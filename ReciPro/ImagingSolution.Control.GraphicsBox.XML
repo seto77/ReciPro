@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ImagingSolution.Control.GraphicsBox</name>
+    </assembly>
+    <members>
+        <member name="T:ImagingSolution.Control.GraphicsBox.evMouseWheeled">
+            <summary>
+            マウスホイールが上下に動かされ、画像の拡大縮小処理が行われた後に発生します。
+            </summary>
+        </member>
+        <member name="E:ImagingSolution.Control.GraphicsBox.MouseWheeled">
+            <summary>
+            MouseWheeledイベント
+            </summary>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.#ctor">
+            <summary>
+            GraphicsBoxクラスのコンストラクタ
+            </summary>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            GraphicsBoxクラスのコンストラクタ
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.Finalize">
+            <summary>
+            GraphicsBoxクラスのファイナライザ
+            </summary>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.Dispose">
+            <summary>
+            GraphicsBoxクラスオブジェクトの解放
+            </summary>
+        </member>
+        <member name="P:ImagingSolution.Control.GraphicsBox.Graphics">
+            <summary>
+            Graphicsプロパティ
+            </summary>
+        </member>
+        <member name="P:ImagingSolution.Control.GraphicsBox.Fonts">
+            <summary>
+            Fontプロパティ
+            </summary>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            マウスホイールイベント
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.Refresh">
+            <summary>
+            描画を更新します。
+            </summary>
+        </member>
+        <member name="F:ImagingSolution.Control.GraphicsBox.components">
+            <summary>
+            必要なデザイナ変数です。
+            </summary>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.Dispose(System.Boolean)">
+            <summary> 
+            使用中のリソースをすべてクリーンアップします。
+            </summary>
+            <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        </member>
+        <member name="M:ImagingSolution.Control.GraphicsBox.InitializeComponent">
+            <summary>
+            デザイナ サポートに必要なメソッドです。このメソッドの内容を
+            コード エディタで変更しないでください。
+            </summary>
+        </member>
+    </members>
+</doc>

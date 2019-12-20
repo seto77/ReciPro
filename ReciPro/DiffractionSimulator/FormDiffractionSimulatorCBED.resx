@@ -1,0 +1,1699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonExecute.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 133</value>
+  </data>
+  <data name="buttonExecute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 5, 3, 5</value>
+  </data>
+  <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 28</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonExecute.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.Name" xml:space="preserve">
+    <value>buttonExecute</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 111</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 23</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
+    <value>Draw guide circles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Name" xml:space="preserve">
+    <value>checkBoxDrawGuideCircles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 350</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>494, 20</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 15</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>      </value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Division of disk diameter</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Max # of Bloch waves</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="labelDivisionNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>207, 70</value>
+  </data>
+  <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 30</value>
+  </data>
+  <data name="labelDivisionNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="labelDivisionNumber.Text" xml:space="preserve">
+    <value>Disk is divided
+into 31029 points</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
+    <value>labelDivisionNumber</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
+    <value>comboBoxSolver</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
+    <value>numericBoxThread</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
+    <value>numericBoxThicknessStep</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
+    <value>numericBoxWholeThicknessStart</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
+    <value>numericBoxThicknessEnd</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
+    <value>numericBoxMaxNumOfG</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
+    <value>buttonStop</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedAlphaMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
+    <value>numericBoxDivision</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 0</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>489, 165</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Input parameters</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxSolver.Items" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="comboBoxSolver.Items1" xml:space="preserve">
+    <value>MKL</value>
+  </data>
+  <data name="comboBoxSolver.Items2" xml:space="preserve">
+    <value>Eigen</value>
+  </data>
+  <data name="comboBoxSolver.Items3" xml:space="preserve">
+    <value>Managed</value>
+  </data>
+  <data name="comboBoxSolver.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 65</value>
+  </data>
+  <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 25</value>
+  </data>
+  <data name="comboBoxSolver.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
+    <value>comboBoxSolver</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 133</value>
+  </data>
+  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 28</value>
+  </data>
+  <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="buttonStop.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
+    <value>buttonStop</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        gg==
+</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 45</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 78</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 45</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 17</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Solver</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>155, 154</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 154</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>Negative</value>
+  </data>
+  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 151</value>
+  </data>
+  <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 25</value>
+  </data>
+  <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
+    <value>comboBoxGradient</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxScale.Items" xml:space="preserve">
+    <value>Gray scale</value>
+  </data>
+  <data name="comboBoxScale.Items1" xml:space="preserve">
+    <value>Cold-Warm scale</value>
+  </data>
+  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 151</value>
+  </data>
+  <data name="comboBoxScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 25</value>
+  </data>
+  <data name="comboBoxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
+    <value>comboBoxScale</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarOutputThickness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>333, 27</value>
+  </data>
+  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 20</value>
+  </data>
+  <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
+    <value>trackBarOutputThickness</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="trackBarGamma.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 120</value>
+  </data>
+  <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 18</value>
+  </data>
+  <data name="trackBarGamma.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Name" xml:space="preserve">
+    <value>trackBarGamma</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 85</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 61</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMin</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>270, 24</value>
+  </data>
+  <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 25</value>
+  </data>
+  <data name="textBoxThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="textBoxThickness.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
+    <value>textBoxThickness</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 27</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 27</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 111</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 34</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Gamma
+(enhance outer diks)</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 85</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 17</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 61</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 17</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 73</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="numericBoxImageSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxImageSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxImageSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxImageSize.FooterText" xml:space="preserve">
+    <value>^2 pixels</value>
+  </data>
+  <data name="numericBoxImageSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxImageSize.HeaderText" xml:space="preserve">
+    <value>Image size</value>
+  </data>
+  <data name="numericBoxImageSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 24</value>
+  </data>
+  <data name="numericBoxImageSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxImageSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxImageSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxImageSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxImageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="numericBoxImageSize.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="numericBoxImageSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxImageSize.Name" xml:space="preserve">
+    <value>numericBoxImageSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxImageSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxImageSize.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;numericBoxImageSize.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="groupBoxOutput.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 165</value>
+  </data>
+  <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>489, 181</value>
+  </data>
+  <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>Output parameters</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
+  <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 370</value>
+  </data>
+  <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>494, 22</value>
+  </data>
+  <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="statusStrip2.Text" xml:space="preserve">
+    <value>statusStrip2</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.Name" xml:space="preserve">
+    <value>statusStrip2</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 16</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>    </value>
+  </data>
+  <data name="numericBoxThread.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxThread.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericBoxThread.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThread.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThread.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThread.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThread.HeaderText" xml:space="preserve">
+    <value>Thread</value>
+  </data>
+  <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 93</value>
+  </data>
+  <data name="numericBoxThread.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxThread.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 25</value>
+  </data>
+  <data name="numericBoxThread.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
+    <value>numericBoxThread</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxThicknessStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxThicknessStep.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>with step of </value>
+  </data>
+  <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 133</value>
+  </data>
+  <data name="numericBoxThicknessStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxThicknessStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxThicknessStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 25</value>
+  </data>
+  <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
+    <value>numericBoxThicknessStep</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxWholeThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
+    <value>Thickness from</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 133</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 25</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
+    <value>numericBoxWholeThicknessStart</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericBoxThicknessEnd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 133</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxThicknessEnd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="numericBoxThicknessEnd.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
+    <value>numericBoxThicknessEnd</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 24</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 25</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
+    <value>numericBoxMaxNumOfG</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.HeaderText" xml:space="preserve">
+    <value>Max semiangle</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 55</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 53</value>
+  </data>
+  <data name="trackBarAdvancedAlphaMax.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedAlphaMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="numericBoxDivision.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxDivision.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxDivision.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxDivision.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="numericBoxDivision.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDivision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 45</value>
+  </data>
+  <data name="numericBoxDivision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxDivision.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxDivision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 25</value>
+  </data>
+  <data name="numericBoxDivision.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxDivision.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
+    <value>numericBoxDivision</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.9.24.1029, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>494, 392</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 5, 3, 5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>CBED</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
+    <value>toolStripProgressBar</value>
+  </data>
+  <data name="&gt;&gt;toolStripProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
+    <value>toolStripStatusLabel2</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormDiffractionSimulatorCBED</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
