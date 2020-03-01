@@ -18,21 +18,19 @@ namespace ReciPro
     {
         public FormMain formMain;
 
-        public double EwaldRadius { get { return 1 / WaveLength; } }
-        public double WaveLength { get { return waveLengthControl.WaveLength; } }
+        public double EwaldRadius => 1 / WaveLength;
+        public double WaveLength => waveLengthControl.WaveLength;
+        public double Energy => waveLengthControl.Energy;
+        public double ExcitationError => numericBoxSpotRadius.Value;
+        public int ClientWidth => numericBoxClientWidth.ValueInteger;
+        public int ClientHeight => numericBoxClientHeight.ValueInteger;
 
-        public double Energy { get => waveLengthControl.Energy; }
-        public double ExcitationError { get { return trackBarAdvancedSpotRadius.Value; } }
-        public int ClientWidth { get => numericBoxClientWidth.ValueInteger; }
-        public int ClientHeight { get => numericBoxClientHeight.ValueInteger; }
+        public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
 
-        public double Thickness { get => trackBarAdvancedThickness.Value; set => trackBarAdvancedThickness.Value = value; }
-
-        private Font font
-        { get { return new Font("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0)); } }
+        private Font font => new Font("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
 
         /// <summary>
-        /// 画面解像度 pixel/mm
+        /// 画面解像度 mm/pix
         /// </summary>
         public double Resolution
         {
@@ -81,19 +79,39 @@ namespace ReciPro
         public double CameraLength2
         {
             set { FormDiffractionSimulatorGeometry.CameraLength2 = value; Draw(); }
-            get { return FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength2; }
+            get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength2;
         }
 
-        public double Tau
-        {
-            set { FormDiffractionSimulatorGeometry.Tau = value; }
-            get { return FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Tau; }
-        }
+        public double Tau     {          set => FormDiffractionSimulatorGeometry.Tau = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Tau;        }
 
-        public double CosTau { set; get; } = 0;
-        public double SinTau { set; get; } = 0;
+        public double Phi { set => FormDiffractionSimulatorGeometry.Phi = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Phi; }
+        
 
-        public PointD FootPt = new PointD(0, 0);
+        public double CosTau => FormDiffractionSimulatorGeometry.CosTau; 
+        public double CosTauSquare => FormDiffractionSimulatorGeometry.CosTauSquare;
+        public double SinTau => FormDiffractionSimulatorGeometry.SinTau;
+        public double SinTauSquare => FormDiffractionSimulatorGeometry.SinTauSquare;
+
+        public double CosPhi => FormDiffractionSimulatorGeometry.CosPhi;
+        public double CosPhiSquare => FormDiffractionSimulatorGeometry.CosPhiSquare;
+        public double SinPhi => FormDiffractionSimulatorGeometry.SinPhi;
+        public double SinPhiSquare => FormDiffractionSimulatorGeometry.SinPhiSquare;
+
+        /// <summary>
+        /// (CosPhi, SinPhi, 0) の周りに Tau回転する行列
+        ///  Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
+        ///  CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
+        /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
+        /// この行列をv＝(X,Y,CL2)に作用させると、検出器座標(X,Y)を実空間座標に変換できる。
+        /// </summary>
+        public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry.DetectorRotation;
+
+
+        public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
+        /// <summary>
+        /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
+        /// </summary>
+        public PointD DisplayCenter { get; set; } = new PointD(0, 0);
 
         public FormDiffractionSimulator()
         {
@@ -105,6 +123,7 @@ namespace ReciPro
             timerBlinkSpot.Tag = true;
             timerBlinkKikuchiLine.Tag = true;
             timerBlinkDebyeRing.Tag = true;
+            timerBlinkScale.Tag = true;
         }
 
         //ロードされたとき
@@ -152,7 +171,7 @@ namespace ReciPro
         {
             if (this.Visible)
             {
-                FootPt = new PointD(0, 0);
+                DisplayCenter = new PointD(0, 0);
                 setVector();
                 graphicsBox.BringToFront();
                 Draw();
@@ -179,8 +198,8 @@ namespace ReciPro
                 {
                     g.Transform = new System.Drawing.Drawing2D.Matrix(
                     (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
-                    (float)(graphicsBox.ClientSize.Width / 2.0 + FootPt.X / Resolution),
-                    (float)(graphicsBox.ClientSize.Height / 2.0 + FootPt.Y / Resolution));
+                    (float)(graphicsBox.ClientSize.Width / 2.0 + DisplayCenter.X / Resolution),
+                    (float)(graphicsBox.ClientSize.Height / 2.0 + DisplayCenter.Y / Resolution));
                 }
                 catch { return false; }
             return true;
@@ -196,6 +215,11 @@ namespace ReciPro
         /// 描画をスキップする (コントロールイベントをスキップする場合は、SkipEventを使う)
         /// </summary>
         public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get { return skipDrawing; } }
+
+        private void Draw(object sender, EventArgs e)
+        {
+            Draw();
+        }
 
         /// <summary>
         /// 逆空間描画関数
@@ -228,9 +252,9 @@ namespace ReciPro
             //背景を描画
             if (drawOverlappedImage)
             {
-                var topleft = convertClientToSrc(new Point(0, 0));
-                var bottomright = convertClientToSrc(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
-                g.FillRectangle(new SolidBrush(pictureBoxBackGround.BackColor), new RectangleF((float)topleft.X, (float)topleft.Y, (float)(bottomright.X - topleft.X), (float)(bottomright.Y - topleft.Y)));
+                var topleft = convertScreenToDetector(new Point(0, 0));
+                var bottomright = convertScreenToDetector(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
+                g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF((float)topleft.X, (float)topleft.Y, (float)(bottomright.X - topleft.X), (float)(bottomright.Y - topleft.Y)));
             }
 
             g.SmoothingMode = SmoothingMode.None;
@@ -266,6 +290,9 @@ namespace ReciPro
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
+            if(toolStripButtonScale.Checked && (bool)timerBlinkScale?.Tag)
+                DrawScale(g);
+
             if (toolStripButtonKikuchiLines.Checked && (bool)timerBlinkKikuchiLine?.Tag)
                 DrawKikuchiLine(g);
 
@@ -288,8 +315,8 @@ namespace ReciPro
             if (MouseRangingMode)
             {
                 Pen pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash };
-                var rangeStart = convertClientToSrc(MouseRangeStart).ToPointF();
-                var rangeEnd = convertClientToSrc(MouseRangeEnd).ToPointF();
+                var rangeStart = convertScreenToDetector(MouseRangeStart).ToPointF();
+                var rangeEnd = convertScreenToDetector(MouseRangeEnd).ToPointF();
                 g.DrawRectangle(pen, Math.Min(rangeStart.X, rangeEnd.X), Math.Min(rangeStart.Y, rangeEnd.Y), Math.Abs(rangeStart.X - rangeEnd.X), Math.Abs(rangeStart.Y - rangeEnd.Y));
             }
 
@@ -353,7 +380,7 @@ namespace ReciPro
 
             double radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
-            int bgR = pictureBoxBackGround.BackColor.R, bgG = pictureBoxBackGround.BackColor.G, bgB = pictureBoxBackGround.BackColor.B;
+            int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
             var fillCircleSpread = new Func<Color, PointD, double, double, double>((c, pt, intensity, sigma) =>
               {
                   //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
@@ -423,7 +450,6 @@ namespace ReciPro
 
             #endregion 3次元ガウス関数のメモ書き
 
-            double cosTau = Math.Cos(Tau), sinTau = Math.Sin(Tau);
             double spotRadiusOnDetector = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * ExcitationError / 2));
             double error2 = ExcitationError * ExcitationError, error3 = ExcitationError * ExcitationError * ExcitationError;
             double sqrt2PI = Math.Sqrt(2 * Math.PI);
@@ -455,7 +481,7 @@ namespace ReciPro
                     {
                         var eigenValues = crystal.Bethe.EigenValuesPED;//電子線の場合
 
-                        var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, trackBarAdvancedThickness.Value,
+                        var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                             numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
                         gVector = gPED.Select(g => g.ConvertToVector3D()).ToArray();
 
@@ -467,7 +493,7 @@ namespace ReciPro
 
                         var eigenValues = crystal.Bethe.EigenValues;
 
-                        var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, trackBarAdvancedThickness.Value);
+                        var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value);
                         gVector = gBethe.Select(g => g.ConvertToVector3D()).ToArray();
 
                         if (eigenValues != crystal.Bethe.EigenValues)
@@ -485,23 +511,23 @@ namespace ReciPro
                 {
                     var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
 
-                    vec.Y = -vec.Y; vec.Z = -vec.Z;//ここでベクトルのY,Zの符号を反転
-                    if (vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
+                    //逆空間 <=>実空間で、Y,Zの符号が反転していることに注意
+                    if (-vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
                     {
                         var L2 = (vec.X * vec.X) + (vec.Y * vec.Y);
                         var dev = 0.0;
                         if (!bethe)
                         {
-                            dev = EwaldRadius - Math.Sqrt(L2 + (vec.Z + EwaldRadius) * (vec.Z + EwaldRadius));
+                            dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
                             g.Tag = dev;
                         }
 
                         var dev2 = dev * dev;
-                        if (-sinTau * vec.Y + cosTau * (vec.Z + EwaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
+                        if (SinPhi * SinTau *vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
+                        //(vec.X, -vec.Y, -vec.Z + EwaldRadius) と(SinPhi*SinTau, -CosPhi*sinTau, cosTau) の内積が0より大きい = 前方散乱)
                         {
-                            var point = Geometriy.GetCrossPoint(0, -sinTau, cosTau, CameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + EwaldRadius));
-                            PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
-                            if (IsDisplayArea(pt))
+                            var pt = convertReciprocalToDetector(vec);
+                            if (IsScreenArea(pt))
                             {
                                 //CBEDモードの時
                                 if (FormDiffractionSimulatorCBED.Visible)
@@ -510,7 +536,7 @@ namespace ReciPro
                                         drawCircle(Color.Yellow, pt, radiusCBED);
                                 }
                                 //ダイナミックコンプレッションモードがONの時は、描画しないで強度と座標だけを格納する
-                                else if (outputOnlySpotInformation && IsDetectorArea(pt))
+                                else if (outputOnlySpotInformation && IsScreenArea(pt))
                                 {
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma;
                                     var intensity = g.RelativeIntensity / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
@@ -528,7 +554,7 @@ namespace ReciPro
                                         if (!logScale)
                                             intensity = g.RelativeIntensity / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2) * linearCoeff;
                                         else
-                                            intensity = (Math.Log10(g.RelativeIntensity) + logCoeff)  / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
+                                            intensity = (Math.Log10(g.RelativeIntensity) + logCoeff) / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
 
                                         if (!double.IsNaN(intensity))
                                         {
@@ -544,7 +570,7 @@ namespace ReciPro
                                     var sphereRadius = ExcitationError;//逆空間における逆格子点の半径
                                     if (!bethe)
                                         sphereRadius = ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//Kinematicな強度計算が有効の場合は、半径に、相対強度の1/3乗を掛ける
-                                    else 
+                                    else
                                         sphereRadius = ExcitationError * Math.Sqrt(g.RelativeIntensity);//ベーテ法の場合は、相対強度の平方根が半径に比例
 
                                     if (Math.Abs(dev) < sphereRadius)
@@ -558,7 +584,6 @@ namespace ReciPro
                                 }
                             }
                         }
-
                     }
                 }
             }
@@ -573,28 +598,27 @@ namespace ReciPro
                 return null;
 
             //ダイレクトスポットの描画
-            var ptOrigin3D = Geometriy.GetCrossPoint(0, sinTau, cosTau, CameraLength2, new Vector3D(0, 0, 0), new Vector3D(0, 0, EwaldRadius));
-            PointD ptOrigin = new PointD(ptOrigin3D.X, ptOrigin3D.Y * cosTau + ptOrigin3D.Z * sinTau);
-            if (IsDisplayArea(ptOrigin))
+            PointD ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            if (IsScreenArea(ptOrigin))
             {
-                var penOrigin = new Pen(pictureBoxOrigin.BackColor, (float)Resolution);
+                var penOrigin = new Pen(colorControlOrigin.Color, (float)Resolution);
                 graphics.DrawLine(penOrigin, ptOrigin.X - l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X + l / 2f, ptOrigin.Y + l / 2f);
                 graphics.DrawLine(penOrigin, ptOrigin.X + l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X - l / 2f, ptOrigin.Y + l / 2f);
                 //fillCircle(pictureBoxOrigin.BackColor, ptOrigin, l);
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityBethe.Checked)
-                    graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), pictureBoxOrigin.BackColor)), (float)(ptOrigin.X + l / 2f), (float)(ptOrigin.Y + l / 2f));
+                    graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + l / 2f), (float)(ptOrigin.Y + l / 2f));
                 //ダイレクトスポットの描画ここまで
             }
             //垂線の足の描画
-            if (Tau != 0 && IsDisplayArea(new PointD(0, 0)))
+            if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
             {
-                var penFoot = new Pen(pictureBoxFoot.BackColor, (float)Resolution);
+                var penFoot = new Pen(colorControlFoot.Color, (float)Resolution);
 
                 graphics.DrawLine(penFoot, -l / 2f, -l / 2f, l / 2f, l / 2f);
                 graphics.DrawLine(penFoot, +l / 2f, -l / 2f, -l / 2f, l / 2f);
 
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
-                    graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), pictureBoxFoot.BackColor)), l / 2f, l / 2f);
+                    graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), l / 2f, l / 2f);
             }
             //垂線の足の描画ここまで
             return null;
@@ -616,13 +640,13 @@ namespace ReciPro
                 if (radioButtonIntensityBethe.Checked)
                     sb.AppendLine((g.RelativeIntensity * 100).ToString("#.#") + " %, (" + g.F.Real.ToString("0.###") + " + " + g.F.Imaginary.ToString("0.###") + "i)");
             }
-            graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), pictureBoxString.BackColor)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
+            graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
         }
 
         private void DrawKikuchiLine(Graphics graphics)
         {
-            var penExcess = new Pen(new SolidBrush(pictureBoxExcessLine.BackColor), (float)(trackBarLineWidth.Value * Resolution / 2000f));
-            var penDefect = new Pen(new SolidBrush(pictureBoxDefectLine.BackColor), (float)(trackBarLineWidth.Value * Resolution / 2000f));
+            var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
+            var penDefect = new Pen(new SolidBrush(colorControlDefectLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
             var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
 
             for (int i = 0; i < formMain.Crystals.Length; i++)
@@ -677,8 +701,8 @@ namespace ReciPro
                             graphics.DrawLines(excess ? penDefect : penExcess, pts2.ToArray());
                             if (toolStripButtonIndexLabels.Checked)
                             {
-                                graphics.DrawString(g.Index, font, new SolidBrush(pictureBoxString.BackColor), pts1[pts1.Count / 2]);
-                                graphics.DrawString(g.Index, font, new SolidBrush(pictureBoxString.BackColor), pts2[pts2.Count / 2]);
+                                graphics.DrawString(g.Index, font, new SolidBrush(colorControlString.Color), pts1[pts1.Count / 2]);
+                                graphics.DrawString(g.Index, font, new SolidBrush(colorControlString.Color), pts2[pts2.Count / 2]);
                             }
                         }
                         catch { }
@@ -691,66 +715,170 @@ namespace ReciPro
 
         private void DrawDebyeRing(Graphics g)
         {
-            int bgR = pictureBoxBackGround.BackColor.R, bgG = pictureBoxBackGround.BackColor.G, bgB = pictureBoxBackGround.BackColor.B;
-            int ringR = pictureBoxDebyeRing.BackColor.R, ringG = pictureBoxDebyeRing.BackColor.G, ringB = pictureBoxDebyeRing.BackColor.B;
-            double diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-            double sinTau = Math.Sin(Tau), sin2Tau = sinTau * sinTau, cosTau = Math.Cos(Tau);
+            int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
+            if (width == 0 || height == 0)
+                return;
+
+            var cornerDetector = new[] { convertScreenToDetector(0, 0), convertScreenToDetector(width, 0), convertScreenToDetector(width, height), convertScreenToDetector(0, height) };
+            var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+
+            int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
+            int ringR = colorControlDebyeRing.Color.R, ringG = colorControlDebyeRing.Color.G, ringB = colorControlDebyeRing.Color.B;
             for (int n = 0; n < formMain.Crystal.Plane.Count; n++)
             {
                 var intensity = formMain.Crystal.Plane[n].Intensity;
                 if (checkBoxDebyeRingIgnoreIntensity.Checked)
                     intensity = 1;
 
-                var d = formMain.Crystal.Plane[n].d;
-                //cos2θ = 1 - 2 (sinθ)^2,  sinθ = wavelength/2/d
-                double sinTheta = WaveLength / 2 / d, cosTwoTheta = 1 - 2 * sinTheta * sinTheta, cos2TwoTheta = cosTwoTheta * cosTwoTheta;
+                double twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
-                double P = -(sin2Tau - cos2TwoTheta) / (CameraLength2 * CameraLength2 * (1 - cos2TwoTheta));
-                double Psqrt = Math.Sqrt(Math.Abs(P));
-                double Q = -P * (sin2Tau - cos2TwoTheta) / cos2TwoTheta, Qsqrt = Math.Sqrt(Q);
-                double Y = -CameraLength2 * sinTau * cosTau / (sin2Tau - cos2TwoTheta);
+                var ptsArray = Geometriy.ConicSection(twoTheta , Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+                
+                int red = (int)(ringR * intensity + bgR * (1 - intensity));
+                int green = (int)(ringG * intensity + bgG * (1 - intensity));
+                int blue = (int)(ringB * intensity + bgB * (1 - intensity));
+                Pen pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(this.trackBarDebyeRingWidth.Value * Resolution / 2f));
 
-                //現在のMatrixを保存
-                var original = g.Transform;
-                //平行移動
-                g.TranslateTransform(0, (float)Y);
+                foreach (var pts in ptsArray)
+                    g.DrawLines(pen, pts.ToArray());
 
-                if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
-                {
-                    int red = (int)(ringR * intensity + bgR * (1 - intensity));
-                    int green = (int)(ringG * intensity + bgG * (1 - intensity));
-                    int blue = (int)(ringB * intensity + bgB * (1 - intensity));
-                    Pen pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(this.trackBarDebyeRingWidth.Value * Resolution / 2f));
-
-                    int sign = -1;
-                    if (P > 0)
-                    {
-                        g.DrawEllipse(pen, -(float)(1 / Psqrt), -(float)(1 / Qsqrt), (float)(2 / Psqrt), (float)(2 / Qsqrt));
-                    }
-                    else
-                    {
-                        var v1 = new Vector3DBase(0, 1 / Qsqrt + Y, CameraLength2).Normarize();
-                        var v2 = new Vector3DBase(0, -1 / Qsqrt + Y, CameraLength2).Normarize();
-                        var e = new Vector3DBase(0, SinTau, CosTau);
-                        sign = (Math.Abs(v1 * e - cosTwoTheta) > Math.Abs(v2 * e - cosTwoTheta)) ? -1 : 1;
-
-                        // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
-                        double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                        List<PointF> pts = new List<PointF>();
-                        for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 1000)
-                        {
-                            float x = (float)(Math.Sinh(omega) / Psqrt), y = (float)(Math.Cosh(omega) / Qsqrt);
-                            pts.Add(new PointF(x, sign * y));
-                        }
-                        g.DrawLines(pen, pts.ToArray());
-                    }
-
-                    if (checkBoxDebyeRingLabel.Checked)
-                        g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(pictureBoxString.BackColor), 0, (float)(sign / Qsqrt));
-                }
-                g.Transform = original;
+                var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 5)), originSrc, -90);
+                if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
+                    g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
             }
         }
+
+        
+
+        private void DrawScale(Graphics g)
+        {
+           
+            int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
+            if (width == 0 || height == 0)
+                return;
+
+            var cornerDetector = new[] { convertScreenToDetector(0, 0), convertScreenToDetector(width, 0), convertScreenToDetector(width, height), convertScreenToDetector(0, height) };
+            var cornerReals = new[] { convertScreenToReal(0, 0), convertScreenToReal(width, 0), convertScreenToReal(width, height), convertScreenToReal(0, height) };
+            var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            var originInside = IsScreenArea(originSrc);
+
+            //Azimuthのスケールライン ここから
+            int azimuthStep = radioButtonScaleDivisionFine.Checked ? 5 : radioButtonScaleDivisionMedium.Checked ? 15 : 30;
+            var pen = new Pen(new SolidBrush(colorControlScaleAzimuth.Color), (float)(trackBarScaleLineWidth.Value * Resolution / 2f));
+
+            var length = new[] { (cornerReals[0]- cornerReals[1]).Length, (cornerReals[1] - cornerReals[2]).Length,
+                (cornerReals[2] - cornerReals[3]).Length, (cornerReals[3] - cornerReals[0]).Length };
+
+            for (double n = 0; n < 180; n += azimuthStep)
+            {
+                pen.DashStyle = n % 10 == 0 ? DashStyle.Dash : DashStyle.Dot;
+
+                var crossList = new List<(PointD pt, int index)>();
+                double cos = Math.Cos(n / 180.0 * Math.PI), sin = Math.Sin(n / 180.0 * Math.PI);
+                //n度傾いた平面と、画像のエッジの交点を求める
+                for (int i = 0; i < 4; i++)
+                {
+                    //  0 - 1
+                    //  |   |
+                    //  3 - 2 
+                    var j = i < 3 ? i + 1 : 0;
+                    var cross = Geometriy.GetCrossPoint(cos, sin, 0, 0, cornerReals[i], cornerReals[j]);
+                    double length1 = (cornerReals[i] - cross).Length, length2 = (cornerReals[j] - cross).Length;
+                    if (length1 + length2 < length[i] * 1.001)
+                        crossList.Add((length1 / length[i] * cornerDetector[j] + length2 / length[i] * cornerDetector[i], i));
+                    if (crossList.Count == 2)
+                    {
+                        g.DrawLine(pen, crossList[0].pt.ToPointF(), crossList[1].pt.ToPointF());
+
+                        if (checkBoxScaleLabel.Checked)//ラベル描画
+                        {
+                            if (!originInside)//ダイレクトスポットが描画範囲内に含まれていないときは 中心に近い点は削除
+                                crossList.Remove((crossList[0].pt - originSrc).Length > (crossList[1].pt - originSrc).Length ?
+                                    crossList[1] : crossList[0]);
+
+                            foreach (var (pt, index) in crossList)
+                            {
+                                double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
+                                var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString() : (n - 180).ToString();
+                                var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
+                                g.DrawString(str + "°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            //Azimuthのスケールライン ここまで
+
+            //ここから2θのスケールラインの描画
+
+            //2θの最大/最小値
+            double max2Theta = 0, min2Theta = 0.0;
+            var edges = new List<Vector3DBase>();
+            edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
+            edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, height)));
+            edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(0, h)));
+            edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(width, h)));
+            if(!originInside)
+                min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
+            max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
+            //2θの最大/最小値　ここまで
+
+            //分割幅をきめる　ここから
+            //fineのときは20分割以上、mediumは10分割以上、coarseは5分割以上になるように調節
+            double dev = max2Theta - min2Theta;
+            int thereshold = radioButtonScaleDivisionFine.Checked ? 30 : radioButtonScaleDivisionMedium.Checked ? 15 : 5;
+            int stepInteger = 5, stepPow = 0;
+            for (stepPow = (int)Math.Log10(dev) + 1; stepPow > -7; stepPow--)
+            {
+                if (dev / (stepInteger = 5) / Math.Pow(10, stepPow) > thereshold) break;
+                if (dev / (stepInteger = 2) / Math.Pow(10, stepPow) > thereshold) break;
+                if (dev / (stepInteger = 1) / Math.Pow(10, stepPow) > thereshold) break;
+            }
+            //分割幅をきめる　ここまで
+
+            int startN = (int)(min2Theta / stepInteger / Math.Pow(10, stepPow));
+            int endN = (int)(max2Theta / stepInteger / Math.Pow(10, stepPow)) + 1;
+
+            pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
+
+           
+
+            for (double n = Math.Max(1, startN); n < endN; n++)
+            {
+                var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
+                var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+                foreach (var pts in ptsArray)
+                    g.DrawLines(pen, pts.ToArray());
+                    
+                var labelPosition = getLabelPosition(ptsArray.SelectMany(p=>p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
+                if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
+                    g.DrawString(twoTheta.ToString() + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
+            }
+        }
+
+        /// <summary>
+        /// 与えられた点集合 pts の中から、もっとも指定した方向に近い点を返す. deg 0 : 右, deg 90: 下, deg 180: 左, deg -90:上
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
+        private PointD getLabelPosition (IEnumerable<PointD> list, PointD origin, double deg)
+        {
+            var residual = double.PositiveInfinity;
+            var result = new PointD(float.NaN, float.NaN);
+            foreach (var p in list)
+            {
+                var dev = Math.Abs((deg / 180) * Math.PI - Math.Atan2(p.Y - origin.Y, p.X - origin.X)  );
+                if (residual > dev)
+                {
+                    residual = dev;
+                    result = p;
+                }
+            }
+            return result;
+        }
+
 
 
         /// <summary>
@@ -809,11 +937,6 @@ namespace ReciPro
             lastPanelSize = graphicsBox.ClientSize;
         }
 
-        private void graphicsBox_Move(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
         /// <summary>
         /// このフラグがtrueの時は、計算をキャンセルする
         /// </summary>
@@ -826,10 +949,10 @@ namespace ReciPro
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            double d1 = 1 / convertClientToReciprocalSpace(0, 0, false).Length;
-            double d2 = 1 / convertClientToReciprocalSpace(0, graphicsBox.ClientSize.Height, false).Length;
-            double d3 = 1 / convertClientToReciprocalSpace(graphicsBox.ClientSize.Width, 0, false).Length;
-            double d4 = 1 / convertClientToReciprocalSpace(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length;
+            double d1 = 1 / convertScreenToReciprocal(0, 0, false).Length;
+            double d2 = 1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length;
+            double d3 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length;
+            double d4 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length;
             double minD = new[] { d1, d2, d3, d4 }.Min();
             //double maxD = new[] { d1, d2, d3, d4 }.Max();
             WaveSource w = waveLengthControl.WaveSource;
@@ -843,9 +966,9 @@ namespace ReciPro
                     Crystal crystal = formMain.Crystals[i];
                     crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? w : WaveSource.None);
 
-                    int noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? pictureBoxNoCondition.BackColor.ToArgb() : crystal.Argb;
-                    int screwGlideColor = pictureBoxForbiddenScrewGlide.BackColor.ToArgb();
-                    int latticeColor = pictureBoxForbiddenLattice.BackColor.ToArgb();
+                    int noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
+                    int screwGlideColor = colorControlScrewGlide.Color.ToArgb();
+                    int latticeColor = colorControlForbiddenLattice.Color.ToArgb();
                     string latticeType = crystal.Symmetry.LatticeTypeStr;
 
                     foreach (var gtemp in crystal.VectorOfG.AsParallel().Where(g => g.Extinction.Length == 0))
@@ -889,123 +1012,146 @@ namespace ReciPro
             toolStripStatusLabelTimeForSearchingG.Text = "Time for searching g-vectors: " + sw.ElapsedMilliseconds.ToString() + " ms.  ";
         }
 
+
+        #region 座標変換
+
+
+
+        /// <summary>
+        /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public PointD convertScreenToDetector(int x, int y)
+        {
+            return new PointD(
+                (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
+                (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
+        }
+
+        /// <summary>
+        /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public PointD convertScreenToDetector(Point p) => convertScreenToDetector(p.X, p.Y);
+
+        /// <summary>
+        /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Vector3DBase convertScreenToReal(int x, int y)
+        {
+            PointD p = convertScreenToDetector(x, y);//まずフィルム上の位置を取得
+            return convertDetectorToReal(p.X, p.Y);//実空間の座標に変換
+        }
+
         /// <summary>
         /// 座標系変換 画面(Client)上の点(pixel) を 逆空間上の点(mm^-1)に変換 　回転している場合はOriginal座標系に戻して変換。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
+        public Vector3DBase convertScreenToReciprocal(int x, int y, bool originalCoordinate)
+            => convertRealToReciprocal(convertScreenToReal(x, y), originalCoordinate);
 
-        public Vector3D convertClientToReciprocalSpace(double x, double y, bool originalCoordinate)
+        /// <summary>
+        /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public PointD convertDetectorToScreen(double x, double y) => new PointD(
+                (x + DisplayCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
+                (y + DisplayCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
+
+
+        /// <summary>
+        /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
+        /// </summary>
+        /// <param name="pt"></param>
+        /// <returns></returns>
+        public PointD convertDetectorToScreen(PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
+
+        /// <summary>
+        /// 座標変換 検出器(Detector)上の点(Foot中心, mm単位) を 実空間座標(mm単位, ３次元座標)に変換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Vector3DBase convertDetectorToReal(double x, double y)
         {
-            //まずフィルム上の位置を取得
-            PointD p = convertClientToSrc(x, y);
+            #region 座標変換の計算式
+            // (CosPhi, SinPhi, 0) の周りに Tau回転する行列は、
+            //   Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
+            //   CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
+            //  -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau  
+            //この行列を(x,y,CameraLength2)に作用させればよい
+            #endregion
+            return DetectorRotation * new Vector3DBase(x, y, CameraLength2);
+        }
 
-            double X, Y, Z;
-            double _x, _y;
-            double len, twoTheta;
 
-            //実空間の座標に変換
-            var real3D = new Vector3DBase(p.X, -CameraLength2 * Math.Sin(Tau) + p.Y * Math.Cos(Tau), CameraLength2 * Math.Cos(Tau) + p.Y * Math.Sin(Tau));
-            _x = real3D.X;
-            _y = real3D.Y;
-            len = Math.Sqrt(_x * _x + _y * _y);
-            twoTheta = Math.Atan2(len, real3D.Z);
-            //if()
+        /// <summary>
+        /// 実空間座標(mm単位, ３次元座標)を逆空間座標に変換
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="originalCoordinate"></param>
+        /// <returns></returns>
+        public Vector3DBase convertRealToReciprocal(Vector3DBase v, bool originalCoordinate)
+        {
+            double len = Math.Sqrt(v.X2Y2);
+            double twoTheta = Math.Atan2(len, v.Z);
 
-            double sinTheta = Math.Sin(twoTheta / 2);
-            double sinThetaSquare = sinTheta * sinTheta;
-            Z = EwaldRadius * (1 - Math.Cos(twoTheta));
+            double sinTheta = Math.Sin(twoTheta / 2), sinThetaSquare = sinTheta * sinTheta;
+            double Z = EwaldRadius * (1 - Math.Cos(twoTheta));
 
             double temp = 1 / len * Math.Sqrt((4 * sinThetaSquare * EwaldRadius * EwaldRadius) - Z * Z);
-            X = _x * temp;
-            Y = -_y * temp;
+            double X = v.X * temp, Y = -v.Y * temp;
 
-            if (originalCoordinate)
-            {
-                if (formMain.Crystal.RotationMatrix.E11 == 1 && formMain.Crystal.RotationMatrix.E22 == 1 && formMain.Crystal.RotationMatrix.E33 == 1)
-                    return new Vector3D(X, Y, Z, false);
-                else
-                    return formMain.Crystal.RotationMatrix.Inverse() * new Vector3D(X, Y, Z, false);
-            }
-            else
-                return new Vector3D(X, Y, Z, false);
+            return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * new Vector3DBase(X, Y, Z) : new Vector3DBase(X, Y, Z);
         }
 
         /// <summary>
-        /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
+        /// 逆空間座標を実空間座標に変換。　 逆空間座標のy,zの符号を反転することに注意
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="g"></param>
         /// <returns></returns>
-        public PointD convertSrcToClient(double x, double y)
-        {
-            return new PointD(
-                (x - FootPt.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
-                -(y - FootPt.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
-        }
+        public Vector3DBase convertReciprocalToReal(Vector3DBase g)
+            => Geometriy.GetCrossPoint(SinPhi * SinTau, -CosPhi * SinTau, CosTau, CameraLength2, new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z));
+
+        // return p * d / (a * p.X + b * p.Y + c * p.Z);
 
         /// <summary>
-        /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
+        /// 逆空間座標を検出器座標に変換。　 逆空間座標のy,zの符号を反転することに注意
         /// </summary>
-        /// <param name="pt"></param>
+        /// <param name="g"></param>
         /// <returns></returns>
-        public PointD convertSrcToClient(PointD pt)
+        public PointD convertReciprocalToDetector(Vector3DBase g)
         {
-            return new PointD(
-                (pt.X + FootPt.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
-                (pt.Y + FootPt.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
+            var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
+            var coeff = CameraLength2 / v.Z;
+            return new PointD(v.X, v.Y) * coeff;
         }
 
-        /// <summary>
-        /// 座標系変換 画面(Client)上の点(pixel)を検出器(Src)上の位置 (mm)に変換
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public PointD convertClientToSrc(double x, double y)
-        {
-            return new PointD(
-                (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - FootPt.X,
-                (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - FootPt.Y);
-        }
 
         /// <summary>
-        /// 座標系変換 画面(Client)上の点(pixel)をフィルム(Src)上の位置 (mm)に変換
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        public PointD convertClientToSrc(Point p)
-        {
-            return convertClientToSrc(p.X, p.Y);
-        }
-
-        /// <summary>
-        /// フィルム座標で与えられたptが、画面内に含まれるかどうかを返す
+        /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
-        public bool IsDisplayArea(PointD pt)
+        public bool IsScreenArea(PointD pt, int margin=0)
         {
-            var clientPt = convertSrcToClient(pt);
-            return clientPt.X > 0 && clientPt.Y > 0 && clientPt.X < graphicsBox.ClientRectangle.Width && clientPt.Y < graphicsBox.ClientRectangle.Height;
+            var clientPt = convertDetectorToScreen(pt);
+            return clientPt.X > margin && clientPt.Y > margin 
+                && clientPt.X < graphicsBox.ClientRectangle.Width - margin 
+                && clientPt.Y < graphicsBox.ClientRectangle.Height- margin;
         }
 
-        /// <summary>
-        /// フィルム座標で与えられたptが、検出器内に含まれるかどうかを返す。OverlapPivture機能がOFFの場合は、常に検出器設定が
-        /// </summary>
-        /// <param name="pt"></param>
-        /// <returns></returns>
-        public bool IsDetectorArea(PointD pt)
-        {
-            var fdsg = FormDiffractionSimulatorGeometry;
-            var start = new PointD(-fdsg.DetectorPixelSize * fdsg.FootX, -fdsg.DetectorPixelSize * fdsg.FootY);
-            var end = new PointD(fdsg.DetectorPixelSize * (fdsg.DetectorWidth - fdsg.FootX), fdsg.DetectorPixelSize * (fdsg.DetectorHeight - fdsg.FootY));
-
-            //var clientPt = convertSrcToClient(pt);
-            //return clientPt.X > 0 && clientPt.Y > 0 && clientPt.X < graphicsBox.ClientRectangle.Width && clientPt.Y < graphicsBox.ClientRectangle.Height;
-            return pt.X > start.X && pt.Y > start.Y && pt.X < end.X && pt.Y < end.Y;
-        }
+        #endregion 座標変換
 
         private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1017,22 +1163,6 @@ namespace ReciPro
         internal void SetCrystal()
         {
             setVector(true);
-            Draw();
-        }
-
-        //カラー変更用のピクチャーボックスがクリックされたとき
-        private void panelColor_Click(object sender, System.EventArgs e)
-        {
-            ColorDialog colorDialog = new ColorDialog
-            {
-                Color = ((PictureBox)sender).BackColor,
-                AllowFullOpen = true,
-                AnyColor = true,
-                SolidColorOnly = false,
-                ShowHelp = true
-            };
-            colorDialog.ShowDialog();
-            ((PictureBox)sender).BackColor = colorDialog.Color;
             Draw();
         }
 
@@ -1053,11 +1183,11 @@ namespace ReciPro
             else if (e.Button == MouseButtons.Left && e.Button != MouseButtons.Right && e.Clicks == 2)
             {
                 //まずフィルム上の位置を逆空間点に変換
-                Vector3D inversePos = convertClientToReciprocalSpace(e.X, e.Y, true);
+                var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
                 //座標を反転
-                Vector3D[] gVector = formMain.Crystal.VectorOfG.ToArray();
+                var gVector = formMain.Crystal.VectorOfG.ToArray();
                 int num = -1;
-                double minLength = double.PositiveInfinity;
+                var minLength = double.PositiveInfinity;
                 for (int i = 0; i < gVector.Length; i++)
                 {
                     if (minLength > (gVector[i] - inversePos).Length2)
@@ -1068,7 +1198,7 @@ namespace ReciPro
                 }
 
                 var vec = formMain.Crystal.RotationMatrix * gVector[num];
-                double dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
+                var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
 
                 MessageBox.Show(
                     "index: " + gVector[num].h.ToString() + " " + gVector[num].k.ToString() + " " + gVector[num].l.ToString()
@@ -1093,15 +1223,15 @@ namespace ReciPro
                 MouseRangingMode = false;
                 MouseRangeEnd = new Point(e.X, e.Y);
 
-                PointD ptStart = convertClientToSrc(MouseRangeStart);
-                PointD ptEnd = convertClientToSrc(MouseRangeEnd);
+                var ptStart = convertScreenToDetector(MouseRangeStart);
+                var ptEnd = convertScreenToDetector(MouseRangeEnd);
 
                 if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) < 2 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) < 2)
                 {//選択範囲があまりに小さすぎたら縮小
                     if (checkBoxFixCenter.Checked)
-                        FootPt = new PointD(0, 0);
+                        DisplayCenter = new PointD(0, 0);
                     else
-                        FootPt = -(ptStart + ptEnd) / 2;
+                        DisplayCenter = -(ptStart + ptEnd) / 2;
                     Resolution *= 1.2;
                 }
                 else if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) > 10 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) > 10)
@@ -1109,9 +1239,9 @@ namespace ReciPro
                     //現在のmagと中心位置から、新しいmagと中心位置を決定する
 
                     if (checkBoxFixCenter.Checked)
-                        FootPt = new PointD(0, 0);
+                        DisplayCenter = new PointD(0, 0);
                     else
-                        FootPt = -(ptStart + ptEnd) / 2;
+                        DisplayCenter = -(ptStart + ptEnd) / 2;
                     Resolution = (Math.Abs(ptStart.X - ptEnd.X) / graphicsBox.ClientSize.Width + Math.Abs(ptStart.Y - ptEnd.Y) / graphicsBox.ClientSize.Height) / 2;
                 }
             }
@@ -1119,21 +1249,25 @@ namespace ReciPro
                 Draw();
         }
 
-        private PointD lastMousePositionReal = new PointD();
-        private Point lastMousePositionClient = new Point();
+        private PointD lastMousePositionDetector = new PointD();
+        private Point lastMousePositionScreen = new Point();
 
         private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             //マウスポインタの情報を表示
 
-            var srcPos = convertClientToSrc(e.X, e.Y);
-            labelMousePointReal.Text = "Real Coord.(mm): " + srcPos.X.ToString("f3") + ", " + srcPos.Y.ToString("f3");
+            var detectorPos = convertScreenToDetector(e.X, e.Y);
+            labelMousePositionDetector.Text = detectorPos.X.ToString("f3") + ", " + detectorPos.Y.ToString("f3");
 
-            Vector3D inversePos = convertClientToReciprocalSpace(e.X, e.Y, false);
-            labelMousePointInverse.Text = "Inverse Coord. (nm^-1): " + inversePos.X.ToString("f3") + ", " + inversePos.Y.ToString("f3") + ", " + inversePos.Z.ToString("f3");
+            var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
+            labelMousePositionReal.Text = realPos.X.ToString("f3") + ", " + realPos.Y.ToString("f3")+ ", " + realPos.Z.ToString("f3");
 
-            labelDinv.Text = "1/d: " + inversePos.Length.ToString("f4") + " nm^-1";
-            double d = 1 / inversePos.Length;
+
+            var reciprocalPos = convertRealToReciprocal(realPos, false);
+            labelMousePositionReciprocal.Text = reciprocalPos.X.ToString("f3") + ", " + reciprocalPos.Y.ToString("f3") + ", " + reciprocalPos.Z.ToString("f3");
+
+            labelDinv.Text = "1/d: " + reciprocalPos.Length.ToString("f4") + " nm^-1";
+            var d = 1.0 / reciprocalPos.Length;
             labelD.Text = "d: " + d.ToString("f4") + "nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
@@ -1155,25 +1289,25 @@ namespace ReciPro
                 if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
                     < Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * 0.18)
                 {
-                    double angle = Math.Atan(new PointD(lastMousePositionReal.X - srcPos.X, lastMousePositionReal.Y - srcPos.Y).Length / CameraLength2 * Resolution) * trackBarRotationSpeed.Value / 50.0;
-                    formMain.Rotate((srcPos.Y - lastMousePositionReal.Y, srcPos.X - lastMousePositionReal.X, 0), angle);
+                    double angle = Math.Atan(new PointD(lastMousePositionDetector.X - detectorPos.X, lastMousePositionDetector.Y - detectorPos.Y).Length / CameraLength2 * Resolution) * trackBarRotationSpeed.Value / 50.0;
+                    formMain.Rotate((detectorPos.Y - lastMousePositionDetector.Y, detectorPos.X - lastMousePositionDetector.X, 0), angle);
                 }
                 else
                 {
-                    formMain.Rotate((0, 0, 1), -Math.Atan2(lastMousePositionReal.X, lastMousePositionReal.Y) + Math.Atan2(srcPos.X, srcPos.Y));
+                    formMain.Rotate((0, 0, 1), -Math.Atan2(lastMousePositionDetector.X, lastMousePositionDetector.Y) + Math.Atan2(detectorPos.X, detectorPos.Y));
                 }
             }
             else if (e.Button == MouseButtons.Middle)
             {
                 if ((Control.ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
                 {
-                    FootPt = new PointD(FootPt.X + (e.X - lastMousePositionClient.X) * Resolution, FootPt.Y + (e.Y - lastMousePositionClient.Y) * Resolution);
+                    DisplayCenter = new PointD(DisplayCenter.X + (e.X - lastMousePositionScreen.X) * Resolution, DisplayCenter.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
                     Draw(null, false);
                 }
                 else if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null)//コントロールキーが押されている場合
                 {
-                    FormDiffractionSimulatorGeometry.FootX += (lastMousePositionClient.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
-                    FormDiffractionSimulatorGeometry.FootY += (lastMousePositionClient.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
+                    FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
+                    FormDiffractionSimulatorGeometry.FootY += (lastMousePositionScreen.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
                     Draw(null, false);
                 }
             }
@@ -1183,17 +1317,12 @@ namespace ReciPro
                 Draw(null, false);
             }
 
-            lastMousePositionReal = srcPos;
-            lastMousePositionClient = new Point(e.X, e.Y);
+            lastMousePositionDetector = detectorPos;
+            lastMousePositionScreen = new Point(e.X, e.Y);
         }
 
         #endregion graphicsBoxのイベント
 
-        private void checkBoxDiffractionSpot_CheckedChanged(object sender, EventArgs e)
-        {
-            setVector();
-            Draw();
-        }
 
         private void tabControl_Click(object sender, EventArgs e)
         {
@@ -1211,11 +1340,6 @@ namespace ReciPro
             else
                 checkBoxExtinctionLattice.Enabled = true;
             setVector();
-            Draw();
-        }
-
-        private void trackBarStrSize_ValueChanged(object sender, EventArgs e)
-        {
             Draw();
         }
 
@@ -1284,11 +1408,6 @@ namespace ReciPro
             Draw();
         }
 
-        private void toolStripButtonKinematicalSimulation_CheckedChanged(object sender, EventArgs e)
-        {
-            setVector();
-            Draw();
-        }
 
         private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
         {
@@ -1321,12 +1440,6 @@ namespace ReciPro
             radioButtonBeamParallel.Checked = true;
         }
 
-        private void checkBoxPrecession_CheckedChanged(object sender, EventArgs e)
-            => Draw();
-
-        private void backLaueToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-            => Draw();
-
         public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e)
         {
             FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
@@ -1339,12 +1452,7 @@ namespace ReciPro
 
         private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
         {
-            labelSigma.Visible = radioButtonPointSpread.Checked;
-            labelRadius.Visible = !radioButtonPointSpread.Checked;
-
-            flowLayoutPanelColorScale.Visible = radioButtonPointSpread.Checked;
-
-
+            flowLayoutPanelGaussianOption.Enabled = radioButtonPointSpread.Checked;
             setVector();
             trackBarIntensityForPointSpread.Enabled = radioButtonPointSpread.Checked;
             checkBoxLogScale.Enabled = radioButtonPointSpread.Checked;
@@ -1354,10 +1462,16 @@ namespace ReciPro
 
         private void radioButtonKinematical_CheckedChanged(object sender, EventArgs e)
         {
+            flowLayoutPanelExtinctionOption.Enabled = radioButtonIntensityExcitation.Checked;
+
+            colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Visible = radioButtonIntensityExcitation.Checked;
+
+            buttonDetailsOfSpots.Enabled = radioButtonIntensityBethe.Checked;
+
             formMain.Crystal.Bethe.MaxNumOfBloch = 0;
 
             FormDiffractionSimulatorCBED.Visible = radioButtonBeamConvergence.Checked;
-            trackBarAdvancedSpotRadius.Enabled = !radioButtonBeamConvergence.Checked;
+            numericBoxSpotRadius.Enabled = !radioButtonBeamConvergence.Checked;
 
             saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
 
@@ -1399,16 +1513,11 @@ namespace ReciPro
 
         private void buttonResetCenter_Click_1(object sender, EventArgs e)
         {
-            FootPt = new PointD(0, 0);
+            DisplayCenter = new PointD(0, 0);
             Draw();
         }
 
-        private bool trackBarAdvancedSpotSize_ValueChanged(object sender, double value)
-        {
-            Draw();
-            return true;
-        }
-
+      
         private void toolStripButtonDiffractionSpots_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && ((ToolStripButton)sender).Checked)
@@ -1418,8 +1527,10 @@ namespace ReciPro
                     timer = timerBlinkSpot;
                 else if ((ToolStripButton)sender == toolStripButtonKikuchiLines)
                     timer = timerBlinkKikuchiLine;
-                else
+                else if ((ToolStripButton)sender == toolStripButtonDebyeRing)
                     timer = timerBlinkDebyeRing;
+                else
+                    timer = timerBlinkScale;
 
                 if (!timer.Enabled)
                     timer.Start();
@@ -1457,6 +1568,16 @@ namespace ReciPro
             Draw();
         }
 
+        private void timerBlinkScale_Tick(object sender, EventArgs e)
+        {
+            var timer = (Timer)sender;
+            timer.Tag = !(bool)timer.Tag;
+            toolStripButtonScale.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
+            Draw();
+        }
+
+
+        #region 保存、コピー関連ｎ
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveOrCopy(true, true, true);
@@ -1583,14 +1704,14 @@ namespace ReciPro
                 graphicsBox.Visible = false;
                 var originalSize = graphicsBox.Size;
                 var originalResolution = Resolution;
-                var originalFoot = new PointD(FootPt.X, FootPt.Y);
+                var originalFoot = new PointD(DisplayCenter.X, DisplayCenter.Y);
                 var originalStringSize = trackBarStrSize.Value;
 
                 var fdsg = FormDiffractionSimulatorGeometry;
 
                 Resolution = fdsg.DetectorPixelSize;
                 graphicsBox.ClientSize = new Size(fdsg.DetectorWidth, fdsg.DetectorHeight);
-                FootPt = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
+                DisplayCenter = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
 
                 int strSize = (int)(originalResolution / Resolution * originalStringSize);
                 if (strSize > trackBarStrSize.Maximum)
@@ -1607,7 +1728,7 @@ namespace ReciPro
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
                 trackBarStrSize.Value = originalStringSize;
-                FootPt = originalFoot;
+                DisplayCenter = originalFoot;
                 setVector();
                 graphicsBox.Visible = true;
                 Draw();
@@ -1620,23 +1741,25 @@ namespace ReciPro
                 graphicsBox.Visible = false;
                 var originalSize = graphicsBox.Size;
                 var originalResolution = Resolution;
-                var originalFoot = new PointD(FootPt.X, FootPt.Y);
+                var originalFoot = new PointD(DisplayCenter.X, DisplayCenter.Y);
 
                 Resolution = FormDiffractionSimulatorCBED.ImagePixelSize;
                 graphicsBox.ClientSize = new Size(FormDiffractionSimulatorCBED.ImageWidth, FormDiffractionSimulatorCBED.ImageHeight);
-                FootPt = new PointD(0, 0);
+                DisplayCenter = new PointD(0, 0);
 
                 SaveOrCopy(save, asImage, drawOverlappedImage);
 
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
-                FootPt = originalFoot;
+                DisplayCenter = originalFoot;
                 setVector();
                 graphicsBox.Visible = true;
                 Draw();
                 graphicsBox.Refresh();
             }
         }
+
+        #endregion
 
         private void statusStrip1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1652,7 +1775,7 @@ namespace ReciPro
                 "Camera Length2:  " + CameraLength2 + "\r\n" +
 
                 "Spot shape:\t" + (radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian") + "\r\n" +
-                "Radius or Sigma:\t" + trackBarAdvancedSpotRadius.Value + "\r\n" +
+                "Radius or Sigma:\t" + numericBoxSpotRadius.Value + "\r\n" +
                 "Intensity calculation:\t" + (radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical") + "\r\n" +
                 "Tau:\t" + (Tau / Math.PI * 180) + "\r\n" +
                 "Image name:\t" + fdsg.textBoxFileName.Text + "\r\n" +
@@ -1672,21 +1795,6 @@ namespace ReciPro
             Draw();
         }
 
-        private void checkBoxLogScale_CheckedChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private void numericBoxNumOfBlochWave_ValueChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private bool trackBarAdvancedThickness_ValueChanged(object sender, double value)
-        {
-            Draw();
-            return true;
-        }
 
         private void dynamicCompressionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1707,16 +1815,6 @@ namespace ReciPro
             FormDiffractionBeamTable.BringToFront();
             if(radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
-        }
-
-        private void toolStripComboBoxSolver_Click(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private void TrackBarAdvancedSpotRadius_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -1753,7 +1851,7 @@ namespace ReciPro
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < 300; i++)
                 {
-                    trackBarAdvancedThickness.Value = i;
+                    numericBoxThickness.Value = i;
                     Draw();
                     var intensity = formMain.Crystal.Bethe.Beams[0].Psi.Magnitude2();
 
@@ -1771,6 +1869,13 @@ namespace ReciPro
             var f = new FormPDF(appPath + @"\pdf\bethe.pdf");
             f.ShowDialog();
         }
+
+        private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
+            Draw();
+        }
+
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e)
         {

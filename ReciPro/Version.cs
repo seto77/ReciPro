@@ -12,6 +12,12 @@ namespace ReciPro
 
         static public string History =
             "History" +
+            "\r\n ver4.747(2020/02/29)  Improved: Diffraction simulator." +
+            "\r\n ver4.746(2020/02/28)  Improved: Diffraction simulator." +
+            "\r\n ver4.745(2020/02/16)  Fixed a minor bug of Diffraction simulator." +
+            "\r\n ver4.744(2020/02/05)  Improved interfaces of Diffraction simulator." +
+            "\r\n ver4.743(2020/02/02)  Improved interfaces of Diffraction simulator." +
+            "\r\n ver4.742(2020/01/06)  A minor improvement on SpotID. " +
             "\r\n ver4.741(2019/12/12)  Fixed a minor bug on SpotID. " +
             "\r\n ver4.740(2019/12/07)  Fixed a minor bug on TDS calculation. " +
             "\r\n ver4.739(2019/10/24)  Fixed a minor bug on 'Diffraction Simulator'. " +

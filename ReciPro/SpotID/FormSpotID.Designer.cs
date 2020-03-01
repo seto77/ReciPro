@@ -33,17 +33,17 @@ namespace ReciPro
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,36 +81,46 @@ namespace ReciPro
             this.buttonPixelToPixel = new System.Windows.Forms.Button();
             this.buttonCopyMetafile = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonClearSpots = new System.Windows.Forms.Button();
-            this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
-            this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
-            this.buttonGlobalFit = new System.Windows.Forms.Button();
-            this.buttonFindSpots = new System.Windows.Forms.Button();
-            this.buttonCopyToClipboad = new System.Windows.Forms.Button();
-            this.buttonSaveToFile = new System.Windows.Forms.Button();
-            this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
-            this.dataGridViewSpots = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.hkl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.η = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.θ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.y0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.x0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Range = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.checkBoxDetailsSpot = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxDetailsSpot = new System.Windows.Forms.CheckBox();
+            this.dataGridViewSpots = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Range = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.x0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.y0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.H1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.H2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.θ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.η = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.B0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hkl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
+            this.buttonSaveToFile = new System.Windows.Forms.Button();
+            this.buttonCopyToClipboad = new System.Windows.Forms.Button();
+            this.buttonFindSpots = new System.Windows.Forms.Button();
+            this.buttonGlobalFit = new System.Windows.Forms.Button();
+            this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
+            this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
+            this.buttonClearSpots = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonDonut = new System.Windows.Forms.Button();
+            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
+            this.DataSet = new ReciPro.DataSet();
+            this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
+            this.noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            this.numericBoxDonut = new Crystallography.Controls.NumericBox();
             this.numericBoxNearestNeighbor = new Crystallography.Controls.NumericBox();
             this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
             this.numericBoxFittingRange = new Crystallography.Controls.NumericBox();
@@ -121,14 +131,6 @@ namespace ReciPro
             this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
             this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
             this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet = new ReciPro.DataSet();
-            this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
-            this.noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -139,9 +141,9 @@ namespace ReciPro
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).BeginInit();
@@ -549,144 +551,47 @@ namespace ReciPro
             this.splitContainer1.SplitterDistance = 595;
             this.splitContainer1.TabIndex = 12;
             // 
-            // pictureBox1
+            // groupBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::ReciPro.Properties.Resources.TwoDimensionalPseudoVoigt;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 383);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(598, 77);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.numericBoxDonut);
+            this.groupBox1.Controls.Add(this.checkBoxDetailsSpot);
+            this.groupBox1.Controls.Add(this.dataGridViewSpots);
+            this.groupBox1.Controls.Add(this.checkBoxShowObsSpotSymbol);
+            this.groupBox1.Controls.Add(this.checkBoxShowObsSpotLabel);
+            this.groupBox1.Controls.Add(this.buttonSaveToFile);
+            this.groupBox1.Controls.Add(this.numericBoxNearestNeighbor);
+            this.groupBox1.Controls.Add(this.numericBoxNumberOfSpots);
+            this.groupBox1.Controls.Add(this.numericBoxFittingRange);
+            this.groupBox1.Controls.Add(this.buttonCopyToClipboad);
+            this.groupBox1.Controls.Add(this.buttonFindSpots);
+            this.groupBox1.Controls.Add(this.buttonDonut);
+            this.groupBox1.Controls.Add(this.buttonGlobalFit);
+            this.groupBox1.Controls.Add(this.buttonResetRangeForAllSpots);
+            this.groupBox1.Controls.Add(this.buttonCopmprehensiveFitting);
+            this.groupBox1.Controls.Add(this.buttonClearSpots);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.groupBox1.Location = new System.Drawing.Point(7, 104);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(776, 464);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Spot";
             // 
-            // buttonClearSpots
+            // checkBoxDetailsSpot
             // 
-            this.buttonClearSpots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClearSpots.AutoSize = true;
-            this.buttonClearSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonClearSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonClearSpots.ForeColor = System.Drawing.Color.White;
-            this.buttonClearSpots.Location = new System.Drawing.Point(670, 12);
-            this.buttonClearSpots.Name = "buttonClearSpots";
-            this.buttonClearSpots.Size = new System.Drawing.Size(101, 27);
-            this.buttonClearSpots.TabIndex = 2;
-            this.buttonClearSpots.Text = "Clear all spots";
-            this.buttonClearSpots.UseVisualStyleBackColor = false;
-            this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);
-            // 
-            // buttonCopmprehensiveFitting
-            // 
-            this.buttonCopmprehensiveFitting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCopmprehensiveFitting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonCopmprehensiveFitting.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonCopmprehensiveFitting.Location = new System.Drawing.Point(672, 386);
-            this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
-            this.buttonCopmprehensiveFitting.Size = new System.Drawing.Size(103, 27);
-            this.buttonCopmprehensiveFitting.TabIndex = 2;
-            this.buttonCopmprehensiveFitting.Text = "Re-fit all";
-            this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
-            this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
-            // 
-            // buttonResetRangeForAllSpots
-            // 
-            this.buttonResetRangeForAllSpots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetRangeForAllSpots.AutoSize = true;
-            this.buttonResetRangeForAllSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonResetRangeForAllSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonResetRangeForAllSpots.Location = new System.Drawing.Point(443, 14);
-            this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
-            this.buttonResetRangeForAllSpots.Size = new System.Drawing.Size(88, 27);
-            this.buttonResetRangeForAllSpots.TabIndex = 2;
-            this.buttonResetRangeForAllSpots.Text = "Reset range";
-            this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
-            this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
-            // 
-            // buttonGlobalFit
-            // 
-            this.buttonGlobalFit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGlobalFit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonGlobalFit.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonGlobalFit.Location = new System.Drawing.Point(671, 435);
-            this.buttonGlobalFit.Name = "buttonGlobalFit";
-            this.buttonGlobalFit.Size = new System.Drawing.Size(103, 27);
-            this.buttonGlobalFit.TabIndex = 2;
-            this.buttonGlobalFit.Text = "Global fit";
-            this.buttonGlobalFit.UseVisualStyleBackColor = true;
-            this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
-            // 
-            // buttonFindSpots
-            // 
-            this.buttonFindSpots.AutoSize = true;
-            this.buttonFindSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonFindSpots.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonFindSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonFindSpots.ForeColor = System.Drawing.Color.White;
-            this.buttonFindSpots.Location = new System.Drawing.Point(132, 12);
-            this.buttonFindSpots.Name = "buttonFindSpots";
-            this.buttonFindSpots.Size = new System.Drawing.Size(91, 27);
-            this.buttonFindSpots.TabIndex = 2;
-            this.buttonFindSpots.Text = "Detect spots";
-            this.buttonFindSpots.UseVisualStyleBackColor = false;
-            this.buttonFindSpots.Click += new System.EventHandler(this.buttonFindSpots_Click);
-            // 
-            // buttonCopyToClipboad
-            // 
-            this.buttonCopyToClipboad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCopyToClipboad.AutoSize = true;
-            this.buttonCopyToClipboad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonCopyToClipboad.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonCopyToClipboad.Location = new System.Drawing.Point(722, 40);
-            this.buttonCopyToClipboad.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
-            this.buttonCopyToClipboad.Size = new System.Drawing.Size(48, 27);
-            this.buttonCopyToClipboad.TabIndex = 2;
-            this.buttonCopyToClipboad.Text = "Copy";
-            this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
-            this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
-            // 
-            // buttonSaveToFile
-            // 
-            this.buttonSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveToFile.AutoSize = true;
-            this.buttonSaveToFile.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSaveToFile.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.buttonSaveToFile.Location = new System.Drawing.Point(677, 40);
-            this.buttonSaveToFile.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSaveToFile.Name = "buttonSaveToFile";
-            this.buttonSaveToFile.Size = new System.Drawing.Size(45, 27);
-            this.buttonSaveToFile.TabIndex = 2;
-            this.buttonSaveToFile.Text = "Save";
-            this.buttonSaveToFile.UseVisualStyleBackColor = true;
-            this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
-            // 
-            // checkBoxShowObsSpotLabel
-            // 
-            this.checkBoxShowObsSpotLabel.AutoSize = true;
-            this.checkBoxShowObsSpotLabel.Checked = true;
-            this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotLabel.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.checkBoxShowObsSpotLabel.Location = new System.Drawing.Point(9, 44);
-            this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
-            this.checkBoxShowObsSpotLabel.Size = new System.Drawing.Size(90, 21);
-            this.checkBoxShowObsSpotLabel.TabIndex = 6;
-            this.checkBoxShowObsSpotLabel.Text = "Show label";
-            this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // checkBoxShowObsSpotSymbol
-            // 
-            this.checkBoxShowObsSpotSymbol.AutoSize = true;
-            this.checkBoxShowObsSpotSymbol.Checked = true;
-            this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotSymbol.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.checkBoxShowObsSpotSymbol.Location = new System.Drawing.Point(9, 19);
-            this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
-            this.checkBoxShowObsSpotSymbol.Size = new System.Drawing.Size(104, 21);
-            this.checkBoxShowObsSpotSymbol.TabIndex = 6;
-            this.checkBoxShowObsSpotSymbol.Text = "Show symbol";
-            this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            this.checkBoxDetailsSpot.AutoSize = true;
+            this.checkBoxDetailsSpot.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxDetailsSpot.Location = new System.Drawing.Point(551, 19);
+            this.checkBoxDetailsSpot.Name = "checkBoxDetailsSpot";
+            this.checkBoxDetailsSpot.Size = new System.Drawing.Size(115, 38);
+            this.checkBoxDetailsSpot.TabIndex = 6;
+            this.checkBoxDetailsSpot.Text = "Details of the\r\n selected spots";
+            this.checkBoxDetailsSpot.UseVisualStyleBackColor = true;
+            this.checkBoxDetailsSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsSpot_CheckedChanged);
             // 
             // dataGridViewSpots
             // 
@@ -734,37 +639,144 @@ namespace ReciPro
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewSpots.Location = new System.Drawing.Point(0, 71);
+            this.dataGridViewSpots.Location = new System.Drawing.Point(3, 71);
             this.dataGridViewSpots.MultiSelect = false;
             this.dataGridViewSpots.Name = "dataGridViewSpots";
             this.dataGridViewSpots.RowHeadersWidth = 20;
             this.dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSpots.RowTemplate.Height = 21;
             this.dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSpots.Size = new System.Drawing.Size(774, 315);
+            this.dataGridViewSpots.Size = new System.Drawing.Size(767, 304);
             this.dataGridViewSpots.TabIndex = 5;
             this.dataGridViewSpots.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSpots_CellContentClick);
             this.dataGridViewSpots.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewSpots_RowHeaderMouseDoubleClick);
             // 
-            // Column1
+            // Column2
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Column1.HeaderText = "Fit    ";
-            this.Column1.Name = "Column1";
-            this.Column1.Text = "Fit";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 28;
+            this.Column2.DataPropertyName = "Direct";
+            this.Column2.HeaderText = "Di- rect";
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.Width = 31;
             // 
-            // hkl
+            // Range
             // 
-            this.hkl.DataPropertyName = "HKL";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.hkl.DefaultCellStyle = dataGridViewCellStyle13;
-            this.hkl.HeaderText = "hkl";
-            this.hkl.Name = "hkl";
-            this.hkl.ReadOnly = true;
-            this.hkl.Width = 60;
+            this.Range.DataPropertyName = "Range";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N1";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Range.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Range.HeaderText = "Range (radius)";
+            this.Range.Name = "Range";
+            this.Range.Width = 48;
+            // 
+            // x0
+            // 
+            this.x0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.x0.DataPropertyName = "x0";
+            dataGridViewCellStyle4.Format = "N1";
+            dataGridViewCellStyle4.NullValue = null;
+            this.x0.DefaultCellStyle = dataGridViewCellStyle4;
+            this.x0.HeaderText = "x0";
+            this.x0.Name = "x0";
+            this.x0.Width = 46;
+            // 
+            // y0
+            // 
+            this.y0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.y0.DataPropertyName = "y0";
+            dataGridViewCellStyle5.Format = "N1";
+            dataGridViewCellStyle5.NullValue = null;
+            this.y0.DefaultCellStyle = dataGridViewCellStyle5;
+            this.y0.HeaderText = "y0";
+            this.y0.Name = "y0";
+            this.y0.Width = 46;
+            // 
+            // H1
+            // 
+            this.H1.DataPropertyName = "H1";
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.H1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.H1.HeaderText = "H1";
+            this.H1.Name = "H1";
+            this.H1.Width = 36;
+            // 
+            // H2
+            // 
+            this.H2.DataPropertyName = "H2";
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.H2.DefaultCellStyle = dataGridViewCellStyle7;
+            this.H2.HeaderText = "H2";
+            this.H2.Name = "H2";
+            this.H2.Width = 36;
+            // 
+            // θ
+            // 
+            this.θ.DataPropertyName = "θ";
+            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.NullValue = null;
+            this.θ.DefaultCellStyle = dataGridViewCellStyle8;
+            this.θ.HeaderText = "θ (°)";
+            this.θ.Name = "θ";
+            this.θ.Width = 40;
+            // 
+            // η
+            // 
+            this.η.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.η.DataPropertyName = "η";
+            this.η.HeaderText = "η";
+            this.η.Name = "η";
+            this.η.Width = 40;
+            // 
+            // A
+            // 
+            this.A.DataPropertyName = "A";
+            dataGridViewCellStyle9.Format = "0.0000E0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.A.DefaultCellStyle = dataGridViewCellStyle9;
+            this.A.HeaderText = "A (intensity)";
+            this.A.Name = "A";
+            this.A.Width = 68;
+            // 
+            // B0
+            // 
+            this.B0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.B0.DataPropertyName = "B0";
+            this.B0.HeaderText = "B0";
+            this.B0.Name = "B0";
+            this.B0.Width = 47;
+            // 
+            // Bx
+            // 
+            this.Bx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Bx.DataPropertyName = "Bx";
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Bx.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Bx.HeaderText = "Bx";
+            this.Bx.Name = "Bx";
+            this.Bx.Width = 46;
+            // 
+            // By
+            // 
+            this.By.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.By.DataPropertyName = "By";
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.By.DefaultCellStyle = dataGridViewCellStyle11;
+            this.By.HeaderText = "By";
+            this.By.Name = "By";
+            this.By.Width = 46;
+            // 
+            // R
+            // 
+            this.R.DataPropertyName = "R";
+            this.R.HeaderText = "R (%)";
+            this.R.Name = "R";
+            this.R.ReadOnly = true;
+            this.R.Width = 40;
             // 
             // d
             // 
@@ -778,172 +790,238 @@ namespace ReciPro
             this.d.ReadOnly = true;
             this.d.Width = 50;
             // 
-            // R
+            // hkl
             // 
-            this.R.DataPropertyName = "R";
-            this.R.HeaderText = "R (%)";
-            this.R.Name = "R";
-            this.R.ReadOnly = true;
-            this.R.Width = 40;
+            this.hkl.DataPropertyName = "HKL";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.hkl.DefaultCellStyle = dataGridViewCellStyle13;
+            this.hkl.HeaderText = "hkl";
+            this.hkl.Name = "hkl";
+            this.hkl.ReadOnly = true;
+            this.hkl.Width = 60;
             // 
-            // By
+            // Column1
             // 
-            this.By.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.By.DataPropertyName = "By";
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.By.DefaultCellStyle = dataGridViewCellStyle11;
-            this.By.HeaderText = "By";
-            this.By.Name = "By";
-            this.By.Width = 46;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Column1.HeaderText = "Fit    ";
+            this.Column1.Name = "Column1";
+            this.Column1.Text = "Fit";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 28;
             // 
-            // Bx
+            // checkBoxShowObsSpotSymbol
             // 
-            this.Bx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Bx.DataPropertyName = "Bx";
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Bx.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Bx.HeaderText = "Bx";
-            this.Bx.Name = "Bx";
-            this.Bx.Width = 46;
+            this.checkBoxShowObsSpotSymbol.AutoSize = true;
+            this.checkBoxShowObsSpotSymbol.Checked = true;
+            this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowObsSpotSymbol.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxShowObsSpotSymbol.Location = new System.Drawing.Point(9, 19);
+            this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
+            this.checkBoxShowObsSpotSymbol.Size = new System.Drawing.Size(104, 21);
+            this.checkBoxShowObsSpotSymbol.TabIndex = 6;
+            this.checkBoxShowObsSpotSymbol.Text = "Show symbol";
+            this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
+            this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
-            // B0
+            // checkBoxShowObsSpotLabel
             // 
-            this.B0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.B0.DataPropertyName = "B0";
-            this.B0.HeaderText = "B0";
-            this.B0.Name = "B0";
-            this.B0.Width = 47;
+            this.checkBoxShowObsSpotLabel.AutoSize = true;
+            this.checkBoxShowObsSpotLabel.Checked = true;
+            this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowObsSpotLabel.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxShowObsSpotLabel.Location = new System.Drawing.Point(9, 44);
+            this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
+            this.checkBoxShowObsSpotLabel.Size = new System.Drawing.Size(90, 21);
+            this.checkBoxShowObsSpotLabel.TabIndex = 6;
+            this.checkBoxShowObsSpotLabel.Text = "Show label";
+            this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
+            this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
-            // A
+            // buttonSaveToFile
             // 
-            this.A.DataPropertyName = "A";
-            dataGridViewCellStyle9.Format = "0.0000E0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.A.DefaultCellStyle = dataGridViewCellStyle9;
-            this.A.HeaderText = "A (intensity)";
-            this.A.Name = "A";
-            this.A.Width = 68;
+            this.buttonSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSaveToFile.AutoSize = true;
+            this.buttonSaveToFile.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonSaveToFile.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonSaveToFile.Location = new System.Drawing.Point(677, 40);
+            this.buttonSaveToFile.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSaveToFile.Name = "buttonSaveToFile";
+            this.buttonSaveToFile.Size = new System.Drawing.Size(45, 27);
+            this.buttonSaveToFile.TabIndex = 2;
+            this.buttonSaveToFile.Text = "Save";
+            this.buttonSaveToFile.UseVisualStyleBackColor = true;
+            this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
             // 
-            // η
+            // buttonCopyToClipboad
             // 
-            this.η.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.η.DataPropertyName = "η";
-            this.η.HeaderText = "η";
-            this.η.Name = "η";
-            this.η.Width = 40;
+            this.buttonCopyToClipboad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCopyToClipboad.AutoSize = true;
+            this.buttonCopyToClipboad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonCopyToClipboad.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonCopyToClipboad.Location = new System.Drawing.Point(722, 40);
+            this.buttonCopyToClipboad.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
+            this.buttonCopyToClipboad.Size = new System.Drawing.Size(48, 27);
+            this.buttonCopyToClipboad.TabIndex = 2;
+            this.buttonCopyToClipboad.Text = "Copy";
+            this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
+            this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
             // 
-            // θ
+            // buttonFindSpots
             // 
-            this.θ.DataPropertyName = "θ";
-            dataGridViewCellStyle8.Format = "N1";
-            dataGridViewCellStyle8.NullValue = null;
-            this.θ.DefaultCellStyle = dataGridViewCellStyle8;
-            this.θ.HeaderText = "θ (°)";
-            this.θ.Name = "θ";
-            this.θ.Width = 40;
+            this.buttonFindSpots.AutoSize = true;
+            this.buttonFindSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonFindSpots.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonFindSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonFindSpots.ForeColor = System.Drawing.Color.White;
+            this.buttonFindSpots.Location = new System.Drawing.Point(132, 12);
+            this.buttonFindSpots.Name = "buttonFindSpots";
+            this.buttonFindSpots.Size = new System.Drawing.Size(91, 27);
+            this.buttonFindSpots.TabIndex = 2;
+            this.buttonFindSpots.Text = "Detect spots";
+            this.buttonFindSpots.UseVisualStyleBackColor = false;
+            this.buttonFindSpots.Click += new System.EventHandler(this.buttonFindSpots_Click);
             // 
-            // H2
+            // buttonGlobalFit
             // 
-            this.H2.DataPropertyName = "H2";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.H2.DefaultCellStyle = dataGridViewCellStyle7;
-            this.H2.HeaderText = "H2";
-            this.H2.Name = "H2";
-            this.H2.Width = 36;
+            this.buttonGlobalFit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGlobalFit.AutoSize = true;
+            this.buttonGlobalFit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonGlobalFit.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.buttonGlobalFit.Location = new System.Drawing.Point(627, 409);
+            this.buttonGlobalFit.Name = "buttonGlobalFit";
+            this.buttonGlobalFit.Size = new System.Drawing.Size(140, 23);
+            this.buttonGlobalFit.TabIndex = 2;
+            this.buttonGlobalFit.Text = "Global fit (experimental)";
+            this.buttonGlobalFit.UseVisualStyleBackColor = true;
+            this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
             // 
-            // H1
+            // buttonResetRangeForAllSpots
             // 
-            this.H1.DataPropertyName = "H1";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.H1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.H1.HeaderText = "H1";
-            this.H1.Name = "H1";
-            this.H1.Width = 36;
+            this.buttonResetRangeForAllSpots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonResetRangeForAllSpots.AutoSize = true;
+            this.buttonResetRangeForAllSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonResetRangeForAllSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonResetRangeForAllSpots.Location = new System.Drawing.Point(443, 12);
+            this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
+            this.buttonResetRangeForAllSpots.Size = new System.Drawing.Size(88, 27);
+            this.buttonResetRangeForAllSpots.TabIndex = 2;
+            this.buttonResetRangeForAllSpots.Text = "Reset range";
+            this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
+            this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
             // 
-            // y0
+            // buttonCopmprehensiveFitting
             // 
-            this.y0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.y0.DataPropertyName = "y0";
-            dataGridViewCellStyle5.Format = "N1";
-            dataGridViewCellStyle5.NullValue = null;
-            this.y0.DefaultCellStyle = dataGridViewCellStyle5;
-            this.y0.HeaderText = "y0";
-            this.y0.Name = "y0";
-            this.y0.Width = 46;
+            this.buttonCopmprehensiveFitting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCopmprehensiveFitting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonCopmprehensiveFitting.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonCopmprehensiveFitting.Location = new System.Drawing.Point(634, 380);
+            this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
+            this.buttonCopmprehensiveFitting.Size = new System.Drawing.Size(136, 27);
+            this.buttonCopmprehensiveFitting.TabIndex = 2;
+            this.buttonCopmprehensiveFitting.Text = "Re-fit all";
+            this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
+            this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
             // 
-            // x0
+            // buttonClearSpots
             // 
-            this.x0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.x0.DataPropertyName = "x0";
-            dataGridViewCellStyle4.Format = "N1";
-            dataGridViewCellStyle4.NullValue = null;
-            this.x0.DefaultCellStyle = dataGridViewCellStyle4;
-            this.x0.HeaderText = "x0";
-            this.x0.Name = "x0";
-            this.x0.Width = 46;
+            this.buttonClearSpots.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClearSpots.AutoSize = true;
+            this.buttonClearSpots.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonClearSpots.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.buttonClearSpots.ForeColor = System.Drawing.Color.White;
+            this.buttonClearSpots.Location = new System.Drawing.Point(670, 12);
+            this.buttonClearSpots.Name = "buttonClearSpots";
+            this.buttonClearSpots.Size = new System.Drawing.Size(101, 27);
+            this.buttonClearSpots.TabIndex = 2;
+            this.buttonClearSpots.Text = "Clear all spots";
+            this.buttonClearSpots.UseVisualStyleBackColor = false;
+            this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);
             // 
-            // Range
+            // pictureBox1
             // 
-            this.Range.DataPropertyName = "Range";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N1";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Range.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Range.HeaderText = "Range (radius)";
-            this.Range.Name = "Range";
-            this.Range.Width = 48;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = global::ReciPro.Properties.Resources.TwoDimensionalPseudoVoigt;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 381);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(598, 77);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
-            // Column2
+            // buttonDonut
             // 
-            this.Column2.DataPropertyName = "Direct";
-            this.Column2.HeaderText = "Di- rect";
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column2.Width = 31;
+            this.buttonDonut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDonut.AutoSize = true;
+            this.buttonDonut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonDonut.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.buttonDonut.Location = new System.Drawing.Point(604, 432);
+            this.buttonDonut.Name = "buttonDonut";
+            this.buttonDonut.Size = new System.Drawing.Size(125, 23);
+            this.buttonDonut.TabIndex = 2;
+            this.buttonDonut.Text = "Donut (experimental)";
+            this.buttonDonut.UseVisualStyleBackColor = true;
+            this.buttonDonut.Click += new System.EventHandler(this.buttonDonut_Click);
             // 
-            // checkBoxDetailsSpot
+            // noDataGridViewTextBoxColumn
             // 
-            this.checkBoxDetailsSpot.AutoSize = true;
-            this.checkBoxDetailsSpot.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.checkBoxDetailsSpot.Location = new System.Drawing.Point(551, 19);
-            this.checkBoxDetailsSpot.Name = "checkBoxDetailsSpot";
-            this.checkBoxDetailsSpot.Size = new System.Drawing.Size(115, 38);
-            this.checkBoxDetailsSpot.TabIndex = 6;
-            this.checkBoxDetailsSpot.Text = "Details of the\r\n selected spots";
-            this.checkBoxDetailsSpot.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsSpot_CheckedChanged);
+            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.noDataGridViewTextBoxColumn.HeaderText = "No";
+            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noDataGridViewTextBoxColumn.Width = 28;
             // 
-            // groupBox1
+            // bindingSourceObsSpots
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.checkBoxDetailsSpot);
-            this.groupBox1.Controls.Add(this.dataGridViewSpots);
-            this.groupBox1.Controls.Add(this.checkBoxShowObsSpotSymbol);
-            this.groupBox1.Controls.Add(this.checkBoxShowObsSpotLabel);
-            this.groupBox1.Controls.Add(this.buttonSaveToFile);
-            this.groupBox1.Controls.Add(this.numericBoxNearestNeighbor);
-            this.groupBox1.Controls.Add(this.numericBoxNumberOfSpots);
-            this.groupBox1.Controls.Add(this.numericBoxFittingRange);
-            this.groupBox1.Controls.Add(this.buttonCopyToClipboad);
-            this.groupBox1.Controls.Add(this.buttonFindSpots);
-            this.groupBox1.Controls.Add(this.buttonGlobalFit);
-            this.groupBox1.Controls.Add(this.buttonResetRangeForAllSpots);
-            this.groupBox1.Controls.Add(this.buttonCopmprehensiveFitting);
-            this.groupBox1.Controls.Add(this.buttonClearSpots);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.groupBox1.Location = new System.Drawing.Point(7, 104);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 464);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Spot";
+            this.bindingSourceObsSpots.DataMember = "DataTableSpot";
+            this.bindingSourceObsSpots.DataSource = this.DataSet;
+            this.bindingSourceObsSpots.CurrentChanged += new System.EventHandler(this.bindingSourceSpot_CurrentChanged);
+            this.bindingSourceObsSpots.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceObsSpots_ListChanged);
+            // 
+            // DataSet
+            // 
+            this.DataSet.DataSetName = "DataSet";
+            this.DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // noDataGridViewTextBoxColumn2
+            // 
+            this.noDataGridViewTextBoxColumn2.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn2.HeaderText = "No";
+            this.noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
+            this.noDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.noDataGridViewTextBoxColumn2.Width = 30;
+            // 
+            // assignedSpotsDataGridViewTextBoxColumn
+            // 
+            this.assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
+            this.assignedSpotsDataGridViewTextBoxColumn.HeaderText = "AssignedSpots";
+            this.assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
+            this.assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceGrains
+            // 
+            this.bindingSourceGrains.DataMember = "DataTableGrain";
+            this.bindingSourceGrains.DataSource = this.DataSet;
+            this.bindingSourceGrains.CurrentChanged += new System.EventHandler(this.bindingSourceGrains_CurrentChanged);
+            // 
+            // noDataGridViewTextBoxColumn1
+            // 
+            this.noDataGridViewTextBoxColumn1.DataPropertyName = "No";
+            this.noDataGridViewTextBoxColumn1.HeaderText = "No";
+            this.noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
+            this.noDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.noDataGridViewTextBoxColumn1.Width = 30;
+            // 
+            // bindingSourceCandidates
+            // 
+            this.bindingSourceCandidates.DataMember = "DataTableCandidate";
+            this.bindingSourceCandidates.DataSource = this.DataSet;
+            this.bindingSourceCandidates.CurrentChanged += new System.EventHandler(this.bindingSourceCandidates_CurrentChanged);
             // 
             // scalablePictureBoxAdvanced
             // 
@@ -957,8 +1035,10 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1.5D;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
+            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = true;
             this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = true;
             this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 3D;
+            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = true;
             this.scalablePictureBoxAdvanced.ImageFilterVisible = true;
             this.scalablePictureBoxAdvanced.Location = new System.Drawing.Point(1, 26);
             this.scalablePictureBoxAdvanced.LogScaleBar = true;
@@ -968,7 +1048,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(594, 593);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(594, 567);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.Size = new System.Drawing.Size(594, 735);
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
@@ -981,6 +1061,47 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MouseDown2 += new Crystallography.Controls.ScalablePictureBoxAdvanced.MouseEvent(this.scalablePictureBoxAdvanced1_MouseDown2);
             this.scalablePictureBoxAdvanced.StatusChanged += new System.EventHandler(this.scalablePictureBoxAdvanced_StatusChanged);
             this.scalablePictureBoxAdvanced.FilterChanged += new System.EventHandler(this.ScalablePictureBoxAdvanced_FilterChanged);
+            // 
+            // numericBoxDonut
+            // 
+            this.numericBoxDonut.AllowMouseControl = false;
+            this.numericBoxDonut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDonut.DecimalPlaces = -2;
+            this.numericBoxDonut.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDonut.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDonut.FooterText = "";
+            this.numericBoxDonut.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDonut.HeaderText = "";
+            this.numericBoxDonut.Location = new System.Drawing.Point(730, 433);
+            this.numericBoxDonut.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDonut.Maximum = 100D;
+            this.numericBoxDonut.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBoxDonut.Minimum = 1D;
+            this.numericBoxDonut.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxDonut.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxDonut.MouseSpeed = 1D;
+            this.numericBoxDonut.Multiline = false;
+            this.numericBoxDonut.Name = "numericBoxDonut";
+            this.numericBoxDonut.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxDonut.RadianValue = 0.087266462599716474D;
+            this.numericBoxDonut.ReadOnly = false;
+            this.numericBoxDonut.RestrictLimitValue = true;
+            this.numericBoxDonut.ShowFraction = false;
+            this.numericBoxDonut.ShowPositiveSign = false;
+            this.numericBoxDonut.ShowUpDown = true;
+            this.numericBoxDonut.Size = new System.Drawing.Size(44, 22);
+            this.numericBoxDonut.SkipEventDuringInput = false;
+            this.numericBoxDonut.SmartIncrement = true;
+            this.numericBoxDonut.TabIndex = 9;
+            this.numericBoxDonut.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxDonut.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.numericBoxDonut.ThonsandsSeparator = true;
+            this.numericBoxDonut.ToolTip = "";
+            this.numericBoxDonut.UpDown_Increment = 1D;
+            this.numericBoxDonut.Value = 5D;
+            this.numericBoxDonut.WordWrap = true;
             // 
             // numericBoxNearestNeighbor
             // 
@@ -1104,6 +1225,7 @@ namespace ReciPro
             this.numericBoxFittingRange.UpDown_Increment = 1D;
             this.numericBoxFittingRange.Value = 20D;
             this.numericBoxFittingRange.WordWrap = true;
+            this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
             // 
             // numericBoxSemiangle
             // 
@@ -1355,8 +1477,7 @@ namespace ReciPro
             // waveLengthControl1
             // 
             this.waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.waveLengthControl1.Energy = 70258.129960094971D;
-            this.waveLengthControl1.EnergyText = "70258.129960095";
+            this.waveLengthControl1.Energy = 199.99999999999997D;
             this.waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F);
             this.waveLengthControl1.Location = new System.Drawing.Point(9, 18);
             this.waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -1366,70 +1487,10 @@ namespace ReciPro
             this.waveLengthControl1.Size = new System.Drawing.Size(221, 79);
             this.waveLengthControl1.TabIndex = 6;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.waveLengthControl1.WaveLength = 1.75199947557609E-05D;
-            this.waveLengthControl1.WaveLengthText = "0.000175199947557609";
+            this.waveLengthControl1.WaveLength = 0.00250793474552456D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
             this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
-            // 
-            // noDataGridViewTextBoxColumn
-            // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.noDataGridViewTextBoxColumn.HeaderText = "No";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.ReadOnly = true;
-            this.noDataGridViewTextBoxColumn.Width = 28;
-            // 
-            // bindingSourceObsSpots
-            // 
-            this.bindingSourceObsSpots.DataMember = "DataTableSpot";
-            this.bindingSourceObsSpots.DataSource = this.DataSet;
-            this.bindingSourceObsSpots.CurrentChanged += new System.EventHandler(this.bindingSourceSpot_CurrentChanged);
-            this.bindingSourceObsSpots.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceObsSpots_ListChanged);
-            // 
-            // DataSet
-            // 
-            this.DataSet.DataSetName = "DataSet";
-            this.DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // noDataGridViewTextBoxColumn2
-            // 
-            this.noDataGridViewTextBoxColumn2.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn2.HeaderText = "No";
-            this.noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
-            this.noDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.noDataGridViewTextBoxColumn2.Width = 30;
-            // 
-            // assignedSpotsDataGridViewTextBoxColumn
-            // 
-            this.assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
-            this.assignedSpotsDataGridViewTextBoxColumn.HeaderText = "AssignedSpots";
-            this.assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
-            this.assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSourceGrains
-            // 
-            this.bindingSourceGrains.DataMember = "DataTableGrain";
-            this.bindingSourceGrains.DataSource = this.DataSet;
-            this.bindingSourceGrains.CurrentChanged += new System.EventHandler(this.bindingSourceGrains_CurrentChanged);
-            // 
-            // noDataGridViewTextBoxColumn1
-            // 
-            this.noDataGridViewTextBoxColumn1.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn1.HeaderText = "No";
-            this.noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
-            this.noDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.noDataGridViewTextBoxColumn1.Width = 30;
-            // 
-            // bindingSourceCandidates
-            // 
-            this.bindingSourceCandidates.DataMember = "DataTableCandidate";
-            this.bindingSourceCandidates.DataSource = this.DataSet;
-            this.bindingSourceCandidates.CurrentChanged += new System.EventHandler(this.bindingSourceCandidates_CurrentChanged);
             // 
             // FormSpotID
             // 
@@ -1464,10 +1525,10 @@ namespace ReciPro
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).EndInit();
@@ -1564,5 +1625,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonCopmprehensiveFitting;
         private System.Windows.Forms.Button buttonClearSpots;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonDonut;
+        private Crystallography.Controls.NumericBox numericBoxDonut;
     }
 }

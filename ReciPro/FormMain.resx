@@ -138,7 +138,7 @@
     <value>0, 0</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 22</value>
+    <value>861, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -172,7 +172,7 @@
     <value>Fill</value>
   </data>
   <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 0</value>
+    <value>129, 0</value>
   </data>
   <data name="splitContainer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -202,7 +202,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 207</value>
+    <value>604, 214</value>
   </data>
   <data name="listBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -242,7 +242,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 0</value>
+    <value>396, 0</value>
   </data>
   <data name="buttonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -326,7 +326,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>393, 0</value>
+    <value>490, 0</value>
   </data>
   <data name="buttonAllClear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -407,7 +407,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 26</value>
+    <value>604, 26</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -437,7 +437,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 257</value>
+    <value>610, 264</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -485,7 +485,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 335</value>
+    <value>604, 353</value>
   </data>
   <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -494,7 +494,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>crystalControl</value>
   </data>
   <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -515,7 +515,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 359</value>
+    <value>610, 377</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -632,7 +632,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 3</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 42</value>
+    <value>610, 42</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -665,10 +665,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>523, 660</value>
+    <value>620, 685</value>
   </data>
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>257</value>
+    <value>264</value>
   </data>
   <data name="splitContainer.SplitterWidth" type="System.Int32, mscorlib">
     <value>2</value>
@@ -785,7 +785,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 28</value>
+    <value>123, 28</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -801,6 +801,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tableLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
@@ -854,7 +857,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisU</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisU.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -911,7 +914,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 1</value>
+    <value>106, 1</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -989,7 +992,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisV</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisV.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1034,7 +1037,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 25</value>
+    <value>29, 25</value>
   </data>
   <data name="numericalTextBoxAxisW.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1046,16 +1049,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisW</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisW.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisW.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 28</value>
@@ -1073,7 +1073,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 29</value>
+    <value>119, 29</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -1091,7 +1091,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1121,7 +1121,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value />
   </data>
   <data name="numericalTextBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 2</value>
+    <value>76, 2</value>
   </data>
   <data name="numericalTextBoxPlaneL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1136,7 +1136,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 25</value>
+    <value>29, 25</value>
   </data>
   <data name="numericalTextBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -1148,7 +1148,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneL</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1193,7 +1193,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 25</value>
+    <value>29, 25</value>
   </data>
   <data name="numericalTextBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -1205,7 +1205,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneH</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneH.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1235,7 +1235,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value />
   </data>
   <data name="numericalTextBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 2</value>
+    <value>45, 2</value>
   </data>
   <data name="numericalTextBoxPlaneK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1250,7 +1250,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 25</value>
+    <value>29, 25</value>
   </data>
   <data name="numericalTextBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -1262,7 +1262,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneK</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneK.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1280,7 +1280,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 1</value>
+    <value>106, 1</value>
   </data>
   <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1370,7 +1370,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 29</value>
+    <value>119, 29</value>
   </data>
   <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -1391,7 +1391,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1487,7 +1487,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 28</value>
+    <value>123, 28</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -1517,7 +1517,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>4</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 118</value>
+    <value>123, 118</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -1553,7 +1553,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 3, 0, 3</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 142</value>
+    <value>123, 142</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1883,7 +1883,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="buttonBottomRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
+    <value>26, 25</value>
   </data>
   <data name="buttonBottomRight.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1970,7 +1970,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 0, 0, 0</value>
   </data>
   <data name="buttonTopRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
+    <value>26, 25</value>
   </data>
   <data name="buttonTopRight.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2012,7 +2012,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="buttonRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
+    <value>26, 25</value>
   </data>
   <data name="buttonRight.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2048,7 +2048,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 87</value>
+    <value>117, 87</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -2105,7 +2105,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 25</value>
+    <value>113, 25</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -2120,7 +2120,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxStep</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
     <value>panel4</value>
@@ -2141,7 +2141,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 4, 2, 2</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 33</value>
+    <value>117, 33</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -2171,7 +2171,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3, 141</value>
   </data>
   <data name="checkBoxAnimation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 21</value>
+    <value>117, 21</value>
   </data>
   <data name="checkBoxAnimation.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -2207,7 +2207,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 5, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 165</value>
+    <value>123, 165</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2240,7 +2240,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 58</value>
+    <value>104, 58</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 0, 0</value>
@@ -2279,7 +2279,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownEulerPsi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 25</value>
+    <value>79, 25</value>
   </data>
   <data name="numericUpDownEulerPsi.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -2306,7 +2306,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 3</value>
+    <value>104, 3</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 0, 0</value>
@@ -2381,7 +2381,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownEulerTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 25</value>
+    <value>79, 25</value>
   </data>
   <data name="numericUpDownEulerTheta.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -2414,7 +2414,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownEulerPhi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 25</value>
+    <value>79, 25</value>
   </data>
   <data name="numericUpDownEulerPhi.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -2441,7 +2441,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 30</value>
+    <value>104, 30</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 0, 0</value>
@@ -2552,7 +2552,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 83</value>
+    <value>117, 83</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -2585,7 +2585,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 107</value>
+    <value>123, 107</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2627,7 +2627,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3, 133</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 27</value>
+    <value>117, 27</value>
   </data>
   <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2669,7 +2669,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="labelCurrentIndexU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 0</value>
+    <value>28, 0</value>
   </data>
   <data name="labelCurrentIndexU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2708,7 +2708,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="labelCurrentIndexV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 0</value>
+    <value>59, 0</value>
   </data>
   <data name="labelCurrentIndexV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2747,7 +2747,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="labelCurrentIndexW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 0</value>
+    <value>90, 0</value>
   </data>
   <data name="labelCurrentIndexW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2819,7 +2819,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 0</value>
+    <value>105, 0</value>
   </data>
   <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2858,7 +2858,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
+    <value>117, 17</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -2918,7 +2918,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 25</value>
+    <value>117, 25</value>
   </data>
   <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -2930,7 +2930,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxMaxUVW</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.12.9.132, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.28.514, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
     <value>groupBox7</value>
@@ -2951,7 +2951,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 205</value>
+    <value>123, 205</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -2990,7 +2990,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3, 8, 3, 2</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 660</value>
+    <value>129, 685</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -3014,7 +3014,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>651, 660</value>
+    <value>749, 685</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -3611,7 +3611,7 @@ This module simulates diffraction pattern of powder sample</value>
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 714</value>
+    <value>865, 739</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -3793,7 +3793,7 @@ This module simulates diffraction pattern of powder sample</value>
     <value>5, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 28</value>
+    <value>861, 28</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3856,7 +3856,7 @@ This module simulates diffraction pattern of powder sample</value>
     <value>None</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>767, 714</value>
+    <value>865, 739</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>

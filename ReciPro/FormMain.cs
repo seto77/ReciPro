@@ -70,10 +70,9 @@ namespace ReciPro
 
         public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
         public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
-        public double Psi { get { return (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; } set { numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); } }
+        public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
 
-        public string UserAppDataPath = new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
-
+        public string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
         public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }//=new Crystal();
 
@@ -106,6 +105,8 @@ namespace ReciPro
 
         private WaitDlg initialDialog;
 
+        private GLControlAlpha glControlAxes;
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -129,7 +130,6 @@ namespace ReciPro
             InitializeComponent();
         }
 
-        private GLControlAlpha glControlAxes;
 
         /// <summary>
         /// フォームロード時
@@ -398,12 +398,8 @@ namespace ReciPro
             }
         }
 
-        //アニメーション
-        public bool AnimationMode { get { return checkBoxAnimation.Checked; } set { checkBoxAnimation.Checked = value; } }
+        public bool YusaGonioMode { get; set; } = false;
 
-        public bool YusaGonioMode { get => yusaGonioMode; set => yusaGonioMode = value; }
-
-        private bool yusaGonioMode = false;
 
         /// <summary>
         /// 回転量と回転角度を指定して、全フォームに回転命令を出す
@@ -596,14 +592,14 @@ namespace ReciPro
                 this.FormDiffractionSimulator.Location = new Point((int)regKey.GetValue("formElectronDiffractionLocationX", this.FormDiffractionSimulator.Location.X),
                     (int)regKey.GetValue("formElectronDiffractionLocationY", this.FormDiffractionSimulator.Location.Y));
 
-                FormDiffractionSimulator.pictureBoxBackGround.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", FormDiffractionSimulator.pictureBoxBackGround.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxDefectLine.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", FormDiffractionSimulator.pictureBoxDefectLine.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxExcessLine.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", FormDiffractionSimulator.pictureBoxExcessLine.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxForbiddenLattice.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", FormDiffractionSimulator.pictureBoxForbiddenLattice.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxForbiddenScrewGlide.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", FormDiffractionSimulator.pictureBoxForbiddenScrewGlide.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxNoCondition.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", FormDiffractionSimulator.pictureBoxNoCondition.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxOrigin.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", FormDiffractionSimulator.pictureBoxOrigin.BackColor.ToArgb()));
-                FormDiffractionSimulator.pictureBoxString.BackColor = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxString.BackColor", FormDiffractionSimulator.pictureBoxString.BackColor.ToArgb()));
+                FormDiffractionSimulator.colorControlBackGround.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", FormDiffractionSimulator.colorControlBackGround.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlDefectLine.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", FormDiffractionSimulator.colorControlDefectLine.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlExcessLine.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", FormDiffractionSimulator.colorControlExcessLine.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlForbiddenLattice.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", FormDiffractionSimulator.colorControlForbiddenLattice.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlScrewGlide.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", FormDiffractionSimulator.colorControlScrewGlide.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlNoCondition.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", FormDiffractionSimulator.colorControlNoCondition.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlOrigin.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", FormDiffractionSimulator.colorControlOrigin.Color.ToArgb()));
+                FormDiffractionSimulator.colorControlString.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxString.BackColor", FormDiffractionSimulator.colorControlString.Color.ToArgb()));
 
                 FormDiffractionSimulator.FormElectronDiffraction_Load(new object(), new EventArgs());//.Visible = true;
 
@@ -615,6 +611,7 @@ namespace ReciPro
                 if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight")) != null) FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight = Convert.ToInt32((string)o);
                 if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize")) != null) FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize = Convert.ToDouble((string)o);
                 if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau")) != null) FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau = Convert.ToDouble((string)o);
+                if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi")) != null) FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi = Convert.ToDouble((string)o);
 
                 double resolution = Convert.ToDouble((string)regKey.GetValue("formElectronDiffraction.numericUpDownResolution.Value", FormDiffractionSimulator.numericBoxResolution.Value.ToString()));
 
@@ -679,14 +676,14 @@ namespace ReciPro
             regKey.SetValue("formTEMIDLocationX", this.FormTEMID.Location.X);
             regKey.SetValue("formTEMIDLocationY", this.FormTEMID.Location.Y);
 
-            regKey.SetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", this.FormDiffractionSimulator.pictureBoxBackGround.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", this.FormDiffractionSimulator.pictureBoxDefectLine.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", this.FormDiffractionSimulator.pictureBoxExcessLine.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", this.FormDiffractionSimulator.pictureBoxForbiddenLattice.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", this.FormDiffractionSimulator.pictureBoxForbiddenScrewGlide.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", this.FormDiffractionSimulator.pictureBoxNoCondition.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", this.FormDiffractionSimulator.pictureBoxOrigin.BackColor.ToArgb());
-            regKey.SetValue("formElectronDiffraction.pictureBoxString.BackColor", this.FormDiffractionSimulator.pictureBoxString.BackColor.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", this.FormDiffractionSimulator.colorControlBackGround.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", this.FormDiffractionSimulator.colorControlDefectLine.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", this.FormDiffractionSimulator.colorControlExcessLine.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", this.FormDiffractionSimulator.colorControlForbiddenLattice.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", this.FormDiffractionSimulator.colorControlScrewGlide.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", this.FormDiffractionSimulator.colorControlNoCondition.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", this.FormDiffractionSimulator.colorControlOrigin.Color.ToArgb());
+            regKey.SetValue("formElectronDiffraction.pictureBoxString.BackColor", this.FormDiffractionSimulator.colorControlString.Color.ToArgb());
 
             regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX.ToString());
             regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootY", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootY.ToString());
@@ -695,6 +692,7 @@ namespace ReciPro
             regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight.ToString());
             regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize.ToString());
             regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau.ToString());
+            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi.ToString());
 
             //regKey.SetValue("formElectronDiffraction.numericUpDownPictureResolution.Value", formElectronDiffraction.formOverlapPicture.numericUpDownPictureResolution.Value.ToString());
             regKey.SetValue("formElectronDiffraction.numericUpDownResolution.Value", FormDiffractionSimulator.numericBoxResolution.Value.ToString());
@@ -1158,14 +1156,9 @@ namespace ReciPro
         }
 
         private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            toolTip.Active = toolTipToolStripMenuItem.Checked;
-        }
+            => toolTip.Active = toolTipToolStripMenuItem.Checked;
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            listBox.Items.Clear();
-        }
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
 
         private Stopwatch sw = new Stopwatch();
 
@@ -1315,19 +1308,13 @@ namespace ReciPro
         }
 
         private void FormMain_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+            => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         private void crystalControl_scatteringFactor_VisibleChanged(object sender, EventArgs e)
-        {
-            toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
-        }
+            => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
 
         private void crystalControl_symmetryInformation_VisibleChanged(object sender, EventArgs e)
-        {
-            toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
-        }
+            => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
 
         private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1432,9 +1419,7 @@ namespace ReciPro
         private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxAnimation.Checked)
-            {
                 numericBoxStep.FooterText = "°/s";
-            }
             else
             {
                 numericBoxStep.FooterText = "°";

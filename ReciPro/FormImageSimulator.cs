@@ -27,80 +27,80 @@ namespace ReciPro
         /// <summary>
         /// 電子の加速電圧 (kV)
         /// </summary>
-        public double AccVol { get => numericBoxAccVol.Value; }
+        public double AccVol => numericBoxAccVol.Value;
         /// <summary>
         /// 電子の波長 (nm)
         /// </summary>
-        public double Rambda { get => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol); }
+        public double Rambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
 
         /// <summary>
         /// 電子の加速電圧の揺らぎ (kV)
         /// </summary>
-        public double DeltaVol { get => numericBoxDeltaV.Value / 1000; }
+        public double DeltaVol => numericBoxDeltaV.Value / 1000;
 
         /// <summary>
         /// 対物絞りのサイズ (rad)
         /// </summary>
-        public double ObjAperRadius { get =>checkBoxOpenAperture.Checked? double.PositiveInfinity : numericBoxObjAperRadius.Value / 1000; }
+        public double ObjAperRadius => checkBoxOpenAperture.Checked ? double.PositiveInfinity : numericBoxObjAperRadius.Value / 1000;
 
         /// <summary>
         /// 対物絞りの中心位置X (rad)
         /// </summary>
-        public double ObjAperX { get => numericBoxObjAperX.Value / 1000; }
+        public double ObjAperX => numericBoxObjAperX.Value / 1000;
         /// <summary>
         /// 対物絞りの中心位置Y (rad)
         /// </summary>
-        public double ObjAperY { get => numericBoxObjAperY.Value / 1000; }
+        public double ObjAperY => numericBoxObjAperY.Value / 1000;
 
         /// <summary>
         /// β (llumination semiangle) (rad)
         /// </summary>
-        public double Beta { get => numericBoxBetaAgnle.Value / 1000; }
+        public double Beta => numericBoxBetaAgnle.Value / 1000;
 
         /// <summary>
         /// Bloch波の数
         /// </summary>
-        public int BlochNum { get => numericBoxNumOfBlochWave.ValueInteger; }
+        public int BlochNum => numericBoxNumOfBlochWave.ValueInteger;
 
         /// <summary>
         /// 試料の厚み (nm) (シリアルモードではないとき)
         /// </summary>
-        public double Thickness { get => numericBoxThickness.Value; }
+        public double Thickness => numericBoxThickness.Value;
 
         /// <summary>
         /// デフォーカス値 (nm) (シリアルモードではないとき) 
         /// </summary>
-        public double Defocus { get => numericBoxDefocus.Value; }
+        public double Defocus => numericBoxDefocus.Value;
 
         /// <summary>
         /// 球面収差 Cs (nm)
         /// </summary>
-        public double Cs { get => numericBoxCs.Value * 1000000; }
+        public double Cs => numericBoxCs.Value * 1000000;
 
         /// <summary>
         /// 色収差 Cc (nm)
         /// </summary>
-        public double Cc { get => numericBoxCc.Value * 1000000; }
+        public double Cc => numericBoxCc.Value * 1000000;
 
         /// <summary>
         /// Δ
         /// </summary>
-        public double Delta { get => Cc * DeltaVol / AccVol; }
+        public double Delta => Cc * DeltaVol / AccVol;
 
         /// <summary>
         /// Scherzer focus (nm)
         /// </summary>
-        public double Scherzer { get => Cs>0 ? - Math.Sqrt(4.0 / 3.0 * Cs * Rambda) : Math.Sqrt(4.0 / 3.0 * -Cs * Rambda); }
+        public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Rambda) : Sqrt(4.0 / 3.0 * -Cs * Rambda);
 
         /// <summary>
         /// イメージの解像度 (nm/pix)
         /// </summary>
-        public double ImageResolution { get => numericBoxResolution.Value / 1000.0; }
+        public double ImageResolution => numericBoxResolution.Value / 1000.0;
 
         /// <summary>
         /// イメージサイズ 
         /// </summary>
-        public Size ImageSize { get => new Size(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger); }
+        public Size ImageSize => new Size(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger);
 
         private double[] thicknessArray
         {
@@ -1033,11 +1033,8 @@ namespace ReciPro
         private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath + @"\pdf\hrtem.pdf");
-            f.ShowDialog();
+            new FormPDF(appPath + @"\pdf\hrtem.pdf").ShowDialog();
         }
-
-
 
         #region 画像の輝度、カラースケール、ガウシアンぼかし
 

@@ -1458,9 +1458,7 @@
         private System.Windows.Forms.Button buttonSetPlane;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Button buttonAllClear;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripMenuItem hintToolStripMenuItem;
@@ -1494,15 +1492,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
-        private Crystallography.Controls.NumericBox numericalTextBoxAxisU;
-        private Crystallography.Controls.NumericBox numericalTextBoxAxisV;
-        private Crystallography.Controls.NumericBox numericalTextBoxAxisW;
         private Crystallography.Controls.NumericBox numericalTextBoxPlaneL;
         private Crystallography.Controls.NumericBox numericalTextBoxPlaneH;
         private Crystallography.Controls.NumericBox numericalTextBoxPlaneK;
@@ -1532,6 +1526,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         public System.Windows.Forms.ToolStripButton toolStripButtonImageSimulation;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private Crystallography.Controls.NumericBox numericalTextBoxAxisU;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private Crystallography.Controls.NumericBox numericalTextBoxAxisV;
+        private Crystallography.Controls.NumericBox numericalTextBoxAxisW;
     }
 }
 

@@ -238,7 +238,7 @@ namespace ReciPro
 
             foreach (var disk in disks.Where(disk => disk.Intensity.Max() > 1E-20))
             {
-                var v = new { x = -disk.G.X, y = disk.G.Y, z = disk.G.Z };//ここでベクトルのY,Zの符号を反転
+                var v = new { x = disk.G.X, y = -disk.G.Y, z = -disk.G.Z };//ここでベクトルのY,Zの符号を反転
                 var point = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
                 var pt = new PointD(point.X, point.Y);
                 //ptをピクセル座標に変換する
@@ -248,8 +248,8 @@ namespace ReciPro
                 {
                     var side = (int)Math.Sqrt(disk.Intensity.Length);
                     int n = 0;
-                    for (int y = diskCenter.Y - side / 2; y <= diskCenter.Y + side / 2; y++)
-                        for (int x = diskCenter.X - side / 2; x <= diskCenter.X + side / 2; x++)
+                    for (int y = diskCenter.Y + side / 2; y >= diskCenter.Y - side / 2; y--)
+                        for (int x = diskCenter.X + side / 2; x >= diskCenter.X - side / 2; x--)
                         {
                             if (x > -1 && x < ImageWidth && y > -1 && y < ImageHeight && (diskCenter.X - x) * (diskCenter.X - x) + (diskCenter.Y - y) * (diskCenter.Y - y) < (side * side / 4))
                                 image[y * ImageWidth + x] += disk.Intensity[n];

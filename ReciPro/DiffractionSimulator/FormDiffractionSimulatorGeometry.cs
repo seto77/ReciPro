@@ -10,23 +10,49 @@ namespace ReciPro
     {
         public FormDiffractionSimulator FormDiffractionSimulator;
 
-        public double Tau { set { numericBoxTau.RadianValue = value; } get { return numericBoxTau.RadianValue; } }
+        public double Tau { set => numericBoxTau.RadianValue = value; get => numericBoxTau.RadianValue; }
+        public double Phi { set => numericBoxPhi.RadianValue = value; get => numericBoxPhi.RadianValue; }
+
+        public double CosTau { set; get; } = 1;
+        public double CosTauSquare { set; get; } = 1;
+        public double SinTau { set; get; } = 0;
+        public double SinTauSquare { set; get; } = 0;
+
+        public double CosPhi { set; get; } = 1;
+        public double CosPhiSquare { set; get; } = 1;
+        public double SinPhi { set; get; } = 0;
+        public double SinPhiSquare { set; get; } = 0;
+
+        /// <summary>
+        /// (CosPhi, SinPhi, 0) の周りに Tau回転する行列
+        ///  Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
+        ///  CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
+        /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
+        /// この行列をv＝(X,Y,CL2)に作用させると、検出器座標(X,Y)を実空間座標に変換できる。
+        /// </summary>
+        public Matrix3D DetectorRotation { get; set; } = new Matrix3D();
+
+        /// <summary>
+        /// DetectorRotationの逆行列
+        /// </summary>
+        public Matrix3D DetectorRotationInv { get; set; } = new Matrix3D();
+
 
         //public double CameraLength1 { set { numericBoxCameraLength1.Value = value; } get { return numericBoxCameraLength1.Value; } }
-        public double CameraLength2 { set { numericBoxCameraLength2.Value = value; } get { return numericBoxCameraLength2.Value; } }
+        public double CameraLength2 { set => numericBoxCameraLength2.Value = value; get => numericBoxCameraLength2.Value; }
 
-        public int DetectorWidth { set { numericalTextBoxPixelWidth.Value = value; } get { return (int)numericalTextBoxPixelWidth.Value; } }
-        public int DetectorHeight { set { numericalTextBoxPixelHeight.Value = value; } get { return (int)numericalTextBoxPixelHeight.Value; } }
-        public double DetectorPixelSize { set { numericalTextBoxPixelSize.Value = value; } get { return numericalTextBoxPixelSize.Value; } }
+        public int DetectorWidth { set => numericalTextBoxPixelWidth.Value = value; get => (int)numericalTextBoxPixelWidth.Value; }
+        public int DetectorHeight { set => numericalTextBoxPixelHeight.Value = value; get => (int)numericalTextBoxPixelHeight.Value; }
+        public double DetectorPixelSize { set => numericalTextBoxPixelSize.Value = value; get => numericalTextBoxPixelSize.Value; }
 
-        public double FootX { set { numericalTextBoxFootX.Value = value; } get { return numericalTextBoxFootX.Value; } }
-        public double FootY { set { numericalTextBoxFootY.Value = value; } get { return numericalTextBoxFootY.Value; } }
+        public double FootX { set => numericalTextBoxFootX.Value = value; get => numericalTextBoxFootX.Value; }
+        public double FootY { set => numericalTextBoxFootY.Value = value; get => numericalTextBoxFootY.Value; }
 
-        public bool ShowDetectorArea { get { return checkBoxDetectorSizePosition.Checked; } set { checkBoxDetectorSizePosition.Checked = value; } }
+        public bool ShowDetectorArea { get => checkBoxDetectorSizePosition.Checked; set => checkBoxDetectorSizePosition.Checked = value; }
 
         //public bool Precession { get { return checkBoxPrecession.Checked; } set { checkBoxPrecession.Checked = value; } }
 
-        public float ImageOpacity { get { return (float)trackBarPictureOpacity1.Value / trackBarPictureOpacity1.Maximum; } }
+        public float ImageOpacity => (float)trackBarPictureOpacity1.Value / trackBarPictureOpacity1.Maximum;
 
         public PseudoBitmap pseudBitmap = null;
         public Bitmap OverlappedImage = null;
@@ -38,7 +64,8 @@ namespace ReciPro
 
         private void FormDiffractionSimulatorGeometry_Load(object sender, EventArgs e)
         {
-            this.ClientSize = new Size(panel2.Width, panel2.Location.Y + panel2.Height);
+            panelSchematicDiagram.ClientSize = new Size(0, 0);
+            this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panel2.Location.Y + panel2.Height);
         }
 
         private void FormDiffractionSimulatorGeometry_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,7 +76,7 @@ namespace ReciPro
 
         private void checkBoxDetectorSizePosition_CheckedChanged(object sender, EventArgs e)
         {
-            groupBox1.Enabled = checkBoxDetectorSizePosition.Checked;
+            groupBoxDetectorAndOverlappedImage.Enabled = checkBoxDetectorSizePosition.Checked;
             FormDiffractionSimulator.Draw();
 
             FormDiffractionSimulator.copyDetectorAreaToolStripMenuItem.Visible = checkBoxDetectorSizePosition.Checked;
@@ -73,8 +100,28 @@ namespace ReciPro
         {
             FormDiffractionSimulator.setVector();
 
-            FormDiffractionSimulator.CosTau = Math.Cos(Tau);
-            FormDiffractionSimulator.SinTau = Math.Sin(Tau);
+            CosTau = Math.Cos(Tau);
+            CosTauSquare = CosTau * CosTau;
+            SinTau = Math.Sin(Tau);
+            SinTauSquare = SinTau * SinTau;
+            CosPhi = Math.Cos(Phi);
+            CosPhiSquare = CosPhi * CosPhi;
+            SinPhi = Math.Sin(Phi);
+            SinPhiSquare = SinPhi * SinPhi;
+
+            /// (CosPhi, SinPhi, 0) の周りに Tau回転する行列
+            ///  CosPhiSquare * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
+            ///  CosPhi * SinPhi * (1 - CosTau)  | SinPhiSquare * (1 - CosTau) + CosTau | -CosPhi * SinTau
+            /// -SinPhi * SinTau                 | CosPhi  * SinTau                |  CosTau 
+
+            DetectorRotation = new Matrix3D(
+                CosPhiSquare * (1 - CosTau) + CosTau, CosPhi * SinPhi * (1 - CosTau), -SinPhi * SinTau,
+                CosPhi * SinPhi * (1 - CosTau), SinPhiSquare * (1 - CosTau) + CosTau, CosPhi * SinTau,
+                SinPhi * SinTau, -CosPhi * SinTau, CosTau
+                );
+
+            DetectorRotationInv = DetectorRotation.Inverse();
+
             FormDiffractionSimulator.Draw();
         }
 
@@ -197,9 +244,21 @@ namespace ReciPro
 
                     FootX = Convert.ToDouble(prm.SACLA_EH5_FootX);
                     FootY = Convert.ToDouble(prm.SACLA_EH5_FootY);
-                    Tau = Convert.ToDouble(prm.SACLA_EH5_TwoTheta) / 180.0 * Math.PI;
+                    if (prm.SACLA_EH5_Phi != null)
+                    {
+                        Tau = Convert.ToDouble(prm.SACLA_EH5_Tau) / 180.0 * Math.PI;
+                        Phi = Convert.ToDouble(prm.SACLA_EH5_Phi) / 180.0 * Math.PI;
+                        CameraLength2 = Convert.ToDouble(prm.SACLA_EH5_CameraLength2);
+                    }
+                    else
+                    {
+                        Tau = Convert.ToDouble(prm.SACLA_EH5_TwoTheta) / 180.0 * Math.PI;
+                        Phi = 0;
+                        CameraLength2 = Convert.ToDouble(prm.SACLA_EH5_Distance);
+                    }
 
-                    CameraLength2 = Convert.ToDouble(prm.SACLA_EH5_Distance);
+
+                    
                 }
                 else
                 {
@@ -281,8 +340,16 @@ namespace ReciPro
 
         private void CheckBoxShowSchematicDiagram_CheckedChanged(object sender, EventArgs e)
         {
-            flowLayoutPanelSchematicDiagram.Visible = checkBoxSchematicDiagram.Checked;
-            this.ClientSize = new Size(panel2.Width, panel2.Location.Y + panel2.Height);
+            if (checkBoxSchematicDiagram.Checked)
+            {
+                panelSchematicDiagram.ClientSize = pictureBoxSchematicDiagram.Size;
+                this.ClientSize = new Size(pictureBoxSchematicDiagram.Width, panel2.Location.Y + panel2.Height);
+            }
+            else
+            {
+                panelSchematicDiagram.ClientSize = new Size(1, 1);
+                this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panel2.Location.Y + panel2.Height);
+            }
         }
 
         public bool ReadImage(string filename)

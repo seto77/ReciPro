@@ -320,6 +320,7 @@ namespace ReciPro
                     vec.Y = -vec.Y; vec.Z = -vec.Z;//ここでベクトルのY,Zの符号を反転
                     if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
                     {
+                        //2020/02/03の変更対処済み
                         var point = Geometriy.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
                         if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
                             gVector.Add(g);
@@ -544,8 +545,8 @@ namespace ReciPro
             ewaldRadius = FormDiffractionSimulator.EwaldRadius;
             cameraLength2 = FormDiffractionSimulator.CameraLength2;
             waveLength = FormDiffractionSimulator.WaveLength;
-            cosTau = Math.Cos(FormDiffractionSimulator.Tau);
-            sinTau = Math.Sin(FormDiffractionSimulator.Tau);
+            cosTau = FormDiffractionSimulator.CosTau;
+            sinTau = FormDiffractionSimulator.SinTau;
             spotRadiusOnDetector = cameraLength2 * Math.Tan(2 * Math.Asin(waveLength * excitationError / 2));
             error2 = excitationError * excitationError;
             error3 = excitationError * excitationError * excitationError;
@@ -574,7 +575,8 @@ namespace ReciPro
                     {
                         if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
                         {
-                            var point = Geometriy.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                            //2020/02/03の変更対処済み
+                            var point = Geometriy.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
                             PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
 
                             //if (IsDetectorArea(pt))

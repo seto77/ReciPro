@@ -464,6 +464,13 @@ namespace ReciPro
                     pixelsBG.Add((new double[] { x, y }, srcValues[index], 1));
             }
             
+            //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
+            while(pixelsBG.Count > 50000)
+            {
+                pixelsBG = pixelsBG.Where((b, i) => i % 2 == 0).ToList();
+
+            }
+
             var r = MQ.Solve(pixelsBG, functions, MQ.Precision.Low);
 
             for (int i = 0; i < prmsList.Count; i++)
@@ -1453,8 +1460,48 @@ namespace ReciPro
             Application.DoEvents();
             skipProgressChangedEvent = false;
         }
+
         #endregion
 
+        private void numericBoxFittingRange_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private void buttonDonut_Click(object sender, EventArgs e)
+        {
+            if (DataSet.DataTableSpot.Spots.Count == 0) return;
+            Enabled = false;
+            Application.DoEvents();
+            sw.Restart();
+            bindingSourceObsSpots.DataMember = "";
+
+             
+            int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
+            var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
+            for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)
+            {
+                //現在のスポットのパラメータを取得
+                var prms = DataSet.DataTableSpot.GetPrms(i);
+
+                List<double> core = new List<double>(), mantle = new List<double>();
+                double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
+                for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
+                    for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)
+                    {
+                        var r = (x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0);
+
+                        if (r < range1 * range1)
+                            core.Add(srcValues[x + y * width]);
+                        else if (r < range2 * range2)
+                            mantle.Add(srcValues[x + y * width]);
+                    }
+                var intensity = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
+                DataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
+            }
+            bindingSourceObsSpots.DataMember = "DataTableSpot";
+            toolStripStatusLabelIdentifySpot.Text = " Fitting time (" + DataSet.DataTableSpot.Rows.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+            Enabled = true;
+        }
     }
 }

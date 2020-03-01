@@ -54,7 +54,7 @@ namespace ReciPro
             if (FormDiffractionSimulator != null)
             {
                 if (FormDiffractionSimulator.Mode == FormDiffractionSimulator.DrawingMode.BetheSAED)
-                    textBoxThickness.Text = FormDiffractionSimulator.trackBarAdvancedThickness.Value.ToString();
+                    textBoxThickness.Text = FormDiffractionSimulator.numericBoxThickness.Value.ToString();
                 else if (FormDiffractionSimulator.Mode == FormDiffractionSimulator.DrawingMode.BetheCBED)
                 {
                     textBoxThickness.Text = FormDiffractionSimulator.FormDiffractionSimulatorCBED.textBoxThickness.Text;
