@@ -1,0 +1,1243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label60.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 30</value>
+  </data>
+  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 3</value>
+  </data>
+  <data name="textBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 3</value>
+  </data>
+  <data name="textBoxZnumber.ToolTip" xml:space="preserve">
+    <value>単位格子に含まれる組成式の数 </value>
+  </data>
+  <data name="numericalTextBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 35</value>
+  </data>
+  <data name="numericalTextBoxVolume.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 36</value>
+  </data>
+  <data name="textBoxDensity.ToolTip" xml:space="preserve">
+    <value>1ccあたりの重量 </value>
+  </data>
+  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>298, 35</value>
+  </data>
+  <data name="label50.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label50.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 5</value>
+  </data>
+  <data name="label50.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 18</value>
+  </data>
+  <data name="label50.Text" xml:space="preserve">
+    <value>回折線の表示色</value>
+  </data>
+  <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>207, 40</value>
+  </data>
+  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 3</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>結晶の表示色を指定します </value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 184</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 215</value>
+  </data>
+  <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
+    <value>Strain control</value>
+  </data>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 198</value>
+  </data>
+  <data name="numericTextBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 48</value>
+  </data>
+  <data name="numericTextBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="numericTextBoxBetaErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 24</value>
+  </data>
+  <data name="numericTextBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="numericTextBoxAlphaErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 0</value>
+  </data>
+  <data name="numericTextBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 48</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 24</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 0</value>
+  </data>
+  <data name="numericTextBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="numericTextBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="numericTextBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="numericTextBoxBeta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="numericTextBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 0</value>
+  </data>
+  <data name="label47.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 24</value>
+  </data>
+  <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 48</value>
+  </data>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 76</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 74</value>
+  </data>
+  <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 24</value>
+  </data>
+  <data name="numericTextBoxAErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 0</value>
+  </data>
+  <data name="numericTextBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 23</value>
+  </data>
+  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 48</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 0</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="numericTextBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 48</value>
+  </data>
+  <data name="numericTextBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 23</value>
+  </data>
+  <data name="numericTextBoxBErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 24</value>
+  </data>
+  <data name="numericTextBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 23</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="numericTextBoxA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="numericTextBoxB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="numericTextBoxB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 0</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 48</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 24</value>
+  </data>
+  <data name="numericTextBoxC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="numericTextBoxC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 73</value>
+  </data>
+  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 151</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 175</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>格子定数</value>
+  </data>
+  <data name="comboBoxSpaceGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 75</value>
+  </data>
+  <data name="comboBoxSpaceGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 26</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>空間群を表示/選択します </value>
+  </data>
+  <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 46</value>
+  </data>
+  <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 26</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>点群を表示/選択します </value>
+  </data>
+  <data name="comboBoxCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 25</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>結晶系を表示/選択します </value>
+  </data>
+  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 79</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>空間群</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 110</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 21</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>結晶系</value>
+  </data>
+  <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 107</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>入力した文字列に適合する空間群を検索します
+検索結果は右に表示されます </value>
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 50</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>点群</value>
+  </data>
+  <data name="comboBoxSearchResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 106</value>
+  </data>
+  <data name="comboBoxSearchResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 26</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>左で入力された文字列に適合する空間群の候補を表示します </value>
+  </data>
+  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 3</value>
+  </data>
+  <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 175</value>
+  </data>
+  <data name="groupBoxSymmetry.Text" xml:space="preserve">
+    <value>対称性</value>
+  </data>
+  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 181</value>
+  </data>
+  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageBasicInfo.Text" xml:space="preserve">
+    <value>格子/対称性</value>
+  </data>
+  <data name="listBoxAtoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 248</value>
+  </data>
+  <data name="listBoxAtoms.ToolTip" xml:space="preserve">
+    <value>各原子の種類・位置・対称性などの情報を表示します。
+変更、追加する場合は、下の入力パネルを使用します。</value>
+  </data>
+  <data name="listBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 14</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 262</value>
+  </data>
+  <data name="buttonAddAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonAddAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 28</value>
+  </data>
+  <data name="buttonAddAtom.Text" xml:space="preserve">
+    <value>↑追加↑</value>
+  </data>
+  <data name="buttonAtomUp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonAtomUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 0</value>
+  </data>
+  <data name="buttonAtomUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 28</value>
+  </data>
+  <data name="buttonAtomUp.Text" xml:space="preserve">
+    <value>上へ</value>
+  </data>
+  <data name="buttonChangeAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonChangeAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 28</value>
+  </data>
+  <data name="buttonChangeAtom.Text" xml:space="preserve">
+    <value>↑ 置換 ↑</value>
+  </data>
+  <data name="buttonChangeAtom.ToolTip" xml:space="preserve">
+    <value>選択されている原子を設定内容にしたがって変更します</value>
+  </data>
+  <data name="buttonAtomDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonAtomDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 0</value>
+  </data>
+  <data name="buttonAtomDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 28</value>
+  </data>
+  <data name="buttonAtomDown.Text" xml:space="preserve">
+    <value>下へ</value>
+  </data>
+  <data name="buttonDeleteAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonDeleteAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>414, 0</value>
+  </data>
+  <data name="buttonDeleteAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 28</value>
+  </data>
+  <data name="buttonDeleteAtom.Text" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 262</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 28</value>
+  </data>
+  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="panelAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 290</value>
+  </data>
+  <data name="atomInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 292</value>
+  </data>
+  <data name="atomInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 108</value>
+  </data>
+  <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabPageAtom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageAtom.Text" xml:space="preserve">
+    <value>原子情報</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>333, 5</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>描画色</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>描画半径</value>
+  </data>
+  <data name="colorControlAtomColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 4</value>
+  </data>
+  <data name="label62.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 7</value>
+  </data>
+  <data name="numericUpDownAtomTransparency.ToolTip" xml:space="preserve">
+    <value>透明度 </value>
+  </data>
+  <data name="numericUpDownAtomAmbient.ToolTip" xml:space="preserve">
+    <value>環境光 </value>
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>周辺光</value>
+  </data>
+  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="numericUpDownAtomShininess.ToolTip" xml:space="preserve">
+    <value>反射光の強度 </value>
+  </data>
+  <data name="numericUpDownAtomSpecular.ToolTip" xml:space="preserve">
+    <value>反射光 </value>
+  </data>
+  <data name="numericUpDownAtomDiffusion.ToolTip" xml:space="preserve">
+    <value>拡散光 </value>
+  </data>
+  <data name="label38.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>反射</value>
+  </data>
+  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>表面拡散</value>
+  </data>
+  <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>光沢</value>
+  </data>
+  <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>放射</value>
+  </data>
+  <data name="numericUpDownAtomEmmision.ToolTip" xml:space="preserve">
+    <value>放射光 </value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 27</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 56</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>素材</value>
+  </data>
+  <data name="numericUpDownAtomRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 6</value>
+  </data>
+  <data name="numericUpDownAtomRadius.ToolTip" xml:space="preserve">
+    <value>構造描画時の原子の半径(Å) </value>
+  </data>
+  <data name="buttonChangeToSameElement.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonChangeToSameElement.Text" xml:space="preserve">
+    <value>↑ 同種の元素全てに適用 ↑</value>
+  </data>
+  <data name="buttonChangeToSameElement.ToolTip" xml:space="preserve">
+    <value>変更したプロパティを同種の元素に適用します </value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 311</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 89</value>
+  </data>
+  <data name="tabPageAtomAdvanced.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabPageAtomAdvanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageAtomAdvanced.Text" xml:space="preserve">
+    <value>原子描画設定</value>
+  </data>
+  <data name="buttonAddBond.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonAddBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 309</value>
+  </data>
+  <data name="buttonAddBond.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
+  <data name="buttonAddBond.Text" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>設定された内容にしたがってボンドを追加します </value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 371</value>
+  </data>
+  <data name="buttonAutoDetect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 343</value>
+  </data>
+  <data name="buttonAutoDetect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 30</value>
+  </data>
+  <data name="buttonChangeBond.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonChangeBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 309</value>
+  </data>
+  <data name="buttonChangeBond.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
+  <data name="buttonChangeBond.Text" xml:space="preserve">
+    <value>置換</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>選択されているボンドを設定された内容にしたがって変更します </value>
+  </data>
+  <data name="buttonDeleteBond.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 309</value>
+  </data>
+  <data name="buttonDeleteBond.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
+  <data name="buttonDeleteBond.Text" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>選択されているボンドを削除します </value>
+  </data>
+  <data name="colorControlBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 26</value>
+  </data>
+  <data name="listBoxBondsAndPolyhedra.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 17</value>
+  </data>
+  <data name="listBoxBondsAndPolyhedra.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 328</value>
+  </data>
+  <data name="label63.Location" type="System.Drawing.Point, System.Drawing">
+    <value>435, 64</value>
+  </data>
+  <data name="label59.Location" type="System.Drawing.Point, System.Drawing">
+    <value>398, 92</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 147</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.Text" xml:space="preserve">
+    <value>多面体を表示する</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>ボンドで構成される多面体を描画します </value>
+  </data>
+  <data name="numericUpDownBondTrasparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>322, 119</value>
+  </data>
+  <data name="numericUpDownBondTrasparency.ToolTip" xml:space="preserve">
+    <value>ボンドの透明度 </value>
+  </data>
+  <data name="label53.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label53.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 121</value>
+  </data>
+  <data name="label53.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label53.Text" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="listBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="numericUpDownBondMaxLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 58</value>
+  </data>
+  <data name="numericUpDownBondMaxLength.ToolTip" xml:space="preserve">
+    <value>ボンドの最大距離 </value>
+  </data>
+  <data name="numericUpDownBondMinLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 58</value>
+  </data>
+  <data name="numericUpDownBondMinLength.ToolTip" xml:space="preserve">
+    <value>ボンドの最小距離 </value>
+  </data>
+  <data name="numericUpDownBondRadius.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 91</value>
+  </data>
+  <data name="numericUpDownBondRadius.ToolTip" xml:space="preserve">
+    <value>ボンドの半径(太さ) </value>
+  </data>
+  <data name="label51.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label51.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 59</value>
+  </data>
+  <data name="label51.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 18</value>
+  </data>
+  <data name="label51.Text" xml:space="preserve">
+    <value>結合距離の範囲</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label52.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label52.Location" type="System.Drawing.Point, System.Drawing">
+    <value>357, 62</value>
+  </data>
+  <data name="label52.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 15</value>
+  </data>
+  <data name="label43.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 93</value>
+  </data>
+  <data name="comboBoxBondingAtom1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 28</value>
+  </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>ボンドに寄与する原子種(多面体描画時には中心) </value>
+  </data>
+  <data name="comboBoxBondingAtom2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 28</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>ボンドに寄与する原子種(多面体描画時には頂点) </value>
+  </data>
+  <data name="label41.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label41.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label41.Location" type="System.Drawing.Point, System.Drawing">
+    <value>385, 26</value>
+  </data>
+  <data name="label41.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>結合色</value>
+  </data>
+  <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label58.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 9</value>
+  </data>
+  <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 18</value>
+  </data>
+  <data name="label58.Text" xml:space="preserve">
+    <value>(頂点)</value>
+  </data>
+  <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label57.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 10</value>
+  </data>
+  <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 18</value>
+  </data>
+  <data name="label57.Text" xml:space="preserve">
+    <value>(中心)</value>
+  </data>
+  <data name="label39.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 31</value>
+  </data>
+  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>結合原子</value>
+  </data>
+  <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 25</value>
+  </data>
+  <data name="colorControlPlyhedron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 17</value>
+  </data>
+  <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowEdges.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 48</value>
+  </data>
+  <data name="checkBoxShowEdges.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxShowEdges.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 22</value>
+  </data>
+  <data name="checkBoxShowEdges.Text" xml:space="preserve">
+    <value>稜を表示</value>
+  </data>
+  <data name="colorControlEdges.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 21</value>
+  </data>
+  <data name="label55.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label55.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label55.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 22</value>
+  </data>
+  <data name="label55.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label55.Text" xml:space="preserve">
+    <value>稜の色</value>
+  </data>
+  <data name="numericUpDownEdgeLineWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 18</value>
+  </data>
+  <data name="numericUpDownEdgeLineWidth.ToolTip" xml:space="preserve">
+    <value>稜(辺)の太さ </value>
+  </data>
+  <data name="label56.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label56.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label56.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 19</value>
+  </data>
+  <data name="label56.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label56.Text" xml:space="preserve">
+    <value>太さ</value>
+  </data>
+  <data name="groupBoxEdge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 48</value>
+  </data>
+  <data name="groupBoxEdge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 46</value>
+  </data>
+  <data name="numericUpDownPolyhedronPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 14</value>
+  </data>
+  <data name="numericUpDownPolyhedronPlaneAlpha.ToolTip" xml:space="preserve">
+    <value>多面体の面の透明度 </value>
+  </data>
+  <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 22</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.Text" xml:space="preserve">
+    <value>結合を表示</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>多面体の中にあるボンドを描画します </value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.Text" xml:space="preserve">
+    <value>頂点原子を表示</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>多面体の頂点原子を描画します </value>
+  </data>
+  <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.Text" xml:space="preserve">
+    <value>中心原子を表示</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>多面体の中心原子を描画します </value>
+  </data>
+  <data name="label54.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 14</value>
+  </data>
+  <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label54.Text" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="label42.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>面の色</value>
+  </data>
+  <data name="groupBoxPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 145</value>
+  </data>
+  <data name="groupBoxPolyhedron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 100</value>
+  </data>
+  <data name="tabPageBondsPolyhedra.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabPageBondsPolyhedra.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
+    <value>多面体/結合描画設定</value>
+  </data>
+  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 260</value>
+  </data>
+  <data name="textBoxTitle.ToolTip" xml:space="preserve">
+    <value>原著論文のタイトル </value>
+  </data>
+  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 284</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 260</value>
+  </data>
+  <data name="textBoxAuthor.ToolTip" xml:space="preserve">
+    <value>原著論文の著者 </value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 284</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>著者</value>
+  </data>
+  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 31</value>
+  </data>
+  <data name="textBoxJournal.ToolTip" xml:space="preserve">
+    <value>原著論文の掲載雑誌 </value>
+  </data>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 55</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>雑誌名</value>
+  </data>
+  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 33</value>
+  </data>
+  <data name="textBoxMemo.ToolTip" xml:space="preserve">
+    <value>メモ　覚え書など </value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 57</value>
+  </data>
+  <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageReference.Text" xml:space="preserve">
+    <value>引用文献</value>
+  </data>
+  <data name="textBoxEOS_Note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 25</value>
+  </data>
+  <data name="checkBoxUseEOS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 22</value>
+  </data>
+  <data name="checkBoxUseEOS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 37</value>
+  </data>
+  <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageEOS.Text" xml:space="preserve">
+    <value>状態方程式</value>
+  </data>
+
+
+  <data name="tabPageElasticity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabPageElasticity.Text" xml:space="preserve">
+    <value>弾性定数</value>
+  </data>
+  <data name="numericalTextBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 123</value>
+  </data>
+  <data name="tabPageStraingStress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 348</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 27</value>
+  </data>
+  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 18</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 2</value>
+  </data>
+  <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 4</value>
+  </data>
+  <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 2</value>
+  </data>
+  <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 4</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 27</value>
+  </data>
+  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 402</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1</value>
+  </data>
+  <data name="tabControl.ShowToolTips" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 432</value>
+  </data>
+  <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 0</value>
+  </data>
+  <data name="textBoxFormula.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label90.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 0</value>
+  </data>
+  <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>化学組成</value>
+  </data>
+  <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 0</value>
+  </data>
+  <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 25</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>結晶名</value>
+  </data>
+  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>404, 0</value>
+  </data>
+  <data name="buttonReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 0</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 24</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 456</value>
+  </data>
+</root>

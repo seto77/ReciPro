@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableScatteringFactor" msprop:Generator_TableClassName="DataTableScatteringFactorDataTable" msprop:Generator_TableVarName="tableDataTableScatteringFactor" msprop:Generator_RowChangedName="DataTableScatteringFactorRowChanged" msprop:Generator_TablePropName="DataTableScatteringFactor" msprop:Generator_RowDeletingName="DataTableScatteringFactorRowDeleting" msprop:Generator_RowChangingName="DataTableScatteringFactorRowChanging" msprop:Generator_RowEvHandlerName="DataTableScatteringFactorRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableScatteringFactorRowDeleted" msprop:Generator_RowClassName="DataTableScatteringFactorRow" msprop:Generator_UserTableName="DataTableScatteringFactor" msprop:Generator_RowEvArgName="DataTableScatteringFactorRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="H" msprop:Generator_ColumnVarNameInTable="columnH" msprop:Generator_ColumnPropNameInRow="H" msprop:Generator_ColumnPropNameInTable="HColumn" msprop:Generator_UserColumnName="H" type="xs:int" minOccurs="0" />
+              <xs:element name="K" msprop:Generator_ColumnVarNameInTable="columnK" msprop:Generator_ColumnPropNameInRow="K" msprop:Generator_ColumnPropNameInTable="KColumn" msprop:Generator_UserColumnName="K" type="xs:int" minOccurs="0" />
+              <xs:element name="L" msprop:Generator_ColumnVarNameInTable="columnL" msprop:Generator_ColumnPropNameInRow="L" msprop:Generator_ColumnPropNameInTable="LColumn" msprop:Generator_UserColumnName="L" type="xs:int" minOccurs="0" />
+              <xs:element name="Multi" msprop:Generator_ColumnVarNameInTable="columnMulti" msprop:Generator_ColumnPropNameInRow="Multi" msprop:Generator_ColumnPropNameInTable="MultiColumn" msprop:Generator_UserColumnName="Multi" type="xs:int" minOccurs="0" />
+              <xs:element name="D" msprop:Generator_ColumnVarNameInTable="columnD" msprop:Generator_ColumnPropNameInRow="D" msprop:Generator_ColumnPropNameInTable="DColumn" msprop:Generator_UserColumnName="D" type="xs:double" minOccurs="0" />
+              <xs:element name="Q" msprop:Generator_ColumnVarNameInTable="columnQ" msprop:Generator_ColumnPropNameInRow="Q" msprop:Generator_ColumnPropNameInTable="QColumn" msprop:Generator_UserColumnName="Q" type="xs:double" minOccurs="0" />
+              <xs:element name="TwoTheta" msprop:Generator_ColumnVarNameInTable="columnTwoTheta" msprop:Generator_ColumnPropNameInRow="TwoTheta" msprop:Generator_ColumnPropNameInTable="TwoThetaColumn" msprop:Generator_UserColumnName="TwoTheta" type="xs:double" minOccurs="0" />
+              <xs:element name="F_real" msprop:Generator_ColumnVarNameInTable="columnF_real" msprop:Generator_ColumnPropNameInRow="F_real" msprop:Generator_ColumnPropNameInTable="F_realColumn" msprop:Generator_UserColumnName="F_real" type="xs:double" minOccurs="0" />
+              <xs:element name="F_inv" msprop:Generator_ColumnVarNameInTable="columnF_inv" msprop:Generator_ColumnPropNameInRow="F_inv" msprop:Generator_ColumnPropNameInTable="F_invColumn" msprop:Generator_UserColumnName="F_inv" type="xs:double" minOccurs="0" />
+              <xs:element name="F" msprop:Generator_ColumnVarNameInTable="columnF" msprop:Generator_ColumnPropNameInRow="F" msprop:Generator_ColumnPropNameInTable="FColumn" msprop:Generator_UserColumnName="F" type="xs:double" minOccurs="0" />
+              <xs:element name="F2" msprop:Generator_ColumnVarNameInTable="columnF2" msprop:Generator_ColumnPropNameInRow="F2" msprop:Generator_ColumnPropNameInTable="F2Column" msprop:Generator_UserColumnName="F2" type="xs:double" minOccurs="0" />
+              <xs:element name="RelInt" msprop:Generator_ColumnVarNameInTable="columnRelInt" msprop:Generator_ColumnPropNameInRow="RelInt" msprop:Generator_ColumnPropNameInTable="RelIntColumn" msprop:Generator_UserColumnName="RelInt" type="xs:double" minOccurs="0" />
+              <xs:element name="Condition" msprop:Generator_ColumnVarNameInTable="columnCondition" msprop:Generator_ColumnPropNameInRow="Condition" msprop:Generator_ColumnPropNameInTable="ConditionColumn" msprop:Generator_UserColumnName="Condition" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
