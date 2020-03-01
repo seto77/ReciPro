@@ -824,15 +824,15 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Crystallography.Control\Crystallography.Controls\Crystallography.Controls.csproj">
+    <ProjectReference Include="..\Crystallography.Controls\Crystallography.Controls.csproj">
       <Project>{6f1c3736-e86f-46b3-9ff5-1ca1a018ef02}</Project>
       <Name>Crystallography.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Crystallography.OpenGL\Crystallography.OpenGL\Crystallography.OpenGL.csproj">
+    <ProjectReference Include="..\Crystallography.OpenGL\Crystallography.OpenGL.csproj">
       <Project>{b3cb8d22-b8e1-43b9-9364-cf86d748d05a}</Project>
       <Name>Crystallography.OpenGL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Crystallography\Crystallography\Crystallography.csproj">
+    <ProjectReference Include="..\Crystallography\Crystallography.csproj">
       <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
       <Name>Crystallography</Name>
     </ProjectReference>
