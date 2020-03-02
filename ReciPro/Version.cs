@@ -12,6 +12,7 @@ namespace ReciPro
 
         static public string History =
             "History" +
+            "\r\n ver4.756(2020/03/02)  Minor bugs fixed." +
             "\r\n ver4.755(2020/03/01)  Changed: Distribution site is changed to GitHub." +
             "\r\n ver4.747(2020/02/29)  Improved: Diffraction simulator." +
             "\r\n ver4.746(2020/02/28)  Improved: Diffraction simulator." +
