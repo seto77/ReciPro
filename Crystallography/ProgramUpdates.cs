@@ -18,9 +18,7 @@ namespace Crystallography
         public static bool CheckUpdate(string software, string version)
         {
             if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed) return false;//click onceの場合
-
             bool update = false;
-
             try
             {
                 System.Net.WebClient wc = new System.Net.WebClient();

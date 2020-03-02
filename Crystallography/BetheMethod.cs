@@ -29,8 +29,6 @@ namespace Crystallography
         private static readonly Complex PiI = Math.PI * ImaginaryOne;
         private static readonly double PiSq = Math.PI * Math.PI;
         private static readonly Vector3DBase zNorm = new Vector3DBase(0, 0, 1);
-
-        //private double Wavelength { get; set; } = 0;
         private double AccVoltage { get; set; }
         private Crystal Crystal { get; set; } = null;
         private Matrix3D BaseRotation { get; set; } = null;
@@ -296,42 +294,6 @@ namespace Crystallography
 
 
 
-        public (DMat,DVec)  RefineEigenProblem(DMat mat, DMat eigenVectors, DVec eigenValues)
-        {
-            for(int i=0; i<eigenValues.Count; i++)
-            {
-                var val = eigenValues[i];
-                var vec = eigenVectors.Column(i);
-
-                var sum = 0.0;
-                foreach (var v in vec) sum += v.Magnitude2();
-
-                var result = mat * vec - val * vec;
-                var bestR = result.L2Norm();
-
-                
-
-                for (int n = -5; n > -10; n--)
-                {
-                    for (int j = 0; j < eigenValues.Count; j++)
-                    {
-                        //j番目の要素を 1 + 10^n 倍して計算してみる
-                        vec[j] *= 1 + Math.Pow(10, n);
-
-
-                    }
-                }
-
-
-            }
-
-
-
-
-            return (eigenVectors, eigenValues);
-        }
-
-
         /// <summary>
         /// 平行ビームの電子回折計算
         /// </summary>
@@ -342,8 +304,8 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
-            MathNet.Numerics.Control.TryUseNativeMKL();
-            //MathNet.Numerics.Control.UseManaged();
+            var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
+            
 
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
@@ -368,11 +330,17 @@ namespace Crystallography
 
                 var potentialMatrix = getEigenProblemMatrix(Beams);
 
-                //A行列に関する固有値、固有ベクトルを取得 //ここは必ずMKLで。
-                var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-
-                EigenValues = evd.EigenValues.AsArray();
-                EigenVectors = (DMat)evd.EigenVectors;
+                //A行列に関する固有値、固有ベクトルを取得 
+                if (useEigen)
+                {
+                    (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
+                }
+                else
+                {
+                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    EigenValues = evd.EigenValues.AsArray();
+                    EigenVectors = (DMat)evd.EigenVectors;
+                }
 
                 //(EigenVectors, EigenValues) = RefineEigenProblem(DMat.OfArray(potentialMatrix), (DMat)evd.EigenVectors, evd.EigenValues.ToArray());
             }
@@ -547,8 +515,6 @@ namespace Crystallography
         #endregion Image Simulation
 
 
-
-
         /// <summary>
         /// PEDの計算
         /// </summary>
@@ -561,7 +527,6 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetPrecessionElectronDiffraction(int maxNumOfBloch, double voltage, Matrix3D baseRotation, double thickness, double semiangle, int step)
         {
-            MathNet.Numerics.Control.TryUseNativeMKL();
 
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(voltage);
@@ -572,6 +537,8 @@ namespace Crystallography
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
 
             var useEigen = EigenEnabled && maxNumOfBloch < 400;
+            if (!MathNet.Numerics.Control.TryUseNativeMKL())
+                useEigen = true;
 
             var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
