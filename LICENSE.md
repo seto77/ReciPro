@@ -1,4 +1,4 @@
-ReciPro License (MIT)
+**ReciPro License (MIT)**
 
 Copyright (c) 2002-2020 Yusuke SETO
 
