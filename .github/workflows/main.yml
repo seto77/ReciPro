@@ -1,0 +1,2 @@
+- name: Github Release
+  uses: elgohr/Github-Release-Action@v3.1
