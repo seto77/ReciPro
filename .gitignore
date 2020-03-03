@@ -3,7 +3,7 @@
 
 references/
 ReciProSetup/
-Ctystallography.Native/Eigen
+Ctystallography.Native/Eigen/
 *.exe
 
 # User-specific files
