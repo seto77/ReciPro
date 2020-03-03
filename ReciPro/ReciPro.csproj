@@ -441,12 +441,12 @@
     <Content Include="dll\bin64\zlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="dll\x64\libiomp5md.dll">
+    <Content Include="dll\x64\libiomp5md.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="dll\x64\MathNet.Numerics.MKL.dll">
+    </Content>
+    <Content Include="dll\x64\MathNet.Numerics.MKL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="pdf\hrtem.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -538,26 +538,6 @@
       <PublishState>Include</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="Crystallography.Controls">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Crystallography.OpenGL">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="default.xml">
       <Visible>False</Visible>
@@ -824,15 +804,15 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crystallography.Controls\Crystallography.Controls.csproj">
+    <ProjectReference Include="..\Ctystallography.Controls\Crystallography.Controls.csproj">
       <Project>{6f1c3736-e86f-46b3-9ff5-1ca1a018ef02}</Project>
       <Name>Crystallography.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Crystallography.OpenGL\Crystallography.OpenGL.csproj">
+    <ProjectReference Include="..\Ctystallography.OpenGL\Crystallography.OpenGL.csproj">
       <Project>{b3cb8d22-b8e1-43b9-9364-cf86d748d05a}</Project>
       <Name>Crystallography.OpenGL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Crystallography\Crystallography.csproj">
+    <ProjectReference Include="..\Ctystallography\Crystallography.csproj">
       <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
       <Name>Crystallography</Name>
     </ProjectReference>
@@ -846,6 +826,13 @@ if "$(ConfigurationName)" =="Release"  "$(ProjectDir)"Updater.exe /v $(ProjectNa
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\MathNet.Numerics.MKL.Win-x64.2.3.0\build\MathNet.Numerics.MKL.Win-x64.targets" Condition="Exists('..\packages\MathNet.Numerics.MKL.Win-x64.2.3.0\build\MathNet.Numerics.MKL.Win-x64.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MathNet.Numerics.MKL.Win-x64.2.3.0\build\MathNet.Numerics.MKL.Win-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MathNet.Numerics.MKL.Win-x64.2.3.0\build\MathNet.Numerics.MKL.Win-x64.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

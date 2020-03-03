@@ -582,7 +582,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crystallography\Crystallography.csproj">
+    <ProjectReference Include="..\Ctystallography\Crystallography.csproj">
       <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
       <Name>Crystallography</Name>
     </ProjectReference>
