@@ -47,7 +47,6 @@ namespace Crystallography
                 else if (MessageBox.Show("Now, new version " + newVersion + " is available.\r\n" +
                         "If you press 'Yes', the current " + software + " will be closed immediately and the installer of new " + software + " launched.", "Update checked!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    
                     wc.DownloadFile("http://github.com/seto77/" + software + "/releases/download/v." + newVersion + "/" + software + "Setup.msi", UserAppDataPath + software + "Setup.msi");
                     if (File.Exists(UserAppDataPath + software + "Setup.msi"))
                         Process.Start(UserAppDataPath + software + "Setup.msi");

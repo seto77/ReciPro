@@ -928,7 +928,6 @@ namespace Crystallography
 
             var tempResult = new List<List<PointD>>();
 
-            var isEllipse = false;
 
             if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
             {
@@ -945,7 +944,6 @@ namespace Crystallography
                     var shift = new PointD(0, -l * sinTau * cosTau / (sinTau2 - cosAlpha2));//•½sˆÚ“®—Ê
                     if (P > 0)//‘È‰~
                     {
-                        isEllipse = true;
                         var pts = new List<PointD>();
                         for (double omega = 0; omega < Math.PI * 2.0000001; omega += Math.PI / 2000)
                             pts.Add(rot(new PointD(Math.Sin(omega + Math.PI / 2) / Psqrt, -Math.Cos(omega + Math.PI / 2) / Qsqrt) + shift));
