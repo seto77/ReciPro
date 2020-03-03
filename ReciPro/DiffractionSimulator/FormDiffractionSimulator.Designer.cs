@@ -724,15 +724,15 @@
             // 
             // colorControlScaleAzimuth
             // 
-            this.colorControlScaleAzimuth.Argb = -8960698;
+            this.colorControlScaleAzimuth.Argb = -8960954;
             resources.ApplyResources(this.colorControlScaleAzimuth, "colorControlScaleAzimuth");
             this.colorControlScaleAzimuth.Blue = 70;
             this.colorControlScaleAzimuth.BlueF = 0.2745098F;
-            this.colorControlScaleAzimuth.Color = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(69)))), ((int)(((byte)(70)))));
+            this.colorControlScaleAzimuth.Color = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
             this.colorControlScaleAzimuth.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorControlScaleAzimuth.FooterText = "Azimuth scale line";
-            this.colorControlScaleAzimuth.Green = 69;
-            this.colorControlScaleAzimuth.GreenF = 0.2705882F;
+            this.colorControlScaleAzimuth.Green = 68;
+            this.colorControlScaleAzimuth.GreenF = 0.2666667F;
             this.colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
             this.colorControlScaleAzimuth.Red = 119;
             this.colorControlScaleAzimuth.RedF = 0.4666667F;
@@ -741,18 +741,18 @@
             // 
             // colorControlScale2Theta
             // 
-            this.colorControlScale2Theta.Argb = -12237448;
+            this.colorControlScale2Theta.Argb = -12303240;
             resources.ApplyResources(this.colorControlScale2Theta, "colorControlScale2Theta");
             this.colorControlScale2Theta.Blue = 120;
             this.colorControlScale2Theta.BlueF = 0.4705882F;
-            this.colorControlScale2Theta.Color = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(69)))), ((int)(((byte)(120)))));
+            this.colorControlScale2Theta.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(120)))));
             this.colorControlScale2Theta.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorControlScale2Theta.FooterText = "2θ scale line";
-            this.colorControlScale2Theta.Green = 69;
-            this.colorControlScale2Theta.GreenF = 0.2705882F;
+            this.colorControlScale2Theta.Green = 68;
+            this.colorControlScale2Theta.GreenF = 0.2666667F;
             this.colorControlScale2Theta.Name = "colorControlScale2Theta";
-            this.colorControlScale2Theta.Red = 69;
-            this.colorControlScale2Theta.RedF = 0.2705882F;
+            this.colorControlScale2Theta.Red = 68;
+            this.colorControlScale2Theta.RedF = 0.2666667F;
             this.colorControlScale2Theta.ToolTip = "";
             this.colorControlScale2Theta.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.Draw);
             // 

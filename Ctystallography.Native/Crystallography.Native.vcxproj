@@ -97,7 +97,7 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.dll</TargetExt>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\dll\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\dll</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>

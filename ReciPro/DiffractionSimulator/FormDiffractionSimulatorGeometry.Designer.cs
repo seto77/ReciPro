@@ -712,6 +712,7 @@
             // pictureBoxSchematicDiagram
             // 
             this.pictureBoxSchematicDiagram.BackColor = System.Drawing.Color.White;
+            this.pictureBoxSchematicDiagram.Image = global::ReciPro.Properties.Resources.geometry;
             this.pictureBoxSchematicDiagram.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxSchematicDiagram.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxSchematicDiagram.Name = "pictureBoxSchematicDiagram";
