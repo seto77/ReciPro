@@ -35,7 +35,8 @@ namespace Crystallography
                 using (var sr = new StreamReader("Version.cs"))
                 {
                     var temp =  sr.ReadToEnd().Split(new[] { '\r', '\n' });
-                    newVersion = temp.First(s => s.Contains("ver")).Substring(newVersion.IndexOf("ver") + 3, 5);
+                    newVersion = temp.First(s => s.Contains("ver"));
+                    newVersion = newVersion.Substring(newVersion.IndexOf("ver") + 3, 5);
                 }
                 File.Delete("Version.cs");
 
