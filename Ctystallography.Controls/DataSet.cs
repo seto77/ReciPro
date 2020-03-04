@@ -18,19 +18,17 @@ namespace Crystallography.Controls
                 dr[this.DColumn] = d;
                 dr[this.QColumn] = Math.PI * 2 / d;
                 dr[this.TwoThetaColumn] = twoTheta;
-                dr[this.F_realColumn] = Math.Abs(f.Real) > 10E-10 ? f.Real : 0;
-                dr[this.F_invColumn] = Math.Abs(f.Imaginary) > 10E-10 ? f.Imaginary : 0;
-                dr[this.FColumn] = f.Magnitude > 10E-10 ? f.Magnitude : 0;
-                dr[this.F2Column] = f.Magnitude * f.Magnitude > 10E-10 ? f.Magnitude * f.Magnitude : 0;
-                dr[RelIntColumn] = relInt * 100 > 10E-10 ? relInt * 100 : 0;
+                dr[this.F_realColumn] = Math.Abs(f.Real) > 1E-18 ? f.Real : 0;
+                dr[this.F_invColumn] = Math.Abs(f.Imaginary) > 10E-18 ? f.Imaginary : 0;
+                dr[this.FColumn] = f.Magnitude > 1E-18 ? f.Magnitude : 0;
+                dr[this.F2Column] = f.Magnitude * f.Magnitude > 1E-18 ? f.Magnitude * f.Magnitude : 0;
+                dr[RelIntColumn] = relInt * 100 > 1E-18 ? relInt * 100 : 0;
 
-                string str = "";
-                if (condition.Length == 1)
-                    str = condition[0];
-                else if (condition.Length > 1)
-                    for (int m = 0; m < condition.Length; m++)
-                        str += condition[m] + " & ";
-                dr[columnCondition] = str.TrimEnd(new[] { ' ', '&' });
+                System.Text.StringBuilder str = new System.Text.StringBuilder();
+                for (int m = 0; m < condition.Length; m++)
+                    str.Append(m == 0 ? condition[m] : " & " + condition[m]);
+
+                dr[columnCondition] = str.ToString();
 
                 this.Rows.Add(dr);
             }

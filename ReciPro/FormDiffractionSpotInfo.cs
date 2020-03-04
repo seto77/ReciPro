@@ -216,22 +216,20 @@ namespace ReciPro
         private void CheckBoxAutoRowSize_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxAutoRowSize.Checked)
-            {
-                dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            else
+                dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
-            }
         }
 
         private void DataGridView_Scroll(object sender, ScrollEventArgs e)
         {
 
-            if(checkBoxAutoRowSize.Checked)
+            if (checkBoxAutoRowSize.Checked)
             {
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            }
+            }            
 
         }
     }
