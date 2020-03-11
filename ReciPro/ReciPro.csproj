@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReciPro</RootNamespace>
     <AssemblyName>ReciPro</AssemblyName>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <ManifestCertificateThumbprint>46F2D730B58F89557CD46FEBBF20A56305852CCB</ManifestCertificateThumbprint>
     <ManifestKeyFile>SetoSoft.pfx</ManifestKeyFile>
     <TargetZone>LocalIntranet</TargetZone>

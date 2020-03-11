@@ -232,5 +232,38 @@ namespace ReciPro
             }            
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataSet.DataTableBethe.Rows.Count < 1)
+                return;
+
+            var sb = new StringBuilder("\t");
+
+            for (int j = 0; j < dataGridView.Rows.Count; j++) {
+                var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[3, j].Value);
+                if((h+k+l)%2==0)
+                    sb.Append(h.ToString() + " " + k.ToString() + " " + l.ToString() + " even \t");
+                else
+                    sb.Append(h.ToString() + " " + k.ToString() + " " + l.ToString() + " odd \t");
+
+            }
+            sb.Append("\r\n");
+
+            for (double thickness = 1; thickness <= 300; thickness += 1)
+            {
+                FormDiffractionSimulator.Thickness = thickness;
+
+                sb.Append(thickness.ToString()+"\t");
+
+                for (int j = 0; j < dataGridView.Rows.Count; j++)
+                    sb.Append(dataGridView[18, j].Value.ToString()+"\t");
+
+                sb.Append("\r\n");
+                if(thickness % 10==0)
+                    Application.DoEvents();
+            }
+            Clipboard.SetDataObject(sb.ToString());
+        }
     }
 }

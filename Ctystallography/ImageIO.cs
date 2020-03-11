@@ -230,55 +230,54 @@ namespace Crystallography
                         return false;
                     headersize = Convert.ToInt32(str.Split(new[] { '=', ';' })[1]);
                 }
-                using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
+                
+                using BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
+                var headers = new string(br.ReadChars(headersize)).Split(new[] { '{', '}', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(new[] { '=' })[1] == "little_endian";
+                var type = headers.First(h => h.StartsWith("TYPE=")).Split(new[] { '=' })[1];
+                var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(new[] { '=' })[1]);
+                var size2 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE2=")).Split(new[] { '=' })[1]);
+                var size3 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE3=")).Split(new[] { '=' })[1]);
+                var size4 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE4=")).Split(new[] { '=' })[1]);
+
+                if (type != "UNSIGNED_SHORT" && type != "float")
+                    return false;
+
+                int imageWidth = size1, imageHeight = size2;
+                int numberOfFrame = size3;
+                long length = imageWidth * imageHeight;
+
+                Ring.SequentialImageIntensities = new List<List<double>>();
+                Ring.SequentialImageNames = new List<string>();
+
+                var read = type == "UNSIGNED_SHORT" ? new Func<double>(() => br.ReadUInt16()) : new Func<double>(() => br.ReadSingle());
+
+                for (int j = 0; j < numberOfFrame; j++)
                 {
-                    var headers = new string(br.ReadChars(headersize)).Split(new[] { '{', '}', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(new[] { '=' })[1] == "little_endian";
-                    var type = headers.First(h => h.StartsWith("TYPE=")).Split(new[] { '=' })[1];
-                    var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(new[] { '=' })[1]);
-                    var size2 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE2=")).Split(new[] { '=' })[1]);
-                    var size3 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE3=")).Split(new[] { '=' })[1]);
-                    var size4 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE4=")).Split(new[] { '=' })[1]);
-
-                    if (type != "UNSIGNED_SHORT" && type != "float")
-                        return false;
-
-                    int imageWidth = size1, imageHeight = size2;
-                    int numberOfFrame = size3;
-                    long length = imageWidth * imageHeight;
-
-                    Ring.SequentialImageIntensities = new List<List<double>>();
-                    Ring.SequentialImageNames = new List<string>();
-
-                    var read = type == "UNSIGNED_SHORT" ? new Func<double>(() => br.ReadUInt16()) : new Func<double>(() => br.ReadSingle());
-
-                    for (int j = 0; j < numberOfFrame; j++)
-                    {
-                        Ring.SequentialImageIntensities.Add(new List<double>());
-                        br.BaseStream.Position = headersize + j * length * (type == "UNSIGNED_SHORT" ? 2 : 4);
-                        for (int i = 0; i < length; i++)
-                            Ring.SequentialImageIntensities[j].Add(read());
-                        Ring.SequentialImageNames.Add(j.ToString("000"));
-                    }
-
-                    if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-                    {
-                        Ring.Intensity.Clear();
-                        for (int i = 0; i < length; i++)
-                            Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < length; i++)
-                            Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
-                    }
-
-                    Ring.BitsPerPixels = type == "UNSIGNED_SHORT" ? 2 : 4;
-
-                    Ring.SrcImgSize = new Size(imageWidth, imageHeight);
-                    Ring.ImageType = Ring.ImageTypeEnum.SMV;
-                    Ring.Comments = "Num. of Frame: " + numberOfFrame.ToString(); ;
+                    Ring.SequentialImageIntensities.Add(new List<double>());
+                    br.BaseStream.Position = headersize + j * length * (type == "UNSIGNED_SHORT" ? 2 : 4);
+                    for (int i = 0; i < length; i++)
+                        Ring.SequentialImageIntensities[j].Add(read());
+                    Ring.SequentialImageNames.Add(j.ToString("000"));
                 }
+
+                if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
+                {
+                    Ring.Intensity.Clear();
+                    for (int i = 0; i < length; i++)
+                        Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
+                }
+                else
+                {
+                    for (int i = 0; i < length; i++)
+                        Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
+                }
+
+                Ring.BitsPerPixels = type == "UNSIGNED_SHORT" ? 2 : 4;
+
+                Ring.SrcImgSize = new Size(imageWidth, imageHeight);
+                Ring.ImageType = Ring.ImageTypeEnum.SMV;
+                Ring.Comments = "Num. of Frame: " + numberOfFrame.ToString(); ;
             }
             catch (Exception e)
             {
@@ -640,9 +639,9 @@ namespace Crystallography
 
                 //tag番号を調べる
                 List<string> tag = new List<string>();
-                foreach (var g in hdf.Paths)
+                foreach (var (Name, Parent, Depth) in hdf.Paths)
                 {
-                    var tmp = g.Name.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                    var tmp = Name.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
                     if (tmp.Length != 0 && tmp[tmp.Length - 1].StartsWith("tag_") && !tag.Contains(tmp[tmp.Length - 1]))
                         tag.Add(tmp[tmp.Length - 1]);
                 }

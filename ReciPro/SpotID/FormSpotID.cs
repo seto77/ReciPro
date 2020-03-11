@@ -1194,8 +1194,8 @@ namespace ReciPro
                         DataSet.DataTableSpot.setHKL(i, index.Length != 1 ? "" : index[0].H.ToString() + " " + index[0].K.ToString() + " " + index[0].L.ToString());
                     }
                     DataSet.DataTableSpot.setHKL(DataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
-                    foreach (var index in g.Indices)
-                        DataSet.DataTableSpot.setHKL(index.No, " " + index.H.ToString() + " " + index.K.ToString() + " " + index.L.ToString());
+                    foreach (var (No, H, K, L) in g.Indices)
+                        DataSet.DataTableSpot.setHKL(No, " " + H.ToString() + " " + K.ToString() + " " + L.ToString());
                     skipEvent = false;
 
                     //シンボルを更新

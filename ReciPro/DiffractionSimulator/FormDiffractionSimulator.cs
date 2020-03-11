@@ -501,7 +501,9 @@ namespace ReciPro
                     }
                     var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                     gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToArray();
-
+                    
+                    foreach (var g in gVector)
+                        g.Argb = formMain.Crystals.Length == 1 ? colorControlNoCondition.Argb : crystal.Argb;
                 }
                 else
                     gVector = crystal.VectorOfG.ToArray();
@@ -559,6 +561,8 @@ namespace ReciPro
                                         if (!double.IsNaN(intensity))
                                         {
                                             var radius = fillCircleSpread(Color.FromArgb(g.Argb), pt, intensity, sigma);
+                                  
+
                                             if (drawLabel && trackBarStrSize.Value != 1 && intensity / (2 * Math.PI * sigma * sigma) > 0.5)
                                                 DrawDiffractionSpotsLabel(graphics, g, pt, radius, (double)g.Tag);
                                         }

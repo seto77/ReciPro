@@ -108,6 +108,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
             this.numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -935,7 +936,20 @@
             this.numericBoxEffectiveDigit.WordWrap = true;
             this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
             // 
-            // FormDiffractionSimulatorTable
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.button1.Location = new System.Drawing.Point(996, 197);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 30);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FormDiffractionSpotInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -948,6 +962,7 @@
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonCopyToClipboard);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label9);
@@ -955,7 +970,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.pictureBox);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
-            this.Name = "FormDiffractionSimulatorTable";
+            this.Name = "FormDiffractionSpotInfo";
             this.Text = "Diffraction Spot Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDiffractionSimulatorTable_FormClosing);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -1058,5 +1073,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.CheckBox checkBoxAutoRowSize;
+        private System.Windows.Forms.Button button1;
     }
 }

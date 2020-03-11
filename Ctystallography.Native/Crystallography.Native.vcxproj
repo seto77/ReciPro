@@ -63,6 +63,9 @@
     <ProfileGuidedOptimization>Disabled</ProfileGuidedOptimization>
     <UseIntelMKL>No</UseIntelMKL>
     <SpectreMitigation>false</SpectreMitigation>
+    <UseILP64Interfaces>false</UseILP64Interfaces>
+    <UseIntelIPP>false</UseIntelIPP>
+    <UseIntelDAAL>false</UseIntelDAAL>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -142,13 +145,13 @@
       <SupportJustMyCode>false</SupportJustMyCode>
       <AdditionalIncludeDirectories>D:\Users\seto\source\repos\Crystallography.Native\Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
-      <GenerateAlternateCodePaths>COMMON512</GenerateAlternateCodePaths>
-      <UseProcessorExtensions>COMMON512</UseProcessorExtensions>
+      <GenerateAlternateCodePaths>AVX2</GenerateAlternateCodePaths>
+      <UseProcessorExtensions>AVX2</UseProcessorExtensions>
       <ConditionalBranch>keep</ConditionalBranch>
-      <OptimizeForWindowsApplication>false</OptimizeForWindowsApplication>
+      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
       <Parallelization>false</Parallelization>
       <OpenMP>None</OpenMP>
-      <OffloadConstructs>Mandatory</OffloadConstructs>
+      <OffloadConstructs>None</OffloadConstructs>
       <Mtune>No</Mtune>
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
@@ -178,6 +181,10 @@
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Parallelization>true</Parallelization>
+      <GenerateAlternateCodePaths>AVX2</GenerateAlternateCodePaths>
+      <UseProcessorExtensions>AVX2</UseProcessorExtensions>
+      <OpenMP>GenerateParallelCode</OpenMP>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -196,26 +203,25 @@
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
-      <Parallelization>false</Parallelization>
-      <UseIntelOptimizedHeaders>true</UseIntelOptimizedHeaders>
-      <UseProcessorExtensions>AVX</UseProcessorExtensions>
+      <Parallelization>true</Parallelization>
+      <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
+      <UseProcessorExtensions>AVX2</UseProcessorExtensions>
       <Mtune>No</Mtune>
-      <UseMSVC>true</UseMSVC>
       <ConditionalBranch>keep</ConditionalBranch>
       <OpenMPSupport>false</OpenMPSupport>
-      <OpenMP>None</OpenMP>
+      <OpenMP>GenerateParallelCode</OpenMP>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>false</EnableModules>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
-      <OffloadOpenMP>No</OffloadOpenMP>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <OptimizeForWindowsApplication>false</OptimizeForWindowsApplication>
+      <OffloadOpenMP>Yes</OffloadOpenMP>
       <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
       <EnableMatrixMultiplyLibraryCall>Yes</EnableMatrixMultiplyLibraryCall>
-      <GenerateAlternateCodePaths>AVX</GenerateAlternateCodePaths>
+      <GenerateAlternateCodePaths>AVX2</GenerateAlternateCodePaths>
       <OffloadConstructs>None</OffloadConstructs>
       <OffloadArch>Default</OffloadArch>
       <DiagnosticsFormat>Classic</DiagnosticsFormat>
@@ -224,6 +230,7 @@
       <AdditionalIncludeDirectories>D:\Users\seto\source\repos\Crystallography.Native\Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <OmitFramePointers>false</OmitFramePointers>
+      <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -231,6 +238,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
