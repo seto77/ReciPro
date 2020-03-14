@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Crystallography;
 
 namespace Crystallography.Controls
 {
@@ -14,6 +15,7 @@ namespace Crystallography.Controls
     {
         public ScalablePictureBoxAdvanced()
         {
+           
             InitializeComponent();
 
             graphControl.LineList = new[] { new PointD(0, 0), new PointD(0, 0) };

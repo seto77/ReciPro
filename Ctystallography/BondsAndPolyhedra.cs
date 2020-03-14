@@ -1,42 +1,45 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace Crystallography
 {
+    [ProtoContract]
     [Serializable()]
     public class Bonds
     {
-        public string Element1;
-        public string Element2;
+        [ProtoMember(301)] public string Element1;
+        [ProtoMember(302)] public string Element2;
 
-        public float MinLength;
-        public float MaxLength;
+        [ProtoMember(303)] public float MinLength;
+        [ProtoMember(304)] public float MaxLength;
 
-        public float Radius;
+        [ProtoMember(305)] public float Radius;
 
-        public float BondTransParency;
+        [ProtoMember(306)] public float BondTransParency;
 
         //public System.Drawing.Color BondColor;
-        public int ArgbBond;
+        [ProtoMember(307)] public int ArgbBond;
 
-        public float PolyhedronTransParency;
+        [ProtoMember(308)] public float PolyhedronTransParency;
 
-        public bool ShowPolyhedron;
-        public bool ShowCenterAtom;
-        public bool ShowVertexAtom;
-        public bool ShowInnerBonds;
+        [ProtoMember(309)] public bool ShowPolyhedron;
+        [ProtoMember(310)] public bool ShowCenterAtom;
+        [ProtoMember(311)] public bool ShowVertexAtom;
+        [ProtoMember(312)] public bool ShowInnerBonds;
 
         //public System.Drawing.Color PolyhedronColor;
-        public int ArgbPolyhedron;
+        [ProtoMember(313)] public int ArgbPolyhedron;
 
-        public bool ShowEdges;
-        public float EdgeLineWidth;
+        [ProtoMember(314)] public bool ShowEdges;
+        [ProtoMember(315)] public float EdgeLineWidth;
 
         //public System.Drawing.Color EdgeColor;
-        public int ArgbEdge;
+        [ProtoMember(316)] public int ArgbEdge;
 
         [XmlIgnoreAttribute]
+        [ProtoIgnore]
         public List<int[]> pairID = new List<int[]>();
 
         public Bonds()

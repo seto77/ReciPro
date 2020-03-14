@@ -19,27 +19,15 @@ namespace Crystallography
                 destBmp.Dispose();
         }
 
-        private bool verticalFlip = false;
-
         /// <summary>
         /// 上下方向の反転をするかどうか
         /// </summary>
-        public bool VerticalFlip
-        {
-            set { verticalFlip = value; }
-            get { return verticalFlip; }
-        }
-
-        private bool horizontalFlip = false;
+        public bool VerticalFlip { set; get; } = false;
 
         /// <summary>
         /// 左右方向の反転をするかどうか
         /// </summary>
-        public bool HorizontalFlip
-        {
-            set { horizontalFlip = value; }
-            get { return horizontalFlip; }
-        }
+        public bool HorizontalFlip { set; get; } = false;
 
         static PseudoBitmap()
         {
@@ -919,11 +907,11 @@ namespace Crystallography
             GetSrcPosition getSrcPosition = delegate (int x, int y)
             {
                 int _x, _y;
-                if (!horizontalFlip)
+                if (!HorizontalFlip)
                     _x = (int)(srcRect.X + (double)x / destSize.Width * srcRect.Width + 0.5);
                 else
                     _x = (int)(srcRect.X + (double)(destSize.Width - x) / destSize.Width * srcRect.Width + 0.5);
-                if (!verticalFlip)
+                if (!VerticalFlip)
                     _y = (int)(srcRect.Y + (double)y / destSize.Height * srcRect.Height + 0.5);
                 else
                     _y = (int)(srcRect.Y + (double)(destSize.Height - y) / destSize.Height * srcRect.Height + 0.5);

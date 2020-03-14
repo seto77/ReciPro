@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.Devices;
-using Microsoft.VisualBasic.FileIO;
 
 namespace Crystallography
 {
@@ -21,11 +16,14 @@ namespace Crystallography
             bool update = false;
             try
             {
+                if (File.Exists("Version.cs"))
+                    File.Delete("Version.cs");
+
                 System.Net.WebClient wc = new System.Net.WebClient();
+               
 
-                new Network().DownloadFile("https://raw.githubusercontent.com/seto77/" + software + "/master/" + software + "/Version.cs",
-                "Version.cs", "", "", false, 1000, true, UICancelOption.ThrowException);
 
+                wc.DownloadFile("https://raw.githubusercontent.com/seto77/" + software + "/master/" + software + "/Version.cs", "Version.cs");
 
                 if (!File.Exists("Version.cs"))
                     MessageBox.Show("An error occured while trying to locate the update to " + software + "."
@@ -63,7 +61,7 @@ namespace Crystallography
         }
 
 
-
+        /*
         public static bool CheckUpdate_old(string software, string version)
         {
             if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed) return false;//click onceの場合
@@ -107,5 +105,6 @@ namespace Crystallography
             }
             return update;
         }
+        */
     }
 }

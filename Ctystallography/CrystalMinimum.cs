@@ -1,35 +1,37 @@
 using System;
 using System.Collections.Generic;
+using ProtoBuf;
 
 namespace Crystallography
 {
     //Saveのために必要最小限の情報だけを保存するクラス
+    [ProtoContract]
     [Serializable()]
     public class Crystal2
     {
-        public double a;
-        public double b;
-        public double c;
-        public double alpha;
-        public double beta;
-        public double gamma;
-        public int argb;
-        public double density;
-        public string name;
-        public string note;
-        public string jour;
-        public string auth;
-        public string sect;
-        public string formula;//計算可能な場合は。
+        [ProtoMember(101)] public double a;
+        [ProtoMember(102)] public double b;
+        [ProtoMember(103)] public double c;
+        [ProtoMember(104)] public double alpha;
+        [ProtoMember(105)] public double beta;
+        [ProtoMember(106)] public double gamma;
+        [ProtoMember(107)] public int argb;
+        [ProtoMember(108)] public double density;
+        [ProtoMember(109)] public string name;
+        [ProtoMember(110)] public string note;
+        [ProtoMember(111)] public string jour;
+        [ProtoMember(112)] public string auth;
+        [ProtoMember(113)] public string sect;
+        [ProtoMember(114)] public string formula;//計算可能な場合は。
 
         //public string[] elStr;//元素の記号
         //public double[] elNum;//元素の数
-        public Int16 sym;//対称性の通し番号
+        [ProtoMember(115)] public Int16 sym;//対称性の通し番号
 
-        public List<Atoms2> atoms;
-        public List<Bonds> bonds = new List<Bonds>();
-        public double[] d = new double[0];//強度8位までのd値
-        public string fileName = "";
+        [ProtoMember(116)] public List<Atoms2> atoms=new List<Atoms2>();
+        [ProtoMember(117)] public List<Bonds> bonds = new List<Bonds>();
+        [ProtoMember(118)] public double[] d = new double[0];//強度8位までのd値
+        [ProtoMember(119)] public string fileName = "";
 
         public Crystal2()
         {
@@ -311,24 +313,25 @@ namespace Crystallography
         }
     }
 
+    [ProtoContract]
     [Serializable()]
     public class Atoms2
     {
-        public string Label;
-        public float[] X = new float[3];
-        public float[] X_err = null;
-        public float[] Occ = null;//Occ, Occ_errの順番
-        public byte SubXray;//SubNumberForXray
-        public byte SubElectron;//SubNumberForElectron
-        public byte AtomNo; //atomic number
-        public bool IsIso;
-        public float[] Biso = null;//Biso, Biso_errの順番
-        public float[] Baniso = null;//B11, B22, B33, B12, B23, B31, B11_err, B22_err, B33_err, B12_err, B23_err, B31_errの順番
+        [ProtoMember(201)] public string Label;
+        [ProtoMember(202)] public float[] X = new float[3];
+        [ProtoMember(203)] public float[] X_err = null;
+        [ProtoMember(204)] public float[] Occ = null;//Occ, Occ_errの順番
+        [ProtoMember(205)] public byte SubXray;//SubNumberForXray
+        [ProtoMember(206)] public byte SubElectron;//SubNumberForElectron
+        [ProtoMember(207)] public byte AtomNo; //atomic number
+        [ProtoMember(208)] public bool IsIso;
+        [ProtoMember(209)] public float[] Biso = null;//Biso, Biso_errの順番
+        [ProtoMember(210)] public float[] Baniso = null;//B11, B22, B33, B12, B23, B31, B11_err, B22_err, B33_err, B12_err, B23_err, B31_errの順番
 
-        public float Rad;
-        public int Argb;//色
-        public byte[] Mat = null;//amb,dif,emi,shi,spe,traの順番
-        public double[] Isotope = null;
+        [ProtoMember(211)] public float Rad;
+        [ProtoMember(212)] public int Argb;//色
+        [ProtoMember(213)] public byte[] Mat = null;//amb,dif,emi,shi,spe,traの順番
+        [ProtoMember(214)] public double[] Isotope = null;
 
         /*public float amb = 0.1f;//環境光
         public float dif = 0.8f;//拡散光
@@ -338,6 +341,8 @@ namespace Crystallography
         public float tra = 1f;//透明度
         */
 
+        public Atoms2()
+        { }
         public Atoms2(string label, int atomNo, int sfx, int sfe, Vector3D pos, Vector3D pos_err, double occ, double occ_err,
             DiffuseScatteringFactor dsf
             , AtomMaterial mat, float radius)

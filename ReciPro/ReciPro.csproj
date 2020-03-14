@@ -14,7 +14,7 @@
     <ManifestCertificateThumbprint>46F2D730B58F89557CD46FEBBF20A56305852CCB</ManifestCertificateThumbprint>
     <ManifestKeyFile>SetoSoft.pfx</ManifestKeyFile>
     <TargetZone>LocalIntranet</TargetZone>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <FileUpgradeFlags>
