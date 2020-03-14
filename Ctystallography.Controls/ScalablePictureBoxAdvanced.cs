@@ -381,8 +381,7 @@ namespace Crystallography.Controls
 
         private void scalablePictureBox_DrawingAreaChanged(object sender, double zoom, PointD center)
         {
-            if (DrawingAreaChanged != null)
-                DrawingAreaChanged(sender, zoom, center);
+            DrawingAreaChanged?.Invoke(sender, zoom, center);
         }
 
         /// <summary>
@@ -483,7 +482,7 @@ namespace Crystallography.Controls
             skipEvent = true;
             LowerIntensity = trackBarAdvancedMinimum.Value;
             skipEvent = false;
-            return default(bool);
+            return default;
         }
 
         private bool trackBarAdvancedMaximum_ValueChanged(object sender, double value)
@@ -492,7 +491,7 @@ namespace Crystallography.Controls
             skipEvent = true;
             UpperIntensity = trackBarAdvancedMaximum.Value;
             skipEvent = false;
-            return default(bool);
+            return default;
         }
 
         public void DrawPictureBox()
@@ -529,8 +528,7 @@ namespace Crystallography.Controls
                 PseudoBitmap.GrayScale = false;
             }
             scalablePictureBox.drawPictureBox();
-            if (BrightnessAndColorChanged != null)
-                BrightnessAndColorChanged(sender, e);
+            BrightnessAndColorChanged?.Invoke(sender, e);
         }
 
         #region ImageFilter関連

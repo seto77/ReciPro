@@ -209,9 +209,9 @@ namespace Crystallography
             SrcValuesR.Clear();
             SrcValuesG = SrcValuesB = SrcValuesR;
 
-            ScaleR = scaleR != null ? scaleR : BrightnessScaleLiner;
-            ScaleG = scaleG != null ? scaleG : BrightnessScaleLiner;
-            ScaleB = scaleB != null ? scaleB : BrightnessScaleLiner;
+            ScaleR = scaleR ?? BrightnessScaleLiner;
+            ScaleG = scaleG ?? BrightnessScaleLiner;
+            ScaleB = scaleB ?? BrightnessScaleLiner;
             initFilter();
         }
 
@@ -901,10 +901,10 @@ namespace Crystallography
             {
                 return null;
             }
-            double zoom = ((double)destSize.Width / srcRect.Width + (double)destSize.Height / srcRect.Height) / 2.0;
+            double zoom = (destSize.Width / srcRect.Width + (double)destSize.Height / srcRect.Height) / 2.0;
 
             //描画する画素位置をソース画像位置に変換するdelegateを作成
-            GetSrcPosition getSrcPosition = delegate (int x, int y)
+            Point getSrcPosition(int x, int y)
             {
                 int _x, _y;
                 if (!HorizontalFlip)
@@ -917,17 +917,17 @@ namespace Crystallography
                     _y = (int)(srcRect.Y + (double)(destSize.Height - y) / destSize.Height * srcRect.Height + 0.5);
 
                 return new Point(_x, _y);
-            };
+            }
 
             //入力値doubleを表示する値に変換するdelegate
-            GetValue getValue = delegate (double rawValue, byte[] scale)
-                {
-                    double rawIndex = (double)(rawValue - MinValue) / (MaxValue - MinValue) * scale.Length;
-                    int minIndex = (int)(Math.Min(rawIndex, scale.Length - 1) + 0.5);
-                    int index = Math.Max(minIndex, 0);
+            byte getValue(double rawValue, byte[] scale)
+            {
+                double rawIndex = (double)(rawValue - MinValue) / (MaxValue - MinValue) * scale.Length;
+                int minIndex = (int)(Math.Min(rawIndex, scale.Length - 1) + 0.5);
+                int index = Math.Max(minIndex, 0);
 
-                    return scale[index];
-                };
+                return scale[index];
+            }
 
             int range = (int)(1 / zoom / 2 + 0.5);
             int increase = (zoom >= 1) ? 0 : Math.Max(range / 3, 1);

@@ -777,8 +777,8 @@ namespace ReciPro
             skipProgressChangedEvent = false;
         }
 
-        private object lockObj = new object();
-        private Stopwatch sw = new Stopwatch();
+        private readonly object lockObj = new object();
+        private readonly Stopwatch sw = new Stopwatch();
 
         private List<List<Grain>> identifySpots(List<Crystal> crystals)
         {
@@ -1402,11 +1402,11 @@ namespace ReciPro
             var disks = FormMain.Crystal.Bethe.Disks;
             var tempDisk = disks[0].Select((disk, index) => (disk, index));
             var corrTable = new List<(int index, double intensity)>();
-            foreach (var obj in grain.Indices)
+            foreach (var (No, H, K, L) in grain.Indices)
             {
-                var temp = tempDisk.Where(o => obj.H == o.disk.H && obj.K == o.disk.K && obj.L == o.disk.L).ToArray();
+                var temp = tempDisk.Where(o => H == o.disk.H && K == o.disk.K && L == o.disk.L).ToArray();
                 if(temp.Length==1)
-                corrTable.Add((temp[0].index, spots[obj.No].A / spots.Max(s => s.A)));
+                corrTable.Add((temp[0].index, spots[No].A / spots.Max(s => s.A)));
             }
 
             var bestResidual = double.PositiveInfinity;
