@@ -182,7 +182,7 @@ namespace Crystallography
         {
             SymmetrySeriesNumber = symmetrySeriesNumber;
 
-            Atoms temp = WyckoffPosition.GetEquivalentAtomsPosition(new Vector3D(X, Y, Z), symmetrySeriesNumber);
+            var temp = WyckoffPosition.GetEquivalentAtomsPosition(new Vector3D(X, Y, Z), symmetrySeriesNumber);
             WyckoffLeter = temp.WyckoffLeter;
             SiteSymmetry = temp.SiteSymmetry;
             Multiplicity = temp.Multiplicity;
@@ -213,7 +213,7 @@ namespace Crystallography
         /// <param name="seed"></param>
         public void RandomizeKeepingWykoff(Random r)
         {
-            WyckoffPosition wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
+            var wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
             if (wyk.FreedomX) X = r.NextDouble();
             if (wyk.FreedomY) Y = r.NextDouble();
             if (wyk.FreedomZ) Z = r.NextDouble();
@@ -231,9 +231,9 @@ namespace Crystallography
         public void ShakeKeepingWykoff(double threshold, Random r)
         {
             WyckoffPosition wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
-            if (wyk.FreedomX) X = X + (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
-            if (wyk.FreedomY) Y = Y + (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
-            if (wyk.FreedomZ) Z = Z + (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.FreedomX) X += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.FreedomY) Y += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.FreedomZ) Z += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
 
             Atom = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber].GeneratePositions(X, Y, Z);
             X = Atom[0].X;

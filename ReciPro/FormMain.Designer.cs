@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelCalcTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox = new System.Windows.Forms.ListBox();
@@ -153,6 +153,7 @@
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -218,13 +219,14 @@
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelCalcTime});
+            this.toolStripProgressBar,
+            this.toolStripStatusLabel});
             this.statusStrip1.Name = "statusStrip1";
             // 
-            // toolStripStatusLabelCalcTime
+            // toolStripStatusLabel
             // 
-            this.toolStripStatusLabelCalcTime.Name = "toolStripStatusLabelCalcTime";
-            resources.ApplyResources(this.toolStripStatusLabelCalcTime, "toolStripStatusLabelCalcTime");
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
             // 
             // splitContainer
             // 
@@ -1332,6 +1334,11 @@
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -1466,7 +1473,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCalcTime;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         public System.Windows.Forms.ToolStripButton toolStripButtonPolycrystallineDiffraction;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         public System.Windows.Forms.ToolStripButton toolStripButtonScatteringFactor;
@@ -1532,6 +1539,7 @@
         private System.Windows.Forms.Label label10;
         private Crystallography.Controls.NumericBox numericalTextBoxAxisV;
         private Crystallography.Controls.NumericBox numericalTextBoxAxisW;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
     }
 }
 

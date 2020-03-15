@@ -4,7 +4,6 @@ using Crystallography.Controls.Numeric;
 using Crystallography.OpenGL;
 using Microsoft.Win32;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -380,7 +379,7 @@ namespace ReciPro
             if (initialDialog.AutomaricallyClose)
                 initialDialog.Visible = false;
 
-            toolStripStatusLabelCalcTime.Text = "Startup time: " + sw.ElapsedMilliseconds + " ms.";
+            toolStripStatusLabel.Text = "Startup time: " + sw.ElapsedMilliseconds + " ms.";
 
             if (disableOpneGLToolStripMenuItem.Checked)
             {
@@ -396,6 +395,9 @@ namespace ReciPro
                 toolStripButtonStructureViewer.Visible = false;
                 glControlAxes.Visible = false;
             }
+
+            ProgramUpdates.ProgressChanged += ProgramUpdates_ProgressChanged;
+            ProgramUpdates.Completed += ProgramUpdates_Completed;
         }
 
         public bool YusaGonioMode { get; set; } = false;
@@ -868,7 +870,7 @@ namespace ReciPro
             double angle = (differenceTime) / 1000.0 * numericBoxStep.RadianValue;
             if (timerCounter++ % 10 == 0)
             {
-                toolStripStatusLabelCalcTime.Text = "Frame rate: " + (1000.0 / differenceTime).ToString("f1") + "frm/sec.";
+                toolStripStatusLabel.Text = "Frame rate: " + (1000.0 / differenceTime).ToString("f1") + "frm/sec.";
                 timerCounter = 1;
             }
             Rotate(rotationAxisAnimation, angle);
@@ -1330,14 +1332,36 @@ namespace ReciPro
         private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
             => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
+        #region ProgramUpdates
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ProgramUpdates.CheckUpdate(Version.Software, Version.VersionAndDate))
+            toolStripProgressBar.Visible = true;
+            //以下はコンストラクタで行う
+            //ProgramUpdates.ProgressChanged += ProgramUpdates_ProgressChanged;
+            //ProgramUpdates.Completed += ProgramUpdates_Completed;
+            if(ProgramUpdates.CheckUpdate(Version.Software, Version.VersionAndDate))
                 Close();
+            toolStripProgressBar.Visible = false;
+
         }
 
-        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)
-            => Ngen.Compile();
+        private void ProgramUpdates_Completed(string message)
+        {
+            toolStripProgressBar.Value = toolStripProgressBar.Maximum;
+            toolStripStatusLabel.Text = message;
+            Application.DoEvents();
+
+        }
+
+        private void ProgramUpdates_ProgressChanged(long currentBytes, long totalBytes, double ratio, double ellapsedSec, double remainingSec, string message)
+        {
+            toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
+            toolStripStatusLabel.Text = message;
+            Application.DoEvents();
+        }
+        #endregion
+
+        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)            => Ngen.Compile();
 
         private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
         {

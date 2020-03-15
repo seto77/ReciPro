@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 // 下にあるように、'*' を使って、すべての値を指定するか、
 // ビルドおよびリビジョン番号を既定値にすることができます。
 
-[assembly: AssemblyVersion("2020.3.14.1025")]
+[assembly: AssemblyVersion("2020.3.15.0712")]
 
 //
 // アセンブリに署名するには、使用するキーを指定しなければなりません。
@@ -57,5 +57,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 [assembly: ComVisibleAttribute(true)]
-[assembly: AssemblyFileVersion("2020.3.14.1025")]
+[assembly: AssemblyFileVersion("2020.3.15.0712")]
 
