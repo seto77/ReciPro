@@ -86,7 +86,7 @@ namespace ReciPro
         public object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes)
         {
             return new object[] {
-                i,
+                i,  
                 "[" + zoneaxes.Za1.u.ToString() +" " + zoneaxes.Za1.v.ToString() + " " + zoneaxes.Za1.w.ToString() + "]",
                 "[" + zoneaxes.Za2.u.ToString() +" " + zoneaxes.Za2.v.ToString() + " " + zoneaxes.Za2.w.ToString() + "]",
                 "[" + zoneaxes.Za3.u.ToString() +" " + zoneaxes.Za3.v.ToString() + " " + zoneaxes.Za3.w.ToString() + "]",
