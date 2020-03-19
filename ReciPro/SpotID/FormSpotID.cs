@@ -1452,10 +1452,9 @@ namespace ReciPro
             var progress = (int)(100.0 * report.Current / divisionNumber);
             if (progress <= 100)
                 toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum * report.Current / divisionNumber);
-            toolStripStatusLabelRefine.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-            toolStripStatusLabelRefine.Text += sec / report.Current > 0.9 ? (sec / report.Current).ToString("f2") + " s.,  " : (sec / report.Current * 1000).ToString("f2") + " ms., ";
-            toolStripStatusLabelRefine.Text += (100.0 * report.Current / divisionNumber).ToString("f1") + " % completed,  wait for "
-                + (sec * (divisionNumber - report.Current) / report.Current).ToString("f2") + " s.";
+            toolStripStatusLabelRefine.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
+            toolStripStatusLabelRefine.Text += sec / report.Current > 0.9 ? $"{sec / report.Current:f2} s.,  " : $"{sec / report.Current * 1000:f2} ms., ";
+            toolStripStatusLabelRefine.Text += $"{100.0 * report.Current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - report.Current) / report.Current:f2} s.";
 
             Application.DoEvents();
             skipProgressChangedEvent = false;
