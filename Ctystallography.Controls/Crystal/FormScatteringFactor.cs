@@ -133,7 +133,7 @@ namespace Crystallography.Controls
             {
                 for (int i = 0; i < dataGridView2.ColumnCount; i++)
                     if (dataGridView2.Columns[i].Visible)
-                        str.Append(dataGridView2[i, j].Value.ToString() + "\t");
+                        str.Append($"{dataGridView2[i, j].Value}\t");
                 str.Append("\r\n");
             }
             Clipboard.SetDataObject(str.ToString());

@@ -21,9 +21,9 @@ namespace ReciPro
 
             //DataGridViewの画面ちらつきをおさえるため、DoubleBufferedを有効にする
             // DataGirdViewのTypeを取得
-            System.Type dgvtype = typeof(DataGridView);
+            var dgvtype = typeof(DataGridView);
             // プロパティ設定の取得
-            System.Reflection.PropertyInfo dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            var dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             // 対象のDataGridViewにtrueをセットする
             dgvPropertyInfo.SetValue(dataGridView, true, null);
         }
@@ -176,20 +176,18 @@ namespace ReciPro
 
         private void buttonCopyToClipboard_Click(object sender, EventArgs e)
         {
-            
             if (dataSet.DataTableBethe.Rows.Count > 1)
             {
                 var sb = new StringBuilder();
-                //string str = "";
                 for (int i = 0; i < dataGridView.Columns.Count; i++)
                     if (dataGridView.Columns[i].Visible)
                     {
-                        if(dataGridView.Columns[i].HeaderText=="h" || dataGridView.Columns[i].HeaderText=="k")
+                        if (dataGridView.Columns[i].HeaderText == "h" || dataGridView.Columns[i].HeaderText == "k")
                             sb.Append(dataGridView.Columns[i].HeaderText);
                         else
-                            sb.Append( dataGridView.Columns[i].HeaderText + "\t");
+                            sb.Append(dataGridView.Columns[i].HeaderText + "\t");
                     }
-                sb.Append( "\r\n");
+                sb.Append("\r\n");
 
                 for (int j = 0; j < dataGridView.Rows.Count; j++)
                 {
@@ -197,11 +195,11 @@ namespace ReciPro
                         if (dataGridView.Columns[i].Visible)
                         {
                             if (dataGridView.Columns[i].HeaderText == "h")
-                                sb.Append(" " + dataGridView[i, j].Value.ToString() + " ");
-                            else if(dataGridView.Columns[i].HeaderText == "k")
-                                sb.Append(dataGridView[i, j].Value.ToString() + " ");
+                                sb.Append($"{dataGridView[i, j].Value} ");
+                            else if (dataGridView.Columns[i].HeaderText == "k")
+                                sb.Append($"{dataGridView[i, j].Value} ");
                             else
-                                sb.Append(dataGridView[i, j].Value.ToString() + "\t");
+                                sb.Append($"{dataGridView[i, j].Value}\t");
                         }
                     sb.Append("\r\n");
                 }
@@ -243,9 +241,9 @@ namespace ReciPro
             for (int j = 0; j < dataGridView.Rows.Count; j++) {
                 var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[3, j].Value);
                 if((h+k+l)%2==0)
-                    sb.Append(h.ToString() + " " + k.ToString() + " " + l.ToString() + " even \t");
+                    sb.Append($"{h} {k} {l} even \t");
                 else
-                    sb.Append(h.ToString() + " " + k.ToString() + " " + l.ToString() + " odd \t");
+                    sb.Append($"{h} {k} {l} odd \t");
 
             }
             sb.Append("\r\n");
@@ -254,10 +252,10 @@ namespace ReciPro
             {
                 FormDiffractionSimulator.Thickness = thickness;
 
-                sb.Append(thickness.ToString()+"\t");
+                sb.Append($"{thickness}\t");
 
                 for (int j = 0; j < dataGridView.Rows.Count; j++)
-                    sb.Append(dataGridView[18, j].Value.ToString()+"\t");
+                    sb.Append($"{dataGridView[18, j].Value}\t");
 
                 sb.Append("\r\n");
                 if(thickness % 10==0)

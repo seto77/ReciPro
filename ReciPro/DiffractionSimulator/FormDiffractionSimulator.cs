@@ -335,7 +335,7 @@ namespace ReciPro
 
             graphicsBox.Refresh();
 
-            toolStripStatusLabelTimeForDrawing.Text = "Time for drawing objects: " + sw.ElapsedMilliseconds.ToString() + " ms.  ";
+            toolStripStatusLabelTimeForDrawing.Text = $"Time for drawing objects: {sw.ElapsedMilliseconds} ms.  ";
 
             if (FormDiffractionBeamTable.Visible && radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
@@ -486,7 +486,7 @@ namespace ReciPro
                         gVector = gPED.Select(g => g.ConvertToVector3D()).ToArray();
 
                         if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
-                            toolStripStatusLabelTimeForBethe.Text = "Time for solving dynamic effects (PED): " + sw.ElapsedMilliseconds.ToString() + " ms.  ";
+                            toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {sw.ElapsedMilliseconds} ms.  ";
                     }
                     else//パラレルかCBEDの場合
                     {
@@ -497,7 +497,7 @@ namespace ReciPro
                         gVector = gBethe.Select(g => g.ConvertToVector3D()).ToArray();
 
                         if (eigenValues != crystal.Bethe.EigenValues)
-                            toolStripStatusLabelTimeForBethe.Text = "Time for solving dynamic effects: " + sw.ElapsedMilliseconds.ToString() + " ms.  ";
+                            toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
                     }
                     var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                     gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToArray();
@@ -633,16 +633,16 @@ namespace ReciPro
             double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
             StringBuilder sb = new StringBuilder();
             if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Index);
-            if (toolStripButtonDspacing.Checked) sb.AppendLine((g.d * 10).ToString("#.###") + " Å");
-            if (toolStripButtonDistance.Checked) sb.AppendLine((CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2))).ToString("#.###") + " mm");
-            if (toolStripButtonExcitationError.Checked) sb.AppendLine(error.ToString("f3") + " /nm");
+            if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
+            if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
+            if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
 
             if (toolStripButtonFg.Checked)
             {
                 if (radioButtonIntensityKinematical.Checked)
-                    sb.AppendLine((g.RelativeIntensity * 100).ToString("#.#") + " %");
+                    sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %");
                 if (radioButtonIntensityBethe.Checked)
-                    sb.AppendLine((g.RelativeIntensity * 100).ToString("#.#") + " %, (" + g.F.Real.ToString("0.###") + " + " + g.F.Imaginary.ToString("0.###") + "i)");
+                    sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %, ({g.F.Real:0.###} + {g.F.Imaginary:0.###}i)");
             }
             graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
         }
@@ -1013,7 +1013,7 @@ namespace ReciPro
             if (toolStripButtonKikuchiLines.Checked)
                 formMain.Crystal.SetVectorOfG_KikuchiLine((double)numericUpDownMinKL.Value, WaveLength);
 
-            toolStripStatusLabelTimeForSearchingG.Text = "Time for searching g-vectors: " + sw.ElapsedMilliseconds.ToString() + " ms.  ";
+            toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
         }
 
 
@@ -1205,12 +1205,10 @@ namespace ReciPro
                 var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
 
                 MessageBox.Show(
-                    "index: " + gVector[num].h.ToString() + " " + gVector[num].k.ToString() + " " + gVector[num].l.ToString()
-                    + "\r\nd-spacing: " + (gVector[num].d).ToString("f4") + " nm"
-                    + "\r\nInverse coordinate (1/nm): " + vec.X.ToString("f3") + " ," + vec.Y.ToString("f3") + " ," + vec.Z.ToString("f3")
-                    + "\r\nExitation error: " + dev.ToString("f4") + " /nm"
-                    )
-                    ;
+                    $"index: {gVector[num].h} {gVector[num].k} {gVector[num].l}\r\n" +
+                    $"d-spacing: {gVector[num].d:f4} nm\r\n" +
+                    $"Inverse coordinate (1/nm): {vec.X:f3} ,{vec.Y:f3} ,{vec.Z:f3}\r\n"
+                    + $"Exitation error: {dev:f4} /nm");
             }
         }
 
@@ -1261,21 +1259,21 @@ namespace ReciPro
             //マウスポインタの情報を表示
 
             var detectorPos = convertScreenToDetector(e.X, e.Y);
-            labelMousePositionDetector.Text = detectorPos.X.ToString("f3") + ", " + detectorPos.Y.ToString("f3");
+            labelMousePositionDetector.Text = $"{detectorPos.X:f3}, {detectorPos.Y:f3}";
 
             var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-            labelMousePositionReal.Text = realPos.X.ToString("f3") + ", " + realPos.Y.ToString("f3")+ ", " + realPos.Z.ToString("f3");
+            labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3}";
 
 
             var reciprocalPos = convertRealToReciprocal(realPos, false);
-            labelMousePositionReciprocal.Text = reciprocalPos.X.ToString("f3") + ", " + reciprocalPos.Y.ToString("f3") + ", " + reciprocalPos.Z.ToString("f3");
+            labelMousePositionReciprocal.Text = $"{reciprocalPos.X:f3}, {reciprocalPos.Y:f3}, {reciprocalPos.Z:f3}";
 
-            labelDinv.Text = "1/d: " + reciprocalPos.Length.ToString("f4") + " nm^-1";
+            labelDinv.Text = $"1/d: {reciprocalPos.Length:f4} nm^-1";
             var d = 1.0 / reciprocalPos.Length;
-            labelD.Text = "d: " + d.ToString("f4") + "nm";
+            labelD.Text = $"d: {d:f4}nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
-            labelTwoTheta.Text = "2θ: " + (twoThetaRad <0.1 ? (twoThetaRad*1000).ToString("g4") + " mrad, ": twoThetaRad.ToString("g4") + " rad, ")+ twoThetaDeg.ToString("g4") + "°";
+            labelTwoTheta.Text = $"2θ: {(twoThetaRad <0.1 ? $"{twoThetaRad*1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
 
             //Application.DoEvents();
 
@@ -1859,7 +1857,7 @@ namespace ReciPro
                     Draw();
                     var intensity = formMain.Crystal.Bethe.Beams[0].Psi.Magnitude2();
 
-                    sb.AppendLine(i.ToString() + "\t" + intensity.ToString());
+                    sb.AppendLine($"{i}\t{intensity}");
                 }
 
                 Clipboard.SetDataObject(sb.ToString());

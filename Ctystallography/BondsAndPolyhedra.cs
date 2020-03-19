@@ -1,45 +1,53 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using ProtoBuf;
+//using ProtoBuf;
+using MessagePack;
 
 namespace Crystallography
 {
-    [ProtoContract]
+    //[ProtoContract]
     [Serializable()]
+    [MessagePackObject]
     public class Bonds
     {
-        [ProtoMember(301)] public string Element1;
-        [ProtoMember(302)] public string Element2;
-
-        [ProtoMember(303)] public float MinLength;
-        [ProtoMember(304)] public float MaxLength;
-
-        [ProtoMember(305)] public float Radius;
-
-        [ProtoMember(306)] public float BondTransParency;
-
-        //public System.Drawing.Color BondColor;
-        [ProtoMember(307)] public int ArgbBond;
-
-        [ProtoMember(308)] public float PolyhedronTransParency;
-
-        [ProtoMember(309)] public bool ShowPolyhedron;
-        [ProtoMember(310)] public bool ShowCenterAtom;
-        [ProtoMember(311)] public bool ShowVertexAtom;
-        [ProtoMember(312)] public bool ShowInnerBonds;
-
-        //public System.Drawing.Color PolyhedronColor;
-        [ProtoMember(313)] public int ArgbPolyhedron;
-
-        [ProtoMember(314)] public bool ShowEdges;
-        [ProtoMember(315)] public float EdgeLineWidth;
-
-        //public System.Drawing.Color EdgeColor;
-        [ProtoMember(316)] public int ArgbEdge;
-
-        [XmlIgnoreAttribute]
-        [ProtoIgnore]
+        [Key(0)]
+        public string Element1;
+        [Key(1)]
+        public string Element2;
+        [Key(2)]
+        public float MinLength;
+        [Key(3)]
+        public float MaxLength;
+        [Key(4)]
+        public float Radius;
+        [Key(5)]
+        public float BondTransParency;
+        [Key(6)]
+        public int ArgbBond;
+        [Key(7)]
+        public float PolyhedronTransParency;
+        [Key(8)]
+        public bool ShowPolyhedron;
+        [Key(9)]
+        public bool ShowCenterAtom;
+        [Key(10)]
+        public bool ShowVertexAtom;
+        [Key(11)]
+        public bool ShowInnerBonds;
+        [Key(12)]
+        public int ArgbPolyhedron;
+        [Key(13)]
+        public bool ShowEdges;
+        [Key(14)]
+        public float EdgeLineWidth;
+        [Key(15)]
+        public int ArgbEdge;
+        
+        
+        [XmlIgnore]
+        //[ProtoIgnore]
+        [IgnoreMember]
         public List<int[]> pairID = new List<int[]>();
 
         public Bonds()

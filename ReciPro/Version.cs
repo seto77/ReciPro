@@ -12,6 +12,7 @@ namespace ReciPro
 
         static public string History =
             "History" +
+            "\r\n ver4.762(2020/03/19)  Minor bugs fixed. " +
             "\r\n ver4.761(2020/03/14)  Minor bugs fixed." +
             "\r\n ver4.760(2020/03/03)  Minor bugs fixed." +
             "\r\n ver4.756(2020/03/02)  Minor bugs fixed." +

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -106,11 +107,16 @@ namespace ReciPro
 
         private GLControlAlpha glControlAxes;
 
+        public bool skipProgressEvent { get; set; } = false;
+        private IProgress<(long, long, long, string)> ip;//IReport
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public FormMain()
         {
+
+            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
             RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
             try
             {
@@ -396,8 +402,6 @@ namespace ReciPro
                 glControlAxes.Visible = false;
             }
 
-            ProgramUpdates.ProgressChanged += ProgramUpdates_ProgressChanged;
-            ProgramUpdates.Completed += ProgramUpdates_Completed;
         }
 
         public bool YusaGonioMode { get; set; } = false;
@@ -1336,29 +1340,81 @@ namespace ReciPro
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripProgressBar.Visible = true;
-            //以下はコンストラクタで行う
-            //ProgramUpdates.ProgressChanged += ProgramUpdates_ProgressChanged;
-            //ProgramUpdates.Completed += ProgramUpdates_Completed;
-            if(ProgramUpdates.CheckUpdate(Version.Software, Version.VersionAndDate))
-                Close();
-            toolStripProgressBar.Visible = false;
+            
+            (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+
+            if (!NeedUpdate)
+                MessageBox.Show(Message, Title, MessageBoxButtons.OK);
+            else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                using (var wc = new WebClient())
+                {
+                    long counter = 1;
+                    wc.DownloadProgressChanged += (s, ev) =>
+                    {
+                        if (counter++ % 10 == 0)
+                            ip.Report(ProgramUpdates.ProgressMessage(ev, sw));
+                    };
+
+                    wc.DownloadFileCompleted += (s, ev) =>
+                    {
+                        if (ProgramUpdates.Execute(Path))
+                            Close();
+                        else
+                            MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
+                    };
+                    sw.Restart();
+                    wc.DownloadFileAsync(new Uri(URL), Path);
+                }
 
         }
 
-        private void ProgramUpdates_Completed(string message)
+
+        /// <summary>
+        /// 進捗状況を更新
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="total"></param>
+        /// <param name="elapsedMilliseconds">経過時間</param>
+        /// <param name="message">メッセージ</param>
+        /// <param name="interval">何回に一回更新するか</param>
+        /// <param name="sleep"></param>
+        /// <param name="showPercentage"></param>
+        /// <param name="showEllapsedTime"></param>
+        /// <param name="showRemainTime"></param>
+        /// <param name="digit"></param>
+        private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
+            int sleep = 0, bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
         {
-            toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            toolStripStatusLabel.Text = message;
-            Application.DoEvents();
+            if (skipProgressEvent || current > total)
+                return;
+            skipProgressEvent = true;
+            try
+            {
+                toolStripProgressBar.Maximum = int.MaxValue;
+                var ratio = (double)current / total;
+                toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
+                var ellapsedSec = elapsedMilliseconds / 1000.0;
+                var format = $"f{digit}";
 
-        }
+                if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
+                if (showEllapsedTime) message += $" Elappsed: {ellapsedSec.ToString(format)} s.";
+                if (showRemainTime) message += $" Remaining: {(ellapsedSec / current * (total - current)).ToString(format)} s.";
 
-        private void ProgramUpdates_ProgressChanged(long currentBytes, long totalBytes, double ratio, double ellapsedSec, double remainingSec, string message)
-        {
-            toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
-            toolStripStatusLabel.Text = message;
-            Application.DoEvents();
+                toolStripStatusLabel.Text = message;
+
+                Application.DoEvents();
+
+                if (sleep != 0) Thread.Sleep(sleep);
+            }
+            catch (Exception e)
+            {
+
+            }
+            skipProgressEvent = false;
         }
+        private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
+            => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
+
         #endregion
 
         private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)            => Ngen.Compile();

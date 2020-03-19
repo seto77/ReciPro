@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Linq;
+using System.IO;
 
 namespace Crystallography
 {
@@ -226,48 +227,50 @@ namespace Crystallography
 
         #endregion SMAPの出力ファイル(*.out)読込
 
-        public delegate void ConvertToCrystal2Delegate(string fileName, ref Crystal2 crystal);
-
-        public static void ConvertToCrystal2(string fileName, ref Crystal2 crystal)
+        public static Crystal2 ConvertToCrystal2(string fileName)
         {
-            Crystal c = ConvertToCrystal(fileName);
+            var c = ConvertToCrystal(fileName);
+
             if (c != null)
-                crystal = c.ToCrystal2();
+            {
+                var c2 = c.ToCrystal2();
+                c2.fileName = Path.GetFileNameWithoutExtension(fileName);
+                return c2;
+            }
             else
-                crystal = null;
+                return null;
         }
 
         public static Crystal ConvertToCrystal(string fileName)
         {
             List<string> stringList = new List<string>();
             string strTemp;
-            System.IO.StreamReader reader = new System.IO.StreamReader(fileName);
-            Crystal crystal = null;
-            try
+            using (var reader = new System.IO.StreamReader(fileName))
             {
-                if (fileName.EndsWith("amc"))
+                Crystal crystal = null;
+                try
                 {
-                    while ((strTemp = reader.ReadLine()) != null)
-                        if (strTemp != "")
+                    if (fileName.EndsWith("amc"))
+                    {
+                        while ((strTemp = reader.ReadLine()) != null)
+                            if (strTemp != "")
+                                stringList.Add(strTemp);
+                        crystal = ConvertFromAmc(stringList.ToArray());
+                    }
+                    else if (fileName.EndsWith("cif"))
+                    {
+                        while ((strTemp = reader.ReadLine()) != null)
                             stringList.Add(strTemp);
-                    reader.Close();
-                    crystal = ConvertCrystalData.ConvertFromAmc(stringList.ToArray());
+                        crystal = ConvertFromCIF(stringList.ToArray());
+                    }
+                    return crystal;
                 }
-                else if (fileName.EndsWith("cif"))
+                catch
                 {
-                    while ((strTemp = reader.ReadLine()) != null)
-                        stringList.Add(strTemp);
-                    reader.Close();
-                    crystal = ConvertCrystalData.ConvertFromCIF(stringList.ToArray());
+                    return null;
                 }
-                return crystal;
             }
-            catch
-            {
-                reader.Close();
-                return null;
-            }
-        }
+    }
 
         #region amcファイルの読み込み
 
