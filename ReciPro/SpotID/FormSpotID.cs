@@ -753,7 +753,7 @@ namespace ReciPro
                 for (int i = 0; i < candidates.Count; i++)
                     DataSet.DataTableCandidate.Add(i, candidates[i]);
                 toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-                toolStripStatusLabelFindSpot.Text = "Completed! Total time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + "sec.";
+                toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2}sec.";
             }
             buttonIdentifySpots.Visible = true;
             buttonStop.Visible = false;
@@ -768,7 +768,7 @@ namespace ReciPro
             try
             {
                 double progress = (double)e.ProgressPercentage / 1000000;
-                toolStripStatusLabelFindSpot.Text = "Ellapsed time: " + ((double)sw.ElapsedMilliseconds / 1000).ToString("f2") + " sec.";
+                toolStripStatusLabelFindSpot.Text = $"Ellapsed time: {(double)sw.ElapsedMilliseconds / 1000:f2} sec.";
                 //+" Wait about: " + ((1 - progress) / progress * (sw.ElapsedMilliseconds / 1000.0)).ToString("f2") + "sec.";
                 toolStripProgressBar.Value = (int)((double)toolStripProgressBar.Maximum * progress);
                 Application.DoEvents();
