@@ -41,10 +41,3 @@ ReciPro makes various crystallographic calculations, simulation of/indexing diff
 <img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer1.png" width="320px">
 <img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer2.png" width="320px">
 <img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/ScatteringFactors.png" width="320px">
-
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/DiffractionSimulator1.png?raw=true)
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/DiffractionSimulator2.png?raw=true)
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer1.png?raw=true)
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer2.png?raw=true)
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/Stereonet.png?raw=true)
-![](https://github.com/seto77/ReciPro/blob/master/Screenshots/ScatteringFactors.png?raw=true)
