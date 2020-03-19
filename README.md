@@ -2,7 +2,7 @@
 The software ReciPro is a .Net Framework application which makes various crystallographic calculations, simulation of/indexing diffraction pattern, and so on.  
 
 ## Install
-Access https://github.com/seto77/ReciPro/releases/latest, download ReciProSetup.msi, and execute it.
+Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 
 ## Main features of ReciPro
 * ReciPro provides many crystallographic calculations for 530 (Hall symbol) space groups
@@ -36,4 +36,4 @@ Access https://github.com/seto77/ReciPro/releases/latest, download ReciProSetup.
   * Import from COD and AMCSD database through CSManager
 
 ## Screenshots
-<img src="Screenshots/Main.png?raw=true" height="320px">  <img src="Screenshots/DiffractionSimulator1.png?raw=false" height="320px">　<img src="Screenshots/DiffractionSimulator2.png" height="320px">　<img src="Screenshots/StructureViewer1.png" height="320px">　<img src="Screenshots/StructureViewer2.png" height="320px"> <img src="Screenshots/ScatteringFactors.png" height="320px"> <img src="Screenshots/Stereonet.png" height="320px">
+<img src="Screenshots/Main.png" height="320px">  <img src="Screenshots/DiffractionSimulator1.png" height="320px">　<img src="Screenshots/DiffractionSimulator2.png" height="320px">　<img src="Screenshots/StructureViewer1.png" height="320px">　<img src="Screenshots/StructureViewer2.png" height="320px"> <img src="Screenshots/ScatteringFactors.png" height="320px"> <img src="Screenshots/Stereonet.png" height="320px">
