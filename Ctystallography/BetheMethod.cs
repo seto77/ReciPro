@@ -64,7 +64,7 @@ namespace Crystallography
 
         public double SemianglePED { get; set; }
 
-        public bool IsBusy { get => bwCBED == null ? true : bwCBED.IsBusy; }
+        public bool IsBusy => bwCBED == null ? true : bwCBED.IsBusy;
 
         /// <summary>
         /// Disks[Z_index][G_index]
@@ -306,7 +306,6 @@ namespace Crystallography
         {
             var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
             
-
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
 
@@ -332,9 +331,7 @@ namespace Crystallography
 
                 //A行列に関する固有値、固有ベクトルを取得 
                 if (useEigen)
-                {
                     (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
-                }
                 else
                 {
                     var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
@@ -711,7 +708,7 @@ namespace Crystallography
                 //Kirklandの教科書のp120参照
                 var coeff1 = 1 / Math.PI / Crystal.Volume;
                 //相対論補正
-                var gamma = 1 + UniversalConstants.e0 * kV * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
+                var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
                 var beta = Math.Sqrt(1 - 1 / gamma / gamma);
                 var coeff2 = 2 * UniversalConstants.h / UniversalConstants.m0 / beta / UniversalConstants.c * 1E9;
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
@@ -948,10 +945,10 @@ namespace Crystallography
             /// <summary>
             /// 指数
             /// </summary>
-            public int H { get => Index.H; }
-            public int K { get => Index.K; }
-            public int L { get => Index.L; }
-                
+            public int H => Index.H;
+            public int K => Index.K;
+            public int L => Index.L;
+
             /// <summary>
             /// 指数
             /// </summary>
@@ -965,7 +962,7 @@ namespace Crystallography
             /// <summary>
             /// 励起誤差
             /// </summary>
-            public double S { get => Math.Sqrt(P * P / 4 + Q) - P / 2; }
+            public double S => Math.Sqrt(P * P / 4 + Q) - P / 2;
 
             public Complex Freal;
 

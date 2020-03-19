@@ -1417,7 +1417,7 @@ namespace ReciPro
 
         #endregion
 
-        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)            => Ngen.Compile();
+        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
 
         private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
         {

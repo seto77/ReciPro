@@ -51,7 +51,8 @@ namespace Crystallography
                     else
                         return ($"Update checked!", $"Now, new version {newVersion} is available.\r\n" +
                              $"If you press 'Yes', the current {software} will be closed immediately and the installer of new {software} launched.", true,
-                             $"http://github.com/seto77/{software}/releases/download/v.{newVersion}/{software}Setup.msi", UserAppDataPath + software + "Setup.msi");
+                             $"http://github.com/seto77/{software}/releases/download/v.{newVersion}/{software}Setup.msi",
+                             UserAppDataPath + software + "Setup.msi");
                 }
             }
             catch

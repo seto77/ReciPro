@@ -104,7 +104,8 @@ namespace ReciPro
         /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
         /// この行列をv＝(X,Y,CL2)に作用させると、検出器座標(X,Y)を実空間座標に変換できる。
         /// </summary>
-        public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry.DetectorRotation;
+        public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry == null ?
+                    new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
 
 
         public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
@@ -173,7 +174,7 @@ namespace ReciPro
             {
                 DisplayCenter = new PointD(0, 0);
                 setVector();
-                graphicsBox.BringToFront();
+                panelMain.BringToFront();
                 Draw();
                 graphicsBox.Refresh();
 
@@ -949,6 +950,7 @@ namespace ReciPro
         //逆格子ベクトルを設定する
         public void setVector(bool renewCrystal = false)
         {
+            if (formMain == null) return;
             if (CancelSetVector) return;
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -1259,18 +1261,18 @@ namespace ReciPro
             //マウスポインタの情報を表示
 
             var detectorPos = convertScreenToDetector(e.X, e.Y);
-            labelMousePositionDetector.Text = $"{detectorPos.X:f3}, {detectorPos.Y:f3}";
+            labelMousePositionDetector.Text = $"Detector Coord. (origin: foot):　{detectorPos.X:f3} mm, {detectorPos.Y:f3} mm";
 
             var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-            labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3}";
+            labelMousePositionReal.Text = $"Real Coord. (origin: sample):　{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
 
 
             var reciprocalPos = convertRealToReciprocal(realPos, false);
-            labelMousePositionReciprocal.Text = $"{reciprocalPos.X:f3}, {reciprocalPos.Y:f3}, {reciprocalPos.Z:f3}";
+            labelMousePositionReciprocal.Text = $"Reciprocal Coord. :{reciprocalPos.X:f3} /nm, {reciprocalPos.Y:f3} /nm, {reciprocalPos.Z:f3} /nm";
 
-            labelDinv.Text = $"1/d: {reciprocalPos.Length:f4} nm^-1";
+            labelDinv.Text = $"1/d: {reciprocalPos.Length:f4} /nm";
             var d = 1.0 / reciprocalPos.Length;
-            labelD.Text = $"d: {d:f4}nm";
+            labelD.Text = $"d: {d:f4} nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
             labelTwoTheta.Text = $"2θ: {(twoThetaRad <0.1 ? $"{twoThetaRad*1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
@@ -1279,7 +1281,7 @@ namespace ReciPro
 
             if (e.X > tabControl.Width || e.Y > tabControl.Height - 20)
             {
-                graphicsBox.BringToFront();
+                panelMain.BringToFront();
                 graphicsBox.Refresh();
             }
 
@@ -1328,7 +1330,7 @@ namespace ReciPro
 
         private void tabControl_Click(object sender, EventArgs e)
         {
-            graphicsBox.SendToBack();
+            panelMain.SendToBack();
             graphicsBox.Refresh();
         }
 
@@ -1878,6 +1880,13 @@ namespace ReciPro
             Draw();
         }
 
+        private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e)
+        {
+            labelMousePositionReciprocal.Visible = 
+                labelMousePositionDetector.Visible =
+                labelMousePositionReal.Visible = 
+                checkBoxMousePositionDetailes.Checked;
+        }
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e)
         {
