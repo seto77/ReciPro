@@ -35,8 +35,4 @@ ReciPro makes various crystallographic calculations, simulation of/indexing diff
   * Import from COD and AMCSD database through CSManager
 
 ## Screenshots
-|<img src="Screenshots/Main.png?raw=true" height="320px">  <img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/DiffractionSimulator1.png?raw=false" height="320px">  
-<img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/DiffractionSimulator2.png" width="320px">
-<img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer1.png" width="320px">
-<img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/StructureViewer2.png" width="320px">
-<img src="https://github.com/seto77/ReciPro/blob/master/Screenshots/ScatteringFactors.png" width="320px">
+<img src="Screenshots/Main.png?raw=true" height="320px">  <img src="Screenshots/DiffractionSimulator1.png?raw=false" height="320px">　<img src="Screenshots/DiffractionSimulator2.png" height="320px">　<img src="Screenshots/StructureViewer1.png" height="320px">　<img src="Screenshots/StructureViewer2.png" height="320px">　<img src="Screenshots/ScatteringFactors.png" height="320px">
