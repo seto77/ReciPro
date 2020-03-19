@@ -1,4 +1,6 @@
-# The software “ReciPro” makes crystallographic calculations, simulation of/indexing diffraction pattern, and so on.
+# The software ReciPro
+
+ReciPro makes various crystallographic calculations, simulation of/indexing diffraction pattern, and so on.
 
 ## Main features of ReciPro
 
