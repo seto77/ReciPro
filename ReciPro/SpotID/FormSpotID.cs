@@ -167,7 +167,7 @@ namespace ReciPro
                 bindingSourceObsSpots.Position = DataSet.DataTableSpot.Rows.Count - 1;
                 skipEvent = false;
                 bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemAdded, DataSet.DataTableSpot.Rows.Count - 1));
-                toolStripStatusLabelIdentifySpot.Text = "  Fitting time (1 spot): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+                toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms.";
                 return true;
             }
             else if (e.Button == MouseButtons.Left && e.Clicks == 1)//左クリック スポット選択
@@ -228,7 +228,7 @@ namespace ReciPro
                 spots = spots.Where(s => (new PointD(s.X, s.Y) - DirectSpot).Length > numericBoxNearestNeighbor.Value)//ダイレクトに近いものを除去
                 .OrderBy(s => 1 / s.Int * (new PointD(s.X, s.Y) - DirectSpot).Length2).ToList(); //優先順に並び替える。　条件は　①なるべく逆格子原点に近い。②強度が大きい。(③鋭いピークである)
 
-            toolStripStatusLabelIdentifySpot.Text = " Search time (" + spots.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.   ";
+            toolStripStatusLabelIdentifySpot.Text = $" Search time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms.   ";
             sw.Restart();
             #region テストコード
             /*
@@ -285,7 +285,7 @@ namespace ReciPro
                     DataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             bindingSourceObsSpots.DataMember = "DataTableSpot";
-            toolStripStatusLabelIdentifySpot.Text += " Fitting time (" + spots.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+            toolStripStatusLabelIdentifySpot.Text += $" Fitting time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
 
@@ -408,7 +408,7 @@ namespace ReciPro
                 }
 
             bindingSourceObsSpots.DataMember = "DataTableSpot";
-            toolStripStatusLabelIdentifySpot.Text = " Fitting time (" + DataSet.DataTableSpot.Rows.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ DataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
 
@@ -493,7 +493,7 @@ namespace ReciPro
             }
             bindingSourceObsSpots.DataMember = "DataTableSpot";
 
-            toolStripStatusLabelIdentifySpot.Text = " Fitting time (" + DataSet.DataTableSpot.Rows.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ DataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
 
@@ -600,7 +600,7 @@ namespace ReciPro
                         DataSet.DataTableSpot.SetPrms(currentIndex, range, r.PrmsPv, r.PrmsBg, r.R);
                         skipEvent = false;
                         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
-                        toolStripStatusLabelIdentifySpot.Text = "  Fitting time (1 spot): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+                        toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms.";
                     }
                 }
             }
@@ -1172,7 +1172,7 @@ namespace ReciPro
                             foreach (var spot in g.Spots)
                             {
                                 ScalablePictureBox.Symbol s = new ScalablePictureBox.Symbol(
-                                    name + n.ToString() + ": " + spot.h + " " + spot.k + " " + spot.l,
+                                    $"{name}{n}: {spot.h} {spot.k} {spot.l}",
                                     new PointD(spot.X, spot.Y),
                                     Color.LightGreen, Color.DarkGreen, 5);
                                 s.Tag = tagCalcSpot;
@@ -1191,11 +1191,11 @@ namespace ReciPro
                     for (int i = 0; i < DataSet.DataTableSpot.Count; i++)
                     {
                         var index = g.Indices.Where(index => index.No == i).ToArray();
-                        DataSet.DataTableSpot.setHKL(i, index.Length != 1 ? "" : index[0].H.ToString() + " " + index[0].K.ToString() + " " + index[0].L.ToString());
+                        DataSet.DataTableSpot.setHKL(i, index.Length != 1 ? "" : $"{index[0].H} {index[0].K} {index[0].L}");
                     }
                     DataSet.DataTableSpot.setHKL(DataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
                     foreach (var (No, H, K, L) in g.Indices)
-                        DataSet.DataTableSpot.setHKL(No, " " + H.ToString() + " " + K.ToString() + " " + L.ToString());
+                        DataSet.DataTableSpot.setHKL(No, $" {H} {K} {L}");
                     skipEvent = false;
 
                     //シンボルを更新
@@ -1499,7 +1499,7 @@ namespace ReciPro
                 DataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
             }
             bindingSourceObsSpots.DataMember = "DataTableSpot";
-            toolStripStatusLabelIdentifySpot.Text = " Fitting time (" + DataSet.DataTableSpot.Rows.Count.ToString() + " spots): " + sw.ElapsedMilliseconds.ToString() + " ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({DataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
     }
