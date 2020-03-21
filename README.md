@@ -4,7 +4,7 @@ The software ReciPro is a .Net Framework application which makes various crystal
 ## Install
 Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 
-## Main features of ReciPro
+## Main features
 * ReciPro provides many crystallographic calculations for 530 (Hall symbol) space groups
   * General conditions (or extinction rules), Wyckoff positions, multiplicities.  
   * Geometrical calculation of periodicity and/or angle between planes and/or axes 
