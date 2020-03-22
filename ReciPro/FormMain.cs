@@ -1363,7 +1363,14 @@ namespace ReciPro
                             MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
                     };
                     sw.Restart();
-                    wc.DownloadFileAsync(new Uri(URL), Path);
+                    try
+                    {
+                        wc.DownloadFileAsync(new Uri(URL), Path);
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error"");
+                    }
                 }
 
         }
