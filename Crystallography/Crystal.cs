@@ -442,10 +442,7 @@ namespace Crystallography
         /// <summary>
         /// Crystal2クラスに変換します。
         /// </summary>
-        public Crystal2 ToCrystal2()
-        {
-            return Crystal2.GetCrystal2(this);
-        }
+        public Crystal2 ToCrystal2() => Crystal2.GetCrystal2(this);
 
         /// <summary>
         /// 格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する
@@ -481,10 +478,7 @@ namespace Crystallography
             Volume = Math.Sqrt(CellVolumeSqure);
         }
 
-        public override string ToString()
-        {
-            return Name.ToString();
-        }
+        public override string ToString() => Name.ToString();
 
         #region 結晶幾何学関連
 
@@ -701,12 +695,10 @@ namespace Crystallography
         public void SetVectorOfPlane((int H, int K, int L)[] indices)
         {
             VectorOfPlane = new List<Vector3D>();
-            Vector3D vec;
-
-            foreach (var index in indices)
+            foreach (var (H, K, L) in indices)
             {
-                vec = index.H * A_Star + index.K * B_Star + index.L * C_Star;
-                vec.Index = $"({index.H}{index.K}{index.L})";
+                var vec = H * A_Star + K * B_Star + L * C_Star;
+                vec.Index = $"({H}{K}{L})";
                 VectorOfPlane.Add(vec);
             }
         }
@@ -1383,14 +1375,14 @@ namespace Crystallography
             Complex F = 0;
             foreach (var atoms in atomsArray)
             {
-                Complex f = 0;
-                if (wave == WaveSource.Electron)
-                    f = new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0);
-                else if (wave == WaveSource.Xray)
-                    f = new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0);
-                else if (wave == WaveSource.Neutron)
-                    f = atoms.GetAtomicScatteringFactorForNeutron();
-
+                Complex f = wave switch
+                {
+                    WaveSource.Electron => new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0),
+                    WaveSource.Xray => new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0),
+                    WaveSource.Neutron => atoms.GetAtomicScatteringFactorForNeutron(),
+                    _ => 0,
+                };
+                    
                 if (atoms.Dsf.IsIso)
                 {
                     var T = Math.Exp(-atoms.Dsf.Biso * s2);
@@ -1403,7 +1395,7 @@ namespace Crystallography
                     {
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
                         var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
-                        F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
+                        F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z)) ;
                     }
                 }
             }
@@ -1511,9 +1503,9 @@ namespace Crystallography
             GetFormulaAndDensity();
         }
 
-        public void SetCrystallites() => this.Crystallites = new Crystallite(this);
+        public void SetCrystallites() => Crystallites = new Crystallite(this);
 
-        public void SetCrystallites(double[] density) => this.Crystallites = new Crystallite(this, density);
+        public void SetCrystallites(double[] density) => Crystallites = new Crystallite(this, density);
 
         public void SaveInitialCellConstants()
         {

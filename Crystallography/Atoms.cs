@@ -285,37 +285,33 @@ namespace Crystallography
         /// </summary>
         /// <param name="S2">S2: (Sin(theta)/ramda)^2</param>
         /// <returns></returns>
-        public double GetAtomicScatteringFactorForElectron(double s2)
-        {
-            return AtomConstants.ElectronScattering[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
-        }
+        public double GetAtomicScatteringFactorForElectron(double s2) 
+            => AtomConstants.ElectronScattering[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
 
         /// <summary>
         /// Xü‚ÌŒ´qU—ˆöq‚ğŒvZ
         /// </summary>
         /// <param name="s2"></param>
         /// <returns></returns>
-        public double GetAtomicScatteringFactorForXray(double s2)
-        {
-            return AtomConstants.XrayScattering[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
-        }
+        public double GetAtomicScatteringFactorForXray(double s2) 
+            => AtomConstants.XrayScattering[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
 
         public Complex GetAtomicScatteringFactorForNeutron()
         {
             if (Isotope != null && Isotope.Length == AtomConstants.IsotopeAbundance[AtomicNumber].Count)
             {
-                Complex f = new Complex();
+                var f = new Complex();
                 for (int i = 0; i < AtomConstants.IsotopeAbundance[AtomicNumber].Count; i++)
                     f += AtomConstants.NeutronCoherentScattering[AtomicNumber][i + 1] * Isotope[i] / 100.0;
-                return f;
+                return f * Occ;
             }
             else
-                return AtomConstants.NeutronCoherentScattering[AtomicNumber][0];
+                return AtomConstants.NeutronCoherentScattering[AtomicNumber][0] * Occ;
         }
 
         public override string ToString()
         {
-            return Label + "\t" + ElementName + "\t" + GetStringFromDouble(X) + "\t" + GetStringFromDouble(Y) + "\t" + GetStringFromDouble(Z) + "\t" + GetStringFromDouble(Occ) + "\t" + Multiplicity.ToString() + "\t" + WyckoffLeter + "\t" + SiteSymmetry;
+            return $"{Label}\t{ElementName}\t{GetStringFromDouble(X)}\t{GetStringFromDouble(Y)}\t{GetStringFromDouble(Z)}\t{GetStringFromDouble(Occ)}\t{Multiplicity}\t{WyckoffLeter}\t{SiteSymmetry}";
         }
 
         public static string GetStringFromDouble(double d)
