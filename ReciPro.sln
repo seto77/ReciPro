@@ -12,13 +12,13 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ReciProSetup", "ReciProSetu
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD} = {0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography", "Ctystallography\Crystallography.csproj", "{433B6CBF-1E0B-4E01-AB6D-753D92DC354E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography", "Crystallography\Crystallography.csproj", "{433B6CBF-1E0B-4E01-AB6D-753D92DC354E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.OpenGL", "Ctystallography.OpenGL\Crystallography.OpenGL.csproj", "{B3CB8D22-B8E1-43B9-9364-CF86D748D05A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.OpenGL", "Crystallography.OpenGL\Crystallography.OpenGL.csproj", "{B3CB8D22-B8E1-43B9-9364-CF86D748D05A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.Controls", "Ctystallography.Controls\Crystallography.Controls.csproj", "{6F1C3736-E86F-46B3-9FF5-1CA1A018EF02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{6F1C3736-E86F-46B3-9FF5-1CA1A018EF02}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crystallography.Native", "Ctystallography.Native\Crystallography.Native.vcxproj", "{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crystallography.Native", "Crystallography.Native\Crystallography.Native.vcxproj", "{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
