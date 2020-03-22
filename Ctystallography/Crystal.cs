@@ -594,7 +594,7 @@ namespace Crystallography
                 {
                     u = u / z; v = v / z; w = w / z; z = 1;
                 }
-            return " " + u.ToString() + " " + v.ToString() + " " + w.ToString();
+            return $" {u} {v} {w}";
         }
 
         /// <summary>
@@ -656,7 +656,7 @@ namespace Crystallography
             foreach (var index in indices)
             {
                 var vec = index.U * A_Axis + index.V * B_Axis + index.W * C_Axis;
-                vec.Index = "[" + index.U.ToString() + index.V.ToString() + index.W.ToString() + "]";
+                vec.Index = $"[{index.U}{index.V}{index.W}]";
                 VectorOfAxis.Add(vec);
             }
         }
@@ -685,7 +685,7 @@ namespace Crystallography
                         if (Crystal.CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
                         {
                             vec = u * A_Axis + v * B_Axis + w * C_Axis;
-                            vec.Index = "[" + u.ToString() + v.ToString() + w.ToString() + "]";
+                            vec.Index = $"[{u}{v}{w}]";
                             VectorOfAxis.Add(vec);
                         }
         }
@@ -706,7 +706,7 @@ namespace Crystallography
             foreach (var index in indices)
             {
                 vec = index.H * A_Star + index.K * B_Star + index.L * C_Star;
-                vec.Index = "(" + index.H.ToString() + index.K.ToString() + index.L.ToString() + ")";
+                vec.Index = $"({index.H}{index.K}{index.L})";
                 VectorOfPlane.Add(vec);
             }
         }
@@ -735,7 +735,7 @@ namespace Crystallography
                         {
                             vec = CalcHklVector(h, k, l);
                             vec = vec * GetLengthPlane(h, k, l) / vec.d;
-                            vec.Index = "(" + h.ToString() + k.ToString() + l.ToString() + ")";
+                            vec.Index = $"({h}{k}{l})";
                             VectorOfPlane.Add(vec);
                         }
         }
@@ -779,7 +779,7 @@ namespace Crystallography
                                 {
                                     temp.Multi[0] = multi;
                                     temp.h = h; temp.k = k; temp.l = l; temp.d = d;
-                                    temp.strHKL = h.ToString() + " " + k.ToString() + " " + l.ToString();
+                                    temp.strHKL = $"{h} {k} {l}";
                                     temp.IsRootIndex = true;
                                     listPlane.Add(temp);
                                 }
@@ -798,7 +798,7 @@ namespace Crystallography
                                 {
                                     temp.Multi[0] = multi;
                                     temp.h = h; temp.k = k; temp.l = l; temp.d = d;
-                                    temp.strHKL = h.ToString() + " " + k.ToString() + " " + l.ToString();
+                                    temp.strHKL = $"{h} {k} {l}";
                                     listPlane.Add(temp);
                                 }
                             }
@@ -1032,7 +1032,7 @@ namespace Crystallography
                     vec1.l = (short)l;
                     vec1.d = 1 / glen;
                     vec1.Extinction = Symmetry.CheckExtinctionRule(h, k, l);
-                    vec1.Index = h.ToString() + " " + k.ToString() + " " + l.ToString();
+                    vec1.Index = $"{h} {k} {l}";
 
                     var vec2 = -vec1;
                     vec2.h = (short)-h;
@@ -1040,7 +1040,7 @@ namespace Crystallography
                     vec2.l = (short)-l;
                     vec2.d = vec1.d;
                     vec2.Extinction = vec1.Extinction;
-                    vec2.Index = (-h).ToString() + " " + (-k).ToString() + " " + (-l).ToString();
+                    vec2.Index = $"{-h} {-k} {-l}";
 
                     gTemp[i * 2] = vec1;
                     gTemp[i * 2 + 1] = vec2;
@@ -1089,7 +1089,7 @@ namespace Crystallography
                         {
                             temp.Theta = waveLength / 2 * temp.Length;
                             temp.TanTheta = Math.Tan(temp.Theta);
-                            temp.text = h.ToString() + " " + k.ToString() + " " + l.ToString();
+                            temp.text = $"{h} {k} {l}";
                             VectorOfG_KikuchiLine.Add(temp);
                         }
                     }
@@ -1335,12 +1335,12 @@ namespace Crystallography
                     if (Num[i] == 1)
                         ChemicalFormulaSum += ElementName[i] + " ";
                     else
-                        ChemicalFormulaSum += ElementName[i] + Num[i].ToString() + " ";
+                        ChemicalFormulaSum += $"{ElementName[i]}{Num[i]} ";
                 }
                 ChemicalFormulaSum = ChemicalFormulaSum.Substring(0, ChemicalFormulaSum.Length - 1);
 
                 if (is3times && denom != 3)
-                    ChemicalFormulaSum += "  *" + denom.ToString() + "/3";
+                    ChemicalFormulaSum += $"  *{denom}/3";
 
                 double TotalWeightPerUnitCell = 0;
                 for (int i = 0; i < ElementName.Length; i++)
