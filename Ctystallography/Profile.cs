@@ -355,10 +355,6 @@ namespace Crystallography
     [Serializable]
     public class DiffractionProfile : ICloneable
     {
-
-   
-
-
         //MaskingŠÖ˜A‚±‚±‚©‚ç
         [Serializable]
         public class MaskingRange
@@ -376,22 +372,12 @@ namespace Crystallography
                 X[1] = x2;
             }
 
-            public double Maximum
-            {
-                // set;
-                get { return Math.Max(X[0], X[1]); }
-            }
+            public double Maximum => Math.Max(X[0], X[1]);
 
-            public double Minimum
-            {
-                //  set;
-                get { return Math.Min(X[0], X[1]); }
-            }
+            public double Minimum => Math.Min(X[0], X[1]);
 
-            public override string ToString()
-            {
-                return X[0] < X[1] ? X[0].ToString("g8") + " - " + X[1].ToString("g8") : X[1].ToString("g8") + " - " + X[0].ToString("g8");
-            }
+            public override string ToString() 
+                => X[0] < X[1] ? $"{X[0]:g8} - {X[1]:g8}" : $"{X[1]:g8} - {X[0]:g8}";
         }
 
         public List<MaskingRange> maskingRanges = new List<MaskingRange>();
@@ -444,7 +430,7 @@ namespace Crystallography
                     interpolationOrder = value;
                 }
             }
-            get { return interpolationOrder; }
+            get => interpolationOrder;
         }
 
         private int interpolationPoints = 20;
@@ -458,7 +444,7 @@ namespace Crystallography
                     interpolationPoints = value;
                 }
             }
-            get { return interpolationPoints; }
+            get => interpolationPoints;
         }
 
         public bool DoesMaskAndInterpolate = false;
@@ -606,10 +592,7 @@ namespace Crystallography
         public int ImageWidth = 0;
         public int ImageHeight = 0;
 
-        public override string ToString()
-        {
-            return Name.ToString();
-        }
+        public override string ToString() => Name.ToString();
 
         public DiffractionProfile()
         {
@@ -634,7 +617,7 @@ namespace Crystallography
             ColorARGB = null;
         }
 
-        public void CopyParameter(DiffractionProfile defaultDP)
+               public void CopyParameter(DiffractionProfile defaultDP)
         {
             DoesSmoothing = defaultDP.DoesSmoothing;
 

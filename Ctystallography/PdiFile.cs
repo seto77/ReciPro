@@ -190,6 +190,9 @@ namespace Crystallography
                 }
             }
 
+            for(int i=0; i<dp.Count; i++)
+                dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Count>1 ? $" -{i}" : "")}";
+
             if (dp.Count > 0)
                 return dp.ToArray();
             else return new DiffractionProfile[0];
@@ -202,12 +205,14 @@ namespace Crystallography
         /// <returns></returns>
         public static DiffractionProfile[] ReadCSVFile(string fileName)
         {
-            List<string> strArray = new List<string>();
-            StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
-            string tempstr;
-            while ((tempstr = reader.ReadLine()) != null)
-                strArray.Add(tempstr);
-            reader.Close();
+            var strArray = new List<string>();
+            using (var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS")))
+            {
+                string tempstr;
+                while ((tempstr = reader.ReadLine()) != null)
+                    strArray.Add(tempstr);
+            }
+
             if (strArray.Count <= 3)
                 return new DiffractionProfile[0];
 
@@ -222,7 +227,7 @@ namespace Crystallography
                 if (title.Length * 2 != axis.Length || axis.Length != value.Length)
                     return new DiffractionProfile[0];
 
-                DiffractionProfile[] dp = new DiffractionProfile[title.Length];
+                var dp = new DiffractionProfile[title.Length];
                 for (int i = 0; i < dp.Length; i++)
                 {
                     dp[i] = new DiffractionProfile();
@@ -238,6 +243,14 @@ namespace Crystallography
                         dp[j].OriginalProfile.Pt.Add(new PointD(x, y));
                     }
                 }
+
+                for (int i = 0; i < dp.Length; i++)
+                {
+                    if (title[i] == "")
+                        dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Length > 1 ? $" -{i}" : "")}";
+                    else
+                        dp[i].Name = title[i];
+                }
                 return dp;
             }
             catch
@@ -246,13 +259,14 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// よく分からないファイルを読み込む
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="separater"></param>
-        /// <returns></returns>
 
+
+            /// <summary>
+            /// よく分からないファイルを読み込む
+            /// </summary>
+            /// <param name="fileName"></param>
+            /// <param name="separater"></param>
+            /// <returns></returns>
         public static DiffractionProfile ConvertUnknownFileToProfileData(string fileName, char separater)
         {
             List<string> strArray = new List<string>();

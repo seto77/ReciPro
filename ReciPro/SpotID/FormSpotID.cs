@@ -734,15 +734,11 @@ namespace ReciPro
             backgroundWorkerSpotID.RunWorkerAsync(crystals);
         }
 
-        private void buttonStop_Click(object sender, EventArgs e)
-        {
-            backgroundWorkerSpotID.CancelAsync();
-        }
+        private void buttonStop_Click(object sender, EventArgs e) 
+            => backgroundWorkerSpotID.CancelAsync();
 
-        private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e)
-        {
-            e.Result = identifySpots((List<Crystal>)(e.Argument));
-        }
+        private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e) 
+            => e.Result = identifySpots((List<Crystal>)(e.Argument));
 
         private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
