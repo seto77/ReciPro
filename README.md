@@ -7,10 +7,10 @@
 
 ## Main features
 * Provides crystallographic calculations.
-  * 530 (Hall symbol) space groups.
-  * General conditions (or extinction rules), Wyckoff positions, multiplicities.  
-  * Geometrical calculation of periodicity and/or angle between planes and/or axes.
-  * Generation of equivalent atomic positions.
+  * 530 (Hall symbol) space groups are available. 
+    * General conditions (or extinction rules), Wyckoff positions, multiplicities of all space groups.  
+    * Geometrical calculation of periodicity and/or angle between planes and/or axes.
+    * Generation of equivalent atomic positions.
 
 * Includes atomic properties.
   * Characteristic X-ray wavelength/energy.
