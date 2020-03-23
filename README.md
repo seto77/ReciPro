@@ -32,9 +32,8 @@
   * Large and small circles.
   
 * Identifies diffraction spots in the observed image.
-  * Support several file format (dm3, dm4, tiff, …).
-  * Detect and fit diffraction spots automatically.
-  * Identify (or index) the diffraction spots for the selected crystal(s).
+  * Major file formats (dm3, dm4, tiff, …) are supported.
+  * Automatically detects diffraction spots, and identifies (or indexes) the spots for the selected crystal(s).
   
 * Manages crystal data base.
   * ~80 crystal data are initially bundled. 
