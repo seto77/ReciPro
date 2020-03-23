@@ -4,6 +4,7 @@
 references/
 ReciProSetup/
 Eigen/
+Crystallography.Native/Eigen/
 *.exe
 
 # User-specific files
