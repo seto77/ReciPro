@@ -6,17 +6,17 @@
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 
 ## Main features
-* ReciPro provides crystallographic calculations.
+* Provides crystallographic calculations.
   * 530 (Hall symbol) space groups.
   * General conditions (or extinction rules), Wyckoff positions, multiplicities.  
   * Geometrical calculation of periodicity and/or angle between planes and/or axes.
   * Generation of equivalent atomic positions.
 
-* ReciPro includes atomic properties.
+* Includes atomic properties.
   * Characteristic X-ray wavelength/energy.
   * Atomic scattering factor for X-ray, electron and neutron.
   
-* Simulation of diffraction patterns
+* Simulates diffraction patterns.
   * X-ray, electron, and neutron sources are available for incident beams.
   * Kinematic simulations for the all sources.
   * Dynamic simulations for electron diffraction based on the Bethe method.
@@ -24,19 +24,19 @@
     * Precession electron diffraction (PED)
     * Convergent beam electron diffraction (CBED)
   
-* ReciPro draws crystal structure using OpenGL4
+* Draws crystal structure using OpenGL4
   * Atom, bonds, polyhedra, unit cell and lattice planes.
   
-* ReciPro plots stereonet (Wulf-net)
+* Plots stereonet (Wulf-net).
   * Axes and planes of any indices.
   * Large and small circles.
   
-* ReciPro identifies diffraction spots in the observed image.
+* Identifies diffraction spots in the observed image.
   * Support several file format (dm3, dm4, tiff, …).
   * Detect and fit diffraction spots automatically.
   * Identify (or index) the diffraction spots for the selected crystal(s).
   
-* Crystal data base
+* Manages crystal data base.
   * ~80 crystal data are initially bundled. 
   * Import/export CIF, AMC format files.
   * Possible to use COD and AMCSD database through CSManager (https://github.com/seto77/CSManager/releases/latest). 
