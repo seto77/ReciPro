@@ -30,15 +30,15 @@ namespace ReciPro
         public AreaDetector Detector;
 
         private bool skipEvent = false;
-        public PointD DirectSpot { get => DataSet.DataTableSpot.DirectSpotPosition; }
+        public PointD DirectSpot => DataSet.DataTableSpot.DirectSpotPosition;
 
         public double PixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
         public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
-        public double ToleranceLength { get => numericBoxAcceptableError.Value * 0.01; }
-        public double ToleranceAngle { get => Math.Asin(ToleranceLength) / 2; }
+        public double ToleranceLength => numericBoxAcceptableError.Value * 0.01;
+        public double ToleranceAngle => Math.Asin(ToleranceLength) / 2;
 
-        public double FittingRange { get => numericBoxFittingRange.Value; }
+        public double FittingRange => numericBoxFittingRange.Value;
 
         #endregion プロパティ、フィールド
 
@@ -65,7 +65,7 @@ namespace ReciPro
         #endregion ロード, クローズ関連
 
 
-        private void clearStatusLabel()=> toolStripStatusLabelFindSpot.Text = toolStripStatusLabelIdentifySpot.Text =
+        private void clearStatusLabel() => toolStripStatusLabelFindSpot.Text = toolStripStatusLabelIdentifySpot.Text =
                 toolStripStatusLabelImageFilter.Text = toolStripStatusLabelRefine.Text = "";
 
         #region 画像読み込み関連
@@ -136,10 +136,7 @@ namespace ReciPro
             }
         }
 
-        private void FormSpotID_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        private void FormSpotID_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         #endregion DragDrop関連
         #endregion 画像読み込み関連
@@ -272,14 +269,16 @@ namespace ReciPro
             }).ToList();
 
             for (int i = 0; i < results.Count; i++)
-            { double x = results[i].PrmsPv[0], y = results[i].PrmsPv[1];
+            {
+                double x = results[i].PrmsPv[0], y = results[i].PrmsPv[1];
                 for (int j = i + 1; j < results.Count; j++)
                 {
-                        double x1 = results[j].PrmsPv[0], y1 = results[j].PrmsPv[1];
+                    double x1 = results[j].PrmsPv[0], y1 = results[j].PrmsPv[1];
 
                     if ((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y) < numericBoxNearestNeighbor.Value * numericBoxNearestNeighbor.Value)
                         results.RemoveAt(j--);
-}            }
+                }
+            }
             for (int i = 0; i < results.Count; i++)
                 if (!double.IsPositiveInfinity(results[i].R))
                     DataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
@@ -414,7 +413,7 @@ namespace ReciPro
 
         private void ButtonGlobalFit_Click(object sender, EventArgs e)
         {
-            if (DataSet.DataTableSpot.Spots.Count==0) return;
+            if (DataSet.DataTableSpot.Spots.Count == 0) return;
             Enabled = false;
             Application.DoEvents();
             sw.Restart();
@@ -463,9 +462,9 @@ namespace ReciPro
                 if (x > range && x < width - range && y > range && y < height - range)
                     pixelsBG.Add((new double[] { x, y }, srcValues[index], 1));
             }
-            
+
             //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
-            while(pixelsBG.Count > 50000)
+            while (pixelsBG.Count > 50000)
             {
                 pixelsBG = pixelsBG.Where((b, i) => i % 2 == 0).ToList();
 
@@ -477,14 +476,14 @@ namespace ReciPro
             {
                 var intensity = 0.0;
                 var prms = prmsList[i];
-                var h = (prms.H1 + prms.H2) / 2.0 *8.0;
+                var h = (prms.H1 + prms.H2) / 2.0 * 8.0;
                 for (int y = Math.Max(0, (int)(prms.Y0 - h - 1)); y < Math.Min(height, (int)(prms.Y0 + h + 2)); y++)
                     for (int x = Math.Max(0, (int)(prms.X0 - h - 1)); x < Math.Min(width, (int)(prms.X0 + h + 2)); x++)
                         if ((x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0) < h * h)
                         {
                             var temp = srcValues[x + y * width];
-                            foreach(var p in r.Prms)
-                                temp -= MQ.PseudoVoigt(new double[] { x, y },p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
+                            foreach (var p in r.Prms)
+                                temp -= MQ.PseudoVoigt(new double[] { x, y }, p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
                             intensity += temp;
                         }
 
@@ -520,8 +519,8 @@ namespace ReciPro
                 for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)
                 {
                     var p = DataSet.DataTableSpot.GetPrms(i);
-                    var symbol = !p.Direct?
-                        new ScalablePictureBox.Symbol(i.ToString(), new PointD(p.X0,p.Y0), p.Range, Color.LightBlue, 5, Color.LightBlue, Color.DarkBlue):
+                    var symbol = !p.Direct ?
+                        new ScalablePictureBox.Symbol(i.ToString(), new PointD(p.X0, p.Y0), p.Range, Color.LightBlue, 5, Color.LightBlue, Color.DarkBlue) :
                         new ScalablePictureBox.Symbol(i.ToString(), new PointD(p.X0, p.Y0), p.Range, Color.Pink, 5, Color.Pink, Color.DarkRed);
                     symbol.Tag = tagObsSpot;
                     symbol.Bold = i == current;
@@ -553,7 +552,7 @@ namespace ReciPro
                 foreach (var s in scalablePictureBoxAdvanced.Symbols)
                     if (s.Tag == tagObsSpot)
                         s.Bold = s.Label == index.ToString();
-                
+
                 //中心位置をシフト
                 var spot = DataSet.DataTableSpot.Spots[index];
                 var center = new PointD(spot.X, spot.Y);
@@ -611,7 +610,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-   
+
         private void DataGridViewSpots_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (DataSet.DataTableSpot.Rows.Count > 0 && e.RowIndex >= 0)
@@ -626,9 +625,9 @@ namespace ReciPro
         private void ButtonResetRangeForAllSpots_Click(object sender, EventArgs e)
         {
             bindingSourceObsSpots.DataMember = "";
-            for (int i=0; i< DataSet.DataTableSpot.Rows.Count; i++)
+            for (int i = 0; i < DataSet.DataTableSpot.Rows.Count; i++)
             {
-                (_, _, _, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)  
+                (_, _, _, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
                     = DataSet.DataTableSpot.GetPrms(i);
                 DataSet.DataTableSpot.SetPrms(i, numericBoxFittingRange.Value, new[] { X0, Y0, H1, H2, Theta, Eta, A }, new[] { B0, Bx, By }, R);
 
@@ -734,10 +733,10 @@ namespace ReciPro
             backgroundWorkerSpotID.RunWorkerAsync(crystals);
         }
 
-        private void buttonStop_Click(object sender, EventArgs e) 
+        private void buttonStop_Click(object sender, EventArgs e)
             => backgroundWorkerSpotID.CancelAsync();
 
-        private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e) 
+        private void backgroundWorkerSpotID_DoWork(object sender, DoWorkEventArgs e)
             => e.Result = identifySpots((List<Crystal>)(e.Argument));
 
         private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -756,17 +755,17 @@ namespace ReciPro
             FormMain.Enabled = true;
         }
 
-        
+
         private void backgroundWorkerSpotID_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if(skipProgressChangedEvent) return;
+            if (skipProgressChangedEvent) return;
             skipProgressChangedEvent = true;
             try
             {
                 double progress = (double)e.ProgressPercentage / 1000000;
                 toolStripStatusLabelFindSpot.Text = $"Ellapsed time: {(double)sw.ElapsedMilliseconds / 1000:f2} sec.";
                 //+" Wait about: " + ((1 - progress) / progress * (sw.ElapsedMilliseconds / 1000.0)).ToString("f2") + "sec.";
-                toolStripProgressBar.Value = (int)((double)toolStripProgressBar.Maximum * progress);
+                toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum * progress);
                 Application.DoEvents();
             }
             catch { }
@@ -846,7 +845,7 @@ namespace ReciPro
                         {
                             var exceptedIndices = new List<int>();
                             foreach (Grain g in candidates[i])
-                                exceptedIndices.AddRange(g.Indices.Select(o=>o.No).ToArray());
+                                exceptedIndices.AddRange(g.Indices.Select(o => o.No).ToArray());
 
                             var cand = func(j, DataSet.DataTableSpot.ReciprocalVectors, exceptedIndices.ToArray());
                             if (cand.Count == 0)
@@ -934,61 +933,61 @@ namespace ReciPro
 
             var candidates = new List<Grain>();
             int counter = 0;
-            Parallel.ForEach( mList, rot =>
-            {
-                var residual = 0.0;
-                var indices = new List<(int No, int H, int K, int L)>();
-                for (int n = 0; n < 4; n++)
-                {
-                    if (backgroundWorkerSpotID.CancellationPending)
-                        break;
+            Parallel.ForEach(mList, rot =>
+           {
+               var residual = 0.0;
+               var indices = new List<(int No, int H, int K, int L)>();
+               for (int n = 0; n < 4; n++)
+               {
+                   if (backgroundWorkerSpotID.CancellationPending)
+                       break;
 
-                    var obsList = new List<Vector3DBase>();
-                    var refList = new List<Vector3DBase>();
-                    int beforeCount = 0;
-                    indices = new List<(int No, int H, int K, int L)>();
+                   var obsList = new List<Vector3DBase>();
+                   var refList = new List<Vector3DBase>();
+                   int beforeCount = 0;
+                   indices = new List<(int No, int H, int K, int L)>();
 
-                    for (int k = 0; k < obsSpotsReciprocal.Length; k++)
-                        if (gVectors[k].Count > 0)
-                        {
-                            if (backgroundWorkerSpotID.CancellationPending) break;
+                   for (int k = 0; k < obsSpotsReciprocal.Length; k++)
+                       if (gVectors[k].Count > 0)
+                       {
+                           if (backgroundWorkerSpotID.CancellationPending) break;
 
-                            var obsV = rot * obsSpotsReciprocal[k];
+                           var obsV = rot * obsSpotsReciprocal[k];
                             //最も近いgVectorを探す
                             var min = double.PositiveInfinity;
-                            Vector3D v2 = null;
-                            for (int l = 0; l < gVectors[k].Count; l++)
-                            {
-                                double temp = (gVectors[k][l] - obsV).Length2;
-                                if (min > temp && !refList.Contains(gVectors[k][l]))
-                                {
-                                    v2 = gVectors[k][l];
-                                    min = temp;
-                                }
-                            }
+                           Vector3D v2 = null;
+                           for (int l = 0; l < gVectors[k].Count; l++)
+                           {
+                               double temp = (gVectors[k][l] - obsV).Length2;
+                               if (min > temp && !refList.Contains(gVectors[k][l]))
+                               {
+                                   v2 = gVectors[k][l];
+                                   min = temp;
+                               }
+                           }
 
-                            if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
+                           if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
                             {
-                                indices.Add((k, v2.h,v2.k,v2.l));
-                                obsList.Add(obsSpotsReciprocal[k]);
-                                refList.Add(v2);
-                            }
-                        }
-                    if (indices.Count > 1)
-                        residual = MQ.GetRotationMatrix2(obsList.ToArray(), refList.ToArray(), ref rot, rot);
-                    if (obsList.Count == beforeCount)
-                        break;
-                    beforeCount = obsList.Count;
-                }
+                               indices.Add((k, v2.h, v2.k, v2.l));
+                               obsList.Add(obsSpotsReciprocal[k]);
+                               refList.Add(v2);
+                           }
+                       }
+                   if (indices.Count > 1)
+                       residual = MQ.GetRotationMatrix2(obsList.ToArray(), refList.ToArray(), ref rot, rot);
+                   if (obsList.Count == beforeCount)
+                       break;
+                   beforeCount = obsList.Count;
+               }
 
-                lock (lockObj)
-                {
-                    if (indices.Count > 1)
-                        candidates.Add(new Grain(rot.Inverse(), residual, indices.ToArray()));
-                    if (counter++ % 10 == 0)
-                        backgroundWorkerSpotID.ReportProgress((int)(1000000.0 / mList.Count * counter));
-                }
-            }
+               lock (lockObj)
+               {
+                   if (indices.Count > 1)
+                       candidates.Add(new Grain(rot.Inverse(), residual, indices.ToArray()));
+                   if (counter++ % 10 == 0)
+                       backgroundWorkerSpotID.ReportProgress((int)(1000000.0 / mList.Count * counter));
+               }
+           }
             );
 
             return candidates;
@@ -1004,7 +1003,7 @@ namespace ReciPro
             /// <summary>
             /// 観測された回折スポット配列に対して、このGrainで説明可能であったindicesのリスト
             /// </summary>
-            public (int No, int H, int K, int L )[] Indices;
+            public (int No, int H, int K, int L)[] Indices;
 
             /// <summary>
             /// このGrainによって出現する全てのスポットの位置(x,y)と強度(z)
@@ -1062,7 +1061,7 @@ namespace ReciPro
                             foreach (Vector3D vec2 in gVectors[j].Where(g => Math.Abs(angle - Vector3D.AngleBetVectors(g, vec1)) < toleranceAngle))
                             {
                                 var vX2 = Vector3DBase.VectorProduct(vec1, vec2).Normarize();
-                                var vY2 = (((Vector3DBase)vec1).Normarize() + ((Vector3DBase)vec2).Normarize()).Normarize();
+                                var vY2 = (vec1.Normarize() + vec2.Normarize()).Normarize();
                                 mList.Add(m1 * new Matrix3D(vX2, vY2, Vector3DBase.VectorProduct(vX2, vY2)).Inverse());
                             }
                         }
@@ -1247,15 +1246,9 @@ namespace ReciPro
             scalablePictureBoxAdvanced.Refresh();
         }
 
-        private void scalablePictureBoxAdvanced_StatusChanged(object sender, EventArgs e)
-        {
-            toolStripStatusLabelImageFilter.Text = scalablePictureBoxAdvanced.StatusLabel;
-        }
+        private void scalablePictureBoxAdvanced_StatusChanged(object sender, EventArgs e) => toolStripStatusLabelImageFilter.Text = scalablePictureBoxAdvanced.StatusLabel;
 
-        private void radioButtonSingleGrain_CheckedChanged(object sender, EventArgs e)
-        {
-            numericBoxMaxGrainNum.Enabled = radioButtonMultiGrain.Checked;
-        }
+        private void radioButtonSingleGrain_CheckedChanged(object sender, EventArgs e) => numericBoxMaxGrainNum.Enabled = radioButtonMultiGrain.Checked;
 
         private void buttonPixelToPixel_Click(object sender, EventArgs e)
         {
@@ -1344,10 +1337,7 @@ namespace ReciPro
 
         #endregion
 
-        private void checkBoxDetailsSpot_CheckedChanged(object sender, EventArgs e)
-        {
-            FormSpotDetails.Visible = checkBoxDetailsSpot.Checked;
-        }
+        private void checkBoxDetailsSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsSpot.Checked;
 
         #region Refine thickness and direction機能
         private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
@@ -1380,7 +1370,7 @@ namespace ReciPro
             FormMain.Crystal.Bethe.RunCBED(numericBoxMaxNumOfG.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, BetheMethod.Solver.Auto);
         }
 
-       
+
 
         private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -1401,8 +1391,8 @@ namespace ReciPro
             foreach (var (No, H, K, L) in grain.Indices)
             {
                 var temp = tempDisk.Where(o => H == o.disk.H && K == o.disk.K && L == o.disk.L).ToArray();
-                if(temp.Length==1)
-                corrTable.Add((temp[0].index, spots[No].A / spots.Max(s => s.A)));
+                if (temp.Length == 1)
+                    corrTable.Add((temp[0].index, spots[No].A / spots.Max(s => s.A)));
             }
 
             var bestResidual = double.PositiveInfinity;
@@ -1416,12 +1406,12 @@ namespace ReciPro
                 for (int r = 0; r < FormMain.Crystal.Bethe.BeamRotations.Length; r++)
                 {
                     var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Intensity[r]);
-                    var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Intensity[r] ,2));
+                    var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Intensity[r], 2));
                     if (denom != 0)
                     {
                         var a = numer / denom;
                         var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].Intensity[r], 2));
-                        if(bestResidual>residual)
+                        if (bestResidual > residual)
                         {
                             bestResidual = residual;
                             bestThickness = FormMain.Crystal.Bethe.Thicknesses[t];
@@ -1447,7 +1437,7 @@ namespace ReciPro
             var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength;
             var progress = (int)(100.0 * report.Current / divisionNumber);
             if (progress <= 100)
-                toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum * report.Current / divisionNumber);
+                toolStripProgressBar.Value = toolStripProgressBar.Maximum * report.Current / divisionNumber;
             toolStripStatusLabelRefine.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
             toolStripStatusLabelRefine.Text += sec / report.Current > 0.9 ? $"{sec / report.Current:f2} s.,  " : $"{sec / report.Current * 1000:f2} ms., ";
             toolStripStatusLabelRefine.Text += $"{100.0 * report.Current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - report.Current) / report.Current:f2} s.";
@@ -1471,7 +1461,7 @@ namespace ReciPro
             sw.Restart();
             bindingSourceObsSpots.DataMember = "";
 
-             
+
             int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
             var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
             for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)

@@ -10,7 +10,7 @@ namespace ReciPro
         public Crystal Crystal { get; set; }
         public new bool Enabled { get => checkBoxEnable.Checked; set => checkBoxEnable.Checked = value; }
 
-        public bool FullOption { get { return checkBoxEquivalency.Visible; } set { checkBoxEquivalency.Visible = radioButtonAngstrom.Visible = radioButtonDspacing.Visible = label1.Visible = value; } }
+        public bool FullOption { get => checkBoxEquivalency.Visible; set => checkBoxEquivalency.Visible = radioButtonAngstrom.Visible = radioButtonDspacing.Visible = label1.Visible = value; }
 
         public Color Color { get => colorControl.Color; set => colorControl.Color = value; }
 
@@ -55,10 +55,7 @@ namespace ReciPro
             Crystal = crystal;
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            Delete?.Invoke(this, e);
-        }
+        private void buttonDelete_Click(object sender, EventArgs e) => Delete?.Invoke(this, e);
 
         private bool skipEvent = false;
 

@@ -47,7 +47,7 @@ namespace ReciPro
                     CurrentProgress = "";
                 }
             }
-            get { return toolStripStatusLabel.Text; }
+            get => toolStripStatusLabel.Text;
         }
 
         public string CurrentProgress
@@ -61,7 +61,7 @@ namespace ReciPro
                 }
                 toolStripStatusLabelProgress.Text = value;
             }
-            get { return toolStripStatusLabelProgress.Text; }
+            get => toolStripStatusLabelProgress.Text;
         }
 
         public bool ProgressBarVisible
@@ -75,7 +75,7 @@ namespace ReciPro
                 }
                 toolStripProgressBar.Visible = value;
             }
-            get { return toolStripProgressBar.Visible; }
+            get => toolStripProgressBar.Visible;
         }
 
         private int processorCount = System.Environment.ProcessorCount;
@@ -91,11 +91,9 @@ namespace ReciPro
             diffractionPatternControlSimulation.ProgressChanged += dpc_ProgressChanged;
         }
 
-        private void FormPolycrystallineDiffractionSimulator_Load(object sender, EventArgs e)
-        {
+        private void FormPolycrystallineDiffractionSimulator_Load(object sender, EventArgs e) =>
             //formMainのlistBoxのselectedIndexの変更イベントを登録
             formMain.listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
-        }
 
         private List<Crystallography.Controls.CrystalControl> CrystalContlols = new List<Crystallography.Controls.CrystalControl>();
 
@@ -136,10 +134,7 @@ namespace ReciPro
             //listBox.SelectedIndex = 0;
         }
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
-        {
-            Crystals[crystal.id] = crystal;
-        }
+        private void crystalControl_CrystalChanged(Crystal crystal) => Crystals[crystal.id] = crystal;
 
         private void FormPolycrystallineDiffractionSimulator_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -244,10 +239,7 @@ namespace ReciPro
 
         #region View関連
 
-        private void comboBoxScale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
+        private void comboBoxScale_SelectedIndexChanged(object sender, EventArgs e) => setScale();
 
         private void setScale()
         {
@@ -784,79 +776,77 @@ namespace ReciPro
         #region stressの部分
 
         //double stressStep = 0.01;
-        private double refineStress(Crystal crystal)
-        {
+        private double refineStress(Crystal crystal) =>
             /*            Random rn = new Random();
-                        Matrix3D stressOriginal = new Matrix3D(Stress);
-                        Matrix3D stressBest = new Matrix3D(Stress);
-                        double residualBest = 0;
-                        double residual = 0;
-                        for (int i = 0; i < diffractionPatternControl.Count; i++)
-                            residualBest += diffractionPatternControl[i].Residual();
-                        stressStep = 0.1;//最大10%変動させる
-                        for (int n = 0; n < 10; n++)
-                        {
-                            residual = 0;
-                            for (int j = 0; j < 6; j++)
-                            {
-                                int targetElement = rn.Next(6);
-                                double variation = (rn.NextDouble() * 2 - 1) * stressStep;
-                                switch (targetElement)
-                                {
-                                    case 0:
-                                        polyCrystal.Stress.E11 = Math.Abs(polyCrystal.Stress.E11) > stressStep ? polyCrystal.Stress.E11 * (1+variation) : polyCrystal.Stress.E11 + variation; break;
-                                    case 1:
-                                        polyCrystal.Stress.E22 = Math.Abs(polyCrystal.Stress.E22) > stressStep ? polyCrystal.Stress.E22 * (1+variation) : polyCrystal.Stress.E22 + variation; break;
-                                    case 2:
-                                        polyCrystal.Stress.E33 = Math.Abs(polyCrystal.Stress.E33) > stressStep ? polyCrystal.Stress.E33 * (1+variation) : polyCrystal.Stress.E33 + variation; break;
-                                    case 3:
-                                        polyCrystal.Stress.E12 = Math.Abs(polyCrystal.Stress.E12) > stressStep ? polyCrystal.Stress.E12 * (1+variation) : polyCrystal.Stress.E12 + variation;
-                                        polyCrystal.Stress.E21 = Math.Abs(polyCrystal.Stress.E21) > stressStep ? polyCrystal.Stress.E21 * (1+variation) : polyCrystal.Stress.E21 + variation; break;
-                                       // polyCrystal.Stress.E12 += variation * 0.1; polyCrystal.Stress.E21 += variation * 0.1; break;
-                                    case 4:
-                                        polyCrystal.Stress.E23 = Math.Abs(polyCrystal.Stress.E23) > stressStep ? polyCrystal.Stress.E23 * (1+variation) : polyCrystal.Stress.E23 + variation;
-                                        polyCrystal.Stress.E32 = Math.Abs(polyCrystal.Stress.E32) > stressStep ? polyCrystal.Stress.E32 * (1+variation) : polyCrystal.Stress.E32 + variation; break;
-                                        //polyCrystal.Stress.E23 += variation * 0.1; polyCrystal.Stress.E32 += variation * 0.1; break;
-                                    case 5:
-                                        polyCrystal.Stress.E31 = Math.Abs(polyCrystal.Stress.E31) > stressStep ? polyCrystal.Stress.E31 * (1+variation) : polyCrystal.Stress.E31 + variation;
-                                        polyCrystal.Stress.E13 = Math.Abs(polyCrystal.Stress.E13) > stressStep ? polyCrystal.Stress.E13 * (1+variation) : polyCrystal.Stress.E13 + variation; break;
-                                        //polyCrystal.Stress.E31 += variation * 0.1; polyCrystal.Stress.E13 += variation * 0.1; break;
-                                    //case 0: polyCrystal.Stress.E11 += variation; polyCrystal.Stress.E33 += variation; break;
-                                    //case 1: polyCrystal.Stress.E22 += variation; break;
-                                }
-                            }
-                            for (int i = 0; i < diffractionPatternControl.Count; i++){
-                                diffractionPatternControl[i].Simulate(true, false, false, true);
-                                diffractionPatternControl[i].RefineScaleFactor();
-                                residual += diffractionPatternControl[i].Residual();
-                            }
-                            if (residualBest > residual)
-                            {
-                                residualBest = residual;
-                                stressBest = new Matrix3D(polyCrystal.Stress);
-                            }
-                            polyCrystal.Stress = stressOriginal;
-                        }
+Matrix3D stressOriginal = new Matrix3D(Stress);
+Matrix3D stressBest = new Matrix3D(Stress);
+double residualBest = 0;
+double residual = 0;
+for (int i = 0; i < diffractionPatternControl.Count; i++)
+residualBest += diffractionPatternControl[i].Residual();
+stressStep = 0.1;//最大10%変動させる
+for (int n = 0; n < 10; n++)
+{
+residual = 0;
+for (int j = 0; j < 6; j++)
+{
+int targetElement = rn.Next(6);
+double variation = (rn.NextDouble() * 2 - 1) * stressStep;
+switch (targetElement)
+{
+case 0:
+polyCrystal.Stress.E11 = Math.Abs(polyCrystal.Stress.E11) > stressStep ? polyCrystal.Stress.E11 * (1+variation) : polyCrystal.Stress.E11 + variation; break;
+case 1:
+polyCrystal.Stress.E22 = Math.Abs(polyCrystal.Stress.E22) > stressStep ? polyCrystal.Stress.E22 * (1+variation) : polyCrystal.Stress.E22 + variation; break;
+case 2:
+polyCrystal.Stress.E33 = Math.Abs(polyCrystal.Stress.E33) > stressStep ? polyCrystal.Stress.E33 * (1+variation) : polyCrystal.Stress.E33 + variation; break;
+case 3:
+polyCrystal.Stress.E12 = Math.Abs(polyCrystal.Stress.E12) > stressStep ? polyCrystal.Stress.E12 * (1+variation) : polyCrystal.Stress.E12 + variation;
+polyCrystal.Stress.E21 = Math.Abs(polyCrystal.Stress.E21) > stressStep ? polyCrystal.Stress.E21 * (1+variation) : polyCrystal.Stress.E21 + variation; break;
+// polyCrystal.Stress.E12 += variation * 0.1; polyCrystal.Stress.E21 += variation * 0.1; break;
+case 4:
+polyCrystal.Stress.E23 = Math.Abs(polyCrystal.Stress.E23) > stressStep ? polyCrystal.Stress.E23 * (1+variation) : polyCrystal.Stress.E23 + variation;
+polyCrystal.Stress.E32 = Math.Abs(polyCrystal.Stress.E32) > stressStep ? polyCrystal.Stress.E32 * (1+variation) : polyCrystal.Stress.E32 + variation; break;
+//polyCrystal.Stress.E23 += variation * 0.1; polyCrystal.Stress.E32 += variation * 0.1; break;
+case 5:
+polyCrystal.Stress.E31 = Math.Abs(polyCrystal.Stress.E31) > stressStep ? polyCrystal.Stress.E31 * (1+variation) : polyCrystal.Stress.E31 + variation;
+polyCrystal.Stress.E13 = Math.Abs(polyCrystal.Stress.E13) > stressStep ? polyCrystal.Stress.E13 * (1+variation) : polyCrystal.Stress.E13 + variation; break;
+//polyCrystal.Stress.E31 += variation * 0.1; polyCrystal.Stress.E13 += variation * 0.1; break;
+//case 0: polyCrystal.Stress.E11 += variation; polyCrystal.Stress.E33 += variation; break;
+//case 1: polyCrystal.Stress.E22 += variation; break;
+}
+}
+for (int i = 0; i < diffractionPatternControl.Count; i++){
+diffractionPatternControl[i].Simulate(true, false, false, true);
+diffractionPatternControl[i].RefineScaleFactor();
+residual += diffractionPatternControl[i].Residual();
+}
+if (residualBest > residual)
+{
+residualBest = residual;
+stressBest = new Matrix3D(polyCrystal.Stress);
+}
+polyCrystal.Stress = stressOriginal;
+}
 
-                        //変化がなければ
-                        if (stressBest.E11 == stressOriginal.E11 && stressBest.E22 == stressOriginal.E22 && stressBest.E33 == stressOriginal.E33
-                            && stressBest.E12 == stressOriginal.E12 && stressBest.E23 == stressOriginal.E23 && stressBest.E31 == stressOriginal.E31)
-                            polyCrystal.Stress = stressOriginal;
-                        //変化があれば
-                        else
-                            polyCrystal.Stress = stressBest;
+//変化がなければ
+if (stressBest.E11 == stressOriginal.E11 && stressBest.E22 == stressOriginal.E22 && stressBest.E33 == stressOriginal.E33
+&& stressBest.E12 == stressOriginal.E12 && stressBest.E23 == stressOriginal.E23 && stressBest.E31 == stressOriginal.E31)
+polyCrystal.Stress = stressOriginal;
+//変化があれば
+else
+polyCrystal.Stress = stressBest;
 
-                        residual = 0;
-                        for (int i = 0; i < diffractionPatternControl.Count; i++)
-                        {
-                            diffractionPatternControl[i].Simulate(true, false, false, true);
-                            diffractionPatternControl[i].RefineScaleFactor();
-                            residual += diffractionPatternControl[i].Residual();
-                        }
-                        return residual;
-             */
-            return 0;
-        }
+residual = 0;
+for (int i = 0; i < diffractionPatternControl.Count; i++)
+{
+diffractionPatternControl[i].Simulate(true, false, false, true);
+diffractionPatternControl[i].RefineScaleFactor();
+residual += diffractionPatternControl[i].Residual();
+}
+return residual;
+*/
+            0;
 
         #endregion stressの部分
 
@@ -1010,10 +1000,7 @@ namespace ReciPro
             }
         }
 
-        private void FormPolycrystallineDiffractionSimulator_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        private void FormPolycrystallineDiffractionSimulator_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         #region
 
@@ -1143,10 +1130,7 @@ namespace ReciPro
             }
         }
 
-        private void listView1_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetDataPresent(typeof(Crystal))) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        private void listView1_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetDataPresent(typeof(Crystal))) ? DragDropEffects.Copy : DragDropEffects.None;
 
         private void buttonSimulateDebyeRing_Click(object sender, EventArgs e)
         {
@@ -1202,7 +1186,7 @@ namespace ReciPro
             dpc.numericUpDownMaxInt.Maximum = (decimal)max;
             dpc.numericUpDownMaxInt.Value = (decimal)max;
             dpc.numericUpDownMinInt.Maximum = (decimal)max - 1;
-            dpc.numericUpDownMinInt.Value = (decimal)1;
+            dpc.numericUpDownMinInt.Value = 1;
 
             dpc.checkBoxSimulation.Checked = true;
             setScale();
@@ -1240,20 +1224,11 @@ namespace ReciPro
             dpc.setSimulatedPixels();
         }
 
-        private void checkBoxInheritabiliryThreshold_CheckedChanged(object sender, EventArgs e)
-        {
-            numericBoxInheritabiliryThreshold.Visible = checkBoxInheritabiliryThreshold.Checked;
-        }
+        private void checkBoxInheritabiliryThreshold_CheckedChanged(object sender, EventArgs e) => numericBoxInheritabiliryThreshold.Visible = checkBoxInheritabiliryThreshold.Checked;
 
-        private void checkBoxDirectionalDensityThreshold_CheckedChanged(object sender, EventArgs e)
-        {
-            numericBoxDirectionalDensityThreshold.Visible = checkBoxDirectionalDensityThreshold.Checked;
-        }
+        private void checkBoxDirectionalDensityThreshold_CheckedChanged(object sender, EventArgs e) => numericBoxDirectionalDensityThreshold.Visible = checkBoxDirectionalDensityThreshold.Checked;
 
-        private void checkBoxCrystalNumPerStepThreshold_CheckedChanged(object sender, EventArgs e)
-        {
-            numericBoxCrystalNumPerStepThreshold.Visible = checkBoxCrystalNumPerStepThreshold.Checked;
-        }
+        private void checkBoxCrystalNumPerStepThreshold_CheckedChanged(object sender, EventArgs e) => numericBoxCrystalNumPerStepThreshold.Visible = checkBoxCrystalNumPerStepThreshold.Checked;
 
         private delegate void dpc_ProgressChangedCallBack(object sender, ProgressChangedEventArgs e);
 

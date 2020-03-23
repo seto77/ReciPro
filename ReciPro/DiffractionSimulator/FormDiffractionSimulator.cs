@@ -44,7 +44,7 @@ namespace ReciPro
                     numericBoxResolution.Value = value;
                 Draw();
             }
-            get { return numericBoxResolution.Value; }
+            get => numericBoxResolution.Value;
         }
 
         public enum DrawingMode { None, Kinematical, BetheSAED, BetheCBED }
@@ -82,12 +82,12 @@ namespace ReciPro
             get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength2;
         }
 
-        public double Tau     {          set => FormDiffractionSimulatorGeometry.Tau = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Tau;        }
+        public double Tau { set => FormDiffractionSimulatorGeometry.Tau = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Tau; }
 
         public double Phi { set => FormDiffractionSimulatorGeometry.Phi = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Phi; }
-        
 
-        public double CosTau => FormDiffractionSimulatorGeometry.CosTau; 
+
+        public double CosTau => FormDiffractionSimulatorGeometry.CosTau;
         public double CosTauSquare => FormDiffractionSimulatorGeometry.CosTauSquare;
         public double SinTau => FormDiffractionSimulatorGeometry.SinTau;
         public double SinTauSquare => FormDiffractionSimulatorGeometry.SinTauSquare;
@@ -162,10 +162,7 @@ namespace ReciPro
             Draw();
         }
 
-        private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e)
-        {
-            numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
-        }
+        private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e) => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
 
         //Visibleが変更されたとき
         private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
@@ -178,7 +175,7 @@ namespace ReciPro
                 Draw();
                 graphicsBox.Refresh();
 
-                if(radioButtonBeamConvergence.Checked)
+                if (radioButtonBeamConvergence.Checked)
                     FormDiffractionSimulatorCBED.Visible = true;
             }
             else
@@ -197,7 +194,7 @@ namespace ReciPro
             if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
                 try
                 {
-                    g.Transform = new System.Drawing.Drawing2D.Matrix(
+                    g.Transform = new Matrix(
                     (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
                     (float)(graphicsBox.ClientSize.Width / 2.0 + DisplayCenter.X / Resolution),
                     (float)(graphicsBox.ClientSize.Height / 2.0 + DisplayCenter.Y / Resolution));
@@ -215,12 +212,9 @@ namespace ReciPro
         /// <summary>
         /// 描画をスキップする (コントロールイベントをスキップする場合は、SkipEventを使う)
         /// </summary>
-        public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get { return skipDrawing; } }
+        public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
 
-        private void Draw(object sender, EventArgs e)
-        {
-            Draw();
-        }
+        private void Draw(object sender, EventArgs e) => Draw();
 
         /// <summary>
         /// 逆空間描画関数
@@ -259,7 +253,7 @@ namespace ReciPro
             }
 
             g.SmoothingMode = SmoothingMode.None;
-            
+
             g.InterpolationMode = InterpolationMode.NearestNeighbor;
             g.PixelOffsetMode = PixelOffsetMode.Half;
 
@@ -269,10 +263,10 @@ namespace ReciPro
             //画像の重ね合わせ
             if (drawOverlappedImage && fdsg.ShowDetectorArea && fdsg.OverlappedImage != null)
             {
-                ColorMatrix cm = new ColorMatrix();//ColorMatrixオブジェクトの作成
+                var cm = new ColorMatrix();//ColorMatrixオブジェクトの作成
                 cm.Matrix00 = cm.Matrix11 = cm.Matrix22 = cm.Matrix44 = 1;
                 cm.Matrix33 = fdsg.ImageOpacity;
-                ImageAttributes ia = new ImageAttributes();//ImageAttributesオブジェクトの作成
+                var ia = new ImageAttributes();//ImageAttributesオブジェクトの作成
                 ia.SetColorMatrix(cm);  //ColorMatrixを設定する
                 var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
                 g.DrawImage(fdsg.OverlappedImage, dest, new RectangleF(0, 0, fdsg.OverlappedImage.Width, fdsg.OverlappedImage.Height), GraphicsUnit.Pixel, ia);
@@ -291,7 +285,7 @@ namespace ReciPro
             g.SmoothingMode = SmoothingMode.HighQuality;
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            if(toolStripButtonScale.Checked && (bool)timerBlinkScale?.Tag)
+            if (toolStripButtonScale.Checked && (bool)timerBlinkScale?.Tag)
                 DrawScale(g);
 
             if (toolStripButtonKikuchiLines.Checked && (bool)timerBlinkKikuchiLine?.Tag)
@@ -322,16 +316,15 @@ namespace ReciPro
             }
 
             //対物絞りの範囲を示す円
-            if(formMain.toolStripButtonImageSimulation.Checked && formMain.FormImageSimulator.ImageMode== FormImageSimulator.ImageModes.HRTEM 
-                && !double.IsInfinity( formMain.FormImageSimulator.ObjAperRadius))
+            if (formMain.toolStripButtonImageSimulation.Checked && formMain.FormImageSimulator.ImageMode == FormImageSimulator.ImageModes.HRTEM
+                && !double.IsInfinity(formMain.FormImageSimulator.ObjAperRadius))
             {
-
-                var aperR = CameraLength2 * Math.Tan( formMain.FormImageSimulator.ObjAperRadius);
+                var aperR = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperRadius);
                 var aperX = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperX);
                 var aperY = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperY);
 
                 Pen pen = new Pen(Brushes.LightGreen, (float)Resolution);
-                g.DrawEllipse(pen, (float)(aperX- aperR), (float)(-aperY- aperR), (float)(aperR*2), (float)(aperR * 2));
+                g.DrawEllipse(pen, (float)(aperX - aperR), (float)(-aperY - aperR), (float)(aperR * 2), (float)(aperR * 2));
             }
 
             graphicsBox.Refresh();
@@ -411,7 +404,7 @@ namespace ReciPro
 
                       double intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
 
-                      
+
                       int alpha = (int)(255 * intensity2 * alphaCoeff);
                       if (comboBoxScaleColorScale.SelectedIndex == 1)
                       {
@@ -457,12 +450,12 @@ namespace ReciPro
             double linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
             double logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
 
-            if(waveLengthControl.WaveSource== WaveSource.Xray)
+            if (waveLengthControl.WaveSource == WaveSource.Xray)
             {
                 linearCoeff *= 1000;
                 logCoeff *= 1000000;
             }
-            
+
             bool bethe = radioButtonIntensityBethe.Checked;
             Stopwatch sw = new Stopwatch();
             //toolStripStatusLabelTimeForBethe.Text = "";
@@ -502,7 +495,7 @@ namespace ReciPro
                     }
                     var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                     gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToArray();
-                    
+
                     foreach (var g in gVector)
                         g.Argb = formMain.Crystals.Length == 1 ? colorControlNoCondition.Argb : crystal.Argb;
                 }
@@ -526,7 +519,7 @@ namespace ReciPro
                         }
 
                         var dev2 = dev * dev;
-                        if (SinPhi * SinTau *vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
+                        if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
                         //(vec.X, -vec.Y, -vec.Z + EwaldRadius) と(SinPhi*SinTau, -CosPhi*sinTau, cosTau) の内積が0より大きい = 前方散乱)
                         {
                             var pt = convertReciprocalToDetector(vec);
@@ -562,7 +555,7 @@ namespace ReciPro
                                         if (!double.IsNaN(intensity))
                                         {
                                             var radius = fillCircleSpread(Color.FromArgb(g.Argb), pt, intensity, sigma);
-                                  
+
 
                                             if (drawLabel && trackBarStrSize.Value != 1 && intensity / (2 * Math.PI * sigma * sigma) > 0.5)
                                                 DrawDiffractionSpotsLabel(graphics, g, pt, radius, (double)g.Tag);
@@ -660,7 +653,7 @@ namespace ReciPro
 
                 foreach (var g in crystal.VectorOfG.Where(g => g.Flag))
                 {
-                    double sinTheta = WaveLength * g.Length / 2 , sin2Theta = sinTheta * sinTheta;
+                    double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
                     Vector3D vec1 = crystal.RotationMatrix * g;
 
@@ -737,8 +730,8 @@ namespace ReciPro
 
                 double twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
-                var ptsArray = Geometriy.ConicSection(twoTheta , Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
-                
+                var ptsArray = Geometriy.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+
                 int red = (int)(ringR * intensity + bgR * (1 - intensity));
                 int green = (int)(ringG * intensity + bgG * (1 - intensity));
                 int blue = (int)(ringB * intensity + bgB * (1 - intensity));
@@ -753,11 +746,11 @@ namespace ReciPro
             }
         }
 
-        
+
 
         private void DrawScale(Graphics g)
         {
-           
+
             int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
             if (width == 0 || height == 0)
                 return;
@@ -824,7 +817,7 @@ namespace ReciPro
             edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, height)));
             edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(0, h)));
             edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(width, h)));
-            if(!originInside)
+            if (!originInside)
                 min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
             max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
             //2θの最大/最小値　ここまで
@@ -847,7 +840,7 @@ namespace ReciPro
 
             pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
 
-           
+
 
             for (double n = Math.Max(1, startN); n < endN; n++)
             {
@@ -855,8 +848,8 @@ namespace ReciPro
                 var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
                 foreach (var pts in ptsArray)
                     g.DrawLines(pen, pts.ToArray());
-                    
-                var labelPosition = getLabelPosition(ptsArray.SelectMany(p=>p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
+
+                var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
                 if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
                     g.DrawString(twoTheta.ToString() + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
@@ -868,13 +861,13 @@ namespace ReciPro
         /// <param name="list"></param>
         /// <param name="origin"></param>
         /// <returns></returns>
-        private PointD getLabelPosition (IEnumerable<PointD> list, PointD origin, double deg)
+        private PointD getLabelPosition(IEnumerable<PointD> list, PointD origin, double deg)
         {
             var residual = double.PositiveInfinity;
             var result = new PointD(float.NaN, float.NaN);
             foreach (var p in list)
             {
-                var dev = Math.Abs((deg / 180) * Math.PI - Math.Atan2(p.Y - origin.Y, p.X - origin.X)  );
+                var dev = Math.Abs((deg / 180) * Math.PI - Math.Atan2(p.Y - origin.Y, p.X - origin.X));
                 if (residual > dev)
                 {
                     residual = dev;
@@ -1029,12 +1022,9 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public PointD convertScreenToDetector(int x, int y)
-        {
-            return new PointD(
+        public PointD convertScreenToDetector(int x, int y) => new PointD(
                 (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
                 (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
-        }
 
         /// <summary>
         /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
@@ -1088,17 +1078,15 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Vector3DBase convertDetectorToReal(double x, double y)
-        {
-            #region 座標変換の計算式
+        public Vector3DBase convertDetectorToReal(double x, double y) =>
+        #region 座標変換の計算式
             // (CosPhi, SinPhi, 0) の周りに Tau回転する行列は、
             //   Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
             //   CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
             //  -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau  
             //この行列を(x,y,CameraLength2)に作用させればよい
-            #endregion
-            return DetectorRotation * new Vector3DBase(x, y, CameraLength2);
-        }
+        #endregion
+            DetectorRotation * new Vector3DBase(x, y, CameraLength2);
 
 
         /// <summary>
@@ -1149,12 +1137,12 @@ namespace ReciPro
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
-        public bool IsScreenArea(PointD pt, int margin=0)
+        public bool IsScreenArea(PointD pt, int margin = 0)
         {
             var clientPt = convertDetectorToScreen(pt);
-            return clientPt.X > margin && clientPt.Y > margin 
-                && clientPt.X < graphicsBox.ClientRectangle.Width - margin 
-                && clientPt.Y < graphicsBox.ClientRectangle.Height- margin;
+            return clientPt.X > margin && clientPt.Y > margin
+                && clientPt.X < graphicsBox.ClientRectangle.Width - margin
+                && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
         }
 
         #endregion 座標変換
@@ -1275,7 +1263,7 @@ namespace ReciPro
             labelD.Text = $"d: {d:f4} nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
-            labelTwoTheta.Text = $"2θ: {(twoThetaRad <0.1 ? $"{twoThetaRad*1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
+            labelTwoTheta.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
 
             //Application.DoEvents();
 
@@ -1355,11 +1343,9 @@ namespace ReciPro
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
         }
 
-        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) =>
             // 印刷プレビューを表示
             printPreviewDialog1.ShowDialog();
-        }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1424,15 +1410,15 @@ namespace ReciPro
 
         private void WaveLengthControl_WaveSourceChanged(object sender, EventArgs e)
         {
-            if(waveLengthControl.WaveSource == WaveSource.Electron )
+            if (waveLengthControl.WaveSource == WaveSource.Electron)
             {
-                radioButtonBeamConvergence.Enabled = radioButtonBeamPrecession.Enabled= true;
+                radioButtonBeamConvergence.Enabled = radioButtonBeamPrecession.Enabled = true;
                 radioButtonIntensityBethe.Enabled = true;
             }
             else
             {
                 radioButtonBeamConvergence.Enabled = radioButtonBeamPrecession.Enabled = false;
-                
+
                 if (radioButtonBeamConvergence.Checked || radioButtonBeamPrecession.Checked)
                     radioButtonBeamParallel.Checked = true;
 
@@ -1444,15 +1430,9 @@ namespace ReciPro
             radioButtonBeamParallel.Checked = true;
         }
 
-        public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e)
-        {
-            FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
-        }
+        public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e) => FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
 
-        private void FormDiffractionSimulator_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        private void FormDiffractionSimulator_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
         {
@@ -1491,10 +1471,10 @@ namespace ReciPro
 
             if (radioButtonBeamConvergence.Checked || radioButtonBeamPrecession.Checked)
             {
-               
-                    radioButtonIntensityExcitation.Enabled = false;
-                    radioButtonIntensityKinematical.Enabled = false;
-                    radioButtonIntensityBethe.Checked = true;
+
+                radioButtonIntensityExcitation.Enabled = false;
+                radioButtonIntensityKinematical.Enabled = false;
+                radioButtonIntensityBethe.Checked = true;
             }
             else
             {
@@ -1503,7 +1483,7 @@ namespace ReciPro
             }
             flowLayoutPanelBethe.Enabled = radioButtonIntensityBethe.Checked;
 
-           
+
 
             setVector();
             Draw();
@@ -1521,7 +1501,7 @@ namespace ReciPro
             Draw();
         }
 
-      
+
         private void toolStripButtonDiffractionSpots_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && ((ToolStripButton)sender).Checked)
@@ -1582,50 +1562,23 @@ namespace ReciPro
 
 
         #region 保存、コピー関連ｎ
-        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopy(true, true, true);
-        }
+        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);
 
-        private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopy(true, false, true);
-        }
+        private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, false, true);
 
-        private void saveDetectorAsImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(true, true);
-        }
+        private void saveDetectorAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
 
-        private void saveDetectorAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(true, false);
-        }
+        private void saveDetectorAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
 
-        private void copyAsImageToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SaveOrCopy(false, true, true);
-        }
+        private void copyAsImageToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, true, true);
 
-        private void copyAsMetafileToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SaveOrCopy(false, false, true);
-        }
+        private void copyAsMetafileToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, false, true);
 
-        private void copyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(false, true);
-        }
+        private void copyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
-        private void copyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(false, false);
-        }
+        private void copyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
 
-        private void saveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(true, true);
-        }
+        private void saveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
 
         private void saveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1634,20 +1587,11 @@ namespace ReciPro
                 Tiff.Writer(dlg.FileName, FormDiffractionSimulatorCBED.SrcImage, 3, FormDiffractionSimulatorCBED.CBED_Image.Width);
         }
 
-        private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(true, false);
-        }
+        private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
 
-        private void copyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(false, true);
-        }
+        private void copyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
-        private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveOrCopyDetector(false, false);
-        }
+        private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
 
         private void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage)
         {
@@ -1817,7 +1761,7 @@ namespace ReciPro
         {
             FormDiffractionBeamTable.Visible = true;
             FormDiffractionBeamTable.BringToFront();
-            if(radioButtonIntensityBethe.Checked)
+            if (radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
         }
 
@@ -1829,15 +1773,15 @@ namespace ReciPro
 
             var sum = new double[graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Height];
 
-            for (double s = -range; s <= range; s+= step)
+            for (double s = -range; s <= range; s += step)
             {
                 waveLengthControl.Energy = numericBoxAcc.Value + numericBoxAcc.Value * numericBoxDev.Value / 100.0 * s;
 
                 var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
                 Draw(Graphics.FromImage(bmp), false, false);
-                var gray =BitmapConverter.ToByteGray(bmp);
+                var gray = BitmapConverter.ToByteGray(bmp);
 
-                var temp = gray.Select(intensity => (double)intensity * step / Math.Sqrt(2.0* Math.PI) * Math.Exp(-s * s / 2)).ToArray();
+                var temp = gray.Select(intensity => intensity * step / Math.Sqrt(2.0 * Math.PI) * Math.Exp(-s * s / 2)).ToArray();
 
                 for (int i = 0; i < sum.Length; i++)
                     sum[i] += temp[i];
@@ -1850,7 +1794,7 @@ namespace ReciPro
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            if(radioButtonBeamParallel.Checked && radioButtonIntensityBethe.Checked)
+            if (radioButtonBeamParallel.Checked && radioButtonIntensityBethe.Checked)
             {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < 300; i++)
@@ -1876,21 +1820,15 @@ namespace ReciPro
 
         private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
         {
-          flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
+            flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
             Draw();
         }
 
-        private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e)
-        {
-            labelMousePositionReciprocal.Visible = 
+        private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => labelMousePositionReciprocal.Visible =
                 labelMousePositionDetector.Visible =
-                labelMousePositionReal.Visible = 
+                labelMousePositionReal.Visible =
                 checkBoxMousePositionDetailes.Checked;
-        }
 
-        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e)
-        {
-            Draw();
-        }
+        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
     }
 }

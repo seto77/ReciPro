@@ -5,10 +5,7 @@ namespace ReciPro
 {
     public partial class FormResolution : Form
     {
-        public FormResolution()
-        {
-            InitializeComponent();
-        }
+        public FormResolution() => InitializeComponent();
 
         private bool SkipEvent = false;
 

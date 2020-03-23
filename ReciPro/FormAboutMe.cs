@@ -5,10 +5,7 @@ namespace ReciPro
 {
     public partial class FormAboutMe : Form
     {
-        public FormAboutMe()
-        {
-            InitializeComponent();
-        }
+        public FormAboutMe() => InitializeComponent();
 
         private void linkLabelHomePage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -57,10 +57,7 @@ namespace ReciPro
         public PseudoBitmap pseudBitmap = null;
         public Bitmap OverlappedImage = null;
 
-        public FormDiffractionSimulatorGeometry()
-        {
-            InitializeComponent();
-        }
+        public FormDiffractionSimulatorGeometry() => InitializeComponent();
 
         private void FormDiffractionSimulatorGeometry_Load(object sender, EventArgs e)
         {
@@ -127,20 +124,11 @@ namespace ReciPro
 
         #region View関連
 
-        private void toolStripComboBoxScale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
+        private void toolStripComboBoxScale_SelectedIndexChanged(object sender, EventArgs e) => setScale();
 
-        private void toolStripComboBoxScale2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
+        private void toolStripComboBoxScale2_SelectedIndexChanged(object sender, EventArgs e) => setScale();
 
-        private void toolStripComboBoxGradient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
+        private void toolStripComboBoxGradient_SelectedIndexChanged(object sender, EventArgs e) => setScale();
 
         private void setScale()
         {
@@ -196,15 +184,9 @@ namespace ReciPro
 
         private double trackbarConstantA = 0, trackbarConstantB = 1;
 
-        private double convertTrackbarIntensityToRealIntensity(int trackbarPosition)
-        {
-            return trackbarConstantA + Math.Exp(trackbarPosition / trackbarConstantB);
-        }
+        private double convertTrackbarIntensityToRealIntensity(int trackbarPosition) => trackbarConstantA + Math.Exp(trackbarPosition / trackbarConstantB);
 
-        private double convertRealIntensityToTrackbarIntensity(double intensity)
-        {
-            return (int)(trackbarConstantB * Math.Log(intensity - trackbarConstantA));
-        }
+        private double convertRealIntensityToTrackbarIntensity(double intensity) => (int)(trackbarConstantB * Math.Log(intensity - trackbarConstantA));
 
         private void trackBarMaxInt_ValueChanged(object sender, EventArgs e)
         {
@@ -258,7 +240,7 @@ namespace ReciPro
                     }
 
 
-                    
+
                 }
                 else
                 {
@@ -286,10 +268,7 @@ namespace ReciPro
             }
         }
 
-        public void FormDiffractionSimulatorGeometry_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        public void FormDiffractionSimulatorGeometry_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         private void buttonClearPicture_Click(object sender, EventArgs e)
         {
@@ -299,15 +278,9 @@ namespace ReciPro
             FormDiffractionSimulator.Draw();
         }
 
-        private void textBoxFileName_TextChanged(object sender, EventArgs e)
-        {
-            numericalTextBoxPixelHeight.Enabled = numericalTextBoxPixelWidth.Enabled = textBoxFileName.Text == "";
-        }
+        private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericalTextBoxPixelHeight.Enabled = numericalTextBoxPixelWidth.Enabled = textBoxFileName.Text == "";
 
-        private void trackBarPictureOpacity1_ValueChanged(object sender, EventArgs e)
-        {
-            FormDiffractionSimulator.Draw();
-        }
+        private void trackBarPictureOpacity1_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
         private void buttonRot90_Click(object sender, EventArgs e)
         {

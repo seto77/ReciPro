@@ -12,10 +12,7 @@ namespace ReciPro
         public List<ZoneAxes> zoneAxes;
         public List<ZoneAxis> zoneAxis;
 
-        public FormTEMIDResults()
-        {
-            InitializeComponent();
-        }
+        public FormTEMIDResults() => InitializeComponent();
 
         public FormTEMIDResults(FormTEMID formTEMID)
         {
@@ -62,9 +59,7 @@ namespace ReciPro
             }
         }
 
-        public object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis)
-        {
-            return new object[] {
+        public object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis) => new object[] {
                 i,
                 "[" + zoneaxis.u.ToString() +" " + zoneaxis.v.ToString() + " " + zoneaxis.w.ToString() + "]",
 
@@ -81,12 +76,9 @@ namespace ReciPro
 
                 zoneaxis.Phase
             };
-        }
 
-        public object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes)
-        {
-            return new object[] {
-                i,  
+        public object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes) => new object[] {
+                i,
                 "[" + zoneaxes.Za1.u.ToString() +" " + zoneaxes.Za1.v.ToString() + " " + zoneaxes.Za1.w.ToString() + "]",
                 "[" + zoneaxes.Za2.u.ToString() +" " + zoneaxes.Za2.v.ToString() + " " + zoneaxes.Za2.w.ToString() + "]",
                 "[" + zoneaxes.Za3.u.ToString() +" " + zoneaxes.Za3.v.ToString() + " " + zoneaxes.Za3.w.ToString() + "]",
@@ -96,7 +88,6 @@ namespace ReciPro
 
                 zoneaxes.Za1.Phase
             };
-        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -14,10 +14,7 @@ namespace ReciPro
 
         public bool SkipChange = true;
 
-        public FormAtom()
-        {
-            InitializeComponent();
-        }
+        public FormAtom() => InitializeComponent();
 
         /*
         internal void SetAtom(atom atom)

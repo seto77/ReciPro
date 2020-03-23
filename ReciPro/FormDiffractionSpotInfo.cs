@@ -70,7 +70,7 @@ namespace ReciPro
                 dataGridView.Columns[10].HeaderText = "Vg im";
                 dataGridView.Columns[11].HeaderText = "V'g re";
                 dataGridView.Columns[12].HeaderText = "V'g im";
-           
+
             }
             else
             {
@@ -168,7 +168,7 @@ namespace ReciPro
         {
             e.Cancel = true;
             this.Visible = false;
-        
+
         }
 
         private void numericBoxEffectiveDigit_ValueChanged(object sender, EventArgs e)
@@ -227,7 +227,7 @@ namespace ReciPro
             {
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            }            
+            }
 
         }
 
@@ -238,9 +238,10 @@ namespace ReciPro
 
             var sb = new StringBuilder("\t");
 
-            for (int j = 0; j < dataGridView.Rows.Count; j++) {
+            for (int j = 0; j < dataGridView.Rows.Count; j++)
+            {
                 var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[3, j].Value);
-                if((h+k+l)%2==0)
+                if ((h + k + l) % 2 == 0)
                     sb.Append($"{h} {k} {l} even \t");
                 else
                     sb.Append($"{h} {k} {l} odd \t");
@@ -258,7 +259,7 @@ namespace ReciPro
                     sb.Append($"{dataGridView[18, j].Value}\t");
 
                 sb.Append("\r\n");
-                if(thickness % 10==0)
+                if (thickness % 10 == 0)
                     Application.DoEvents();
             }
             Clipboard.SetDataObject(sb.ToString());

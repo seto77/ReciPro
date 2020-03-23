@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ReciPro
+﻿namespace ReciPro
 {
     internal static class Version
     {
@@ -8,7 +6,7 @@ namespace ReciPro
            "ReciPro"
            ;
 
-        static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
+        static public string VersionAndDate => History.Remove(0, 10).Remove(20);
 
         static public string History =
             "History" +
@@ -290,7 +288,7 @@ namespace ReciPro
             "\r\n ver1.00 (2002/03/03)  暫定動作バージョンを作成"
             ;
 
-        
+
 
         /// <summary>
         /// はじめに
@@ -340,14 +338,14 @@ namespace ReciPro
             + "\r\n The people or companies engaged in commercial enterprise may also use ReciPro for their buisiness."
             + "\r\n The use of ReciPro is limited to non-military and non-illegal purposes."
             ;
-             
+
 
         /// <summary>
         /// 免責事項
         /// </summary>
         static public string Exemption =
             "Disclaimer:"
-            + "\r\n ReciPro is provided by the author \"as is\" and \"with all faults.\" " 
+            + "\r\n ReciPro is provided by the author \"as is\" and \"with all faults.\" "
             + "\r\n The author makes no warranties of any kind concerning the safety, lack of viruses, inaccuracies, or other harmful components of ReciPro."
             + "\r\n The author will not be liable for any damages you may suffer in connection with using ReciPro."
             ;

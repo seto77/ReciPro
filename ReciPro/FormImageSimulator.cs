@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using static System.Math; 
+using static System.Math;
 
 
 namespace ReciPro
@@ -19,10 +19,10 @@ namespace ReciPro
     {
         #region プロパティ
 
-        public bool Native { get => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0; }
-        public HRTEM_Modes HRTEM_Mode { get => radioButtonModeQuasiCoherent.Checked? HRTEM_Modes.Quasi: HRTEM_Modes.TCC; }
+        public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
+        public HRTEM_Modes HRTEM_Mode => radioButtonModeQuasiCoherent.Checked ? HRTEM_Modes.Quasi : HRTEM_Modes.TCC;
 
-        public ImageModes ImageMode { get => radioButtonHRTEM.Checked ? ImageModes.HRTEM : radioButtonProjectedPotential.Checked ? ImageModes.POTENTIAL : ImageModes.STEM; }
+        public ImageModes ImageMode => radioButtonHRTEM.Checked ? ImageModes.HRTEM : radioButtonProjectedPotential.Checked ? ImageModes.POTENTIAL : ImageModes.STEM;
 
         /// <summary>
         /// 電子の加速電圧 (kV)
@@ -154,9 +154,9 @@ namespace ReciPro
         private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
 
         private PseudoBitmap scaleImage;
-        public enum ImageModes { HRTEM, POTENTIAL, STEM}
+        public enum ImageModes { HRTEM, POTENTIAL, STEM }
 
-        public enum HRTEM_Modes {Quasi, TCC }
+        public enum HRTEM_Modes { Quasi, TCC }
 
         #endregion フィールド
 
@@ -236,14 +236,14 @@ namespace ReciPro
             public string Text;
             public bool LockIntensity;
 
-            public ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity=false)
+            public ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity = false)
             {
                 Width = width;
                 Height = height;
                 Resolution = resolution;
                 Mat = mat;
                 A = new PointD(mat.E11, mat.E21);
-                B = new PointD(mat.E12, mat.E22); 
+                B = new PointD(mat.E12, mat.E22);
                 C = new PointD(mat.E13, mat.E23);
                 Text = text;
                 LockIntensity = lockIntensity;
@@ -260,7 +260,7 @@ namespace ReciPro
         private void ButtonSimulate_Click(object sender, EventArgs e)
         {
             Enabled = false;
-          
+
             toolStripStatusLabel1.Text = "";
             toolStripProgressBar1.Value = 0;
 
@@ -273,7 +273,7 @@ namespace ReciPro
             Enabled = true;
         }
 
-        private void simulatePotential(bool realtimeMode=false)
+        private void simulatePotential(bool realtimeMode = false)
         {
             sw.Restart();
 
@@ -348,7 +348,7 @@ namespace ReciPro
             toolStripStatusLabel1.Text += "Drawing: " + (sw.ElapsedMilliseconds - temp).ToString() + " msec.";
         }
 
-        public void simulateHRTEM(bool realtimeMode=false)
+        public void simulateHRTEM(bool realtimeMode = false)
         {
             sw.Restart();
 
@@ -378,7 +378,7 @@ namespace ReciPro
                 //進捗状況を報告
                 toolStripProgressBar1.Value = (int)(100.0 * (t + 1) / tLen);
                 toolStripStatusLabel1.Text = toolStripProgressBar1.Value.ToString() + " % completed.";
-                if(!realtimeMode)
+                if (!realtimeMode)
                     Application.DoEvents();
             }
             var temp = sw.ElapsedMilliseconds;
@@ -398,7 +398,7 @@ namespace ReciPro
                     //ノーマライズ
                     totalImage[t][d] = normalize(totalImage[t][d], checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
                     //PseudoBitmapを生成
-                    pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t] 
+                    pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                         = new PseudoBitmap(totalImage[t][d], width)
                         {
                             Tag = new ImageInfo(width, height, ImageResolution, mat, "t=" + thicknessArray[t].ToString() + "\r\nf=" + defocusArray[d].ToString()),
@@ -417,7 +417,7 @@ namespace ReciPro
                 var oldPseudo = pseudo.Cast<PseudoBitmap>().ToList();
                 for (int r = 0, n = 0; r < newRow; r++)
                     for (int c = 0; c < newCol; c++, n++)
-                            newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
+                        newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
                 pseudo = newPseudo;
             }
 
@@ -445,7 +445,7 @@ namespace ReciPro
         public void setPseudoBitamap(PseudoBitmap[,] image)
         {
 
-            
+
             var row = image.GetLength(0);
             var col = image.GetLength(1);
 
@@ -491,9 +491,9 @@ namespace ReciPro
                     }
                 tableLayoutPanel.ResumeLayout();
             }
-            
+
             //if(pictureBoxes[0, 0].ScrollBarVisible)
-                pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
+            pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
         }
 
         private bool FormImageSimulator_MouseDown2(object sender, MouseEventArgs e, PointD pt)
@@ -523,8 +523,8 @@ namespace ReciPro
                             }
                             else
                             {
-                                rowsList.ForEach(row => tableLayoutPanel.RowStyles[row].Height = targetR == row ? 100f: 0f);
-                                colsList.ForEach(col => tableLayoutPanel.ColumnStyles[col].Width = targetC==col ? 100f : 0f);
+                                rowsList.ForEach(row => tableLayoutPanel.RowStyles[row].Height = targetR == row ? 100f : 0f);
+                                colsList.ForEach(col => tableLayoutPanel.ColumnStyles[col].Width = targetC == col ? 100f : 0f);
                             }
 
                             //rowsList.ForEach(row => colsList.ForEach(col => pictureBoxes[row, col].SkipEvent = false));
@@ -556,7 +556,7 @@ namespace ReciPro
                 return;
 
             foreach (var b in pictureBoxes)
-                if (b!=null && b != (ScalablePictureBox)sender)
+                if (b != null && b != (ScalablePictureBox)sender)
                 {
                     b.DrawingAreaChanged -= PictureBox_DrawingAreaChanged;
                     b.ZoomAndCenter = (zoom, center);
@@ -625,7 +625,7 @@ namespace ReciPro
         {
             numericBoxObjAperRadius.Enabled = numericBoxObjAperX.Enabled = numericBoxObjAperY.Enabled = !checkBoxOpenAperture.Checked;
 
-            textBoxApertureRadius.Text = checkBoxOpenAperture.Checked? ObjAperRadius.ToString() : (2 * Math.Sin(ObjAperRadius / 2) / Rambda).ToString("f4");
+            textBoxApertureRadius.Text = checkBoxOpenAperture.Checked ? ObjAperRadius.ToString() : (2 * Math.Sin(ObjAperRadius / 2) / Rambda).ToString("f4");
 
             CalculateInsideSpotInfo();
         }
@@ -725,7 +725,7 @@ namespace ReciPro
             checkBoxGraphEs.ForeColor = colorEs;
             checkBoxGraphEc.ForeColor = colorEc;
             checkBoxGraphAll.ForeColor = colorAll;
-            double rambda = Rambda, rambda2 = rambda * rambda; 
+            double rambda = Rambda, rambda2 = rambda * rambda;
 
             List<PointD> kai = new List<PointD>(), es = new List<PointD>(), ec = new List<PointD>(), all = new List<PointD>();
             var delta = Cc * DeltaVol / AccVol;
@@ -735,7 +735,7 @@ namespace ReciPro
                 kai.Add(new PointD(u, Math.Sin(Math.PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
                 es.Add(new PointD(u, Math.Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//時間的インコヒーレンス
                 ec.Add(new PointD(u, Math.Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2)));//空間的インコヒーレンス
-                all.Add(new PointD(u, kai[kai.Count-1].Y * es[es.Count - 1].Y * ec[ec.Count - 1].Y));
+                all.Add(new PointD(u, kai[kai.Count - 1].Y * es[es.Count - 1].Y * ec[ec.Count - 1].Y));
             }
             graphControl.ClearProfile();
             var profiles = new List<Profile>();
@@ -766,8 +766,8 @@ namespace ReciPro
                 for (int i = 0; i < p[0].Pt.Count; i++)
                 {
                     sb.Append(p[0].Pt[i].X.ToString());
-                    for(int j=0; j< p.Length; j++)
-                        sb.Append("\t"+p[j].Pt[i].Y.ToString());
+                    for (int j = 0; j < p.Length; j++)
+                        sb.Append("\t" + p[j].Pt[i].Y.ToString());
                     sb.Append("\r\n");
                 }
                 Clipboard.SetDataObject(sb.ToString());
@@ -822,7 +822,7 @@ namespace ReciPro
         private void PictureBox_Paint2(object sender, PaintEventArgs e)
         {
             var box = sender as ScalablePictureBox;
-            if (box.PseudoBitmap != null && box.PseudoBitmap.Tag !=null && box.PseudoBitmap.Tag is ImageInfo info)
+            if (box.PseudoBitmap != null && box.PseudoBitmap.Tag != null && box.PseudoBitmap.Tag is ImageInfo info)
             {
                 var conv = new Func<PointD, PointD>(src => box.ConvertToClientPt(src));
                 var zoom = box.Zoom;
@@ -830,7 +830,7 @@ namespace ReciPro
             }
         }
 
-        private void drawSymbols(Graphics g, Func<PointD, PointD> conv, double zoom, ImageInfo imageInfo, bool merge=false)
+        private void drawSymbols(Graphics g, Func<PointD, PointD> conv, double zoom, ImageInfo imageInfo, bool merge = false)
         {
             var reso = imageInfo.Resolution;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -869,20 +869,20 @@ namespace ReciPro
             if (checkBoxShowScale.Checked)
             {
                 var pen = new Pen(colorControlScale.Color, 3);
-                var pt1 = merge ? conv(new PointD(4, 4)) :  new PointD(4f, 4f);
+                var pt1 = merge ? conv(new PointD(4, 4)) : new PointD(4f, 4f);
                 var pt2 = new PointD(pt1.X + numericBoxScaleLength.Value / reso * zoom, pt1.Y);
                 g.DrawLine(pen, (float)pt1.X, (float)pt1.Y, (float)pt2.X, (float)pt2.Y);
             }
 
-   
+
         }
 
         enum formatEnum { Meta, PNG, TIFF }
         enum actionEnum { Save, Copy }
         private void Save(formatEnum format, actionEnum action)
         {
-            
-            if (pictureBoxes !=null && pictureBoxes.Length != 0)
+
+            if (pictureBoxes != null && pictureBoxes.Length != 0)
             {
                 int row = pictureBoxes.GetLength(0), col = pictureBoxes.GetLength(1);
                 var pseudo = new PseudoBitmap[row, col];
@@ -890,7 +890,7 @@ namespace ReciPro
                     for (int c = 0; c < col; c++)
                         pseudo[r, c] = pictureBoxes[r, c].PseudoBitmap;
                 int width = pseudo[0, 0].Width, height = pseudo[0, 0].Height;
-                
+
                 //イメージを生成するAction. RとCが無効の場合は全画像、有効な場合は1枚画像
                 var draw = new Action<Graphics, PseudoBitmap>((g, p) =>
                 {
@@ -916,7 +916,7 @@ namespace ReciPro
                     }
                 });
 
-                
+
 
                 //メタファイルをセーブしたりコピーしたりするときのアクション
                 var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>
@@ -988,7 +988,7 @@ namespace ReciPro
                     }
                     else//全体保存 or 全体コピー
                     {
-                        var bmp = new Bitmap(col* width, row* height);
+                        var bmp = new Bitmap(col * width, row * height);
                         draw(Graphics.FromImage(bmp), null);
                         if (action == actionEnum.Save)
                             bmp.Save(dlg.FileName, ImageFormat.Png);
@@ -1024,7 +1024,7 @@ namespace ReciPro
         private void ToolStripMenuItemSaveTIFF_Click(object sender, EventArgs e) => Save(formatEnum.TIFF, actionEnum.Save);
         private void ToolStripMenuItemSaveMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Save);
 
-       
+
 
         private void ToolStripMenuItemCopyImage_Click(object sender, EventArgs e) => Save(formatEnum.PNG, actionEnum.Copy);
         private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Copy);

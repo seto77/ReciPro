@@ -67,10 +67,7 @@ namespace ReciPro
 
         #region 境界(Bounds)のFlowLayoutPanel関連
 
-        private void checkBoxShowBoundPlanes_CheckedChanged(object sender, EventArgs e)
-        {
-            SetGLObjects(null);
-        }
+        private void checkBoxShowBoundPlanes_CheckedChanged(object sender, EventArgs e) => SetGLObjects(null);
 
         private void AddBoundary_Click(object sender, EventArgs e)
         {
@@ -581,10 +578,7 @@ namespace ReciPro
 
         #region コンストラクタ
 
-        public FormStructureViewer()
-        {
-            InitializeComponent();
-        }
+        public FormStructureViewer() => InitializeComponent();
 
         private void FormStructureViewer_Load(object sender, EventArgs e)
         {
@@ -1020,20 +1014,11 @@ namespace ReciPro
 
         #endregion イメージ保存orコピー
 
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-            tabControl.BringToFront();
-        }
+        private void tabControl1_Click(object sender, EventArgs e) => tabControl.BringToFront();
 
-        private void checkBoxShowCrystalAxes_CheckedChanged(object sender, EventArgs e)
-        {
-            glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
-        }
+        private void checkBoxShowCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
 
-        private void checkBoxShowLightingBall_CheckedChanged(object sender, EventArgs e)
-        {
-            glControlLight.Visible = toolStripButtonLightDirection.Checked;
-        }
+        private void checkBoxShowLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
         #region 印刷関連
 
@@ -1066,11 +1051,9 @@ namespace ReciPro
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
         }
 
-        private void printPerviewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void printPerviewToolStripMenuItem_Click(object sender, EventArgs e) =>
             // 印刷プレビューを表示
             printPreviewDialog1.ShowDialog();
-        }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1080,10 +1063,7 @@ namespace ReciPro
 
         #endregion 印刷関連
 
-        private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e)
-        {
-            glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
-        }
+        private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e) => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
 
         private void FormStructureViewer_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {

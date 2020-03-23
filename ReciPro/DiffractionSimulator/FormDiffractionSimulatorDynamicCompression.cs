@@ -21,15 +21,9 @@ namespace ReciPro
 
         private Dictionary<double, Profile> Profiles;
 
-        public FormDiffractionSimulatorDynamicCompression()
-        {
-            InitializeComponent();
-        }
+        public FormDiffractionSimulatorDynamicCompression() => InitializeComponent();
 
-        private void FormDiffractionSimulatorDynamicCompression_Load(object sender, EventArgs e)
-        {
-            CrystalControl = FormDiffractionSimulator.formMain.crystalControl;
-        }
+        private void FormDiffractionSimulatorDynamicCompression_Load(object sender, EventArgs e) => CrystalControl = FormDiffractionSimulator.formMain.crystalControl;
 
         /// <summary>
         /// Pasteボタンを押したときの動作
@@ -38,7 +32,7 @@ namespace ReciPro
         /// <param name="e"></param>
         private void buttonPaste_Click(object sender, EventArgs e)
         {
-            if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
+            if (Clipboard.GetDataObject().GetDataPresent(typeof(string)))
             {
                 try
                 {
@@ -148,7 +142,7 @@ namespace ReciPro
 
             int count = checkBoxOmegaStep.Checked ? numericBoxOmegaTimes.ValueInteger : 1;
             var initialRot = new Matrix3D(FormDiffractionSimulator.formMain.Crystal.RotationMatrix);
-             var path = (folderBrowserDialog.SelectedPath == "" ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
+            var path = (folderBrowserDialog.SelectedPath == "" ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
             sw.Restart();
 
             for (int i = 0; i < count; i++)
@@ -176,7 +170,7 @@ namespace ReciPro
             var numMax = 4;
             var ptTemp = graphControl.Profile.Pt;
             var pt = new List<PointD>();
-            for(int i=0; i< ptTemp.Count; i+= numMax)
+            for (int i = 0; i < ptTemp.Count; i += numMax)
             {
                 var num = Math.Min(numMax, ptTemp.Count - i);
                 var p = new PointD();
@@ -184,11 +178,11 @@ namespace ReciPro
                     p += ptTemp[j];
                 pt.Add(p / num);
             }
-            
+
             //var pt = graphControl.Profile.Pt;
 
             var states = new List<(double depth, double pressure, double thickness)>();
-            for (int i = 0; i < pt.Count-1; i++)
+            for (int i = 0; i < pt.Count - 1; i++)
                 states.Add(((pt[i].X + pt[i + 1].X) / 2, (pt[i].Y + pt[i + 1].Y) / 2, pt[i + 1].X - pt[i].X));
 
             int count = checkBoxOmegaStep.Checked ? numericBoxOmegaTimes.ValueInteger : 1;
@@ -204,9 +198,9 @@ namespace ReciPro
             //無回転時の圧縮面と平行なベクトル
             (int h, int k, int l, Vector3DBase vec) v1 = (-cK, cH, 0, (-cK * OriginalCrystal.A_Axis + cH * OriginalCrystal.B_Axis).Normarize());
             (int h, int k, int l, Vector3DBase vec) v2 = (0, -cL, cK, (-cL * OriginalCrystal.B_Axis + cK * OriginalCrystal.C_Axis).Normarize());
-            if (v1.vec.Length2< 0.1)
+            if (v1.vec.Length2 < 0.1)
                 v1 = (-cL, 0, cH, (-cL * OriginalCrystal.A_Axis + cH * OriginalCrystal.C_Axis).Normarize());
-            if (v2.vec.Length2< 0.1)
+            if (v2.vec.Length2 < 0.1)
                 v2 = (-cL, 0, cH, (-cL * OriginalCrystal.A_Axis + cH * OriginalCrystal.C_Axis).Normarize());
 
             //回転状態の圧縮面の法線ベクトル
@@ -338,7 +332,7 @@ namespace ReciPro
                         FormDiffractionSimulator.formMain.SetRotation(rot * initialRot * corrRot);
                 }
 
-               // if (spots.Count > 100 || i == states.Count - 1)
+                // if (spots.Count > 100 || i == states.Count - 1)
                 {
                     var image = getImageData(spots);
                     for (int j = 0; j < compiledImage.Length; j++)
@@ -442,26 +436,14 @@ namespace ReciPro
         private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength;
         private double spotRadiusOnDetector, error2, error3, sqrt2PI = Math.Sqrt(2 * Math.PI);
 
-        private void buttonSetFolder_Click(object sender, EventArgs e)
-        {
-            folderBrowserDialog.ShowDialog();
-        }
+        private void buttonSetFolder_Click(object sender, EventArgs e) => folderBrowserDialog.ShowDialog();
 
-        private void checkBoxSaveSimulatedPattern_CheckedChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanelSavePatterns.Enabled = checkBoxSaveSimulatedPattern.Checked;
-        }
+        private void checkBoxSaveSimulatedPattern_CheckedChanged(object sender, EventArgs e) => flowLayoutPanelSavePatterns.Enabled = checkBoxSaveSimulatedPattern.Checked;
 
-        private void checkBoxOmegaStep_CheckedChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanelOmegaStep.Enabled = checkBoxOmegaStep.Checked;
-        }
+        private void checkBoxOmegaStep_CheckedChanged(object sender, EventArgs e) => flowLayoutPanelOmegaStep.Enabled = checkBoxOmegaStep.Checked;
 
-        private void radioButton2019Model_CheckedChanged(object sender, EventArgs e)
-        {
-            groupBoxSlipPlane.Enabled = numericBoxCompressedThetaA.Enabled = numericBoxCompressedThetaB.Enabled =
+        private void radioButton2019Model_CheckedChanged(object sender, EventArgs e) => groupBoxSlipPlane.Enabled = numericBoxCompressedThetaA.Enabled = numericBoxCompressedThetaB.Enabled =
                 numericBoxReleasedThetaA.Enabled = numericBoxReleasedThetaB.Enabled = radioButton2019Model.Checked;
-        }
 
         private void FormDiffractionSimulatorDynamicCompression_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -469,10 +451,7 @@ namespace ReciPro
             this.Visible = false;
         }
 
-        private void FormDiffractionSimulatorDynamicCompression_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
-        }
+        private void FormDiffractionSimulatorDynamicCompression_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
         private void FormDiffractionSimulatorDynamicCompression_DragDrop(object sender, DragEventArgs e)
         {
@@ -592,7 +571,7 @@ namespace ReciPro
             return spotInformation;
         }
 
-        private PointD startArea = new PointD(double.NaN,double.NaN), endArea;
+        private PointD startArea = new PointD(double.NaN, double.NaN), endArea;
 
         /// <summary>
         /// フィルム座標で与えられたptが、検出器内に含まれるかどうかを返す。OverlapPivture機能がOFFの場合は、常に検出器設定が

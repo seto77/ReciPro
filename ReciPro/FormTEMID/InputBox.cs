@@ -5,31 +5,28 @@ namespace ReciPro
 {
     public partial class InputBox : UserControl
     {
-        public InputBox()
-        {
-            InitializeComponent();
-        }
+        public InputBox() => InitializeComponent();
 
         private double waveLength = 0;
 
         public double WaveLength
         {
-            set { waveLength = value; }
-            get { return waveLength; }
+            set => waveLength = value;
+            get => waveLength;
         }
 
         private double cameraLength = 0;
 
         public double CameraLength
         {
-            set { cameraLength = value; }
-            get { return cameraLength; }
+            set => cameraLength = value;
+            get => cameraLength;
         }
 
         public double Length
         {
-            set { numericalTextBoxLength.Value = value; }
-            get { return numericalTextBoxLength.Value; }
+            set => numericalTextBoxLength.Value = value;
+            get => numericalTextBoxLength.Value;
         }
 
         public delegate void MyEventHandler(object sender, EventArgs e);

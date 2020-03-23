@@ -58,7 +58,7 @@ namespace ReciPro
 
                 case WM_CHANGECBCHAIN:
                     if (msg.WParam == NextHandle)
-                        NextHandle = (IntPtr)msg.LParam;
+                        NextHandle = msg.LParam;
                     else if ((int)NextHandle != 0)
                         SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
                     break;
@@ -353,9 +353,9 @@ namespace ReciPro
 
             //初期結晶リストを読み込み
             readCrystalList(UserAppDataPath + "default.xml", false, true);
-            
+
             //何らかの理由(前回が不正終了だったなど)でdefalut.xmlが壊れている場合はinitial.xmlを読み込む
-            if(listBox.Items.Count==0)
+            if (listBox.Items.Count == 0)
                 readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
             initialDialog.Text = "Now Loading...Setting ReadMe.txt.";
@@ -412,10 +412,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="axis"></param>
         /// <param name="angle"></param>
-        public void Rotate((double X, double Y, double Z) axis, double angle)
-        {
-            Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
-        }
+        public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
 
         /// <summary>
         /// 回転量と回転角度を指定して、全フォームに回転命令を出す
@@ -623,13 +620,13 @@ namespace ReciPro
 
                 FormDiffractionSimulator.numericBoxResolution.Value = Math.Min(Math.Max(FormDiffractionSimulator.numericBoxResolution.Minimum, resolution), FormDiffractionSimulator.numericBoxResolution.Maximum);
 
-                FormDiffractionSimulator.waveLengthControl.WaveSource = 
+                FormDiffractionSimulator.waveLengthControl.WaveSource =
                     (WaveSource)System.Enum.Parse(typeof(WaveSource), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveSource", FormDiffractionSimulator.waveLengthControl.WaveSource.ToString()));
-                FormDiffractionSimulator.waveLengthControl.WaveLength = 
+                FormDiffractionSimulator.waveLengthControl.WaveLength =
                     Convert.ToDouble(regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveLength", "0.0250793474552456"));
-                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 
+                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber =
                     (int)regKey.GetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
-                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine = 
+                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine =
                     (XrayLine)System.Enum.Parse(typeof(XrayLine), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceLine", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine.ToString()));
                 FormDiffractionSimulator.CancelSetVector = false;
             }
@@ -760,45 +757,21 @@ namespace ReciPro
 
         #region ToolStripButtonのイベント
 
-        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e)
-        {
-            FormSpotID.Visible = toolStripButtonSpotID.Checked;
-        }
+        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
 
-        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e)
-        {
-            crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
-        }
+        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
 
-        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e)
-        {
-            crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
-        }
+        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
 
-        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e)
-        {
-            FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
-        }
+        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
 
-        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e)
-        {
-            FormStereonet.Visible = toolStripButtonStereonet.Checked;
-        }
+        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) => FormStereonet.Visible = toolStripButtonStereonet.Checked;
 
-        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e)
-        {
-            FormRotation.Visible = toolStripButtonRotation.Checked;
-        }
+        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) => FormRotation.Visible = toolStripButtonRotation.Checked;
 
-        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
-        {
-            FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
-        }
+        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
 
-        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e)
-        {
-            FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
-        }
+        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
 
         private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
         {
@@ -806,10 +779,7 @@ namespace ReciPro
             listBox_SelectedIndexChanged(listBox, e);
         }
 
-        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e)
-        {
-            FormTEMID.Visible = toolStripButtonTEMID.Checked;
-        }
+        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
 
         #endregion ToolStripButtonのイベント
 
@@ -970,7 +940,7 @@ namespace ReciPro
 
             double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
             double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta);
-            double cosPsi= Math.Cos(psi), sinPsi = Math.Sin(psi);
+            double cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi);
 
             var matrix = new Matrix3D(
                 cosPhi * cosPsi - cosTheta * sinPhi * sinPsi,
@@ -1039,10 +1009,7 @@ namespace ReciPro
             }
         }
 
-        private void buttonAllClear_Click(object sender, EventArgs e)
-        {
-            listBox.Items.Clear();
-        }
+        private void buttonAllClear_Click(object sender, EventArgs e) => listBox.Items.Clear();
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
@@ -1084,10 +1051,7 @@ namespace ReciPro
                 readCrystalList(Dlg.FileName, true, false);
         }
 
-        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e)
-        {
-            readCrystalList(UserAppDataPath + "initial.xml", false, true);
-        }
+        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e) => readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
         private void readCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
         {
@@ -1226,10 +1190,7 @@ namespace ReciPro
         #region Axisの描画関連
 
         //軸の情報を表示する部分
-        public void DrawAxes()
-        {
-            glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
-        }
+        public void DrawAxes() => glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
 
         private void crystalControl_CrystalChanged_1(Crystal crystal)
         {
@@ -1340,7 +1301,7 @@ namespace ReciPro
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripProgressBar.Visible = true;
-            
+
             (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
 
             if (!NeedUpdate)
@@ -1494,13 +1455,13 @@ namespace ReciPro
 
         private void tableLayoutPanel3_MouseDown(object sender, MouseEventArgs e)
         {
-           /* if (e.Button == MouseButtons.Right && e.Clicks == 2)
-            {
-                FormRotationMatrix formRotationMatrix = new FormRotationMatrix();
-                formRotationMatrix.FormMain = this;
-                formRotationMatrix.Show();
-            }
-            */
+            /* if (e.Button == MouseButtons.Right && e.Clicks == 2)
+             {
+                 FormRotationMatrix formRotationMatrix = new FormRotationMatrix();
+                 formRotationMatrix.FormMain = this;
+                 formRotationMatrix.Show();
+             }
+             */
         }
 
         private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)

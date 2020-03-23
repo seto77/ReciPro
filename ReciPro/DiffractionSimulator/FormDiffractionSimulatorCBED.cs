@@ -15,9 +15,9 @@ namespace ReciPro
     {
         public FormDiffractionSimulator FormDiffractionSimulator;
 
-        private double Voltage { get => FormDiffractionSimulator.waveLengthControl.Energy; }
-        private double WaveLength { get => FormDiffractionSimulator.WaveLength; }
-        private double Thickness { get => numericBoxWholeThicknessStart.Value; }
+        private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
+        private double WaveLength => FormDiffractionSimulator.WaveLength;
+        private double Thickness => numericBoxWholeThicknessStart.Value;
 
         private Crystal Crystal => FormDiffractionSimulator.formMain.Crystal;
 
@@ -42,12 +42,12 @@ namespace ReciPro
 
         //public double Defocus { get { return numericBoxDefocus.Value; } }
         //public double Cs { get { return numericBoxCs.Value; } }
-        public double AlphaMax { get => trackBarAdvancedAlphaMax.Value / 1000.0; }
+        public double AlphaMax => trackBarAdvancedAlphaMax.Value / 1000.0;
 
-        public bool DrawGuideCircles { get => checkBoxDrawGuideCircles.Checked; }
-        public int MaxNumOfBloch { get => numericBoxMaxNumOfG.ValueInteger; }
+        public bool DrawGuideCircles => checkBoxDrawGuideCircles.Checked;
+        public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
 
-        public int Division { get => numericBoxDivision.ValueInteger; }
+        public int Division => numericBoxDivision.ValueInteger;
 
         public double[] ThicknessArray
         {
@@ -192,7 +192,7 @@ namespace ReciPro
 
         private void generateImage(bool resetSrc = true, bool resetDest = true)
         {
-            if (FormDiffractionSimulator==null || Crystal == null || Crystal.Bethe.Disks == null)
+            if (FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null)
                 return;
 
             setImagePixelSize();
@@ -218,7 +218,7 @@ namespace ReciPro
                 pseudoBmp.SetScaleColdWarm();
 
             pseudoBmp.IsNegative = comboBoxGradient.SelectedIndex == 1;
-           
+
 
             CBED_Image = pseudoBmp.GetImage();
 
@@ -327,9 +327,6 @@ namespace ReciPro
 
         private void numericBoxMaxNumOfG_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
-        private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
-        }
+        private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e) => numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
     }
 }

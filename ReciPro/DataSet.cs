@@ -66,7 +66,7 @@ namespace ReciPro
                             return new PointD((double)Rows[i]["x0"], (double)Rows[i]["y0"]);
                     return new PointD(double.NaN, double.NaN);
                 }
-            } 
+            }
 
             /// <summary>
             /// プロパティ ダイレクトスポットのIndex(No)を取得する. 存在しない場合は-1を返す.

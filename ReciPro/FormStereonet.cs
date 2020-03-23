@@ -21,7 +21,7 @@ namespace ReciPro
         private PointD centerPt = new PointD(0, 0);
         private double mag;
 
-        public Matrix3D RotationMatrix { get { return formMain.Crystal.RotationMatrix; } }
+        public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
 
         public FormStereonet()
         {
@@ -43,7 +43,7 @@ namespace ReciPro
         {
             if (this.Visible)
             {
-                pointSize = (float)(trackBarPointSize.Value);
+                pointSize = trackBarPointSize.Value;
                 setVector();
                 centerPt = new PointD(0, 0);
 
@@ -318,15 +318,9 @@ namespace ReciPro
         }
 
         //Src（単位なし）をClient(pixel)に変換
-        private PointF convertSrcToClient(PointD pt)
-        {
-            return new PointF((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
-        }
+        private PointF convertSrcToClient(PointD pt) => new PointF((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
 
-        private PointF convertSrcToClient(double x, double y)
-        {
-            return convertSrcToClient(new PointD(x, y));
-        }
+        private PointF convertSrcToClient(double x, double y) => convertSrcToClient(new PointD(x, y));
 
         private PointD convertClientToSrc(Point pt)
         {
@@ -334,10 +328,7 @@ namespace ReciPro
             return p;
         }
 
-        private PointD convertClientToSrc(int x, int y)
-        {
-            return convertClientToSrc(new Point(x, y));
-        }
+        private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
 
         //指数範囲が変更されたとき
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
@@ -519,7 +510,7 @@ namespace ReciPro
         private void trackBarStrSize_Scroll(object sender, EventArgs e)
         {
             strFont = new Font("Tahoma", trackBarStrSize.Value / 9f);
-            pointSize = (float)(trackBarPointSize.Value);
+            pointSize = trackBarPointSize.Value;
             Draw();
         }
 
@@ -543,15 +534,9 @@ namespace ReciPro
             graphicsBox.Refresh();
         }
 
-        private void radioButtonOutlineEquator_CheckedChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
+        private void radioButtonOutlineEquator_CheckedChanged(object sender, EventArgs e) => Draw();
 
-        private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
+        private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e) => Draw();
 
         private void radioButtonAxes_CheckedChanged(object sender, EventArgs e)
         {
@@ -609,11 +594,9 @@ namespace ReciPro
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
         }
 
-        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) =>
             // 印刷プレビューを表示
             printPreviewDialog1.ShowDialog();
-        }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -695,10 +678,7 @@ namespace ReciPro
             panelPlanes.Enabled = radioButtonCircleByPlanes.Checked;
         }
 
-        private void colorControl_ColorChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
+        private void colorControl_ColorChanged(object sender, EventArgs e) => Draw();
 
         private List<List<PointD>> positionRecorder = new List<List<PointD>>();
 
@@ -826,9 +806,6 @@ namespace ReciPro
             Draw();
         }
 
-        private void FormStereonet_Paint(object sender, PaintEventArgs e)
-        {
-            Draw();
-        }
+        private void FormStereonet_Paint(object sender, PaintEventArgs e) => Draw();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Crystallography;
 using Crystallography.Controls;
 using Crystallography.OpenGL;
-using MathNet.Numerics.LinearAlgebra.Complex;
 using OpenTK;
 using System;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace ReciPro
         /// </summary>
         public Matrix3D RotBase { get; set; } = new Matrix3D();
 
-        public Matrix3D RotReciPro { get => Euler.SetEulerAngle(FormMain.Phi, FormMain.Theta, FormMain.Psi); }
+        public Matrix3D RotReciPro => Euler.SetEulerAngle(FormMain.Phi, FormMain.Theta, FormMain.Psi);
 
         public Matrix3D RotExp
         {
@@ -35,10 +34,7 @@ namespace ReciPro
             }
         }
 
-        public FormRotationMatrix()
-        {
-            InitializeComponent();
-        }
+        public FormRotationMatrix() => InitializeComponent();
 
         private bool skip = false;
 
@@ -66,7 +62,7 @@ namespace ReciPro
 
         private void buttonPaste_Click(object sender, EventArgs e)
         {
-            if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
+            if (Clipboard.GetDataObject().GetDataPresent(typeof(string)))
             {
                 var data = Clipboard.GetDataObject();
                 var str = (string)data.GetData(typeof(string).ToString(), true);
@@ -127,7 +123,7 @@ namespace ReciPro
         /// 角度をセット. exp=trueの時は、expのオイラー角が入力されたとき
         /// </summary>
         /// <param name="fromExp"></param>
-        public void SetRotation(bool fromExp=false)
+        public void SetRotation(bool fromExp = false)
         {
             if (skip)
                 return;
@@ -166,10 +162,10 @@ namespace ReciPro
             numericBox33.Value = rotMatrix.E33;
 
 
-            if(checkBoxLink.Checked && fromExp == false)
+            if (checkBoxLink.Checked && fromExp == false)
             {
                 var dir = getExpDirections();
-                var result = Euler.DecomposeMatrix(RotReciPro* RotBase.Inverse(), dir[0], dir[1], dir[2]);
+                var result = Euler.DecomposeMatrix(RotReciPro * RotBase.Inverse(), dir[0], dir[1], dir[2]);
                 numericBoxExp1.RadianValue = result[0];
                 numericBoxExp2.RadianValue = result[1];
                 numericBoxExp3.RadianValue = result[2];
@@ -179,7 +175,7 @@ namespace ReciPro
             skip = false;
         }
 
-       // enum dir { PlusX, MinusX, PlusY, MinusY, PlusZ, MinusZ }
+        // enum dir { PlusX, MinusX, PlusY, MinusY, PlusZ, MinusZ }
 
         private void setAxes(GLControlAlpha gl)
         {
@@ -196,9 +192,9 @@ namespace ReciPro
             obj.Add(new Cylinder(new V3(0, -1, 0), new V3(0, 2, 0), r, mat, DrawingMode.Surfaces));//軸
             obj.Add(new Cone(new V3(0, 1.1, 0), new V3(0, -0.2, 0), r * 2, mat, DrawingMode.Surfaces));//矢
             //Z軸
-            mat.Color = new C4(0f, 0f, 0.8f,  1f);
+            mat.Color = new C4(0f, 0f, 0.8f, 1f);
             obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0,0,  -0.2), r * 2, mat, DrawingMode.Surfaces));//矢
+            obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, mat, DrawingMode.Surfaces));//矢
 
             //中央の球
             mat.Color = C4.Gray;
@@ -273,7 +269,7 @@ namespace ReciPro
             var rot = Matrix3D.Rot(dir[0], angle[0]) * Matrix3D.Rot(dir[1], angle[1]) * Matrix3D.Rot(dir[2], angle[2]);
 
             if (checkBoxLink.Checked && gl.Name.Contains("Ex"))
-                rot =  RotReciPro;
+                rot = RotReciPro;
 
             obj.Add(new Sphere(new V3(0, 0, 0), r * 6, mat, DrawingMode.Surfaces));
             var nX = rot * new V3(r * 6, 0, 0);
@@ -297,15 +293,9 @@ namespace ReciPro
             FormMain.toolStripButtonRotation.Checked = false;
         }
 
-        private void ButtonViewIsometric_Click(object sender, EventArgs e)
-        {
-            glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
-        }
+        private void ButtonViewIsometric_Click(object sender, EventArgs e) => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
 
-        private void ButtonViewAlongBeam_Click(object sender, EventArgs e)
-        {
-            glControlReciProGonio.WorldMatrix = Matrix4d.Identity;
-        }
+        private void ButtonViewAlongBeam_Click(object sender, EventArgs e) => glControlReciProGonio.WorldMatrix = Matrix4d.Identity;
 
 
         /// <summary>
@@ -315,7 +305,7 @@ namespace ReciPro
         /// <param name="e"></param>
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             if (!(sender as RadioButton).Checked)
                 return;
             var name = (sender as RadioButton).Name;
@@ -353,15 +343,15 @@ namespace ReciPro
                     radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = false;
                     radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = true;
                     radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = true;
-                    if(radioButton3rdXminus.Checked || radioButton3rdXplus.Checked)
-                    radioButton3rdYplus.Checked = true;
+                    if (radioButton3rdXminus.Checked || radioButton3rdXplus.Checked)
+                        radioButton3rdYplus.Checked = true;
                 }
                 else if (name.Contains("Y"))
                 {
                     radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = true;
                     radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = false;
                     radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = true;
-                    if(radioButton3rdYminus.Checked || radioButton3rdYplus.Checked)
+                    if (radioButton3rdYminus.Checked || radioButton3rdYplus.Checked)
                         radioButton3rdZplus.Checked = true;
                 }
                 else
@@ -369,7 +359,7 @@ namespace ReciPro
                     radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = true;
                     radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = true;
                     radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = false;
-                    if(radioButton3rdZminus.Checked || radioButton3rdZplus.Checked)
+                    if (radioButton3rdZminus.Checked || radioButton3rdZplus.Checked)
                         radioButton3rdXplus.Checked = true;
                 }
             }
@@ -427,7 +417,7 @@ namespace ReciPro
         {
             var matrix = (sender as GLControlAlpha).WorldMatrix;
             var name = (sender as GLControlAlpha).Name;
-            var glControls = new[] { glControlReciProGonio, glControlReciProAxes, glControlReciProObjects ,glControlExpGonio,glControlExpAxes,glControlExpObjects};
+            var glControls = new[] { glControlReciProGonio, glControlReciProAxes, glControlReciProObjects, glControlExpGonio, glControlExpAxes, glControlExpObjects };
 
             foreach (var glControl in glControls)
                 if (glControl.Name != name)
@@ -446,11 +436,11 @@ namespace ReciPro
 
             var box = sender as NumericBox;
             if (box.Value > 360)
-            { 
+            {
                 box.Value -= 360;
                 return;
             }
-            else if(box.Value <-360)
+            else if (box.Value < -360)
             {
                 box.Value += 360;
                 return;
@@ -470,7 +460,7 @@ namespace ReciPro
                     FormMain.Psi = euler.Psi;
                 skip = false;
             }
-            
+
             SetRotation(true);
         }
 
@@ -478,7 +468,7 @@ namespace ReciPro
         {
 
             if (checkBoxLink.Checked)
-                RotBase = RotExp.Inverse() *RotReciPro;
+                RotBase = RotExp.Inverse() * RotReciPro;
 
             SetRotation(true);
 

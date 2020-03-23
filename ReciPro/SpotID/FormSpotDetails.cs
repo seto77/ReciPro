@@ -12,13 +12,10 @@ namespace ReciPro
     public partial class FormSpotDetails : Form
     {
         public FormSpotID FormSpotID;
-        public int BoxWide { get => scalablePictureBoxAdvanced.PictureSize.Width; }
-        public int BoxHeight { get => scalablePictureBoxAdvanced.PictureSize.Height; }
+        public int BoxWide => scalablePictureBoxAdvanced.PictureSize.Width;
+        public int BoxHeight => scalablePictureBoxAdvanced.PictureSize.Height;
 
-        public FormSpotDetails()
-        {
-            InitializeComponent();
-        }
+        public FormSpotDetails() => InitializeComponent();
 
         public void SetData(bool renewImage = true)
         {

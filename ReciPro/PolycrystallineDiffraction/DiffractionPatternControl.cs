@@ -12,10 +12,7 @@ namespace ReciPro
 {
     public partial class DiffractionPatternControl : UserControl
     {
-        public DiffractionPatternControl()
-        {
-            InitializeComponent();
-        }
+        public DiffractionPatternControl() => InitializeComponent();
 
         #region プロパティ, フィールド
 
@@ -27,32 +24,32 @@ namespace ReciPro
         public List<Crystal> Crystals
         {
             set { crystals = value; SetPlaneIndex(); }
-            get { return crystals; }
+            get => crystals;
         }
 
         #region WaveProperty関連
 
         public double Cameralength
         {
-            set { numericalTextBoxCameraLength.Value = value; }
-            get { return numericalTextBoxCameraLength.Value; }
+            set => numericalTextBoxCameraLength.Value = value;
+            get => numericalTextBoxCameraLength.Value;
         }
 
         public double Wavelength
         {
-            set { waveLengthControl.WaveLength = value; }
-            get { return waveLengthControl.WaveLength; }
+            set => waveLengthControl.WaveLength = value;
+            get => waveLengthControl.WaveLength;
         }
 
         public WaveSource WaveSource
         {
-            set { waveLengthControl.WaveSource = value; }
-            get { return waveLengthControl.WaveSource; }
+            set => waveLengthControl.WaveSource = value;
+            get => waveLengthControl.WaveSource;
         }
 
         public WaveProperty WaveProperty
         {
-            get { return new WaveProperty(waveLengthControl.WaveSource, waveLengthControl.WaveLength, Monochromaticity, Convergence, false); }
+            get => new WaveProperty(waveLengthControl.WaveSource, waveLengthControl.WaveLength, Monochromaticity, Convergence, false);
             set
             {
                 waveLengthControl.WaveSource = value.Source;
@@ -74,14 +71,14 @@ namespace ReciPro
 
         public double Convergence
         {
-            set { numericalTextBoxConvergentAngle.RadianValue = value; }
-            get { return numericalTextBoxConvergentAngle.RadianValue; }
+            set => numericalTextBoxConvergentAngle.RadianValue = value;
+            get => numericalTextBoxConvergentAngle.RadianValue;
         }
 
         public double ConvergenceDegree
         {
-            set { numericalTextBoxConvergentAngle.Value = value; }
-            get { return numericalTextBoxConvergentAngle.Value; }
+            set => numericalTextBoxConvergentAngle.Value = value;
+            get => numericalTextBoxConvergentAngle.Value;
         }
 
         private double monochromaticity = 0;
@@ -98,7 +95,7 @@ namespace ReciPro
                 }
                 catch { }
             }
-            get { return monochromaticity; }
+            get => monochromaticity;
         }
 
         #endregion WaveProperty関連
@@ -110,8 +107,8 @@ namespace ReciPro
         /// </summary>
         public int ImageWidth
         {
-            get { return (int)numericUpDownImageWidth.Value; }
-            set { numericUpDownImageWidth.Value = value; }
+            get => (int)numericUpDownImageWidth.Value;
+            set => numericUpDownImageWidth.Value = value;
         }
 
         /// <summary>
@@ -119,22 +116,22 @@ namespace ReciPro
         /// </summary>
         public int ImageHeight
         {
-            get { return (int)numericUpDownImageHeight.Value; }
-            set { numericUpDownImageHeight.Value = value; }
+            get => (int)numericUpDownImageHeight.Value;
+            set => numericUpDownImageHeight.Value = value;
         }
 
         /// <summary>
         /// イメージの全ピクセル数
         /// </summary>
-        public int ImageLength { get { return ImageHeight * ImageWidth; } }
+        public int ImageLength => ImageHeight * ImageWidth;
 
         /// <summary>
         /// イメージの解像度 (mm/pixel)
         /// </summary>
         public double Resolution
         {
-            get { return numericalTextBoxImageResolution.Value; }
-            set { numericalTextBoxImageResolution.Value = value; }
+            get => numericalTextBoxImageResolution.Value;
+            set => numericalTextBoxImageResolution.Value = value;
         }
 
         /// <summary>
@@ -142,8 +139,8 @@ namespace ReciPro
         /// </summary>
         public double Phi
         {
-            set { numericalTextBoxPhi.RadianValue = value; }
-            get { return numericalTextBoxPhi.RadianValue; }
+            set => numericalTextBoxPhi.RadianValue = value;
+            get => numericalTextBoxPhi.RadianValue;
         }
 
         /// <summary>
@@ -151,17 +148,14 @@ namespace ReciPro
         /// </summary>
         public double Tau
         {
-            set { numericalTextBoxTau.RadianValue = value; }
-            get { return numericalTextBoxTau.RadianValue; }
+            set => numericalTextBoxTau.RadianValue = value;
+            get => numericalTextBoxTau.RadianValue;
         }
 
         /// <summary>
         /// イメージの傾き
         /// </summary>
-        public Matrix3D Rotation
-        {
-            get { return Matrix3D.Rot(new Vector3D(Math.Cos(Phi), Math.Sin(Phi), 0), Tau); }
-        }
+        public Matrix3D Rotation => Matrix3D.Rot(new Vector3D(Math.Cos(Phi), Math.Sin(Phi), 0), Tau);
 
         private delegate void callBack();
 
@@ -183,10 +177,7 @@ namespace ReciPro
                 numericalTextBoxCenterY.Value = center.Y;
                 DetectorProperty.Center = value;
             }
-            get
-            {
-                return new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
-            }
+            get => new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
         }
 
         private AreaDetector detectorProperty = null;
@@ -196,7 +187,7 @@ namespace ReciPro
         /// </summary>
         public AreaDetector DetectorProperty
         {
-            set { detectorProperty = value; }
+            set => detectorProperty = value;
             get
             {
                 if (detectorProperty == null)
@@ -237,13 +228,13 @@ namespace ReciPro
                     trackBarBgR.Value = 0;
                 }
             }
-            get { return isReferrenceImage; }
+            get => isReferrenceImage;
         }
 
         public bool SimulationCheck
         {
-            set { panelSimulationCheck.Enabled = value; }
-            get { return panelSimulationCheck.Enabled; }
+            set => panelSimulationCheck.Enabled = value;
+            get => panelSimulationCheck.Enabled;
         }
 
         /// <summary>
@@ -260,7 +251,7 @@ namespace ReciPro
                 }
                 numericalTextBoxFilmBlur.Value = value;
             }
-            get { return numericalTextBoxFilmBlur.Value; }
+            get => numericalTextBoxFilmBlur.Value;
         }
 
         #region ピクセル配列群
@@ -370,7 +361,7 @@ namespace ReciPro
             {
                 if (graphControlFrequency.LineList[1].X == graphControlFrequency.LineList[0].X) return;
 
-                decimal max = (decimal)((int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+                decimal max = (int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X);
                 if (numericUpDownMaxInt.Maximum < max)
                     numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
                 else if (numericUpDownMinInt.Minimum > max)
@@ -378,7 +369,7 @@ namespace ReciPro
                 else
                     numericUpDownMaxInt.Value = max;
 
-                decimal min = (decimal)((int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+                decimal min = (int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X);
                 if (numericUpDownMinInt.Maximum < min)
                     numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
                 else if (numericUpDownMinInt.Minimum > min)
@@ -436,7 +427,7 @@ namespace ReciPro
             }
             Profile p = new Profile();
             for (int i = 0; i < frequency.Count; i++)
-                p.Pt.Add(new PointD((double)frequency.Keys[i], (double)frequency[frequency.Keys[i]]));
+                p.Pt.Add(new PointD(frequency.Keys[i], frequency[frequency.Keys[i]]));
             return p;
         }
 
@@ -586,20 +577,11 @@ namespace ReciPro
             setRectangleMask();
         }
 
-        private void checkBoxRectangleIsBothSide_CheckedChanged(object sender, EventArgs e)
-        {
-            setRectangleMask();
-        }
+        private void checkBoxRectangleIsBothSide_CheckedChanged(object sender, EventArgs e) => setRectangleMask();
 
-        private void numericUpDownRectangleBand_ValueChanged(object sender, EventArgs e)
-        {
-            setRectangleMask();
-        }
+        private void numericUpDownRectangleBand_ValueChanged(object sender, EventArgs e) => setRectangleMask();
 
-        private void numericUpDownRectangleAngle_ValueChanged(object sender, EventArgs e)
-        {
-            setRectangleMask();
-        }
+        private void numericUpDownRectangleAngle_ValueChanged(object sender, EventArgs e) => setRectangleMask();
 
         #region 矩形マスク
 
@@ -760,10 +742,7 @@ namespace ReciPro
 
         #endregion 矩形マスク
 
-        private void numericUpDownCircleStart_ValueChanged(object sender, EventArgs e)
-        {
-            setCircleMask();
-        }
+        private void numericUpDownCircleStart_ValueChanged(object sender, EventArgs e) => setCircleMask();
 
         private void setCircleMask()
         {
@@ -829,7 +808,7 @@ namespace ReciPro
             scalablePictureBox.drawPictureBox();
         }
 
-        private PointD startMaskPoint=new PointD(double.NaN,double.NaN);
+        private PointD startMaskPoint = new PointD(double.NaN, double.NaN);
 
         private bool scalablePictureBox_MouseDown2(object sender, MouseEventArgs e, PointD pt)
         {
@@ -865,7 +844,7 @@ namespace ReciPro
                                 else
                                     scalablePictureBox.PseudoBitmap.Filter3[j * ImageWidth + i] = e.Button == MouseButtons.Left;
                 }
-                else if (radioButtonManualCircle.Checked && !double.IsNaN( startMaskPoint.X))
+                else if (radioButtonManualCircle.Checked && !double.IsNaN(startMaskPoint.X))
                 {
                     double r = (startMaskPoint - pt).Length;
                     int top = Math.Max((int)(startMaskPoint.Y - r - 0.5), 0);
@@ -963,7 +942,7 @@ namespace ReciPro
                 }
 
                 scalablePictureBox.drawPictureBox();
-                startMaskPoint = new PointD(double.NaN,double.NaN);
+                startMaskPoint = new PointD(double.NaN, double.NaN);
             }
             else
             {
@@ -1078,7 +1057,7 @@ namespace ReciPro
             {
                 if (checkBoxSimulation.Checked)//
                 {
-                    double opacity = (double)(trackBarOpacity.Value / 100.0);
+                    double opacity = trackBarOpacity.Value / 100.0;
 
                     for (int i = 0; i < SrcPixels.Length; i++)
                         DestPixels[i] = SrcPixels[i] * (1 - opacity) + SimulatedPixels[i] * opacity;
@@ -1105,10 +1084,7 @@ namespace ReciPro
             }
         }
 
-        private void trackBarOpacity_Scroll(object sender, EventArgs e)
-        {
-            setDestPixels();
-        }
+        private void trackBarOpacity_Scroll(object sender, EventArgs e) => setDestPixels();
 
         private void checkBoxSimulation_CheckedChanged(object sender, EventArgs e)
         {
@@ -1467,10 +1443,7 @@ namespace ReciPro
 
         public BackGroundParameter beforeParameter = new BackGroundParameter();
 
-        public double RefineBackGround()
-        {
-            return RefineBackGround(beforeParameter);
-        }
+        public double RefineBackGround() => RefineBackGround(beforeParameter);
 
         private delegate Matrix[] RefineBackGroundDelegate(int start, int end);
 
@@ -1765,7 +1738,7 @@ namespace ReciPro
         {
             bgH = trackBarBgH.Value;
             bgR = trackBarBgR.Value;
-            bgA = Math.Pow(10.0, (double)(trackBarBgA.Value) / 100.0);
+            bgA = Math.Pow(10.0, trackBarBgA.Value / 100.0);
 
             beforeParameter = new BackGroundParameter(bgH, center.X, center.Y, bgA, bgR, 0, 0, 0);
             for (int y = 0; y < ImageHeight; y++)
@@ -1775,10 +1748,7 @@ namespace ReciPro
             setSimulatedPixels();
         }
 
-        private void radioButtonBackground_CheckedChanged(object sender, EventArgs e)
-        {
-            setSimulatedPixels();
-        }
+        private void radioButtonBackground_CheckedChanged(object sender, EventArgs e) => setSimulatedPixels();
 
         #endregion
 
@@ -1912,15 +1882,9 @@ namespace ReciPro
 
         #endregion
 
-        public void ContolEnabled(bool flag)
-        {
-            groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag;
-        }
+        public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag;
 
-        private void numericalTextBoxCenterX_ValueChanged(object sender, EventArgs e)
-        {
-            center = new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
-        }
+        private void numericalTextBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
 
         private delegate void SetPlaneIndexCallBack();
 
