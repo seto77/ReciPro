@@ -16,17 +16,23 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
 
-            formScatteringFactor = new FormScatteringFactor();
-            formScatteringFactor.crystalControl = this;
-            formScatteringFactor.Visible = false;
+            formScatteringFactor = new FormScatteringFactor
+            {
+                crystalControl = this,
+                Visible = false
+            };
 
-            formSymmetryInformation = new FormSymmetryInformation();
-            formSymmetryInformation.crystalControl = this;
-            formSymmetryInformation.Visible = false;
+            formSymmetryInformation = new FormSymmetryInformation
+            {
+                crystalControl = this,
+                Visible = false
+            };
 
-            formStrain = new FormStrain();
-            formStrain.crystalControl = this;
-            formStrain.Visible = false;
+            formStrain = new FormStrain
+            {
+                crystalControl = this,
+                Visible = false
+            };
         }
 
         public bool SymmetryInformationVisible
@@ -1077,9 +1083,11 @@ namespace Crystallography.Controls
             {
                 if (listBoxAtoms.SelectedIndex == listBoxAtoms.IndexFromPoint(new Point(e.X, e.Y)))
                 {
-                    formAtomDetailedInfo = new FormAtomDetailedInfo();
-                    formAtomDetailedInfo.Atoms = (Atoms)listBoxAtoms.SelectedItem;
-                    formAtomDetailedInfo.Location = listBoxAtoms.PointToScreen(new Point(e.X, e.Y));
+                    formAtomDetailedInfo = new FormAtomDetailedInfo
+                    {
+                        Atoms = (Atoms)listBoxAtoms.SelectedItem,
+                        Location = listBoxAtoms.PointToScreen(new Point(e.X, e.Y))
+                    };
 
                     formAtomDetailedInfo.ShowDialog();
                 }
@@ -1133,8 +1141,7 @@ namespace Crystallography.Controls
         {
             if (Crystal != null)
             {
-                var dlg = new SaveFileDialog();
-                dlg.Filter = " *.cif| *.cif";
+                var dlg = new SaveFileDialog { Filter = " *.cif| *.cif" };
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     StreamWriter sw = new StreamWriter(dlg.FileName, false);
@@ -1345,8 +1352,7 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void readToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new System.Windows.Forms.OpenFileDialog();
-            dlg.Filter = "Database File[*.cpo]|*.cpo";
+            var dlg = new OpenFileDialog { Filter = "Database File[*.cpo]|*.cpo" };
             try
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -1379,8 +1385,7 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new System.Windows.Forms.SaveFileDialog();
-            dlg.Filter = "Database File[*.cpo]|*.cpo";
+            var dlg = new SaveFileDialog            {                Filter = "Database File[*.cpo]|*.cpo"            };
             try
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -1413,11 +1418,10 @@ namespace Crystallography.Controls
             if (crystal.Crystallites == null) return;
             int maxCrystallites = 499900;
 
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.ctf|*.ctf";
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            var dlg = new SaveFileDialog            {                Filter = "*.ctf|*.ctf"            };
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter sw = new StreamWriter(dlg.FileName);
+                var sw = new StreamWriter(dlg.FileName);
                 sw.WriteLine("Channel Text File");
                 sw.WriteLine("Prj\t OutPut from Recipro");
                 sw.WriteLine("Author\t[Unknown]");
@@ -1477,8 +1481,7 @@ namespace Crystallography.Controls
         {
             if (crystal.Crystallites == null) return;
 
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.txt|*.txt";
+            var dlg = new SaveFileDialog            {                Filter = "*.txt|*.txt"            };
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 using (StreamWriter sw = new StreamWriter(dlg.FileName))

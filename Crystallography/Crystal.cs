@@ -492,18 +492,13 @@ namespace Crystallography
         public double GetLengthPlane(int h, int k, int l)
         {
             if ((h == 0 && k == 0 && l == 0) || A * B * C == 0 || CellVolumeSqure <= 0) return 0;
-            switch (Symmetry.CrystalSystemStr)//ê‡•ª‚¯‚µ‚½‚Ù‚¤‚ª‘‚¢‚©‚ÈH
+            return Symmetry.CrystalSystemStr switch//ê‡•ª‚¯‚µ‚½‚Ù‚¤‚ª‘‚¢‚©‚ÈH
             {
-                case "cubic":
-                    return A / Math.Sqrt(h * h + k * k + l * l);
-
-                case "tetragoanl":
-                    return 1 / Math.Sqrt((h * h + k * k) / A / A + l * l / C / C);
-
-                case "orthorhombic":
-                    return 1 / Math.Sqrt(h * h / A / A + k * k / B / B + l * l / C / C);
-            }
-            return Math.Sqrt(1.0 / (h * h * sigma11 + k * k * sigma22 + l * l * sigma33 + 2 * k * l * sigma23 + 2 * l * h * sigma31 + 2 * h * k * sigma12) * CellVolumeSqure);
+                "cubic" => A / Math.Sqrt(h * h + k * k + l * l),
+                "tetragoanl" => 1 / Math.Sqrt((h * h + k * k) / A / A + l * l / C / C),
+                "orthorhombic" => 1 / Math.Sqrt(h * h / A / A + k * k / B / B + l * l / C / C),
+                _ => Math.Sqrt(1.0 / (h * h * sigma11 + k * k * sigma22 + l * l * sigma33 + 2 * k * l * sigma23 + 2 * l * h * sigma31 + 2 * h * k * sigma12) * CellVolumeSqure),
+            };
         }
 
         /// <summary>
@@ -647,10 +642,10 @@ namespace Crystallography
         {
             if (A_Axis == null) return;
             VectorOfAxis = new List<Vector3D>();
-            foreach (var index in indices)
+            foreach (var (U, V, W) in indices)
             {
-                var vec = index.U * A_Axis + index.V * B_Axis + index.W * C_Axis;
-                vec.Index = $"[{index.U}{index.V}{index.W}]";
+                var vec = U * A_Axis + V * B_Axis + W * C_Axis;
+                vec.Index = $"[{U}{V}{W}]";
                 VectorOfAxis.Add(vec);
             }
         }
@@ -1040,8 +1035,8 @@ namespace Crystallography
                 });
                 g.AddRange(gTemp);
                 outerList.ForEach(target => outer.Remove(target));
-                foreach (var o in outerTemp)
-                    outer.Add((o.h, o.k, o.l), o.glen);
+                foreach (var (h, k, l, glen) in outerTemp)
+                    outer.Add((h, k, l), glen);
             }
             g = g.OrderByDescending(v => v.d).ToList();
 

@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Edge = Crystallography.XrayLineEdge;
 
 namespace Crystallography
 {
@@ -65,1716 +66,1716 @@ namespace Crystallography
 			switch (z)
 			{
 				case 1:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.36000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.36000E-02,
+						_ => double.NaN,
+					};
 				case 2:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.46000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 2.46000E-02,
+						_ => double.NaN,
+					};
 				case 3:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.47500E-02;
-						case XrayLineEdge.L1: return 5.34000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 5.47500E-02,
+						Edge.L1 => 5.34000E-03,
+						_ => double.NaN,
+					};
 				case 4:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.11000E-01;
-						case XrayLineEdge.L1: return 8.42000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 1.11000E-01,
+						Edge.L1 => 8.42000E-03,
+						_ => double.NaN,
+					};
 				case 5:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.88000E-01;
-						case XrayLineEdge.L1: return 1.34700E-02;
-						case XrayLineEdge.L2: return 4.70000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 1.88000E-01,
+						Edge.L1 => 1.34700E-02,
+						Edge.L2 => 4.70000E-03,
+						_ => double.NaN,
+					};
 				case 6:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.83800E-01;
-						case XrayLineEdge.L1: return 1.95100E-02;
-						case XrayLineEdge.L2: return 6.40000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 2.83800E-01,
+						Edge.L1 => 1.95100E-02,
+						Edge.L2 => 6.40000E-03,
+						_ => double.NaN,
+					};
 				case 7:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.01600E-01;
-						case XrayLineEdge.L1: return 2.63100E-02;
-						case XrayLineEdge.L2: return 9.20000E-03;
-						case XrayLineEdge.L3: return 9.20000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 4.01600E-01,
+						Edge.L1 => 2.63100E-02,
+						Edge.L2 => 9.20000E-03,
+						Edge.L3 => 9.20000E-03,
+						_ => double.NaN,
+					};
 				case 8:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.32000E-01;
-						case XrayLineEdge.L1: return 2.37000E-02;
-						case XrayLineEdge.L2: return 7.10000E-03;
-						case XrayLineEdge.L3: return 7.10000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 5.32000E-01,
+						Edge.L1 => 2.37000E-02,
+						Edge.L2 => 7.10000E-03,
+						Edge.L3 => 7.10000E-03,
+						_ => double.NaN,
+					};
 				case 9:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.85400E-01;
-						case XrayLineEdge.L1: return 3.10000E-02;
-						case XrayLineEdge.L2: return 8.60000E-03;
-						case XrayLineEdge.L3: return 8.60000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 6.85400E-01,
+						Edge.L1 => 3.10000E-02,
+						Edge.L2 => 8.60000E-03,
+						Edge.L3 => 8.60000E-03,
+						_ => double.NaN,
+					};
 				case 10:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.66900E-01;
-						case XrayLineEdge.L1: return 4.50000E-02;
-						case XrayLineEdge.L2: return 1.83000E-02;
-						case XrayLineEdge.L3: return 1.83000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 8.66900E-01,
+						Edge.L1 => 4.50000E-02,
+						Edge.L2 => 1.83000E-02,
+						Edge.L3 => 1.83000E-02,
+						_ => double.NaN,
+					};
 				case 11:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.07210E+00;
-						case XrayLineEdge.L1: return 6.33000E-02;
-						case XrayLineEdge.L2: return 3.11000E-02;
-						case XrayLineEdge.L3: return 3.11000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.07210E+00,
+						Edge.L1 => 6.33000E-02,
+						Edge.L2 => 3.11000E-02,
+						Edge.L3 => 3.11000E-02,
+						_ => double.NaN,
+					};
 				case 12:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.30500E+00;
-						case XrayLineEdge.L1: return 8.94000E-02;
-						case XrayLineEdge.L2: return 5.14000E-02;
-						case XrayLineEdge.L3: return 5.14000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.30500E+00,
+						Edge.L1 => 8.94000E-02,
+						Edge.L2 => 5.14000E-02,
+						Edge.L3 => 5.14000E-02,
+						_ => double.NaN,
+					};
 				case 13:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.55960E+00;
-						case XrayLineEdge.L1: return 1.17700E-01;
-						case XrayLineEdge.L2: return 7.31000E-02;
-						case XrayLineEdge.L3: return 7.31000E-02;
-						case XrayLineEdge.M1: return 8.37567E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 1.55960E+00,
+						Edge.L1 => 1.17700E-01,
+						Edge.L2 => 7.31000E-02,
+						Edge.L3 => 7.31000E-02,
+						Edge.M1 => 8.37567E-03,
+						_ => double.NaN,
+					};
 				case 14:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.83890E+00;
-						case XrayLineEdge.L1: return 1.48700E-01;
-						case XrayLineEdge.L2: return 9.92000E-02;
-						case XrayLineEdge.L3: return 9.92000E-02;
-						case XrayLineEdge.M1: return 1.13572E-02;
-						case XrayLineEdge.M2: return 5.08305E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 1.83890E+00,
+						Edge.L1 => 1.48700E-01,
+						Edge.L2 => 9.92000E-02,
+						Edge.L3 => 9.92000E-02,
+						Edge.M1 => 1.13572E-02,
+						Edge.M2 => 5.08305E-03,
+						_ => double.NaN,
+					};
 				case 15:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.14550E+00;
-						case XrayLineEdge.L1: return 1.89300E-01;
-						case XrayLineEdge.L2: return 1.32200E-01;
-						case XrayLineEdge.L3: return 1.32200E-01;
-						case XrayLineEdge.M1: return 1.44615E-02;
-						case XrayLineEdge.M2: return 6.38493E-03;
-						case XrayLineEdge.M3: return 6.33669E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 2.14550E+00,
+						Edge.L1 => 1.89300E-01,
+						Edge.L2 => 1.32200E-01,
+						Edge.L3 => 1.32200E-01,
+						Edge.M1 => 1.44615E-02,
+						Edge.M2 => 6.38493E-03,
+						Edge.M3 => 6.33669E-03,
+						_ => double.NaN,
+					};
 				case 16:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.47200E+00;
-						case XrayLineEdge.L1: return 2.29200E-01;
-						case XrayLineEdge.L2: return 1.64800E-01;
-						case XrayLineEdge.L3: return 1.64800E-01;
-						case XrayLineEdge.M1: return 1.76882E-02;
-						case XrayLineEdge.M2: return 7.81363E-03;
-						case XrayLineEdge.M3: return 7.73488E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 2.47200E+00,
+						Edge.L1 => 2.29200E-01,
+						Edge.L2 => 1.64800E-01,
+						Edge.L3 => 1.64800E-01,
+						Edge.M1 => 1.76882E-02,
+						Edge.M2 => 7.81363E-03,
+						Edge.M3 => 7.73488E-03,
+						_ => double.NaN,
+					};
 				case 17:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.82240E+00;
-						case XrayLineEdge.L1: return 2.70200E-01;
-						case XrayLineEdge.L2: return 2.01600E-01;
-						case XrayLineEdge.L3: return 2.00000E-01;
-						case XrayLineEdge.M1: return 1.75000E-02;
-						case XrayLineEdge.M2: return 6.80000E-03;
-						case XrayLineEdge.M3: return 6.80000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 2.82240E+00,
+						Edge.L1 => 2.70200E-01,
+						Edge.L2 => 2.01600E-01,
+						Edge.L3 => 2.00000E-01,
+						Edge.M1 => 1.75000E-02,
+						Edge.M2 => 6.80000E-03,
+						Edge.M3 => 6.80000E-03,
+						_ => double.NaN,
+					};
 				case 18:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.20290E+00;
-						case XrayLineEdge.L1: return 3.20000E-01;
-						case XrayLineEdge.L2: return 2.47300E-01;
-						case XrayLineEdge.L3: return 2.45200E-01;
-						case XrayLineEdge.M1: return 2.53000E-02;
-						case XrayLineEdge.M2: return 1.24000E-02;
-						case XrayLineEdge.M3: return 1.24000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 3.20290E+00,
+						Edge.L1 => 3.20000E-01,
+						Edge.L2 => 2.47300E-01,
+						Edge.L3 => 2.45200E-01,
+						Edge.M1 => 2.53000E-02,
+						Edge.M2 => 1.24000E-02,
+						Edge.M3 => 1.24000E-02,
+						_ => double.NaN,
+					};
 				case 19:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.60740E+00;
-						case XrayLineEdge.L1: return 3.77100E-01;
-						case XrayLineEdge.L2: return 2.96300E-01;
-						case XrayLineEdge.L3: return 2.93600E-01;
-						case XrayLineEdge.M1: return 3.39000E-02;
-						case XrayLineEdge.M2: return 1.78000E-02;
-						case XrayLineEdge.M3: return 1.78000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 3.60740E+00,
+						Edge.L1 => 3.77100E-01,
+						Edge.L2 => 2.96300E-01,
+						Edge.L3 => 2.93600E-01,
+						Edge.M1 => 3.39000E-02,
+						Edge.M2 => 1.78000E-02,
+						Edge.M3 => 1.78000E-02,
+						_ => double.NaN,
+					};
 				case 20:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.03810E+00;
-						case XrayLineEdge.L1: return 4.37800E-01;
-						case XrayLineEdge.L2: return 3.50000E-01;
-						case XrayLineEdge.L3: return 3.46400E-01;
-						case XrayLineEdge.M1: return 4.37000E-02;
-						case XrayLineEdge.M2: return 2.54000E-02;
-						case XrayLineEdge.M3: return 2.54000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 4.03810E+00,
+						Edge.L1 => 4.37800E-01,
+						Edge.L2 => 3.50000E-01,
+						Edge.L3 => 3.46400E-01,
+						Edge.M1 => 4.37000E-02,
+						Edge.M2 => 2.54000E-02,
+						Edge.M3 => 2.54000E-02,
+						_ => double.NaN,
+					};
 				case 21:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.49280E+00;
-						case XrayLineEdge.L1: return 5.00400E-01;
-						case XrayLineEdge.L2: return 4.06700E-01;
-						case XrayLineEdge.L3: return 4.02200E-01;
-						case XrayLineEdge.M1: return 5.38000E-02;
-						case XrayLineEdge.M2: return 3.23000E-02;
-						case XrayLineEdge.M3: return 3.23000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 4.49280E+00,
+						Edge.L1 => 5.00400E-01,
+						Edge.L2 => 4.06700E-01,
+						Edge.L3 => 4.02200E-01,
+						Edge.M1 => 5.38000E-02,
+						Edge.M2 => 3.23000E-02,
+						Edge.M3 => 3.23000E-02,
+						_ => double.NaN,
+					};
 				case 22:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.96640E+00;
-						case XrayLineEdge.L1: return 5.63700E-01;
-						case XrayLineEdge.L2: return 4.61500E-01;
-						case XrayLineEdge.L3: return 4.55500E-01;
-						case XrayLineEdge.M1: return 6.03000E-02;
-						case XrayLineEdge.M2: return 3.46000E-02;
-						case XrayLineEdge.M3: return 3.46000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 4.96640E+00,
+						Edge.L1 => 5.63700E-01,
+						Edge.L2 => 4.61500E-01,
+						Edge.L3 => 4.55500E-01,
+						Edge.M1 => 6.03000E-02,
+						Edge.M2 => 3.46000E-02,
+						Edge.M3 => 3.46000E-02,
+						_ => double.NaN,
+					};
 				case 23:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.46510E+00;
-						case XrayLineEdge.L1: return 6.28200E-01;
-						case XrayLineEdge.L2: return 5.20500E-01;
-						case XrayLineEdge.L3: return 5.12900E-01;
-						case XrayLineEdge.M1: return 6.65000E-02;
-						case XrayLineEdge.M2: return 3.78000E-02;
-						case XrayLineEdge.M3: return 3.78000E-02;
-						case XrayLineEdge.M4: return 2.20000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 5.46510E+00,
+						Edge.L1 => 6.28200E-01,
+						Edge.L2 => 5.20500E-01,
+						Edge.L3 => 5.12900E-01,
+						Edge.M1 => 6.65000E-02,
+						Edge.M2 => 3.78000E-02,
+						Edge.M3 => 3.78000E-02,
+						Edge.M4 => 2.20000E-03,
+						_ => double.NaN,
+					};
 				case 24:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.98920E+00;
-						case XrayLineEdge.L1: return 6.94600E-01;
-						case XrayLineEdge.L2: return 5.83700E-01;
-						case XrayLineEdge.L3: return 5.74500E-01;
-						case XrayLineEdge.M1: return 7.41000E-02;
-						case XrayLineEdge.M2: return 4.25000E-02;
-						case XrayLineEdge.M3: return 4.25000E-02;
-						case XrayLineEdge.M4: return 2.30000E-03;
-						case XrayLineEdge.M5: return 2.30000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 5.98920E+00,
+						Edge.L1 => 6.94600E-01,
+						Edge.L2 => 5.83700E-01,
+						Edge.L3 => 5.74500E-01,
+						Edge.M1 => 7.41000E-02,
+						Edge.M2 => 4.25000E-02,
+						Edge.M3 => 4.25000E-02,
+						Edge.M4 => 2.30000E-03,
+						Edge.M5 => 2.30000E-03,
+						_ => double.NaN,
+					};
 				case 25:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.53900E+00;
-						case XrayLineEdge.L1: return 7.69000E-01;
-						case XrayLineEdge.L2: return 6.51400E-01;
-						case XrayLineEdge.L3: return 6.40300E-01;
-						case XrayLineEdge.M1: return 8.39000E-02;
-						case XrayLineEdge.M2: return 4.86000E-02;
-						case XrayLineEdge.M3: return 4.86000E-02;
-						case XrayLineEdge.M4: return 7.26159E-03;
-						case XrayLineEdge.M5: return 7.14378E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 6.53900E+00,
+						Edge.L1 => 7.69000E-01,
+						Edge.L2 => 6.51400E-01,
+						Edge.L3 => 6.40300E-01,
+						Edge.M1 => 8.39000E-02,
+						Edge.M2 => 4.86000E-02,
+						Edge.M3 => 4.86000E-02,
+						Edge.M4 => 7.26159E-03,
+						Edge.M5 => 7.14378E-03,
+						_ => double.NaN,
+					};
 				case 26:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.11200E+00;
-						case XrayLineEdge.L1: return 8.46100E-01;
-						case XrayLineEdge.L2: return 7.21100E-01;
-						case XrayLineEdge.L3: return 7.08100E-01;
-						case XrayLineEdge.M1: return 9.29000E-02;
-						case XrayLineEdge.M2: return 5.40000E-02;
-						case XrayLineEdge.M3: return 5.40000E-02;
-						case XrayLineEdge.M4: return 3.60000E-03;
-						case XrayLineEdge.M5: return 3.60000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 7.11200E+00,
+						Edge.L1 => 8.46100E-01,
+						Edge.L2 => 7.21100E-01,
+						Edge.L3 => 7.08100E-01,
+						Edge.M1 => 9.29000E-02,
+						Edge.M2 => 5.40000E-02,
+						Edge.M3 => 5.40000E-02,
+						Edge.M4 => 3.60000E-03,
+						Edge.M5 => 3.60000E-03,
+						_ => double.NaN,
+					};
 				case 27:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.70890E+00;
-						case XrayLineEdge.L1: return 9.25600E-01;
-						case XrayLineEdge.L2: return 7.93600E-01;
-						case XrayLineEdge.L3: return 7.78600E-01;
-						case XrayLineEdge.M1: return 1.00700E-01;
-						case XrayLineEdge.M2: return 5.95000E-02;
-						case XrayLineEdge.M3: return 5.95000E-02;
-						case XrayLineEdge.M4: return 2.90000E-03;
-						case XrayLineEdge.M5: return 2.90000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 7.70890E+00,
+						Edge.L1 => 9.25600E-01,
+						Edge.L2 => 7.93600E-01,
+						Edge.L3 => 7.78600E-01,
+						Edge.M1 => 1.00700E-01,
+						Edge.M2 => 5.95000E-02,
+						Edge.M3 => 5.95000E-02,
+						Edge.M4 => 2.90000E-03,
+						Edge.M5 => 2.90000E-03,
+						_ => double.NaN,
+					};
 				case 28:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.33280E+00;
-						case XrayLineEdge.L1: return 1.00810E+00;
-						case XrayLineEdge.L2: return 8.71900E-01;
-						case XrayLineEdge.L3: return 8.54700E-01;
-						case XrayLineEdge.M1: return 1.11800E-01;
-						case XrayLineEdge.M2: return 6.81000E-02;
-						case XrayLineEdge.M3: return 6.81000E-02;
-						case XrayLineEdge.M4: return 3.60000E-03;
-						case XrayLineEdge.M5: return 3.60000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.33280E+00,
+						Edge.L1 => 1.00810E+00,
+						Edge.L2 => 8.71900E-01,
+						Edge.L3 => 8.54700E-01,
+						Edge.M1 => 1.11800E-01,
+						Edge.M2 => 6.81000E-02,
+						Edge.M3 => 6.81000E-02,
+						Edge.M4 => 3.60000E-03,
+						Edge.M5 => 3.60000E-03,
+						_ => double.NaN,
+					};
 				case 29:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.97890E+00;
-						case XrayLineEdge.L1: return 1.09610E+00;
-						case XrayLineEdge.L2: return 9.51000E-01;
-						case XrayLineEdge.L3: return 9.31100E-01;
-						case XrayLineEdge.M1: return 1.19800E-01;
-						case XrayLineEdge.M2: return 7.36000E-02;
-						case XrayLineEdge.M3: return 7.36000E-02;
-						case XrayLineEdge.M4: return 1.60000E-03;
-						case XrayLineEdge.M5: return 1.60000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.97890E+00,
+						Edge.L1 => 1.09610E+00,
+						Edge.L2 => 9.51000E-01,
+						Edge.L3 => 9.31100E-01,
+						Edge.M1 => 1.19800E-01,
+						Edge.M2 => 7.36000E-02,
+						Edge.M3 => 7.36000E-02,
+						Edge.M4 => 1.60000E-03,
+						Edge.M5 => 1.60000E-03,
+						_ => double.NaN,
+					};
 				case 30:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 9.65860E+00;
-						case XrayLineEdge.L1: return 1.19360E+00;
-						case XrayLineEdge.L2: return 1.04280E+00;
-						case XrayLineEdge.L3: return 1.01970E+00;
-						case XrayLineEdge.M1: return 1.35900E-01;
-						case XrayLineEdge.M2: return 8.66000E-02;
-						case XrayLineEdge.M3: return 8.66000E-02;
-						case XrayLineEdge.M4: return 8.10000E-03;
-						case XrayLineEdge.M5: return 8.10000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 9.65860E+00,
+						Edge.L1 => 1.19360E+00,
+						Edge.L2 => 1.04280E+00,
+						Edge.L3 => 1.01970E+00,
+						Edge.M1 => 1.35900E-01,
+						Edge.M2 => 8.66000E-02,
+						Edge.M3 => 8.66000E-02,
+						Edge.M4 => 8.10000E-03,
+						Edge.M5 => 8.10000E-03,
+						_ => double.NaN,
+					};
 				case 31:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.03671E+01;
-						case XrayLineEdge.L1: return 1.29770E+00;
-						case XrayLineEdge.L2: return 1.14230E+00;
-						case XrayLineEdge.L3: return 1.11540E+00;
-						case XrayLineEdge.M1: return 1.58100E-01;
-						case XrayLineEdge.M2: return 1.06800E-01;
-						case XrayLineEdge.M3: return 1.02900E-01;
-						case XrayLineEdge.M4: return 1.74000E-02;
-						case XrayLineEdge.M5: return 1.74000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.03671E+01,
+						Edge.L1 => 1.29770E+00,
+						Edge.L2 => 1.14230E+00,
+						Edge.L3 => 1.11540E+00,
+						Edge.M1 => 1.58100E-01,
+						Edge.M2 => 1.06800E-01,
+						Edge.M3 => 1.02900E-01,
+						Edge.M4 => 1.74000E-02,
+						Edge.M5 => 1.74000E-02,
+						_ => double.NaN,
+					};
 				case 32:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.11031E+01;
-						case XrayLineEdge.L1: return 1.41430E+00;
-						case XrayLineEdge.L2: return 1.24780E+00;
-						case XrayLineEdge.L3: return 1.21670E+00;
-						case XrayLineEdge.M1: return 1.80000E-01;
-						case XrayLineEdge.M2: return 1.27900E-01;
-						case XrayLineEdge.M3: return 1.20800E-01;
-						case XrayLineEdge.M4: return 2.87000E-02;
-						case XrayLineEdge.M5: return 2.87000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.11031E+01,
+						Edge.L1 => 1.41430E+00,
+						Edge.L2 => 1.24780E+00,
+						Edge.L3 => 1.21670E+00,
+						Edge.M1 => 1.80000E-01,
+						Edge.M2 => 1.27900E-01,
+						Edge.M3 => 1.20800E-01,
+						Edge.M4 => 2.87000E-02,
+						Edge.M5 => 2.87000E-02,
+						_ => double.NaN,
+					};
 				case 33:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.18667E+01;
-						case XrayLineEdge.L1: return 1.52650E+00;
-						case XrayLineEdge.L2: return 1.35860E+00;
-						case XrayLineEdge.L3: return 1.32310E+00;
-						case XrayLineEdge.M1: return 2.03500E-01;
-						case XrayLineEdge.M2: return 1.46400E-01;
-						case XrayLineEdge.M3: return 1.40500E-01;
-						case XrayLineEdge.M4: return 4.12000E-02;
-						case XrayLineEdge.M5: return 4.12000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.18667E+01,
+						 Edge.L1=> 1.52650E+00,
+						 Edge.L2=> 1.35860E+00,
+						 Edge.L3=> 1.32310E+00,
+						 Edge.M1=> 2.03500E-01,
+						 Edge.M2=> 1.46400E-01,
+						 Edge.M3=> 1.40500E-01,
+						 Edge.M4=> 4.12000E-02,
+						 Edge.M5=> 4.12000E-02,
+						_=> double.NaN,
+					};
 				case 34:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.26578E+01;
-						case XrayLineEdge.L1: return 1.65390E+00;
-						case XrayLineEdge.L2: return 1.47620E+00;
-						case XrayLineEdge.L3: return 1.43580E+00;
-						case XrayLineEdge.M1: return 2.31500E-01;
-						case XrayLineEdge.M2: return 1.68200E-01;
-						case XrayLineEdge.M3: return 1.61900E-01;
-						case XrayLineEdge.M4: return 5.67000E-02;
-						case XrayLineEdge.M5: return 5.67000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.26578E+01,
+						 Edge.L1=> 1.65390E+00,
+						 Edge.L2=> 1.47620E+00,
+						 Edge.L3=> 1.43580E+00,
+						 Edge.M1=> 2.31500E-01,
+						 Edge.M2=> 1.68200E-01,
+						 Edge.M3=> 1.61900E-01,
+						 Edge.M4=> 5.67000E-02,
+						 Edge.M5=> 5.67000E-02,
+						_=> double.NaN,
+					};
 				case 35:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.34737E+01;
-						case XrayLineEdge.L1: return 1.78200E+00;
-						case XrayLineEdge.L2: return 1.59600E+00;
-						case XrayLineEdge.L3: return 1.54990E+00;
-						case XrayLineEdge.M1: return 2.56500E-01;
-						case XrayLineEdge.M2: return 1.89300E-01;
-						case XrayLineEdge.M3: return 1.81500E-01;
-						case XrayLineEdge.M4: return 7.01000E-02;
-						case XrayLineEdge.M5: return 6.90000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.34737E+01,
+						 Edge.L1=> 1.78200E+00,
+						 Edge.L2=> 1.59600E+00,
+						 Edge.L3=> 1.54990E+00,
+						 Edge.M1=> 2.56500E-01,
+						 Edge.M2=> 1.89300E-01,
+						 Edge.M3=> 1.81500E-01,
+						 Edge.M4=> 7.01000E-02,
+						 Edge.M5=> 6.90000E-02,
+						_=> double.NaN,
+					};
 				case 36:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.43256E+01;
-						case XrayLineEdge.L1: return 1.92100E+00;
-						case XrayLineEdge.L2: return 1.72720E+00;
-						case XrayLineEdge.L3: return 1.67490E+00;
-						case XrayLineEdge.M1: return 2.88330E-01;
-						case XrayLineEdge.M2: return 2.22700E-01;
-						case XrayLineEdge.M3: return 2.13800E-01;
-						case XrayLineEdge.M4: return 8.89000E-02;
-						case XrayLineEdge.M5: return 8.89000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.43256E+01,
+						 Edge.L1=> 1.92100E+00,
+						 Edge.L2=> 1.72720E+00,
+						 Edge.L3=> 1.67490E+00,
+						 Edge.M1=> 2.88330E-01,
+						 Edge.M2=> 2.22700E-01,
+						 Edge.M3=> 2.13800E-01,
+						 Edge.M4=> 8.89000E-02,
+						 Edge.M5=> 8.89000E-02,
+						_=> double.NaN,
+					};
 				case 37:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.51997E+01;
-						case XrayLineEdge.L1: return 2.06510E+00;
-						case XrayLineEdge.L2: return 1.86390E+00;
-						case XrayLineEdge.L3: return 1.80440E+00;
-						case XrayLineEdge.M1: return 3.22100E-01;
-						case XrayLineEdge.M2: return 2.47400E-01;
-						case XrayLineEdge.M3: return 2.38500E-01;
-						case XrayLineEdge.M4: return 1.11800E-01;
-						case XrayLineEdge.M5: return 1.10300E-01;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.51997E+01,
+						 Edge.L1=> 2.06510E+00,
+						 Edge.L2=> 1.86390E+00,
+						 Edge.L3=> 1.80440E+00,
+						 Edge.M1=> 3.22100E-01,
+						 Edge.M2=> 2.47400E-01,
+						 Edge.M3=> 2.38500E-01,
+						 Edge.M4=> 1.11800E-01,
+						 Edge.M5=> 1.10300E-01,
+						_=> double.NaN,
+					};
 				case 38:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.61046E+01;
-						case XrayLineEdge.L1: return 2.21630E+00;
-						case XrayLineEdge.L2: return 2.00680E+00;
-						case XrayLineEdge.L3: return 1.93960E+00;
-						case XrayLineEdge.M1: return 3.57500E-01;
-						case XrayLineEdge.M2: return 2.79800E-01;
-						case XrayLineEdge.M3: return 2.69100E-01;
-						case XrayLineEdge.M4: return 1.35000E-01;
-						case XrayLineEdge.M5: return 1.33100E-01;
-						case XrayLineEdge.N1: return 3.77000E-02;
-						case XrayLineEdge.N2: return 1.99000E-02;
-						case XrayLineEdge.N3: return 1.99000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.61046E+01,
+						 Edge.L1=> 2.21630E+00,
+						 Edge.L2=> 2.00680E+00,
+						 Edge.L3=> 1.93960E+00,
+						 Edge.M1=> 3.57500E-01,
+						 Edge.M2=> 2.79800E-01,
+						 Edge.M3=> 2.69100E-01,
+						 Edge.M4=> 1.35000E-01,
+						 Edge.M5=> 1.33100E-01,
+						 Edge.N1=> 3.77000E-02,
+						 Edge.N2=> 1.99000E-02,
+						 Edge.N3=> 1.99000E-02,
+						_=> double.NaN,
+					};
 				case 39:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.70384E+01;
-						case XrayLineEdge.L1: return 2.37250E+00;
-						case XrayLineEdge.L2: return 2.15550E+00;
-						case XrayLineEdge.L3: return 2.08000E+00;
-						case XrayLineEdge.M1: return 3.93600E-01;
-						case XrayLineEdge.M2: return 3.12400E-01;
-						case XrayLineEdge.M3: return 3.00300E-01;
-						case XrayLineEdge.M4: return 1.59600E-01;
-						case XrayLineEdge.M5: return 1.57400E-01;
-						case XrayLineEdge.N1: return 4.54000E-02;
-						case XrayLineEdge.N2: return 2.56000E-02;
-						case XrayLineEdge.N3: return 2.56000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.70384E+01,
+						 Edge.L1=> 2.37250E+00,
+						 Edge.L2=> 2.15550E+00,
+						 Edge.L3=> 2.08000E+00,
+						 Edge.M1=> 3.93600E-01,
+						 Edge.M2=> 3.12400E-01,
+						 Edge.M3=> 3.00300E-01,
+						 Edge.M4=> 1.59600E-01,
+						 Edge.M5=> 1.57400E-01,
+						 Edge.N1=> 4.54000E-02,
+						 Edge.N2=> 2.56000E-02,
+						 Edge.N3=> 2.56000E-02,
+						_=> double.NaN,
+					};
 				case 40:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.79976E+01;
-						case XrayLineEdge.L1: return 2.53160E+00;
-						case XrayLineEdge.L2: return 2.30670E+00;
-						case XrayLineEdge.L3: return 2.22230E+00;
-						case XrayLineEdge.M1: return 4.30300E-01;
-						case XrayLineEdge.M2: return 3.44200E-01;
-						case XrayLineEdge.M3: return 3.30500E-01;
-						case XrayLineEdge.M4: return 1.82400E-01;
-						case XrayLineEdge.M5: return 1.80000E-01;
-						case XrayLineEdge.N1: return 5.13000E-02;
-						case XrayLineEdge.N2: return 2.87000E-02;
-						case XrayLineEdge.N3: return 2.87000E-02;
-						case XrayLineEdge.N4: return 4.02345E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.79976E+01,
+						 Edge.L1=> 2.53160E+00,
+						 Edge.L2=> 2.30670E+00,
+						 Edge.L3=> 2.22230E+00,
+						 Edge.M1=> 4.30300E-01,
+						 Edge.M2=> 3.44200E-01,
+						 Edge.M3=> 3.30500E-01,
+						 Edge.M4=> 1.82400E-01,
+						 Edge.M5=> 1.80000E-01,
+						 Edge.N1=> 5.13000E-02,
+						 Edge.N2=> 2.87000E-02,
+						 Edge.N3=> 2.87000E-02,
+						 Edge.N4=> 4.02345E-03,
+						_=> double.NaN,
+					};
 				case 41:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.89856E+01;
-						case XrayLineEdge.L1: return 2.69770E+00;
-						case XrayLineEdge.L2: return 2.46470E+00;
-						case XrayLineEdge.L3: return 2.37050E+00;
-						case XrayLineEdge.M1: return 4.68400E-01;
-						case XrayLineEdge.M2: return 3.78400E-01;
-						case XrayLineEdge.M3: return 3.63000E-01;
-						case XrayLineEdge.M4: return 2.07400E-01;
-						case XrayLineEdge.M5: return 2.04600E-01;
-						case XrayLineEdge.N1: return 5.81000E-02;
-						case XrayLineEdge.N2: return 3.39000E-02;
-						case XrayLineEdge.N3: return 3.39000E-02;
-						case XrayLineEdge.N4: return 3.20000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.89856E+01,
+						 Edge.L1=> 2.69770E+00,
+						 Edge.L2=> 2.46470E+00,
+						 Edge.L3=> 2.37050E+00,
+						 Edge.M1=> 4.68400E-01,
+						 Edge.M2=> 3.78400E-01,
+						 Edge.M3=> 3.63000E-01,
+						 Edge.M4=> 2.07400E-01,
+						 Edge.M5=> 2.04600E-01,
+						 Edge.N1=> 5.81000E-02,
+						 Edge.N2=> 3.39000E-02,
+						 Edge.N3=> 3.39000E-02,
+						 Edge.N4=> 3.20000E-03,
+						_=> double.NaN,
+					};
 				case 42:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.99995E+01;
-						case XrayLineEdge.L1: return 2.86550E+00;
-						case XrayLineEdge.L2: return 2.62510E+00;
-						case XrayLineEdge.L3: return 2.52020E+00;
-						case XrayLineEdge.M1: return 5.04600E-01;
-						case XrayLineEdge.M2: return 4.09700E-01;
-						case XrayLineEdge.M3: return 3.92300E-01;
-						case XrayLineEdge.M4: return 2.30300E-01;
-						case XrayLineEdge.M5: return 2.27000E-01;
-						case XrayLineEdge.N1: return 6.18000E-02;
-						case XrayLineEdge.N2: return 3.48000E-02;
-						case XrayLineEdge.N3: return 3.48000E-02;
-						case XrayLineEdge.N4: return 1.80000E-03;
-						case XrayLineEdge.N5: return 1.80000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 1.99995E+01,
+						 Edge.L1=> 2.86550E+00,
+						 Edge.L2=> 2.62510E+00,
+						 Edge.L3=> 2.52020E+00,
+						 Edge.M1=> 5.04600E-01,
+						 Edge.M2=> 4.09700E-01,
+						 Edge.M3=> 3.92300E-01,
+						 Edge.M4=> 2.30300E-01,
+						 Edge.M5=> 2.27000E-01,
+						 Edge.N1=> 6.18000E-02,
+						 Edge.N2=> 3.48000E-02,
+						 Edge.N3=> 3.48000E-02,
+						 Edge.N4=> 1.80000E-03,
+						 Edge.N5=> 1.80000E-03,
+						_=> double.NaN,
+					};
 				case 43:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.10440E+01;
-						case XrayLineEdge.L1: return 3.04250E+00;
-						case XrayLineEdge.L2: return 2.79320E+00;
-						case XrayLineEdge.L3: return 2.67690E+00;
-						case XrayLineEdge.M1: return 5.47600E-01;
-						case XrayLineEdge.M2: return 4.44900E-01;
-						case XrayLineEdge.M3: return 4.25000E-01;
-						case XrayLineEdge.M4: return 2.56400E-01;
-						case XrayLineEdge.M5: return 2.52900E-01;
-						case XrayLineEdge.N1: return 6.84000E-02;
-						case XrayLineEdge.N2: return 3.89000E-02;
-						case XrayLineEdge.N3: return 3.89000E-02;
-						case XrayLineEdge.N4: return 7.01158E-03;
-						case XrayLineEdge.N5: return 6.72942E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.10440E+01,
+						 Edge.L1=> 3.04250E+00,
+						 Edge.L2=> 2.79320E+00,
+						 Edge.L3=> 2.67690E+00,
+						 Edge.M1=> 5.47600E-01,
+						 Edge.M2=> 4.44900E-01,
+						 Edge.M3=> 4.25000E-01,
+						 Edge.M4=> 2.56400E-01,
+						 Edge.M5=> 2.52900E-01,
+						 Edge.N1=> 6.84000E-02,
+						 Edge.N2=> 3.89000E-02,
+						 Edge.N3=> 3.89000E-02,
+						 Edge.N4=> 7.01158E-03,
+						 Edge.N5=> 6.72942E-03,
+						_=> double.NaN,
+					};
 				case 44:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.21172E+01;
-						case XrayLineEdge.L1: return 3.22400E+00;
-						case XrayLineEdge.L2: return 2.96690E+00;
-						case XrayLineEdge.L3: return 2.83790E+00;
-						case XrayLineEdge.M1: return 5.85000E-01;
-						case XrayLineEdge.M2: return 4.82800E-01;
-						case XrayLineEdge.M3: return 4.60600E-01;
-						case XrayLineEdge.M4: return 2.83600E-01;
-						case XrayLineEdge.M5: return 2.79400E-01;
-						case XrayLineEdge.N1: return 7.49000E-02;
-						case XrayLineEdge.N2: return 4.31000E-02;
-						case XrayLineEdge.N3: return 4.31000E-02;
-						case XrayLineEdge.N4: return 2.00000E-03;
-						case XrayLineEdge.N5: return 2.00000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.21172E+01,
+						 Edge.L1=> 3.22400E+00,
+						 Edge.L2=> 2.96690E+00,
+						 Edge.L3=> 2.83790E+00,
+						 Edge.M1=> 5.85000E-01,
+						 Edge.M2=> 4.82800E-01,
+						 Edge.M3=> 4.60600E-01,
+						 Edge.M4=> 2.83600E-01,
+						 Edge.M5=> 2.79400E-01,
+						 Edge.N1=> 7.49000E-02,
+						 Edge.N2=> 4.31000E-02,
+						 Edge.N3=> 4.31000E-02,
+						 Edge.N4=> 2.00000E-03,
+						 Edge.N5=> 2.00000E-03,
+						_=> double.NaN,
+					};
 				case 45:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.32199E+01;
-						case XrayLineEdge.L1: return 3.41190E+00;
-						case XrayLineEdge.L2: return 3.14610E+00;
-						case XrayLineEdge.L3: return 3.00380E+00;
-						case XrayLineEdge.M1: return 6.27100E-01;
-						case XrayLineEdge.M2: return 5.21000E-01;
-						case XrayLineEdge.M3: return 4.96200E-01;
-						case XrayLineEdge.M4: return 3.11700E-01;
-						case XrayLineEdge.M5: return 3.07000E-01;
-						case XrayLineEdge.N1: return 8.10000E-02;
-						case XrayLineEdge.N2: return 4.79000E-02;
-						case XrayLineEdge.N3: return 4.79000E-02;
-						case XrayLineEdge.N4: return 2.50000E-03;
-						case XrayLineEdge.N5: return 2.50000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.32199E+01,
+						 Edge.L1=> 3.41190E+00,
+						 Edge.L2=> 3.14610E+00,
+						 Edge.L3=> 3.00380E+00,
+						 Edge.M1=> 6.27100E-01,
+						 Edge.M2=> 5.21000E-01,
+						 Edge.M3=> 4.96200E-01,
+						 Edge.M4=> 3.11700E-01,
+						 Edge.M5=> 3.07000E-01,
+						 Edge.N1=> 8.10000E-02,
+						 Edge.N2=> 4.79000E-02,
+						 Edge.N3=> 4.79000E-02,
+						 Edge.N4=> 2.50000E-03,
+						 Edge.N5=> 2.50000E-03,
+						_=> double.NaN,
+					};
 				case 46:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.43503E+01;
-						case XrayLineEdge.L1: return 3.60430E+00;
-						case XrayLineEdge.L2: return 3.33030E+00;
-						case XrayLineEdge.L3: return 3.17330E+00;
-						case XrayLineEdge.M1: return 6.69900E-01;
-						case XrayLineEdge.M2: return 5.59100E-01;
-						case XrayLineEdge.M3: return 5.31500E-01;
-						case XrayLineEdge.M4: return 3.40000E-01;
-						case XrayLineEdge.M5: return 3.34700E-01;
-						case XrayLineEdge.N1: return 8.64000E-02;
-						case XrayLineEdge.N2: return 5.11000E-02;
-						case XrayLineEdge.N3: return 5.11000E-02;
-						case XrayLineEdge.N4: return 5.44663E-03;
-						case XrayLineEdge.N5: return 5.01841E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.43503E+01,
+						 Edge.L1=> 3.60430E+00,
+						 Edge.L2=> 3.33030E+00,
+						 Edge.L3=> 3.17330E+00,
+						 Edge.M1=> 6.69900E-01,
+						 Edge.M2=> 5.59100E-01,
+						 Edge.M3=> 5.31500E-01,
+						 Edge.M4=> 3.40000E-01,
+						 Edge.M5=> 3.34700E-01,
+						 Edge.N1=> 8.64000E-02,
+						 Edge.N2=> 5.11000E-02,
+						 Edge.N3=> 5.11000E-02,
+						 Edge.N4=> 5.44663E-03,
+						 Edge.N5=> 5.01841E-03,
+						_=> double.NaN,
+					};
 				case 47:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.55140E+01;
-						case XrayLineEdge.L1: return 3.80580E+00;
-						case XrayLineEdge.L2: return 3.52370E+00;
-						case XrayLineEdge.L3: return 3.35110E+00;
-						case XrayLineEdge.M1: return 7.17500E-01;
-						case XrayLineEdge.M2: return 6.02400E-01;
-						case XrayLineEdge.M3: return 5.71400E-01;
-						case XrayLineEdge.M4: return 3.72800E-01;
-						case XrayLineEdge.M5: return 3.66700E-01;
-						case XrayLineEdge.N1: return 9.52000E-02;
-						case XrayLineEdge.N2: return 6.26000E-02;
-						case XrayLineEdge.N3: return 5.59000E-02;
-						case XrayLineEdge.N4: return 3.30000E-03;
-						case XrayLineEdge.N5: return 3.30000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.55140E+01,
+						 Edge.L1=> 3.80580E+00,
+						 Edge.L2=> 3.52370E+00,
+						 Edge.L3=> 3.35110E+00,
+						 Edge.M1=> 7.17500E-01,
+						 Edge.M2=> 6.02400E-01,
+						 Edge.M3=> 5.71400E-01,
+						 Edge.M4=> 3.72800E-01,
+						 Edge.M5=> 3.66700E-01,
+						 Edge.N1=> 9.52000E-02,
+						 Edge.N2=> 6.26000E-02,
+						 Edge.N3=> 5.59000E-02,
+						 Edge.N4=> 3.30000E-03,
+						 Edge.N5=> 3.30000E-03,
+						_=> double.NaN,
+					};
 				case 48:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.67112E+01;
-						case XrayLineEdge.L1: return 4.01800E+00;
-						case XrayLineEdge.L2: return 3.72700E+00;
-						case XrayLineEdge.L3: return 3.53750E+00;
-						case XrayLineEdge.M1: return 7.70200E-01;
-						case XrayLineEdge.M2: return 6.50700E-01;
-						case XrayLineEdge.M3: return 6.16500E-01;
-						case XrayLineEdge.M4: return 4.10500E-01;
-						case XrayLineEdge.M5: return 4.03700E-01;
-						case XrayLineEdge.N1: return 1.07600E-01;
-						case XrayLineEdge.N2: return 6.69000E-02;
-						case XrayLineEdge.N3: return 6.69000E-02;
-						case XrayLineEdge.N4: return 9.30000E-03;
-						case XrayLineEdge.N5: return 9.30000E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.67112E+01,
+						 Edge.L1=> 4.01800E+00,
+						 Edge.L2=> 3.72700E+00,
+						 Edge.L3=> 3.53750E+00,
+						 Edge.M1=> 7.70200E-01,
+						 Edge.M2=> 6.50700E-01,
+						 Edge.M3=> 6.16500E-01,
+						 Edge.M4=> 4.10500E-01,
+						 Edge.M5=> 4.03700E-01,
+						 Edge.N1=> 1.07600E-01,
+						 Edge.N2=> 6.69000E-02,
+						 Edge.N3=> 6.69000E-02,
+						 Edge.N4=> 9.30000E-03,
+						 Edge.N5=> 9.30000E-03,
+						_=> double.NaN,
+					};
 				case 49:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.79399E+01;
-						case XrayLineEdge.L1: return 4.23750E+00;
-						case XrayLineEdge.L2: return 3.93800E+00;
-						case XrayLineEdge.L3: return 3.73010E+00;
-						case XrayLineEdge.M1: return 8.25600E-01;
-						case XrayLineEdge.M2: return 7.02200E-01;
-						case XrayLineEdge.M3: return 6.64300E-01;
-						case XrayLineEdge.M4: return 4.50800E-01;
-						case XrayLineEdge.M5: return 4.43100E-01;
-						case XrayLineEdge.N1: return 1.21900E-01;
-						case XrayLineEdge.N2: return 7.74000E-02;
-						case XrayLineEdge.N3: return 7.74000E-02;
-						case XrayLineEdge.N4: return 1.62000E-02;
-						case XrayLineEdge.N5: return 1.62000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.79399E+01,
+						 Edge.L1=> 4.23750E+00,
+						 Edge.L2=> 3.93800E+00,
+						 Edge.L3=> 3.73010E+00,
+						 Edge.M1=> 8.25600E-01,
+						 Edge.M2=> 7.02200E-01,
+						 Edge.M3=> 6.64300E-01,
+						 Edge.M4=> 4.50800E-01,
+						 Edge.M5=> 4.43100E-01,
+						 Edge.N1=> 1.21900E-01,
+						 Edge.N2=> 7.74000E-02,
+						 Edge.N3=> 7.74000E-02,
+						 Edge.N4=> 1.62000E-02,
+						 Edge.N5=> 1.62000E-02,
+						_=> double.NaN,
+					};
 				case 50:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 2.92001E+01;
-						case XrayLineEdge.L1: return 4.46470E+00;
-						case XrayLineEdge.L2: return 4.15610E+00;
-						case XrayLineEdge.L3: return 3.92880E+00;
-						case XrayLineEdge.M1: return 8.83800E-01;
-						case XrayLineEdge.M2: return 7.56400E-01;
-						case XrayLineEdge.M3: return 7.14400E-01;
-						case XrayLineEdge.M4: return 4.93300E-01;
-						case XrayLineEdge.M5: return 4.84800E-01;
-						case XrayLineEdge.N1: return 1.36500E-01;
-						case XrayLineEdge.N2: return 8.86000E-02;
-						case XrayLineEdge.N3: return 8.86000E-02;
-						case XrayLineEdge.N4: return 2.39000E-02;
-						case XrayLineEdge.N5: return 2.39000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 2.92001E+01,
+						 Edge.L1=> 4.46470E+00,
+						 Edge.L2=> 4.15610E+00,
+						 Edge.L3=> 3.92880E+00,
+						 Edge.M1=> 8.83800E-01,
+						 Edge.M2=> 7.56400E-01,
+						 Edge.M3=> 7.14400E-01,
+						 Edge.M4=> 4.93300E-01,
+						 Edge.M5=> 4.84800E-01,
+						 Edge.N1=> 1.36500E-01,
+						 Edge.N2=> 8.86000E-02,
+						 Edge.N3=> 8.86000E-02,
+						 Edge.N4=> 2.39000E-02,
+						 Edge.N5=> 2.39000E-02,
+						_=> double.NaN,
+					};
 				case 51:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.04912E+01;
-						case XrayLineEdge.L1: return 4.69830E+00;
-						case XrayLineEdge.L2: return 4.38040E+00;
-						case XrayLineEdge.L3: return 4.13220E+00;
-						case XrayLineEdge.M1: return 9.43700E-01;
-						case XrayLineEdge.M2: return 8.11900E-01;
-						case XrayLineEdge.M3: return 7.65600E-01;
-						case XrayLineEdge.M4: return 5.36900E-01;
-						case XrayLineEdge.M5: return 5.27500E-01;
-						case XrayLineEdge.N1: return 1.52000E-01;
-						case XrayLineEdge.N2: return 9.84000E-02;
-						case XrayLineEdge.N3: return 9.84000E-02;
-						case XrayLineEdge.N4: return 3.14000E-02;
-						case XrayLineEdge.N5: return 3.14000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.04912E+01,
+						 Edge.L1=> 4.69830E+00,
+						 Edge.L2=> 4.38040E+00,
+						 Edge.L3=> 4.13220E+00,
+						 Edge.M1=> 9.43700E-01,
+						 Edge.M2=> 8.11900E-01,
+						 Edge.M3=> 7.65600E-01,
+						 Edge.M4=> 5.36900E-01,
+						 Edge.M5=> 5.27500E-01,
+						 Edge.N1=> 1.52000E-01,
+						 Edge.N2=> 9.84000E-02,
+						 Edge.N3=> 9.84000E-02,
+						 Edge.N4=> 3.14000E-02,
+						 Edge.N5=> 3.14000E-02,
+						_=> double.NaN,
+					};
 				case 52:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.18138E+01;
-						case XrayLineEdge.L1: return 4.93920E+00;
-						case XrayLineEdge.L2: return 4.61200E+00;
-						case XrayLineEdge.L3: return 4.34140E+00;
-						case XrayLineEdge.M1: return 1.00600E+00;
-						case XrayLineEdge.M2: return 8.69700E-01;
-						case XrayLineEdge.M3: return 8.18700E-01;
-						case XrayLineEdge.M4: return 5.82500E-01;
-						case XrayLineEdge.M5: return 5.72100E-01;
-						case XrayLineEdge.N1: return 1.68300E-01;
-						case XrayLineEdge.N2: return 1.10200E-01;
-						case XrayLineEdge.N3: return 1.10200E-01;
-						case XrayLineEdge.N4: return 3.98000E-02;
-						case XrayLineEdge.N5: return 3.98000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.18138E+01,
+						 Edge.L1=> 4.93920E+00,
+						 Edge.L2=> 4.61200E+00,
+						 Edge.L3=> 4.34140E+00,
+						 Edge.M1=> 1.00600E+00,
+						 Edge.M2=> 8.69700E-01,
+						 Edge.M3=> 8.18700E-01,
+						 Edge.M4=> 5.82500E-01,
+						 Edge.M5=> 5.72100E-01,
+						 Edge.N1=> 1.68300E-01,
+						 Edge.N2=> 1.10200E-01,
+						 Edge.N3=> 1.10200E-01,
+						 Edge.N4=> 3.98000E-02,
+						 Edge.N5=> 3.98000E-02,
+						_=> double.NaN,
+					};
 				case 53:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.31694E+01;
-						case XrayLineEdge.L1: return 5.18810E+00;
-						case XrayLineEdge.L2: return 4.85210E+00;
-						case XrayLineEdge.L3: return 4.55710E+00;
-						case XrayLineEdge.M1: return 1.07210E+00;
-						case XrayLineEdge.M2: return 9.30500E-01;
-						case XrayLineEdge.M3: return 8.74600E-01;
-						case XrayLineEdge.M4: return 6.31300E-01;
-						case XrayLineEdge.M5: return 6.19400E-01;
-						case XrayLineEdge.N1: return 1.86400E-01;
-						case XrayLineEdge.N2: return 1.22700E-01;
-						case XrayLineEdge.N3: return 1.22700E-01;
-						case XrayLineEdge.N4: return 4.96000E-02;
-						case XrayLineEdge.N5: return 4.96000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.31694E+01,
+						 Edge.L1=> 5.18810E+00,
+						 Edge.L2=> 4.85210E+00,
+						 Edge.L3=> 4.55710E+00,
+						 Edge.M1=> 1.07210E+00,
+						 Edge.M2=> 9.30500E-01,
+						 Edge.M3=> 8.74600E-01,
+						 Edge.M4=> 6.31300E-01,
+						 Edge.M5=> 6.19400E-01,
+						 Edge.N1=> 1.86400E-01,
+						 Edge.N2=> 1.22700E-01,
+						 Edge.N3=> 1.22700E-01,
+						 Edge.N4=> 4.96000E-02,
+						 Edge.N5=> 4.96000E-02,
+						_=> double.NaN,
+					};
 				case 54:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.45614E+01;
-						case XrayLineEdge.L1: return 5.45280E+00;
-						case XrayLineEdge.L2: return 5.10370E+00;
-						case XrayLineEdge.L3: return 4.78220E+00;
-						case XrayLineEdge.M1: return 1.14460E+00;
-						case XrayLineEdge.M2: return 9.99000E-01;
-						case XrayLineEdge.M3: return 9.37000E-01;
-						case XrayLineEdge.M4: return 6.85400E-01;
-						case XrayLineEdge.M5: return 6.72300E-01;
-						case XrayLineEdge.N1: return 2.08100E-01;
-						case XrayLineEdge.N2: return 1.46700E-01;
-						case XrayLineEdge.N3: return 1.46700E-01;
-						case XrayLineEdge.N4: return 6.40000E-02;
-						case XrayLineEdge.N5: return 6.40000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.45614E+01,
+						 Edge.L1=> 5.45280E+00,
+						 Edge.L2=> 5.10370E+00,
+						 Edge.L3=> 4.78220E+00,
+						 Edge.M1=> 1.14460E+00,
+						 Edge.M2=> 9.99000E-01,
+						 Edge.M3=> 9.37000E-01,
+						 Edge.M4=> 6.85400E-01,
+						 Edge.M5=> 6.72300E-01,
+						 Edge.N1=> 2.08100E-01,
+						 Edge.N2=> 1.46700E-01,
+						 Edge.N3=> 1.46700E-01,
+						 Edge.N4=> 6.40000E-02,
+						 Edge.N5=> 6.40000E-02,
+						_=> double.NaN,
+					};
 				case 55:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.59846E+01;
-						case XrayLineEdge.L1: return 5.71430E+00;
-						case XrayLineEdge.L2: return 5.35940E+00;
-						case XrayLineEdge.L3: return 5.01190E+00;
-						case XrayLineEdge.M1: return 1.21710E+00;
-						case XrayLineEdge.M2: return 1.06500E+00;
-						case XrayLineEdge.M3: return 9.97600E-01;
-						case XrayLineEdge.M4: return 7.39500E-01;
-						case XrayLineEdge.M5: return 7.25500E-01;
-						case XrayLineEdge.N1: return 2.30800E-01;
-						case XrayLineEdge.N2: return 1.72300E-01;
-						case XrayLineEdge.N3: return 1.61600E-01;
-						case XrayLineEdge.N4: return 7.88000E-02;
-						case XrayLineEdge.N5: return 7.65000E-02;
-						case XrayLineEdge.O1: return 2.27000E-02;
-						case XrayLineEdge.O2: return 1.31000E-02;
-						case XrayLineEdge.O3: return 1.14000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.59846E+01,
+						 Edge.L1=> 5.71430E+00,
+						 Edge.L2=> 5.35940E+00,
+						 Edge.L3=> 5.01190E+00,
+						 Edge.M1=> 1.21710E+00,
+						 Edge.M2=> 1.06500E+00,
+						 Edge.M3=> 9.97600E-01,
+						 Edge.M4=> 7.39500E-01,
+						 Edge.M5=> 7.25500E-01,
+						 Edge.N1=> 2.30800E-01,
+						 Edge.N2=> 1.72300E-01,
+						 Edge.N3=> 1.61600E-01,
+						 Edge.N4=> 7.88000E-02,
+						 Edge.N5=> 7.65000E-02,
+						 Edge.O1=> 2.27000E-02,
+						 Edge.O2=> 1.31000E-02,
+						 Edge.O3=> 1.14000E-02,
+						_=> double.NaN,
+					};
 				case 56:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.74406E+01;
-						case XrayLineEdge.L1: return 5.98880E+00;
-						case XrayLineEdge.L2: return 5.62360E+00;
-						case XrayLineEdge.L3: return 5.24700E+00;
-						case XrayLineEdge.M1: return 1.29280E+00;
-						case XrayLineEdge.M2: return 1.13670E+00;
-						case XrayLineEdge.M3: return 1.06220E+00;
-						case XrayLineEdge.M4: return 7.96100E-01;
-						case XrayLineEdge.M5: return 7.80700E-01;
-						case XrayLineEdge.N1: return 2.53000E-01;
-						case XrayLineEdge.N2: return 1.91800E-01;
-						case XrayLineEdge.N3: return 1.79700E-01;
-						case XrayLineEdge.N4: return 9.25000E-02;
-						case XrayLineEdge.N5: return 8.99000E-02;
-						case XrayLineEdge.O1: return 3.91000E-02;
-						case XrayLineEdge.O2: return 1.66000E-02;
-						case XrayLineEdge.O3: return 1.46000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.74406E+01,
+						 Edge.L1=> 5.98880E+00,
+						 Edge.L2=> 5.62360E+00,
+						 Edge.L3=> 5.24700E+00,
+						 Edge.M1=> 1.29280E+00,
+						 Edge.M2=> 1.13670E+00,
+						 Edge.M3=> 1.06220E+00,
+						 Edge.M4=> 7.96100E-01,
+						 Edge.M5=> 7.80700E-01,
+						 Edge.N1=> 2.53000E-01,
+						 Edge.N2=> 1.91800E-01,
+						 Edge.N3=> 1.79700E-01,
+						 Edge.N4=> 9.25000E-02,
+						 Edge.N5=> 8.99000E-02,
+						 Edge.O1=> 3.91000E-02,
+						 Edge.O2=> 1.66000E-02,
+						 Edge.O3=> 1.46000E-02,
+						_=> double.NaN,
+					};
 				case 57:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 3.89246E+01;
-						case XrayLineEdge.L1: return 6.26630E+00;
-						case XrayLineEdge.L2: return 5.89060E+00;
-						case XrayLineEdge.L3: return 5.48270E+00;
-						case XrayLineEdge.M1: return 1.36130E+00;
-						case XrayLineEdge.M2: return 1.20440E+00;
-						case XrayLineEdge.M3: return 1.12340E+00;
-						case XrayLineEdge.M4: return 8.48500E-01;
-						case XrayLineEdge.M5: return 8.31700E-01;
-						case XrayLineEdge.N1: return 2.70400E-01;
-						case XrayLineEdge.N2: return 2.05800E-01;
-						case XrayLineEdge.N3: return 1.91400E-01;
-						case XrayLineEdge.N4: return 9.89000E-02;
-						case XrayLineEdge.N5: return 9.89000E-02;
-						case XrayLineEdge.O1: return 3.23000E-02;
-						case XrayLineEdge.O2: return 1.44000E-02;
-						case XrayLineEdge.O3: return 1.44000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 3.89246E+01,
+						 Edge.L1=> 6.26630E+00,
+						 Edge.L2=> 5.89060E+00,
+						 Edge.L3=> 5.48270E+00,
+						 Edge.M1=> 1.36130E+00,
+						 Edge.M2=> 1.20440E+00,
+						 Edge.M3=> 1.12340E+00,
+						 Edge.M4=> 8.48500E-01,
+						 Edge.M5=> 8.31700E-01,
+						 Edge.N1=> 2.70400E-01,
+						 Edge.N2=> 2.05800E-01,
+						 Edge.N3=> 1.91400E-01,
+						 Edge.N4=> 9.89000E-02,
+						 Edge.N5=> 9.89000E-02,
+						 Edge.O1=> 3.23000E-02,
+						 Edge.O2=> 1.44000E-02,
+						 Edge.O3=> 1.44000E-02,
+						_=> double.NaN,
+					};
 				case 58:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.04430E+01;
-						case XrayLineEdge.L1: return 6.54880E+00;
-						case XrayLineEdge.L2: return 6.16420E+00;
-						case XrayLineEdge.L3: return 5.72340E+00;
-						case XrayLineEdge.M1: return 1.43460E+00;
-						case XrayLineEdge.M2: return 1.27280E+00;
-						case XrayLineEdge.M3: return 1.18540E+00;
-						case XrayLineEdge.M4: return 9.01300E-01;
-						case XrayLineEdge.M5: return 8.83300E-01;
-						case XrayLineEdge.N1: return 2.89600E-01;
-						case XrayLineEdge.N2: return 2.23300E-01;
-						case XrayLineEdge.N3: return 2.07200E-01;
-						case XrayLineEdge.N4: return 1.10000E-01;
-						case XrayLineEdge.N5: return 1.10000E-01;
-						case XrayLineEdge.N6: return 8.59000E-02;
-						case XrayLineEdge.O1: return 3.78000E-02;
-						case XrayLineEdge.O2: return 1.98000E-02;
-						case XrayLineEdge.O3: return 1.98000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.04430E+01,
+						 Edge.L1=> 6.54880E+00,
+						 Edge.L2=> 6.16420E+00,
+						 Edge.L3=> 5.72340E+00,
+						 Edge.M1=> 1.43460E+00,
+						 Edge.M2=> 1.27280E+00,
+						 Edge.M3=> 1.18540E+00,
+						 Edge.M4=> 9.01300E-01,
+						 Edge.M5=> 8.83300E-01,
+						 Edge.N1=> 2.89600E-01,
+						 Edge.N2=> 2.23300E-01,
+						 Edge.N3=> 2.07200E-01,
+						 Edge.N4=> 1.10000E-01,
+						 Edge.N5=> 1.10000E-01,
+						 Edge.N6=> 8.59000E-02,
+						 Edge.O1=> 3.78000E-02,
+						 Edge.O2=> 1.98000E-02,
+						 Edge.O3=> 1.98000E-02,
+						_=> double.NaN,
+					};
 				case 59:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.19906E+01;
-						case XrayLineEdge.L1: return 6.83480E+00;
-						case XrayLineEdge.L2: return 6.44040E+00;
-						case XrayLineEdge.L3: return 5.96430E+00;
-						case XrayLineEdge.M1: return 1.51100E+00;
-						case XrayLineEdge.M2: return 1.33740E+00;
-						case XrayLineEdge.M3: return 1.24220E+00;
-						case XrayLineEdge.M4: return 9.51100E-01;
-						case XrayLineEdge.M5: return 9.31000E-01;
-						case XrayLineEdge.N1: return 3.04500E-01;
-						case XrayLineEdge.N2: return 2.36300E-01;
-						case XrayLineEdge.N3: return 2.17600E-01;
-						case XrayLineEdge.N4: return 1.13200E-01;
-						case XrayLineEdge.N5: return 1.13200E-01;
-						case XrayLineEdge.N6: return 3.50000E-03;
-						case XrayLineEdge.O1: return 3.74000E-02;
-						case XrayLineEdge.O2: return 2.23000E-02;
-						case XrayLineEdge.O3: return 2.23000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.19906E+01,
+						 Edge.L1=> 6.83480E+00,
+						 Edge.L2=> 6.44040E+00,
+						 Edge.L3=> 5.96430E+00,
+						 Edge.M1=> 1.51100E+00,
+						 Edge.M2=> 1.33740E+00,
+						 Edge.M3=> 1.24220E+00,
+						 Edge.M4=> 9.51100E-01,
+						 Edge.M5=> 9.31000E-01,
+						 Edge.N1=> 3.04500E-01,
+						 Edge.N2=> 2.36300E-01,
+						 Edge.N3=> 2.17600E-01,
+						 Edge.N4=> 1.13200E-01,
+						 Edge.N5=> 1.13200E-01,
+						 Edge.N6=> 3.50000E-03,
+						 Edge.O1=> 3.74000E-02,
+						 Edge.O2=> 2.23000E-02,
+						 Edge.O3=> 2.23000E-02,
+						_=> double.NaN,
+					};
 				case 60:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.35689E+01;
-						case XrayLineEdge.L1: return 7.12600E+00;
-						case XrayLineEdge.L2: return 6.72150E+00;
-						case XrayLineEdge.L3: return 6.20790E+00;
-						case XrayLineEdge.M1: return 1.57530E+00;
-						case XrayLineEdge.M2: return 1.40280E+00;
-						case XrayLineEdge.M3: return 1.29740E+00;
-						case XrayLineEdge.M4: return 9.99500E-01;
-						case XrayLineEdge.M5: return 9.77700E-01;
-						case XrayLineEdge.N1: return 3.15200E-01;
-						case XrayLineEdge.N2: return 2.43300E-01;
-						case XrayLineEdge.N3: return 2.24600E-01;
-						case XrayLineEdge.N4: return 1.17500E-01;
-						case XrayLineEdge.N5: return 1.17500E-01;
-						case XrayLineEdge.N6: return 3.00000E-03;
-						case XrayLineEdge.O1: return 3.75000E-02;
-						case XrayLineEdge.O2: return 2.11000E-02;
-						case XrayLineEdge.O3: return 2.11000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.35689E+01,
+						 Edge.L1=> 7.12600E+00,
+						 Edge.L2=> 6.72150E+00,
+						 Edge.L3=> 6.20790E+00,
+						 Edge.M1=> 1.57530E+00,
+						 Edge.M2=> 1.40280E+00,
+						 Edge.M3=> 1.29740E+00,
+						 Edge.M4=> 9.99500E-01,
+						 Edge.M5=> 9.77700E-01,
+						 Edge.N1=> 3.15200E-01,
+						 Edge.N2=> 2.43300E-01,
+						 Edge.N3=> 2.24600E-01,
+						 Edge.N4=> 1.17500E-01,
+						 Edge.N5=> 1.17500E-01,
+						 Edge.N6=> 3.00000E-03,
+						 Edge.O1=> 3.75000E-02,
+						 Edge.O2=> 2.11000E-02,
+						 Edge.O3=> 2.11000E-02,
+						_=> double.NaN,
+					};
 				case 61:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.51840E+01;
-						case XrayLineEdge.L1: return 7.42790E+00;
-						case XrayLineEdge.L2: return 7.01280E+00;
-						case XrayLineEdge.L3: return 6.45930E+00;
-						case XrayLineEdge.M1: return 1.64650E+00;
-						case XrayLineEdge.M2: return 1.47140E+00;
-						case XrayLineEdge.M3: return 1.35690E+00;
-						case XrayLineEdge.M4: return 1.05150E+00;
-						case XrayLineEdge.M5: return 1.02690E+00;
-						case XrayLineEdge.N1: return 3.30400E-01;
-						case XrayLineEdge.N2: return 2.54400E-01;
-						case XrayLineEdge.N3: return 2.36000E-01;
-						case XrayLineEdge.N4: return 1.20400E-01;
-						case XrayLineEdge.N5: return 1.20400E-01;
-						case XrayLineEdge.N6: return 4.00000E-03;
-						case XrayLineEdge.O1: return 3.75000E-02;
-						case XrayLineEdge.O2: return 2.11000E-02;
-						case XrayLineEdge.O3: return 2.11000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.51840E+01,
+						 Edge.L1=> 7.42790E+00,
+						 Edge.L2=> 7.01280E+00,
+						 Edge.L3=> 6.45930E+00,
+						 Edge.M1=> 1.64650E+00,
+						 Edge.M2=> 1.47140E+00,
+						 Edge.M3=> 1.35690E+00,
+						 Edge.M4=> 1.05150E+00,
+						 Edge.M5=> 1.02690E+00,
+						 Edge.N1=> 3.30400E-01,
+						 Edge.N2=> 2.54400E-01,
+						 Edge.N3=> 2.36000E-01,
+						 Edge.N4=> 1.20400E-01,
+						 Edge.N5=> 1.20400E-01,
+						 Edge.N6=> 4.00000E-03,
+						 Edge.O1=> 3.75000E-02,
+						 Edge.O2=> 2.11000E-02,
+						 Edge.O3=> 2.11000E-02,
+						_=> double.NaN,
+					};
 				case 62:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.68342E+01;
-						case XrayLineEdge.L1: return 7.73680E+00;
-						case XrayLineEdge.L2: return 7.31180E+00;
-						case XrayLineEdge.L3: return 6.71620E+00;
-						case XrayLineEdge.M1: return 1.72280E+00;
-						case XrayLineEdge.M2: return 1.54070E+00;
-						case XrayLineEdge.M3: return 1.41980E+00;
-						case XrayLineEdge.M4: return 1.10600E+00;
-						case XrayLineEdge.M5: return 1.08020E+00;
-						case XrayLineEdge.N1: return 3.45700E-01;
-						case XrayLineEdge.N2: return 2.65600E-01;
-						case XrayLineEdge.N3: return 2.47400E-01;
-						case XrayLineEdge.N4: return 1.29000E-01;
-						case XrayLineEdge.N5: return 1.29000E-01;
-						case XrayLineEdge.N6: return 5.50000E-03;
-						case XrayLineEdge.O1: return 3.74000E-02;
-						case XrayLineEdge.O2: return 2.13000E-02;
-						case XrayLineEdge.O3: return 2.13000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.68342E+01,
+						 Edge.L1=> 7.73680E+00,
+						 Edge.L2=> 7.31180E+00,
+						 Edge.L3=> 6.71620E+00,
+						 Edge.M1=> 1.72280E+00,
+						 Edge.M2=> 1.54070E+00,
+						 Edge.M3=> 1.41980E+00,
+						 Edge.M4=> 1.10600E+00,
+						 Edge.M5=> 1.08020E+00,
+						 Edge.N1=> 3.45700E-01,
+						 Edge.N2=> 2.65600E-01,
+						 Edge.N3=> 2.47400E-01,
+						 Edge.N4=> 1.29000E-01,
+						 Edge.N5=> 1.29000E-01,
+						 Edge.N6=> 5.50000E-03,
+						 Edge.O1=> 3.74000E-02,
+						 Edge.O2=> 2.13000E-02,
+						 Edge.O3=> 2.13000E-02,
+						_=> double.NaN,
+					};
 				case 63:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 4.85190E+01;
-						case XrayLineEdge.L1: return 8.05200E+00;
-						case XrayLineEdge.L2: return 7.61710E+00;
-						case XrayLineEdge.L3: return 6.97690E+00;
-						case XrayLineEdge.M1: return 1.80000E+00;
-						case XrayLineEdge.M2: return 1.61390E+00;
-						case XrayLineEdge.M3: return 1.48060E+00;
-						case XrayLineEdge.M4: return 1.16060E+00;
-						case XrayLineEdge.M5: return 1.13090E+00;
-						case XrayLineEdge.N1: return 3.60200E-01;
-						case XrayLineEdge.N2: return 2.83900E-01;
-						case XrayLineEdge.N3: return 2.56600E-01;
-						case XrayLineEdge.N4: return 1.33200E-01;
-						case XrayLineEdge.N5: return 1.33200E-01;
-						case XrayLineEdge.N6: return 2.91151E-03;
-						case XrayLineEdge.O1: return 3.18000E-02;
-						case XrayLineEdge.O2: return 2.20000E-02;
-						case XrayLineEdge.O3: return 2.20000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 4.85190E+01,
+						 Edge.L1=> 8.05200E+00,
+						 Edge.L2=> 7.61710E+00,
+						 Edge.L3=> 6.97690E+00,
+						 Edge.M1=> 1.80000E+00,
+						 Edge.M2=> 1.61390E+00,
+						 Edge.M3=> 1.48060E+00,
+						 Edge.M4=> 1.16060E+00,
+						 Edge.M5=> 1.13090E+00,
+						 Edge.N1=> 3.60200E-01,
+						 Edge.N2=> 2.83900E-01,
+						 Edge.N3=> 2.56600E-01,
+						 Edge.N4=> 1.33200E-01,
+						 Edge.N5=> 1.33200E-01,
+						 Edge.N6=> 2.91151E-03,
+						 Edge.O1=> 3.18000E-02,
+						 Edge.O2=> 2.20000E-02,
+						 Edge.O3=> 2.20000E-02,
+						_=> double.NaN,
+					};
 				case 64:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.02391E+01;
-						case XrayLineEdge.L1: return 8.37560E+00;
-						case XrayLineEdge.L2: return 7.93030E+00;
-						case XrayLineEdge.L3: return 7.24280E+00;
-						case XrayLineEdge.M1: return 1.88080E+00;
-						case XrayLineEdge.M2: return 1.68830E+00;
-						case XrayLineEdge.M3: return 1.54400E+00;
-						case XrayLineEdge.M4: return 1.21720E+00;
-						case XrayLineEdge.M5: return 1.18520E+00;
-						case XrayLineEdge.N1: return 3.75800E-01;
-						case XrayLineEdge.N2: return 2.88500E-01;
-						case XrayLineEdge.N3: return 2.70900E-01;
-						case XrayLineEdge.N4: return 1.40500E-01;
-						case XrayLineEdge.N5: return 1.40500E-01;
-						case XrayLineEdge.N6: return 9.27940E-03;
-						case XrayLineEdge.N7: return 8.52419E-03;
-						case XrayLineEdge.O1: return 3.61000E-02;
-						case XrayLineEdge.O2: return 2.03000E-02;
-						case XrayLineEdge.O3: return 2.03000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 5.02391E+01,
+						 Edge.L1=> 8.37560E+00,
+						 Edge.L2=> 7.93030E+00,
+						 Edge.L3=> 7.24280E+00,
+						 Edge.M1=> 1.88080E+00,
+						 Edge.M2=> 1.68830E+00,
+						 Edge.M3=> 1.54400E+00,
+						 Edge.M4=> 1.21720E+00,
+						 Edge.M5=> 1.18520E+00,
+						 Edge.N1=> 3.75800E-01,
+						 Edge.N2=> 2.88500E-01,
+						 Edge.N3=> 2.70900E-01,
+						 Edge.N4=> 1.40500E-01,
+						 Edge.N5=> 1.40500E-01,
+						 Edge.N6=> 9.27940E-03,
+						 Edge.N7=> 8.52419E-03,
+						 Edge.O1=> 3.61000E-02,
+						 Edge.O2=> 2.03000E-02,
+						 Edge.O3=> 2.03000E-02,
+						_=> double.NaN,
+					};
 				case 65:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.19957E+01;
-						case XrayLineEdge.L1: return 8.70800E+00;
-						case XrayLineEdge.L2: return 8.25160E+00;
-						case XrayLineEdge.L3: return 7.51400E+00;
-						case XrayLineEdge.M1: return 1.96750E+00;
-						case XrayLineEdge.M2: return 1.76770E+00;
-						case XrayLineEdge.M3: return 1.61130E+00;
-						case XrayLineEdge.M4: return 1.27500E+00;
-						case XrayLineEdge.M5: return 1.24120E+00;
-						case XrayLineEdge.N1: return 3.97900E-01;
-						case XrayLineEdge.N2: return 3.10200E-01;
-						case XrayLineEdge.N3: return 2.85000E-01;
-						case XrayLineEdge.N4: return 1.47000E-01;
-						case XrayLineEdge.N5: return 1.47000E-01;
-						case XrayLineEdge.N6: return 9.40000E-03;
-						case XrayLineEdge.N7: return 8.60000E-03;
-						case XrayLineEdge.O1: return 3.90000E-02;
-						case XrayLineEdge.O2: return 2.54000E-02;
-						case XrayLineEdge.O3: return 2.54000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 5.19957E+01,
+						 Edge.L1=> 8.70800E+00,
+						 Edge.L2=> 8.25160E+00,
+						 Edge.L3=> 7.51400E+00,
+						 Edge.M1=> 1.96750E+00,
+						 Edge.M2=> 1.76770E+00,
+						 Edge.M3=> 1.61130E+00,
+						 Edge.M4=> 1.27500E+00,
+						 Edge.M5=> 1.24120E+00,
+						 Edge.N1=> 3.97900E-01,
+						 Edge.N2=> 3.10200E-01,
+						 Edge.N3=> 2.85000E-01,
+						 Edge.N4=> 1.47000E-01,
+						 Edge.N5=> 1.47000E-01,
+						 Edge.N6=> 9.40000E-03,
+						 Edge.N7=> 8.60000E-03,
+						 Edge.O1=> 3.90000E-02,
+						 Edge.O2=> 2.54000E-02,
+						 Edge.O3=> 2.54000E-02,
+						_=> double.NaN,
+					};
 				case 66:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.37885E+01;
-						case XrayLineEdge.L1: return 9.04580E+00;
-						case XrayLineEdge.L2: return 8.58060E+00;
-						case XrayLineEdge.L3: return 7.79010E+00;
-						case XrayLineEdge.M1: return 2.04680E+00;
-						case XrayLineEdge.M2: return 1.84180E+00;
-						case XrayLineEdge.M3: return 1.67560E+00;
-						case XrayLineEdge.M4: return 1.33250E+00;
-						case XrayLineEdge.M5: return 1.29490E+00;
-						case XrayLineEdge.N1: return 4.16300E-01;
-						case XrayLineEdge.N2: return 3.31800E-01;
-						case XrayLineEdge.N3: return 2.92900E-01;
-						case XrayLineEdge.N4: return 1.54200E-01;
-						case XrayLineEdge.N5: return 1.54200E-01;
-						case XrayLineEdge.N6: return 4.20000E-03;
-						case XrayLineEdge.N7: return 4.20000E-03;
-						case XrayLineEdge.O1: return 6.29000E-02;
-						case XrayLineEdge.O2: return 2.63000E-02;
-						case XrayLineEdge.O3: return 2.63000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 5.37885E+01,
+						 Edge.L1=> 9.04580E+00,
+						 Edge.L2=> 8.58060E+00,
+						 Edge.L3=> 7.79010E+00,
+						 Edge.M1=> 2.04680E+00,
+						 Edge.M2=> 1.84180E+00,
+						 Edge.M3=> 1.67560E+00,
+						 Edge.M4=> 1.33250E+00,
+						 Edge.M5=> 1.29490E+00,
+						 Edge.N1=> 4.16300E-01,
+						 Edge.N2=> 3.31800E-01,
+						 Edge.N3=> 2.92900E-01,
+						 Edge.N4=> 1.54200E-01,
+						 Edge.N5=> 1.54200E-01,
+						 Edge.N6=> 4.20000E-03,
+						 Edge.N7=> 4.20000E-03,
+						 Edge.O1=> 6.29000E-02,
+						 Edge.O2=> 2.63000E-02,
+						 Edge.O3=> 2.63000E-02,
+						_=> double.NaN,
+					};
 				case 67:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.56177E+01;
-						case XrayLineEdge.L1: return 9.39420E+00;
-						case XrayLineEdge.L2: return 8.91780E+00;
-						case XrayLineEdge.L3: return 8.07110E+00;
-						case XrayLineEdge.M1: return 2.12830E+00;
-						case XrayLineEdge.M2: return 1.92280E+00;
-						case XrayLineEdge.M3: return 1.74120E+00;
-						case XrayLineEdge.M4: return 1.39150E+00;
-						case XrayLineEdge.M5: return 1.35140E+00;
-						case XrayLineEdge.N1: return 4.35700E-01;
-						case XrayLineEdge.N2: return 3.43500E-01;
-						case XrayLineEdge.N3: return 3.06600E-01;
-						case XrayLineEdge.N4: return 1.61000E-01;
-						case XrayLineEdge.N5: return 1.61000E-01;
-						case XrayLineEdge.N6: return 3.70000E-03;
-						case XrayLineEdge.N7: return 3.70000E-03;
-						case XrayLineEdge.O1: return 5.12000E-02;
-						case XrayLineEdge.O2: return 2.03000E-02;
-						case XrayLineEdge.O3: return 2.03000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 5.56177E+01,
+						 Edge.L1=> 9.39420E+00,
+						 Edge.L2=> 8.91780E+00,
+						 Edge.L3=> 8.07110E+00,
+						 Edge.M1=> 2.12830E+00,
+						 Edge.M2=> 1.92280E+00,
+						 Edge.M3=> 1.74120E+00,
+						 Edge.M4=> 1.39150E+00,
+						 Edge.M5=> 1.35140E+00,
+						 Edge.N1=> 4.35700E-01,
+						 Edge.N2=> 3.43500E-01,
+						 Edge.N3=> 3.06600E-01,
+						 Edge.N4=> 1.61000E-01,
+						 Edge.N5=> 1.61000E-01,
+						 Edge.N6=> 3.70000E-03,
+						 Edge.N7=> 3.70000E-03,
+						 Edge.O1=> 5.12000E-02,
+						 Edge.O2=> 2.03000E-02,
+						 Edge.O3=> 2.03000E-02,
+						_=> double.NaN,
+					};
 				case 68:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.74855E+01;
-						case XrayLineEdge.L1: return 9.75130E+00;
-						case XrayLineEdge.L2: return 9.26430E+00;
-						case XrayLineEdge.L3: return 8.35790E+00;
-						case XrayLineEdge.M1: return 2.20650E+00;
-						case XrayLineEdge.M2: return 2.00580E+00;
-						case XrayLineEdge.M3: return 1.81180E+00;
-						case XrayLineEdge.M4: return 1.45330E+00;
-						case XrayLineEdge.M5: return 1.40930E+00;
-						case XrayLineEdge.N1: return 4.49100E-01;
-						case XrayLineEdge.N2: return 3.66200E-01;
-						case XrayLineEdge.N3: return 3.20000E-01;
-						case XrayLineEdge.N4: return 1.76700E-01;
-						case XrayLineEdge.N5: return 1.67600E-01;
-						case XrayLineEdge.N6: return 4.30000E-03;
-						case XrayLineEdge.N7: return 4.30000E-03;
-						case XrayLineEdge.O1: return 5.98000E-02;
-						case XrayLineEdge.O2: return 2.94000E-02;
-						case XrayLineEdge.O3: return 2.94000E-02;
-						default: return double.NaN;
-					}
+						 Edge.K=> 5.74855E+01,
+						 Edge.L1=> 9.75130E+00,
+						 Edge.L2=> 9.26430E+00,
+						 Edge.L3=> 8.35790E+00,
+						 Edge.M1=> 2.20650E+00,
+						 Edge.M2=> 2.00580E+00,
+						 Edge.M3=> 1.81180E+00,
+						 Edge.M4=> 1.45330E+00,
+						 Edge.M5=> 1.40930E+00,
+						 Edge.N1=> 4.49100E-01,
+						 Edge.N2=> 3.66200E-01,
+						 Edge.N3=> 3.20000E-01,
+						 Edge.N4=> 1.76700E-01,
+						 Edge.N5=> 1.67600E-01,
+						 Edge.N6=> 4.30000E-03,
+						 Edge.N7=> 4.30000E-03,
+						 Edge.O1=> 5.98000E-02,
+						 Edge.O2=> 2.94000E-02,
+						 Edge.O3=> 2.94000E-02,
+						_=> double.NaN,
+					};
 				case 69:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 5.93896E+01;
-						case XrayLineEdge.L1: return 1.01157E+01;
-						case XrayLineEdge.L2: return 9.61690E+00;
-						case XrayLineEdge.L3: return 8.64800E+00;
-						case XrayLineEdge.M1: return 2.30680E+00;
-						case XrayLineEdge.M2: return 2.08980E+00;
-						case XrayLineEdge.M3: return 1.88450E+00;
-						case XrayLineEdge.M4: return 1.51460E+00;
-						case XrayLineEdge.M5: return 1.46770E+00;
-						case XrayLineEdge.N1: return 4.71700E-01;
-						case XrayLineEdge.N2: return 3.85900E-01;
-						case XrayLineEdge.N3: return 3.36600E-01;
-						case XrayLineEdge.N4: return 1.79600E-01;
-						case XrayLineEdge.N5: return 1.79600E-01;
-						case XrayLineEdge.N6: return 5.30000E-03;
-						case XrayLineEdge.N7: return 5.30000E-03;
-						case XrayLineEdge.O1: return 5.32000E-02;
-						case XrayLineEdge.O2: return 3.23000E-02;
-						case XrayLineEdge.O3: return 3.23000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 5.93896E+01,
+						Edge.L1 => 1.01157E+01,
+						Edge.L2 => 9.61690E+00,
+						Edge.L3 => 8.64800E+00,
+						Edge.M1 => 2.30680E+00,
+						Edge.M2 => 2.08980E+00,
+						Edge.M3 => 1.88450E+00,
+						Edge.M4 => 1.51460E+00,
+						Edge.M5 => 1.46770E+00,
+						Edge.N1 => 4.71700E-01,
+						Edge.N2 => 3.85900E-01,
+						Edge.N3 => 3.36600E-01,
+						Edge.N4 => 1.79600E-01,
+						Edge.N5 => 1.79600E-01,
+						Edge.N6 => 5.30000E-03,
+						Edge.N7 => 5.30000E-03,
+						Edge.O1 => 5.32000E-02,
+						Edge.O2 => 3.23000E-02,
+						Edge.O3 => 3.23000E-02,
+						_ => double.NaN,
+					};
 				case 70:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.13323E+01;
-						case XrayLineEdge.L1: return 1.04864E+01;
-						case XrayLineEdge.L2: return 9.97820E+00;
-						case XrayLineEdge.L3: return 8.94360E+00;
-						case XrayLineEdge.M1: return 2.39810E+00;
-						case XrayLineEdge.M2: return 2.17300E+00;
-						case XrayLineEdge.M3: return 1.94980E+00;
-						case XrayLineEdge.M4: return 1.57630E+00;
-						case XrayLineEdge.M5: return 1.52780E+00;
-						case XrayLineEdge.N1: return 4.87200E-01;
-						case XrayLineEdge.N2: return 3.96700E-01;
-						case XrayLineEdge.N3: return 3.43500E-01;
-						case XrayLineEdge.N4: return 1.98100E-01;
-						case XrayLineEdge.N5: return 1.84900E-01;
-						case XrayLineEdge.N6: return 6.30000E-03;
-						case XrayLineEdge.N7: return 6.30000E-03;
-						case XrayLineEdge.O1: return 5.41000E-02;
-						case XrayLineEdge.O2: return 2.34000E-02;
-						case XrayLineEdge.O3: return 2.34000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 6.13323E+01,
+						Edge.L1 => 1.04864E+01,
+						Edge.L2 => 9.97820E+00,
+						Edge.L3 => 8.94360E+00,
+						Edge.M1 => 2.39810E+00,
+						Edge.M2 => 2.17300E+00,
+						Edge.M3 => 1.94980E+00,
+						Edge.M4 => 1.57630E+00,
+						Edge.M5 => 1.52780E+00,
+						Edge.N1 => 4.87200E-01,
+						Edge.N2 => 3.96700E-01,
+						Edge.N3 => 3.43500E-01,
+						Edge.N4 => 1.98100E-01,
+						Edge.N5 => 1.84900E-01,
+						Edge.N6 => 6.30000E-03,
+						Edge.N7 => 6.30000E-03,
+						Edge.O1 => 5.41000E-02,
+						Edge.O2 => 2.34000E-02,
+						Edge.O3 => 2.34000E-02,
+						_ => double.NaN,
+					};
 				case 71:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.33138E+01;
-						case XrayLineEdge.L1: return 1.08704E+01;
-						case XrayLineEdge.L2: return 1.03486E+01;
-						case XrayLineEdge.L3: return 9.24410E+00;
-						case XrayLineEdge.M1: return 2.49120E+00;
-						case XrayLineEdge.M2: return 2.26350E+00;
-						case XrayLineEdge.M3: return 2.02360E+00;
-						case XrayLineEdge.M4: return 1.63940E+00;
-						case XrayLineEdge.M5: return 1.58850E+00;
-						case XrayLineEdge.N1: return 5.06200E-01;
-						case XrayLineEdge.N2: return 4.10100E-01;
-						case XrayLineEdge.N3: return 3.59300E-01;
-						case XrayLineEdge.N4: return 2.04800E-01;
-						case XrayLineEdge.N5: return 1.95000E-01;
-						case XrayLineEdge.N6: return 6.90000E-03;
-						case XrayLineEdge.N7: return 6.90000E-03;
-						case XrayLineEdge.O1: return 5.68000E-02;
-						case XrayLineEdge.O2: return 2.80000E-02;
-						case XrayLineEdge.O3: return 2.80000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 6.33138E+01,
+						Edge.L1 => 1.08704E+01,
+						Edge.L2 => 1.03486E+01,
+						Edge.L3 => 9.24410E+00,
+						Edge.M1 => 2.49120E+00,
+						Edge.M2 => 2.26350E+00,
+						Edge.M3 => 2.02360E+00,
+						Edge.M4 => 1.63940E+00,
+						Edge.M5 => 1.58850E+00,
+						Edge.N1 => 5.06200E-01,
+						Edge.N2 => 4.10100E-01,
+						Edge.N3 => 3.59300E-01,
+						Edge.N4 => 2.04800E-01,
+						Edge.N5 => 1.95000E-01,
+						Edge.N6 => 6.90000E-03,
+						Edge.N7 => 6.90000E-03,
+						Edge.O1 => 5.68000E-02,
+						Edge.O2 => 2.80000E-02,
+						Edge.O3 => 2.80000E-02,
+						_ => double.NaN,
+					};
 				case 72:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.53508E+01;
-						case XrayLineEdge.L1: return 1.12707E+01;
-						case XrayLineEdge.L2: return 1.07394E+01;
-						case XrayLineEdge.L3: return 9.56070E+00;
-						case XrayLineEdge.M1: return 2.60090E+00;
-						case XrayLineEdge.M2: return 2.36540E+00;
-						case XrayLineEdge.M3: return 2.10760E+00;
-						case XrayLineEdge.M4: return 1.71640E+00;
-						case XrayLineEdge.M5: return 1.66170E+00;
-						case XrayLineEdge.N1: return 5.38100E-01;
-						case XrayLineEdge.N2: return 4.37000E-01;
-						case XrayLineEdge.N3: return 3.80400E-01;
-						case XrayLineEdge.N4: return 2.23800E-01;
-						case XrayLineEdge.N5: return 2.13700E-01;
-						case XrayLineEdge.N6: return 1.71000E-02;
-						case XrayLineEdge.N7: return 1.71000E-02;
-						case XrayLineEdge.O1: return 6.49000E-02;
-						case XrayLineEdge.O2: return 3.81000E-02;
-						case XrayLineEdge.O3: return 3.06000E-02;
-						case XrayLineEdge.O4: return 5.00000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 6.53508E+01,
+						Edge.L1 => 1.12707E+01,
+						Edge.L2 => 1.07394E+01,
+						Edge.L3 => 9.56070E+00,
+						Edge.M1 => 2.60090E+00,
+						Edge.M2 => 2.36540E+00,
+						Edge.M3 => 2.10760E+00,
+						Edge.M4 => 1.71640E+00,
+						Edge.M5 => 1.66170E+00,
+						Edge.N1 => 5.38100E-01,
+						Edge.N2 => 4.37000E-01,
+						Edge.N3 => 3.80400E-01,
+						Edge.N4 => 2.23800E-01,
+						Edge.N5 => 2.13700E-01,
+						Edge.N6 => 1.71000E-02,
+						Edge.N7 => 1.71000E-02,
+						Edge.O1 => 6.49000E-02,
+						Edge.O2 => 3.81000E-02,
+						Edge.O3 => 3.06000E-02,
+						Edge.O4 => 5.00000E-03,
+						_ => double.NaN,
+					};
 				case 73:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.74164E+01;
-						case XrayLineEdge.L1: return 1.16815E+01;
-						case XrayLineEdge.L2: return 1.11361E+01;
-						case XrayLineEdge.L3: return 9.88110E+00;
-						case XrayLineEdge.M1: return 2.70800E+00;
-						case XrayLineEdge.M2: return 2.46870E+00;
-						case XrayLineEdge.M3: return 2.19400E+00;
-						case XrayLineEdge.M4: return 1.79320E+00;
-						case XrayLineEdge.M5: return 1.73510E+00;
-						case XrayLineEdge.N1: return 5.65500E-01;
-						case XrayLineEdge.N2: return 4.64800E-01;
-						case XrayLineEdge.N3: return 4.04500E-01;
-						case XrayLineEdge.N4: return 2.41300E-01;
-						case XrayLineEdge.N5: return 2.29300E-01;
-						case XrayLineEdge.N6: return 2.50000E-02;
-						case XrayLineEdge.N7: return 2.50000E-02;
-						case XrayLineEdge.O1: return 7.11000E-02;
-						case XrayLineEdge.O2: return 4.49000E-02;
-						case XrayLineEdge.O3: return 3.64000E-02;
-						case XrayLineEdge.O4: return 5.70000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 6.74164E+01,
+						Edge.L1 => 1.16815E+01,
+						Edge.L2 => 1.11361E+01,
+						Edge.L3 => 9.88110E+00,
+						Edge.M1 => 2.70800E+00,
+						Edge.M2 => 2.46870E+00,
+						Edge.M3 => 2.19400E+00,
+						Edge.M4 => 1.79320E+00,
+						Edge.M5 => 1.73510E+00,
+						Edge.N1 => 5.65500E-01,
+						Edge.N2 => 4.64800E-01,
+						Edge.N3 => 4.04500E-01,
+						Edge.N4 => 2.41300E-01,
+						Edge.N5 => 2.29300E-01,
+						Edge.N6 => 2.50000E-02,
+						Edge.N7 => 2.50000E-02,
+						Edge.O1 => 7.11000E-02,
+						Edge.O2 => 4.49000E-02,
+						Edge.O3 => 3.64000E-02,
+						Edge.O4 => 5.70000E-03,
+						_ => double.NaN,
+					};
 				case 74:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 6.95250E+01;
-						case XrayLineEdge.L1: return 1.20998E+01;
-						case XrayLineEdge.L2: return 1.15440E+01;
-						case XrayLineEdge.L3: return 1.02068E+01;
-						case XrayLineEdge.M1: return 2.81960E+00;
-						case XrayLineEdge.M2: return 2.57490E+00;
-						case XrayLineEdge.M3: return 2.28100E+00;
-						case XrayLineEdge.M4: return 1.87160E+00;
-						case XrayLineEdge.M5: return 1.80920E+00;
-						case XrayLineEdge.N1: return 5.95000E-01;
-						case XrayLineEdge.N2: return 4.91600E-01;
-						case XrayLineEdge.N3: return 4.25300E-01;
-						case XrayLineEdge.N4: return 2.58800E-01;
-						case XrayLineEdge.N5: return 2.45400E-01;
-						case XrayLineEdge.N6: return 3.65000E-02;
-						case XrayLineEdge.N7: return 3.36000E-02;
-						case XrayLineEdge.O1: return 7.71000E-02;
-						case XrayLineEdge.O2: return 4.68000E-02;
-						case XrayLineEdge.O3: return 3.56000E-02;
-						case XrayLineEdge.O4: return 6.10000E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 6.95250E+01,
+						Edge.L1 => 1.20998E+01,
+						Edge.L2 => 1.15440E+01,
+						Edge.L3 => 1.02068E+01,
+						Edge.M1 => 2.81960E+00,
+						Edge.M2 => 2.57490E+00,
+						Edge.M3 => 2.28100E+00,
+						Edge.M4 => 1.87160E+00,
+						Edge.M5 => 1.80920E+00,
+						Edge.N1 => 5.95000E-01,
+						Edge.N2 => 4.91600E-01,
+						Edge.N3 => 4.25300E-01,
+						Edge.N4 => 2.58800E-01,
+						Edge.N5 => 2.45400E-01,
+						Edge.N6 => 3.65000E-02,
+						Edge.N7 => 3.36000E-02,
+						Edge.O1 => 7.71000E-02,
+						Edge.O2 => 4.68000E-02,
+						Edge.O3 => 3.56000E-02,
+						Edge.O4 => 6.10000E-03,
+						_ => double.NaN,
+					};
 				case 75:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.16764E+01;
-						case XrayLineEdge.L1: return 1.25267E+01;
-						case XrayLineEdge.L2: return 1.19587E+01;
-						case XrayLineEdge.L3: return 1.05353E+01;
-						case XrayLineEdge.M1: return 2.93170E+00;
-						case XrayLineEdge.M2: return 2.68160E+00;
-						case XrayLineEdge.M3: return 2.36730E+00;
-						case XrayLineEdge.M4: return 1.94890E+00;
-						case XrayLineEdge.M5: return 1.88290E+00;
-						case XrayLineEdge.N1: return 6.25000E-01;
-						case XrayLineEdge.N2: return 5.17900E-01;
-						case XrayLineEdge.N3: return 4.44400E-01;
-						case XrayLineEdge.N4: return 2.73700E-01;
-						case XrayLineEdge.N5: return 2.60200E-01;
-						case XrayLineEdge.N6: return 4.06000E-02;
-						case XrayLineEdge.N7: return 4.06000E-02;
-						case XrayLineEdge.O1: return 8.28000E-02;
-						case XrayLineEdge.O2: return 4.56000E-02;
-						case XrayLineEdge.O3: return 3.46000E-02;
-						case XrayLineEdge.O4: return 6.06267E-03;
-						case XrayLineEdge.O5: return 5.20913E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 7.16764E+01,
+						Edge.L1 => 1.25267E+01,
+						Edge.L2 => 1.19587E+01,
+						Edge.L3 => 1.05353E+01,
+						Edge.M1 => 2.93170E+00,
+						Edge.M2 => 2.68160E+00,
+						Edge.M3 => 2.36730E+00,
+						Edge.M4 => 1.94890E+00,
+						Edge.M5 => 1.88290E+00,
+						Edge.N1 => 6.25000E-01,
+						Edge.N2 => 5.17900E-01,
+						Edge.N3 => 4.44400E-01,
+						Edge.N4 => 2.73700E-01,
+						Edge.N5 => 2.60200E-01,
+						Edge.N6 => 4.06000E-02,
+						Edge.N7 => 4.06000E-02,
+						Edge.O1 => 8.28000E-02,
+						Edge.O2 => 4.56000E-02,
+						Edge.O3 => 3.46000E-02,
+						Edge.O4 => 6.06267E-03,
+						Edge.O5 => 5.20913E-03,
+						_ => double.NaN,
+					};
 				case 76:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.38708E+01;
-						case XrayLineEdge.L1: return 1.29680E+01;
-						case XrayLineEdge.L2: return 1.23850E+01;
-						case XrayLineEdge.L3: return 1.08709E+01;
-						case XrayLineEdge.M1: return 3.04850E+00;
-						case XrayLineEdge.M2: return 2.79220E+00;
-						case XrayLineEdge.M3: return 2.45720E+00;
-						case XrayLineEdge.M4: return 2.03080E+00;
-						case XrayLineEdge.M5: return 1.96010E+00;
-						case XrayLineEdge.N1: return 6.54300E-01;
-						case XrayLineEdge.N2: return 5.46500E-01;
-						case XrayLineEdge.N3: return 4.68200E-01;
-						case XrayLineEdge.N4: return 2.89400E-01;
-						case XrayLineEdge.N5: return 2.72800E-01;
-						case XrayLineEdge.N6: return 4.63000E-02;
-						case XrayLineEdge.N7: return 4.63000E-02;
-						case XrayLineEdge.O1: return 8.37000E-02;
-						case XrayLineEdge.O2: return 5.80000E-02;
-						case XrayLineEdge.O3: return 4.54000E-02;
-						case XrayLineEdge.O4: return 7.05265E-03;
-						case XrayLineEdge.O5: return 6.02794E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 7.38708E+01,
+						Edge.L1 => 1.29680E+01,
+						Edge.L2 => 1.23850E+01,
+						Edge.L3 => 1.08709E+01,
+						Edge.M1 => 3.04850E+00,
+						Edge.M2 => 2.79220E+00,
+						Edge.M3 => 2.45720E+00,
+						Edge.M4 => 2.03080E+00,
+						Edge.M5 => 1.96010E+00,
+						Edge.N1 => 6.54300E-01,
+						Edge.N2 => 5.46500E-01,
+						Edge.N3 => 4.68200E-01,
+						Edge.N4 => 2.89400E-01,
+						Edge.N5 => 2.72800E-01,
+						Edge.N6 => 4.63000E-02,
+						Edge.N7 => 4.63000E-02,
+						Edge.O1 => 8.37000E-02,
+						Edge.O2 => 5.80000E-02,
+						Edge.O3 => 4.54000E-02,
+						Edge.O4 => 7.05265E-03,
+						Edge.O5 => 6.02794E-03,
+						_ => double.NaN,
+					};
 				case 77:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.61110E+01;
-						case XrayLineEdge.L1: return 1.34185E+01;
-						case XrayLineEdge.L2: return 1.28241E+01;
-						case XrayLineEdge.L3: return 1.12152E+01;
-						case XrayLineEdge.M1: return 3.17370E+00;
-						case XrayLineEdge.M2: return 2.90870E+00;
-						case XrayLineEdge.M3: return 2.55070E+00;
-						case XrayLineEdge.M4: return 2.11610E+00;
-						case XrayLineEdge.M5: return 2.04040E+00;
-						case XrayLineEdge.N1: return 6.90100E-01;
-						case XrayLineEdge.N2: return 5.77100E-01;
-						case XrayLineEdge.N3: return 4.94300E-01;
-						case XrayLineEdge.N4: return 3.11400E-01;
-						case XrayLineEdge.N5: return 2.94900E-01;
-						case XrayLineEdge.N6: return 6.34000E-02;
-						case XrayLineEdge.N7: return 6.05000E-02;
-						case XrayLineEdge.O1: return 9.52000E-02;
-						case XrayLineEdge.O2: return 6.30000E-02;
-						case XrayLineEdge.O3: return 5.05000E-02;
-						case XrayLineEdge.O4: return 8.06275E-03;
-						case XrayLineEdge.O5: return 6.85456E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 7.61110E+01,
+						 Edge.L1=> 1.34185E+01,
+						 Edge.L2=> 1.28241E+01,
+						 Edge.L3=> 1.12152E+01,
+						 Edge.M1=> 3.17370E+00,
+						 Edge.M2=> 2.90870E+00,
+						 Edge.M3=> 2.55070E+00,
+						 Edge.M4=> 2.11610E+00,
+						 Edge.M5=> 2.04040E+00,
+						 Edge.N1=> 6.90100E-01,
+						 Edge.N2=> 5.77100E-01,
+						 Edge.N3=> 4.94300E-01,
+						 Edge.N4=> 3.11400E-01,
+						 Edge.N5=> 2.94900E-01,
+						 Edge.N6=> 6.34000E-02,
+						 Edge.N7=> 6.05000E-02,
+						 Edge.O1=> 9.52000E-02,
+						 Edge.O2=> 6.30000E-02,
+						 Edge.O3=> 5.05000E-02,
+						 Edge.O4=> 8.06275E-03,
+						 Edge.O5=> 6.85456E-03,
+						_=> double.NaN,
+					};
 				case 78:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 7.83948E+01;
-						case XrayLineEdge.L1: return 1.38799E+01;
-						case XrayLineEdge.L2: return 1.32726E+01;
-						case XrayLineEdge.L3: return 1.15637E+01;
-						case XrayLineEdge.M1: return 3.29600E+00;
-						case XrayLineEdge.M2: return 3.02650E+00;
-						case XrayLineEdge.M3: return 2.64540E+00;
-						case XrayLineEdge.M4: return 2.20190E+00;
-						case XrayLineEdge.M5: return 2.12160E+00;
-						case XrayLineEdge.N1: return 7.22000E-01;
-						case XrayLineEdge.N2: return 6.09200E-01;
-						case XrayLineEdge.N3: return 5.19000E-01;
-						case XrayLineEdge.N4: return 3.30800E-01;
-						case XrayLineEdge.N5: return 3.13300E-01;
-						case XrayLineEdge.N6: return 7.43000E-02;
-						case XrayLineEdge.N7: return 7.11000E-02;
-						case XrayLineEdge.O1: return 1.01700E-01;
-						case XrayLineEdge.O2: return 6.53000E-02;
-						case XrayLineEdge.O3: return 5.17000E-02;
-						case XrayLineEdge.O4: return 7.43991E-03;
-						case XrayLineEdge.O5: return 6.12538E-03;
-						default: return double.NaN;
-					}
+						 Edge.K=> 7.83948E+01,
+						 Edge.L1=> 1.38799E+01,
+						 Edge.L2=> 1.32726E+01,
+						 Edge.L3=> 1.15637E+01,
+						 Edge.M1=> 3.29600E+00,
+						 Edge.M2=> 3.02650E+00,
+						 Edge.M3=> 2.64540E+00,
+						 Edge.M4=> 2.20190E+00,
+						 Edge.M5=> 2.12160E+00,
+						 Edge.N1=> 7.22000E-01,
+						 Edge.N2=> 6.09200E-01,
+						 Edge.N3=> 5.19000E-01,
+						 Edge.N4=> 3.30800E-01,
+						 Edge.N5=> 3.13300E-01,
+						 Edge.N6=> 7.43000E-02,
+						 Edge.N7=> 7.11000E-02,
+						 Edge.O1=> 1.01700E-01,
+						 Edge.O2=> 6.53000E-02,
+						 Edge.O3=> 5.17000E-02,
+						 Edge.O4=> 7.43991E-03,
+						 Edge.O5=> 6.12538E-03,
+						_=> double.NaN,
+					};
 				case 79:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.07249E+01;
-						case XrayLineEdge.L1: return 1.43528E+01;
-						case XrayLineEdge.L2: return 1.37336E+01;
-						case XrayLineEdge.L3: return 1.19187E+01;
-						case XrayLineEdge.M1: return 3.42490E+00;
-						case XrayLineEdge.M2: return 3.14780E+00;
-						case XrayLineEdge.M3: return 2.74300E+00;
-						case XrayLineEdge.M4: return 2.29110E+00;
-						case XrayLineEdge.M5: return 2.20570E+00;
-						case XrayLineEdge.N1: return 7.58800E-01;
-						case XrayLineEdge.N2: return 6.43700E-01;
-						case XrayLineEdge.N3: return 5.45400E-01;
-						case XrayLineEdge.N4: return 3.52000E-01;
-						case XrayLineEdge.N5: return 3.33900E-01;
-						case XrayLineEdge.N6: return 8.64000E-02;
-						case XrayLineEdge.N7: return 8.28000E-02;
-						case XrayLineEdge.O1: return 1.07800E-01;
-						case XrayLineEdge.O2: return 7.17000E-02;
-						case XrayLineEdge.O3: return 5.37000E-02;
-						case XrayLineEdge.O4: return 8.30838E-03;
-						case XrayLineEdge.O5: return 6.79032E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.07249E+01,
+						Edge.L1 => 1.43528E+01,
+						Edge.L2 => 1.37336E+01,
+						Edge.L3 => 1.19187E+01,
+						Edge.M1 => 3.42490E+00,
+						Edge.M2 => 3.14780E+00,
+						Edge.M3 => 2.74300E+00,
+						Edge.M4 => 2.29110E+00,
+						Edge.M5 => 2.20570E+00,
+						Edge.N1 => 7.58800E-01,
+						Edge.N2 => 6.43700E-01,
+						Edge.N3 => 5.45400E-01,
+						Edge.N4 => 3.52000E-01,
+						Edge.N5 => 3.33900E-01,
+						Edge.N6 => 8.64000E-02,
+						Edge.N7 => 8.28000E-02,
+						Edge.O1 => 1.07800E-01,
+						Edge.O2 => 7.17000E-02,
+						Edge.O3 => 5.37000E-02,
+						Edge.O4 => 8.30838E-03,
+						Edge.O5 => 6.79032E-03,
+						_ => double.NaN,
+					};
 				case 80:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.31023E+01;
-						case XrayLineEdge.L1: return 1.48393E+01;
-						case XrayLineEdge.L2: return 1.42087E+01;
-						case XrayLineEdge.L3: return 1.22839E+01;
-						case XrayLineEdge.M1: return 3.56160E+00;
-						case XrayLineEdge.M2: return 3.27850E+00;
-						case XrayLineEdge.M3: return 2.84710E+00;
-						case XrayLineEdge.M4: return 2.38490E+00;
-						case XrayLineEdge.M5: return 2.29490E+00;
-						case XrayLineEdge.N1: return 8.00300E-01;
-						case XrayLineEdge.N2: return 6.76900E-01;
-						case XrayLineEdge.N3: return 5.71000E-01;
-						case XrayLineEdge.N4: return 3.78300E-01;
-						case XrayLineEdge.N5: return 3.59800E-01;
-						case XrayLineEdge.N6: return 1.02200E-01;
-						case XrayLineEdge.N7: return 9.85000E-02;
-						case XrayLineEdge.O1: return 1.20300E-01;
-						case XrayLineEdge.O2: return 8.05000E-02;
-						case XrayLineEdge.O3: return 5.76000E-02;
-						case XrayLineEdge.O4: return 6.40000E-03;
-						case XrayLineEdge.O5: return 6.40000E-03;
-						case XrayLineEdge.P1: return 7.71361E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.31023E+01,
+						Edge.L1 => 1.48393E+01,
+						Edge.L2 => 1.42087E+01,
+						Edge.L3 => 1.22839E+01,
+						Edge.M1 => 3.56160E+00,
+						Edge.M2 => 3.27850E+00,
+						Edge.M3 => 2.84710E+00,
+						Edge.M4 => 2.38490E+00,
+						Edge.M5 => 2.29490E+00,
+						Edge.N1 => 8.00300E-01,
+						Edge.N2 => 6.76900E-01,
+						Edge.N3 => 5.71000E-01,
+						Edge.N4 => 3.78300E-01,
+						Edge.N5 => 3.59800E-01,
+						Edge.N6 => 1.02200E-01,
+						Edge.N7 => 9.85000E-02,
+						Edge.O1 => 1.20300E-01,
+						Edge.O2 => 8.05000E-02,
+						Edge.O3 => 5.76000E-02,
+						Edge.O4 => 6.40000E-03,
+						Edge.O5 => 6.40000E-03,
+						Edge.P1 => 7.71361E-03,
+						_ => double.NaN,
+					};
 				case 81:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.55304E+01;
-						case XrayLineEdge.L1: return 1.53467E+01;
-						case XrayLineEdge.L2: return 1.46979E+01;
-						case XrayLineEdge.L3: return 1.26575E+01;
-						case XrayLineEdge.M1: return 3.70410E+00;
-						case XrayLineEdge.M2: return 3.41570E+00;
-						case XrayLineEdge.M3: return 2.95660E+00;
-						case XrayLineEdge.M4: return 2.48510E+00;
-						case XrayLineEdge.M5: return 2.38930E+00;
-						case XrayLineEdge.N1: return 8.45500E-01;
-						case XrayLineEdge.N2: return 7.21300E-01;
-						case XrayLineEdge.N3: return 6.09000E-01;
-						case XrayLineEdge.N4: return 4.06600E-01;
-						case XrayLineEdge.N5: return 3.86200E-01;
-						case XrayLineEdge.N6: return 1.22800E-01;
-						case XrayLineEdge.N7: return 1.18500E-01;
-						case XrayLineEdge.O1: return 1.36300E-01;
-						case XrayLineEdge.O2: return 9.96000E-02;
-						case XrayLineEdge.O3: return 7.54000E-02;
-						case XrayLineEdge.O4: return 1.53000E-02;
-						case XrayLineEdge.O5: return 1.31000E-02;
-						case XrayLineEdge.P1: return 9.66483E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.55304E+01,
+						Edge.L1 => 1.53467E+01,
+						Edge.L2 => 1.46979E+01,
+						Edge.L3 => 1.26575E+01,
+						Edge.M1 => 3.70410E+00,
+						Edge.M2 => 3.41570E+00,
+						Edge.M3 => 2.95660E+00,
+						Edge.M4 => 2.48510E+00,
+						Edge.M5 => 2.38930E+00,
+						Edge.N1 => 8.45500E-01,
+						Edge.N2 => 7.21300E-01,
+						Edge.N3 => 6.09000E-01,
+						Edge.N4 => 4.06600E-01,
+						Edge.N5 => 3.86200E-01,
+						Edge.N6 => 1.22800E-01,
+						Edge.N7 => 1.18500E-01,
+						Edge.O1 => 1.36300E-01,
+						Edge.O2 => 9.96000E-02,
+						Edge.O3 => 7.54000E-02,
+						Edge.O4 => 1.53000E-02,
+						Edge.O5 => 1.31000E-02,
+						Edge.P1 => 9.66483E-03,
+						_ => double.NaN,
+					};
 				case 82:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 8.80045E+01;
-						case XrayLineEdge.L1: return 1.58608E+01;
-						case XrayLineEdge.L2: return 1.52000E+01;
-						case XrayLineEdge.L3: return 1.30352E+01;
-						case XrayLineEdge.M1: return 3.85070E+00;
-						case XrayLineEdge.M2: return 3.55420E+00;
-						case XrayLineEdge.M3: return 3.06640E+00;
-						case XrayLineEdge.M4: return 2.58560E+00;
-						case XrayLineEdge.M5: return 2.48400E+00;
-						case XrayLineEdge.N1: return 8.93600E-01;
-						case XrayLineEdge.N2: return 7.63900E-01;
-						case XrayLineEdge.N3: return 6.44500E-01;
-						case XrayLineEdge.N4: return 4.35200E-01;
-						case XrayLineEdge.N5: return 4.12900E-01;
-						case XrayLineEdge.N6: return 1.42900E-01;
-						case XrayLineEdge.N7: return 1.38100E-01;
-						case XrayLineEdge.O1: return 1.47300E-01;
-						case XrayLineEdge.O2: return 1.04800E-01;
-						case XrayLineEdge.O3: return 8.60000E-02;
-						case XrayLineEdge.O4: return 2.18000E-02;
-						case XrayLineEdge.O5: return 1.92000E-02;
-						case XrayLineEdge.P1: return 1.16904E-02;
-						case XrayLineEdge.P2: return 4.91166E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 8.80045E+01,
+						Edge.L1 => 1.58608E+01,
+						Edge.L2 => 1.52000E+01,
+						Edge.L3 => 1.30352E+01,
+						Edge.M1 => 3.85070E+00,
+						Edge.M2 => 3.55420E+00,
+						Edge.M3 => 3.06640E+00,
+						Edge.M4 => 2.58560E+00,
+						Edge.M5 => 2.48400E+00,
+						Edge.N1 => 8.93600E-01,
+						Edge.N2 => 7.63900E-01,
+						Edge.N3 => 6.44500E-01,
+						Edge.N4 => 4.35200E-01,
+						Edge.N5 => 4.12900E-01,
+						Edge.N6 => 1.42900E-01,
+						Edge.N7 => 1.38100E-01,
+						Edge.O1 => 1.47300E-01,
+						Edge.O2 => 1.04800E-01,
+						Edge.O3 => 8.60000E-02,
+						Edge.O4 => 2.18000E-02,
+						Edge.O5 => 1.92000E-02,
+						Edge.P1 => 1.16904E-02,
+						Edge.P2 => 4.91166E-03,
+						_ => double.NaN,
+					};
 				case 83:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 9.05259E+01;
-						case XrayLineEdge.L1: return 1.63875E+01;
-						case XrayLineEdge.L2: return 1.57111E+01;
-						case XrayLineEdge.L3: return 1.34186E+01;
-						case XrayLineEdge.M1: return 3.99910E+00;
-						case XrayLineEdge.M2: return 3.69630E+00;
-						case XrayLineEdge.M3: return 3.17690E+00;
-						case XrayLineEdge.M4: return 2.68760E+00;
-						case XrayLineEdge.M5: return 2.57960E+00;
-						case XrayLineEdge.N1: return 9.38200E-01;
-						case XrayLineEdge.N2: return 8.05300E-01;
-						case XrayLineEdge.N3: return 6.78900E-01;
-						case XrayLineEdge.N4: return 4.63600E-01;
-						case XrayLineEdge.N5: return 4.40000E-01;
-						case XrayLineEdge.N6: return 1.61900E-01;
-						case XrayLineEdge.N7: return 1.57400E-01;
-						case XrayLineEdge.O1: return 1.59300E-01;
-						case XrayLineEdge.O2: return 1.16800E-01;
-						case XrayLineEdge.O3: return 9.28000E-02;
-						case XrayLineEdge.O4: return 2.65000E-02;
-						case XrayLineEdge.O5: return 2.44000E-02;
-						case XrayLineEdge.P1: return 1.42334E-02;
-						case XrayLineEdge.P2: return 6.16991E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 9.05259E+01,
+						Edge.L1 => 1.63875E+01,
+						Edge.L2 => 1.57111E+01,
+						Edge.L3 => 1.34186E+01,
+						Edge.M1 => 3.99910E+00,
+						Edge.M2 => 3.69630E+00,
+						Edge.M3 => 3.17690E+00,
+						Edge.M4 => 2.68760E+00,
+						Edge.M5 => 2.57960E+00,
+						Edge.N1 => 9.38200E-01,
+						Edge.N2 => 8.05300E-01,
+						Edge.N3 => 6.78900E-01,
+						Edge.N4 => 4.63600E-01,
+						Edge.N5 => 4.40000E-01,
+						Edge.N6 => 1.61900E-01,
+						Edge.N7 => 1.57400E-01,
+						Edge.O1 => 1.59300E-01,
+						Edge.O2 => 1.16800E-01,
+						Edge.O3 => 9.28000E-02,
+						Edge.O4 => 2.65000E-02,
+						Edge.O5 => 2.44000E-02,
+						Edge.P1 => 1.42334E-02,
+						Edge.P2 => 6.16991E-03,
+						_ => double.NaN,
+					};
 				case 84:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 9.31050E+01;
-						case XrayLineEdge.L1: return 1.69393E+01;
-						case XrayLineEdge.L2: return 1.62443E+01;
-						case XrayLineEdge.L3: return 1.38138E+01;
-						case XrayLineEdge.M1: return 4.14940E+00;
-						case XrayLineEdge.M2: return 3.85410E+00;
-						case XrayLineEdge.M3: return 3.30190E+00;
-						case XrayLineEdge.M4: return 2.79800E+00;
-						case XrayLineEdge.M5: return 2.68300E+00;
-						case XrayLineEdge.N1: return 9.95300E-01;
-						case XrayLineEdge.N2: return 8.51000E-01;
-						case XrayLineEdge.N3: return 7.05000E-01;
-						case XrayLineEdge.N4: return 5.00200E-01;
-						case XrayLineEdge.N5: return 4.73400E-01;
-						case XrayLineEdge.N6: return 1.75344E-01;
-						case XrayLineEdge.N7: return 1.69362E-01;
-						case XrayLineEdge.O1: return 1.70906E-01;
-						case XrayLineEdge.O2: return 1.25695E-01;
-						case XrayLineEdge.O3: return 9.83141E-02;
-						case XrayLineEdge.O4: return 3.14000E-02;
-						case XrayLineEdge.O5: return 3.14000E-02;
-						case XrayLineEdge.P1: return 1.67777E-02;
-						case XrayLineEdge.P2: return 7.55974E-03;
-						case XrayLineEdge.P3: return 5.39477E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 9.31050E+01,
+						Edge.L1 => 1.69393E+01,
+						Edge.L2 => 1.62443E+01,
+						Edge.L3 => 1.38138E+01,
+						Edge.M1 => 4.14940E+00,
+						Edge.M2 => 3.85410E+00,
+						Edge.M3 => 3.30190E+00,
+						Edge.M4 => 2.79800E+00,
+						Edge.M5 => 2.68300E+00,
+						Edge.N1 => 9.95300E-01,
+						Edge.N2 => 8.51000E-01,
+						Edge.N3 => 7.05000E-01,
+						Edge.N4 => 5.00200E-01,
+						Edge.N5 => 4.73400E-01,
+						Edge.N6 => 1.75344E-01,
+						Edge.N7 => 1.69362E-01,
+						Edge.O1 => 1.70906E-01,
+						Edge.O2 => 1.25695E-01,
+						Edge.O3 => 9.83141E-02,
+						Edge.O4 => 3.14000E-02,
+						Edge.O5 => 3.14000E-02,
+						Edge.P1 => 1.67777E-02,
+						Edge.P2 => 7.55974E-03,
+						Edge.P3 => 5.39477E-03,
+						_ => double.NaN,
+					};
 				case 85:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 9.57299E+01;
-						case XrayLineEdge.L1: return 1.74930E+01;
-						case XrayLineEdge.L2: return 1.67847E+01;
-						case XrayLineEdge.L3: return 1.42135E+01;
-						case XrayLineEdge.M1: return 4.31700E+00;
-						case XrayLineEdge.M2: return 4.00800E+00;
-						case XrayLineEdge.M3: return 3.42600E+00;
-						case XrayLineEdge.M4: return 2.90870E+00;
-						case XrayLineEdge.M5: return 2.78670E+00;
-						case XrayLineEdge.N1: return 1.04200E+00;
-						case XrayLineEdge.N2: return 8.86000E-01;
-						case XrayLineEdge.N3: return 7.40000E-01;
-						case XrayLineEdge.N4: return 5.33200E-01;
-						case XrayLineEdge.N5: return 4.75385E-01;
-						case XrayLineEdge.N6: return 1.97076E-01;
-						case XrayLineEdge.N7: return 1.90577E-01;
-						case XrayLineEdge.O1: return 1.85617E-01;
-						case XrayLineEdge.O2: return 1.38499E-01;
-						case XrayLineEdge.O3: return 1.08426E-01;
-						case XrayLineEdge.O4: return 4.15942E-02;
-						case XrayLineEdge.O5: return 3.76618E-02;
-						case XrayLineEdge.P1: return 1.93390E-02;
-						case XrayLineEdge.P2: return 9.03104E-03;
-						case XrayLineEdge.P3: return 6.24450E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 9.57299E+01,
+						Edge.L1 => 1.74930E+01,
+						Edge.L2 => 1.67847E+01,
+						Edge.L3 => 1.42135E+01,
+						Edge.M1 => 4.31700E+00,
+						Edge.M2 => 4.00800E+00,
+						Edge.M3 => 3.42600E+00,
+						Edge.M4 => 2.90870E+00,
+						Edge.M5 => 2.78670E+00,
+						Edge.N1 => 1.04200E+00,
+						Edge.N2 => 8.86000E-01,
+						Edge.N3 => 7.40000E-01,
+						Edge.N4 => 5.33200E-01,
+						Edge.N5 => 4.75385E-01,
+						Edge.N6 => 1.97076E-01,
+						Edge.N7 => 1.90577E-01,
+						Edge.O1 => 1.85617E-01,
+						Edge.O2 => 1.38499E-01,
+						Edge.O3 => 1.08426E-01,
+						Edge.O4 => 4.15942E-02,
+						Edge.O5 => 3.76618E-02,
+						Edge.P1 => 1.93390E-02,
+						Edge.P2 => 9.03104E-03,
+						Edge.P3 => 6.24450E-03,
+						_ => double.NaN,
+					};
 				case 86:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 9.84040E+01;
-						case XrayLineEdge.L1: return 1.80490E+01;
-						case XrayLineEdge.L2: return 1.73371E+01;
-						case XrayLineEdge.L3: return 1.46194E+01;
-						case XrayLineEdge.M1: return 4.48200E+00;
-						case XrayLineEdge.M2: return 4.15900E+00;
-						case XrayLineEdge.M3: return 3.53800E+00;
-						case XrayLineEdge.M4: return 3.02150E+00;
-						case XrayLineEdge.M5: return 2.89240E+00;
-						case XrayLineEdge.N1: return 1.09700E+00;
-						case XrayLineEdge.N2: return 9.29000E-01;
-						case XrayLineEdge.N3: return 7.68000E-01;
-						case XrayLineEdge.N4: return 5.66600E-01;
-						case XrayLineEdge.N5: return 5.37000E-01;
-						case XrayLineEdge.N6: return 2.19631E-01;
-						case XrayLineEdge.N7: return 2.12588E-01;
-						case XrayLineEdge.O1: return 2.00831E-01;
-						case XrayLineEdge.O2: return 1.51771E-01;
-						case XrayLineEdge.O3: return 1.18817E-01;
-						case XrayLineEdge.O4: return 4.86911E-02;
-						case XrayLineEdge.O5: return 4.42550E-02;
-						case XrayLineEdge.P1: return 2.19397E-02;
-						case XrayLineEdge.P2: return 1.05726E-02;
-						case XrayLineEdge.P3: return 7.12588E-03;
-						default: return double.NaN;
-					}
+						Edge.K => 9.84040E+01,
+						Edge.L1 => 1.80490E+01,
+						Edge.L2 => 1.73371E+01,
+						Edge.L3 => 1.46194E+01,
+						Edge.M1 => 4.48200E+00,
+						Edge.M2 => 4.15900E+00,
+						Edge.M3 => 3.53800E+00,
+						Edge.M4 => 3.02150E+00,
+						Edge.M5 => 2.89240E+00,
+						Edge.N1 => 1.09700E+00,
+						Edge.N2 => 9.29000E-01,
+						Edge.N3 => 7.68000E-01,
+						Edge.N4 => 5.66600E-01,
+						Edge.N5 => 5.37000E-01,
+						Edge.N6 => 2.19631E-01,
+						Edge.N7 => 2.12588E-01,
+						Edge.O1 => 2.00831E-01,
+						Edge.O2 => 1.51771E-01,
+						Edge.O3 => 1.18817E-01,
+						Edge.O4 => 4.86911E-02,
+						Edge.O5 => 4.42550E-02,
+						Edge.P1 => 2.19397E-02,
+						Edge.P2 => 1.05726E-02,
+						Edge.P3 => 7.12588E-03,
+						_ => double.NaN,
+					};
 				case 87:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.01137E+02;
-						case XrayLineEdge.L1: return 1.86390E+01;
-						case XrayLineEdge.L2: return 1.79065E+01;
-						case XrayLineEdge.L3: return 1.50312E+01;
-						case XrayLineEdge.M1: return 4.65200E+00;
-						case XrayLineEdge.M2: return 4.32700E+00;
-						case XrayLineEdge.M3: return 3.66300E+00;
-						case XrayLineEdge.M4: return 3.13620E+00;
-						case XrayLineEdge.M5: return 2.99970E+00;
-						case XrayLineEdge.N1: return 1.15300E+00;
-						case XrayLineEdge.N2: return 9.80000E-01;
-						case XrayLineEdge.N3: return 8.10000E-01;
-						case XrayLineEdge.N4: return 6.03300E-01;
-						case XrayLineEdge.N5: return 5.77000E-01;
-						case XrayLineEdge.N6: return 2.46488E-01;
-						case XrayLineEdge.N7: return 2.38863E-01;
-						case XrayLineEdge.O1: return 2.20035E-01;
-						case XrayLineEdge.O2: return 1.69009E-01;
-						case XrayLineEdge.O3: return 1.32957E-01;
-						case XrayLineEdge.O4: return 5.95378E-02;
-						case XrayLineEdge.O5: return 5.45529E-02;
-						case XrayLineEdge.P1: return 2.78679E-02;
-						case XrayLineEdge.P2: return 1.51650E-02;
-						case XrayLineEdge.P3: return 1.06123E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.01137E+02,
+						Edge.L1 => 1.86390E+01,
+						Edge.L2 => 1.79065E+01,
+						Edge.L3 => 1.50312E+01,
+						Edge.M1 => 4.65200E+00,
+						Edge.M2 => 4.32700E+00,
+						Edge.M3 => 3.66300E+00,
+						Edge.M4 => 3.13620E+00,
+						Edge.M5 => 2.99970E+00,
+						Edge.N1 => 1.15300E+00,
+						Edge.N2 => 9.80000E-01,
+						Edge.N3 => 8.10000E-01,
+						Edge.N4 => 6.03300E-01,
+						Edge.N5 => 5.77000E-01,
+						Edge.N6 => 2.46488E-01,
+						Edge.N7 => 2.38863E-01,
+						Edge.O1 => 2.20035E-01,
+						Edge.O2 => 1.69009E-01,
+						Edge.O3 => 1.32957E-01,
+						Edge.O4 => 5.95378E-02,
+						Edge.O5 => 5.45529E-02,
+						Edge.P1 => 2.78679E-02,
+						Edge.P2 => 1.51650E-02,
+						Edge.P3 => 1.06123E-02,
+						_ => double.NaN,
+					};
 				case 88:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.03922E+02;
-						case XrayLineEdge.L1: return 1.92367E+01;
-						case XrayLineEdge.L2: return 1.84843E+01;
-						case XrayLineEdge.L3: return 1.54444E+01;
-						case XrayLineEdge.M1: return 4.82200E+00;
-						case XrayLineEdge.M2: return 4.48950E+00;
-						case XrayLineEdge.M3: return 3.79180E+00;
-						case XrayLineEdge.M4: return 3.24840E+00;
-						case XrayLineEdge.M5: return 3.10490E+00;
-						case XrayLineEdge.N1: return 1.20840E+00;
-						case XrayLineEdge.N2: return 1.05760E+00;
-						case XrayLineEdge.N3: return 8.79100E-01;
-						case XrayLineEdge.N4: return 6.35900E-01;
-						case XrayLineEdge.N5: return 6.02700E-01;
-						case XrayLineEdge.N6: return 2.98900E-01;
-						case XrayLineEdge.N7: return 2.98900E-01;
-						case XrayLineEdge.O1: return 2.54400E-01;
-						case XrayLineEdge.O2: return 2.00400E-01;
-						case XrayLineEdge.O3: return 1.52800E-01;
-						case XrayLineEdge.O4: return 6.72000E-02;
-						case XrayLineEdge.O5: return 6.72000E-02;
-						case XrayLineEdge.P1: return 4.35000E-02;
-						case XrayLineEdge.P2: return 1.88000E-02;
-						case XrayLineEdge.P3: return 1.88000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.03922E+02,
+						Edge.L1 => 1.92367E+01,
+						Edge.L2 => 1.84843E+01,
+						Edge.L3 => 1.54444E+01,
+						Edge.M1 => 4.82200E+00,
+						Edge.M2 => 4.48950E+00,
+						Edge.M3 => 3.79180E+00,
+						Edge.M4 => 3.24840E+00,
+						Edge.M5 => 3.10490E+00,
+						Edge.N1 => 1.20840E+00,
+						Edge.N2 => 1.05760E+00,
+						Edge.N3 => 8.79100E-01,
+						Edge.N4 => 6.35900E-01,
+						Edge.N5 => 6.02700E-01,
+						Edge.N6 => 2.98900E-01,
+						Edge.N7 => 2.98900E-01,
+						Edge.O1 => 2.54400E-01,
+						Edge.O2 => 2.00400E-01,
+						Edge.O3 => 1.52800E-01,
+						Edge.O4 => 6.72000E-02,
+						Edge.O5 => 6.72000E-02,
+						Edge.P1 => 4.35000E-02,
+						Edge.P2 => 1.88000E-02,
+						Edge.P3 => 1.88000E-02,
+						_ => double.NaN,
+					};
 				case 89:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.06755E+02;
-						case XrayLineEdge.L1: return 1.98400E+01;
-						case XrayLineEdge.L2: return 1.90832E+01;
-						case XrayLineEdge.L3: return 1.58710E+01;
-						case XrayLineEdge.M1: return 5.00200E+00;
-						case XrayLineEdge.M2: return 4.65600E+00;
-						case XrayLineEdge.M3: return 3.90900E+00;
-						case XrayLineEdge.M4: return 3.37020E+00;
-						case XrayLineEdge.M5: return 3.21900E+00;
-						case XrayLineEdge.N1: return 1.26900E+00;
-						case XrayLineEdge.N2: return 1.08000E+00;
-						case XrayLineEdge.N3: return 8.90000E-01;
-						case XrayLineEdge.N4: return 6.74900E-01;
-						case XrayLineEdge.N5: return 6.37000E-01;
-						case XrayLineEdge.N6: return 3.03944E-01;
-						case XrayLineEdge.N7: return 2.95067E-01;
-						case XrayLineEdge.O1: return 2.61255E-01;
-						case XrayLineEdge.O2: return 2.06171E-01;
-						case XrayLineEdge.O3: return 1.63235E-01;
-						case XrayLineEdge.O4: return 8.31361E-02;
-						case XrayLineEdge.O5: return 7.69389E-02;
-						case XrayLineEdge.P1: return 4.04636E-02;
-						case XrayLineEdge.P2: return 2.51851E-02;
-						case XrayLineEdge.P3: return 1.84021E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.06755E+02,
+						Edge.L1 => 1.98400E+01,
+						Edge.L2 => 1.90832E+01,
+						Edge.L3 => 1.58710E+01,
+						Edge.M1 => 5.00200E+00,
+						Edge.M2 => 4.65600E+00,
+						Edge.M3 => 3.90900E+00,
+						Edge.M4 => 3.37020E+00,
+						Edge.M5 => 3.21900E+00,
+						Edge.N1 => 1.26900E+00,
+						Edge.N2 => 1.08000E+00,
+						Edge.N3 => 8.90000E-01,
+						Edge.N4 => 6.74900E-01,
+						Edge.N5 => 6.37000E-01,
+						Edge.N6 => 3.03944E-01,
+						Edge.N7 => 2.95067E-01,
+						Edge.O1 => 2.61255E-01,
+						Edge.O2 => 2.06171E-01,
+						Edge.O3 => 1.63235E-01,
+						Edge.O4 => 8.31361E-02,
+						Edge.O5 => 7.69389E-02,
+						Edge.P1 => 4.04636E-02,
+						Edge.P2 => 2.51851E-02,
+						Edge.P3 => 1.84021E-02,
+						_ => double.NaN,
+					};
 				case 90:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.09651E+02;
-						case XrayLineEdge.L1: return 2.04721E+01;
-						case XrayLineEdge.L2: return 1.96932E+01;
-						case XrayLineEdge.L3: return 1.63003E+01;
-						case XrayLineEdge.M1: return 5.18230E+00;
-						case XrayLineEdge.M2: return 4.83040E+00;
-						case XrayLineEdge.M3: return 4.04610E+00;
-						case XrayLineEdge.M4: return 3.49080E+00;
-						case XrayLineEdge.M5: return 3.33200E+00;
-						case XrayLineEdge.N1: return 1.32950E+00;
-						case XrayLineEdge.N2: return 1.16820E+00;
-						case XrayLineEdge.N3: return 9.67300E-01;
-						case XrayLineEdge.N4: return 7.14100E-01;
-						case XrayLineEdge.N5: return 6.76400E-01;
-						case XrayLineEdge.N6: return 3.44400E-01;
-						case XrayLineEdge.N7: return 3.35200E-01;
-						case XrayLineEdge.O1: return 2.90200E-01;
-						case XrayLineEdge.O2: return 2.29400E-01;
-						case XrayLineEdge.O3: return 1.81800E-01;
-						case XrayLineEdge.O4: return 9.43000E-02;
-						case XrayLineEdge.O5: return 8.79000E-02;
-						case XrayLineEdge.P1: return 5.95000E-02;
-						case XrayLineEdge.P2: return 4.90000E-02;
-						case XrayLineEdge.P3: return 4.30000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.09651E+02,
+						Edge.L1 => 2.04721E+01,
+						Edge.L2 => 1.96932E+01,
+						Edge.L3 => 1.63003E+01,
+						Edge.M1 => 5.18230E+00,
+						Edge.M2 => 4.83040E+00,
+						Edge.M3 => 4.04610E+00,
+						Edge.M4 => 3.49080E+00,
+						Edge.M5 => 3.33200E+00,
+						Edge.N1 => 1.32950E+00,
+						Edge.N2 => 1.16820E+00,
+						Edge.N3 => 9.67300E-01,
+						Edge.N4 => 7.14100E-01,
+						Edge.N5 => 6.76400E-01,
+						Edge.N6 => 3.44400E-01,
+						Edge.N7 => 3.35200E-01,
+						Edge.O1 => 2.90200E-01,
+						Edge.O2 => 2.29400E-01,
+						Edge.O3 => 1.81800E-01,
+						Edge.O4 => 9.43000E-02,
+						Edge.O5 => 8.79000E-02,
+						Edge.P1 => 5.95000E-02,
+						Edge.P2 => 4.90000E-02,
+						Edge.P3 => 4.30000E-02,
+						_ => double.NaN,
+					};
 				case 91:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.12601E+02;
-						case XrayLineEdge.L1: return 2.11046E+01;
-						case XrayLineEdge.L2: return 2.03137E+01;
-						case XrayLineEdge.L3: return 1.67331E+01;
-						case XrayLineEdge.M1: return 5.36690E+00;
-						case XrayLineEdge.M2: return 5.00090E+00;
-						case XrayLineEdge.M3: return 4.17380E+00;
-						case XrayLineEdge.M4: return 3.61120E+00;
-						case XrayLineEdge.M5: return 3.44180E+00;
-						case XrayLineEdge.N1: return 1.38710E+00;
-						case XrayLineEdge.N2: return 1.22430E+00;
-						case XrayLineEdge.N3: return 1.00670E+00;
-						case XrayLineEdge.N4: return 7.43400E-01;
-						case XrayLineEdge.N5: return 7.08200E-01;
-						case XrayLineEdge.N6: return 3.71200E-01;
-						case XrayLineEdge.N7: return 3.59500E-01;
-						case XrayLineEdge.O1: return 3.09600E-01;
-						case XrayLineEdge.O2: return 2.33624E-01;
-						case XrayLineEdge.O3: return 1.83050E-01;
-						case XrayLineEdge.O4: return 9.66789E-02;
-						case XrayLineEdge.O5: return 8.92408E-02;
-						case XrayLineEdge.P1: return 4.54585E-02;
-						case XrayLineEdge.P2: return 2.85451E-02;
-						case XrayLineEdge.P3: return 2.03206E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.12601E+02,
+						Edge.L1 => 2.11046E+01,
+						Edge.L2 => 2.03137E+01,
+						Edge.L3 => 1.67331E+01,
+						Edge.M1 => 5.36690E+00,
+						Edge.M2 => 5.00090E+00,
+						Edge.M3 => 4.17380E+00,
+						Edge.M4 => 3.61120E+00,
+						Edge.M5 => 3.44180E+00,
+						Edge.N1 => 1.38710E+00,
+						Edge.N2 => 1.22430E+00,
+						Edge.N3 => 1.00670E+00,
+						Edge.N4 => 7.43400E-01,
+						Edge.N5 => 7.08200E-01,
+						Edge.N6 => 3.71200E-01,
+						Edge.N7 => 3.59500E-01,
+						Edge.O1 => 3.09600E-01,
+						Edge.O2 => 2.33624E-01,
+						Edge.O3 => 1.83050E-01,
+						Edge.O4 => 9.66789E-02,
+						Edge.O5 => 8.92408E-02,
+						Edge.P1 => 4.54585E-02,
+						Edge.P2 => 2.85451E-02,
+						Edge.P3 => 2.03206E-02,
+						_ => double.NaN,
+					};
 				case 92:
-					switch (line)
+					return line switch
 					{
-						case XrayLineEdge.K: return 1.15606E+02;
-						case XrayLineEdge.L1: return 2.17574E+01;
-						case XrayLineEdge.L2: return 2.09476E+01;
-						case XrayLineEdge.L3: return 1.71663E+01;
-						case XrayLineEdge.M1: return 5.54800E+00;
-						case XrayLineEdge.M2: return 5.18220E+00;
-						case XrayLineEdge.M3: return 4.30340E+00;
-						case XrayLineEdge.M4: return 3.72760E+00;
-						case XrayLineEdge.M5: return 3.55170E+00;
-						case XrayLineEdge.N1: return 1.44080E+00;
-						case XrayLineEdge.N2: return 1.27260E+00;
-						case XrayLineEdge.N3: return 1.04490E+00;
-						case XrayLineEdge.N4: return 7.80400E-01;
-						case XrayLineEdge.N5: return 7.37700E-01;
-						case XrayLineEdge.N6: return 3.91300E-01;
-						case XrayLineEdge.N7: return 3.80900E-01;
-						case XrayLineEdge.O1: return 3.23700E-01;
-						case XrayLineEdge.O2: return 2.59300E-01;
-						case XrayLineEdge.O3: return 1.95100E-01;
-						case XrayLineEdge.O4: return 1.05000E-01;
-						case XrayLineEdge.O5: return 9.63000E-02;
-						case XrayLineEdge.P1: return 7.07000E-02;
-						case XrayLineEdge.P2: return 4.23000E-02;
-						case XrayLineEdge.P3: return 3.23000E-02;
-						default: return double.NaN;
-					}
+						Edge.K => 1.15606E+02,
+						Edge.L1 => 2.17574E+01,
+						Edge.L2 => 2.09476E+01,
+						Edge.L3 => 1.71663E+01,
+						Edge.M1 => 5.54800E+00,
+						Edge.M2 => 5.18220E+00,
+						Edge.M3 => 4.30340E+00,
+						Edge.M4 => 3.72760E+00,
+						Edge.M5 => 3.55170E+00,
+						Edge.N1 => 1.44080E+00,
+						Edge.N2 => 1.27260E+00,
+						Edge.N3 => 1.04490E+00,
+						Edge.N4 => 7.80400E-01,
+						Edge.N5 => 7.37700E-01,
+						Edge.N6 => 3.91300E-01,
+						Edge.N7 => 3.80900E-01,
+						Edge.O1 => 3.23700E-01,
+						Edge.O2 => 2.59300E-01,
+						Edge.O3 => 1.95100E-01,
+						Edge.O4 => 1.05000E-01,
+						Edge.O5 => 9.63000E-02,
+						Edge.P1 => 7.07000E-02,
+						Edge.P2 => 4.23000E-02,
+						Edge.P3 => 3.23000E-02,
+						_ => double.NaN,
+					};
 				default: return double.NaN;
 			}
 			#endregion
@@ -5753,7 +5754,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 		#endregion
 
 		public static readonly Complex[][] NeutronCoherentScattering = new Complex[][]{
-			#region
+			#region 単位はfm
 					new Complex[]{new Complex(  0   ,   0   )},
 					new Complex[]{new Complex(  -3.739  ,   0   ),
 					new Complex(    -3.7406 ,   0   ),
@@ -6753,11 +6754,11 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 		public static void ReadChantlerData(string[] fileNames)
 		{
 			#region
-			StringBuilder sbEdgeEnergy = new StringBuilder();
+			var sbEdgeEnergy = new StringBuilder();
 			sbEdgeEnergy.AppendLine("switch (z)");
 			sbEdgeEnergy.AppendLine("{");
 
-			StringBuilder sbAbsorption = new StringBuilder();
+			var sbAbsorption = new StringBuilder();
 			sbAbsorption.AppendLine("public static PointD[][][] MassAbsorptionCoefficient = new PointD[][][]");
 			sbAbsorption.AppendLine("{");
 			sbAbsorption.AppendLine("new PointD[][]{new PointD[]{}},");
@@ -6824,8 +6825,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 					absorp.Add(new PointD(Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1])));
 				//sbAbsorption.AppendLine("new PointD(" + str[i].Replace("  ", ",") + ")" + (i == str.Count - 2 ? "" : ","));
 				absorp.Sort();
-				List<Profile> pf = new List<Profile>();
-				pf.Add(new Profile());
+				var pf = new List<Profile> { new Profile() };
 				for (int j = 0; j < absorp.Count; j++)
 				{
 					if (double.IsPositiveInfinity(absorp[j].Y) && pf[pf.Count - 1].Pt.Count > 0)
