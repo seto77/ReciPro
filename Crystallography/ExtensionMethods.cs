@@ -1,5 +1,6 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using System;
 using System.Numerics;
 
 namespace Crystallography
@@ -96,6 +97,42 @@ namespace Crystallography
         /// <param name="c"></param>
         /// <returns></returns>
         public static Complex Conjugate(this Complex c) => Complex.Conjugate(c);
+    }
+
+    public static class StringEx
+    {
+        /// <summary>
+        /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static string[] Split(this string s, string separator, bool removeEmptyEntries = true)
+            => s.Split(new[] { separator }, removeEmptyEntries ? System.StringSplitOptions.RemoveEmptyEntries: System.StringSplitOptions.None);
+
+        /// <summary>
+        /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="separator"></param>
+        /// <param name="removeEmptyEntries"></param>
+        /// <returns></returns>
+        public static string[] Split(this string s, char separator, bool removeEmptyEntries = true)
+             => s.Split(new[] { separator }, removeEmptyEntries ? System.StringSplitOptions.RemoveEmptyEntries : System.StringSplitOptions.None);
+
+        /// <summary>
+        /// 拡張メソッド.  ConvertToDoubleを拡張メソッドとして呼び出す. 変換できない場合は例外発生
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static double ToDouble(this string s) => Convert.ToDouble(s);
+
+        /// <summary>
+        /// 拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int ToInt(this string s) => Convert.ToInt32(s);
+
 
     }
 }
