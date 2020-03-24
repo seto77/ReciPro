@@ -17,13 +17,13 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <o:Template>Normal</o:Template>
   <o:LastAuthor>seto</o:LastAuthor>
   <o:Revision>1</o:Revision>
-  <o:TotalTime>32</o:TotalTime>
+  <o:TotalTime>33</o:TotalTime>
   <o:Created>2013-02-24T13:17:00Z</o:Created>
   <o:LastSaved>2013-02-24T13:17:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>594</o:Words>
-  <o:Characters>1668</o:Characters>
-  <o:Lines>13</o:Lines>
+  <o:Words>337</o:Words>
+  <o:Characters>1925</o:Characters>
+  <o:Lines>16</o:Lines>
   <o:Paragraphs>4</o:Paragraphs>
   <o:CharactersWithSpaces>2258</o:CharactersWithSpaces>
   <o:Version>16.00</o:Version>
@@ -39,7 +39,7 @@ href="ReciProHelpContents.files/colorschememapping.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
   <w:Zoom>0</w:Zoom>
-  <w:TrackMoves/>
+  <w:TrackMoves>false</w:TrackMoves>
   <w:TrackFormatting/>
   <w:PunctuationKerning/>
   <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
@@ -87,7 +87,7 @@ href="ReciProHelpContents.files/colorschememapping.xml">
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
   DefSemiHidden="false" DefQFormat="false" DefPriority="99"
-  LatentStyleCount="371">
+  LatentStyleCount="375">
   <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
   <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
   <w:LsdException Locked="false" Priority="9" SemiHidden="true"
@@ -293,8 +293,6 @@ href="ReciProHelpContents.files/colorschememapping.xml">
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="HTML Variable"/>
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Normal Table"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="annotation subject"/>
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="No List"/>
@@ -381,13 +379,9 @@ href="ReciProHelpContents.files/colorschememapping.xml">
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="Table Subtle 1"/>
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Subtle 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="Table Web 1"/>
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="Table Web 2"/>
-  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
-   Name="Table Web 3"/>
   <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
    Name="Balloon Text"/>
   <w:LsdException Locked="false" Priority="59" Name="Table Grid"/>
@@ -652,6 +646,14 @@ href="ReciProHelpContents.files/colorschememapping.xml">
    Name="List Table 6 Colorful Accent 6"/>
   <w:LsdException Locked="false" Priority="52"
    Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
  </w:LatentStyles>
 </xml><![endif]-->
 <style>
@@ -675,10 +677,10 @@ href="ReciProHelpContents.files/colorschememapping.xml">
 @font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;
-	mso-font-charset:1;
+	mso-font-charset:0;
 	mso-generic-font-family:roman;
 	mso-font-pitch:variable;
-	mso-font-signature:0 0 0 0 0 0;}
+	mso-font-signature:3 0 0 0 1 0;}
 @font-face
 	{font-family:"‚l‚r ‚oƒSƒVƒbƒN";
 	panose-1:2 11 6 0 7 2 5 8 2 4;
@@ -867,7 +869,8 @@ h4
 	mso-themecolor:background1;
 	letter-spacing:.5pt;
 	mso-bidi-font-weight:normal;
-	font-style:italic;}
+	font-style:italic;
+	mso-bidi-font-style:normal;}
 h5
 	{mso-style-noshow:yes;
 	mso-style-priority:9;
@@ -899,8 +902,7 @@ h5
 	mso-themecolor:accent2;
 	mso-themeshade:191;
 	letter-spacing:.5pt;
-	font-weight:normal;
-	mso-bidi-font-style:italic;}
+	font-weight:normal;}
 p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
 	{mso-style-noshow:yes;
 	mso-style-priority:9;
@@ -1932,7 +1934,7 @@ div.WordSection1
 	font-family:"Meiryo UI";}
 </style>
 <![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="15361">
+ <o:shapedefaults v:ext="edit" spidmax="2049">
   <v:textbox inset="5.85pt,.7pt,5.85pt,.7pt"/>
  </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
  <o:shapelayout v:ext="edit">
