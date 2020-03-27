@@ -356,7 +356,7 @@ namespace ReciPro
 
             var spotInformation = new List<SpotInformation>();
 
-            double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
+            var alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
 
             bool logScale = checkBoxLogScale.Checked;
 
@@ -372,7 +372,7 @@ namespace ReciPro
                     graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
             });
 
-            double radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
+            var radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
             int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
             var fillCircleSpread = new Func<Color, PointD, double, double, double>((c, pt, intensity, sigma) =>
@@ -381,10 +381,10 @@ namespace ReciPro
                   //intensityはスポットの積分強度、sは半値幅
                   int gradation = 32;
 
-                  double sigma2 = sigma * sigma;
-                  double coeff1 = 1 / (2 * Math.PI * sigma2);
+                  var sigma2 = sigma * sigma;
+                  var coeff1 = 1 / (2 * Math.PI * sigma2);
 
-                  double maxI = intensity * coeff1;
+                  var maxI = intensity * coeff1;
                   if (maxI <= 1.0 / gradation) return 0;//もし、最大強度が1/gradiationより小さかったら、何もせずに戻る
 
                   double minRadius = 0;
@@ -392,20 +392,20 @@ namespace ReciPro
                   if (maxI > 1)//もし中心付近が飽和する場合(強度が1以上)は、強度が　1/gradiation ～ 1 の半径範囲をgradationで分割
                       minRadius = sigma * Math.Sqrt(-2 * Math.Log(2 * Math.PI * sigma2 / intensity));
 
-                  double maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//強度が　1/2*gradiation　になる半径を求める
+                  var maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//強度が　1/2*gradiation　になる半径を求める
 
                   //minRからmaxRまで、円を描画
                   for (int j = 0; j < gradation; j++)
                   {
-                      double ratio1 = (double)(j + 1) / gradation;
-                      double ratio2 = (double)(j + 2) / gradation;
-                      double radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius;
-                      double radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
+                      var ratio1 = (double)(j + 1) / gradation;
+                      var ratio2 = (double)(j + 2) / gradation;
+                      var radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius;
+                      var radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
 
-                      double intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
+                      var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
 
 
-                      int alpha = (int)(255 * intensity2 * alphaCoeff);
+                      var alpha = (int)(255 * intensity2 * alphaCoeff);
                       if (comboBoxScaleColorScale.SelectedIndex == 1)
                       {
                           var index = Math.Min((int)(intensity2 * 65535), 65535);
@@ -625,7 +625,7 @@ namespace ReciPro
         public void DrawDiffractionSpotsLabel(Graphics graphics, Vector3D g, PointD pt, double radius, double error)
         {
             double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Index);
             if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
             if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
@@ -649,7 +649,7 @@ namespace ReciPro
 
             for (int i = 0; i < formMain.Crystals.Length; i++)
             {
-                Crystal crystal = formMain.Crystals[i];
+                var crystal = formMain.Crystals[i];
 
                 foreach (var g in crystal.VectorOfG.Where(g => g.Flag))
                 {
@@ -728,7 +728,7 @@ namespace ReciPro
                 if (checkBoxDebyeRingIgnoreIntensity.Checked)
                     intensity = 1;
 
-                double twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
+                var twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
                 var ptsArray = Geometriy.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
 
