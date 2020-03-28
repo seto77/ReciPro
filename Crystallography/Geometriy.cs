@@ -301,8 +301,8 @@ namespace Crystallography
                     }
                 }
                 startCenter = BestCenter - 2.4 * stepCenter;
-                endCenter = BestCenter + 2.4 * stepCenter;
-                stepCenter = stepCenter * 0.8;
+                endCenter = BestCenter + (2.4 * stepCenter);
+                stepCenter *= 0.8;
 
                 startTau1 = bestTau1 - 2.4 * stepTau1;
                 endTau1 = bestTau1 + 2.4 * stepTau1;

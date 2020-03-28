@@ -1343,8 +1343,8 @@ namespace ReciPro
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
         }
 
+        // 印刷プレビューを表示
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) =>
-            // 印刷プレビューを表示
             printPreviewDialog1.ShowDialog();
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
