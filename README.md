@@ -1,5 +1,5 @@
 # ReciPro
-* *ReciPro* makes various crystallographic calculations, simulation of/indexing diffraction pattern, and so on.
+* *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
   * Runs on Windows with .Net Framework 4.8.
 
 ## Install
