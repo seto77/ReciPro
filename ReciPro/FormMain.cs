@@ -108,7 +108,7 @@ namespace ReciPro
         private GLControlAlpha glControlAxes;
 
         public bool skipProgressEvent { get; set; } = false;
-        private IProgress<(long, long, long, string)> ip;//IReport
+        private readonly IProgress<(long, long, long, string)> ip;//IReport
 
         /// <summary>
         /// コンストラクタ

@@ -117,7 +117,7 @@ namespace Crystallography
             this.Y = pos.Y;
             this.Z = pos.Z;
 
-            Atoms temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
+            var temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
             WyckoffLeter = temp.WyckoffLeter;
             SiteSymmetry = temp.SiteSymmetry;
             Multiplicity = temp.Multiplicity;
@@ -230,7 +230,7 @@ namespace Crystallography
         /// <param name="threshold">ìÆÇ©Ç∑ç≈ëÂíl (ëäëŒà íu) </param>
         public void ShakeKeepingWykoff(double threshold, Random r)
         {
-            WyckoffPosition wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
+            var wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
             if (wyk.FreedomX) X += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
             if (wyk.FreedomY) Y += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
             if (wyk.FreedomZ) Z += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;

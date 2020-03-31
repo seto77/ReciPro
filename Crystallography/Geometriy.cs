@@ -219,7 +219,7 @@ namespace Crystallography
             Statistics.LineFitting(EllipseCenter, ref phi1, ref A);
             double CosPhi1 = Math.Cos(phi1);
             double SinPhi1 = Math.Sin(phi1);
-            bool xMode = Math.Abs(CosPhi1) > 1 / Math.Sqrt(2) ? true : false;
+            bool xMode = Math.Abs(CosPhi1) > 1 / Math.Sqrt(2);
 
             //この直線上の点B(x,y)と、各CenterPtの距離Riとしたとき
             //δ^2= ( Ri - Cameralength * Tan(2θ)^2 *Sin(ψ) / pixelSize )^2　
@@ -306,7 +306,7 @@ namespace Crystallography
 
                 startTau1 = bestTau1 - 2.4 * stepTau1;
                 endTau1 = bestTau1 + 2.4 * stepTau1;
-                stepTau1 = stepTau1 * 0.8;
+                stepTau1 *= 0.8;
             }//最適化終了
 
             offset = new PointD(BestX, BestY);
@@ -541,8 +541,8 @@ namespace Crystallography
                 int next = i < ptAlpha.Count - 1 ? i + 1 : 0;
                 if (ptAlpha[i].Flag != ptAlpha[next].Flag)
                 {
-                    var crossPt = getCrossPoint(ptAlpha[i], ptAlpha[next], a, b, c);
-                    (double X, double Y, bool Flag) v = (crossPt.X, crossPt.Y, true);
+                    var (X, Y) = getCrossPoint(ptAlpha[i], ptAlpha[next], a, b, c);
+                    (double X, double Y, bool Flag) v = (X, Y, true);
                     ptAlpha.Insert(i + 1, v);
                     i++;
                 }
