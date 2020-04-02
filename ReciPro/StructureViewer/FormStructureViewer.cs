@@ -133,9 +133,11 @@ namespace ReciPro
 
             foreach (var bound in crystal.Bounds)
             {
-                BoundsControl bc = new BoundsControl(Crystal);
-                bc.Bound = bound;
-                bc.Enabled = true;
+                BoundsControl bc = new BoundsControl(Crystal)
+                {
+                    Bound = bound,
+                    Enabled = true
+                };
                 bc.Changed += Bounds_Changed;
                 bc.ColorChanged += Bounds_Changed;
                 bc.Delete += Bounds_Delete;
@@ -1002,8 +1004,7 @@ namespace ReciPro
             {
                 if (name.Contains("save"))
                 {
-                    var dialog = new SaveFileDialog();
-                    dialog.Filter = "Picture File[*.png]|*.png;";
+                    var dialog = new SaveFileDialog { Filter = "Picture File[*.png]|*.png;" };
                     if (dialog.ShowDialog() == DialogResult.OK)
                         bmp.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
                 }

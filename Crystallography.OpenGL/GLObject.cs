@@ -56,7 +56,7 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// Color
         /// </summary>
-        public C4 Color { get { return _Color; } set { _Color = value; ColorV = new V4f(_Color.R, _Color.G, _Color.B, _Color.A); } }
+        public C4 Color { get => _Color; set { _Color = value; ColorV = new V4f(_Color.R, _Color.G, _Color.B, _Color.A); } }
 
         private C4 _Color;
         internal V4f ColorV;
@@ -429,10 +429,12 @@ namespace Crystallography.OpenGL
                 for (int j = 0; j < pts.Length; j++)
                     pts[j] = rot.Mult(pts[j]) - norm * prms.W * 1.0005;
 
-                var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(1, 0, 0, 1, 0, 1, 0, 0, 0), DrawingMode.Surfaces);
-                obj.UseFixedColor = true;
-                obj.IgnoreNormalSides = false;
-                obj.Types = new[] { PT.TriangleFan };
+                var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(1, 0, 0, 1, 0, 1, 0, 0, 0), DrawingMode.Surfaces)
+                {
+                    UseFixedColor = true,
+                    IgnoreNormalSides = false,
+                    Types = new[] { PT.TriangleFan }
+                };
                 Planes.Add(obj);
                 PrmsF.AddRange(prms.ToArrayF());
                 PrmsD.Add(prms);
@@ -678,14 +680,14 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Ellipsoid : GLObject
     {
-        public const int DefaultSlices = 4;
+        public const int DefaultSlices = 3;
 
-        public V3d Origin;
-        public V3d RadiusVector1;
-        public V3d RadiusVector2;
-        public V3d RadiusVector3;
+        public V3d Origin { get; set; }
+        public V3d RadiusVector1 { get; set; }
+        public V3d RadiusVector2 { get; set; }
+        public V3d RadiusVector3 { get; set; }
 
-        public Ellipsoid(Vector3DBase o, Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode, int slices = 4)
+        public Ellipsoid(Vector3DBase o, Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode, int slices = DefaultSlices)
         : this(new V3d(o.X, o.Y, o.Z), new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode, slices) { }
 
         /// <summary>
@@ -708,11 +710,13 @@ namespace Crystallography.OpenGL
             CircumscribedSphereCenter = new V4d(o, 1);
             CircumscribedSphereRadius = new[] { a.Length, b.Length, c.Length }.Max();
 
-            var transMat = new M4d();
-            transMat.Column0 = new V4d(a, 0);
-            transMat.Column1 = new V4d(b, 0);
-            transMat.Column2 = new V4d(c, 0);
-            transMat.Column3 = new V4d(o, 1);
+            var transMat = new M4d
+            {
+                Column0 = new V4d(a, 0),
+                Column1 = new V4d(b, 0),
+                Column2 = new V4d(c, 0),
+                Column3 = new V4d(o, 1)
+            };
 
             if (slices == DefaultSlices && a.LengthSquared == b.LengthSquared && b.LengthSquared == c.LengthSquared && Sphere.DefaultIndices != null)
             {
@@ -793,7 +797,7 @@ namespace Crystallography.OpenGL
         /// <param name="mat">素材</param>
         /// <param name="mode">描画モード</param>
         /// <param name="slices">分割数.　6*(2*slices+1)^2 の頂点が生成される</param>
-        public Sphere(V3d o, double radius, Material mat, DrawingMode mode, int slices = 4)
+        public Sphere(V3d o, double radius, Material mat, DrawingMode mode, int slices = DefaultSlices)
            : base(o, new V3d(radius, 0, 0), new V3d(0, radius, 0), new V3d(0, 0, radius), mat, mode, slices)
         { Radius = radius; }
 
@@ -807,8 +811,6 @@ namespace Crystallography.OpenGL
             DefaultIndices = sphere.Indices;
             DefaultVertices = sphere.Vertices.AsParallel();
             DefaultTypes = sphere.Types;
-
-            var p = DefaultVertices.AsParallel();
         }
     }
 
@@ -818,8 +820,8 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Pipe : GLObject
     {
-        public const int DefaultSlices = 3;
-        public const int DefaultStacks = 12;
+        public const int DefaultSlices = 2;
+        public const int DefaultStacks = 8;
 
         public double Radius1, Radius2;
         public V3d Origin, Vector;
@@ -852,7 +854,7 @@ namespace Crystallography.OpenGL
             var maxR = Math.Max(r1, r2);
             CircumscribedSphereRadius = Math.Sqrt(height * height / 4 + maxR * maxR);
 
-            if (slices == DefaultSlices && stacks == DefaultStacks && r1 == r2 && Cylinder.DefaultIndices != null)
+            if (slices == DefaultSlices && stacks == DefaultStacks && r1 == r2 && Cylinder.DefaultIndices != null)//デフォルトのシリンダーの場合
             {
                 var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
                 var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
@@ -861,6 +863,16 @@ namespace Crystallography.OpenGL
                 Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat.ColorV)).ToArray();
                 Indices = Cylinder.DefaultIndices;
                 Types = Cylinder.DefaultTypes;
+            }
+            else if (slices == DefaultSlices && stacks == DefaultStacks &&  r2 ==0 && Cone.DefaultIndices != null)//デフォルトのコーンの場合
+            {
+                var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
+                var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
+                transMat.Column3 = new V4d(o, 1);
+
+                Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat.ColorV)).ToArray();
+                Indices = Cone.DefaultIndices;
+                Types = Cone.DefaultTypes;
             }
             else
             {
@@ -955,6 +967,10 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cone : Pipe
     {
+        public static readonly ParallelQuery<Vertex> DefaultVertices;
+        public static readonly int[][] DefaultIndices;
+        public static readonly PT[] DefaultTypes;
+
         public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
             : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, slices, stacks) { }
 
@@ -972,6 +988,14 @@ namespace Crystallography.OpenGL
         public Cone(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
            : base(o, vec, 0, r, mat, mode, slices, stacks)
         { }
+
+        static Cone()
+        {
+            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices, DefaultStacks);
+            DefaultIndices = cone.Indices;
+            DefaultVertices = cone.Vertices.AsParallel();
+            DefaultTypes = cone.Types;
+        }
     }
 
     /// <summary>
@@ -980,6 +1004,9 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cylinder : Pipe
     {
+        public static readonly ParallelQuery<Vertex> DefaultVertices;
+        public static readonly int[][] DefaultIndices;
+        public static readonly PT[] DefaultTypes;
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, slices, stacks) { }
 
@@ -994,13 +1021,11 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = 5, int stacks = 18)
+        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
            : base(o, vec, r, r, mat, mode, slices, stacks)
         { }
 
-        public static readonly ParallelQuery<Vertex> DefaultVertices;
-        public static readonly int[][] DefaultIndices;
-        public static readonly PT[] DefaultTypes;
+       
 
         static Cylinder()
         {
@@ -1017,8 +1042,8 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Torus : GLObject
     {
-        public const int DefaultSlices1 = 90;
-        public const int DefaultSlices2 = 20;
+        public const int DefaultSlices1 = 45;
+        public const int DefaultSlices2 = 10;
 
         public V3d Origin;
         public V3d Normal;
@@ -1041,8 +1066,6 @@ namespace Crystallography.OpenGL
             Normal = norm.Normalized();
             Radius1 = r1;
             Radius2 = r2;
-
-
 
             CircumscribedSphereCenter = new V4d(Origin, 1);
             CircumscribedSphereRadius = r1 + r2;
