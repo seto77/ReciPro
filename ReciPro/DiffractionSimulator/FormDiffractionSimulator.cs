@@ -1814,7 +1814,7 @@ namespace ReciPro
         private void basicConceptOfBethesMethodToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath + @"\pdf\bethe.pdf");
+            var f = new FormPDF(appPath + @"\doc\bethe.pdf");
             f.ShowDialog();
         }
 

@@ -107,6 +107,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSymmetryInformation = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonScatteringFactor = new System.Windows.Forms.ToolStripButton();
@@ -145,9 +147,10 @@
             this.ngenCompileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,6 +211,7 @@
             // toolStripContainer1.RightToolStripPanel
             // 
             this.toolStripContainer1.RightToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.RightToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
@@ -1012,8 +1016,11 @@
             // toolStrip1
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripSeparator14,
             this.toolStripButtonSymmetryInformation,
             this.toolStripSeparator9,
             this.toolStripButtonScatteringFactor,
@@ -1034,7 +1041,18 @@
             this.toolStripSeparator10,
             this.toolStripButtonPolycrystallineDiffraction});
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            // 
+            // toolStripLabel1
+            // 
+            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            resources.ApplyResources(this.toolStripSeparator14, "toolStripSeparator14");
             // 
             // toolStripButtonSymmetryInformation
             // 
@@ -1282,18 +1300,13 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutMeToolStripMenuItem,
             this.checkUpdatesToolStripMenuItem,
             this.hintToolStripMenuItem,
+            this.versionHistoryToolStripMenuItem,
+            this.licenseToolStripMenuItem,
             this.helpwebToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // aboutMeToolStripMenuItem
-            // 
-            this.aboutMeToolStripMenuItem.Name = "aboutMeToolStripMenuItem";
-            resources.ApplyResources(this.aboutMeToolStripMenuItem, "aboutMeToolStripMenuItem");
-            this.aboutMeToolStripMenuItem.Click += new System.EventHandler(this.aboutMeToolStripMenuItem_Click);
             // 
             // checkUpdatesToolStripMenuItem
             // 
@@ -1306,6 +1319,18 @@
             this.hintToolStripMenuItem.Name = "hintToolStripMenuItem";
             resources.ApplyResources(this.hintToolStripMenuItem, "hintToolStripMenuItem");
             this.hintToolStripMenuItem.Click += new System.EventHandler(this.hintToolStripMenuItem_Click);
+            // 
+            // versionHistoryToolStripMenuItem
+            // 
+            this.versionHistoryToolStripMenuItem.Name = "versionHistoryToolStripMenuItem";
+            resources.ApplyResources(this.versionHistoryToolStripMenuItem, "versionHistoryToolStripMenuItem");
+            this.versionHistoryToolStripMenuItem.Click += new System.EventHandler(this.versionHistoryToolStripMenuItem_Click);
+            // 
+            // licenseToolStripMenuItem
+            // 
+            this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
+            resources.ApplyResources(this.licenseToolStripMenuItem, "licenseToolStripMenuItem");
+            this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
             // 
             // helpwebToolStripMenuItem
             // 
@@ -1422,9 +1447,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem readCrystalDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveCrystalDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -1432,7 +1454,6 @@
         public System.Windows.Forms.ToolStripButton toolStripButtonStereonet;
         public System.Windows.Forms.ToolStripButton toolStripButtonElectronDiffraction;
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotID;
-        private System.Windows.Forms.ToolStripMenuItem aboutMeToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonSetAxis;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1475,9 +1496,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         public System.Windows.Forms.ToolStripButton toolStripButtonPolycrystallineDiffraction;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         public System.Windows.Forms.ToolStripButton toolStripButtonScatteringFactor;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         public System.Windows.Forms.ToolStripButton toolStripButtonSymmetryInformation;
         private System.Windows.Forms.ToolStripMenuItem resetRegistryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportCIF;
@@ -1508,7 +1527,6 @@
         private Crystallography.Controls.NumericBox numericalTextBoxPlaneH;
         private Crystallography.Controls.NumericBox numericalTextBoxPlaneK;
         public System.Windows.Forms.ToolStripButton toolStripButtonTEMID;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ngenCompileToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndexU;
@@ -1528,10 +1546,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem disableOpneGLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReadInitialCrystalList;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         public System.Windows.Forms.ToolStripButton toolStripButtonRotation;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         public System.Windows.Forms.ToolStripButton toolStripButtonImageSimulation;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private Crystallography.Controls.NumericBox numericalTextBoxAxisU;
@@ -1540,6 +1555,19 @@
         private Crystallography.Controls.NumericBox numericalTextBoxAxisV;
         private Crystallography.Controls.NumericBox numericalTextBoxAxisW;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
+        private System.Windows.Forms.ToolStripMenuItem versionHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem licenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
 

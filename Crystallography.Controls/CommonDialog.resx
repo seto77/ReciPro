@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="progressBar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="progressBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="textBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 54</value>
+  </data>
+  <data name="textBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="textBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 305</value>
+  </data>
+  <data name="textBox.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;textBox.Name" xml:space="preserve">
+    <value>textBox</value>
+  </data>
+  <data name="&gt;&gt;textBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonOK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonOK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonOK.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 0</value>
+  </data>
+  <data name="buttonOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 23</value>
+  </data>
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>panelOK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSoftwareAndVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSoftwareAndVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelSoftwareAndVersion.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="labelSoftwareAndVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 0</value>
+  </data>
+  <data name="labelSoftwareAndVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="labelSoftwareAndVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 17</value>
+  </data>
+  <data name="labelSoftwareAndVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="labelSoftwareAndVersion.Text" xml:space="preserve">
+    <value>Software and Version</value>
+  </data>
+  <data name="labelSoftwareAndVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelSoftwareAndVersion.Name" xml:space="preserve">
+    <value>labelSoftwareAndVersion</value>
+  </data>
+  <data name="&gt;&gt;labelSoftwareAndVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSoftwareAndVersion.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSoftwareInformation</value>
+  </data>
+  <data name="&gt;&gt;labelSoftwareAndVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelCopyRight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCopyRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelCopyRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 0</value>
+  </data>
+  <data name="labelCopyRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="labelCopyRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 17</value>
+  </data>
+  <data name="labelCopyRight.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="labelCopyRight.Text" xml:space="preserve">
+    <value>Copyright (C) 2005-20##     Yusuke SETO</value>
+  </data>
+  <data name="labelCopyRight.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelCopyRight.Name" xml:space="preserve">
+    <value>labelCopyRight</value>
+  </data>
+  <data name="&gt;&gt;labelCopyRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCopyRight.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSoftwareInformation</value>
+  </data>
+  <data name="&gt;&gt;labelCopyRight.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonNext.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonNext.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonNext.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonNext.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="buttonNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 23</value>
+  </data>
+  <data name="buttonNext.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="buttonNext.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Name" xml:space="preserve">
+    <value>buttonNext</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.Parent" xml:space="preserve">
+    <value>panelOK</value>
+  </data>
+  <data name="&gt;&gt;buttonNext.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxCloseWindow.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCloseWindow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="checkBoxCloseWindow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxCloseWindow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 0</value>
+  </data>
+  <data name="checkBoxCloseWindow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxCloseWindow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 23</value>
+  </data>
+  <data name="checkBoxCloseWindow.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="checkBoxCloseWindow.Text" xml:space="preserve">
+    <value>Close this window after initial loading</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCloseWindow.Name" xml:space="preserve">
+    <value>checkBoxCloseWindow</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCloseWindow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCloseWindow.Parent" xml:space="preserve">
+    <value>panelOK</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCloseWindow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 15</value>
+  </data>
+  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>seto@crystal.kobe-u.ac.jp</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
+    <value>linkLabel1</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
+    <value>flowLayoutPanelSoftwareInformation</value>
+  </data>
+  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 32</value>
+  </data>
+  <data name="flowLayoutPanelSoftwareInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelSoftwareInformation.Name" xml:space="preserve">
+    <value>flowLayoutPanelSoftwareInformation</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelSoftwareInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelSoftwareInformation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelSoftwareInformation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panelOK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 359</value>
+  </data>
+  <data name="panelOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 23</value>
+  </data>
+  <data name="panelOK.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;panelOK.Name" xml:space="preserve">
+    <value>panelOK</value>
+  </data>
+  <data name="&gt;&gt;panelOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelOK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>484, 382</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAAAGACoDAAAJgAAABAQAAAAABgAaAMAAM4MAAAoAAAAIAAAAEAAAAABABgAAAAAAAAM
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2v//AAAAo///lf//jv//AAAA0Pz65+7f5+7f5+7fAAAA
+        AAAA3efTAAAAnLh/hqljrsaX0d7DAAAA7fLnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        k///f/z8iv//jv//jv//jv//jv//jv//YbmKNGsAOHEASZBkVHusYn63Yn63SnerSpF4OHEAOHEAOnAH
+        OHgYb9vNdvHxg/n5jv//jv//kPv7v/39+v//AAAAAAAAk///jv//jP//N+7udvv7jv//jv//jv//jv//
+        h/v7RZFdV7SJRGyrf6zQlb/blb/bd63PFiaFWMKkNGsALGYcZNzVdvHxg/n5jv//jP//Yff3Pe/vjv//
+        oP//AAAAwP//hf7+Yff3jv//jv//X/b2W/X1gf39jv//jv//h/v7berpcOfnl/Lyufv7x///x///r/n5
+        je/vcOfnL4NMTbywa+rqdvHxg/n5fPz8Xfb2ePv7jv//jP//SfLypf//sv//jv//ZPf3T/Pzdvv7jv//
+        jv//jv//jv//jv//fvb2XOXleerqm/Pzx///x///x///r/n5je/vcOfnSMzGZ+jocu7uffX1jv//jv//
+        jv//hf7+Yff3S/Lyc/r6jP//w///cfr6RPHxevv7cfr6gf39jv//jv//jv//hfr6fvb2VcnXYIfMl/Ly
+        ufv7x///x///qvf3je/vSnOyUMDWZ+joa+rqdvHxg/n5jv//jv//g/39hf7+bfn5Mu3tdfr69///mv//
+        iv//X/b2X/b2iP7+jv//jv//hfr6efPzcu/vOIuxNjaWl/Lyqvf3x///x///qvf3iO7uGxt1QX+1XuPj
+        a+rqdvHxg/n5jv//jv//hf7+avj4cfr6jv//w///AAAAAAAAtv/mev3PdvDUh//qdvTfdvTfcenhcu/v
+        ZObmSMbPP3Gleerqqvf3x///r/n5l/LyiO7uLmeWPrfIXuPja+rqa+rqdvHxe/bmev3ScPW3Wt6hfP+6
+        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
+        v/39/P//rP//fPz8ZPf3evv7jv//b+PdSq6yharQdZbFS4+zKWgycevpiv//bfn5dPv7ivr6mf7+YPf3
+        f/z8jv//jv//Zunphe3tx///x///e+rqR8jFcO3tjv//iP7+W/b2Z/j45///f/zpcffmfPbkde7tR9vb
+        OoKqx///q/f3UaC9R9vba+vrdvDug/7haPfIxf//AAAAof+hIKsgBYEFG7ciNZ6AXeHhcufncufnTN3d
+        NsK/Rc15CHoOSOxIG8gbAAAAAAAAr/+vDGkMDYANH7UfJ9EnMrmMLdLSLdLSJr24NNJCPew9AGEAN8Y3
+        LcUtAAAAAAAA1P/UADgAJLUkJN0kAHkACIYILsk9KsV3FZsVAHkADaoNIMogFXwVTNVMAAAAAAAA2f/q
+        CXIJIM0gJcslAFgAADgAAJIAIMUgAFgAAFgABJcEVf9VAFgAa+NrAAAA/v//mv/qF68XHNccTftNDYcN
+        AFAAAJIAINogAGkAAVoBJMMkKc8pAIkAe/uaAAAAzv//cfrrLNosHtweAIkADpwOFKQUALsAHNwcAYMB
+        I7MjAHEABI8EJNMkZPyn1///lv39aPn5Vv9YHbIdAFAAAGEAE68TI+UjIN8gH9IfAWsBADgAAHEAVf9V
+        XvuolP39jP39UPPzNr9JG58bB14HAGkAALIAPeU9IMUgCcoJAHkAAFAAHLIcCogKT/Ppnv//AAAAAAAA
+        8P76E4MTIewhFMQUIM8gH6kfAHEAG7YbGM4YNOU0BHAEmOCcAAAAAAAAAAAAAAAAAAAAh/iHM+gzFa0V
+        O907AGEAADgAB5IHKMUoI9cjQfNBAAAAAAAAAAAAAAAAAAAAAAAAAAAAuvy6VrBWF5IXI7AjAGkAJMkk
+        OJc4hO2EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsvqyef95a/9rY/NjAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAgAEAAIABAAAAAQAAAAAAAAAAAAAAAAAAwAMAAOAH
+        AADwDwAA/D8AAA==
+</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 45</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Calculating .... </value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CommonDialog</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

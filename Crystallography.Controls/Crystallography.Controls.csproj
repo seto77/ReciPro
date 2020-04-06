@@ -368,11 +368,11 @@
     <Compile Include="ScalablePictureBox.Designer.cs">
       <DependentUpon>ScalablePictureBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaitDlg.cs">
+    <Compile Include="CommonDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WaitDlg.Designer.cs">
-      <DependentUpon>WaitDlg.cs</DependentUpon>
+    <Compile Include="CommonDialog.Designer.cs">
+      <DependentUpon>CommonDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Wave\WaveLengthControl.cs">
       <SubType>UserControl</SubType>
@@ -480,8 +480,8 @@
     <EmbeddedResource Include="TrackBarAdvanced.resx">
       <DependentUpon>TrackBarAdvanced.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaitDlg.ja.resx">
-      <DependentUpon>WaitDlg.cs</DependentUpon>
+    <EmbeddedResource Include="CommonDialog.ja.resx">
+      <DependentUpon>CommonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wave\HorizontalAxisUserControl.ja.resx">
       <DependentUpon>HorizontalAxisUserControl.cs</DependentUpon>
@@ -512,8 +512,8 @@
       <DependentUpon>ScalablePictureBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaitDlg.resx">
-      <DependentUpon>WaitDlg.cs</DependentUpon>
+    <EmbeddedResource Include="CommonDialog.resx">
+      <DependentUpon>CommonDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Wave\WaveLengthControl.ja.resx">
@@ -579,6 +579,10 @@
     <None Include="DataSet.xss">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
+    <None Include="doc\CrystalInformationManual.docx" />
+    <Content Include="doc\CrystalInformationManual.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

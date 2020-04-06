@@ -503,7 +503,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>crystalControl</value>
   </data>
   <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -872,7 +872,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisU</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisU.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1007,7 +1007,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisV</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisV.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1064,7 +1064,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxAxisW</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAxisW.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1163,7 +1163,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneL</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1220,7 +1220,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneH</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneH.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1277,7 +1277,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericalTextBoxPlaneK</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPlaneK.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2111,10 +2111,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 12</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
+    <value>1, 25</value>
   </data>
   <data name="numericBoxStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2135,7 +2135,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxStep</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
     <value>panel4</value>
@@ -2945,7 +2945,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxMaxUVW</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.18.437, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.4.433, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
     <value>groupBox7</value>
@@ -3078,6 +3078,24 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
+  </data>
+  <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>Functions</value>
+  </data>
+  <data name="toolStripLabel1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="toolStripLabel1.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>TextBeforeImage</value>
+  </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 6</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3441,6 +3459,9 @@ Thi module simulates diffraction pattern of single crystal</value>
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="toolStripButtonImageSimulation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="toolStripButtonImageSimulation.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -3508,6 +3529,53 @@ This module help you to Index the electron diffraction patterns.</value>
   <data name="toolStripButtonSpotID.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="toolStripButtonSpotID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="toolStripButtonSpotID.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="toolStripButtonSpotID.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -3515,13 +3583,10 @@ This module help you to Index the electron diffraction patterns.</value>
     <value>White</value>
   </data>
   <data name="toolStripButtonSpotID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 21</value>
+    <value>110, 39</value>
   </data>
   <data name="toolStripButtonSpotID.Text" xml:space="preserve">
     <value>Spot ID</value>
-  </data>
-  <data name="toolStripButtonSpotID.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
   </data>
   <data name="toolStripButtonSpotID.ToolTipText" xml:space="preserve">
     <value>Spot ID
@@ -3590,10 +3655,10 @@ Diffraction</value>
 This module simulates diffraction pattern of powder sample</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 6</value>
+    <value>0, 3</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 451</value>
+    <value>112, 486</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3733,12 +3798,6 @@ This module simulates diffraction pattern of powder sample</value>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>Option</value>
   </data>
-  <data name="aboutMeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 24</value>
-  </data>
-  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
-    <value>About Me</value>
-  </data>
   <data name="checkUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 24</value>
   </data>
@@ -3751,11 +3810,23 @@ This module simulates diffraction pattern of powder sample</value>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>Hint</value>
   </data>
+  <data name="versionHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 24</value>
+  </data>
+  <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Version history</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 24</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
   <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 24</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (web)</value>
+    <value>Help (PDF)</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
@@ -3973,6 +4044,18 @@ This module simulates diffraction pattern of powder sample</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabel1.Name" xml:space="preserve">
+    <value>toolStripLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator14.Name" xml:space="preserve">
+    <value>toolStripSeparator14</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButtonSymmetryInformation.Name" xml:space="preserve">
     <value>toolStripButtonSymmetryInformation</value>
@@ -4196,12 +4279,6 @@ This module simulates diffraction pattern of powder sample</value>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;aboutMeToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutMeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;aboutMeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;checkUpdatesToolStripMenuItem.Name" xml:space="preserve">
     <value>checkUpdatesToolStripMenuItem</value>
   </data>
@@ -4212,6 +4289,18 @@ This module simulates diffraction pattern of powder sample</value>
     <value>hintToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;hintToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;versionHistoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>versionHistoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;versionHistoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;licenseToolStripMenuItem.Name" xml:space="preserve">
+    <value>licenseToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;licenseToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;helpwebToolStripMenuItem.Name" xml:space="preserve">

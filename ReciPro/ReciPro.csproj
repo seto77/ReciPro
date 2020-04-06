@@ -415,6 +415,19 @@
     <None Include="DataSet.xss">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
+    <Content Include="doc\Bethe.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="doc\Bethe.pptx" />
+    <None Include="doc\draft.pptx" />
+    <Content Include="doc\Hrtem.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="doc\Hrtem.pptx" />
+    <None Include="doc\ReciProManual%28ja%29.docx" />
+    <Content Include="doc\ReciProManual%28ja%29.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <Content Include="dll\bin32\hdf5.dll">
@@ -447,14 +460,6 @@
     <Content Include="dll\x64\MathNet.Numerics.MKL.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="pdf\hrtem.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="pdf\bethe.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="pdf\bethe.pptx" />
-    <None Include="pdf\hrtem.pptx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -517,6 +522,7 @@
     <Content Include="image\mesh.png" />
     <Content Include="image\rotation.png" />
     <Content Include="image\scattering.png" />
+    <Content Include="image\SpotID.png" />
     <Content Include="image\Structure.ico" />
     <Content Include="image\electron.png" />
     <Content Include="image\kaeru.png" />

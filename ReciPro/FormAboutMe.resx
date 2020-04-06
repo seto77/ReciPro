@@ -126,7 +126,7 @@
     <value>Arial, 8.25pt</value>
   </data>
   <data name="textBoxReadMe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 80</value>
+    <value>0, 60</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBoxReadMe.Multiline" type="System.Boolean, mscorlib">
@@ -136,7 +136,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxReadMe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 144</value>
+    <value>592, 164</value>
   </data>
   <data name="textBoxReadMe.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxReadMe.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="linkLabelHomePage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -181,7 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linkLabelHomePage.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="linkLabelMail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -211,7 +211,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linkLabelMail.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -244,7 +244,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -277,7 +277,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="labelVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -313,7 +313,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelVersion.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -346,7 +346,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -379,7 +379,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -412,34 +412,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="webBrowser1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="webBrowser1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 230</value>
-  </data>
-  <data name="webBrowser1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="webBrowser1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 279</value>
-  </data>
-  <data name="webBrowser1.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Name" xml:space="preserve">
-    <value>webBrowser1</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>8</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -448,7 +421,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>593, 508</value>
+    <value>593, 227</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11pt</value>

@@ -3,6 +3,7 @@ using Crystallography.Controls;
 using Crystallography.Controls.Numeric;
 using Crystallography.OpenGL;
 using Microsoft.Win32;
+using OpenTK.Graphics.ES10;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -103,7 +104,7 @@ namespace ReciPro
         public FormRotationMatrix FormRotation;
         public FormImageSimulator FormImageSimulator;
 
-        private WaitDlg initialDialog;
+        private Crystallography.Controls.CommonDialog commonDialog;
 
         private GLControlAlpha glControlAxes;
 
@@ -160,16 +161,17 @@ namespace ReciPro
 
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
-            initialDialog = new WaitDlg
+            commonDialog = new Crystallography.Controls.CommonDialog
             {
                 Owner = this,
-                Version = "ReciPro  " + Version.VersionAndDate,
-                Text = "Now Loading...",
-                ShowVersion = true,
-                //Hint = Version.Hint,
-                ShowHints = false,
+                DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Initialize,
+                Software = Version.Software,
+                VersionAndDate = Version.VersionAndDate,
+                History = Version.History,
+                Hint = Version.Hint,
+
             };
-            initialDialog.Show();
+            commonDialog.Show();
             Application.DoEvents();
 
             try { ReadInitialRegistry(); }
@@ -207,15 +209,15 @@ namespace ReciPro
                 this.Close();
             }
 
-            initialDialog.Text = "Now Loading...Initializing OpenGL.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.1);
+            commonDialog.Text = "Now Loading...Initializing OpenGL.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.1);
             glControlAxes.LightPosition = new Vec3(100, 100, 100);
             glControlAxes.ProjWidth = 2.4;
             Application.DoEvents();
 
 
-            initialDialog.Text = "Now Loading...Initializing 'Rotation' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.15);
+            commonDialog.Text = "Now Loading...Initializing 'Rotation' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.15);
             Application.DoEvents();
             FormRotation = new FormRotationMatrix
             {
@@ -224,8 +226,8 @@ namespace ReciPro
             };
 
 
-            initialDialog.Text = "Now Loading...Initializing 'Structure Viewer' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.2);
+            commonDialog.Text = "Now Loading...Initializing 'Structure Viewer' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.2);
             Application.DoEvents();
             FormStructureViewer = new FormStructureViewer
             {
@@ -235,8 +237,8 @@ namespace ReciPro
             FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-            initialDialog.Text = "Now Loading...Initializing 'Stereonet' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.3);
+            commonDialog.Text = "Now Loading...Initializing 'Stereonet' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.3);
             Application.DoEvents();
             FormStereonet = new FormStereonet
             {
@@ -246,8 +248,8 @@ namespace ReciPro
             FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-            initialDialog.Text = "Now Loading...Initializing 'Crystal diffraction' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.4);
+            commonDialog.Text = "Now Loading...Initializing 'Crystal diffraction' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.4);
             Application.DoEvents();
             FormDiffractionSimulator = new FormDiffractionSimulator
             {
@@ -259,8 +261,8 @@ namespace ReciPro
             FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
 
-            initialDialog.Text = "Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.45);
+            commonDialog.Text = "Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.45);
             Application.DoEvents();
             FormImageSimulator = new FormImageSimulator
             {
@@ -272,8 +274,8 @@ namespace ReciPro
             //FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
 
-            initialDialog.Text = "Now Loading...Initializing 'Powder diffraction' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.5);
+            commonDialog.Text = "Now Loading...Initializing 'Powder diffraction' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.5);
             Application.DoEvents();
             FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator
             {
@@ -282,8 +284,8 @@ namespace ReciPro
             };
             FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
-            initialDialog.Text = "Now Loading...Initializing 'TEM ID' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.6);
+            commonDialog.Text = "Now Loading...Initializing 'TEM ID' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.6);
             Application.DoEvents();
             //  t = sw.ElapsedMilliseconds;
             FormTEMID = new FormTEMID
@@ -296,8 +298,8 @@ namespace ReciPro
             FormTEMID.Visible = false;
             FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
 
-            initialDialog.Text = "Now Loading...Initializing 'Spot ID' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.7);
+            commonDialog.Text = "Now Loading...Initializing 'Spot ID' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.7);
             Application.DoEvents();
             FormSpotID = new FormSpotID
             {
@@ -305,8 +307,8 @@ namespace ReciPro
                 Visible = false
             };
 
-            initialDialog.Text = "Now Loading...Initializing 'Calculator' form.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.8);
+            commonDialog.Text = "Now Loading...Initializing 'Calculator' form.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.8);
             Application.DoEvents();
             //  toolStripStatusLabelCalcTime.Text += "formTEMID " + (sw.ElapsedMilliseconds-t).ToString() + "  ";
 
@@ -319,24 +321,24 @@ namespace ReciPro
             FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormCalculator.FormClosing += new FormClosingEventHandler(formCalculator_FormClosing);
 
-            initialDialog.Text = "Now Loading...Initializing clipboard viewer.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.9);
+            commonDialog.Text = "Now Loading...Initializing clipboard viewer.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.9);
             Application.DoEvents();
             NextHandle = SetClipboardViewer(this.Handle);
 
-            initialDialog.Text = "Now Loading...Setting CrystalChanged event.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.91);
+            commonDialog.Text = "Now Loading...Setting CrystalChanged event.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.91);
             Application.DoEvents();
             crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
 
-            initialDialog.Text = "Now Loading...Initialize Crystal class.";
+            commonDialog.Text = "Now Loading...Initialize Crystal class.";
             Crystal = new Crystal();
 
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.92);
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.92);
             Application.DoEvents();
 
-            initialDialog.Text = "Now Loading...Setting default crystal list.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.94);
+            commonDialog.Text = "Now Loading...Setting default crystal list.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.94);
 
             //ユーザーパスにinitial.xmlが存在しない場合は、default.xmlをinitial.xmlとしてコピー
             if (!File.Exists(UserAppDataPath + "initial.xml"))
@@ -358,19 +360,19 @@ namespace ReciPro
             if (listBox.Items.Count == 0)
                 readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
-            initialDialog.Text = "Now Loading...Setting ReadMe.txt.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.96);
+            commonDialog.Text = "Now Loading...Setting ReadMe.txt.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.96);
             Application.DoEvents();
 
             DrawAxes();
 
-            initialDialog.Text = "Now Loading...Reading registries again.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.98);
+            commonDialog.Text = "Now Loading...Reading registries again.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.98);
             Application.DoEvents();
             ReadInitialRegistry();
 
-            initialDialog.Text = "Now Loading...Recognizing Click Once application or not.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.99);
+            commonDialog.Text = "Now Loading...Recognizing Click Once application or not.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.99);
             Application.DoEvents();
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
@@ -380,10 +382,10 @@ namespace ReciPro
             //    this.Text += "   Caution! ClickOnce vesion will be not maintained in the future.";
             //}
 
-            initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
-            initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 1.0);
-            if (initialDialog.AutomaricallyClose)
-                initialDialog.Visible = false;
+            commonDialog.Text = "Initializing has been finished successfully. You can close this window.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 1.0);
+            if (commonDialog.AutomaricallyClose)
+                commonDialog.Visible = false;
 
             toolStripStatusLabel.Text = "Startup time: " + sw.ElapsedMilliseconds + " ms.";
 
@@ -554,10 +556,10 @@ namespace ReciPro
                 this.Location = new Point((int)regKey.GetValue("formMainLocationX", this.Location.X), (int)regKey.GetValue("formMainLocationY", this.Location.Y));
             }
 
-            if (initialDialog != null)
+            if (commonDialog != null)
             {
-                initialDialog.Location = new Point(this.Location.X + this.Width / 2 - initialDialog.Width / 2, this.Location.Y + this.Height / 2 - initialDialog.Height / 2);
-                initialDialog.AutomaricallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
+                commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
+                commonDialog.AutomaricallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
             }
 
             if (FormStructureViewer != null && (int)regKey.GetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X) >= 0)
@@ -660,7 +662,7 @@ namespace ReciPro
             regKey.SetValue("formMainHeight", this.Height);
             regKey.SetValue("formMainLocationX", this.Location.X);
             regKey.SetValue("formMainLocationY", this.Location.Y);
-            regKey.SetValue("initialDialog.AutomaricallyClose", initialDialog.AutomaricallyClose);
+            regKey.SetValue("initialDialog.AutomaricallyClose", commonDialog.AutomaricallyClose);
 
             regKey.SetValue("formStructureViewerWidth", this.FormStructureViewer.Width);
             regKey.SetValue("formStructureViewerHeight", this.FormStructureViewer.Height);
@@ -1118,9 +1120,11 @@ namespace ReciPro
             try
             {
                 if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
-                    Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/ja/ReciProHelp.html");
+                    //Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/ja/ReciProHelp.html");
+                    Process.Start("doc/ReciProManual(ja).pdf");
                 else
-                    Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/en/ReciProHelp.html");
+                    
+                    Process.Start("doc\\ReciProManual(ja).pdf");
             }
             catch { }
         }
@@ -1253,9 +1257,20 @@ namespace ReciPro
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            initialDialog.ShowProgressBar = false;
-            initialDialog.Text = "Hint";
-            initialDialog.Visible = true;
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
+            commonDialog.Visible = true;
+
+        }
+        private void versionHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.History;
+            commonDialog.Visible = true;
+        }
+
+        private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.License;
+            commonDialog.Visible = true;
         }
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)

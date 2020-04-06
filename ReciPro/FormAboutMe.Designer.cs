@@ -38,7 +38,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // textBoxReadMe
@@ -91,17 +90,10 @@
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // webBrowser1
-            // 
-            resources.ApplyResources(this.webBrowser1, "webBrowser1");
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Url = new System.Uri("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/ReciProHelp.html", System.UriKind.Absolute);
-            // 
             // FormAboutMe
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.textBoxReadMe);
             this.Controls.Add(this.linkLabelHomePage);
             this.Controls.Add(this.linkLabelMail);
@@ -129,6 +121,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
