@@ -1121,10 +1121,9 @@ namespace ReciPro
             {
                 if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
                     //Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/ja/ReciProHelp.html");
-                    Process.Start("doc/ReciProManual(ja).pdf");
-                else
-                    
                     Process.Start("doc\\ReciProManual(ja).pdf");
+                else
+                    Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/en/ReciProHelp.html");
             }
             catch { }
         }
