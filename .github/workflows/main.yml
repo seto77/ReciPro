@@ -1,0 +1,93 @@
+- name: TOC Generator
+  uses: technote-space/toc-generator@v2.3.1
+  with:
+    # Secret GitHub API token used to make API requests or git authentication.
+    GITHUB_TOKEN: # default is ${{ github.token }}
+    # Secret GitHub API token used to make API requests.
+    API_TOKEN: # optional
+    # Target file path. (Comma separated, @see https://github.com/thlorenz/doctoc#adding-toc-to-individual-files)
+    TARGET_PATHS: # default is README*.md
+    # TOC Title
+    TOC_TITLE: # optional, default is **Table of Contents**
+    # Whether to fold.
+    FOLDING: # optional
+    # Max header level.
+    MAX_HEADER_LEVEL: # optional
+    # Entry prefix.
+    ENTRY_PREFIX: # optional
+    # Opening comment (for other than DocToc)
+    OPENING_COMMENT: # optional, default is <!-- toc 
+    # Closing comment (for other than DocToc)
+    CLOSING_COMMENT: # optional, default is <!-- tocstop 
+    # Commit message.
+    COMMIT_MESSAGE: # default is docs: update TOC
+    # Git commit name.
+    COMMIT_NAME: # optional, default is 
+    # Git commit email.
+    COMMIT_EMAIL: # optional, default is 
+    # PullRequest branch prefix.
+    PR_BRANCH_PREFIX: # default is toc-generator/
+    # PullRequest branch name.
+    PR_BRANCH_NAME: # default is update-toc-${PR_ID}
+    # PullRequest title.
+    PR_TITLE: # default is docs: update TOC (${PR_MERGE_REF})
+    # PullRequest body.
+    PR_BODY: # default is ## Base PullRequest
+
+${PR_TITLE} (${PR_NUMBER_REF})
+
+## Command results
+<details>
+  <summary>Details: </summary>
+
+  ${COMMANDS_OUTPUT}
+
+</details>
+
+## Changed files
+<details>
+  <summary>${FILES_SUMMARY}: </summary>
+
+  ${FILES}
+
+</details>
+
+<hr>
+
+[:octocat: Repo](${ACTION_URL}) | [:memo: Issues](${ACTION_URL}/issues) | [:department_store: Marketplace](${ACTION_MARKETPLACE_URL})
+
+    # PullRequest body.
+    PR_COMMENT_BODY: # optional, default is ## Command results
+<details>
+  <summary>Details: </summary>
+
+  ${COMMANDS_OUTPUT}
+
+</details>
+
+## Changed files
+<details>
+  <summary>${FILES_SUMMARY}: </summary>
+
+  ${FILES}
+
+</details>
+
+<hr>
+
+[:octocat: Repo](${ACTION_URL}) | [:memo: Issues](${ACTION_URL}/issues) | [:department_store: Marketplace](${ACTION_MARKETPLACE_URL})
+
+    # PullRequest branch prefix for default branch.
+    PR_DEFAULT_BRANCH_PREFIX: # optional, default is 
+    # PullRequest branch name for default branch.
+    PR_DEFAULT_BRANCH_NAME: # optional, default is 
+    # PullRequest title for default branch.
+    PR_DEFAULT_BRANCH_TITLE: # optional, default is 
+    # PullRequest body for default branch.
+    PR_DEFAULT_BRANCH_BODY: # optional, default is 
+    # Message body when closing PullRequest.
+    PR_CLOSE_MESSAGE: # optional, default is This PR has been closed because it is no longer needed.
+    # Filter by branch name. (e.g. release/)
+    TARGET_BRANCH_PREFIX: # optional, default is 
+    # Labels used to check if the PullRequest has it.
+    INCLUDE_LABELS: # optional, default is 
