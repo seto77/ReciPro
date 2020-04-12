@@ -578,15 +578,16 @@ namespace Crystallography
                     for (int i = 0; i < image.StripByteCounts.Length; i++)
                     {
                         br.BaseStream.Position = image.StripOffsets[i];
-                        if (image.SampleFormat == 1)//整数データの時
+                        if (image.SampleFormat == 1 || image.SampleFormat ==2)//整数データの時 1の時は符号なし。1の時は符号アリ
                         {
+                            var sign = image.SampleFormat == 2;
                             if (image.IsGray)
                             {
                                 for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel; j++)
                                 {
-                                    uint intensity = toInt(br, bytePerPixel, ByteOrder);
+                                    var intensity = toInt(br, bytePerPixel, ByteOrder, sign);
                                     if (image.MDFileTag == 2)//gelファイルの時
-                                        intensity = (uint)intensity * (uint)intensity;
+                                        intensity = intensity * intensity;
                                     image.Value[n++] = intensity;
                                 }
                             }
@@ -594,11 +595,11 @@ namespace Crystallography
                             {
                                 for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel / bitsPerSampleLength; j++)
                                 {
-                                    image.ValueRed[n] = toInt(br, bytePerPixel, ByteOrder);
-                                    image.ValueGreen[n] = toInt(br, bytePerPixel, ByteOrder);
-                                    image.ValueBlue[n] = toInt(br, bytePerPixel, ByteOrder);
+                                    image.ValueRed[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
+                                    image.ValueGreen[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
+                                    image.ValueBlue[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
                                     if (bitsPerSampleLength == 4)
-                                        toInt(br, bytePerPixel, ByteOrder);
+                                        toInt(br, bytePerPixel, ByteOrder, sign);
                                     n++;
                                 }
                             }
@@ -614,15 +615,22 @@ namespace Crystallography
                 br.Close();
             }
 
-            private uint toInt(BinaryReader br, int byteCount, TiffByteOrder byteOrder)
+            /// <summary>
+            /// ファイルからbyteCountだけ読み込んで、数値に変換して返す。signは符号付きの場合はtrue。
+            /// </summary>
+            /// <param name="br"></param>
+            /// <param name="byteCount"></param>
+            /// <param name="byteOrder"></param>
+            /// <param name="sign"></param>
+            /// <returns></returns>
+            private double toInt(BinaryReader br, int byteCount, TiffByteOrder byteOrder, bool sign)
             {
-                uint intensity = 0;
                 if (byteCount == 1)
                 {
                     byte[] temp = new byte[1];
                     br.Read(temp, 0, 1);
 
-                    intensity = temp[0];
+                    return (double)temp[0];
                 }
                 else if (byteCount == 2)
                 {
@@ -630,7 +638,7 @@ namespace Crystallography
                     br.Read(temp, 0, 2);
                     if (byteOrder == TiffByteOrder.Intel) temp = temp.Reverse().ToArray();
 
-                    intensity = BitConverter.ToUInt16(temp, 0);
+                    return sign ? (double)BitConverter.ToInt16(temp, 0) : BitConverter.ToUInt16(temp, 0);
                 }
                 else if (byteCount == 4)
                 {
@@ -638,12 +646,12 @@ namespace Crystallography
                     br.Read(temp, 0, 4);
                     if (byteOrder == TiffByteOrder.Intel) temp = temp.Reverse().ToArray();
 
-                    intensity = BitConverter.ToUInt32(temp, 0);
+                    return sign ? (double)BitConverter.ToInt32(temp, 0): BitConverter.ToUInt32(temp, 0);
+
                 }
                 else
                     return 0;
 
-                return intensity;
             }
 
             private float toFloat(BinaryReader br, int byteCount, TiffByteOrder byteOrder)

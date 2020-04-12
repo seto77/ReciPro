@@ -86,12 +86,16 @@
             this.numericBoxExp1 = new Crystallography.Controls.NumericBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonViewAlongBeam = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -587,7 +591,7 @@
             this.buttonViewIsometric.AutoSize = true;
             this.buttonViewIsometric.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonViewIsometric.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonViewIsometric.Location = new System.Drawing.Point(293, 375);
+            this.buttonViewIsometric.Location = new System.Drawing.Point(254, 4);
             this.buttonViewIsometric.Name = "buttonViewIsometric";
             this.buttonViewIsometric.Size = new System.Drawing.Size(94, 25);
             this.buttonViewIsometric.TabIndex = 97;
@@ -610,8 +614,9 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 1);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(385, 368);
             this.groupBox1.TabIndex = 98;
@@ -746,6 +751,7 @@
             this.glControlReciProObjects.AllowMouseRotation = true;
             this.glControlReciProObjects.AllowMouseScaling = false;
             this.glControlReciProObjects.AllowMouseTranslating = false;
+            this.glControlReciProObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlReciProObjects.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlReciProObjects.DisablingOpenGL = false;
             this.glControlReciProObjects.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -769,6 +775,7 @@
             this.glControlReciProAxes.AllowMouseRotation = true;
             this.glControlReciProAxes.AllowMouseScaling = false;
             this.glControlReciProAxes.AllowMouseTranslating = false;
+            this.glControlReciProAxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlReciProAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlReciProAxes.DisablingOpenGL = false;
             this.glControlReciProAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -792,6 +799,9 @@
             this.glControlReciProGonio.AllowMouseRotation = true;
             this.glControlReciProGonio.AllowMouseScaling = true;
             this.glControlReciProGonio.AllowMouseTranslating = false;
+            this.glControlReciProGonio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlReciProGonio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlReciProGonio.DisablingOpenGL = false;
             this.glControlReciProGonio.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -1144,7 +1154,7 @@
             // 
             this.checkBoxLink.AutoSize = true;
             this.checkBoxLink.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLink.Location = new System.Drawing.Point(42, 385);
+            this.checkBoxLink.Location = new System.Drawing.Point(3, 14);
             this.checkBoxLink.Name = "checkBoxLink";
             this.checkBoxLink.Size = new System.Drawing.Size(53, 21);
             this.checkBoxLink.TabIndex = 101;
@@ -1163,10 +1173,11 @@
             this.groupBox2.Controls.Add(this.numericBoxExp3);
             this.groupBox2.Controls.Add(this.numericBoxExp2);
             this.groupBox2.Controls.Add(this.numericBoxExp1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(6, 419);
+            this.groupBox2.Location = new System.Drawing.Point(3, 430);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(385, 359);
+            this.groupBox2.Size = new System.Drawing.Size(385, 368);
             this.groupBox2.TabIndex = 102;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Experimental coordinate system";
@@ -1176,10 +1187,11 @@
             this.glControlExpObjects.AllowMouseRotation = true;
             this.glControlExpObjects.AllowMouseScaling = false;
             this.glControlExpObjects.AllowMouseTranslating = false;
+            this.glControlExpObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlExpObjects.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlExpObjects.DisablingOpenGL = false;
             this.glControlExpObjects.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpObjects.Location = new System.Drawing.Point(255, 231);
+            this.glControlExpObjects.Location = new System.Drawing.Point(255, 238);
             this.glControlExpObjects.Margin = new System.Windows.Forms.Padding(0);
             this.glControlExpObjects.MaxHeight = 1;
             this.glControlExpObjects.MaxWidth = 1;
@@ -1199,10 +1211,11 @@
             this.glControlExpAxes.AllowMouseRotation = true;
             this.glControlExpAxes.AllowMouseScaling = false;
             this.glControlExpAxes.AllowMouseTranslating = false;
+            this.glControlExpAxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlExpAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlExpAxes.DisablingOpenGL = false;
             this.glControlExpAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpAxes.Location = new System.Drawing.Point(255, 107);
+            this.glControlExpAxes.Location = new System.Drawing.Point(255, 114);
             this.glControlExpAxes.Margin = new System.Windows.Forms.Padding(0);
             this.glControlExpAxes.MaxHeight = 1;
             this.glControlExpAxes.MaxWidth = 1;
@@ -1222,10 +1235,13 @@
             this.glControlExpGonio.AllowMouseRotation = true;
             this.glControlExpGonio.AllowMouseScaling = true;
             this.glControlExpGonio.AllowMouseTranslating = false;
+            this.glControlExpGonio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlExpGonio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.glControlExpGonio.DisablingOpenGL = false;
             this.glControlExpGonio.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpGonio.Location = new System.Drawing.Point(6, 107);
+            this.glControlExpGonio.Location = new System.Drawing.Point(5, 114);
             this.glControlExpGonio.Margin = new System.Windows.Forms.Padding(0);
             this.glControlExpGonio.MaxHeight = 1;
             this.glControlExpGonio.MaxWidth = 1;
@@ -1369,7 +1385,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(66, 376);
+            this.panel1.Location = new System.Drawing.Point(27, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2, 39);
             this.panel1.TabIndex = 103;
@@ -1379,7 +1395,7 @@
             this.buttonViewAlongBeam.AutoSize = true;
             this.buttonViewAlongBeam.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonViewAlongBeam.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonViewAlongBeam.Location = new System.Drawing.Point(180, 375);
+            this.buttonViewAlongBeam.Location = new System.Drawing.Point(141, 4);
             this.buttonViewAlongBeam.Name = "buttonViewAlongBeam";
             this.buttonViewAlongBeam.Size = new System.Drawing.Size(108, 25);
             this.buttonViewAlongBeam.TabIndex = 97;
@@ -1387,17 +1403,41 @@
             this.buttonViewAlongBeam.UseVisualStyleBackColor = true;
             this.buttonViewAlongBeam.Click += new System.EventHandler(this.ButtonViewAlongBeam_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(391, 801);
+            this.tableLayoutPanel2.TabIndex = 104;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.checkBoxLink);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.buttonViewIsometric);
+            this.panel2.Controls.Add(this.buttonViewAlongBeam);
+            this.panel2.Location = new System.Drawing.Point(3, 377);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(351, 47);
+            this.panel2.TabIndex = 103;
+            // 
             // FormRotationMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(397, 782);
-            this.Controls.Add(this.checkBoxLink);
-            this.Controls.Add(this.buttonViewIsometric);
-            this.Controls.Add(this.buttonViewAlongBeam);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(391, 801);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -1417,8 +1457,11 @@
             this.flowLayoutPanel3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1482,5 +1525,7 @@
         private Crystallography.OpenGL.GLControlAlpha glControlExpObjects;
         private Crystallography.OpenGL.GLControlAlpha glControlExpAxes;
         private System.Windows.Forms.Button buttonViewAlongBeam;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel2;
     }
 }
