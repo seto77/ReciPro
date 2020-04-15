@@ -138,8 +138,8 @@
     <Reference Include="ImagingSolution.Control.GraphicsBox">
       <HintPath>.\ImagingSolution.Control.GraphicsBox.dll</HintPath>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=4.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.9.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=4.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.9.1\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenTK.3.1.0\lib\net20\OpenTK.dll</HintPath>
@@ -825,8 +825,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>move /Y "$(TargetDir)*.dll" "$(TargetDir)dll"
-if "$(ConfigurationName)" =="Release"  "$(ProjectDir)"Updater.exe /v $(ProjectName)  "$(ProjectDir)"</PostBuildEvent>
+    <PostBuildEvent>move /Y "$(TargetDir)*.dll" "$(TargetDir)dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

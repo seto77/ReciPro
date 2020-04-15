@@ -144,14 +144,14 @@
     <Reference Include="HDF.PInvoke, Version=1.10.6.1, Culture=neutral, PublicKeyToken=18793c1fcffe58a3, processorArchitecture=MSIL">
       <HintPath>..\packages\HDF.PInvoke.1.10.6.1\lib\HDF.PInvoke.dll</HintPath>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=4.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.9.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=4.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.9.1\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
-      <HintPath>..\packages\MessagePack.2.1.90\lib\netstandard2.0\MessagePack.dll</HintPath>
+      <HintPath>..\packages\MessagePack.2.1.115\lib\netstandard2.0\MessagePack.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack.Annotations, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
-      <HintPath>..\packages\MessagePack.Annotations.2.1.90\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
+      <HintPath>..\packages\MessagePack.Annotations.2.1.115\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>

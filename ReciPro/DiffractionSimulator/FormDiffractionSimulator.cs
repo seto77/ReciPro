@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace ReciPro
 {
     public partial class FormDiffractionSimulator : Form
@@ -1395,6 +1396,14 @@ namespace ReciPro
         private void toolStripButtonDiffractionSpots_CheckedChanged(object sender, EventArgs e)
         {
             setVector();
+
+            if (sender is ToolStripButton button)
+            {
+                if (button.Name.Contains("Spot"))
+                    groupBoxSpotProperty.Enabled = button.Checked;
+               // else if (button.Name.Contains("Kikuchi"))
+               //     tabControl.TabPages[2].ena
+                        }
             Draw();
         }
 
