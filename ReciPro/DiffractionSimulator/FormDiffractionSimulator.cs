@@ -1290,17 +1290,22 @@ namespace ReciPro
                     formMain.Rotate((0, 0, 1), -Math.Atan2(lastMousePositionDetector.X, lastMousePositionDetector.Y) + Math.Atan2(detectorPos.X, detectorPos.Y));
                 }
             }
+            //真ん中ボタンが押されながらマウスが動いたとき
             else if (e.Button == MouseButtons.Middle)
             {
+                //コントロールキーが押されていなくて、かつ中心位置が固定でないとき
                 if ((Control.ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
                 {
                     DisplayCenter = new PointD(DisplayCenter.X + (e.X - lastMousePositionScreen.X) * Resolution, DisplayCenter.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
                     Draw(null, false);
                 }
-                else if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null)//コントロールキーが押されている場合
+                //コントロールキーが押されていて、かつ検出器エリアが表示の時
+                else if ((Control.ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
                 {
                     FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
                     FormDiffractionSimulatorGeometry.FootY += (lastMousePositionScreen.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
+                    if (FormDiffractionSimulatorGeometry.Visible)
+                        FormDiffractionSimulatorGeometry.Refresh();
                     Draw(null, false);
                 }
             }
@@ -1401,10 +1406,72 @@ namespace ReciPro
             {
                 if (button.Name.Contains("Spot"))
                     groupBoxSpotProperty.Enabled = button.Checked;
-               // else if (button.Name.Contains("Kikuchi"))
-               //     tabControl.TabPages[2].ena
-                        }
+                else
+                {
+                    TabPage page;
+                    if (button.Name.Contains("Kikuchi"))
+                        page = tabPageKikuchi;
+                    else if (button.Name.Contains("Debye"))
+                        page = tabPageDebye;
+                    else if (button.Name.Contains("Scale"))
+                        page = tabPageScale;
+                    else
+                        return;
+
+                    if (button.Checked)
+                    {
+                        tabControl.SelectedTab = page;
+                        tabControl.BringToFront();
+                    }
+                    else if (tabControl.SelectedTab == page)
+                        tabControl.SelectedTab = tabPageWave;
+                }
+                tabControl.Refresh();
+            }
             Draw();
+        }
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (
+                (!toolStripButtonDebyeRing.Checked && e.TabPage.Name == tabPageDebye.Name) ||
+                (!toolStripButtonScale.Checked && e.TabPage.Name == tabPageScale.Name) ||
+                 (!toolStripButtonKikuchiLines.Checked && e.TabPage.Name == tabPageKikuchi.Name)
+                )
+                e.Cancel = true;
+
+        }
+
+        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+            var tab = (TabControl)sender;
+            //タブページのテキストを取得
+            var txt = tab.TabPages[e.Index].Text;
+
+            //StringFormatを作成 //水平垂直方向の中央に、行が完全に表示されるようにする
+            var sf = new StringFormat()
+            {
+                LineAlignment = StringAlignment.Center,
+                Alignment = StringAlignment.Center,
+                FormatFlags = StringFormatFlags.LineLimit
+            };
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            //背景の描画
+            if(tab.SelectedIndex == e.Index)
+                e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds);
+            else
+                e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds);
+
+            //文字色を設定
+            var brush = new SolidBrush(tabControl.ForeColor);
+            if ((!toolStripButtonDebyeRing.Checked && txt == tabPageDebye.Text) ||
+                (!toolStripButtonScale.Checked && txt == tabPageScale.Text) ||
+                 (!toolStripButtonKikuchiLines.Checked && txt == tabPageKikuchi.Text))
+                brush = new SolidBrush(Color.Gray);
+
+            //Textの描画
+            e.Graphics.DrawString(txt, tabControl.Font, brush, e.Bounds, sf);
         }
 
 
@@ -1723,26 +1790,26 @@ namespace ReciPro
             if (e.Button == MouseButtons.Right && e.Clicks == 2)
             {
                 var fdsg = FormDiffractionSimulatorGeometry;
-                string text =
-                "Crystal:\t" + formMain.Crystal.Name + "\r\n" +
-                "Euler Phi:\t" + (formMain.Phi / Math.PI * 180).ToString("f3") + "\r\n" +
-                "Euler Theta:\t" + (formMain.Theta / Math.PI * 180).ToString("f3") + "\r\n" +
-                "Euler Psi:\t" + (formMain.Psi / Math.PI * 180).ToString("f3") + "\r\n" +
-                "Monitor resolution:\t" + Resolution + "\r\n" +
-                "Camera Length2:  " + CameraLength2 + "\r\n" +
+                var sb = new StringBuilder();
+                sb.AppendLine($"Crystal:\t{formMain.Crystal.Name}");
+                sb.AppendLine($"Euler Phi:\t{formMain.Phi / Math.PI * 180:f3}");
+                sb.AppendLine($"Euler Theta:\t{formMain.Theta / Math.PI * 180:f3}");
+                sb.AppendLine($"Euler Psi:\t{formMain.Psi / Math.PI * 180:f3}");
+                sb.AppendLine($"Monitor resolution:\t{Resolution}");
+                sb.AppendLine($"Camera Length2:  {CameraLength2}");
 
-                "Spot shape:\t" + (radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian") + "\r\n" +
-                "Radius or Sigma:\t" + numericBoxSpotRadius.Value + "\r\n" +
-                "Intensity calculation:\t" + (radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical") + "\r\n" +
-                "Tau:\t" + (Tau / Math.PI * 180) + "\r\n" +
-                "Image name:\t" + fdsg.textBoxFileName.Text + "\r\n" +
-                "Detector width:\t" + fdsg.DetectorWidth + "\r\n" +
-                "Detector height:\t" + fdsg.DetectorHeight + "\r\n" +
-                "Detector pixel size:\t" + fdsg.DetectorPixelSize + "\r\n" +
-                "Detector foot X:\t" + fdsg.FootX + "\r\n" +
-                "Detector foot Y:\t" + fdsg.FootY + "\r\n";
+                sb.AppendLine($"Spot shape:\t{(radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian")}");
+                sb.AppendLine($"Radius or Sigma:\t{numericBoxSpotRadius.Value}");
+                sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}");
+                sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
+                sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");
+                sb.AppendLine($"Detector width:\t{fdsg.DetectorWidth}");
+                sb.AppendLine($"Detector height:\t{fdsg.DetectorHeight}");
+                sb.AppendLine($"Detector pixel size:\t{fdsg.DetectorPixelSize}");
+                sb.AppendLine($"Detector foot X:\t{fdsg.FootX}");
+                sb.AppendLine($"Detector foot Y:\t{fdsg.FootY}");
 
-                Clipboard.SetDataObject(text);
+                Clipboard.SetDataObject(sb.ToString());
             }
         }
 
@@ -1837,6 +1904,8 @@ namespace ReciPro
                 labelMousePositionDetector.Visible =
                 labelMousePositionReal.Visible =
                 checkBoxMousePositionDetailes.Checked;
+
+      
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
     }

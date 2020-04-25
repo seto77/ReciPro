@@ -1,6 +1,9 @@
+using MathNet.Numerics;
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using OpenTK;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using DMat = MathNet.Numerics.LinearAlgebra.Double.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Double.DenseVector;
@@ -373,17 +376,17 @@ namespace Crystallography
         //public enum Setting { XYX, XYZ, XZX, XZY, YXY, YXZ, YZX, YZY, ZXY, ZXZ, ZYX, ZYZ}
 
         /// <summary>
-        /// 任意のセッティングのオイラー角に分解する. 
+        /// 任意のセッティングのオイラー角に分解する.  => MathNet.FindMinimumの方が簡単なので、お蔵入り
         /// </summary>
         /// <param name="rot"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
         public static double[] DecomposeMatrix(Matrix3D rot, Vector3DBase v1, Vector3DBase v2, Vector3DBase v3)
         {
-            Func<double[], Matrix3D> funcRot = angle => Matrix3D.Rot(v1,angle[0]) * Matrix3D.Rot(v2,angle[1]) * Matrix3D.Rot(v3,angle[2]);
+            Matrix3D funcRot(double[] angle) => Matrix3D.Rot(v1, angle[0]) * Matrix3D.Rot(v2, angle[1]) * Matrix3D.Rot(v3, angle[2]);
 
 
-            Marquardt.Function func = new Marquardt.Function(
+            var func = new Marquardt.Function(
                 new Func<double[], double[], double>((x, prm) =>
                 {
                     var res = funcRot(prm);
@@ -414,15 +417,71 @@ namespace Crystallography
 
             };
 
+            var (Prms, Error, R) = Marquardt.Solve(obsValues, new[] { func },Marquardt.Precision.High);
 
-            var result = Marquardt.Solve(obsValues, new[] { func },Marquardt.Precision.High);
-
-            return result.Prms[0];
+            return Prms[0];
         }
 
-        public static double[] DecomposeMatrix(Matrix3D rot, Vector3d v1, Vector3d v2, Vector3d v3)
+        /* public static double[] DecomposeMatrix(Matrix3D rot, Vector3d v1, Vector3d v2, Vector3d v3)
+         {
+             //return DecomposeMatrix(rot, new Vector3DBase(v1.X, v1.Y, v1.Z), new Vector3DBase(v2.X, v2.Y, v2.Z), new Vector3DBase(v3.X, v3.Y, v3.Z));
+             return DecomposeMatrix2(rot, new Vector3DBase[] { new Vector3DBase(v1.X, v1.Y, v1.Z), new Vector3DBase(v2.X, v2.Y, v2.Z), new Vector3DBase(v3.X, v3.Y, v3.Z) });
+         }
+        */
+
+        /// <summary>
+        /// rotに最も近い、任意のセッティングのオイラー角に分解する.
+        /// </summary>
+        /// <param name="rot"></param>
+        /// <param name="setting">settings配列の長さは最大で3.
+        /// V: 回転軸、Angle: 初期(あるいは固定)角度、Variable: Trueで変数、Falseで固定</param>
+        /// <returns>戻り値は、</returns>
+        public static double[] DecomposeMatrix2(Matrix3D targetRotation, params (Vector3d Vec, double Angle, bool Variable)[] settings)
         {
-            return DecomposeMatrix(rot, new Vector3DBase(v1.X, v1.Y, v1.Z), new Vector3DBase(v2.X, v2.Y, v2.Z), new Vector3DBase(v3.X, v3.Y, v3.Z));
+            if (settings.Count(s => s.Variable) == 0)
+                return settings.Select(s => s.Angle).ToArray();
+
+            var rotations = new List<object>();
+            var initialAngles = new List<double>();
+            foreach (var (Vec, Angle, Variable) in settings)
+            {
+                if (Variable)
+                {
+                    rotations.Add(new Func<double, Matrix3D>(angle => Matrix3D.Rot(Vec, angle)));
+                    initialAngles.Add(Angle*2.2);
+                }
+                else
+                    rotations.Add(Matrix3D.Rot(Vec, Angle));
+            }
+
+            var rotInv = targetRotation.Inverse();
+
+            var func = new Func<Vector<double>, double>(angles =>
+            {
+                var mat = new Matrix3D();
+                var n = 0;
+                foreach (var o in rotations)
+                    if (o is Matrix3D fixedRot)
+                        mat = mat * fixedRot;
+                    else if (o is Func<double, Matrix3D> functionalRot)
+                        mat = mat * functionalRot(angles[n++]);
+
+                return -(mat * rotInv).SumOfDiagonalCompenent();
+            });
+
+            var temp = func(new DVec(initialAngles.ToArray()));
+            try
+            {
+                var result = FindMinimum.OfFunction(func, new DVec(initialAngles.ToArray())).ToList();
+                for (int i = 0; i < settings.Length; i++)
+                    if (!settings[i].Variable)
+                        result.Insert(i, settings[i].Angle);
+                return result.ToArray();
+            }
+            catch
+            {
+                return initialAngles.ToArray();
+            }
         }
 
     }

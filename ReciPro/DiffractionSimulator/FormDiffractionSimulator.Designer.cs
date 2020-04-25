@@ -328,7 +328,8 @@
             this.toolStripButtonScale.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(this.toolStripButtonScale, "toolStripButtonScale");
             this.toolStripButtonScale.Name = "toolStripButtonScale";
-            this.toolStripButtonScale.CheckedChanged += new System.EventHandler(this.Draw);
+            this.toolStripButtonScale.CheckedChanged += new System.EventHandler(this.toolStripButtonDiffractionSpots_CheckedChanged);
+            this.toolStripButtonScale.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtonDiffractionSpots_MouseDown);
             // 
             // toolStrip1
             // 
@@ -398,10 +399,13 @@
             this.tabControl.Controls.Add(this.tabPageDebye);
             this.tabControl.Controls.Add(this.tabPageScale);
             this.tabControl.Controls.Add(this.tabPageMisc);
+            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.HotTrack = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
+            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
+            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
             this.tabControl.Click += new System.EventHandler(this.tabControl_Click);
             // 
             // tabPageWave

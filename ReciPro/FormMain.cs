@@ -426,18 +426,23 @@ namespace ReciPro
             axis = axis.Normarize();
             if (angle == 0) return;
 
+
+            if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
+            {
+                FormRotation.setRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
+                return;
+            }
+
             for (int i = 0; i < Crystals.Length; i++)
             {
                 Matrix3D rot;
-                if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked)
+                if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
                     rot = Matrix3D.Rot(axis, angle);
                 else
                 {
-                    Vector3DBase newAxis;
-                    if (checkBoxFixAxis.Checked)
-                        newAxis = Crystals[i].RotationMatrix * (numericalTextBoxAxisU.Value * Crystal.A_Axis + numericalTextBoxAxisV.Value * Crystal.B_Axis + numericalTextBoxAxisW.Value * Crystal.C_Axis);
-                    else
-                        newAxis = Crystals[i].RotationMatrix * (numericalTextBoxPlaneH.Value * Crystal.A_Star + numericalTextBoxPlaneK.Value * Crystal.B_Star + numericalTextBoxPlaneL.Value * Crystal.C_Star);
+                    var  newAxis = checkBoxFixAxis.Checked ?
+                         Crystals[i].RotationMatrix * (numericalTextBoxAxisU.Value * Crystal.A_Axis + numericalTextBoxAxisV.Value * Crystal.B_Axis + numericalTextBoxAxisW.Value * Crystal.C_Axis):
+                         Crystals[i].RotationMatrix * (numericalTextBoxPlaneH.Value * Crystal.A_Star + numericalTextBoxPlaneK.Value * Crystal.B_Star + numericalTextBoxPlaneL.Value * Crystal.C_Star);
                     if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                         rot = Matrix3D.Rot(newAxis, angle);
                     else
@@ -454,40 +459,43 @@ namespace ReciPro
         /// <param name="mat"></param>
         public void SetRotation(Matrix3D mat)
         {
-            if (this.InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
+            if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
             {
-                this.Invoke(new Action(() => SetRotation(mat)), null);
+                Invoke(new Action(() => SetRotation(mat)), null);
                 return;
             }
             Crystal.RotationMatrix = mat;
             if (FormStructureViewer.Visible)
                 FormStructureViewer.Draw();
+
             if (FormStereonet.Visible)
                 FormStereonet.Draw();
+
             if (FormDiffractionSimulator.Visible)
                 FormDiffractionSimulator.Draw();
+
             if (FormImageSimulator.Visible)
                 FormImageSimulator.RotationChanged();
 
-            if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力されている時
+            if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力された時
                 FormRotation.SetRotation();
-
 
             DrawAxes();
 
-            if (SkipEulerChange)
-                return;
-            var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
-            SkipEulerChange = true;
-            numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
-            SkipEulerChange = false;
+            if (!SkipEulerChange)//Euler Angle が直接入力されてない時
+            {
+                var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
+                SkipEulerChange = true;
+                numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
+                numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
+                numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+                SkipEulerChange = false;
 
-            if (FormRotation.Visible)//Euler Angle が直接入力されていないとき
-                FormRotation.SetRotation();
+                if (FormRotation.Visible)
+                    FormRotation.SetRotation();
 
-            SetNearestUVW();
+                SetNearestUVW();
+            }
         }
 
         private void FormTEMID_VisibleChanged(object sender, EventArgs e)

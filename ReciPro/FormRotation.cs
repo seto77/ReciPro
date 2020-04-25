@@ -5,17 +5,21 @@ using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 //using System.Windows.Media.Media3D;
+using MathNet.Numerics;
+using MathNet.Numerics.LinearAlgebra;
+
 
 namespace ReciPro
 {
     public partial class FormRotationMatrix : Form
     {
-        public FormMain FormMain;
-
+        
+        #region プロパティ
         /// <summary>
         ///  R_base  =R_ex ^-1 * R_reci の関係がある.
         /// </summary>
@@ -28,15 +32,30 @@ namespace ReciPro
             get
             {
                 var dir = getExpDirections();
-                return Matrix3D.Rot(dir[0], numericBoxExp1.RadianValue)
-                    * Matrix3D.Rot(dir[1], numericBoxExp2.RadianValue)
-                    * Matrix3D.Rot(dir[2], numericBoxExp3.RadianValue);
+
+                var rot = Matrix3D.Rot(dir[0], numericBoxExp1.RadianValue);
+                if (dir.Length > 1)
+                    rot = rot * Matrix3D.Rot(dir[1], numericBoxExp2.RadianValue);
+                if(dir.Length >2)
+                    rot = rot * Matrix3D.Rot(dir[2], numericBoxExp3.RadianValue);
+
+                return rot;
             }
         }
 
         public FormRotationMatrix() => InitializeComponent();
 
+        public bool Linked => Visible && checkBoxLink.Checked;
+
+        #endregion
+
+        #region フィールド
+
         private bool skip = false;
+        public FormMain FormMain;
+
+        #endregion
+
 
         private void numericBox6_ValueChanged(object sender, EventArgs e)
         {
@@ -51,6 +70,8 @@ namespace ReciPro
             skip = false;
         }
 
+
+        #region Excelのコピーペースト
         private void buttonCopy_Click(object sender, EventArgs e)
         {
             var str =
@@ -104,7 +125,13 @@ namespace ReciPro
             }
         }
 
+        #endregion
 
+        /// <summary>
+        /// 起動時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormRotationMatrix_Load(object sender, EventArgs e)
         {
             glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
@@ -120,21 +147,87 @@ namespace ReciPro
         }
 
         /// <summary>
-        /// 角度をセット. exp=trueの時は、expのオイラー角が入力されたとき
+        /// Link状態の時、FormMainから呼ばれる。rotにもっとも近い回転行列をExperimetal coordinatesの
+        /// オイラー角で表現する。その後、この回転行列で他のウィンドウに回転命令を出す。
         /// </summary>
-        /// <param name="fromExp"></param>
-        public void SetRotation(bool fromExp = false)
+        /// <param name="rot"></param>
+        public void setRotation(Matrix3D rot)
         {
-            if (skip)
-                return;
-            setRotationMatrix(fromExp);
+            var settings = new List<(V3 Vec, double Angle, bool Variable)>();
+            var dir = getExpDirections();
+            settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
+            if (checkBoxEnable2nd.Checked)
+                settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
+            if (checkBoxEnable3rd.Checked)
+                settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
 
+            var angles = Euler.DecomposeMatrix2(rot * RotBase.Inverse(), settings.ToArray());
+            skip = true;
+            numericBoxExp1.RadianValue = angles[0];
+            if (checkBoxEnable2nd.Checked)
+                numericBoxExp2.RadianValue = angles[1];
+            if (checkBoxEnable3rd.Checked)
+                numericBoxExp3.RadianValue = angles[2];
+            skip = false;
+            NumericBoxExp_ValueChanged(new object(), new EventArgs());
+        }
+
+        /// <summary>
+        /// 角度をセット. 
+        /// </summary>
+        /// <param name="fromExp">trueの時は、Experimental coordinatesの制限を解除して、オイラー角を更新する。</param>
+        public void SetRotation(bool renewExpEuler = true)
+        {
+            if (skip) return;
+
+            numericBoxPhi.RadianValue = FormMain.Phi;
+            numericBoxTheta.RadianValue = FormMain.Theta;
+            numericBoxPsi.RadianValue = FormMain.Psi;
+
+            var rotMatrix = Euler.SetEulerAngle(numericBoxPhi.RadianValue, numericBoxTheta.RadianValue, numericBoxPsi.RadianValue);
+            skip = true;
+            numericBox11.Value = RotReciPro.E11;
+            numericBox12.Value = RotReciPro.E12;
+            numericBox13.Value = RotReciPro.E13;
+            numericBox21.Value = RotReciPro.E21;
+            numericBox22.Value = RotReciPro.E22;
+            numericBox23.Value = RotReciPro.E23;
+            numericBox31.Value = RotReciPro.E31;
+            numericBox32.Value = RotReciPro.E32;
+            numericBox33.Value = RotReciPro.E33;
+            skip = false;
+
+            if (renewExpEuler && Linked)
+            {
+                skip = true;
+                checkBoxEnable2nd.Checked = checkBoxEnable3rd.Checked = true;
+                checkBoxFix1st.Checked = checkBoxFix2nd.Checked = checkBoxFix3rd.Checked = false;
+                var settings = new List<(V3 Vec, double Angle, bool Variable)>();
+                var dir = getExpDirections();
+                settings.Add((dir[0], numericBoxExp1.RadianValue, !checkBoxFix1st.Checked));
+                settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
+                settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
+
+                var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), settings.ToArray());
+                numericBoxExp1.RadianValue = angles[0];
+                numericBoxExp2.RadianValue = angles[1];
+                numericBoxExp3.RadianValue = angles[2];
+                skip = false;
+
+
+                
+            }
+
+
+
+            //ReciPro coordinatesの描画
             var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };
             var angleReciPro = new[] { FormMain.Phi, FormMain.Theta, FormMain.Psi };
             setGonio(glControlReciProGonio, dirReciPro, angleReciPro);
             setObject(glControlReciProObjects, dirReciPro, angleReciPro);
             setAxes(glControlReciProAxes);
 
+            //Experimetal coordinatesの描画
             var dirExp = getExpDirections();
             var angleExp = new[] { numericBoxExp1.RadianValue, numericBoxExp2.RadianValue, numericBoxExp3.RadianValue };
             setGonio(glControlExpGonio, dirExp, angleExp);
@@ -142,41 +235,12 @@ namespace ReciPro
             setAxes(glControlExpAxes);
         }
 
-        private void setRotationMatrix(bool fromExp = false)
-        {
-            numericBoxPhi.RadianValue = FormMain.Phi;
-            numericBoxTheta.RadianValue = FormMain.Theta;
-            numericBoxPsi.RadianValue = FormMain.Psi;
+        #region OpenGL
 
-            if (skip) return;
-            var rotMatrix = Euler.SetEulerAngle(numericBoxPhi.RadianValue, numericBoxTheta.RadianValue, numericBoxPsi.RadianValue);
-            skip = true;
-            numericBox11.Value = rotMatrix.E11;
-            numericBox12.Value = rotMatrix.E12;
-            numericBox13.Value = rotMatrix.E13;
-            numericBox21.Value = rotMatrix.E21;
-            numericBox22.Value = rotMatrix.E22;
-            numericBox23.Value = rotMatrix.E23;
-            numericBox31.Value = rotMatrix.E31;
-            numericBox32.Value = rotMatrix.E32;
-            numericBox33.Value = rotMatrix.E33;
-
-
-            if (checkBoxLink.Checked && fromExp == false)
-            {
-                var dir = getExpDirections();
-                var result = Euler.DecomposeMatrix(RotReciPro * RotBase.Inverse(), dir[0], dir[1], dir[2]);
-                numericBoxExp1.RadianValue = result[0];
-                numericBoxExp2.RadianValue = result[1];
-                numericBoxExp3.RadianValue = result[2];
-            }
-
-
-            skip = false;
-        }
-
-        // enum dir { PlusX, MinusX, PlusY, MinusY, PlusZ, MinusZ }
-
+        /// <summary>
+        /// 軸オブジェクトを生成
+        /// </summary>
+        /// <param name="gl"></param>
         private void setAxes(GLControlAlpha gl)
         {
             gl.DeleteAllObjects();
@@ -204,6 +268,13 @@ namespace ReciPro
             gl.Refresh();
 
         }
+
+        /// <summary>
+        /// ゴニオオブジェクトを生成
+        /// </summary>
+        /// <param name="gl"></param>
+        /// <param name="dir"></param>
+        /// <param name="angle"></param>
         private void setGonio(GLControlAlpha gl, V3[] dir, double[] angle)
         {
             gl.DeleteAllObjects();
@@ -212,46 +283,62 @@ namespace ReciPro
             var obj = new List<GLObject>();
             var mat = new Material(C4.White, 0.2, 0.7, 0.8, 50, 0.2);
 
-            var rot = new Matrix3D[] { Matrix3D.Rot(dir[0], angle[0]), Matrix3D.Rot(dir[1], angle[1]), Matrix3D.Rot(dir[2], angle[2]) };
-            Matrix3D rot01 = rot[0] * rot[1], rot012 = rot01 * rot[2];
-
+            var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
 
             //1st
             mat.Color = new C4(0.8f, 0.8f, 0f, 1f);
-
-            obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
             obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-            //1stトーラスの法線は、1st軸と2nd軸が直交する方向
-            obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
 
-            //2nd
-            mat.Color = new C4(0f, 0.8f, 0.8f, 1f);
-            var n = rot[0] * dir[1];
+            if (!checkBoxEnable2nd.Checked)//2ndが存在しない時
+            {
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 3.8, r, mat, DrawingMode.Surfaces));//軸
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], new V3(dir[0].Z, dir[0].X, dir[0].Y)), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+            }
+            else //2ndが存在する時
+            {
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
+                obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
+                //1stトーラスの法線は、1st軸と2nd軸が直交する方向
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
 
-            obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-            //2ndトーラスの法線は、1st軸と2nd軸が直交する方向
-            obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                //以下2nd
+                var rot01 = rot[0] * rot[1];
+                mat.Color = new C4(0f, 0.8f, 0.8f, 1f);
+                var n = rot[0] * dir[1];
+                obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                if (!checkBoxEnable3rd.Checked)
+                {
+                    obj.Add(new Cylinder(n * 1.9, -n * 3.8, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], new V3(dir[1].Z, dir[1].X, dir[1].Y)), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                }
+                else
+                {
+                    obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, mat, DrawingMode.Surfaces));//軸
+                    //2ndトーラスの法線は、2nd軸と3rd軸が直交する方向
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
 
-            //3rd
-            mat.Color = new C4(0.8f, 0f, 0.8f, 1f);
-            n = rot01 * dir[2];
-            obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-            if (dir[2].Z == 0)
-                obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
-            else
-                obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                    //以下、3rd
+                    mat.Color = new C4(0.8f, 0f, 0.8f, 1f);
+                    var rot012 = rot[0] * rot[1] * rot[2];
+                    n = rot[0] * rot[1] * dir[2];
+                    obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                    if (dir[2].Z == 0)
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                    else
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                }
+            }
+
 
             //中央の球
             obj.AddRange(createObject(gl, dir, angle));
-
             gl.AddObjects(obj);
             gl.Refresh();
 
         }
+
 
         private void setObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
@@ -259,6 +346,8 @@ namespace ReciPro
             gl.AddObjects(createObject(gl, dir, angle));
             gl.Refresh();
         }
+
+        //球体オブジェクトを生成
         private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
 
@@ -266,7 +355,11 @@ namespace ReciPro
             var obj = new List<GLObject>();
             var mat = new Material(C4.Gray, 0.2, 0.7, 0.8, 50, 0.2);
 
-            var rot = Matrix3D.Rot(dir[0], angle[0]) * Matrix3D.Rot(dir[1], angle[1]) * Matrix3D.Rot(dir[2], angle[2]);
+            var rot = Matrix3D.Rot(dir[0], angle[0]);
+            if (dir.Length > 1)
+                rot = rot * Matrix3D.Rot(dir[1], angle[1]);
+            if (dir.Length > 2)
+                rot = rot * Matrix3D.Rot(dir[2], angle[2]);
 
             if (checkBoxLink.Checked && gl.Name.Contains("Ex"))
                 rot = RotReciPro;
@@ -286,6 +379,7 @@ namespace ReciPro
             obj.Add(new Sphere(-nZ, r * 1.5, mat, DrawingMode.Surfaces));
             return obj;
         }
+        #endregion
 
         private void FormRotationMatrix_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -293,9 +387,11 @@ namespace ReciPro
             FormMain.toolStripButtonRotation.Checked = false;
         }
 
-        private void ButtonViewIsometric_Click(object sender, EventArgs e) => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
+        private void ButtonViewIsometric_Click(object sender, EventArgs e) 
+            => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
 
-        private void ButtonViewAlongBeam_Click(object sender, EventArgs e) => glControlReciProGonio.WorldMatrix = Matrix4d.Identity;
+        private void ButtonViewAlongBeam_Click(object sender, EventArgs e)
+            => glControlReciProGonio.WorldMatrix = Matrix4d.Identity;
 
 
         /// <summary>
@@ -363,7 +459,7 @@ namespace ReciPro
                         radioButton3rdXplus.Checked = true;
                 }
             }
-            SetRotation();
+            SetRotation(false);
         }
 
         private V3[] getExpDirections()
@@ -411,6 +507,8 @@ namespace ReciPro
                 v3 = new V3(0, 0, -1);
 
             return new[] { v1, v2, v3 };
+           
+
         }
 
         private void GlControlReciProAxes_WorldMatrixChanged(object sender, EventArgs e)
@@ -430,21 +528,22 @@ namespace ReciPro
 
         private void NumericBoxExp_ValueChanged(object sender, EventArgs e)
         {
+            if (sender is NumericBox box)
+            {
+                if (box.Value > 360)
+                {
+                    box.Value -= 360;
+                    return;
+                }
+                else if (box.Value < -360)
+                {
+                    box.Value += 360;
+                    return;
+                }
+            }
+
             if (skip)
                 return;
-
-
-            var box = sender as NumericBox;
-            if (box.Value > 360)
-            {
-                box.Value -= 360;
-                return;
-            }
-            else if (box.Value < -360)
-            {
-                box.Value += 360;
-                return;
-            }
 
             if (checkBoxLink.Checked)
             {
@@ -453,26 +552,47 @@ namespace ReciPro
                 FormMain.SkipEulerChange = true;
                 FormMain.Phi = euler.Phi;
                 FormMain.Theta = euler.Theta;
+                FormMain.Psi = euler.Psi;
                 FormMain.SkipEulerChange = false;
-                if (FormMain.Psi == euler.Psi)
-                    FormMain.SetRotation(RotReciPro);
-                else
-                    FormMain.Psi = euler.Psi;
+                FormMain.SetRotation(RotReciPro);
                 skip = false;
             }
 
-            SetRotation(true);
+            SetRotation(false);
         }
 
         private void CheckBoxLink_CheckedChanged(object sender, EventArgs e)
         {
-
             if (checkBoxLink.Checked)
                 RotBase = RotExp.Inverse() * RotReciPro;
 
-            SetRotation(true);
-
-
+            SetRotation(false);
         }
+
+        private void checkBox1st_CheckedChanged(object sender, EventArgs e)
+        {
+            var check = (CheckBox)sender;
+            if (check.Name.Contains("2nd"))
+            {
+                checkBoxFix2nd.Enabled = numericBoxExp2.Enabled = checkBoxEnable3rd.Enabled = flowLayoutPanel2.Enabled = check.Checked;
+                if (!check.Checked)
+                {
+                    checkBoxFix2nd.Checked = checkBoxEnable3rd.Checked = checkBoxFix3rd.Checked = false;
+                    numericBoxExp2.Value = 0;
+                }
+            }
+            else if (check.Name.Contains("3rd"))
+            {
+                checkBoxFix3rd.Enabled = numericBoxExp3.Enabled = flowLayoutPanel3.Enabled = check.Checked;
+                if (!check.Checked)
+                {
+                    checkBoxFix3rd.Checked = false;
+                    numericBoxExp3.Value = 0;
+                }
+            }
+            SetRotation(false);
+        }
+
+
     }
 }

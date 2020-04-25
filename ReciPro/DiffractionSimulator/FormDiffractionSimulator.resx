@@ -457,7 +457,7 @@
     <value>waveLengthControl</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
     <value>tabPageWave</value>
@@ -469,7 +469,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageWave.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -571,7 +571,7 @@
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -641,7 +641,7 @@
     <value>colorControlFoot</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -674,7 +674,7 @@
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -713,7 +713,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -758,7 +758,7 @@
     <value>colorControlDefectLine</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -791,7 +791,7 @@
     <value>colorControlExcessLine</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -1010,7 +1010,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageKikuchi.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1058,7 +1058,7 @@
     <value>colorControlDebyeRing</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
     <value>tabPageDebye</value>
@@ -1206,7 +1206,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDebye.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageDebye.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1509,7 +1509,7 @@
     <value>colorControlScaleAzimuth</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1542,7 +1542,7 @@
     <value>colorControlScale2Theta</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1554,7 +1554,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageScale.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1623,7 +1623,7 @@
     <value>numericBoxDev</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1680,7 +1680,7 @@
     <value>numericBoxAcc</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1815,7 +1815,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 109</value>
+    <value>428, 109</value>
   </data>
   <data name="tabPageMisc.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1839,7 +1839,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>60, 22</value>
+    <value>71, 22</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 89</value>
@@ -1848,7 +1848,7 @@
     <value>4, 3</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 139</value>
+    <value>436, 139</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>65</value>
@@ -2286,7 +2286,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Semiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -2340,7 +2340,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Step</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -2469,7 +2469,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxNumOfBlochWave</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -2523,7 +2523,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxThickness</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -2853,7 +2853,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxSpotRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -3255,7 +3255,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlOrigin</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3288,7 +3288,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlNoCondition</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3321,7 +3321,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlScrewGlide</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3354,7 +3354,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlForbiddenLattice</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -4349,7 +4349,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxClientHeight</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4403,7 +4403,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxClientWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4457,7 +4457,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxResolution</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.12.1031, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.21.446, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
     <value>groupBox6</value>

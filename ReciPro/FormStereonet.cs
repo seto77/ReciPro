@@ -722,6 +722,12 @@ namespace ReciPro
         {
             labelPlusMinus1.Visible = labelPlusMinus2.Visible = labelPlusMinus3.Visible = radioButtonRange.Checked;
             panelSpecifiedIndices.Visible = !radioButtonRange.Checked;
+
+            if(radioButtonRange.Checked)
+                numericUpDown1.Minimum = numericUpDown2.Minimum = numericUpDown3.Minimum = 0;
+            else
+                numericUpDown1.Minimum = numericUpDown2.Minimum = numericUpDown3.Minimum = -numericUpDown1.Maximum;
+
             setVector();
             Draw();
         }

@@ -181,11 +181,11 @@
     <Compile Include="FormImageSimulator.Designer.cs">
       <DependentUpon>FormImageSimulator.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRotationMatrix.cs">
+    <Compile Include="FormRotation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRotationMatrix.Designer.cs">
-      <DependentUpon>FormRotationMatrix.cs</DependentUpon>
+    <Compile Include="FormRotation.Designer.cs">
+      <DependentUpon>FormRotation.cs</DependentUpon>
     </Compile>
     <Compile Include="SpotID\FormSpotDetails.cs">
       <SubType>Form</SubType>
@@ -317,8 +317,8 @@
     <EmbeddedResource Include="FormMain.ja.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRotationMatrix.resx">
-      <DependentUpon>FormRotationMatrix.cs</DependentUpon>
+    <EmbeddedResource Include="FormRotation.resx">
+      <DependentUpon>FormRotation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpotID\FormSpotDetails.resx">
       <DependentUpon>FormSpotDetails.cs</DependentUpon>
