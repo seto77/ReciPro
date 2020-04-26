@@ -37,39 +37,30 @@
             this.buttonPaste = new System.Windows.Forms.Button();
             this.buttonViewIsometric = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1stXplus = new System.Windows.Forms.RadioButton();
+            this.radioButton1stX = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton1stXminus = new System.Windows.Forms.RadioButton();
-            this.radioButton1stYplus = new System.Windows.Forms.RadioButton();
-            this.radioButton1stYminus = new System.Windows.Forms.RadioButton();
-            this.radioButton1stZplus = new System.Windows.Forms.RadioButton();
-            this.radioButton1stZminus = new System.Windows.Forms.RadioButton();
+            this.radioButton1stY = new System.Windows.Forms.RadioButton();
+            this.radioButton1stZ = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton2ndXplus = new System.Windows.Forms.RadioButton();
-            this.radioButton2ndXminus = new System.Windows.Forms.RadioButton();
-            this.radioButton2ndYplus = new System.Windows.Forms.RadioButton();
-            this.radioButton2ndYminus = new System.Windows.Forms.RadioButton();
-            this.radioButton2ndZplus = new System.Windows.Forms.RadioButton();
-            this.radioButton2ndZminus = new System.Windows.Forms.RadioButton();
+            this.radioButton2ndX = new System.Windows.Forms.RadioButton();
+            this.radioButton2ndY = new System.Windows.Forms.RadioButton();
+            this.radioButton2ndZ = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton3rdXplus = new System.Windows.Forms.RadioButton();
-            this.radioButton3rdXminus = new System.Windows.Forms.RadioButton();
-            this.radioButton3rdYplus = new System.Windows.Forms.RadioButton();
-            this.radioButton3rdYminus = new System.Windows.Forms.RadioButton();
-            this.radioButton3rdZplus = new System.Windows.Forms.RadioButton();
-            this.radioButton3rdZminus = new System.Windows.Forms.RadioButton();
+            this.radioButton3rdX = new System.Windows.Forms.RadioButton();
+            this.radioButton3rdY = new System.Windows.Forms.RadioButton();
+            this.radioButton3rdZ = new System.Windows.Forms.RadioButton();
             this.checkBoxLink = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxEnable3rd = new System.Windows.Forms.CheckBox();
+            this.checkBoxFix3rd = new System.Windows.Forms.CheckBox();
+            this.checkBoxFix2nd = new System.Windows.Forms.CheckBox();
+            this.checkBoxFix1st = new System.Windows.Forms.CheckBox();
             this.checkBoxEnable2nd = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonViewAlongBeam = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBoxFix1st = new System.Windows.Forms.CheckBox();
-            this.checkBoxFix2nd = new System.Windows.Forms.CheckBox();
-            this.checkBoxFix3rd = new System.Windows.Forms.CheckBox();
             this.glControlExpObjects = new Crystallography.OpenGL.GLControlAlpha();
             this.glControlExpAxes = new Crystallography.OpenGL.GLControlAlpha();
             this.glControlExpGonio = new Crystallography.OpenGL.GLControlAlpha();
@@ -91,6 +82,7 @@
             this.numericBox23 = new Crystallography.Controls.NumericBox();
             this.numericBox31 = new Crystallography.Controls.NumericBox();
             this.numericBox32 = new Crystallography.Controls.NumericBox();
+            this.buttonResetExpEuler = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -239,299 +231,180 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ReciPro coordinate system (ZXZ)";
             // 
-            // radioButton1stXplus
+            // radioButton1stX
             // 
-            this.radioButton1stXplus.AutoSize = true;
-            this.radioButton1stXplus.Checked = true;
-            this.radioButton1stXplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stXplus.Location = new System.Drawing.Point(0, 4);
-            this.radioButton1stXplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stXplus.Name = "radioButton1stXplus";
-            this.radioButton1stXplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton1stXplus.TabIndex = 99;
-            this.radioButton1stXplus.TabStop = true;
-            this.radioButton1stXplus.Text = "+X";
-            this.radioButton1stXplus.UseVisualStyleBackColor = true;
-            this.radioButton1stXplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton1stX.AutoSize = true;
+            this.radioButton1stX.Checked = true;
+            this.radioButton1stX.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1stX.ForeColor = System.Drawing.Color.Red;
+            this.radioButton1stX.Location = new System.Drawing.Point(2, 4);
+            this.radioButton1stX.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton1stX.Name = "radioButton1stX";
+            this.radioButton1stX.Size = new System.Drawing.Size(33, 19);
+            this.radioButton1stX.TabIndex = 99;
+            this.radioButton1stX.TabStop = true;
+            this.radioButton1stX.Text = "X";
+            this.radioButton1stX.UseVisualStyleBackColor = true;
+            this.radioButton1stX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stXplus);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stXminus);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stYplus);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stYminus);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stZplus);
-            this.flowLayoutPanel1.Controls.Add(this.radioButton1stZminus);
+            this.flowLayoutPanel1.Controls.Add(this.radioButton1stX);
+            this.flowLayoutPanel1.Controls.Add(this.radioButton1stY);
+            this.flowLayoutPanel1.Controls.Add(this.radioButton1stZ);
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(71, 18);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(71, 20);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(205, 20);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(110, 23);
             this.flowLayoutPanel1.TabIndex = 100;
             // 
-            // radioButton1stXminus
+            // radioButton1stY
             // 
-            this.radioButton1stXminus.AutoSize = true;
-            this.radioButton1stXminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stXminus.Location = new System.Drawing.Point(36, 4);
-            this.radioButton1stXminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stXminus.Name = "radioButton1stXminus";
-            this.radioButton1stXminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton1stXminus.TabIndex = 99;
-            this.radioButton1stXminus.Text = "-X";
-            this.radioButton1stXminus.UseVisualStyleBackColor = true;
-            this.radioButton1stXminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton1stY.AutoSize = true;
+            this.radioButton1stY.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1stY.ForeColor = System.Drawing.Color.Green;
+            this.radioButton1stY.Location = new System.Drawing.Point(39, 4);
+            this.radioButton1stY.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton1stY.Name = "radioButton1stY";
+            this.radioButton1stY.Size = new System.Drawing.Size(33, 19);
+            this.radioButton1stY.TabIndex = 99;
+            this.radioButton1stY.Text = "Y";
+            this.radioButton1stY.UseVisualStyleBackColor = true;
+            this.radioButton1stY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // radioButton1stYplus
+            // radioButton1stZ
             // 
-            this.radioButton1stYplus.AutoSize = true;
-            this.radioButton1stYplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stYplus.Location = new System.Drawing.Point(69, 4);
-            this.radioButton1stYplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stYplus.Name = "radioButton1stYplus";
-            this.radioButton1stYplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton1stYplus.TabIndex = 99;
-            this.radioButton1stYplus.Text = "+Y";
-            this.radioButton1stYplus.UseVisualStyleBackColor = true;
-            this.radioButton1stYplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton1stYminus
-            // 
-            this.radioButton1stYminus.AutoSize = true;
-            this.radioButton1stYminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stYminus.Location = new System.Drawing.Point(105, 4);
-            this.radioButton1stYminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stYminus.Name = "radioButton1stYminus";
-            this.radioButton1stYminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton1stYminus.TabIndex = 99;
-            this.radioButton1stYminus.Text = "-Y";
-            this.radioButton1stYminus.UseVisualStyleBackColor = true;
-            this.radioButton1stYminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton1stZplus
-            // 
-            this.radioButton1stZplus.AutoSize = true;
-            this.radioButton1stZplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stZplus.Location = new System.Drawing.Point(138, 4);
-            this.radioButton1stZplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stZplus.Name = "radioButton1stZplus";
-            this.radioButton1stZplus.Size = new System.Drawing.Size(35, 16);
-            this.radioButton1stZplus.TabIndex = 99;
-            this.radioButton1stZplus.Text = "+Z";
-            this.radioButton1stZplus.UseVisualStyleBackColor = true;
-            this.radioButton1stZplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton1stZminus
-            // 
-            this.radioButton1stZminus.AutoSize = true;
-            this.radioButton1stZminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton1stZminus.Location = new System.Drawing.Point(173, 4);
-            this.radioButton1stZminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton1stZminus.Name = "radioButton1stZminus";
-            this.radioButton1stZminus.Size = new System.Drawing.Size(32, 16);
-            this.radioButton1stZminus.TabIndex = 99;
-            this.radioButton1stZminus.Text = "-Z";
-            this.radioButton1stZminus.UseVisualStyleBackColor = true;
-            this.radioButton1stZminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton1stZ.AutoSize = true;
+            this.radioButton1stZ.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1stZ.ForeColor = System.Drawing.Color.Blue;
+            this.radioButton1stZ.Location = new System.Drawing.Point(76, 4);
+            this.radioButton1stZ.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton1stZ.Name = "radioButton1stZ";
+            this.radioButton1stZ.Size = new System.Drawing.Size(32, 19);
+            this.radioButton1stZ.TabIndex = 99;
+            this.radioButton1stZ.Text = "Z";
+            this.radioButton1stZ.UseVisualStyleBackColor = true;
+            this.radioButton1stZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndXplus);
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndXminus);
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndYplus);
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndYminus);
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndZplus);
-            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndZminus);
+            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndX);
+            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndY);
+            this.flowLayoutPanel2.Controls.Add(this.radioButton2ndZ);
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(71, 48);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(71, 50);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(205, 20);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(110, 23);
             this.flowLayoutPanel2.TabIndex = 100;
             // 
-            // radioButton2ndXplus
+            // radioButton2ndX
             // 
-            this.radioButton2ndXplus.AutoSize = true;
-            this.radioButton2ndXplus.Enabled = false;
-            this.radioButton2ndXplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndXplus.Location = new System.Drawing.Point(0, 4);
-            this.radioButton2ndXplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndXplus.Name = "radioButton2ndXplus";
-            this.radioButton2ndXplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton2ndXplus.TabIndex = 99;
-            this.radioButton2ndXplus.Text = "+X";
-            this.radioButton2ndXplus.UseVisualStyleBackColor = true;
-            this.radioButton2ndXplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton2ndX.AutoSize = true;
+            this.radioButton2ndX.Enabled = false;
+            this.radioButton2ndX.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2ndX.ForeColor = System.Drawing.Color.Red;
+            this.radioButton2ndX.Location = new System.Drawing.Point(2, 4);
+            this.radioButton2ndX.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton2ndX.Name = "radioButton2ndX";
+            this.radioButton2ndX.Size = new System.Drawing.Size(33, 19);
+            this.radioButton2ndX.TabIndex = 99;
+            this.radioButton2ndX.Text = "X";
+            this.radioButton2ndX.UseVisualStyleBackColor = true;
+            this.radioButton2ndX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // radioButton2ndXminus
+            // radioButton2ndY
             // 
-            this.radioButton2ndXminus.AutoSize = true;
-            this.radioButton2ndXminus.Enabled = false;
-            this.radioButton2ndXminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndXminus.Location = new System.Drawing.Point(36, 4);
-            this.radioButton2ndXminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndXminus.Name = "radioButton2ndXminus";
-            this.radioButton2ndXminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton2ndXminus.TabIndex = 99;
-            this.radioButton2ndXminus.Text = "-X";
-            this.radioButton2ndXminus.UseVisualStyleBackColor = true;
-            this.radioButton2ndXminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton2ndY.AutoSize = true;
+            this.radioButton2ndY.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2ndY.ForeColor = System.Drawing.Color.Green;
+            this.radioButton2ndY.Location = new System.Drawing.Point(39, 4);
+            this.radioButton2ndY.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton2ndY.Name = "radioButton2ndY";
+            this.radioButton2ndY.Size = new System.Drawing.Size(33, 19);
+            this.radioButton2ndY.TabIndex = 99;
+            this.radioButton2ndY.Text = "Y";
+            this.radioButton2ndY.UseVisualStyleBackColor = true;
+            this.radioButton2ndY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // radioButton2ndYplus
+            // radioButton2ndZ
             // 
-            this.radioButton2ndYplus.AutoSize = true;
-            this.radioButton2ndYplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndYplus.Location = new System.Drawing.Point(69, 4);
-            this.radioButton2ndYplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndYplus.Name = "radioButton2ndYplus";
-            this.radioButton2ndYplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton2ndYplus.TabIndex = 99;
-            this.radioButton2ndYplus.Text = "+Y";
-            this.radioButton2ndYplus.UseVisualStyleBackColor = true;
-            this.radioButton2ndYplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton2ndYminus
-            // 
-            this.radioButton2ndYminus.AutoSize = true;
-            this.radioButton2ndYminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndYminus.Location = new System.Drawing.Point(105, 4);
-            this.radioButton2ndYminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndYminus.Name = "radioButton2ndYminus";
-            this.radioButton2ndYminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton2ndYminus.TabIndex = 99;
-            this.radioButton2ndYminus.Text = "-Y";
-            this.radioButton2ndYminus.UseVisualStyleBackColor = true;
-            this.radioButton2ndYminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton2ndZplus
-            // 
-            this.radioButton2ndZplus.AutoSize = true;
-            this.radioButton2ndZplus.Checked = true;
-            this.radioButton2ndZplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndZplus.Location = new System.Drawing.Point(138, 4);
-            this.radioButton2ndZplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndZplus.Name = "radioButton2ndZplus";
-            this.radioButton2ndZplus.Size = new System.Drawing.Size(35, 16);
-            this.radioButton2ndZplus.TabIndex = 99;
-            this.radioButton2ndZplus.TabStop = true;
-            this.radioButton2ndZplus.Text = "+Z";
-            this.radioButton2ndZplus.UseVisualStyleBackColor = true;
-            this.radioButton2ndZplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton2ndZminus
-            // 
-            this.radioButton2ndZminus.AutoSize = true;
-            this.radioButton2ndZminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton2ndZminus.Location = new System.Drawing.Point(173, 4);
-            this.radioButton2ndZminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton2ndZminus.Name = "radioButton2ndZminus";
-            this.radioButton2ndZminus.Size = new System.Drawing.Size(32, 16);
-            this.radioButton2ndZminus.TabIndex = 99;
-            this.radioButton2ndZminus.Text = "-Z";
-            this.radioButton2ndZminus.UseVisualStyleBackColor = true;
-            this.radioButton2ndZminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton2ndZ.AutoSize = true;
+            this.radioButton2ndZ.Checked = true;
+            this.radioButton2ndZ.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2ndZ.ForeColor = System.Drawing.Color.Blue;
+            this.radioButton2ndZ.Location = new System.Drawing.Point(76, 4);
+            this.radioButton2ndZ.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton2ndZ.Name = "radioButton2ndZ";
+            this.radioButton2ndZ.Size = new System.Drawing.Size(32, 19);
+            this.radioButton2ndZ.TabIndex = 99;
+            this.radioButton2ndZ.TabStop = true;
+            this.radioButton2ndZ.Text = "Z";
+            this.radioButton2ndZ.UseVisualStyleBackColor = true;
+            this.radioButton2ndZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoSize = true;
             this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdXplus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdXminus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdYplus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdYminus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdZplus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdZminus);
+            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdX);
+            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdY);
+            this.flowLayoutPanel3.Controls.Add(this.radioButton3rdZ);
             this.flowLayoutPanel3.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(71, 78);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(71, 80);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(205, 20);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(110, 23);
             this.flowLayoutPanel3.TabIndex = 100;
             // 
-            // radioButton3rdXplus
+            // radioButton3rdX
             // 
-            this.radioButton3rdXplus.AutoSize = true;
-            this.radioButton3rdXplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdXplus.Location = new System.Drawing.Point(0, 4);
-            this.radioButton3rdXplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdXplus.Name = "radioButton3rdXplus";
-            this.radioButton3rdXplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton3rdXplus.TabIndex = 99;
-            this.radioButton3rdXplus.Text = "+X";
-            this.radioButton3rdXplus.UseVisualStyleBackColor = true;
-            this.radioButton3rdXplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton3rdX.AutoSize = true;
+            this.radioButton3rdX.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3rdX.ForeColor = System.Drawing.Color.Red;
+            this.radioButton3rdX.Location = new System.Drawing.Point(2, 4);
+            this.radioButton3rdX.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton3rdX.Name = "radioButton3rdX";
+            this.radioButton3rdX.Size = new System.Drawing.Size(33, 19);
+            this.radioButton3rdX.TabIndex = 99;
+            this.radioButton3rdX.Text = "X";
+            this.radioButton3rdX.UseVisualStyleBackColor = true;
+            this.radioButton3rdX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // radioButton3rdXminus
+            // radioButton3rdY
             // 
-            this.radioButton3rdXminus.AutoSize = true;
-            this.radioButton3rdXminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdXminus.Location = new System.Drawing.Point(36, 4);
-            this.radioButton3rdXminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdXminus.Name = "radioButton3rdXminus";
-            this.radioButton3rdXminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton3rdXminus.TabIndex = 99;
-            this.radioButton3rdXminus.Text = "-X";
-            this.radioButton3rdXminus.UseVisualStyleBackColor = true;
-            this.radioButton3rdXminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton3rdY.AutoSize = true;
+            this.radioButton3rdY.Checked = true;
+            this.radioButton3rdY.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3rdY.ForeColor = System.Drawing.Color.Green;
+            this.radioButton3rdY.Location = new System.Drawing.Point(39, 4);
+            this.radioButton3rdY.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton3rdY.Name = "radioButton3rdY";
+            this.radioButton3rdY.Size = new System.Drawing.Size(33, 19);
+            this.radioButton3rdY.TabIndex = 99;
+            this.radioButton3rdY.TabStop = true;
+            this.radioButton3rdY.Text = "Y";
+            this.radioButton3rdY.UseVisualStyleBackColor = true;
+            this.radioButton3rdY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
-            // radioButton3rdYplus
+            // radioButton3rdZ
             // 
-            this.radioButton3rdYplus.AutoSize = true;
-            this.radioButton3rdYplus.Checked = true;
-            this.radioButton3rdYplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdYplus.Location = new System.Drawing.Point(69, 4);
-            this.radioButton3rdYplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdYplus.Name = "radioButton3rdYplus";
-            this.radioButton3rdYplus.Size = new System.Drawing.Size(36, 16);
-            this.radioButton3rdYplus.TabIndex = 99;
-            this.radioButton3rdYplus.TabStop = true;
-            this.radioButton3rdYplus.Text = "+Y";
-            this.radioButton3rdYplus.UseVisualStyleBackColor = true;
-            this.radioButton3rdYplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton3rdYminus
-            // 
-            this.radioButton3rdYminus.AutoSize = true;
-            this.radioButton3rdYminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdYminus.Location = new System.Drawing.Point(105, 4);
-            this.radioButton3rdYminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdYminus.Name = "radioButton3rdYminus";
-            this.radioButton3rdYminus.Size = new System.Drawing.Size(33, 16);
-            this.radioButton3rdYminus.TabIndex = 99;
-            this.radioButton3rdYminus.Text = "-Y";
-            this.radioButton3rdYminus.UseVisualStyleBackColor = true;
-            this.radioButton3rdYminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton3rdZplus
-            // 
-            this.radioButton3rdZplus.AutoSize = true;
-            this.radioButton3rdZplus.Enabled = false;
-            this.radioButton3rdZplus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdZplus.Location = new System.Drawing.Point(138, 4);
-            this.radioButton3rdZplus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdZplus.Name = "radioButton3rdZplus";
-            this.radioButton3rdZplus.Size = new System.Drawing.Size(35, 16);
-            this.radioButton3rdZplus.TabIndex = 99;
-            this.radioButton3rdZplus.Text = "+Z";
-            this.radioButton3rdZplus.UseVisualStyleBackColor = true;
-            this.radioButton3rdZplus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
-            // 
-            // radioButton3rdZminus
-            // 
-            this.radioButton3rdZminus.AutoSize = true;
-            this.radioButton3rdZminus.Enabled = false;
-            this.radioButton3rdZminus.Font = new System.Drawing.Font("Times New Roman", 7F);
-            this.radioButton3rdZminus.Location = new System.Drawing.Point(173, 4);
-            this.radioButton3rdZminus.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.radioButton3rdZminus.Name = "radioButton3rdZminus";
-            this.radioButton3rdZminus.Size = new System.Drawing.Size(32, 16);
-            this.radioButton3rdZminus.TabIndex = 99;
-            this.radioButton3rdZminus.Text = "-Z";
-            this.radioButton3rdZminus.UseVisualStyleBackColor = true;
-            this.radioButton3rdZminus.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
+            this.radioButton3rdZ.AutoSize = true;
+            this.radioButton3rdZ.Enabled = false;
+            this.radioButton3rdZ.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3rdZ.ForeColor = System.Drawing.Color.Blue;
+            this.radioButton3rdZ.Location = new System.Drawing.Point(76, 4);
+            this.radioButton3rdZ.Margin = new System.Windows.Forms.Padding(2, 4, 2, 0);
+            this.radioButton3rdZ.Name = "radioButton3rdZ";
+            this.radioButton3rdZ.Size = new System.Drawing.Size(32, 19);
+            this.radioButton3rdZ.TabIndex = 99;
+            this.radioButton3rdZ.Text = "Z";
+            this.radioButton3rdZ.UseVisualStyleBackColor = true;
+            this.radioButton3rdZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // checkBoxLink
             // 
@@ -547,6 +420,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonResetExpEuler);
             this.groupBox2.Controls.Add(this.flowLayoutPanel1);
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
             this.groupBox2.Controls.Add(this.flowLayoutPanel3);
@@ -577,7 +451,7 @@
             this.checkBoxEnable3rd.Checked = true;
             this.checkBoxEnable3rd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEnable3rd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.checkBoxEnable3rd.Location = new System.Drawing.Point(5, 79);
+            this.checkBoxEnable3rd.Location = new System.Drawing.Point(5, 81);
             this.checkBoxEnable3rd.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxEnable3rd.Name = "checkBoxEnable3rd";
             this.checkBoxEnable3rd.Size = new System.Drawing.Size(65, 19);
@@ -586,13 +460,49 @@
             this.checkBoxEnable3rd.UseVisualStyleBackColor = true;
             this.checkBoxEnable3rd.CheckedChanged += new System.EventHandler(this.checkBox1st_CheckedChanged);
             // 
+            // checkBoxFix3rd
+            // 
+            this.checkBoxFix3rd.AutoSize = true;
+            this.checkBoxFix3rd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.checkBoxFix3rd.Location = new System.Drawing.Point(290, 84);
+            this.checkBoxFix3rd.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxFix3rd.Name = "checkBoxFix3rd";
+            this.checkBoxFix3rd.Size = new System.Drawing.Size(40, 19);
+            this.checkBoxFix3rd.TabIndex = 101;
+            this.checkBoxFix3rd.Text = "Fix";
+            this.checkBoxFix3rd.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFix2nd
+            // 
+            this.checkBoxFix2nd.AutoSize = true;
+            this.checkBoxFix2nd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.checkBoxFix2nd.Location = new System.Drawing.Point(290, 54);
+            this.checkBoxFix2nd.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxFix2nd.Name = "checkBoxFix2nd";
+            this.checkBoxFix2nd.Size = new System.Drawing.Size(40, 19);
+            this.checkBoxFix2nd.TabIndex = 101;
+            this.checkBoxFix2nd.Text = "Fix";
+            this.checkBoxFix2nd.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFix1st
+            // 
+            this.checkBoxFix1st.AutoSize = true;
+            this.checkBoxFix1st.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.checkBoxFix1st.Location = new System.Drawing.Point(290, 24);
+            this.checkBoxFix1st.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxFix1st.Name = "checkBoxFix1st";
+            this.checkBoxFix1st.Size = new System.Drawing.Size(40, 19);
+            this.checkBoxFix1st.TabIndex = 101;
+            this.checkBoxFix1st.Text = "Fix";
+            this.checkBoxFix1st.UseVisualStyleBackColor = true;
+            // 
             // checkBoxEnable2nd
             // 
             this.checkBoxEnable2nd.AutoSize = true;
             this.checkBoxEnable2nd.Checked = true;
             this.checkBoxEnable2nd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEnable2nd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.checkBoxEnable2nd.Location = new System.Drawing.Point(5, 51);
+            this.checkBoxEnable2nd.Location = new System.Drawing.Point(5, 53);
             this.checkBoxEnable2nd.Margin = new System.Windows.Forms.Padding(0);
             this.checkBoxEnable2nd.Name = "checkBoxEnable2nd";
             this.checkBoxEnable2nd.Size = new System.Drawing.Size(68, 19);
@@ -606,7 +516,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(21, 24);
+            this.label5.Location = new System.Drawing.Point(21, 26);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 6, 0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 15);
@@ -662,42 +572,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(351, 47);
             this.panel2.TabIndex = 103;
-            // 
-            // checkBoxFix1st
-            // 
-            this.checkBoxFix1st.AutoSize = true;
-            this.checkBoxFix1st.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.checkBoxFix1st.Location = new System.Drawing.Point(366, 21);
-            this.checkBoxFix1st.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxFix1st.Name = "checkBoxFix1st";
-            this.checkBoxFix1st.Size = new System.Drawing.Size(40, 19);
-            this.checkBoxFix1st.TabIndex = 101;
-            this.checkBoxFix1st.Text = "Fix";
-            this.checkBoxFix1st.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFix2nd
-            // 
-            this.checkBoxFix2nd.AutoSize = true;
-            this.checkBoxFix2nd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.checkBoxFix2nd.Location = new System.Drawing.Point(366, 51);
-            this.checkBoxFix2nd.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxFix2nd.Name = "checkBoxFix2nd";
-            this.checkBoxFix2nd.Size = new System.Drawing.Size(40, 19);
-            this.checkBoxFix2nd.TabIndex = 101;
-            this.checkBoxFix2nd.Text = "Fix";
-            this.checkBoxFix2nd.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFix3rd
-            // 
-            this.checkBoxFix3rd.AutoSize = true;
-            this.checkBoxFix3rd.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.checkBoxFix3rd.Location = new System.Drawing.Point(366, 81);
-            this.checkBoxFix3rd.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxFix3rd.Name = "checkBoxFix3rd";
-            this.checkBoxFix3rd.Size = new System.Drawing.Size(40, 19);
-            this.checkBoxFix3rd.TabIndex = 101;
-            this.checkBoxFix3rd.Text = "Fix";
-            this.checkBoxFix3rd.UseVisualStyleBackColor = true;
             // 
             // glControlExpObjects
             // 
@@ -784,7 +658,7 @@
             this.numericBoxExp3.FooterText = "°";
             this.numericBoxExp3.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxExp3.HeaderText = "";
-            this.numericBoxExp3.Location = new System.Drawing.Point(276, 77);
+            this.numericBoxExp3.Location = new System.Drawing.Point(195, 80);
             this.numericBoxExp3.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxExp3.Maximum = double.PositiveInfinity;
             this.numericBoxExp3.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -826,7 +700,7 @@
             this.numericBoxExp2.FooterText = "°";
             this.numericBoxExp2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxExp2.HeaderText = "";
-            this.numericBoxExp2.Location = new System.Drawing.Point(276, 47);
+            this.numericBoxExp2.Location = new System.Drawing.Point(195, 50);
             this.numericBoxExp2.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxExp2.Maximum = double.PositiveInfinity;
             this.numericBoxExp2.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -868,7 +742,7 @@
             this.numericBoxExp1.FooterText = "°";
             this.numericBoxExp1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxExp1.HeaderText = "";
-            this.numericBoxExp1.Location = new System.Drawing.Point(276, 17);
+            this.numericBoxExp1.Location = new System.Drawing.Point(195, 20);
             this.numericBoxExp1.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxExp1.Maximum = double.PositiveInfinity;
             this.numericBoxExp1.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -1483,6 +1357,19 @@
             this.numericBox32.WordWrap = true;
             this.numericBox32.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
             // 
+            // buttonResetExpEuler
+            // 
+            this.buttonResetExpEuler.AutoSize = true;
+            this.buttonResetExpEuler.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonResetExpEuler.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonResetExpEuler.Location = new System.Drawing.Point(352, 70);
+            this.buttonResetExpEuler.Name = "buttonResetExpEuler";
+            this.buttonResetExpEuler.Size = new System.Drawing.Size(51, 40);
+            this.buttonResetExpEuler.TabIndex = 102;
+            this.buttonResetExpEuler.Text = "Reset\r\nangles";
+            this.buttonResetExpEuler.UseVisualStyleBackColor = true;
+            this.buttonResetExpEuler.Click += new System.EventHandler(this.buttonResetExpEuler_Click);
+            // 
             // FormRotationMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1540,27 +1427,18 @@
         private Crystallography.OpenGL.GLControlAlpha glControlReciProGonio;
         private System.Windows.Forms.Button buttonViewIsometric;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton1stXplus;
+        private System.Windows.Forms.RadioButton radioButton1stX;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.RadioButton radioButton1stXminus;
-        private System.Windows.Forms.RadioButton radioButton1stYplus;
-        private System.Windows.Forms.RadioButton radioButton1stYminus;
-        private System.Windows.Forms.RadioButton radioButton1stZplus;
-        private System.Windows.Forms.RadioButton radioButton1stZminus;
+        private System.Windows.Forms.RadioButton radioButton1stY;
+        private System.Windows.Forms.RadioButton radioButton1stZ;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.RadioButton radioButton2ndXplus;
-        private System.Windows.Forms.RadioButton radioButton2ndXminus;
-        private System.Windows.Forms.RadioButton radioButton2ndYplus;
-        private System.Windows.Forms.RadioButton radioButton2ndYminus;
-        private System.Windows.Forms.RadioButton radioButton2ndZplus;
-        private System.Windows.Forms.RadioButton radioButton2ndZminus;
+        private System.Windows.Forms.RadioButton radioButton2ndX;
+        private System.Windows.Forms.RadioButton radioButton2ndY;
+        private System.Windows.Forms.RadioButton radioButton2ndZ;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.RadioButton radioButton3rdXplus;
-        private System.Windows.Forms.RadioButton radioButton3rdXminus;
-        private System.Windows.Forms.RadioButton radioButton3rdYplus;
-        private System.Windows.Forms.RadioButton radioButton3rdYminus;
-        private System.Windows.Forms.RadioButton radioButton3rdZplus;
-        private System.Windows.Forms.RadioButton radioButton3rdZminus;
+        private System.Windows.Forms.RadioButton radioButton3rdX;
+        private System.Windows.Forms.RadioButton radioButton3rdY;
+        private System.Windows.Forms.RadioButton radioButton3rdZ;
         private Crystallography.Controls.NumericBox numericBoxExp1;
         private Crystallography.Controls.NumericBox numericBoxExp2;
         private Crystallography.Controls.NumericBox numericBoxExp3;
@@ -1581,5 +1459,6 @@
         private System.Windows.Forms.CheckBox checkBoxFix3rd;
         private System.Windows.Forms.CheckBox checkBoxFix2nd;
         private System.Windows.Forms.CheckBox checkBoxFix1st;
+        private System.Windows.Forms.Button buttonResetExpEuler;
     }
 }

@@ -409,54 +409,54 @@ namespace ReciPro
             {
                 if (name.Contains("X"))
                 {
-                    radioButton2ndXminus.Enabled = radioButton2ndXplus.Enabled = false;
-                    radioButton2ndYminus.Enabled = radioButton2ndYplus.Enabled = true;
-                    radioButton2ndZminus.Enabled = radioButton2ndZplus.Enabled = true;
-                    if (radioButton2ndXminus.Checked || radioButton2ndXplus.Checked)
-                        radioButton2ndYplus.Checked = true;
+                    radioButton2ndX.Enabled = false;
+                    radioButton2ndY.Enabled = true;
+                    radioButton2ndZ.Enabled = true;
+                    if (radioButton2ndX.Checked)
+                        radioButton2ndY.Checked = true;
                 }
                 else if (name.Contains("Y"))
                 {
-                    radioButton2ndXminus.Enabled = radioButton2ndXplus.Enabled = true;
-                    radioButton2ndYminus.Enabled = radioButton2ndYplus.Enabled = false;
-                    radioButton2ndZminus.Enabled = radioButton2ndZplus.Enabled = true;
-                    if (radioButton2ndYminus.Checked || radioButton2ndYplus.Checked)
-                        radioButton2ndZplus.Checked = true;
+                    radioButton2ndX.Enabled = true;
+                    radioButton2ndY.Enabled = false;
+                    radioButton2ndZ.Enabled = true;
+                    if (radioButton2ndY.Checked)
+                        radioButton2ndZ.Checked = true;
                 }
                 else
                 {
-                    radioButton2ndXminus.Enabled = radioButton2ndXplus.Enabled = true;
-                    radioButton2ndYminus.Enabled = radioButton2ndYplus.Enabled = true;
-                    radioButton2ndZminus.Enabled = radioButton2ndZplus.Enabled = false;
-                    if (radioButton2ndZminus.Checked || radioButton2ndZplus.Checked)
-                        radioButton2ndXplus.Checked = true;
+                    radioButton2ndX.Enabled = true;
+                    radioButton2ndY.Enabled = true;
+                    radioButton2ndZ.Enabled = false;
+                    if (radioButton2ndZ.Checked)
+                        radioButton2ndX.Checked = true;
                 }
             }
             else if (name.Contains("2nd"))
             {
                 if (name.Contains("X"))
                 {
-                    radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = false;
-                    radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = true;
-                    radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = true;
-                    if (radioButton3rdXminus.Checked || radioButton3rdXplus.Checked)
-                        radioButton3rdYplus.Checked = true;
+                    radioButton3rdX.Enabled = false;
+                    radioButton3rdY.Enabled = true;
+                    radioButton3rdZ.Enabled = true;
+                    if (radioButton3rdX.Checked)
+                        radioButton3rdY.Checked = true;
                 }
                 else if (name.Contains("Y"))
                 {
-                    radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = true;
-                    radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = false;
-                    radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = true;
-                    if (radioButton3rdYminus.Checked || radioButton3rdYplus.Checked)
-                        radioButton3rdZplus.Checked = true;
+                    radioButton3rdX.Enabled = true;
+                    radioButton3rdY.Enabled = false;
+                    radioButton3rdZ.Enabled = true;
+                    if (radioButton3rdY.Checked)
+                        radioButton3rdZ.Checked = true;
                 }
                 else
                 {
-                    radioButton3rdXminus.Enabled = radioButton3rdXplus.Enabled = true;
-                    radioButton3rdYminus.Enabled = radioButton3rdYplus.Enabled = true;
-                    radioButton3rdZminus.Enabled = radioButton3rdZplus.Enabled = false;
-                    if (radioButton3rdZminus.Checked || radioButton3rdZplus.Checked)
-                        radioButton3rdXplus.Checked = true;
+                    radioButton3rdX.Enabled = true;
+                    radioButton3rdY.Enabled = true;
+                    radioButton3rdZ.Enabled = false;
+                    if (radioButton3rdZ.Checked)
+                        radioButton3rdX.Checked = true;
                 }
             }
             SetRotation(false);
@@ -465,46 +465,22 @@ namespace ReciPro
         private V3[] getExpDirections()
         {
             var v1 = new V3(1, 0, 0);
-            if (radioButton1stXplus.Checked)
-                v1 = new V3(1, 0, 0);
-            else if (radioButton1stXminus.Checked)
-                v1 = new V3(-1, 0, 0);
-            else if (radioButton1stYplus.Checked)
+            if (radioButton1stY.Checked)
                 v1 = new V3(0, 1, 0);
-            else if (radioButton1stYminus.Checked)
-                v1 = new V3(0, -1, 0);
-            else if (radioButton1stZplus.Checked)
+            else if (radioButton1stZ.Checked)
                 v1 = new V3(0, 0, 1);
-            else if (radioButton1stZminus.Checked)
-                v1 = new V3(0, 0, -1);
 
             var v2 = new V3(1, 0, 0);
-            if (radioButton2ndXplus.Checked)
-                v2 = new V3(1, 0, 0);
-            else if (radioButton2ndXminus.Checked)
-                v2 = new V3(-1, 0, 0);
-            else if (radioButton2ndYplus.Checked)
+            if (radioButton2ndY.Checked)
                 v2 = new V3(0, 1, 0);
-            else if (radioButton2ndYminus.Checked)
-                v2 = new V3(0, -1, 0);
-            else if (radioButton2ndZplus.Checked)
+            else if (radioButton2ndZ.Checked)
                 v2 = new V3(0, 0, 1);
-            else if (radioButton2ndZminus.Checked)
-                v2 = new V3(0, 0, -1);
 
             var v3 = new V3(1, 0, 0);
-            if (radioButton3rdXplus.Checked)
-                v3 = new V3(1, 0, 0);
-            else if (radioButton3rdXminus.Checked)
-                v3 = new V3(-1, 0, 0);
-            else if (radioButton3rdYplus.Checked)
+            if (radioButton3rdY.Checked)
                 v3 = new V3(0, 1, 0);
-            else if (radioButton3rdYminus.Checked)
-                v3 = new V3(0, -1, 0);
-            else if (radioButton3rdZplus.Checked)
+            else if (radioButton3rdZ.Checked)
                 v3 = new V3(0, 0, 1);
-            else if (radioButton3rdZminus.Checked)
-                v3 = new V3(0, 0, -1);
 
             return new[] { v1, v2, v3 };
            
@@ -530,12 +506,12 @@ namespace ReciPro
         {
             if (sender is NumericBox box)
             {
-                if (box.Value > 360)
+                if (box.Value > 180)
                 {
                     box.Value -= 360;
                     return;
                 }
-                else if (box.Value < -360)
+                else if (box.Value < -180)
                 {
                     box.Value += 360;
                     return;
@@ -593,6 +569,12 @@ namespace ReciPro
             SetRotation(false);
         }
 
-
+        private void buttonResetExpEuler_Click(object sender, EventArgs e)
+        {
+            skip = true;
+            numericBoxExp1.Value = numericBoxExp2.Value = numericBoxExp3.Value = 0;
+            skip = false;
+            NumericBoxExp_ValueChanged(sender, e);
+        }
     }
 }

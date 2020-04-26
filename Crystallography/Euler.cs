@@ -448,7 +448,7 @@ namespace Crystallography
                 if (Variable)
                 {
                     rotations.Add(new Func<double, Matrix3D>(angle => Matrix3D.Rot(Vec, angle)));
-                    initialAngles.Add(Angle*2.2);
+                    initialAngles.Add(Angle);
                 }
                 else
                     rotations.Add(Matrix3D.Rot(Vec, Angle));
@@ -472,7 +472,7 @@ namespace Crystallography
             var temp = func(new DVec(initialAngles.ToArray()));
             try
             {
-                var result = FindMinimum.OfFunction(func, new DVec(initialAngles.ToArray())).ToList();
+                var result = FindMinimum.OfFunction(func, new DVec(initialAngles.ToArray()), 1e-12, 100000).ToList();
                 for (int i = 0; i < settings.Length; i++)
                     if (!settings[i].Variable)
                         result.Insert(i, settings[i].Angle);
