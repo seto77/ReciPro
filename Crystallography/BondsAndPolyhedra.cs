@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 //using ProtoBuf;
 using MessagePack;
+using System.Drawing;
 
 namespace Crystallography
 {
@@ -44,6 +45,10 @@ namespace Crystallography
         [Key(15)]
         public int ArgbEdge;
         
+        public string[] ElementList;
+
+        public bool Enabled = true;
+        
         
         [XmlIgnore]
         //[ProtoIgnore]
@@ -54,10 +59,23 @@ namespace Crystallography
         {
         }
 
-        public Bonds(string element1, string element2, float minLength, float maxLength, float radius, float bondTranParency,
-            System.Drawing.Color bondColor, float polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
-            bool showInnerBonds, System.Drawing.Color polyhedronColor, bool showEdges, float edgeLineWidth, System.Drawing.Color edgeColor)
+        public Bonds(bool enabled, string[] elementList, string element1, string element2, double minLength, double maxLength, double radius, double bondTranParency,
+            Color bondColor, double polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
+            bool showInnerBonds, Color polyhedronColor, bool showEdges, double edgeLineWidth, Color edgeColor)
+            :this(enabled, elementList, element1, element2, (float) minLength, (float)maxLength, (float)radius, (float)bondTranParency,
+            bondColor, (float)polyhedronTransParency, showPolyhedron,showCenterAtom,  showVertexAtom,
+             showInnerBonds, polyhedronColor,showEdges, (float)edgeLineWidth,edgeColor)
         {
+
+        }
+
+        public Bonds(bool enabled, string[] elementList, string element1, string element2, float minLength, float maxLength, float radius, float bondTranParency,
+            Color bondColor, float polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
+            bool showInnerBonds, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor)
+        {
+            Enabled = enabled;
+
+            ElementList = elementList;
             Element1 = element1;
             Element2 = element2;
 

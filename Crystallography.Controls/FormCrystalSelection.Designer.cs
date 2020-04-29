@@ -140,7 +140,6 @@
             this.crystalControl1.Name = "crystalControl1";
             this.crystalControl1.Size = new System.Drawing.Size(486, 256);
             this.crystalControl1.TabIndex = 1;
-            this.crystalControl1.VisibleAtomAdvancedTab = true;
             this.crystalControl1.VisibleAtomTab = true;
             this.crystalControl1.VisibleBasicInfoTab = true;
             this.crystalControl1.VisibleBondsPolyhedraTab = true;

@@ -12,9 +12,6 @@ namespace Crystallography
     {
         //[NonSerialized] [XmlIgnore]
 
-        public enum UnitEnum { D_spacing, Angstrom }
-
-        public UnitEnum Unit { get; } = UnitEnum.D_spacing;
         public (int H, int K, int L) BaseIndex { get; set; }
 
         [XmlIgnore]
@@ -30,11 +27,10 @@ namespace Crystallography
         public Bound()
         { }
 
-        public Bound(Crystal crystal, int h, int k, int l, bool equivalency, double distance, UnitEnum unit, int argb)
+        public Bound(Crystal crystal, int h, int k, int l, bool equivalency, double distance, int argb)
         {
             ColorArgb = argb;
             Equivalency = equivalency;
-            Unit = unit;
             Distance = distance;
             BaseIndex = (h, k, l);
 
@@ -46,7 +42,7 @@ namespace Crystallography
 
             var gBase = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
             D = 1 / gBase.Length;
-            var d = Unit == UnitEnum.D_spacing ? D * distance : distance;
+            var d = distance;
 
             PlaneParams = new double[planes.Length][];
             for (int i = 0; i < planes.Length; i++)

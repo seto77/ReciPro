@@ -113,7 +113,7 @@ namespace ReciPro
             this.buttonDonut = new System.Windows.Forms.Button();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet = new ReciPro.DataSet();
+            this.DataSet = new ReciPro.DataSetReciPro();
             this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
@@ -1574,7 +1574,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonCopyMetafile;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIdentifySpot;
         public System.Windows.Forms.BindingSource bindingSourceObsSpots;
-        public DataSet DataSet;
+        public DataSetReciPro DataSet;
         public Crystallography.Controls.ScalablePictureBoxAdvanced scalablePictureBoxAdvanced;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem shortcutHintsToolStripMenuItem;

@@ -124,46 +124,7 @@
   <data name="contextMenuStripBody.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items" xml:space="preserve">
-    <value>No control</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items1" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items2" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items3" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items4" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items5" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items6" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items7" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items8" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items9" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items10" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items11" xml:space="preserve">
-    <value>10</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripComboBoxDecimalPlaces.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
-  </data>
   <data name="decimalPlacesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
   </data>
@@ -185,23 +146,11 @@
   <data name="toolStripMenuItemRestrictLimit.Text" xml:space="preserve">
     <value>Restrict limit</value>
   </data>
-  <data name="toolStripTextBoxMaximum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMaximum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>      Maximum</value>
-  </data>
-  <data name="toolStripTextBoxMimimum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMimimum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
@@ -218,15 +167,6 @@
   <data name="allowMouseContlolToolStripMenuItem.Text" xml:space="preserve">
     <value>Allow Mouse Contlol</value>
   </data>
-  <data name="toolStripTextBoxMouseSpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMouseSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="toolStripTextBoxMouseSpeed.Text" xml:space="preserve">
-    <value>1</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -236,15 +176,6 @@
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>      Mouse Speed</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Items" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Items1" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
   </data>
   <data name="toolStripMenuItem4.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -289,7 +220,7 @@
     <value>No</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 25</value>
+    <value>69, 25</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -304,13 +235,85 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBox.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items" xml:space="preserve">
+    <value>No control</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items1" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items5" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items6" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items7" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items8" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items9" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items10" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items11" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Items" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Items1" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
   </data>
   <data name="labelHeader.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="labelHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="labelHeader.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -322,13 +325,16 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelHeader.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="labelHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 20</value>
   </data>
   <data name="labelHeader.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="labelHeader.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;labelHeader.Name" xml:space="preserve">
     <value>labelHeader</value>
@@ -337,16 +343,64 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelHeader.Parent" xml:space="preserve">
-    <value>panelHeader</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;labelHeader.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <metadata name="contextMenuStripUpDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>110, 17</value>
   </metadata>
   <data name="contextMenuStripUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="contextMenuStripUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripUpDown.Name" xml:space="preserve">
+    <value>contextMenuStripUpDown</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="numericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 0</value>
+  </data>
+  <data name="numericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="numericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 25</value>
+  </data>
+  <data name="numericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Name" xml:space="preserve">
+    <value>numericUpDown</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 22</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Increment</value>
   </data>
   <data name="smartIncrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 22</value>
@@ -426,119 +480,11 @@
   <data name="toolStripComboBoxIncrement.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
   </data>
-  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
-  </data>
-  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
-    <value>Increment</value>
-  </data>
-  <data name="contextMenuStripUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripUpDown.Name" xml:space="preserve">
-    <value>contextMenuStripUpDown</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="numericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 0</value>
-  </data>
-  <data name="numericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="numericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 25</value>
-  </data>
-  <data name="numericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericUpDown.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Name" xml:space="preserve">
-    <value>numericUpDown</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 25</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panelHeader.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panelHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="panelHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panelHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="panelHeader.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;panelHeader.Name" xml:space="preserve">
-    <value>panelHeader</value>
-  </data>
-  <data name="&gt;&gt;panelHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelHeader.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelHeader.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panelFooter.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panelFooter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="labelFooter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="labelFooter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="labelFooter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -547,16 +493,16 @@
     <value>NoControl</value>
   </data>
   <data name="labelFooter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>69, 0</value>
   </data>
   <data name="labelFooter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelFooter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="labelFooter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 20</value>
   </data>
   <data name="labelFooter.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -568,37 +514,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelFooter.Parent" xml:space="preserve">
-    <value>panelFooter</value>
-  </data>
-  <data name="&gt;&gt;labelFooter.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panelFooter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panelFooter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 0</value>
-  </data>
-  <data name="panelFooter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panelFooter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="panelFooter.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;panelFooter.Name" xml:space="preserve">
-    <value>panelFooter</value>
-  </data>
-  <data name="&gt;&gt;panelFooter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelFooter.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panelFooter.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;labelFooter.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -631,7 +550,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>70, 26</value>
   </data>
   <data name="&gt;&gt;decimalPlacesToolStripMenuItem.Name" xml:space="preserve">
     <value>decimalPlacesToolStripMenuItem</value>

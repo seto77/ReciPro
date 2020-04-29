@@ -111,7 +111,6 @@ namespace ReciPro
 
                 crystalControl.Dock = DockStyle.Fill;
                 crystalControl.VisibleAtomTab = false;
-                crystalControl.VisibleAtomAdvancedTab = false;
                 crystalControl.VisibleBondsPolyhedraTab = false;
                 crystalControl.VisibleEOSTab = false;
                 crystalControl.VisiblePolycrystallineTab = true;

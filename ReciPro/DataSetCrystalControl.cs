@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Numerics;
 using Crystallography;
-using Microsoft.Scripting.Utils;
 
-namespace Crystallography.Controls
-{
-}
-
-namespace Crystallography.Controls
+namespace ReciPro
 {
     public partial class DataSet
     {
@@ -19,9 +12,7 @@ namespace Crystallography.Controls
         {
             public Bonds Get(int i) => Rows[i][BondColumn] as Bonds;
 
-            public Bonds[] GetAll() => Rows.Select(r => (r as DataTableBondRow)[BondColumn] as Bonds).ToArray();
-
-            public void Replace(Bonds bonds, int i)
+            public void Set(Bonds bonds, int i)
             {
                 var dr = createRow(bonds);
 
@@ -63,9 +54,7 @@ namespace Crystallography.Controls
         {
             public Atoms Get(int i) => Rows[i][AtomColumn] as Atoms;
 
-            public Atoms[] GetAll() => Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms).ToArray();
-
-            public void Replace(Atoms atoms, int i)
+            public void Set(Atoms atoms, int i)
             {
                 var dr = createRow(atoms);
 
@@ -175,4 +164,3 @@ namespace Crystallography.Controls
         }
     }
 }
-

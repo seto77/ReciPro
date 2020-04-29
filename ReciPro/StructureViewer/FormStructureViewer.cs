@@ -116,18 +116,18 @@ namespace ReciPro
                 int n = crystal.Symmetry.CrystalSystemNumber;
                 if (n >= 0 && n <= 3)
                     crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.7, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 1, 0, true, 0.7, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 0, 1, true, 0.7, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
+                        new Bound(crystal, 1, 0, 0, true, 0.7,  Color.Green.ToArgb()),
+                        new Bound(crystal, 0, 1, 0, true, 0.7,  Color.Green.ToArgb()),
+                        new Bound(crystal, 0, 0, 1, true, 0.7,  Color.Green.ToArgb()),
                         };
                 else if (n >= 4 && n <= 6)
                     crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.7, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 0, 1, true, 0.7, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
+                        new Bound(crystal, 1, 0, 0, true, 0.7,  Color.Green.ToArgb()),
+                        new Bound(crystal, 0, 0, 1, true, 0.7,  Color.Green.ToArgb()),
                         };
                 else
                     crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.75, Bound.UnitEnum.D_spacing, Color.Green.ToArgb()),
+                        new Bound(crystal, 1, 0, 0, true, 0.75, Color.Green.ToArgb()),
                         };
             }
 
@@ -596,7 +596,13 @@ namespace ReciPro
 
             numericBoxBoundPlanesOpacity.ShowUpDown = true;
             numericBoxLatticePlaneOpacity.ShowUpDown = true;
+
+           
+            tabPageBond.Controls.Add(  formMain.crystalControl.bondControl);
+
+
         }
+
 
         #endregion コンストラクタ
 
@@ -981,9 +987,11 @@ namespace ReciPro
 
         private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible)//現れたときメインウィンドウの結晶を表示する
+            if (Visible)//現れたときメインウィンドウの結晶を表示する
                 if (formMain.crystalControl.Crystal != null)
                     SetGLObjects(formMain.crystalControl.Crystal);
+
+            MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
         }
 
         #region イメージ保存orコピー
@@ -1015,7 +1023,6 @@ namespace ReciPro
 
         #endregion イメージ保存orコピー
 
-        private void tabControl1_Click(object sender, EventArgs e) => tabControl.BringToFront();
 
         private void checkBoxShowCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
 
@@ -1066,14 +1073,57 @@ namespace ReciPro
 
         private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e) => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
 
-        private void FormStructureViewer_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-        }
+
 
         private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.Shift && e.KeyCode == Keys.C)
                 Clipboard.SetDataObject(glControlMain.GenerateBitmap());
+        }
+
+        private void bindingSourceAtom_PositionChanged(object sender, EventArgs e)
+        {
+          /*  if (bindingSourceAtoms.Position >= 0 && bindingSourceAtoms.Count > 0)
+            {
+                var atoms = formMain.crystalControl.dataSet.DataTableAtom.Get(bindingSourceAtoms.Position);
+                atomInput.SetAtom(atoms);
+            }
+          */
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
+        }
+
+        private void MoveAtomControl(bool flag)
+        {
+            if (flag)
+            {
+                formMain.crystalControl.atomControl.DebyeWallerTabVisible = false;
+                formMain.crystalControl.atomControl.ScatteringFactorTabVisible = false;
+                formMain.crystalControl.atomControl.AppearanceTabVisible = true;
+
+                tabPageAtom.Controls.Add(formMain.crystalControl.atomControl);
+                formMain.crystalControl.tabPageAtom.Controls.Add(labelMessage);
+            }
+            else
+            {
+                formMain.crystalControl.atomControl.DebyeWallerTabVisible = true;
+                formMain.crystalControl.atomControl.ScatteringFactorTabVisible = true;
+                formMain.crystalControl.atomControl.AppearanceTabVisible = false;
+                formMain.crystalControl.tabPageAtom.Controls.Add(formMain.crystalControl.atomControl);
+                tabPageAtom.Controls.Add(labelMessage);
+            }
+        }
+
+        private void tabControl_VisibleChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

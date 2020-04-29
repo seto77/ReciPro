@@ -161,13 +161,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet.cs">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <Compile Include="DataSetCrystalControl.cs">
+      <DependentUpon>DataSetCrystalControl.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSet.Designer.cs">
+    <Compile Include="DataSetCrystalControl.designer.cs">
+      <DependentUpon>DataSetCrystalControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetCrystalControl1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet.xsd</DependentUpon>
+      <DependentUpon>DataSetCrystalControl.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReciPro.cs">
+      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetReciPro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormDiffractionSpotInfo.cs">
       <SubType>Form</SubType>
@@ -404,16 +415,27 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSet.xsc">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <None Include="DataSetCrystalControl.xsc">
+      <DependentUpon>DataSetCrystalControl.xsd</DependentUpon>
     </None>
-    <None Include="DataSet.xsd">
+    <None Include="DataSetCrystalControl.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCrystalControl1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCrystalControl.xss">
+      <DependentUpon>DataSetCrystalControl.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReciPro.xsc">
+      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetReciPro.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetReciPro.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet.xss">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <None Include="DataSetReciPro.xss">
+      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
     </None>
     <Content Include="doc\Bethe.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

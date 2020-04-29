@@ -82,7 +82,7 @@ namespace ReciPro
 
             //var z_index = FormDiffractionSimulator.FormDiffractionSimulatorCBED.trackBarOutputThickness.Value;
 
-            var rows = new List<DataSet.DataTableBetheRow>();
+            var rows = new List<DataSetReciPro.DataTableBetheRow>();
             for (int i = 0; i < Beams.Length; i++)
             {
                 var beam = Beams[i];

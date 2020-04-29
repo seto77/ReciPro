@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
+    [TypeConverter(typeof(DefinitionOrderTypeConverter))]
     public partial class NumericBox : UserControl
     {
         #region イベント
@@ -46,16 +47,24 @@ namespace Crystallography.Controls
         /// <summary>
         /// UpDownボタンを有効にするかどうか
         /// </summary>
+        [Category("Appearance properties")]
         public bool ShowUpDown { get => numericUpDown.Visible; set => numericUpDown.Visible = value; }
 
         /// <summary>
         /// UpDownボタンが有効な場合、Incrementを取得/設定
         /// </summary>
+        [Category("Value properties")]
         public double UpDown_Increment { set; get; } = 1;
 
+        [Category("Value properties")]
         public bool SmartIncrement { set { smartIncrementToolStripMenuItem.Checked = value; toolStripComboBoxIncrement.Enabled = !value; } get { return smartIncrementToolStripMenuItem.Checked; } }
 
         private double maximum = double.PositiveInfinity;
+      
+        /// <summary>
+        /// 最大値
+        /// </summary>
+        [Category("Value properties")]
 
         public double Maximum
         {
@@ -79,7 +88,11 @@ namespace Crystallography.Controls
         }
 
         private double minimum = double.NegativeInfinity;
-
+     
+        /// <summary>
+        /// 最小値
+        /// </summary>
+        [Category("Value properties")]
         public double Minimum
         {
             set
@@ -104,6 +117,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// Maximum, Minimumの範囲に入力値を制限する。範囲外の場合は、自動的にどちらかの場合に変更される
         /// </summary>
+        [Category("Value properties")]
         public bool RestrictLimitValue { set => toolStripMenuItemRestrictLimit.Checked = value; get => toolStripMenuItemRestrictLimit.Checked; }
 
         [Localizable(true)]
@@ -118,28 +132,51 @@ namespace Crystallography.Controls
             }
         }
 
+        [Category("Value properties")]
         public double MinimalStep { get { return DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1; } }
 
+        #region ヘッダー＆フッター
         /// <summary>
         /// 数値の前に表示するテキスト
         /// </summary>
         [Localizable(true)]
+        [Category("Font && Color")]
         public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }
 
         [Localizable(true)]
+        [Category("Font && Color")]
+
         public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
+
+        [Category("Font && Color")]
+        public Color HeaderForeColor { set => labelHeader.ForeColor = value; get => labelHeader.ForeColor; }
+        [Category("Font && Color")]
+        public Color HeaderBackColor { set => labelHeader.BackColor = value; get => labelHeader.BackColor; }
 
         /// <summary>
         /// 数値の後に表示するテキスト
         /// </summary>
+        [Category("Font && Color")]
         [Localizable(true)]
         public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
 
+        [Category("Font && Color")]
         [Localizable(true)]
         public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
+       
+        [Category("Font && Color")]
+        public Color FooterForeColor { set => labelFooter.ForeColor = value; get => labelFooter.ForeColor; }
+       
+        [Category("Font && Color")]
+        public Color FooterBackColor { set => labelFooter.BackColor = value; get => labelFooter.BackColor; }
+        #endregion
 
+        [Category("Font && Color")]
         public Color TextBoxForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
+        [Category("Font && Color")]
         public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
+
+        [Category("Font && Color")]
 
         /// <summary>
         /// font
@@ -158,13 +195,14 @@ namespace Crystallography.Controls
                 else
                 {
                     this.Height = textBox.Height;
-                    MinimumSize = new Size(1, textBox.Height);
-                    MaximumSize = new Size(1000, textBox.Height);
+                    MinimumSize = new Size(1, textBox.Height+2);
+                    MaximumSize = new Size(1000, textBox.Height+2);
                 }
             }
             get { return textBox.Font; }
         }
 
+        [Category("Appearance properties")]
         /// <summary>
         /// ＋を表示するかどうか
         /// </summary>
@@ -175,6 +213,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// コントロールが保持している値
         /// </summary>
+        [Category("Value properties")]
         public double Value
         {
             set
@@ -199,23 +238,27 @@ namespace Crystallography.Controls
             }
             get => numericalValue;
         }
+        [Category("Value properties")]
 
         public int ValueInteger { get => (int)numericalValue; }
 
         /// <summary>
         /// Radianとして値を入力。
         /// </summary>
+        [Category("Value properties")]
         public double RadianValue { set => Value = value * 180.0 / Math.PI; get => Value / 180.0 * Math.PI; }
 
         /// <summary>
         /// 3桁区切りでカンマを表示させる
         /// </summary>
+        [Category("Appearance properties")]
         public bool ThonsandsSeparator { set => thousandsSeparatorToolStripMenuItem.Checked = value; get => thousandsSeparatorToolStripMenuItem.Checked; }
 
         // private int decimalPlaces = -1;
         /// <summary>
         /// 小数点以下の桁数
         /// </summary>
+        [Category("Appearance properties")]
         public int DecimalPlaces
         {
             set
@@ -237,6 +280,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// 複数行表示をするかどうか
         /// </summary>
+        [Category("Appearance properties")]
         public bool Multiline
         {
             set
@@ -259,10 +303,12 @@ namespace Crystallography.Controls
             get { return textBox.Multiline; }
         }
 
+        [Category("Appearance properties")]
         public bool ShowFraction { set; get; } = false;
 
         public new string Text { set => textBox.Text = value; get => numericalValue.ToString(); }
 
+        [Category("Appearance properties")]
         public bool WordWrap { set => textBox.WordWrap = value; get => textBox.WordWrap; }
 
         #endregion プロパティ

@@ -37,8 +37,8 @@
             this.buttonNext = new System.Windows.Forms.Button();
             this.checkBoxCloseWindow = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelSoftwareInformation = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelOK = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.panelOK = new System.Windows.Forms.Panel();
             this.flowLayoutPanelSoftwareInformation.SuspendLayout();
             this.panelOK.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +110,12 @@
             this.flowLayoutPanelSoftwareInformation.Controls.Add(this.linkLabel1);
             this.flowLayoutPanelSoftwareInformation.Name = "flowLayoutPanelSoftwareInformation";
             // 
+            // linkLabel1
+            // 
+            resources.ApplyResources(this.linkLabel1, "linkLabel1");
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.TabStop = true;
+            // 
             // panelOK
             // 
             this.panelOK.Controls.Add(this.checkBoxCloseWindow);
@@ -117,12 +123,6 @@
             this.panelOK.Controls.Add(this.buttonNext);
             resources.ApplyResources(this.panelOK, "panelOK");
             this.panelOK.Name = "panelOK";
-            // 
-            // linkLabel1
-            // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
             // 
             // CommonDialog
             // 
@@ -136,6 +136,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "CommonDialog";
+            this.ShowIcon = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommonDialog_FormClosing);
             this.flowLayoutPanelSoftwareInformation.ResumeLayout(false);
             this.flowLayoutPanelSoftwareInformation.PerformLayout();

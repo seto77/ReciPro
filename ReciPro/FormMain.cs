@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -340,18 +341,23 @@ namespace ReciPro
             commonDialog.Text = "Now Loading...Setting default crystal list.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.94);
 
+
+            var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\";
             //ユーザーパスにinitial.xmlが存在しない場合は、default.xmlをinitial.xmlとしてコピー
             if (!File.Exists(UserAppDataPath + "initial.xml"))
-                File.Copy("default.xml", UserAppDataPath + "initial.xml", true);
+                File.Copy(appPath + "default.xml", UserAppDataPath + "initial.xml", true);
 
-            //ユーザーパスにdefault.xmlが存在しない場合は、実行フォルダのdefault.xmlをユーザーパスにコピー
-            //!!これは開発環境かClickOneceで実行した場合への対応!!　
-            if (!File.Exists(UserAppDataPath + "default.xml"))
-                File.Copy("default.xml", UserAppDataPath + "default.xml", true);
+            //ユーザーパスにdefault.xmlが存在しない場合、あるいは壊れている場合は、実行フォルダのdefault.xmlをユーザーパスにコピー
+            if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
+                File.Copy(appPath + "default.xml", UserAppDataPath + "default.xml", true);
 
-            Directory.Delete(Application.UserAppDataPath, true);
             if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
                 File.Delete(UserAppDataPath + "ReciProSetup.msi");
+
+            //UserAppDataPathに空フォルダがあったら削除
+            foreach (var dir in Directory.GetDirectories(UserAppDataPath))
+                if (!Directory.EnumerateFileSystemEntries(dir).Any())
+                    Directory.Delete(dir);
 
             //初期結晶リストを読み込み
             readCrystalList(UserAppDataPath + "default.xml", false, true);
@@ -375,12 +381,6 @@ namespace ReciPro
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.99);
             Application.DoEvents();
             this.Text = "ReciPro  " + Version.VersionAndDate;
-
-            //if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-            //{
-            //    checkUpdatesToolStripMenuItem.Visible = false;//click onceの場合
-            //    this.Text += "   Caution! ClickOnce vesion will be not maintained in the future.";
-            //}
 
             commonDialog.Text = "Initializing has been finished successfully. You can close this window.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 1.0);
@@ -425,7 +425,6 @@ namespace ReciPro
         {
             axis = axis.Normarize();
             if (angle == 0) return;
-
 
             if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
             {

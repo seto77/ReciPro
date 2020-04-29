@@ -83,7 +83,7 @@
             "\r\n ver4.628(2019/02/19)  Fixed a bug of calculations of anisotropic Debye-Waller efects." +
             "\r\n ver4.627(2019/02/17)  Minor bug fixed." +
             "\r\n ver4.625(2019/02/13)  Fixed minor bugs." +
-            "\r\n ver4.624(2019/02/09)  Added: Check routine of OpenGL version.." +
+            "\r\n ver4.624(2019/02/09)  Added: Check routine of OpenGL version." +
             "\r\n ver4.622(2019/02/06)  Minor improvements." +
             "\r\n ver4.621(2019/02/05)  Minor bug on the 'Spot ID' function fixed." +
             "\r\n ver4.620(2019/02/05)  Minor bug on the 'Spot ID' function fixed." +

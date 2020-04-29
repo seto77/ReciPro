@@ -78,7 +78,7 @@
             this.φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new ReciPro.DataSet();
+            this.dataSet = new ReciPro.DataSetReciPro();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -1023,7 +1023,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource dataSetBindingSource;
-        private DataSet dataSet;
+        private DataSetReciPro dataSet;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;

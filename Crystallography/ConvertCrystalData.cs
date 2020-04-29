@@ -842,17 +842,17 @@ namespace Crystallography
             //Si-O
             string[] bondsAtom = new string[] { "14: Si", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add(new Bonds(bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                c.Bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(0, 0, 255), true, 0.1f, Color.FromArgb(50, 50, 50)));
             //Al-O
             bondsAtom = new string[] { "13: Al", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add(new Bonds(bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                c.Bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(153, 46, 158), true, 0.1f, Color.FromArgb(50, 50, 50)));
             //Ti-O
             bondsAtom = new string[] { "22: Ti", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add(new Bonds(bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                c.Bonds.Add( new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(64, 112, 111), true, 0.1f, Color.FromArgb(50, 50, 50)));
         }
 

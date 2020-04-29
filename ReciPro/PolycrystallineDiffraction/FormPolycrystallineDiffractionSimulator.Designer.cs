@@ -252,7 +252,6 @@
             this.crystalControl1.Size = new System.Drawing.Size(508, 517);
             this.crystalControl1.SymmetryInformationVisible = false;
             this.crystalControl1.TabIndex = 1002;
-            this.crystalControl1.VisibleAtomAdvancedTab = false;
             this.crystalControl1.VisibleAtomTab = true;
             this.crystalControl1.VisibleBasicInfoTab = true;
             this.crystalControl1.VisibleBondsPolyhedraTab = false;

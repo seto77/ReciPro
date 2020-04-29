@@ -191,11 +191,23 @@
     <Compile Include="Crystal\AtomCoordinateTable.Designer.cs">
       <DependentUpon>AtomCoordinateTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Crystal\AtomInputControl.cs">
+    <Compile Include="Crystal\AtomControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Crystal\AtomInputControl.Designer.cs">
-      <DependentUpon>AtomInputControl.cs</DependentUpon>
+    <Compile Include="Crystal\AtomControl.Designer.cs">
+      <DependentUpon>AtomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\BondControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\BondControl.Designer.cs">
+      <DependentUpon>BondControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\BoundControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\BoundControl.Designer.cs">
+      <DependentUpon>BoundControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Crystal\CrystalControl.cs">
       <SubType>UserControl</SubType>
@@ -394,12 +406,18 @@
       <DependentUpon>AtomCoordinateTable.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Crystal\AtomInputControl.ja.resx">
-      <DependentUpon>AtomInputControl.cs</DependentUpon>
+    <EmbeddedResource Include="Crystal\AtomControl.ja.resx">
+      <DependentUpon>AtomControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Crystal\AtomInputControl.resx">
-      <DependentUpon>AtomInputControl.cs</DependentUpon>
+    <EmbeddedResource Include="Crystal\AtomControl.resx">
+      <DependentUpon>AtomControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\BondControl.resx">
+      <DependentUpon>BondControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\BoundControl.resx">
+      <DependentUpon>BoundControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\CrystalControl.ja.resx">
       <DependentUpon>CrystalControl.cs</DependentUpon>

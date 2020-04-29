@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ReciPro
 {
-    public partial class DataSet
+    public partial class DataSetReciPro
     {
         partial class DataTableBetheDataTable
         {

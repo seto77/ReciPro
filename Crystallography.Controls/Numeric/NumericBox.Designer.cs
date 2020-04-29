@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBox));
             this.textBox = new System.Windows.Forms.TextBox();
-            this.contextMenuStripBody = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripBody = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.decimalPlacesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxDecimalPlaces = new System.Windows.Forms.ToolStripComboBox();
             this.thousandsSeparatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,23 +48,17 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxMouseDirection = new System.Windows.Forms.ToolStripComboBox();
             this.labelHeader = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStripUpDown = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripUpDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.incrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smartIncrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxIncrement = new System.Windows.Forms.ToolStripComboBox();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.panelFooter = new System.Windows.Forms.Panel();
             this.labelFooter = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.contextMenuStripBody.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.contextMenuStripUpDown.SuspendLayout();
-            this.panelHeader.SuspendLayout();
-            this.panelFooter.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox
@@ -227,13 +222,6 @@
             this.labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelHeader.Name = "labelHeader";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.textBox);
-            this.panel1.Controls.Add(this.numericUpDown);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
             // numericUpDown
             // 
             this.numericUpDown.ContextMenuStrip = this.contextMenuStripUpDown;
@@ -300,18 +288,6 @@
             this.toolStripComboBoxIncrement.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxIncrement_SelectedIndexChanged);
             this.toolStripComboBoxIncrement.TextUpdate += new System.EventHandler(this.toolStripComboBoxIncrement_TextUpdate);
             // 
-            // panelHeader
-            // 
-            resources.ApplyResources(this.panelHeader, "panelHeader");
-            this.panelHeader.Controls.Add(this.labelHeader);
-            this.panelHeader.Name = "panelHeader";
-            // 
-            // panelFooter
-            // 
-            resources.ApplyResources(this.panelFooter, "panelFooter");
-            this.panelFooter.Controls.Add(this.labelFooter);
-            this.panelFooter.Name = "panelFooter";
-            // 
             // labelFooter
             // 
             resources.ApplyResources(this.labelFooter, "labelFooter");
@@ -326,21 +302,17 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelFooter);
-            this.Controls.Add(this.panelHeader);
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.numericUpDown);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.labelHeader);
+            this.Controls.Add(this.labelFooter);
+            this.DoubleBuffered = true;
             this.Name = "NumericBox";
             this.SizeChanged += new System.EventHandler(this.NumericalTextBox_SizeChanged);
             this.contextMenuStripBody.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             this.contextMenuStripUpDown.ResumeLayout(false);
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            this.panelFooter.ResumeLayout(false);
-            this.panelFooter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,9 +322,6 @@
 
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label labelHeader;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.Label labelFooter;
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.NumericUpDown numericUpDown;

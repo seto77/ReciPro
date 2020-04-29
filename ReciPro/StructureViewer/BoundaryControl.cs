@@ -10,7 +10,7 @@ namespace ReciPro
         public Crystal Crystal { get; set; }
         public new bool Enabled { get => checkBoxEnable.Checked; set => checkBoxEnable.Checked = value; }
 
-        public bool FullOption { get => checkBoxEquivalency.Visible; set => checkBoxEquivalency.Visible = radioButtonAngstrom.Visible = radioButtonDspacing.Visible = label1.Visible = value; }
+        public bool FullOption { get => checkBoxEquivalency.Visible; set => checkBoxEquivalency.Visible = label1.Visible = value; }
 
         public Color Color { get => colorControl.Color; set => colorControl.Color = value; }
 
@@ -31,8 +31,7 @@ namespace ReciPro
                     numericBoxK.ValueInteger,
                     numericBoxL.ValueInteger,
                     checkBoxEquivalency.Checked,
-                    radioButtonAngstrom.Checked ? numericBoxDistance.Value / 10 : numericBoxDistance.Value,
-                    radioButtonDspacing.Checked ? Bound.UnitEnum.D_spacing : Bound.UnitEnum.Angstrom,
+                    numericBoxDistance.Value,
                     colorControl.Color.ToArgb());
             set
             {
@@ -41,14 +40,16 @@ namespace ReciPro
                 numericBoxH.Value = value.BaseIndex.H;
                 numericBoxK.Value = value.BaseIndex.K;
                 numericBoxL.Value = value.BaseIndex.L;
-                radioButtonDspacing.Checked = value.Unit == Bound.UnitEnum.D_spacing;
-                radioButtonAngstrom.Checked = value.Unit == Bound.UnitEnum.Angstrom;
                 skipEvent = false;
-                numericBoxDistance.Value = value.Unit == Bound.UnitEnum.D_spacing ? value.Distance : value.Distance * 10;
+                numericBoxDistance.Value = value.Distance;
                 colorControl.Color = value.Color;
             }
         }
 
+        public BoundsControl()
+        {
+            InitializeComponent();
+        }
         public BoundsControl(Crystal crystal) : base()
         {
             InitializeComponent();
@@ -62,7 +63,6 @@ namespace ReciPro
         private void ValueChanged(object sender, EventArgs e)
         {
             if (skipEvent) return;
-            radioButtonDspacing.Text = "d (" + (10 * Bound.D).ToString("0.000") + " Å)";
 
             Changed?.Invoke(this, e);
         }
@@ -74,15 +74,6 @@ namespace ReciPro
             ColorChanged?.Invoke(this, e);
         }
 
-        private void radioButtonAngstrom_CheckedChanged(object sender, EventArgs e)
-        {
-            if (skipEvent) return;
-
-            if (radioButtonAngstrom.Checked)
-                numericBoxDistance.Value *= Bound.D * 10;
-            else
-                numericBoxDistance.Value /= Bound.D * 10;
-        }
 
         private void checkBoxEquivalency_CheckedChanged(object sender, EventArgs e)
         {
@@ -91,6 +82,11 @@ namespace ReciPro
             checkBoxEquivalency.Text = checkBoxEquivalency.Checked ? "{" : "(";
             label1.Text = checkBoxEquivalency.Checked ? "}" : ")";
             Changed?.Invoke(this, e);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

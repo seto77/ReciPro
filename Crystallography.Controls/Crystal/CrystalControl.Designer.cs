@@ -64,9 +64,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericTextBoxAlpha = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxGamma = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxBeta = new Crystallography.Controls.NumericBox();
+            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
+            this.numericBoxGamma = new Crystallography.Controls.NumericBox();
+            this.numericBoxBeta = new Crystallography.Controls.NumericBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -83,12 +83,12 @@
             this.numericTextBoxCErr = new Crystallography.Controls.NumericBox();
             this.numericTextBoxBErr = new Crystallography.Controls.NumericBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.numericTextBoxA = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxB = new Crystallography.Controls.NumericBox();
+            this.numericBoxA = new Crystallography.Controls.NumericBox();
+            this.numericBoxB = new Crystallography.Controls.NumericBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericTextBoxC = new Crystallography.Controls.NumericBox();
+            this.numericBoxC = new Crystallography.Controls.NumericBox();
             this.groupBoxSymmetry = new System.Windows.Forms.GroupBox();
             this.comboBoxSpaceGroup = new System.Windows.Forms.ComboBox();
             this.comboBoxPointGroup = new System.Windows.Forms.ComboBox();
@@ -100,81 +100,13 @@
             this.label21 = new System.Windows.Forms.Label();
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.tabPageAtom = new System.Windows.Forms.TabPage();
+            this.atomControl = new Crystallography.Controls.AtomInputControl();
             this.panelAtom = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.listBoxAtoms = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonAddAtom = new System.Windows.Forms.Button();
-            this.buttonAtomUp = new System.Windows.Forms.Button();
-            this.buttonChangeAtom = new System.Windows.Forms.Button();
-            this.buttonAtomDown = new System.Windows.Forms.Button();
-            this.buttonDeleteAtom = new System.Windows.Forms.Button();
-            this.atomInput = new Crystallography.Controls.AtomInputControl();
-            this.tabPageAtomAdvanced = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
-            this.label62 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDownAtomTransparency = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomAmbient = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.numericUpDownAtomShininess = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomSpecular = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomDiffusion = new System.Windows.Forms.NumericUpDown();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.numericUpDownAtomEmmision = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomRadius = new System.Windows.Forms.NumericUpDown();
-            this.buttonChangeToSameElement = new System.Windows.Forms.Button();
             this.tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
-            this.buttonAddBond = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonAutoDetect = new System.Windows.Forms.Button();
-            this.buttonChangeBond = new System.Windows.Forms.Button();
-            this.buttonDeleteBond = new System.Windows.Forms.Button();
-            this.colorControlBond = new Crystallography.Controls.ColorControl();
-            this.listBoxBondsAndPolyhedra = new System.Windows.Forms.ListBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.checkBoxShowPolyhedron = new System.Windows.Forms.CheckBox();
-            this.numericUpDownBondTrasparency = new System.Windows.Forms.NumericUpDown();
-            this.label53 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.numericUpDownBondMaxLength = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownBondMinLength = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownBondRadius = new System.Windows.Forms.NumericUpDown();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.comboBoxBondingAtom1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxBondingAtom2 = new System.Windows.Forms.ComboBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.groupBoxPolyhedron = new System.Windows.Forms.GroupBox();
-            this.colorControlPlyhedron = new Crystallography.Controls.ColorControl();
-            this.checkBoxShowEdges = new System.Windows.Forms.CheckBox();
-            this.groupBoxEdge = new System.Windows.Forms.GroupBox();
-            this.colorControlEdges = new Crystallography.Controls.ColorControl();
-            this.label55 = new System.Windows.Forms.Label();
-            this.numericUpDownEdgeLineWidth = new System.Windows.Forms.NumericUpDown();
-            this.label56 = new System.Windows.Forms.Label();
-            this.numericUpDownPolyhedronPlaneAlpha = new System.Windows.Forms.NumericUpDown();
-            this.checkBoxShowInnerBonds = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowVertexAtoms = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowCenterAtom = new System.Windows.Forms.CheckBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.bondControl = new Crystallography.Controls.BondInputControl();
             this.tabPageReference = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
@@ -311,28 +243,8 @@
             this.groupBoxSymmetry.SuspendLayout();
             this.tabPageAtom.SuspendLayout();
             this.panelAtom.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.tabPageAtomAdvanced.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomAmbient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomDiffusion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomEmmision)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomRadius)).BeginInit();
             this.tabPageBondsPolyhedra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondTrasparency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondMaxLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondMinLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondRadius)).BeginInit();
-            this.groupBoxPolyhedron.SuspendLayout();
-            this.groupBoxEdge.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEdgeLineWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPolyhedronPlaneAlpha)).BeginInit();
             this.tabPageReference.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -358,7 +270,6 @@
             this.tabControl.AllowDrop = true;
             this.tabControl.Controls.Add(this.tabPageBasicInfo);
             this.tabControl.Controls.Add(this.tabPageAtom);
-            this.tabControl.Controls.Add(this.tabPageAtomAdvanced);
             this.tabControl.Controls.Add(this.tabPageBondsPolyhedra);
             this.tabControl.Controls.Add(this.tabPageReference);
             this.tabControl.Controls.Add(this.tabPageEOS);
@@ -369,7 +280,6 @@
             this.tabControl.HotTrack = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             this.tabControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragDrop);
             this.tabControl.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragEnter);
             // 
@@ -411,7 +321,6 @@
             this.textBoxZnumber.Name = "textBoxZnumber";
             this.textBoxZnumber.ReadOnly = true;
             this.textBoxZnumber.TabStop = false;
-            this.toolTip.SetToolTip(this.textBoxZnumber, resources.GetString("textBoxZnumber.ToolTip"));
             // 
             // numericalTextBoxVolume
             // 
@@ -419,6 +328,10 @@
             resources.ApplyResources(this.numericalTextBoxVolume, "numericalTextBoxVolume");
             this.numericalTextBoxVolume.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxVolume.DecimalPlaces = -1;
+            this.numericalTextBoxVolume.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxVolume.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxVolume.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxVolume.Maximum = double.PositiveInfinity;
             this.numericalTextBoxVolume.Minimum = double.NegativeInfinity;
             this.numericalTextBoxVolume.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -437,7 +350,6 @@
             this.numericalTextBoxVolume.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxVolume.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericalTextBoxVolume, resources.GetString("numericalTextBoxVolume.ToolTip"));
             this.numericalTextBoxVolume.UpDown_Increment = 1D;
             this.numericalTextBoxVolume.Value = 0D;
             this.numericalTextBoxVolume.WordWrap = true;
@@ -448,7 +360,6 @@
             this.textBoxDensity.Name = "textBoxDensity";
             this.textBoxDensity.ReadOnly = true;
             this.textBoxDensity.TabStop = false;
-            this.toolTip.SetToolTip(this.textBoxDensity, resources.GetString("textBoxDensity.ToolTip"));
             // 
             // label32
             // 
@@ -468,17 +379,18 @@
             // colorControl
             // 
             this.colorControl.Argb = -986896;
+            resources.ApplyResources(this.colorControl, "colorControl");
             this.colorControl.Blue = 240;
             this.colorControl.BlueF = 0.9411765F;
             this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            resources.ApplyResources(this.colorControl, "colorControl");
+            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControl.FooterText = "";
             this.colorControl.Green = 240;
             this.colorControl.GreenF = 0.9411765F;
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 240;
             this.colorControl.RedF = 0.9411765F;
-            this.colorControl.ToolTip = "結晶の表示色を指定します";
-            this.toolTip.SetToolTip(this.colorControl, resources.GetString("colorControl.ToolTip"));
+            this.colorControl.ToolTip = "";
             // 
             // tableLayoutPanel3
             // 
@@ -590,9 +502,9 @@
             this.tableLayoutPanel2.Controls.Add(this.label7, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.label10, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.label11, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.numericTextBoxAlpha, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.numericTextBoxGamma, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.numericTextBoxBeta, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.numericBoxAlpha, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.numericBoxGamma, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.numericBoxBeta, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label28, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label27, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label26, 0, 0);
@@ -607,6 +519,10 @@
             resources.ApplyResources(this.numericTextBoxGammaErr, "numericTextBoxGammaErr");
             this.numericTextBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxGammaErr.DecimalPlaces = -1;
+            this.numericTextBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxGammaErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxGammaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxGammaErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxGammaErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxGammaErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxGammaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -636,6 +552,10 @@
             resources.ApplyResources(this.numericTextBoxBetaErr, "numericTextBoxBetaErr");
             this.numericTextBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxBetaErr.DecimalPlaces = -1;
+            this.numericTextBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxBetaErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxBetaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxBetaErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxBetaErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxBetaErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxBetaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -665,6 +585,10 @@
             resources.ApplyResources(this.numericTextBoxAlphaErr, "numericTextBoxAlphaErr");
             this.numericTextBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxAlphaErr.DecimalPlaces = -1;
+            this.numericTextBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxAlphaErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxAlphaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxAlphaErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxAlphaErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxAlphaErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxAlphaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -703,113 +627,122 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // numericTextBoxAlpha
+            // numericBoxAlpha
             // 
-            this.numericTextBoxAlpha.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxAlpha, "numericTextBoxAlpha");
-            this.numericTextBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxAlpha.DecimalPlaces = -1;
-            this.numericTextBoxAlpha.Maximum = double.PositiveInfinity;
-            this.numericTextBoxAlpha.Minimum = double.NegativeInfinity;
-            this.numericTextBoxAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxAlpha.MouseSpeed = 1D;
-            this.numericTextBoxAlpha.Multiline = false;
-            this.numericTextBoxAlpha.Name = "numericTextBoxAlpha";
-            this.numericTextBoxAlpha.RadianValue = 0D;
-            this.numericTextBoxAlpha.ReadOnly = false;
-            this.numericTextBoxAlpha.RestrictLimitValue = false;
-            this.numericTextBoxAlpha.ShowFraction = false;
-            this.numericTextBoxAlpha.ShowPositiveSign = false;
-            this.numericTextBoxAlpha.ShowUpDown = false;
-            this.numericTextBoxAlpha.SkipEventDuringInput = false;
-            this.numericTextBoxAlpha.SmartIncrement = true;
-            this.numericTextBoxAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxAlpha.ThonsandsSeparator = false;
-            this.numericTextBoxAlpha.UpDown_Increment = 1D;
-            this.numericTextBoxAlpha.Value = 0D;
-            this.numericTextBoxAlpha.WordWrap = true;
-            this.numericTextBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxAlpha.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxAlpha.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
+            this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.DecimalPlaces = -1;
+            this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxAlpha.Maximum = double.PositiveInfinity;
+            this.numericBoxAlpha.Minimum = double.NegativeInfinity;
+            this.numericBoxAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxAlpha.MouseSpeed = 1D;
+            this.numericBoxAlpha.Multiline = false;
+            this.numericBoxAlpha.Name = "numericBoxAlpha";
+            this.numericBoxAlpha.RadianValue = 0D;
+            this.numericBoxAlpha.ReadOnly = false;
+            this.numericBoxAlpha.RestrictLimitValue = false;
+            this.numericBoxAlpha.ShowFraction = false;
+            this.numericBoxAlpha.ShowPositiveSign = false;
+            this.numericBoxAlpha.ShowUpDown = false;
+            this.numericBoxAlpha.SkipEventDuringInput = false;
+            this.numericBoxAlpha.SmartIncrement = true;
+            this.numericBoxAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAlpha.ThonsandsSeparator = false;
+            this.numericBoxAlpha.UpDown_Increment = 1D;
+            this.numericBoxAlpha.Value = 0D;
+            this.numericBoxAlpha.WordWrap = true;
+            this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxAlpha.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
-            // numericTextBoxGamma
+            // numericBoxGamma
             // 
-            this.numericTextBoxGamma.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxGamma, "numericTextBoxGamma");
-            this.numericTextBoxGamma.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxGamma.DecimalPlaces = -1;
-            this.numericTextBoxGamma.Maximum = double.PositiveInfinity;
-            this.numericTextBoxGamma.Minimum = double.NegativeInfinity;
-            this.numericTextBoxGamma.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxGamma.MouseSpeed = 1D;
-            this.numericTextBoxGamma.Multiline = false;
-            this.numericTextBoxGamma.Name = "numericTextBoxGamma";
-            this.numericTextBoxGamma.RadianValue = 0D;
-            this.numericTextBoxGamma.ReadOnly = false;
-            this.numericTextBoxGamma.RestrictLimitValue = false;
-            this.numericTextBoxGamma.ShowFraction = false;
-            this.numericTextBoxGamma.ShowPositiveSign = false;
-            this.numericTextBoxGamma.ShowUpDown = false;
-            this.numericTextBoxGamma.SkipEventDuringInput = false;
-            this.numericTextBoxGamma.SmartIncrement = true;
-            this.numericTextBoxGamma.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxGamma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxGamma.ThonsandsSeparator = false;
-            this.numericTextBoxGamma.UpDown_Increment = 1D;
-            this.numericTextBoxGamma.Value = 0D;
-            this.numericTextBoxGamma.WordWrap = true;
-            this.numericTextBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxGamma.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxGamma.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
+            this.numericBoxGamma.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.DecimalPlaces = -1;
+            this.numericBoxGamma.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxGamma.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxGamma.Maximum = double.PositiveInfinity;
+            this.numericBoxGamma.Minimum = double.NegativeInfinity;
+            this.numericBoxGamma.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxGamma.MouseSpeed = 1D;
+            this.numericBoxGamma.Multiline = false;
+            this.numericBoxGamma.Name = "numericBoxGamma";
+            this.numericBoxGamma.RadianValue = 0D;
+            this.numericBoxGamma.ReadOnly = false;
+            this.numericBoxGamma.RestrictLimitValue = false;
+            this.numericBoxGamma.ShowFraction = false;
+            this.numericBoxGamma.ShowPositiveSign = false;
+            this.numericBoxGamma.ShowUpDown = false;
+            this.numericBoxGamma.SkipEventDuringInput = false;
+            this.numericBoxGamma.SmartIncrement = true;
+            this.numericBoxGamma.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxGamma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxGamma.ThonsandsSeparator = false;
+            this.numericBoxGamma.UpDown_Increment = 1D;
+            this.numericBoxGamma.Value = 0D;
+            this.numericBoxGamma.WordWrap = true;
+            this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxGamma.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
-            // numericTextBoxBeta
+            // numericBoxBeta
             // 
-            this.numericTextBoxBeta.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxBeta, "numericTextBoxBeta");
-            this.numericTextBoxBeta.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxBeta.DecimalPlaces = -1;
-            this.numericTextBoxBeta.Maximum = double.PositiveInfinity;
-            this.numericTextBoxBeta.Minimum = double.NegativeInfinity;
-            this.numericTextBoxBeta.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxBeta.MouseSpeed = 1D;
-            this.numericTextBoxBeta.Multiline = false;
-            this.numericTextBoxBeta.Name = "numericTextBoxBeta";
-            this.numericTextBoxBeta.RadianValue = 0D;
-            this.numericTextBoxBeta.ReadOnly = false;
-            this.numericTextBoxBeta.RestrictLimitValue = false;
-            this.numericTextBoxBeta.ShowFraction = false;
-            this.numericTextBoxBeta.ShowPositiveSign = false;
-            this.numericTextBoxBeta.ShowUpDown = false;
-            this.numericTextBoxBeta.SkipEventDuringInput = false;
-            this.numericTextBoxBeta.SmartIncrement = true;
-            this.numericTextBoxBeta.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxBeta.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxBeta.ThonsandsSeparator = false;
-            this.numericTextBoxBeta.UpDown_Increment = 1D;
-            this.numericTextBoxBeta.Value = 0D;
-            this.numericTextBoxBeta.WordWrap = true;
-            this.numericTextBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxBeta.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxBeta.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
+            this.numericBoxBeta.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.DecimalPlaces = -1;
+            this.numericBoxBeta.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBeta.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBeta.Maximum = double.PositiveInfinity;
+            this.numericBoxBeta.Minimum = double.NegativeInfinity;
+            this.numericBoxBeta.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxBeta.MouseSpeed = 1D;
+            this.numericBoxBeta.Multiline = false;
+            this.numericBoxBeta.Name = "numericBoxBeta";
+            this.numericBoxBeta.RadianValue = 0D;
+            this.numericBoxBeta.ReadOnly = false;
+            this.numericBoxBeta.RestrictLimitValue = false;
+            this.numericBoxBeta.ShowFraction = false;
+            this.numericBoxBeta.ShowPositiveSign = false;
+            this.numericBoxBeta.ShowUpDown = false;
+            this.numericBoxBeta.SkipEventDuringInput = false;
+            this.numericBoxBeta.SmartIncrement = true;
+            this.numericBoxBeta.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxBeta.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxBeta.ThonsandsSeparator = false;
+            this.numericBoxBeta.UpDown_Increment = 1D;
+            this.numericBoxBeta.Value = 0D;
+            this.numericBoxBeta.WordWrap = true;
+            this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxBeta.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
             // label28
             // 
             resources.ApplyResources(this.label28, "label28");
             this.label28.Name = "label28";
-            this.toolTip.SetToolTip(this.label28, resources.GetString("label28.ToolTip"));
             // 
             // label27
             // 
             resources.ApplyResources(this.label27, "label27");
             this.label27.Name = "label27";
-            this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
             // 
             // label26
             // 
             resources.ApplyResources(this.label26, "label26");
             this.label26.Name = "label26";
-            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip"));
             // 
             // label46
             // 
@@ -838,19 +771,18 @@
             this.tableLayoutPanel1.Controls.Add(this.numericTextBoxCErr, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.numericTextBoxBErr, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label25, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericTextBoxA, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericTextBoxB, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.numericBoxA, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.numericBoxB, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericTextBoxC, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.numericBoxC, 1, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // label45
             // 
             resources.ApplyResources(this.label45, "label45");
             this.label45.Name = "label45";
-            this.toolTip.SetToolTip(this.label45, resources.GetString("label45.ToolTip"));
             // 
             // numericTextBoxAErr
             // 
@@ -858,6 +790,10 @@
             resources.ApplyResources(this.numericTextBoxAErr, "numericTextBoxAErr");
             this.numericTextBoxAErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxAErr.DecimalPlaces = -1;
+            this.numericTextBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxAErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxAErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxAErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxAErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxAErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxAErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -885,25 +821,21 @@
             // 
             resources.ApplyResources(this.label44, "label44");
             this.label44.Name = "label44";
-            this.toolTip.SetToolTip(this.label44, resources.GetString("label44.ToolTip"));
             // 
             // label23
             // 
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
-            this.toolTip.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
-            this.toolTip.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
             // 
             // label24
             // 
             resources.ApplyResources(this.label24, "label24");
             this.label24.Name = "label24";
-            this.toolTip.SetToolTip(this.label24, resources.GetString("label24.ToolTip"));
             // 
             // numericTextBoxCErr
             // 
@@ -911,6 +843,10 @@
             resources.ApplyResources(this.numericTextBoxCErr, "numericTextBoxCErr");
             this.numericTextBoxCErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxCErr.DecimalPlaces = -1;
+            this.numericTextBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxCErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxCErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxCErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxCErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxCErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxCErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -940,6 +876,10 @@
             resources.ApplyResources(this.numericTextBoxBErr, "numericTextBoxBErr");
             this.numericTextBoxBErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericTextBoxBErr.DecimalPlaces = -1;
+            this.numericTextBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxBErr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericTextBoxBErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericTextBoxBErr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericTextBoxBErr.Maximum = double.PositiveInfinity;
             this.numericTextBoxBErr.Minimum = double.NegativeInfinity;
             this.numericTextBoxBErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -967,67 +907,74 @@
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
-            this.toolTip.SetToolTip(this.label25, resources.GetString("label25.ToolTip"));
             // 
-            // numericTextBoxA
+            // numericBoxA
             // 
-            this.numericTextBoxA.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxA, "numericTextBoxA");
-            this.numericTextBoxA.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxA.DecimalPlaces = -1;
-            this.numericTextBoxA.Maximum = double.PositiveInfinity;
-            this.numericTextBoxA.Minimum = double.NegativeInfinity;
-            this.numericTextBoxA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxA.MouseSpeed = 1D;
-            this.numericTextBoxA.Multiline = false;
-            this.numericTextBoxA.Name = "numericTextBoxA";
-            this.numericTextBoxA.RadianValue = 0D;
-            this.numericTextBoxA.ReadOnly = false;
-            this.numericTextBoxA.RestrictLimitValue = false;
-            this.numericTextBoxA.ShowFraction = false;
-            this.numericTextBoxA.ShowPositiveSign = false;
-            this.numericTextBoxA.ShowUpDown = false;
-            this.numericTextBoxA.SkipEventDuringInput = false;
-            this.numericTextBoxA.SmartIncrement = true;
-            this.numericTextBoxA.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxA.ThonsandsSeparator = false;
-            this.numericTextBoxA.UpDown_Increment = 1D;
-            this.numericTextBoxA.Value = 0D;
-            this.numericTextBoxA.WordWrap = true;
-            this.numericTextBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxA.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxA.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxA, "numericBoxA");
+            this.numericBoxA.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.DecimalPlaces = -1;
+            this.numericBoxA.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxA.Maximum = double.PositiveInfinity;
+            this.numericBoxA.Minimum = double.NegativeInfinity;
+            this.numericBoxA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxA.MouseSpeed = 1D;
+            this.numericBoxA.Multiline = false;
+            this.numericBoxA.Name = "numericBoxA";
+            this.numericBoxA.RadianValue = 0D;
+            this.numericBoxA.ReadOnly = false;
+            this.numericBoxA.RestrictLimitValue = false;
+            this.numericBoxA.ShowFraction = false;
+            this.numericBoxA.ShowPositiveSign = false;
+            this.numericBoxA.ShowUpDown = false;
+            this.numericBoxA.SkipEventDuringInput = false;
+            this.numericBoxA.SmartIncrement = true;
+            this.numericBoxA.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxA.ThonsandsSeparator = false;
+            this.numericBoxA.UpDown_Increment = 1D;
+            this.numericBoxA.Value = 0D;
+            this.numericBoxA.WordWrap = true;
+            this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxA.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
-            // numericTextBoxB
+            // numericBoxB
             // 
-            this.numericTextBoxB.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxB, "numericTextBoxB");
-            this.numericTextBoxB.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxB.DecimalPlaces = -1;
-            this.numericTextBoxB.Maximum = double.PositiveInfinity;
-            this.numericTextBoxB.Minimum = double.NegativeInfinity;
-            this.numericTextBoxB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxB.MouseSpeed = 1D;
-            this.numericTextBoxB.Multiline = false;
-            this.numericTextBoxB.Name = "numericTextBoxB";
-            this.numericTextBoxB.RadianValue = 0D;
-            this.numericTextBoxB.ReadOnly = false;
-            this.numericTextBoxB.RestrictLimitValue = false;
-            this.numericTextBoxB.ShowFraction = false;
-            this.numericTextBoxB.ShowPositiveSign = false;
-            this.numericTextBoxB.ShowUpDown = false;
-            this.numericTextBoxB.SkipEventDuringInput = false;
-            this.numericTextBoxB.SmartIncrement = true;
-            this.numericTextBoxB.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxB.ThonsandsSeparator = false;
-            this.numericTextBoxB.UpDown_Increment = 1D;
-            this.numericTextBoxB.Value = 0D;
-            this.numericTextBoxB.WordWrap = true;
-            this.numericTextBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxB.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxB.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxB, "numericBoxB");
+            this.numericBoxB.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.DecimalPlaces = -1;
+            this.numericBoxB.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxB.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxB.Maximum = double.PositiveInfinity;
+            this.numericBoxB.Minimum = double.NegativeInfinity;
+            this.numericBoxB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxB.MouseSpeed = 1D;
+            this.numericBoxB.Multiline = false;
+            this.numericBoxB.Name = "numericBoxB";
+            this.numericBoxB.RadianValue = 0D;
+            this.numericBoxB.ReadOnly = false;
+            this.numericBoxB.RestrictLimitValue = false;
+            this.numericBoxB.ShowFraction = false;
+            this.numericBoxB.ShowPositiveSign = false;
+            this.numericBoxB.ShowUpDown = false;
+            this.numericBoxB.SkipEventDuringInput = false;
+            this.numericBoxB.SmartIncrement = true;
+            this.numericBoxB.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxB.ThonsandsSeparator = false;
+            this.numericBoxB.UpDown_Increment = 1D;
+            this.numericBoxB.Value = 0D;
+            this.numericBoxB.WordWrap = true;
+            this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxB.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
             // label6
             // 
@@ -1044,35 +991,39 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // numericTextBoxC
+            // numericBoxC
             // 
-            this.numericTextBoxC.AllowMouseControl = false;
-            resources.ApplyResources(this.numericTextBoxC, "numericTextBoxC");
-            this.numericTextBoxC.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBoxC.DecimalPlaces = -1;
-            this.numericTextBoxC.Maximum = double.PositiveInfinity;
-            this.numericTextBoxC.Minimum = double.NegativeInfinity;
-            this.numericTextBoxC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericTextBoxC.MouseSpeed = 1D;
-            this.numericTextBoxC.Multiline = false;
-            this.numericTextBoxC.Name = "numericTextBoxC";
-            this.numericTextBoxC.RadianValue = 0D;
-            this.numericTextBoxC.ReadOnly = false;
-            this.numericTextBoxC.RestrictLimitValue = false;
-            this.numericTextBoxC.ShowFraction = false;
-            this.numericTextBoxC.ShowPositiveSign = false;
-            this.numericTextBoxC.ShowUpDown = false;
-            this.numericTextBoxC.SkipEventDuringInput = false;
-            this.numericTextBoxC.SmartIncrement = true;
-            this.numericTextBoxC.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericTextBoxC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericTextBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericTextBoxC.ThonsandsSeparator = false;
-            this.numericTextBoxC.UpDown_Increment = 1D;
-            this.numericTextBoxC.Value = 0D;
-            this.numericTextBoxC.WordWrap = true;
-            this.numericTextBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
-            this.numericTextBoxC.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
+            this.numericBoxC.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxC, "numericBoxC");
+            this.numericBoxC.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.DecimalPlaces = -1;
+            this.numericBoxC.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxC.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxC.Maximum = double.PositiveInfinity;
+            this.numericBoxC.Minimum = double.NegativeInfinity;
+            this.numericBoxC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxC.MouseSpeed = 1D;
+            this.numericBoxC.Multiline = false;
+            this.numericBoxC.Name = "numericBoxC";
+            this.numericBoxC.RadianValue = 0D;
+            this.numericBoxC.ReadOnly = false;
+            this.numericBoxC.RestrictLimitValue = false;
+            this.numericBoxC.ShowFraction = false;
+            this.numericBoxC.ShowPositiveSign = false;
+            this.numericBoxC.ShowUpDown = false;
+            this.numericBoxC.SkipEventDuringInput = false;
+            this.numericBoxC.SmartIncrement = true;
+            this.numericBoxC.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxC.ThonsandsSeparator = false;
+            this.numericBoxC.UpDown_Increment = 1D;
+            this.numericBoxC.Value = 0D;
+            this.numericBoxC.WordWrap = true;
+            this.numericBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
+            this.numericBoxC.ReadOnlyChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericTextBoxErr_ReadOnlyChanged);
             // 
             // groupBoxSymmetry
             // 
@@ -1096,7 +1047,6 @@
             this.comboBoxSpaceGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSpaceGroup.DropDownWidth = 200;
             this.comboBoxSpaceGroup.Name = "comboBoxSpaceGroup";
-            this.toolTip.SetToolTip(this.comboBoxSpaceGroup, resources.GetString("comboBoxSpaceGroup.ToolTip"));
             this.comboBoxSpaceGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
             this.comboBoxSpaceGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpaceGroup_SelectedIndexChanged);
             // 
@@ -1106,7 +1056,6 @@
             this.comboBoxPointGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxPointGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPointGroup.Name = "comboBoxPointGroup";
-            this.toolTip.SetToolTip(this.comboBoxPointGroup, resources.GetString("comboBoxPointGroup.ToolTip"));
             this.comboBoxPointGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
             this.comboBoxPointGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxPointGroup_SelectedIndexChanged);
             // 
@@ -1124,7 +1073,6 @@
             resources.GetString("comboBoxCrystalSystem.Items6"),
             resources.GetString("comboBoxCrystalSystem.Items7")});
             this.comboBoxCrystalSystem.Name = "comboBoxCrystalSystem";
-            this.toolTip.SetToolTip(this.comboBoxCrystalSystem, resources.GetString("comboBoxCrystalSystem.ToolTip"));
             this.comboBoxCrystalSystem.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrystalSystem_SelectedIndexChanged);
             // 
             // label20
@@ -1146,7 +1094,6 @@
             // 
             resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
             this.textBoxSearch.Name = "textBoxSearch";
-            this.toolTip.SetToolTip(this.textBoxSearch, resources.GetString("textBoxSearch.ToolTip"));
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // label21
@@ -1161,61 +1108,78 @@
             this.comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearchResult.DropDownWidth = 200;
             this.comboBoxSearchResult.Name = "comboBoxSearchResult";
-            this.toolTip.SetToolTip(this.comboBoxSearchResult, resources.GetString("comboBoxSearchResult.ToolTip"));
             this.comboBoxSearchResult.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
             this.comboBoxSearchResult.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchResult_SelectedIndexChanged);
             // 
             // tabPageAtom
             // 
             this.tabPageAtom.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageAtom.Controls.Add(this.atomControl);
             this.tabPageAtom.Controls.Add(this.panelAtom);
-            this.tabPageAtom.Controls.Add(this.atomInput);
             resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
             this.tabPageAtom.Name = "tabPageAtom";
+            // 
+            // atomControl
+            // 
+            this.atomControl.Alpha = 0D;
+            this.atomControl.Ambient = 0D;
+            this.atomControl.AppearanceTabVisible = true;
+            this.atomControl.AtomColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.atomControl.AtomicPositionError = false;
+            this.atomControl.AtomNo = 0;
+            this.atomControl.AtomSubNoElectron = -1;
+            this.atomControl.AtomSubNoXray = -1;
+            resources.ApplyResources(this.atomControl, "atomControl");
+            this.atomControl.B11 = 0D;
+            this.atomControl.B11Err = 0D;
+            this.atomControl.B12 = 0D;
+            this.atomControl.B12Err = 0D;
+            this.atomControl.B13 = 0D;
+            this.atomControl.B13Err = 0D;
+            this.atomControl.B22 = 0D;
+            this.atomControl.B22Err = 0D;
+            this.atomControl.B23 = 0D;
+            this.atomControl.B23Err = 0D;
+            this.atomControl.B33 = 0D;
+            this.atomControl.B33Err = 0D;
+            this.atomControl.Biso = 0D;
+            this.atomControl.BisoErr = 0D;
+            this.atomControl.DebyeWallerError = false;
+            this.atomControl.DebyeWallerTabVisible = true;
+            this.atomControl.Diffusion = 0D;
+            this.atomControl.ElementAndPositionTabVisible = true;
+            this.atomControl.Emission = 0D;
+            this.atomControl.IsotopicComposition = null;
+            this.atomControl.Istoropy = false;
+            this.atomControl.Label = "";
+            this.atomControl.Name = "atomControl";
+            this.atomControl.Occ = 0D;
+            this.atomControl.OccErr = 0D;
+            this.atomControl.Radius = 0D;
+            this.atomControl.ScatteringFactorTabVisible = true;
+            this.atomControl.Shininess = 0D;
+            this.atomControl.SkipEvent = false;
+            this.atomControl.Specular = 0D;
+            this.atomControl.SymmetrySeriesNumber = 0;
+            this.atomControl.TabNumber = 0;
+            this.atomControl.X = 0D;
+            this.atomControl.XErr = 0D;
+            this.atomControl.Y = 0D;
+            this.atomControl.YErr = 0D;
+            this.atomControl.Z = 0D;
+            this.atomControl.ZErr = 0D;
+            this.atomControl.DataChanged += new System.EventHandler(this.atomControl_AtomsChanged);
             // 
             // panelAtom
             // 
             resources.ApplyResources(this.panelAtom, "panelAtom");
-            this.panelAtom.Controls.Add(this.panel2);
             this.panelAtom.Controls.Add(this.panel3);
             this.panelAtom.Name = "panelAtom";
-            this.toolTip.SetToolTip(this.panelAtom, resources.GetString("panelAtom.ToolTip"));
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.listBoxAtoms);
-            this.panel2.Controls.Add(this.listBox1);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // listBoxAtoms
-            // 
-            resources.ApplyResources(this.listBoxAtoms, "listBoxAtoms");
-            this.listBoxAtoms.Name = "listBoxAtoms";
-            this.toolTip.SetToolTip(this.listBoxAtoms, resources.GetString("listBoxAtoms.ToolTip"));
-            this.listBoxAtoms.Click += new System.EventHandler(this.listBoxAtoms_SelectedIndexChanged);
-            this.listBoxAtoms.SelectedIndexChanged += new System.EventHandler(this.listBoxAtoms_SelectedIndexChanged);
-            this.listBoxAtoms.MouseLeave += new System.EventHandler(this.listBoxAtoms_MouseLeave);
-            this.listBoxAtoms.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBoxAtoms_MouseUp);
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBox1.TabStop = false;
             // 
             // panel3
             // 
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.ContextMenuStrip = this.contextMenuStrip2;
-            this.panel3.Controls.Add(this.buttonAddAtom);
-            this.panel3.Controls.Add(this.buttonAtomUp);
-            this.panel3.Controls.Add(this.buttonChangeAtom);
-            this.panel3.Controls.Add(this.buttonAtomDown);
-            this.panel3.Controls.Add(this.buttonDeleteAtom);
             this.panel3.Name = "panel3";
             // 
             // contextMenuStrip2
@@ -1231,741 +1195,20 @@
             resources.ApplyResources(this.resetToolStripMenuItem, "resetToolStripMenuItem");
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
-            // buttonAddAtom
-            // 
-            resources.ApplyResources(this.buttonAddAtom, "buttonAddAtom");
-            this.buttonAddAtom.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonAddAtom.Name = "buttonAddAtom";
-            this.toolTip.SetToolTip(this.buttonAddAtom, resources.GetString("buttonAddAtom.ToolTip"));
-            this.buttonAddAtom.UseVisualStyleBackColor = false;
-            this.buttonAddAtom.Click += new System.EventHandler(this.buttonAddAtom_Click);
-            // 
-            // buttonAtomUp
-            // 
-            resources.ApplyResources(this.buttonAtomUp, "buttonAtomUp");
-            this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomUp.Name = "buttonAtomUp";
-            this.buttonAtomUp.UseVisualStyleBackColor = true;
-            this.buttonAtomUp.Click += new System.EventHandler(this.buttonAtomUp_Click);
-            // 
-            // buttonChangeAtom
-            // 
-            resources.ApplyResources(this.buttonChangeAtom, "buttonChangeAtom");
-            this.buttonChangeAtom.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonChangeAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChangeAtom.Name = "buttonChangeAtom";
-            this.toolTip.SetToolTip(this.buttonChangeAtom, resources.GetString("buttonChangeAtom.ToolTip"));
-            this.buttonChangeAtom.UseVisualStyleBackColor = false;
-            this.buttonChangeAtom.Click += new System.EventHandler(this.buttonChangeAtom_Click);
-            // 
-            // buttonAtomDown
-            // 
-            resources.ApplyResources(this.buttonAtomDown, "buttonAtomDown");
-            this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomDown.Name = "buttonAtomDown";
-            this.buttonAtomDown.UseVisualStyleBackColor = true;
-            this.buttonAtomDown.Click += new System.EventHandler(this.buttonAtomDown_Click);
-            // 
-            // buttonDeleteAtom
-            // 
-            resources.ApplyResources(this.buttonDeleteAtom, "buttonDeleteAtom");
-            this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAtom.Name = "buttonDeleteAtom";
-            this.toolTip.SetToolTip(this.buttonDeleteAtom, resources.GetString("buttonDeleteAtom.ToolTip"));
-            this.buttonDeleteAtom.UseVisualStyleBackColor = false;
-            this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDeleteAtom_Click);
-            // 
-            // atomInput
-            // 
-            this.atomInput.AtomNo = 0;
-            this.atomInput.AtomSubNoElectron = -1;
-            this.atomInput.AtomSubNoXray = -1;
-            resources.ApplyResources(this.atomInput, "atomInput");
-            this.atomInput.B11 = 0D;
-            this.atomInput.B11Err = 0D;
-            this.atomInput.B12 = 0D;
-            this.atomInput.B12Err = 0D;
-            this.atomInput.B13 = 0D;
-            this.atomInput.B13Err = 0D;
-            this.atomInput.B22 = 0D;
-            this.atomInput.B22Err = 0D;
-            this.atomInput.B23 = 0D;
-            this.atomInput.B23Err = 0D;
-            this.atomInput.B33 = 0D;
-            this.atomInput.B33Err = 0D;
-            this.atomInput.Biso = 0D;
-            this.atomInput.BisoErr = 0D;
-            this.atomInput.Details1 = false;
-            this.atomInput.Details2 = false;
-            this.atomInput.IsotopicComposition = null;
-            this.atomInput.Istoropy = false;
-            this.atomInput.Label = "";
-            this.atomInput.Name = "atomInput";
-            this.atomInput.Occ = 0D;
-            this.atomInput.OccErr = 0D;
-            this.atomInput.X = 0D;
-            this.atomInput.XErr = 0D;
-            this.atomInput.Y = 0D;
-            this.atomInput.YErr = 0D;
-            this.atomInput.Z = 0D;
-            this.atomInput.ZErr = 0D;
-            // 
-            // tabPageAtomAdvanced
-            // 
-            this.tabPageAtomAdvanced.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageAtomAdvanced.Controls.Add(this.panel1);
-            resources.ApplyResources(this.tabPageAtomAdvanced, "tabPageAtomAdvanced");
-            this.tabPageAtomAdvanced.Name = "tabPageAtomAdvanced";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.colorControlAtomColor);
-            this.panel1.Controls.Add(this.label62);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.numericUpDownAtomRadius);
-            this.panel1.Controls.Add(this.buttonChangeToSameElement);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // colorControlAtomColor
-            // 
-            this.colorControlAtomColor.Argb = -986896;
-            this.colorControlAtomColor.Blue = 240;
-            this.colorControlAtomColor.BlueF = 0.9411765F;
-            this.colorControlAtomColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            resources.ApplyResources(this.colorControlAtomColor, "colorControlAtomColor");
-            this.colorControlAtomColor.Green = 240;
-            this.colorControlAtomColor.GreenF = 0.9411765F;
-            this.colorControlAtomColor.Name = "colorControlAtomColor";
-            this.colorControlAtomColor.Red = 240;
-            this.colorControlAtomColor.RedF = 0.9411765F;
-            this.colorControlAtomColor.ToolTip = "";
-            // 
-            // label62
-            // 
-            resources.ApplyResources(this.label62, "label62");
-            this.label62.Name = "label62";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.numericUpDownAtomTransparency);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomAmbient);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label37);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomShininess);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomSpecular);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomDiffusion);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.label34);
-            this.groupBox1.Controls.Add(this.label36);
-            this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomEmmision);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // numericUpDownAtomTransparency
-            // 
-            this.numericUpDownAtomTransparency.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAtomTransparency, "numericUpDownAtomTransparency");
-            this.numericUpDownAtomTransparency.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomTransparency.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomTransparency.Name = "numericUpDownAtomTransparency";
-            this.toolTip.SetToolTip(this.numericUpDownAtomTransparency, resources.GetString("numericUpDownAtomTransparency.ToolTip"));
-            this.numericUpDownAtomTransparency.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownAtomAmbient
-            // 
-            this.numericUpDownAtomAmbient.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAtomAmbient, "numericUpDownAtomAmbient");
-            this.numericUpDownAtomAmbient.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomAmbient.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomAmbient.Name = "numericUpDownAtomAmbient";
-            this.toolTip.SetToolTip(this.numericUpDownAtomAmbient, resources.GetString("numericUpDownAtomAmbient.ToolTip"));
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // numericUpDownAtomShininess
-            // 
-            resources.ApplyResources(this.numericUpDownAtomShininess, "numericUpDownAtomShininess");
-            this.numericUpDownAtomShininess.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomShininess.Name = "numericUpDownAtomShininess";
-            this.toolTip.SetToolTip(this.numericUpDownAtomShininess, resources.GetString("numericUpDownAtomShininess.ToolTip"));
-            // 
-            // numericUpDownAtomSpecular
-            // 
-            this.numericUpDownAtomSpecular.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAtomSpecular, "numericUpDownAtomSpecular");
-            this.numericUpDownAtomSpecular.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomSpecular.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomSpecular.Name = "numericUpDownAtomSpecular";
-            this.toolTip.SetToolTip(this.numericUpDownAtomSpecular, resources.GetString("numericUpDownAtomSpecular.ToolTip"));
-            // 
-            // numericUpDownAtomDiffusion
-            // 
-            this.numericUpDownAtomDiffusion.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAtomDiffusion, "numericUpDownAtomDiffusion");
-            this.numericUpDownAtomDiffusion.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomDiffusion.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomDiffusion.Name = "numericUpDownAtomDiffusion";
-            this.toolTip.SetToolTip(this.numericUpDownAtomDiffusion, resources.GetString("numericUpDownAtomDiffusion.ToolTip"));
-            this.numericUpDownAtomDiffusion.Value = new decimal(new int[] {
-            7,
-            0,
-            0,
-            65536});
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
-            // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
-            // 
-            // label35
-            // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
-            // 
-            // numericUpDownAtomEmmision
-            // 
-            this.numericUpDownAtomEmmision.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAtomEmmision, "numericUpDownAtomEmmision");
-            this.numericUpDownAtomEmmision.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomEmmision.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomEmmision.Name = "numericUpDownAtomEmmision";
-            this.toolTip.SetToolTip(this.numericUpDownAtomEmmision, resources.GetString("numericUpDownAtomEmmision.ToolTip"));
-            // 
-            // numericUpDownAtomRadius
-            // 
-            this.numericUpDownAtomRadius.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownAtomRadius, "numericUpDownAtomRadius");
-            this.numericUpDownAtomRadius.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomRadius.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomRadius.Name = "numericUpDownAtomRadius";
-            this.toolTip.SetToolTip(this.numericUpDownAtomRadius, resources.GetString("numericUpDownAtomRadius.ToolTip"));
-            // 
-            // buttonChangeToSameElement
-            // 
-            this.buttonChangeToSameElement.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChangeToSameElement, "buttonChangeToSameElement");
-            this.buttonChangeToSameElement.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChangeToSameElement.Name = "buttonChangeToSameElement";
-            this.toolTip.SetToolTip(this.buttonChangeToSameElement, resources.GetString("buttonChangeToSameElement.ToolTip"));
-            this.buttonChangeToSameElement.UseVisualStyleBackColor = false;
-            this.buttonChangeToSameElement.Click += new System.EventHandler(this.buttonChangeToSameElement_Click);
-            // 
             // tabPageBondsPolyhedra
             // 
             this.tabPageBondsPolyhedra.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageBondsPolyhedra.Controls.Add(this.buttonAddBond);
-            this.tabPageBondsPolyhedra.Controls.Add(this.button1);
-            this.tabPageBondsPolyhedra.Controls.Add(this.buttonAutoDetect);
-            this.tabPageBondsPolyhedra.Controls.Add(this.buttonChangeBond);
-            this.tabPageBondsPolyhedra.Controls.Add(this.buttonDeleteBond);
-            this.tabPageBondsPolyhedra.Controls.Add(this.colorControlBond);
-            this.tabPageBondsPolyhedra.Controls.Add(this.listBoxBondsAndPolyhedra);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label63);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label59);
-            this.tabPageBondsPolyhedra.Controls.Add(this.checkBoxShowPolyhedron);
-            this.tabPageBondsPolyhedra.Controls.Add(this.numericUpDownBondTrasparency);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label53);
-            this.tabPageBondsPolyhedra.Controls.Add(this.listBox3);
-            this.tabPageBondsPolyhedra.Controls.Add(this.numericUpDownBondMaxLength);
-            this.tabPageBondsPolyhedra.Controls.Add(this.numericUpDownBondMinLength);
-            this.tabPageBondsPolyhedra.Controls.Add(this.numericUpDownBondRadius);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label51);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label52);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label43);
-            this.tabPageBondsPolyhedra.Controls.Add(this.comboBoxBondingAtom1);
-            this.tabPageBondsPolyhedra.Controls.Add(this.comboBoxBondingAtom2);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label41);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label58);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label57);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label39);
-            this.tabPageBondsPolyhedra.Controls.Add(this.label40);
-            this.tabPageBondsPolyhedra.Controls.Add(this.groupBoxPolyhedron);
+            this.tabPageBondsPolyhedra.Controls.Add(this.bondControl);
             resources.ApplyResources(this.tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
             this.tabPageBondsPolyhedra.Name = "tabPageBondsPolyhedra";
             // 
-            // buttonAddBond
-            // 
-            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBond.Name = "buttonAddBond";
-            this.toolTip.SetToolTip(this.buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
-            this.buttonAddBond.UseVisualStyleBackColor = false;
-            this.buttonAddBond.Click += new System.EventHandler(this.buttonAddBond_Click);
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            // 
-            // buttonAutoDetect
-            // 
-            resources.ApplyResources(this.buttonAutoDetect, "buttonAutoDetect");
-            this.buttonAutoDetect.Name = "buttonAutoDetect";
-            // 
-            // buttonChangeBond
-            // 
-            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
-            this.buttonChangeBond.Name = "buttonChangeBond";
-            this.toolTip.SetToolTip(this.buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
-            this.buttonChangeBond.UseVisualStyleBackColor = false;
-            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChangeBond_Click);
-            // 
-            // buttonDeleteBond
-            // 
-            resources.ApplyResources(this.buttonDeleteBond, "buttonDeleteBond");
-            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteBond.Name = "buttonDeleteBond";
-            this.toolTip.SetToolTip(this.buttonDeleteBond, resources.GetString("buttonDeleteBond.ToolTip"));
-            this.buttonDeleteBond.UseVisualStyleBackColor = false;
-            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDeleteBond_Click);
-            // 
-            // colorControlBond
-            // 
-            this.colorControlBond.Argb = -986896;
-            this.colorControlBond.Blue = 240;
-            this.colorControlBond.BlueF = 0.9411765F;
-            this.colorControlBond.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlBond.Green = 240;
-            this.colorControlBond.GreenF = 0.9411765F;
-            resources.ApplyResources(this.colorControlBond, "colorControlBond");
-            this.colorControlBond.Name = "colorControlBond";
-            this.colorControlBond.Red = 240;
-            this.colorControlBond.RedF = 0.9411765F;
-            this.colorControlBond.ToolTip = "";
-            // 
-            // listBoxBondsAndPolyhedra
-            // 
-            resources.ApplyResources(this.listBoxBondsAndPolyhedra, "listBoxBondsAndPolyhedra");
-            this.listBoxBondsAndPolyhedra.Name = "listBoxBondsAndPolyhedra";
-            this.toolTip.SetToolTip(this.listBoxBondsAndPolyhedra, resources.GetString("listBoxBondsAndPolyhedra.ToolTip"));
-            this.listBoxBondsAndPolyhedra.Click += new System.EventHandler(this.listBoxBondsAndPolyhedra_SelectedIndexChanged);
-            this.listBoxBondsAndPolyhedra.SelectedIndexChanged += new System.EventHandler(this.listBoxBondsAndPolyhedra_SelectedIndexChanged);
-            // 
-            // label63
-            // 
-            resources.ApplyResources(this.label63, "label63");
-            this.label63.Name = "label63";
-            // 
-            // label59
-            // 
-            resources.ApplyResources(this.label59, "label59");
-            this.label59.Name = "label59";
-            // 
-            // checkBoxShowPolyhedron
-            // 
-            resources.ApplyResources(this.checkBoxShowPolyhedron, "checkBoxShowPolyhedron");
-            this.checkBoxShowPolyhedron.Checked = true;
-            this.checkBoxShowPolyhedron.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowPolyhedron.Name = "checkBoxShowPolyhedron";
-            this.toolTip.SetToolTip(this.checkBoxShowPolyhedron, resources.GetString("checkBoxShowPolyhedron.ToolTip"));
-            this.checkBoxShowPolyhedron.UseVisualStyleBackColor = true;
-            this.checkBoxShowPolyhedron.CheckStateChanged += new System.EventHandler(this.checkBoxShowPolyhedron_CheckedChanged);
-            // 
-            // numericUpDownBondTrasparency
-            // 
-            this.numericUpDownBondTrasparency.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownBondTrasparency, "numericUpDownBondTrasparency");
-            this.numericUpDownBondTrasparency.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownBondTrasparency.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownBondTrasparency.Name = "numericUpDownBondTrasparency";
-            this.toolTip.SetToolTip(this.numericUpDownBondTrasparency, resources.GetString("numericUpDownBondTrasparency.ToolTip"));
-            this.numericUpDownBondTrasparency.Value = new decimal(new int[] {
-            7,
-            0,
-            0,
-            65536});
-            // 
-            // label53
-            // 
-            resources.ApplyResources(this.label53, "label53");
-            this.label53.Name = "label53";
-            // 
-            // listBox3
-            // 
-            this.listBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.listBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.listBox3, "listBox3");
-            this.listBox3.Items.AddRange(new object[] {
-            resources.GetString("listBox3.Items")});
-            this.listBox3.Name = "listBox3";
-            this.listBox3.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.listBox3.TabStop = false;
-            // 
-            // numericUpDownBondMaxLength
-            // 
-            this.numericUpDownBondMaxLength.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownBondMaxLength, "numericUpDownBondMaxLength");
-            this.numericUpDownBondMaxLength.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownBondMaxLength.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            65536});
-            this.numericUpDownBondMaxLength.Name = "numericUpDownBondMaxLength";
-            this.toolTip.SetToolTip(this.numericUpDownBondMaxLength, resources.GetString("numericUpDownBondMaxLength.ToolTip"));
-            this.numericUpDownBondMaxLength.Value = new decimal(new int[] {
-            16,
-            0,
-            0,
-            65536});
-            // 
-            // numericUpDownBondMinLength
-            // 
-            this.numericUpDownBondMinLength.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownBondMinLength, "numericUpDownBondMinLength");
-            this.numericUpDownBondMinLength.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownBondMinLength.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            65536});
-            this.numericUpDownBondMinLength.Name = "numericUpDownBondMinLength";
-            this.toolTip.SetToolTip(this.numericUpDownBondMinLength, resources.GetString("numericUpDownBondMinLength.ToolTip"));
-            // 
-            // numericUpDownBondRadius
-            // 
-            this.numericUpDownBondRadius.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownBondRadius, "numericUpDownBondRadius");
-            this.numericUpDownBondRadius.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            131072});
-            this.numericUpDownBondRadius.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownBondRadius.Name = "numericUpDownBondRadius";
-            this.toolTip.SetToolTip(this.numericUpDownBondRadius, resources.GetString("numericUpDownBondRadius.ToolTip"));
-            this.numericUpDownBondRadius.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            131072});
-            // 
-            // label51
-            // 
-            resources.ApplyResources(this.label51, "label51");
-            this.label51.Name = "label51";
-            // 
-            // label52
-            // 
-            resources.ApplyResources(this.label52, "label52");
-            this.label52.Name = "label52";
-            // 
-            // label43
-            // 
-            resources.ApplyResources(this.label43, "label43");
-            this.label43.Name = "label43";
-            // 
-            // comboBoxBondingAtom1
-            // 
-            this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBondingAtom1, "comboBoxBondingAtom1");
-            this.comboBoxBondingAtom1.Name = "comboBoxBondingAtom1";
-            this.toolTip.SetToolTip(this.comboBoxBondingAtom1, resources.GetString("comboBoxBondingAtom1.ToolTip"));
-            // 
-            // comboBoxBondingAtom2
-            // 
-            this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBondingAtom2, "comboBoxBondingAtom2");
-            this.comboBoxBondingAtom2.Items.AddRange(new object[] {
-            resources.GetString("comboBoxBondingAtom2.Items")});
-            this.comboBoxBondingAtom2.Name = "comboBoxBondingAtom2";
-            this.toolTip.SetToolTip(this.comboBoxBondingAtom2, resources.GetString("comboBoxBondingAtom2.ToolTip"));
-            // 
-            // label41
-            // 
-            resources.ApplyResources(this.label41, "label41");
-            this.label41.Name = "label41";
-            // 
-            // label58
-            // 
-            resources.ApplyResources(this.label58, "label58");
-            this.label58.Name = "label58";
-            // 
-            // label57
-            // 
-            resources.ApplyResources(this.label57, "label57");
-            this.label57.Name = "label57";
-            // 
-            // label39
-            // 
-            resources.ApplyResources(this.label39, "label39");
-            this.label39.Name = "label39";
-            // 
-            // label40
-            // 
-            resources.ApplyResources(this.label40, "label40");
-            this.label40.Name = "label40";
-            // 
-            // groupBoxPolyhedron
-            // 
-            this.groupBoxPolyhedron.Controls.Add(this.colorControlPlyhedron);
-            this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowEdges);
-            this.groupBoxPolyhedron.Controls.Add(this.groupBoxEdge);
-            this.groupBoxPolyhedron.Controls.Add(this.numericUpDownPolyhedronPlaneAlpha);
-            this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowInnerBonds);
-            this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowVertexAtoms);
-            this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowCenterAtom);
-            this.groupBoxPolyhedron.Controls.Add(this.label54);
-            this.groupBoxPolyhedron.Controls.Add(this.label42);
-            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
-            this.groupBoxPolyhedron.Name = "groupBoxPolyhedron";
-            this.groupBoxPolyhedron.TabStop = false;
-            // 
-            // colorControlPlyhedron
-            // 
-            this.colorControlPlyhedron.Argb = -986896;
-            this.colorControlPlyhedron.Blue = 240;
-            this.colorControlPlyhedron.BlueF = 0.9411765F;
-            this.colorControlPlyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlPlyhedron.Green = 240;
-            this.colorControlPlyhedron.GreenF = 0.9411765F;
-            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
-            this.colorControlPlyhedron.Name = "colorControlPlyhedron";
-            this.colorControlPlyhedron.Red = 240;
-            this.colorControlPlyhedron.RedF = 0.9411765F;
-            this.colorControlPlyhedron.ToolTip = "";
-            // 
-            // checkBoxShowEdges
-            // 
-            resources.ApplyResources(this.checkBoxShowEdges, "checkBoxShowEdges");
-            this.checkBoxShowEdges.Checked = true;
-            this.checkBoxShowEdges.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowEdges.Name = "checkBoxShowEdges";
-            this.toolTip.SetToolTip(this.checkBoxShowEdges, resources.GetString("checkBoxShowEdges.ToolTip"));
-            this.checkBoxShowEdges.UseVisualStyleBackColor = true;
-            this.checkBoxShowEdges.CheckedChanged += new System.EventHandler(this.checkBoxShowEdges_CheckedChanged);
-            // 
-            // groupBoxEdge
-            // 
-            this.groupBoxEdge.Controls.Add(this.colorControlEdges);
-            this.groupBoxEdge.Controls.Add(this.label55);
-            this.groupBoxEdge.Controls.Add(this.numericUpDownEdgeLineWidth);
-            this.groupBoxEdge.Controls.Add(this.label56);
-            resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
-            this.groupBoxEdge.Name = "groupBoxEdge";
-            this.groupBoxEdge.TabStop = false;
-            // 
-            // colorControlEdges
-            // 
-            this.colorControlEdges.Argb = -986896;
-            this.colorControlEdges.Blue = 240;
-            this.colorControlEdges.BlueF = 0.9411765F;
-            this.colorControlEdges.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlEdges.Green = 240;
-            this.colorControlEdges.GreenF = 0.9411765F;
-            resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
-            this.colorControlEdges.Name = "colorControlEdges";
-            this.colorControlEdges.Red = 240;
-            this.colorControlEdges.RedF = 0.9411765F;
-            this.colorControlEdges.ToolTip = "";
-            // 
-            // label55
-            // 
-            resources.ApplyResources(this.label55, "label55");
-            this.label55.Name = "label55";
-            // 
-            // numericUpDownEdgeLineWidth
-            // 
-            this.numericUpDownEdgeLineWidth.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownEdgeLineWidth, "numericUpDownEdgeLineWidth");
-            this.numericUpDownEdgeLineWidth.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDownEdgeLineWidth.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownEdgeLineWidth.Name = "numericUpDownEdgeLineWidth";
-            this.toolTip.SetToolTip(this.numericUpDownEdgeLineWidth, resources.GetString("numericUpDownEdgeLineWidth.ToolTip"));
-            this.numericUpDownEdgeLineWidth.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            // 
-            // label56
-            // 
-            resources.ApplyResources(this.label56, "label56");
-            this.label56.Name = "label56";
-            // 
-            // numericUpDownPolyhedronPlaneAlpha
-            // 
-            this.numericUpDownPolyhedronPlaneAlpha.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownPolyhedronPlaneAlpha, "numericUpDownPolyhedronPlaneAlpha");
-            this.numericUpDownPolyhedronPlaneAlpha.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownPolyhedronPlaneAlpha.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownPolyhedronPlaneAlpha.Name = "numericUpDownPolyhedronPlaneAlpha";
-            this.toolTip.SetToolTip(this.numericUpDownPolyhedronPlaneAlpha, resources.GetString("numericUpDownPolyhedronPlaneAlpha.ToolTip"));
-            this.numericUpDownPolyhedronPlaneAlpha.Value = new decimal(new int[] {
-            7,
-            0,
-            0,
-            65536});
-            // 
-            // checkBoxShowInnerBonds
-            // 
-            resources.ApplyResources(this.checkBoxShowInnerBonds, "checkBoxShowInnerBonds");
-            this.checkBoxShowInnerBonds.Checked = true;
-            this.checkBoxShowInnerBonds.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowInnerBonds.Name = "checkBoxShowInnerBonds";
-            this.toolTip.SetToolTip(this.checkBoxShowInnerBonds, resources.GetString("checkBoxShowInnerBonds.ToolTip"));
-            this.checkBoxShowInnerBonds.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowVertexAtoms
-            // 
-            resources.ApplyResources(this.checkBoxShowVertexAtoms, "checkBoxShowVertexAtoms");
-            this.checkBoxShowVertexAtoms.Checked = true;
-            this.checkBoxShowVertexAtoms.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowVertexAtoms.Name = "checkBoxShowVertexAtoms";
-            this.toolTip.SetToolTip(this.checkBoxShowVertexAtoms, resources.GetString("checkBoxShowVertexAtoms.ToolTip"));
-            this.checkBoxShowVertexAtoms.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowCenterAtom
-            // 
-            resources.ApplyResources(this.checkBoxShowCenterAtom, "checkBoxShowCenterAtom");
-            this.checkBoxShowCenterAtom.Checked = true;
-            this.checkBoxShowCenterAtom.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowCenterAtom.Name = "checkBoxShowCenterAtom";
-            this.toolTip.SetToolTip(this.checkBoxShowCenterAtom, resources.GetString("checkBoxShowCenterAtom.ToolTip"));
-            this.checkBoxShowCenterAtom.UseVisualStyleBackColor = true;
-            // 
-            // label54
-            // 
-            resources.ApplyResources(this.label54, "label54");
-            this.label54.Name = "label54";
-            // 
-            // label42
-            // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
+            // bondControl
+            // 
+            resources.ApplyResources(this.bondControl, "bondControl");
+            this.bondControl.Crystal = null;
+            this.bondControl.ElementList = new string[0];
+            this.bondControl.Name = "bondControl";
+            this.bondControl.SkipEvent = false;
             // 
             // tabPageReference
             // 
@@ -1989,7 +1232,6 @@
             this.textBoxTitle.AcceptsReturn = true;
             resources.ApplyResources(this.textBoxTitle, "textBoxTitle");
             this.textBoxTitle.Name = "textBoxTitle";
-            this.toolTip.SetToolTip(this.textBoxTitle, resources.GetString("textBoxTitle.ToolTip"));
             this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxReferenfeChanged_TextChanged);
             // 
             // groupBox6
@@ -2004,7 +1246,6 @@
             this.textBoxAuthor.AcceptsReturn = true;
             resources.ApplyResources(this.textBoxAuthor, "textBoxAuthor");
             this.textBoxAuthor.Name = "textBoxAuthor";
-            this.toolTip.SetToolTip(this.textBoxAuthor, resources.GetString("textBoxAuthor.ToolTip"));
             this.textBoxAuthor.TextChanged += new System.EventHandler(this.textBoxReferenfeChanged_TextChanged);
             // 
             // groupBox7
@@ -2019,7 +1260,6 @@
             this.textBoxJournal.AcceptsReturn = true;
             resources.ApplyResources(this.textBoxJournal, "textBoxJournal");
             this.textBoxJournal.Name = "textBoxJournal";
-            this.toolTip.SetToolTip(this.textBoxJournal, resources.GetString("textBoxJournal.ToolTip"));
             this.textBoxJournal.TextChanged += new System.EventHandler(this.textBoxReferenfeChanged_TextChanged);
             // 
             // groupBox5
@@ -2033,7 +1273,6 @@
             // 
             resources.ApplyResources(this.textBoxMemo, "textBoxMemo");
             this.textBoxMemo.Name = "textBoxMemo";
-            this.toolTip.SetToolTip(this.textBoxMemo, resources.GetString("textBoxMemo.ToolTip"));
             this.textBoxMemo.TextChanged += new System.EventHandler(this.textBoxReferenfeChanged_TextChanged);
             // 
             // tabPageEOS
@@ -2064,7 +1303,6 @@
             // 
             resources.ApplyResources(this.checkBoxUseEOS, "checkBoxUseEOS");
             this.checkBoxUseEOS.Name = "checkBoxUseEOS";
-            this.toolTip.SetToolTip(this.checkBoxUseEOS, resources.GetString("checkBoxUseEOS.ToolTip"));
             this.checkBoxUseEOS.UseVisualStyleBackColor = true;
             this.checkBoxUseEOS.CheckedChanged += new System.EventHandler(this.numericalTextBoxEOS_State_ValueChanged);
             // 
@@ -2111,6 +1349,10 @@
             resources.ApplyResources(this.numericBoxEOS_C, "numericBoxEOS_C");
             this.numericBoxEOS_C.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_C.DecimalPlaces = -1;
+            this.numericBoxEOS_C.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_C.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_C.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_C.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_C.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_C.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_C.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2140,6 +1382,10 @@
             resources.ApplyResources(this.numericBoxEOS_B, "numericBoxEOS_B");
             this.numericBoxEOS_B.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_B.DecimalPlaces = -1;
+            this.numericBoxEOS_B.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_B.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_B.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_B.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_B.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_B.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_B.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2183,6 +1429,10 @@
             resources.ApplyResources(this.numericBoxEOS_A, "numericBoxEOS_A");
             this.numericBoxEOS_A.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_A.DecimalPlaces = -1;
+            this.numericBoxEOS_A.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_A.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_A.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_A.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_A.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_A.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_A.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2212,6 +1462,10 @@
             resources.ApplyResources(this.numericBoxEOS_KperT, "numericBoxEOS_KperT");
             this.numericBoxEOS_KperT.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_KperT.DecimalPlaces = -1;
+            this.numericBoxEOS_KperT.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KperT.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_KperT.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KperT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_KperT.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_KperT.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_KperT.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2241,6 +1495,10 @@
             resources.ApplyResources(this.numericBoxEOS_Gamma0, "numericBoxEOS_Gamma0");
             this.numericBoxEOS_Gamma0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_Gamma0.DecimalPlaces = -1;
+            this.numericBoxEOS_Gamma0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Gamma0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_Gamma0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Gamma0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_Gamma0.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_Gamma0.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_Gamma0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2259,7 +1517,6 @@
             this.numericBoxEOS_Gamma0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_Gamma0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_Gamma0.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_Gamma0, resources.GetString("numericBoxEOS_Gamma0.ToolTip"));
             this.numericBoxEOS_Gamma0.UpDown_Increment = 1D;
             this.numericBoxEOS_Gamma0.Value = 0D;
             this.numericBoxEOS_Gamma0.WordWrap = true;
@@ -2269,7 +1526,6 @@
             // 
             resources.ApplyResources(this.label76, "label76");
             this.label76.Name = "label76";
-            this.toolTip.SetToolTip(this.label76, resources.GetString("label76.ToolTip"));
             // 
             // label13
             // 
@@ -2350,13 +1606,11 @@
             // 
             resources.ApplyResources(this.label73, "label73");
             this.label73.Name = "label73";
-            this.toolTip.SetToolTip(this.label73, resources.GetString("label73.ToolTip"));
             // 
             // label65
             // 
             resources.ApplyResources(this.label65, "label65");
             this.label65.Name = "label65";
-            this.toolTip.SetToolTip(this.label65, resources.GetString("label65.ToolTip"));
             // 
             // numericBoxEOS_Theta0
             // 
@@ -2364,6 +1618,10 @@
             resources.ApplyResources(this.numericBoxEOS_Theta0, "numericBoxEOS_Theta0");
             this.numericBoxEOS_Theta0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_Theta0.DecimalPlaces = -1;
+            this.numericBoxEOS_Theta0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Theta0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_Theta0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Theta0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_Theta0.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_Theta0.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_Theta0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2382,7 +1640,6 @@
             this.numericBoxEOS_Theta0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_Theta0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_Theta0.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_Theta0, resources.GetString("numericBoxEOS_Theta0.ToolTip"));
             this.numericBoxEOS_Theta0.UpDown_Increment = 1D;
             this.numericBoxEOS_Theta0.Value = 300D;
             this.numericBoxEOS_Theta0.WordWrap = true;
@@ -2394,6 +1651,10 @@
             resources.ApplyResources(this.numericBoxEOS_Q, "numericBoxEOS_Q");
             this.numericBoxEOS_Q.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_Q.DecimalPlaces = -1;
+            this.numericBoxEOS_Q.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Q.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_Q.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_Q.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_Q.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_Q.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_Q.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2412,7 +1673,6 @@
             this.numericBoxEOS_Q.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_Q.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_Q.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_Q, resources.GetString("numericBoxEOS_Q.ToolTip"));
             this.numericBoxEOS_Q.UpDown_Increment = 1D;
             this.numericBoxEOS_Q.Value = 0D;
             this.numericBoxEOS_Q.WordWrap = true;
@@ -2475,25 +1735,21 @@
             // 
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
             // 
             // label67
             // 
             resources.ApplyResources(this.label67, "label67");
             this.label67.Name = "label67";
-            this.toolTip.SetToolTip(this.label67, resources.GetString("label67.ToolTip"));
             // 
             // label66
             // 
             resources.ApplyResources(this.label66, "label66");
             this.label66.Name = "label66";
-            this.toolTip.SetToolTip(this.label66, resources.GetString("label66.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // numericalTextBoxEOS_V0perMol
             // 
@@ -2501,6 +1757,10 @@
             resources.ApplyResources(this.numericalTextBoxEOS_V0perMol, "numericalTextBoxEOS_V0perMol");
             this.numericalTextBoxEOS_V0perMol.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxEOS_V0perMol.DecimalPlaces = -1;
+            this.numericalTextBoxEOS_V0perMol.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxEOS_V0perMol.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxEOS_V0perMol.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxEOS_V0perMol.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxEOS_V0perMol.Maximum = double.PositiveInfinity;
             this.numericalTextBoxEOS_V0perMol.Minimum = double.NegativeInfinity;
             this.numericalTextBoxEOS_V0perMol.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2531,6 +1791,10 @@
             resources.ApplyResources(this.numericBoxEOS_V0perCell, "numericBoxEOS_V0perCell");
             this.numericBoxEOS_V0perCell.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_V0perCell.DecimalPlaces = -1;
+            this.numericBoxEOS_V0perCell.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_V0perCell.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_V0perCell.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_V0perCell.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_V0perCell.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_V0perCell.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_V0perCell.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2549,7 +1813,6 @@
             this.numericBoxEOS_V0perCell.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_V0perCell.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_V0perCell.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_V0perCell, resources.GetString("numericBoxEOS_V0perCell.ToolTip"));
             this.numericBoxEOS_V0perCell.UpDown_Increment = 1D;
             this.numericBoxEOS_V0perCell.Value = 300D;
             this.numericBoxEOS_V0perCell.WordWrap = true;
@@ -2562,6 +1825,10 @@
             resources.ApplyResources(this.numericBoxEOS_KT0, "numericBoxEOS_KT0");
             this.numericBoxEOS_KT0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_KT0.DecimalPlaces = -1;
+            this.numericBoxEOS_KT0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KT0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_KT0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KT0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_KT0.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_KT0.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_KT0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2580,7 +1847,6 @@
             this.numericBoxEOS_KT0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_KT0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_KT0.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_KT0, resources.GetString("numericBoxEOS_KT0.ToolTip"));
             this.numericBoxEOS_KT0.UpDown_Increment = 1D;
             this.numericBoxEOS_KT0.Value = 0D;
             this.numericBoxEOS_KT0.WordWrap = true;
@@ -2590,7 +1856,6 @@
             // 
             resources.ApplyResources(this.label70, "label70");
             this.label70.Name = "label70";
-            this.toolTip.SetToolTip(this.label70, resources.GetString("label70.ToolTip"));
             // 
             // label81
             // 
@@ -2601,7 +1866,6 @@
             // 
             resources.ApplyResources(this.label71, "label71");
             this.label71.Name = "label71";
-            this.toolTip.SetToolTip(this.label71, resources.GetString("label71.ToolTip"));
             // 
             // label80
             // 
@@ -2612,7 +1876,6 @@
             // 
             resources.ApplyResources(this.label68, "label68");
             this.label68.Name = "label68";
-            this.toolTip.SetToolTip(this.label68, resources.GetString("label68.ToolTip"));
             // 
             // numericBoxEOS_KprimeT0
             // 
@@ -2620,6 +1883,10 @@
             resources.ApplyResources(this.numericBoxEOS_KprimeT0, "numericBoxEOS_KprimeT0");
             this.numericBoxEOS_KprimeT0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_KprimeT0.DecimalPlaces = -1;
+            this.numericBoxEOS_KprimeT0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KprimeT0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_KprimeT0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_KprimeT0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_KprimeT0.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_KprimeT0.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_KprimeT0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2638,7 +1905,6 @@
             this.numericBoxEOS_KprimeT0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_KprimeT0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxEOS_KprimeT0.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_KprimeT0, resources.GetString("numericBoxEOS_KprimeT0.ToolTip"));
             this.numericBoxEOS_KprimeT0.UpDown_Increment = 1D;
             this.numericBoxEOS_KprimeT0.Value = 4D;
             this.numericBoxEOS_KprimeT0.WordWrap = true;
@@ -2666,6 +1932,10 @@
             resources.ApplyResources(this.numericBoxEOS_T0, "numericBoxEOS_T0");
             this.numericBoxEOS_T0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_T0.DecimalPlaces = -1;
+            this.numericBoxEOS_T0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_T0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEOS_T0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_T0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxEOS_T0.Maximum = double.PositiveInfinity;
             this.numericBoxEOS_T0.Minimum = double.NegativeInfinity;
             this.numericBoxEOS_T0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2684,7 +1954,6 @@
             this.numericBoxEOS_T0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEOS_T0.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxEOS_T0.ThonsandsSeparator = false;
-            this.toolTip.SetToolTip(this.numericBoxEOS_T0, resources.GetString("numericBoxEOS_T0.ToolTip"));
             this.numericBoxEOS_T0.UpDown_Increment = 1D;
             this.numericBoxEOS_T0.Value = 300D;
             this.numericBoxEOS_T0.WordWrap = true;
@@ -2696,6 +1965,10 @@
             resources.ApplyResources(this.numericalTextBoxTemperature, "numericalTextBoxTemperature");
             this.numericalTextBoxTemperature.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTemperature.DecimalPlaces = -1;
+            this.numericalTextBoxTemperature.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTemperature.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxTemperature.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTemperature.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxTemperature.Maximum = double.PositiveInfinity;
             this.numericalTextBoxTemperature.Minimum = double.NegativeInfinity;
             this.numericalTextBoxTemperature.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2725,6 +1998,10 @@
             resources.ApplyResources(this.numericBoxPressure, "numericBoxPressure");
             this.numericBoxPressure.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPressure.DecimalPlaces = 5;
+            this.numericBoxPressure.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPressure.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxPressure.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPressure.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxPressure.Maximum = double.PositiveInfinity;
             this.numericBoxPressure.Minimum = double.NegativeInfinity;
             this.numericBoxPressure.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2803,6 +2080,10 @@
             resources.ApplyResources(this.numericalTextBoxHill, "numericalTextBoxHill");
             this.numericalTextBoxHill.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxHill.DecimalPlaces = -1;
+            this.numericalTextBoxHill.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxHill.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxHill.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxHill.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxHill.Maximum = double.PositiveInfinity;
             this.numericalTextBoxHill.Minimum = double.NegativeInfinity;
             this.numericalTextBoxHill.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2911,6 +2192,10 @@
             resources.ApplyResources(this.numericalTextBoxStress33, "numericalTextBoxStress33");
             this.numericalTextBoxStress33.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress33.DecimalPlaces = -1;
+            this.numericalTextBoxStress33.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress33.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress33.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress33.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress33.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress33.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2939,6 +2224,10 @@
             resources.ApplyResources(this.numericalTextBoxStress22, "numericalTextBoxStress22");
             this.numericalTextBoxStress22.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress22.DecimalPlaces = -1;
+            this.numericalTextBoxStress22.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress22.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress22.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress22.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress22.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress22.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2967,6 +2256,10 @@
             resources.ApplyResources(this.numericalTextBoxStress11, "numericalTextBoxStress11");
             this.numericalTextBoxStress11.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress11.DecimalPlaces = -1;
+            this.numericalTextBoxStress11.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress11.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress11.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress11.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress11.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress11.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -2995,6 +2288,10 @@
             resources.ApplyResources(this.numericalTextBoxStress23, "numericalTextBoxStress23");
             this.numericalTextBoxStress23.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress23.DecimalPlaces = -1;
+            this.numericalTextBoxStress23.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress23.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress23.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress23.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress23.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress23.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3023,6 +2320,10 @@
             resources.ApplyResources(this.numericalTextBoxStress13, "numericalTextBoxStress13");
             this.numericalTextBoxStress13.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress13.DecimalPlaces = -1;
+            this.numericalTextBoxStress13.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress13.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress13.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress13.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress13.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress13.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3051,6 +2352,10 @@
             resources.ApplyResources(this.numericalTextBoxStress12, "numericalTextBoxStress12");
             this.numericalTextBoxStress12.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStress12.DecimalPlaces = -1;
+            this.numericalTextBoxStress12.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress12.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStress12.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStress12.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStress12.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStress12.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3079,6 +2384,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain33, "numericalTextBoxStrain33");
             this.numericalTextBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain33.DecimalPlaces = -1;
+            this.numericalTextBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain33.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain33.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain33.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain33.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain33.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3107,6 +2416,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain11, "numericalTextBoxStrain11");
             this.numericalTextBoxStrain11.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain11.DecimalPlaces = -1;
+            this.numericalTextBoxStrain11.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain11.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain11.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain11.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain11.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain11.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3135,6 +2448,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain22, "numericalTextBoxStrain22");
             this.numericalTextBoxStrain22.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain22.DecimalPlaces = -1;
+            this.numericalTextBoxStrain22.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain22.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain22.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain22.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain22.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain22.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3163,6 +2480,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain12, "numericalTextBoxStrain12");
             this.numericalTextBoxStrain12.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain12.DecimalPlaces = -1;
+            this.numericalTextBoxStrain12.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain12.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain12.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain12.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain12.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain12.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3191,6 +2512,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain23, "numericalTextBoxStrain23");
             this.numericalTextBoxStrain23.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain23.DecimalPlaces = -1;
+            this.numericalTextBoxStrain23.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain23.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain23.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain23.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain23.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain23.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3219,6 +2544,10 @@
             resources.ApplyResources(this.numericalTextBoxStrain13, "numericalTextBoxStrain13");
             this.numericalTextBoxStrain13.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxStrain13.DecimalPlaces = -1;
+            this.numericalTextBoxStrain13.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain13.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxStrain13.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxStrain13.Maximum = double.PositiveInfinity;
             this.numericalTextBoxStrain13.Minimum = double.NegativeInfinity;
             this.numericalTextBoxStrain13.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -3429,7 +2758,6 @@
             resources.ApplyResources(this.textBoxFormula, "textBoxFormula");
             this.textBoxFormula.Name = "textBoxFormula";
             this.textBoxFormula.ReadOnly = true;
-            this.toolTip.SetToolTip(this.textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
             // 
             // label90
             // 
@@ -3440,7 +2768,6 @@
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
             this.textBoxName.Name = "textBoxName";
-            this.toolTip.SetToolTip(this.textBoxName, resources.GetString("textBoxName.ToolTip"));
             // 
             // label22
             // 
@@ -3509,33 +2836,9 @@
             this.tabPageAtom.PerformLayout();
             this.panelAtom.ResumeLayout(false);
             this.panelAtom.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.contextMenuStrip2.ResumeLayout(false);
-            this.tabPageAtomAdvanced.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomAmbient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomDiffusion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomEmmision)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomRadius)).EndInit();
             this.tabPageBondsPolyhedra.ResumeLayout(false);
             this.tabPageBondsPolyhedra.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondTrasparency)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondMaxLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondMinLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBondRadius)).EndInit();
-            this.groupBoxPolyhedron.ResumeLayout(false);
-            this.groupBoxPolyhedron.PerformLayout();
-            this.groupBoxEdge.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEdgeLineWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPolyhedronPlaneAlpha)).EndInit();
             this.tabPageReference.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -3573,13 +2876,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabPage tabPageAtom;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBoxAtoms;
-        private System.Windows.Forms.Button buttonChangeAtom;
-        private System.Windows.Forms.Button buttonDeleteAtom;
-        private System.Windows.Forms.Button buttonAddAtom;
         private System.Windows.Forms.TabPage tabPageReference;
         public System.Windows.Forms.TextBox textBoxTitle;
         public System.Windows.Forms.TextBox textBoxMemo;
@@ -3607,74 +2903,18 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomShininess;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomEmmision;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomDiffusion;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomAmbient;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomTransparency;
-        private System.Windows.Forms.Label label37;
-        public System.Windows.Forms.TabPage tabPageAtomAdvanced;
         public System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageBondsPolyhedra;
-        private System.Windows.Forms.ListBox listBoxBondsAndPolyhedra;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomSpecular;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button buttonChangeToSameElement;
-        private System.Windows.Forms.ComboBox comboBoxBondingAtom2;
-        private System.Windows.Forms.ComboBox comboBoxBondingAtom1;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtomRadius;
-        private System.Windows.Forms.NumericUpDown numericUpDownBondMinLength;
-        private System.Windows.Forms.NumericUpDown numericUpDownBondRadius;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Button buttonAddBond;
-        private System.Windows.Forms.Button buttonChangeBond;
-        private System.Windows.Forms.Button buttonDeleteBond;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.NumericUpDown numericUpDownBondMaxLength;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.NumericUpDown numericUpDownBondTrasparency;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.GroupBox groupBoxPolyhedron;
-        private System.Windows.Forms.CheckBox checkBoxShowVertexAtoms;
-        private System.Windows.Forms.CheckBox checkBoxShowCenterAtom;
-        private System.Windows.Forms.NumericUpDown numericUpDownPolyhedronPlaneAlpha;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.CheckBox checkBoxShowEdges;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDownEdgeLineWidth;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.GroupBox groupBoxEdge;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.CheckBox checkBoxShowPolyhedron;
-        private System.Windows.Forms.CheckBox checkBoxShowInnerBonds;
-        private System.Windows.Forms.Label label58;
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.TabPage tabPageBasicInfo;
-        private System.Windows.Forms.Label label59;
-        private NumericBox numericTextBoxA;
-        private NumericBox numericTextBoxAlpha;
-        private NumericBox numericTextBoxBeta;
-        private NumericBox numericTextBoxGamma;
-        private NumericBox numericTextBoxC;
-        private NumericBox numericTextBoxB;
+        private NumericBox numericBoxA;
+        private NumericBox numericBoxAlpha;
+        private NumericBox numericBoxBeta;
+        private NumericBox numericBoxGamma;
+        private NumericBox numericBoxC;
+        private NumericBox numericBoxB;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Button buttonAutoDetect;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelAtom;
         private NumericBox numericTextBoxGammaErr;
         private NumericBox numericTextBoxCErr;
@@ -3689,21 +2929,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private ColorControl colorControl;
-        private ColorControl colorControlAtomColor;
-        private ColorControl colorControlBond;
-        private ColorControl colorControlPlyhedron;
-        private ColorControl colorControlEdges;
-        private AtomInputControl atomInput;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonAtomDown;
-        private System.Windows.Forms.Button buttonAtomUp;
         private System.Windows.Forms.ToolStripMenuItem importCrystalFromCIFAMCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendThisCrystalToOtherSoftwareToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scatteringFactorToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem clearAllDataToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
@@ -3843,5 +3074,8 @@
         private System.Windows.Forms.ToolStripMenuItem revertCellConstantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem strainControlToolStripMenuItem;
+        public BondInputControl bondControl;
+        public AtomInputControl atomControl;
+        public System.Windows.Forms.TabPage tabPageAtom;
     }
 }
