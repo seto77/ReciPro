@@ -22,8 +22,8 @@ namespace Crystallography.Controls
 
         public Bound GetFromInterface()
         {
-            return new Bound(Crystal, numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger, 
-                checkBoxEquivalency.Checked, numericBoxDistance.Value, colorControl.Argb); ;
+            return new Bound(Crystal, numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger,
+                checkBoxEquivalency.Checked, numericBoxDistance.Value, colorControl.Argb);
         }
     }
 }

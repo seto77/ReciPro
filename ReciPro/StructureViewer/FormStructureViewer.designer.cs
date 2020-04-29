@@ -40,8 +40,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStructureViewer));
-            this.bindingSourceAtoms = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new ReciPro.DataSet();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonBoost = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -170,8 +168,6 @@
             this.numericBoxLatticePlaneOpacity = new Crystallography.Controls.NumericBox();
             this.labelMessage = new System.Windows.Forms.Label();
             this.boundsControl1 = new ReciPro.BoundsControl();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAtoms)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBoxShowUnitCell.SuspendLayout();
@@ -198,17 +194,6 @@
             this.tabPageText.SuspendLayout();
             this.tabPageBond.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // bindingSourceAtoms
-            // 
-            this.bindingSourceAtoms.DataMember = "DataTableAtom";
-            this.bindingSourceAtoms.DataSource = this.dataSet;
-            this.bindingSourceAtoms.PositionChanged += new System.EventHandler(this.bindingSourceAtom_PositionChanged);
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // toolStrip1
             // 
@@ -1523,8 +1508,6 @@
             this.Load += new System.EventHandler(this.FormStructureViewer_Load);
             this.VisibleChanged += new System.EventHandler(this.FormStructureViewer_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStructureViewer_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAtoms)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1691,7 +1674,6 @@
         private Crystallography.Controls.NumericBox numericBox3;
         private Crystallography.Controls.NumericBox numericBox1;
         private System.Windows.Forms.BindingSource bindingSourceAtoms;
-        private DataSet dataSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

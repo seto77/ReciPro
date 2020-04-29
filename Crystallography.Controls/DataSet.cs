@@ -15,26 +15,73 @@ namespace Crystallography.Controls
 {
     public partial class DataSet
     {
+        #region 共通の静的関数
+        public static Bitmap ColorImage(int argb)
+        {
+            var bmp = new Bitmap(40, 15);
+            var g = Graphics.FromImage(bmp);
+            g.Clear(Color.FromArgb(argb));
+            return bmp;
+        }
+
+        public static void MoveItemBase(DataRowCollection rows, int srcIndex, int destIndex)
+        {
+            if (srcIndex < rows.Count && destIndex < rows.Count)
+                for (int j = 0; j < rows[srcIndex].ItemArray.Length; j++)
+                {
+                    var obj = rows[srcIndex][j];
+                    rows[srcIndex][j] = rows[destIndex][j];
+                    rows[destIndex][j] = obj;
+                }
+        }
+
+        public static void ReplaceBase(DataRowCollection rows, DataRow r, int i)
+        {
+            for (int j = 0; j < rows[i].ItemArray.Length; j++)
+                rows[i][j] = r[j];
+        }
+        #endregion
+
+        partial class DataTableBoundDataTable
+        {
+            public Bound Get(int i) => Rows[i][BoundColumn] as Bound;
+            public Bound[] GetAll() => Rows.Select(r => (r as DataTableBoundRow).Bound as Bound).ToArray();
+            public void Replace(Bound bound, int i) => ReplaceBase(Rows, createRow(bound), i);
+            public void Add(Bound bound) => Rows.Add(createRow(bound));
+            public new void Clear() => Rows.Clear();
+            public void Remove(int i) => Rows.RemoveAt(i);
+            public void MoveItem(int srcIndex, int destIndex) => MoveItemBase(Rows, srcIndex, destIndex);
+
+            private DataTableBoundRow createRow(Bound bound)
+            {
+                var dr = NewDataTableBoundRow();
+                dr.Bound = bound;
+                //dr[EnabledColumn] = bound.Enabled;
+                dr.h = bound.BaseIndex.H;
+                dr.k = bound.BaseIndex.K;
+                dr.l = bound.BaseIndex.L;
+                dr.Equivalency = bound.Equivalency;
+                dr.Distance = bound.Distance.ToString("f3");
+                //dr.DistanceD = bound.Distance;
+
+                dr.Color = ColorImage(bound.ColorArgb);
+                return dr;
+            }
+        }
+
+        partial class DataTableLatticePlaneDataTable
+        {
+        }
+
         partial class DataTableBondDataTable
         {
             public Bonds Get(int i) => Rows[i][BondColumn] as Bonds;
-
             public Bonds[] GetAll() => Rows.Select(r => (r as DataTableBondRow)[BondColumn] as Bonds).ToArray();
-
-            public void Replace(Bonds bonds, int i)
-            {
-                var dr = createRow(bonds);
-
-                for (int j = 0; j < Columns.Count; j++)
-                    Rows[i][j] = dr[j];
-            }
-
+            public void Replace(Bonds bonds, int i) => ReplaceBase(Rows, createRow(bonds), i);
             public void Add(Bonds bonds) => Rows.Add(createRow(bonds));
-
             public new void Clear() => Rows.Clear();
-
             public void Remove(int i) => Rows.RemoveAt(i);
-
+            public void MoveItem(int srcIndex, int destIndex) => MoveItemBase(Rows, srcIndex, destIndex);
             private DataTableBondRow createRow(Bonds bonds)
             {
                 var dr = NewDataTableBondRow();
@@ -44,16 +91,8 @@ namespace Crystallography.Controls
                 dr[VertexColumn] = bonds.Element2;
                 dr[_Max_len_Column] = bonds.MaxLength;
                 dr[_Min_len_Column] = bonds.MinLength;
-
-                var bmp1 = new Bitmap(40, 15);
-                var g1 = Graphics.FromImage(bmp1);
-                g1.Clear(Color.FromArgb(bonds.ArgbBond));
-                dr[Bond_colorColumn] = bmp1;
-
-                var bmp2 = new Bitmap(40, 15);
-                var g2 = Graphics.FromImage(bmp2);
-                g2.Clear(Color.FromArgb(bonds.ArgbPolyhedron));
-                dr[Polyhedron_colorColumn] = bmp2;
+                dr[Bond_colorColumn] = ColorImage(bonds.ArgbBond);
+                dr[Polyhedron_colorColumn] = ColorImage(bonds.ArgbPolyhedron);
 
                 return dr;
             }
@@ -62,22 +101,12 @@ namespace Crystallography.Controls
         partial class DataTableAtomDataTable
         {
             public Atoms Get(int i) => Rows[i][AtomColumn] as Atoms;
-
             public Atoms[] GetAll() => Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms).ToArray();
-
-            public void Replace(Atoms atoms, int i)
-            {
-                var dr = createRow(atoms);
-
-                for (int j = 0; j < Columns.Count; j++)
-                    Rows[i][j] = dr[j];
-            }
-
+            public void Replace(Atoms atoms, int i) => ReplaceBase(Rows, createRow(atoms), i);
             public void Add(Atoms atom) => Rows.Add(createRow(atom));
-
             public new void Clear() => Rows.Clear();
-
             public void Remove(int i) => Rows.RemoveAt(i);
+            public void MoveItem(int srcIndex, int destIndex) => MoveItemBase(Rows, srcIndex, destIndex);
 
             private DataTableAtomRow createRow(Atoms atom)
             {
@@ -94,21 +123,6 @@ namespace Crystallography.Controls
                 dr[this._Occ_Column] = atom.Occ;
                 return dr;
             }
-
-            public void MoveItem(int srcIndex, int destIndex)
-            {
-                if (srcIndex < this.Rows.Count && destIndex < this.Rows.Count)
-                {
-                    for (int j = 0; j < Columns.Count; j++)
-                    {
-                        var obj = Rows[srcIndex][j];
-                        this.Rows[srcIndex][j] = this.Rows[destIndex][j];
-                        this.Rows[destIndex][j] = obj;
-                    }
-                }
-            }
-
-
 
             public static string GetStringFromDouble(double d)
             {
@@ -168,10 +182,7 @@ namespace Crystallography.Controls
                 this.Rows.Add(dr);
             }
 
-            public new void Clear()
-            {
-                this.Rows.Clear();
-            }
+            public new void Clear() => Rows.Clear();
         }
     }
 }
