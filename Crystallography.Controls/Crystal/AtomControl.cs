@@ -1,6 +1,4 @@
-﻿using Microsoft.Scripting.Utils;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -52,22 +50,21 @@ namespace Crystallography.Controls
                 details2 = value;
                 if (value == false)
                 {
-                    numericalTextBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
+                    numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
                         numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 60;
 
-                    labelBiso_.Visible = labelB11_.Visible = labelB12_.Visible = labelB13_.Visible = labelB22_.Visible = labelB23_.Visible = labelB33_.Visible =
-                        numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
+                 numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
                  = numericalTextBoxB23err.Visible = numericalTextBoxB33err.Visible = false;
                 }
                 else
                 {
-                    numericalTextBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
+                    numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
                         numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 45;
 
-                    numericalTextBoxBisoerr.Visible = labelBiso_.Visible = numericalTextBoxBiso.Visible =
-                    numericalTextBoxB33err.Visible = labelB33_.Visible = numericalTextBoxB23err.Visible = labelB23_.Visible =
-                    numericalTextBoxB22err.Visible = labelB22_.Visible = numericalTextBoxB13err.Visible = labelB13_.Visible =
-                    numericalTextBoxB12err.Visible = labelB12_.Visible = numericalTextBoxB11err.Visible = labelB11_.Visible = true;
+                    numericalTextBoxBisoerr.Visible =  numericBoxBiso.Visible =
+                    numericalTextBoxB33err.Visible =  numericalTextBoxB23err.Visible = 
+                    numericalTextBoxB22err.Visible = numericalTextBoxB13err.Visible = 
+                    numericalTextBoxB12err.Visible =  numericalTextBoxB11err.Visible =  true;
                 }
             }
             get => details2;
@@ -87,7 +84,7 @@ namespace Crystallography.Controls
 
         #region 温度因子 プロパティ
         [Category("Atom")]
-        public double Biso { set => numericalTextBoxBiso.Value = value; get => numericalTextBoxBiso.Value; }
+        public double Biso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
         [Category("Atom")]
         public double BisoErr { set => numericalTextBoxBisoerr.Value = value; get => numericalTextBoxBisoerr.Value; }
         [Category("Atom")]
@@ -231,17 +228,12 @@ namespace Crystallography.Controls
             InitializeComponent();
             table = dataSet.DataTableAtom;
             comboBoxAtom.SelectedIndex = 0;
+            comboBoxNeutron.SelectedIndex = 0;
             //   toolTip.SetTooltipToUsercontrol(this);
-        } 
+        }
         #endregion
 
-        private void radioButtonIsotoropy_CheckedChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
-            flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
-        }
-
-
+        #region タブベージの表示/非表示制御
         private void setTabPages()
         {
             tabControl.TabPages.Clear();
@@ -251,14 +243,20 @@ namespace Crystallography.Controls
             if (DebyeWallerTabVisible)
                 tabControl.TabPages.Add(tabPageDebyeWaller);
 
-            if (ScatteringFactorTabVisible) 
+            if (ScatteringFactorTabVisible)
                 tabControl.TabPages.Add(tabPageScatteringFactor);
 
             if (AppearanceTabVisible)
                 tabControl.TabPages.Add(tabPageAppearance);
         }
 
-      
+        #endregion
+
+        private void radioButtonIsotoropy_CheckedChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
+            flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
+        }
 
         //原子番号コンボ
         private void comboBoxAtom_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -296,7 +294,6 @@ namespace Crystallography.Controls
 
         private void checkBoxDebyeWallerError_CheckedChanged(object sender, EventArgs e) => DebyeWallerError = checkBoxDetailsDebyeWallerError.Checked;
 
-        private void AtomInputControl_Load(object sender, EventArgs e) => comboBoxNeutron.SelectedIndex = 0;
 
         #region 中性子関連
         private void comboBoxNeutron_SelectedIndexChanged(object sender, EventArgs e)
@@ -341,11 +338,6 @@ namespace Crystallography.Controls
                 IsotopicComposition = formIsotopeComposition.IsotopicComposition;
         }
         #endregion
-
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         #region データベース操作
@@ -559,15 +551,6 @@ namespace Crystallography.Controls
             if (bindingSource.Position >= 0 && bindingSource.Count > 0)
                 SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
         }
-
-
-
-        
-        
-
-
-
-
 
         private void listBoxAtoms_MouseUp(object sender, MouseEventArgs e)
         {

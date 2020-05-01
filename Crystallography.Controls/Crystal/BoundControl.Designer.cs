@@ -43,15 +43,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equivalencyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MultipleOfD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonAddBond = new System.Windows.Forms.Button();
             this.buttonChangeBond = new System.Windows.Forms.Button();
@@ -59,19 +51,28 @@
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equivalencyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new Crystallography.Controls.DataSet();
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
             this.colorControl = new Crystallography.Controls.ColorControl();
             this.numericBoxDistanceD = new Crystallography.Controls.NumericBox();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
             this.numericBoxL = new Crystallography.Controls.NumericBox();
             this.numericBoxK = new Crystallography.Controls.NumericBox();
             this.numericBoxH = new Crystallography.Controls.NumericBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -91,10 +92,10 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 355);
+            this.panel2.Location = new System.Drawing.Point(0, 356);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 45);
+            this.panel2.Size = new System.Drawing.Size(550, 44);
             this.panel2.TabIndex = 129;
             // 
             // checkBoxEquivalency
@@ -104,7 +105,7 @@
             this.checkBoxEquivalency.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEquivalency.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.checkBoxEquivalency.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxEquivalency.Location = new System.Drawing.Point(174, 22);
+            this.checkBoxEquivalency.Location = new System.Drawing.Point(174, 21);
             this.checkBoxEquivalency.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.checkBoxEquivalency.Name = "checkBoxEquivalency";
             this.checkBoxEquivalency.Size = new System.Drawing.Size(89, 19);
@@ -118,7 +119,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(153, 18);
+            this.label2.Location = new System.Drawing.Point(153, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 21);
             this.label2.TabIndex = 90;
@@ -129,7 +130,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(4, 18);
+            this.label1.Location = new System.Drawing.Point(4, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 21);
             this.label1.TabIndex = 90;
@@ -140,7 +141,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 9F);
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(485, 2);
+            this.label11.Location = new System.Drawing.Point(472, 2);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 15);
             this.label11.TabIndex = 120;
@@ -184,7 +185,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(273, 2);
+            this.label6.Location = new System.Drawing.Point(280, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 15);
             this.label6.TabIndex = 90;
@@ -248,10 +249,104 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(550, 322);
+            this.dataGridView.Size = new System.Drawing.Size(550, 328);
             this.dataGridView.TabIndex = 127;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // MultipleOfD
+            // 
+            this.MultipleOfD.DataPropertyName = "MultipleOfD";
+            this.MultipleOfD.HeaderText = "Multiples of d";
+            this.MultipleOfD.Name = "MultipleOfD";
+            this.MultipleOfD.ReadOnly = true;
+            this.MultipleOfD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonAddBond);
+            this.panel1.Controls.Add(this.buttonChangeBond);
+            this.panel1.Controls.Add(this.buttonDeleteBond);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 328);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(550, 28);
+            this.panel1.TabIndex = 128;
+            // 
+            // buttonAddBond
+            // 
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonAddBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
+            this.buttonAddBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonAddBond.Location = new System.Drawing.Point(0, 0);
+            this.buttonAddBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddBond.Name = "buttonAddBond";
+            this.buttonAddBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonAddBond.TabIndex = 121;
+            this.buttonAddBond.Text = "Add";
+            this.buttonAddBond.UseVisualStyleBackColor = false;
+            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonChangeBond
+            // 
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonChangeBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
+            this.buttonChangeBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonChangeBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChangeBond.Location = new System.Drawing.Point(75, 0);
+            this.buttonChangeBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonChangeBond.Name = "buttonChangeBond";
+            this.buttonChangeBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonChangeBond.TabIndex = 122;
+            this.buttonChangeBond.Text = "Replace";
+            this.buttonChangeBond.UseVisualStyleBackColor = false;
+            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
+            // 
+            // buttonDeleteBond
+            // 
+            this.buttonDeleteBond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteBond.AutoSize = true;
+            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonDeleteBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonDeleteBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonDeleteBond.Location = new System.Drawing.Point(475, 0);
+            this.buttonDeleteBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDeleteBond.Name = "buttonDeleteBond";
+            this.buttonDeleteBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonDeleteBond.TabIndex = 123;
+            this.buttonDeleteBond.Text = "Delete";
+            this.buttonDeleteBond.UseVisualStyleBackColor = false;
+            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.DataPropertyName = "Color";
+            this.dataGridViewImageColumn3.HeaderText = "Color";
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn3.Width = 60;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.DataPropertyName = "Color";
+            this.dataGridViewImageColumn4.HeaderText = "Color";
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn4.Width = 60;
+            // 
+            // dataGridViewImageColumn5
+            // 
+            this.dataGridViewImageColumn5.DataPropertyName = "Color";
+            this.dataGridViewImageColumn5.HeaderText = "Color";
+            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn5.Width = 60;
             // 
             // enabledDataGridViewCheckBoxColumn
             // 
@@ -304,14 +399,6 @@
             this.distanceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.distanceDataGridViewTextBoxColumn.Width = 80;
             // 
-            // MultipleOfD
-            // 
-            this.MultipleOfD.DataPropertyName = "MultipleOfD";
-            this.MultipleOfD.HeaderText = "Multiples of d";
-            this.MultipleOfD.Name = "MultipleOfD";
-            this.MultipleOfD.ReadOnly = true;
-            this.MultipleOfD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // bindingSource
             // 
             this.bindingSource.DataMember = "DataTableBound";
@@ -324,92 +411,6 @@
             this.dataSet.DataSetName = "DataSet";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonAddBond);
-            this.panel1.Controls.Add(this.buttonChangeBond);
-            this.panel1.Controls.Add(this.buttonDeleteBond);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 322);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 33);
-            this.panel1.TabIndex = 128;
-            // 
-            // buttonAddBond
-            // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonAddBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddBond.Location = new System.Drawing.Point(0, 2);
-            this.buttonAddBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonAddBond.Name = "buttonAddBond";
-            this.buttonAddBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonAddBond.TabIndex = 121;
-            this.buttonAddBond.Text = "Add";
-            this.buttonAddBond.UseVisualStyleBackColor = false;
-            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonChangeBond
-            // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonChangeBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
-            this.buttonChangeBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonChangeBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChangeBond.Location = new System.Drawing.Point(75, 2);
-            this.buttonChangeBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonChangeBond.Name = "buttonChangeBond";
-            this.buttonChangeBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonChangeBond.TabIndex = 122;
-            this.buttonChangeBond.Text = "Replace";
-            this.buttonChangeBond.UseVisualStyleBackColor = false;
-            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
-            // 
-            // buttonDeleteBond
-            // 
-            this.buttonDeleteBond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteBond.AutoSize = true;
-            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonDeleteBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteBond.Location = new System.Drawing.Point(475, 2);
-            this.buttonDeleteBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonDeleteBond.Name = "buttonDeleteBond";
-            this.buttonDeleteBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonDeleteBond.TabIndex = 123;
-            this.buttonDeleteBond.Text = "Delete";
-            this.buttonDeleteBond.UseVisualStyleBackColor = false;
-            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.DataPropertyName = "Color";
-            this.dataGridViewImageColumn3.HeaderText = "Color";
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn3.Width = 60;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            this.dataGridViewImageColumn4.DataPropertyName = "Color";
-            this.dataGridViewImageColumn4.HeaderText = "Color";
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn4.Width = 60;
-            // 
-            // dataGridViewImageColumn5
-            // 
-            this.dataGridViewImageColumn5.DataPropertyName = "Color";
-            this.dataGridViewImageColumn5.HeaderText = "Color";
-            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn5.Width = 60;
-            // 
             // dataGridViewImageColumn6
             // 
             this.dataGridViewImageColumn6.DataPropertyName = "Color";
@@ -418,6 +419,14 @@
             this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn6.Width = 60;
             // 
+            // dataGridViewImageColumn7
+            // 
+            this.dataGridViewImageColumn7.DataPropertyName = "Color";
+            this.dataGridViewImageColumn7.HeaderText = "Color";
+            this.dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
+            this.dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn7.Width = 60;
+            // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
@@ -425,6 +434,52 @@
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
             this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // numericBoxDistance
+            // 
+            this.numericBoxDistance.AllowMouseControl = false;
+            this.numericBoxDistance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.DecimalPlaces = 3;
+            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDistance.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxDistance.FooterText = "Å)";
+            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDistance.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxDistance.HeaderText = "";
+            this.numericBoxDistance.Location = new System.Drawing.Point(377, 19);
+            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDistance.Maximum = 100D;
+            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxDistance.Minimum = -100D;
+            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxDistance.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxDistance.MouseSpeed = 1D;
+            this.numericBoxDistance.Multiline = false;
+            this.numericBoxDistance.Name = "numericBoxDistance";
+            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxDistance.RadianValue = 0D;
+            this.numericBoxDistance.ReadOnly = false;
+            this.numericBoxDistance.RestrictLimitValue = true;
+            this.numericBoxDistance.ShowFraction = false;
+            this.numericBoxDistance.ShowPositiveSign = false;
+            this.numericBoxDistance.ShowUpDown = false;
+            this.numericBoxDistance.Size = new System.Drawing.Size(66, 25);
+            this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.SmartIncrement = false;
+            this.numericBoxDistance.TabIndex = 119;
+            this.numericBoxDistance.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxDistance.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.ToolTip = "";
+            this.numericBoxDistance.UpDown_Increment = 1D;
+            this.numericBoxDistance.Value = 0D;
+            this.numericBoxDistance.WordWrap = true;
+            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
             // 
             // colorControl
             // 
@@ -439,7 +494,7 @@
             this.colorControl.FooterText = "";
             this.colorControl.Green = 192;
             this.colorControl.GreenF = 0.7529412F;
-            this.colorControl.Location = new System.Drawing.Point(504, 22);
+            this.colorControl.Location = new System.Drawing.Point(491, 21);
             this.colorControl.Margin = new System.Windows.Forms.Padding(0);
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 0;
@@ -463,7 +518,7 @@
             this.numericBoxDistanceD.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDistanceD.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxDistanceD.HeaderText = "d×";
-            this.numericBoxDistanceD.Location = new System.Drawing.Point(273, 19);
+            this.numericBoxDistanceD.Location = new System.Drawing.Point(280, 19);
             this.numericBoxDistanceD.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxDistanceD.Maximum = 20D;
             this.numericBoxDistanceD.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -480,7 +535,7 @@
             this.numericBoxDistanceD.ShowFraction = false;
             this.numericBoxDistanceD.ShowPositiveSign = false;
             this.numericBoxDistanceD.ShowUpDown = true;
-            this.numericBoxDistanceD.Size = new System.Drawing.Size(108, 25);
+            this.numericBoxDistanceD.Size = new System.Drawing.Size(96, 25);
             this.numericBoxDistanceD.SkipEventDuringInput = false;
             this.numericBoxDistanceD.SmartIncrement = false;
             this.numericBoxDistanceD.TabIndex = 119;
@@ -493,52 +548,6 @@
             this.numericBoxDistanceD.Value = 1D;
             this.numericBoxDistanceD.WordWrap = true;
             this.numericBoxDistanceD.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
-            // 
-            // numericBoxDistance
-            // 
-            this.numericBoxDistance.AllowMouseControl = false;
-            this.numericBoxDistance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.DecimalPlaces = 3;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxDistance.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxDistance.FooterText = "Å)";
-            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxDistance.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxDistance.HeaderText = "";
-            this.numericBoxDistance.Location = new System.Drawing.Point(381, 19);
-            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDistance.Maximum = 100D;
-            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxDistance.Minimum = -100D;
-            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDistance.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxDistance.MouseSpeed = 1D;
-            this.numericBoxDistance.Multiline = false;
-            this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDistance.RadianValue = 0D;
-            this.numericBoxDistance.ReadOnly = false;
-            this.numericBoxDistance.RestrictLimitValue = true;
-            this.numericBoxDistance.ShowFraction = false;
-            this.numericBoxDistance.ShowPositiveSign = false;
-            this.numericBoxDistance.ShowUpDown = false;
-            this.numericBoxDistance.Size = new System.Drawing.Size(74, 27);
-            this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.SmartIncrement = false;
-            this.numericBoxDistance.TabIndex = 119;
-            this.numericBoxDistance.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDistance.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDistance.ThonsandsSeparator = true;
-            this.numericBoxDistance.ToolTip = "";
-            this.numericBoxDistance.UpDown_Increment = 1D;
-            this.numericBoxDistance.Value = 0D;
-            this.numericBoxDistance.WordWrap = true;
-            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
             // 
             // numericBoxL
             // 
@@ -555,7 +564,7 @@
             this.numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxL.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxL.HeaderText = "";
-            this.numericBoxL.Location = new System.Drawing.Point(111, 19);
+            this.numericBoxL.Location = new System.Drawing.Point(111, 18);
             this.numericBoxL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxL.Maximum = 10D;
             this.numericBoxL.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -601,7 +610,7 @@
             this.numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxK.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxK.HeaderText = "";
-            this.numericBoxK.Location = new System.Drawing.Point(65, 19);
+            this.numericBoxK.Location = new System.Drawing.Point(65, 18);
             this.numericBoxK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxK.Maximum = 10D;
             this.numericBoxK.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -647,7 +656,7 @@
             this.numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxH.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxH.HeaderText = "";
-            this.numericBoxH.Location = new System.Drawing.Point(20, 19);
+            this.numericBoxH.Location = new System.Drawing.Point(20, 18);
             this.numericBoxH.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxH.Maximum = 10D;
             this.numericBoxH.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -692,10 +701,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -739,5 +748,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MultipleOfD;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
     }
 }
