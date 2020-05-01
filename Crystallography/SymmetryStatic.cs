@@ -13627,6 +13627,9 @@ new[]{535,2,6,2,1,1}
             #endregion
         }
 
+        public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym)
+            => GenerateEquivalentPlanes(index.H, index.K, index.L, sym);
+
         /// <summary>
         /// 対称性symに従って(hkl)と等価な結晶軸を生成する
         /// </summary>

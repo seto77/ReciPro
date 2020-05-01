@@ -563,10 +563,12 @@ namespace Crystallography.Controls
             bondControl.AddRange(Crystal.Bonds);
 
             //Boundsコントロール
+            boundControl.Crystal = Crystal;
             boundControl.Clear();
             boundControl.AddRange(Crystal.Bounds);
 
             //LatticePlaneコントロール
+            latticePlaneControl.Crystal = Crystal;
             latticePlaneControl.Clear();
             latticePlaneControl.AddRange(crystal.LatticePlanes);
 

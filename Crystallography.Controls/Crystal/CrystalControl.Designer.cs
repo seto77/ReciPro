@@ -100,7 +100,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.tabPageAtom = new System.Windows.Forms.TabPage();
-            this.atomControl = new Crystallography.Controls.AtomInputControl();
+            this.atomControl = new Crystallography.Controls.AtomControl();
             this.panelAtom = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -226,6 +226,7 @@
             this.tabPageBounds = new System.Windows.Forms.TabPage();
             this.boundControl = new Crystallography.Controls.BoundControl();
             this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
+            this.latticePlaneControl = new Crystallography.Controls.LatticePlaneControl();
             this.textBoxFormula = new System.Windows.Forms.TextBox();
             this.label90 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -234,7 +235,6 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.latticePlaneControl = new Crystallography.Controls.LatticePlaneControl();
             this.tabControl.SuspendLayout();
             this.tabPageBasicInfo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -521,10 +521,10 @@
             this.tableLayoutPanel2.Controls.Add(this.label48, 4, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // numericTextBoxGammaErr
+            // numericBoxGammaErr
             // 
             this.numericBoxGammaErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxGammaErr, "numericTextBoxGammaErr");
+            resources.ApplyResources(this.numericBoxGammaErr, "numericBoxGammaErr");
             this.numericBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGammaErr.DecimalPlaces = -1;
             this.numericBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -536,7 +536,7 @@
             this.numericBoxGammaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxGammaErr.MouseSpeed = 1D;
             this.numericBoxGammaErr.Multiline = false;
-            this.numericBoxGammaErr.Name = "numericTextBoxGammaErr";
+            this.numericBoxGammaErr.Name = "numericBoxGammaErr";
             this.numericBoxGammaErr.RadianValue = 0D;
             this.numericBoxGammaErr.ReadOnly = false;
             this.numericBoxGammaErr.RestrictLimitValue = false;
@@ -554,10 +554,10 @@
             this.numericBoxGammaErr.WordWrap = true;
             this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
             // 
-            // numericTextBoxBetaErr
+            // numericBoxBetaErr
             // 
             this.numericBoxBetaErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxBetaErr, "numericTextBoxBetaErr");
+            resources.ApplyResources(this.numericBoxBetaErr, "numericBoxBetaErr");
             this.numericBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBetaErr.DecimalPlaces = -1;
             this.numericBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -569,7 +569,7 @@
             this.numericBoxBetaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxBetaErr.MouseSpeed = 1D;
             this.numericBoxBetaErr.Multiline = false;
-            this.numericBoxBetaErr.Name = "numericTextBoxBetaErr";
+            this.numericBoxBetaErr.Name = "numericBoxBetaErr";
             this.numericBoxBetaErr.RadianValue = 0D;
             this.numericBoxBetaErr.ReadOnly = false;
             this.numericBoxBetaErr.RestrictLimitValue = false;
@@ -587,10 +587,10 @@
             this.numericBoxBetaErr.WordWrap = true;
             this.numericBoxBetaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
             // 
-            // numericTextBoxAlphaErr
+            // numericBoxAlphaErr
             // 
             this.numericBoxAlphaErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxAlphaErr, "numericTextBoxAlphaErr");
+            resources.ApplyResources(this.numericBoxAlphaErr, "numericBoxAlphaErr");
             this.numericBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlphaErr.DecimalPlaces = -1;
             this.numericBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -602,7 +602,7 @@
             this.numericBoxAlphaErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxAlphaErr.MouseSpeed = 1D;
             this.numericBoxAlphaErr.Multiline = false;
-            this.numericBoxAlphaErr.Name = "numericTextBoxAlphaErr";
+            this.numericBoxAlphaErr.Name = "numericBoxAlphaErr";
             this.numericBoxAlphaErr.RadianValue = 0D;
             this.numericBoxAlphaErr.ReadOnly = false;
             this.numericBoxAlphaErr.RestrictLimitValue = false;
@@ -792,10 +792,10 @@
             resources.ApplyResources(this.label45, "label45");
             this.label45.Name = "label45";
             // 
-            // numericTextBoxAErr
+            // numericBoxAErr
             // 
             this.numericBoxAErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxAErr, "numericTextBoxAErr");
+            resources.ApplyResources(this.numericBoxAErr, "numericBoxAErr");
             this.numericBoxAErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAErr.DecimalPlaces = -1;
             this.numericBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -807,7 +807,7 @@
             this.numericBoxAErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxAErr.MouseSpeed = 1D;
             this.numericBoxAErr.Multiline = false;
-            this.numericBoxAErr.Name = "numericTextBoxAErr";
+            this.numericBoxAErr.Name = "numericBoxAErr";
             this.numericBoxAErr.RadianValue = 0D;
             this.numericBoxAErr.ReadOnly = false;
             this.numericBoxAErr.RestrictLimitValue = false;
@@ -845,10 +845,10 @@
             resources.ApplyResources(this.label24, "label24");
             this.label24.Name = "label24";
             // 
-            // numericTextBoxCErr
+            // numericBoxCErr
             // 
             this.numericBoxCErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxCErr, "numericTextBoxCErr");
+            resources.ApplyResources(this.numericBoxCErr, "numericBoxCErr");
             this.numericBoxCErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCErr.DecimalPlaces = -1;
             this.numericBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -860,7 +860,7 @@
             this.numericBoxCErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxCErr.MouseSpeed = 1D;
             this.numericBoxCErr.Multiline = false;
-            this.numericBoxCErr.Name = "numericTextBoxCErr";
+            this.numericBoxCErr.Name = "numericBoxCErr";
             this.numericBoxCErr.RadianValue = 0D;
             this.numericBoxCErr.ReadOnly = false;
             this.numericBoxCErr.RestrictLimitValue = false;
@@ -878,10 +878,10 @@
             this.numericBoxCErr.WordWrap = true;
             this.numericBoxCErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxUnitCell_ValueChanged);
             // 
-            // numericTextBoxBErr
+            // numericBoxBErr
             // 
             this.numericBoxBErr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxBErr, "numericTextBoxBErr");
+            resources.ApplyResources(this.numericBoxBErr, "numericBoxBErr");
             this.numericBoxBErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBErr.DecimalPlaces = -1;
             this.numericBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -893,7 +893,7 @@
             this.numericBoxBErr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
             this.numericBoxBErr.MouseSpeed = 1D;
             this.numericBoxBErr.Multiline = false;
-            this.numericBoxBErr.Name = "numericTextBoxBErr";
+            this.numericBoxBErr.Name = "numericBoxBErr";
             this.numericBoxBErr.RadianValue = 0D;
             this.numericBoxBErr.ReadOnly = false;
             this.numericBoxBErr.RestrictLimitValue = false;
@@ -2772,12 +2772,20 @@
             this.boundControl.Crystal = null;
             resources.ApplyResources(this.boundControl, "boundControl");
             this.boundControl.Name = "boundControl";
+            this.boundControl.SkipEvent = false;
             // 
             // tabPageLatticePlane
             // 
             this.tabPageLatticePlane.Controls.Add(this.latticePlaneControl);
             resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
             this.tabPageLatticePlane.Name = "tabPageLatticePlane";
+            // 
+            // latticePlaneControl
+            // 
+            this.latticePlaneControl.Crystal = null;
+            resources.ApplyResources(this.latticePlaneControl, "latticePlaneControl");
+            this.latticePlaneControl.Name = "latticePlaneControl";
+            this.latticePlaneControl.SkipEvent = false;
             // 
             // textBoxFormula
             // 
@@ -2828,11 +2836,6 @@
             this.panel4.Controls.Add(this.buttonReset);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            // 
-            // latticePlaneControl
-            // 
-            resources.ApplyResources(this.latticePlaneControl, "latticePlaneControl");
-            this.latticePlaneControl.Name = "latticePlaneControl";
             // 
             // CrystalControl
             // 
@@ -3108,7 +3111,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem strainControlToolStripMenuItem;
         public BondInputControl bondControl;
-        public AtomInputControl atomControl;
+        public AtomControl atomControl;
         public System.Windows.Forms.TabPage tabPageAtom;
         private System.Windows.Forms.TabPage tabPageBounds;
         private System.Windows.Forms.TabPage tabPageLatticePlane;

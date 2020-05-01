@@ -1,4 +1,5 @@
 using Crystallography;
+using Crystallography.Controls;
 using Crystallography.OpenGL;
 using OpenTK;
 using System;
@@ -27,6 +28,11 @@ namespace ReciPro
         private V3 shift;
         private Matrix3d axes;
         private List<(V4 prm, Color color)> bounds;
+
+        private BoundControl boundControl;
+        private LatticePlaneControl latticePlaneControl;
+        private AtomControl atomControl;
+        private BondInputControl bondControl;
 
         #endregion フィールド
 
@@ -60,101 +66,11 @@ namespace ReciPro
         private class cellID { }
 
         private class latticeID { }
-
         private class boundsID { }
 
         public readonly object lockObj = new object();
 
-        #region 境界(Bounds)のFlowLayoutPanel関連
-
-        private void checkBoxShowBoundPlanes_CheckedChanged(object sender, EventArgs e) => SetGLObjects(null);
-
-        private void AddBoundary_Click(object sender, EventArgs e)
-        {
-            /*
-            skipSetCrystal = true;
-            BoundsControl bc = new BoundsControl(Crystal);
-            bc.Changed += Bounds_Changed;
-            bc.ColorChanged += Bounds_Changed;
-            bc.Delete += Bounds_Delete;
-            flowLayoutPanelBounds.Controls.Add(bc);
-            if (Crystal.Bounds == null)
-                Crystal.Bounds = new List<Bound>();
-            Crystal.Bounds.Add(bc.Bound);
-            skipSetCrystal = false;
-            SetGLObjects(null);
-            */
-        }
-
-        private void Bounds_Changed(object sender, EventArgs e)
-        {
-            /*
-            var bc = (BoundsControl)sender;
-            var index = flowLayoutPanelBounds.Controls.IndexOf(bc);
-            Crystal.Bounds[index] = bc.Bound;
-            SetGLObjects(null);
-            */
-        }
-
-        private void Bounds_Delete(object sender, EventArgs e)
-        {
-            /*
-            var bc = (BoundsControl)sender;
-            var index = flowLayoutPanelBounds.Controls.IndexOf(bc);
-            Crystal.Bounds.RemoveAt(index);
-            flowLayoutPanelBounds.Controls.Remove(bc);
-            SetGLObjects(null);
-            */
-        }
-
-        /// <summary>
-        /// 結晶そのものが変更されたときに呼び出されて、境界条件をパネルに表示する
-        /// </summary>
-        /// <param name="crystal"></param>
-        public void initBoundsControl(Crystal crystal)
-        {
-            /*
-            skipSetCrystal = true;
-
-            flowLayoutPanelBounds.Controls.Clear();
-
-            if (crystal.Bounds == null || crystal.Bounds.Count == 0)
-            {
-                int n = crystal.Symmetry.CrystalSystemNumber;
-                if (n >= 0 && n <= 3)
-                    crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.7,  Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 1, 0, true, 0.7,  Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 0, 1, true, 0.7,  Color.Green.ToArgb()),
-                        };
-                else if (n >= 4 && n <= 6)
-                    crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.7,  Color.Green.ToArgb()),
-                        new Bound(crystal, 0, 0, 1, true, 0.7,  Color.Green.ToArgb()),
-                        };
-                else
-                    crystal.Bounds = new List<Bound> {
-                        new Bound(crystal, 1, 0, 0, true, 0.75, Color.Green.ToArgb()),
-                        };
-            }
-
-            foreach (var bound in crystal.Bounds)
-            {
-                BoundsControl bc = new BoundsControl(Crystal)
-                {
-                    Bound = bound,
-                    Enabled = true
-                };
-                bc.Changed += Bounds_Changed;
-                bc.ColorChanged += Bounds_Changed;
-                bc.Delete += Bounds_Delete;
-                flowLayoutPanelBounds.Controls.Add(bc);
-            }
-            skipSetCrystal = false;
-            */
-        }
-
-        #endregion 境界(Bounds)のFlowLayoutPanel関連
+       
 
         #region 格子面の(Lattice Planes)のFlowLayoutPanel関連
 
@@ -251,22 +167,26 @@ namespace ReciPro
 
         private void initBounds()
         {
-            /*
             bounds = new List<(V4 prm, Color color)>();
-            foreach (var bc in flowLayoutPanelBounds.Controls.Cast<BoundsControl>().Where(bc => bc.Enabled && bc.Bound.D != 0 && !double.IsInfinity(bc.Bound.D)))
-                bounds.AddRange(bc.Bound.PlaneParams.Select(p => (new V4(p[0], p[1], p[2], p[3]), bc.Bound.Color)));
+            foreach (var bc in formMain.crystalControl.boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index !=(0,0,0)))
+                foreach (var (X, Y, Z, D) in bc.PlaneParams)
+                    bounds.Add((new V4(X, Y, Z, D), bc.Color));
 
-            //描画範囲が閉じているかどうかを判定. 閉じていない場合は、強制的に単位格子を境界とする
-            if (!Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))
-                bounds = new List<(V4 prms, Color color)>() {
-                    (new V4(axes.Column0.Normalized(),axes.Column0.Length/2) , Color.Gray),
-                    (new V4(-axes.Column0.Normalized(),axes.Column0.Length/2), Color.Gray),
-                    (new V4(axes.Column1.Normalized(),axes.Column1.Length/2), Color.Gray),
-                    (new V4(-axes.Column1.Normalized(),axes.Column1.Length/2), Color.Gray),
-                    (new V4(axes.Column2.Normalized(),axes.Column2.Length/2), Color.Gray),
-                    (new V4(-axes.Column2.Normalized(),axes.Column2.Length/2), Color.Gray),
+            //境界条件としてUnit cellが選択されているか、Planeが選択されているが描画範囲が閉じていない場合 、単位格子を境界とする
+            if (radioButtonBoundUnitCell.Checked || !Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))
+            {//
+
+                bounds = new List<(V4 prms, Color color)>()
+                {
+                    (new V4(axes.Column0.Normalized(),axes.Column0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Gray),
+                    (new V4(-axes.Column0.Normalized(),axes.Column0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Gray),
+                    (new V4(axes.Column1.Normalized(),axes.Column1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Gray),
+                    (new V4(-axes.Column1.Normalized(),axes.Column1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Gray),
+                    (new V4(axes.Column2.Normalized(),axes.Column2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Gray),
+                    (new V4(-axes.Column2.Normalized(),axes.Column2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Gray),
+
                 };
-            */
+            }
         }
 
         /// <summary>
@@ -340,12 +260,13 @@ namespace ReciPro
                             var min = bounds.Min(b => V4.Dot(pos, b.prm));
                             if (min > threshold)
                             {
+                                var sphere = new Sphere(new V3(pos), atoms.Radius * 0.1, mat, DrawingMode.Surfaces)
+                                {
+                                    Rendered = min > -0.0000001,
+                                    Tag = new atomID(atoms, min > -0.0000001, i)
+                                };
                                 lock (lockObj)
-                                    GLObjects.Add(new Sphere(new V3(pos), atoms.Radius * 0.1, mat, DrawingMode.Surfaces)
-                                    {
-                                        Rendered = min > -0.0000001,
-                                        Tag = new atomID(atoms, min > -0.0000001, i)
-                                    });
+                                    GLObjects.Add(sphere);
                             }
                         }
                 }
@@ -432,7 +353,7 @@ namespace ReciPro
             sw.Restart();
             glControlMain.DeleteAllObjects();
             glControlMain.AddObjects(GLObjects);
-            toolStripLabelStatusInitialization.Text += " and sent to OpenGL shader (" + sw.ElapsedMilliseconds + " ms.)    ";
+            toolStripLabelStatusInitialization.Text += " and sent to OpenGL (" + sw.ElapsedMilliseconds + " ms.)    ";
         }
 
         private bool skipSetCrystal = false;
@@ -458,13 +379,13 @@ namespace ReciPro
 
             setUnitCellPlanes();//単位格子面の描画
 
-            if (_crystal != null)//
-                initBoundsControl(Crystal);//flowLayoutPanelBoundsをセット
+            //if (_crystal != null)//
+            //    initBoundsControl(Crystal);//flowLayoutPanelBoundsをセット
 
             initBounds();//境界条件を初期化;
 
-            if (_crystal != null)
-                initLatticePlanesControl(Crystal);//flowLayoutPanelLatticePlanesをセット
+            //if (_crystal != null)
+            //    initLatticePlanesControl(Crystal);//flowLayoutPanelLatticePlanesをセット
 
             SetLatticePlanes();//格子面オブジェクトを生成
 
@@ -616,12 +537,25 @@ namespace ReciPro
             glControlLight.ProjWidth = glControlAxes.ProjWidth = 2.2;
             glControlMain.ProjWidth = 5f;
 
-            numericBoxBoundPlanesOpacity.ShowUpDown = true;
+            tabControlBoundOption.ItemSize = new Size(0, 1);
 
-            tabPageBond.Controls.Add(formMain.crystalControl.bondControl);
-            tabPageBounds.Controls.Add(formMain.crystalControl.boundControl);
-            tabPageLatticePlane.Controls.Add(formMain.crystalControl.latticePlaneControl);
+            //各種ユーザーコントロール
+            boundControl = formMain.crystalControl.boundControl;
+            latticePlaneControl = formMain.crystalControl.latticePlaneControl;
+            atomControl = formMain.crystalControl.atomControl;
+            bondControl = formMain.crystalControl.bondControl;
+
+            tabPageBond.Controls.Add(bondControl);
+            tabPageBoundPlane.Controls.Add(boundControl);
+            tabPageLatticePlane.Controls.Add(latticePlaneControl);
+
+
+            boundControl.ItemsChanged += BoundControl_BoundsChanged;
+            latticePlaneControl.ItemsChanged += LatticePlaneControl_LatticePlaneChanged;
+            bondControl.ItemsChanged += BondControl_BondsChanged;
         }
+
+      
 
 
         #endregion コンストラクタ
@@ -641,7 +575,7 @@ namespace ReciPro
             glControlMain.WorldMatrixEx = world;
             //glControlMain.Render();
             glControlAxes.WorldMatrixEx = world;
-            toolStripLabelStatusRendering.Text = "Rendering time: " + sw.ElapsedMilliseconds + " ms.    ";
+            toolStripLabelStatusRendering.Text = "Rendering time: " + sw.ElapsedMilliseconds + " ms.";
         }
 
         //凡例を表示する
@@ -860,6 +794,7 @@ namespace ReciPro
                     glControlMain.Render();
                 }
             }
+            #region お蔵入り ?
 
             /*
             //原子選択
@@ -980,17 +915,19 @@ namespace ReciPro
                 }
                 Draw();
             }
-            */
+            */ 
+            #endregion
         }
 
         #endregion マウスイベント
 
+        #region Unit cell タブ関連
         private void checkBoxShowUnitCell_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
             setUnitCellPlanes();
         }
-
+        #endregion
         private void pictureBoxColor_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog
@@ -1043,10 +980,16 @@ namespace ReciPro
 
         #endregion イメージ保存orコピー
 
+        #region toolStripButton ライト、結晶軸、凡例、ブースト
+        private void toolStripButtonCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
 
-        private void checkBoxShowCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
+        private void toolStripButtonLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
-        private void checkBoxShowLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
+        private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e)
+        => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
+
+
+        #endregion
 
         #region 印刷関連
 
@@ -1091,8 +1034,7 @@ namespace ReciPro
 
         #endregion 印刷関連
 
-        private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e) => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
-
+    
 
 
         private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
@@ -1101,36 +1043,64 @@ namespace ReciPro
                 Clipboard.SetDataObject(glControlMain.GenerateBitmap());
         }
 
-    
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
-        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) => MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
 
         private void MoveAtomControl(bool flag)
         {
             if (flag)
             {
-                formMain.crystalControl.atomControl.DebyeWallerTabVisible = false;
-                formMain.crystalControl.atomControl.ScatteringFactorTabVisible = false;
-                formMain.crystalControl.atomControl.AppearanceTabVisible = true;
-
-                tabPageAtom.Controls.Add(formMain.crystalControl.atomControl);
+                TopMost = true;
+                atomControl.DebyeWallerTabVisible = atomControl.ScatteringFactorTabVisible = false;
+                atomControl.AppearanceTabVisible = true;
                 formMain.crystalControl.tabPageAtom.Controls.Add(labelMessage);
+                tabPageAtom.Controls.Add(atomControl);
+                TopMost = false;
+
             }
             else
             {
-                formMain.crystalControl.atomControl.DebyeWallerTabVisible = true;
-                formMain.crystalControl.atomControl.ScatteringFactorTabVisible = true;
-                formMain.crystalControl.atomControl.AppearanceTabVisible = false;
-                formMain.crystalControl.tabPageAtom.Controls.Add(formMain.crystalControl.atomControl);
+                atomControl.DebyeWallerTabVisible = atomControl.ScatteringFactorTabVisible = true;
+                atomControl.AppearanceTabVisible = false;
                 tabPageAtom.Controls.Add(labelMessage);
+                formMain.crystalControl.tabPageAtom.Controls.Add(atomControl);
             }
         }
 
-        private void tabControl_VisibleChanged(object sender, EventArgs e)
+        #region Bounds(境界)タブ関連
+        private void radioButtonUnitCell_CheckedChanged(object sender, EventArgs e)
+            => tabControlBoundOption.SelectedIndex = radioButtonBoundUnitCell.Checked ? 0 : 1;
+
+        private void numericBoxCMax_ValueChanged(object sender, EventArgs e)
         {
-            
+            if (SkipEvent) 
+                return;
+            SetGLObjects();
         }
+
+        public bool SkipEvent { get; set; } = false;
+        private void buttonSetCenterOrRange_Click(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                SkipEvent = true;
+                if (button.Name.Contains("Center"))
+                    numericBoxACenter.Value = numericBoxBCenter.Value = numericBoxCCenter.Value = Convert.ToDouble(button.Tag as string);
+                else
+                    numericBoxARange.Value = numericBoxBRange.Value = numericBoxCRange.Value = Convert.ToDouble(button.Tag as string);
+                SkipEvent = true;
+
+                SetGLObjects();
+            }
+        }
+        private void checkBoxShowBoundPlanes_CheckedChanged(object sender, EventArgs e) => SetGLObjects(null);
+        private void BoundControl_BoundsChanged(object sender, EventArgs e) => SetGLObjects(null);
+        #endregion
+
+        private void LatticePlaneControl_LatticePlaneChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void BondControl_BondsChanged(object sender, EventArgs e) => SetGLObjects(null);
     }
 }

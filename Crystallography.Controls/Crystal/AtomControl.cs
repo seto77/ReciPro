@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class AtomInputControl : UserControl
+    public partial class AtomControl : UserControl
     {
-        #region プロパティ
-
+        #region プロパティ, フィールド, イベントハンドラ
+        DataSet.DataTableAtomDataTable table;
         public bool SkipEvent { get; set; } = false;
         public int SymmetrySeriesNumber { get; set; } = 0;
 
@@ -167,10 +167,6 @@ namespace Crystallography.Controls
             get => isotopicComposition;
         }
 
-       
-
-
-
         #region マテリアル プロパティ
         [Category("Material properties")]
         public double Ambient { get => numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
@@ -224,26 +220,27 @@ namespace Crystallography.Controls
 
         public int TabNumber { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
 
+        public event EventHandler DataChanged;
 
         #endregion プロパティ
 
 
-        #region イベント
-        public event EventHandler DataChanged;
-        #endregion
-
-        public AtomInputControl()
+        #region コンストラクタ
+        public AtomControl()
         {
             InitializeComponent();
+            table = dataSet.DataTableAtom;
             comboBoxAtom.SelectedIndex = 0;
             //   toolTip.SetTooltipToUsercontrol(this);
-        }
+        } 
+        #endregion
 
         private void radioButtonIsotoropy_CheckedChanged(object sender, EventArgs e)
         {
             flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
             flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
         }
+
 
         private void setTabPages()
         {
@@ -359,7 +356,7 @@ namespace Crystallography.Controls
         public void Add(Atoms atoms)
         {
             if(atoms!=null)
-                dataSet.DataTableAtom.Add(atoms);
+                table.Add(atoms);
 
             DataChanged?.Invoke(this, new EventArgs());
         }
@@ -371,7 +368,7 @@ namespace Crystallography.Controls
         public void AddRange(IEnumerable<Atoms> atoms)
         {
             foreach (var a in atoms)
-                dataSet.DataTableAtom.Add(a);
+                table.Add(a);
             DataChanged?.Invoke(this, new EventArgs());
         }
 
@@ -381,13 +378,13 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Delete(int i)
         {
-            dataSet.DataTableAtom.Remove(i);
+            table.Remove(i);
             DataChanged?.Invoke(this, new EventArgs());
         }
 
         public void Replace(Atoms atoms, int i)
         {
-            dataSet.DataTableAtom.Replace(atoms, i);
+            table.Replace(atoms, i);
             DataChanged?.Invoke(this, new EventArgs());
         }
 
@@ -397,7 +394,7 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void Clear()
         {
-            dataSet.DataTableAtom.Rows.Clear();
+            table.Rows.Clear();
             DataChanged?.Invoke(this, new EventArgs());
         }
 
@@ -407,11 +404,11 @@ namespace Crystallography.Controls
         public void ResetSymmetry(int symmetrySeriesNumber)
         {
             SymmetrySeriesNumber = symmetrySeriesNumber;
-            for (int i = 0; i < dataSet.DataTableAtom.Rows.Count; i++)
+            for (int i = 0; i < table.Rows.Count; i++)
             {
-                var a = dataSet.DataTableAtom.Get(i);
+                var a = table.Get(i);
                 a.ResetSymmetry(SymmetrySeriesNumber);
-                dataSet.DataTableAtom.Replace(a, i);
+                table.Replace(a, i);
             }
             DataChanged?.Invoke(this, new EventArgs());
         }
@@ -420,11 +417,12 @@ namespace Crystallography.Controls
         /// データベース中の全ての原子を取得
         /// </summary>
         /// <returns></returns>
-        public Atoms[] GetAll() => dataSet.DataTableAtom.GetAll();
+        public Atoms[] GetAll() => table.GetAll();
 
         #endregion
 
 
+        #region Atomクラスを画面下部から生成/に表示
         /// <summary>
         /// 引数のAtomを、画面下部に表示する
         /// </summary>
@@ -464,8 +462,10 @@ namespace Crystallography.Controls
                 material, (float)Radius);
             return atoms;
         }
+        #endregion
 
 
+        #region 原子追加、削除などのボタン
         //原子追加ボタン
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
@@ -496,21 +496,25 @@ namespace Crystallography.Controls
             {
                 SkipEvent = true;//bindingSourceAtoms_PositionChangedが呼ばれるのを防ぐ
                 Delete(pos);
-                bindingSource.Position = bindingSource.Count > pos ? pos :  pos - 1;//選択列を選択しなおす
                 SkipEvent = false;
+                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
             }
         }
-
-        //選択Atomが変更されたとき
-        private void bindingSource_PositionChanged(object sender, System.EventArgs e)
+        private void buttonUp_Click(object sender, EventArgs e)
         {
-            if (SkipEvent) return;
-         
-            if (bindingSource.Position >= 0 && bindingSource.Count > 0)
-                SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
+            int n = bindingSource.Position;
+            if (n <= 0) return;
+            table.MoveItem(n, n - 1);
+            bindingSource.Position = n - 1;
         }
 
-
+        private void buttonDown_Click(object sender, EventArgs e)
+        {
+            int n = bindingSource.Position;
+            if (n >= bindingSource.Count - 1) return;
+            table.MoveItem(n, n + 1);
+            bindingSource.Position = n + 1;
+        }
 
         //編集内容を同種の元素にすべて適用する
         private void buttonChangeToSameElement_Click(object sender, EventArgs e)
@@ -543,22 +547,23 @@ namespace Crystallography.Controls
                    }
                 */
         }
-        
-        private void buttonUp_Click(object sender, EventArgs e)
+
+        #endregion
+
+
+        //選択Atomが変更されたとき
+        private void bindingSource_PositionChanged(object sender, System.EventArgs e)
         {
-            int n = bindingSource.Position;
-            if (n <= 0) return;
-            dataSet.DataTableAtom.MoveItem(n, n - 1);
-            bindingSource.Position = n - 1;
+            if (SkipEvent) return;
+         
+            if (bindingSource.Position >= 0 && bindingSource.Count > 0)
+                SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
         }
 
-        private void buttonDown_Click(object sender, EventArgs e)
-        {
-            int n = bindingSource.Position;
-            if (n >= bindingSource.Count - 1) return;
-            dataSet.DataTableAtom.MoveItem(n, n + 1);
-            bindingSource.Position = n + 1;
-        }
+
+
+        
+        
 
 
 

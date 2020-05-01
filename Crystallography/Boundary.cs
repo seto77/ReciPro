@@ -18,15 +18,26 @@ namespace Crystallography
         public int ColorArgb { get; set; } = Color.Gray.ToArgb();
 
         public bool Equivalency { get; set; } = true;
-        public (double X, double Y, double Z, double D)[] PlaneParams { get; }
+        public (double X, double Y, double Z, double D)[] PlaneParams { get; set; }
         public double Distance { get; set; }
-        public double MultipleOfD { get; }
+        public double MultipleOfD { get; set; }
 
         public bool Enabled { get; set; } = true;
 
         public Bound()
         { }
 
+        /// <summary>
+        /// Boundクラスを生成. distanceはnm単位であることに注意
+        /// </summary>
+        /// <param name="enabled"></param>
+        /// <param name="crystal"></param>
+        /// <param name="h"></param>
+        /// <param name="k"></param>
+        /// <param name="l"></param>
+        /// <param name="equivalency"></param>
+        /// <param name="distance"></param>
+        /// <param name="argb"></param>
         public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance, int argb) : this()
         {
             Enabled = enabled;
@@ -35,10 +46,15 @@ namespace Crystallography
             Distance = distance;
             Index = (h, k, l);
 
-            var gBase = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
+            Reset(crystal);
+        }
+
+        public void Reset(Crystal crystal)
+        {
+            var gBase = Index.H * crystal.A_Star + Index.K * crystal.B_Star + Index.L * crystal.C_Star;
             MultipleOfD = Distance * gBase.Length;
 
-            (int H, int K, int L)[] planes = equivalency ? SymmetryStatic.GenerateEquivalentPlanes(h, k, l, crystal.Symmetry) : new[] { (h, k, l) };
+            (int H, int K, int L)[] planes = Equivalency ? SymmetryStatic.GenerateEquivalentPlanes(Index, crystal.Symmetry) : new[] { Index };
 
             PlaneParams = planes.Select(p =>
             {
@@ -46,12 +62,6 @@ namespace Crystallography
                 g.NormarizeThis();
                 return (g.X, g.Y, g.Z, Distance);
             }).ToArray();
-        }
-
-
-        public void Reset(Crystal crystal)
-        {
-
         }
     }
 

@@ -12,15 +12,25 @@ namespace Crystallography.Controls
 {
     public partial class LatticePlaneControl : UserControl
     {
+        #region プロパティ, フィールド, イベントハンドラ
         public bool SkipEvent { get; set; } = false;
         public Crystal Crystal { get; set; } = null;
 
-        public event EventHandler LatticePlaneChanged;
+        public event EventHandler ItemsChanged;
 
+        private DataSet.DataTableLatticePlaneDataTable table;
+
+        #endregion
+
+        #region コンストラクタ
         public LatticePlaneControl()
         {
             InitializeComponent();
+            table = dataSet.DataTableLatticePlane;
         }
+        #endregion
+
+        #region　LatticePlaneクラスを画面下部から生成/にセット
 
         public LatticePlane GetFromInterface()
         {
@@ -38,21 +48,19 @@ namespace Crystallography.Controls
 
             colorControl.Color = Color.FromArgb(plane.ColorArgb);
         }
-
-
-
+        #endregion
 
         #region データベース操作
         /// <summary>
         /// データベースにbondsを追加する
         /// </summary>
         /// <param name="bonds"></param>
-        public void Add(LatticePlane bounds)
+        public void Add(LatticePlane plane)
         {
-            if (bounds != null)
+            if (plane != null && plane.Index!=(0,0,0))
             {
-                dataSet.DataTableLatticePlane.Add(bounds);
-                LatticePlaneChanged?.Invoke(this, new EventArgs());
+                table.Add(plane);
+                ItemsChanged?.Invoke(this, new EventArgs());
             }
         }
 
@@ -60,13 +68,13 @@ namespace Crystallography.Controls
         /// データベースに原子を追加する
         /// </summary>
         /// <param name="bonds"></param>
-        public void AddRange(IEnumerable<LatticePlane> bounds)
+        public void AddRange(IEnumerable<LatticePlane> planes)
         {
-            if (bounds != null)
+            if (planes != null)
             {
-                foreach (var b in bounds)
-                    dataSet.DataTableLatticePlane.Add(b);
-                LatticePlaneChanged?.Invoke(this, new EventArgs());
+                foreach (var b in planes.Where(p => p.Index != (0, 0, 0)))
+                    table.Add(b);
+                ItemsChanged?.Invoke(this, new EventArgs());
             }
         }
 
@@ -76,8 +84,8 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Delete(int i)
         {
-            dataSet.DataTableLatticePlane.Remove(i);
-            LatticePlaneChanged?.Invoke(this, new EventArgs());
+            table.Remove(i);
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -87,8 +95,8 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Replace(LatticePlane bounds, int i)
         {
-            dataSet.DataTableLatticePlane.Replace(bounds, i);
-            LatticePlaneChanged?.Invoke(this, new EventArgs());
+            table.Replace(bounds, i);
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -96,18 +104,17 @@ namespace Crystallography.Controls
         /// </summary>
         public void Clear()
         {
-            dataSet.DataTableLatticePlane.Clear();
-            LatticePlaneChanged?.Invoke(this, new EventArgs());
+            table.Clear();
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
         /// データベース中の全ての原子を取得
         /// </summary>
         /// <returns></returns>
-        public LatticePlane[] GetAll() => dataSet.DataTableLatticePlane.GetAll();
+        public LatticePlane[] GetAll() => table.GetAll();
 
         #endregion
-
 
         #region 追加/削除/置換 ボタン
 
@@ -118,10 +125,10 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
-            var bound = GetFromInterface();
-            if (bound != null)
+            var plane = GetFromInterface();
+            if (plane != null && plane.Index != (0,0,0))
             {
-                Add(bound);
+                Add(plane);
                 bindingSource.Position = bindingSource.Count - 1;
             }
         }
@@ -153,13 +160,14 @@ namespace Crystallography.Controls
             {
                 SkipEvent = true;//bindingSourceAtoms_PositionChangedが呼ばれるのを防ぐ
                 Delete(pos);
-                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
                 SkipEvent = false;
+                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
             }
         }
 
         #endregion
 
+        #region bindingSourceイベント
         //選択Atomが変更されたとき
         private void bindingSource_PositionChanged(object sender, System.EventArgs e)
         {
@@ -168,7 +176,23 @@ namespace Crystallography.Controls
             if (bindingSource.Position >= 0 && bindingSource.Count > 0)
                 SetToInterface(dataSet.DataTableLatticePlane.Get(bindingSource.Position));
         }
+        #endregion
 
-
+        #region dataGridView イベント
+        private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {//チェックボックスが変わると即座に反映させる
+            if (dataGridView.CurrentCellAddress.X == 0 && dataGridView.IsCurrentCellDirty)
+                dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
+        }
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                table.Get(bindingSource.Position).Enabled =
+                    (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                ItemsChanged?.Invoke(this, new EventArgs());
+            }
+        } 
+        #endregion
     }
 }

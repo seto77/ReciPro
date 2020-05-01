@@ -72,6 +72,9 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.checkBoxUnitCell = new System.Windows.Forms.CheckBox();
             this.groupBoxShowUnitCell = new System.Windows.Forms.GroupBox();
+            this.numericBoxCellTransrationC = new Crystallography.Controls.NumericBox();
+            this.numericBoxCellTransrationB = new Crystallography.Controls.NumericBox();
+            this.numericBoxCellTransrationA = new Crystallography.Controls.NumericBox();
             this.checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
             this.checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
             this.pictureBoxCellPlaneColor = new System.Windows.Forms.PictureBox();
@@ -93,71 +96,58 @@
             this.label7 = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
-            this.tabPageBounds = new System.Windows.Forms.TabPage();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelBounds = new System.Windows.Forms.FlowLayoutPanel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.AddBoundary = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.checkBoxHideAllAtoms = new System.Windows.Forms.CheckBox();
-            this.checkBoxClipObjects = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowBoundPlanes = new System.Windows.Forms.CheckBox();
-            this.tabPageUnitCell = new System.Windows.Forms.TabPage();
-            this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
-            this.tabPageAtom = new System.Windows.Forms.TabPage();
-            this.tabPageBond = new System.Windows.Forms.TabPage();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageCrystal = new System.Windows.Forms.TabPage();
-            this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
-            this.labelMessage = new System.Windows.Forms.Label();
             this.glControlAxes = new Crystallography.OpenGL.GLControlAlpha();
             this.glControlLight = new Crystallography.OpenGL.GLControlAlpha();
             this.glControlMain = new Crystallography.OpenGL.GLControlAlpha();
-            this.numericBox6 = new Crystallography.Controls.NumericBox();
-            this.numericBox4 = new Crystallography.Controls.NumericBox();
-            this.numericBox2 = new Crystallography.Controls.NumericBox();
-            this.numericBox5 = new Crystallography.Controls.NumericBox();
-            this.numericBox3 = new Crystallography.Controls.NumericBox();
-            this.numericBox1 = new Crystallography.Controls.NumericBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPageBounds = new System.Windows.Forms.TabPage();
+            this.tabControlBoundOption = new System.Windows.Forms.TabControl();
+            this.tabPageBoundUnitcell = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonSetRange2 = new System.Windows.Forms.Button();
+            this.buttonSetRange3 = new System.Windows.Forms.Button();
+            this.buttonSetCenter1 = new System.Windows.Forms.Button();
+            this.buttonSetCenter3 = new System.Windows.Forms.Button();
+            this.buttonSetRange1 = new System.Windows.Forms.Button();
+            this.numericBoxCRange = new Crystallography.Controls.NumericBox();
+            this.numericBoxBRange = new Crystallography.Controls.NumericBox();
+            this.numericBoxARange = new Crystallography.Controls.NumericBox();
+            this.numericBoxCCenter = new Crystallography.Controls.NumericBox();
+            this.numericBoxBCenter = new Crystallography.Controls.NumericBox();
+            this.numericBoxACenter = new Crystallography.Controls.NumericBox();
+            this.tabPageBoundPlane = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBoxShowBoundPlanes = new System.Windows.Forms.CheckBox();
             this.numericBoxBoundPlanesOpacity = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellTransrationC = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellTransrationB = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellTransrationA = new Crystallography.Controls.NumericBox();
+            this.checkBoxClipObjects = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideAllAtoms = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioButtonBoundUnitCell = new System.Windows.Forms.RadioButton();
+            this.radioButtonBoundPlane = new System.Windows.Forms.RadioButton();
+            this.tabPageAtom = new System.Windows.Forms.TabPage();
+            this.labelMessage = new System.Windows.Forms.Label();
+            this.tabPageBond = new System.Windows.Forms.TabPage();
+            this.tabPageUnitCell = new System.Windows.Forms.TabPage();
+            this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
+            this.tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
+            this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
             this.tabPageInformation = new System.Windows.Forms.TabPage();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCrystal = new System.Windows.Forms.TabPage();
+            this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
+            this.buttonCenter2 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBoxShowUnitCell.SuspendLayout();
@@ -167,19 +157,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCellPlaneAlpha)).BeginInit();
-            this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl.SuspendLayout();
-            this.tabPageCoordinateInfromatin.SuspendLayout();
             this.tabPageBounds.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPageUnitCell.SuspendLayout();
+            this.tabControlBoundOption.SuspendLayout();
+            this.tabPageBoundUnitcell.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.tabPageAtom.SuspendLayout();
+            this.tabPageUnitCell.SuspendLayout();
+            this.tabPageCoordinateInfromatin.SuspendLayout();
             this.tabPageInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,7 +182,9 @@
             this.toolStripButtonCrystalAxes,
             this.toolStripButtonLightDirection,
             this.toolStripButtonLegend,
-            this.toolStripSeparator3});
+            this.toolStripSeparator3,
+            this.toolStripLabelStatusInitialization,
+            this.toolStripLabelStatusRendering});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Stretch = true;
@@ -218,7 +210,7 @@
             this.toolStripButtonCrystalAxes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.toolStripButtonCrystalAxes, "toolStripButtonCrystalAxes");
             this.toolStripButtonCrystalAxes.Name = "toolStripButtonCrystalAxes";
-            this.toolStripButtonCrystalAxes.CheckedChanged += new System.EventHandler(this.checkBoxShowCrystalAxes_CheckedChanged);
+            this.toolStripButtonCrystalAxes.CheckedChanged += new System.EventHandler(this.toolStripButtonCrystalAxes_CheckedChanged);
             // 
             // toolStripButtonLightDirection
             // 
@@ -229,7 +221,7 @@
             this.toolStripButtonLightDirection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.toolStripButtonLightDirection, "toolStripButtonLightDirection");
             this.toolStripButtonLightDirection.Name = "toolStripButtonLightDirection";
-            this.toolStripButtonLightDirection.CheckedChanged += new System.EventHandler(this.checkBoxShowLightingBall_CheckedChanged);
+            this.toolStripButtonLightDirection.CheckedChanged += new System.EventHandler(this.toolStripButtonLightingBall_CheckedChanged);
             // 
             // toolStripButtonLegend
             // 
@@ -443,6 +435,105 @@
             this.groupBoxShowUnitCell.TabStop = false;
             this.toolTip.SetToolTip(this.groupBoxShowUnitCell, resources.GetString("groupBoxShowUnitCell.ToolTip"));
             // 
+            // numericBoxCellTransrationC
+            // 
+            this.numericBoxCellTransrationC.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCellTransrationC, "numericBoxCellTransrationC");
+            this.numericBoxCellTransrationC.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.DecimalPlaces = 2;
+            this.numericBoxCellTransrationC.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationC.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationC.Maximum = 10D;
+            this.numericBoxCellTransrationC.Minimum = -10D;
+            this.numericBoxCellTransrationC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationC.MouseSpeed = 1D;
+            this.numericBoxCellTransrationC.Multiline = false;
+            this.numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
+            this.numericBoxCellTransrationC.RadianValue = 0D;
+            this.numericBoxCellTransrationC.ReadOnly = false;
+            this.numericBoxCellTransrationC.RestrictLimitValue = true;
+            this.numericBoxCellTransrationC.ShowFraction = false;
+            this.numericBoxCellTransrationC.ShowPositiveSign = false;
+            this.numericBoxCellTransrationC.ShowUpDown = false;
+            this.numericBoxCellTransrationC.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationC.SmartIncrement = true;
+            this.numericBoxCellTransrationC.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationC.ThonsandsSeparator = true;
+            this.numericBoxCellTransrationC.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationC.Value = 0D;
+            this.numericBoxCellTransrationC.WordWrap = true;
+            this.numericBoxCellTransrationC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericBoxCellTransrationB
+            // 
+            this.numericBoxCellTransrationB.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCellTransrationB, "numericBoxCellTransrationB");
+            this.numericBoxCellTransrationB.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.DecimalPlaces = 2;
+            this.numericBoxCellTransrationB.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationB.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationB.Maximum = 10D;
+            this.numericBoxCellTransrationB.Minimum = -10D;
+            this.numericBoxCellTransrationB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationB.MouseSpeed = 1D;
+            this.numericBoxCellTransrationB.Multiline = false;
+            this.numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
+            this.numericBoxCellTransrationB.RadianValue = 0D;
+            this.numericBoxCellTransrationB.ReadOnly = false;
+            this.numericBoxCellTransrationB.RestrictLimitValue = true;
+            this.numericBoxCellTransrationB.ShowFraction = false;
+            this.numericBoxCellTransrationB.ShowPositiveSign = false;
+            this.numericBoxCellTransrationB.ShowUpDown = false;
+            this.numericBoxCellTransrationB.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationB.SmartIncrement = true;
+            this.numericBoxCellTransrationB.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationB.ThonsandsSeparator = true;
+            this.numericBoxCellTransrationB.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationB.Value = 0D;
+            this.numericBoxCellTransrationB.WordWrap = true;
+            this.numericBoxCellTransrationB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericBoxCellTransrationA
+            // 
+            this.numericBoxCellTransrationA.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCellTransrationA, "numericBoxCellTransrationA");
+            this.numericBoxCellTransrationA.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.DecimalPlaces = 2;
+            this.numericBoxCellTransrationA.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationA.Maximum = 10D;
+            this.numericBoxCellTransrationA.Minimum = -10D;
+            this.numericBoxCellTransrationA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationA.MouseSpeed = 1D;
+            this.numericBoxCellTransrationA.Multiline = false;
+            this.numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
+            this.numericBoxCellTransrationA.RadianValue = 0D;
+            this.numericBoxCellTransrationA.ReadOnly = false;
+            this.numericBoxCellTransrationA.RestrictLimitValue = true;
+            this.numericBoxCellTransrationA.ShowFraction = false;
+            this.numericBoxCellTransrationA.ShowPositiveSign = false;
+            this.numericBoxCellTransrationA.ShowUpDown = false;
+            this.numericBoxCellTransrationA.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationA.SmartIncrement = true;
+            this.numericBoxCellTransrationA.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationA.ThonsandsSeparator = true;
+            this.numericBoxCellTransrationA.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationA.Value = 0D;
+            this.numericBoxCellTransrationA.WordWrap = true;
+            this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
             // checkBoxShowSubCell
             // 
             resources.ApplyResources(this.checkBoxShowSubCell, "checkBoxShowSubCell");
@@ -636,26 +727,6 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // toolStrip2
-            // 
-            resources.ApplyResources(this.toolStrip2, "toolStrip2");
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabelStatusInitialization,
-            this.toolStripLabelStatusRendering});
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Stretch = true;
-            // 
-            // toolStripLabelStatusInitialization
-            // 
-            this.toolStripLabelStatusInitialization.Name = "toolStripLabelStatusInitialization";
-            resources.ApplyResources(this.toolStripLabelStatusInitialization, "toolStripLabelStatusInitialization");
-            // 
-            // toolStripLabelStatusRendering
-            // 
-            this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
-            resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
-            // 
             // printDialog1
             // 
             this.printDialog1.Document = this.printDocument1;
@@ -692,295 +763,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabPageBounds);
-            this.tabControl.Controls.Add(this.tabPageAtom);
-            this.tabControl.Controls.Add(this.tabPageBond);
-            this.tabControl.Controls.Add(this.tabPageUnitCell);
-            this.tabControl.Controls.Add(this.tabPageLatticePlane);
-            this.tabControl.Controls.Add(this.tabPageCoordinateInfromatin);
-            this.tabControl.Controls.Add(this.tabPageInformation);
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.HotTrack = true;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            this.tabControl.VisibleChanged += new System.EventHandler(this.tabControl_VisibleChanged);
-            // 
-            // tabPageCoordinateInfromatin
-            // 
-            this.tabPageCoordinateInfromatin.Controls.Add(this.atomCoordinateTable1);
-            resources.ApplyResources(this.tabPageCoordinateInfromatin, "tabPageCoordinateInfromatin");
-            this.tabPageCoordinateInfromatin.Name = "tabPageCoordinateInfromatin";
-            // 
-            // tabPageBounds
-            // 
-            this.tabPageBounds.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageBounds.Controls.Add(this.radioButton2);
-            this.tabPageBounds.Controls.Add(this.tabControl1);
-            this.tabPageBounds.Controls.Add(this.radioButton1);
-            this.tabPageBounds.Controls.Add(this.checkBoxHideAllAtoms);
-            this.tabPageBounds.Controls.Add(this.checkBoxClipObjects);
-            this.tabPageBounds.Controls.Add(this.checkBoxShowBoundPlanes);
-            this.tabPageBounds.Controls.Add(this.numericBoxBoundPlanesOpacity);
-            resources.ApplyResources(this.tabPageBounds, "tabPageBounds");
-            this.tabPageBounds.Name = "tabPageBounds";
-            // 
-            // radioButton2
-            // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // tabControl1
-            // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.label29);
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.label45);
-            this.tabPage2.Controls.Add(this.label44);
-            this.tabPage2.Controls.Add(this.label33);
-            this.tabPage2.Controls.Add(this.label32);
-            this.tabPage2.Controls.Add(this.label31);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.numericBox6);
-            this.tabPage2.Controls.Add(this.numericBox4);
-            this.tabPage2.Controls.Add(this.numericBox2);
-            this.tabPage2.Controls.Add(this.numericBox5);
-            this.tabPage2.Controls.Add(this.numericBox3);
-            this.tabPage2.Controls.Add(this.numericBox1);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label29
-            // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
-            // 
-            // label44
-            // 
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.Name = "label44";
-            // 
-            // label33
-            // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
-            // 
-            // label32
-            // 
-            resources.ApplyResources(this.label32, "label32");
-            this.label32.Name = "label32";
-            // 
-            // label31
-            // 
-            resources.ApplyResources(this.label31, "label31");
-            this.label31.Name = "label31";
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // button4
-            // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.flowLayoutPanelBounds);
-            this.tabPage3.Controls.Add(this.label21);
-            this.tabPage3.Controls.Add(this.label30);
-            this.tabPage3.Controls.Add(this.label20);
-            this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Controls.Add(this.AddBoundary);
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.label19);
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // flowLayoutPanelBounds
-            // 
-            resources.ApplyResources(this.flowLayoutPanelBounds, "flowLayoutPanelBounds");
-            this.flowLayoutPanelBounds.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelBounds.Name = "flowLayoutPanelBounds";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // label30
-            // 
-            resources.ApplyResources(this.label30, "label30");
-            this.label30.Name = "label30";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
-            // AddBoundary
-            // 
-            resources.ApplyResources(this.AddBoundary, "AddBoundary");
-            this.AddBoundary.BackColor = System.Drawing.Color.SteelBlue;
-            this.AddBoundary.ForeColor = System.Drawing.Color.White;
-            this.AddBoundary.Name = "AddBoundary";
-            this.AddBoundary.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
-            // 
-            // radioButton1
-            // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Checked = true;
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxHideAllAtoms
-            // 
-            resources.ApplyResources(this.checkBoxHideAllAtoms, "checkBoxHideAllAtoms");
-            this.checkBoxHideAllAtoms.Name = "checkBoxHideAllAtoms";
-            this.checkBoxHideAllAtoms.UseVisualStyleBackColor = true;
-            this.checkBoxHideAllAtoms.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
-            // 
-            // checkBoxClipObjects
-            // 
-            resources.ApplyResources(this.checkBoxClipObjects, "checkBoxClipObjects");
-            this.checkBoxClipObjects.Name = "checkBoxClipObjects";
-            this.checkBoxClipObjects.UseVisualStyleBackColor = true;
-            this.checkBoxClipObjects.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
-            // 
-            // checkBoxShowBoundPlanes
-            // 
-            resources.ApplyResources(this.checkBoxShowBoundPlanes, "checkBoxShowBoundPlanes");
-            this.checkBoxShowBoundPlanes.Name = "checkBoxShowBoundPlanes";
-            this.checkBoxShowBoundPlanes.UseVisualStyleBackColor = true;
-            this.checkBoxShowBoundPlanes.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
-            // 
-            // tabPageUnitCell
-            // 
-            this.tabPageUnitCell.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageUnitCell.Controls.Add(this.checkBoxUnitCell);
-            this.tabPageUnitCell.Controls.Add(this.groupBoxShowUnitCell);
-            resources.ApplyResources(this.tabPageUnitCell, "tabPageUnitCell");
-            this.tabPageUnitCell.Name = "tabPageUnitCell";
-            this.tabPageUnitCell.UseVisualStyleBackColor = true;
-            // 
-            // tabPageLatticePlane
-            // 
-            this.tabPageLatticePlane.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
-            this.tabPageLatticePlane.Name = "tabPageLatticePlane";
-            // 
-            // tabPageAtom
-            // 
-            this.tabPageAtom.Controls.Add(this.labelMessage);
-            resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
-            this.tabPageAtom.Name = "tabPageAtom";
-            // 
-            // tabPageBond
-            // 
-            resources.ApplyResources(this.tabPageBond, "tabPageBond");
-            this.tabPageBond.Name = "tabPageBond";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // tabPageCrystal
-            // 
-            resources.ApplyResources(this.tabPageCrystal, "tabPageCrystal");
-            this.tabPageCrystal.Name = "tabPageCrystal";
-            // 
-            // atomCoordinateTable1
-            // 
-            this.atomCoordinateTable1.Atom = null;
-            this.atomCoordinateTable1.Crystal = null;
-            resources.ApplyResources(this.atomCoordinateTable1, "atomCoordinateTable1");
-            this.atomCoordinateTable1.Name = "atomCoordinateTable1";
-            // 
-            // labelMessage
-            // 
-            resources.ApplyResources(this.labelMessage, "labelMessage");
-            this.labelMessage.ForeColor = System.Drawing.Color.Red;
-            this.labelMessage.Name = "labelMessage";
             // 
             // glControlAxes
             // 
@@ -1040,197 +822,342 @@
             this.glControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMain_MouseDown);
             this.glControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlMain_MouseMove);
             // 
-            // numericBox6
+            // tabControl
             // 
-            this.numericBox6.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox6, "numericBox6");
-            this.numericBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox6.DecimalPlaces = 1;
-            this.numericBox6.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox6.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox6.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox6.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox6.Maximum = 10D;
-            this.numericBox6.Minimum = -10D;
-            this.numericBox6.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox6.MouseSpeed = 1D;
-            this.numericBox6.Multiline = false;
-            this.numericBox6.Name = "numericBox6";
-            this.numericBox6.RadianValue = 0.0087266462599716477D;
-            this.numericBox6.ReadOnly = false;
-            this.numericBox6.RestrictLimitValue = true;
-            this.numericBox6.ShowFraction = false;
-            this.numericBox6.ShowPositiveSign = false;
-            this.numericBox6.ShowUpDown = false;
-            this.numericBox6.SkipEventDuringInput = false;
-            this.numericBox6.SmartIncrement = true;
-            this.numericBox6.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox6.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox6.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox6.ThonsandsSeparator = true;
-            this.numericBox6.UpDown_Increment = 0.1D;
-            this.numericBox6.Value = 0.5D;
-            this.numericBox6.WordWrap = true;
+            this.tabControl.Controls.Add(this.tabPageBounds);
+            this.tabControl.Controls.Add(this.tabPageAtom);
+            this.tabControl.Controls.Add(this.tabPageBond);
+            this.tabControl.Controls.Add(this.tabPageUnitCell);
+            this.tabControl.Controls.Add(this.tabPageLatticePlane);
+            this.tabControl.Controls.Add(this.tabPageCoordinateInfromatin);
+            this.tabControl.Controls.Add(this.tabPageInformation);
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.HotTrack = true;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
-            // numericBox4
+            // tabPageBounds
             // 
-            this.numericBox4.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox4, "numericBox4");
-            this.numericBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox4.DecimalPlaces = 1;
-            this.numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox4.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox4.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox4.Maximum = 10D;
-            this.numericBox4.Minimum = -10D;
-            this.numericBox4.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox4.MouseSpeed = 1D;
-            this.numericBox4.Multiline = false;
-            this.numericBox4.Name = "numericBox4";
-            this.numericBox4.RadianValue = 0.0087266462599716477D;
-            this.numericBox4.ReadOnly = false;
-            this.numericBox4.RestrictLimitValue = true;
-            this.numericBox4.ShowFraction = false;
-            this.numericBox4.ShowPositiveSign = false;
-            this.numericBox4.ShowUpDown = false;
-            this.numericBox4.SkipEventDuringInput = false;
-            this.numericBox4.SmartIncrement = true;
-            this.numericBox4.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox4.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox4.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox4.ThonsandsSeparator = true;
-            this.numericBox4.UpDown_Increment = 0.1D;
-            this.numericBox4.Value = 0.5D;
-            this.numericBox4.WordWrap = true;
+            this.tabPageBounds.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageBounds.Controls.Add(this.tabControlBoundOption);
+            this.tabPageBounds.Controls.Add(this.flowLayoutPanel1);
+            this.tabPageBounds.Controls.Add(this.flowLayoutPanel2);
+            resources.ApplyResources(this.tabPageBounds, "tabPageBounds");
+            this.tabPageBounds.Name = "tabPageBounds";
             // 
-            // numericBox2
+            // tabControlBoundOption
             // 
-            this.numericBox2.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox2, "numericBox2");
-            this.numericBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox2.DecimalPlaces = 1;
-            this.numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox2.Maximum = 10D;
-            this.numericBox2.Minimum = -10D;
-            this.numericBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox2.MouseSpeed = 1D;
-            this.numericBox2.Multiline = false;
-            this.numericBox2.Name = "numericBox2";
-            this.numericBox2.RadianValue = 0.0087266462599716477D;
-            this.numericBox2.ReadOnly = false;
-            this.numericBox2.RestrictLimitValue = true;
-            this.numericBox2.ShowFraction = false;
-            this.numericBox2.ShowPositiveSign = false;
-            this.numericBox2.ShowUpDown = false;
-            this.numericBox2.SkipEventDuringInput = false;
-            this.numericBox2.SmartIncrement = true;
-            this.numericBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox2.ThonsandsSeparator = true;
-            this.numericBox2.UpDown_Increment = 0.1D;
-            this.numericBox2.Value = 0.5D;
-            this.numericBox2.WordWrap = true;
+            resources.ApplyResources(this.tabControlBoundOption, "tabControlBoundOption");
+            this.tabControlBoundOption.Controls.Add(this.tabPageBoundUnitcell);
+            this.tabControlBoundOption.Controls.Add(this.tabPageBoundPlane);
+            this.tabControlBoundOption.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControlBoundOption.Multiline = true;
+            this.tabControlBoundOption.Name = "tabControlBoundOption";
+            this.tabControlBoundOption.SelectedIndex = 0;
+            this.tabControlBoundOption.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             // 
-            // numericBox5
+            // tabPageBoundUnitcell
             // 
-            this.numericBox5.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox5, "numericBox5");
-            this.numericBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox5.DecimalPlaces = 1;
-            this.numericBox5.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox5.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox5.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox5.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox5.Maximum = 10D;
-            this.numericBox5.Minimum = -10D;
-            this.numericBox5.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox5.MouseSpeed = 1D;
-            this.numericBox5.Multiline = false;
-            this.numericBox5.Name = "numericBox5";
-            this.numericBox5.RadianValue = -0.0087266462599716477D;
-            this.numericBox5.ReadOnly = false;
-            this.numericBox5.RestrictLimitValue = true;
-            this.numericBox5.ShowFraction = false;
-            this.numericBox5.ShowPositiveSign = false;
-            this.numericBox5.ShowUpDown = false;
-            this.numericBox5.SkipEventDuringInput = false;
-            this.numericBox5.SmartIncrement = true;
-            this.numericBox5.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox5.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox5.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox5.ThonsandsSeparator = true;
-            this.numericBox5.UpDown_Increment = 0.1D;
-            this.numericBox5.Value = -0.5D;
-            this.numericBox5.WordWrap = true;
+            this.tabPageBoundUnitcell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetRange2);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetRange3);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetCenter1);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonCenter2);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetCenter3);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetRange1);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxCRange);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxBRange);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxARange);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxCCenter);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxBCenter);
+            this.tabPageBoundUnitcell.Controls.Add(this.numericBoxACenter);
+            this.tabPageBoundUnitcell.Controls.Add(this.label2);
+            this.tabPageBoundUnitcell.Controls.Add(this.label4);
+            this.tabPageBoundUnitcell.Controls.Add(this.label3);
+            this.tabPageBoundUnitcell.Controls.Add(this.label1);
+            resources.ApplyResources(this.tabPageBoundUnitcell, "tabPageBoundUnitcell");
+            this.tabPageBoundUnitcell.Name = "tabPageBoundUnitcell";
             // 
-            // numericBox3
+            // label2
             // 
-            this.numericBox3.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox3, "numericBox3");
-            this.numericBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox3.DecimalPlaces = 1;
-            this.numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox3.Maximum = 10D;
-            this.numericBox3.Minimum = -10D;
-            this.numericBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox3.MouseSpeed = 1D;
-            this.numericBox3.Multiline = false;
-            this.numericBox3.Name = "numericBox3";
-            this.numericBox3.RadianValue = -0.0087266462599716477D;
-            this.numericBox3.ReadOnly = false;
-            this.numericBox3.RestrictLimitValue = true;
-            this.numericBox3.ShowFraction = false;
-            this.numericBox3.ShowPositiveSign = false;
-            this.numericBox3.ShowUpDown = false;
-            this.numericBox3.SkipEventDuringInput = false;
-            this.numericBox3.SmartIncrement = true;
-            this.numericBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox3.ThonsandsSeparator = true;
-            this.numericBox3.UpDown_Increment = 0.1D;
-            this.numericBox3.Value = -0.5D;
-            this.numericBox3.WordWrap = true;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
-            // numericBox1
+            // label4
             // 
-            this.numericBox1.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox1, "numericBox1");
-            this.numericBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBox1.DecimalPlaces = 1;
-            this.numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox1.Maximum = 10D;
-            this.numericBox1.Minimum = -10D;
-            this.numericBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox1.MouseSpeed = 1D;
-            this.numericBox1.Multiline = false;
-            this.numericBox1.Name = "numericBox1";
-            this.numericBox1.RadianValue = -0.0087266462599716477D;
-            this.numericBox1.ReadOnly = false;
-            this.numericBox1.RestrictLimitValue = true;
-            this.numericBox1.ShowFraction = false;
-            this.numericBox1.ShowPositiveSign = false;
-            this.numericBox1.ShowUpDown = false;
-            this.numericBox1.SkipEventDuringInput = false;
-            this.numericBox1.SmartIncrement = true;
-            this.numericBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox1.ThonsandsSeparator = true;
-            this.numericBox1.UpDown_Increment = 0.1D;
-            this.numericBox1.Value = -0.5D;
-            this.numericBox1.WordWrap = true;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // buttonSetRange2
+            // 
+            resources.ApplyResources(this.buttonSetRange2, "buttonSetRange2");
+            this.buttonSetRange2.Name = "buttonSetRange2";
+            this.buttonSetRange2.Tag = "0.75";
+            this.buttonSetRange2.UseVisualStyleBackColor = true;
+            this.buttonSetRange2.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetRange3
+            // 
+            resources.ApplyResources(this.buttonSetRange3, "buttonSetRange3");
+            this.buttonSetRange3.Name = "buttonSetRange3";
+            this.buttonSetRange3.Tag = "1";
+            this.buttonSetRange3.UseVisualStyleBackColor = true;
+            this.buttonSetRange3.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetCenter1
+            // 
+            resources.ApplyResources(this.buttonSetCenter1, "buttonSetCenter1");
+            this.buttonSetCenter1.Name = "buttonSetCenter1";
+            this.buttonSetCenter1.Tag = "0";
+            this.buttonSetCenter1.UseVisualStyleBackColor = true;
+            this.buttonSetCenter1.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetCenter3
+            // 
+            resources.ApplyResources(this.buttonSetCenter3, "buttonSetCenter3");
+            this.buttonSetCenter3.Name = "buttonSetCenter3";
+            this.buttonSetCenter3.Tag = "0.5";
+            this.buttonSetCenter3.UseVisualStyleBackColor = true;
+            this.buttonSetCenter3.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetRange1
+            // 
+            resources.ApplyResources(this.buttonSetRange1, "buttonSetRange1");
+            this.buttonSetRange1.Name = "buttonSetRange1";
+            this.buttonSetRange1.Tag = "0.5";
+            this.buttonSetRange1.UseVisualStyleBackColor = true;
+            this.buttonSetRange1.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // numericBoxCRange
+            // 
+            this.numericBoxCRange.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCRange, "numericBoxCRange");
+            this.numericBoxCRange.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCRange.DecimalPlaces = 2;
+            this.numericBoxCRange.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCRange.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCRange.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCRange.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCRange.Maximum = 10D;
+            this.numericBoxCRange.Minimum = 0D;
+            this.numericBoxCRange.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxCRange.MouseSpeed = 1D;
+            this.numericBoxCRange.Multiline = false;
+            this.numericBoxCRange.Name = "numericBoxCRange";
+            this.numericBoxCRange.RadianValue = 0.0087266462599716477D;
+            this.numericBoxCRange.ReadOnly = false;
+            this.numericBoxCRange.RestrictLimitValue = true;
+            this.numericBoxCRange.ShowFraction = false;
+            this.numericBoxCRange.ShowPositiveSign = true;
+            this.numericBoxCRange.ShowUpDown = true;
+            this.numericBoxCRange.SkipEventDuringInput = false;
+            this.numericBoxCRange.SmartIncrement = false;
+            this.numericBoxCRange.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCRange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCRange.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCRange.ThonsandsSeparator = true;
+            this.numericBoxCRange.UpDown_Increment = 0.25D;
+            this.numericBoxCRange.Value = 0.5D;
+            this.numericBoxCRange.WordWrap = true;
+            this.numericBoxCRange.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // numericBoxBRange
+            // 
+            this.numericBoxBRange.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBRange, "numericBoxBRange");
+            this.numericBoxBRange.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBRange.DecimalPlaces = 2;
+            this.numericBoxBRange.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBRange.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBRange.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBRange.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBRange.Maximum = 10D;
+            this.numericBoxBRange.Minimum = 0D;
+            this.numericBoxBRange.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxBRange.MouseSpeed = 1D;
+            this.numericBoxBRange.Multiline = false;
+            this.numericBoxBRange.Name = "numericBoxBRange";
+            this.numericBoxBRange.RadianValue = 0.0087266462599716477D;
+            this.numericBoxBRange.ReadOnly = false;
+            this.numericBoxBRange.RestrictLimitValue = true;
+            this.numericBoxBRange.ShowFraction = false;
+            this.numericBoxBRange.ShowPositiveSign = true;
+            this.numericBoxBRange.ShowUpDown = true;
+            this.numericBoxBRange.SkipEventDuringInput = false;
+            this.numericBoxBRange.SmartIncrement = false;
+            this.numericBoxBRange.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxBRange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxBRange.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxBRange.ThonsandsSeparator = true;
+            this.numericBoxBRange.UpDown_Increment = 0.25D;
+            this.numericBoxBRange.Value = 0.5D;
+            this.numericBoxBRange.WordWrap = true;
+            this.numericBoxBRange.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // numericBoxARange
+            // 
+            this.numericBoxARange.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxARange, "numericBoxARange");
+            this.numericBoxARange.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxARange.DecimalPlaces = 2;
+            this.numericBoxARange.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxARange.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxARange.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxARange.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxARange.Maximum = 10D;
+            this.numericBoxARange.Minimum = 0D;
+            this.numericBoxARange.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxARange.MouseSpeed = 1D;
+            this.numericBoxARange.Multiline = false;
+            this.numericBoxARange.Name = "numericBoxARange";
+            this.numericBoxARange.RadianValue = 0.0087266462599716477D;
+            this.numericBoxARange.ReadOnly = false;
+            this.numericBoxARange.RestrictLimitValue = true;
+            this.numericBoxARange.ShowFraction = false;
+            this.numericBoxARange.ShowPositiveSign = true;
+            this.numericBoxARange.ShowUpDown = true;
+            this.numericBoxARange.SkipEventDuringInput = false;
+            this.numericBoxARange.SmartIncrement = false;
+            this.numericBoxARange.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxARange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxARange.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxARange.ThonsandsSeparator = true;
+            this.numericBoxARange.UpDown_Increment = 0.25D;
+            this.numericBoxARange.Value = 0.5D;
+            this.numericBoxARange.WordWrap = true;
+            this.numericBoxARange.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // numericBoxCCenter
+            // 
+            this.numericBoxCCenter.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCCenter, "numericBoxCCenter");
+            this.numericBoxCCenter.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCCenter.DecimalPlaces = 2;
+            this.numericBoxCCenter.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCCenter.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCCenter.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCCenter.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCCenter.Maximum = 10D;
+            this.numericBoxCCenter.Minimum = 0D;
+            this.numericBoxCCenter.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxCCenter.MouseSpeed = 1D;
+            this.numericBoxCCenter.Multiline = false;
+            this.numericBoxCCenter.Name = "numericBoxCCenter";
+            this.numericBoxCCenter.RadianValue = 0D;
+            this.numericBoxCCenter.ReadOnly = false;
+            this.numericBoxCCenter.RestrictLimitValue = true;
+            this.numericBoxCCenter.ShowFraction = false;
+            this.numericBoxCCenter.ShowPositiveSign = false;
+            this.numericBoxCCenter.ShowUpDown = true;
+            this.numericBoxCCenter.SkipEventDuringInput = false;
+            this.numericBoxCCenter.SmartIncrement = false;
+            this.numericBoxCCenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCCenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCCenter.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCCenter.ThonsandsSeparator = true;
+            this.numericBoxCCenter.UpDown_Increment = 0.25D;
+            this.numericBoxCCenter.Value = 0D;
+            this.numericBoxCCenter.WordWrap = true;
+            this.numericBoxCCenter.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // numericBoxBCenter
+            // 
+            this.numericBoxBCenter.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBCenter, "numericBoxBCenter");
+            this.numericBoxBCenter.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBCenter.DecimalPlaces = 2;
+            this.numericBoxBCenter.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBCenter.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBCenter.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBCenter.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBCenter.Maximum = 10D;
+            this.numericBoxBCenter.Minimum = 0D;
+            this.numericBoxBCenter.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxBCenter.MouseSpeed = 1D;
+            this.numericBoxBCenter.Multiline = false;
+            this.numericBoxBCenter.Name = "numericBoxBCenter";
+            this.numericBoxBCenter.RadianValue = 0D;
+            this.numericBoxBCenter.ReadOnly = false;
+            this.numericBoxBCenter.RestrictLimitValue = true;
+            this.numericBoxBCenter.ShowFraction = false;
+            this.numericBoxBCenter.ShowPositiveSign = false;
+            this.numericBoxBCenter.ShowUpDown = true;
+            this.numericBoxBCenter.SkipEventDuringInput = false;
+            this.numericBoxBCenter.SmartIncrement = false;
+            this.numericBoxBCenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxBCenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxBCenter.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxBCenter.ThonsandsSeparator = true;
+            this.numericBoxBCenter.UpDown_Increment = 0.25D;
+            this.numericBoxBCenter.Value = 0D;
+            this.numericBoxBCenter.WordWrap = true;
+            this.numericBoxBCenter.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // numericBoxACenter
+            // 
+            this.numericBoxACenter.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxACenter, "numericBoxACenter");
+            this.numericBoxACenter.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxACenter.DecimalPlaces = 2;
+            this.numericBoxACenter.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxACenter.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxACenter.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxACenter.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxACenter.Maximum = 10D;
+            this.numericBoxACenter.Minimum = 0D;
+            this.numericBoxACenter.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxACenter.MouseSpeed = 1D;
+            this.numericBoxACenter.Multiline = false;
+            this.numericBoxACenter.Name = "numericBoxACenter";
+            this.numericBoxACenter.RadianValue = 0D;
+            this.numericBoxACenter.ReadOnly = false;
+            this.numericBoxACenter.RestrictLimitValue = true;
+            this.numericBoxACenter.ShowFraction = false;
+            this.numericBoxACenter.ShowPositiveSign = false;
+            this.numericBoxACenter.ShowUpDown = true;
+            this.numericBoxACenter.SkipEventDuringInput = false;
+            this.numericBoxACenter.SmartIncrement = false;
+            this.numericBoxACenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxACenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxACenter.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxACenter.ThonsandsSeparator = true;
+            this.numericBoxACenter.UpDown_Increment = 0.25D;
+            this.numericBoxACenter.Value = 0D;
+            this.numericBoxACenter.WordWrap = true;
+            this.numericBoxACenter.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCMax_ValueChanged);
+            // 
+            // tabPageBoundPlane
+            // 
+            this.tabPageBoundPlane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.tabPageBoundPlane, "tabPageBoundPlane");
+            this.tabPageBoundPlane.Name = "tabPageBoundPlane";
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxShowBoundPlanes);
+            this.flowLayoutPanel1.Controls.Add(this.numericBoxBoundPlanesOpacity);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxClipObjects);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxHideAllAtoms);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // checkBoxShowBoundPlanes
+            // 
+            resources.ApplyResources(this.checkBoxShowBoundPlanes, "checkBoxShowBoundPlanes");
+            this.checkBoxShowBoundPlanes.Name = "checkBoxShowBoundPlanes";
+            this.checkBoxShowBoundPlanes.UseVisualStyleBackColor = true;
+            this.checkBoxShowBoundPlanes.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
             // 
             // numericBoxBoundPlanesOpacity
             // 
@@ -1253,116 +1180,98 @@
             this.numericBoxBoundPlanesOpacity.RestrictLimitValue = true;
             this.numericBoxBoundPlanesOpacity.ShowFraction = false;
             this.numericBoxBoundPlanesOpacity.ShowPositiveSign = false;
-            this.numericBoxBoundPlanesOpacity.ShowUpDown = false;
+            this.numericBoxBoundPlanesOpacity.ShowUpDown = true;
             this.numericBoxBoundPlanesOpacity.SkipEventDuringInput = false;
             this.numericBoxBoundPlanesOpacity.SmartIncrement = false;
             this.numericBoxBoundPlanesOpacity.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxBoundPlanesOpacity.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxBoundPlanesOpacity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxBoundPlanesOpacity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBoundPlanesOpacity.ThonsandsSeparator = true;
             this.numericBoxBoundPlanesOpacity.UpDown_Increment = 0.1D;
             this.numericBoxBoundPlanesOpacity.Value = 0.7D;
             this.numericBoxBoundPlanesOpacity.WordWrap = true;
             this.numericBoxBoundPlanesOpacity.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
             // 
-            // numericBoxCellTransrationC
+            // checkBoxClipObjects
             // 
-            this.numericBoxCellTransrationC.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxCellTransrationC, "numericBoxCellTransrationC");
-            this.numericBoxCellTransrationC.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.DecimalPlaces = 2;
-            this.numericBoxCellTransrationC.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationC.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationC.Maximum = 10D;
-            this.numericBoxCellTransrationC.Minimum = -10D;
-            this.numericBoxCellTransrationC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationC.MouseSpeed = 1D;
-            this.numericBoxCellTransrationC.Multiline = false;
-            this.numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
-            this.numericBoxCellTransrationC.RadianValue = 0D;
-            this.numericBoxCellTransrationC.ReadOnly = false;
-            this.numericBoxCellTransrationC.RestrictLimitValue = true;
-            this.numericBoxCellTransrationC.ShowFraction = false;
-            this.numericBoxCellTransrationC.ShowPositiveSign = false;
-            this.numericBoxCellTransrationC.ShowUpDown = false;
-            this.numericBoxCellTransrationC.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationC.SmartIncrement = true;
-            this.numericBoxCellTransrationC.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationC.ThonsandsSeparator = true;
-            this.numericBoxCellTransrationC.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationC.Value = 0D;
-            this.numericBoxCellTransrationC.WordWrap = true;
-            this.numericBoxCellTransrationC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            resources.ApplyResources(this.checkBoxClipObjects, "checkBoxClipObjects");
+            this.checkBoxClipObjects.Name = "checkBoxClipObjects";
+            this.checkBoxClipObjects.UseVisualStyleBackColor = true;
+            this.checkBoxClipObjects.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
             // 
-            // numericBoxCellTransrationB
+            // checkBoxHideAllAtoms
             // 
-            this.numericBoxCellTransrationB.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxCellTransrationB, "numericBoxCellTransrationB");
-            this.numericBoxCellTransrationB.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.DecimalPlaces = 2;
-            this.numericBoxCellTransrationB.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationB.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationB.Maximum = 10D;
-            this.numericBoxCellTransrationB.Minimum = -10D;
-            this.numericBoxCellTransrationB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationB.MouseSpeed = 1D;
-            this.numericBoxCellTransrationB.Multiline = false;
-            this.numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
-            this.numericBoxCellTransrationB.RadianValue = 0D;
-            this.numericBoxCellTransrationB.ReadOnly = false;
-            this.numericBoxCellTransrationB.RestrictLimitValue = true;
-            this.numericBoxCellTransrationB.ShowFraction = false;
-            this.numericBoxCellTransrationB.ShowPositiveSign = false;
-            this.numericBoxCellTransrationB.ShowUpDown = false;
-            this.numericBoxCellTransrationB.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationB.SmartIncrement = true;
-            this.numericBoxCellTransrationB.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationB.ThonsandsSeparator = true;
-            this.numericBoxCellTransrationB.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationB.Value = 0D;
-            this.numericBoxCellTransrationB.WordWrap = true;
-            this.numericBoxCellTransrationB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            resources.ApplyResources(this.checkBoxHideAllAtoms, "checkBoxHideAllAtoms");
+            this.checkBoxHideAllAtoms.Name = "checkBoxHideAllAtoms";
+            this.checkBoxHideAllAtoms.UseVisualStyleBackColor = true;
+            this.checkBoxHideAllAtoms.CheckedChanged += new System.EventHandler(this.checkBoxShowBoundPlanes_CheckedChanged);
             // 
-            // numericBoxCellTransrationA
+            // flowLayoutPanel2
             // 
-            this.numericBoxCellTransrationA.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxCellTransrationA, "numericBoxCellTransrationA");
-            this.numericBoxCellTransrationA.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.DecimalPlaces = 2;
-            this.numericBoxCellTransrationA.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationA.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationA.Maximum = 10D;
-            this.numericBoxCellTransrationA.Minimum = -10D;
-            this.numericBoxCellTransrationA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationA.MouseSpeed = 1D;
-            this.numericBoxCellTransrationA.Multiline = false;
-            this.numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
-            this.numericBoxCellTransrationA.RadianValue = 0D;
-            this.numericBoxCellTransrationA.ReadOnly = false;
-            this.numericBoxCellTransrationA.RestrictLimitValue = true;
-            this.numericBoxCellTransrationA.ShowFraction = false;
-            this.numericBoxCellTransrationA.ShowPositiveSign = false;
-            this.numericBoxCellTransrationA.ShowUpDown = false;
-            this.numericBoxCellTransrationA.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationA.SmartIncrement = true;
-            this.numericBoxCellTransrationA.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationA.ThonsandsSeparator = true;
-            this.numericBoxCellTransrationA.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationA.Value = 0D;
-            this.numericBoxCellTransrationA.WordWrap = true;
-            this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Controls.Add(this.radioButtonBoundUnitCell);
+            this.flowLayoutPanel2.Controls.Add(this.radioButtonBoundPlane);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // radioButtonBoundUnitCell
+            // 
+            resources.ApplyResources(this.radioButtonBoundUnitCell, "radioButtonBoundUnitCell");
+            this.radioButtonBoundUnitCell.Checked = true;
+            this.radioButtonBoundUnitCell.Name = "radioButtonBoundUnitCell";
+            this.radioButtonBoundUnitCell.TabStop = true;
+            this.radioButtonBoundUnitCell.UseVisualStyleBackColor = true;
+            this.radioButtonBoundUnitCell.CheckedChanged += new System.EventHandler(this.radioButtonUnitCell_CheckedChanged);
+            // 
+            // radioButtonBoundPlane
+            // 
+            resources.ApplyResources(this.radioButtonBoundPlane, "radioButtonBoundPlane");
+            this.radioButtonBoundPlane.Name = "radioButtonBoundPlane";
+            this.radioButtonBoundPlane.UseVisualStyleBackColor = true;
+            // 
+            // tabPageAtom
+            // 
+            this.tabPageAtom.Controls.Add(this.labelMessage);
+            resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
+            this.tabPageAtom.Name = "tabPageAtom";
+            // 
+            // labelMessage
+            // 
+            resources.ApplyResources(this.labelMessage, "labelMessage");
+            this.labelMessage.ForeColor = System.Drawing.Color.Red;
+            this.labelMessage.Name = "labelMessage";
+            // 
+            // tabPageBond
+            // 
+            resources.ApplyResources(this.tabPageBond, "tabPageBond");
+            this.tabPageBond.Name = "tabPageBond";
+            // 
+            // tabPageUnitCell
+            // 
+            this.tabPageUnitCell.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageUnitCell.Controls.Add(this.checkBoxUnitCell);
+            this.tabPageUnitCell.Controls.Add(this.groupBoxShowUnitCell);
+            resources.ApplyResources(this.tabPageUnitCell, "tabPageUnitCell");
+            this.tabPageUnitCell.Name = "tabPageUnitCell";
+            this.tabPageUnitCell.UseVisualStyleBackColor = true;
+            // 
+            // tabPageLatticePlane
+            // 
+            this.tabPageLatticePlane.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
+            this.tabPageLatticePlane.Name = "tabPageLatticePlane";
+            // 
+            // tabPageCoordinateInfromatin
+            // 
+            this.tabPageCoordinateInfromatin.Controls.Add(this.atomCoordinateTable1);
+            resources.ApplyResources(this.tabPageCoordinateInfromatin, "tabPageCoordinateInfromatin");
+            this.tabPageCoordinateInfromatin.Name = "tabPageCoordinateInfromatin";
+            // 
+            // atomCoordinateTable1
+            // 
+            this.atomCoordinateTable1.Atom = null;
+            this.atomCoordinateTable1.Crystal = null;
+            resources.ApplyResources(this.atomCoordinateTable1, "atomCoordinateTable1");
+            this.atomCoordinateTable1.Name = "atomCoordinateTable1";
             // 
             // tabPageInformation
             // 
@@ -1377,13 +1286,48 @@
             this.textBoxInformation.Name = "textBoxInformation";
             this.textBoxInformation.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Atom";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Atom";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // tabPageCrystal
+            // 
+            resources.ApplyResources(this.tabPageCrystal, "tabPageCrystal");
+            this.tabPageCrystal.Name = "tabPageCrystal";
+            // 
+            // toolStripLabelStatusInitialization
+            // 
+            this.toolStripLabelStatusInitialization.Name = "toolStripLabelStatusInitialization";
+            resources.ApplyResources(this.toolStripLabelStatusInitialization, "toolStripLabelStatusInitialization");
+            // 
+            // toolStripLabelStatusRendering
+            // 
+            this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
+            resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
+            // 
+            // buttonCenter2
+            // 
+            resources.ApplyResources(this.buttonCenter2, "buttonCenter2");
+            this.buttonCenter2.Name = "buttonCenter2";
+            this.buttonCenter2.Tag = "0.25";
+            this.buttonCenter2.UseVisualStyleBackColor = true;
+            this.buttonCenter2.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -1404,25 +1348,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCellPlaneAlpha)).EndInit();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
-            this.tabPageCoordinateInfromatin.ResumeLayout(false);
             this.tabPageBounds.ResumeLayout(false);
             this.tabPageBounds.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPageUnitCell.ResumeLayout(false);
-            this.tabPageUnitCell.PerformLayout();
+            this.tabControlBoundOption.ResumeLayout(false);
+            this.tabPageBoundUnitcell.ResumeLayout(false);
+            this.tabPageBoundUnitcell.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.tabPageAtom.ResumeLayout(false);
             this.tabPageAtom.PerformLayout();
+            this.tabPageUnitCell.ResumeLayout(false);
+            this.tabPageUnitCell.PerformLayout();
+            this.tabPageCoordinateInfromatin.ResumeLayout(false);
             this.tabPageInformation.ResumeLayout(false);
             this.tabPageInformation.PerformLayout();
             this.ResumeLayout(false);
@@ -1486,24 +1430,15 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLightDirection;
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStrip toolStrip2;
         private Crystallography.OpenGL.GLControlAlpha glControlMain;
         private Crystallography.OpenGL.GLControlAlpha glControlAxes;
         private Crystallography.Controls.NumericBox numericBoxCellTransrationC;
         private Crystallography.Controls.NumericBox numericBoxCellTransrationB;
         private Crystallography.Controls.NumericBox numericBoxCellTransrationA;
         private Crystallography.OpenGL.GLControlAlpha glControlLight;
-        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusInitialization;
-        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusRendering;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBounds;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Button AddBoundary;
         private System.Windows.Forms.CheckBox checkBoxClipObjects;
         private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
         private Crystallography.Controls.NumericBox numericBoxBoundPlanesOpacity;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageBounds;
         private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -1515,32 +1450,17 @@
         private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
         private System.Windows.Forms.TabPage tabPageAtom;
         private System.Windows.Forms.TabPage tabPageBond;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private Crystallography.Controls.NumericBox numericBox6;
-        private Crystallography.Controls.NumericBox numericBox4;
-        private Crystallography.Controls.NumericBox numericBox2;
-        private Crystallography.Controls.NumericBox numericBox5;
-        private Crystallography.Controls.NumericBox numericBox3;
-        private Crystallography.Controls.NumericBox numericBox1;
+        private System.Windows.Forms.RadioButton radioButtonBoundPlane;
+        private System.Windows.Forms.RadioButton radioButtonBoundUnitCell;
+        private System.Windows.Forms.TabControl tabControlBoundOption;
+        private System.Windows.Forms.TabPage tabPageBoundUnitcell;
+        private System.Windows.Forms.TabPage tabPageBoundPlane;
+        private Crystallography.Controls.NumericBox numericBoxCRange;
+        private Crystallography.Controls.NumericBox numericBoxBRange;
+        private Crystallography.Controls.NumericBox numericBoxARange;
+        private Crystallography.Controls.NumericBox numericBoxCCenter;
+        private Crystallography.Controls.NumericBox numericBoxBCenter;
+        private Crystallography.Controls.NumericBox numericBoxACenter;
         private System.Windows.Forms.BindingSource bindingSourceAtoms;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -1550,5 +1470,19 @@
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.TabPage tabPageInformation;
         private System.Windows.Forms.TextBox textBoxInformation;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonSetRange2;
+        private System.Windows.Forms.Button buttonSetRange3;
+        private System.Windows.Forms.Button buttonSetCenter1;
+        private System.Windows.Forms.Button buttonSetCenter3;
+        private System.Windows.Forms.Button buttonSetRange1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusInitialization;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusRendering;
+        private System.Windows.Forms.Button buttonCenter2;
     }
 }

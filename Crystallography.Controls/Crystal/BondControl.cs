@@ -13,15 +13,9 @@ namespace Crystallography.Controls
 {
     public partial class BondInputControl : UserControl
     {
-        #region プロパティ
+        #region プロパティ, フィールド、イベントハンドラ
         public Crystal Crystal { get; set; } = null;
-
         public bool SkipEvent { get; set; } = false;
-        #endregion
-
-        public event EventHandler BondsChanged;
-
-
 
         private string[] elementList = new string[0];
         public string[] ElementList
@@ -44,24 +38,32 @@ namespace Crystallography.Controls
             }
         }
 
+        private DataSet.DataTableBondDataTable table;
+
+        public event EventHandler ItemsChanged;
+        #endregion,
+
+
         public BondInputControl()
         {
             InitializeComponent();
+            table = dataSet.DataTableBond;
         }
 
+        #region Bondsクラスを画面下部　から生成 /　にセット
         public Bonds GetFromInterface()
         {
-            if (ElementList.Length <1 || comboBoxBondingAtom1.Text == "" || comboBoxBondingAtom2.Text == "")
+            if (ElementList.Length < 1 || comboBoxBondingAtom1.Text == "" || comboBoxBondingAtom2.Text == "")
                 return null;
             else
-             return new Bonds(
-                 true, ElementList, comboBoxBondingAtom1.Text, comboBoxBondingAtom2.Text,
-                 numericBoxBondMinLength.Value, numericBoxBondMaxLength.Value,
-                 numericBoxBondRadius.Value, numericBoxBondAlpha.Value,
-                 colorControlBond.Color, numericBoxPolyhedronAlpha.Value,
-                 checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked,
-                 checkBoxShowInnerBonds.Checked, colorControlPlyhedron.Color, checkBoxShowEdges.Checked,
-                 numericBoxEdgeWidth.Value, colorControlEdges.Color);
+                return new Bonds(
+                    true, ElementList, comboBoxBondingAtom1.Text, comboBoxBondingAtom2.Text,
+                    numericBoxBondMinLength.Value, numericBoxBondMaxLength.Value,
+                    numericBoxBondRadius.Value, numericBoxBondAlpha.Value,
+                    colorControlBond.Color, numericBoxPolyhedronAlpha.Value,
+                    checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked,
+                    checkBoxShowInnerBonds.Checked, colorControlPlyhedron.Color, checkBoxShowEdges.Checked,
+                    numericBoxEdgeWidth.Value, colorControlEdges.Color);
         }
 
         public void SetToInterface(Bonds b)
@@ -87,12 +89,15 @@ namespace Crystallography.Controls
             numericBoxEdgeWidth.Value = b.EdgeLineWidth;
             colorControlEdges.Color = Color.FromArgb(b.ArgbEdge);
         }
+        #endregion
+
+        #region チェックボックスイベント
 
         private void checkBoxShowPolyhedron_CheckedChanged(object sender, EventArgs e) => groupBoxPolyhedron.Enabled = checkBoxShowPolyhedron.Checked;
-
         private void checkBoxShowEdges_CheckedChanged(object sender, EventArgs e) => groupBoxEdge.Enabled = checkBoxShowEdges.Checked;
 
 
+        #endregion
 
         #region データベース操作
         /// <summary>
@@ -102,9 +107,9 @@ namespace Crystallography.Controls
         public void Add(Bonds bonds)
         {
             if (bonds != null)
-                dataSet.DataTableBond.Add(bonds);
+                table.Add(bonds);
 
-            BondsChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -116,8 +121,8 @@ namespace Crystallography.Controls
             if (bonds != null)
             {
                 foreach (var b in bonds)
-                    dataSet.DataTableBond.Add(b);
-                BondsChanged?.Invoke(this, new EventArgs());
+                    table.Add(b);
+                ItemsChanged?.Invoke(this, new EventArgs());
             }
         }
 
@@ -127,8 +132,8 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Delete(int i)
         {
-            dataSet.DataTableBond.Remove(i);
-            BondsChanged?.Invoke(this, new EventArgs());
+            table.Remove(i);
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -138,8 +143,8 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Replace(Bonds bonds, int i)
         {
-            dataSet.DataTableBond.Replace(bonds, i);
-            BondsChanged?.Invoke(this, new EventArgs());
+            table.Replace(bonds, i);
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -147,18 +152,17 @@ namespace Crystallography.Controls
         /// </summary>
         public void Clear()
         {
-            dataSet.DataTableBond.Clear();
-            BondsChanged?.Invoke(this, new EventArgs());
+            table.Clear();
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
         /// データベース中の全ての原子を取得
         /// </summary>
         /// <returns></returns>
-        public Bonds[] GetAll() => dataSet.DataTableBond.GetAll();
+        public Bonds[] GetAll() => table.GetAll();
 
         #endregion
-
 
         #region 追加/削除/置換 ボタン
 
@@ -204,14 +208,20 @@ namespace Crystallography.Controls
             {
                 SkipEvent = true;//bindingSourceAtoms_PositionChangedが呼ばれるのを防ぐ
                 Delete(pos);
-                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
                 SkipEvent = false;
+                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
             }
         }
 
         #endregion
 
-        //選択Atomが変更されたとき
+        #region bindingSourceイベント
+
+        /// <summary>
+        /// 選択行が変更されたとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bindingSource_PositionChanged(object sender, System.EventArgs e)
         {
             if (SkipEvent) return;
@@ -219,7 +229,25 @@ namespace Crystallography.Controls
             if (bindingSource.Position >= 0 && bindingSource.Count > 0)
                 SetToInterface(dataSet.DataTableBond.Get(bindingSource.Position));
         }
+        #endregion
 
+        #region dataGridView イベント
+
+        private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {//チェックボックスが変わると即座に反映させる
+            if (dataGridView.CurrentCellAddress.X == 0 && dataGridView.IsCurrentCellDirty)
+                dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
+        }
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                table.Get(bindingSource.Position).Enabled =
+                    (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                ItemsChanged?.Invoke(this, new EventArgs());
+            }
+        } 
+        #endregion
 
     }
 }
