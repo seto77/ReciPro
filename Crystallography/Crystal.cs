@@ -44,9 +44,9 @@ namespace Crystallography
 
         #region プロパティ、フィールド
 
-        public List<Bound> Bounds;
+        public Bound[] Bounds;
 
-        public List<Bound> LatticePlanes;
+        public LatticePlane[] LatticePlanes;
 
         [NonSerialized]
         [XmlIgnore]
@@ -264,7 +264,7 @@ namespace Crystallography
         /// <summary>
         /// 結合の情報を取り扱うBondクラスの配列
         /// </summary>
-        public List<Bonds> Bonds = new List<Bonds>();
+        public Bonds[] Bonds = new Bonds[0];
 
         /// <summary>
         /// 格子歪みテンソル
@@ -367,57 +367,91 @@ namespace Crystallography
             Plane = new List<Plane>();
             Atoms = new Atoms[0];
             ElasticStiffnessArray = new double[21];
-
             Bethe = new BetheMethod(this);
-
             A = B = C = Alpha = Beta = Gamma = 0;
             Name = "";
             Argb = Color.Black.ToArgb();
         }
 
-        public Crystal(double a, double b, double c, double alpha, double beta, double gamma, int symmetrySeriesNumber, String name, String note, Color col)
+        public Crystal(
+            (double A, double B, double C, double Alpha, double Beta, double Gamma) cell,
+            int symmetrySeriesNumber,
+            string name,
+            Color col)
             : this()
         {
-            this.A = a; this.B = b; this.C = c; this.Alpha = alpha; this.Beta = beta; this.Gamma = gamma;
+            A = cell.A; B = cell.B; C = cell.C; Alpha = cell.Alpha; Beta = cell.Beta; Gamma = cell.Gamma;
             Name = name;
-            Note = note;
             Argb = col.ToArgb();
-            SetAxis();
             SymmetrySeriesNumber = symmetrySeriesNumber;
             Symmetry = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
-        }
 
-        public Crystal(double a, double b, double c, double alpha, double beta, double gamma, double a_err, double b_err, double c_err, double alpha_err, double beta_err, double gamma_err,
-           int symmetrySeriesNumber, String name, String note, Color col)
-            : this(a, b, c, alpha, beta, gamma, symmetrySeriesNumber, name, note, col)
+            SetAxis();
+        }
+        public Crystal(
+            (double A, double B, double C, double Alpha, double Beta, double Gamma) cell,
+            (double A, double B, double C, double Alpha, double Beta, double Gamma)? err,
+            int symmetrySeriesNumber,
+            string name,
+            Color col)
+            : this(cell, symmetrySeriesNumber, name, col)
         {
-            this.A_err = a_err; this.B_err = b_err; this.C_err = c_err; this.Alpha_err = alpha_err; this.Beta_err = beta_err; this.Gamma_err = gamma_err;
+            if (err != null)
+                A_err = err.Value.A; B_err = err.Value.B; C_err = err.Value.C; Alpha_err = err.Value.Alpha; Beta_err = err.Value.Beta; Gamma_err = err.Value.Gamma;
         }
 
-        public Crystal(double a, double b, double c, double alpha, double beta, double gamma, int symmetrySeriesNumber, String name, String note, Color col,
-            Atoms[] atoms, string authorName, string journal, string publishedSectionTitle, List<Bonds> bonds)
-            : this(a, b, c, alpha, beta, gamma, symmetrySeriesNumber, name, note, col)
+
+        public Crystal(
+          (double A, double B, double C, double Alpha, double Beta, double Gamma) cell, 
+          (double A, double B, double C, double Alpha, double Beta, double Gamma)? err,
+          int symmetrySeriesNumber,
+          string name,
+          Color col,
+          Matrix3D rot,
+          Atoms[] atoms,
+          (string Note, string Authors, string Journal, string Title) reference,
+          Bonds[] bonds)
+          : this(cell, err, symmetrySeriesNumber, name, col)
         {
             Atoms = atoms;
-            PublAuthorName = authorName;
-            Journal = journal;
-            PublSectionTitle = publishedSectionTitle;
+            for (int i = 0; i < atoms.Length; i++)
+                Atoms[i].ResetSymmetry(symmetrySeriesNumber);
+
+            Note = reference.Note; PublAuthorName = reference.Authors; Journal = reference.Journal; PublSectionTitle = reference.Title;
+            RotationMatrix = new Matrix3D(rot);
             GetFormulaAndDensity();
             Bonds = bonds;
         }
 
-        public Crystal(double a, double b, double c, double alpha, double beta, double gamma, double a_err, double b_err, double c_err, double alpha_err, double beta_err, double gamma_err,
-            int symmetrySeriesNumber, String name, String note, Color col,
-            Atoms[] atoms, string authorName, string journal, string publishedSectionTitle, List<Bonds> bonds)
-            : this(a, b, c, alpha, beta, gamma, symmetrySeriesNumber, name, note, col, atoms, authorName, journal, publishedSectionTitle, bonds)
+
+        public Crystal(
+          (double A, double B, double C, double Alpha, double Beta, double Gamma) cell,
+          (double A, double B, double C, double Alpha, double Beta, double Gamma)? err,
+          int symmetrySeriesNumber,
+          string name,
+          Color col,
+          Matrix3D rot,
+          Atoms[] atoms,
+          (string Note, string Authors, string Journal, string Title) reference,
+          Bonds[] bonds,
+          Bound[] bounds,
+          LatticePlane[] latticePlane)
+          : this(cell, err, symmetrySeriesNumber, name, col, rot, atoms,reference,bonds)
         {
-            this.A_err = a_err; this.B_err = b_err; this.C_err = c_err; this.Alpha_err = alpha_err; this.Beta_err = beta_err; this.Gamma_err = gamma_err;
+          
+            Bounds = bounds;
+            for (int i = 0; i < Bounds.Length; i++)
+                Bounds[i].Reset(this);
+            LatticePlanes = latticePlane;
+            for (int i = 0; i < LatticePlanes.Length; i++)
+                LatticePlanes[i].Reset(this);
         }
+
 
         public Crystal(Crystal cry)
         {
-            this.A = cry.A; this.B = cry.B; this.C = cry.C; this.Alpha = cry.Alpha; this.Beta = cry.Beta; this.Gamma = cry.Gamma;
-            this.A_err = cry.A_err; this.B_err = cry.B_err; this.C_err = cry.C_err; this.Alpha_err = cry.Alpha_err; this.Beta_err = cry.Beta_err; this.Gamma_err = cry.Gamma_err;
+            A = cry.A; B = cry.B; C = cry.C; Alpha = cry.Alpha; Beta = cry.Beta; Gamma = cry.Gamma;
+            A_err = cry.A_err; B_err = cry.B_err; C_err = cry.C_err; Alpha_err = cry.Alpha_err; Beta_err = cry.Beta_err; Gamma_err = cry.Gamma_err;
             Name = cry.Name; Note = cry.Note; /*color = col;*/ Argb = cry.Argb;
             SetAxis();
 
@@ -433,6 +467,9 @@ namespace Crystallography
             GetFormulaAndDensity();
 
             Bonds = cry.Bonds;
+
+            LatticePlanes = cry.LatticePlanes;
+            Bounds = cry.Bounds;
 
             ElasticStiffnessArray = cry.ElasticStiffnessArray;
         }

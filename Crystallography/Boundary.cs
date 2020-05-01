@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Crystallography
@@ -10,47 +11,87 @@ namespace Crystallography
     [Serializable()]
     public class Bound
     {
-        //[NonSerialized] [XmlIgnore]
+        public (int H, int K, int L) Index { get; set; }
 
-        public (int H, int K, int L) BaseIndex { get; set; }
+        [XmlIgnore]
+        public Color Color { get => Color.FromArgb(ColorArgb); }
+        public int ColorArgb { get; set; } = Color.Gray.ToArgb();
+
+        public bool Equivalency { get; set; } = true;
+        public (double X, double Y, double Z, double D)[] PlaneParams { get; }
+        public double Distance { get; set; }
+        public double MultipleOfD { get; }
+
+        public bool Enabled { get; set; } = true;
+
+        public Bound()
+        { }
+
+        public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance, int argb) : this()
+        {
+            Enabled = enabled;
+            ColorArgb = argb;
+            Equivalency = equivalency;
+            Distance = distance;
+            Index = (h, k, l);
+
+            var gBase = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
+            MultipleOfD = Distance * gBase.Length;
+
+            (int H, int K, int L)[] planes = equivalency ? SymmetryStatic.GenerateEquivalentPlanes(h, k, l, crystal.Symmetry) : new[] { (h, k, l) };
+
+            PlaneParams = planes.Select(p =>
+            {
+                var g = p.H * crystal.A_Star + p.K * crystal.B_Star + p.L * crystal.C_Star;
+                g.NormarizeThis();
+                return (g.X, g.Y, g.Z, Distance);
+            }).ToArray();
+        }
+
+
+        public void Reset(Crystal crystal)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// 境界を表現するクラス. 主にReciProのStructure Viewerから呼び出される.
+    /// </summary>
+    [Serializable()]
+    public class LatticePlane
+    {
+        public (int H, int K, int L) Index { get; set; }
+        public double Translation { get; set; } = 0;
+        public double D { get; set; } = 0;
+        public bool Enabled { get; set; } = true;
+
+        public (double X, double Y, double Z, double D) PlaneParam { get; }
 
         [XmlIgnore]
         public Color Color { get => Color.FromArgb(ColorArgb); }
 
         public int ColorArgb { get; set; } = Color.Gray.ToArgb();
 
-        public bool Equivalency { get; set; } = true;
-        public double[][] PlaneParams { get; }
-        public double Distance { get; set; }
-        public double D { get; }
-
-        public Bound()
+        public LatticePlane()
         { }
 
-        public Bound(Crystal crystal, int h, int k, int l, bool equivalency, double distance, int argb)
+        public LatticePlane(bool enabled, Crystal crystal, int h, int k, int l, double translation, int argb):this()
         {
+            Enabled = enabled;
             ColorArgb = argb;
-            Equivalency = equivalency;
-            Distance = distance;
-            BaseIndex = (h, k, l);
+            Translation = translation;
+            Index = (h, k, l);
 
-            var planes = new (int H, int K, int L)[1];
-            if (equivalency)
-                planes = SymmetryStatic.GenerateEquivalentPlanes(h, k, l, crystal.Symmetry);
-            else
-                planes[0] = (h, k, l);
+            var g = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
+            var d = 1 / g.Length;
+            g.NormarizeThis();
+            PlaneParam = (g.X, g.Y, g.Z, d);
+        }
 
-            var gBase = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
-            D = 1 / gBase.Length;
-            var d = distance;
+        public void Reset(Crystal crystal)
+        {
 
-            PlaneParams = new double[planes.Length][];
-            for (int i = 0; i < planes.Length; i++)
-            {
-                var g = planes[i].H * crystal.A_Star + planes[i].K * crystal.B_Star + planes[i].L * crystal.C_Star;
-                g.NormarizeThis();
-                PlaneParams[i] = new double[] { g.X, g.Y, g.Z, d };
-            }
         }
     }
 }

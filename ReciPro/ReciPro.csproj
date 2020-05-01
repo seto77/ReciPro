@@ -264,12 +264,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="StructureViewer\BoundaryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="StructureViewer\BoundaryControl.Designer.cs">
-      <DependentUpon>BoundaryControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormStereonet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,9 +366,6 @@
     <EmbeddedResource Include="FormTEMID\FormTEMIDResults.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormTEMIDResults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StructureViewer\BoundaryControl.resx">
-      <DependentUpon>BoundaryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StructureViewer\FormAtom.resx">
       <DependentUpon>FormAtom.cs</DependentUpon>

@@ -117,29 +117,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IronPython, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\IronPython.2.7.10-candidate1\lib\net45\IronPython.dll</HintPath>
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.dll</HintPath>
     </Reference>
     <Reference Include="IronPython.Modules, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\IronPython.2.7.10-candidate1\lib\net45\IronPython.Modules.dll</HintPath>
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Modules.dll</HintPath>
     </Reference>
     <Reference Include="IronPython.SQLite, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\IronPython.2.7.10-candidate1\lib\net45\IronPython.SQLite.dll</HintPath>
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="IronPython.Wpf, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\IronPython.2.7.10-candidate1\lib\net45\IronPython.Wpf.dll</HintPath>
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics, Version=4.9.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.4.9.1\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Dynamic, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\DynamicLanguageRuntime.1.2.3-candidate1\lib\net45\Microsoft.Dynamic.dll</HintPath>
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Scripting, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\DynamicLanguageRuntime.1.2.3-candidate1\lib\net45\Microsoft.Scripting.dll</HintPath>
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Scripting.Metadata, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\..\ReciPro\packages\DynamicLanguageRuntime.1.2.3-candidate1\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore">
@@ -250,6 +250,12 @@
     </Compile>
     <Compile Include="Crystal\FormScatteringFactor.Designer.cs">
       <DependentUpon>FormScatteringFactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\LatticePlaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\LatticePlaneControl.Designer.cs">
+      <DependentUpon>LatticePlaneControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
@@ -448,6 +454,9 @@
     <EmbeddedResource Include="Crystal\FormScatteringFactor.resx">
       <DependentUpon>FormScatteringFactor.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\LatticePlaneControl.resx">
+      <DependentUpon>LatticePlaneControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\PoleFigureControl.ja.resx">
       <DependentUpon>PoleFigureControl.cs</DependentUpon>

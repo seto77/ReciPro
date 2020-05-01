@@ -453,15 +453,14 @@ namespace Crystallography.Controls
         /// <summary>
         /// 画面下部の情報から、Atomを生成する
         /// </summary>
-        /// <param name="symmetrySeriesNumber"></param>
         /// <returns></returns>
-        public Atoms GetFromInterface(int symmetrySeriesNumber)
+        private Atoms GetFromInterface()
         {
             var dsf = new DiffuseScatteringFactor(Istoropy, Biso, B11, B22, B33, B12, B23, B13, BisoErr, B11Err, B22Err, B33Err, B12Err, B23Err, B13Err);
             var material = new AtomMaterial(AtomColor.ToArgb(), Ambient, Diffusion, Specular, Shininess, Emission, Alpha);
 
             var atoms = new Atoms(Label, AtomNo, AtomSubNoXray, AtomSubNoElectron, IsotopicComposition,
-                symmetrySeriesNumber, new Vector3D(X, Y, Z), new Vector3D(XErr, YErr, ZErr), Occ, OccErr, dsf,
+                SymmetrySeriesNumber, new Vector3D(X, Y, Z), new Vector3D(XErr, YErr, ZErr), Occ, OccErr, dsf,
                 material, (float)Radius);
             return atoms;
         }
@@ -470,7 +469,7 @@ namespace Crystallography.Controls
         //原子追加ボタン
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
-            var atoms = GetFromInterface(SymmetrySeriesNumber);
+            var atoms = GetFromInterface();
             if (atoms != null)
             {
                 Add(atoms);
@@ -484,7 +483,7 @@ namespace Crystallography.Controls
             var pos = bindingSource.Position;
             if (pos >= 0)
             {
-                Replace(GetFromInterface(SymmetrySeriesNumber), pos);
+                Replace(GetFromInterface(), pos);
                 bindingSource.Position = pos;
             }
         }

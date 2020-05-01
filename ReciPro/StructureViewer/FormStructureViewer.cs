@@ -71,6 +71,7 @@ namespace ReciPro
 
         private void AddBoundary_Click(object sender, EventArgs e)
         {
+            /*
             skipSetCrystal = true;
             BoundsControl bc = new BoundsControl(Crystal);
             bc.Changed += Bounds_Changed;
@@ -82,23 +83,28 @@ namespace ReciPro
             Crystal.Bounds.Add(bc.Bound);
             skipSetCrystal = false;
             SetGLObjects(null);
+            */
         }
 
         private void Bounds_Changed(object sender, EventArgs e)
         {
+            /*
             var bc = (BoundsControl)sender;
             var index = flowLayoutPanelBounds.Controls.IndexOf(bc);
             Crystal.Bounds[index] = bc.Bound;
             SetGLObjects(null);
+            */
         }
 
         private void Bounds_Delete(object sender, EventArgs e)
         {
+            /*
             var bc = (BoundsControl)sender;
             var index = flowLayoutPanelBounds.Controls.IndexOf(bc);
             Crystal.Bounds.RemoveAt(index);
             flowLayoutPanelBounds.Controls.Remove(bc);
             SetGLObjects(null);
+            */
         }
 
         /// <summary>
@@ -107,6 +113,7 @@ namespace ReciPro
         /// <param name="crystal"></param>
         public void initBoundsControl(Crystal crystal)
         {
+            /*
             skipSetCrystal = true;
 
             flowLayoutPanelBounds.Controls.Clear();
@@ -144,6 +151,7 @@ namespace ReciPro
                 flowLayoutPanelBounds.Controls.Add(bc);
             }
             skipSetCrystal = false;
+            */
         }
 
         #endregion ‹«ŠE(Bounds)‚ÌFlowLayoutPanelŠÖ˜A
@@ -152,6 +160,7 @@ namespace ReciPro
 
         private void AddLatticePlane_Click(object sender, EventArgs e)
         {
+            /*
             skipSetCrystal = true;
             BoundsControl bc = new BoundsControl(Crystal)
             {
@@ -171,27 +180,33 @@ namespace ReciPro
             Crystal.LatticePlanes.Add(bc.Bound);
             skipSetCrystal = false;
             SetGLObjects(null);
+            */
         }
 
         private void LatticePlanes_Changed(object sender, EventArgs e)
         {
+            /*
             var bc = (BoundsControl)sender;
             var index = flowLayoutPanelLatticePlanes.Controls.IndexOf(bc);
             Crystal.LatticePlanes[index] = bc.Bound;
             SetLatticePlanes();
+            */
         }
 
         private void LatticePlanes_Delete(object sender, EventArgs e)
         {
+            /*
             var bc = (BoundsControl)sender;
             var index = flowLayoutPanelLatticePlanes.Controls.IndexOf(bc);
             Crystal.LatticePlanes.RemoveAt(index);
             flowLayoutPanelLatticePlanes.Controls.Remove(bc);
             SetLatticePlanes();
+            */
         }
 
         private void initLatticePlanesControl(Crystal crystal)
         {
+            /*
             skipSetCrystal = true;
             flowLayoutPanelLatticePlanes.Controls.Clear();
             if (crystal.LatticePlanes != null && crystal.LatticePlanes.Count != 0)
@@ -213,6 +228,7 @@ namespace ReciPro
                 }
             }
             skipSetCrystal = false;
+            */
         }
 
         #endregion ŠiŽq–Ê‚Ì(Lattice Planes)‚ÌFlowLayoutPanelŠÖ˜A
@@ -235,6 +251,7 @@ namespace ReciPro
 
         private void initBounds()
         {
+            /*
             bounds = new List<(V4 prm, Color color)>();
             foreach (var bc in flowLayoutPanelBounds.Controls.Cast<BoundsControl>().Where(bc => bc.Enabled && bc.Bound.D != 0 && !double.IsInfinity(bc.Bound.D)))
                 bounds.AddRange(bc.Bound.PlaneParams.Select(p => (new V4(p[0], p[1], p[2], p[3]), bc.Bound.Color)));
@@ -249,6 +266,7 @@ namespace ReciPro
                     (new V4(axes.Column2.Normalized(),axes.Column2.Length/2), Color.Gray),
                     (new V4(-axes.Column2.Normalized(),axes.Column2.Length/2), Color.Gray),
                 };
+            */
         }
 
         /// <summary>
@@ -256,6 +274,8 @@ namespace ReciPro
         /// </summary>
         private void setBoundPlanes()
         {
+            if (bounds == null)
+                return;
             //‹«ŠE–Ê‚ð’Ç‰Á
             for (int i = 0; i < bounds.Count; i++)
             {
@@ -514,6 +534,7 @@ namespace ReciPro
         /// </summary>
         public void SetLatticePlanes()
         {
+            /*
             while (GLObjects.Count(obj => obj.Tag is latticeID) != 0)
             {
                 glControlMain.DeleteObjects(GLObjects.First(obj => obj.Tag is latticeID));
@@ -551,6 +572,7 @@ namespace ReciPro
                 }
             }
             Draw();
+            */
         }
 
         /// <summary>
@@ -595,12 +617,10 @@ namespace ReciPro
             glControlMain.ProjWidth = 5f;
 
             numericBoxBoundPlanesOpacity.ShowUpDown = true;
-            numericBoxLatticePlaneOpacity.ShowUpDown = true;
 
-           
-            tabPageBond.Controls.Add(  formMain.crystalControl.bondControl);
-
-
+            tabPageBond.Controls.Add(formMain.crystalControl.bondControl);
+            tabPageBounds.Controls.Add(formMain.crystalControl.boundControl);
+            tabPageLatticePlane.Controls.Add(formMain.crystalControl.latticePlaneControl);
         }
 
 
@@ -1081,20 +1101,7 @@ namespace ReciPro
                 Clipboard.SetDataObject(glControlMain.GenerateBitmap());
         }
 
-        private void bindingSourceAtom_PositionChanged(object sender, EventArgs e)
-        {
-          /*  if (bindingSourceAtoms.Position >= 0 && bindingSourceAtoms.Count > 0)
-            {
-                var atoms = formMain.crystalControl.dataSet.DataTableAtom.Get(bindingSourceAtoms.Position);
-                atomInput.SetAtom(atoms);
-            }
-          */
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
-
+    
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             MoveAtomControl(tabControl.SelectedTab == tabPageAtom);

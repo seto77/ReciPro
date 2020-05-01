@@ -56,13 +56,13 @@ namespace Crystallography.Controls
             {
                 var dr = NewDataTableBoundRow();
                 dr.Bound = bound;
-                //dr[EnabledColumn] = bound.Enabled;
-                dr.h = bound.BaseIndex.H;
-                dr.k = bound.BaseIndex.K;
-                dr.l = bound.BaseIndex.L;
+                dr.Enabled = bound.Enabled;
+                dr.h = bound.Index.H;
+                dr.k = bound.Index.K;
+                dr.l = bound.Index.L;
                 dr.Equivalency = bound.Equivalency;
                 dr.Distance = bound.Distance.ToString("f3");
-                //dr.DistanceD = bound.Distance;
+                dr.MultipleOfD = bound.MultipleOfD.ToString("f3");
 
                 dr.Color = ColorImage(bound.ColorArgb);
                 return dr;
@@ -71,6 +71,27 @@ namespace Crystallography.Controls
 
         partial class DataTableLatticePlaneDataTable
         {
+            public LatticePlane Get(int i) => Rows[i][LatticePlaneColumn] as LatticePlane;
+            public LatticePlane[] GetAll() => Rows.Select(r => (r as DataTableLatticePlaneRow).LatticePlane as LatticePlane).ToArray();
+            public void Replace(LatticePlane bound, int i) => ReplaceBase(Rows, createRow(bound), i);
+            public void Add(LatticePlane bound) => Rows.Add(createRow(bound));
+            public new void Clear() => Rows.Clear();
+            public void Remove(int i) => Rows.RemoveAt(i);
+            public void MoveItem(int srcIndex, int destIndex) => MoveItemBase(Rows, srcIndex, destIndex);
+
+            private DataTableLatticePlaneRow createRow(LatticePlane plane)
+            {
+                var dr = NewDataTableLatticePlaneRow();
+                dr.LatticePlane = plane;
+                dr.Enabled = plane.Enabled;
+                dr.h = plane.Index.H;
+                dr.k = plane.Index.K;
+                dr.l = plane.Index.L;
+                dr.Translation = plane.Translation.ToString("f3");
+
+                dr.Color = ColorImage(plane.ColorArgb);
+                return dr;
+            }
         }
 
         partial class DataTableBondDataTable

@@ -91,10 +91,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBoxInformation = new System.Windows.Forms.TextBox();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -106,9 +102,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.glControlAxes = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlLight = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlMain = new Crystallography.OpenGL.GLControlAlpha();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
             this.tabPageBounds = new System.Windows.Forms.TabPage();
@@ -143,18 +136,16 @@
             this.checkBoxShowBoundPlanes = new System.Windows.Forms.CheckBox();
             this.tabPageUnitCell = new System.Windows.Forms.TabPage();
             this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelLatticePlanes = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAddLatticePlane = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tabPageText = new System.Windows.Forms.TabPage();
             this.tabPageAtom = new System.Windows.Forms.TabPage();
             this.tabPageBond = new System.Windows.Forms.TabPage();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageCrystal = new System.Windows.Forms.TabPage();
             this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
+            this.labelMessage = new System.Windows.Forms.Label();
+            this.glControlAxes = new Crystallography.OpenGL.GLControlAlpha();
+            this.glControlLight = new Crystallography.OpenGL.GLControlAlpha();
+            this.glControlMain = new Crystallography.OpenGL.GLControlAlpha();
             this.numericBox6 = new Crystallography.Controls.NumericBox();
             this.numericBox4 = new Crystallography.Controls.NumericBox();
             this.numericBox2 = new Crystallography.Controls.NumericBox();
@@ -165,9 +156,8 @@
             this.numericBoxCellTransrationC = new Crystallography.Controls.NumericBox();
             this.numericBoxCellTransrationB = new Crystallography.Controls.NumericBox();
             this.numericBoxCellTransrationA = new Crystallography.Controls.NumericBox();
-            this.numericBoxLatticePlaneOpacity = new Crystallography.Controls.NumericBox();
-            this.labelMessage = new System.Windows.Forms.Label();
-            this.boundsControl1 = new ReciPro.BoundsControl();
+            this.tabPageInformation = new System.Windows.Forms.TabPage();
+            this.textBoxInformation = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBoxShowUnitCell.SuspendLayout();
@@ -188,11 +178,9 @@
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.flowLayoutPanelBounds.SuspendLayout();
             this.tabPageUnitCell.SuspendLayout();
-            this.tabPageLatticePlane.SuspendLayout();
-            this.tabPageText.SuspendLayout();
-            this.tabPageBond.SuspendLayout();
+            this.tabPageAtom.SuspendLayout();
+            this.tabPageInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -638,32 +626,6 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip"));
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            this.toolTip.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
-            // 
-            // textBoxInformation
-            // 
-            resources.ApplyResources(this.textBoxInformation, "textBoxInformation");
-            this.textBoxInformation.HideSelection = false;
-            this.textBoxInformation.Name = "textBoxInformation";
-            this.textBoxInformation.ReadOnly = true;
-            this.toolTip.SetToolTip(this.textBoxInformation, resources.GetString("textBoxInformation.ToolTip"));
-            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
@@ -731,73 +693,15 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             // 
-            // glControlAxes
-            // 
-            this.glControlAxes.AllowMouseRotation = false;
-            this.glControlAxes.AllowMouseScaling = false;
-            this.glControlAxes.AllowMouseTranslating = false;
-            resources.ApplyResources(this.glControlAxes, "glControlAxes");
-            this.glControlAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlAxes.DisablingOpenGL = false;
-            this.glControlAxes.MaxHeight = 1;
-            this.glControlAxes.MaxWidth = 1;
-            this.glControlAxes.Name = "glControlAxes";
-            this.glControlAxes.NodeCoefficient = 1;
-            this.glControlAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlAxes.ProjWidth = 4D;
-            this.glControlAxes.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
-            this.glControlAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlAxes.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlAxes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlAxes_MouseMove);
-            // 
-            // glControlLight
-            // 
-            this.glControlLight.AllowMouseRotation = false;
-            this.glControlLight.AllowMouseScaling = false;
-            this.glControlLight.AllowMouseTranslating = false;
-            resources.ApplyResources(this.glControlLight, "glControlLight");
-            this.glControlLight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlLight.DisablingOpenGL = false;
-            this.glControlLight.MaxHeight = 1;
-            this.glControlLight.MaxWidth = 1;
-            this.glControlLight.Name = "glControlLight";
-            this.glControlLight.NodeCoefficient = 1;
-            this.glControlLight.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlLight.ProjWidth = 4D;
-            this.glControlLight.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
-            this.glControlLight.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlLight.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlLight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlLight_MouseMove);
-            // 
-            // glControlMain
-            // 
-            this.glControlMain.AllowMouseRotation = false;
-            this.glControlMain.AllowMouseScaling = true;
-            this.glControlMain.AllowMouseTranslating = true;
-            resources.ApplyResources(this.glControlMain, "glControlMain");
-            this.glControlMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlMain.DisablingOpenGL = false;
-            this.glControlMain.MaxHeight = 1440;
-            this.glControlMain.MaxWidth = 2560;
-            this.glControlMain.Name = "glControlMain";
-            this.glControlMain.NodeCoefficient = 8;
-            this.glControlMain.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlMain.ProjWidth = 4D;
-            this.glControlMain.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Always;
-            this.glControlMain.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlMain.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMain_MouseDown);
-            this.glControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlMain_MouseMove);
-            // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPageCoordinateInfromatin);
             this.tabControl.Controls.Add(this.tabPageBounds);
-            this.tabControl.Controls.Add(this.tabPageUnitCell);
-            this.tabControl.Controls.Add(this.tabPageLatticePlane);
-            this.tabControl.Controls.Add(this.tabPageText);
             this.tabControl.Controls.Add(this.tabPageAtom);
             this.tabControl.Controls.Add(this.tabPageBond);
+            this.tabControl.Controls.Add(this.tabPageUnitCell);
+            this.tabControl.Controls.Add(this.tabPageLatticePlane);
+            this.tabControl.Controls.Add(this.tabPageCoordinateInfromatin);
+            this.tabControl.Controls.Add(this.tabPageInformation);
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.HotTrack = true;
             this.tabControl.Name = "tabControl";
@@ -952,7 +856,6 @@
             // 
             resources.ApplyResources(this.flowLayoutPanelBounds, "flowLayoutPanelBounds");
             this.flowLayoutPanelBounds.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelBounds.Controls.Add(this.boundsControl1);
             this.flowLayoutPanelBounds.Name = "flowLayoutPanelBounds";
             // 
             // label21
@@ -982,7 +885,6 @@
             this.AddBoundary.ForeColor = System.Drawing.Color.White;
             this.AddBoundary.Name = "AddBoundary";
             this.AddBoundary.UseVisualStyleBackColor = false;
-            this.AddBoundary.Click += new System.EventHandler(this.AddBoundary_Click);
             // 
             // label2
             // 
@@ -1035,63 +937,17 @@
             // tabPageLatticePlane
             // 
             this.tabPageLatticePlane.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageLatticePlane.Controls.Add(this.flowLayoutPanelLatticePlanes);
-            this.tabPageLatticePlane.Controls.Add(this.buttonAddLatticePlane);
-            this.tabPageLatticePlane.Controls.Add(this.label26);
-            this.tabPageLatticePlane.Controls.Add(this.label27);
-            this.tabPageLatticePlane.Controls.Add(this.label3);
-            this.tabPageLatticePlane.Controls.Add(this.label25);
-            this.tabPageLatticePlane.Controls.Add(this.label23);
-            this.tabPageLatticePlane.Controls.Add(this.label4);
-            this.tabPageLatticePlane.Controls.Add(this.numericBoxLatticePlaneOpacity);
             resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
             this.tabPageLatticePlane.Name = "tabPageLatticePlane";
             // 
-            // flowLayoutPanelLatticePlanes
-            // 
-            resources.ApplyResources(this.flowLayoutPanelLatticePlanes, "flowLayoutPanelLatticePlanes");
-            this.flowLayoutPanelLatticePlanes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelLatticePlanes.Name = "flowLayoutPanelLatticePlanes";
-            // 
-            // buttonAddLatticePlane
-            // 
-            resources.ApplyResources(this.buttonAddLatticePlane, "buttonAddLatticePlane");
-            this.buttonAddLatticePlane.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddLatticePlane.ForeColor = System.Drawing.Color.White;
-            this.buttonAddLatticePlane.Name = "buttonAddLatticePlane";
-            this.buttonAddLatticePlane.UseVisualStyleBackColor = false;
-            this.buttonAddLatticePlane.Click += new System.EventHandler(this.AddLatticePlane_Click);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // tabPageText
-            // 
-            this.tabPageText.Controls.Add(this.textBoxInformation);
-            resources.ApplyResources(this.tabPageText, "tabPageText");
-            this.tabPageText.Name = "tabPageText";
-            this.tabPageText.UseVisualStyleBackColor = true;
-            // 
             // tabPageAtom
             // 
+            this.tabPageAtom.Controls.Add(this.labelMessage);
             resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
             this.tabPageAtom.Name = "tabPageAtom";
             // 
             // tabPageBond
             // 
-            this.tabPageBond.Controls.Add(this.labelMessage);
             resources.ApplyResources(this.tabPageBond, "tabPageBond");
             this.tabPageBond.Name = "tabPageBond";
             // 
@@ -1119,6 +975,70 @@
             this.atomCoordinateTable1.Crystal = null;
             resources.ApplyResources(this.atomCoordinateTable1, "atomCoordinateTable1");
             this.atomCoordinateTable1.Name = "atomCoordinateTable1";
+            // 
+            // labelMessage
+            // 
+            resources.ApplyResources(this.labelMessage, "labelMessage");
+            this.labelMessage.ForeColor = System.Drawing.Color.Red;
+            this.labelMessage.Name = "labelMessage";
+            // 
+            // glControlAxes
+            // 
+            this.glControlAxes.AllowMouseRotation = false;
+            this.glControlAxes.AllowMouseScaling = false;
+            this.glControlAxes.AllowMouseTranslating = false;
+            resources.ApplyResources(this.glControlAxes, "glControlAxes");
+            this.glControlAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.glControlAxes.DisablingOpenGL = false;
+            this.glControlAxes.MaxHeight = 1;
+            this.glControlAxes.MaxWidth = 1;
+            this.glControlAxes.Name = "glControlAxes";
+            this.glControlAxes.NodeCoefficient = 1;
+            this.glControlAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
+            this.glControlAxes.ProjWidth = 4D;
+            this.glControlAxes.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
+            this.glControlAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
+            this.glControlAxes.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
+            this.glControlAxes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlAxes_MouseMove);
+            // 
+            // glControlLight
+            // 
+            this.glControlLight.AllowMouseRotation = false;
+            this.glControlLight.AllowMouseScaling = false;
+            this.glControlLight.AllowMouseTranslating = false;
+            resources.ApplyResources(this.glControlLight, "glControlLight");
+            this.glControlLight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.glControlLight.DisablingOpenGL = false;
+            this.glControlLight.MaxHeight = 1;
+            this.glControlLight.MaxWidth = 1;
+            this.glControlLight.Name = "glControlLight";
+            this.glControlLight.NodeCoefficient = 1;
+            this.glControlLight.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
+            this.glControlLight.ProjWidth = 4D;
+            this.glControlLight.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
+            this.glControlLight.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
+            this.glControlLight.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
+            this.glControlLight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlLight_MouseMove);
+            // 
+            // glControlMain
+            // 
+            this.glControlMain.AllowMouseRotation = false;
+            this.glControlMain.AllowMouseScaling = true;
+            this.glControlMain.AllowMouseTranslating = true;
+            resources.ApplyResources(this.glControlMain, "glControlMain");
+            this.glControlMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.glControlMain.DisablingOpenGL = false;
+            this.glControlMain.MaxHeight = 1440;
+            this.glControlMain.MaxWidth = 2560;
+            this.glControlMain.Name = "glControlMain";
+            this.glControlMain.NodeCoefficient = 8;
+            this.glControlMain.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
+            this.glControlMain.ProjWidth = 4D;
+            this.glControlMain.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Always;
+            this.glControlMain.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
+            this.glControlMain.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
+            this.glControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMain_MouseDown);
+            this.glControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlMain_MouseMove);
             // 
             // numericBox6
             // 
@@ -1444,54 +1364,18 @@
             this.numericBoxCellTransrationA.WordWrap = true;
             this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
-            // numericBoxLatticePlaneOpacity
+            // tabPageInformation
             // 
-            this.numericBoxLatticePlaneOpacity.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxLatticePlaneOpacity, "numericBoxLatticePlaneOpacity");
-            this.numericBoxLatticePlaneOpacity.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLatticePlaneOpacity.DecimalPlaces = -2;
-            this.numericBoxLatticePlaneOpacity.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLatticePlaneOpacity.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLatticePlaneOpacity.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLatticePlaneOpacity.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLatticePlaneOpacity.Maximum = 1D;
-            this.numericBoxLatticePlaneOpacity.Minimum = 0D;
-            this.numericBoxLatticePlaneOpacity.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxLatticePlaneOpacity.MouseSpeed = 1D;
-            this.numericBoxLatticePlaneOpacity.Multiline = false;
-            this.numericBoxLatticePlaneOpacity.Name = "numericBoxLatticePlaneOpacity";
-            this.numericBoxLatticePlaneOpacity.RadianValue = 0.012217304763960307D;
-            this.numericBoxLatticePlaneOpacity.ReadOnly = false;
-            this.numericBoxLatticePlaneOpacity.RestrictLimitValue = true;
-            this.numericBoxLatticePlaneOpacity.ShowFraction = false;
-            this.numericBoxLatticePlaneOpacity.ShowPositiveSign = false;
-            this.numericBoxLatticePlaneOpacity.ShowUpDown = false;
-            this.numericBoxLatticePlaneOpacity.SkipEventDuringInput = false;
-            this.numericBoxLatticePlaneOpacity.SmartIncrement = true;
-            this.numericBoxLatticePlaneOpacity.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxLatticePlaneOpacity.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxLatticePlaneOpacity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxLatticePlaneOpacity.ThonsandsSeparator = true;
-            this.numericBoxLatticePlaneOpacity.UpDown_Increment = 0.1D;
-            this.numericBoxLatticePlaneOpacity.Value = 0.7D;
-            this.numericBoxLatticePlaneOpacity.WordWrap = true;
-            this.numericBoxLatticePlaneOpacity.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.LatticePlanes_Changed);
+            this.tabPageInformation.Controls.Add(this.textBoxInformation);
+            resources.ApplyResources(this.tabPageInformation, "tabPageInformation");
+            this.tabPageInformation.Name = "tabPageInformation";
+            this.tabPageInformation.UseVisualStyleBackColor = true;
             // 
-            // labelMessage
+            // textBoxInformation
             // 
-            resources.ApplyResources(this.labelMessage, "labelMessage");
-            this.labelMessage.ForeColor = System.Drawing.Color.Red;
-            this.labelMessage.Name = "labelMessage";
-            // 
-            // boundsControl1
-            // 
-            resources.ApplyResources(this.boundsControl1, "boundsControl1");
-            this.boundsControl1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.boundsControl1.Crystal = null;
-            this.boundsControl1.Distance = 0.5D;
-            this.boundsControl1.Equivalency = true;
-            this.boundsControl1.FullOption = false;
-            this.boundsControl1.Name = "boundsControl1";
+            resources.ApplyResources(this.textBoxInformation, "textBoxInformation");
+            this.textBoxInformation.Name = "textBoxInformation";
+            this.textBoxInformation.ReadOnly = true;
             // 
             // FormStructureViewer
             // 
@@ -1535,16 +1419,12 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.flowLayoutPanelBounds.ResumeLayout(false);
-            this.flowLayoutPanelBounds.PerformLayout();
             this.tabPageUnitCell.ResumeLayout(false);
             this.tabPageUnitCell.PerformLayout();
-            this.tabPageLatticePlane.ResumeLayout(false);
-            this.tabPageLatticePlane.PerformLayout();
-            this.tabPageText.ResumeLayout(false);
-            this.tabPageText.PerformLayout();
-            this.tabPageBond.ResumeLayout(false);
-            this.tabPageBond.PerformLayout();
+            this.tabPageAtom.ResumeLayout(false);
+            this.tabPageAtom.PerformLayout();
+            this.tabPageInformation.ResumeLayout(false);
+            this.tabPageInformation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1567,8 +1447,6 @@
         private System.Windows.Forms.CheckBox checkBoxCellShowEdge;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBoxInformation;
-        private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageLatticePlane;
@@ -1627,14 +1505,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageBounds;
-        private Crystallography.Controls.NumericBox numericBoxLatticePlaneOpacity;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLatticePlanes;
-        private System.Windows.Forms.Button buttonAddLatticePlane;
         private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
@@ -1643,7 +1513,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
-        private System.Windows.Forms.TabPage tabPageText;
         private System.Windows.Forms.TabPage tabPageAtom;
         private System.Windows.Forms.TabPage tabPageBond;
         private System.Windows.Forms.Label label18;
@@ -1655,7 +1524,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private BoundsControl boundsControl1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label45;
@@ -1680,5 +1548,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.TabPage tabPageCrystal;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.TabPage tabPageInformation;
+        private System.Windows.Forms.TextBox textBoxInformation;
     }
 }

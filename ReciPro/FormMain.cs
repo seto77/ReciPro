@@ -998,7 +998,7 @@ namespace ReciPro
         {
             if (crystalControl.StrainControlVisible) return;
 
-            crystalControl.GenerateCrystal();
+            crystalControl.GenerateFromInterface();
             if (crystalControl.Crystal != null)
                 listBox.Items.Add(crystalControl.Crystal);
             listBox.SelectedIndex = -1;
@@ -1026,7 +1026,7 @@ namespace ReciPro
 
             if (listBox.SelectedIndex < 0) return;
 
-            crystalControl.GenerateCrystal();
+            crystalControl.GenerateFromInterface();
 
             if (crystalControl.Crystal != null && listBox.SelectedIndex >= 0)
                 listBox.Items[listBox.SelectedIndex] = crystalControl.Crystal;

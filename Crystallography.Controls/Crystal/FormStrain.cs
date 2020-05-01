@@ -59,7 +59,7 @@ namespace Crystallography.Controls
             //ここが呼ばれるのは、crystalControl側が操作されて結晶が変更される場合のみ。
             //このformStrainがcrystalControlを変更する時は、その時だけこのイベントを無視する
             skipCrystalChangedEvent = true;
-            crystalControl.GenerateCrystal();
+            crystalControl.GenerateFromInterface();
             originalCrystal = Deep.Copy(crystal);
 
             SetStrainedCrystal();
@@ -120,7 +120,7 @@ namespace Crystallography.Controls
             if (this.Visible)
             {
                 skipCrystalChangedEvent = true;
-                crystalControl.GenerateCrystal();
+                crystalControl.GenerateFromInterface();
                 originalCrystal = Deep.Copy(crystalControl.Crystal);
 
                 SetStrainedCrystal();
@@ -155,7 +155,7 @@ namespace Crystallography.Controls
                     atom.Z = originalCrystal.Atoms[i].Atom[j].Z;
                     crystalControl.Crystal.AddAtoms(atom);
                 }
-            crystalControl.SetForm();
+            crystalControl.SetToInterface();
             numericalTextBoxStrain_ValueChanged(new object(), new EventArgs());
 
             skipCrystalChangedEvent = false;

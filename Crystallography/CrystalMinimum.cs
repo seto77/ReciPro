@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 //using ProtoBuf;
 using MessagePack;
 
@@ -88,8 +89,10 @@ namespace Crystallography
                     new DiffuseScatteringFactor(a.IsIso, a.Biso, a.Baniso)
                     , new AtomMaterial(a.Argb, Mat[0], Mat[1], Mat[2], Mat[3], Mat[4], Mat[5]), a.Rad));
             }
-            Crystal crystal = new Crystal(c.a, c.b, c.c, c.alpha, c.beta, c.gamma, c.sym, c.name, c.note, System.Drawing.Color.FromArgb(c.argb)
-                , atom.ToArray(), c.auth, GetFullJournal(c.jour), GetFullTitle(c.sect), c.bonds);
+            Crystal crystal = new Crystal(
+                (c.a, c.b, c.c, c.alpha, c.beta, c.gamma), null,
+                c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(),
+                atom.ToArray(), (c.note, c.auth, GetFullJournal(c.jour), GetFullTitle(c.sect)), c.bonds.ToArray());
 
             return crystal;
         }
@@ -111,7 +114,7 @@ namespace Crystallography
 
             crystal.density = c.Density;
             crystal.atoms = new List<Atoms2>();
-            crystal.bonds = c.Bonds;
+            crystal.bonds = c.Bonds.ToList();
             //c.Atoms[0].Asf =
             //for (int i = 0; i < c.Atoms.Length; i++)
             //    c.Atoms[i].Asf = new AtomicScatteringFactor(c.Atoms[i].AtomicNumber, c.Atoms[i].SubNumberXray, c.Atoms[i].SubNumberElectron);

@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-//using ProtoBuf;
 using MessagePack;
 using System.Drawing;
 
 namespace Crystallography
 {
-    //[ProtoContract]
     [Serializable()]
     [MessagePackObject]
     public class Bonds
@@ -71,7 +69,7 @@ namespace Crystallography
 
         public Bonds(bool enabled, string[] elementList, string element1, string element2, float minLength, float maxLength, float radius, float bondTranParency,
             Color bondColor, float polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
-            bool showInnerBonds, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor)
+            bool showInnerBonds, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor) : this()
         {
             Enabled = enabled;
 
@@ -98,20 +96,6 @@ namespace Crystallography
             ShowEdges = showEdges;
             EdgeLineWidth = edgeLineWidth;
             ArgbEdge = edgeColor.ToArgb();
-        }
-
-        public override string ToString()
-        {
-            string str = "";
-            str += Element1 + "              ";
-            str = str.Remove(8);
-            str += Element2 + "              ";
-            str = str.Remove(16);
-            str += MinLength.ToString("f3") + "              ";
-            str = str.Remove(24);
-            str += MaxLength.ToString("f3") + "              ";
-            str = str.Remove(32);
-            return str;
         }
     }
 }

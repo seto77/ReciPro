@@ -96,7 +96,7 @@ namespace ReciPro
 
         public void SetCrystal()
         {
-            CrystalControl.GenerateCrystal();
+            CrystalControl.GenerateFromInterface();
             OriginalCrystal = Deep.Copy(CrystalControl.Crystal);
             OriginalCrystal.SetAxis();
 
@@ -111,14 +111,14 @@ namespace ReciPro
                     atom.Z = OriginalCrystal.Atoms[i].Atom[j].Z;
                     CrystalControl.Crystal.AddAtoms(atom);
                 }
-            CrystalControl.SetForm();
+            CrystalControl.SetToInterface();
         }
 
         public void RevertCrystal()
         {
             CrystalControl.Crystal = OriginalCrystal;
 
-            CrystalControl.SetForm();
+            CrystalControl.SetToInterface();
             FormDiffractionSimulator.setVector();
             FormDiffractionSimulator.Draw();
         }

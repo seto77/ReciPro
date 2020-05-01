@@ -113,9 +113,12 @@ namespace Crystallography.Controls
         /// <param name="bonds"></param>
         public void AddRange(IEnumerable<Bonds> bonds)
         {
-            foreach (var b in bonds)
-                dataSet.DataTableBond.Add(b);
-            BondsChanged?.Invoke(this, new EventArgs());
+            if (bonds != null)
+            {
+                foreach (var b in bonds)
+                    dataSet.DataTableBond.Add(b);
+                BondsChanged?.Invoke(this, new EventArgs());
+            }
         }
 
         /// <summary>
@@ -166,10 +169,10 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
-            var atoms = GetFromInterface();
-            if (atoms != null)
+            var bond = GetFromInterface();
+            if (bond != null)
             {
-                Add(atoms);
+                Add(bond);
                 bindingSource.Position = bindingSource.Count - 1;
             }
         }

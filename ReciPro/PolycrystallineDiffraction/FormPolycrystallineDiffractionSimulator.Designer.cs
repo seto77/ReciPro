@@ -259,7 +259,7 @@
             this.crystalControl1.VisibleEOSTab = false;
             this.crystalControl1.VisiblePolycrystallineTab = true;
             this.crystalControl1.VisibleReferenceTab = false;
-            this.crystalControl1.VisibleStressStrainTab = true;
+            this.crystalControl1.VisibleStressStrainTab=true;
             this.crystalControl1.VisibleChanged += new System.EventHandler(this.crystalControl1_VisibleChanged);
             // 
             // tabPage3

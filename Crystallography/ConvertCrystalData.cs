@@ -169,9 +169,11 @@ namespace Crystallography
                 for (; line < str.Length; line++)
                     if (str[line].StartsWith("No ="))
                     {
-                        Crystal tempCrystal = new Crystal(a, b, c, alpha, beta, gamma, spaceGroupSeriesNum,
+                        Crystal tempCrystal = new Crystal(
+                            (a, b, c, alpha, beta, gamma),
+                            null, spaceGroupSeriesNum,
                             ChemicalFormula.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries)[1].Trim() + "-" + (n++).ToString()
-                            , "", Color.Blue);
+                            , Color.Blue);
                         tempCrystal.Note = wavelength + "  " + ChemicalFormula + "\r\n" + str[line];
                         line++;
                         for (; line < str.Length; line++)
@@ -713,9 +715,9 @@ namespace Crystallography
 
             if (symmetrySeriesNumber >= 0)
             {
-                System.Random r = new System.Random();
-                return new Crystal(A / 10, B / 10, C / 10, Alfa * Math.PI / 180, Beta * Math.PI / 180, Gamma * Math.PI / 180,
-                    symmetrySeriesNumber, "", "", System.Drawing.Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)));
+                var r = new Random();
+                return new Crystal((A / 10, B / 10, C / 10, Alfa * Math.PI / 180, Beta * Math.PI / 180, Gamma * Math.PI / 180),null,
+                    symmetrySeriesNumber, "",  Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)));
             }
             else
                 return null;
@@ -838,22 +840,24 @@ namespace Crystallography
             }
 
             //Bonds‚ðŽw’è
-            c.Bonds = new List<Bonds>();
+            var bonds = new List<Bonds>();
             //Si-O
             string[] bondsAtom = new string[] { "14: Si", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(0, 0, 255), true, 0.1f, Color.FromArgb(50, 50, 50)));
             //Al-O
             bondsAtom = new string[] { "13: Al", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                bonds.Add(new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(153, 46, 158), true, 0.1f, Color.FromArgb(50, 50, 50)));
             //Ti-O
             bondsAtom = new string[] { "22: Ti", "8: O" };
             if (elementList.Contains(bondsAtom[0]) && elementList.Contains(bondsAtom[1]))
-                c.Bonds.Add( new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
+                bonds.Add( new Bonds(true, elementList.ToArray(), bondsAtom[0], bondsAtom[1], 0, 2.2f, 0.05f, 1, Color.FromArgb(128, 128, 128),
                     0.8f, true, true, true, true, Color.FromArgb(64, 112, 111), true, 0.1f, Color.FromArgb(50, 50, 50)));
+
+            c.Bonds = bonds.ToArray();
         }
 
         private static double ConvertToDouble(string str)
@@ -1157,11 +1161,12 @@ namespace Crystallography
 
             bool isHex = (sgnum >= 430 && sgnum <= 488);
 
-            Crystal crystalTemp = new Crystal(a / 10.0, b / 10.0, c / 10.0, alpha / 180 * Math.PI, beta / 180 * Math.PI, gamma / 180 * Math.PI, sgnum, "", "", System.Drawing.Color.AliceBlue);
+            Crystal crystalTemp = new Crystal(
+                (a / 10.0, b / 10.0, c / 10.0, alpha / 180 * Math.PI, beta / 180 * Math.PI, gamma / 180 * Math.PI), sgnum, "", Color.AliceBlue);
             crystalTemp.SetAxis();
-            double aStar = crystalTemp.A_Star.Length/ 10;
-            double bStar = crystalTemp.B_Star.Length/ 10;
-            double cStar = crystalTemp.C_Star.Length/ 10;
+            double aStar = crystalTemp.A_Star.Length / 10;
+            double bStar = crystalTemp.B_Star.Length / 10;
+            double cStar = crystalTemp.C_Star.Length / 10;
 
             //Œ´Žq‚Ìî•ñ
             string atomLabel, atomSymbol, thermalDisplaceType;
@@ -1376,32 +1381,30 @@ namespace Crystallography
             foreach (string s in author)
                 authours += s + "; ";
 
-            System.Random r = new System.Random();
+            var r = new Random();
 
-            List<Bonds> bonds = GetBonds(atoms);
-
-            Crystal crystal = new Crystal(a / 10, b / 10, c / 10, alpha * Math.PI / 180, beta * Math.PI / 180, gamma * Math.PI / 180, sgnum,
-                name, note, System.Drawing.Color.FromArgb(r.Next(255), r.Next(255), r.Next(255))
-                , atoms.ToArray(), authours, journal, sectionTitle, bonds);
+            Crystal crystal = new Crystal(
+                (a / 10, b / 10, c / 10, alpha * Math.PI / 180, beta * Math.PI / 180, gamma * Math.PI / 180),
+                (a_err / 10, b_err / 10, c_err / 10, alpha_err / 10, beta_err / 10, gamma_err / 10),
+                sgnum,
+                name,
+                Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)),
+                new Matrix3D(),
+                atoms.ToArray(),
+                ("", authours, journal, sectionTitle),
+                null);
 
             crystal.JournalName = journalNameFull;
             crystal.JournalPageFirst = pageFirst;
             crystal.JournalPageLast = pageLast;
             crystal.JournalVolume = volume;
             crystal.JournalYear = year;
-
             crystal.JournalIssue = issue;
 
             crystal.ChemicalFormulaStructural = chemical_formula_structural;
 
-            crystal.A_err = a_err / 10;
-            crystal.B_err = b_err / 10;
-            crystal.C_err = c_err / 10;
-            crystal.Alpha_err = alpha_err / 10;
-            crystal.Beta_err = beta_err / 10;
-            crystal.Gamma_err = gamma_err / 10;
-
             SetOpenGL_property(crystal);
+
             return crystal;
         }
 

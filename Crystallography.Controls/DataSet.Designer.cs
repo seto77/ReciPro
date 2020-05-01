@@ -1578,7 +1578,7 @@ namespace Crystallography.Controls {
             
             private global::System.Data.DataColumn columnDistance;
             
-            private global::System.Data.DataColumn columnDistanceD;
+            private global::System.Data.DataColumn columnMultipleOfD;
             
             private global::System.Data.DataColumn columnColor;
             
@@ -1673,9 +1673,9 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DistanceDColumn {
+            public global::System.Data.DataColumn MultipleOfDColumn {
                 get {
-                    return this.columnDistanceD;
+                    return this.columnMultipleOfD;
                 }
             }
             
@@ -1724,7 +1724,7 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTableBoundRow AddDataTableBoundRow(object Bound, bool Enabled, int h, int k, int l, bool Equivalency, string Distance, string DistanceD, object Color) {
+            public DataTableBoundRow AddDataTableBoundRow(object Bound, bool Enabled, int h, int k, int l, bool Equivalency, string Distance, string MultipleOfD, object Color) {
                 DataTableBoundRow rowDataTableBoundRow = ((DataTableBoundRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Bound,
@@ -1734,7 +1734,7 @@ namespace Crystallography.Controls {
                         l,
                         Equivalency,
                         Distance,
-                        DistanceD,
+                        MultipleOfD,
                         Color};
                 rowDataTableBoundRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTableBoundRow);
@@ -1765,7 +1765,7 @@ namespace Crystallography.Controls {
                 this.columnl = base.Columns["l"];
                 this.columnEquivalency = base.Columns["Equivalency"];
                 this.columnDistance = base.Columns["Distance"];
-                this.columnDistanceD = base.Columns["DistanceD"];
+                this.columnMultipleOfD = base.Columns["MultipleOfD"];
                 this.columnColor = base.Columns["Color"];
             }
             
@@ -1786,8 +1786,8 @@ namespace Crystallography.Controls {
                 base.Columns.Add(this.columnEquivalency);
                 this.columnDistance = new global::System.Data.DataColumn("Distance", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDistance);
-                this.columnDistanceD = new global::System.Data.DataColumn("DistanceD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDistanceD);
+                this.columnMultipleOfD = new global::System.Data.DataColumn("MultipleOfD", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMultipleOfD);
                 this.columnColor = new global::System.Data.DataColumn("Color", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnColor);
             }
@@ -1923,7 +1923,7 @@ namespace Crystallography.Controls {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableLatticePlaneDataTable : global::System.Data.TypedTableBase<DataTableLatticePlaneRow> {
             
-            private global::System.Data.DataColumn columnLattticePlane;
+            private global::System.Data.DataColumn columnLatticePlane;
             
             private global::System.Data.DataColumn columnEnabled;
             
@@ -1972,9 +1972,9 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LattticePlaneColumn {
+            public global::System.Data.DataColumn LatticePlaneColumn {
                 get {
-                    return this.columnLattticePlane;
+                    return this.columnLatticePlane;
                 }
             }
             
@@ -2063,10 +2063,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTableLatticePlaneRow AddDataTableLatticePlaneRow(string LattticePlane, string Enabled, string h, string k, string l, string Translation, string Color) {
+            public DataTableLatticePlaneRow AddDataTableLatticePlaneRow(object LatticePlane, bool Enabled, int h, int k, int l, string Translation, object Color) {
                 DataTableLatticePlaneRow rowDataTableLatticePlaneRow = ((DataTableLatticePlaneRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        LattticePlane,
+                        LatticePlane,
                         Enabled,
                         h,
                         k,
@@ -2095,7 +2095,7 @@ namespace Crystallography.Controls {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnLattticePlane = base.Columns["LattticePlane"];
+                this.columnLatticePlane = base.Columns["LatticePlane"];
                 this.columnEnabled = base.Columns["Enabled"];
                 this.columnh = base.Columns["h"];
                 this.columnk = base.Columns["k"];
@@ -2107,19 +2107,19 @@ namespace Crystallography.Controls {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnLattticePlane = new global::System.Data.DataColumn("LattticePlane", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLattticePlane);
-                this.columnEnabled = new global::System.Data.DataColumn("Enabled", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnLatticePlane = new global::System.Data.DataColumn("LatticePlane", typeof(object), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLatticePlane);
+                this.columnEnabled = new global::System.Data.DataColumn("Enabled", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEnabled);
-                this.columnh = new global::System.Data.DataColumn("h", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnh = new global::System.Data.DataColumn("h", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnh);
-                this.columnk = new global::System.Data.DataColumn("k", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnk = new global::System.Data.DataColumn("k", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnk);
-                this.columnl = new global::System.Data.DataColumn("l", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnl = new global::System.Data.DataColumn("l", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnl);
                 this.columnTranslation = new global::System.Data.DataColumn("Translation", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTranslation);
-                this.columnColor = new global::System.Data.DataColumn("Color", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnColor = new global::System.Data.DataColumn("Color", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnColor);
             }
             
@@ -3288,17 +3288,17 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DistanceD {
+            public string MultipleOfD {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableBound.DistanceDColumn]));
+                        return ((string)(this[this.tableDataTableBound.MultipleOfDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBound\' にある列 \'DistanceD\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBound\' にある列 \'MultipleOfD\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableDataTableBound.DistanceDColumn] = value;
+                    this[this.tableDataTableBound.MultipleOfDColumn] = value;
                 }
             }
             
@@ -3404,14 +3404,14 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDistanceDNull() {
-                return this.IsNull(this.tableDataTableBound.DistanceDColumn);
+            public bool IsMultipleOfDNull() {
+                return this.IsNull(this.tableDataTableBound.MultipleOfDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDistanceDNull() {
-                this[this.tableDataTableBound.DistanceDColumn] = global::System.Convert.DBNull;
+            public void SetMultipleOfDNull() {
+                this[this.tableDataTableBound.MultipleOfDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3443,26 +3443,26 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string LattticePlane {
+            public object LatticePlane {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.LattticePlaneColumn]));
+                        return ((object)(this[this.tableDataTableLatticePlane.LatticePlaneColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'LattticePlane\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'LatticePlane\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableDataTableLatticePlane.LattticePlaneColumn] = value;
+                    this[this.tableDataTableLatticePlane.LatticePlaneColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Enabled {
+            public bool Enabled {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.EnabledColumn]));
+                        return ((bool)(this[this.tableDataTableLatticePlane.EnabledColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'Enabled\' の値は DBNull です。", e);
@@ -3475,10 +3475,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string h {
+            public int h {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.hColumn]));
+                        return ((int)(this[this.tableDataTableLatticePlane.hColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'h\' の値は DBNull です。", e);
@@ -3491,10 +3491,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string k {
+            public int k {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.kColumn]));
+                        return ((int)(this[this.tableDataTableLatticePlane.kColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'k\' の値は DBNull です。", e);
@@ -3507,10 +3507,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string l {
+            public int l {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.lColumn]));
+                        return ((int)(this[this.tableDataTableLatticePlane.lColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'l\' の値は DBNull です。", e);
@@ -3539,10 +3539,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Color {
+            public object Color {
                 get {
                     try {
-                        return ((string)(this[this.tableDataTableLatticePlane.ColorColumn]));
+                        return ((object)(this[this.tableDataTableLatticePlane.ColorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableLatticePlane\' にある列 \'Color\' の値は DBNull です。", e);
@@ -3555,14 +3555,14 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLattticePlaneNull() {
-                return this.IsNull(this.tableDataTableLatticePlane.LattticePlaneColumn);
+            public bool IsLatticePlaneNull() {
+                return this.IsNull(this.tableDataTableLatticePlane.LatticePlaneColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLattticePlaneNull() {
-                this[this.tableDataTableLatticePlane.LattticePlaneColumn] = global::System.Convert.DBNull;
+            public void SetLatticePlaneNull() {
+                this[this.tableDataTableLatticePlane.LatticePlaneColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

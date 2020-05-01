@@ -344,8 +344,10 @@
             this.crystalControl.VisibleAtomTab = true;
             this.crystalControl.VisibleBasicInfoTab = true;
             this.crystalControl.VisibleBondsPolyhedraTab = false;
-            this.crystalControl.VisibleElasticityTab = true;
+            this.crystalControl.VisibleBoundTab = false;
+            this.crystalControl.VisibleElasticityTab = false;
             this.crystalControl.VisibleEOSTab = true;
+            this.crystalControl.VisibleLatticePlaneTab = false;
             this.crystalControl.VisiblePolycrystallineTab = false;
             this.crystalControl.VisibleReferenceTab = true;
             this.crystalControl.VisibleStressStrainTab = false;
