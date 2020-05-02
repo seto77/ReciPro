@@ -337,7 +337,7 @@ namespace ReciPro
             commonDialog.Text = "Now Loading...Setting CrystalChanged event.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.91);
             Application.DoEvents();
-            crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
+            crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
 
             commonDialog.Text = "Now Loading...Initialize Crystal class.";
             Crystal = new Crystal();
@@ -740,9 +740,9 @@ namespace ReciPro
 
         public bool skipDrawing = false;
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
-            if (crystal != null)
+            if (crystalControl.Crystal != null)
             {
                 var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
                 SkipEulerChange = true;
@@ -756,7 +756,7 @@ namespace ReciPro
                 if (skipDrawing) return;
 
                 if (FormStructureViewer.Visible)
-                    FormStructureViewer.SetGLObjects(crystal);
+                    FormStructureViewer.SetGLObjects(crystalControl.Crystal);
                 if (FormStereonet.Visible)
                     FormStereonet.SetCrystal();
                 if (FormDiffractionSimulator.Visible)
@@ -1209,7 +1209,7 @@ namespace ReciPro
         //Ž²‚Ìî•ñ‚ð•\Ž¦‚·‚é•”•ª
         public void DrawAxes() => glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
 
-        private void crystalControl_CrystalChanged_1(Crystal crystal)
+        private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
         {
             var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
             var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };

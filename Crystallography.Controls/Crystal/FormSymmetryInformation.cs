@@ -6,7 +6,7 @@ namespace Crystallography.Controls
 {
     public partial class FormSymmetryInformation : Form
     {
-        public Crystal crystal;
+        public Crystal Crystal { get => crystalControl.Crystal; }
         public CrystalControl crystalControl;
 
         public FormSymmetryInformation()
@@ -14,9 +14,9 @@ namespace Crystallography.Controls
             InitializeComponent();
         }
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
-            ChangeCrystal(crystal);
+            ChangeCrystal();
         }
 
         private void ConvertRichTextBox1(ref RichTextBox rTB)
@@ -125,14 +125,14 @@ namespace Crystallography.Controls
 
         private void FormCrystallographicInformation_Load(object sender, EventArgs e)
         {
-            crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
-            ChangeCrystal(crystal);
+            crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
+            ChangeCrystal();
         }
 
         //åãèªÇïœçXÇ∑ÇÈ
-        public void ChangeCrystal(Crystal crystal)
+        public void ChangeCrystal()
         {
-            this.crystal = crystal;
+            
             numericUpDown_ValueChanged(new object(), new EventArgs());
             SetWyckoffPosition();
 
@@ -146,23 +146,23 @@ namespace Crystallography.Controls
             ConvertRichTextBoxReset(ref richTextBoxCS);
             ConvertRichTextBoxReset(ref richTextBoxExtinctionRule);
 
-            richTextBoxSG_Num.Text = crystal.Symmetry.SpaceGroupNumber.ToString() + ": " + crystal.Symmetry.SpaceGroupSubNumber.ToString();
-            richTextBoxSG_HM.Text = crystal.Symmetry.SpaceGroupHMStr;
-            richTextBoxSG_HM_full.Text = crystal.Symmetry.SpaceGroupHMfullStr;
-            richTextBoxSG_SF.Text = crystal.Symmetry.SpaceGroupSFStr;
-            richTextBoxSG_Hall.Text = crystal.Symmetry.SpaceGroupHallStr;
-            richTextBoxPG_HM.Text = crystal.Symmetry.PointGroupHMStr;
-            richTextBoxPG_SF.Text = crystal.Symmetry.PointGroupSFStr;
-            richTextBoxLG.Text = crystal.Symmetry.LaueGroupStr;
-            richTextBoxCS.Text = crystal.Symmetry.CrystalSystemStr;
+            richTextBoxSG_Num.Text = Crystal.Symmetry.SpaceGroupNumber.ToString() + ": " + Crystal.Symmetry.SpaceGroupSubNumber.ToString();
+            richTextBoxSG_HM.Text = Crystal.Symmetry.SpaceGroupHMStr;
+            richTextBoxSG_HM_full.Text = Crystal.Symmetry.SpaceGroupHMfullStr;
+            richTextBoxSG_SF.Text = Crystal.Symmetry.SpaceGroupSFStr;
+            richTextBoxSG_Hall.Text = Crystal.Symmetry.SpaceGroupHallStr;
+            richTextBoxPG_HM.Text = Crystal.Symmetry.PointGroupHMStr;
+            richTextBoxPG_SF.Text = Crystal.Symmetry.PointGroupSFStr;
+            richTextBoxLG.Text = Crystal.Symmetry.LaueGroupStr;
+            richTextBoxCS.Text = Crystal.Symmetry.CrystalSystemStr;
             richTextBoxExtinctionRule.Text = "";
-            for (int n = 0; n < (SymmetryStatic.ExtinctionRule(crystal.Symmetry)).Length; n++)
-                richTextBoxExtinctionRule.Text += (SymmetryStatic.ExtinctionRule(crystal.Symmetry))[n] + "\r\n";
+            for (int n = 0; n < (SymmetryStatic.ExtinctionRule(Crystal.Symmetry)).Length; n++)
+                richTextBoxExtinctionRule.Text += (SymmetryStatic.ExtinctionRule(Crystal.Symmetry))[n] + "\r\n";
             if (richTextBoxExtinctionRule.Text == "")
                 richTextBoxExtinctionRule.Text = "No Condition";
             ConvertRichTextBox3(ref richTextBoxExtinctionRule);
 
-            if (crystal.Symmetry.SeriesNumber != 0)
+            if (Crystal.Symmetry.SeriesNumber != 0)
             {
                 ConvertRichTextBox1(ref richTextBoxSG_HM);
                 ConvertRichTextBox1(ref richTextBoxSG_HM_full);
@@ -192,56 +192,56 @@ namespace Crystallography.Controls
             int v2 = (int)numericUpDownV2.Value;
             int w2 = (int)numericUpDownW2.Value;
 
-            textBoxLengthPlane1.Text = (crystal.GetLengthPlane(h1, k1, l1) * 10).ToString("f4");
-            textBoxLengthPlane2.Text = (crystal.GetLengthPlane(h2, k2, l2) * 10).ToString("f4");
-            textBoxLengthAxis1.Text = (crystal.GetLengthAxis(u1, v1, w1) * 10).ToString("f4");
-            textBoxLengthAxis2.Text = (crystal.GetLengthAxis(u2, v2, w2) * 10).ToString("f4");
+            textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(h1, k1, l1) * 10).ToString("f4");
+            textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(h2, k2, l2) * 10).ToString("f4");
+            textBoxLengthAxis1.Text = (Crystal.GetLengthAxis(u1, v1, w1) * 10).ToString("f4");
+            textBoxLengthAxis2.Text = (Crystal.GetLengthAxis(u2, v2, w2) * 10).ToString("f4");
 
-            textBoxAnglePlanes.Text = (crystal.GetAnglePlanes(h1, k1, l1, h2, k2, l2) * 180 / Math.PI).ToString("f4");
-            textBoxAngleAxes.Text = (crystal.GetAngleAxes(u1, v1, w1, u2, v2, w2) * 180 / Math.PI).ToString("f4");
-            textBoxAnglePlaneAxis1.Text = (crystal.GetAnglePlaneAxis(h1, k1, l1, u1, v1, w1) * 180 / Math.PI).ToString("f4");
-            textBoxAnglePlaneAxis2.Text = (crystal.GetAnglePlaneAxis(h2, k2, l2, u2, v2, w2) * 180 / Math.PI).ToString("f4");
+            textBoxAnglePlanes.Text = (Crystal.GetAnglePlanes(h1, k1, l1, h2, k2, l2) * 180 / Math.PI).ToString("f4");
+            textBoxAngleAxes.Text = (Crystal.GetAngleAxes(u1, v1, w1, u2, v2, w2) * 180 / Math.PI).ToString("f4");
+            textBoxAnglePlaneAxis1.Text = (Crystal.GetAnglePlaneAxis(h1, k1, l1, u1, v1, w1) * 180 / Math.PI).ToString("f4");
+            textBoxAnglePlaneAxis2.Text = (Crystal.GetAnglePlaneAxis(h2, k2, l2, u2, v2, w2) * 180 / Math.PI).ToString("f4");
 
-            textBoxZoneAxis.Text = "[" + crystal.GetZoneAxis(h1, k1, l1, h2, k2, l2) + " ]";
-            textBoxZonePlane.Text = "(" + crystal.GetZoneAxis(u1, v1, w1, u2, v2, w2) + " )";
+            textBoxZoneAxis.Text = "[" + Crystal.GetZoneAxis(h1, k1, l1, h2, k2, l2) + " ]";
+            textBoxZonePlane.Text = "(" + Crystal.GetZoneAxis(u1, v1, w1, u2, v2, w2) + " )";
         }
 
         private void SetWyckoffPosition()
         {
             dataSet.Tables[0].Clear();
-            if (crystal.Symmetry.LatticeTypeStr == "P")
+            if (Crystal.Symmetry.LatticeTypeStr == "P")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "", "", "" });
-            else if (crystal.Symmetry.LatticeTypeStr == "A")
+            else if (Crystal.Symmetry.LatticeTypeStr == "A")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "", "" });
-            else if (crystal.Symmetry.LatticeTypeStr == "B")
+            else if (Crystal.Symmetry.LatticeTypeStr == "B")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,0,1/2)+", "", "" });
-            else if (crystal.Symmetry.LatticeTypeStr == "C")
+            else if (Crystal.Symmetry.LatticeTypeStr == "C")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,0)+", "", "" });
-            else if (crystal.Symmetry.LatticeTypeStr == "F")
+            else if (Crystal.Symmetry.LatticeTypeStr == "F")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "(1/2,0,1/2)+", "(1/2,0,1/2)+" });
-            else if (crystal.Symmetry.LatticeTypeStr == "I")
+            else if (Crystal.Symmetry.LatticeTypeStr == "I")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,1/2)+", "", "" });
-            else if (crystal.Symmetry.LatticeTypeStr == "H")
+            else if (Crystal.Symmetry.LatticeTypeStr == "H")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/3,2/3,2/3)+", "(2/3,1/3,1/3)+", "" });
 
-            crystal.Symmetry = SymmetryStatic.Get_Symmetry(crystal.SymmetrySeriesNumber);
+            Crystal.Symmetry = SymmetryStatic.Get_Symmetry(Crystal.SymmetrySeriesNumber);
 
-            for (int i = 0; i < SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber].Length; i++)
+            for (int i = 0; i < SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber].Length; i++)
             {
-                int len = SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr.Length;
+                int len = SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr.Length;
                 for (int j = 0; j < len; j += 4)
                 {
                     object[] o;
                     if (j == 0)
                     {
                         o = new object[] {
-                               SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].Multiplicity,
-                               SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].WyckoffLetter,
-                                SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].SiteSymmetry,
-                                j<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
-                                j+1<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
-                                j+2<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
-                                j+3<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
+                               SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].Multiplicity,
+                               SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].WyckoffLetter,
+                                SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].SiteSymmetry,
+                                j<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
+                                j+1<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
+                                j+2<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
+                                j+3<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
                             };
                     }
                     else
@@ -250,10 +250,10 @@ namespace Crystallography.Controls
                                "",
                               "",
                                 "",
-                                j<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
-                                j+1<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
-                                j+2<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
-                                j+3<len ? SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
+                                j<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
+                                j+1<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
+                                j+2<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
+                                j+3<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
                             };
                     }
 

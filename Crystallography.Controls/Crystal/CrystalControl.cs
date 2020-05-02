@@ -14,38 +14,13 @@ namespace Crystallography.Controls
     {
         #region プロパティ、フィールド、イベントハンドラ
 
-        public bool SymmetryInformationVisible
-        {
-            set
-            {
-                if (formSymmetryInformation.crystal == null)
-                    formSymmetryInformation.crystal = Crystal;
-                formSymmetryInformation.Visible = value;
-            }
-            get => formSymmetryInformation.Visible;
-        }
+        public bool SymmetryInformationVisible { set => formSymmetryInformation.Visible = value; get => formSymmetryInformation.Visible; }
 
-        public bool ScatteringFactorVisible
-        {
-            set
-            {
-                if (formScatteringFactor.crystal == null)
-                    formScatteringFactor.crystal = Crystal;
-                formScatteringFactor.Visible = value;
-            }
-            get => formScatteringFactor.Visible;
-        }
+        public bool ScatteringFactorVisible { set { formScatteringFactor.Visible = value; } get => formScatteringFactor.Visible; }
 
         public bool StrainControlVisible { get => formStrain.Visible; }
 
-        public int atomSeriesNum;
-
-
-        public int SymmetrySeriesNumber
-        {
-            get => symmetryControl.SymmetrySeriesNumber;
-            set => symmetryControl.SymmetrySeriesNumber = value;
-        }
+        public int SymmetrySeriesNumber { get => symmetryControl.SymmetrySeriesNumber; set => symmetryControl.SymmetrySeriesNumber = value; }
 
         #region Tabページの表示/非表示プロパティ
 
@@ -95,27 +70,6 @@ namespace Crystallography.Controls
 
         #endregion Tabページの表示/非表示プロパティ
 
-/*
-        public double[] CellConstants
-        {
-            get => new[] { numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue };
-            set
-            {
-                if (value != null && value.Length == 6)
-                {
-                    SkipEvent = true;
-                    numericBoxA.Value = value[0];
-                    numericBoxB.Value = value[1];
-                    numericBoxC.Value = value[2];
-                    numericBoxAlpha.RadianValue = value[3];
-                    numericBoxBeta.RadianValue = value[4];
-                    numericBoxGamma.RadianValue = value[5];
-                    SkipEvent = false;
-                    GenerateFromInterface();
-                }
-            }
-        }
-        */
         public Crystal Crystal
         {
             set
@@ -137,7 +91,7 @@ namespace Crystallography.Controls
                         SetToInterface();
                     }
 
-                    CrystalChanged?.Invoke(crystal);
+                    CrystalChanged?.Invoke(this,new EventArgs());
                 }
             }
             get => crystal;
@@ -150,9 +104,7 @@ namespace Crystallography.Controls
 
         public int DefaultTabNumber { set => tabControl.SelectedIndex = value; get => tabControl.SelectedIndex; }
 
-        public delegate void MyEventHandler(Crystal crystal);
-
-        public event MyEventHandler CrystalChanged;
+        public event EventHandler CrystalChanged;
 
         public FormScatteringFactor formScatteringFactor;
         public FormSymmetryInformation formSymmetryInformation;
@@ -174,7 +126,7 @@ namespace Crystallography.Controls
 
             formScatteringFactor = new FormScatteringFactor
             {
-                crystalControl = this,
+                CrystalControl = this,
                 Visible = false
             };
 
@@ -258,7 +210,8 @@ namespace Crystallography.Controls
 
             if (cell.A < 0 || cell.B < 0 || cell.C < 0 || cell.Alpha > Math.PI || cell.Beta > Math.PI || cell.Gamma > Math.PI)
             {
-                MessageBox.Show("0～180の範囲で入力してください");
+                SkipEvent = false;
+                MessageBox.Show("Input valid cell constants");
                 return;
             }
 
@@ -313,7 +266,7 @@ namespace Crystallography.Controls
             SkipEvent = false;
             SetToInterface(false);
 
-            CrystalChanged?.Invoke(Crystal);
+            CrystalChanged?.Invoke(this,new EventArgs());
         }
 
 
@@ -343,21 +296,18 @@ namespace Crystallography.Controls
 
             if (ChangeCellParameter)
             {
-
                 symmetryControl.CellConstants = (Crystal.A, Crystal.B, Crystal.C, Crystal.Alpha, Crystal.Beta, Crystal.Gamma);
                 symmetryControl.CellConstantsErr = (Crystal.A_err, Crystal.B_err, Crystal.C_err, Crystal.Alpha_err, Crystal.Beta_err, Crystal.Gamma_err);
-
-               
             }
 
             //Atomsコントロール
+            atomControl.SymmetrySeriesNumber = SymmetrySeriesNumber;
             atomControl.Clear();
             atomControl.AddRange(Crystal.Atoms);
 
 
             //Bondコントロール
             bondControl.ElementList = Crystal.Atoms.Select(a => a.ElementName).ToArray();//Bonds&Polyhedra中のコンボボックスの変更
-
             bondControl.Clear();//listBoxBondsAndPolyhedraにBondsを追加
             bondControl.AddRange(Crystal.Bonds);
 
@@ -405,13 +355,6 @@ namespace Crystallography.Controls
 
         }
 
-        private void textBoxName_TextChanged(object sender, System.EventArgs e)
-        {
-            GenerateFromInterface();
-        }
-
-
-
         #region ドラッグドロップイベント
 
         public void FormCrystal_DragDrop(object sender, DragEventArgs e)
@@ -438,8 +381,7 @@ namespace Crystallography.Controls
 
         private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = " *.cif; *.amc | *.cif;*.amc";
+            var dlg = new OpenFileDialog { Filter = " *.cif; *.amc | *.cif;*.amc" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -465,21 +407,11 @@ namespace Crystallography.Controls
             }
         }
 
-        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (formScatteringFactor.crystal == null)
-                formScatteringFactor.crystal = Crystal;
+        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e) 
+            => formScatteringFactor.Visible = !formScatteringFactor.Visible;
 
-            formScatteringFactor.Visible = !formScatteringFactor.Visible;
-        }
-
-        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (formSymmetryInformation.crystal == null)
-                formSymmetryInformation.crystal = Crystal;
-
-            formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
-        }
+        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e) 
+            => formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
 
         private void sendThisCrystalToOtherSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -501,80 +433,6 @@ namespace Crystallography.Controls
             if (e.Control && e.Shift && e.KeyCode == Keys.R)
                 crystal.Reserved = !crystal.Reserved;
         }
-
-        #region 空間群を表示するコンボボックスのオーナードロー関係
-
-        private void comboBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            e.DrawBackground();
-            string txt = ((ComboBox)sender).Items[e.Index].ToString();
-
-            //下付き文字用フォント
-            Font sub = new Font("Times New Roman", 8f, FontStyle.Regular);
-            //斜体
-            Font italic = new Font("Times New Roman", 11f, FontStyle.Italic);
-            //普通
-            Font regular = new Font("Times New Roman", 11f, FontStyle.Regular);
-
-            Font bold = new Font("Times New Roman", 10f, FontStyle.Bold);
-
-            float xPos = e.Bounds.Left;
-            Brush b = null;
-
-            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
-                b = new SolidBrush(Color.Black);
-            else
-                b = new SolidBrush(Color.White);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            //最初に数値を書く
-            while (txt.Length > 0)
-            {
-                if (txt.StartsWith(" "))
-                    xPos += 0;
-                else if (txt.StartsWith("sub"))//subで始まる時は
-                {
-                    xPos -= 1;
-                    txt = txt.Substring(3, txt.Length - 3);
-                    e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
-                }
-                else if (txt.StartsWith("-"))//-で始まる時は
-                {
-                    float x = e.Graphics.MeasureString(txt[1].ToString(), regular).Width;
-                    e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));
-                }
-                else if (txt.StartsWith("Hex") || txt.StartsWith("Rho") || txt.StartsWith("(1)") || txt.StartsWith("(2)"))
-                {
-                    xPos += 2;
-                    e.Graphics.DrawString(txt.Substring(0, 3), sub, b, xPos, e.Bounds.Y + 3);
-                    xPos += e.Graphics.MeasureString(txt.Substring(0, 3), sub).Width - 2;
-                    txt = txt.Substring(2);
-                }
-                else if (txt[0] == '/')
-                {
-                    xPos -= 1;
-                    e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 5;
-                }
-                else if (('0' <= txt[0] && '9' >= txt[0]) || txt[0] == '(' || txt[0] == ')')
-                {
-                    e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 2;
-                }
-                else
-                {
-                    e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
-                }
-                txt = txt.Substring(1);
-            }
-
-            b.Dispose();
-        }
-
-        #endregion 空間群を表示するコンボボックスのオーナードロー関係
 
         #region EOSタブの入力設定
         private void numericalTextBoxEOS_State_ValueChanged(object sender, EventArgs e)

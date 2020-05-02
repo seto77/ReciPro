@@ -7,32 +7,27 @@ namespace Crystallography.Controls
 {
     public partial class FormScatteringFactor : Form
     {
-        public Crystal crystal;
-        public CrystalControl crystalControl;
+        public Crystal Crystal { get => CrystalControl.Crystal; }
+        public CrystalControl CrystalControl;
 
         public FormScatteringFactor()
         {
             InitializeComponent();
         }
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
+        //CrystalContorolでCystalが変更されたとき
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
-            ChangeCrystal(crystal);
+            numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
+            SetSortedPlanes();
         }
 
         private void FormCrystallographicInformation_Load(object sender, EventArgs e)
         {
-            crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
-            ChangeCrystal(crystal);
+            //CrystalContorolでCystalが変更されたときのイベントを登録
+            CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
         }
 
-        //結晶を変更する
-        public void ChangeCrystal(Crystal crystal)
-        {
-            this.crystal = crystal;
-            numericUpDownThresholdD.Minimum = (decimal)((crystal.A + crystal.B + crystal.C) / 20);
-            SetSortedPlanes();
-        }
 
         private void numericUpDownThresholdD_ValueChanged(object sender, EventArgs e)
         {
@@ -50,7 +45,9 @@ namespace Crystallography.Controls
             if (checkBoxHideProhibitedPlanes.Checked)
                 this.dataGridView2.Columns[12].Visible = false;
 
-            Crystal c = (Crystal)crystal.Clone();
+            var c = (Crystal)Crystal.Clone();
+
+            
 
             c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
 
@@ -162,6 +159,11 @@ namespace Crystallography.Controls
         }
 
         private void waveLengthControl1_WavelengthChanged(object sender, EventArgs e)
+        {
+            SetSortedPlanes();
+        }
+
+        private void FormScatteringFactor_VisibleChanged(object sender, EventArgs e)
         {
             SetSortedPlanes();
         }

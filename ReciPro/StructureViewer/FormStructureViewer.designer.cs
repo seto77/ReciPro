@@ -40,63 +40,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStructureViewer));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonBoost = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonCrystalAxes = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLightDirection = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonLegend = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveMainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveLegendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyMainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyLegendToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPerviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxUnitCell = new System.Windows.Forms.CheckBox();
-            this.groupBoxShowUnitCell = new System.Windows.Forms.GroupBox();
-            this.numericBoxCellPlaneAlpha = new Crystallography.Controls.NumericBox();
-            this.colorControlCellPlane = new Crystallography.Controls.ColorControl();
-            this.colorControlCellEdge = new Crystallography.Controls.ColorControl();
-            this.numericBoxCellTransrationC = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellTransrationB = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellTransrationA = new Crystallography.Controls.NumericBox();
-            this.checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
-            this.checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
-            this.numericUpDownSubCellB = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.checkBoxCellShowPlane = new System.Windows.Forms.CheckBox();
-            this.numericUpDownSubCellC = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSubCellA = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.glControlAxes = new Crystallography.OpenGL.GLControlAlpha();
             this.glControlLight = new Crystallography.OpenGL.GLControlAlpha();
@@ -135,6 +78,24 @@
             this.labelMessage = new System.Windows.Forms.Label();
             this.tabPageBond = new System.Windows.Forms.TabPage();
             this.tabPageUnitCell = new System.Windows.Forms.TabPage();
+            this.checkBoxUnitCell = new System.Windows.Forms.CheckBox();
+            this.groupBoxShowUnitCell = new System.Windows.Forms.GroupBox();
+            this.numericBoxCellPlaneAlpha = new Crystallography.Controls.NumericBox();
+            this.colorControlCellPlane = new Crystallography.Controls.ColorControl();
+            this.colorControlCellEdge = new Crystallography.Controls.ColorControl();
+            this.numericBoxCellTransrationC = new Crystallography.Controls.NumericBox();
+            this.numericBoxCellTransrationB = new Crystallography.Controls.NumericBox();
+            this.numericBoxCellTransrationA = new Crystallography.Controls.NumericBox();
+            this.checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
+            this.checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
+            this.numericUpDownSubCellB = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkBoxCellShowPlane = new System.Windows.Forms.CheckBox();
+            this.numericUpDownSubCellC = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSubCellA = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxLatticePlaneOpacity = new Crystallography.Controls.NumericBox();
@@ -142,15 +103,48 @@
             this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
             this.tabPageInformation = new System.Windows.Forms.TabPage();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonBoost = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonCrystalAxes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLightDirection = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLegend = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveMainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLegendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyMainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLegendToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPerviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.tabPageCrystal = new System.Windows.Forms.TabPage();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageCrystal = new System.Windows.Forms.TabPage();
-            this.toolStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.groupBoxShowUnitCell.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -163,619 +157,17 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.tabPageAtom.SuspendLayout();
             this.tabPageUnitCell.SuspendLayout();
+            this.groupBoxShowUnitCell.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).BeginInit();
             this.tabPageLatticePlane.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.tabPageCoordinateInfromatin.SuspendLayout();
             this.tabPageInformation.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonBoost,
-            this.toolStripSeparator2,
-            this.toolStripButtonCrystalAxes,
-            this.toolStripButtonLightDirection,
-            this.toolStripButtonLegend,
-            this.toolStripSeparator3,
-            this.toolStripLabelStatusInitialization,
-            this.toolStripLabelStatusRendering});
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Stretch = true;
-            this.toolTip.SetToolTip(this.toolStrip1, resources.GetString("toolStrip1.ToolTip"));
-            // 
-            // toolStripButtonBoost
-            // 
-            resources.ApplyResources(this.toolStripButtonBoost, "toolStripButtonBoost");
-            this.toolStripButtonBoost.CheckOnClick = true;
-            this.toolStripButtonBoost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonBoost.Name = "toolStripButtonBoost";
-            this.toolStripButtonBoost.CheckedChanged += new System.EventHandler(this.toolStripButtonBoost_CheckedChanged);
-            // 
-            // toolStripSeparator2
-            // 
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            // 
-            // toolStripButtonCrystalAxes
-            // 
-            resources.ApplyResources(this.toolStripButtonCrystalAxes, "toolStripButtonCrystalAxes");
-            this.toolStripButtonCrystalAxes.Checked = true;
-            this.toolStripButtonCrystalAxes.CheckOnClick = true;
-            this.toolStripButtonCrystalAxes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripButtonCrystalAxes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonCrystalAxes.Name = "toolStripButtonCrystalAxes";
-            this.toolStripButtonCrystalAxes.CheckedChanged += new System.EventHandler(this.toolStripButtonCrystalAxes_CheckedChanged);
-            // 
-            // toolStripButtonLightDirection
-            // 
-            resources.ApplyResources(this.toolStripButtonLightDirection, "toolStripButtonLightDirection");
-            this.toolStripButtonLightDirection.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripButtonLightDirection.Checked = true;
-            this.toolStripButtonLightDirection.CheckOnClick = true;
-            this.toolStripButtonLightDirection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripButtonLightDirection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonLightDirection.Name = "toolStripButtonLightDirection";
-            this.toolStripButtonLightDirection.CheckedChanged += new System.EventHandler(this.toolStripButtonLightingBall_CheckedChanged);
-            // 
-            // toolStripButtonLegend
-            // 
-            resources.ApplyResources(this.toolStripButtonLegend, "toolStripButtonLegend");
-            this.toolStripButtonLegend.Checked = true;
-            this.toolStripButtonLegend.CheckOnClick = true;
-            this.toolStripButtonLegend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripButtonLegend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonLegend.Name = "toolStripButtonLegend";
-            this.toolStripButtonLegend.CheckedChanged += new System.EventHandler(this.toolStripButtonLegend_CheckedChanged);
-            // 
-            // toolStripSeparator3
-            // 
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            // 
-            // toolStripLabelStatusInitialization
-            // 
-            resources.ApplyResources(this.toolStripLabelStatusInitialization, "toolStripLabelStatusInitialization");
-            this.toolStripLabelStatusInitialization.Name = "toolStripLabelStatusInitialization";
-            // 
-            // toolStripLabelStatusRendering
-            // 
-            resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
-            this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
-            // 
-            // menuStrip1
-            // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveImageToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Name = "menuStrip1";
-            this.toolTip.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
-            // 
-            // saveImageToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
-            this.saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveImageToolStripMenuItem1,
-            this.copyToClipboardToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.pageSetupToolStripMenuItem,
-            this.printPerviewToolStripMenuItem,
-            this.printToolStripMenuItem});
-            this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-            // 
-            // saveImageToolStripMenuItem1
-            // 
-            resources.ApplyResources(this.saveImageToolStripMenuItem1, "saveImageToolStripMenuItem1");
-            this.saveImageToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveMainToolStripMenuItem,
-            this.saveLegendToolStripMenuItem,
-            this.saveAxesToolStripMenuItem,
-            this.saveLightToolStripMenuItem});
-            this.saveImageToolStripMenuItem1.Name = "saveImageToolStripMenuItem1";
-            // 
-            // saveMainToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveMainToolStripMenuItem, "saveMainToolStripMenuItem");
-            this.saveMainToolStripMenuItem.Name = "saveMainToolStripMenuItem";
-            this.saveMainToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // saveLegendToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveLegendToolStripMenuItem, "saveLegendToolStripMenuItem");
-            this.saveLegendToolStripMenuItem.Name = "saveLegendToolStripMenuItem";
-            // 
-            // saveAxesToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveAxesToolStripMenuItem, "saveAxesToolStripMenuItem");
-            this.saveAxesToolStripMenuItem.Name = "saveAxesToolStripMenuItem";
-            this.saveAxesToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // saveLightToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveLightToolStripMenuItem, "saveLightToolStripMenuItem");
-            this.saveLightToolStripMenuItem.Name = "saveLightToolStripMenuItem";
-            this.saveLightToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // copyToClipboardToolStripMenuItem
-            // 
-            resources.ApplyResources(this.copyToClipboardToolStripMenuItem, "copyToClipboardToolStripMenuItem");
-            this.copyToClipboardToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyMainToolStripMenuItem,
-            this.copyLegendToolStripMenuItem1,
-            this.copyAxesToolStripMenuItem,
-            this.copyLightToolStripMenuItem});
-            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-            // 
-            // copyMainToolStripMenuItem
-            // 
-            resources.ApplyResources(this.copyMainToolStripMenuItem, "copyMainToolStripMenuItem");
-            this.copyMainToolStripMenuItem.Name = "copyMainToolStripMenuItem";
-            this.copyMainToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // copyLegendToolStripMenuItem1
-            // 
-            resources.ApplyResources(this.copyLegendToolStripMenuItem1, "copyLegendToolStripMenuItem1");
-            this.copyLegendToolStripMenuItem1.Name = "copyLegendToolStripMenuItem1";
-            // 
-            // copyAxesToolStripMenuItem
-            // 
-            resources.ApplyResources(this.copyAxesToolStripMenuItem, "copyAxesToolStripMenuItem");
-            this.copyAxesToolStripMenuItem.Name = "copyAxesToolStripMenuItem";
-            this.copyAxesToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // copyLightToolStripMenuItem
-            // 
-            resources.ApplyResources(this.copyLightToolStripMenuItem, "copyLightToolStripMenuItem");
-            this.copyLightToolStripMenuItem.Name = "copyLightToolStripMenuItem";
-            this.copyLightToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            // 
-            // pageSetupToolStripMenuItem
-            // 
-            resources.ApplyResources(this.pageSetupToolStripMenuItem, "pageSetupToolStripMenuItem");
-            this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-            this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
-            // 
-            // printPerviewToolStripMenuItem
-            // 
-            resources.ApplyResources(this.printPerviewToolStripMenuItem, "printPerviewToolStripMenuItem");
-            this.printPerviewToolStripMenuItem.Name = "printPerviewToolStripMenuItem";
-            this.printPerviewToolStripMenuItem.Click += new System.EventHandler(this.printPerviewToolStripMenuItem_Click);
-            // 
-            // printToolStripMenuItem
-            // 
-            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem1,
-            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
-            this.toolStripMenuItem2});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            // 
-            // cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
-            // 
-            resources.ApplyResources(this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlte" +
-        "rnatelyToolStripMenuItem");
-            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlte" +
-    "rnatelyToolStripMenuItem";
-            // 
-            // toolStripMenuItem3
-            // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            // 
-            // toolStripMenuItem1
-            // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            // 
-            // cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
-            // 
-            resources.ApplyResources(this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem");
-            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem";
-            // 
-            // toolStripMenuItem2
-            // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 10000;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.IsBalloon = true;
-            this.toolTip.ReshowDelay = 100;
-            // 
-            // checkBoxUnitCell
-            // 
-            resources.ApplyResources(this.checkBoxUnitCell, "checkBoxUnitCell");
-            this.checkBoxUnitCell.BackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxUnitCell.Name = "checkBoxUnitCell";
-            this.toolTip.SetToolTip(this.checkBoxUnitCell, resources.GetString("checkBoxUnitCell.ToolTip"));
-            this.checkBoxUnitCell.UseVisualStyleBackColor = false;
-            this.checkBoxUnitCell.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // groupBoxShowUnitCell
-            // 
-            resources.ApplyResources(this.groupBoxShowUnitCell, "groupBoxShowUnitCell");
-            this.groupBoxShowUnitCell.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellPlaneAlpha);
-            this.groupBoxShowUnitCell.Controls.Add(this.colorControlCellPlane);
-            this.groupBoxShowUnitCell.Controls.Add(this.colorControlCellEdge);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationC);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationB);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationA);
-            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxShowSubCell);
-            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxCellShowEdge);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellB);
-            this.groupBoxShowUnitCell.Controls.Add(this.label10);
-            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxCellShowPlane);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellC);
-            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellA);
-            this.groupBoxShowUnitCell.Controls.Add(this.label17);
-            this.groupBoxShowUnitCell.Controls.Add(this.label16);
-            this.groupBoxShowUnitCell.Controls.Add(this.label12);
-            this.groupBoxShowUnitCell.Name = "groupBoxShowUnitCell";
-            this.groupBoxShowUnitCell.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxShowUnitCell, resources.GetString("groupBoxShowUnitCell.ToolTip"));
-            // 
-            // numericBoxCellPlaneAlpha
-            // 
-            resources.ApplyResources(this.numericBoxCellPlaneAlpha, "numericBoxCellPlaneAlpha");
-            this.numericBoxCellPlaneAlpha.AllowMouseControl = false;
-            this.numericBoxCellPlaneAlpha.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxCellPlaneAlpha.DecimalPlaces = 1;
-            this.numericBoxCellPlaneAlpha.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxCellPlaneAlpha.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellPlaneAlpha.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxCellPlaneAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellPlaneAlpha.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCellPlaneAlpha.Maximum = 1D;
-            this.numericBoxCellPlaneAlpha.Minimum = 0D;
-            this.numericBoxCellPlaneAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxCellPlaneAlpha.MouseSpeed = 1D;
-            this.numericBoxCellPlaneAlpha.Multiline = false;
-            this.numericBoxCellPlaneAlpha.Name = "numericBoxCellPlaneAlpha";
-            this.numericBoxCellPlaneAlpha.RadianValue = 0.0087266462599716477D;
-            this.numericBoxCellPlaneAlpha.ReadOnly = false;
-            this.numericBoxCellPlaneAlpha.RestrictLimitValue = true;
-            this.numericBoxCellPlaneAlpha.ShowFraction = false;
-            this.numericBoxCellPlaneAlpha.ShowPositiveSign = false;
-            this.numericBoxCellPlaneAlpha.ShowUpDown = false;
-            this.numericBoxCellPlaneAlpha.SkipEventDuringInput = false;
-            this.numericBoxCellPlaneAlpha.SmartIncrement = false;
-            this.numericBoxCellPlaneAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellPlaneAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellPlaneAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxCellPlaneAlpha, resources.GetString("numericBoxCellPlaneAlpha.ToolTip1"));
-            this.numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
-            this.numericBoxCellPlaneAlpha.Value = 0.5D;
-            this.numericBoxCellPlaneAlpha.WordWrap = true;
-            this.numericBoxCellPlaneAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // colorControlCellPlane
-            // 
-            resources.ApplyResources(this.colorControlCellPlane, "colorControlCellPlane");
-            this.colorControlCellPlane.Argb = -5192482;
-            this.colorControlCellPlane.Blue = 222;
-            this.colorControlCellPlane.BlueF = 0.8705882F;
-            this.colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(196)))), ((int)(((byte)(222)))));
-            this.colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellPlane.FooterFont = new System.Drawing.Font("メイリオ", 9F);
-            this.colorControlCellPlane.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellPlane.FooterText = "";
-            this.colorControlCellPlane.Green = 196;
-            this.colorControlCellPlane.GreenF = 0.7686275F;
-            this.colorControlCellPlane.HeaderFont = new System.Drawing.Font("メイリオ", 9F);
-            this.colorControlCellPlane.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellPlane.HeaderText = "色";
-            this.colorControlCellPlane.Name = "colorControlCellPlane";
-            this.colorControlCellPlane.Red = 176;
-            this.colorControlCellPlane.RedF = 0.6901961F;
-            this.toolTip.SetToolTip(this.colorControlCellPlane, resources.GetString("colorControlCellPlane.ToolTip"));
-            this.colorControlCellPlane.ToolTip = "";
-            this.colorControlCellPlane.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // colorControlCellEdge
-            // 
-            resources.ApplyResources(this.colorControlCellEdge, "colorControlCellEdge");
-            this.colorControlCellEdge.Argb = -16777011;
-            this.colorControlCellEdge.Blue = 205;
-            this.colorControlCellEdge.BlueF = 0.8039216F;
-            this.colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(205)))));
-            this.colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellEdge.FooterFont = new System.Drawing.Font("メイリオ", 9F);
-            this.colorControlCellEdge.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellEdge.FooterText = "";
-            this.colorControlCellEdge.Green = 0;
-            this.colorControlCellEdge.GreenF = 0F;
-            this.colorControlCellEdge.HeaderFont = new System.Drawing.Font("メイリオ", 9F);
-            this.colorControlCellEdge.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellEdge.HeaderText = "色";
-            this.colorControlCellEdge.Name = "colorControlCellEdge";
-            this.colorControlCellEdge.Red = 0;
-            this.colorControlCellEdge.RedF = 0F;
-            this.toolTip.SetToolTip(this.colorControlCellEdge, resources.GetString("colorControlCellEdge.ToolTip"));
-            this.colorControlCellEdge.ToolTip = "";
-            this.colorControlCellEdge.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericBoxCellTransrationC
-            // 
-            resources.ApplyResources(this.numericBoxCellTransrationC, "numericBoxCellTransrationC");
-            this.numericBoxCellTransrationC.AllowMouseControl = false;
-            this.numericBoxCellTransrationC.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.DecimalPlaces = 2;
-            this.numericBoxCellTransrationC.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationC.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationC.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationC.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCellTransrationC.Maximum = 10D;
-            this.numericBoxCellTransrationC.Minimum = -10D;
-            this.numericBoxCellTransrationC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationC.MouseSpeed = 1D;
-            this.numericBoxCellTransrationC.Multiline = false;
-            this.numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
-            this.numericBoxCellTransrationC.RadianValue = 0D;
-            this.numericBoxCellTransrationC.ReadOnly = false;
-            this.numericBoxCellTransrationC.RestrictLimitValue = true;
-            this.numericBoxCellTransrationC.ShowFraction = false;
-            this.numericBoxCellTransrationC.ShowPositiveSign = false;
-            this.numericBoxCellTransrationC.ShowUpDown = false;
-            this.numericBoxCellTransrationC.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationC.SmartIncrement = true;
-            this.numericBoxCellTransrationC.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationC.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxCellTransrationC, resources.GetString("numericBoxCellTransrationC.ToolTip1"));
-            this.numericBoxCellTransrationC.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationC.Value = 0D;
-            this.numericBoxCellTransrationC.WordWrap = true;
-            this.numericBoxCellTransrationC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericBoxCellTransrationB
-            // 
-            resources.ApplyResources(this.numericBoxCellTransrationB, "numericBoxCellTransrationB");
-            this.numericBoxCellTransrationB.AllowMouseControl = false;
-            this.numericBoxCellTransrationB.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.DecimalPlaces = 2;
-            this.numericBoxCellTransrationB.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationB.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationB.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationB.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCellTransrationB.Maximum = 10D;
-            this.numericBoxCellTransrationB.Minimum = -10D;
-            this.numericBoxCellTransrationB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationB.MouseSpeed = 1D;
-            this.numericBoxCellTransrationB.Multiline = false;
-            this.numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
-            this.numericBoxCellTransrationB.RadianValue = 0D;
-            this.numericBoxCellTransrationB.ReadOnly = false;
-            this.numericBoxCellTransrationB.RestrictLimitValue = true;
-            this.numericBoxCellTransrationB.ShowFraction = false;
-            this.numericBoxCellTransrationB.ShowPositiveSign = false;
-            this.numericBoxCellTransrationB.ShowUpDown = false;
-            this.numericBoxCellTransrationB.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationB.SmartIncrement = true;
-            this.numericBoxCellTransrationB.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationB.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxCellTransrationB, resources.GetString("numericBoxCellTransrationB.ToolTip1"));
-            this.numericBoxCellTransrationB.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationB.Value = 0D;
-            this.numericBoxCellTransrationB.WordWrap = true;
-            this.numericBoxCellTransrationB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericBoxCellTransrationA
-            // 
-            resources.ApplyResources(this.numericBoxCellTransrationA, "numericBoxCellTransrationA");
-            this.numericBoxCellTransrationA.AllowMouseControl = false;
-            this.numericBoxCellTransrationA.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.DecimalPlaces = 2;
-            this.numericBoxCellTransrationA.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationA.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellTransrationA.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCellTransrationA.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCellTransrationA.Maximum = 10D;
-            this.numericBoxCellTransrationA.Minimum = -10D;
-            this.numericBoxCellTransrationA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCellTransrationA.MouseSpeed = 1D;
-            this.numericBoxCellTransrationA.Multiline = false;
-            this.numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
-            this.numericBoxCellTransrationA.RadianValue = 0D;
-            this.numericBoxCellTransrationA.ReadOnly = false;
-            this.numericBoxCellTransrationA.RestrictLimitValue = true;
-            this.numericBoxCellTransrationA.ShowFraction = false;
-            this.numericBoxCellTransrationA.ShowPositiveSign = false;
-            this.numericBoxCellTransrationA.ShowUpDown = false;
-            this.numericBoxCellTransrationA.SkipEventDuringInput = true;
-            this.numericBoxCellTransrationA.SmartIncrement = true;
-            this.numericBoxCellTransrationA.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCellTransrationA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCellTransrationA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCellTransrationA.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxCellTransrationA, resources.GetString("numericBoxCellTransrationA.ToolTip1"));
-            this.numericBoxCellTransrationA.UpDown_Increment = 0.1D;
-            this.numericBoxCellTransrationA.Value = 0D;
-            this.numericBoxCellTransrationA.WordWrap = true;
-            this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // checkBoxShowSubCell
-            // 
-            resources.ApplyResources(this.checkBoxShowSubCell, "checkBoxShowSubCell");
-            this.checkBoxShowSubCell.BackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxShowSubCell.Name = "checkBoxShowSubCell";
-            this.toolTip.SetToolTip(this.checkBoxShowSubCell, resources.GetString("checkBoxShowSubCell.ToolTip"));
-            this.checkBoxShowSubCell.UseVisualStyleBackColor = false;
-            this.checkBoxShowSubCell.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // checkBoxCellShowEdge
-            // 
-            resources.ApplyResources(this.checkBoxCellShowEdge, "checkBoxCellShowEdge");
-            this.checkBoxCellShowEdge.Checked = true;
-            this.checkBoxCellShowEdge.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCellShowEdge.Name = "checkBoxCellShowEdge";
-            this.toolTip.SetToolTip(this.checkBoxCellShowEdge, resources.GetString("checkBoxCellShowEdge.ToolTip"));
-            this.checkBoxCellShowEdge.UseVisualStyleBackColor = true;
-            this.checkBoxCellShowEdge.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericUpDownSubCellB
-            // 
-            resources.ApplyResources(this.numericUpDownSubCellB, "numericUpDownSubCellB");
-            this.numericUpDownSubCellB.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellB.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellB.Name = "numericUpDownSubCellB";
-            this.toolTip.SetToolTip(this.numericUpDownSubCellB, resources.GetString("numericUpDownSubCellB.ToolTip"));
-            this.numericUpDownSubCellB.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellB.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            this.toolTip.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
-            // 
-            // checkBoxCellShowPlane
-            // 
-            resources.ApplyResources(this.checkBoxCellShowPlane, "checkBoxCellShowPlane");
-            this.checkBoxCellShowPlane.Checked = true;
-            this.checkBoxCellShowPlane.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCellShowPlane.Name = "checkBoxCellShowPlane";
-            this.toolTip.SetToolTip(this.checkBoxCellShowPlane, resources.GetString("checkBoxCellShowPlane.ToolTip"));
-            this.checkBoxCellShowPlane.UseVisualStyleBackColor = true;
-            this.checkBoxCellShowPlane.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericUpDownSubCellC
-            // 
-            resources.ApplyResources(this.numericUpDownSubCellC, "numericUpDownSubCellC");
-            this.numericUpDownSubCellC.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellC.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellC.Name = "numericUpDownSubCellC";
-            this.toolTip.SetToolTip(this.numericUpDownSubCellC, resources.GetString("numericUpDownSubCellC.ToolTip"));
-            this.numericUpDownSubCellC.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellC.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // numericUpDownSubCellA
-            // 
-            resources.ApplyResources(this.numericUpDownSubCellA, "numericUpDownSubCellA");
-            this.numericUpDownSubCellA.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellA.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellA.Name = "numericUpDownSubCellA";
-            this.toolTip.SetToolTip(this.numericUpDownSubCellA, resources.GetString("numericUpDownSubCellA.ToolTip"));
-            this.numericUpDownSubCellA.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownSubCellA.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            this.toolTip.SetToolTip(this.label17, resources.GetString("label17.ToolTip"));
-            // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            this.toolTip.SetToolTip(this.label16, resources.GetString("label16.ToolTip"));
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            this.toolTip.SetToolTip(this.label12, resources.GetString("label12.ToolTip"));
-            // 
-            // printPreviewDialog1
-            // 
-            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.toolTip.SetToolTip(this.printPreviewDialog1, resources.GetString("printPreviewDialog1.ToolTip"));
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // pageSetupDialog1
-            // 
-            this.pageSetupDialog1.Document = this.printDocument1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // splitContainer1
             // 
@@ -863,7 +255,7 @@
             // flowLayoutPanelLegend
             // 
             resources.ApplyResources(this.flowLayoutPanelLegend, "flowLayoutPanelLegend");
-            this.flowLayoutPanelLegend.BackColor = System.Drawing.SystemColors.Control;
+            this.flowLayoutPanelLegend.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanelLegend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanelLegend.Name = "flowLayoutPanelLegend";
             this.toolTip.SetToolTip(this.flowLayoutPanelLegend, resources.GetString("flowLayoutPanelLegend.ToolTip"));
@@ -1348,6 +740,346 @@
             this.toolTip.SetToolTip(this.tabPageUnitCell, resources.GetString("tabPageUnitCell.ToolTip"));
             this.tabPageUnitCell.UseVisualStyleBackColor = true;
             // 
+            // checkBoxUnitCell
+            // 
+            resources.ApplyResources(this.checkBoxUnitCell, "checkBoxUnitCell");
+            this.checkBoxUnitCell.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxUnitCell.Name = "checkBoxUnitCell";
+            this.toolTip.SetToolTip(this.checkBoxUnitCell, resources.GetString("checkBoxUnitCell.ToolTip"));
+            this.checkBoxUnitCell.UseVisualStyleBackColor = false;
+            this.checkBoxUnitCell.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // groupBoxShowUnitCell
+            // 
+            resources.ApplyResources(this.groupBoxShowUnitCell, "groupBoxShowUnitCell");
+            this.groupBoxShowUnitCell.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellPlaneAlpha);
+            this.groupBoxShowUnitCell.Controls.Add(this.colorControlCellPlane);
+            this.groupBoxShowUnitCell.Controls.Add(this.colorControlCellEdge);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationC);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationB);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericBoxCellTransrationA);
+            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxShowSubCell);
+            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxCellShowEdge);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellB);
+            this.groupBoxShowUnitCell.Controls.Add(this.label10);
+            this.groupBoxShowUnitCell.Controls.Add(this.checkBoxCellShowPlane);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellC);
+            this.groupBoxShowUnitCell.Controls.Add(this.numericUpDownSubCellA);
+            this.groupBoxShowUnitCell.Controls.Add(this.label17);
+            this.groupBoxShowUnitCell.Controls.Add(this.label16);
+            this.groupBoxShowUnitCell.Controls.Add(this.label12);
+            this.groupBoxShowUnitCell.Name = "groupBoxShowUnitCell";
+            this.groupBoxShowUnitCell.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxShowUnitCell, resources.GetString("groupBoxShowUnitCell.ToolTip"));
+            // 
+            // numericBoxCellPlaneAlpha
+            // 
+            resources.ApplyResources(this.numericBoxCellPlaneAlpha, "numericBoxCellPlaneAlpha");
+            this.numericBoxCellPlaneAlpha.AllowMouseControl = false;
+            this.numericBoxCellPlaneAlpha.BackColor = System.Drawing.Color.Transparent;
+            this.numericBoxCellPlaneAlpha.DecimalPlaces = 1;
+            this.numericBoxCellPlaneAlpha.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxCellPlaneAlpha.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellPlaneAlpha.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxCellPlaneAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellPlaneAlpha.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCellPlaneAlpha.Maximum = 1D;
+            this.numericBoxCellPlaneAlpha.Minimum = 0D;
+            this.numericBoxCellPlaneAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxCellPlaneAlpha.MouseSpeed = 1D;
+            this.numericBoxCellPlaneAlpha.Multiline = false;
+            this.numericBoxCellPlaneAlpha.Name = "numericBoxCellPlaneAlpha";
+            this.numericBoxCellPlaneAlpha.RadianValue = 0.0087266462599716477D;
+            this.numericBoxCellPlaneAlpha.ReadOnly = false;
+            this.numericBoxCellPlaneAlpha.RestrictLimitValue = true;
+            this.numericBoxCellPlaneAlpha.ShowFraction = false;
+            this.numericBoxCellPlaneAlpha.ShowPositiveSign = false;
+            this.numericBoxCellPlaneAlpha.ShowUpDown = false;
+            this.numericBoxCellPlaneAlpha.SkipEventDuringInput = false;
+            this.numericBoxCellPlaneAlpha.SmartIncrement = false;
+            this.numericBoxCellPlaneAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellPlaneAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellPlaneAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellPlaneAlpha, resources.GetString("numericBoxCellPlaneAlpha.ToolTip1"));
+            this.numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
+            this.numericBoxCellPlaneAlpha.Value = 0.5D;
+            this.numericBoxCellPlaneAlpha.WordWrap = true;
+            this.numericBoxCellPlaneAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // colorControlCellPlane
+            // 
+            resources.ApplyResources(this.colorControlCellPlane, "colorControlCellPlane");
+            this.colorControlCellPlane.Argb = -5192482;
+            this.colorControlCellPlane.Blue = 222;
+            this.colorControlCellPlane.BlueF = 0.8705882F;
+            this.colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(196)))), ((int)(((byte)(222)))));
+            this.colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlCellPlane.FooterFont = new System.Drawing.Font("メイリオ", 9F);
+            this.colorControlCellPlane.FooterMargin = new System.Windows.Forms.Padding(0);
+            this.colorControlCellPlane.FooterText = "";
+            this.colorControlCellPlane.Green = 196;
+            this.colorControlCellPlane.GreenF = 0.7686275F;
+            this.colorControlCellPlane.HeaderFont = new System.Drawing.Font("メイリオ", 9F);
+            this.colorControlCellPlane.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.colorControlCellPlane.HeaderText = "色";
+            this.colorControlCellPlane.Name = "colorControlCellPlane";
+            this.colorControlCellPlane.Red = 176;
+            this.colorControlCellPlane.RedF = 0.6901961F;
+            this.toolTip.SetToolTip(this.colorControlCellPlane, resources.GetString("colorControlCellPlane.ToolTip"));
+            this.colorControlCellPlane.ToolTip = "";
+            this.colorControlCellPlane.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // colorControlCellEdge
+            // 
+            resources.ApplyResources(this.colorControlCellEdge, "colorControlCellEdge");
+            this.colorControlCellEdge.Argb = -16777011;
+            this.colorControlCellEdge.Blue = 205;
+            this.colorControlCellEdge.BlueF = 0.8039216F;
+            this.colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(205)))));
+            this.colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlCellEdge.FooterFont = new System.Drawing.Font("メイリオ", 9F);
+            this.colorControlCellEdge.FooterMargin = new System.Windows.Forms.Padding(0);
+            this.colorControlCellEdge.FooterText = "";
+            this.colorControlCellEdge.Green = 0;
+            this.colorControlCellEdge.GreenF = 0F;
+            this.colorControlCellEdge.HeaderFont = new System.Drawing.Font("メイリオ", 9F);
+            this.colorControlCellEdge.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.colorControlCellEdge.HeaderText = "色";
+            this.colorControlCellEdge.Name = "colorControlCellEdge";
+            this.colorControlCellEdge.Red = 0;
+            this.colorControlCellEdge.RedF = 0F;
+            this.toolTip.SetToolTip(this.colorControlCellEdge, resources.GetString("colorControlCellEdge.ToolTip"));
+            this.colorControlCellEdge.ToolTip = "";
+            this.colorControlCellEdge.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericBoxCellTransrationC
+            // 
+            resources.ApplyResources(this.numericBoxCellTransrationC, "numericBoxCellTransrationC");
+            this.numericBoxCellTransrationC.AllowMouseControl = false;
+            this.numericBoxCellTransrationC.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.DecimalPlaces = 2;
+            this.numericBoxCellTransrationC.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationC.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationC.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationC.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCellTransrationC.Maximum = 10D;
+            this.numericBoxCellTransrationC.Minimum = -10D;
+            this.numericBoxCellTransrationC.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationC.MouseSpeed = 1D;
+            this.numericBoxCellTransrationC.Multiline = false;
+            this.numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
+            this.numericBoxCellTransrationC.RadianValue = 0D;
+            this.numericBoxCellTransrationC.ReadOnly = false;
+            this.numericBoxCellTransrationC.RestrictLimitValue = true;
+            this.numericBoxCellTransrationC.ShowFraction = false;
+            this.numericBoxCellTransrationC.ShowPositiveSign = false;
+            this.numericBoxCellTransrationC.ShowUpDown = false;
+            this.numericBoxCellTransrationC.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationC.SmartIncrement = true;
+            this.numericBoxCellTransrationC.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationC.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationC.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationC, resources.GetString("numericBoxCellTransrationC.ToolTip1"));
+            this.numericBoxCellTransrationC.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationC.Value = 0D;
+            this.numericBoxCellTransrationC.WordWrap = true;
+            this.numericBoxCellTransrationC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericBoxCellTransrationB
+            // 
+            resources.ApplyResources(this.numericBoxCellTransrationB, "numericBoxCellTransrationB");
+            this.numericBoxCellTransrationB.AllowMouseControl = false;
+            this.numericBoxCellTransrationB.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.DecimalPlaces = 2;
+            this.numericBoxCellTransrationB.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationB.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationB.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationB.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCellTransrationB.Maximum = 10D;
+            this.numericBoxCellTransrationB.Minimum = -10D;
+            this.numericBoxCellTransrationB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationB.MouseSpeed = 1D;
+            this.numericBoxCellTransrationB.Multiline = false;
+            this.numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
+            this.numericBoxCellTransrationB.RadianValue = 0D;
+            this.numericBoxCellTransrationB.ReadOnly = false;
+            this.numericBoxCellTransrationB.RestrictLimitValue = true;
+            this.numericBoxCellTransrationB.ShowFraction = false;
+            this.numericBoxCellTransrationB.ShowPositiveSign = false;
+            this.numericBoxCellTransrationB.ShowUpDown = false;
+            this.numericBoxCellTransrationB.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationB.SmartIncrement = true;
+            this.numericBoxCellTransrationB.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationB.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationB, resources.GetString("numericBoxCellTransrationB.ToolTip1"));
+            this.numericBoxCellTransrationB.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationB.Value = 0D;
+            this.numericBoxCellTransrationB.WordWrap = true;
+            this.numericBoxCellTransrationB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericBoxCellTransrationA
+            // 
+            resources.ApplyResources(this.numericBoxCellTransrationA, "numericBoxCellTransrationA");
+            this.numericBoxCellTransrationA.AllowMouseControl = false;
+            this.numericBoxCellTransrationA.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.DecimalPlaces = 2;
+            this.numericBoxCellTransrationA.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellTransrationA.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxCellTransrationA.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCellTransrationA.Maximum = 10D;
+            this.numericBoxCellTransrationA.Minimum = -10D;
+            this.numericBoxCellTransrationA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericBoxCellTransrationA.MouseSpeed = 1D;
+            this.numericBoxCellTransrationA.Multiline = false;
+            this.numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
+            this.numericBoxCellTransrationA.RadianValue = 0D;
+            this.numericBoxCellTransrationA.ReadOnly = false;
+            this.numericBoxCellTransrationA.RestrictLimitValue = true;
+            this.numericBoxCellTransrationA.ShowFraction = false;
+            this.numericBoxCellTransrationA.ShowPositiveSign = false;
+            this.numericBoxCellTransrationA.ShowUpDown = false;
+            this.numericBoxCellTransrationA.SkipEventDuringInput = true;
+            this.numericBoxCellTransrationA.SmartIncrement = true;
+            this.numericBoxCellTransrationA.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxCellTransrationA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxCellTransrationA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCellTransrationA.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationA, resources.GetString("numericBoxCellTransrationA.ToolTip1"));
+            this.numericBoxCellTransrationA.UpDown_Increment = 0.1D;
+            this.numericBoxCellTransrationA.Value = 0D;
+            this.numericBoxCellTransrationA.WordWrap = true;
+            this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // checkBoxShowSubCell
+            // 
+            resources.ApplyResources(this.checkBoxShowSubCell, "checkBoxShowSubCell");
+            this.checkBoxShowSubCell.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxShowSubCell.Name = "checkBoxShowSubCell";
+            this.toolTip.SetToolTip(this.checkBoxShowSubCell, resources.GetString("checkBoxShowSubCell.ToolTip"));
+            this.checkBoxShowSubCell.UseVisualStyleBackColor = false;
+            this.checkBoxShowSubCell.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // checkBoxCellShowEdge
+            // 
+            resources.ApplyResources(this.checkBoxCellShowEdge, "checkBoxCellShowEdge");
+            this.checkBoxCellShowEdge.Checked = true;
+            this.checkBoxCellShowEdge.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCellShowEdge.Name = "checkBoxCellShowEdge";
+            this.toolTip.SetToolTip(this.checkBoxCellShowEdge, resources.GetString("checkBoxCellShowEdge.ToolTip"));
+            this.checkBoxCellShowEdge.UseVisualStyleBackColor = true;
+            this.checkBoxCellShowEdge.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericUpDownSubCellB
+            // 
+            resources.ApplyResources(this.numericUpDownSubCellB, "numericUpDownSubCellB");
+            this.numericUpDownSubCellB.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellB.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellB.Name = "numericUpDownSubCellB";
+            this.toolTip.SetToolTip(this.numericUpDownSubCellB, resources.GetString("numericUpDownSubCellB.ToolTip"));
+            this.numericUpDownSubCellB.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellB.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            this.toolTip.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
+            // 
+            // checkBoxCellShowPlane
+            // 
+            resources.ApplyResources(this.checkBoxCellShowPlane, "checkBoxCellShowPlane");
+            this.checkBoxCellShowPlane.Checked = true;
+            this.checkBoxCellShowPlane.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCellShowPlane.Name = "checkBoxCellShowPlane";
+            this.toolTip.SetToolTip(this.checkBoxCellShowPlane, resources.GetString("checkBoxCellShowPlane.ToolTip"));
+            this.checkBoxCellShowPlane.UseVisualStyleBackColor = true;
+            this.checkBoxCellShowPlane.CheckedChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericUpDownSubCellC
+            // 
+            resources.ApplyResources(this.numericUpDownSubCellC, "numericUpDownSubCellC");
+            this.numericUpDownSubCellC.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellC.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellC.Name = "numericUpDownSubCellC";
+            this.toolTip.SetToolTip(this.numericUpDownSubCellC, resources.GetString("numericUpDownSubCellC.ToolTip"));
+            this.numericUpDownSubCellC.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellC.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // numericUpDownSubCellA
+            // 
+            resources.ApplyResources(this.numericUpDownSubCellA, "numericUpDownSubCellA");
+            this.numericUpDownSubCellA.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellA.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellA.Name = "numericUpDownSubCellA";
+            this.toolTip.SetToolTip(this.numericUpDownSubCellA, resources.GetString("numericUpDownSubCellA.ToolTip"));
+            this.numericUpDownSubCellA.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSubCellA.ValueChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            this.toolTip.SetToolTip(this.label17, resources.GetString("label17.ToolTip"));
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            this.toolTip.SetToolTip(this.label16, resources.GetString("label16.ToolTip"));
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            this.toolTip.SetToolTip(this.label12, resources.GetString("label12.ToolTip"));
+            // 
             // tabPageLatticePlane
             // 
             resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
@@ -1428,6 +1160,280 @@
             this.textBoxInformation.ReadOnly = true;
             this.toolTip.SetToolTip(this.textBoxInformation, resources.GetString("textBoxInformation.ToolTip"));
             // 
+            // toolStrip1
+            // 
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonBoost,
+            this.toolStripSeparator2,
+            this.toolStripButtonCrystalAxes,
+            this.toolStripButtonLightDirection,
+            this.toolStripButtonLegend,
+            this.toolStripSeparator3,
+            this.toolStripLabelStatusInitialization,
+            this.toolStripLabelStatusRendering});
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Stretch = true;
+            this.toolTip.SetToolTip(this.toolStrip1, resources.GetString("toolStrip1.ToolTip"));
+            // 
+            // toolStripButtonBoost
+            // 
+            resources.ApplyResources(this.toolStripButtonBoost, "toolStripButtonBoost");
+            this.toolStripButtonBoost.CheckOnClick = true;
+            this.toolStripButtonBoost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonBoost.Name = "toolStripButtonBoost";
+            this.toolStripButtonBoost.CheckedChanged += new System.EventHandler(this.toolStripButtonBoost_CheckedChanged);
+            // 
+            // toolStripSeparator2
+            // 
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            // 
+            // toolStripButtonCrystalAxes
+            // 
+            resources.ApplyResources(this.toolStripButtonCrystalAxes, "toolStripButtonCrystalAxes");
+            this.toolStripButtonCrystalAxes.Checked = true;
+            this.toolStripButtonCrystalAxes.CheckOnClick = true;
+            this.toolStripButtonCrystalAxes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripButtonCrystalAxes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCrystalAxes.Name = "toolStripButtonCrystalAxes";
+            this.toolStripButtonCrystalAxes.CheckedChanged += new System.EventHandler(this.toolStripButtonCrystalAxes_CheckedChanged);
+            // 
+            // toolStripButtonLightDirection
+            // 
+            resources.ApplyResources(this.toolStripButtonLightDirection, "toolStripButtonLightDirection");
+            this.toolStripButtonLightDirection.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripButtonLightDirection.Checked = true;
+            this.toolStripButtonLightDirection.CheckOnClick = true;
+            this.toolStripButtonLightDirection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripButtonLightDirection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLightDirection.Name = "toolStripButtonLightDirection";
+            this.toolStripButtonLightDirection.CheckedChanged += new System.EventHandler(this.toolStripButtonLightingBall_CheckedChanged);
+            // 
+            // toolStripButtonLegend
+            // 
+            resources.ApplyResources(this.toolStripButtonLegend, "toolStripButtonLegend");
+            this.toolStripButtonLegend.Checked = true;
+            this.toolStripButtonLegend.CheckOnClick = true;
+            this.toolStripButtonLegend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripButtonLegend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLegend.Name = "toolStripButtonLegend";
+            this.toolStripButtonLegend.CheckedChanged += new System.EventHandler(this.toolStripButtonLegend_CheckedChanged);
+            // 
+            // toolStripSeparator3
+            // 
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            // 
+            // toolStripLabelStatusInitialization
+            // 
+            resources.ApplyResources(this.toolStripLabelStatusInitialization, "toolStripLabelStatusInitialization");
+            this.toolStripLabelStatusInitialization.Name = "toolStripLabelStatusInitialization";
+            // 
+            // toolStripLabelStatusRendering
+            // 
+            resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
+            this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
+            // 
+            // menuStrip1
+            // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveImageToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Name = "menuStrip1";
+            this.toolTip.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
+            // 
+            // saveImageToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
+            this.saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveImageToolStripMenuItem1,
+            this.copyToClipboardToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.pageSetupToolStripMenuItem,
+            this.printPerviewToolStripMenuItem,
+            this.printToolStripMenuItem});
+            this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
+            // 
+            // saveImageToolStripMenuItem1
+            // 
+            resources.ApplyResources(this.saveImageToolStripMenuItem1, "saveImageToolStripMenuItem1");
+            this.saveImageToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveMainToolStripMenuItem,
+            this.saveLegendToolStripMenuItem,
+            this.saveAxesToolStripMenuItem,
+            this.saveLightToolStripMenuItem});
+            this.saveImageToolStripMenuItem1.Name = "saveImageToolStripMenuItem1";
+            // 
+            // saveMainToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveMainToolStripMenuItem, "saveMainToolStripMenuItem");
+            this.saveMainToolStripMenuItem.Name = "saveMainToolStripMenuItem";
+            this.saveMainToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // saveLegendToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveLegendToolStripMenuItem, "saveLegendToolStripMenuItem");
+            this.saveLegendToolStripMenuItem.Name = "saveLegendToolStripMenuItem";
+            // 
+            // saveAxesToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveAxesToolStripMenuItem, "saveAxesToolStripMenuItem");
+            this.saveAxesToolStripMenuItem.Name = "saveAxesToolStripMenuItem";
+            this.saveAxesToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // saveLightToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveLightToolStripMenuItem, "saveLightToolStripMenuItem");
+            this.saveLightToolStripMenuItem.Name = "saveLightToolStripMenuItem";
+            this.saveLightToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyToClipboardToolStripMenuItem, "copyToClipboardToolStripMenuItem");
+            this.copyToClipboardToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyMainToolStripMenuItem,
+            this.copyLegendToolStripMenuItem1,
+            this.copyAxesToolStripMenuItem,
+            this.copyLightToolStripMenuItem});
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            // 
+            // copyMainToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyMainToolStripMenuItem, "copyMainToolStripMenuItem");
+            this.copyMainToolStripMenuItem.Name = "copyMainToolStripMenuItem";
+            this.copyMainToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // copyLegendToolStripMenuItem1
+            // 
+            resources.ApplyResources(this.copyLegendToolStripMenuItem1, "copyLegendToolStripMenuItem1");
+            this.copyLegendToolStripMenuItem1.Name = "copyLegendToolStripMenuItem1";
+            // 
+            // copyAxesToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyAxesToolStripMenuItem, "copyAxesToolStripMenuItem");
+            this.copyAxesToolStripMenuItem.Name = "copyAxesToolStripMenuItem";
+            this.copyAxesToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // copyLightToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyLightToolStripMenuItem, "copyLightToolStripMenuItem");
+            this.copyLightToolStripMenuItem.Name = "copyLightToolStripMenuItem";
+            this.copyLightToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // pageSetupToolStripMenuItem
+            // 
+            resources.ApplyResources(this.pageSetupToolStripMenuItem, "pageSetupToolStripMenuItem");
+            this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
+            this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
+            // 
+            // printPerviewToolStripMenuItem
+            // 
+            resources.ApplyResources(this.printPerviewToolStripMenuItem, "printPerviewToolStripMenuItem");
+            this.printPerviewToolStripMenuItem.Name = "printPerviewToolStripMenuItem";
+            this.printPerviewToolStripMenuItem.Click += new System.EventHandler(this.printPerviewToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem1,
+            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
+            this.toolStripMenuItem2});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            // 
+            // cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
+            // 
+            resources.ApplyResources(this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlte" +
+        "rnatelyToolStripMenuItem");
+            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlte" +
+    "rnatelyToolStripMenuItem";
+            // 
+            // toolStripMenuItem3
+            // 
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            // 
+            // toolStripMenuItem1
+            // 
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            // 
+            // cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
+            // 
+            resources.ApplyResources(this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem, "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem");
+            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem";
+            // 
+            // toolStripMenuItem2
+            // 
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 10000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.IsBalloon = true;
+            this.toolTip.ReshowDelay = 100;
+            // 
+            // printPreviewDialog1
+            // 
+            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.toolTip.SetToolTip(this.printPreviewDialog1, resources.GetString("printPreviewDialog1.ToolTip"));
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // tabPageCrystal
+            // 
+            resources.ApplyResources(this.tabPageCrystal, "tabPageCrystal");
+            this.tabPageCrystal.Name = "tabPageCrystal";
+            this.toolTip.SetToolTip(this.tabPageCrystal, resources.GetString("tabPageCrystal.ToolTip"));
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // pageSetupDialog1
+            // 
+            this.pageSetupDialog1.Document = this.printDocument1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Atom";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Atom";
@@ -1440,12 +1446,6 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // tabPageCrystal
-            // 
-            resources.ApplyResources(this.tabPageCrystal, "tabPageCrystal");
-            this.tabPageCrystal.Name = "tabPageCrystal";
-            this.toolTip.SetToolTip(this.tabPageCrystal, resources.GetString("tabPageCrystal.ToolTip"));
             // 
             // FormStructureViewer
             // 
@@ -1462,15 +1462,6 @@
             this.Load += new System.EventHandler(this.FormStructureViewer_Load);
             this.VisibleChanged += new System.EventHandler(this.FormStructureViewer_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStructureViewer_KeyDown);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.groupBoxShowUnitCell.ResumeLayout(false);
-            this.groupBoxShowUnitCell.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1489,12 +1480,21 @@
             this.tabPageAtom.PerformLayout();
             this.tabPageUnitCell.ResumeLayout(false);
             this.tabPageUnitCell.PerformLayout();
+            this.groupBoxShowUnitCell.ResumeLayout(false);
+            this.groupBoxShowUnitCell.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubCellA)).EndInit();
             this.tabPageLatticePlane.ResumeLayout(false);
             this.tabPageLatticePlane.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.tabPageCoordinateInfromatin.ResumeLayout(false);
             this.tabPageInformation.ResumeLayout(false);
             this.tabPageInformation.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

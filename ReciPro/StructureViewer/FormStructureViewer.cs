@@ -29,11 +29,6 @@ namespace ReciPro
         private Matrix3d axes;
         private List<(V4 prm, Color color)> bounds;
 
-        private BoundControl boundControl;
-        private LatticePlaneControl latticePlaneControl;
-        private AtomControl atomControl;
-        private BondInputControl bondControl;
-      
         public List<GLObject> GLObjects = new List<GLObject>();
 
         public readonly object lockObj = new object();
@@ -45,12 +40,17 @@ namespace ReciPro
 
         public bool SkipEvent { get; set; } = false;
 
-        public List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
-        public List<Label> legendLabels = new List<Label>();
-        public List<FlowLayoutPanel> legendPanels = new List<FlowLayoutPanel>();
+        private BoundControl boundControl;
+        private LatticePlaneControl latticePlaneControl;
+        private AtomControl atomControl;
+        private BondInputControl bondControl;
+
+        private List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
+        private List<Label> legendLabels = new List<Label>();
+        private List<FlowLayoutPanel> legendPanels = new List<FlowLayoutPanel>();
 
 
-        #endregion フィールド
+        #endregion
 
         #region ローカルクラス
         private class atomID
@@ -489,9 +489,6 @@ namespace ReciPro
 
             removeObjects();//余計な原子を削除
 
-            //glControlLegend.Size = new Size(glControlLegend.Size.Width, crystal.Atoms.Length * 20);
-            // SetLatticePlaneProperty();
-
             toolStripLabelStatusInitialization.Text = GLObjects.Count + " objects were created (" + sw.ElapsedMilliseconds + " ms)";
 
             transferGLObjects();
@@ -601,6 +598,8 @@ namespace ReciPro
                 var rotMat = Matrix3d.CreateFromAxisAngle(-new V3(rot), rot.W);
                 if (rotMat.M11 == double.NaN) return;
                 glControlLight.LightPosition = glControlMain.LightPosition = glControlAxes.LightPosition = rotMat.Mult(glControlLight.LightPosition);
+                foreach (var c in legendControls)
+                    c.LightPosition = glControlLight.LightPosition;
             }
             lastPosLight = new Point(e.X, e.Y);
         }
@@ -907,7 +906,7 @@ namespace ReciPro
                     numericBoxACenter.Value = numericBoxBCenter.Value = numericBoxCCenter.Value = Convert.ToDouble(button.Tag as string);
                 else
                     numericBoxARange.Value = numericBoxBRange.Value = numericBoxCRange.Value = Convert.ToDouble(button.Tag as string);
-                SkipEvent = true;
+                SkipEvent = false;
 
                 SetGLObjects();
             }
@@ -967,7 +966,6 @@ namespace ReciPro
 
         #region Atom コントロール関連イベント
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) => MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
-
         private void MoveAtomControl(bool flag)
         {
             if (flag)
@@ -978,7 +976,6 @@ namespace ReciPro
                 formMain.crystalControl.tabPageAtom.Controls.Add(labelMessage);
                 tabPageAtom.Controls.Add(atomControl);
                 TopMost = false;
-
             }
             else
             {
@@ -993,91 +990,74 @@ namespace ReciPro
         {
         }
 
-        private void SetLegend()
-        {
-            glControlMain.SkipRendering = true;
-            
-            legendControls = new List<GLControlAlpha>();
-            legendLabels = new List<Label>();
-            legendPanels.Clear();
-            flowLayoutPanelLegend.Controls.Clear();
 
-
-            if (!toolStripButtonLegend.Checked)
-            {
-                glControlMain.SkipRendering = false;
-                return;
-            }
-            
-
-            var atoms = atomControl.GetAll();
-            flowLayoutPanelLegend.SuspendLayout();
-
-          
-
-            for (int i = 0; i < atoms.Length; i++)
-            {
-                legendControls.Add(new GLControlAlpha
-                {
-                    AllowMouseRotation=false,
-                    AllowMouseScaling=false,
-                    AllowMouseTranslating=false,
-                    Width = 60,
-                    Height = 60,
-                    BorderStyle = BorderStyle.Fixed3D,
-                    DisablingOpenGL = false,
-                    MaxHeight = 1,
-                    MaxWidth = 1,
-                    Name = "legend" + i.ToString(),
-                    NodeCoefficient = 1,
-                    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                    ProjWidth = 2.2D,
-                    RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
-                    RotationMode = GLControlAlpha.RotationModes.Object,
-                    TranslatingMode = GLControlAlpha.TranslatingModes.View,
-                    LightPosition = glControlLight.LightPosition,
-                    WorldMatrix = glControlLight.WorldMatrix,
-                    ViewFrom = glControlLight.ViewFrom
-                });
-
-                legendLabels.Add(new Label
-                {
-                    Text = atoms[i].Label,
-                    Font = Font,
-                    AutoSize = true,
-                    Margin = new Padding(3, 0, 0, 0),
-                });
-
-                legendPanels.Add(new FlowLayoutPanel
-                {
-                    AutoSize = true,
-                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                    FlowDirection = FlowDirection.TopDown,
-                    Margin = new Padding(1, 1, 1, 8),
-                }) ;
-
-
-                legendPanels[i].Controls.Add(legendControls[i]);
-                legendPanels[i].Controls.Add(legendLabels[i]);
-                flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
-            }
-            flowLayoutPanelLegend.ResumeLayout();
-
-            var maxRadius = atoms.Max(a => a.Radius);
-            for (int i = 0; i < atoms.Length; i++)
-            {
-                legendControls[i].AddObjects(
-                    new Sphere(new V3(0, 0, 0), atoms[i].Radius/maxRadius,
-                    new Material(atoms[i].Argb, atoms[i].Transparency, atoms[i].Ambient, atoms[i].Diffusion, atoms[i].Specular, atoms[i].Shininess, atoms[i].Emission),
-                    DrawingMode.Surfaces));
-            }
-            glControlMain.SkipRendering = false;
-
-
-        }
 
         #endregion
 
+        /// <summary>
+        /// 凡例部分の描画
+        /// </summary>
+        private void SetLegend()
+        {
+            var size = new Size(60, 60);
+            glControlMain.SkipRendering = true;
 
+            legendControls.Clear();
+            legendLabels.Clear();
+            legendPanels.Clear();
+            flowLayoutPanelLegend.Controls.Clear();
+
+            if (toolStripButtonLegend.Checked)
+            {
+                var atoms = atomControl.GetAll();
+                flowLayoutPanelLegend.SuspendLayout();
+
+                for (int i = 0; i < atoms.Length; i++)
+                {
+                    legendControls.Add(new GLControlAlpha
+                    {
+                        AllowMouseRotation = false,
+                        AllowMouseScaling = false,
+                        AllowMouseTranslating = false,
+                        DisablingOpenGL = false,
+                        Name = "legend" + i.ToString(),
+                        NodeCoefficient = 1,
+                        ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                        ProjWidth = 2.2D,
+                        RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                        LightPosition = glControlLight.LightPosition,
+                        WorldMatrix = glControlLight.WorldMatrix,
+                        ViewFrom = glControlLight.ViewFrom
+                    });
+                    legendControls[i].Size = size;
+
+                    legendLabels.Add(new Label { Text = atoms[i].Label, Font = Font, AutoSize = true});
+                  
+                    legendPanels.Add(new FlowLayoutPanel
+                    {
+                        AutoSize = true,
+                        AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                        FlowDirection = FlowDirection.TopDown,
+                        Margin = new Padding(1, 1, 1, 8),
+                    });
+
+                    legendPanels[i].Controls.Add(legendControls[i]);
+                    legendPanels[i].Controls.Add(legendLabels[i]);
+                    flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
+                }
+                flowLayoutPanelLegend.ResumeLayout();
+
+                var maxRadius = atoms.Max(a => a.Radius);
+                for (int i = 0; i < atoms.Length; i++)
+                {
+                    legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2 +3, 0, 0, 0);
+                    legendControls[i].AddObjects(
+                        new Sphere(new V3(0, 0, 0), atoms[i].Radius / maxRadius,
+                        new Material(atoms[i].Argb, atoms[i].Transparency, atoms[i].Ambient, atoms[i].Diffusion, atoms[i].Specular, atoms[i].Shininess, atoms[i].Emission),
+                        DrawingMode.Surfaces));
+                }
+            }
+            glControlMain.SkipRendering = false;
+        }
     }
 }

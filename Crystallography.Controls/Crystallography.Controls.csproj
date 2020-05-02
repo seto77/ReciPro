@@ -425,8 +425,14 @@
       <DependentUpon>AtomControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\BondControl.ja.resx">
+      <DependentUpon>BondControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\BondControl.resx">
       <DependentUpon>BondControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\BoundControl.ja.resx">
+      <DependentUpon>BoundControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\BoundControl.resx">
       <DependentUpon>BoundControl.cs</DependentUpon>
@@ -466,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\PoleFigureControl.ja.resx">
       <DependentUpon>PoleFigureControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\SymmetryControl.ja.resx">
+      <DependentUpon>SymmetryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\SymmetryControl.resx">
       <DependentUpon>SymmetryControl.cs</DependentUpon>

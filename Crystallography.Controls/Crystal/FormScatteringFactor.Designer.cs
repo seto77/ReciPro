@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,7 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.K = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +52,7 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RelInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource();
+            this.bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.numericUpDownThresholdD = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,6 +63,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceScatteringFactor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThresholdD)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView2
@@ -334,19 +338,16 @@
             this.waveLengthControl1.AutoSize = true;
             this.waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.waveLengthControl1.Energy = 8.04114721308336D;
-            this.waveLengthControl1.EnergyText = "8.04114721308336";
             this.waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.waveLengthControl1.Location = new System.Drawing.Point(10, 2);
             this.waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
             this.waveLengthControl1.MinimumSize = new System.Drawing.Size(200, 0);
             this.waveLengthControl1.Name = "waveLengthControl1";
-            this.waveLengthControl1.Property = ((Crystallography.WaveProperty)(resources.GetObject("waveLengthControl1.Property")));
             this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.Size = new System.Drawing.Size(200, 103);
+            this.waveLengthControl1.Size = new System.Drawing.Size(200, 107);
             this.waveLengthControl1.TabIndex = 9;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.waveLengthControl1.WaveLength = 0.15418710666666666D;
-            this.waveLengthControl1.WaveLengthText = "1.54187106666667";
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 29;
             this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka;
@@ -375,6 +376,11 @@
             this.Text = "Scattering Factor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCrystallographicInformation_FormClosing);
             this.Load += new System.EventHandler(this.FormCrystallographicInformation_Load);
+            this.VisibleChanged += new System.EventHandler(this.FormScatteringFactor_VisibleChanged);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceScatteringFactor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThresholdD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

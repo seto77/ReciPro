@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Crystallography.Controls;
 
 namespace ReciPro
 {
@@ -119,7 +120,7 @@ namespace ReciPro
                 crystalControl.DefaultTabNumber = 4;
                 tab.Controls.Add(crystalControl);
                 tab.Text = c.Name;
-                tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+                tab.Padding = new Padding(3, 2, 3, 2);
 
                 tabControlCrystals.TabPages.Add(tab);
                 CrystalContlols.Add(crystalControl);
@@ -133,8 +134,10 @@ namespace ReciPro
             //listBox.SelectedIndex = 0;
         }
 
-        private void crystalControl_CrystalChanged(Crystal crystal) => Crystals[crystal.id] = crystal;
-
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
+        {
+            Crystals[(sender as CrystalControl).Crystal.id] = (sender as CrystalControl).Crystal;
+        }
         private void FormPolycrystallineDiffractionSimulator_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;

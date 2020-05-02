@@ -121,12 +121,12 @@
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>655, 25</value>
   </data>
-  <data name="&gt;&gt;glControlLight.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1128, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxClipObjects.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
+  </data>
+  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
   </data>
   <data name="&gt;&gt;checkBoxShowBoundPlanes.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -147,17 +147,20 @@
   <data name="numericBoxBCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 46</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
-    <value>Coordinates</value>
+  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Light Direction</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
-  <data name="toolStripButtonCrystalAxes.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="toolStrip1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;buttonSetRange1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonSetCenter1.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -219,11 +222,20 @@
   <data name="&gt;&gt;numericBoxCCenter.Name" xml:space="preserve">
     <value>numericBoxCCenter</value>
   </data>
+  <data name="checkBoxCellShowEdge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
   <data name="&gt;&gt;buttonSetRange1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
   </data>
   <data name="&gt;&gt;toolStripLabelStatusRendering.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -234,20 +246,14 @@
   <data name="&gt;&gt;glControlAxes.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="numericBoxCellTransrationC.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
   <data name="numericBoxBCenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericBoxLatticePlaneOpacity.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
+  <data name="numericBoxCellPlaneAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
   <data name="labelMessage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -256,10 +262,10 @@
     <value>15, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;glControlAxes.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1128, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
+  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>602, 22</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
     <value>Main Image</value>
@@ -273,8 +279,8 @@
   <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+  <data name="&gt;&gt;toolStripButtonLegend.Name" xml:space="preserve">
+    <value>toolStripButtonLegend</value>
   </data>
   <data name="atomCoordinateTable1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -294,8 +300,8 @@
   <data name="&gt;&gt;numericBoxBRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
+  <data name="textBoxInformation.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
     <value />
@@ -304,7 +310,7 @@
     <value>118, 21</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxBCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -312,8 +318,8 @@
   <data name="numericBoxCellTransrationA.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
   </data>
-  <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="checkBoxShowSubCell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxCellTransrationA.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -321,8 +327,11 @@
   <data name="label17.Text" xml:space="preserve">
     <value>c</value>
   </data>
-  <data name="buttonSetRange1.Text" xml:space="preserve">
-    <value>(±½ ±½ ±½)</value>
+  <data name="numericBoxCellTransrationB.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;tabPageCrystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelMessage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -372,14 +381,11 @@
   <data name="&gt;&gt;checkBoxCellShowPlane.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
+  <data name="numericBoxBoundPlanesOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 22</value>
-  </data>
-  <data name="numericBoxCellTransrationC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;tabPageBoundPlane.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -387,8 +393,8 @@
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Bounds defined by unit cell</value>
   </data>
-  <data name="saveLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+  <data name="buttonSetCenter3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
     <value>toolStripMenuItem3</value>
@@ -414,9 +420,6 @@
   <data name="&gt;&gt;numericBoxBCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
-  <data name="tabPageAtom.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericUpDownSubCellB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
@@ -429,8 +432,8 @@
   <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -447,8 +450,8 @@
   <data name="numericBoxCCenter.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;checkBoxCellShowEdge.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -461,9 +464,6 @@
   </data>
   <data name="menuStrip1.Text" xml:space="preserve">
     <value>menuStrip1</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
   </data>
   <data name="tabControlBoundOption.Alignment" type="System.Windows.Forms.TabAlignment, System.Windows.Forms">
     <value>Left</value>
@@ -483,6 +483,9 @@
   <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 17</value>
   </data>
@@ -498,14 +501,11 @@
   <data name="numericBoxCellTransrationA.HeaderText" xml:space="preserve">
     <value>a</value>
   </data>
-  <data name="label12.ToolTip" xml:space="preserve">
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
-    <value>printToolStripMenuItem</value>
   </data>
   <data name="numericBoxCRange.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -516,14 +516,8 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="numericBoxBoundPlanesOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="&gt;&gt;copyMainToolStripMenuItem.Name" xml:space="preserve">
-    <value>copyMainToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
     <value>splitContainer1</value>
@@ -537,14 +531,17 @@
   <data name="numericBoxCellPlaneAlpha.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="labelMessage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericBoxCellTransrationA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="&gt;&gt;saveLegendToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveLegendToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;printPreviewDialog1.Name" xml:space="preserve">
     <value>printPreviewDialog1</value>
@@ -558,6 +555,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Center</value>
   </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="tabPageCoordinateInfromatin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
@@ -570,17 +570,11 @@
   <data name="&gt;&gt;saveLightToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBoxShowUnitCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
+  <data name="numericBoxBRange.HeaderText" xml:space="preserve">
+    <value>±</value>
   </data>
   <data name="checkBoxHideAllAtoms.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
-  </data>
-  <data name="buttonSetCenter1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
   </data>
   <data name="&gt;&gt;printDocument1.Type" xml:space="preserve">
     <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -594,8 +588,8 @@
   <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;groupBoxShowUnitCell.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -608,9 +602,6 @@
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Name" xml:space="preserve">
     <value>colorControlCellEdge</value>
-  </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxACenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -632,9 +623,6 @@
   </data>
   <data name="&gt;&gt;buttonSetCenter3.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="numericBoxCellTransrationC.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;tabPageBoundPlane.Parent" xml:space="preserve">
     <value>tabControlBoundOption</value>
@@ -669,8 +657,8 @@
   <data name="&gt;&gt;buttonCenter2.Name" xml:space="preserve">
     <value>buttonCenter2</value>
   </data>
-  <data name="numericBoxACenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="labelMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 11</value>
   </data>
   <data name="radioButtonBoundUnitCell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -678,11 +666,8 @@
   <data name="printPerviewToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxCellTransrationB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 26</value>
+  <data name="numericBoxCellTransrationB.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;buttonCenter2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -711,17 +696,11 @@
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>現在の描画イメージを保存します。</value>
   </data>
-  <data name="&gt;&gt;toolStripLabelStatusInitialization.Name" xml:space="preserve">
-    <value>toolStripLabelStatusInitialization</value>
-  </data>
   <data name="glControlLight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="buttonSetRange3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageCoordinateInfromatin.Parent" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="numericBoxCellTransrationC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="tabPageInformation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -732,14 +711,11 @@
   <data name="radioButtonBoundUnitCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonSetCenter1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt</value>
   </data>
-  <data name="labelMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 11</value>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownSubCellA.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 136</value>
@@ -762,8 +738,8 @@
   <data name="&gt;&gt;numericUpDownSubCellA.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonSetCenter1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelLegend.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -774,11 +750,11 @@
   <data name="&gt;&gt;numericUpDownSubCellB.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name" xml:space="preserve">
-    <value>cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem</value>
-  </data>
   <data name="&gt;&gt;saveMainToolStripMenuItem.Name" xml:space="preserve">
     <value>saveMainToolStripMenuItem</value>
+  </data>
+  <data name="printPreviewDialog1.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 300</value>
   </data>
   <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
     <value>Atom</value>
@@ -822,11 +798,14 @@
   <data name="tabPageUnitCell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="numericBoxBoundPlanesOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+  <data name="numericBoxLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 8</value>
   </data>
   <data name="numericBoxCRange.FooterText" xml:space="preserve">
     <value />
+  </data>
+  <data name="numericUpDownSubCellA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 28</value>
@@ -837,9 +816,6 @@
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;glControlMain.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
@@ -847,9 +823,6 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxUnitCell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
@@ -873,14 +846,17 @@
   <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn2</value>
   </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>Unit Cell</value>
+  </data>
   <data name="&gt;&gt;tabPageBoundPlane.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;glControlMain.Name" xml:space="preserve">
     <value>glControlMain</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowSubCell.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
+  <data name="&gt;&gt;copyMainToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxCCenter.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -903,6 +879,9 @@
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
   </data>
+  <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
+    <value>Coordinates</value>
+  </data>
   <data name="colorControlCellPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
   </data>
@@ -915,14 +894,11 @@
   <data name="buttonSetRange1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label12.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="numericBoxCellTransrationC.HeaderText" xml:space="preserve">
-    <value>c</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>14</value>
@@ -945,8 +921,11 @@
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolStripLabelStatusRendering.Text" xml:space="preserve">
-    <value>   </value>
+  <data name="checkBoxCellShowPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="label12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="printPreviewDialog1.Enabled" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -972,14 +951,11 @@
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
     <value />
   </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Mouse Right Up/Down:  Change  zoom</value>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 0</value>
-  </data>
-  <data name="numericBoxBRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name" xml:space="preserve">
     <value>cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem</value>
@@ -989,9 +965,6 @@
   </data>
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;tabPageLatticePlane.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
@@ -1017,20 +990,26 @@
   <data name="tabPageBond.Text" xml:space="preserve">
     <value>Bonds and Polyhedra</value>
   </data>
+  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
   <data name="numericBoxBoundPlanesOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="toolStrip1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printPerviewToolStripMenuItem.Name" xml:space="preserve">
     <value>printPerviewToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;radioButtonBoundUnitCell.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericUpDownSubCellB.Name" xml:space="preserve">
+    <value>numericUpDownSubCellB</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="&gt;&gt;toolStripLabelStatusInitialization.Name" xml:space="preserve">
+    <value>toolStripLabelStatusInitialization</value>
+  </data>
+  <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.Parent" xml:space="preserve">
     <value>tabPageUnitCell</value>
@@ -1038,8 +1017,8 @@
   <data name="checkBoxCellShowEdge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 141</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Text" xml:space="preserve">
     <value>Axes</value>
@@ -1059,14 +1038,14 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Structure Viewer</value>
   </data>
-  <data name="glControlAxes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
     <value>単位格子の稜(辺)を表示します。</value>
+  </data>
+  <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 233</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1080,8 +1059,11 @@
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
   </data>
-  <data name="&gt;&gt;tabPageCrystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxARange.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1089,20 +1071,14 @@
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
-  <data name="numericBoxACenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
   <data name="checkBoxClipObjects.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowSubCell.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxBoundPlanesOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
   </data>
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
@@ -1146,8 +1122,8 @@
   <data name="glControlMain.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxCellTransrationB.FooterText" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTransrationA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;checkBoxShowSubCell.Name" xml:space="preserve">
     <value>checkBoxShowSubCell</value>
@@ -1158,17 +1134,14 @@
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>602, 22</value>
   </data>
-  <data name="&gt;&gt;saveLegendToolStripMenuItem.Name" xml:space="preserve">
-    <value>saveLegendToolStripMenuItem</value>
+  <data name="&gt;&gt;saveLegendToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxShowUnitCell.Parent" xml:space="preserve">
     <value>tabPageUnitCell</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>Atom</value>
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>Lattice Plane</value>
@@ -1178,9 +1151,6 @@
   </data>
   <data name="numericBoxCellTransrationB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1206,9 +1176,6 @@
   <data name="numericBoxACenter.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
     <value>CTRL+SHIFT+c:  Copy main image to clipboard</value>
   </data>
@@ -1218,17 +1185,17 @@
   <data name="&gt;&gt;tabPageUnitCell.Name" xml:space="preserve">
     <value>tabPageUnitCell</value>
   </data>
-  <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
+  <data name="&gt;&gt;copyToClipboardToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyToClipboardToolStripMenuItem</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
   </data>
-  <data name="numericBoxCellTransrationB.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+  <data name="buttonCenter2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;numericBoxBRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripLabelStatusInitialization.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1241,9 +1208,6 @@
   </data>
   <data name="tabPageLatticePlane.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value />
@@ -1275,14 +1239,17 @@
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;tabPageBounds.Name" xml:space="preserve">
-    <value>tabPageBounds</value>
+  <data name="checkBoxShowSubCell.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
     <value>結晶の単位格子を表示します。</value>
   </data>
-  <data name="checkBoxUnitCell.Text" xml:space="preserve">
-    <value>Show Unit Cell</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
   </data>
   <data name="numericBoxCCenter.HeaderText" xml:space="preserve">
     <value>c: </value>
@@ -1290,8 +1257,11 @@
   <data name="label1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="numericUpDownSubCellB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 21</value>
+  </data>
+  <data name="tabPageAtom.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxUnitCell.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1311,23 +1281,23 @@
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxBCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+  <data name="numericBoxCellTransrationC.HeaderText" xml:space="preserve">
+    <value>c</value>
   </data>
   <data name="glControlMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;buttonSetCenter3.Name" xml:space="preserve">
-    <value>buttonSetCenter3</value>
+  <data name="flowLayoutPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonSetRange3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonLegend.Name" xml:space="preserve">
-    <value>toolStripButtonLegend</value>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelMessage.Parent" xml:space="preserve">
-    <value>tabPageAtom</value>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 196</value>
   </data>
   <data name="glControlLight.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
@@ -1351,8 +1321,8 @@
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 789</value>
   </data>
-  <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
+  <data name="&gt;&gt;glControlLight.Name" xml:space="preserve">
+    <value>glControlLight</value>
   </data>
   <data name="tabControl.ToolTip" xml:space="preserve">
     <value />
@@ -1381,32 +1351,26 @@
   <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 25</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;glControlLight.Type" xml:space="preserve">
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+  <data name="glControlAxes.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 496</value>
   </data>
-  <data name="glControlAxes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="numericBoxCellTransrationA.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="numericUpDownSubCellB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 21</value>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
-  </data>
-  <data name="numericBoxCRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 25</value>
+  <data name="numericBoxACenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>655, 814</value>
-  </data>
-  <data name="numericBoxCellTransrationB.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1414,20 +1378,14 @@
   <data name="numericBoxCCenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 25</value>
   </data>
-  <data name="tabPageBounds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>647, 233</value>
   </data>
-  <data name="flowLayoutPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 8, 0, 0</value>
+  <data name="colorControlCellPlane.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="buttonCenter2.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 46</value>
@@ -1438,8 +1396,8 @@
   <data name="&gt;&gt;tabPageAtom.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="textBoxInformation.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxBRange.FooterText" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
     <value>チェックされると単位格子の面を表示します。</value>
@@ -1459,8 +1417,8 @@
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;buttonSetRange1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxCRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1470,6 +1428,9 @@
   </data>
   <data name="colorControlCellPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;glControlAxes.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1483,8 +1444,8 @@
   <data name="&gt;&gt;tabPageLatticePlane.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxCCenter.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1495,8 +1456,8 @@
   <data name="&gt;&gt;tabControlBoundOption.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="numericBoxACenter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownSubCellC.Location" type="System.Drawing.Point, System.Drawing">
     <value>271, 136</value>
@@ -1510,11 +1471,8 @@
   <data name="&gt;&gt;saveAxesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageBoundUnitcell.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
   </data>
   <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1525,32 +1483,35 @@
   <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
     <value>単位格子の表示方法を設定します。</value>
   </data>
-  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Light Direction</value>
+  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 141</value>
   </data>
+  <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="tabPageInformation.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;buttonSetCenter3.Name" xml:space="preserve">
+    <value>buttonSetCenter3</value>
+  </data>
+  <data name="tabPageBounds.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxARange.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="&gt;&gt;numericUpDownSubCellA.Name" xml:space="preserve">
+    <value>numericUpDownSubCellA</value>
   </data>
   <data name="numericBoxBCenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;printPerviewToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxBRange.FooterText" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxHideAllAtoms.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
@@ -1564,14 +1525,17 @@
   <data name="&gt;&gt;labelMessage.Name" xml:space="preserve">
     <value>labelMessage</value>
   </data>
+  <data name="glControlAxes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
   <data name="&gt;&gt;checkBoxUnitCell.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.Name" xml:space="preserve">
-    <value>numericBoxCellTransrationA</value>
+  <data name="numericBoxBRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="glControlLight.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
@@ -1581,9 +1545,6 @@
   </data>
   <data name="&gt;&gt;tabPageBounds.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxBRange.HeaderText" xml:space="preserve">
-    <value>±</value>
   </data>
   <data name="toolStripButtonLegend.Text" xml:space="preserve">
     <value>Legend</value>
@@ -1597,14 +1558,11 @@
   <data name="buttonSetRange1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabPageLatticePlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+  <data name="checkBoxUnitCell.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>15</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 141</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 17</value>
@@ -1636,14 +1594,14 @@
   <data name="checkBoxHideAllAtoms.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
   </data>
-  <data name="groupBoxShowUnitCell.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+  <data name="numericBoxBCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 25</value>
+  </data>
+  <data name="&gt;&gt;cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name" xml:space="preserve">
+    <value>cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;toolStripButtonCrystalAxes.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;groupBoxShowUnitCell.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1659,6 +1617,9 @@
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSubCell.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1684,29 +1645,23 @@
   <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
     <value>tabPageLatticePlane</value>
   </data>
-  <data name="buttonSetRange2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
+  <data name="numericBoxARange.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxCellPlaneAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
   </data>
   <data name="&gt;&gt;numericUpDownSubCellC.Name" xml:space="preserve">
     <value>numericUpDownSubCellC</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;copyMainToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyMainToolStripMenuItem</value>
   </data>
   <data name="buttonSetRange1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 233</value>
-  </data>
-  <data name="colorControlCellPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="numericBoxLatticePlaneOpacity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1726,17 +1681,14 @@
   <data name="&gt;&gt;buttonSetRange3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;saveLegendToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;glControlLight.Name" xml:space="preserve">
-    <value>glControlLight</value>
+  <data name="toolStripLabelStatusRendering.Text" xml:space="preserve">
+    <value>   </value>
   </data>
   <data name="&gt;&gt;buttonSetCenter1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxCellPlaneAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="&gt;&gt;copyAxesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1747,14 +1699,14 @@
   <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
     <value>Legend</value>
   </data>
+  <data name="groupBoxShowUnitCell.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
   <data name="numericBoxCellTransrationC.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="tabPageBounds.Text" xml:space="preserve">
     <value>Bounds</value>
-  </data>
-  <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Name" xml:space="preserve">
     <value>colorControlCellPlane</value>
@@ -1798,9 +1750,6 @@
   <data name="toolStripButtonLegend.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
   <data name="&gt;&gt;buttonSetCenter1.Name" xml:space="preserve">
     <value>buttonSetCenter1</value>
   </data>
@@ -1825,9 +1774,6 @@
   <data name="buttonCenter2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxLatticePlaneOpacity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="&gt;&gt;buttonSetRange1.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
@@ -1835,7 +1781,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;glControlLight.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1861,9 +1807,6 @@
   <data name="buttonSetRange2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;numericBoxACenter.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
-  </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 15</value>
   </data>
@@ -1872,9 +1815,6 @@
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
-  </data>
-  <data name="numericBoxBCenter.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;printPreviewDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PrintPreviewDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1903,17 +1843,17 @@
   <data name="numericBoxARange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 20</value>
   </data>
-  <data name="&gt;&gt;numericUpDownSubCellB.Name" xml:space="preserve">
-    <value>numericUpDownSubCellB</value>
+  <data name="glControlAxes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
     <value>Show bound planes</value>
   </data>
+  <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="toolStrip1.Text" xml:space="preserve">
     <value>toolStrip1</value>
-  </data>
-  <data name="tabControlBoundOption.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1921,17 +1861,17 @@
   <data name="&gt;&gt;flowLayoutPanelLegend.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 196</value>
-  </data>
-  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Legend</value>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1960,23 +1900,20 @@
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tabPageLatticePlane.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabPageBounds.Name" xml:space="preserve">
+    <value>tabPageBounds</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;copyMainToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
   </data>
-  <data name="tabPageBounds.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="glControlMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;labelMessage.Parent" xml:space="preserve">
+    <value>tabPageAtom</value>
   </data>
   <data name="&gt;&gt;copyAxesToolStripMenuItem.Name" xml:space="preserve">
     <value>copyAxesToolStripMenuItem</value>
@@ -2008,17 +1945,11 @@
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>655, 26</value>
   </data>
-  <data name="&gt;&gt;timer.Name" xml:space="preserve">
-    <value>timer</value>
-  </data>
   <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="textBoxInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
-  </data>
-  <data name="numericBoxCRange.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2028,6 +1959,9 @@
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
     <value />
+  </data>
+  <data name="numericBoxCellTransrationB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2056,14 +1990,14 @@
   <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
     <value>toolStrip1</value>
   </data>
-  <data name="buttonSetCenter1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;radioButtonBoundUnitCell.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabPageUnitCell.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="printPreviewDialog1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2078,7 +2012,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageCrystal.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2098,20 +2032,20 @@
   <data name="&gt;&gt;printDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PrintDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="checkBoxUnitCell.Text" xml:space="preserve">
+    <value>Show Unit Cell</value>
   </data>
-  <data name="glControlAxes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="&gt;&gt;tabPageLatticePlane.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;numericUpDownSubCellA.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="numericBoxCellTransrationB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 26</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 62</value>
   </data>
-  <data name="&gt;&gt;buttonCenter2.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
+  <data name="numericBoxCellTransrationC.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="toolStripMenuItem2.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2119,14 +2053,11 @@
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
-  <data name="numericBoxARange.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
@@ -2152,8 +2083,8 @@
   <data name="numericBoxACenter.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
-  <data name="numericBoxBCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxCellShowEdge.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 21</value>
@@ -2227,11 +2158,11 @@
   <data name="checkBoxClipObjects.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 0</value>
   </data>
-  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabControlBoundOption.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>Buttons</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellTransrationA.Name" xml:space="preserve">
+    <value>numericBoxCellTransrationA</value>
   </data>
   <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2245,8 +2176,8 @@
   <data name="buttonSetCenter1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxShowSubCell.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2272,17 +2203,26 @@
   <data name="checkBoxHideAllAtoms.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
-  <data name="buttonSetRange3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt</value>
+  <data name="&gt;&gt;buttonSetRange2.Name" xml:space="preserve">
+    <value>buttonSetRange2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxCRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 72</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Parent" xml:space="preserve">
     <value>tabPageCoordinateInfromatin</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxCRange.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -2296,9 +2236,6 @@
   <data name="&gt;&gt;toolStripButtonBoost.Name" xml:space="preserve">
     <value>toolStripButtonBoost</value>
   </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 22</value>
-  </data>
   <data name="tabPageInformation.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -2308,6 +2245,9 @@
   <data name="numericBoxLatticePlaneOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="numericBoxCellTransrationB.FooterText" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Name" xml:space="preserve">
     <value>numericBoxLatticePlaneOpacity</value>
   </data>
@@ -2316,6 +2256,709 @@
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Atom</value>
+  </data>
+  <data name="&gt;&gt;timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabControlBoundOption.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="glControlMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="buttonSetRange3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 26</value>
+  </data>
+  <data name="numericBoxCellTransrationC.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 22</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSubCell.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonBoundPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 22</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxCRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="&gt;&gt;buttonSetCenter3.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 20</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Crystal Axes</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
+    <value>numericBoxACenter</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBoundPlane.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabControlBoundOption.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxCRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageUnitCell.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;copyLightToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyLightToolStripMenuItem</value>
+  </data>
+  <data name="numericBoxCellTransrationA.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlCellEdge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>Main Image</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlCellEdge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="numericBoxCellTransrationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxBRange.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="glControlAxes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 100</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxInformation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxBCenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabPageBoundUnitcell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxCCenter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButtonBoundPlane.Name" xml:space="preserve">
+    <value>radioButtonBoundPlane</value>
+  </data>
+  <data name="colorControlCellEdge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>602, 22</value>
+  </data>
+  <data name="label17.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Set range to</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBoundUnitCell.Name" xml:space="preserve">
+    <value>radioButtonBoundUnitCell</value>
+  </data>
+  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="&gt;&gt;numericBoxARange.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="glControlMain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxACenter.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="&gt;&gt;numericBoxACenter.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="tabPageInformation.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelLegend.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageUnitCell.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="glControlAxes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 396</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Name" xml:space="preserve">
+    <value>numericBoxCellPlaneAlpha</value>
+  </data>
+  <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxUnitCell.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxACenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 25</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSubCellB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSubCellB.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
+  </data>
+  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="glControlAxes.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="glControlMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
+    <value>Show Cell Plane</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="&gt;&gt;cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonBoundPlane.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonSetRange3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
+  </data>
+  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>596, 178</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        aAsrTgA7AAC9AAC5RABIAADlAADeAACOAAAAn5/DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACmAQHtDw/6AADJhwQGjgoKjgoKAADWUVH/GBj+AAC+
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAC4Bgb6Ozv/AADXAAAAAAAAAAAAAAC+AADuAADnAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy+TAADSAADbAACmAAAAAAAAAAAA
+        7+/1AACUAACFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA7+/0v7/XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///H///jh///wQf//8AH//4gB//8GAf//AAP7/4A
+        A4f8AAGD+AAAA/gAIAf4ABAHxAAAD4AAAAOAAAABwAAAAfAAAGHwCAAD4AQAH+ADAB/gAAAf4cAAf+Hg
+        AD//8AA///AAP//wAv//4AP//+HD///hx///8/////////////8oAAAAEAAAACAAAAABABgAAAAAAAAD
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLAAAAAAAAAADqAADAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKTk7/XwgdKwU8AADqAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAA39/qAgL1Pz+aAAAApQAJPgBKBATyv7/UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADkogcN
+        VwU9lgkzjgAMmQ0NAACXAAAAAAAAAADJAAC2AAAAAAAAAAAAAAAAAADXAACzmgAVAADIDg77jgoKcys/
+        fX3/AACiVwoKAADWAAC8AAAAAAAAAAAAAAAAAADkAADDewYMAADsAADTAADiDw+Df3+5pQAJZwArHBz9
+        AACQAAAAAAAAAADsAADjy8vLmgEFpQUJAADIAACnjGsXWABTaA8PjgExeQkenQoKl5OtAAAAAAAAAACr
+        GgCJrwoKSQA7cQ8onwoKeQAhAACdpwIGAACaAQHxhwMGjgoKTk7/AAC+AAAAAAAAkwAHaQA0WVn/AACs
+        AAAAAADlAADgTgADAADUAADTAwO9Ly+UAACcAAAAAAAAAAAAAADMLgBWAACYAADVAADkAAAAlgIGpw8R
+        AADSAADRCwv6AADFAAAAAAAAAAAAAAAABAT5AAC8AAAAAAC6AADLrwoKfgcblgkbnwoKjgUOHx+SAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjwYJkwAcGRn8AAC+iwoKAADgAgLzAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAACgaAsrAAC9RABIAADeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        Bgb6AADXAAAAAAC+AADnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/Z8AAPgfAADiHwAA8BkAAOABAADgAQAAgAEAAIAAAADCAQAAwQMAAMgHAAD8BwAA/B8AAPyf
+        AAD//wAA//8AAA==
+</value>
+  </data>
+  <data name="tabPageBond.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabControlBoundOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;saveImageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabPageCoordinateInfromatin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="toolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>This control is now displayed
+ in "Structure Viewer" window.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellTransrationC.Name" xml:space="preserve">
+    <value>numericBoxCellTransrationC</value>
+  </data>
+  <data name="&gt;&gt;tabPageBoundPlane.Name" xml:space="preserve">
+    <value>tabPageBoundPlane</value>
+  </data>
+  <data name="&gt;&gt;saveLightToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveLightToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyLegendToolStripMenuItem1.Name" xml:space="preserve">
+    <value>copyLegendToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="tabPageCoordinateInfromatin.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="numericUpDownSubCellC.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="&gt;&gt;tabPageBond.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="checkBoxShowSubCell.Text" xml:space="preserve">
+    <value>Show Subcell</value>
+  </data>
+  <data name="buttonSetCenter3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="&gt;&gt;tabPageBond.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
+    <value>Light direction
+光源の方向を設定する球を表示します</value>
+  </data>
+  <data name="tabPageInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxShowUnitCell.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonSetCenter3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 26</value>
+  </data>
+  <data name="buttonCenter2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageBond.Name" xml:space="preserve">
+    <value>tabPageBond</value>
+  </data>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 22</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="buttonSetCenter3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageBounds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSetRange1.Text" xml:space="preserve">
+    <value>(±½ ±½ ±½)</value>
+  </data>
+  <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 72</value>
+  </data>
+  <data name="&gt;&gt;textBoxInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxCellShowEdge.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericBoxBCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 1</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.Name" xml:space="preserve">
+    <value>tabPageLatticePlane</value>
+  </data>
+  <data name="&gt;&gt;textBoxInformation.Name" xml:space="preserve">
+    <value>textBoxInformation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCellShowEdge.Name" xml:space="preserve">
+    <value>checkBoxCellShowEdge</value>
+  </data>
+  <data name="flowLayoutPanelLegend.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBoxClipObjects.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="numericBoxACenter.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxARange.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>339, 0</value>
+  </data>
+  <data name="radioButtonBoundPlane.Text" xml:space="preserve">
+    <value>Bounds defined by crystal plane</value>
+  </data>
+  <data name="printPerviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;pageSetupDialog1.Name" xml:space="preserve">
+    <value>pageSetupDialog1</value>
+  </data>
+  <data name="radioButtonBoundPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 3</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tabPageBond.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="tabPageBoundUnitcell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 4</value>
+  </data>
+  <data name="numericBoxARange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="numericBoxCRange.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStripLabelStatusInitialization.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 22</value>
+  </data>
+  <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 65</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>CTRL+ Mouse right up/down:  Change  degree of perspective</value>
+  </data>
+  <data name="checkBoxShowSubCell.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="numericBoxARange.HeaderText" xml:space="preserve">
+    <value>±</value>
+  </data>
+  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 233</value>
+  </data>
+  <data name="tabPageLatticePlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlBoundOption.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Save Image</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 233</value>
+  </data>
+  <data name="numericBoxCRange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;pageSetupToolStripMenuItem.Name" xml:space="preserve">
+    <value>pageSetupToolStripMenuItem</value>
+  </data>
+  <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 5</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;tabPageUnitCell.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;colorControlCellPlane.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonSetRange3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericUpDownSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;textBoxInformation.Parent" xml:space="preserve">
+    <value>tabPageInformation</value>
+  </data>
+  <data name="&gt;&gt;numericBoxBRange.Name" xml:space="preserve">
+    <value>numericBoxBRange</value>
+  </data>
+  <data name="radioButtonBoundPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowSubCell.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSubCellA.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;printDocument1.Name" xml:space="preserve">
+    <value>printDocument1</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Atom</value>
+  </data>
+  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>647, 233</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>b</value>
+  </data>
+  <data name="toolStripMenuItem3.Text" xml:space="preserve">
+    <value>Mouse drag:  Rotate objects</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBond.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxCellTransrationA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxCellTransrationC.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBoxHideAllAtoms.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxCellTransrationB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabPageCrystal.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericBoxBCenter.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Light Direction</value>
+  </data>
+  <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="&gt;&gt;buttonCenter2.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSubCellA.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
+  </data>
+  <data name="&gt;&gt;printDialog1.Name" xml:space="preserve">
+    <value>printDialog1</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="numericBoxCellTransrationB.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericUpDownSubCellB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlBoundOption.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2490,695 +3133,19 @@
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
   </data>
-  <data name="&gt;&gt;timer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tabControlBoundOption.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
   <data name="toolStripButtonBoost.ToolTipText" xml:space="preserve">
     <value>During mouse operation, omit 
 回転、拡大、縮小時に奥行き方向の計算を省略し、
 高速に描画します</value>
   </data>
-  <data name="buttonSetRange3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 26</value>
-  </data>
-  <data name="numericBoxCellTransrationC.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="pageSetupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowSubCell.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonBoundPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="checkBoxHideAllAtoms.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="printToolStripMenuItem.Text" xml:space="preserve">
-    <value>Print</value>
-  </data>
-  <data name="checkBoxCellShowPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="numericBoxCRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="&gt;&gt;buttonSetCenter3.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Crystal Axes</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
-    <value>numericBoxACenter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBoundPlane.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 20</value>
-  </data>
-  <data name="numericBoxCRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageUnitCell.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;copyLightToolStripMenuItem.Name" xml:space="preserve">
-    <value>copyLightToolStripMenuItem</value>
-  </data>
-  <data name="numericBoxCellTransrationA.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlCellEdge.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
-    <value>Main Image</value>
-  </data>
-  <data name="groupBoxShowUnitCell.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="colorControlCellEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="numericBoxCellTransrationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxBRange.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="glControlAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="textBoxInformation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxBCenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="tabPageBoundUnitcell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <data name="numericBoxCCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonBoundPlane.Name" xml:space="preserve">
-    <value>radioButtonBoundPlane</value>
-  </data>
-  <data name="colorControlCellEdge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 22</value>
-  </data>
-  <data name="label17.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Set range to</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBoundUnitCell.Name" xml:space="preserve">
-    <value>radioButtonBoundUnitCell</value>
-  </data>
-  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="&gt;&gt;numericBoxARange.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="glControlMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownSubCellA.Name" xml:space="preserve">
-    <value>numericUpDownSubCellA</value>
-  </data>
-  <data name="&gt;&gt;numericBoxACenter.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="tabPageInformation.Text" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelLegend.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabPageUnitCell.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="glControlAxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 396</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Name" xml:space="preserve">
-    <value>numericBoxCellPlaneAlpha</value>
-  </data>
-  <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxUnitCell.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxACenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 25</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownSubCellB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownSubCellB.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
-  </data>
-  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="glControlAxes.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkBoxShowSubCell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="glControlMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
-    <value>Show Cell Plane</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="&gt;&gt;cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonBoundPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 178</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        aAsrTgA7AAC9AAC5RABIAADlAADeAACOAAAAn5/DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACmAQHtDw/6AADJhwQGjgoKjgoKAADWUVH/GBj+AAC+
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAC4Bgb6Ozv/AADXAAAAAAAAAAAAAAC+AADuAADnAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy+TAADSAADbAACmAAAAAAAAAAAA
-        7+/1AACUAACFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAA7+/0v7/XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///H///jh///wQf//8AH//4gB//8GAf//AAP7/4A
-        A4f8AAGD+AAAA/gAIAf4ABAHxAAAD4AAAAOAAAABwAAAAfAAAGHwCAAD4AQAH+ADAB/gAAAf4cAAf+Hg
-        AD//8AA///AAP//wAv//4AP//+HD///hx///8/////////////8oAAAAEAAAACAAAAABABgAAAAAAAAD
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLAAAAAAAAAADqAADAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKTk7/XwgdKwU8AADqAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAA39/qAgL1Pz+aAAAApQAJPgBKBATyv7/UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADkogcN
-        VwU9lgkzjgAMmQ0NAACXAAAAAAAAAADJAAC2AAAAAAAAAAAAAAAAAADXAACzmgAVAADIDg77jgoKcys/
-        fX3/AACiVwoKAADWAAC8AAAAAAAAAAAAAAAAAADkAADDewYMAADsAADTAADiDw+Df3+5pQAJZwArHBz9
-        AACQAAAAAAAAAADsAADjy8vLmgEFpQUJAADIAACnjGsXWABTaA8PjgExeQkenQoKl5OtAAAAAAAAAACr
-        GgCJrwoKSQA7cQ8onwoKeQAhAACdpwIGAACaAQHxhwMGjgoKTk7/AAC+AAAAAAAAkwAHaQA0WVn/AACs
-        AAAAAADlAADgTgADAADUAADTAwO9Ly+UAACcAAAAAAAAAAAAAADMLgBWAACYAADVAADkAAAAlgIGpw8R
-        AADSAADRCwv6AADFAAAAAAAAAAAAAAAABAT5AAC8AAAAAAC6AADLrwoKfgcblgkbnwoKjgUOHx+SAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjwYJkwAcGRn8AAC+iwoKAADgAgLzAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAACgaAsrAAC9RABIAADeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        Bgb6AADXAAAAAAC+AADnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAA/Z8AAPgfAADiHwAA8BkAAOABAADgAQAAgAEAAIAAAADCAQAAwQMAAMgHAAD8BwAA/B8AAPyf
-        AAD//wAA//8AAA==
-</value>
-  </data>
-  <data name="tabPageBond.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxCellTransrationA.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabControlBoundOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;saveImageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tabPageCoordinateInfromatin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="toolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelMessage.Text" xml:space="preserve">
-    <value>This control is now displayed
- in "Structure Viewer" window.</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.Name" xml:space="preserve">
-    <value>numericBoxCellTransrationC</value>
-  </data>
-  <data name="&gt;&gt;tabPageBoundPlane.Name" xml:space="preserve">
-    <value>tabPageBoundPlane</value>
-  </data>
-  <data name="&gt;&gt;saveLightToolStripMenuItem.Name" xml:space="preserve">
-    <value>saveLightToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;copyLegendToolStripMenuItem1.Name" xml:space="preserve">
-    <value>copyLegendToolStripMenuItem1</value>
-  </data>
-  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
-  </data>
-  <data name="printPreviewDialog1.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>400, 300</value>
-  </data>
-  <data name="flowLayoutPanelLegend.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDownSubCellC.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkBoxCellShowEdge.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;tabPageBond.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowSubCell.Text" xml:space="preserve">
-    <value>Show Subcell</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>655, 263</value>
-  </data>
-  <data name="buttonSetCenter3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
-  </data>
-  <data name="&gt;&gt;tabPageBond.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
-    <value>Light direction
-光源の方向を設定する球を表示します</value>
-  </data>
-  <data name="toolStripMenuItem2.Text" xml:space="preserve">
-    <value>CTRL+ Mouse right up/down:  Change  degree of perspective</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPageBoundUnitcell</value>
-  </data>
-  <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBoxShowUnitCell.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="buttonSetCenter3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 26</value>
-  </data>
-  <data name="buttonCenter2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageBond.Name" xml:space="preserve">
-    <value>tabPageBond</value>
-  </data>
-  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>Unit Cell</value>
-  </data>
-  <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 72</value>
-  </data>
-  <data name="&gt;&gt;textBoxInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxCellShowEdge.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 1</value>
-  </data>
-  <data name="&gt;&gt;tabPageLatticePlane.Name" xml:space="preserve">
-    <value>tabPageLatticePlane</value>
-  </data>
-  <data name="&gt;&gt;textBoxInformation.Name" xml:space="preserve">
-    <value>textBoxInformation</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCellShowEdge.Name" xml:space="preserve">
-    <value>checkBoxCellShowEdge</value>
-  </data>
-  <data name="&gt;&gt;checkBoxClipObjects.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="numericBoxACenter.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;glControlMain.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1128, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numericBoxARange.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 0</value>
-  </data>
-  <data name="radioButtonBoundPlane.Text" xml:space="preserve">
-    <value>Bounds defined by crystal plane</value>
-  </data>
-  <data name="printPerviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
-    <value>toolStripSeparator2</value>
-  </data>
-  <data name="&gt;&gt;pageSetupDialog1.Name" xml:space="preserve">
-    <value>pageSetupDialog1</value>
-  </data>
-  <data name="radioButtonBoundPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 3</value>
-  </data>
-  <data name="checkBoxShowBoundPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tabPageBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="tabControlBoundOption.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="numericBoxARange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="numericBoxCRange.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStripLabelStatusInitialization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 22</value>
-  </data>
-  <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 65</value>
-  </data>
-  <data name="checkBoxShowSubCell.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellPlaneAlpha.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="numericBoxARange.HeaderText" xml:space="preserve">
-    <value>±</value>
-  </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 233</value>
-  </data>
-  <data name="numericBoxCellTransrationB.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="tabControlBoundOption.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Save Image</value>
-  </data>
-  <data name="toolStripButtonLightDirection.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 233</value>
-  </data>
-  <data name="numericBoxCRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;pageSetupToolStripMenuItem.Name" xml:space="preserve">
-    <value>pageSetupToolStripMenuItem</value>
-  </data>
-  <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxUnitCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 5</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;tabPageUnitCell.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;colorControlCellPlane.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonSetRange3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericUpDownSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="&gt;&gt;textBoxInformation.Parent" xml:space="preserve">
-    <value>tabPageInformation</value>
-  </data>
-  <data name="&gt;&gt;numericBoxBRange.Name" xml:space="preserve">
-    <value>numericBoxBRange</value>
-  </data>
-  <data name="radioButtonBoundPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 233</value>
-  </data>
-  <data name="&gt;&gt;printDocument1.Name" xml:space="preserve">
-    <value>printDocument1</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
-    <value>Opacity</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Atom</value>
-  </data>
-  <data name="tabPageBoundUnitcell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 4</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>b</value>
-  </data>
-  <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Mouse drag:  Rotate objects</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageBond.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxCellTransrationA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxCellTransrationC.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkBoxHideAllAtoms.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxCellTransrationB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonSetCenter3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageCrystal.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="numericUpDownSubCellA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
-    <value>Light Direction</value>
-  </data>
-  <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;printDialog1.Name" xml:space="preserve">
-    <value>printDialog1</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericUpDownSubCellB.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxCCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="&gt;&gt;timer.Name" xml:space="preserve">
+    <value>timer</value>
   </data>
   <data name="tabPageAtom.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxCellTransrationB.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxCellTransrationA.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 26</value>
@@ -3213,6 +3180,9 @@
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
+  <data name="checkBoxHideAllAtoms.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="numericBoxBoundPlanesOpacity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
@@ -3222,14 +3192,23 @@
   <data name="printPerviewToolStripMenuItem.Text" xml:space="preserve">
     <value>Print Perview</value>
   </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
   <data name="label16.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxBCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 25</value>
+  <data name="&gt;&gt;tabPageBoundUnitcell.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonSetRange2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 26</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
   </data>
   <data name="tabPageBoundPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3252,17 +3231,14 @@
   <data name="&gt;&gt;numericBoxCellTransrationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
   </data>
-  <data name="numericBoxCellTransrationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>Mouse Right Up/Down:  Change  zoom</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="numericBoxBCenter.FooterText" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;copyToClipboardToolStripMenuItem.Name" xml:space="preserve">
-    <value>copyToClipboardToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormStructureViewer</value>
@@ -3273,8 +3249,8 @@
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
+  <data name="&gt;&gt;glControlMain.Type" xml:space="preserve">
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
@@ -3285,11 +3261,14 @@
   <data name="&gt;&gt;buttonSetRange2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabPageCrystal.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="buttonSetRange1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
   </data>
   <data name="&gt;&gt;tabPageCoordinateInfromatin.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -3308,6 +3287,9 @@
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;numericBoxCCenter.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn4</value>
@@ -3330,8 +3312,8 @@
   <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>Page Setup</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
+  <data name="buttonSetCenter1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -3348,11 +3330,14 @@
   <data name="checkBoxShowBoundPlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 0</value>
   </data>
-  <data name="&gt;&gt;numericUpDownSubCellA.Parent" xml:space="preserve">
-    <value>groupBoxShowUnitCell</value>
+  <data name="&gt;&gt;tabPageCoordinateInfromatin.Parent" xml:space="preserve">
+    <value>tabControl</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
     <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripButtonBoost.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3374,6 +3359,9 @@
   </data>
   <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>647, 233</value>
+  </data>
+  <data name="&gt;&gt;numericBoxBCenter.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
@@ -3412,10 +3400,10 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxCRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
@@ -3432,17 +3420,17 @@
   <data name="numericUpDownSubCellC.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+  <data name="numericBoxCRange.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
+  <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 8</value>
+  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
+    <value>printToolStripMenuItem</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3450,8 +3438,8 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonSetRange1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt</value>
+  <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3465,14 +3453,17 @@
   <data name="numericBoxLatticePlaneOpacity.FooterText" xml:space="preserve">
     <value />
   </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
   <data name="numericBoxCellTransrationB.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
   </data>
   <data name="buttonSetRange2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonSetCenter3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>655, 263</value>
   </data>
   <data name="numericUpDownSubCellC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -3521,10 +3512,13 @@
     <value>Shortcut hint</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1029, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1149, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPageBoundUnitcell.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCellShowEdge.Parent" xml:space="preserve">
+    <value>groupBoxShowUnitCell</value>
   </data>
   <data name="checkBoxCellShowPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3550,14 +3544,20 @@
   <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 3, 0, 3</value>
   </data>
-  <data name="&gt;&gt;buttonSetRange2.Name" xml:space="preserve">
-    <value>buttonSetRange2</value>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
   </data>
   <data name="&gt;&gt;buttonSetCenter1.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="numericBoxACenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
+  </data>
+  <data name="numericBoxCellTransrationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label17.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3580,14 +3580,11 @@
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>ja</value>
   </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>891, 17</value>
-  </metadata>
   <metadata name="printPreviewDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>738, 17</value>
   </metadata>
-  <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>303, 17</value>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>99</value>
   </metadata>
   <metadata name="pageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>428, 17</value>
@@ -3598,13 +3595,16 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>303, 17</value>
+  </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>891, 17</value>
+  </metadata>
   <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>589, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>99</value>
   </metadata>
 </root>

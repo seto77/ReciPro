@@ -119,22 +119,16 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>860, 22</value>
-  </data>
-  <data name="statusStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
+    <value>860, 25</value>
   </data>
   <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 0</value>
   </data>
   <data name="listBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 58</value>
+    <value>5, 25</value>
   </data>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 221</value>
+    <value>581, 218</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>結晶リストを表示します。
@@ -143,56 +137,27 @@
 削除するには対象結晶を選択し、″削除″します。
 リストに載っているすべての結晶を削除するには″全削除″します。</value>
   </data>
-  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>462, 0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
   </data>
-  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 33</value>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>591, 248</value>
   </data>
-  <data name="buttonDelete.Text" xml:space="preserve">
-    <value>削除</value>
-  </data>
-  <data name="buttonDelete.ToolTip" xml:space="preserve">
-    <value>選択した結晶をリストから削除します</value>
-  </data>
-  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 0</value>
-  </data>
-  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 33</value>
-  </data>
-  <data name="buttonLower.Text" xml:space="preserve">
-    <value>下へ</value>
-  </data>
-  <data name="buttonLower.ToolTip" xml:space="preserve">
-    <value>リスト中の選択された結晶を下に移動します</value>
-  </data>
-  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 0</value>
-  </data>
-  <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 33</value>
-  </data>
-  <data name="buttonAllClear.Text" xml:space="preserve">
-    <value>全削除</value>
-  </data>
-  <data name="buttonAllClear.ToolTip" xml:space="preserve">
-    <value>リスト中のすべての結晶を削除します</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>結晶リスト</value>
   </data>
   <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>411, 0</value>
+  </data>
   <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 33</value>
+    <value>42, 29</value>
   </data>
   <data name="buttonUpper.Text" xml:space="preserve">
     <value>上へ</value>
@@ -200,70 +165,35 @@
   <data name="buttonUpper.ToolTip" xml:space="preserve">
     <value>リスト中の選択された結晶を上に移動します</value>
   </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 25</value>
+  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>453, 0</value>
   </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 33</value>
+  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 29</value>
   </data>
-  <data name="panel3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonLower.Text" xml:space="preserve">
+    <value>下へ</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>リスト中の選択された結晶を下に移動します</value>
   </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>621, 284</value>
+  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>495, 0</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>結晶リスト</value>
+  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 29</value>
   </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>削除</value>
   </data>
-  <data name="splitContainer.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 23</value>
-  </data>
-  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 370</value>
-  </data>
-  <data name="crystalControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 34</value>
-  </data>
-  <data name="groupBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="groupBox6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>621, 398</value>
-  </data>
-  <data name="groupBox6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonChange.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="buttonDelete.ToolTip" xml:space="preserve">
+    <value>選択した結晶をリストから削除します</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -280,12 +210,6 @@
   <data name="buttonChange.ToolTip" xml:space="preserve">
     <value>リスト中の選択されている結晶を置き換えます。</value>
   </data>
-  <data name="buttonAdd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonAdd.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -301,6 +225,24 @@
   <data name="buttonAdd.ToolTip" xml:space="preserve">
     <value>結晶を新規にリストに加えます。</value>
   </data>
+  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>537, 0</value>
+  </data>
+  <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 29</value>
+  </data>
+  <data name="buttonAllClear.Text" xml:space="preserve">
+    <value>全削除</value>
+  </data>
+  <data name="buttonAllClear.ToolTip" xml:space="preserve">
+    <value>リスト中のすべての結晶を削除します</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 248</value>
+  </data>
   <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
@@ -308,22 +250,115 @@
     <value>0, 0, 0, 5</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>621, 34</value>
+    <value>591, 34</value>
   </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="crystalControl.Crystal" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAExDcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC41LjIuMTQ0
+        NiwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAXQ3J5c3RhbGxvZ3JhcGh5
+        LkNyeXN0YWwtAAAACFJlc2lkdWFsBkJvdW5kcw1MYXR0aWNlUGxhbmVzAUEBQgFDBUFscGhhBEJldGEF
+        R2FtbWEFQV9lcnIFQl9lcnIFQ19lcnIJQWxwaGFfZXJyCEJldGFfZXJyCUdhbW1hX2Vycg5Sb3RhdGlv
+        bk1hdHJpeARBcmdiCFJlc2VydmVkBE5hbWUETm90ZQ5QdWJsQXV0aG9yTmFtZRBQdWJsU2VjdGlvblRp
+        dGxlFFN5bW1ldHJ5U2VyaWVzTnVtYmVyB0pvdXJuYWwLSm91cm5hbE5hbWUNSm91cm5hbFZvbHVtZQxK
+        b3VybmFsSXNzdWULSm91cm5hbFllYXIQSm91cm5hbFBhZ2VGaXJzdA9Kb3VybmFsUGFnZUxhc3QIU3lt
+        bWV0cnkFQXRvbXMFQm9uZHMGU3RyYWluBlN0cmVzcw9IaWxsQ29lZmZpY2llbnQVRWxhc3RpY1N0aWZm
+        bmVzc0FycmF5DEVPU0NvbmRpdGlvbgpEb2VzVXNlRU9TDENyeXN0YWxsaXRlcw9BbmdsZVJlc29sdXRp
+        b24LU3ViRGl2aXNpb24JR3JhaW5TaXplAmlkCGxvY2tUaGlzAAQEAAAAAAAAAAAAAAAABAAAAQEBAQAB
+        AQEBAQEBBAQEBAQABwQABAAAAAACBhdDcnlzdGFsbG9ncmFwaHkuQm91bmRbXQIAAAAeQ3J5c3RhbGxv
+        Z3JhcGh5LkxhdHRpY2VQbGFuZVtdAgAAAAYGBgYGBgYGBgYGBhhDcnlzdGFsbG9ncmFwaHkuTWF0cml4
+        M0QCAAAACAEIGENyeXN0YWxsb2dyYXBoeS5TeW1tZXRyeQIAAAAXQ3J5c3RhbGxvZ3JhcGh5LkF0b21z
+        W10CAAAAF0NyeXN0YWxsb2dyYXBoeS5Cb25kc1tdAgAAABhDcnlzdGFsbG9ncmFwaHkuTWF0cml4M0QC
+        AAAAGENyeXN0YWxsb2dyYXBoeS5NYXRyaXgzRAIAAAAGBhNDcnlzdGFsbG9ncmFwaHkuRU9TAgAAAAEb
+        Q3J5c3RhbGxvZ3JhcGh5LkNyeXN0YWxsaXRlAgAAAAYIBggCAAAAAAAAAAAAAAAJAwAAAAkEAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQUAAADw8PD/AAYGAAAAAAkGAAAACQYAAAAJ
+        BgAAAAAAAAAJBgAAAAkGAAAACQYAAAAJBgAAAAkGAAAACQYAAAAJBgAAAAkHAAAACQgAAAAJCQAAAAkK
+        AAAACQsAAAAAAAAAAAAAAAkMAAAACQ0AAAAACgAAAAAAAABABAAAAAAAAAAAAFlAAAAAAAkOAAAABwMA
+        AAAAAQAAAAAAAAAEFUNyeXN0YWxsb2dyYXBoeS5Cb3VuZAIAAAAHBAAAAAABAAAAAAAAAAQcQ3J5c3Rh
+        bGxvZ3JhcGh5LkxhdHRpY2VQbGFuZQIAAAAFBQAAABhDcnlzdGFsbG9ncmFwaHkuTWF0cml4M0QJAAAA
+        A0UxMQNFMTIDRTEzA0UyMQNFMjIDRTIzA0UzMQNFMzIDRTMzAAAAAAAAAAAABgYGBgYGBgYGAgAAAAAA
+        AAAAAPA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAADwPwwPAAAA/gNtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWws
+        IFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBW
+        ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0
+        ZTA4OV0sW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
+        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNjb3Js
+        aWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1
+        NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+        bGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBD
+        dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFBwAAABhDcnlzdGFs
+        bG9ncmFwaHkuU3ltbWV0cnkZAAAAElNwYWNlR3JvdXBITXN1YlN0cg9TcGFjZUdyb3VwU0ZTdHIRU3Bh
+        Y2VHcm91cEhhbGxTdHIPU3BhY2VHcm91cEhNU3RyE1NwYWNlR3JvdXBITWZ1bGxTdHIITWFpbkF4aXMO
+        TGF0dGljZVR5cGVTdHIHU3RyU0UxcAdTdHJTRTF2B1N0clNFMnAHU3RyU0UydgdTdHJTRTNwB1N0clNF
+        M3YPUG9pbnRHcm91cEhNU3RyD1BvaW50R3JvdXBTRlN0cgxMYXVlR3JvdXBTdHIQQ3J5c3RhbFN5c3Rl
+        bVN0cgxTZXJpZXNOdW1iZXIQU3BhY2VHcm91cE51bWJlchNTcGFjZUdyb3VwU3ViTnVtYmVyEFBvaW50
+        R3JvdXBOdW1iZXIPTGF1ZUdyb3VwTnVtYmVyE0NyeXN0YWxTeXN0ZW1OdW1iZXIRRXh0aW5jdGlvblJ1
+        bGVTdHITQ2hlY2tFeHRpbmN0aW9uRnVuYwEBAQEBAQEBAQEBAQEBAQEBAAAAAAAABgQICAgICAg+U3lz
+        dGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0uRnVuY2A0W1tTeXN0ZW0uSW50MzIP
+        AAAAAgAAAAkGAAAABhEAAAAHVW5rbm93bgkRAAAACREAAAAJEQAAAAkGAAAACREAAAAJEQAAAAkRAAAA
+        CREAAAAJEQAAAAkRAAAACREAAAAJEQAAAAkRAAAACREAAAAJEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAkUAAAACRUAAAAHCAAAAAABAAAAAAAAAAQVQ3J5c3RhbGxvZ3JhcGh5LkF0b21zAgAAAAcJAAAA
+        AAEAAAAAAAAABBVDcnlzdGFsbG9ncmFwaHkuQm9uZHMCAAAAAQoAAAAFAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQsA
+        AAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAADwwAAAAVAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAUNAAAAE0NyeXN0YWxsb2dyYXBoeS5FT1MRAAAAC0NlbGxWb2x1bWUwAlQw
+        AkswB0twcmltZTAGR2FtbWEwBlRoZXRhMAFRBUtwZXJUAUEBQgFDF1RoZXJtYWxQcmVzc3VyZUFwcHJv
+        YWNoGklzb3RoZXJtYWxQcmVzc3VyZUFwcHJvYWNoAVoBTgROb3RlC1RlbXBlcmF0dXJlAAAAAAAAAAAA
+        AAAEBAAAAQAGBgYGBgYGBgYGBh9DcnlzdGFsbG9ncmFwaHkuVGhlcm1hbFByZXNzdXJlAgAAACJDcnlz
+        dGFsbG9ncmFwaHkuSXNvdGhlcm1hbFByZXNzdXJlAgAAAAYIBgIAAAAAAAAAAMByQAAAAAAAwHJAAAAA
+        AAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAADAckAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAABer///8fQ3J5c3RhbGxvZ3JhcGh5LlRoZXJtYWxQcmVzc3VyZQEAAAAHdmFsdWVfXwAI
+        AgAAAAAAAAAF6f///yJDcnlzdGFsbG9ncmFwaHkuSXNvdGhlcm1hbFByZXNzdXJlAQAAAAd2YWx1ZV9f
+        AAgCAAAAAAAAAAAAAAAAAAAAAAAAAAkGAAAAAAAAAADAckAEDgAAAA1TeXN0ZW0uT2JqZWN0AAAAABEU
+        AAAAAAAAAAUVAAAAPlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbU3lzdGVtLkZ1bmNg
+        NFtbU3lzdGVtLkludDMyAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24DAACBA1N5c3RlbS5GdW5jYDRb
+        W1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
+        dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVy
+        c2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+        ODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+        bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5TdHJpbmcsIG1zY29ybGli
+        LCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYx
+        OTM0ZTA4OV1dW10ICA8AAAAJGQAAAAAAAAAAAAAADBoAAACvA21zY29ybGliLCBWZXJzaW9uPTQuMC4w
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3Rl
+        bS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNL
+        ZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00
+        LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtT
+        eXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1
+        YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwg
+        Q3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BxkAAAAAAQAAAAAA
+        AAAEG1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMhoAAAAL
+</value>
   </data>
-  <data name="splitContainer.Panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 25</value>
+  </data>
+  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>581, 401</value>
+  </data>
+  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="groupBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="groupBox6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>591, 431</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>結晶情報</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>631, 718</value>
+    <value>601, 715</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>284</value>
-  </data>
-  <data name="splitContainer.ToolTip" xml:space="preserve">
-    <value />
+    <value>282</value>
   </data>
   <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -350,14 +385,8 @@
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
     <value>固定</value>
   </data>
-  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 28</value>
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericalTextBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 2</value>
@@ -365,17 +394,11 @@
   <data name="numericalTextBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 25</value>
   </data>
-  <data name="numericalTextBoxAxisU.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 19</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -386,26 +409,17 @@
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 19</value>
   </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 2</value>
   </data>
   <data name="numericalTextBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 25</value>
   </data>
-  <data name="numericalTextBoxAxisV.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 2</value>
   </data>
   <data name="numericalTextBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 25</value>
-  </data>
-  <data name="numericalTextBoxAxisW.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 28</value>
@@ -416,35 +430,32 @@
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 29</value>
   </data>
-  <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 2</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 25</value>
+  <data name="numericalTextBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericalTextBoxPlaneL.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericalTextBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 27</value>
   </data>
   <data name="numericalTextBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 2</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 25</value>
+  <data name="numericalTextBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericalTextBoxPlaneH.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericalTextBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 27</value>
   </data>
   <data name="numericalTextBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>49, 2</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 25</value>
+  <data name="numericalTextBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericalTextBoxPlaneK.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericalTextBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 27</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -455,17 +466,11 @@
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 19</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 19</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 93</value>
@@ -504,17 +509,11 @@
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>固定</value>
   </data>
-  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 65</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 28</value>
-  </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 25</value>
@@ -525,14 +524,11 @@
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 136</value>
   </data>
-  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 538</value>
+    <value>3, 514</value>
   </data>
   <data name="groupBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -542,9 +538,6 @@
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>軸/面投影</value>
-  </data>
-  <data name="groupBox5.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonAntiClock.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 2</value>
@@ -566,9 +559,6 @@
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 24</value>
-  </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonTopLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 20</value>
@@ -645,9 +635,6 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 73</value>
   </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -658,7 +645,7 @@
     <value>2, 6</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 25</value>
+    <value>134, 27</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value />
@@ -674,9 +661,6 @@
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 36</value>
-  </data>
-  <data name="panel4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxAnimation.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 134</value>
@@ -694,7 +678,7 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 375</value>
+    <value>3, 351</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -705,9 +689,6 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>回転</value>
   </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 60</value>
   </data>
@@ -716,9 +697,6 @@
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 20</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericUpDownEulerPsi.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 25</value>
@@ -735,17 +713,11 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 20</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 60</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericUpDownEulerTheta.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 25</value>
@@ -768,17 +740,11 @@
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 20</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 5</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 32</value>
@@ -786,23 +752,17 @@
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 25</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 83</value>
   </data>
-  <data name="tableLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 262</value>
+    <value>3, 238</value>
   </data>
   <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -813,17 +773,14 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>オイラー角</value>
   </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 155</value>
+    <value>3, 137</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 28</value>
+    <value>142, 28</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>方向リセット</value>
@@ -832,7 +789,7 @@
     <value>回転を初期状態にリセットします。</value>
   </data>
   <data name="labelCurrentIndexU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 0</value>
+    <value>35, 0</value>
   </data>
   <data name="labelCurrentIndexU.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 20</value>
@@ -841,7 +798,7 @@
     <value />
   </data>
   <data name="labelCurrentIndexV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 0</value>
+    <value>72, 0</value>
   </data>
   <data name="labelCurrentIndexV.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 20</value>
@@ -850,7 +807,7 @@
     <value />
   </data>
   <data name="labelCurrentIndexW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 0</value>
+    <value>109, 0</value>
   </data>
   <data name="labelCurrentIndexW.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 20</value>
@@ -865,7 +822,7 @@
     <value />
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 0</value>
+    <value>126, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 20</value>
@@ -874,64 +831,55 @@
     <value />
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 183</value>
+    <value>3, 165</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 20</value>
+    <value>142, 20</value>
   </data>
   <data name="tableLayoutPanel6.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 203</value>
-  </data>
   <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 25</value>
+    <value>142, 27</value>
   </data>
-  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox7.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
+  <data name="groupBoxCurrentDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
   </data>
-  <data name="groupBox7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="groupBoxCurrentDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 215</value>
   </data>
-  <data name="groupBox7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 233</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>現在の角度</value>
-  </data>
-  <data name="groupBox7.ToolTip" xml:space="preserve">
-    <value />
+  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
+    <value>現在の結晶方位</value>
   </data>
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10.2pt</value>
   </data>
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 718</value>
+    <value>154, 715</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>回転情報</value>
   </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>785, 718</value>
+    <value>755, 715</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 20</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>機能</value>
+  </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -958,14 +906,14 @@
 </value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 72</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>対称性
 詳細</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -993,14 +941,71 @@
 </value>
   </data>
   <data name="toolStripButtonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 72</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
     <value>散乱
 因子</value>
   </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 6</value>
+  </data>
+  <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="toolStripButtonRotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAjgSURBVFhHnVYLVJTHFaYnnjxOT9V4xBgNTbTNSZNjzaOa
+        JiQYElFREkyJ4ittRFMVXUUTBZ9ERF4qPqJUXQERARFQRFzwgajrCgg+MAgoigIqAqIC68Lu/rv7de78
+        87uAtKH9OD87jzt3vrlz753rQMD/AZvNxn8fPzahudnM28rY/wJOgCD63QZtZjJZIUk2/PhjEYKDm3i7
+        rc0Kq9XG57vLR1DoPglSbrHIH+vxsdjYYiQn1/G2PCYTIZnuEBEUukeCFFutosNQV2dGRoYBU6Zcx8iR
+        lQgM1CMhQcLNm0KAEeq8pisICr9OQpLsmjSaRri5laBPHx2cnHLh6qplRM5j3Liz+OCDXLz+eh5cXGpw
+        8KBYwCxjsYhmFxAU/hsJ21MCFRWP2IYF6NUrCypVAQoLa9gpn7CZ9ju0orKyGqGhWgwceBSjR9fj4UMa
+        JyJd342g0DUJun+zWSaQkVGJF19Mx7Rp51Bfz7VykFo6JTklfe19oKnpPr7+Oh39+1/FnTs0YuE6O0NQ
+        6JqEYoF9+0qYYCJiYm7wPsFktEAyyRawMjmL2QKLZIHVQk5pZeQV60iYO/cwBgy4iifMaHSozkQEhWdJ
+        WJgyQmHhLSa0l3l/De8bW6UOShqk66JlB80TGdJhNpOsBGfnJEyefJ+1KaxJt12HoNCRBJ2E7s9kakW/
+        fruxfHk5Hze2ipOzv5r8apwJ1yLIwxe7/7ETsd/uRk7ESdw5L5MlcD1kHbZnXV0tXnjhAG4wYyrhq0BQ
+        6EhCMWVQUA4GDcribYklJkLBngJsHLIJa/4YhA1fbEbQnDn4eUUAdqn2YMUXSzHv9wsQ8PYyXE66zOWZ
+        l7DDyPp8fTXw9LzLR8kaikUFBTsJJdu1turRu7caaWkPYGNjks2CmGnR8H/ZHznbctDY2Mjlqx9fRfQJ
+        FYJ2zMCkRUMRvGsCkv4Vhyn9p2Kr51bYjLQhWcOG4uKbbMNDuM9uxWZj9hRXLijYSdACwoEDhewqUpkD
+        ymyTF+/H8r7L8aj2Ee8ryM6Nw1dze2L77iDkFGqhCh2Ds1Xr0NTSgtnOs7DOeR2PYAtzSMlkQM/fRUO9
+        swU2um7m3HRgQcFOgq6CTu7jkwavv51nbSvu3K7F/B7zcbeQTMkio83If3+5dhZeqxzhu9oDmuzjMJ/S
+        4rouC+syR/F5Fi+YOXgGsldm8z7BeUQiZs6qEj0ZgoJMglgp7jL8wzhs3FLL2yfTTiPozSDelswUHVY8
+        MRgQEe+O/tN7wMXHDYFr12Pvu3+BLsQPCSVzYGVyhAu6Iqh6qVAQXYi8racwemgUhv/pJGK8tyDOJx6G
+        xwY7CU6AfS0NetzKK8OggTsQ6X8JxSlFCP0mHGuHrOVKJbP8ZGsvpmD7cU98NmoUxnm4Y/XqRVi2MoT5
+        xLc4USYTtlokSFYJ/n/wR/ysRBSm6uD+yU44Dz+DIo0OJdpSfihBwcGBnIRIFGVdxK55m+HUezMWTjiM
+        rPXpSI5MwZQeU9BYTM4o5wD1kTk4d30Dpn7+Jfo49sPgwVEYO+7v8NvqhHsPy2Q55l/0F/hmIGov13Ni
+        w/6ahH/OusbbCgQF+3UoGPbhHuyI1YseELkwEn6v+QH0VDCEqCcjtywchvtNiI9Lw1TfRfhK9RoydZG0
+        /1O/uXLsClY5BqKtxcjGDHj++WgkJtaxg1i6cEyxv8kksQRjxYwZqcwxr3JhY6uJ5TwJARMCMNtpFu7m
+        38OFci18Qt5GZp4aSZmRmLjwZezRLJaVCNReqcWS3y7BWbWOqz+dW4HnnkthlZiZb05hSxAUng3RnJxL
+        LE9kskqJUji9CfKC6IhoeL/qjS3jtyLs+0DMnDEGazf4YX/2z8i/EcvCC6i/UodjAccR0CcAmeGZfB1h
+        /PijWLToF95u/4YICnYSCkOr1Yg33lAjPJzsL5dyFLqEuvo6RK2IwpJPA7D0zysR/tF6hH4chlVu3yP0
+        /WD8NOQnbJu0DRWXKrg8maGoqBYvvZQGvd7IUzaldAWCgp0EQbGGRlPABNJx6xb12B2aKOfLcwqqq6ug
+        O3YWR/ZmY3HIJ9CeS8bj5iYxyyKEXa3RaIKjYwbWry/lY+0LJIKg0JEEWUMhsmBBCvr2PY9HPFFa+KtI
+        J6F5xTIK6h7dZv/l/ECvLZmAkt977+WyukLL+50JEASFjiQIREQuaMz47rtEvPJKPvLz5Tl2Pm5OKmJI
+        hh4o8nQyO0sNfJ5QVtaGt97SYrT7UUgWA5fnQp0gKDxrCUrXlA/khRZERGiYo2awqHnAlMty/wlVVVbM
+        U91Gz95ZWL6sQIzKj2NXEBSetYQCWmbmRIBrZdcw2TsdTqx2/Ny1HIsXN0KtNrKC1oa4OBN++KEBzp+W
+        4tUBpzDJqwA1N8ipzVgSH4Cd2Tu5jvYOqUBQkEkoIWMxmdBw7hyeVFTA1tzMx9qjkT3zCakl8J1/Bu5j
+        T2Dou5msfMvEdFZ/7lXfwN2aB6jUX0R4TjAmbPfGtA3TkHo6VUReN0jQ16bX46CfH2LGjkXsiBHYN3Ik
+        sry9UbRiBW4lJKKp8ALAHjAFLSxq1qyRwzG5ZD8+i3CFR+g4ZOjS6SafQjlkZwgK9uvoLKhvbUVVeTmK
+        0tORFRKCZB8fxLiNRPTHHyHVbQxKVf44ErYJs1Ub4RU4DFM3TsTFu1fFahksPzLfkli4yp+NhTn/xKEF
+        hY7XQb9cuAvTPQWLgvy8E/Cc/g76ef4G3l+6YNv7Q5DlPh5502eiaKk/qhMTYCguZu+NeHDagTQrxxUU
+        Olqi8ycXrHL8E0ruX8HCgwvhuskNwTkR0F0uZ0WQjlv+dsV1XDh8GEfDwpDCrBbv5oYkFxdkenigQKXC
+        zago6A8dArJY7SoOKijYSXQGJyI4a8o1mKieCNdQV0SkR6CWVdCE25UPWTI6wVrP3jkRe9DQgHLm6Ke3
+        b+e+ljB8OA46OuJJaemvk+BWYFVUK/MLrzAveGz0wP4z+yEZ7VaRWHZqaGhGwl4WSUye0jqV+WQ5ulI2
+        KCTtMLCN77FCmWZojYODg8O/AaSJ7z5NYKU2AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonRotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 40</value>
+  </data>
+  <data name="toolStripButtonRotation.Text" xml:space="preserve">
+    <value>ゴニオ
+メーター</value>
+  </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1038,7 +1043,7 @@
 </value>
   </data>
   <data name="toolStripButtonStructureViewer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 73</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
     <value>結晶構造
@@ -1048,7 +1053,7 @@
     <value>Structure Viewer (V) 結晶の三次元構造を描画します。</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1078,7 +1083,7 @@
 </value>
   </data>
   <data name="toolStripButtonStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 72</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
     <value>ステレオ
@@ -1089,7 +1094,7 @@
 ステレオネットを表示します。</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonElectronDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1108,7 +1113,7 @@
 </value>
   </data>
   <data name="toolStripButtonElectronDiffraction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 72</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonElectronDiffraction.Text" xml:space="preserve">
     <value>単結晶回折
@@ -1119,7 +1124,165 @@
 単結晶からの電子線回折像を表示します。</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
+    <value>103, 6</value>
+  </data>
+  <data name="toolStripButtonImageSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="toolStripButtonImageSimulation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonImageSimulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 40</value>
+  </data>
+  <data name="toolStripButtonImageSimulation.Text" xml:space="preserve">
+    <value>高分解能
+像計算</value>
+  </data>
+  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 6</value>
+  </data>
+  <data name="toolStripButtonTEMID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMcSURBVEhLtZe7axRRFMbnDxAsbXyASMAHptAoUQMq4iOI
+        2LiiFjYiqWOhIqKNDxC2iSTbGJAYCCtICrNNsBArizRLBItYhK1slhTpP8/vMne5u3tnMpuM5+MwszPn
+        ce953dkkj9rtttLbQrShDTWaDS0tL6nVahXTXde6aps11et1xwvfF5xiU039MLw2PDZwBTzj3YSh0qp0
+        9OYW54o5HNe4qu1qR3G2MavDGtINXdQj3dc7TeqTXjmu6Zl7dlnndEgH1TI0lhtOb+b3jO4YUrNxmte8
+        rhhQXP27qpU/K1rbXNNewy/VM/muruuNAT2Pjwb0UtNxmtKUE+pVPGKIOfL8zfaK3lPDF8N7A79HDKQo
+        Nd9N5GJEw3phuUD4kuF0CgzGHIWMDLoXNOrCT8h/2mJJUZ9Tko5gaACF8Pd2uc8pN+woJlwW4xQfziGF
+        QghigmUyFUvaEvqnrPDlMe3k2oQeiwmUzb6SEyozJhDyBz13PKl7eqCbXezfxfRCJopnDcm0pvVQtzov
+        PuutXtqTirXFPu3RUZsg3jjPMV411/7q3yG3W7tsbIy6hWEndMhwYCS6Kg13iSG/8lChKOMIhywmfO52
+        54keZC6GAmUyBdNpC4hj5X859c6iI444l+kUZ12hjBFOr2psR72JLsOEgkzNZhOThxCctEKimFhlzGiM
+        kR3TKae/5c4gcnnMwAr9MOeA5R5mSPh7z0QkPJw5MWizQjv0PRk6HJS9Ltctd8msYwRRONsd6Oj7cck1
+        NR0nVoQg4YFDQ4MwOeRKuN0JkUVecKfH1XD6ScKi+bJLzXeTP4j9YdlrZBCu6JrbXa5DCEck/IShyHdM
+        FlN4tBS2aLPUfD/xbQO+GoocWzFetLGNLi1WqPE9UbH0VMxoFpMOnOUWShaxQsq66GzFGXnjCy01MThR
+        SBjAUF5OaXIW5w7Y7RAh4eOKMUfij1uZ+7FG5eGAnXPPswParzM2fZFhgbmVGSOMwBj2u2CHE7rtWuaJ
+        4bxhyP7C9Mr48y+3OnuJUKJAiFgxoIhYOVWMDDmmmkMZ4P/COUN9lCT/AGL283FZ2xusAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="toolStripButtonTEMID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 37</value>
+  </data>
+  <data name="toolStripButtonTEMID.ToolTipText" xml:space="preserve">
+    <value>TEM ID
+電子線回折図形の指数付けを行います。</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 6</value>
+  </data>
+  <data name="toolStripButtonSpotID.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="toolStripButtonSpotID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="toolStripButtonSpotID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 40</value>
+  </data>
+  <data name="toolStripButtonSpotID.Text" xml:space="preserve">
+    <value>回折スポ
+ット解析</value>
+  </data>
+  <data name="toolStripButtonSpotID.ToolTipText" xml:space="preserve">
+    <value>Spot ID
+電子線回折図形の指数付けを行います。</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 6</value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1161,7 +1324,7 @@
 </value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 72</value>
+    <value>103, 40</value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.Text" xml:space="preserve">
     <value>多結晶回折
@@ -1171,60 +1334,11 @@
     <value>Electron Diffraction
 粉末からの電子線回折像を表示します。</value>
   </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
-  </data>
-  <data name="toolStripButtonTEMID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMcSURBVEhLtZe7axRRFMbnDxAsbXyASMAHptAoUQMq4iOI
-        2LiiFjYiqWOhIqKNDxC2iSTbGJAYCCtICrNNsBArizRLBItYhK1slhTpP8/vMne5u3tnMpuM5+MwszPn
-        ce953dkkj9rtttLbQrShDTWaDS0tL6nVahXTXde6aps11et1xwvfF5xiU039MLw2PDZwBTzj3YSh0qp0
-        9OYW54o5HNe4qu1qR3G2MavDGtINXdQj3dc7TeqTXjmu6Zl7dlnndEgH1TI0lhtOb+b3jO4YUrNxmte8
-        rhhQXP27qpU/K1rbXNNewy/VM/muruuNAT2Pjwb0UtNxmtKUE+pVPGKIOfL8zfaK3lPDF8N7A79HDKQo
-        Nd9N5GJEw3phuUD4kuF0CgzGHIWMDLoXNOrCT8h/2mJJUZ9Tko5gaACF8Pd2uc8pN+woJlwW4xQfziGF
-        QghigmUyFUvaEvqnrPDlMe3k2oQeiwmUzb6SEyozJhDyBz13PKl7eqCbXezfxfRCJopnDcm0pvVQtzov
-        PuutXtqTirXFPu3RUZsg3jjPMV411/7q3yG3W7tsbIy6hWEndMhwYCS6Kg13iSG/8lChKOMIhywmfO52
-        54keZC6GAmUyBdNpC4hj5X859c6iI444l+kUZ12hjBFOr2psR72JLsOEgkzNZhOThxCctEKimFhlzGiM
-        kR3TKae/5c4gcnnMwAr9MOeA5R5mSPh7z0QkPJw5MWizQjv0PRk6HJS9Ltctd8msYwRRONsd6Oj7cck1
-        NR0nVoQg4YFDQ4MwOeRKuN0JkUVecKfH1XD6ScKi+bJLzXeTP4j9YdlrZBCu6JrbXa5DCEck/IShyHdM
-        FlN4tBS2aLPUfD/xbQO+GoocWzFetLGNLi1WqPE9UbH0VMxoFpMOnOUWShaxQsq66GzFGXnjCy01MThR
-        SBjAUF5OaXIW5w7Y7RAh4eOKMUfij1uZ+7FG5eGAnXPPswParzM2fZFhgbmVGSOMwBj2u2CHE7rtWuaJ
-        4bxhyP7C9Mr48y+3OnuJUKJAiFgxoIhYOVWMDDmmmkMZ4P/COUN9lCT/AGL283FZ2xusAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="toolStripButtonTEMID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 54</value>
-  </data>
-  <data name="toolStripButtonTEMID.ToolTipText" xml:space="preserve">
-    <value>TEM ID
-電子線回折図形の指数付けを行います。</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 6</value>
-  </data>
-  <data name="toolStripButtonSpotID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 21</value>
-  </data>
-  <data name="toolStripButtonSpotID.ToolTipText" xml:space="preserve">
-    <value>Spot ID
-電子線回折図形の指数付けを行います。</value>
-  </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 585</value>
-  </data>
-  <data name="toolStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
+    <value>105, 512</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>864, 772</value>
-  </data>
-  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -1240,6 +1354,9 @@
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを読込 (現在のリストに追加)</value>
+  </data>
+  <data name="toolStripMenuItemReadInitialCrystalList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 24</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 6</value>
@@ -1307,26 +1424,26 @@
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>オプション</value>
   </data>
-  <data name="aboutMeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 24</value>
-  </data>
-  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
-    <value>ReciProについて</value>
-  </data>
   <data name="checkUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 24</value>
+    <value>170, 24</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデート</value>
   </data>
   <data name="hintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 24</value>
+    <value>170, 24</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>ヒント</value>
   </data>
+  <data name="versionHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 24</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 24</value>
+  </data>
   <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 24</value>
+    <value>170, 24</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>使い方 (WEB)</value>
@@ -1349,6 +1466,9 @@
         rkJggg==
 </value>
   </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 26</value>
+  </data>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -1357,17 +1477,14 @@
         E2dEJ41V0r+pZPOtAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 26</value>
+  </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>860, 28</value>
-  </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>864, 772</value>
@@ -1448,8 +1565,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAgAEAAIABAAAAAQAAAAAAAAAAAAAAAAAAwAMAAOAH
         AADwDwAA/D8AAA==
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

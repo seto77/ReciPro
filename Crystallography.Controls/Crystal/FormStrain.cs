@@ -41,7 +41,7 @@ namespace Crystallography.Controls
 
         private void FormStrain_Load(object sender, EventArgs e)
         {
-            crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
+            crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
         }
 
         private void FormStrain_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,7 +52,7 @@ namespace Crystallography.Controls
 
         private bool skipCrystalChangedEvent = false;
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
             if (skipCrystalChangedEvent || !this.Visible) return;
 
@@ -60,7 +60,7 @@ namespace Crystallography.Controls
             //このformStrainがcrystalControlを変更する時は、その時だけこのイベントを無視する
             skipCrystalChangedEvent = true;
             crystalControl.GenerateFromInterface();
-            originalCrystal = Deep.Copy(crystal);
+            originalCrystal = Deep.Copy(crystalControl.Crystal);
 
             SetStrainedCrystal();
             skipCrystalChangedEvent = false;
