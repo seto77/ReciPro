@@ -1,16 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
+    [TypeConverter(typeof(DefinitionOrderTypeConverter))]
     public partial class ColorControl : UserControl
     {
         public event EventHandler ColorChanged;
 
-        [Category("Appearance")]
+        [Category("Appearance property")]
         public FlowDirection FlowDirection
         {
             get => flowLayoutPanel.FlowDirection;
@@ -22,42 +22,40 @@ namespace Crystallography.Controls
             }
         }
 
-        [Category("Appearance")]
+        [Category("Appearance property")]
         public Size BoxSize { get => pictureBox.Size; set => pictureBox.Size = value; }
+  
+        [Localizable(true)]
         public string ToolTip { set => toolTip.SetToolTip(pictureBox, value); get => toolTip.GetToolTip(pictureBox); }
-
       
         [Category("Header/footer text")]
+        [Localizable(true)] 
         public string HeaderText { set { labelHeader.Text = value; labelHeader.Visible = value != ""; } get => labelHeader.Text; }
      
         [Category("Header/footer text")]
+        [Localizable(true)]
         public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
    
         [Category("Header/footer text")]
+        [Localizable(true)]
         public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
-
-
         [Category("Header/footer text")]
+        [Localizable(true)]
         public string FooterText {set{ labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
+      
+        [Localizable(true)]
         [Category("Header/footer text")]
         public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
 
+        [Localizable(true)]
         [Category("Header/footer text")]
         public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
-
-
-        public SolidBrush SolidBrush
-        {
-            set => pictureBox.BackColor = value.Color; get => new SolidBrush(pictureBox.BackColor);
-        }
 
         [Category("Color")]
         public Color Color { set => pictureBox.BackColor = value; get => pictureBox.BackColor; }
 
-
         [Category("Color")]
-
         public int Argb { set => pictureBox.BackColor = Color.FromArgb(value); get => pictureBox.BackColor.ToArgb(); }
 
         [Category("Color")]
@@ -109,7 +107,7 @@ namespace Crystallography.Controls
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog
+            var colorDialog = new ColorDialog
             {
                 Color = pictureBox.BackColor,
                 AllowFullOpen = true,

@@ -118,35 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 27</value>
-  </data>
-  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 30</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 217</value>
-  </data>
-  <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 179</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 396</value>
-  </data>
   <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
   </data>
   <data name="tabPageBasicInfo.Text" xml:space="preserve">
     <value>格子/対称性</value>
-  </data>
-  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 398</value>
-  </data>
-  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -161,12 +137,6 @@
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子情報</value>
   </data>
-  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 398</value>
-  </data>
   <data name="tabPageBondsPolyhedra.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -176,56 +146,11 @@
   <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
     <value>多面体/結合描画設定</value>
   </data>
-  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 260</value>
-  </data>
-  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 284</value>
-  </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>タイトル</value>
-  </data>
-  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 260</value>
-  </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 284</value>
-  </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>著者</value>
-  </data>
-  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 31</value>
-  </data>
-  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 55</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>雑誌名</value>
-  </data>
-  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 33</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 57</value>
-  </data>
   <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
   </data>
   <data name="tabPageReference.Text" xml:space="preserve">
     <value>引用文献</value>
-  </data>
-  <data name="textBoxEOS_Note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 25</value>
-  </data>
-  <data name="checkBoxUseEOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
-  </data>
-  <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 37</value>
   </data>
   <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
@@ -239,9 +164,6 @@
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
   </data>
-  <data name="numericalTextBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 123</value>
-  </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
   </data>
@@ -251,41 +173,14 @@
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
   </data>
-  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 18</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>Division</value>
-  </data>
-  <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 2</value>
-  </data>
-  <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 4</value>
-  </data>
-  <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 2</value>
-  </data>
-  <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 4</value>
-  </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
   </data>
   <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
   </data>
-  <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 396</value>
-  </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
-  </data>
-  <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 396</value>
   </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 402</value>
@@ -308,6 +203,321 @@
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 432</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 396</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 217</value>
+  </data>
+  <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
+    <value>Z数</value>
+  </data>
+  <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 27</value>
+  </data>
+  <data name="numericBoxVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxVolume.HeaderText" xml:space="preserve">
+    <value>単位格子体積</value>
+  </data>
+  <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 27</value>
+  </data>
+  <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxDensity.HeaderText" xml:space="preserve">
+    <value>密度</value>
+  </data>
+  <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 27</value>
+  </data>
+  <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 27</value>
+  </data>
+  <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControl.HeaderText" xml:space="preserve">
+    <value>プロファイルの色</value>
+  </data>
+  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 30</value>
+  </data>
+  <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 20</value>
+  </data>
+  <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 179</value>
+  </data>
+  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 398</value>
+  </data>
+  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 398</value>
+  </data>
+  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 284</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 260</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 284</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>著者</value>
+  </data>
+  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 260</value>
+  </data>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 55</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>雑誌名</value>
+  </data>
+  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 31</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 57</value>
+  </data>
+  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 33</value>
+  </data>
+  <data name="textBoxEOS_Note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 25</value>
+  </data>
+  <data name="checkBoxUseEOS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 22</value>
+  </data>
+  <data name="numericBoxEOS_C.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 24</value>
+  </data>
+  <data name="numericBoxEOS_B.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_B.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 24</value>
+  </data>
+  <data name="numericBoxEOS_A.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 24</value>
+  </data>
+  <data name="numericBoxEOS_KperT.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_KperT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 24</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 24</value>
+  </data>
+  <data name="numericBoxEOS_Q.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_Q.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 24</value>
+  </data>
+  <data name="numericalTextBoxEOS_V0perMol.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxEOS_V0perMol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 24</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 24</value>
+  </data>
+  <data name="numericBoxEOS_KT0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_KT0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 24</value>
+  </data>
+  <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 37</value>
+  </data>
+  <data name="numericBoxEOS_KprimeT0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxEOS_KprimeT0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="numericBoxEOS_T0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxEOS_T0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 27</value>
+  </data>
+  <data name="numericalTextBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericalTextBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 27</value>
+  </data>
+  <data name="numericBoxPressure.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 27</value>
+  </data>
+  <data name="numericalTextBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxHill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 123</value>
+  </data>
+  <data name="numericalTextBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericalTextBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 18</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Division</value>
+  </data>
+  <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 2</value>
+  </data>
+  <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 4</value>
+  </data>
+  <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 2</value>
+  </data>
+  <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 4</value>
+  </data>
+  <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 396</value>
+  </data>
+  <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 396</value>
   </data>
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>Strain control</value>

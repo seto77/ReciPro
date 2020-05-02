@@ -133,6 +133,40 @@
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 434</value>
   </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 260</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 698</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>434</value>
+  </data>
+  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 229</value>
+  </data>
+  <data name="tabPageBounds.Text" xml:space="preserve">
+    <value>描画範囲</value>
+  </data>
+  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 179</value>
+  </data>
+  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 171</value>
+  </data>
   <data name="numericBoxCRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
   </data>
@@ -205,17 +239,14 @@
   <data name="label1.Text" xml:space="preserve">
     <value>中心</value>
   </data>
-  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 171</value>
-  </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>484, 171</value>
   </data>
-  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 204</value>
   </data>
-  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 179</value>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 25</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -265,10 +296,7 @@
   <data name="checkBoxHideAllAtoms.Text" xml:space="preserve">
     <value>全ての原子を隠す</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 204</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>535, 25</value>
   </data>
   <data name="radioButtonBoundUnitCell.Size" type="System.Drawing.Size, System.Drawing">
@@ -285,21 +313,6 @@
   </data>
   <data name="radioButtonBoundPlane.Text" xml:space="preserve">
     <value>描画範囲を結晶面で指定</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 25</value>
-  </data>
-  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 229</value>
-  </data>
-  <data name="tabPageBounds.Text" xml:space="preserve">
-    <value>描画範囲</value>
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -325,6 +338,18 @@
   <data name="tabPageBond.Text" xml:space="preserve">
     <value>結合と多面体</value>
   </data>
+  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 229</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>単位格子</value>
+  </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -333,6 +358,12 @@
   </data>
   <data name="checkBoxUnitCell.Text" xml:space="preserve">
     <value>単位格子を表示</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>529, 221</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 65</value>
@@ -406,36 +437,6 @@
   <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
     <value>面を表示</value>
   </data>
-  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>529, 221</value>
-  </data>
-  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 229</value>
-  </data>
-  <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>単位格子</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 27</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 190</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>529, 35</value>
-  </data>
   <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -448,8 +449,17 @@
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>結晶格子面</value>
   </data>
-  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 229</value>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 190</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>529, 35</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 27</value>
   </data>
   <data name="tabPageCoordinateInfromatin.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -463,8 +473,8 @@
   <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
     <value>配位情報</value>
   </data>
-  <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>529, 223</value>
+  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>535, 229</value>
   </data>
   <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -478,18 +488,14 @@
   <data name="tabPageInformation.Text" xml:space="preserve">
     <value>情報</value>
   </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>529, 223</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 260</value>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 728</value>
   </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 698</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>434</value>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 25</value>
   </data>
   <data name="toolStripButtonBoost.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -588,14 +594,26 @@
   <data name="toolStripButtonLegend.Text" xml:space="preserve">
     <value>凡例</value>
   </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 728</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 25</value>
-  </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 30</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 24</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 22</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>画像を保存</value>
   </data>
   <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
@@ -609,11 +627,11 @@
   <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>画像を保存</value>
+  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像をクリップボードにコピー</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
@@ -627,12 +645,6 @@
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
   </data>
-  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 22</value>
-  </data>
-  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をクリップボードにコピー</value>
-  </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 6</value>
   </data>
@@ -645,14 +657,11 @@
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 24</value>
   </data>
-  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 24</value>
-  </data>
-  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>664, 24</value>
@@ -668,15 +677,6 @@
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>664, 24</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 24</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ショートカットヒント</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 30</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

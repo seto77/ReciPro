@@ -6,8 +6,8 @@ namespace Crystallography.Controls
 {
     public partial class FormSymmetryInformation : Form
     {
-        public Crystal Crystal { get => crystalControl.Crystal; }
-        public CrystalControl crystalControl;
+        public Crystal Crystal { get => CrystalControl.Crystal; }
+        public CrystalControl CrystalControl;
 
         public FormSymmetryInformation()
         {
@@ -125,7 +125,7 @@ namespace Crystallography.Controls
 
         private void FormCrystallographicInformation_Load(object sender, EventArgs e)
         {
-            crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
+            CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
             ChangeCrystal();
         }
 

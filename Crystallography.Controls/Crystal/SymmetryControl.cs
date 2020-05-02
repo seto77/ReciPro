@@ -19,6 +19,7 @@ namespace Crystallography.Controls
         public int PointGroupIndex { get => comboBoxPointGroup.SelectedIndex; }
         public int SpaceGroupIndex { get => comboBoxSpaceGroup.SelectedIndex; }
 
+
         public int SymmetrySeriesNumber
         {
             get => (CrystalSystemIndex >= 0 && PointGroupIndex >= 0 && SpaceGroupIndex >= 0) ?
@@ -68,7 +69,7 @@ namespace Crystallography.Controls
         }
 
         /// <summary>
-        /// Cell constants error の get/set.  単位はnm, radian.
+        /// Cell constants error の get/set. 単位はnm, radian.
         /// </summary>
         public (double AErr, double BErr, double CErr, double AlphaErr, double BetaErr, double GammaErr) CellConstantsErr
         {
@@ -153,9 +154,7 @@ namespace Crystallography.Controls
             SkipEvent = true;
             comboBoxPointGroup.Items.Clear();
             comboBoxSpaceGroup.Items.Clear();
-
             comboBoxPointGroup.Items.AddRange(PointGroupArray(CrystalSystemIndex));
-
             SkipEvent = false;
 
             comboBoxPointGroup.SelectedIndex = 0;
@@ -169,10 +168,12 @@ namespace Crystallography.Controls
         private void comboBoxPointGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SkipEvent) return;
+            
             SkipEvent = true;
             comboBoxSpaceGroup.Items.Clear();
             comboBoxSpaceGroup.Items.AddRange(SpaceGroupArray(CrystalSystemIndex, PointGroupIndex));
             SkipEvent = false;
+
             comboBoxSpaceGroup.SelectedIndex = 0;
         }
 
@@ -185,8 +186,6 @@ namespace Crystallography.Controls
         {
             if (SkipEvent) return;
             SetCellConstantsBySymmetry();
-            //elasticityControl1.SymmetrySeriesNumber = SymmetrySeriesNumber;
-            //atomControl.SymmetrySeriesNumber = SymmetrySeriesNumber;
         }
 
         #endregion

@@ -76,7 +76,7 @@ namespace Crystallography
         public double D { get; set; } = 0;
         public bool Enabled { get; set; } = true;
 
-        public (double X, double Y, double Z, double D) PlaneParam { get; }
+        public (double X, double Y, double Z, double D) PlaneParam { get; set; }
 
         [XmlIgnore]
         public Color Color { get => Color.FromArgb(ColorArgb); }
@@ -93,15 +93,15 @@ namespace Crystallography
             Translation = translation;
             Index = (h, k, l);
 
-            var g = h * crystal.A_Star + k * crystal.B_Star + l * crystal.C_Star;
-            var d = 1 / g.Length;
-            g.NormarizeThis();
-            PlaneParam = (g.X, g.Y, g.Z, d);
+            Reset(crystal);
         }
 
         public void Reset(Crystal crystal)
         {
-
+            var g = Index.H * crystal.A_Star + Index.K * crystal.B_Star + Index.L * crystal.C_Star;
+            var d = 1 / g.Length;
+            g.NormarizeThis();
+            PlaneParam = (g.X, g.Y, g.Z, d);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,9 +11,12 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
+    [TypeConverter(typeof(DefinitionOrderTypeConverter))]
     public partial class CrystalControl : UserControl
     {
         #region プロパティ、フィールド、イベントハンドラ
+
+        public bool SkipEvent { get; set; } = false;
 
         public bool SymmetryInformationVisible { set => formSymmetryInformation.Visible = value; get => formSymmetryInformation.Visible; }
 
@@ -119,29 +123,13 @@ namespace Crystallography.Controls
         #endregion
 
         #region コンストラクタ、Loadイベント
-
         public CrystalControl()
         {
             InitializeComponent();
 
-            formScatteringFactor = new FormScatteringFactor
-            {
-                CrystalControl = this,
-                Visible = false
-            };
-
-            formSymmetryInformation = new FormSymmetryInformation
-            {
-                crystalControl = this,
-                Visible = false
-            };
-
-            formStrain = new FormStrain
-            {
-                crystalControl = this,
-                Visible = false
-            };
-
+            formScatteringFactor = new FormScatteringFactor { CrystalControl = this, Visible = false };
+            formSymmetryInformation = new FormSymmetryInformation { CrystalControl = this, Visible = false };
+            formStrain = new FormStrain { CrystalControl = this, Visible = false };
         }
         
         private void CrystalForm_Load(object sender, System.EventArgs e)
@@ -159,8 +147,10 @@ namespace Crystallography.Controls
 
         #endregion
 
-        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
-        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e) => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
+        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) 
+            => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
+        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e)
+            => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
         private void checkSpecialNumber()
         {
@@ -196,7 +186,8 @@ namespace Crystallography.Controls
             }
         }
 
-        public bool SkipEvent = false;
+        #region Crystalクラスを画面下部 から生成/にセット
+
 
         /// <summary>
         /// Formに入力された内容からからCrystalを生成する
@@ -222,7 +213,7 @@ namespace Crystallography.Controls
 
             crystal = new Crystal(
                 symmetryControl.CellConstants, symmetryControl.CellConstantsErr,
-                SymmetrySeriesNumber, textBoxName.Text,  colorControl.Color, rot, atomControl.GetAll(),
+                SymmetrySeriesNumber, textBoxName.Text, colorControl.Color, rot, atomControl.GetAll(),
                 (textBoxMemo.Text, textBoxAuthor.Text, textBoxJournal.Text, textBoxTitle.Text),
                 bondControl.GetAll(), boundControl.GetAll(), latticePlaneControl.GetAll());
 
@@ -266,7 +257,7 @@ namespace Crystallography.Controls
             SkipEvent = false;
             SetToInterface(false);
 
-            CrystalChanged?.Invoke(this,new EventArgs());
+            CrystalChanged?.Invoke(this, new EventArgs());
         }
 
 
@@ -355,6 +346,8 @@ namespace Crystallography.Controls
 
         }
 
+        #endregion
+    
         #region ドラッグドロップイベント
 
         public void FormCrystal_DragDrop(object sender, DragEventArgs e)
@@ -509,10 +502,6 @@ namespace Crystallography.Controls
 
         #endregion Polycrystalline関連
 
-        private void textBoxReferenfeChanged_TextChanged(object sender, EventArgs e)
-        {
-            //GenerateFromInterface();
-        }
 
         private void numericUpDownAngleResolution_ValueChanged(object sender, EventArgs e)
         {

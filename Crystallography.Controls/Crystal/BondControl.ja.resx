@@ -253,17 +253,4 @@
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridViewImageColumn7.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn8.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn8.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
 </root>
