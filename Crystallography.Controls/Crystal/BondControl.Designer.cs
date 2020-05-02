@@ -32,7 +32,6 @@
             this.checkBoxShowPolyhedron = new System.Windows.Forms.CheckBox();
             this.comboBoxBondingAtom1 = new System.Windows.Forms.ComboBox();
             this.comboBoxBondingAtom2 = new System.Windows.Forms.ComboBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -40,11 +39,9 @@
             this.groupBoxPolyhedron = new System.Windows.Forms.GroupBox();
             this.checkBoxShowEdges = new System.Windows.Forms.CheckBox();
             this.groupBoxEdge = new System.Windows.Forms.GroupBox();
-            this.label55 = new System.Windows.Forms.Label();
             this.checkBoxShowInnerBonds = new System.Windows.Forms.CheckBox();
             this.checkBoxShowVertexAtoms = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCenterAtom = new System.Windows.Forms.CheckBox();
-            this.label42 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonAddBond = new System.Windows.Forms.Button();
             this.buttonChangeBond = new System.Windows.Forms.Button();
@@ -65,6 +62,8 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.bondColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.polyhedronColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.colorControlBond = new Crystallography.Controls.ColorControl();
@@ -128,17 +127,6 @@
             this.comboBoxBondingAtom2.Size = new System.Drawing.Size(69, 23);
             this.comboBoxBondingAtom2.TabIndex = 102;
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label41.Location = new System.Drawing.Point(210, 82);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(36, 15);
-            this.label41.TabIndex = 115;
-            this.label41.Text = "Color";
-            // 
             // label58
             // 
             this.label58.AutoSize = true;
@@ -194,7 +182,6 @@
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowInnerBonds);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowVertexAtoms);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowCenterAtom);
-            this.groupBoxPolyhedron.Controls.Add(this.label42);
             this.groupBoxPolyhedron.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.groupBoxPolyhedron.Location = new System.Drawing.Point(279, 0);
             this.groupBoxPolyhedron.Margin = new System.Windows.Forms.Padding(0);
@@ -224,7 +211,6 @@
             // 
             this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
             this.groupBoxEdge.Controls.Add(this.colorControlEdges);
-            this.groupBoxEdge.Controls.Add(this.label55);
             this.groupBoxEdge.Location = new System.Drawing.Point(106, 45);
             this.groupBoxEdge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxEdge.Name = "groupBoxEdge";
@@ -232,16 +218,6 @@
             this.groupBoxEdge.Size = new System.Drawing.Size(158, 49);
             this.groupBoxEdge.TabIndex = 6;
             this.groupBoxEdge.TabStop = false;
-            // 
-            // label55
-            // 
-            this.label55.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label55.Location = new System.Drawing.Point(5, 25);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(56, 20);
-            this.label55.TabIndex = 90;
-            this.label55.Text = "Color";
             // 
             // checkBoxShowInnerBonds
             // 
@@ -288,23 +264,11 @@
             this.checkBoxShowCenterAtom.Text = "Center Atom";
             this.checkBoxShowCenterAtom.UseVisualStyleBackColor = true;
             // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label42.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label42.Location = new System.Drawing.Point(110, 20);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(36, 15);
-            this.label42.TabIndex = 90;
-            this.label42.Text = "Color";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBoxBondingAtom1);
             this.groupBox1.Controls.Add(this.colorControlBond);
             this.groupBox1.Controls.Add(this.numericBoxBondAlpha);
-            this.groupBox1.Controls.Add(this.label41);
             this.groupBox1.Controls.Add(this.numericBoxBondRadius);
             this.groupBox1.Controls.Add(this.label39);
             this.groupBox1.Controls.Add(this.numericBoxBondMaxLength);
@@ -521,6 +485,22 @@
             this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn4.Width = 80;
             // 
+            // dataGridViewImageColumn5
+            // 
+            this.dataGridViewImageColumn5.DataPropertyName = "Bond color";
+            this.dataGridViewImageColumn5.HeaderText = "Bond color";
+            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn5.Width = 80;
+            // 
+            // dataGridViewImageColumn6
+            // 
+            this.dataGridViewImageColumn6.DataPropertyName = "Polyhedron color";
+            this.dataGridViewImageColumn6.HeaderText = "Polyhedron color";
+            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
+            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn6.Width = 80;
+            // 
             // bondColorDataGridViewTextBoxColumn
             // 
             this.bondColorDataGridViewTextBoxColumn.DataPropertyName = "Bond color";
@@ -544,18 +524,24 @@
             this.colorControlBond.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.colorControlBond.Blue = 240;
             this.colorControlBond.BlueF = 0.9411765F;
+            this.colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlBond.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlBond.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlBond.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlBond.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.colorControlBond.FooterMargin = new System.Windows.Forms.Padding(0);
             this.colorControlBond.FooterText = "";
             this.colorControlBond.Green = 240;
             this.colorControlBond.GreenF = 0.9411765F;
-            this.colorControlBond.Location = new System.Drawing.Point(246, 81);
+            this.colorControlBond.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControlBond.HeaderMargin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.colorControlBond.HeaderText = "Color";
+            this.colorControlBond.Location = new System.Drawing.Point(207, 80);
             this.colorControlBond.Margin = new System.Windows.Forms.Padding(0);
             this.colorControlBond.Name = "colorControlBond";
             this.colorControlBond.Red = 240;
             this.colorControlBond.RedF = 0.9411765F;
-            this.colorControlBond.Size = new System.Drawing.Size(18, 18);
+            this.colorControlBond.Size = new System.Drawing.Size(56, 20);
             this.colorControlBond.TabIndex = 103;
             this.colorControlBond.ToolTip = "";
             // 
@@ -574,7 +560,7 @@
             this.numericBoxBondAlpha.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBondAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxBondAlpha.HeaderText = "Alpha";
-            this.numericBoxBondAlpha.Location = new System.Drawing.Point(118, 80);
+            this.numericBoxBondAlpha.Location = new System.Drawing.Point(116, 80);
             this.numericBoxBondAlpha.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxBondAlpha.Maximum = 1D;
             this.numericBoxBondAlpha.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -791,18 +777,24 @@
             this.colorControlPlyhedron.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.colorControlPlyhedron.Blue = 240;
             this.colorControlPlyhedron.BlueF = 0.9411765F;
+            this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlPlyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlPlyhedron.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlPlyhedron.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlPlyhedron.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlPlyhedron.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.colorControlPlyhedron.FooterMargin = new System.Windows.Forms.Padding(0);
             this.colorControlPlyhedron.FooterText = "";
             this.colorControlPlyhedron.Green = 240;
             this.colorControlPlyhedron.GreenF = 0.9411765F;
-            this.colorControlPlyhedron.Location = new System.Drawing.Point(147, 18);
+            this.colorControlPlyhedron.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControlPlyhedron.HeaderMargin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.colorControlPlyhedron.HeaderText = "Color";
+            this.colorControlPlyhedron.Location = new System.Drawing.Point(114, 17);
             this.colorControlPlyhedron.Margin = new System.Windows.Forms.Padding(0);
             this.colorControlPlyhedron.Name = "colorControlPlyhedron";
             this.colorControlPlyhedron.Red = 240;
             this.colorControlPlyhedron.RedF = 0.9411765F;
-            this.colorControlPlyhedron.Size = new System.Drawing.Size(18, 18);
+            this.colorControlPlyhedron.Size = new System.Drawing.Size(56, 20);
             this.colorControlPlyhedron.TabIndex = 102;
             this.colorControlPlyhedron.ToolTip = "";
             // 
@@ -858,18 +850,24 @@
             this.colorControlEdges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.colorControlEdges.Blue = 240;
             this.colorControlEdges.BlueF = 0.9411765F;
+            this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlEdges.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlEdges.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlEdges.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlEdges.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlEdges.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.colorControlEdges.FooterMargin = new System.Windows.Forms.Padding(0);
             this.colorControlEdges.FooterText = "";
             this.colorControlEdges.Green = 240;
             this.colorControlEdges.GreenF = 0.9411765F;
-            this.colorControlEdges.Location = new System.Drawing.Point(41, 25);
+            this.colorControlEdges.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControlEdges.HeaderMargin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.colorControlEdges.HeaderText = "Color";
+            this.colorControlEdges.Location = new System.Drawing.Point(8, 23);
             this.colorControlEdges.Margin = new System.Windows.Forms.Padding(0);
             this.colorControlEdges.Name = "colorControlEdges";
             this.colorControlEdges.Red = 240;
             this.colorControlEdges.RedF = 0.9411765F;
-            this.colorControlEdges.Size = new System.Drawing.Size(18, 18);
+            this.colorControlEdges.Size = new System.Drawing.Size(56, 20);
             this.colorControlEdges.TabIndex = 102;
             this.colorControlEdges.ToolTip = "";
             // 
@@ -908,7 +906,6 @@
         private System.Windows.Forms.CheckBox checkBoxShowPolyhedron;
         private System.Windows.Forms.ComboBox comboBoxBondingAtom1;
         private System.Windows.Forms.ComboBox comboBoxBondingAtom2;
-        private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label39;
@@ -918,11 +915,9 @@
         private System.Windows.Forms.CheckBox checkBoxShowEdges;
         private System.Windows.Forms.GroupBox groupBoxEdge;
         private ColorControl colorControlEdges;
-        private System.Windows.Forms.Label label55;
         private System.Windows.Forms.CheckBox checkBoxShowInnerBonds;
         private System.Windows.Forms.CheckBox checkBoxShowVertexAtoms;
         private System.Windows.Forms.CheckBox checkBoxShowCenterAtom;
-        private System.Windows.Forms.Label label42;
         private NumericBox numericBoxPolyhedronAlpha;
         private NumericBox numericBoxEdgeWidth;
         private NumericBox numericBoxBondMinLength;
@@ -951,5 +946,7 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
     }
 }

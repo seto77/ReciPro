@@ -29,17 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colorControl = new Crystallography.Controls.ColorControl();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
-            this.numericBoxL = new Crystallography.Controls.NumericBox();
-            this.numericBoxK = new Crystallography.Controls.NumericBox();
-            this.numericBoxH = new Crystallography.Controls.NumericBox();
-            this.DistanceD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonAddBond = new System.Windows.Forms.Button();
@@ -49,7 +38,6 @@
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +48,18 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Translation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colorControl = new Crystallography.Controls.ColorControl();
+            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
+            this.numericBoxL = new Crystallography.Controls.NumericBox();
+            this.numericBoxK = new Crystallography.Controls.NumericBox();
+            this.numericBoxH = new Crystallography.Controls.NumericBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -67,33 +67,321 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.DataPropertyName = "Color";
+            this.dataGridViewImageColumn3.HeaderText = "Color";
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn3.Width = 60;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.buttonAddBond);
+            this.panel1.Controls.Add(this.buttonChangeBond);
+            this.panel1.Controls.Add(this.buttonDeleteBond);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 366);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(550, 32);
+            this.panel1.TabIndex = 131;
+            // 
+            // buttonAddBond
+            // 
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonAddBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
+            this.buttonAddBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonAddBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonAddBond.Location = new System.Drawing.Point(0, 2);
+            this.buttonAddBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddBond.Name = "buttonAddBond";
+            this.buttonAddBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonAddBond.TabIndex = 121;
+            this.buttonAddBond.Text = "Add";
+            this.buttonAddBond.UseVisualStyleBackColor = false;
+            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonChangeBond
+            // 
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonChangeBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
+            this.buttonChangeBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonChangeBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChangeBond.Location = new System.Drawing.Point(75, 2);
+            this.buttonChangeBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonChangeBond.Name = "buttonChangeBond";
+            this.buttonChangeBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonChangeBond.TabIndex = 122;
+            this.buttonChangeBond.Text = "Replace";
+            this.buttonChangeBond.UseVisualStyleBackColor = false;
+            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
+            // 
+            // buttonDeleteBond
+            // 
+            this.buttonDeleteBond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteBond.AutoSize = true;
+            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonDeleteBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonDeleteBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonDeleteBond.Location = new System.Drawing.Point(475, 2);
+            this.buttonDeleteBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDeleteBond.Name = "buttonDeleteBond";
+            this.buttonDeleteBond.Size = new System.Drawing.Size(75, 28);
+            this.buttonDeleteBond.TabIndex = 123;
+            this.buttonDeleteBond.Text = "Delete";
+            this.buttonDeleteBond.UseVisualStyleBackColor = false;
+            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.enabledDataGridViewCheckBoxColumn,
+            this.hDataGridViewTextBoxColumn,
+            this.kDataGridViewTextBoxColumn,
+            this.lDataGridViewTextBoxColumn,
+            this.Translation,
+            this.colorDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.bindingSource;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowTemplate.Height = 21;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(550, 398);
+            this.dataGridView.TabIndex = 130;
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
+            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataMember = "DataTableLatticePlane";
+            this.bindingSource.DataSource = this.dataSet;
+            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.numericBoxDistance);
+            this.panel2.Controls.Add(this.numericBoxL);
+            this.panel2.Controls.Add(this.numericBoxK);
+            this.panel2.Controls.Add(this.numericBoxH);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.colorControl);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 398);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(550, 49);
+            this.panel2.TabIndex = 132;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(120, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 15);
+            this.label5.TabIndex = 90;
+            this.label5.Text = "l";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(72, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 15);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "k";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(27, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 15);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "h";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(194, 1);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 15);
+            this.label6.TabIndex = 90;
+            this.label6.Text = "Translation";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(153, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 21);
+            this.label2.TabIndex = 90;
+            this.label2.Text = "}";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(4, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 21);
+            this.label1.TabIndex = 90;
+            this.label1.Text = "{";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Bond color";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Polyhedron color";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
+            this.dataGridViewImageColumn1.HeaderText = "Bond color";
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 80;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
+            this.dataGridViewImageColumn2.HeaderText = "Polyhedron color";
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.Width = 80;
+            // 
+            // enabledDataGridViewCheckBoxColumn
+            // 
+            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
+            this.enabledDataGridViewCheckBoxColumn.HeaderText = "";
+            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
+            this.enabledDataGridViewCheckBoxColumn.Width = 30;
+            // 
+            // hDataGridViewTextBoxColumn
+            // 
+            this.hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            this.hDataGridViewTextBoxColumn.HeaderText = "h";
+            this.hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            this.hDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.hDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // kDataGridViewTextBoxColumn
+            // 
+            this.kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            this.kDataGridViewTextBoxColumn.HeaderText = "k";
+            this.kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            this.kDataGridViewTextBoxColumn.ReadOnly = true;
+            this.kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.kDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // lDataGridViewTextBoxColumn
+            // 
+            this.lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            this.lDataGridViewTextBoxColumn.HeaderText = "l";
+            this.lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            this.lDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.lDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // Translation
+            // 
+            this.Translation.DataPropertyName = "Translation";
+            this.Translation.HeaderText = "Translation";
+            this.Translation.Name = "Translation";
+            this.Translation.ReadOnly = true;
+            this.Translation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.DataPropertyName = "Color";
+            this.dataGridViewImageColumn4.HeaderText = "Color";
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.ReadOnly = true;
+            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn4.Width = 60;
+            // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
             this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
             this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorDataGridViewTextBoxColumn.Width = 60;
             // 
             // colorControl
             // 
-            this.colorControl.Argb = -986896;
+            this.colorControl.Argb = -16192;
             this.colorControl.AutoSize = true;
             this.colorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.colorControl.Blue = 240;
-            this.colorControl.BlueF = 0.9411765F;
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControl.Blue = 192;
+            this.colorControl.BlueF = 0.7529412F;
+            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.colorControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.FooterMargin = new System.Windows.Forms.Padding(0);
             this.colorControl.FooterText = "";
-            this.colorControl.Green = 240;
-            this.colorControl.GreenF = 0.9411765F;
-            this.colorControl.Location = new System.Drawing.Point(504, 25);
+            this.colorControl.Green = 192;
+            this.colorControl.GreenF = 0.7529412F;
+            this.colorControl.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.colorControl.HeaderText = "Color";
+            this.colorControl.Location = new System.Drawing.Point(335, 3);
             this.colorControl.Margin = new System.Windows.Forms.Padding(0);
             this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 240;
-            this.colorControl.RedF = 0.9411765F;
-            this.colorControl.Size = new System.Drawing.Size(18, 18);
+            this.colorControl.Red = 255;
+            this.colorControl.RedF = 1F;
+            this.colorControl.Size = new System.Drawing.Size(36, 35);
             this.colorControl.TabIndex = 121;
             this.colorControl.ToolTip = "";
             // 
@@ -102,21 +390,23 @@
             this.numericBoxDistance.AllowMouseControl = false;
             this.numericBoxDistance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.DecimalPlaces = 4;
+            this.numericBoxDistance.DecimalPlaces = -1;
             this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDistance.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxDistance.FooterText = "Å (= d×";
+            this.numericBoxDistance.FooterMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDistance.FooterText = "× d";
             this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDistance.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxDistance.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxDistance.HeaderText = "";
-            this.numericBoxDistance.Location = new System.Drawing.Point(325, 25);
+            this.numericBoxDistance.Location = new System.Drawing.Point(197, 17);
             this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDistance.Maximum = 20D;
+            this.numericBoxDistance.Maximum = 0.5D;
             this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxDistance.Minimum = 0D;
+            this.numericBoxDistance.Minimum = -0.5D;
             this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxDistance.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
             this.numericBoxDistance.MouseSpeed = 1D;
@@ -128,8 +418,8 @@
             this.numericBoxDistance.RestrictLimitValue = true;
             this.numericBoxDistance.ShowFraction = false;
             this.numericBoxDistance.ShowPositiveSign = false;
-            this.numericBoxDistance.ShowUpDown = false;
-            this.numericBoxDistance.Size = new System.Drawing.Size(98, 27);
+            this.numericBoxDistance.ShowUpDown = true;
+            this.numericBoxDistance.Size = new System.Drawing.Size(81, 27);
             this.numericBoxDistance.SkipEventDuringInput = false;
             this.numericBoxDistance.SmartIncrement = false;
             this.numericBoxDistance.TabIndex = 119;
@@ -138,7 +428,7 @@
             this.numericBoxDistance.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxDistance.ThonsandsSeparator = true;
             this.numericBoxDistance.ToolTip = "";
-            this.numericBoxDistance.UpDown_Increment = 1D;
+            this.numericBoxDistance.UpDown_Increment = 0.1D;
             this.numericBoxDistance.Value = 0D;
             this.numericBoxDistance.WordWrap = true;
             // 
@@ -152,12 +442,14 @@
             this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxL.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxL.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxL.FooterMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxL.FooterText = "";
             this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxL.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxL.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxL.HeaderText = "";
-            this.numericBoxL.Location = new System.Drawing.Point(111, 22);
+            this.numericBoxL.Location = new System.Drawing.Point(111, 17);
             this.numericBoxL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxL.Maximum = 10D;
             this.numericBoxL.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -197,12 +489,14 @@
             this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxK.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxK.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxK.FooterMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxK.FooterText = "";
             this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxK.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxK.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxK.HeaderText = "";
-            this.numericBoxK.Location = new System.Drawing.Point(65, 22);
+            this.numericBoxK.Location = new System.Drawing.Point(65, 17);
             this.numericBoxK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxK.Maximum = 10D;
             this.numericBoxK.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -242,12 +536,14 @@
             this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxH.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxH.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxH.FooterMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxH.FooterText = "";
             this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxH.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxH.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxH.HeaderText = "";
-            this.numericBoxH.Location = new System.Drawing.Point(20, 22);
+            this.numericBoxH.Location = new System.Drawing.Point(20, 17);
             this.numericBoxH.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxH.Maximum = 10D;
             this.numericBoxH.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -277,280 +573,6 @@
             this.numericBoxH.Value = 0D;
             this.numericBoxH.WordWrap = true;
             // 
-            // DistanceD
-            // 
-            this.DistanceD.DataPropertyName = "DistanceD";
-            this.DistanceD.HeaderText = "DistanceD";
-            this.DistanceD.Name = "DistanceD";
-            this.DistanceD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // lDataGridViewTextBoxColumn
-            // 
-            this.lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            this.lDataGridViewTextBoxColumn.HeaderText = "l";
-            this.lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
-            this.lDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.lDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // kDataGridViewTextBoxColumn
-            // 
-            this.kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            this.kDataGridViewTextBoxColumn.HeaderText = "k";
-            this.kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
-            this.kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.kDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // hDataGridViewTextBoxColumn
-            // 
-            this.hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            this.hDataGridViewTextBoxColumn.HeaderText = "h";
-            this.hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
-            this.hDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.hDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // enabledDataGridViewCheckBoxColumn
-            // 
-            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
-            this.enabledDataGridViewCheckBoxColumn.HeaderText = "";
-            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
-            this.enabledDataGridViewCheckBoxColumn.Width = 30;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.DataPropertyName = "Color";
-            this.dataGridViewImageColumn3.HeaderText = "Color";
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn3.Width = 60;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonAddBond);
-            this.panel1.Controls.Add(this.buttonChangeBond);
-            this.panel1.Controls.Add(this.buttonDeleteBond);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 365);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 33);
-            this.panel1.TabIndex = 131;
-            // 
-            // buttonAddBond
-            // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonAddBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddBond.Location = new System.Drawing.Point(0, 2);
-            this.buttonAddBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonAddBond.Name = "buttonAddBond";
-            this.buttonAddBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonAddBond.TabIndex = 121;
-            this.buttonAddBond.Text = "Add";
-            this.buttonAddBond.UseVisualStyleBackColor = false;
-            // 
-            // buttonChangeBond
-            // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonChangeBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
-            this.buttonChangeBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonChangeBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChangeBond.Location = new System.Drawing.Point(75, 2);
-            this.buttonChangeBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonChangeBond.Name = "buttonChangeBond";
-            this.buttonChangeBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonChangeBond.TabIndex = 122;
-            this.buttonChangeBond.Text = "Replace";
-            this.buttonChangeBond.UseVisualStyleBackColor = false;
-            // 
-            // buttonDeleteBond
-            // 
-            this.buttonDeleteBond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteBond.AutoSize = true;
-            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteBond.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteBond.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonDeleteBond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteBond.Location = new System.Drawing.Point(475, 2);
-            this.buttonDeleteBond.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonDeleteBond.Name = "buttonDeleteBond";
-            this.buttonDeleteBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonDeleteBond.TabIndex = 123;
-            this.buttonDeleteBond.Text = "Delete";
-            this.buttonDeleteBond.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.enabledDataGridViewCheckBoxColumn,
-            this.hDataGridViewTextBoxColumn,
-            this.kDataGridViewTextBoxColumn,
-            this.lDataGridViewTextBoxColumn,
-            this.DistanceD,
-            this.colorDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(550, 398);
-            this.dataGridView.TabIndex = 130;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
-            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataMember = "DataTableLatticePlane";
-            this.bindingSource.DataSource = this.dataSet;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.colorControl);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.numericBoxDistance);
-            this.panel2.Controls.Add(this.numericBoxL);
-            this.panel2.Controls.Add(this.numericBoxK);
-            this.panel2.Controls.Add(this.numericBoxH);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 398);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 49);
-            this.panel2.TabIndex = 132;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F);
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(460, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 15);
-            this.label11.TabIndex = 120;
-            this.label11.Text = "Color";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(120, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(10, 15);
-            this.label5.TabIndex = 90;
-            this.label5.Text = "l";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(72, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 15);
-            this.label4.TabIndex = 90;
-            this.label4.Text = "k";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(27, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 15);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "h";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(322, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 15);
-            this.label6.TabIndex = 90;
-            this.label6.Text = "Distance from origin";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(153, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 21);
-            this.label2.TabIndex = 90;
-            this.label2.Text = "}";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(4, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 21);
-            this.label1.TabIndex = 90;
-            this.label1.Text = "{";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Bond color";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Polyhedron color";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            this.dataGridViewImageColumn1.HeaderText = "Bond color";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.Width = 80;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            this.dataGridViewImageColumn2.HeaderText = "Polyhedron color";
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.Width = 80;
-            // 
             // LatticePlaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -570,22 +592,16 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private ColorControl colorControl;
         private NumericBox numericBoxDistance;
         private NumericBox numericBoxL;
         private NumericBox numericBoxK;
         private NumericBox numericBoxH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DistanceD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonAddBond;
@@ -595,7 +611,6 @@
         private System.Windows.Forms.BindingSource bindingSource;
         private DataSet dataSet;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -606,5 +621,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Translation;
+        private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
     }
 }

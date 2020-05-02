@@ -299,7 +299,7 @@ namespace ReciPro
                 var b = new Vector3DBase(newAxes.E12, newAxes.E22, newAxes.E32);
                 var c = new Vector3DBase(newAxes.E13, newAxes.E23, newAxes.E33);
                 FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.skipDrawing = true;
-                CrystalControl.CellConstants = new double[] { a.Length, b.Length, c.Length, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b) };
+                CrystalControl.CellConstants = ( a.Length, b.Length, c.Length, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b) );
 
                 var corrRot = newAxes * new Matrix3D(CrystalControl.Crystal.A_Axis * 10, CrystalControl.Crystal.B_Axis * 10, CrystalControl.Crystal.C_Axis * 10).Inverse();
 

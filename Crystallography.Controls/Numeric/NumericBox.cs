@@ -84,7 +84,7 @@ namespace Crystallography.Controls
                     toolStripTextBoxMaximum.Text = text;
                 }
             }
-            get { return maximum; }
+            get => maximum;
         }
 
         private double minimum = double.NegativeInfinity;
@@ -111,7 +111,7 @@ namespace Crystallography.Controls
                     toolStripTextBoxMimimum.Text = text;
                 }
             }
-            get { return minimum; }
+            get => minimum;
         }
 
         /// <summary>
@@ -143,6 +143,10 @@ namespace Crystallography.Controls
         [Category("Font && Color")]
         public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }
 
+        [Category("Font && Color")]
+        public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
+
+
         [Localizable(true)]
         [Category("Font && Color")]
 
@@ -159,6 +163,10 @@ namespace Crystallography.Controls
         [Category("Font && Color")]
         [Localizable(true)]
         public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
+
+        [Category("Font && Color")]
+        [Localizable(true)]
+        public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
 
         [Category("Font && Color")]
         [Localizable(true)]

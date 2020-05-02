@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.toolTip = new System.Windows.Forms.ToolTip();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelFooter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -42,46 +44,56 @@
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox.Size = new System.Drawing.Size(20, 20);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             this.pictureBox.BackColorChanged += new System.EventHandler(this.pictureBox_BackColorChanged);
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox);
-            this.flowLayoutPanel1.Controls.Add(this.label);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(18, 18);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
             // label
             // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(18, 0);
-            this.label.Margin = new System.Windows.Forms.Padding(0);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(0, 17);
-            this.label.TabIndex = 1;
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Margin = new System.Windows.Forms.Padding(0);
+            this.labelHeader.Name = "label";
+            this.labelHeader.Size = new System.Drawing.Size(0, 17);
+            this.labelHeader.TabIndex = 2;
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoSize = true;
+            this.flowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel.Controls.Add(this.labelHeader);
+            this.flowLayoutPanel.Controls.Add(this.pictureBox);
+            this.flowLayoutPanel.Controls.Add(this.labelFooter);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(20, 20);
+            this.flowLayoutPanel.TabIndex = 4;
+            // 
+            // labelFooter
+            // 
+            this.labelFooter.AutoSize = true;
+            this.labelFooter.Location = new System.Drawing.Point(20, 0);
+            this.labelFooter.Margin = new System.Windows.Forms.Padding(0);
+            this.labelFooter.Name = "labelFooter";
+            this.labelFooter.Size = new System.Drawing.Size(0, 17);
+            this.labelFooter.TabIndex = 3;
             // 
             // ColorControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayoutPanel);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ColorControl";
-            this.Size = new System.Drawing.Size(18, 18);
+            this.Size = new System.Drawing.Size(20, 20);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel.ResumeLayout(false);
+            this.flowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,7 +103,8 @@
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelHeader;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.Label labelFooter;
     }
 }

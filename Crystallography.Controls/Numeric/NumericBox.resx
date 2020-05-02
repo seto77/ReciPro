@@ -124,7 +124,46 @@
   <data name="contextMenuStripBody.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items" xml:space="preserve">
+    <value>No control</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items1" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items2" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items3" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items4" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items5" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items6" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items7" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items8" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items9" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items10" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.Items11" xml:space="preserve">
+    <value>10</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripComboBoxDecimalPlaces.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
   <data name="decimalPlacesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
   </data>
@@ -146,11 +185,23 @@
   <data name="toolStripMenuItemRestrictLimit.Text" xml:space="preserve">
     <value>Restrict limit</value>
   </data>
+  <data name="toolStripTextBoxMaximum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>      Maximum</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
@@ -167,6 +218,15 @@
   <data name="allowMouseContlolToolStripMenuItem.Text" xml:space="preserve">
     <value>Allow Mouse Contlol</value>
   </data>
+  <data name="toolStripTextBoxMouseSpeed.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -176,6 +236,15 @@
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>      Mouse Speed</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Items" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Items1" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
   </data>
   <data name="toolStripMenuItem4.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -238,76 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items" xml:space="preserve">
-    <value>No control</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items1" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items2" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items3" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items4" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items5" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items6" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items7" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items8" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items9" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items10" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Items11" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="toolStripComboBoxDecimalPlaces.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
-  </data>
-  <data name="toolStripTextBoxMaximum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMaximum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="toolStripTextBoxMimimum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMimimum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="toolStripTextBoxMouseSpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="toolStripTextBoxMouseSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="toolStripTextBoxMouseSpeed.Text" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Items" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Items1" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="toolStripComboBoxMouseDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
   </data>
   <data name="labelHeader.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -353,54 +353,6 @@
   </metadata>
   <data name="contextMenuStripUpDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="contextMenuStripUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripUpDown.Name" xml:space="preserve">
-    <value>contextMenuStripUpDown</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="numericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
-  </data>
-  <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 0</value>
-  </data>
-  <data name="numericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="numericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 25</value>
-  </data>
-  <data name="numericUpDown.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericUpDown.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Name" xml:space="preserve">
-    <value>numericUpDown</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
-  </data>
-  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
-    <value>Increment</value>
   </data>
   <data name="smartIncrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 22</value>
@@ -479,6 +431,54 @@
   </data>
   <data name="toolStripComboBoxIncrement.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 23</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 22</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Increment</value>
+  </data>
+  <data name="contextMenuStripUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripUpDown.Name" xml:space="preserve">
+    <value>contextMenuStripUpDown</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDown.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="numericUpDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 0</value>
+  </data>
+  <data name="numericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="numericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 25</value>
+  </data>
+  <data name="numericUpDown.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericUpDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Name" xml:space="preserve">
+    <value>numericUpDown</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labelFooter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

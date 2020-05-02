@@ -1,4 +1,6 @@
-﻿namespace ReciPro
+﻿using System;
+
+namespace ReciPro
 {
     partial class FormImageSimulator
     {
@@ -540,7 +542,7 @@
             this.colorControlLabel.Red = 173;
             this.colorControlLabel.RedF = 0.6784314F;
             this.colorControlLabel.ToolTip = "";
-            this.colorControlLabel.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            this.colorControlLabel.ColorChanged += new EventHandler(this.CheckBoxShowLabel_CheckedChanged);
             // 
             // checkBoxShowLabel
             // 
@@ -624,7 +626,7 @@
             this.colorControlScale.Red = 135;
             this.colorControlScale.RedF = 0.5294118F;
             this.colorControlScale.ToolTip = "";
-            this.colorControlScale.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            this.colorControlScale.ColorChanged += new EventHandler(this.CheckBoxShowLabel_CheckedChanged);
             // 
             // groupBox6
             // 

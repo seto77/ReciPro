@@ -257,6 +257,12 @@
     <Compile Include="Crystal\LatticePlaneControl.Designer.cs">
       <DependentUpon>LatticePlaneControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\SymmetryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\SymmetryControl.Designer.cs">
+      <DependentUpon>SymmetryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
@@ -460,6 +466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\PoleFigureControl.ja.resx">
       <DependentUpon>PoleFigureControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\SymmetryControl.resx">
+      <DependentUpon>SymmetryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DistributionGraphControl.resx">
       <DependentUpon>DistributionGraphControl.cs</DependentUpon>

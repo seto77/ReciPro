@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Scripting.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -53,18 +55,18 @@ namespace Crystallography.Controls
                     numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
                         numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 60;
 
-                 numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
-                 = numericalTextBoxB23err.Visible = numericalTextBoxB33err.Visible = false;
+                    numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
+                    = numericalTextBoxB23err.Visible = numericalTextBoxB33err.Visible = false;
                 }
                 else
                 {
                     numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
                         numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 45;
 
-                    numericalTextBoxBisoerr.Visible =  numericBoxBiso.Visible =
-                    numericalTextBoxB33err.Visible =  numericalTextBoxB23err.Visible = 
-                    numericalTextBoxB22err.Visible = numericalTextBoxB13err.Visible = 
-                    numericalTextBoxB12err.Visible =  numericalTextBoxB11err.Visible =  true;
+                    numericalTextBoxBisoerr.Visible = numericBoxBiso.Visible =
+                    numericalTextBoxB33err.Visible = numericalTextBoxB23err.Visible =
+                    numericalTextBoxB22err.Visible = numericalTextBoxB13err.Visible =
+                    numericalTextBoxB12err.Visible = numericalTextBoxB11err.Visible = true;
                 }
             }
             get => details2;
@@ -185,39 +187,32 @@ namespace Crystallography.Controls
         #endregion
 
 
-        #region TabVisibleプロパティ
+        #region Tabの表示/非表示 プロパティ
+        [Category("Tab")]
+        public bool ElementAndPositionTabVisible { set { elementAndPositionTabVisible = value; setTabPages(); } get => elementAndPositionTabVisible; }
         private bool elementAndPositionTabVisible = true;
-        public bool ElementAndPositionTabVisible
-        {
-            set { elementAndPositionTabVisible = value; setTabPages(); }
-            get { return elementAndPositionTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool OriginShiftVisible { set { originShiftTabVisible = value; setTabPages(); } get => originShiftTabVisible; }
+        private bool originShiftTabVisible = true;
+
+        [Category("Tab")]
+        public bool DebyeWallerTabVisible { set { debyeWallerTabVisible = value; setTabPages(); } get => debyeWallerTabVisible; }
         private bool debyeWallerTabVisible = true;
-        public bool DebyeWallerTabVisible
-        {
-            set { debyeWallerTabVisible = value; setTabPages(); }
-            get { return debyeWallerTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool ScatteringFactorTabVisible { set { scatteringFactorTabVisible = value; setTabPages(); } get => scatteringFactorTabVisible; }
         private bool scatteringFactorTabVisible = true;
-        public bool ScatteringFactorTabVisible
-        {
-            set { scatteringFactorTabVisible = value; setTabPages(); }
-            get { return scatteringFactorTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool AppearanceTabVisible { set { appearanceTabVisible = value; setTabPages(); } get => appearanceTabVisible; }
         private bool appearanceTabVisible = true;
-        public bool AppearanceTabVisible
-        {
-            set { appearanceTabVisible = value; setTabPages(); }
-            get { return appearanceTabVisible; }
-        }
+
+        [Category("Tab")]
+        public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
         #endregion
 
-        public int TabNumber { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
-
-        public event EventHandler DataChanged;
+        public event EventHandler ItemsChanged;
 
         #endregion プロパティ
 
@@ -239,6 +234,9 @@ namespace Crystallography.Controls
             tabControl.TabPages.Clear();
             if (ElementAndPositionTabVisible)
                 tabControl.TabPages.Add(tabPageElementAndPosition);
+
+            if (originShiftTabVisible)
+                tabControl.TabPages.Add(tabPageOriginShift);
 
             if (DebyeWallerTabVisible)
                 tabControl.TabPages.Add(tabPageDebyeWaller);
@@ -347,10 +345,10 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void Add(Atoms atoms)
         {
-            if(atoms!=null)
+            if (atoms != null)
                 table.Add(atoms);
 
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -361,7 +359,7 @@ namespace Crystallography.Controls
         {
             foreach (var a in atoms)
                 table.Add(a);
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -371,13 +369,13 @@ namespace Crystallography.Controls
         public void Delete(int i)
         {
             table.Remove(i);
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         public void Replace(Atoms atoms, int i)
         {
             table.Replace(atoms, i);
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -387,7 +385,7 @@ namespace Crystallography.Controls
         public void Clear()
         {
             table.Rows.Clear();
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -402,7 +400,7 @@ namespace Crystallography.Controls
                 a.ResetSymmetry(SymmetrySeriesNumber);
                 table.Replace(a, i);
             }
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -547,7 +545,7 @@ namespace Crystallography.Controls
         private void bindingSource_PositionChanged(object sender, System.EventArgs e)
         {
             if (SkipEvent) return;
-         
+
             if (bindingSource.Position >= 0 && bindingSource.Count > 0)
                 SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
         }
@@ -600,6 +598,28 @@ namespace Crystallography.Controls
         private void listBoxAtoms_MouseLeave(object sender, EventArgs e)
         {
             //  this.toolTip.SetToolTip(this.listBoxAtoms, "displya element, position, symmetry seeting for each atoms.");
+        }
+
+        private void buttonOriginShift_Click(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var shift = button.Name.Contains("Custom") ?
+                new Vector3DBase(numericBoxOriginShiftX.Value, numericBoxOriginShiftY.Value, numericBoxOriginShiftZ.Value) :
+                new Vector3DBase((button.Tag as string).Split().Select(s => s.ToDouble()).ToArray()) * (radioButtonOriginShiftPlus.Checked ? 1 : -1);
+
+            SkipEvent = true;
+            foreach (var atoms in GetAll())
+            {
+                atoms.X += shift.X;
+                atoms.Y += shift.Y;
+                atoms.Z += shift.Y;
+                atoms.ResetSymmetry(SymmetrySeriesNumber);
+            }
+            SkipEvent = false;
+            bindingSource_PositionChanged(sender, e);
+
+            ItemsChanged(this, e);
+
         }
     }
 }

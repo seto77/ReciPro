@@ -70,6 +70,8 @@ namespace ReciPro
 
         #endregion クリップボード監視
 
+        #region プロパティ、フィールド、イベントハンドラ
+
         public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
         public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
         public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
@@ -112,6 +114,9 @@ namespace ReciPro
         public bool skipProgressEvent { get; set; } = false;
         private readonly IProgress<(long, long, long, string)> ip;//IReport
 
+        #endregion
+     
+        
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -187,8 +192,8 @@ namespace ReciPro
                     AllowMouseScaling = false,
                     AllowMouseTranslating = false,
                     DisablingOpenGL = disableOpneGLToolStripMenuItem.Checked,
-                    Width = groupBox7.ClientSize.Width,
-                    Height = groupBox7.ClientSize.Width,
+                    Width = groupBoxCurrentDirection.ClientSize.Width - 10,
+                    Height = groupBoxCurrentDirection.ClientSize.Width - 10,
                     Name = "glControlAxes",
                     NodeCoefficient = 1,
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
@@ -201,7 +206,9 @@ namespace ReciPro
                 glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
                 glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
 
-                groupBox7.Controls.Add(glControlAxes);
+                groupBoxCurrentDirection.Controls.Add(glControlAxes);
+                glControlAxes.Dock = DockStyle.Fill;
+                glControlAxes.BringToFront();
             }
             catch
             {

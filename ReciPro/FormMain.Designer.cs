@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -38,16 +39,15 @@
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox = new System.Windows.Forms.ListBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonLower = new System.Windows.Forms.Button();
-            this.buttonAllClear = new System.Windows.Forms.Button();
-            this.buttonUpper = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.crystalControl = new Crystallography.Controls.CrystalControl();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonUpper = new System.Windows.Forms.Button();
+            this.buttonLower = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonAllClear = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.crystalControl = new Crystallography.Controls.CrystalControl();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -96,7 +96,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.labelCurrentIndexU = new System.Windows.Forms.Label();
@@ -154,8 +154,8 @@
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip();
-            this.timer = new System.Windows.Forms.Timer();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -167,9 +167,8 @@
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -186,7 +185,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).BeginInit();
-            this.groupBox7.SuspendLayout();
+            this.groupBoxCurrentDirection.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -244,19 +243,18 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer.Panel1.Controls.Add(this.panel2);
             resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
             // 
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.groupBox6);
-            this.splitContainer.Panel2.Controls.Add(this.panel2);
             resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.listBox);
-            this.groupBox1.Controls.Add(this.panel3);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -270,14 +268,32 @@
             this.toolTip.SetToolTip(this.listBox, resources.GetString("listBox.ToolTip"));
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
-            // panel3
+            // panel2
             // 
-            this.panel3.Controls.Add(this.buttonDelete);
-            this.panel3.Controls.Add(this.buttonLower);
-            this.panel3.Controls.Add(this.buttonAllClear);
-            this.panel3.Controls.Add(this.buttonUpper);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.buttonUpper);
+            this.panel2.Controls.Add(this.buttonLower);
+            this.panel2.Controls.Add(this.buttonDelete);
+            this.panel2.Controls.Add(this.buttonChange);
+            this.panel2.Controls.Add(this.buttonAdd);
+            this.panel2.Controls.Add(this.buttonAllClear);
+            this.panel2.Name = "panel2";
+            // 
+            // buttonUpper
+            // 
+            resources.ApplyResources(this.buttonUpper, "buttonUpper");
+            this.buttonUpper.Name = "buttonUpper";
+            this.toolTip.SetToolTip(this.buttonUpper, resources.GetString("buttonUpper.ToolTip"));
+            this.buttonUpper.UseVisualStyleBackColor = false;
+            this.buttonUpper.Click += new System.EventHandler(this.buttonUpper_Click);
+            // 
+            // buttonLower
+            // 
+            resources.ApplyResources(this.buttonLower, "buttonLower");
+            this.buttonLower.Name = "buttonLower";
+            this.toolTip.SetToolTip(this.buttonLower, resources.GetString("buttonLower.ToolTip"));
+            this.buttonLower.UseVisualStyleBackColor = false;
+            this.buttonLower.Click += new System.EventHandler(this.buttonLower_Click);
             // 
             // buttonDelete
             // 
@@ -288,78 +304,6 @@
             this.toolTip.SetToolTip(this.buttonDelete, resources.GetString("buttonDelete.ToolTip"));
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // buttonLower
-            // 
-            resources.ApplyResources(this.buttonLower, "buttonLower");
-            this.buttonLower.Name = "buttonLower";
-            this.toolTip.SetToolTip(this.buttonLower, resources.GetString("buttonLower.ToolTip"));
-            this.buttonLower.UseVisualStyleBackColor = false;
-            this.buttonLower.Click += new System.EventHandler(this.buttonLower_Click);
-            // 
-            // buttonAllClear
-            // 
-            resources.ApplyResources(this.buttonAllClear, "buttonAllClear");
-            this.buttonAllClear.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonAllClear.ForeColor = System.Drawing.Color.White;
-            this.buttonAllClear.Name = "buttonAllClear";
-            this.toolTip.SetToolTip(this.buttonAllClear, resources.GetString("buttonAllClear.ToolTip"));
-            this.buttonAllClear.UseVisualStyleBackColor = false;
-            this.buttonAllClear.Click += new System.EventHandler(this.buttonAllClear_Click);
-            // 
-            // buttonUpper
-            // 
-            resources.ApplyResources(this.buttonUpper, "buttonUpper");
-            this.buttonUpper.Name = "buttonUpper";
-            this.toolTip.SetToolTip(this.buttonUpper, resources.GetString("buttonUpper.ToolTip"));
-            this.buttonUpper.UseVisualStyleBackColor = false;
-            this.buttonUpper.Click += new System.EventHandler(this.buttonUpper_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.crystalControl);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
-            // 
-            // crystalControl
-            // 
-            this.crystalControl.AllowDrop = true;
-            resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.CellConstants = new double[] {
-        0D,
-        0D,
-        0D,
-        0D,
-        0D,
-        0D};
-            this.crystalControl.Crystal = null;
-            this.crystalControl.DefaultTabNumber = 0;
-            this.crystalControl.Name = "crystalControl";
-            this.crystalControl.ScatteringFactorVisible = false;
-            this.crystalControl.SymmetryInformationVisible = false;
-            this.crystalControl.SymmetrySeriesNumber = 0;
-            this.crystalControl.VisibleAtomTab = true;
-            this.crystalControl.VisibleBasicInfoTab = true;
-            this.crystalControl.VisibleBondsPolyhedraTab = false;
-            this.crystalControl.VisibleBoundTab = false;
-            this.crystalControl.VisibleElasticityTab = false;
-            this.crystalControl.VisibleEOSTab = true;
-            this.crystalControl.VisibleLatticePlaneTab = false;
-            this.crystalControl.VisiblePolycrystallineTab = false;
-            this.crystalControl.VisibleReferenceTab = true;
-            this.crystalControl.VisibleStressStrainTab = false;
-            this.crystalControl.CrystalChanged += new Crystallography.Controls.CrystalControl.MyEventHandler(this.crystalControl_CrystalChanged_1);
-            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.crystalControl_scatteringFactor_VisibleChanged);
-            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.crystalControl_symmetryInformation_VisibleChanged);
-            // 
-            // panel2
-            // 
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Controls.Add(this.buttonChange);
-            this.panel2.Controls.Add(this.buttonAdd);
-            this.panel2.Name = "panel2";
             // 
             // buttonChange
             // 
@@ -381,12 +325,55 @@
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // buttonAllClear
+            // 
+            resources.ApplyResources(this.buttonAllClear, "buttonAllClear");
+            this.buttonAllClear.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonAllClear.ForeColor = System.Drawing.Color.White;
+            this.buttonAllClear.Name = "buttonAllClear";
+            this.toolTip.SetToolTip(this.buttonAllClear, resources.GetString("buttonAllClear.ToolTip"));
+            this.buttonAllClear.UseVisualStyleBackColor = false;
+            this.buttonAllClear.Click += new System.EventHandler(this.buttonAllClear_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.crystalControl);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // crystalControl
+            // 
+            this.crystalControl.AllowDrop = true;
+            resources.ApplyResources(this.crystalControl, "crystalControl");
+            this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
+            this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
+            this.crystalControl.DefaultTabNumber = 0;
+            this.crystalControl.Name = "crystalControl";
+            this.crystalControl.ScatteringFactorVisible = false;
+            this.crystalControl.SymmetryInformationVisible = false;
+            this.crystalControl.SymmetrySeriesNumber = 0;
+            this.crystalControl.VisibleAtomTab = true;
+            this.crystalControl.VisibleBasicInfoTab = true;
+            this.crystalControl.VisibleBondsPolyhedraTab = false;
+            this.crystalControl.VisibleBoundTab = false;
+            this.crystalControl.VisibleElasticityTab = true;
+            this.crystalControl.VisibleEOSTab = true;
+            this.crystalControl.VisibleLatticePlaneTab = false;
+            this.crystalControl.VisiblePolycrystallineTab = false;
+            this.crystalControl.VisibleReferenceTab = true;
+            this.crystalControl.VisibleStressStrainTab = false;
+            this.crystalControl.CrystalChanged += new Crystallography.Controls.CrystalControl.MyEventHandler(this.crystalControl_CrystalChanged_1);
+            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.crystalControl_scatteringFactor_VisibleChanged);
+            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.crystalControl_symmetryInformation_VisibleChanged);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.groupBox3);
-            this.groupBox4.Controls.Add(this.groupBox7);
+            this.groupBox4.Controls.Add(this.groupBoxCurrentDirection);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
@@ -450,6 +437,7 @@
             this.numericalTextBoxAxisU.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAxisU.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxAxisU.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxAxisU.Maximum = double.PositiveInfinity;
             this.numericalTextBoxAxisU.Minimum = double.NegativeInfinity;
             this.numericalTextBoxAxisU.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -492,6 +480,7 @@
             this.numericalTextBoxAxisV.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAxisV.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxAxisV.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxAxisV.Maximum = double.PositiveInfinity;
             this.numericalTextBoxAxisV.Minimum = double.NegativeInfinity;
             this.numericalTextBoxAxisV.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -524,6 +513,7 @@
             this.numericalTextBoxAxisW.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAxisW.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxAxisW.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxAxisW.Maximum = double.PositiveInfinity;
             this.numericalTextBoxAxisW.Minimum = double.NegativeInfinity;
             this.numericalTextBoxAxisW.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -567,6 +557,7 @@
             this.numericalTextBoxPlaneL.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPlaneL.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxPlaneL.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxPlaneL.Maximum = double.PositiveInfinity;
             this.numericalTextBoxPlaneL.Minimum = double.NegativeInfinity;
             this.numericalTextBoxPlaneL.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -599,6 +590,7 @@
             this.numericalTextBoxPlaneH.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPlaneH.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxPlaneH.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxPlaneH.Maximum = double.PositiveInfinity;
             this.numericalTextBoxPlaneH.Minimum = double.NegativeInfinity;
             this.numericalTextBoxPlaneH.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -631,6 +623,7 @@
             this.numericalTextBoxPlaneK.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPlaneK.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxPlaneK.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericalTextBoxPlaneK.Maximum = double.PositiveInfinity;
             this.numericalTextBoxPlaneK.Minimum = double.NegativeInfinity;
             this.numericalTextBoxPlaneK.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -811,6 +804,7 @@
             this.numericBoxStep.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStep.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxStep.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxStep.Maximum = 360D;
             this.numericBoxStep.Minimum = 0.001D;
             this.numericBoxStep.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -829,7 +823,7 @@
             this.numericBoxStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxStep.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
+            this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip1"));
             this.numericBoxStep.UpDown_Increment = 1D;
             this.numericBoxStep.Value = 10D;
             this.numericBoxStep.WordWrap = true;
@@ -951,15 +945,15 @@
             this.label1.Name = "label1";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tableLayoutPanel3_MouseDown);
             // 
-            // groupBox7
+            // groupBoxCurrentDirection
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Controls.Add(this.buttonReset);
-            this.groupBox7.Controls.Add(this.tableLayoutPanel6);
-            this.groupBox7.Controls.Add(this.numericBoxMaxUVW);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBox7, resources.GetString("groupBox7.ToolTip"));
+            resources.ApplyResources(this.groupBoxCurrentDirection, "groupBoxCurrentDirection");
+            this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
+            this.groupBoxCurrentDirection.Controls.Add(this.tableLayoutPanel6);
+            this.groupBoxCurrentDirection.Controls.Add(this.numericBoxMaxUVW);
+            this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
+            this.groupBoxCurrentDirection.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
             // 
             // buttonReset
             // 
@@ -1022,6 +1016,7 @@
             this.numericBoxMaxUVW.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMaxUVW.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxMaxUVW.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxMaxUVW.Maximum = 100D;
             this.numericBoxMaxUVW.Minimum = 1D;
             this.numericBoxMaxUVW.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1426,15 +1421,12 @@
             this.statusStrip1.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
-            this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -1460,8 +1452,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.groupBoxCurrentDirection.ResumeLayout(false);
+            this.groupBoxCurrentDirection.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -1536,7 +1528,6 @@
         public System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label6;
@@ -1548,7 +1539,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBoxCurrentDirection;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;

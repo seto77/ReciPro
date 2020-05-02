@@ -1,4 +1,6 @@
-﻿namespace ReciPro
+﻿using System;
+
+namespace ReciPro
 {
     partial class FormStereonet
     {
@@ -455,7 +457,7 @@
             this.colorControlSmallCircle.Red = 255;
             this.colorControlSmallCircle.RedF = 1F;
             this.colorControlSmallCircle.ToolTip = "";
-            this.colorControlSmallCircle.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlSmallCircle.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // colorControlGreatCircle
             // 
@@ -470,7 +472,7 @@
             this.colorControlGreatCircle.Red = 255;
             this.colorControlGreatCircle.RedF = 1F;
             this.colorControlGreatCircle.ToolTip = "";
-            this.colorControlGreatCircle.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlGreatCircle.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // label4
             // 
@@ -494,7 +496,7 @@
             this.colorControlString.TabStop = false;
             this.colorControlString.ToolTip = "指数文字の色";
             this.toolTip1.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
-            this.colorControlString.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlString.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // colorControlUniqueAxis
             // 
@@ -513,7 +515,7 @@
             this.colorControlUniqueAxis.TabStop = false;
             this.colorControlUniqueAxis.ToolTip = "軸表示時の[100], [010], [001]の表示色";
             this.toolTip1.SetToolTip(this.colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
-            this.colorControlUniqueAxis.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlUniqueAxis.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // colorControlUniquePlane
             // 
@@ -532,7 +534,7 @@
             this.colorControlUniquePlane.TabStop = false;
             this.colorControlUniquePlane.ToolTip = "結晶面(100), (010), (001)の色";
             this.toolTip1.SetToolTip(this.colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
-            this.colorControlUniquePlane.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlUniquePlane.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelUniqueAxis
             // 
@@ -556,7 +558,7 @@
             this.colorControlGeneralAxis.RedF = 1F;
             this.colorControlGeneralAxis.TabStop = false;
             this.colorControlGeneralAxis.ToolTip = "";
-            this.colorControlGeneralAxis.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlGeneralAxis.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelGeneralAxis
             // 
@@ -592,7 +594,7 @@
             this.colorControlGeneralPlane.RedF = 0.1294118F;
             this.colorControlGeneralPlane.TabStop = false;
             this.colorControlGeneralPlane.ToolTip = "";
-            this.colorControlGeneralPlane.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlGeneralPlane.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // colorControlBackGround
             // 
@@ -610,7 +612,7 @@
             this.colorControlBackGround.TabStop = false;
             this.colorControlBackGround.ToolTip = "背景色";
             this.toolTip1.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
-            this.colorControlBackGround.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControlBackGround.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelBackGround
             // 
@@ -635,7 +637,7 @@
             this.colorControl90DegLine.TabStop = false;
             this.colorControl90DegLine.ToolTip = "90度線の色";
             this.toolTip1.SetToolTip(this.colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
-            this.colorControl90DegLine.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControl90DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // label90DegLine
             // 
@@ -666,7 +668,7 @@
             this.colorControl10DegLine.TabStop = false;
             this.colorControl10DegLine.ToolTip = "10度線の色";
             this.toolTip1.SetToolTip(this.colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
-            this.colorControl10DegLine.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControl10DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // label1DegLine
             // 
@@ -691,7 +693,7 @@
             this.colorControl1DegLine.TabStop = false;
             this.colorControl1DegLine.ToolTip = "1度線の色\r\n「Show 1°line」がチェックされているとき有効";
             this.toolTip1.SetToolTip(this.colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
-            this.colorControl1DegLine.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControl_ColorChanged);
+            this.colorControl1DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelString
             // 

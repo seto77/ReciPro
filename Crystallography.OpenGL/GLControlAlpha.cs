@@ -556,7 +556,7 @@ namespace Crystallography.OpenGL
         #endregion
 
         #region レンダリング
-        private bool skipRendering = false;
+        public bool SkipRendering = false;
 
         /// <summary>
         /// レンダリング
@@ -570,7 +570,7 @@ namespace Crystallography.OpenGL
             }
             timer.Stop();
 
-            if (skipRendering || Program < 1)
+            if (SkipRendering || Program < 1)
                 return;
 
             if (RenderingTransparency == RenderingTransparencyModes.Always)
@@ -685,10 +685,10 @@ namespace Crystallography.OpenGL
             {
                 if ((ModifierKeys & Keys.Control) == Keys.Control && ProjectionMode == ProjectionModes.Perspective)
                 {
-                    skipRendering = true;
+                    SkipRendering = true;
                     viewFrom *= (float)(1 + dy * 0.005);
                     setViewMatrix();
-                    skipRendering = false;
+                    SkipRendering = false;
                     setProjMatrix();
                 }
                 else

@@ -84,7 +84,7 @@ namespace Crystallography.Controls
             numericBoxBeta.RadianValue = Vector3DBase.AngleBetVectors(c, a);
             numericBoxGamma.RadianValue = Vector3DBase.AngleBetVectors(a, b);
 
-            crystalControl.CellConstants = new double[] { numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue };
+            crystalControl.symmetryControl.CellConstants = ( numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue );
             Application.DoEvents();
             skipCrystalChangedEvent = false;
 
