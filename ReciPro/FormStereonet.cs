@@ -343,8 +343,8 @@ namespace ReciPro
             {
                 if (radioButtonRange.Checked)
                 {
-                    formMain.Crystal.SetVectorOfAxis((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
-                    formMain.Crystal.SetVectorOfPlane((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
+                    formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+                    formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
                 }
                 else if (radioButtonSpecifiedIndices.Checked)
                 {
@@ -516,8 +516,8 @@ namespace ReciPro
 
         public void SetCrystal()
         {
-            formMain.Crystal.SetVectorOfAxis((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
-            formMain.Crystal.SetVectorOfPlane((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
+            formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+            formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
 
             checkedListBoxCircles.Items.Clear();
             if (formMain.Crystal.VectorOfPole == null)
@@ -720,13 +720,14 @@ namespace ReciPro
 
         private void radioButtonRange_CheckedChanged(object sender, EventArgs e)
         {
-            labelPlusMinus1.Visible = labelPlusMinus2.Visible = labelPlusMinus3.Visible = radioButtonRange.Checked;
+            numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText =
+                radioButtonRange.Checked ? "Å}" : "";
             panelSpecifiedIndices.Visible = !radioButtonRange.Checked;
 
             if(radioButtonRange.Checked)
-                numericUpDown1.Minimum = numericUpDown2.Minimum = numericUpDown3.Minimum = 0;
+                numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
             else
-                numericUpDown1.Minimum = numericUpDown2.Minimum = numericUpDown3.Minimum = -numericUpDown1.Maximum;
+                numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
 
             setVector();
             Draw();
@@ -734,7 +735,7 @@ namespace ReciPro
 
         private void buttonAddIndex_Click(object sender, EventArgs e)
         {
-            int index1 = (int)numericUpDown1.Value, index2 = (int)numericUpDown2.Value, index3 = (int)numericUpDown3.Value;
+            int index1 = (int)numericBox1.Value, index2 = (int)numericBox2.Value, index3 = (int)numericBox3.Value;
             if (index1 != 0 || index2 != 0 || index3 != 0)
                 listBoxSpecifiedIndices.Items.Add(index1.ToString() + " " + index2.ToString() + " " + index3.ToString());
             setVector();

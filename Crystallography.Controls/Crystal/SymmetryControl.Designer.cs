@@ -91,8 +91,8 @@
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.tableLayoutPanel4);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -125,8 +125,8 @@
             // 
             // numericBoxGammaErr
             // 
-            resources.ApplyResources(this.numericBoxGammaErr, "numericBoxGammaErr");
             this.numericBoxGammaErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxGammaErr, "numericBoxGammaErr");
             this.numericBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGammaErr.DecimalPlaces = -1;
             this.numericBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -159,8 +159,8 @@
             // 
             // numericBoxBetaErr
             // 
-            resources.ApplyResources(this.numericBoxBetaErr, "numericBoxBetaErr");
             this.numericBoxBetaErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBetaErr, "numericBoxBetaErr");
             this.numericBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBetaErr.DecimalPlaces = -1;
             this.numericBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -193,8 +193,8 @@
             // 
             // numericBoxAlphaErr
             // 
-            resources.ApplyResources(this.numericBoxAlphaErr, "numericBoxAlphaErr");
             this.numericBoxAlphaErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxAlphaErr, "numericBoxAlphaErr");
             this.numericBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlphaErr.DecimalPlaces = -1;
             this.numericBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -242,8 +242,8 @@
             // 
             // numericBoxAlpha
             // 
-            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
             this.numericBoxAlpha.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
             this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlpha.DecimalPlaces = -1;
             this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -276,8 +276,8 @@
             // 
             // numericBoxGamma
             // 
-            resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
             this.numericBoxGamma.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
             this.numericBoxGamma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGamma.DecimalPlaces = -1;
             this.numericBoxGamma.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -310,8 +310,8 @@
             // 
             // numericBoxBeta
             // 
-            resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
             this.numericBoxBeta.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
             this.numericBoxBeta.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBeta.DecimalPlaces = -1;
             this.numericBoxBeta.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -399,8 +399,8 @@
             // 
             // numericBoxAErr
             // 
-            resources.ApplyResources(this.numericBoxAErr, "numericBoxAErr");
             this.numericBoxAErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxAErr, "numericBoxAErr");
             this.numericBoxAErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAErr.DecimalPlaces = -1;
             this.numericBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -453,8 +453,8 @@
             // 
             // numericBoxCErr
             // 
-            resources.ApplyResources(this.numericBoxCErr, "numericBoxCErr");
             this.numericBoxCErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxCErr, "numericBoxCErr");
             this.numericBoxCErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCErr.DecimalPlaces = -1;
             this.numericBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -487,8 +487,8 @@
             // 
             // numericBoxBErr
             // 
-            resources.ApplyResources(this.numericBoxBErr, "numericBoxBErr");
             this.numericBoxBErr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBErr, "numericBoxBErr");
             this.numericBoxBErr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBErr.DecimalPlaces = -1;
             this.numericBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -526,8 +526,8 @@
             // 
             // numericBoxA
             // 
-            resources.ApplyResources(this.numericBoxA, "numericBoxA");
             this.numericBoxA.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxA, "numericBoxA");
             this.numericBoxA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxA.DecimalPlaces = -1;
             this.numericBoxA.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -560,8 +560,8 @@
             // 
             // numericBoxB
             // 
-            resources.ApplyResources(this.numericBoxB, "numericBoxB");
             this.numericBoxB.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxB, "numericBoxB");
             this.numericBoxB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB.DecimalPlaces = -1;
             this.numericBoxB.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -609,8 +609,8 @@
             // 
             // numericBoxC
             // 
-            resources.ApplyResources(this.numericBoxC, "numericBoxC");
             this.numericBoxC.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxC, "numericBoxC");
             this.numericBoxC.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxC.DecimalPlaces = -1;
             this.numericBoxC.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -643,7 +643,6 @@
             // 
             // groupBoxSymmetry
             // 
-            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
             this.groupBoxSymmetry.Controls.Add(this.comboBoxSpaceGroup);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxPointGroup);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxCrystalSystem);
@@ -653,6 +652,7 @@
             this.groupBoxSymmetry.Controls.Add(this.textBoxSearch);
             this.groupBoxSymmetry.Controls.Add(this.label21);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxSearchResult);
+            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
             this.groupBoxSymmetry.Name = "groupBoxSymmetry";
             this.groupBoxSymmetry.TabStop = false;
             // 

@@ -38,12 +38,21 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.groupBoxPolyhedron = new System.Windows.Forms.GroupBox();
+            this.numericBoxPolyhedronAlpha = new Crystallography.Controls.NumericBox();
+            this.colorControlPlyhedron = new Crystallography.Controls.ColorControl();
             this.checkBoxShowEdges = new System.Windows.Forms.CheckBox();
             this.groupBoxEdge = new System.Windows.Forms.GroupBox();
+            this.numericBoxEdgeWidth = new Crystallography.Controls.NumericBox();
+            this.colorControlEdges = new Crystallography.Controls.ColorControl();
             this.checkBoxShowInnerBonds = new System.Windows.Forms.CheckBox();
             this.checkBoxShowVertexAtoms = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCenterAtom = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.colorControlBond = new Crystallography.Controls.ColorControl();
+            this.numericBoxBondAlpha = new Crystallography.Controls.NumericBox();
+            this.numericBoxBondRadius = new Crystallography.Controls.NumericBox();
+            this.numericBoxBondMaxLength = new Crystallography.Controls.NumericBox();
+            this.numericBoxBondMinLength = new Crystallography.Controls.NumericBox();
             this.buttonAddBond = new System.Windows.Forms.Button();
             this.buttonChangeBond = new System.Windows.Forms.Button();
             this.buttonDeleteBond = new System.Windows.Forms.Button();
@@ -55,6 +64,8 @@
             this.vertexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minLenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bondColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.polyhedronColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,17 +80,6 @@
             this.dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.bondColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.polyhedronColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colorControlBond = new Crystallography.Controls.ColorControl();
-            this.numericBoxBondAlpha = new Crystallography.Controls.NumericBox();
-            this.numericBoxBondRadius = new Crystallography.Controls.NumericBox();
-            this.numericBoxBondMaxLength = new Crystallography.Controls.NumericBox();
-            this.numericBoxBondMinLength = new Crystallography.Controls.NumericBox();
-            this.numericBoxPolyhedronAlpha = new Crystallography.Controls.NumericBox();
-            this.colorControlPlyhedron = new Crystallography.Controls.ColorControl();
-            this.numericBoxEdgeWidth = new Crystallography.Controls.NumericBox();
-            this.colorControlEdges = new Crystallography.Controls.ColorControl();
             this.groupBoxPolyhedron.SuspendLayout();
             this.groupBoxEdge.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -146,6 +146,54 @@
             this.groupBoxPolyhedron.Name = "groupBoxPolyhedron";
             this.groupBoxPolyhedron.TabStop = false;
             // 
+            // numericBoxPolyhedronAlpha
+            // 
+            this.numericBoxPolyhedronAlpha.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxPolyhedronAlpha, "numericBoxPolyhedronAlpha");
+            this.numericBoxPolyhedronAlpha.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPolyhedronAlpha.DecimalPlaces = 1;
+            this.numericBoxPolyhedronAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPolyhedronAlpha.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxPolyhedronAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPolyhedronAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxPolyhedronAlpha.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxPolyhedronAlpha.Maximum = 1D;
+            this.numericBoxPolyhedronAlpha.Minimum = 0D;
+            this.numericBoxPolyhedronAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxPolyhedronAlpha.MouseSpeed = 1D;
+            this.numericBoxPolyhedronAlpha.Multiline = false;
+            this.numericBoxPolyhedronAlpha.Name = "numericBoxPolyhedronAlpha";
+            this.numericBoxPolyhedronAlpha.RadianValue = 0.012217304763960307D;
+            this.numericBoxPolyhedronAlpha.ReadOnly = false;
+            this.numericBoxPolyhedronAlpha.RestrictLimitValue = true;
+            this.numericBoxPolyhedronAlpha.ShowFraction = false;
+            this.numericBoxPolyhedronAlpha.ShowPositiveSign = false;
+            this.numericBoxPolyhedronAlpha.ShowUpDown = true;
+            this.numericBoxPolyhedronAlpha.SkipEventDuringInput = false;
+            this.numericBoxPolyhedronAlpha.SmartIncrement = true;
+            this.numericBoxPolyhedronAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxPolyhedronAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxPolyhedronAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPolyhedronAlpha.ThonsandsSeparator = true;
+            this.numericBoxPolyhedronAlpha.UpDown_Increment = 0.1D;
+            this.numericBoxPolyhedronAlpha.Value = 0.7D;
+            this.numericBoxPolyhedronAlpha.WordWrap = true;
+            // 
+            // colorControlPlyhedron
+            // 
+            this.colorControlPlyhedron.Argb = -986896;
+            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
+            this.colorControlPlyhedron.Blue = 240;
+            this.colorControlPlyhedron.BlueF = 0.9411765F;
+            this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlPlyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlPlyhedron.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlPlyhedron.Green = 240;
+            this.colorControlPlyhedron.GreenF = 0.9411765F;
+            this.colorControlPlyhedron.Name = "colorControlPlyhedron";
+            this.colorControlPlyhedron.Red = 240;
+            this.colorControlPlyhedron.RedF = 0.9411765F;
+            // 
             // checkBoxShowEdges
             // 
             resources.ApplyResources(this.checkBoxShowEdges, "checkBoxShowEdges");
@@ -162,6 +210,54 @@
             resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
             this.groupBoxEdge.Name = "groupBoxEdge";
             this.groupBoxEdge.TabStop = false;
+            // 
+            // numericBoxEdgeWidth
+            // 
+            this.numericBoxEdgeWidth.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxEdgeWidth, "numericBoxEdgeWidth");
+            this.numericBoxEdgeWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEdgeWidth.DecimalPlaces = 1;
+            this.numericBoxEdgeWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEdgeWidth.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEdgeWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEdgeWidth.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxEdgeWidth.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxEdgeWidth.Maximum = 1D;
+            this.numericBoxEdgeWidth.Minimum = 0D;
+            this.numericBoxEdgeWidth.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxEdgeWidth.MouseSpeed = 1D;
+            this.numericBoxEdgeWidth.Multiline = false;
+            this.numericBoxEdgeWidth.Name = "numericBoxEdgeWidth";
+            this.numericBoxEdgeWidth.RadianValue = 0.012217304763960307D;
+            this.numericBoxEdgeWidth.ReadOnly = false;
+            this.numericBoxEdgeWidth.RestrictLimitValue = true;
+            this.numericBoxEdgeWidth.ShowFraction = false;
+            this.numericBoxEdgeWidth.ShowPositiveSign = false;
+            this.numericBoxEdgeWidth.ShowUpDown = true;
+            this.numericBoxEdgeWidth.SkipEventDuringInput = false;
+            this.numericBoxEdgeWidth.SmartIncrement = true;
+            this.numericBoxEdgeWidth.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxEdgeWidth.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxEdgeWidth.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxEdgeWidth.ThonsandsSeparator = true;
+            this.numericBoxEdgeWidth.UpDown_Increment = 0.1D;
+            this.numericBoxEdgeWidth.Value = 0.7D;
+            this.numericBoxEdgeWidth.WordWrap = true;
+            // 
+            // colorControlEdges
+            // 
+            this.colorControlEdges.Argb = -986896;
+            resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
+            this.colorControlEdges.Blue = 240;
+            this.colorControlEdges.BlueF = 0.9411765F;
+            this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlEdges.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlEdges.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlEdges.Green = 240;
+            this.colorControlEdges.GreenF = 0.9411765F;
+            this.colorControlEdges.Name = "colorControlEdges";
+            this.colorControlEdges.Red = 240;
+            this.colorControlEdges.RedF = 0.9411765F;
             // 
             // checkBoxShowInnerBonds
             // 
@@ -204,219 +300,6 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // buttonAddBond
-            // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
-            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBond.Name = "buttonAddBond";
-            this.buttonAddBond.UseVisualStyleBackColor = false;
-            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonChangeBond
-            // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
-            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
-            this.buttonChangeBond.Name = "buttonChangeBond";
-            this.buttonChangeBond.UseVisualStyleBackColor = false;
-            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
-            // 
-            // buttonDeleteBond
-            // 
-            resources.ApplyResources(this.buttonDeleteBond, "buttonDeleteBond");
-            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteBond.Name = "buttonDeleteBond";
-            this.buttonDeleteBond.UseVisualStyleBackColor = false;
-            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataMember = "DataTableBond";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.enabledDataGridViewCheckBoxColumn,
-            this.centerDataGridViewTextBoxColumn,
-            this.vertexDataGridViewTextBoxColumn,
-            this.maxLenDataGridViewTextBoxColumn,
-            this.minLenDataGridViewTextBoxColumn,
-            this.bondColorDataGridViewTextBoxColumn,
-            this.polyhedronColorDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
-            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // enabledDataGridViewCheckBoxColumn
-            // 
-            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn, "enabledDataGridViewCheckBoxColumn");
-            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
-            // 
-            // centerDataGridViewTextBoxColumn
-            // 
-            this.centerDataGridViewTextBoxColumn.DataPropertyName = "Center";
-            resources.ApplyResources(this.centerDataGridViewTextBoxColumn, "centerDataGridViewTextBoxColumn");
-            this.centerDataGridViewTextBoxColumn.Name = "centerDataGridViewTextBoxColumn";
-            this.centerDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // vertexDataGridViewTextBoxColumn
-            // 
-            this.vertexDataGridViewTextBoxColumn.DataPropertyName = "Vertex";
-            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn, "vertexDataGridViewTextBoxColumn");
-            this.vertexDataGridViewTextBoxColumn.Name = "vertexDataGridViewTextBoxColumn";
-            this.vertexDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // maxLenDataGridViewTextBoxColumn
-            // 
-            this.maxLenDataGridViewTextBoxColumn.DataPropertyName = "Max len.";
-            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn, "maxLenDataGridViewTextBoxColumn");
-            this.maxLenDataGridViewTextBoxColumn.Name = "maxLenDataGridViewTextBoxColumn";
-            this.maxLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // minLenDataGridViewTextBoxColumn
-            // 
-            this.minLenDataGridViewTextBoxColumn.DataPropertyName = "Min len.";
-            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn, "minLenDataGridViewTextBoxColumn");
-            this.minLenDataGridViewTextBoxColumn.Name = "minLenDataGridViewTextBoxColumn";
-            this.minLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonAddBond);
-            this.panel1.Controls.Add(this.buttonChangeBond);
-            this.panel1.Controls.Add(this.buttonDeleteBond);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
-            this.panel2.Controls.Add(this.groupBoxPolyhedron);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            this.dataGridViewImageColumn4.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn4, "dataGridViewImageColumn4");
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn5
-            // 
-            this.dataGridViewImageColumn5.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn5, "dataGridViewImageColumn5");
-            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            this.dataGridViewImageColumn6.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn6, "dataGridViewImageColumn6");
-            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn7
-            // 
-            this.dataGridViewImageColumn7.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn7, "dataGridViewImageColumn7");
-            this.dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
-            this.dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn8
-            // 
-            this.dataGridViewImageColumn8.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn8, "dataGridViewImageColumn8");
-            this.dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
-            this.dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn9
-            // 
-            this.dataGridViewImageColumn9.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn9, "dataGridViewImageColumn9");
-            this.dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
-            this.dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn10
-            // 
-            this.dataGridViewImageColumn10.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn10, "dataGridViewImageColumn10");
-            this.dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
-            this.dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // bondColorDataGridViewTextBoxColumn
-            // 
-            this.bondColorDataGridViewTextBoxColumn.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.bondColorDataGridViewTextBoxColumn, "bondColorDataGridViewTextBoxColumn");
-            this.bondColorDataGridViewTextBoxColumn.Name = "bondColorDataGridViewTextBoxColumn";
-            this.bondColorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // polyhedronColorDataGridViewTextBoxColumn
-            // 
-            this.polyhedronColorDataGridViewTextBoxColumn.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.polyhedronColorDataGridViewTextBoxColumn, "polyhedronColorDataGridViewTextBoxColumn");
-            this.polyhedronColorDataGridViewTextBoxColumn.Name = "polyhedronColorDataGridViewTextBoxColumn";
-            this.polyhedronColorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // colorControlBond
             // 
             this.colorControlBond.Argb = -986896;
@@ -431,7 +314,6 @@
             this.colorControlBond.Name = "colorControlBond";
             this.colorControlBond.Red = 240;
             this.colorControlBond.RedF = 0.9411765F;
-            this.colorControlBond.ToolTip = "";
             // 
             // numericBoxBondAlpha
             // 
@@ -565,103 +447,218 @@
             this.numericBoxBondMinLength.Value = 0.1D;
             this.numericBoxBondMinLength.WordWrap = true;
             // 
-            // numericBoxPolyhedronAlpha
+            // buttonAddBond
             // 
-            this.numericBoxPolyhedronAlpha.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxPolyhedronAlpha, "numericBoxPolyhedronAlpha");
-            this.numericBoxPolyhedronAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPolyhedronAlpha.DecimalPlaces = 1;
-            this.numericBoxPolyhedronAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPolyhedronAlpha.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxPolyhedronAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPolyhedronAlpha.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxPolyhedronAlpha.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPolyhedronAlpha.Maximum = 1D;
-            this.numericBoxPolyhedronAlpha.Minimum = 0D;
-            this.numericBoxPolyhedronAlpha.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxPolyhedronAlpha.MouseSpeed = 1D;
-            this.numericBoxPolyhedronAlpha.Multiline = false;
-            this.numericBoxPolyhedronAlpha.Name = "numericBoxPolyhedronAlpha";
-            this.numericBoxPolyhedronAlpha.RadianValue = 0.012217304763960307D;
-            this.numericBoxPolyhedronAlpha.ReadOnly = false;
-            this.numericBoxPolyhedronAlpha.RestrictLimitValue = true;
-            this.numericBoxPolyhedronAlpha.ShowFraction = false;
-            this.numericBoxPolyhedronAlpha.ShowPositiveSign = false;
-            this.numericBoxPolyhedronAlpha.ShowUpDown = true;
-            this.numericBoxPolyhedronAlpha.SkipEventDuringInput = false;
-            this.numericBoxPolyhedronAlpha.SmartIncrement = true;
-            this.numericBoxPolyhedronAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxPolyhedronAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxPolyhedronAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxPolyhedronAlpha.ThonsandsSeparator = true;
-            this.numericBoxPolyhedronAlpha.UpDown_Increment = 0.1D;
-            this.numericBoxPolyhedronAlpha.Value = 0.7D;
-            this.numericBoxPolyhedronAlpha.WordWrap = true;
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
+            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
+            this.buttonAddBond.Name = "buttonAddBond";
+            this.buttonAddBond.UseVisualStyleBackColor = false;
+            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // colorControlPlyhedron
+            // buttonChangeBond
             // 
-            this.colorControlPlyhedron.Argb = -986896;
-            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
-            this.colorControlPlyhedron.Blue = 240;
-            this.colorControlPlyhedron.BlueF = 0.9411765F;
-            this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlPlyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlPlyhedron.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlPlyhedron.Green = 240;
-            this.colorControlPlyhedron.GreenF = 0.9411765F;
-            this.colorControlPlyhedron.Name = "colorControlPlyhedron";
-            this.colorControlPlyhedron.Red = 240;
-            this.colorControlPlyhedron.RedF = 0.9411765F;
-            this.colorControlPlyhedron.ToolTip = "";
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
+            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
+            this.buttonChangeBond.Name = "buttonChangeBond";
+            this.buttonChangeBond.UseVisualStyleBackColor = false;
+            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
             // 
-            // numericBoxEdgeWidth
+            // buttonDeleteBond
             // 
-            this.numericBoxEdgeWidth.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxEdgeWidth, "numericBoxEdgeWidth");
-            this.numericBoxEdgeWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEdgeWidth.DecimalPlaces = 1;
-            this.numericBoxEdgeWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEdgeWidth.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxEdgeWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEdgeWidth.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxEdgeWidth.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxEdgeWidth.Maximum = 1D;
-            this.numericBoxEdgeWidth.Minimum = 0D;
-            this.numericBoxEdgeWidth.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxEdgeWidth.MouseSpeed = 1D;
-            this.numericBoxEdgeWidth.Multiline = false;
-            this.numericBoxEdgeWidth.Name = "numericBoxEdgeWidth";
-            this.numericBoxEdgeWidth.RadianValue = 0.012217304763960307D;
-            this.numericBoxEdgeWidth.ReadOnly = false;
-            this.numericBoxEdgeWidth.RestrictLimitValue = true;
-            this.numericBoxEdgeWidth.ShowFraction = false;
-            this.numericBoxEdgeWidth.ShowPositiveSign = false;
-            this.numericBoxEdgeWidth.ShowUpDown = true;
-            this.numericBoxEdgeWidth.SkipEventDuringInput = false;
-            this.numericBoxEdgeWidth.SmartIncrement = true;
-            this.numericBoxEdgeWidth.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxEdgeWidth.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxEdgeWidth.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxEdgeWidth.ThonsandsSeparator = true;
-            this.numericBoxEdgeWidth.UpDown_Increment = 0.1D;
-            this.numericBoxEdgeWidth.Value = 0.7D;
-            this.numericBoxEdgeWidth.WordWrap = true;
+            resources.ApplyResources(this.buttonDeleteBond, "buttonDeleteBond");
+            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteBond.Name = "buttonDeleteBond";
+            this.buttonDeleteBond.UseVisualStyleBackColor = false;
+            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // colorControlEdges
+            // dataSet
             // 
-            this.colorControlEdges.Argb = -986896;
-            resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
-            this.colorControlEdges.Blue = 240;
-            this.colorControlEdges.BlueF = 0.9411765F;
-            this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlEdges.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlEdges.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlEdges.Green = 240;
-            this.colorControlEdges.GreenF = 0.9411765F;
-            this.colorControlEdges.Name = "colorControlEdges";
-            this.colorControlEdges.Red = 240;
-            this.colorControlEdges.RedF = 0.9411765F;
-            this.colorControlEdges.ToolTip = "";
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataMember = "DataTableBond";
+            this.bindingSource.DataSource = this.dataSet;
+            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.enabledDataGridViewCheckBoxColumn,
+            this.centerDataGridViewTextBoxColumn,
+            this.vertexDataGridViewTextBoxColumn,
+            this.maxLenDataGridViewTextBoxColumn,
+            this.minLenDataGridViewTextBoxColumn,
+            this.bondColorDataGridViewTextBoxColumn,
+            this.polyhedronColorDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.bindingSource;
+            resources.ApplyResources(this.dataGridView, "dataGridView");
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowTemplate.Height = 21;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
+            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // enabledDataGridViewCheckBoxColumn
+            // 
+            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
+            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn, "enabledDataGridViewCheckBoxColumn");
+            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
+            // 
+            // centerDataGridViewTextBoxColumn
+            // 
+            this.centerDataGridViewTextBoxColumn.DataPropertyName = "Center";
+            resources.ApplyResources(this.centerDataGridViewTextBoxColumn, "centerDataGridViewTextBoxColumn");
+            this.centerDataGridViewTextBoxColumn.Name = "centerDataGridViewTextBoxColumn";
+            this.centerDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vertexDataGridViewTextBoxColumn
+            // 
+            this.vertexDataGridViewTextBoxColumn.DataPropertyName = "Vertex";
+            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn, "vertexDataGridViewTextBoxColumn");
+            this.vertexDataGridViewTextBoxColumn.Name = "vertexDataGridViewTextBoxColumn";
+            this.vertexDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // maxLenDataGridViewTextBoxColumn
+            // 
+            this.maxLenDataGridViewTextBoxColumn.DataPropertyName = "Max len.";
+            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn, "maxLenDataGridViewTextBoxColumn");
+            this.maxLenDataGridViewTextBoxColumn.Name = "maxLenDataGridViewTextBoxColumn";
+            this.maxLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // minLenDataGridViewTextBoxColumn
+            // 
+            this.minLenDataGridViewTextBoxColumn.DataPropertyName = "Min len.";
+            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn, "minLenDataGridViewTextBoxColumn");
+            this.minLenDataGridViewTextBoxColumn.Name = "minLenDataGridViewTextBoxColumn";
+            this.minLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // bondColorDataGridViewTextBoxColumn
+            // 
+            this.bondColorDataGridViewTextBoxColumn.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.bondColorDataGridViewTextBoxColumn, "bondColorDataGridViewTextBoxColumn");
+            this.bondColorDataGridViewTextBoxColumn.Name = "bondColorDataGridViewTextBoxColumn";
+            this.bondColorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // polyhedronColorDataGridViewTextBoxColumn
+            // 
+            this.polyhedronColorDataGridViewTextBoxColumn.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.polyhedronColorDataGridViewTextBoxColumn, "polyhedronColorDataGridViewTextBoxColumn");
+            this.polyhedronColorDataGridViewTextBoxColumn.Name = "polyhedronColorDataGridViewTextBoxColumn";
+            this.polyhedronColorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonAddBond);
+            this.panel1.Controls.Add(this.buttonChangeBond);
+            this.panel1.Controls.Add(this.buttonDeleteBond);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
+            this.panel2.Controls.Add(this.groupBoxPolyhedron);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewImageColumn1, "dataGridViewImageColumn1");
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewImageColumn3, "dataGridViewImageColumn3");
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewImageColumn4, "dataGridViewImageColumn4");
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn5
+            // 
+            this.dataGridViewImageColumn5.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewImageColumn5, "dataGridViewImageColumn5");
+            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn6
+            // 
+            this.dataGridViewImageColumn6.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewImageColumn6, "dataGridViewImageColumn6");
+            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
+            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn7
+            // 
+            this.dataGridViewImageColumn7.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewImageColumn7, "dataGridViewImageColumn7");
+            this.dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
+            this.dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn8
+            // 
+            this.dataGridViewImageColumn8.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewImageColumn8, "dataGridViewImageColumn8");
+            this.dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
+            this.dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn9
+            // 
+            this.dataGridViewImageColumn9.DataPropertyName = "Bond color";
+            resources.ApplyResources(this.dataGridViewImageColumn9, "dataGridViewImageColumn9");
+            this.dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
+            this.dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn10
+            // 
+            this.dataGridViewImageColumn10.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(this.dataGridViewImageColumn10, "dataGridViewImageColumn10");
+            this.dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
+            this.dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // BondInputControl
             // 

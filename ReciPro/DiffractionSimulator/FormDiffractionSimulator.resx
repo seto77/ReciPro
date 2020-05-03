@@ -244,7 +244,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStrip3.TabIndex" type="System.Int32, mscorlib">
-    <value>71</value>
+    <value>5</value>
   </data>
   <data name="toolStrip3.Text" xml:space="preserve">
     <value>toolStrip3</value>
@@ -415,7 +415,7 @@
     <value>236, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
+    <value>7</value>
   </data>
   <data name="toolStrip1.Text" xml:space="preserve">
     <value>toolStrip1</value>
@@ -451,13 +451,13 @@
     <value>228, 106</value>
   </data>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
     <value>tabPageWave</value>
@@ -502,7 +502,7 @@
     <value>102, 20</value>
   </data>
   <data name="trackBarStrSize.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>0</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 17</value>
@@ -529,7 +529,7 @@
     <value>114, 56</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>73</value>
+    <value>1</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>String size</value>
@@ -555,6 +555,24 @@
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlString.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlString.FooterText" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlString.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlString.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlString.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 46</value>
   </data>
@@ -565,13 +583,16 @@
     <value>62, 20</value>
   </data>
   <data name="colorControlString.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
+    <value>1</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -595,7 +616,7 @@
     <value>135, 34</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>3</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Foot of perpendicular
@@ -625,6 +646,24 @@
   <data name="colorControlFoot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlFoot.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlFoot.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlFoot.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlFoot.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlFoot.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlFoot.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlFoot.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 30</value>
   </data>
@@ -637,11 +676,14 @@
   <data name="colorControlFoot.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
   </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;colorControlFoot.Name" xml:space="preserve">
     <value>colorControlFoot</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -658,6 +700,24 @@
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlBackGround.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlBackGround.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlBackGround.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 21</value>
   </data>
@@ -668,13 +728,16 @@
     <value>97, 20</value>
   </data>
   <data name="colorControlBackGround.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
+    <value>0</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -689,7 +752,7 @@
     <value>298, 73</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>73</value>
+    <value>0</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Color</value>
@@ -742,6 +805,24 @@
   <data name="colorControlDefectLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlDefectLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDefectLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDefectLine.FooterText" xml:space="preserve">
+    <value>Kikuchi line color (Defect)</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlDefectLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 32</value>
   </data>
@@ -752,13 +833,16 @@
     <value>175, 20</value>
   </data>
   <data name="colorControlDefectLine.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>1</value>
+  </data>
+  <data name="colorControlDefectLine.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Name" xml:space="preserve">
     <value>colorControlDefectLine</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -775,6 +859,24 @@
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Kikuchi line color (Ecxess)</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlExcessLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 9</value>
   </data>
@@ -785,13 +887,16 @@
     <value>176, 20</value>
   </data>
   <data name="colorControlExcessLine.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>0</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Name" xml:space="preserve">
     <value>colorControlExcessLine</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -878,7 +983,7 @@
     <value>56, 25</value>
   </data>
   <data name="numericUpDownMinKL.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>2</value>
   </data>
   <data name="numericUpDownMinKL.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -950,7 +1055,7 @@
     <value>88, 16</value>
   </data>
   <data name="trackBarLineWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>3</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>菊池線の表示幅</value>
@@ -1042,6 +1147,24 @@
   <data name="colorControlDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlDebyeRing.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDebyeRing.FooterText" xml:space="preserve">
+    <value>Debye ring color</value>
+  </data>
+  <data name="colorControlDebyeRing.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDebyeRing.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDebyeRing.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlDebyeRing.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
   </data>
@@ -1052,13 +1175,16 @@
     <value>126, 20</value>
   </data>
   <data name="colorControlDebyeRing.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>0</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
     <value>colorControlDebyeRing</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
     <value>tabPageDebye</value>
@@ -1085,7 +1211,7 @@
     <value>125, 21</value>
   </data>
   <data name="checkBoxDebyeRingLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>3</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
     <value>Show index label</value>
@@ -1121,7 +1247,7 @@
     <value>179, 21</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>2</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
     <value>Ignore diffraction intensity
@@ -1185,7 +1311,7 @@
     <value>105, 19</value>
   </data>
   <data name="trackBarDebyeRingWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;trackBarDebyeRingWidth.Name" xml:space="preserve">
     <value>trackBarDebyeRingWidth</value>
@@ -1239,7 +1365,7 @@
     <value>129, 21</value>
   </data>
   <data name="checkBoxScaleLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>4</value>
   </data>
   <data name="checkBoxScaleLabel.Text" xml:space="preserve">
     <value>Show scale labels</value>
@@ -1299,7 +1425,7 @@
     <value>88, 16</value>
   </data>
   <data name="trackBarScaleLineWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;trackBarScaleLineWidth.Name" xml:space="preserve">
     <value>trackBarScaleLineWidth</value>
@@ -1410,7 +1536,7 @@
     <value>70, 19</value>
   </data>
   <data name="radioButtonScaleDivisionMedium.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="radioButtonScaleDivisionMedium.Text" xml:space="preserve">
     <value>Medium</value>
@@ -1446,7 +1572,7 @@
     <value>61, 19</value>
   </data>
   <data name="radioButtonScaleDivisionCoarse.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="radioButtonScaleDivisionCoarse.Text" xml:space="preserve">
     <value>Coarse</value>
@@ -1493,6 +1619,24 @@
   <data name="colorControlScaleAzimuth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlScaleAzimuth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScaleAzimuth.FooterText" xml:space="preserve">
+    <value>Azimuth scale line</value>
+  </data>
+  <data name="colorControlScaleAzimuth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScaleAzimuth.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScaleAzimuth.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlScaleAzimuth.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 29</value>
   </data>
@@ -1505,11 +1649,14 @@
   <data name="colorControlScaleAzimuth.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Name" xml:space="preserve">
     <value>colorControlScaleAzimuth</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1526,6 +1673,24 @@
   <data name="colorControlScale2Theta.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlScale2Theta.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScale2Theta.FooterText" xml:space="preserve">
+    <value>2θ scale line</value>
+  </data>
+  <data name="colorControlScale2Theta.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScale2Theta.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScale2Theta.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlScale2Theta.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 4</value>
   </data>
@@ -1536,13 +1701,16 @@
     <value>100, 20</value>
   </data>
   <data name="colorControlScale2Theta.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Name" xml:space="preserve">
     <value>colorControlScale2Theta</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1582,6 +1750,9 @@
   </data>
   <data name="numericBoxDev.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxDev.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDev.FooterText" xml:space="preserve">
     <value>%</value>
@@ -1623,7 +1794,7 @@
     <value>numericBoxDev</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1639,6 +1810,9 @@
   </data>
   <data name="numericBoxAcc.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAcc.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAcc.FooterText" xml:space="preserve">
     <value>kev</value>
@@ -1680,7 +1854,7 @@
     <value>numericBoxAcc</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1851,7 +2025,7 @@
     <value>436, 139</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
@@ -1884,7 +2058,7 @@
     <value>188, 19</value>
   </data>
   <data name="checkBoxUseCrystalColor.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>0</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
     <value>Assigned color of each crystals</value>
@@ -1923,7 +2097,7 @@
     <value>200, 30</value>
   </data>
   <data name="checkBoxExtinctionAll.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>0</value>
   </data>
   <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
     <value>Exclude all prohited reflections by
@@ -1960,7 +2134,7 @@ lattice centring, glide, and screw</value>
     <value>180, 30</value>
   </data>
   <data name="checkBoxExtinctionLattice.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>1</value>
   </data>
   <data name="checkBoxExtinctionLattice.Text" xml:space="preserve">
     <value>Exclude reflections prohibited
@@ -1991,7 +2165,7 @@ lattice centring, glide, and screw</value>
     <value>88, 25</value>
   </data>
   <data name="numericUpDownCamaraLength2.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>0</value>
   </data>
   <data name="numericUpDownCamaraLength2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -2036,7 +2210,7 @@ lattice centring, glide, and screw</value>
     <value>78, 44</value>
   </data>
   <data name="buttonDetailedGeometry.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
+    <value>1</value>
   </data>
   <data name="buttonDetailedGeometry.Text" xml:space="preserve">
     <value>Detailed
@@ -2142,7 +2316,7 @@ lattice centring, glide, and screw</value>
     <value>237, 62</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
+    <value>2</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Detector Geometry</value>
@@ -2181,7 +2355,7 @@ lattice centring, glide, and screw</value>
     <value>90, 27</value>
   </data>
   <data name="buttonResetCenter.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
+    <value>4</value>
   </data>
   <data name="buttonResetCenter.Text" xml:space="preserve">
     <value>Reset center</value>
@@ -2223,7 +2397,7 @@ lattice centring, glide, and screw</value>
     <value>144, 17</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>0</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Precession property</value>
@@ -2248,6 +2422,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxPED_Semiangle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPED_Semiangle.FooterText" xml:space="preserve">
     <value>mrad</value>
@@ -2277,7 +2454,7 @@ lattice centring, glide, and screw</value>
     <value>165, 25</value>
   </data>
   <data name="numericBoxPED_Semiangle.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>1</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value />
@@ -2286,7 +2463,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Semiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -2302,6 +2479,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxPED_Step.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxPED_Step.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPED_Step.FooterText" xml:space="preserve">
     <value />
@@ -2331,7 +2511,7 @@ lattice centring, glide, and screw</value>
     <value>83, 25</value>
   </data>
   <data name="numericBoxPED_Step.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>2</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
     <value />
@@ -2340,7 +2520,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Step</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -2406,7 +2586,7 @@ lattice centring, glide, and screw</value>
     <value>146, 17</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Bloch wave property</value>
@@ -2431,6 +2611,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxNumOfBlochWave.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.FooterText" xml:space="preserve">
     <value />
@@ -2460,7 +2643,7 @@ lattice centring, glide, and screw</value>
     <value>179, 25</value>
   </data>
   <data name="numericBoxNumOfBlochWave.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>1</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value />
@@ -2469,7 +2652,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxNumOfBlochWave</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -2485,6 +2668,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThickness.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxThickness.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -2514,7 +2700,7 @@ lattice centring, glide, and screw</value>
     <value>187, 25</value>
   </data>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>2</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value />
@@ -2523,7 +2709,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxThickness</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -2589,7 +2775,7 @@ lattice centring, glide, and screw</value>
     <value>88, 17</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>0</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Appearance</value>
@@ -2664,7 +2850,7 @@ lattice centring, glide, and screw</value>
     <value>78, 21</value>
   </data>
   <data name="radioButtonPointSpread.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>0</value>
   </data>
   <data name="radioButtonPointSpread.Text" xml:space="preserve">
     <value>Gaussian</value>
@@ -2760,7 +2946,7 @@ lattice centring, glide, and screw</value>
     <value>123, 17</value>
   </data>
   <data name="trackBarSpotOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>0</value>
   </data>
   <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
     <value>指数文字列の大きさを表示/設定します</value>
@@ -2816,6 +3002,9 @@ lattice centring, glide, and screw</value>
   <data name="numericBoxSpotRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxSpotRadius.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="numericBoxSpotRadius.FooterText" xml:space="preserve">
     <value>1/nm</value>
   </data>
@@ -2844,7 +3033,7 @@ lattice centring, glide, and screw</value>
     <value>152, 25</value>
   </data>
   <data name="numericBoxSpotRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
+    <value>0</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
     <value />
@@ -2853,7 +3042,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxSpotRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -2955,7 +3144,7 @@ lattice centring, glide, and screw</value>
     <value>189, 18</value>
   </data>
   <data name="trackBarIntensityForPointSpread.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>0</value>
   </data>
   <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
     <value>指数文字列の大きさを表示/設定します</value>
@@ -3051,7 +3240,7 @@ lattice centring, glide, and screw</value>
     <value>108, 23</value>
   </data>
   <data name="comboBoxScaleColorScale.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;comboBoxScaleColorScale.Name" xml:space="preserve">
     <value>comboBoxScaleColorScale</value>
@@ -3108,7 +3297,7 @@ lattice centring, glide, and screw</value>
     <value>82, 21</value>
   </data>
   <data name="checkBoxLogScale.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>0</value>
   </data>
   <data name="checkBoxLogScale.Text" xml:space="preserve">
     <value>Log scale</value>
@@ -3239,6 +3428,24 @@ lattice centring, glide, and screw</value>
   <data name="colorControlOrigin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlOrigin.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="colorControlOrigin.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlOrigin.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlOrigin.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlOrigin.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 41</value>
   </data>
@@ -3249,13 +3456,16 @@ lattice centring, glide, and screw</value>
     <value>62, 20</value>
   </data>
   <data name="colorControlOrigin.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>1</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlOrigin.Name" xml:space="preserve">
     <value>colorControlOrigin</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3272,6 +3482,24 @@ lattice centring, glide, and screw</value>
   <data name="colorControlNoCondition.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlNoCondition.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlNoCondition.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlNoCondition.FooterText" xml:space="preserve">
+    <value>General spots</value>
+  </data>
+  <data name="colorControlNoCondition.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlNoCondition.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlNoCondition.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlNoCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 41</value>
   </data>
@@ -3282,13 +3510,16 @@ lattice centring, glide, and screw</value>
     <value>109, 20</value>
   </data>
   <data name="colorControlNoCondition.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>2</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Name" xml:space="preserve">
     <value>colorControlNoCondition</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3305,6 +3536,24 @@ lattice centring, glide, and screw</value>
   <data name="colorControlScrewGlide.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlScrewGlide.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScrewGlide.FooterText" xml:space="preserve">
+    <value>Extinct spots (Screw or Glide)</value>
+  </data>
+  <data name="colorControlScrewGlide.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlScrewGlide.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlScrewGlide.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlScrewGlide.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 63</value>
   </data>
@@ -3315,13 +3564,16 @@ lattice centring, glide, and screw</value>
     <value>198, 20</value>
   </data>
   <data name="colorControlScrewGlide.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>3</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Name" xml:space="preserve">
     <value>colorControlScrewGlide</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3338,6 +3590,24 @@ lattice centring, glide, and screw</value>
   <data name="colorControlForbiddenLattice.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlForbiddenLattice.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlForbiddenLattice.FooterText" xml:space="preserve">
+    <value>Extinct spots (lattice centring)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlForbiddenLattice.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlForbiddenLattice.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlForbiddenLattice.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 85</value>
   </data>
@@ -3348,13 +3618,16 @@ lattice centring, glide, and screw</value>
     <value>198, 20</value>
   </data>
   <data name="colorControlForbiddenLattice.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>4</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Name" xml:space="preserve">
     <value>colorControlForbiddenLattice</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -3447,7 +3720,7 @@ lattice centring, glide, and screw</value>
     <value>141, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>4</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Intensity calculation</value>
@@ -3483,7 +3756,7 @@ lattice centring, glide, and screw</value>
     <value>145, 21</value>
   </data>
   <data name="radioButtonIntensityExcitation.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>0</value>
   </data>
   <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
     <value>Only excitation error</value>
@@ -3552,7 +3825,7 @@ lattice centring, glide, and screw</value>
     <value>199, 21</value>
   </data>
   <data name="radioButtonIntensityKinematical.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>1</value>
   </data>
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
     <value>Kinematical &amp;&amp; excitation error</value>
@@ -3588,7 +3861,7 @@ lattice centring, glide, and screw</value>
     <value>126, 21</value>
   </data>
   <data name="radioButtonIntensityBethe.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>2</value>
   </data>
   <data name="radioButtonIntensityBethe.Text" xml:space="preserve">
     <value>Dynamical theory</value>
@@ -3627,7 +3900,7 @@ lattice centring, glide, and screw</value>
     <value>174, 27</value>
   </data>
   <data name="buttonDetailsOfSpots.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>3</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
     <value>Details of spot information</value>
@@ -3699,7 +3972,7 @@ lattice centring, glide, and screw</value>
     <value>103, 17</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>0</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Incident beam</value>
@@ -3735,7 +4008,7 @@ lattice centring, glide, and screw</value>
     <value>68, 21</value>
   </data>
   <data name="radioButtonBeamParallel.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>0</value>
   </data>
   <data name="radioButtonBeamParallel.Text" xml:space="preserve">
     <value>Parallel</value>
@@ -3771,7 +4044,7 @@ lattice centring, glide, and screw</value>
     <value>88, 21</value>
   </data>
   <data name="radioButtonBeamPrecession.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>1</value>
   </data>
   <data name="radioButtonBeamPrecession.Text" xml:space="preserve">
     <value>Precession</value>
@@ -3807,7 +4080,7 @@ lattice centring, glide, and screw</value>
     <value>102, 21</value>
   </data>
   <data name="radioButtonBeamConvergence.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>2</value>
   </data>
   <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
     <value>Convergence</value>
@@ -3834,7 +4107,7 @@ lattice centring, glide, and screw</value>
     <value>212, 50</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel10.Name" xml:space="preserve">
     <value>flowLayoutPanel10</value>
@@ -3897,7 +4170,7 @@ lattice centring, glide, and screw</value>
     <value>222, 762</value>
   </data>
   <data name="groupBoxSpotProperty.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
+    <value>4</value>
   </data>
   <data name="groupBoxSpotProperty.Text" xml:space="preserve">
     <value>Spot property</value>
@@ -4242,7 +4515,7 @@ lattice centring, glide, and screw</value>
     <value>828, 25</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
+    <value>0</value>
   </data>
   <data name="menuStrip1.Text" xml:space="preserve">
     <value>menuStrip1</value>
@@ -4312,6 +4585,9 @@ lattice centring, glide, and screw</value>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxClientHeight.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="numericBoxClientHeight.FooterText" xml:space="preserve">
     <value> pix</value>
   </data>
@@ -4340,7 +4616,7 @@ lattice centring, glide, and screw</value>
     <value>87, 25</value>
   </data>
   <data name="numericBoxClientHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
+    <value>2</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
     <value />
@@ -4349,7 +4625,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxClientHeight</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4365,6 +4641,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxClientWidth.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.FooterText" xml:space="preserve">
     <value>×</value>
@@ -4394,7 +4673,7 @@ lattice centring, glide, and screw</value>
     <value>75, 25</value>
   </data>
   <data name="numericBoxClientWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
+    <value>1</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
     <value />
@@ -4403,7 +4682,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxClientWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4419,6 +4698,9 @@ lattice centring, glide, and screw</value>
   </data>
   <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxResolution.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxResolution.FooterText" xml:space="preserve">
     <value>mm/pix.</value>
@@ -4448,7 +4730,7 @@ lattice centring, glide, and screw</value>
     <value>129, 25</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
+    <value>0</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value />
@@ -4457,7 +4739,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxResolution</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.711, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.352, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4553,7 +4835,7 @@ lattice centring, glide, and screw</value>
     <value>351, 63</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
+    <value>1</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Monitor</value>
@@ -4764,6 +5046,9 @@ lattice centring, glide, and screw</value>
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
   </data>
+  <data name="printPreviewDialog1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="printPreviewDialog1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4807,7 +5092,7 @@ lattice centring, glide, and screw</value>
     <value>606, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
+    <value>8</value>
   </data>
   <data name="statusStrip1.Text" xml:space="preserve">
     <value>statusStrip1</value>
@@ -4876,7 +5161,7 @@ lattice centring, glide, and screw</value>
     <value>42, 21</value>
   </data>
   <data name="checkBoxFixCenter.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
+    <value>5</value>
   </data>
   <data name="checkBoxFixCenter.Text" xml:space="preserve">
     <value>Fix</value>
@@ -5098,7 +5383,7 @@ lattice centring, glide, and screw</value>
     <value>602, 620</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
     <value>panelMain</value>
@@ -5218,6 +5503,9 @@ lattice centring, glide, and screw</value>
         ICAgICAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>400, 400</value>

@@ -216,7 +216,6 @@ namespace Crystallography.Controls
 
         #endregion プロパティ
 
-
         #region コンストラクタ
         public AtomControl()
         {
@@ -225,6 +224,11 @@ namespace Crystallography.Controls
             comboBoxAtom.SelectedIndex = 0;
             comboBoxNeutron.SelectedIndex = 0;
             //   toolTip.SetTooltipToUsercontrol(this);
+
+            //なぜか一部のnumericBoxのUp/Downが消えてしまうので、対処
+
+            numericBoxAmbient.ShowUpDown = numericBoxDiffusion.ShowUpDown = numericBoxSpecular.ShowUpDown = numericBoxShininess.ShowUpDown =
+                numericBoxEmission.ShowUpDown = numericBoxAlpha.ShowUpDown = numericBoxAtomRadius.ShowUpDown = true;
         }
         #endregion
 
@@ -372,9 +376,30 @@ namespace Crystallography.Controls
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
+        /// <summary>
+        /// 引数の原子をi番目と入れ替え
+        /// </summary>
+        /// <param name="atoms"></param>
+        /// <param name="i"></param>
         public void Replace(Atoms atoms, int i)
         {
             table.Replace(atoms, i);
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// 引数原子をi番目に設定し、そのMaterial Propertyをさらに引数と同じ元素に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void ReplaceAndCopyMaterial(Atoms atoms, int i)
+        {
+            table.Replace(atoms, i);
+            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
+            foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
+            { 
+                a.Material = atoms.Material;
+                a.Radius = atoms.Radius;
+            }
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -408,6 +433,9 @@ namespace Crystallography.Controls
         /// </summary>
         /// <returns></returns>
         public Atoms[] GetAll() => table.GetAll();
+
+
+        
 
         #endregion
 
@@ -478,6 +506,17 @@ namespace Crystallography.Controls
             }
         }
 
+        //編集内容を同種の元素にすべて適用する
+        private void buttonChangeToSameElement_Click(object sender, EventArgs e)
+        {
+            var pos = bindingSource.Position;
+            if (pos >= 0)
+            {
+                ReplaceAndCopyMaterial(GetFromInterface(), pos);
+                bindingSource.Position = pos;
+            }
+        }
+
         //原子削除ボタン
         private void buttonDelete_Click(object sender, System.EventArgs e)
         {
@@ -504,38 +543,6 @@ namespace Crystallography.Controls
             if (n >= bindingSource.Count - 1) return;
             table.MoveItem(n, n + 1);
             bindingSource.Position = n + 1;
-        }
-
-        //編集内容を同種の元素にすべて適用する
-        private void buttonChangeToSameElement_Click(object sender, EventArgs e)
-        {
-            /*       buttonChangeAtom_Click(new object(), new EventArgs());
-                   if (listBoxAtoms.SelectedIndex > 0)
-                   {
-                       Atoms source = (Atoms)listBoxAtoms.SelectedItem;
-                       int selectedIndex = listBoxAtoms.SelectedIndex;
-                       for (int i = 0; i < listBoxAtoms.Items.Count; i++)
-                       {
-                           if (i != listBoxAtoms.SelectedIndex)
-                           {
-                               Atoms a = (Atoms)listBoxAtoms.Items[i];
-                               if (a.AtomicNumber == source.AtomicNumber)
-                               {
-                                   a.Radius = source.Radius;
-                                   a.Argb = source.Argb;
-                                   a.Diffusion = source.Diffusion;
-                                   a.Emission = source.Emission;
-                                   a.Specular = source.Specular;
-                                   a.Transparency = source.Transparency;
-                                   a.Shininess = source.Shininess;
-                                   a.Ambient = source.Ambient;
-                               }
-                           }
-                       }
-                       GenerateCrystal();
-                       listBoxAtoms.SelectedIndex = selectedIndex;
-                   }
-                */
         }
 
         #endregion
@@ -620,6 +627,11 @@ namespace Crystallography.Controls
 
             ItemsChanged(this, e);
 
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
         }
     }
 }

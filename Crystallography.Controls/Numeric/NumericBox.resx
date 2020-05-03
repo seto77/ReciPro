@@ -289,7 +289,7 @@
     <value>No</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 25</value>
+    <value>51, 25</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -307,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="labelHeader.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -478,7 +478,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericUpDown.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labelFooter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

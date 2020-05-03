@@ -45,10 +45,6 @@ namespace ReciPro
             this.radioButtonPlanes = new System.Windows.Forms.RadioButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.labelPlusMinus2 = new System.Windows.Forms.Label();
-            this.labelPlusMinus1 = new System.Windows.Forms.Label();
-            this.labelPlusMinus3 = new System.Windows.Forms.Label();
             this.labelYpos = new System.Windows.Forms.Label();
             this.labelXpos = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,26 +57,15 @@ namespace ReciPro
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.colorControlSmallCircle = new Crystallography.Controls.ColorControl();
-            this.colorControlGreatCircle = new Crystallography.Controls.ColorControl();
             this.label4 = new System.Windows.Forms.Label();
-            this.colorControlString = new Crystallography.Controls.ColorControl();
-            this.colorControlUniqueAxis = new Crystallography.Controls.ColorControl();
-            this.colorControlUniquePlane = new Crystallography.Controls.ColorControl();
             this.labelUniqueAxis = new System.Windows.Forms.Label();
-            this.colorControlGeneralAxis = new Crystallography.Controls.ColorControl();
             this.labelGeneralAxis = new System.Windows.Forms.Label();
             this.labelUniquePlane = new System.Windows.Forms.Label();
             this.labelGeneralPlane = new System.Windows.Forms.Label();
-            this.colorControlGeneralPlane = new Crystallography.Controls.ColorControl();
-            this.colorControlBackGround = new Crystallography.Controls.ColorControl();
             this.labelBackGround = new System.Windows.Forms.Label();
-            this.colorControl90DegLine = new Crystallography.Controls.ColorControl();
             this.label90DegLine = new System.Windows.Forms.Label();
             this.label10DegLine = new System.Windows.Forms.Label();
-            this.colorControl10DegLine = new Crystallography.Controls.ColorControl();
             this.label1DegLine = new System.Windows.Forms.Label();
-            this.colorControl1DegLine = new Crystallography.Controls.ColorControl();
             this.labelString = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -112,17 +97,8 @@ namespace ReciPro
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.buttonYusaModeStop = new System.Windows.Forms.Button();
             this.buttonYusaModeStart = new System.Windows.Forms.Button();
-            this.numericalTextBoxRxSpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRySpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRzSpeed = new Crystallography.Controls.NumericBox();
             this.radioButtonRotationalScan = new System.Windows.Forms.RadioButton();
             this.radioButtonZigzagScan = new System.Windows.Forms.RadioButton();
-            this.numericalTextBoxTotalTime = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxAngularSpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRyStep = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRadialAngle = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRyOscillation = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRzOscillation = new Crystallography.Controls.NumericBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -159,8 +135,6 @@ namespace ReciPro
             this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelHU = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -174,17 +148,40 @@ namespace ReciPro
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
-            this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.numericBox3 = new Crystallography.Controls.NumericBox();
+            this.numericBox2 = new Crystallography.Controls.NumericBox();
+            this.numericBox1 = new Crystallography.Controls.NumericBox();
+            this.colorControlSmallCircle = new Crystallography.Controls.ColorControl();
+            this.colorControlGreatCircle = new Crystallography.Controls.ColorControl();
+            this.colorControlString = new Crystallography.Controls.ColorControl();
+            this.colorControlUniqueAxis = new Crystallography.Controls.ColorControl();
+            this.colorControlUniquePlane = new Crystallography.Controls.ColorControl();
+            this.colorControlGeneralAxis = new Crystallography.Controls.ColorControl();
+            this.colorControlGeneralPlane = new Crystallography.Controls.ColorControl();
+            this.colorControlBackGround = new Crystallography.Controls.ColorControl();
+            this.colorControl90DegLine = new Crystallography.Controls.ColorControl();
+            this.colorControl10DegLine = new Crystallography.Controls.ColorControl();
+            this.colorControl1DegLine = new Crystallography.Controls.ColorControl();
+            this.numericalTextBoxRxSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRySpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRzSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxTotalTime = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxAngularSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRyStep = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRadialAngle = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRyOscillation = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRzOscillation = new Crystallography.Controls.NumericBox();
+            this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -204,13 +201,12 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCircleW)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.panelSpecifiedIndices.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // trackBarStrSize
@@ -298,41 +294,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
-            // 
-            // numericUpDown3
-            // 
-            resources.ApplyResources(this.numericUpDown3, "numericUpDown3");
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.toolTip1.SetToolTip(this.numericUpDown3, resources.GetString("numericUpDown3.ToolTip"));
-            this.numericUpDown3.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            // 
-            // labelPlusMinus2
-            // 
-            resources.ApplyResources(this.labelPlusMinus2, "labelPlusMinus2");
-            this.labelPlusMinus2.Name = "labelPlusMinus2";
-            this.toolTip1.SetToolTip(this.labelPlusMinus2, resources.GetString("labelPlusMinus2.ToolTip"));
-            // 
-            // labelPlusMinus1
-            // 
-            resources.ApplyResources(this.labelPlusMinus1, "labelPlusMinus1");
-            this.labelPlusMinus1.Name = "labelPlusMinus1";
-            this.toolTip1.SetToolTip(this.labelPlusMinus1, resources.GetString("labelPlusMinus1.ToolTip"));
-            // 
-            // labelPlusMinus3
-            // 
-            resources.ApplyResources(this.labelPlusMinus3, "labelPlusMinus3");
-            this.labelPlusMinus3.Name = "labelPlusMinus3";
-            this.toolTip1.SetToolTip(this.labelPlusMinus3, resources.GetString("labelPlusMinus3.ToolTip"));
             // 
             // labelYpos
             // 
@@ -444,121 +405,16 @@ namespace ReciPro
             this.groupBox1.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
-            // colorControlSmallCircle
-            // 
-            this.colorControlSmallCircle.Argb = -16256;
-            this.colorControlSmallCircle.Blue = 128;
-            this.colorControlSmallCircle.BlueF = 0.5019608F;
-            this.colorControlSmallCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.colorControlSmallCircle.Green = 192;
-            this.colorControlSmallCircle.GreenF = 0.7529412F;
-            resources.ApplyResources(this.colorControlSmallCircle, "colorControlSmallCircle");
-            this.colorControlSmallCircle.Name = "colorControlSmallCircle";
-            this.colorControlSmallCircle.Red = 255;
-            this.colorControlSmallCircle.RedF = 1F;
-            this.colorControlSmallCircle.ToolTip = "";
-            this.colorControlSmallCircle.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlGreatCircle
-            // 
-            this.colorControlGreatCircle.Argb = -32768;
-            this.colorControlGreatCircle.Blue = 0;
-            this.colorControlGreatCircle.BlueF = 0F;
-            this.colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.colorControlGreatCircle.Green = 128;
-            this.colorControlGreatCircle.GreenF = 0.5019608F;
-            resources.ApplyResources(this.colorControlGreatCircle, "colorControlGreatCircle");
-            this.colorControlGreatCircle.Name = "colorControlGreatCircle";
-            this.colorControlGreatCircle.Red = 255;
-            this.colorControlGreatCircle.RedF = 1F;
-            this.colorControlGreatCircle.ToolTip = "";
-            this.colorControlGreatCircle.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
-            // colorControlString
-            // 
-            this.colorControlString.Argb = -16777216;
-            this.colorControlString.BackColor = System.Drawing.Color.Black;
-            this.colorControlString.Blue = 0;
-            this.colorControlString.BlueF = 0F;
-            this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlString.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlString.Green = 0;
-            this.colorControlString.GreenF = 0F;
-            resources.ApplyResources(this.colorControlString, "colorControlString");
-            this.colorControlString.Name = "colorControlString";
-            this.colorControlString.Red = 0;
-            this.colorControlString.RedF = 0F;
-            this.colorControlString.TabStop = false;
-            this.colorControlString.ToolTip = "指数文字の色";
-            this.toolTip1.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
-            this.colorControlString.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlUniqueAxis
-            // 
-            this.colorControlUniqueAxis.Argb = -7667712;
-            this.colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
-            this.colorControlUniqueAxis.Blue = 0;
-            this.colorControlUniqueAxis.BlueF = 0F;
-            this.colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlUniqueAxis.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlUniqueAxis.Green = 0;
-            this.colorControlUniqueAxis.GreenF = 0F;
-            resources.ApplyResources(this.colorControlUniqueAxis, "colorControlUniqueAxis");
-            this.colorControlUniqueAxis.Name = "colorControlUniqueAxis";
-            this.colorControlUniqueAxis.Red = 139;
-            this.colorControlUniqueAxis.RedF = 0.5450981F;
-            this.colorControlUniqueAxis.TabStop = false;
-            this.colorControlUniqueAxis.ToolTip = "軸表示時の[100], [010], [001]の表示色";
-            this.toolTip1.SetToolTip(this.colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
-            this.colorControlUniqueAxis.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlUniquePlane
-            // 
-            this.colorControlUniquePlane.Argb = -16751616;
-            this.colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
-            this.colorControlUniquePlane.Blue = 0;
-            this.colorControlUniquePlane.BlueF = 0F;
-            this.colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            this.colorControlUniquePlane.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlUniquePlane.Green = 100;
-            this.colorControlUniquePlane.GreenF = 0.3921569F;
-            resources.ApplyResources(this.colorControlUniquePlane, "colorControlUniquePlane");
-            this.colorControlUniquePlane.Name = "colorControlUniquePlane";
-            this.colorControlUniquePlane.Red = 0;
-            this.colorControlUniquePlane.RedF = 0F;
-            this.colorControlUniquePlane.TabStop = false;
-            this.colorControlUniquePlane.ToolTip = "結晶面(100), (010), (001)の色";
-            this.toolTip1.SetToolTip(this.colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
-            this.colorControlUniquePlane.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelUniqueAxis
             // 
             resources.ApplyResources(this.labelUniqueAxis, "labelUniqueAxis");
             this.labelUniqueAxis.Name = "labelUniqueAxis";
             this.toolTip1.SetToolTip(this.labelUniqueAxis, resources.GetString("labelUniqueAxis.ToolTip"));
-            // 
-            // colorControlGeneralAxis
-            // 
-            this.colorControlGeneralAxis.Argb = -65536;
-            this.colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.colorControlGeneralAxis.Blue = 0;
-            this.colorControlGeneralAxis.BlueF = 0F;
-            this.colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlGeneralAxis.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlGeneralAxis.Green = 0;
-            this.colorControlGeneralAxis.GreenF = 0F;
-            resources.ApplyResources(this.colorControlGeneralAxis, "colorControlGeneralAxis");
-            this.colorControlGeneralAxis.Name = "colorControlGeneralAxis";
-            this.colorControlGeneralAxis.Red = 255;
-            this.colorControlGeneralAxis.RedF = 1F;
-            this.colorControlGeneralAxis.TabStop = false;
-            this.colorControlGeneralAxis.ToolTip = "";
-            this.colorControlGeneralAxis.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelGeneralAxis
             // 
@@ -578,66 +434,11 @@ namespace ReciPro
             this.labelGeneralPlane.Name = "labelGeneralPlane";
             this.toolTip1.SetToolTip(this.labelGeneralPlane, resources.GetString("labelGeneralPlane.ToolTip"));
             // 
-            // colorControlGeneralPlane
-            // 
-            this.colorControlGeneralPlane.Argb = -14578910;
-            this.colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorControlGeneralPlane.Blue = 34;
-            this.colorControlGeneralPlane.BlueF = 0.1333333F;
-            this.colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
-            this.colorControlGeneralPlane.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlGeneralPlane.Green = 139;
-            this.colorControlGeneralPlane.GreenF = 0.5450981F;
-            resources.ApplyResources(this.colorControlGeneralPlane, "colorControlGeneralPlane");
-            this.colorControlGeneralPlane.Name = "colorControlGeneralPlane";
-            this.colorControlGeneralPlane.Red = 33;
-            this.colorControlGeneralPlane.RedF = 0.1294118F;
-            this.colorControlGeneralPlane.TabStop = false;
-            this.colorControlGeneralPlane.ToolTip = "";
-            this.colorControlGeneralPlane.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlBackGround
-            // 
-            this.colorControlBackGround.Argb = -1;
-            this.colorControlBackGround.BackColor = System.Drawing.Color.White;
-            this.colorControlBackGround.Blue = 255;
-            this.colorControlBackGround.BlueF = 1F;
-            this.colorControlBackGround.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colorControlBackGround.Green = 255;
-            this.colorControlBackGround.GreenF = 1F;
-            resources.ApplyResources(this.colorControlBackGround, "colorControlBackGround");
-            this.colorControlBackGround.Name = "colorControlBackGround";
-            this.colorControlBackGround.Red = 255;
-            this.colorControlBackGround.RedF = 1F;
-            this.colorControlBackGround.TabStop = false;
-            this.colorControlBackGround.ToolTip = "背景色";
-            this.toolTip1.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
-            this.colorControlBackGround.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
             // labelBackGround
             // 
             resources.ApplyResources(this.labelBackGround, "labelBackGround");
             this.labelBackGround.Name = "labelBackGround";
             this.toolTip1.SetToolTip(this.labelBackGround, resources.GetString("labelBackGround.ToolTip"));
-            // 
-            // colorControl90DegLine
-            // 
-            this.colorControl90DegLine.Argb = -16776961;
-            this.colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            this.colorControl90DegLine.Blue = 255;
-            this.colorControl90DegLine.BlueF = 1F;
-            this.colorControl90DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.colorControl90DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl90DegLine.Green = 0;
-            this.colorControl90DegLine.GreenF = 0F;
-            resources.ApplyResources(this.colorControl90DegLine, "colorControl90DegLine");
-            this.colorControl90DegLine.Name = "colorControl90DegLine";
-            this.colorControl90DegLine.Red = 0;
-            this.colorControl90DegLine.RedF = 0F;
-            this.colorControl90DegLine.TabStop = false;
-            this.colorControl90DegLine.ToolTip = "90度線の色";
-            this.toolTip1.SetToolTip(this.colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
-            this.colorControl90DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // label90DegLine
             // 
@@ -651,49 +452,11 @@ namespace ReciPro
             this.label10DegLine.Name = "label10DegLine";
             this.toolTip1.SetToolTip(this.label10DegLine, resources.GetString("label10DegLine.ToolTip"));
             // 
-            // colorControl10DegLine
-            // 
-            this.colorControl10DegLine.Argb = -8355585;
-            this.colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.colorControl10DegLine.Blue = 255;
-            this.colorControl10DegLine.BlueF = 1F;
-            this.colorControl10DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.colorControl10DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl10DegLine.Green = 128;
-            this.colorControl10DegLine.GreenF = 0.5019608F;
-            resources.ApplyResources(this.colorControl10DegLine, "colorControl10DegLine");
-            this.colorControl10DegLine.Name = "colorControl10DegLine";
-            this.colorControl10DegLine.Red = 128;
-            this.colorControl10DegLine.RedF = 0.5019608F;
-            this.colorControl10DegLine.TabStop = false;
-            this.colorControl10DegLine.ToolTip = "10度線の色";
-            this.toolTip1.SetToolTip(this.colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
-            this.colorControl10DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
-            // 
             // label1DegLine
             // 
             resources.ApplyResources(this.label1DegLine, "label1DegLine");
             this.label1DegLine.Name = "label1DegLine";
             this.toolTip1.SetToolTip(this.label1DegLine, resources.GetString("label1DegLine.ToolTip"));
-            // 
-            // colorControl1DegLine
-            // 
-            this.colorControl1DegLine.Argb = -4144897;
-            this.colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.colorControl1DegLine.Blue = 255;
-            this.colorControl1DegLine.BlueF = 1F;
-            this.colorControl1DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.colorControl1DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl1DegLine.Green = 192;
-            this.colorControl1DegLine.GreenF = 0.7529412F;
-            resources.ApplyResources(this.colorControl1DegLine, "colorControl1DegLine");
-            this.colorControl1DegLine.Name = "colorControl1DegLine";
-            this.colorControl1DegLine.Red = 192;
-            this.colorControl1DegLine.RedF = 0.7529412F;
-            this.colorControl1DegLine.TabStop = false;
-            this.colorControl1DegLine.ToolTip = "1度線の色\r\n「Show 1°line」がチェックされているとき有効";
-            this.toolTip1.SetToolTip(this.colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
-            this.colorControl1DegLine.ColorChanged += new EventHandler(this.colorControl_ColorChanged);
             // 
             // labelString
             // 
@@ -979,17 +742,8 @@ namespace ReciPro
             // 
             this.tabPage3.Controls.Add(this.buttonYusaModeStop);
             this.tabPage3.Controls.Add(this.buttonYusaModeStart);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRxSpeed);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRySpeed);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRzSpeed);
             this.tabPage3.Controls.Add(this.radioButtonRotationalScan);
             this.tabPage3.Controls.Add(this.radioButtonZigzagScan);
-            this.tabPage3.Controls.Add(this.numericalTextBoxTotalTime);
-            this.tabPage3.Controls.Add(this.numericalTextBoxAngularSpeed);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRyStep);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRadialAngle);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRyOscillation);
-            this.tabPage3.Controls.Add(this.numericalTextBoxRzOscillation);
             this.tabPage3.Controls.Add(this.checkBox3);
             this.tabPage3.Controls.Add(this.checkBox2);
             this.tabPage3.Controls.Add(this.label37);
@@ -1013,6 +767,15 @@ namespace ReciPro
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.label22);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRxSpeed);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRySpeed);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRzSpeed);
+            this.tabPage3.Controls.Add(this.numericalTextBoxTotalTime);
+            this.tabPage3.Controls.Add(this.numericalTextBoxAngularSpeed);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRyStep);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRadialAngle);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRyOscillation);
+            this.tabPage3.Controls.Add(this.numericalTextBoxRzOscillation);
             resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1031,90 +794,6 @@ namespace ReciPro
             this.buttonYusaModeStart.UseVisualStyleBackColor = true;
             this.buttonYusaModeStart.Click += new System.EventHandler(this.buttonYusaModeStart_Click);
             // 
-            // numericalTextBoxRxSpeed
-            // 
-            this.numericalTextBoxRxSpeed.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRxSpeed, "numericalTextBoxRxSpeed");
-            this.numericalTextBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRxSpeed.DecimalPlaces = -1;
-            this.numericalTextBoxRxSpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRxSpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRxSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRxSpeed.MouseSpeed = 1D;
-            this.numericalTextBoxRxSpeed.Multiline = false;
-            this.numericalTextBoxRxSpeed.Name = "numericalTextBoxRxSpeed";
-            this.numericalTextBoxRxSpeed.RadianValue = 0.31415926535897931D;
-            this.numericalTextBoxRxSpeed.ReadOnly = false;
-            this.numericalTextBoxRxSpeed.RestrictLimitValue = true;
-            this.numericalTextBoxRxSpeed.ShowFraction = false;
-            this.numericalTextBoxRxSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRxSpeed.ShowUpDown = false;
-            this.numericalTextBoxRxSpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxRxSpeed.SmartIncrement = true;
-            this.numericalTextBoxRxSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRxSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRxSpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxRxSpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxRxSpeed.Value = 18D;
-            this.numericalTextBoxRxSpeed.WordWrap = true;
-            // 
-            // numericalTextBoxRySpeed
-            // 
-            this.numericalTextBoxRySpeed.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRySpeed, "numericalTextBoxRySpeed");
-            this.numericalTextBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRySpeed.DecimalPlaces = -1;
-            this.numericalTextBoxRySpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRySpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRySpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRySpeed.MouseSpeed = 1D;
-            this.numericalTextBoxRySpeed.Multiline = false;
-            this.numericalTextBoxRySpeed.Name = "numericalTextBoxRySpeed";
-            this.numericalTextBoxRySpeed.RadianValue = 0.017453292519943295D;
-            this.numericalTextBoxRySpeed.ReadOnly = false;
-            this.numericalTextBoxRySpeed.RestrictLimitValue = true;
-            this.numericalTextBoxRySpeed.ShowFraction = false;
-            this.numericalTextBoxRySpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRySpeed.ShowUpDown = false;
-            this.numericalTextBoxRySpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxRySpeed.SmartIncrement = true;
-            this.numericalTextBoxRySpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRySpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRySpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxRySpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxRySpeed.Value = 1D;
-            this.numericalTextBoxRySpeed.WordWrap = true;
-            // 
-            // numericalTextBoxRzSpeed
-            // 
-            this.numericalTextBoxRzSpeed.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRzSpeed, "numericalTextBoxRzSpeed");
-            this.numericalTextBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRzSpeed.DecimalPlaces = -1;
-            this.numericalTextBoxRzSpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRzSpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRzSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRzSpeed.MouseSpeed = 1D;
-            this.numericalTextBoxRzSpeed.Multiline = false;
-            this.numericalTextBoxRzSpeed.Name = "numericalTextBoxRzSpeed";
-            this.numericalTextBoxRzSpeed.RadianValue = 0.034906585039886591D;
-            this.numericalTextBoxRzSpeed.ReadOnly = false;
-            this.numericalTextBoxRzSpeed.RestrictLimitValue = true;
-            this.numericalTextBoxRzSpeed.ShowFraction = false;
-            this.numericalTextBoxRzSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRzSpeed.ShowUpDown = false;
-            this.numericalTextBoxRzSpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxRzSpeed.SmartIncrement = true;
-            this.numericalTextBoxRzSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRzSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRzSpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxRzSpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxRzSpeed.Value = 2D;
-            this.numericalTextBoxRzSpeed.WordWrap = true;
-            // 
             // radioButtonRotationalScan
             // 
             resources.ApplyResources(this.radioButtonRotationalScan, "radioButtonRotationalScan");
@@ -1128,174 +807,6 @@ namespace ReciPro
             this.radioButtonZigzagScan.Name = "radioButtonZigzagScan";
             this.radioButtonZigzagScan.TabStop = true;
             this.radioButtonZigzagScan.UseVisualStyleBackColor = true;
-            // 
-            // numericalTextBoxTotalTime
-            // 
-            this.numericalTextBoxTotalTime.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxTotalTime, "numericalTextBoxTotalTime");
-            this.numericalTextBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTotalTime.DecimalPlaces = -1;
-            this.numericalTextBoxTotalTime.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxTotalTime.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTotalTime.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxTotalTime.MouseSpeed = 1D;
-            this.numericalTextBoxTotalTime.Multiline = false;
-            this.numericalTextBoxTotalTime.Name = "numericalTextBoxTotalTime";
-            this.numericalTextBoxTotalTime.RadianValue = 1.7453292519943295D;
-            this.numericalTextBoxTotalTime.ReadOnly = false;
-            this.numericalTextBoxTotalTime.RestrictLimitValue = true;
-            this.numericalTextBoxTotalTime.ShowFraction = false;
-            this.numericalTextBoxTotalTime.ShowPositiveSign = false;
-            this.numericalTextBoxTotalTime.ShowUpDown = false;
-            this.numericalTextBoxTotalTime.SkipEventDuringInput = false;
-            this.numericalTextBoxTotalTime.SmartIncrement = true;
-            this.numericalTextBoxTotalTime.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxTotalTime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxTotalTime.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxTotalTime.ThonsandsSeparator = true;
-            this.numericalTextBoxTotalTime.UpDown_Increment = 1D;
-            this.numericalTextBoxTotalTime.Value = 100D;
-            this.numericalTextBoxTotalTime.WordWrap = true;
-            // 
-            // numericalTextBoxAngularSpeed
-            // 
-            this.numericalTextBoxAngularSpeed.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxAngularSpeed, "numericalTextBoxAngularSpeed");
-            this.numericalTextBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxAngularSpeed.DecimalPlaces = -1;
-            this.numericalTextBoxAngularSpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxAngularSpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxAngularSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxAngularSpeed.MouseSpeed = 1D;
-            this.numericalTextBoxAngularSpeed.Multiline = false;
-            this.numericalTextBoxAngularSpeed.Name = "numericalTextBoxAngularSpeed";
-            this.numericalTextBoxAngularSpeed.RadianValue = 0.52359877559829882D;
-            this.numericalTextBoxAngularSpeed.ReadOnly = false;
-            this.numericalTextBoxAngularSpeed.RestrictLimitValue = true;
-            this.numericalTextBoxAngularSpeed.ShowFraction = false;
-            this.numericalTextBoxAngularSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxAngularSpeed.ShowUpDown = false;
-            this.numericalTextBoxAngularSpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxAngularSpeed.SmartIncrement = true;
-            this.numericalTextBoxAngularSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxAngularSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxAngularSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxAngularSpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxAngularSpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxAngularSpeed.Value = 30D;
-            this.numericalTextBoxAngularSpeed.WordWrap = true;
-            // 
-            // numericalTextBoxRyStep
-            // 
-            this.numericalTextBoxRyStep.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRyStep, "numericalTextBoxRyStep");
-            this.numericalTextBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRyStep.DecimalPlaces = -1;
-            this.numericalTextBoxRyStep.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRyStep.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRyStep.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRyStep.MouseSpeed = 1D;
-            this.numericalTextBoxRyStep.Multiline = false;
-            this.numericalTextBoxRyStep.Name = "numericalTextBoxRyStep";
-            this.numericalTextBoxRyStep.RadianValue = 0.0034906585039886592D;
-            this.numericalTextBoxRyStep.ReadOnly = false;
-            this.numericalTextBoxRyStep.RestrictLimitValue = true;
-            this.numericalTextBoxRyStep.ShowFraction = false;
-            this.numericalTextBoxRyStep.ShowPositiveSign = false;
-            this.numericalTextBoxRyStep.ShowUpDown = false;
-            this.numericalTextBoxRyStep.SkipEventDuringInput = false;
-            this.numericalTextBoxRyStep.SmartIncrement = true;
-            this.numericalTextBoxRyStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRyStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRyStep.ThonsandsSeparator = true;
-            this.numericalTextBoxRyStep.UpDown_Increment = 1D;
-            this.numericalTextBoxRyStep.Value = 0.2D;
-            this.numericalTextBoxRyStep.WordWrap = true;
-            // 
-            // numericalTextBoxRadialAngle
-            // 
-            this.numericalTextBoxRadialAngle.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRadialAngle, "numericalTextBoxRadialAngle");
-            this.numericalTextBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRadialAngle.DecimalPlaces = -1;
-            this.numericalTextBoxRadialAngle.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRadialAngle.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRadialAngle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRadialAngle.MouseSpeed = 1D;
-            this.numericalTextBoxRadialAngle.Multiline = false;
-            this.numericalTextBoxRadialAngle.Name = "numericalTextBoxRadialAngle";
-            this.numericalTextBoxRadialAngle.RadianValue = 0.13962634015954636D;
-            this.numericalTextBoxRadialAngle.ReadOnly = false;
-            this.numericalTextBoxRadialAngle.RestrictLimitValue = true;
-            this.numericalTextBoxRadialAngle.ShowFraction = false;
-            this.numericalTextBoxRadialAngle.ShowPositiveSign = false;
-            this.numericalTextBoxRadialAngle.ShowUpDown = false;
-            this.numericalTextBoxRadialAngle.SkipEventDuringInput = false;
-            this.numericalTextBoxRadialAngle.SmartIncrement = true;
-            this.numericalTextBoxRadialAngle.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRadialAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRadialAngle.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRadialAngle.ThonsandsSeparator = true;
-            this.numericalTextBoxRadialAngle.UpDown_Increment = 1D;
-            this.numericalTextBoxRadialAngle.Value = 8D;
-            this.numericalTextBoxRadialAngle.WordWrap = true;
-            // 
-            // numericalTextBoxRyOscillation
-            // 
-            this.numericalTextBoxRyOscillation.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRyOscillation, "numericalTextBoxRyOscillation");
-            this.numericalTextBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRyOscillation.DecimalPlaces = -1;
-            this.numericalTextBoxRyOscillation.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRyOscillation.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRyOscillation.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRyOscillation.MouseSpeed = 1D;
-            this.numericalTextBoxRyOscillation.Multiline = false;
-            this.numericalTextBoxRyOscillation.Name = "numericalTextBoxRyOscillation";
-            this.numericalTextBoxRyOscillation.RadianValue = 0.13962634015954636D;
-            this.numericalTextBoxRyOscillation.ReadOnly = false;
-            this.numericalTextBoxRyOscillation.RestrictLimitValue = true;
-            this.numericalTextBoxRyOscillation.ShowFraction = false;
-            this.numericalTextBoxRyOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxRyOscillation.ShowUpDown = false;
-            this.numericalTextBoxRyOscillation.SkipEventDuringInput = false;
-            this.numericalTextBoxRyOscillation.SmartIncrement = true;
-            this.numericalTextBoxRyOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRyOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRyOscillation.ThonsandsSeparator = true;
-            this.numericalTextBoxRyOscillation.UpDown_Increment = 1D;
-            this.numericalTextBoxRyOscillation.Value = 8D;
-            this.numericalTextBoxRyOscillation.WordWrap = true;
-            // 
-            // numericalTextBoxRzOscillation
-            // 
-            this.numericalTextBoxRzOscillation.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxRzOscillation, "numericalTextBoxRzOscillation");
-            this.numericalTextBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRzOscillation.DecimalPlaces = -1;
-            this.numericalTextBoxRzOscillation.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRzOscillation.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRzOscillation.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxRzOscillation.MouseSpeed = 1D;
-            this.numericalTextBoxRzOscillation.Multiline = false;
-            this.numericalTextBoxRzOscillation.Name = "numericalTextBoxRzOscillation";
-            this.numericalTextBoxRzOscillation.RadianValue = 0.13962634015954636D;
-            this.numericalTextBoxRzOscillation.ReadOnly = false;
-            this.numericalTextBoxRzOscillation.RestrictLimitValue = true;
-            this.numericalTextBoxRzOscillation.ShowFraction = false;
-            this.numericalTextBoxRzOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxRzOscillation.ShowUpDown = false;
-            this.numericalTextBoxRzOscillation.SkipEventDuringInput = false;
-            this.numericalTextBoxRzOscillation.SmartIncrement = true;
-            this.numericalTextBoxRzOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRzOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRzOscillation.ThonsandsSeparator = true;
-            this.numericalTextBoxRzOscillation.UpDown_Increment = 1D;
-            this.numericalTextBoxRzOscillation.Value = 8D;
-            this.numericalTextBoxRzOscillation.WordWrap = true;
             // 
             // checkBox3
             // 
@@ -1503,40 +1014,6 @@ namespace ReciPro
             this.toolTip1.InitialDelay = 500;
             this.toolTip1.ReshowDelay = 100;
             // 
-            // numericUpDown2
-            // 
-            resources.ApplyResources(this.numericUpDown2, "numericUpDown2");
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.toolTip1.SetToolTip(this.numericUpDown2, resources.GetString("numericUpDown2.ToolTip"));
-            this.numericUpDown2.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            // 
-            // numericUpDown1
-            // 
-            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.toolTip1.SetToolTip(this.numericUpDown1, resources.GetString("numericUpDown1.ToolTip"));
-            this.numericUpDown1.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            // 
             // labelHU
             // 
             resources.ApplyResources(this.labelHU, "labelHU");
@@ -1556,20 +1033,19 @@ namespace ReciPro
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.panelSpecifiedIndices);
-            this.groupBox5.Controls.Add(this.radioButtonRange);
             this.groupBox5.Controls.Add(this.panel2);
-            this.groupBox5.Controls.Add(this.radioButtonSpecifiedIndices);
+            this.groupBox5.Controls.Add(this.flowLayoutPanel3);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
             // panelSpecifiedIndices
             // 
-            resources.ApplyResources(this.panelSpecifiedIndices, "panelSpecifiedIndices");
             this.panelSpecifiedIndices.Controls.Add(this.buttonRemoveIndex);
             this.panelSpecifiedIndices.Controls.Add(this.buttonAddIndex);
             this.panelSpecifiedIndices.Controls.Add(this.listBoxSpecifiedIndices);
             this.panelSpecifiedIndices.Controls.Add(this.checkBoxIncludingEquivalentPlanes);
+            resources.ApplyResources(this.panelSpecifiedIndices, "panelSpecifiedIndices");
             this.panelSpecifiedIndices.Name = "panelSpecifiedIndices";
             // 
             // buttonRemoveIndex
@@ -1611,13 +1087,10 @@ namespace ReciPro
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Controls.Add(this.numericUpDown1);
-            this.panel2.Controls.Add(this.numericUpDown2);
-            this.panel2.Controls.Add(this.labelPlusMinus2);
-            this.panel2.Controls.Add(this.labelPlusMinus3);
-            this.panel2.Controls.Add(this.numericUpDown3);
+            this.panel2.Controls.Add(this.numericBox3);
+            this.panel2.Controls.Add(this.numericBox2);
+            this.panel2.Controls.Add(this.numericBox1);
             this.panel2.Controls.Add(this.labelHU);
-            this.panel2.Controls.Add(this.labelPlusMinus1);
             this.panel2.Name = "panel2";
             // 
             // radioButtonSpecifiedIndices
@@ -1632,6 +1105,631 @@ namespace ReciPro
             this.panel3.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // graphicsBox
+            // 
+            resources.ApplyResources(this.graphicsBox, "graphicsBox");
+            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.graphicsBox.Name = "graphicsBox";
+            this.graphicsBox.TabStop = false;
+            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
+            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
+            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
+            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
+            // 
+            // pageSetupDialog1
+            // 
+            this.pageSetupDialog1.Document = this.printDocument1;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // numericBox3
+            // 
+            this.numericBox3.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox3, "numericBox3");
+            this.numericBox3.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.DecimalPlaces = -2;
+            this.numericBox3.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox3.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox3.Maximum = 20D;
+            this.numericBox3.Minimum = 0D;
+            this.numericBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox3.MouseSpeed = 1D;
+            this.numericBox3.Multiline = false;
+            this.numericBox3.Name = "numericBox3";
+            this.numericBox3.RadianValue = 0D;
+            this.numericBox3.ReadOnly = false;
+            this.numericBox3.RestrictLimitValue = true;
+            this.numericBox3.ShowFraction = false;
+            this.numericBox3.ShowPositiveSign = false;
+            this.numericBox3.ShowUpDown = true;
+            this.numericBox3.SkipEventDuringInput = false;
+            this.numericBox3.SmartIncrement = false;
+            this.numericBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox3.ThonsandsSeparator = true;
+            this.numericBox3.UpDown_Increment = 1D;
+            this.numericBox3.Value = 0D;
+            this.numericBox3.WordWrap = true;
+            // 
+            // numericBox2
+            // 
+            this.numericBox2.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox2, "numericBox2");
+            this.numericBox2.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.DecimalPlaces = -2;
+            this.numericBox2.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox2.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox2.Maximum = 20D;
+            this.numericBox2.Minimum = 0D;
+            this.numericBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox2.MouseSpeed = 1D;
+            this.numericBox2.Multiline = false;
+            this.numericBox2.Name = "numericBox2";
+            this.numericBox2.RadianValue = 0D;
+            this.numericBox2.ReadOnly = false;
+            this.numericBox2.RestrictLimitValue = true;
+            this.numericBox2.ShowFraction = false;
+            this.numericBox2.ShowPositiveSign = false;
+            this.numericBox2.ShowUpDown = true;
+            this.numericBox2.SkipEventDuringInput = false;
+            this.numericBox2.SmartIncrement = false;
+            this.numericBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox2.ThonsandsSeparator = true;
+            this.numericBox2.UpDown_Increment = 1D;
+            this.numericBox2.Value = 0D;
+            this.numericBox2.WordWrap = true;
+            // 
+            // numericBox1
+            // 
+            this.numericBox1.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox1, "numericBox1");
+            this.numericBox1.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.DecimalPlaces = -2;
+            this.numericBox1.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox1.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox1.Maximum = 20D;
+            this.numericBox1.Minimum = 0D;
+            this.numericBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox1.MouseSpeed = 1D;
+            this.numericBox1.Multiline = false;
+            this.numericBox1.Name = "numericBox1";
+            this.numericBox1.RadianValue = 0D;
+            this.numericBox1.ReadOnly = false;
+            this.numericBox1.RestrictLimitValue = true;
+            this.numericBox1.ShowFraction = false;
+            this.numericBox1.ShowPositiveSign = false;
+            this.numericBox1.ShowUpDown = true;
+            this.numericBox1.SkipEventDuringInput = false;
+            this.numericBox1.SmartIncrement = false;
+            this.numericBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox1.ThonsandsSeparator = true;
+            this.numericBox1.UpDown_Increment = 1D;
+            this.numericBox1.Value = 0D;
+            this.numericBox1.WordWrap = true;
+            // 
+            // colorControlSmallCircle
+            // 
+            this.colorControlSmallCircle.Argb = -16256;
+            resources.ApplyResources(this.colorControlSmallCircle, "colorControlSmallCircle");
+            this.colorControlSmallCircle.Blue = 128;
+            this.colorControlSmallCircle.BlueF = 0.5019608F;
+            this.colorControlSmallCircle.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlSmallCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.colorControlSmallCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlSmallCircle.Green = 192;
+            this.colorControlSmallCircle.GreenF = 0.7529412F;
+            this.colorControlSmallCircle.Name = "colorControlSmallCircle";
+            this.colorControlSmallCircle.Red = 255;
+            this.colorControlSmallCircle.RedF = 1F;
+            this.colorControlSmallCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlGreatCircle
+            // 
+            this.colorControlGreatCircle.Argb = -32768;
+            resources.ApplyResources(this.colorControlGreatCircle, "colorControlGreatCircle");
+            this.colorControlGreatCircle.Blue = 0;
+            this.colorControlGreatCircle.BlueF = 0F;
+            this.colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGreatCircle.Green = 128;
+            this.colorControlGreatCircle.GreenF = 0.5019608F;
+            this.colorControlGreatCircle.Name = "colorControlGreatCircle";
+            this.colorControlGreatCircle.Red = 255;
+            this.colorControlGreatCircle.RedF = 1F;
+            this.colorControlGreatCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlString
+            // 
+            this.colorControlString.Argb = -16777216;
+            resources.ApplyResources(this.colorControlString, "colorControlString");
+            this.colorControlString.BackColor = System.Drawing.Color.Black;
+            this.colorControlString.Blue = 0;
+            this.colorControlString.BlueF = 0F;
+            this.colorControlString.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlString.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlString.Green = 0;
+            this.colorControlString.GreenF = 0F;
+            this.colorControlString.Name = "colorControlString";
+            this.colorControlString.Red = 0;
+            this.colorControlString.RedF = 0F;
+            this.colorControlString.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
+            this.colorControlString.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlUniqueAxis
+            // 
+            this.colorControlUniqueAxis.Argb = -7667712;
+            resources.ApplyResources(this.colorControlUniqueAxis, "colorControlUniqueAxis");
+            this.colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
+            this.colorControlUniqueAxis.Blue = 0;
+            this.colorControlUniqueAxis.BlueF = 0F;
+            this.colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlUniqueAxis.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlUniqueAxis.Green = 0;
+            this.colorControlUniqueAxis.GreenF = 0F;
+            this.colorControlUniqueAxis.Name = "colorControlUniqueAxis";
+            this.colorControlUniqueAxis.Red = 139;
+            this.colorControlUniqueAxis.RedF = 0.5450981F;
+            this.colorControlUniqueAxis.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
+            this.colorControlUniqueAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlUniquePlane
+            // 
+            this.colorControlUniquePlane.Argb = -16751616;
+            resources.ApplyResources(this.colorControlUniquePlane, "colorControlUniquePlane");
+            this.colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
+            this.colorControlUniquePlane.Blue = 0;
+            this.colorControlUniquePlane.BlueF = 0F;
+            this.colorControlUniquePlane.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            this.colorControlUniquePlane.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlUniquePlane.Green = 100;
+            this.colorControlUniquePlane.GreenF = 0.3921569F;
+            this.colorControlUniquePlane.Name = "colorControlUniquePlane";
+            this.colorControlUniquePlane.Red = 0;
+            this.colorControlUniquePlane.RedF = 0F;
+            this.colorControlUniquePlane.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
+            this.colorControlUniquePlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlGeneralAxis
+            // 
+            this.colorControlGeneralAxis.Argb = -65536;
+            resources.ApplyResources(this.colorControlGeneralAxis, "colorControlGeneralAxis");
+            this.colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.colorControlGeneralAxis.Blue = 0;
+            this.colorControlGeneralAxis.BlueF = 0F;
+            this.colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlGeneralAxis.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGeneralAxis.Green = 0;
+            this.colorControlGeneralAxis.GreenF = 0F;
+            this.colorControlGeneralAxis.Name = "colorControlGeneralAxis";
+            this.colorControlGeneralAxis.Red = 255;
+            this.colorControlGeneralAxis.RedF = 1F;
+            this.colorControlGeneralAxis.TabStop = false;
+            this.colorControlGeneralAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlGeneralPlane
+            // 
+            this.colorControlGeneralPlane.Argb = -14578910;
+            resources.ApplyResources(this.colorControlGeneralPlane, "colorControlGeneralPlane");
+            this.colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorControlGeneralPlane.Blue = 34;
+            this.colorControlGeneralPlane.BlueF = 0.1333333F;
+            this.colorControlGeneralPlane.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
+            this.colorControlGeneralPlane.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGeneralPlane.Green = 139;
+            this.colorControlGeneralPlane.GreenF = 0.5450981F;
+            this.colorControlGeneralPlane.Name = "colorControlGeneralPlane";
+            this.colorControlGeneralPlane.Red = 33;
+            this.colorControlGeneralPlane.RedF = 0.1294118F;
+            this.colorControlGeneralPlane.TabStop = false;
+            this.colorControlGeneralPlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlBackGround
+            // 
+            this.colorControlBackGround.Argb = -1;
+            resources.ApplyResources(this.colorControlBackGround, "colorControlBackGround");
+            this.colorControlBackGround.BackColor = System.Drawing.Color.White;
+            this.colorControlBackGround.Blue = 255;
+            this.colorControlBackGround.BlueF = 1F;
+            this.colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlBackGround.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlBackGround.Green = 255;
+            this.colorControlBackGround.GreenF = 1F;
+            this.colorControlBackGround.Name = "colorControlBackGround";
+            this.colorControlBackGround.Red = 255;
+            this.colorControlBackGround.RedF = 1F;
+            this.colorControlBackGround.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
+            this.colorControlBackGround.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControl90DegLine
+            // 
+            this.colorControl90DegLine.Argb = -16776961;
+            resources.ApplyResources(this.colorControl90DegLine, "colorControl90DegLine");
+            this.colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
+            this.colorControl90DegLine.Blue = 255;
+            this.colorControl90DegLine.BlueF = 1F;
+            this.colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl90DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.colorControl90DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl90DegLine.Green = 0;
+            this.colorControl90DegLine.GreenF = 0F;
+            this.colorControl90DegLine.Name = "colorControl90DegLine";
+            this.colorControl90DegLine.Red = 0;
+            this.colorControl90DegLine.RedF = 0F;
+            this.colorControl90DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
+            this.colorControl90DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControl10DegLine
+            // 
+            this.colorControl10DegLine.Argb = -8355585;
+            resources.ApplyResources(this.colorControl10DegLine, "colorControl10DegLine");
+            this.colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.colorControl10DegLine.Blue = 255;
+            this.colorControl10DegLine.BlueF = 1F;
+            this.colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl10DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.colorControl10DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl10DegLine.Green = 128;
+            this.colorControl10DegLine.GreenF = 0.5019608F;
+            this.colorControl10DegLine.Name = "colorControl10DegLine";
+            this.colorControl10DegLine.Red = 128;
+            this.colorControl10DegLine.RedF = 0.5019608F;
+            this.colorControl10DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
+            this.colorControl10DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControl1DegLine
+            // 
+            this.colorControl1DegLine.Argb = -4144897;
+            resources.ApplyResources(this.colorControl1DegLine, "colorControl1DegLine");
+            this.colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.colorControl1DegLine.Blue = 255;
+            this.colorControl1DegLine.BlueF = 1F;
+            this.colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl1DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.colorControl1DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl1DegLine.Green = 192;
+            this.colorControl1DegLine.GreenF = 0.7529412F;
+            this.colorControl1DegLine.Name = "colorControl1DegLine";
+            this.colorControl1DegLine.Red = 192;
+            this.colorControl1DegLine.RedF = 0.7529412F;
+            this.colorControl1DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
+            this.colorControl1DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // numericalTextBoxRxSpeed
+            // 
+            this.numericalTextBoxRxSpeed.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRxSpeed, "numericalTextBoxRxSpeed");
+            this.numericalTextBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRxSpeed.DecimalPlaces = -1;
+            this.numericalTextBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRxSpeed.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRxSpeed.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRxSpeed.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRxSpeed.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRxSpeed.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRxSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRxSpeed.MouseSpeed = 1D;
+            this.numericalTextBoxRxSpeed.Multiline = false;
+            this.numericalTextBoxRxSpeed.Name = "numericalTextBoxRxSpeed";
+            this.numericalTextBoxRxSpeed.RadianValue = 0.31415926535897931D;
+            this.numericalTextBoxRxSpeed.ReadOnly = false;
+            this.numericalTextBoxRxSpeed.RestrictLimitValue = true;
+            this.numericalTextBoxRxSpeed.ShowFraction = false;
+            this.numericalTextBoxRxSpeed.ShowPositiveSign = false;
+            this.numericalTextBoxRxSpeed.ShowUpDown = false;
+            this.numericalTextBoxRxSpeed.SkipEventDuringInput = false;
+            this.numericalTextBoxRxSpeed.SmartIncrement = true;
+            this.numericalTextBoxRxSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRxSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRxSpeed.ThonsandsSeparator = true;
+            this.numericalTextBoxRxSpeed.UpDown_Increment = 1D;
+            this.numericalTextBoxRxSpeed.Value = 18D;
+            this.numericalTextBoxRxSpeed.WordWrap = true;
+            // 
+            // numericalTextBoxRySpeed
+            // 
+            this.numericalTextBoxRySpeed.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRySpeed, "numericalTextBoxRySpeed");
+            this.numericalTextBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRySpeed.DecimalPlaces = -1;
+            this.numericalTextBoxRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRySpeed.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRySpeed.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRySpeed.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRySpeed.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRySpeed.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRySpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRySpeed.MouseSpeed = 1D;
+            this.numericalTextBoxRySpeed.Multiline = false;
+            this.numericalTextBoxRySpeed.Name = "numericalTextBoxRySpeed";
+            this.numericalTextBoxRySpeed.RadianValue = 0.017453292519943295D;
+            this.numericalTextBoxRySpeed.ReadOnly = false;
+            this.numericalTextBoxRySpeed.RestrictLimitValue = true;
+            this.numericalTextBoxRySpeed.ShowFraction = false;
+            this.numericalTextBoxRySpeed.ShowPositiveSign = false;
+            this.numericalTextBoxRySpeed.ShowUpDown = false;
+            this.numericalTextBoxRySpeed.SkipEventDuringInput = false;
+            this.numericalTextBoxRySpeed.SmartIncrement = true;
+            this.numericalTextBoxRySpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRySpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRySpeed.ThonsandsSeparator = true;
+            this.numericalTextBoxRySpeed.UpDown_Increment = 1D;
+            this.numericalTextBoxRySpeed.Value = 1D;
+            this.numericalTextBoxRySpeed.WordWrap = true;
+            // 
+            // numericalTextBoxRzSpeed
+            // 
+            this.numericalTextBoxRzSpeed.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRzSpeed, "numericalTextBoxRzSpeed");
+            this.numericalTextBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzSpeed.DecimalPlaces = -1;
+            this.numericalTextBoxRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzSpeed.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzSpeed.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRzSpeed.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRzSpeed.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRzSpeed.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRzSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRzSpeed.MouseSpeed = 1D;
+            this.numericalTextBoxRzSpeed.Multiline = false;
+            this.numericalTextBoxRzSpeed.Name = "numericalTextBoxRzSpeed";
+            this.numericalTextBoxRzSpeed.RadianValue = 0.034906585039886591D;
+            this.numericalTextBoxRzSpeed.ReadOnly = false;
+            this.numericalTextBoxRzSpeed.RestrictLimitValue = true;
+            this.numericalTextBoxRzSpeed.ShowFraction = false;
+            this.numericalTextBoxRzSpeed.ShowPositiveSign = false;
+            this.numericalTextBoxRzSpeed.ShowUpDown = false;
+            this.numericalTextBoxRzSpeed.SkipEventDuringInput = false;
+            this.numericalTextBoxRzSpeed.SmartIncrement = true;
+            this.numericalTextBoxRzSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRzSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRzSpeed.ThonsandsSeparator = true;
+            this.numericalTextBoxRzSpeed.UpDown_Increment = 1D;
+            this.numericalTextBoxRzSpeed.Value = 2D;
+            this.numericalTextBoxRzSpeed.WordWrap = true;
+            // 
+            // numericalTextBoxTotalTime
+            // 
+            this.numericalTextBoxTotalTime.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxTotalTime, "numericalTextBoxTotalTime");
+            this.numericalTextBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTotalTime.DecimalPlaces = -1;
+            this.numericalTextBoxTotalTime.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTotalTime.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxTotalTime.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTotalTime.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxTotalTime.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxTotalTime.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxTotalTime.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxTotalTime.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxTotalTime.MouseSpeed = 1D;
+            this.numericalTextBoxTotalTime.Multiline = false;
+            this.numericalTextBoxTotalTime.Name = "numericalTextBoxTotalTime";
+            this.numericalTextBoxTotalTime.RadianValue = 1.7453292519943295D;
+            this.numericalTextBoxTotalTime.ReadOnly = false;
+            this.numericalTextBoxTotalTime.RestrictLimitValue = true;
+            this.numericalTextBoxTotalTime.ShowFraction = false;
+            this.numericalTextBoxTotalTime.ShowPositiveSign = false;
+            this.numericalTextBoxTotalTime.ShowUpDown = false;
+            this.numericalTextBoxTotalTime.SkipEventDuringInput = false;
+            this.numericalTextBoxTotalTime.SmartIncrement = true;
+            this.numericalTextBoxTotalTime.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxTotalTime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxTotalTime.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxTotalTime.ThonsandsSeparator = true;
+            this.numericalTextBoxTotalTime.UpDown_Increment = 1D;
+            this.numericalTextBoxTotalTime.Value = 100D;
+            this.numericalTextBoxTotalTime.WordWrap = true;
+            // 
+            // numericalTextBoxAngularSpeed
+            // 
+            this.numericalTextBoxAngularSpeed.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxAngularSpeed, "numericalTextBoxAngularSpeed");
+            this.numericalTextBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxAngularSpeed.DecimalPlaces = -1;
+            this.numericalTextBoxAngularSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxAngularSpeed.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxAngularSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxAngularSpeed.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxAngularSpeed.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxAngularSpeed.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxAngularSpeed.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxAngularSpeed.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxAngularSpeed.MouseSpeed = 1D;
+            this.numericalTextBoxAngularSpeed.Multiline = false;
+            this.numericalTextBoxAngularSpeed.Name = "numericalTextBoxAngularSpeed";
+            this.numericalTextBoxAngularSpeed.RadianValue = 0.52359877559829882D;
+            this.numericalTextBoxAngularSpeed.ReadOnly = false;
+            this.numericalTextBoxAngularSpeed.RestrictLimitValue = true;
+            this.numericalTextBoxAngularSpeed.ShowFraction = false;
+            this.numericalTextBoxAngularSpeed.ShowPositiveSign = false;
+            this.numericalTextBoxAngularSpeed.ShowUpDown = false;
+            this.numericalTextBoxAngularSpeed.SkipEventDuringInput = false;
+            this.numericalTextBoxAngularSpeed.SmartIncrement = true;
+            this.numericalTextBoxAngularSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxAngularSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxAngularSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxAngularSpeed.ThonsandsSeparator = true;
+            this.numericalTextBoxAngularSpeed.UpDown_Increment = 1D;
+            this.numericalTextBoxAngularSpeed.Value = 30D;
+            this.numericalTextBoxAngularSpeed.WordWrap = true;
+            // 
+            // numericalTextBoxRyStep
+            // 
+            this.numericalTextBoxRyStep.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRyStep, "numericalTextBoxRyStep");
+            this.numericalTextBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyStep.DecimalPlaces = -1;
+            this.numericalTextBoxRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyStep.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyStep.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRyStep.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRyStep.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRyStep.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRyStep.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRyStep.MouseSpeed = 1D;
+            this.numericalTextBoxRyStep.Multiline = false;
+            this.numericalTextBoxRyStep.Name = "numericalTextBoxRyStep";
+            this.numericalTextBoxRyStep.RadianValue = 0.0034906585039886592D;
+            this.numericalTextBoxRyStep.ReadOnly = false;
+            this.numericalTextBoxRyStep.RestrictLimitValue = true;
+            this.numericalTextBoxRyStep.ShowFraction = false;
+            this.numericalTextBoxRyStep.ShowPositiveSign = false;
+            this.numericalTextBoxRyStep.ShowUpDown = false;
+            this.numericalTextBoxRyStep.SkipEventDuringInput = false;
+            this.numericalTextBoxRyStep.SmartIncrement = true;
+            this.numericalTextBoxRyStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRyStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRyStep.ThonsandsSeparator = true;
+            this.numericalTextBoxRyStep.UpDown_Increment = 1D;
+            this.numericalTextBoxRyStep.Value = 0.2D;
+            this.numericalTextBoxRyStep.WordWrap = true;
+            // 
+            // numericalTextBoxRadialAngle
+            // 
+            this.numericalTextBoxRadialAngle.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRadialAngle, "numericalTextBoxRadialAngle");
+            this.numericalTextBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRadialAngle.DecimalPlaces = -1;
+            this.numericalTextBoxRadialAngle.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRadialAngle.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRadialAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRadialAngle.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRadialAngle.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRadialAngle.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRadialAngle.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRadialAngle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRadialAngle.MouseSpeed = 1D;
+            this.numericalTextBoxRadialAngle.Multiline = false;
+            this.numericalTextBoxRadialAngle.Name = "numericalTextBoxRadialAngle";
+            this.numericalTextBoxRadialAngle.RadianValue = 0.13962634015954636D;
+            this.numericalTextBoxRadialAngle.ReadOnly = false;
+            this.numericalTextBoxRadialAngle.RestrictLimitValue = true;
+            this.numericalTextBoxRadialAngle.ShowFraction = false;
+            this.numericalTextBoxRadialAngle.ShowPositiveSign = false;
+            this.numericalTextBoxRadialAngle.ShowUpDown = false;
+            this.numericalTextBoxRadialAngle.SkipEventDuringInput = false;
+            this.numericalTextBoxRadialAngle.SmartIncrement = true;
+            this.numericalTextBoxRadialAngle.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRadialAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRadialAngle.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRadialAngle.ThonsandsSeparator = true;
+            this.numericalTextBoxRadialAngle.UpDown_Increment = 1D;
+            this.numericalTextBoxRadialAngle.Value = 8D;
+            this.numericalTextBoxRadialAngle.WordWrap = true;
+            // 
+            // numericalTextBoxRyOscillation
+            // 
+            this.numericalTextBoxRyOscillation.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRyOscillation, "numericalTextBoxRyOscillation");
+            this.numericalTextBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyOscillation.DecimalPlaces = -1;
+            this.numericalTextBoxRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyOscillation.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRyOscillation.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRyOscillation.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRyOscillation.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRyOscillation.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRyOscillation.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRyOscillation.MouseSpeed = 1D;
+            this.numericalTextBoxRyOscillation.Multiline = false;
+            this.numericalTextBoxRyOscillation.Name = "numericalTextBoxRyOscillation";
+            this.numericalTextBoxRyOscillation.RadianValue = 0.13962634015954636D;
+            this.numericalTextBoxRyOscillation.ReadOnly = false;
+            this.numericalTextBoxRyOscillation.RestrictLimitValue = true;
+            this.numericalTextBoxRyOscillation.ShowFraction = false;
+            this.numericalTextBoxRyOscillation.ShowPositiveSign = false;
+            this.numericalTextBoxRyOscillation.ShowUpDown = false;
+            this.numericalTextBoxRyOscillation.SkipEventDuringInput = false;
+            this.numericalTextBoxRyOscillation.SmartIncrement = true;
+            this.numericalTextBoxRyOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRyOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRyOscillation.ThonsandsSeparator = true;
+            this.numericalTextBoxRyOscillation.UpDown_Increment = 1D;
+            this.numericalTextBoxRyOscillation.Value = 8D;
+            this.numericalTextBoxRyOscillation.WordWrap = true;
+            // 
+            // numericalTextBoxRzOscillation
+            // 
+            this.numericalTextBoxRzOscillation.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxRzOscillation, "numericalTextBoxRzOscillation");
+            this.numericalTextBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzOscillation.DecimalPlaces = -1;
+            this.numericalTextBoxRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzOscillation.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxRzOscillation.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxRzOscillation.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxRzOscillation.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxRzOscillation.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxRzOscillation.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
+            this.numericalTextBoxRzOscillation.MouseSpeed = 1D;
+            this.numericalTextBoxRzOscillation.Multiline = false;
+            this.numericalTextBoxRzOscillation.Name = "numericalTextBoxRzOscillation";
+            this.numericalTextBoxRzOscillation.RadianValue = 0.13962634015954636D;
+            this.numericalTextBoxRzOscillation.ReadOnly = false;
+            this.numericalTextBoxRzOscillation.RestrictLimitValue = true;
+            this.numericalTextBoxRzOscillation.ShowFraction = false;
+            this.numericalTextBoxRzOscillation.ShowPositiveSign = false;
+            this.numericalTextBoxRzOscillation.ShowUpDown = false;
+            this.numericalTextBoxRzOscillation.SkipEventDuringInput = false;
+            this.numericalTextBoxRzOscillation.SmartIncrement = true;
+            this.numericalTextBoxRzOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxRzOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxRzOscillation.ThonsandsSeparator = true;
+            this.numericalTextBoxRzOscillation.UpDown_Increment = 1D;
+            this.numericalTextBoxRzOscillation.Value = 8D;
+            this.numericalTextBoxRzOscillation.WordWrap = true;
             // 
             // scalablePictureBoxAdvanced1
             // 
@@ -1653,7 +1751,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -10973);
+            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -228);
             this.scalablePictureBoxAdvanced1.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced1.StatusLabel = " ";
             this.scalablePictureBoxAdvanced1.StatusProgress = 0D;
@@ -1682,7 +1780,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -10973);
+            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -228);
             this.scalablePictureBoxAdvanced2.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced2.StatusLabel = " ";
             this.scalablePictureBoxAdvanced2.StatusProgress = 0D;
@@ -1691,25 +1789,12 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.UpperIntensity = 255D;
             this.scalablePictureBoxAdvanced2.VisibleGradient = true;
             // 
-            // graphicsBox
+            // flowLayoutPanel3
             // 
-            resources.ApplyResources(this.graphicsBox, "graphicsBox");
-            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.graphicsBox.Name = "graphicsBox";
-            this.graphicsBox.TabStop = false;
-            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
-            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
-            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
-            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
-            // 
-            // pageSetupDialog1
-            // 
-            this.pageSetupDialog1.Document = this.printDocument1;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // FormStereonet
             // 
@@ -1736,7 +1821,6 @@ namespace ReciPro
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1762,8 +1846,6 @@ namespace ReciPro
             this.tabPage3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.panelSpecifiedIndices.ResumeLayout(false);
@@ -1771,6 +1853,8 @@ namespace ReciPro
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1781,11 +1865,7 @@ namespace ReciPro
         private System.Windows.Forms.TrackBar trackBarStrSize;
         private System.Windows.Forms.TrackBar trackBarPointSize;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.RadioButton radioButtonAxes;
-        private System.Windows.Forms.Label labelPlusMinus2;
-        private System.Windows.Forms.Label labelPlusMinus1;
-        private System.Windows.Forms.Label labelPlusMinus3;
         private System.Windows.Forms.RadioButton radioButtonPlanes;
         private System.Windows.Forms.Label labelYpos;
         private System.Windows.Forms.Label labelXpos;
@@ -1893,8 +1973,6 @@ namespace ReciPro
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.NumericUpDown numericUpDown1;
-        public System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label labelHU;
         private System.Windows.Forms.RadioButton radioButtonRange;
         private System.Windows.Forms.RadioButton radioButtonSpecifiedIndices;
@@ -1923,5 +2001,9 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem asMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asMetafileToolStripMenuItem1;
+        private Crystallography.Controls.NumericBox numericBox3;
+        private Crystallography.Controls.NumericBox numericBox2;
+        private Crystallography.Controls.NumericBox numericBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }

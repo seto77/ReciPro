@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBoxSymmetryInformation = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -131,7 +132,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource();
+            this.bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxSymmetryInformation.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -139,8 +140,25 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableWyckoff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTablePlanes)).BeginInit();
             this.groupBoxGeometricsCalculation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownW2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownU2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownU1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownL2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownV2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownK2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownV1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownK1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownW1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownL1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceScatteringFactor)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxSymmetryInformation
@@ -725,7 +743,7 @@
             this.textBoxAnglePlanes.Name = "textBoxAnglePlanes";
             this.textBoxAnglePlanes.ReadOnly = true;
             this.textBoxAnglePlanes.Size = new System.Drawing.Size(60, 21);
-            this.textBoxAnglePlanes.TabIndex = 4;
+            this.textBoxAnglePlanes.TabIndex = 12;
             this.textBoxAnglePlanes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDownW2
@@ -744,7 +762,7 @@
             -2147483648});
             this.numericUpDownW2.Name = "numericUpDownW2";
             this.numericUpDownW2.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownW2.TabIndex = 5;
+            this.numericUpDownW2.TabIndex = 11;
             this.numericUpDownW2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownW2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -773,7 +791,7 @@
             -2147483648});
             this.numericUpDownU2.Name = "numericUpDownU2";
             this.numericUpDownU2.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownU2.TabIndex = 5;
+            this.numericUpDownU2.TabIndex = 9;
             this.numericUpDownU2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownU2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -793,7 +811,7 @@
             -2147483648});
             this.numericUpDownU1.Name = "numericUpDownU1";
             this.numericUpDownU1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownU1.TabIndex = 5;
+            this.numericUpDownU1.TabIndex = 6;
             this.numericUpDownU1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownU1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -833,7 +851,7 @@
             -2147483648});
             this.numericUpDownV2.Name = "numericUpDownV2";
             this.numericUpDownV2.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownV2.TabIndex = 5;
+            this.numericUpDownV2.TabIndex = 10;
             this.numericUpDownV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownV2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -853,7 +871,7 @@
             -2147483648});
             this.numericUpDownK2.Name = "numericUpDownK2";
             this.numericUpDownK2.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownK2.TabIndex = 5;
+            this.numericUpDownK2.TabIndex = 4;
             this.numericUpDownK2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownK2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -873,7 +891,7 @@
             -2147483648});
             this.numericUpDownV1.Name = "numericUpDownV1";
             this.numericUpDownV1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownV1.TabIndex = 5;
+            this.numericUpDownV1.TabIndex = 7;
             this.numericUpDownV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownV1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -902,7 +920,7 @@
             -2147483648});
             this.numericUpDownK1.Name = "numericUpDownK1";
             this.numericUpDownK1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownK1.TabIndex = 5;
+            this.numericUpDownK1.TabIndex = 1;
             this.numericUpDownK1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownK1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -931,13 +949,13 @@
             -2147483648});
             this.numericUpDownH2.Name = "numericUpDownH2";
             this.numericUpDownH2.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownH2.TabIndex = 5;
+            this.numericUpDownH2.TabIndex = 3;
             this.numericUpDownH2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownH2.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
             // label34
             // 
-            this.label34.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(597, 36);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(24, 16);
@@ -969,7 +987,7 @@
             -2147483648});
             this.numericUpDownW1.Name = "numericUpDownW1";
             this.numericUpDownW1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownW1.TabIndex = 5;
+            this.numericUpDownW1.TabIndex = 8;
             this.numericUpDownW1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownW1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -989,7 +1007,7 @@
             -2147483648});
             this.numericUpDownH1.Name = "numericUpDownH1";
             this.numericUpDownH1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownH1.TabIndex = 5;
+            this.numericUpDownH1.TabIndex = 0;
             this.numericUpDownH1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownH1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -1037,7 +1055,7 @@
             -2147483648});
             this.numericUpDownL1.Name = "numericUpDownL1";
             this.numericUpDownL1.Size = new System.Drawing.Size(36, 21);
-            this.numericUpDownL1.TabIndex = 5;
+            this.numericUpDownL1.TabIndex = 2;
             this.numericUpDownL1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDownL1.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
@@ -1067,7 +1085,7 @@
             this.textBoxZonePlane.Name = "textBoxZonePlane";
             this.textBoxZonePlane.ReadOnly = true;
             this.textBoxZonePlane.Size = new System.Drawing.Size(72, 21);
-            this.textBoxZonePlane.TabIndex = 4;
+            this.textBoxZonePlane.TabIndex = 19;
             this.textBoxZonePlane.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label25
@@ -1096,7 +1114,7 @@
             this.textBoxLengthPlane1.Name = "textBoxLengthPlane1";
             this.textBoxLengthPlane1.ReadOnly = true;
             this.textBoxLengthPlane1.Size = new System.Drawing.Size(52, 21);
-            this.textBoxLengthPlane1.TabIndex = 4;
+            this.textBoxLengthPlane1.TabIndex = 13;
             this.textBoxLengthPlane1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxAngleAxes
@@ -1106,12 +1124,12 @@
             this.textBoxAngleAxes.Name = "textBoxAngleAxes";
             this.textBoxAngleAxes.ReadOnly = true;
             this.textBoxAngleAxes.Size = new System.Drawing.Size(60, 21);
-            this.textBoxAngleAxes.TabIndex = 4;
+            this.textBoxAngleAxes.TabIndex = 17;
             this.textBoxAngleAxes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label32
             // 
-            this.label32.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(289, 33);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(24, 16);
@@ -1120,7 +1138,7 @@
             // 
             // label35
             // 
-            this.label35.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(597, 76);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(24, 16);
@@ -1134,7 +1152,7 @@
             this.textBoxLengthPlane2.Name = "textBoxLengthPlane2";
             this.textBoxLengthPlane2.ReadOnly = true;
             this.textBoxLengthPlane2.Size = new System.Drawing.Size(52, 21);
-            this.textBoxLengthPlane2.TabIndex = 4;
+            this.textBoxLengthPlane2.TabIndex = 14;
             this.textBoxLengthPlane2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label39
@@ -1171,7 +1189,7 @@
             this.textBoxAnglePlaneAxis2.Name = "textBoxAnglePlaneAxis2";
             this.textBoxAnglePlaneAxis2.ReadOnly = true;
             this.textBoxAnglePlaneAxis2.Size = new System.Drawing.Size(52, 21);
-            this.textBoxAnglePlaneAxis2.TabIndex = 4;
+            this.textBoxAnglePlaneAxis2.TabIndex = 16;
             this.textBoxAnglePlaneAxis2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxAnglePlaneAxis1
@@ -1181,12 +1199,12 @@
             this.textBoxAnglePlaneAxis1.Name = "textBoxAnglePlaneAxis1";
             this.textBoxAnglePlaneAxis1.ReadOnly = true;
             this.textBoxAnglePlaneAxis1.Size = new System.Drawing.Size(52, 21);
-            this.textBoxAnglePlaneAxis1.TabIndex = 4;
+            this.textBoxAnglePlaneAxis1.TabIndex = 15;
             this.textBoxAnglePlaneAxis1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label33
             // 
-            this.label33.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(289, 79);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(24, 16);
@@ -1236,7 +1254,7 @@
             this.textBoxZoneAxis.Name = "textBoxZoneAxis";
             this.textBoxZoneAxis.ReadOnly = true;
             this.textBoxZoneAxis.Size = new System.Drawing.Size(72, 21);
-            this.textBoxZoneAxis.TabIndex = 4;
+            this.textBoxZoneAxis.TabIndex = 18;
             this.textBoxZoneAxis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
@@ -1292,9 +1310,26 @@
             this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableWyckoff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTablePlanes)).EndInit();
             this.groupBoxGeometricsCalculation.ResumeLayout(false);
             this.groupBoxGeometricsCalculation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownW2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownU2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownU1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownL2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownV2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownK2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownV1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownK1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownW1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownL1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceScatteringFactor)).EndInit();
             this.ResumeLayout(false);
 
         }

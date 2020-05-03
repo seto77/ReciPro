@@ -48,7 +48,18 @@ namespace Crystallography.Controls
         /// UpDownボタンを有効にするかどうか
         /// </summary>
         [Category("Appearance properties")]
-        public bool ShowUpDown { get => numericUpDown.Visible; set => numericUpDown.Visible = value; }
+        public bool ShowUpDown
+        {
+            get => showUpDown;
+            set
+            {
+                showUpDown = value;
+                numericUpDown.Visible = showUpDown;
+                if (showUpDown)
+                    Refresh();
+            }
+        }
+        private bool showUpDown = false;
 
         /// <summary>
         /// UpDownボタンが有効な場合、Incrementを取得/設定
@@ -320,6 +331,11 @@ namespace Crystallography.Controls
         public bool WordWrap { set => textBox.WordWrap = value; get => textBox.WordWrap; }
 
         #endregion プロパティ
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            this.BeginInvoke(new MethodInvoker(() => textBox.SelectAll()));
+        }
 
         private void textBox_ReadOnlyChanged(object sender, EventArgs e) => ReadOnlyChanged?.Invoke(sender, e);
 
@@ -729,5 +745,10 @@ namespace Crystallography.Controls
         }
 
         #endregion マウスコントロールモード
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            textBox.SelectAll();
+        }
     }
 }

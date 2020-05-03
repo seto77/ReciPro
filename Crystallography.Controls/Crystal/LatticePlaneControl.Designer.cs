@@ -35,31 +35,31 @@
             this.buttonChangeBond = new System.Windows.Forms.Button();
             this.buttonDeleteBond = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new Crystallography.Controls.DataSet();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Translation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colorControl = new Crystallography.Controls.ColorControl();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new Crystallography.Controls.DataSet();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.numericBoxDistance = new Crystallography.Controls.NumericBox();
             this.numericBoxL = new Crystallography.Controls.NumericBox();
             this.numericBoxK = new Crystallography.Controls.NumericBox();
             this.numericBoxH = new Crystallography.Controls.NumericBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.colorControl = new Crystallography.Controls.ColorControl();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -99,7 +99,7 @@
             this.buttonAddBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddBond.Name = "buttonAddBond";
             this.buttonAddBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonAddBond.TabIndex = 121;
+            this.buttonAddBond.TabIndex = 0;
             this.buttonAddBond.Text = "Add";
             this.buttonAddBond.UseVisualStyleBackColor = false;
             this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -115,7 +115,7 @@
             this.buttonChangeBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChangeBond.Name = "buttonChangeBond";
             this.buttonChangeBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonChangeBond.TabIndex = 122;
+            this.buttonChangeBond.TabIndex = 1;
             this.buttonChangeBond.Text = "Replace";
             this.buttonChangeBond.UseVisualStyleBackColor = false;
             this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
@@ -133,7 +133,7 @@
             this.buttonDeleteBond.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDeleteBond.Name = "buttonDeleteBond";
             this.buttonDeleteBond.Size = new System.Drawing.Size(75, 28);
-            this.buttonDeleteBond.TabIndex = 123;
+            this.buttonDeleteBond.TabIndex = 2;
             this.buttonDeleteBond.Text = "Delete";
             this.buttonDeleteBond.UseVisualStyleBackColor = false;
             this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -163,139 +163,9 @@
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(550, 398);
-            this.dataGridView.TabIndex = 130;
+            this.dataGridView.TabIndex = 0;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataMember = "DataTableLatticePlane";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.numericBoxDistance);
-            this.panel2.Controls.Add(this.numericBoxL);
-            this.panel2.Controls.Add(this.numericBoxK);
-            this.panel2.Controls.Add(this.numericBoxH);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.colorControl);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 398);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 49);
-            this.panel2.TabIndex = 132;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(120, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(10, 15);
-            this.label5.TabIndex = 90;
-            this.label5.Text = "l";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(72, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 15);
-            this.label4.TabIndex = 90;
-            this.label4.Text = "k";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(27, 1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 15);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "h";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(194, 1);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 15);
-            this.label6.TabIndex = 90;
-            this.label6.Text = "Translation";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(153, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 21);
-            this.label2.TabIndex = 90;
-            this.label2.Text = "}";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(4, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 21);
-            this.label1.TabIndex = 90;
-            this.label1.Text = "{";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Bond color";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Polyhedron color";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            this.dataGridViewImageColumn1.HeaderText = "Bond color";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.Width = 80;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            this.dataGridViewImageColumn2.HeaderText = "Polyhedron color";
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.Width = 80;
             // 
             // enabledDataGridViewCheckBoxColumn
             // 
@@ -339,15 +209,6 @@
             this.Translation.ReadOnly = true;
             this.Translation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // dataGridViewImageColumn4
-            // 
-            this.dataGridViewImageColumn4.DataPropertyName = "Color";
-            this.dataGridViewImageColumn4.HeaderText = "Color";
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.ReadOnly = true;
-            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn4.Width = 60;
-            // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
@@ -357,33 +218,37 @@
             this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colorDataGridViewTextBoxColumn.Width = 60;
             // 
-            // colorControl
+            // bindingSource
             // 
-            this.colorControl.Argb = -16192;
-            this.colorControl.AutoSize = true;
-            this.colorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.colorControl.Blue = 192;
-            this.colorControl.BlueF = 0.7529412F;
-            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.colorControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControl.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControl.FooterText = "";
-            this.colorControl.Green = 192;
-            this.colorControl.GreenF = 0.7529412F;
-            this.colorControl.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControl.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControl.HeaderText = "Color";
-            this.colorControl.Location = new System.Drawing.Point(335, 3);
-            this.colorControl.Margin = new System.Windows.Forms.Padding(0);
-            this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 255;
-            this.colorControl.RedF = 1F;
-            this.colorControl.Size = new System.Drawing.Size(36, 35);
-            this.colorControl.TabIndex = 121;
-            this.colorControl.ToolTip = "";
+            this.bindingSource.DataMember = "DataTableLatticePlane";
+            this.bindingSource.DataSource = this.dataSet;
+            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.numericBoxDistance);
+            this.panel2.Controls.Add(this.numericBoxL);
+            this.panel2.Controls.Add(this.numericBoxK);
+            this.panel2.Controls.Add(this.numericBoxH);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.colorControl);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 398);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(550, 49);
+            this.panel2.TabIndex = 132;
             // 
             // numericBoxDistance
             // 
@@ -422,7 +287,7 @@
             this.numericBoxDistance.Size = new System.Drawing.Size(81, 27);
             this.numericBoxDistance.SkipEventDuringInput = false;
             this.numericBoxDistance.SmartIncrement = false;
-            this.numericBoxDistance.TabIndex = 119;
+            this.numericBoxDistance.TabIndex = 3;
             this.numericBoxDistance.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxDistance.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -469,7 +334,7 @@
             this.numericBoxL.Size = new System.Drawing.Size(40, 27);
             this.numericBoxL.SkipEventDuringInput = false;
             this.numericBoxL.SmartIncrement = false;
-            this.numericBoxL.TabIndex = 119;
+            this.numericBoxL.TabIndex = 2;
             this.numericBoxL.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -516,7 +381,7 @@
             this.numericBoxK.Size = new System.Drawing.Size(40, 27);
             this.numericBoxK.SkipEventDuringInput = false;
             this.numericBoxK.SmartIncrement = false;
-            this.numericBoxK.TabIndex = 119;
+            this.numericBoxK.TabIndex = 1;
             this.numericBoxK.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -563,7 +428,7 @@
             this.numericBoxH.Size = new System.Drawing.Size(40, 27);
             this.numericBoxH.SkipEventDuringInput = false;
             this.numericBoxH.SmartIncrement = false;
-            this.numericBoxH.TabIndex = 119;
+            this.numericBoxH.TabIndex = 0;
             this.numericBoxH.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -572,6 +437,141 @@
             this.numericBoxH.UpDown_Increment = 1D;
             this.numericBoxH.Value = 0D;
             this.numericBoxH.WordWrap = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(153, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 21);
+            this.label2.TabIndex = 90;
+            this.label2.Text = "}";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(4, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 21);
+            this.label1.TabIndex = 90;
+            this.label1.Text = "{";
+            // 
+            // colorControl
+            // 
+            this.colorControl.Argb = -16192;
+            this.colorControl.AutoSize = true;
+            this.colorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.colorControl.Blue = 192;
+            this.colorControl.BlueF = 0.7529412F;
+            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.colorControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.FooterMargin = new System.Windows.Forms.Padding(0);
+            this.colorControl.FooterText = "";
+            this.colorControl.Green = 192;
+            this.colorControl.GreenF = 0.7529412F;
+            this.colorControl.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.colorControl.HeaderText = "Color";
+            this.colorControl.Location = new System.Drawing.Point(335, 3);
+            this.colorControl.Margin = new System.Windows.Forms.Padding(0);
+            this.colorControl.Name = "colorControl";
+            this.colorControl.Red = 255;
+            this.colorControl.RedF = 1F;
+            this.colorControl.Size = new System.Drawing.Size(36, 35);
+            this.colorControl.TabIndex = 4;
+            this.colorControl.ToolTip = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(120, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 15);
+            this.label5.TabIndex = 90;
+            this.label5.Text = "l";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(72, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 15);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "k";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(27, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 15);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "h";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(194, 1);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 15);
+            this.label6.TabIndex = 90;
+            this.label6.Text = "Translation";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Bond color";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Polyhedron color";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
+            this.dataGridViewImageColumn1.HeaderText = "Bond color";
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 80;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
+            this.dataGridViewImageColumn2.HeaderText = "Polyhedron color";
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.Width = 80;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.DataPropertyName = "Color";
+            this.dataGridViewImageColumn4.HeaderText = "Color";
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.ReadOnly = true;
+            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn4.Width = 60;
             // 
             // LatticePlaneControl
             // 

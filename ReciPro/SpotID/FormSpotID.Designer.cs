@@ -158,7 +158,7 @@ namespace ReciPro
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1243, 24);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -246,7 +246,7 @@ namespace ReciPro
             this.checkBoxShowDebyeRing.Location = new System.Drawing.Point(7, 5);
             this.checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
             this.checkBoxShowDebyeRing.Size = new System.Drawing.Size(132, 21);
-            this.checkBoxShowDebyeRing.TabIndex = 6;
+            this.checkBoxShowDebyeRing.TabIndex = 0;
             this.checkBoxShowDebyeRing.Text = "Show Debye rings";
             this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
             this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
@@ -261,7 +261,7 @@ namespace ReciPro
             this.groupBox2.Location = new System.Drawing.Point(196, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(587, 102);
-            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Optics";
             // 
@@ -302,7 +302,7 @@ namespace ReciPro
             this.numericBoxCameraLength.Size = new System.Drawing.Size(205, 27);
             this.numericBoxCameraLength.SkipEventDuringInput = false;
             this.numericBoxCameraLength.SmartIncrement = true;
-            this.numericBoxCameraLength.TabIndex = 3;
+            this.numericBoxCameraLength.TabIndex = 1;
             this.numericBoxCameraLength.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxCameraLength.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxCameraLength.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -349,7 +349,7 @@ namespace ReciPro
             this.numericBoxPixelSize.Size = new System.Drawing.Size(168, 27);
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
-            this.numericBoxPixelSize.TabIndex = 3;
+            this.numericBoxPixelSize.TabIndex = 2;
             this.numericBoxPixelSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxPixelSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxPixelSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -370,7 +370,7 @@ namespace ReciPro
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
             this.waveLengthControl1.Size = new System.Drawing.Size(221, 79);
-            this.waveLengthControl1.TabIndex = 6;
+            this.waveLengthControl1.TabIndex = 0;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.waveLengthControl1.WaveLength = 0.00250793474552456D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
@@ -385,7 +385,7 @@ namespace ReciPro
             this.buttonIdentifySpots.Location = new System.Drawing.Point(2, 49);
             this.buttonIdentifySpots.Name = "buttonIdentifySpots";
             this.buttonIdentifySpots.Size = new System.Drawing.Size(97, 27);
-            this.buttonIdentifySpots.TabIndex = 2;
+            this.buttonIdentifySpots.TabIndex = 5;
             this.buttonIdentifySpots.Text = "Identify Spots";
             this.buttonIdentifySpots.UseVisualStyleBackColor = false;
             this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
@@ -411,7 +411,7 @@ namespace ReciPro
             this.groupBox3.Location = new System.Drawing.Point(7, 594);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(776, 185);
-            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Index";
             // 
@@ -452,7 +452,7 @@ namespace ReciPro
             this.numericBoxSemiangle.Size = new System.Drawing.Size(157, 27);
             this.numericBoxSemiangle.SkipEventDuringInput = true;
             this.numericBoxSemiangle.SmartIncrement = true;
-            this.numericBoxSemiangle.TabIndex = 30;
+            this.numericBoxSemiangle.TabIndex = 12;
             this.numericBoxSemiangle.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxSemiangle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
@@ -499,7 +499,7 @@ namespace ReciPro
             this.numericBoxMaxNumOfG.Size = new System.Drawing.Size(138, 27);
             this.numericBoxMaxNumOfG.SkipEventDuringInput = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TabIndex = 30;
+            this.numericBoxMaxNumOfG.TabIndex = 11;
             this.numericBoxMaxNumOfG.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxMaxNumOfG.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
@@ -546,7 +546,7 @@ namespace ReciPro
             this.numericBoxAcceptableError.Size = new System.Drawing.Size(168, 27);
             this.numericBoxAcceptableError.SkipEventDuringInput = false;
             this.numericBoxAcceptableError.SmartIncrement = true;
-            this.numericBoxAcceptableError.TabIndex = 7;
+            this.numericBoxAcceptableError.TabIndex = 6;
             this.numericBoxAcceptableError.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxAcceptableError.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxAcceptableError.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -594,7 +594,7 @@ namespace ReciPro
             this.numericBoxMaxGrainNum.Size = new System.Drawing.Size(168, 27);
             this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
             this.numericBoxMaxGrainNum.SmartIncrement = false;
-            this.numericBoxMaxGrainNum.TabIndex = 7;
+            this.numericBoxMaxGrainNum.TabIndex = 10;
             this.numericBoxMaxGrainNum.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxMaxGrainNum.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -613,7 +613,7 @@ namespace ReciPro
             this.checkBoxShowCalcSpotSymbol.Location = new System.Drawing.Point(8, 22);
             this.checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
             this.checkBoxShowCalcSpotSymbol.Size = new System.Drawing.Size(104, 21);
-            this.checkBoxShowCalcSpotSymbol.TabIndex = 6;
+            this.checkBoxShowCalcSpotSymbol.TabIndex = 3;
             this.checkBoxShowCalcSpotSymbol.Text = "Show symbol";
             this.checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
             this.checkBoxShowCalcSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
@@ -624,7 +624,7 @@ namespace ReciPro
             this.radioButtonMultiGrain.Location = new System.Drawing.Point(102, 103);
             this.radioButtonMultiGrain.Name = "radioButtonMultiGrain";
             this.radioButtonMultiGrain.Size = new System.Drawing.Size(95, 21);
-            this.radioButtonMultiGrain.TabIndex = 8;
+            this.radioButtonMultiGrain.TabIndex = 9;
             this.radioButtonMultiGrain.Text = "Multi grains";
             this.radioButtonMultiGrain.UseVisualStyleBackColor = true;
             // 
@@ -648,7 +648,7 @@ namespace ReciPro
             this.checkBoxShowCalcSpotLabel.Location = new System.Drawing.Point(118, 22);
             this.checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
             this.checkBoxShowCalcSpotLabel.Size = new System.Drawing.Size(90, 21);
-            this.checkBoxShowCalcSpotLabel.TabIndex = 6;
+            this.checkBoxShowCalcSpotLabel.TabIndex = 4;
             this.checkBoxShowCalcSpotLabel.Text = "Show label";
             this.checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowCalcSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
@@ -675,7 +675,7 @@ namespace ReciPro
             this.dataGridViewGrains.RowTemplate.Height = 21;
             this.dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGrains.Size = new System.Drawing.Size(321, 111);
-            this.dataGridViewGrains.TabIndex = 5;
+            this.dataGridViewGrains.TabIndex = 1;
             // 
             // noDataGridViewTextBoxColumn2
             // 
@@ -731,7 +731,7 @@ namespace ReciPro
             this.dataGridViewCandidates.RowTemplate.Height = 21;
             this.dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCandidates.Size = new System.Drawing.Size(157, 111);
-            this.dataGridViewCandidates.TabIndex = 5;
+            this.dataGridViewCandidates.TabIndex = 0;
             // 
             // noDataGridViewTextBoxColumn1
             // 
@@ -760,7 +760,7 @@ namespace ReciPro
             this.checkBoxIgnoreMultipleDiffraction.Location = new System.Drawing.Point(6, 79);
             this.checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
             this.checkBoxIgnoreMultipleDiffraction.Size = new System.Drawing.Size(180, 21);
-            this.checkBoxIgnoreMultipleDiffraction.TabIndex = 6;
+            this.checkBoxIgnoreMultipleDiffraction.TabIndex = 7;
             this.checkBoxIgnoreMultipleDiffraction.Text = "Ignore Multiple Diffraction";
             this.checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
             this.checkBoxIgnoreMultipleDiffraction.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
@@ -773,7 +773,7 @@ namespace ReciPro
             this.buttonRefineThicknessAndDirection.Location = new System.Drawing.Point(511, 155);
             this.buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
             this.buttonRefineThicknessAndDirection.Size = new System.Drawing.Size(191, 27);
-            this.buttonRefineThicknessAndDirection.TabIndex = 2;
+            this.buttonRefineThicknessAndDirection.TabIndex = 13;
             this.buttonRefineThicknessAndDirection.Text = "Refine thickness and direction";
             this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
             this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
@@ -802,7 +802,7 @@ namespace ReciPro
             this.statusStrip1.Location = new System.Drawing.Point(0, 805);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1243, 22);
-            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar
@@ -851,7 +851,7 @@ namespace ReciPro
             this.buttonPixelToPixel.Location = new System.Drawing.Point(62, 3);
             this.buttonPixelToPixel.Name = "buttonPixelToPixel";
             this.buttonPixelToPixel.Size = new System.Drawing.Size(82, 25);
-            this.buttonPixelToPixel.TabIndex = 11;
+            this.buttonPixelToPixel.TabIndex = 1;
             this.buttonPixelToPixel.Text = "Pixel to Pixel";
             this.buttonPixelToPixel.UseVisualStyleBackColor = true;
             this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
@@ -864,7 +864,7 @@ namespace ReciPro
             this.buttonCopyMetafile.Location = new System.Drawing.Point(3, 3);
             this.buttonCopyMetafile.Name = "buttonCopyMetafile";
             this.buttonCopyMetafile.Size = new System.Drawing.Size(60, 25);
-            this.buttonCopyMetafile.TabIndex = 11;
+            this.buttonCopyMetafile.TabIndex = 0;
             this.buttonCopyMetafile.Text = "Metafile";
             this.buttonCopyMetafile.UseVisualStyleBackColor = true;
             this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
@@ -890,7 +890,7 @@ namespace ReciPro
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Size = new System.Drawing.Size(1243, 781);
             this.splitContainer1.SplitterDistance = 453;
-            this.splitContainer1.TabIndex = 12;
+            this.splitContainer1.TabIndex = 1;
             // 
             // scalablePictureBoxAdvanced
             // 
@@ -957,7 +957,7 @@ namespace ReciPro
             this.groupBox1.Location = new System.Drawing.Point(7, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 484);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Spot";
             // 
@@ -999,7 +999,7 @@ namespace ReciPro
             this.numericBoxDonut.Size = new System.Drawing.Size(44, 24);
             this.numericBoxDonut.SkipEventDuringInput = false;
             this.numericBoxDonut.SmartIncrement = true;
-            this.numericBoxDonut.TabIndex = 9;
+            this.numericBoxDonut.TabIndex = 14;
             this.numericBoxDonut.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxDonut.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
@@ -1016,7 +1016,7 @@ namespace ReciPro
             this.checkBoxDetailsSpot.Location = new System.Drawing.Point(551, 19);
             this.checkBoxDetailsSpot.Name = "checkBoxDetailsSpot";
             this.checkBoxDetailsSpot.Size = new System.Drawing.Size(115, 38);
-            this.checkBoxDetailsSpot.TabIndex = 6;
+            this.checkBoxDetailsSpot.TabIndex = 7;
             this.checkBoxDetailsSpot.Text = "Details of the\r\n selected spots";
             this.checkBoxDetailsSpot.UseVisualStyleBackColor = true;
             this.checkBoxDetailsSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsSpot_CheckedChanged);
@@ -1266,7 +1266,7 @@ namespace ReciPro
             this.checkBoxShowObsSpotSymbol.Location = new System.Drawing.Point(9, 19);
             this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
             this.checkBoxShowObsSpotSymbol.Size = new System.Drawing.Size(104, 21);
-            this.checkBoxShowObsSpotSymbol.TabIndex = 6;
+            this.checkBoxShowObsSpotSymbol.TabIndex = 0;
             this.checkBoxShowObsSpotSymbol.Text = "Show symbol";
             this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
             this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
@@ -1280,7 +1280,7 @@ namespace ReciPro
             this.checkBoxShowObsSpotLabel.Location = new System.Drawing.Point(9, 44);
             this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
             this.checkBoxShowObsSpotLabel.Size = new System.Drawing.Size(90, 21);
-            this.checkBoxShowObsSpotLabel.TabIndex = 6;
+            this.checkBoxShowObsSpotLabel.TabIndex = 1;
             this.checkBoxShowObsSpotLabel.Text = "Show label";
             this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
@@ -1295,7 +1295,7 @@ namespace ReciPro
             this.buttonSaveToFile.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSaveToFile.Name = "buttonSaveToFile";
             this.buttonSaveToFile.Size = new System.Drawing.Size(45, 27);
-            this.buttonSaveToFile.TabIndex = 2;
+            this.buttonSaveToFile.TabIndex = 9;
             this.buttonSaveToFile.Text = "Save";
             this.buttonSaveToFile.UseVisualStyleBackColor = true;
             this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
@@ -1337,7 +1337,7 @@ namespace ReciPro
             this.numericBoxNearestNeighbor.Size = new System.Drawing.Size(199, 27);
             this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
             this.numericBoxNearestNeighbor.SmartIncrement = true;
-            this.numericBoxNearestNeighbor.TabIndex = 3;
+            this.numericBoxNearestNeighbor.TabIndex = 6;
             this.numericBoxNearestNeighbor.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxNearestNeighbor.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxNearestNeighbor.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -1384,7 +1384,7 @@ namespace ReciPro
             this.numericBoxNumberOfSpots.Size = new System.Drawing.Size(99, 27);
             this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
             this.numericBoxNumberOfSpots.SmartIncrement = true;
-            this.numericBoxNumberOfSpots.TabIndex = 3;
+            this.numericBoxNumberOfSpots.TabIndex = 5;
             this.numericBoxNumberOfSpots.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxNumberOfSpots.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxNumberOfSpots.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -1452,7 +1452,7 @@ namespace ReciPro
             this.buttonCopyToClipboad.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
             this.buttonCopyToClipboad.Size = new System.Drawing.Size(48, 27);
-            this.buttonCopyToClipboad.TabIndex = 2;
+            this.buttonCopyToClipboad.TabIndex = 10;
             this.buttonCopyToClipboad.Text = "Copy";
             this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
             this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
@@ -1481,7 +1481,7 @@ namespace ReciPro
             this.buttonDonut.Location = new System.Drawing.Point(604, 452);
             this.buttonDonut.Name = "buttonDonut";
             this.buttonDonut.Size = new System.Drawing.Size(125, 23);
-            this.buttonDonut.TabIndex = 2;
+            this.buttonDonut.TabIndex = 13;
             this.buttonDonut.Text = "Donut (experimental)";
             this.buttonDonut.UseVisualStyleBackColor = true;
             this.buttonDonut.Click += new System.EventHandler(this.buttonDonut_Click);
@@ -1495,7 +1495,7 @@ namespace ReciPro
             this.buttonGlobalFit.Location = new System.Drawing.Point(627, 429);
             this.buttonGlobalFit.Name = "buttonGlobalFit";
             this.buttonGlobalFit.Size = new System.Drawing.Size(140, 23);
-            this.buttonGlobalFit.TabIndex = 2;
+            this.buttonGlobalFit.TabIndex = 12;
             this.buttonGlobalFit.Text = "Global fit (experimental)";
             this.buttonGlobalFit.UseVisualStyleBackColor = true;
             this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
@@ -1508,7 +1508,7 @@ namespace ReciPro
             this.buttonResetRangeForAllSpots.Location = new System.Drawing.Point(443, 13);
             this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
             this.buttonResetRangeForAllSpots.Size = new System.Drawing.Size(88, 27);
-            this.buttonResetRangeForAllSpots.TabIndex = 2;
+            this.buttonResetRangeForAllSpots.TabIndex = 4;
             this.buttonResetRangeForAllSpots.Text = "Reset range";
             this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
             this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
@@ -1521,7 +1521,7 @@ namespace ReciPro
             this.buttonCopmprehensiveFitting.Location = new System.Drawing.Point(634, 400);
             this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
             this.buttonCopmprehensiveFitting.Size = new System.Drawing.Size(136, 27);
-            this.buttonCopmprehensiveFitting.TabIndex = 2;
+            this.buttonCopmprehensiveFitting.TabIndex = 11;
             this.buttonCopmprehensiveFitting.Text = "Re-fit all";
             this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
             this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
@@ -1537,7 +1537,7 @@ namespace ReciPro
             this.buttonClearSpots.Location = new System.Drawing.Point(670, 12);
             this.buttonClearSpots.Name = "buttonClearSpots";
             this.buttonClearSpots.Size = new System.Drawing.Size(101, 27);
-            this.buttonClearSpots.TabIndex = 2;
+            this.buttonClearSpots.TabIndex = 8;
             this.buttonClearSpots.Text = "Clear all spots";
             this.buttonClearSpots.UseVisualStyleBackColor = false;
             this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);

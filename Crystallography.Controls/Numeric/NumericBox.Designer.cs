@@ -70,6 +70,7 @@
             this.textBox.ReadOnlyChanged += new System.EventHandler(this.textBox_ReadOnlyChanged);
             this.textBox.FontChanged += new System.EventHandler(this.textBox_FontChanged);
             this.textBox.TextChanged += new System.EventHandler(this.textBox_TextChanged);
+            this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
@@ -232,6 +233,7 @@
             0,
             -2147483648});
             this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.TabStop = false;
             this.numericUpDown.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
             // contextMenuStripUpDown
@@ -303,8 +305,8 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.textBox);
+            this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.labelFooter);
             this.DoubleBuffered = true;

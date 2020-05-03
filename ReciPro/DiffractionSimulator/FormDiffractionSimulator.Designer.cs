@@ -1501,6 +1501,7 @@
             this.numericBoxClientHeight.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxClientHeight.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxClientHeight.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxClientHeight.Maximum = 2000D;
             this.numericBoxClientHeight.Minimum = 1D;
             this.numericBoxClientHeight.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1534,6 +1535,7 @@
             this.numericBoxClientWidth.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxClientWidth.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxClientWidth.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxClientWidth.Maximum = 2000D;
             this.numericBoxClientWidth.Minimum = 1D;
             this.numericBoxClientWidth.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1567,6 +1569,7 @@
             this.numericBoxResolution.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxResolution.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxResolution.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxResolution.Maximum = 10D;
             this.numericBoxResolution.Minimum = 1E-05D;
             this.numericBoxResolution.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1600,6 +1603,7 @@
             this.numericBoxPED_Semiangle.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxPED_Semiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPED_Semiangle.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxPED_Semiangle.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxPED_Semiangle.Maximum = 500D;
             this.numericBoxPED_Semiangle.Minimum = 0.1D;
             this.numericBoxPED_Semiangle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1633,6 +1637,7 @@
             this.numericBoxPED_Step.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxPED_Step.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPED_Step.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxPED_Step.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxPED_Step.Maximum = 1080D;
             this.numericBoxPED_Step.Minimum = 2D;
             this.numericBoxPED_Step.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1666,6 +1671,7 @@
             this.numericBoxNumOfBlochWave.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxNumOfBlochWave.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxNumOfBlochWave.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxNumOfBlochWave.Maximum = 1000D;
             this.numericBoxNumOfBlochWave.Minimum = 8D;
             this.numericBoxNumOfBlochWave.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1699,6 +1705,7 @@
             this.numericBoxThickness.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxThickness.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxThickness.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxThickness.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxThickness.Maximum = 10000D;
             this.numericBoxThickness.Minimum = 0.01D;
             this.numericBoxThickness.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
@@ -1732,6 +1739,7 @@
             this.numericBoxSpotRadius.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxSpotRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSpotRadius.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxSpotRadius.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxSpotRadius.Maximum = 1D;
             this.numericBoxSpotRadius.Minimum = 0.01D;
             this.numericBoxSpotRadius.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
@@ -1778,16 +1786,11 @@
             this.colorControlString.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlString.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlString.FooterText = "String";
             this.colorControlString.Green = 255;
             this.colorControlString.GreenF = 1F;
-            this.colorControlString.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlString.HeaderText = "";
             this.colorControlString.Name = "colorControlString";
             this.colorControlString.Red = 255;
             this.colorControlString.RedF = 1F;
-            this.colorControlString.ToolTip = "";
             this.colorControlString.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlFoot
@@ -1799,16 +1802,11 @@
             this.colorControlFoot.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlFoot.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.colorControlFoot.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlFoot.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlFoot.FooterText = "";
             this.colorControlFoot.Green = 192;
             this.colorControlFoot.GreenF = 0.7529412F;
-            this.colorControlFoot.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlFoot.HeaderText = "";
             this.colorControlFoot.Name = "colorControlFoot";
             this.colorControlFoot.Red = 0;
             this.colorControlFoot.RedF = 0F;
-            this.colorControlFoot.ToolTip = "";
             this.colorControlFoot.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlBackGround
@@ -1820,16 +1818,11 @@
             this.colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlBackGround.Color = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlBackGround.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlBackGround.FooterText = "Background";
             this.colorControlBackGround.Green = 32;
             this.colorControlBackGround.GreenF = 0.1254902F;
-            this.colorControlBackGround.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlBackGround.HeaderText = "";
             this.colorControlBackGround.Name = "colorControlBackGround";
             this.colorControlBackGround.Red = 32;
             this.colorControlBackGround.RedF = 0.1254902F;
-            this.colorControlBackGround.ToolTip = "";
             this.colorControlBackGround.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlDefectLine
@@ -1841,16 +1834,11 @@
             this.colorControlDefectLine.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlDefectLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorControlDefectLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlDefectLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlDefectLine.FooterText = "Kikuchi line color (Defect)";
             this.colorControlDefectLine.Green = 0;
             this.colorControlDefectLine.GreenF = 0F;
-            this.colorControlDefectLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlDefectLine.HeaderText = "";
             this.colorControlDefectLine.Name = "colorControlDefectLine";
             this.colorControlDefectLine.Red = 0;
             this.colorControlDefectLine.RedF = 0F;
-            this.colorControlDefectLine.ToolTip = "";
             this.colorControlDefectLine.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlExcessLine
@@ -1862,16 +1850,11 @@
             this.colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlExcessLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colorControlExcessLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlExcessLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlExcessLine.FooterText = "Kikuchi line color (Ecxess)";
             this.colorControlExcessLine.Green = 224;
             this.colorControlExcessLine.GreenF = 0.8784314F;
-            this.colorControlExcessLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlExcessLine.HeaderText = "";
             this.colorControlExcessLine.Name = "colorControlExcessLine";
             this.colorControlExcessLine.Red = 224;
             this.colorControlExcessLine.RedF = 0.8784314F;
-            this.colorControlExcessLine.ToolTip = "";
             this.colorControlExcessLine.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlDebyeRing
@@ -1883,16 +1866,11 @@
             this.colorControlDebyeRing.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlDebyeRing.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
             this.colorControlDebyeRing.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlDebyeRing.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlDebyeRing.FooterText = "Debye ring color";
             this.colorControlDebyeRing.Green = 255;
             this.colorControlDebyeRing.GreenF = 1F;
-            this.colorControlDebyeRing.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlDebyeRing.HeaderText = "";
             this.colorControlDebyeRing.Name = "colorControlDebyeRing";
             this.colorControlDebyeRing.Red = 255;
             this.colorControlDebyeRing.RedF = 1F;
-            this.colorControlDebyeRing.ToolTip = "";
             this.colorControlDebyeRing.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlScaleAzimuth
@@ -1904,16 +1882,11 @@
             this.colorControlScaleAzimuth.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlScaleAzimuth.Color = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
             this.colorControlScaleAzimuth.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScaleAzimuth.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlScaleAzimuth.FooterText = "Azimuth scale line";
             this.colorControlScaleAzimuth.Green = 68;
             this.colorControlScaleAzimuth.GreenF = 0.2666667F;
-            this.colorControlScaleAzimuth.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlScaleAzimuth.HeaderText = "";
             this.colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
             this.colorControlScaleAzimuth.Red = 119;
             this.colorControlScaleAzimuth.RedF = 0.4666667F;
-            this.colorControlScaleAzimuth.ToolTip = "";
             this.colorControlScaleAzimuth.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlScale2Theta
@@ -1925,16 +1898,11 @@
             this.colorControlScale2Theta.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlScale2Theta.Color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(120)))));
             this.colorControlScale2Theta.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScale2Theta.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlScale2Theta.FooterText = "2θ scale line";
             this.colorControlScale2Theta.Green = 68;
             this.colorControlScale2Theta.GreenF = 0.2666667F;
-            this.colorControlScale2Theta.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControlScale2Theta.HeaderText = "";
             this.colorControlScale2Theta.Name = "colorControlScale2Theta";
             this.colorControlScale2Theta.Red = 68;
             this.colorControlScale2Theta.RedF = 0.2666667F;
-            this.colorControlScale2Theta.ToolTip = "";
             this.colorControlScale2Theta.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // numericBoxDev
@@ -1947,6 +1915,7 @@
             this.numericBoxDev.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxDev.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDev.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxDev.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxDev.Maximum = double.PositiveInfinity;
             this.numericBoxDev.Minimum = double.NegativeInfinity;
             this.numericBoxDev.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
@@ -1979,6 +1948,7 @@
             this.numericBoxAcc.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxAcc.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAcc.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxAcc.HeaderMargin = new System.Windows.Forms.Padding(0);
             this.numericBoxAcc.Maximum = double.PositiveInfinity;
             this.numericBoxAcc.Minimum = double.NegativeInfinity;
             this.numericBoxAcc.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
@@ -2011,16 +1981,11 @@
             this.colorControlOrigin.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlOrigin.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorControlOrigin.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlOrigin.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlOrigin.FooterText = "Direct";
             this.colorControlOrigin.Green = 0;
             this.colorControlOrigin.GreenF = 0F;
-            this.colorControlOrigin.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControlOrigin.HeaderText = "";
             this.colorControlOrigin.Name = "colorControlOrigin";
             this.colorControlOrigin.Red = 255;
             this.colorControlOrigin.RedF = 1F;
-            this.colorControlOrigin.ToolTip = "";
             this.colorControlOrigin.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlNoCondition
@@ -2032,16 +1997,11 @@
             this.colorControlNoCondition.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlNoCondition.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.colorControlNoCondition.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlNoCondition.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlNoCondition.FooterText = "General spots";
             this.colorControlNoCondition.Green = 255;
             this.colorControlNoCondition.GreenF = 1F;
-            this.colorControlNoCondition.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControlNoCondition.HeaderText = "";
             this.colorControlNoCondition.Name = "colorControlNoCondition";
             this.colorControlNoCondition.Red = 255;
             this.colorControlNoCondition.RedF = 1F;
-            this.colorControlNoCondition.ToolTip = "";
             this.colorControlNoCondition.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlScrewGlide
@@ -2053,16 +2013,11 @@
             this.colorControlScrewGlide.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlScrewGlide.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorControlScrewGlide.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScrewGlide.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlScrewGlide.FooterText = "Extinct spots (Screw or Glide)";
             this.colorControlScrewGlide.Green = 192;
             this.colorControlScrewGlide.GreenF = 0.7529412F;
-            this.colorControlScrewGlide.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControlScrewGlide.HeaderText = "";
             this.colorControlScrewGlide.Name = "colorControlScrewGlide";
             this.colorControlScrewGlide.Red = 255;
             this.colorControlScrewGlide.RedF = 1F;
-            this.colorControlScrewGlide.ToolTip = "";
             this.colorControlScrewGlide.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlForbiddenLattice
@@ -2074,16 +2029,11 @@
             this.colorControlForbiddenLattice.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlForbiddenLattice.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.colorControlForbiddenLattice.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlForbiddenLattice.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlForbiddenLattice.FooterText = "Extinct spots (lattice centring)";
             this.colorControlForbiddenLattice.Green = 192;
             this.colorControlForbiddenLattice.GreenF = 0.7529412F;
-            this.colorControlForbiddenLattice.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControlForbiddenLattice.HeaderText = "";
             this.colorControlForbiddenLattice.Name = "colorControlForbiddenLattice";
             this.colorControlForbiddenLattice.Red = 192;
             this.colorControlForbiddenLattice.RedF = 0.7529412F;
-            this.colorControlForbiddenLattice.ToolTip = "";
             this.colorControlForbiddenLattice.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // FormDiffractionSimulator

@@ -140,7 +140,7 @@
             this.buttonChangeToSameElement = new System.Windows.Forms.Button();
             this.buttonAddAtom = new System.Windows.Forms.Button();
             this.buttonAtomUp = new System.Windows.Forms.Button();
-            this.buttonChangeAtom = new System.Windows.Forms.Button();
+            this.buttonChange = new System.Windows.Forms.Button();
             this.buttonAtomDown = new System.Windows.Forms.Button();
             this.buttonDeleteAtom = new System.Windows.Forms.Button();
             this.dataGridViewAtom = new System.Windows.Forms.DataGridView();
@@ -607,6 +607,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageElementAndPosition
             // 
@@ -1711,7 +1712,7 @@
             this.numericBoxAlpha.RestrictLimitValue = true;
             this.numericBoxAlpha.ShowFraction = false;
             this.numericBoxAlpha.ShowPositiveSign = false;
-            this.numericBoxAlpha.ShowUpDown = false;
+            this.numericBoxAlpha.ShowUpDown = true;
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1744,7 +1745,7 @@
             this.numericBoxEmission.RestrictLimitValue = true;
             this.numericBoxEmission.ShowFraction = false;
             this.numericBoxEmission.ShowPositiveSign = false;
-            this.numericBoxEmission.ShowUpDown = false;
+            this.numericBoxEmission.ShowUpDown = true;
             this.numericBoxEmission.SkipEventDuringInput = false;
             this.numericBoxEmission.SmartIncrement = true;
             this.numericBoxEmission.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1777,7 +1778,7 @@
             this.numericBoxShininess.RestrictLimitValue = true;
             this.numericBoxShininess.ShowFraction = false;
             this.numericBoxShininess.ShowPositiveSign = false;
-            this.numericBoxShininess.ShowUpDown = false;
+            this.numericBoxShininess.ShowUpDown = true;
             this.numericBoxShininess.SkipEventDuringInput = false;
             this.numericBoxShininess.SmartIncrement = true;
             this.numericBoxShininess.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1810,7 +1811,7 @@
             this.numericBoxSpecular.RestrictLimitValue = true;
             this.numericBoxSpecular.ShowFraction = false;
             this.numericBoxSpecular.ShowPositiveSign = false;
-            this.numericBoxSpecular.ShowUpDown = false;
+            this.numericBoxSpecular.ShowUpDown = true;
             this.numericBoxSpecular.SkipEventDuringInput = false;
             this.numericBoxSpecular.SmartIncrement = true;
             this.numericBoxSpecular.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1843,7 +1844,7 @@
             this.numericBoxDiffusion.RestrictLimitValue = true;
             this.numericBoxDiffusion.ShowFraction = false;
             this.numericBoxDiffusion.ShowPositiveSign = false;
-            this.numericBoxDiffusion.ShowUpDown = false;
+            this.numericBoxDiffusion.ShowUpDown = true;
             this.numericBoxDiffusion.SkipEventDuringInput = false;
             this.numericBoxDiffusion.SmartIncrement = true;
             this.numericBoxDiffusion.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1876,7 +1877,7 @@
             this.numericBoxAmbient.RestrictLimitValue = true;
             this.numericBoxAmbient.ShowFraction = false;
             this.numericBoxAmbient.ShowPositiveSign = false;
-            this.numericBoxAmbient.ShowUpDown = false;
+            this.numericBoxAmbient.ShowUpDown = true;
             this.numericBoxAmbient.SkipEventDuringInput = false;
             this.numericBoxAmbient.SmartIncrement = true;
             this.numericBoxAmbient.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1909,7 +1910,7 @@
             this.numericBoxAtomRadius.RestrictLimitValue = true;
             this.numericBoxAtomRadius.ShowFraction = false;
             this.numericBoxAtomRadius.ShowPositiveSign = false;
-            this.numericBoxAtomRadius.ShowUpDown = false;
+            this.numericBoxAtomRadius.ShowUpDown = true;
             this.numericBoxAtomRadius.SkipEventDuringInput = false;
             this.numericBoxAtomRadius.SmartIncrement = true;
             this.numericBoxAtomRadius.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1964,7 +1965,6 @@
             this.colorControlAtomColor.Name = "colorControlAtomColor";
             this.colorControlAtomColor.Red = 240;
             this.colorControlAtomColor.RedF = 0.9411765F;
-            this.colorControlAtomColor.ToolTip = "";
             // 
             // buttonChangeToSameElement
             // 
@@ -1993,14 +1993,14 @@
             this.buttonAtomUp.UseVisualStyleBackColor = true;
             this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
             // 
-            // buttonChangeAtom
+            // buttonChange
             // 
-            this.buttonChangeAtom.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChangeAtom, "buttonChangeAtom");
-            this.buttonChangeAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChangeAtom.Name = "buttonChangeAtom";
-            this.buttonChangeAtom.UseVisualStyleBackColor = false;
-            this.buttonChangeAtom.Click += new System.EventHandler(this.buttonChange_Click);
+            this.buttonChange.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonChange, "buttonChange");
+            this.buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.UseVisualStyleBackColor = false;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonAtomDown
             // 
@@ -2157,7 +2157,7 @@
             this.panel1.Controls.Add(this.buttonAddAtom);
             this.panel1.Controls.Add(this.buttonChangeToSameElement);
             this.panel1.Controls.Add(this.buttonAtomUp);
-            this.panel1.Controls.Add(this.buttonChangeAtom);
+            this.panel1.Controls.Add(this.buttonChange);
             this.panel1.Controls.Add(this.buttonAtomDown);
             this.panel1.Controls.Add(this.buttonDeleteAtom);
             resources.ApplyResources(this.panel1, "panel1");
@@ -2296,7 +2296,7 @@
         private System.Windows.Forms.Button buttonChangeToSameElement;
         private System.Windows.Forms.Button buttonAddAtom;
         private System.Windows.Forms.Button buttonAtomUp;
-        private System.Windows.Forms.Button buttonChangeAtom;
+        private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonAtomDown;
         private System.Windows.Forms.Button buttonDeleteAtom;
         private System.Windows.Forms.DataGridView dataGridViewAtom;

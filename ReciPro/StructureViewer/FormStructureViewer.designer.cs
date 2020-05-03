@@ -774,18 +774,11 @@
             this.colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(196)))), ((int)(((byte)(222)))));
             this.colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellPlane.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlCellPlane.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellPlane.FooterText = "";
             this.colorControlCellPlane.Green = 196;
             this.colorControlCellPlane.GreenF = 0.7686275F;
-            this.colorControlCellPlane.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlCellPlane.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellPlane.HeaderText = "Color";
             this.colorControlCellPlane.Name = "colorControlCellPlane";
             this.colorControlCellPlane.Red = 176;
             this.colorControlCellPlane.RedF = 0.6901961F;
-            this.colorControlCellPlane.ToolTip = "";
             this.colorControlCellPlane.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // colorControlCellEdge
@@ -797,18 +790,11 @@
             this.colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(205)))));
             this.colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellEdge.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlCellEdge.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellEdge.FooterText = "";
             this.colorControlCellEdge.Green = 0;
             this.colorControlCellEdge.GreenF = 0F;
-            this.colorControlCellEdge.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlCellEdge.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControlCellEdge.HeaderText = "Color";
             this.colorControlCellEdge.Name = "colorControlCellEdge";
             this.colorControlCellEdge.Red = 0;
             this.colorControlCellEdge.RedF = 0F;
-            this.colorControlCellEdge.ToolTip = "";
             this.colorControlCellEdge.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // numericBoxCellTransrationC

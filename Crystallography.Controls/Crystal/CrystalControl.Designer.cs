@@ -374,7 +374,6 @@
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 240;
             this.colorControl.RedF = 0.9411765F;
-            this.colorControl.ToolTip = "";
             // 
             // symmetryControl
             // 
@@ -398,7 +397,7 @@
             // 
             this.atomControl.Alpha = 0D;
             this.atomControl.Ambient = 0D;
-            this.atomControl.AppearanceTabVisible = true;
+            this.atomControl.AppearanceTabVisible = false;
             this.atomControl.AtomColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.atomControl.AtomicPositionError = false;
             this.atomControl.AtomNo = 0;

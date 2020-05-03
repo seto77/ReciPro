@@ -65,6 +65,17 @@ namespace Crystallography
 
         public float Radius = 0.6f;
 
+        [XmlIgnore]
+        public (int Argb, float Ambient, float Diffusion, float Emission, float Shininess, float Specular, float Transparency) Material
+        {
+            get => (Argb, Ambient, Diffusion, Emission, Shininess, Specular, Transparency);
+            set
+            {
+                Argb = value.Argb; Ambient = value.Ambient; Diffusion = value.Diffusion; Emission = value.Emission;
+                Shininess = value.Shininess; Specular = value.Specular; Transparency = value.Transparency;
+            }
+        }
+
         public Atoms()
         {
             //Atom = new List<Vector3D>();

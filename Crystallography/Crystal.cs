@@ -397,7 +397,9 @@ namespace Crystallography
             : this(cell, symmetrySeriesNumber, name, col)
         {
             if (err != null)
+            {
                 A_err = err.Value.A; B_err = err.Value.B; C_err = err.Value.C; Alpha_err = err.Value.Alpha; Beta_err = err.Value.Beta; Gamma_err = err.Value.Gamma;
+            }
         }
 
 

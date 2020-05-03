@@ -1316,7 +1316,7 @@ namespace ReciPro
             englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
             japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
             Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
-            Language.Change(this);
+            //Language.Change(this);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

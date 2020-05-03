@@ -151,7 +151,7 @@
     <value>glControlAxes</value>
   </data>
   <data name="&gt;&gt;glControlAxes.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;glControlAxes.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -172,13 +172,13 @@
     <value>100, 100</value>
   </data>
   <data name="glControlLight.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;glControlLight.Name" xml:space="preserve">
     <value>glControlLight</value>
   </data>
   <data name="&gt;&gt;glControlLight.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;glControlLight.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -208,7 +208,7 @@
     <value>glControlMain</value>
   </data>
   <data name="&gt;&gt;glControlMain.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;glControlMain.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -283,7 +283,7 @@
     <value>111, 26</value>
   </data>
   <data name="buttonSetRange2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>10</value>
   </data>
   <data name="buttonSetRange2.Text" xml:space="preserve">
     <value>(±¾ ±¾ ±¾)</value>
@@ -316,7 +316,7 @@
     <value>111, 26</value>
   </data>
   <data name="buttonSetRange3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>11</value>
   </data>
   <data name="buttonSetRange3.Text" xml:space="preserve">
     <value>(±1 ±1 ±1)</value>
@@ -349,7 +349,7 @@
     <value>86, 26</value>
   </data>
   <data name="buttonSetCenter1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="buttonSetCenter1.Text" xml:space="preserve">
     <value>(0 0 0)</value>
@@ -382,7 +382,7 @@
     <value>86, 26</value>
   </data>
   <data name="buttonCenter2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="buttonCenter2.Text" xml:space="preserve">
     <value>(¼ ¼ ¼)</value>
@@ -415,7 +415,7 @@
     <value>86, 26</value>
   </data>
   <data name="buttonSetCenter3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="buttonSetCenter3.Text" xml:space="preserve">
     <value>(½ ½ ½)</value>
@@ -448,7 +448,7 @@
     <value>111, 26</value>
   </data>
   <data name="buttonSetRange1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>9</value>
   </data>
   <data name="buttonSetRange1.Text" xml:space="preserve">
     <value>(±½ ±½ ±½)</value>
@@ -505,7 +505,7 @@
     <value>80, 27</value>
   </data>
   <data name="numericBoxCRange.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value />
@@ -514,7 +514,7 @@
     <value>numericBoxCRange</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -562,7 +562,7 @@
     <value>80, 27</value>
   </data>
   <data name="numericBoxBRange.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
     <value />
@@ -571,7 +571,7 @@
     <value>numericBoxBRange</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -619,7 +619,7 @@
     <value>80, 27</value>
   </data>
   <data name="numericBoxARange.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value />
@@ -628,7 +628,7 @@
     <value>numericBoxARange</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -676,7 +676,7 @@
     <value>84, 27</value>
   </data>
   <data name="numericBoxCCenter.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value />
@@ -685,7 +685,7 @@
     <value>numericBoxCCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -733,7 +733,7 @@
     <value>84, 27</value>
   </data>
   <data name="numericBoxBCenter.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value />
@@ -742,7 +742,7 @@
     <value>numericBoxBCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -799,7 +799,7 @@
     <value>numericBoxACenter</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -1051,7 +1051,7 @@
     <value>142, 21</value>
   </data>
   <data name="checkBoxShowBoundPlanes.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
+    <value>0</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
     <value>Show bound planes</value>
@@ -1108,7 +1108,7 @@
     <value>109, 25</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
+    <value>1</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
     <value />
@@ -1117,7 +1117,7 @@
     <value>numericBoxBoundPlanesOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -1147,7 +1147,7 @@
     <value>212, 21</value>
   </data>
   <data name="checkBoxClipObjects.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
+    <value>2</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
     <value>Clip objects by bound planes</value>
@@ -1186,7 +1186,7 @@
     <value>121, 21</value>
   </data>
   <data name="checkBoxHideAllAtoms.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
+    <value>3</value>
   </data>
   <data name="checkBoxHideAllAtoms.Text" xml:space="preserve">
     <value>Hide all atoms</value>
@@ -1255,7 +1255,7 @@
     <value>183, 21</value>
   </data>
   <data name="radioButtonBoundUnitCell.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
+    <value>0</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>Bounds defined by unit cell</value>
@@ -1288,7 +1288,7 @@
     <value>212, 21</value>
   </data>
   <data name="radioButtonBoundPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
+    <value>1</value>
   </data>
   <data name="radioButtonBoundPlane.Text" xml:space="preserve">
     <value>Bounds defined by crystal plane</value>
@@ -1532,7 +1532,7 @@
     <value>numericBoxCellPlaneAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1549,6 +1549,24 @@
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlCellPlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlCellPlane.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlCellPlane.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlCellPlane.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>242, 65</value>
   </data>
@@ -1561,11 +1579,14 @@
   <data name="colorControlCellPlane.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;colorControlCellPlane.Name" xml:space="preserve">
     <value>colorControlCellPlane</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1582,6 +1603,24 @@
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlCellEdge.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlCellEdge.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlCellEdge.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlCellEdge.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="colorControlCellEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 100</value>
   </data>
@@ -1594,11 +1633,14 @@
   <data name="colorControlCellEdge.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;colorControlCellEdge.Name" xml:space="preserve">
     <value>colorControlCellEdge</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1655,7 +1697,7 @@
     <value>numericBoxCellTransrationC</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1712,7 +1754,7 @@
     <value>numericBoxCellTransrationB</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1769,7 +1811,7 @@
     <value>numericBoxCellTransrationA</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -2246,7 +2288,7 @@
     <value>numericBoxLatticePlaneOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -2333,7 +2375,7 @@
     <value>atomCoordinateTable1</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.2.1607, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.3.234, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Parent" xml:space="preserve">
     <value>tabPageCoordinateInfromatin</value>
@@ -2818,7 +2860,7 @@
     <value>655, 26</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
+    <value>0</value>
   </data>
   <data name="menuStrip1.Text" xml:space="preserve">
     <value>menuStrip1</value>
