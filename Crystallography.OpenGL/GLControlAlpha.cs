@@ -510,13 +510,10 @@ namespace Crystallography.OpenGL
         public void AddObjects(IEnumerable<GLObject> objs)
         {
             if (Program < 1) return;
-
             glControl.MakeCurrent();
             foreach (var obj in objs)
-            {
                 obj.Generate(Program);
-                glObjects.Add(obj);
-            }
+            glObjects.AddRange(objs);
         }
 
         public void DeleteObjects(GLObject obj)
@@ -531,11 +528,8 @@ namespace Crystallography.OpenGL
         {
             if (Program < 1) return;
             glControl.MakeCurrent();
-            while (glObjects.Count != 0)
-            {
-                glObjects[0].Dispose();
-                glObjects.RemoveAt(0);
-            }
+            glObjects.ForEach(o => o.Dispose());
+            glObjects.Clear();
         }
 
         #endregion

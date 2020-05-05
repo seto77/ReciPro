@@ -151,7 +151,7 @@ namespace Crystallography.OpenGL
         public V4d CircumscribedSphereCenter = new V4d(0, 0, 0, 1);
 
         /// <summary>
-        /// 物体に外接する外接球の半径 (wは常に1にする)
+        /// 物体に外接する外接球の半径
         /// </summary>
         public double CircumscribedSphereRadius = 0;
 

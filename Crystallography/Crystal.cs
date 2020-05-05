@@ -262,6 +262,13 @@ namespace Crystallography
         public Atoms[] Atoms = new Atoms[0];
 
         /// <summary>
+        /// 原子の情報を取り扱うAtomsクラスのParallelQuery
+        /// </summary>
+        [NonSerialized]
+        [XmlIgnore]
+        public ParallelQuery<Atoms> AtomsP;
+
+        /// <summary>
         /// 結合の情報を取り扱うBondクラスの配列
         /// </summary>
         public Bonds[] Bonds = new Bonds[0];
@@ -418,6 +425,8 @@ namespace Crystallography
             Atoms = atoms;
             for (int i = 0; i < atoms.Length; i++)
                 Atoms[i].ResetSymmetry(symmetrySeriesNumber);
+
+            AtomsP = Atoms.AsParallel();
 
             Note = reference.Note; PublAuthorName = reference.Authors; Journal = reference.Journal; PublSectionTitle = reference.Title;
             RotationMatrix = new Matrix3D(rot);

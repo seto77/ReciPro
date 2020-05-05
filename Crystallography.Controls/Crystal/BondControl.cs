@@ -14,7 +14,6 @@ namespace Crystallography.Controls
     public partial class BondInputControl : UserControl
     {
         #region プロパティ, フィールド、イベントハンドラ
-        public Crystal Crystal { get; set; } = null;
         public bool SkipEvent { get; set; } = false;
 
         private string[] elementList = new string[0];
@@ -23,18 +22,15 @@ namespace Crystallography.Controls
             get => elementList;
             set
             {
-                elementList = value;
-                if (elementList != null)
-                {
-                    comboBoxBondingAtom1.Items.Clear();
-                    comboBoxBondingAtom2.Items.Clear();
-                    foreach (var e in elementList)
-                        if (!comboBoxBondingAtom1.Items.Contains(e))
-                        {
-                            comboBoxBondingAtom1.Items.Add(e);
-                            comboBoxBondingAtom2.Items.Add(e);
-                        }
-                }
+                if (value != null)
+                    if (value.Length != elementList.Length || !elementList.SequenceEqual(value))
+                    {
+                        elementList = value;
+                        comboBoxBondingAtom1.Items.Clear();
+                        comboBoxBondingAtom1.Items.AddRange(elementList.Distinct().ToArray());
+                        comboBoxBondingAtom2.Items.Clear();
+                        comboBoxBondingAtom2.Items.AddRange(elementList.Distinct().ToArray());
+                    }
             }
         }
 
@@ -68,7 +64,7 @@ namespace Crystallography.Controls
 
         public void SetToInterface(Bonds b)
         {
-            ElementList = b.ElementList;
+            //ElementList = b.ElementList;
 
             comboBoxBondingAtom1.Text = b.Element1;
             comboBoxBondingAtom2.Text = b.Element2;

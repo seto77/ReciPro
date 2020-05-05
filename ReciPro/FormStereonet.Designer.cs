@@ -144,8 +144,9 @@ namespace ReciPro
             this.buttonAddIndex = new System.Windows.Forms.Button();
             this.listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             this.checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
-            this.radioButtonRange = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioButtonRange = new System.Windows.Forms.RadioButton();
             this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
@@ -176,7 +177,6 @@ namespace ReciPro
             this.numericalTextBoxRzOscillation = new Crystallography.Controls.NumericBox();
             this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -204,9 +204,9 @@ namespace ReciPro
             this.groupBox5.SuspendLayout();
             this.panelSpecifiedIndices.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // trackBarStrSize
@@ -1075,15 +1075,6 @@ namespace ReciPro
             this.checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
             this.checkBoxIncludingEquivalentPlanes.CheckedChanged += new System.EventHandler(this.checkBoxIncludingEquivalentPlanes_CheckedChanged);
             // 
-            // radioButtonRange
-            // 
-            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
-            this.radioButtonRange.Checked = true;
-            this.radioButtonRange.Name = "radioButtonRange";
-            this.radioButtonRange.TabStop = true;
-            this.radioButtonRange.UseVisualStyleBackColor = true;
-            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
-            // 
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
@@ -1092,6 +1083,22 @@ namespace ReciPro
             this.panel2.Controls.Add(this.numericBox1);
             this.panel2.Controls.Add(this.labelHU);
             this.panel2.Name = "panel2";
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // radioButtonRange
+            // 
+            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
+            this.radioButtonRange.Checked = true;
+            this.radioButtonRange.Name = "radioButtonRange";
+            this.radioButtonRange.TabStop = true;
+            this.radioButtonRange.UseVisualStyleBackColor = true;
+            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
             // 
             // radioButtonSpecifiedIndices
             // 
@@ -1456,7 +1463,6 @@ namespace ReciPro
             this.numericalTextBoxRxSpeed.RestrictLimitValue = true;
             this.numericalTextBoxRxSpeed.ShowFraction = false;
             this.numericalTextBoxRxSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRxSpeed.ShowUpDown = false;
             this.numericalTextBoxRxSpeed.SkipEventDuringInput = false;
             this.numericalTextBoxRxSpeed.SmartIncrement = true;
             this.numericalTextBoxRxSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1489,7 +1495,6 @@ namespace ReciPro
             this.numericalTextBoxRySpeed.RestrictLimitValue = true;
             this.numericalTextBoxRySpeed.ShowFraction = false;
             this.numericalTextBoxRySpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRySpeed.ShowUpDown = false;
             this.numericalTextBoxRySpeed.SkipEventDuringInput = false;
             this.numericalTextBoxRySpeed.SmartIncrement = true;
             this.numericalTextBoxRySpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1522,7 +1527,6 @@ namespace ReciPro
             this.numericalTextBoxRzSpeed.RestrictLimitValue = true;
             this.numericalTextBoxRzSpeed.ShowFraction = false;
             this.numericalTextBoxRzSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRzSpeed.ShowUpDown = false;
             this.numericalTextBoxRzSpeed.SkipEventDuringInput = false;
             this.numericalTextBoxRzSpeed.SmartIncrement = true;
             this.numericalTextBoxRzSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1555,7 +1559,6 @@ namespace ReciPro
             this.numericalTextBoxTotalTime.RestrictLimitValue = true;
             this.numericalTextBoxTotalTime.ShowFraction = false;
             this.numericalTextBoxTotalTime.ShowPositiveSign = false;
-            this.numericalTextBoxTotalTime.ShowUpDown = false;
             this.numericalTextBoxTotalTime.SkipEventDuringInput = false;
             this.numericalTextBoxTotalTime.SmartIncrement = true;
             this.numericalTextBoxTotalTime.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1588,7 +1591,6 @@ namespace ReciPro
             this.numericalTextBoxAngularSpeed.RestrictLimitValue = true;
             this.numericalTextBoxAngularSpeed.ShowFraction = false;
             this.numericalTextBoxAngularSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxAngularSpeed.ShowUpDown = false;
             this.numericalTextBoxAngularSpeed.SkipEventDuringInput = false;
             this.numericalTextBoxAngularSpeed.SmartIncrement = true;
             this.numericalTextBoxAngularSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1621,7 +1623,6 @@ namespace ReciPro
             this.numericalTextBoxRyStep.RestrictLimitValue = true;
             this.numericalTextBoxRyStep.ShowFraction = false;
             this.numericalTextBoxRyStep.ShowPositiveSign = false;
-            this.numericalTextBoxRyStep.ShowUpDown = false;
             this.numericalTextBoxRyStep.SkipEventDuringInput = false;
             this.numericalTextBoxRyStep.SmartIncrement = true;
             this.numericalTextBoxRyStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1654,7 +1655,6 @@ namespace ReciPro
             this.numericalTextBoxRadialAngle.RestrictLimitValue = true;
             this.numericalTextBoxRadialAngle.ShowFraction = false;
             this.numericalTextBoxRadialAngle.ShowPositiveSign = false;
-            this.numericalTextBoxRadialAngle.ShowUpDown = false;
             this.numericalTextBoxRadialAngle.SkipEventDuringInput = false;
             this.numericalTextBoxRadialAngle.SmartIncrement = true;
             this.numericalTextBoxRadialAngle.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1687,7 +1687,6 @@ namespace ReciPro
             this.numericalTextBoxRyOscillation.RestrictLimitValue = true;
             this.numericalTextBoxRyOscillation.ShowFraction = false;
             this.numericalTextBoxRyOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxRyOscillation.ShowUpDown = false;
             this.numericalTextBoxRyOscillation.SkipEventDuringInput = false;
             this.numericalTextBoxRyOscillation.SmartIncrement = true;
             this.numericalTextBoxRyOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1720,7 +1719,6 @@ namespace ReciPro
             this.numericalTextBoxRzOscillation.RestrictLimitValue = true;
             this.numericalTextBoxRzOscillation.ShowFraction = false;
             this.numericalTextBoxRzOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxRzOscillation.ShowUpDown = false;
             this.numericalTextBoxRzOscillation.SkipEventDuringInput = false;
             this.numericalTextBoxRzOscillation.SmartIncrement = true;
             this.numericalTextBoxRzOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1789,13 +1787,6 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.UpperIntensity = 255D;
             this.scalablePictureBoxAdvanced2.VisibleGradient = true;
             // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
             // FormStereonet
             // 
             resources.ApplyResources(this, "$this");
@@ -1851,10 +1842,10 @@ namespace ReciPro
             this.panelSpecifiedIndices.ResumeLayout(false);
             this.panelSpecifiedIndices.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

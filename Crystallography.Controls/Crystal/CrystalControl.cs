@@ -734,5 +734,11 @@ namespace Crystallography.Controls
             if (SkipEvent) return;
             GenerateFromInterface();
         }
+
+        private void bondControl_ItemsChanged(object sender, EventArgs e)
+        {
+          //  if (SkipEvent) return;
+          //  GenerateFromInterface();
+        }
     }
 }

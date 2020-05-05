@@ -6,6 +6,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls
 {
     [TypeConverter(typeof(DefinitionOrderTypeConverter))]
+    [DefaultEvent("ValueChanged")]
     public partial class NumericBox : UserControl
     {
         #region イベント
@@ -47,6 +48,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// UpDownボタンを有効にするかどうか
         /// </summary>
+        [DefaultValue(false)]
         [Category("Appearance properties")]
         public bool ShowUpDown
         {
@@ -54,9 +56,9 @@ namespace Crystallography.Controls
             set
             {
                 showUpDown = value;
+                numericUpDown.Visible = false;
                 numericUpDown.Visible = showUpDown;
-                if (showUpDown)
-                    Refresh();
+                Refresh();
             }
         }
         private bool showUpDown = false;
@@ -331,11 +333,6 @@ namespace Crystallography.Controls
         public bool WordWrap { set => textBox.WordWrap = value; get => textBox.WordWrap; }
 
         #endregion プロパティ
-
-        protected override void OnGotFocus(EventArgs e)
-        {
-            this.BeginInvoke(new MethodInvoker(() => textBox.SelectAll()));
-        }
 
         private void textBox_ReadOnlyChanged(object sender, EventArgs e) => ReadOnlyChanged?.Invoke(sender, e);
 
@@ -635,9 +632,7 @@ namespace Crystallography.Controls
         }
 
         private void toolStripComboBoxDecimalPlaces_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            textBox.Text = GetString();
-        }
+            => textBox.Text = GetString();
 
         private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
