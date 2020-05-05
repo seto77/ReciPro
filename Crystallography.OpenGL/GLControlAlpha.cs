@@ -54,9 +54,10 @@ namespace Crystallography.OpenGL
         public new MouseEventHandler MouseMove;
         public new MouseEventHandler MouseDown;
         public new MouseEventHandler MouseUp;
+       
         public new PaintEventHandler Paint;
 
-
+ 
         /// <summary>
         /// WorldMatrixが変化したときに発生するイベント. 
         /// </summary>
@@ -336,7 +337,7 @@ namespace Crystallography.OpenGL
 
             if (DesignMode) return;
 
-            // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
+               // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
             glControl = new OpenTK.GLControl(new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8))
             {
                 AutoScaleMode = AutoScaleMode.Dpi,
@@ -355,9 +356,15 @@ namespace Crystallography.OpenGL
             glControl.MouseUp += glControl_MouseUp;
             glControl.Resize += glControl_Resize;
 
+            glControl.MouseWheel += GlControl_MouseWheel;
+
             Controls.Add(glControl);
+
+
         }
 
+       
+        
         private void glControl_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -694,6 +701,17 @@ namespace Crystallography.OpenGL
             }
 
             lastMousePosition = new Point(e.X, e.Y);
+        }
+
+        private void GlControl_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.None && AllowMouseScaling)
+            {
+                var coeff = 1 - e.Delta * 0.0008;
+                if (coeff > 0.5)
+                    ProjWidth *= coeff;
+            }
+
         }
 
         private void glControl_MouseDown(object sender, MouseEventArgs e)

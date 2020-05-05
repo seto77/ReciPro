@@ -112,8 +112,10 @@ namespace Crystallography.Controls
                 dr[VertexColumn] = bonds.Element2;
                 dr[_Max_len_Column] = bonds.MaxLength;
                 dr[_Min_len_Column] = bonds.MinLength;
-                dr[Bond_colorColumn] = ColorImage(bonds.ArgbBond);
-                dr[Polyhedron_colorColumn] = ColorImage(bonds.ArgbPolyhedron);
+                //dr[Bond_colorColumn] = ColorImage(bonds.ArgbBond);
+                //dr[Polyhedron_colorColumn] = ColorImage(bonds.ArgbPolyhedron);
+                dr[Show_bondsColumn] = bonds.ShowBond;
+                dr[Show_PolyhedronColumn] = bonds.ShowPolyhedron;
 
                 return dr;
             }

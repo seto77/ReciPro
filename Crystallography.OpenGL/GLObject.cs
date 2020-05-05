@@ -22,6 +22,7 @@ using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 
 namespace Crystallography.OpenGL
 {
+    #region Vertex 頂点クラス
     /// <summary>
     /// 頂点要素（シェーダの頂点要素と合わせる）
     /// </summary>
@@ -47,7 +48,10 @@ namespace Crystallography.OpenGL
 
         public static readonly int Stride = Marshal.SizeOf(default(Vertex));
     }
+    #endregion
 
+
+    #region Material 素材　クラス
     /// <summary>
     /// 素材要素
     /// </summary>
@@ -116,9 +120,11 @@ namespace Crystallography.OpenGL
         public Material(double red, double green, double blue, double alpha, double ambient, double diffuse, double specular, double specularPow, double emission)
             : this(new C4((float)red, (float)green, (float)blue, (float)alpha), (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission) { }
     }
+    #endregion
 
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8 }
 
+    #region GLObjectクラス (抽象クラス)
     /// <summary>
     /// OpenGLで描画するオブジェクトを表現する抽象クラス
     /// </summary>
@@ -187,6 +193,8 @@ namespace Crystallography.OpenGL
 
         #endregion publicなフィールド
 
+
+       
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -406,6 +414,9 @@ namespace Crystallography.OpenGL
         }
     }
 
+    #endregion
+
+    #region クリップ
     /// <summary>
     /// 描画範囲をクリップ(切り取る)する.
     /// </summary>
@@ -475,7 +486,9 @@ namespace Crystallography.OpenGL
                 GL.Disable(EnableCap.ClipDistance0 + i);
         }
     }
+    #endregion
 
+    #region 三角形、四角形、円盤、多角形
     /// <summary>
     /// 多角形 (凸多角形) 点集合が完全に平面に乗らない場合でも、最小二乗法で法線を求める
     /// </summary>
@@ -593,6 +606,10 @@ namespace Crystallography.OpenGL
         { }
     }
 
+    #endregion
+
+
+    #region 多面体、立方体
     /// <summary>
     /// 多面体 (凸多面体)
     /// </summary>
@@ -675,6 +692,10 @@ namespace Crystallography.OpenGL
             : base(new[] { o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c }, mat, mode) { }
     }
 
+    #endregion
+
+   
+    #region 球体 楕円球、真球
     /// <summary>
     /// 楕円球 (原点と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される
     /// </summary>
@@ -814,13 +835,18 @@ namespace Crystallography.OpenGL
         }
     }
 
+    #endregion
+
+   
+    #region パイプ、円錐、円柱
+
     /// <summary>
     /// パイプ (始点の位置、始点から終点へのベクトル、始点側の半径, 終点側の半径 で定義される)
     /// slicesは高さの分割数, stacksは経線の分割数
     /// </summary>
     public class Pipe : GLObject
     {
-        public const int DefaultSlices = 2;
+        public const int DefaultSlices = 4;
         public const int DefaultStacks = 8;
 
         public double Radius1, Radius2;
@@ -828,6 +854,9 @@ namespace Crystallography.OpenGL
 
         public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
             : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode, slices, stacks) { }
+
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
+            : this(o, vec, r1, r2, mat, mat, mode, slices, stacks) { }
 
         /// <summary>
         /// パイプ
@@ -841,43 +870,48 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">円周の分割数</param>
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks) : base(mat, mode)
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks) 
+            : base(mat1, mode)
         {
             ShowClippedSection = true;
             Origin = o;
             Vector = vec;
             Radius1 = r1;
             Radius2 = r2;
+            if (mat1.Color == mat2.Color && mat1.Ambient == mat2.Ambient &&
+                mat1.Emission == mat2.Emission && mat1.Diffuse == mat2.Diffuse &&
+                mat1.Specular == mat2.Specular && mat1.SpecularPower == mat2.SpecularPower)
+                UseFixedColor = true;
 
             var height = vec.Length;
             CircumscribedSphereCenter = new V4d(new V3d(o + vec / 2.0), 1);
             var maxR = Math.Max(r1, r2);
             CircumscribedSphereRadius = Math.Sqrt(height * height / 4 + maxR * maxR);
 
-            if (slices == DefaultSlices && stacks == DefaultStacks && r1 == r2 && Cylinder.DefaultIndices != null)//デフォルトのシリンダーの場合
+            if (slices == DefaultSlices && stacks == DefaultStacks && r1 == r2 && Cylinder.DefaultIndices != null && UseFixedColor)//デフォルトのシリンダーの場合
             {
                 var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
                 var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                 transMat.Column3 = new V4d(o, 1);
 
-                Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat.ColorV)).ToArray();
+                Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
                 Indices = Cylinder.DefaultIndices;
                 Types = Cylinder.DefaultTypes;
             }
-            else if (slices == DefaultSlices && stacks == DefaultStacks &&  r2 ==0 && Cone.DefaultIndices != null)//デフォルトのコーンの場合
+            else if (slices == DefaultSlices && stacks == DefaultStacks &&  r2 ==0 && Cone.DefaultIndices != null && UseFixedColor)//デフォルトのコーンの場合
             {
                 var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
                 var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                 transMat.Column3 = new V4d(o, 1);
 
-                Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat.ColorV)).ToArray();
+                Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
                 Indices = Cone.DefaultIndices;
                 Types = Cone.DefaultTypes;
             }
             else
             {
                 List<V3d> v = new List<V3d>(), n = new List<V3d>();
-
+                List<V4f> c = new List<V4f>();
                 //まず側面
                 for (int h = 0; h <= slices; h++)
                     for (int t = 0; t < stacks; t++)
@@ -887,6 +921,7 @@ namespace Crystallography.OpenGL
                         double z = (double)h / slices * height;
                         v.Add(new V3d(r * sin, r * cos, z));
                         n.Add(new V3d(r2 * height * sin, r2 * height * cos, -r2 * (r2 - r1)));
+                        c.Add(h < slices / 2 ? mat1.ColorV : mat2.ColorV);
                     }
 
                 var current = 0;
@@ -918,12 +953,14 @@ namespace Crystallography.OpenGL
                 {
                     v.Add(new V3d(0, 0, 0));
                     n.Add(-vZ);
+                    c.Add(mat1.ColorV);
                     var indicesTop = new List<int> { v.Count - 1 };
                     int center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[t]);
                         n.Add(-vZ);
+                        c.Add(mat1.ColorV);
                         indicesTop.Add(v.Count - 1);
                     }
                     indicesTop.Add(v.Count - stacks);
@@ -935,12 +972,14 @@ namespace Crystallography.OpenGL
                 {
                     v.Add(new V3d(0, 0, height));
                     n.Add(vZ);
+                    c.Add(mat2.ColorV);
                     var indicesBottom = new List<int> { v.Count - 1 };
                     int center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[(slices + 1) * stacks - t - 1]);
                         n.Add(vZ);
+                        c.Add(mat2.ColorV);
                         indicesBottom.Add(v.Count - 1);
                     }
                     indicesBottom.Add(v.Count - stacks);
@@ -952,7 +991,7 @@ namespace Crystallography.OpenGL
 
                 var vList = new List<Vertex>();
                 for (int i = 0; i < v.Count; i++)
-                    vList.Add(new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), mat.ColorV));
+                    vList.Add(new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]));
 
                 Vertices = vList.ToArray();
                 Indices = indices.ToArray();
@@ -1010,6 +1049,12 @@ namespace Crystallography.OpenGL
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, slices, stacks) { }
 
+
+        public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
+           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode, slices, stacks) { }
+
+
+
         /// <summary>
         ///
         /// </summary>
@@ -1022,10 +1067,10 @@ namespace Crystallography.OpenGL
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
         public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-           : base(o, vec, r, r, mat, mode, slices, stacks)
-        { }
+           : base(o, vec, r, r, mat, mode, slices, stacks) { }
 
-       
+        public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
+         : base(o, vec, r, r, mat1, mat2, mode, slices, stacks) { }
 
         static Cylinder()
         {
@@ -1036,7 +1081,10 @@ namespace Crystallography.OpenGL
         }
     }
 
+    #endregion
 
+
+    #region Torus (ドーナッツ)
     /// <summary>
     /// Torus (ドーナッツ).  中心(V3)、法線(V3), 大半径(double), 小半径(double)で定義される
     /// </summary>
@@ -1140,8 +1188,10 @@ namespace Crystallography.OpenGL
             Types = types.ToArray();
         }
     }
+    #endregion
 
-
+    
+    #region メッシュ
     /// <summary>
     /// メッシュ
     /// </summary>
@@ -1198,4 +1248,5 @@ namespace Crystallography.OpenGL
             Types = new[] { PrimitiveType.Quads };
         }
     }
+    #endregion
 }

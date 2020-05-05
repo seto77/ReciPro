@@ -44,9 +44,12 @@ namespace Crystallography
         public int ArgbEdge;
         
         public string[] ElementList;
-
+        [Key(16)]
         public bool Enabled = true;
-        
+        [Key(17)]
+        public bool ShowBond = true;
+        [Key(18)]
+        public bool UseFixedColor = false;
         
         [XmlIgnore]
         //[ProtoIgnore]
@@ -57,19 +60,11 @@ namespace Crystallography
         {
         }
 
-        public Bonds(bool enabled, string[] elementList, string element1, string element2, double minLength, double maxLength, double radius, double bondTranParency,
-            Color bondColor, double polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
-            bool showInnerBonds, Color polyhedronColor, bool showEdges, double edgeLineWidth, Color edgeColor)
-            :this(enabled, elementList, element1, element2, (float) minLength, (float)maxLength, (float)radius, (float)bondTranParency,
-            bondColor, (float)polyhedronTransParency, showPolyhedron,showCenterAtom,  showVertexAtom,
-             showInnerBonds, polyhedronColor,showEdges, (float)edgeLineWidth,edgeColor)
-        {
-
-        }
-
-        public Bonds(bool enabled, string[] elementList, string element1, string element2, float minLength, float maxLength, float radius, float bondTranParency,
-            Color bondColor, float polyhedronTransParency, bool showPolyhedron, bool showCenterAtom, bool showVertexAtom,
-            bool showInnerBonds, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor) : this()
+        public Bonds(bool enabled,
+            string[] elementList, string element1, string element2, float minLength, float maxLength,
+            bool showBond, float radius, float bondTranParency,
+            bool showPolyhedron, bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
+            float polyhedronTransParency, bool showEdges, float edgeLineWidth)
         {
             Enabled = enabled;
 
@@ -80,22 +75,67 @@ namespace Crystallography
             MinLength = minLength;
             MaxLength = maxLength;
 
+            ShowBond = showBond;
             Radius = radius;
 
             BondTransParency = bondTranParency;
 
-            ArgbBond = bondColor.ToArgb();
             PolyhedronTransParency = polyhedronTransParency;
 
             ShowPolyhedron = showPolyhedron;
             ShowCenterAtom = showCenterAtom;
             ShowVertexAtom = showVertexAtom;
             ShowInnerBonds = showInnerBonds;
-            ArgbPolyhedron = polyhedronColor.ToArgb();
 
             ShowEdges = showEdges;
             EdgeLineWidth = edgeLineWidth;
-            ArgbEdge = edgeColor.ToArgb();
+
+            UseFixedColor = false;
         }
+
+        public Bonds(bool enabled,
+           string[] elementList, string element1, string element2, double minLength, double maxLength,
+           bool showBond, double radius, double bondTranParency,
+           bool showPolyhedron, bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
+           double polyhedronTransParency, bool showEdges, double edgeLineWidth)
+            :this(enabled,
+            elementList, element1, element2, (float) minLength, (float) maxLength,
+            showBond, (float) radius, (float) bondTranParency,
+            showPolyhedron,  showCenterAtom, showVertexAtom,showInnerBonds,
+           (float) polyhedronTransParency, showEdges, (float) edgeLineWidth)
+        { }
+
+
+
+
+        public Bonds(bool enabled,
+             string[] elementList, string element1, string element2, float minLength, float maxLength,
+             bool showBond, float radius, float bondTranParency,Color bondColor, 
+             bool showPolyhedron,  bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
+             float polyhedronTransParency, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor)
+             : this(enabled,elementList, element1, element2, minLength, maxLength,
+             showBond,  radius,  bondTranParency,
+             showPolyhedron,  showCenterAtom, showVertexAtom,showInnerBonds,
+             polyhedronTransParency, showEdges, edgeLineWidth)
+        {
+            ArgbBond = bondColor.ToArgb();
+            ArgbPolyhedron = polyhedronColor.ToArgb();
+            ArgbEdge = edgeColor.ToArgb();
+            UseFixedColor = true;
+        }
+        public Bonds(bool enabled,
+         string[] elementList, string element1, string element2, double minLength, double maxLength,
+          bool showBond, double radius, double bondTranParency, Color bondColor,
+          bool showPolyhedron, bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
+          double polyhedronTransParency, Color polyhedronColor, bool showEdges, double edgeLineWidth, Color edgeColor)
+         : this(enabled, elementList, element1, element2, (float)minLength, (float)maxLength,
+          showBond, (float)radius, (float)bondTranParency, bondColor,
+          showPolyhedron, showCenterAtom, showVertexAtom, showInnerBonds,
+          (float)polyhedronTransParency, polyhedronColor, showEdges, (float)edgeLineWidth, edgeColor)
+        {
+
+        }
+
+
     }
 }

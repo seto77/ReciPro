@@ -1216,7 +1216,7 @@ namespace ReciPro
             var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
 
             var obj = new List<GLObject>();
-            var mat = new Material(Col4.White, 0.2, 0.7, 0.8, 50, 0.2);
+            var mat = new Material(Col4.White, 0.2, 0.5, 0.6, 4, 0.4);
             for (int i = 0; i < 3; i++)
             {
                 mat.Color = color[i];

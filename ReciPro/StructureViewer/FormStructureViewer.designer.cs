@@ -50,6 +50,7 @@
             this.tabControlBoundOption = new System.Windows.Forms.TabControl();
             this.tabPageBoundUnitcell = new System.Windows.Forms.TabPage();
             this.buttonSetRange2 = new System.Windows.Forms.Button();
+            this.buttonSetRange4 = new System.Windows.Forms.Button();
             this.buttonSetRange3 = new System.Windows.Forms.Button();
             this.buttonSetCenter1 = new System.Windows.Forms.Button();
             this.buttonCenter2 = new System.Windows.Forms.Button();
@@ -104,6 +105,7 @@
             this.tabPageInformation = new System.Windows.Forms.TabPage();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonLikeVesta = new System.Windows.Forms.Button();
             this.numericBoxLightSize = new Crystallography.Controls.NumericBox();
             this.numericBoxAxesSize = new Crystallography.Controls.NumericBox();
             this.numericBoxLegendSize = new Crystallography.Controls.NumericBox();
@@ -132,6 +134,8 @@
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPerviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iLikeVESTAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,7 +153,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSetRange4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -323,6 +326,14 @@
             this.buttonSetRange2.Tag = "0.75";
             this.buttonSetRange2.UseVisualStyleBackColor = true;
             this.buttonSetRange2.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetRange4
+            // 
+            resources.ApplyResources(this.buttonSetRange4, "buttonSetRange4");
+            this.buttonSetRange4.Name = "buttonSetRange4";
+            this.buttonSetRange4.Tag = "1.5";
+            this.buttonSetRange4.UseVisualStyleBackColor = true;
+            this.buttonSetRange4.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
             // 
             // buttonSetRange3
             // 
@@ -710,6 +721,8 @@
             // 
             resources.ApplyResources(this.checkBoxUnitCell, "checkBoxUnitCell");
             this.checkBoxUnitCell.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxUnitCell.Checked = true;
+            this.checkBoxUnitCell.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxUnitCell.Name = "checkBoxUnitCell";
             this.toolTip.SetToolTip(this.checkBoxUnitCell, resources.GetString("checkBoxUnitCell.ToolTip"));
             this.checkBoxUnitCell.UseVisualStyleBackColor = false;
@@ -756,7 +769,7 @@
             this.numericBoxCellPlaneAlpha.MouseSpeed = 1D;
             this.numericBoxCellPlaneAlpha.Multiline = false;
             this.numericBoxCellPlaneAlpha.Name = "numericBoxCellPlaneAlpha";
-            this.numericBoxCellPlaneAlpha.RadianValue = 0.0087266462599716477D;
+            this.numericBoxCellPlaneAlpha.RadianValue = 0.0052359877559829881D;
             this.numericBoxCellPlaneAlpha.ReadOnly = false;
             this.numericBoxCellPlaneAlpha.RestrictLimitValue = true;
             this.numericBoxCellPlaneAlpha.ShowFraction = false;
@@ -769,40 +782,40 @@
             this.numericBoxCellPlaneAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
             this.numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
-            this.numericBoxCellPlaneAlpha.Value = 0.5D;
+            this.numericBoxCellPlaneAlpha.Value = 0.3D;
             this.numericBoxCellPlaneAlpha.WordWrap = true;
             this.numericBoxCellPlaneAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // colorControlCellPlane
             // 
-            this.colorControlCellPlane.Argb = -5192482;
+            this.colorControlCellPlane.Argb = -4144897;
             resources.ApplyResources(this.colorControlCellPlane, "colorControlCellPlane");
-            this.colorControlCellPlane.Blue = 222;
-            this.colorControlCellPlane.BlueF = 0.8705882F;
+            this.colorControlCellPlane.Blue = 255;
+            this.colorControlCellPlane.BlueF = 1F;
             this.colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(196)))), ((int)(((byte)(222)))));
+            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellPlane.Green = 196;
-            this.colorControlCellPlane.GreenF = 0.7686275F;
+            this.colorControlCellPlane.Green = 192;
+            this.colorControlCellPlane.GreenF = 0.7529412F;
             this.colorControlCellPlane.Name = "colorControlCellPlane";
-            this.colorControlCellPlane.Red = 176;
-            this.colorControlCellPlane.RedF = 0.6901961F;
+            this.colorControlCellPlane.Red = 192;
+            this.colorControlCellPlane.RedF = 0.7529412F;
             this.colorControlCellPlane.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // colorControlCellEdge
             // 
-            this.colorControlCellEdge.Argb = -16777011;
+            this.colorControlCellEdge.Argb = -8355585;
             resources.ApplyResources(this.colorControlCellEdge, "colorControlCellEdge");
-            this.colorControlCellEdge.Blue = 205;
-            this.colorControlCellEdge.BlueF = 0.8039216F;
+            this.colorControlCellEdge.Blue = 255;
+            this.colorControlCellEdge.BlueF = 1F;
             this.colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(205)))));
+            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlCellEdge.Green = 0;
-            this.colorControlCellEdge.GreenF = 0F;
+            this.colorControlCellEdge.Green = 128;
+            this.colorControlCellEdge.GreenF = 0.5019608F;
             this.colorControlCellEdge.Name = "colorControlCellEdge";
-            this.colorControlCellEdge.Red = 0;
-            this.colorControlCellEdge.RedF = 0F;
+            this.colorControlCellEdge.Red = 128;
+            this.colorControlCellEdge.RedF = 0.5019608F;
             this.colorControlCellEdge.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // numericBoxCellTransrationC
@@ -1093,11 +1106,19 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonLikeVesta);
             this.tabPage1.Controls.Add(this.numericBoxLightSize);
             this.tabPage1.Controls.Add(this.numericBoxAxesSize);
             this.tabPage1.Controls.Add(this.numericBoxLegendSize);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
+            // 
+            // buttonLikeVesta
+            // 
+            resources.ApplyResources(this.buttonLikeVesta, "buttonLikeVesta");
+            this.buttonLikeVesta.Name = "buttonLikeVesta";
+            this.buttonLikeVesta.UseVisualStyleBackColor = true;
+            this.buttonLikeVesta.Click += new System.EventHandler(this.buttonLikeVesta_Click);
             // 
             // numericBoxLightSize
             // 
@@ -1281,6 +1302,7 @@
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveImageToolStripMenuItem,
+            this.toolToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -1385,6 +1407,19 @@
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
+            // toolToolStripMenuItem
+            // 
+            this.toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iLikeVESTAToolStripMenuItem});
+            this.toolToolStripMenuItem.Name = "toolToolStripMenuItem";
+            resources.ApplyResources(this.toolToolStripMenuItem, "toolToolStripMenuItem");
+            // 
+            // iLikeVESTAToolStripMenuItem
+            // 
+            this.iLikeVESTAToolStripMenuItem.Name = "iLikeVESTAToolStripMenuItem";
+            resources.ApplyResources(this.iLikeVESTAToolStripMenuItem, "iLikeVESTAToolStripMenuItem");
+            this.iLikeVESTAToolStripMenuItem.Click += new System.EventHandler(this.buttonLikeVesta_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1484,14 +1519,6 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // buttonSetRange4
-            // 
-            resources.ApplyResources(this.buttonSetRange4, "buttonSetRange4");
-            this.buttonSetRange4.Name = "buttonSetRange4";
-            this.buttonSetRange4.Tag = "1.5";
-            this.buttonSetRange4.UseVisualStyleBackColor = true;
-            this.buttonSetRange4.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
-            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -1536,6 +1563,7 @@
             this.tabPageInformation.ResumeLayout(false);
             this.tabPageInformation.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1657,5 +1685,8 @@
         private Crystallography.Controls.NumericBox numericBoxAxesSize;
         private Crystallography.Controls.NumericBox numericBoxLegendSize;
         private System.Windows.Forms.Button buttonSetRange4;
+        private System.Windows.Forms.Button buttonLikeVesta;
+        private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
     }
 }

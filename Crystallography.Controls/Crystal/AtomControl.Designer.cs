@@ -220,7 +220,6 @@
             this.numericBoxBiso.RestrictLimitValue = true;
             this.numericBoxBiso.ShowFraction = false;
             this.numericBoxBiso.ShowPositiveSign = false;
-            this.numericBoxBiso.ShowUpDown = false;
             this.numericBoxBiso.SkipEventDuringInput = false;
             this.numericBoxBiso.SmartIncrement = true;
             this.numericBoxBiso.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -253,7 +252,6 @@
             this.numericalTextBoxBisoerr.RestrictLimitValue = true;
             this.numericalTextBoxBisoerr.ShowFraction = false;
             this.numericalTextBoxBisoerr.ShowPositiveSign = false;
-            this.numericalTextBoxBisoerr.ShowUpDown = false;
             this.numericalTextBoxBisoerr.SkipEventDuringInput = false;
             this.numericalTextBoxBisoerr.SmartIncrement = true;
             this.numericalTextBoxBisoerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -449,7 +447,6 @@
             this.numericalTextBox1.RestrictLimitValue = true;
             this.numericalTextBox1.ShowFraction = true;
             this.numericalTextBox1.ShowPositiveSign = false;
-            this.numericalTextBox1.ShowUpDown = false;
             this.numericalTextBox1.SkipEventDuringInput = false;
             this.numericalTextBox1.SmartIncrement = true;
             this.numericalTextBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -487,7 +484,6 @@
             this.numericalTextBox2.RestrictLimitValue = true;
             this.numericalTextBox2.ShowFraction = true;
             this.numericalTextBox2.ShowPositiveSign = false;
-            this.numericalTextBox2.ShowUpDown = false;
             this.numericalTextBox2.SkipEventDuringInput = false;
             this.numericalTextBox2.SmartIncrement = true;
             this.numericalTextBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -534,7 +530,6 @@
             this.numericalTextBox3.RestrictLimitValue = true;
             this.numericalTextBox3.ShowFraction = true;
             this.numericalTextBox3.ShowPositiveSign = false;
-            this.numericalTextBox3.ShowUpDown = false;
             this.numericalTextBox3.SkipEventDuringInput = false;
             this.numericalTextBox3.SmartIncrement = true;
             this.numericalTextBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -572,7 +567,6 @@
             this.numericalTextBox4.RestrictLimitValue = true;
             this.numericalTextBox4.ShowFraction = true;
             this.numericalTextBox4.ShowPositiveSign = false;
-            this.numericalTextBox4.ShowUpDown = false;
             this.numericalTextBox4.SkipEventDuringInput = false;
             this.numericalTextBox4.SmartIncrement = true;
             this.numericalTextBox4.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -659,7 +653,6 @@
             this.numericalTextBoxOccerr.RestrictLimitValue = true;
             this.numericalTextBoxOccerr.ShowFraction = false;
             this.numericalTextBoxOccerr.ShowPositiveSign = false;
-            this.numericalTextBoxOccerr.ShowUpDown = false;
             this.numericalTextBoxOccerr.SkipEventDuringInput = false;
             this.numericalTextBoxOccerr.SmartIncrement = true;
             this.numericalTextBoxOccerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -692,7 +685,6 @@
             this.numericTextBoxOcc.RestrictLimitValue = true;
             this.numericTextBoxOcc.ShowFraction = true;
             this.numericTextBoxOcc.ShowPositiveSign = false;
-            this.numericTextBoxOcc.ShowUpDown = false;
             this.numericTextBoxOcc.SkipEventDuringInput = false;
             this.numericTextBoxOcc.SmartIncrement = true;
             this.numericTextBoxOcc.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -725,7 +717,6 @@
             this.numericTextBoxZ.RestrictLimitValue = true;
             this.numericTextBoxZ.ShowFraction = true;
             this.numericTextBoxZ.ShowPositiveSign = false;
-            this.numericTextBoxZ.ShowUpDown = false;
             this.numericTextBoxZ.SkipEventDuringInput = false;
             this.numericTextBoxZ.SmartIncrement = true;
             this.numericTextBoxZ.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -758,7 +749,6 @@
             this.numericalTextBoxYerr.RestrictLimitValue = true;
             this.numericalTextBoxYerr.ShowFraction = false;
             this.numericalTextBoxYerr.ShowPositiveSign = false;
-            this.numericalTextBoxYerr.ShowUpDown = false;
             this.numericalTextBoxYerr.SkipEventDuringInput = false;
             this.numericalTextBoxYerr.SmartIncrement = true;
             this.numericalTextBoxYerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -791,7 +781,6 @@
             this.numericalTextBoxXerr.RestrictLimitValue = true;
             this.numericalTextBoxXerr.ShowFraction = false;
             this.numericalTextBoxXerr.ShowPositiveSign = false;
-            this.numericalTextBoxXerr.ShowUpDown = false;
             this.numericalTextBoxXerr.SkipEventDuringInput = false;
             this.numericalTextBoxXerr.SmartIncrement = true;
             this.numericalTextBoxXerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -824,7 +813,6 @@
             this.numericTextBoxY.RestrictLimitValue = true;
             this.numericTextBoxY.ShowFraction = true;
             this.numericTextBoxY.ShowPositiveSign = false;
-            this.numericTextBoxY.ShowUpDown = false;
             this.numericTextBoxY.SkipEventDuringInput = false;
             this.numericTextBoxY.SmartIncrement = true;
             this.numericTextBoxY.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -857,7 +845,6 @@
             this.numericTextBoxX.RestrictLimitValue = true;
             this.numericTextBoxX.ShowFraction = true;
             this.numericTextBoxX.ShowPositiveSign = false;
-            this.numericTextBoxX.ShowUpDown = false;
             this.numericTextBoxX.SkipEventDuringInput = false;
             this.numericTextBoxX.SmartIncrement = true;
             this.numericTextBoxX.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -890,7 +877,6 @@
             this.numericalTextBoxZerr.RestrictLimitValue = true;
             this.numericalTextBoxZerr.ShowFraction = false;
             this.numericalTextBoxZerr.ShowPositiveSign = false;
-            this.numericalTextBoxZerr.ShowUpDown = false;
             this.numericalTextBoxZerr.SkipEventDuringInput = false;
             this.numericalTextBoxZerr.SmartIncrement = true;
             this.numericalTextBoxZerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1069,7 +1055,6 @@
             this.numericBoxOriginShiftZ.RestrictLimitValue = true;
             this.numericBoxOriginShiftZ.ShowFraction = true;
             this.numericBoxOriginShiftZ.ShowPositiveSign = false;
-            this.numericBoxOriginShiftZ.ShowUpDown = false;
             this.numericBoxOriginShiftZ.SkipEventDuringInput = false;
             this.numericBoxOriginShiftZ.SmartIncrement = true;
             this.numericBoxOriginShiftZ.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1102,7 +1087,6 @@
             this.numericBoxOriginShiftY.RestrictLimitValue = true;
             this.numericBoxOriginShiftY.ShowFraction = true;
             this.numericBoxOriginShiftY.ShowPositiveSign = false;
-            this.numericBoxOriginShiftY.ShowUpDown = false;
             this.numericBoxOriginShiftY.SkipEventDuringInput = false;
             this.numericBoxOriginShiftY.SmartIncrement = true;
             this.numericBoxOriginShiftY.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1135,7 +1119,6 @@
             this.numericBoxOriginShiftX.RestrictLimitValue = true;
             this.numericBoxOriginShiftX.ShowFraction = true;
             this.numericBoxOriginShiftX.ShowPositiveSign = false;
-            this.numericBoxOriginShiftX.ShowUpDown = false;
             this.numericBoxOriginShiftX.SkipEventDuringInput = false;
             this.numericBoxOriginShiftX.SmartIncrement = true;
             this.numericBoxOriginShiftX.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1199,7 +1182,6 @@
             this.numericalTextBoxB22.RestrictLimitValue = true;
             this.numericalTextBoxB22.ShowFraction = false;
             this.numericalTextBoxB22.ShowPositiveSign = false;
-            this.numericalTextBoxB22.ShowUpDown = false;
             this.numericalTextBoxB22.SkipEventDuringInput = false;
             this.numericalTextBoxB22.SmartIncrement = true;
             this.numericalTextBoxB22.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1232,7 +1214,6 @@
             this.numericalTextBoxB22err.RestrictLimitValue = true;
             this.numericalTextBoxB22err.ShowFraction = false;
             this.numericalTextBoxB22err.ShowPositiveSign = false;
-            this.numericalTextBoxB22err.ShowUpDown = false;
             this.numericalTextBoxB22err.SkipEventDuringInput = false;
             this.numericalTextBoxB22err.SmartIncrement = true;
             this.numericalTextBoxB22err.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1265,7 +1246,6 @@
             this.numericalTextBoxB23.RestrictLimitValue = true;
             this.numericalTextBoxB23.ShowFraction = false;
             this.numericalTextBoxB23.ShowPositiveSign = false;
-            this.numericalTextBoxB23.ShowUpDown = false;
             this.numericalTextBoxB23.SkipEventDuringInput = false;
             this.numericalTextBoxB23.SmartIncrement = true;
             this.numericalTextBoxB23.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1298,7 +1278,6 @@
             this.numericalTextBoxB23err.RestrictLimitValue = true;
             this.numericalTextBoxB23err.ShowFraction = false;
             this.numericalTextBoxB23err.ShowPositiveSign = false;
-            this.numericalTextBoxB23err.ShowUpDown = false;
             this.numericalTextBoxB23err.SkipEventDuringInput = false;
             this.numericalTextBoxB23err.SmartIncrement = true;
             this.numericalTextBoxB23err.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1331,7 +1310,6 @@
             this.numericalTextBoxB33.RestrictLimitValue = true;
             this.numericalTextBoxB33.ShowFraction = false;
             this.numericalTextBoxB33.ShowPositiveSign = false;
-            this.numericalTextBoxB33.ShowUpDown = false;
             this.numericalTextBoxB33.SkipEventDuringInput = false;
             this.numericalTextBoxB33.SmartIncrement = true;
             this.numericalTextBoxB33.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1364,7 +1342,6 @@
             this.numericalTextBoxB33err.RestrictLimitValue = true;
             this.numericalTextBoxB33err.ShowFraction = false;
             this.numericalTextBoxB33err.ShowPositiveSign = false;
-            this.numericalTextBoxB33err.ShowUpDown = false;
             this.numericalTextBoxB33err.SkipEventDuringInput = false;
             this.numericalTextBoxB33err.SmartIncrement = true;
             this.numericalTextBoxB33err.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1408,7 +1385,6 @@
             this.numericalTextBoxB11.RestrictLimitValue = true;
             this.numericalTextBoxB11.ShowFraction = false;
             this.numericalTextBoxB11.ShowPositiveSign = false;
-            this.numericalTextBoxB11.ShowUpDown = false;
             this.numericalTextBoxB11.SkipEventDuringInput = false;
             this.numericalTextBoxB11.SmartIncrement = true;
             this.numericalTextBoxB11.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1441,7 +1417,6 @@
             this.numericalTextBoxB11err.RestrictLimitValue = true;
             this.numericalTextBoxB11err.ShowFraction = false;
             this.numericalTextBoxB11err.ShowPositiveSign = false;
-            this.numericalTextBoxB11err.ShowUpDown = false;
             this.numericalTextBoxB11err.SkipEventDuringInput = false;
             this.numericalTextBoxB11err.SmartIncrement = true;
             this.numericalTextBoxB11err.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1474,7 +1449,6 @@
             this.numericalTextBoxB12.RestrictLimitValue = true;
             this.numericalTextBoxB12.ShowFraction = false;
             this.numericalTextBoxB12.ShowPositiveSign = false;
-            this.numericalTextBoxB12.ShowUpDown = false;
             this.numericalTextBoxB12.SkipEventDuringInput = false;
             this.numericalTextBoxB12.SmartIncrement = true;
             this.numericalTextBoxB12.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1507,7 +1481,6 @@
             this.numericalTextBoxB12err.RestrictLimitValue = true;
             this.numericalTextBoxB12err.ShowFraction = false;
             this.numericalTextBoxB12err.ShowPositiveSign = false;
-            this.numericalTextBoxB12err.ShowUpDown = false;
             this.numericalTextBoxB12err.SkipEventDuringInput = false;
             this.numericalTextBoxB12err.SmartIncrement = true;
             this.numericalTextBoxB12err.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1540,7 +1513,6 @@
             this.numericalTextBoxB13.RestrictLimitValue = true;
             this.numericalTextBoxB13.ShowFraction = false;
             this.numericalTextBoxB13.ShowPositiveSign = false;
-            this.numericalTextBoxB13.ShowUpDown = false;
             this.numericalTextBoxB13.SkipEventDuringInput = false;
             this.numericalTextBoxB13.SmartIncrement = true;
             this.numericalTextBoxB13.TextBoxBackColor = System.Drawing.SystemColors.Window;
@@ -1573,7 +1545,6 @@
             this.numericalTextBoxB13err.RestrictLimitValue = true;
             this.numericalTextBoxB13err.ShowFraction = false;
             this.numericalTextBoxB13err.ShowPositiveSign = false;
-            this.numericalTextBoxB13err.ShowUpDown = false;
             this.numericalTextBoxB13err.SkipEventDuringInput = false;
             this.numericalTextBoxB13err.SmartIncrement = true;
             this.numericalTextBoxB13err.TextBoxBackColor = System.Drawing.SystemColors.Window;

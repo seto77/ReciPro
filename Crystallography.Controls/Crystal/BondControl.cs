@@ -55,17 +55,16 @@ namespace Crystallography.Controls
                 return new Bonds(
                     true, ElementList, comboBoxBondingAtom1.Text, comboBoxBondingAtom2.Text,
                     numericBoxBondMinLength.Value, numericBoxBondMaxLength.Value,
-                    numericBoxBondRadius.Value, numericBoxBondAlpha.Value,
-                    colorControlBond.Color, numericBoxPolyhedronAlpha.Value,
-                    checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked,
-                    checkBoxShowInnerBonds.Checked, colorControlPlyhedron.Color, checkBoxShowEdges.Checked,
-                    numericBoxEdgeWidth.Value, colorControlEdges.Color);
+                    checkBoxShowBonds.Checked, numericBoxBondRadius.Value, numericBoxBondAlpha.Value,
+                    checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked, 
+                    checkBoxShowInnerBonds.Checked, numericBoxPolyhedronAlpha.Value, 
+                    checkBoxShowEdges.Checked,numericBoxEdgeWidth.Value);
         }
 
         public void SetToInterface(Bonds b)
         {
             //ElementList = b.ElementList;
-
+            checkBoxShowBonds.Checked = b.ShowBond;
             comboBoxBondingAtom1.Text = b.Element1;
             comboBoxBondingAtom2.Text = b.Element2;
             numericBoxBondMinLength.Value = b.MinLength;
@@ -92,7 +91,7 @@ namespace Crystallography.Controls
         private void checkBoxShowPolyhedron_CheckedChanged(object sender, EventArgs e) => groupBoxPolyhedron.Enabled = checkBoxShowPolyhedron.Checked;
         private void checkBoxShowEdges_CheckedChanged(object sender, EventArgs e) => groupBoxEdge.Enabled = checkBoxShowEdges.Checked;
 
-
+        private void checkBoxShowBonds_CheckedChanged(object sender, EventArgs e) => groupBoxBonds.Enabled = checkBoxShowBonds.Checked;
         #endregion
 
         #region データベース操作
@@ -231,19 +230,27 @@ namespace Crystallography.Controls
 
         private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {//チェックボックスが変わると即座に反映させる
-            if (dataGridView.CurrentCellAddress.X == 0 && dataGridView.IsCurrentCellDirty)
+            var x = dataGridView.CurrentCellAddress.X;
+            if ((x == 0 || x==5 || x==6) && dataGridView.IsCurrentCellDirty)
                 dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
         private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                table.Get(bindingSource.Position).Enabled =
-                    (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (e.ColumnIndex == 0)
+                    table.Get(bindingSource.Position).Enabled = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                else if (e.ColumnIndex == 5)
+                    table.Get(bindingSource.Position).ShowBond = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                else if (e.ColumnIndex == 6)
+                    table.Get(bindingSource.Position).ShowPolyhedron = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+               
                 ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(sender, new EventArgs());
             }
-        } 
+        }
         #endregion
 
+        
     }
 }

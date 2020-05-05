@@ -122,6 +122,7 @@ namespace ReciPro
             bondControl.ItemsChanged += BondControl_BondsChanged;
             atomControl.ItemsChanged += AtomControl_ItemsChanged;
 
+
             flowLayoutPanelLegend.AutoSize = true;
         }
 
@@ -136,9 +137,16 @@ namespace ReciPro
             axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
             axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
             int n = Crystal.Symmetry.CrystalSystemNumber;
-            shift = (n >= 5 && n <= 6) ?
-                new V3(0, 0, 0) :
-                (axes.Column0 + axes.Column1 + axes.Column2) / 2;
+            if(n==5||n==6) //trigonal‚Æhexagonal‚Ì
+            {
+                shift = new V3(0, 0, 0);
+                numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.5;
+            }
+            else
+            {
+                shift = (axes.Column0 + axes.Column1 + axes.Column2) / 2;
+                numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
+            }
         }
 
         /// <summary>
@@ -156,14 +164,17 @@ namespace ReciPro
             if (radioButtonBoundUnitCell.Checked || !Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))
             {//‹«ŠEğŒ‚Æ‚µ‚ÄUnit cell‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚é‚©APlane‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚é‚ª•`‰æ”ÍˆÍ‚ª•Â‚¶‚Ä‚¢‚È‚¢ê‡ A’PˆÊŠiq‚ğ‹«ŠE‚Æ‚·‚é
 
+                var inv = Matrix3d.Invert(axes);
+
+
                 bounds = new List<(V4 prms, Color color)>()
                 {
-                    (new V4(axes.Column0.Normalized(),axes.Column0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Gray),
-                    (new V4(-axes.Column0.Normalized(),axes.Column0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Gray),
-                    (new V4(axes.Column1.Normalized(),axes.Column1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Gray),
-                    (new V4(-axes.Column1.Normalized(),axes.Column1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Gray),
-                    (new V4(axes.Column2.Normalized(),axes.Column2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Gray),
-                    (new V4(-axes.Column2.Normalized(),axes.Column2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Gray),
+                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Gray),
+                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Gray),
+                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Gray),
+                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Gray),
+                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Gray),
+                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Gray),
                 };
             }
 
@@ -278,55 +289,77 @@ namespace ReciPro
         {
             sw.Restart();
             //bonds‚Æpolyhedra‚ğ’Ç‰Á
-            foreach (var bond in bondControl.GetAll())
+            foreach (var bond in bondControl.GetAll().Where(b=>b.Enabled))
             {
-                var bondMat = new Material(bond.ArgbBond, bond.BondTransParency, 0.2, 0.8, 0.8, 50, 0.2);
-                var polyhedronMat = new Material(bond.ArgbPolyhedron, bond.PolyhedronTransParency, 0.2, 0.8, 0.8, 50, 0.2);
+                //‘fŞ‚ğİ’è
+                int argbB2= bond.ArgbBond, argbB1= bond.ArgbBond, argbP= bond.ArgbPolyhedron;
+                double r1 = 0, r2 = 0;
+                if (!bond.UseFixedColor)
+                {
+                    if (Crystal.Atoms.Count(a => a.ElementName == bond.Element1) > 0)
+                    {
+                        var a = Crystal.Atoms.First(a => a.ElementName == bond.Element1);
+                        argbB1 = argbP = a.Argb;
+                        r1 = a.Radius * 0.1;
+                    }
+                    if (Crystal.Atoms.Count(a => a.ElementName == bond.Element2) > 0) {
+                        var a = Crystal.Atoms.First(a => a.ElementName == bond.Element2);
+                        argbB2 = a.Argb;
+                        r2 = a.Radius * 0.1;
+                    }
+                }
+                var bondMat1 = new Material(argbB1, bond.BondTransParency, 0.2, 0.5, 0.6, 4, 0.4);
+                var bondMat2 = new Material(argbB2, bond.BondTransParency, 0.2, 0.5, 0.6, 4, 0.4);
+                var polyhedronMat = new Material(argbP, bond.PolyhedronTransParency, 0.2, 0.5, 0.6, 4, 0.4);
+
                 double min = bond.MinLength * 0.1, min2 = min * min;
                 double max = bond.MaxLength * 0.1, max2 = max * max;
                 double radius = bond.Radius * 0.1;
-                var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
 
                 var elementCenters = GLObjects
-                    .Where(obj => obj.Tag is atomID id && id.Atoms.ElementName == bond.Element1 && id.IsInside)
-                    .Select(e => ((e as Sphere).Origin, e.SerialNumber))
+                    .Where(obj => obj.Tag is atomID id && id.Atoms.ElementName == bond.Element1 && id.IsInside).Select(e => ((e as Sphere).Origin, e.SerialNumber))
                     .ToList().AsParallel().WithDegreeOfParallelism(Math.Max(Environment.ProcessorCount / 4, 1));
                 var elementVertices = GLObjects
                     .Select((Obj, Index) => (Obj, Index))
                     .Where(e => e.Obj.Tag is atomID id && id.Atoms.ElementName == bond.Element2)
                     .Select(e => (e.Index, (e.Obj as Sphere).Origin, e.Obj.SerialNumber)).ToList();
 
+
+                var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
+
                 elementCenters.ForAll(c =>
                 {
                     var vertices = elementVertices.Where(v => (v.Origin - c.Origin).LengthSquared < max2 && (v.Origin - c.Origin).LengthSquared > min2).ToList();
                     if (vertices.Count > 0)
                     {
+
                         foreach (var (Index, Origin, SerialNumber) in vertices) //Bond
                         {
-                            var cylinder = new Cylinder(c.Origin, Origin - c.Origin, radius, bondMat, DrawingMode.Surfaces);
+                            var cylinder = new Cylinder(c.Origin, Origin - c.Origin, radius, bondMat1, bondMat2, DrawingMode.Surfaces, 20, 8);
                             cylinder.Tag = new bondID(c.SerialNumber, SerialNumber);
                             cylinder.ShowClippedSection = false;
+                            cylinder.Rendered = bond.ShowBond;
                             lock (lockObj)
                             {
                                 GLObjects.Add(cylinder);
                                 GLObjects[Index].Rendered = true;
                             }
                         }
-                        if (bond.ShowPolyhedron)//Polyhedra
+
+                        if (vertices.Count == 3)
                         {
-                            if (vertices.Count == 3)
-                            {
-                                var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
-                                lock (lockObj)
-                                    GLObjects.Add(polygon);
-                            }
-                            else if (vertices.Count > 3)
-                            {
-                                var polyhedron = new Polyhedron(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
-                                polyhedron.ShowClippedSection = false;
-                                lock (lockObj)
-                                    GLObjects.Add(polyhedron);
-                            }
+                            var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
+                            polygon.Rendered = bond.ShowPolyhedron;
+                            lock (lockObj)
+                                GLObjects.Add(polygon);
+                        }
+                        else if (vertices.Count > 3)
+                        {
+                            var polyhedron = new Polyhedron(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
+                            polyhedron.Rendered = bond.ShowPolyhedron;
+                            polyhedron.ShowClippedSection = false;
+                            lock (lockObj)
+                                GLObjects.Add(polyhedron);
                         }
                     }
                 });
@@ -358,11 +391,13 @@ namespace ReciPro
                 .ToList();
 
             foreach (var obj in removeList)
-                obj.Rendered = false;
+                GLObjects.Remove(obj);
+           // foreach (var obj in removeList)
+           //      obj.Rendered = false;
 
-            for (int i = 0; i < GLObjects.Count; i++)
-                if (GLObjects[i].Rendered == false)
-                    GLObjects.RemoveAt(i--);
+            // for (int i = 0; i < GLObjects.Count; i++)
+            //     if (GLObjects[i].Rendered == false)
+            //         GLObjects.RemoveAt(i--);
 
             textBoxInformation.AppendText("Remove tentative atoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
@@ -653,8 +688,10 @@ namespace ReciPro
             {
                 var rot = getRotation(e, glControlLight.ClientSize, lastPosLight, true);
                 var rotMat = Matrix3d.CreateFromAxisAngle(-new V3(rot), rot.W);
-                if (rotMat.M11 == double.NaN) return;
-                glControlLight.LightPosition = glControlMain.LightPosition = glControlAxes.LightPosition = rotMat.Mult(glControlLight.LightPosition);
+                if (double.IsNaN( rotMat.M11)) return;
+                var pos = rotMat.Mult(glControlLight.LightPosition);
+                if (double.IsNaN(pos.X)) return;
+                glControlLight.LightPosition = glControlMain.LightPosition = glControlAxes.LightPosition = pos;
                 foreach (var c in legendControls)
                     c.LightPosition = glControlLight.LightPosition;
             }
@@ -1051,6 +1088,8 @@ namespace ReciPro
 
         #endregion
 
+        #region –}—á‚Ì•`‰æ
+
         /// <summary>
         /// –}—á•”•ª‚Ì•`‰æ
         /// </summary>
@@ -1058,51 +1097,61 @@ namespace ReciPro
         {
             sw.Restart();
 
-            var size = new Size(numericBoxLegendSize.ValueInteger, numericBoxLegendSize.ValueInteger);
-            glControlMain.SkipRendering = true;
-
-            legendControls.Clear();
-            legendLabels.Clear();
-            legendPanels.Clear();
-            flowLayoutPanelLegend.Controls.Clear();
-
-            if (toolStripButtonLegend.Checked)
+            if (!toolStripButtonLegend.Checked)
             {
+                flowLayoutPanelLegend.Controls.Clear();
+            }
+            else
+            {
+                var size = new Size(numericBoxLegendSize.ValueInteger, numericBoxLegendSize.ValueInteger);
+                glControlMain.SkipRendering = true;
+
                 var atoms = atomControl.GetAll();
                 flowLayoutPanelLegend.SuspendLayout();
 
-                for (int i = 0; i < atoms.Length; i++)
+                for (int i = 0; i < Math.Max(atoms.Length, legendControls.Count); i++)
                 {
-                    legendControls.Add(new GLControlAlpha
+                    if (i < atoms.Length)
                     {
-                        AllowMouseRotation = false,
-                        AllowMouseScaling = false,
-                        AllowMouseTranslating = false,
-                        DisablingOpenGL = false,
-                        Name = "legend" + i.ToString(),
-                        NodeCoefficient = 1,
-                        ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                        ProjWidth = 2.2D,
-                        RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
-                        LightPosition = glControlLight.LightPosition,
-                        WorldMatrix = glControlLight.WorldMatrix,
-                        ViewFrom = glControlLight.ViewFrom
-                    });
-                    legendControls[i].Size = size;
+                        if (legendControls.Count <= i)
+                        {
+                            legendControls.Add(new GLControlAlpha
+                            {
+                                AllowMouseRotation = false,
+                                AllowMouseScaling = false,
+                                AllowMouseTranslating = false,
+                                DisablingOpenGL = false,
+                                Name = "legend" + i.ToString(),
+                                NodeCoefficient = 1,
+                                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                                ProjWidth = 2.2D,
+                                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                                LightPosition = glControlLight.LightPosition,
+                                WorldMatrix = glControlLight.WorldMatrix,
+                                ViewFrom = glControlLight.ViewFrom
+                            });
 
-                    legendLabels.Add(new Label { Text = atoms[i].Label, Font = Font, AutoSize = true });
+                            legendLabels.Add(new Label { Font = Font, AutoSize = true });
 
-                    legendPanels.Add(new FlowLayoutPanel
-                    {
-                        AutoSize = true,
-                        AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                        FlowDirection = FlowDirection.TopDown,
-                        Margin = new Padding(1, 1, 1, 8),
-                    });
+                            legendPanels.Add(new FlowLayoutPanel
+                            {
+                                AutoSize = true,
+                                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                                FlowDirection = FlowDirection.TopDown,
+                                Margin = new Padding(1, 1, 1, 8),
+                            });
 
-                    legendPanels[i].Controls.Add(legendControls[i]);
-                    legendPanels[i].Controls.Add(legendLabels[i]);
-                    flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
+                            legendPanels[i].Controls.Add(legendControls[i]);
+                            legendPanels[i].Controls.Add(legendLabels[i]);
+                        }
+                        legendLabels[i].Text = atoms[i].Label;
+                        legendControls[i].DeleteAllObjects();
+                        legendControls[i].Size = size;
+                        
+                        flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
+                    }
+                    else
+                        flowLayoutPanelLegend.Controls.Remove(legendPanels[i]);
                 }
                 flowLayoutPanelLegend.ResumeLayout();
 
@@ -1114,13 +1163,15 @@ namespace ReciPro
                         new Sphere(new V3(0, 0, 0), atoms[i].Radius / maxRadius,
                         new Material(atoms[i].Argb, atoms[i].Transparency, atoms[i].Ambient, atoms[i].Diffusion, atoms[i].Specular, atoms[i].Shininess, atoms[i].Emission),
                         DrawingMode.Surfaces));
+                    legendControls[i].LightPosition = glControlLight.LightPosition;
                 }
             }
             glControlMain.SkipRendering = false;
 
             textBoxInformation.AppendText("Generation of legend control: " + sw.ElapsedMilliseconds + "ms.\r\n");
-
         }
+
+        #endregion
 
         #region –}—áAŒõŒ¹•ûŒüAŒ‹»²‚ÌƒTƒCƒY•ÏX
 
@@ -1139,6 +1190,28 @@ namespace ReciPro
         {
             glControlLight.Size = new Size(numericBoxLightSize.ValueInteger, numericBoxLightSize.ValueInteger);
         }
+        #endregion
+
+        #region Vesta‚Æ“¯‚¶‚æ‚¤‚ÈŒ©‰h‚¦‚É‚·‚éB
+        private void buttonLikeVesta_Click(object sender, EventArgs e)
+        {
+            skipSetCrystal = true;
+
+            foreach (var atoms in formMain.crystalControl.Crystal.Atoms)
+                atoms.ResetVesta();
+
+            ConvertCrystalData.SetOpenGL_property(formMain.crystalControl.Crystal);
+
+            formMain.crystalControl.bondControl.Clear();
+            formMain.crystalControl.bondControl.AddRange(formMain.crystalControl.Crystal.Bonds);
+            skipSetCrystal = false;
+            SetGLObjects();
+            SetLegend();
+        }
+
+    
+
+
         #endregion
     }
 }

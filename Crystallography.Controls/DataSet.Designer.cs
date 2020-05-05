@@ -1227,9 +1227,9 @@ namespace Crystallography.Controls {
             
             private global::System.Data.DataColumn _columnMin_len_;
             
-            private global::System.Data.DataColumn columnBond_color;
+            private global::System.Data.DataColumn columnShow_bonds;
             
-            private global::System.Data.DataColumn columnPolyhedron_color;
+            private global::System.Data.DataColumn columnShow_Polyhedron;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1314,17 +1314,17 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Bond_colorColumn {
+            public global::System.Data.DataColumn Show_bondsColumn {
                 get {
-                    return this.columnBond_color;
+                    return this.columnShow_bonds;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Polyhedron_colorColumn {
+            public global::System.Data.DataColumn Show_PolyhedronColumn {
                 get {
-                    return this.columnPolyhedron_color;
+                    return this.columnShow_Polyhedron;
                 }
             }
             
@@ -1365,7 +1365,7 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTableBondRow AddDataTableBondRow(object Bond, bool Enabled, string Center, string Vertex, string _Max_len_, string _Min_len_, object Bond_color, object Polyhedron_color) {
+            public DataTableBondRow AddDataTableBondRow(object Bond, bool Enabled, string Center, string Vertex, string _Max_len_, string _Min_len_, bool Show_bonds, bool Show_Polyhedron) {
                 DataTableBondRow rowDataTableBondRow = ((DataTableBondRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Bond,
@@ -1374,8 +1374,8 @@ namespace Crystallography.Controls {
                         Vertex,
                         _Max_len_,
                         _Min_len_,
-                        Bond_color,
-                        Polyhedron_color};
+                        Show_bonds,
+                        Show_Polyhedron};
                 rowDataTableBondRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTableBondRow);
                 return rowDataTableBondRow;
@@ -1404,8 +1404,8 @@ namespace Crystallography.Controls {
                 this.columnVertex = base.Columns["Vertex"];
                 this._columnMax_len_ = base.Columns["Max len."];
                 this._columnMin_len_ = base.Columns["Min len."];
-                this.columnBond_color = base.Columns["Bond color"];
-                this.columnPolyhedron_color = base.Columns["Polyhedron color"];
+                this.columnShow_bonds = base.Columns["Show bonds"];
+                this.columnShow_Polyhedron = base.Columns["Show Polyhedron"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1427,10 +1427,10 @@ namespace Crystallography.Controls {
                 this._columnMin_len_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMin_len_");
                 this._columnMin_len_.ExtendedProperties.Add("Generator_UserColumnName", "Min len.");
                 base.Columns.Add(this._columnMin_len_);
-                this.columnBond_color = new global::System.Data.DataColumn("Bond color", typeof(object), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBond_color);
-                this.columnPolyhedron_color = new global::System.Data.DataColumn("Polyhedron color", typeof(object), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPolyhedron_color);
+                this.columnShow_bonds = new global::System.Data.DataColumn("Show bonds", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShow_bonds);
+                this.columnShow_Polyhedron = new global::System.Data.DataColumn("Show Polyhedron", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShow_Polyhedron);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3033,33 +3033,33 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public object Bond_color {
+            public bool Show_bonds {
                 get {
                     try {
-                        return ((object)(this[this.tableDataTableBond.Bond_colorColumn]));
+                        return ((bool)(this[this.tableDataTableBond.Show_bondsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBond\' にある列 \'Bond color\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBond\' にある列 \'Show bonds\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableDataTableBond.Bond_colorColumn] = value;
+                    this[this.tableDataTableBond.Show_bondsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public object Polyhedron_color {
+            public bool Show_Polyhedron {
                 get {
                     try {
-                        return ((object)(this[this.tableDataTableBond.Polyhedron_colorColumn]));
+                        return ((bool)(this[this.tableDataTableBond.Show_PolyhedronColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBond\' にある列 \'Polyhedron color\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBond\' にある列 \'Show Polyhedron\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableDataTableBond.Polyhedron_colorColumn] = value;
+                    this[this.tableDataTableBond.Show_PolyhedronColumn] = value;
                 }
             }
             
@@ -3137,26 +3137,26 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBond_colorNull() {
-                return this.IsNull(this.tableDataTableBond.Bond_colorColumn);
+            public bool IsShow_bondsNull() {
+                return this.IsNull(this.tableDataTableBond.Show_bondsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBond_colorNull() {
-                this[this.tableDataTableBond.Bond_colorColumn] = global::System.Convert.DBNull;
+            public void SetShow_bondsNull() {
+                this[this.tableDataTableBond.Show_bondsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPolyhedron_colorNull() {
-                return this.IsNull(this.tableDataTableBond.Polyhedron_colorColumn);
+            public bool IsShow_PolyhedronNull() {
+                return this.IsNull(this.tableDataTableBond.Show_PolyhedronColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPolyhedron_colorNull() {
-                this[this.tableDataTableBond.Polyhedron_colorColumn] = global::System.Convert.DBNull;
+            public void SetShow_PolyhedronNull() {
+                this[this.tableDataTableBond.Show_PolyhedronColumn] = global::System.Convert.DBNull;
             }
         }
         

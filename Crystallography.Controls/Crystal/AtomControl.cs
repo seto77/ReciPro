@@ -396,10 +396,7 @@ namespace Crystallography.Controls
             table.Replace(atoms, i);
             var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
             foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
-            { 
                 a.Material = atoms.Material;
-                a.Radius = atoms.Radius;
-            }
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -633,5 +630,7 @@ namespace Crystallography.Controls
         {
             buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
         }
+
+
     }
 }
