@@ -41,9 +41,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStructureViewer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.glControlAxes = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlLight = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlMain = new Crystallography.OpenGL.GLControlAlpha();
+          
             this.flowLayoutPanelLegend = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageBounds = new System.Windows.Forms.TabPage();
@@ -183,75 +181,17 @@
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
+
             // 
             // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.glControlAxes);
-            this.splitContainer1.Panel1.Controls.Add(this.glControlLight);
-            this.splitContainer1.Panel1.Controls.Add(this.glControlMain);
+            //
             this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanelLegend);
+
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
-            // 
-            // glControlAxes
-            // 
-            this.glControlAxes.AllowMouseRotation = false;
-            this.glControlAxes.AllowMouseScaling = false;
-            this.glControlAxes.AllowMouseTranslating = false;
-            resources.ApplyResources(this.glControlAxes, "glControlAxes");
-            this.glControlAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlAxes.DisablingOpenGL = false;
-            this.glControlAxes.MaxHeight = 1;
-            this.glControlAxes.MaxWidth = 1;
-            this.glControlAxes.Name = "glControlAxes";
-            this.glControlAxes.NodeCoefficient = 1;
-            this.glControlAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlAxes.ProjWidth = 4D;
-            this.glControlAxes.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
-            this.glControlAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlAxes.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlAxes.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlAxes_MouseMove);
-            // 
-            // glControlLight
-            // 
-            this.glControlLight.AllowMouseRotation = false;
-            this.glControlLight.AllowMouseScaling = false;
-            this.glControlLight.AllowMouseTranslating = false;
-            this.glControlLight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlLight.DisablingOpenGL = false;
-            resources.ApplyResources(this.glControlLight, "glControlLight");
-            this.glControlLight.MaxHeight = 1;
-            this.glControlLight.MaxWidth = 1;
-            this.glControlLight.Name = "glControlLight";
-            this.glControlLight.NodeCoefficient = 1;
-            this.glControlLight.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlLight.ProjWidth = 4D;
-            this.glControlLight.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Never;
-            this.glControlLight.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlLight.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlLight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlLight_MouseMove);
-            // 
-            // glControlMain
-            // 
-            this.glControlMain.AllowMouseRotation = false;
-            this.glControlMain.AllowMouseScaling = true;
-            this.glControlMain.AllowMouseTranslating = true;
-            this.glControlMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlMain.DisablingOpenGL = false;
-            resources.ApplyResources(this.glControlMain, "glControlMain");
-            this.glControlMain.MaxHeight = 1440;
-            this.glControlMain.MaxWidth = 2560;
-            this.glControlMain.Name = "glControlMain";
-            this.glControlMain.NodeCoefficient = 8;
-            this.glControlMain.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlMain.ProjWidth = 4D;
-            this.glControlMain.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.Always;
-            this.glControlMain.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlMain.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMain_MouseDown);
-            this.glControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.glControlMain_MouseMove);
+           
             // 
             // flowLayoutPanelLegend
             // 
@@ -967,8 +907,6 @@
             // checkBoxCellShowPlane
             // 
             resources.ApplyResources(this.checkBoxCellShowPlane, "checkBoxCellShowPlane");
-            this.checkBoxCellShowPlane.Checked = true;
-            this.checkBoxCellShowPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCellShowPlane.Name = "checkBoxCellShowPlane";
             this.toolTip.SetToolTip(this.checkBoxCellShowPlane, resources.GetString("checkBoxCellShowPlane.ToolTip"));
             this.checkBoxCellShowPlane.UseVisualStyleBackColor = true;
@@ -1620,12 +1558,12 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLightDirection;
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private Crystallography.OpenGL.GLControlAlpha glControlMain;
-        private Crystallography.OpenGL.GLControlAlpha glControlAxes;
+
         private Crystallography.Controls.NumericBox numericBoxCellTransrationC;
         private Crystallography.Controls.NumericBox numericBoxCellTransrationB;
         private Crystallography.Controls.NumericBox numericBoxCellTransrationA;
-        private Crystallography.OpenGL.GLControlAlpha glControlLight;
+
+        
         private System.Windows.Forms.CheckBox checkBoxClipObjects;
         private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
         private Crystallography.Controls.NumericBox numericBoxBoundPlanesOpacity;

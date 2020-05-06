@@ -54,19 +54,25 @@ namespace ReciPro
 
         private Stopwatch sw = new Stopwatch();
 
+        private ParallelQuery<(int Index, V3 Pos, Material Mat, double Radius)> atomsP;
+
+        private Crystallography.OpenGL.GLControlAlpha glControlLight;
+        private Crystallography.OpenGL.GLControlAlpha glControlMain;
+        private Crystallography.OpenGL.GLControlAlpha glControlAxes;
+
         #endregion
 
         #region ローカルクラス
         private class atomID
         {
             public bool IsInside;
-            public Atoms Atoms;
-            //public int N;
+            //public Atoms Atoms;
+            public int Index;
 
-            public atomID(Atoms atoms, bool isInside)
+            public atomID(int index, bool isInside)
             {
                 IsInside = isInside;
-                Atoms = atoms;
+                Index = index;
                 //N = n;
             }
         }
@@ -93,15 +99,104 @@ namespace ReciPro
 
         private void FormStructureViewer_Load(object sender, EventArgs e)
         {
+            if (DesignMode) return;
+
             formAtom = new FormAtom();
             formAtom.formStructureViewer = this;
             AddOwnedForm(formAtom);
+
+            //ここでGLコントロールを追加
+            // 
+            // glControlAxes
+            // 
+            glControlAxes = new GLControlAlpha
+            {
+                AllowMouseRotation = false,
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                MaxHeight = 1,
+                MaxWidth = 1,
+                Name = "glControlAxes",
+                NodeCoefficient = 1,
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 4D,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                TranslatingMode = GLControlAlpha.TranslatingModes.View,
+                Location = new Point(0, 0),
+                Size = new Size(60, 60),
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+            };
+            glControlAxes.MouseMove += glControlAxes_MouseMove;
+
+
+            // 
+            // glControlLight
+            // 
+            glControlLight = new Crystallography.OpenGL.GLControlAlpha
+            {
+                AllowMouseRotation = false,
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                MaxHeight = 1,
+                MaxWidth = 1,
+                Name = "glControlLight",
+                NodeCoefficient = 1,
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 4D,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                TranslatingMode = GLControlAlpha.TranslatingModes.View,
+                Location = new Point(0, 0),
+                Size = new Size(60, 60),
+                Anchor = AnchorStyles.Top | AnchorStyles.Left
+        };
+            glControlLight.MouseMove += glControlLight_MouseMove;
+
+
+            // 
+            // glControlMain
+            // 
+            glControlMain = new Crystallography.OpenGL.GLControlAlpha
+            {
+                AllowMouseRotation = false,
+                AllowMouseScaling = true,
+                AllowMouseTranslating = true,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                MaxHeight = 1440,
+                MaxWidth = 2560,
+                Name = "glControlMain",
+                NodeCoefficient = 4,
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 4D,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.NotAlways,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                TranslatingMode = GLControlAlpha.TranslatingModes.View,
+                Dock = DockStyle.Fill
+            };
+            glControlMain.MouseDown += panelMain_MouseDown;
+            glControlMain.MouseMove += glControlMain_MouseMove;
+
+
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(glControlAxes);
+            splitContainer1.Panel1.Controls.Add(glControlLight);
+            splitContainer1.Panel1.Controls.Add(glControlMain);
+            glControlAxes.Location = new Point(0, glControlMain.Height - glControlAxes.Height);
+
 
             glControlLight.AddObjects(new Sphere(new V3(0, 0, 0), 1.0, new Material(C4.Gray, 0.2, 0.7, 0.7, 50, 0.2), DrawingMode.Surfaces));
             glControlMain.LightPosition = glControlLight.LightPosition = glControlAxes.LightPosition = new V3(100, 100, 100);
             glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
             glControlLight.ProjWidth = glControlAxes.ProjWidth = 2.2;
-            glControlMain.ProjWidth = 5f;
+            glControlMain.ProjWidth = 3f;
 
             tabControlBoundOption.ItemSize = new Size(0, 1);
 
@@ -130,6 +225,7 @@ namespace ReciPro
 
         #endregion コンストラクタ
 
+        #region 結晶軸行列を設定
         private void initAxesMatrix()
         {
 
@@ -137,7 +233,7 @@ namespace ReciPro
             axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
             axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
             int n = Crystal.Symmetry.CrystalSystemNumber;
-            if(n==5||n==6) //trigonalとhexagonalの時
+            if (n == 5 || n == 6) //trigonalとhexagonalの時
             {
                 shift = new V3(0, 0, 0);
                 numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.5;
@@ -148,7 +244,9 @@ namespace ReciPro
                 numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
             }
         }
+        #endregion
 
+        #region Bounds (境界面)を初期化
         /// <summary>
         /// 境界面を初期化
         /// </summary>
@@ -180,6 +278,8 @@ namespace ReciPro
 
             textBoxInformation.AppendText("Initialization of bounds: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
+
+        #endregion
 
         #region Bounds (境界面) GLObjects の生成
 
@@ -245,38 +345,43 @@ namespace ReciPro
             }
 
             //原子を追加
-            var atomsP = Crystal.Atoms.Select((atoms, i) => (atoms, i)).AsParallel().WithDegreeOfParallelism(Math.Max(Environment.ProcessorCount / 4, 1));
             atomsP.ForAll(o =>
             {
-                var a = o.atoms;
-                var i = o.i;
-                //位置が全く同じ原子が存在する場合は、最もOccが大きいものを選ぶ。それが複数ある場合は、indexが若い方を選ぶ
-                if (Crystal.Atoms.Where((b, j) => i != j && a.X == b.X && a.Y == b.Y && a.Z == b.Z && (a.Occ < b.Occ || (a.Occ <= b.Occ && i > j))).Count() == 0)
+                foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift).ToList())
                 {
-                    var mat = new Material(a.Argb, a.Transparency, a.Ambient, a.Diffusion, a.Specular, a.Shininess, a.Emission);
-                    var radius = a.Radius * 0.1;
-
-                    foreach (var atom in a.Atom.Select(v => new V3(v.X, v.Y, v.Z)).ToList())
-                        foreach (var pos in cells.Select(t => axes.Mult(t + atom) - shift).ToList())
-                        {
-                            var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
-                            if (min > threshold)
-                            {
-                                var sphere = new Sphere(pos, radius, mat, DrawingMode.Surfaces);
-                                sphere.Rendered = min > -0.0000001;
-                                sphere.Tag = new atomID(a, sphere.Rendered);
-                                lock (lockObj)
-                                    GLObjects.Add(sphere);
-                            }
-                        }
+                    var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
+                    if (min > threshold)
+                    {
+                        var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces);
+                        sphere.Rendered = min > -0.0000001;
+                        sphere.Tag = new atomID(o.Index, sphere.Rendered);
+                        lock (lockObj)
+                            GLObjects.Add(sphere);
+                    }
                 }
             });
 
             textBoxInformation.AppendText("Generation of aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
-
-
+        public void setAtomsP()
+        {
+            var list = new List<(int Index, V3 Pos, Material Mat, double Radius)>();
+            //位置が全く同じ原子が存在する場合は、最もOccが大きいものを選ぶ。それが複数ある場合は、indexが若い方を選ぶ
+            for (int i = 0; i < Crystal.Atoms.Length; i++)
+            {
+                var a = Crystal.Atoms[i];
+                if (Crystal.Atoms.Where((b, j) => i != j && a.X == b.X && a.Y == b.Y && a.Z == b.Z && (a.Occ < b.Occ || (a.Occ <= b.Occ && i > j))).Count() == 0)
+                {
+                    var mat = new Material(a.Argb, a.Transparency, a.Ambient, a.Diffusion, a.Specular, a.Shininess, a.Emission);
+                    var radius = a.Radius * 0.1;
+                    foreach (var pos in a.Atom.Select(v => new V3(v.X, v.Y, v.Z)))
+                        list.Add((i, pos, mat, radius));
+                }
+               
+            }
+            atomsP = list.AsParallel();
+        }
 
         #endregion
 
@@ -288,83 +393,72 @@ namespace ReciPro
         private void setBondsAndPolyhera()
         {
             sw.Restart();
-            //bondsとpolyhedraを追加
-            foreach (var bond in bondControl.GetAll().Where(b=>b.Enabled))
+            //まず、頂点原子の辞書を作る
+            var dic = new Dictionary<string, (int Index, V3 Origin, double Radius, bool IsInside, Material BondMat, Material PolyMat, int SerialNumber)[]>();
+            var GLObjectsP = GLObjects.AsParallel();
+            foreach (var bond in bondControl.GetAll().Where(b => b.Enabled))
             {
-                //素材を設定
-                int argbB2= bond.ArgbBond, argbB1= bond.ArgbBond, argbP= bond.ArgbPolyhedron;
-                double r1 = 0, r2 = 0;
-                if (!bond.UseFixedColor)
+                foreach (var element in new[] { bond.Element1, bond.Element2 })
                 {
-                    if (Crystal.Atoms.Count(a => a.ElementName == bond.Element1) > 0)
-                    {
-                        var a = Crystal.Atoms.First(a => a.ElementName == bond.Element1);
-                        argbB1 = argbP = a.Argb;
-                        r1 = a.Radius * 0.1;
-                    }
-                    if (Crystal.Atoms.Count(a => a.ElementName == bond.Element2) > 0) {
-                        var a = Crystal.Atoms.First(a => a.ElementName == bond.Element2);
-                        argbB2 = a.Argb;
-                        r2 = a.Radius * 0.1;
-                    }
+                    if (!dic.ContainsKey(element))
+                        dic.Add(element, GLObjectsP.Select((Obj, Index) => (Obj, Index))
+                       .Where(e => e.Obj.Tag is atomID id && Crystal.Atoms[id.Index].ElementName == element).Select(e =>
+                       {
+                           var s = e.Obj as Sphere;
+                           var BondMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.BondTransParency), 0.2, 0.5, 0.6, 4, 0.4);
+                           var PolyMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.PolyhedronTransParency), 0.2, 0.5, 0.6, 4, 0.4);
+                           return (e.Index, s.Origin, s.Radius, (s.Tag as atomID).IsInside, BondMat, PolyMat, s.SerialNumber);
+                       }).ToArray());
                 }
-                var bondMat1 = new Material(argbB1, bond.BondTransParency, 0.2, 0.5, 0.6, 4, 0.4);
-                var bondMat2 = new Material(argbB2, bond.BondTransParency, 0.2, 0.5, 0.6, 4, 0.4);
-                var polyhedronMat = new Material(argbP, bond.PolyhedronTransParency, 0.2, 0.5, 0.6, 4, 0.4);
+            }
 
-                double min = bond.MinLength * 0.1, min2 = min * min;
-                double max = bond.MaxLength * 0.1, max2 = max * max;
+            //bondsとpolyhedraを追加
+            foreach (var bond in bondControl.GetAll().Where(b => b.Enabled))
+            {
+                double min2 = bond.MinLength * bond.MinLength * 0.01, max2 = bond.MaxLength * bond.MaxLength * 0.01;
                 double radius = bond.Radius * 0.1;
-
-                var elementCenters = GLObjects
-                    .Where(obj => obj.Tag is atomID id && id.Atoms.ElementName == bond.Element1 && id.IsInside).Select(e => ((e as Sphere).Origin, e.SerialNumber))
-                    .ToList().AsParallel().WithDegreeOfParallelism(Math.Max(Environment.ProcessorCount / 4, 1));
-                var elementVertices = GLObjects
-                    .Select((Obj, Index) => (Obj, Index))
-                    .Where(e => e.Obj.Tag is atomID id && id.Atoms.ElementName == bond.Element2)
-                    .Select(e => (e.Index, (e.Obj as Sphere).Origin, e.Obj.SerialNumber)).ToList();
-
-
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
 
-                elementCenters.ForAll(c =>
+                Parallel.ForEach(dic[bond.Element1].Where(e => e.IsInside), c =>
                 {
-                    var vertices = elementVertices.Where(v => (v.Origin - c.Origin).LengthSquared < max2 && (v.Origin - c.Origin).LengthSquared > min2).ToList();
+                    var vertices = dic[bond.Element2].Where(v => (v.Origin - c.Origin).LengthSquared < max2 && (v.Origin - c.Origin).LengthSquared > min2).ToList();
+
                     if (vertices.Count > 0)
                     {
-
-                        foreach (var (Index, Origin, SerialNumber) in vertices) //Bond
+                        foreach (var v in vertices) //Bond
                         {
-                            var cylinder = new Cylinder(c.Origin, Origin - c.Origin, radius, bondMat1, bondMat2, DrawingMode.Surfaces, 20, 8);
-                            cylinder.Tag = new bondID(c.SerialNumber, SerialNumber);
-                            cylinder.ShowClippedSection = false;
-                            cylinder.Rendered = bond.ShowBond;
-                            lock (lockObj)
-                            {
-                                GLObjects.Add(cylinder);
-                                GLObjects[Index].Rendered = true;
-                            }
-                        }
+                            var d = Math.Min(c.Radius, v.Radius) / 2;//Center半径とOrigin半径の小さい方の半分の値を食い込ませる。
+                            var vec1 = v.Origin - c.Origin;//中心間を結ぶベクトル
+                            var length1 = (v.Origin - c.Origin).Length;//中心間を結ぶベクトルの長さ
+                            var o = c.Origin + (c.Radius - d) / length1 * vec1;
+                            var vec = (1 + (d * 2 - c.Radius - v.Radius) / length1) * vec1;
 
+                            var cylinder = new Cylinder(o, vec, radius, c.BondMat, v.BondMat, DrawingMode.Surfaces, 8, 8)
+                            { Tag = new bondID(c.SerialNumber, v.SerialNumber), ShowClippedSection = false, Rendered = bond.ShowBond };
+
+                            lock (lockObj)
+                                GLObjects.Add(cylinder);
+                        }
                         if (vertices.Count == 3)
                         {
-                            var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
-                            polygon.Rendered = bond.ShowPolyhedron;
+                            var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron };
                             lock (lockObj)
                                 GLObjects.Add(polygon);
                         }
                         else if (vertices.Count > 3)
                         {
-                            var polyhedron = new Polyhedron(vertices.Select(v => v.Origin).ToArray(), polyhedronMat, polyhedronMode);
-                            polyhedron.Rendered = bond.ShowPolyhedron;
-                            polyhedron.ShowClippedSection = false;
+                            var polyhedron = new Polyhedron(vertices.Select(v => v.Origin).ToArray(), c.PolyMat, polyhedronMode)
+                            { Rendered = bond.ShowPolyhedron, ShowClippedSection = false };
                             lock (lockObj)
                                 GLObjects.Add(polyhedron);
                         }
+
+                        lock (lockObj)
+                            vertices.ForEach(v => GLObjects[v.Index].Rendered = true);
+
                     }
                 });
             }
-
             textBoxInformation.AppendText("Generation of bonds & polyhedra: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
@@ -392,12 +486,6 @@ namespace ReciPro
 
             foreach (var obj in removeList)
                 GLObjects.Remove(obj);
-           // foreach (var obj in removeList)
-           //      obj.Rendered = false;
-
-            // for (int i = 0; i < GLObjects.Count; i++)
-            //     if (GLObjects[i].Rendered == false)
-            //         GLObjects.RemoveAt(i--);
 
             textBoxInformation.AppendText("Remove tentative atoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
@@ -579,6 +667,9 @@ namespace ReciPro
 
             setBoundPlanes();//境界面オブジェクトを生成
 
+            if (_crystal != null)
+                setAtomsP();
+
             setAtoms();//原子オブジェクトを生成
 
             setBondsAndPolyhera();//結合と多面体オブジェクトを生成
@@ -752,7 +843,9 @@ namespace ReciPro
                 if (depthList.Count > 0)
                 {
                     var sphere = GLObjects[depthList.Last().Value] as Sphere;
-                    textBoxInformation.AppendText((sphere.Tag as atomID).Atoms.Label + " (" + sphere.Origin.X + ", " + sphere.Origin.Y + ", " + sphere.Origin.Z + ")\r\n");
+                    textBoxInformation.AppendText(
+                        Crystal.Atoms[(sphere.Tag as atomID).Index].Label 
+                        + " (" + sphere.Origin.X + ", " + sphere.Origin.Y + ", " + sphere.Origin.Z + ")\r\n");
                     //sphere.Mode = sphere.Mode == DrawingMode.SurfacesAndEdges ? DrawingMode.Surfaces : DrawingMode.SurfacesAndEdges;
                     glControlMain.Render();
                 }
@@ -1059,7 +1152,8 @@ namespace ReciPro
         #endregion
 
         #region Atom コントロール関連イベント
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) => MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) 
+            => MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
         private void MoveAtomControl(bool flag)
         {
             if (flag)
@@ -1082,6 +1176,9 @@ namespace ReciPro
 
         private void AtomControl_ItemsChanged(object sender, EventArgs e)
         {
+            //AtomControlのItemsChangedイベントは拾わなくて良い。
+            //CrystalControlでこのイベントが拾われ、GenerateFromInterface()されたあと、
+            //FormMainから通知が来る。
         }
 
 
@@ -1205,8 +1302,7 @@ namespace ReciPro
             formMain.crystalControl.bondControl.Clear();
             formMain.crystalControl.bondControl.AddRange(formMain.crystalControl.Crystal.Bonds);
             skipSetCrystal = false;
-            SetGLObjects();
-            SetLegend();
+            SetGLObjects(formMain.crystalControl.Crystal);
         }
 
     

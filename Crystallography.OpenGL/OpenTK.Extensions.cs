@@ -50,6 +50,20 @@ namespace Crystallography.OpenGL
 
         #endregion V3dに関する拡張メソッド
 
+
+        #region V3fに関する拡張メソッド
+
+        /// <summary>
+        /// 拡張メソッド.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static C4 ToC4(this V3f v, float A) => new C4(v.X, v.Y, v.Z, A);
+
+        #endregion V4fに関する拡張メソッド
+
+
+
         #region V4fに関する拡張メソッド
 
         /// <summary>
@@ -115,6 +129,13 @@ namespace Crystallography.OpenGL
         /// <param name="v"></param>
         /// <returns></returns>
         public static V4f ToV4f(this C4 c) => new V4f(c.R, c.G, c.B, c.A);
+
+        /// <summary>
+        /// 拡張メソッド. Aチャンネルを削除してVector3に変換.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static V3f ToV3f(this C4 c) => new V3f(c.R, c.G, c.B);
 
         #endregion C4に関する拡張メソッド
 

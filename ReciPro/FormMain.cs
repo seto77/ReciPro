@@ -122,7 +122,10 @@ namespace ReciPro
         /// </summary>
         public FormMain()
         {
+            InitializeComponent();
 
+            if (DesignMode)
+                return;
             ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
             RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
             try
@@ -139,7 +142,6 @@ namespace ReciPro
             }
             catch { }
 
-            InitializeComponent();
         }
 
 

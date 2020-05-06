@@ -737,8 +737,7 @@ namespace Crystallography.Controls
 
         private void bondControl_ItemsChanged(object sender, EventArgs e)
         {
-          //  if (SkipEvent) return;
-          //  GenerateFromInterface();
+          //このイベントは、StructureViewerなどから直接呼び出される。
         }
     }
 }

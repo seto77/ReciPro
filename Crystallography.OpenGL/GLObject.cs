@@ -822,7 +822,7 @@ namespace Crystallography.OpenGL
            : base(o, new V3d(radius, 0, 0), new V3d(0, radius, 0), new V3d(0, 0, radius), mat, mode, slices)
         { Radius = radius; }
 
-        public static readonly ParallelQuery<Vertex> DefaultVertices;
+        public static readonly Vertex[] DefaultVertices;
         public static readonly int[][] DefaultIndices;
         public static readonly PT[] DefaultTypes;
 
@@ -830,7 +830,7 @@ namespace Crystallography.OpenGL
         {
             var sphere = new Sphere(new V3d(0, 0, 0), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices);
             DefaultIndices = sphere.Indices;
-            DefaultVertices = sphere.Vertices.AsParallel();
+            DefaultVertices = sphere.Vertices;
             DefaultTypes = sphere.Types;
         }
     }
@@ -1006,7 +1006,7 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cone : Pipe
     {
-        public static readonly ParallelQuery<Vertex> DefaultVertices;
+        public static readonly Vertex[] DefaultVertices;
         public static readonly int[][] DefaultIndices;
         public static readonly PT[] DefaultTypes;
 
@@ -1032,7 +1032,7 @@ namespace Crystallography.OpenGL
         {
             var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices, DefaultStacks);
             DefaultIndices = cone.Indices;
-            DefaultVertices = cone.Vertices.AsParallel();
+            DefaultVertices = cone.Vertices;
             DefaultTypes = cone.Types;
         }
     }
@@ -1043,7 +1043,7 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cylinder : Pipe
     {
-        public static readonly ParallelQuery<Vertex> DefaultVertices;
+        public static readonly Vertex[] DefaultVertices;
         public static readonly int[][] DefaultIndices;
         public static readonly PT[] DefaultTypes;
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
@@ -1076,7 +1076,7 @@ namespace Crystallography.OpenGL
         {
             var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices, DefaultStacks);
             DefaultIndices = cylinder.Indices;
-            DefaultVertices = cylinder.Vertices.AsParallel();
+            DefaultVertices = cylinder.Vertices;
             DefaultTypes = cylinder.Types;
         }
     }

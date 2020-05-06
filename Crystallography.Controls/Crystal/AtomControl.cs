@@ -612,17 +612,22 @@ namespace Crystallography.Controls
                 new Vector3DBase((button.Tag as string).Split().Select(s => s.ToDouble()).ToArray()) * (radioButtonOriginShiftPlus.Checked ? 1 : -1);
 
             SkipEvent = true;
-            foreach (var atoms in GetAll())
+            var atomArray = GetAll();
+            for (int i = 0; i < atomArray.Length; i++)
+            //foreach(var atoms in GetAll())
             {
+                var atoms = atomArray[i];
+                atoms = Deep.Copy(atoms);
                 atoms.X += shift.X;
                 atoms.Y += shift.Y;
                 atoms.Z += shift.Y;
                 atoms.ResetSymmetry(SymmetrySeriesNumber);
+                table.Replace(atoms, i);
             }
             SkipEvent = false;
             bindingSource_PositionChanged(sender, e);
 
-            ItemsChanged(this, e);
+            ItemsChanged?.Invoke(this, e);
 
         }
 
