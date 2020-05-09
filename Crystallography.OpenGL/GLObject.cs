@@ -130,14 +130,50 @@ namespace Crystallography.OpenGL
     /// </summary>
     abstract public class GLObject
     {
+        #region static private なフィールド
+        static internal int EmissionLocation { get; set; } = -1;
+
+        static internal int AmbientLocation { get; set; } = -1;
+        static internal int DiffuseLocation { get; set; } = -1;
+        static internal int SpecularLocation { get; set; } = -1;
+        static internal int SpecularPowerLocation { get; set; } = -1;
+
+        static internal int UseFixedColorLocation { get; set; } = -1;
+        static internal int FixedColorLocation { get; set; } = -1;
+        static internal int IgnoreNormalSidesLocation { get; set; } = -1;
+        static internal int RenderPassLocation { get; set; } = -1;
+
+        static internal int PassOIT1Index { get; set; } = -1;
+        static internal int PassOIT2Index { get; set; } = -1;
+
+        static internal int PassNormalIndex = -1;
+
+        static internal int PositionLocation { get; set; } = -1;
+        static internal int NormalLocation { get; set; } = -1;
+        static internal int ColorLocation { get; set; } = -1;
+
+
+        #endregion
+
+
         internal int VBO, VAO, EBO;
         internal int Program = -1;
+        /// <summary>
+        /// 頂点
+        /// </summary>
         internal Vertex[] Vertices;
+        /// <summary>
+        /// タイプ
+        /// </summary>
         internal PT[] Types;
-        internal int[][] Indices;
-        internal int EmissionLocation = -1, AmbientLocation = -1, DiffuseLocation = -1, SpecularLocation = -1, SpecularPowerLocation = -1;
-        internal int UseFixedColorLocation = -1, FixedColorLocation = -1, IgnoreNormalSidesLocation = -1, RenderPassLocation = -1;
-        internal int passOIT1Index = -1, passOIT2Index = -1, passNormalIndex = -1;
+        /// <summary>
+        /// 頂点の順番リスト (全てのタイプが連結されている)
+        /// </summary>
+        internal uint[] Indices;
+        /// <summary>
+        /// 各タイプの順番リストの長さ
+        /// </summary>
+        internal int[] TypeCounts;
 
         #region publicなフィールド
 
@@ -189,12 +225,15 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// trueの時は(Vertexの色ではなく)Material構造体中のColorが使われる
         /// </summary>
-        public bool UseFixedColor = false;
+        public bool UseFixedColor = true;
+
+        /// <summary>
+        /// Z sorting で透明度を計算する時のZを一時期的に格納する変数
+        /// </summary>
+        public double Z;
 
         #endregion publicなフィールド
 
-
-       
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -231,108 +270,132 @@ namespace Crystallography.OpenGL
             GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(Vertices.Length * Vertex.Stride), Vertices, BufferUsageHint.DynamicDraw);
 
             // EBO作成
-            var indicesList = new List<int>();
-            for (int i = 0; i < Indices.Length; i++)
-                indicesList.AddRange(Indices[i].ToArray());
-            var indices = indicesList.Select(i => (uint)i).ToArray();
             GL.GenBuffers(1, out EBO);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeof(uint) * indices.Length), indices, BufferUsageHint.DynamicDraw);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeof(uint) * Indices.Length), Indices, BufferUsageHint.DynamicDraw);
 
             // VAO作成
             GL.GenVertexArrays(1, out VAO);
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
 
-            var positionLocation = GL.GetAttribLocation(Program, "Position");
-            var normalLocation = GL.GetAttribLocation(Program, "Normal");
-            var colorLocation = GL.GetAttribLocation(Program, "Color");
-            if (positionLocation == -1 || normalLocation == -1 || colorLocation == -1)
-                throw new Exception("cannot find location!");
+            //Locationを取得
+            if (EmissionLocation == -1)
+                SetLocation(program);
 
             //頂点位置
-            GL.EnableVertexAttribArray(positionLocation);
-            GL.VertexAttribPointer(positionLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
+            GL.EnableVertexAttribArray(PositionLocation);
+            GL.VertexAttribPointer(PositionLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
             //法線
-            GL.EnableVertexAttribArray(normalLocation);
-            GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, V4f.SizeInBytes);
+            GL.EnableVertexAttribArray(NormalLocation);
+            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, V4f.SizeInBytes);
             //色
-            GL.EnableVertexAttribArray(colorLocation);
-            GL.VertexAttribPointer(colorLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, V4f.SizeInBytes + V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(ColorLocation);
+            GL.VertexAttribPointer(ColorLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, V4f.SizeInBytes + V3f.SizeInBytes);
 
-            //インデックスを取得
+        }
+
+        /// <summary>
+        /// パラメータのロケーションをセット
+        /// </summary>
+        /// <param name="Program"></param>
+        public void SetLocation(int Program)
+        {
+            PositionLocation = GL.GetAttribLocation(Program, "Position");
+            NormalLocation = GL.GetAttribLocation(Program, "Normal");
+            ColorLocation = GL.GetAttribLocation(Program, "Color");
+            if (PositionLocation == -1 || NormalLocation == -1 || ColorLocation == -1)
+                throw new Exception("cannot find location!");
+
             EmissionLocation = GL.GetUniformLocation(Program, "Emission");
             AmbientLocation = GL.GetUniformLocation(Program, "Ambient");
             DiffuseLocation = GL.GetUniformLocation(Program, "Diffuse");
             SpecularLocation = GL.GetUniformLocation(Program, "Specular");
             SpecularPowerLocation = GL.GetUniformLocation(Program, "SpecularPower");
-            UseFixedColorLocation = GL.GetUniformLocation(program, "UseFixedColor");
-            IgnoreNormalSidesLocation = GL.GetUniformLocation(program, "IgnoreNormalSides");
-            FixedColorLocation = GL.GetUniformLocation(program, "FixedColor");
-            passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-            passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-            passNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+            UseFixedColorLocation = GL.GetUniformLocation(Program, "UseFixedColor");
+            IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
+            FixedColorLocation = GL.GetUniformLocation(Program, "FixedColor");
+           
+            PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+            PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+            PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
             RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
         }
 
-        /// <summary>
-        /// 物体の材質をGPUに送信する。Render()関数から呼び出される。
-        /// </summary>
-        /// <param name="drawSurfaces">Surfaceモードか否か</param>
-        private void SetMatetrial(bool drawSurfaces)
-        {
-            GL.Uniform1(EmissionLocation, drawSurfaces ? Material.Emission : 0);
-            GL.Uniform1(AmbientLocation, drawSurfaces ? Material.Ambient : 1);
-            GL.Uniform1(DiffuseLocation, drawSurfaces ? Material.Diffuse : 0);
-            GL.Uniform1(SpecularLocation, drawSurfaces ? Material.Specular : 0);
-            GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
-            GL.Uniform1(IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);//true
-
-            if (UseFixedColor)
-            {
-                GL.Uniform1(UseFixedColorLocation, 1);//true
-                GL.Uniform4(FixedColorLocation, ref Material.ColorV);
-            }
-            else
-                GL.Uniform1(UseFixedColorLocation, 0);
-        }
-
-        /// <summary>
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
         /// </summary>
         private void Render()
         {
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            int offset = 0;
-            for (int i = 0; i < Types.Length; i++)
+            for (int i = 0, offset = 0; i < Types.Length; i++)
             {
-                if ((Types[i] == PT.Triangles || Types[i] == PT.TriangleStrip || Types[i] == PT.TriangleFan || Types[i] == PT.Quads) && (Mode == DrawingMode.Surfaces || Mode == DrawingMode.SurfacesAndEdges))
-                    SetMaterialAndDrawElements(true, Types[i], Indices[i].Length, offset);
+                var t = Types[i];
+                var len = TypeCounts[i];
+                if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t== PT.Quads) 
+                    && (Mode == DrawingMode.Surfaces || Mode == DrawingMode.SurfacesAndEdges))
+                    SetMaterialAndDrawElements(true, t, len, offset);
                 else
                 {
-                    if ((Types[i] == PT.Lines || Types[i] == PT.LinesAdjacency || Types[i] == PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
-                        SetMaterialAndDrawElements(false, Types[i], Indices[i].Length, offset);
-                    else if (Types[i] == PT.Points && Mode == DrawingMode.Points)
-                        SetMaterialAndDrawElements(false, Types[i], Indices[i].Length, offset);
+                    if ((t == PT.Lines || t == PT.LinesAdjacency || t== PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
+                        SetMaterialAndDrawElements(false, Types[i], len, offset);
+                    else if (t == PT.Points && Mode == DrawingMode.Points)
+                        SetMaterialAndDrawElements(false, t, len, offset);
                 }
-                offset += Indices[i].Length * sizeof(uint);
+                offset += len * sizeof(uint);
             }
         }
 
+        /// <summary>
+        /// 物体の材質と要素をGPUに送信する。Render()関数から呼び出される。
+        /// </summary>
+        /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
-            SetMatetrial(drawSurfaces);
+            var renew =  prms.Program != Program;
+
+            (float emi, float amb, float dif, float spe) = drawSurfaces ?
+                (Material.Emission, Material.Ambient, Material.Diffuse, Material.Specular) : (0f, 1f, 0f, 0f);
+                
+            if(renew || emi != prms.emi)
+                GL.Uniform1(EmissionLocation, emi);
+
+            if (renew || amb != prms.amb)
+                GL.Uniform1(AmbientLocation, amb);
+
+            if (renew || dif != prms.dif)
+                GL.Uniform1(DiffuseLocation, dif);
+
+            if (renew || spe != prms.spe)
+                GL.Uniform1(SpecularLocation, spe);
+            
+            if (renew || prms.spePow != Material.SpecularPower)
+                GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
+
+            if (renew || prms.UseFixedColor != UseFixedColor)
+                GL.Uniform1(UseFixedColorLocation, UseFixedColor ? 1 : 0);
+
+            if (renew || prms.col != Material.ColorV)
+                GL.Uniform4(FixedColorLocation, ref Material.ColorV);
+
+            if (renew || IgnoreNormalSides != prms.ignoreNormal)
+                GL.Uniform1(IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);
+
             if (IgnoreNormalSides)
             {
-                GL.Disable(EnableCap.CullFace);//CullFace無効化
+                GLable(false, EnableCap.CullFace);//CullFace無効化
                 GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);
                 GL.GetUniformSubroutine(ShaderType.FragmentShader, RenderPassLocation, out int renderPassIndex);  //レンダーパスを取得
-                GLable(renderPassIndex == passNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す
+                GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す
             }
             else
                 GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);
+
+            prms = (Program, emi, amb,dif,spe, Material.SpecularPower,Material.ColorV, IgnoreNormalSides, UseFixedColor);
         }
+        static private (int Program, float emi, float amb, float dif, float spe, float spePow, V4f col, bool ignoreNormal, bool UseFixedColor)
+             prms = (-1, 0 ,0, 0, 0, 0, new V4f(), false, false);
+
 
         /// <summary>
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生. OITモードはCullFaceとDepthTestが無効、通常モードはCullFaceとDepthTestが有効
@@ -365,7 +428,7 @@ namespace Crystallography.OpenGL
                     foreach (var i in indices)
                     {
                         DepthTest(false);//Depthテスト無効
-                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);//サブルーチンを通常パスにする
+                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassNormalIndex);//サブルーチンを通常パスにする
                         GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
                         GL.Enable(EnableCap.CullFace);//CullFace有効
@@ -387,10 +450,10 @@ namespace Crystallography.OpenGL
                         GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
                         GL.Disable(EnableCap.CullFace);//CullFace無効化
                         clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
-                        DepthTest(renderPassIndex == passNormalIndex);//Depthテストを元に戻す (通常モードは有効)
+                        DepthTest(renderPassIndex == PassNormalIndex);//Depthテストを元に戻す (通常モードは有効)
                         clip.Render(i, Material);//i番目のクリップ面を描画
                     }
-                    GLable(renderPassIndex == passNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す (通常モードは有効)
+                    GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す (通常モードは有効)
                     GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
                     clip.EnableClips(indices);//全クリップ有効化
                     Render(); //物体全体の描画
@@ -494,7 +557,13 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Polygon : GLObject
     {
-        public Polygon(Vector3DBase[] vertices, Material mat, DrawingMode mode) : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode)
+        public Polygon(Material mat, DrawingMode mode) : base(mat, mode)
+        {
+
+        }
+
+        public Polygon(Vector3DBase[] vertices, Material mat, DrawingMode mode) 
+            : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode)
         {
         }
 
@@ -543,7 +612,8 @@ namespace Crystallography.OpenGL
             lists.Add(indicesList.ToArray());
             types.Add(PT.Points);
 
-            Indices = lists.ToArray();
+            Indices = lists.SelectMany(i=>i).Select(i=>(uint)i).ToArray();
+            TypeCounts = lists.Select(i => i.Length).ToArray();
             Types = types.ToArray();
         }
     }
@@ -678,8 +748,47 @@ namespace Crystallography.OpenGL
             }
 
             Vertices = vList.ToArray();
-            Indices = iList2.ToArray();
+            Indices = iList2.SelectMany(i => i).Select(i => (uint)i).ToArray();
+            TypeCounts = iList2.Select(i => i.Length).ToArray();
             Types = types.ToArray();
+
+
+        }
+
+        /// <summary>
+        /// PolyhedronをPolygonに分解する
+        /// </summary>
+        public Polygon[] ToPolygons() 
+        {
+            var p =new Polygon[Types.Length / 3];
+
+            for(int i=0, offsetIndices = 0, offsetVetices = 0; i< p.Length; i++)
+            {
+                p[i] = new Polygon(Material, Mode);
+
+                p[i].TypeCounts = new[] { TypeCounts[i * 3], TypeCounts[i * 3 + 1], TypeCounts[i * 3 + 2] };
+
+                p[i].Types = new[] { Types[i * 3], Types[i * 3 + 1], Types[i * 3 + 2] };
+
+                p[i].Indices = new uint[p[i].TypeCounts.Sum()];
+                Array.Copy(Indices, offsetIndices, p[i].Indices, 0, p[i].Indices.Length);
+                p[i].Indices = p[i].Indices.Select(i => (uint)(i - offsetVetices)).ToArray();
+                offsetIndices += p[i].Indices.Length;
+
+                p[i].Vertices = new Vertex[p[i].Indices.Distinct().Count()];
+                Array.Copy(Vertices, offsetVetices, p[i].Vertices, 0, p[i].Vertices.Length);
+                offsetVetices += p[i].Vertices.Length;
+
+                var center = new V3f(p[i].Vertices.Average(v => v.Position.X), p[i].Vertices.Average(v => v.Position.Y), p[i].Vertices.Average(v => v.Position.Z));
+                p[i].CircumscribedSphereCenter = new V4d(center.X, center.Y, center.Z, 1);
+                p[i].CircumscribedSphereRadius = p[i].Vertices.Max(v => (new V3f(v.Position) - center).Length);
+                p[i].Rendered = Rendered;
+                p[i].IgnoreNormalSides = true;
+                p[i].ShowClippedSection = false;
+                p[i].Tag = Tag;
+            }
+            return p;
+        
         }
     }
 
@@ -701,14 +810,14 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Ellipsoid : GLObject
     {
-        public const int DefaultSlices = 3;
+        public static int DefaultSlices = 2;
 
         public V3d Origin { get; set; }
         public V3d RadiusVector1 { get; set; }
         public V3d RadiusVector2 { get; set; }
         public V3d RadiusVector3 { get; set; }
 
-        public Ellipsoid(Vector3DBase o, Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode, int slices = DefaultSlices)
+        public Ellipsoid(Vector3DBase o, Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode, int slices = 0)
         : this(new V3d(o.X, o.Y, o.Z), new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode, slices) { }
 
         /// <summary>
@@ -721,7 +830,7 @@ namespace Crystallography.OpenGL
         /// <param name="mat">素材</param>
         /// <param name="mode">描画モード</param>
         /// <param name="slices">分割数. 6*(2*slices+1)^2 の頂点が生成される. </param>
-        public Ellipsoid(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode, int slices = DefaultSlices) : base(mat, mode)
+        public Ellipsoid(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode, int slices = 0) : base(mat, mode)
         {
             Origin = o;
             RadiusVector1 = a;
@@ -739,16 +848,27 @@ namespace Crystallography.OpenGL
                 Column3 = new V4d(o, 1)
             };
 
-            if (slices == DefaultSlices && a.LengthSquared == b.LengthSquared && b.LengthSquared == c.LengthSquared && Sphere.DefaultIndices != null)
+            if (slices == 0)
             {
-                Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), v.Normal, mat.ColorV)).ToArray();
-                Indices = Sphere.DefaultIndices;
-                Types = Sphere.DefaultTypes;
+                if (a.LengthSquared == b.LengthSquared && b.LengthSquared == c.LengthSquared)
+                {
+                    if (Sphere.DefaultIndices != null)
+                    {
+                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), v.Normal, mat.ColorV)).ToArray();
+                        Indices = Sphere.DefaultIndices;
+                        TypeCounts = Sphere.DefaultTypeCounts;
+                        Types = Sphere.DefaultTypes;
+                        return;
+                    }
+                    else
+                        slices = Sphere.DefaultSlices;
+                }
+                else
+                    slices = DefaultSlices;
             }
-            else
-            {
-                //さいころの6面方向
-                var rot = new[] {
+
+            //さいころの6面方向
+            var rot = new[] {
                 new M3d(1, 0, 0, 0, 1, 0, 0, 0, 1),
                 new M3d(1, 0, 0, 0, 0, -1, 0, 1, 0),
                 new M3d(1, 0, 0, 0, -1, 0, 0, 0, -1),
@@ -756,47 +876,48 @@ namespace Crystallography.OpenGL
                 new M3d(0, 0, 1, 0, 1, 0, -1, 0, 0),
                 new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), };
 
-                var vList = new List<Vertex>();
-                for (int i = 0; i < rot.Length; i++)
-                    for (int h = -slices; h <= slices; h++)
-                        for (int w = -slices; w <= slices; w++)
-                        {
-                            var n = new V4d(V3d.Normalize(rot[i].Mult(new V3d(w, h, slices))), 1);
-                            var v = transMat.Mult(n);
-                            vList.Add(new Vertex(v.ToV3f(), n.ToV3f(), mat.ColorV));
-                        }
-                Vertices = vList.ToArray();
+            var vList = new List<Vertex>();
+            for (int i = 0; i < rot.Length; i++)
+                for (int h = -slices; h <= slices; h++)
+                    for (int w = -slices; w <= slices; w++)
+                    {
+                        var n = new V4d(V3d.Normalize(rot[i].Mult(new V3d(w, h, slices))), 1);
+                        var v = transMat.Mult(n);
+                        vList.Add(new Vertex(v.ToV3f(), n.ToV3f(), mat.ColorV));
+                    }
+            Vertices = vList.ToArray();
 
-                var types = new List<PT>();
-                var indices = new List<int[]>();
+            var types = new List<PT>();
+            var indices = new List<int[]>();
 
-                types.Add(PT.Points);
-                indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
+            types.Add(PT.Points);
+            indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
 
-                var indexListSurfaces = new List<int>();
-                var indexListEdges = new List<int>();
-                for (int i = 0; i < rot.Length; i++)
-                    for (int h = 0; h < 2 * slices; h++)
-                        for (int w = 0; w < 2 * slices; w++)
-                        {
-                            int current = i * (2 * slices + 1) * (2 * slices + 1) + h * (2 * slices + 1) + w;
-                            indexListSurfaces.AddRange(new[] { current, current + 1, current + 2 * slices + 2, current + 2 * slices + 1 });
+            var indexListSurfaces = new List<int>();
+            var indexListEdges = new List<int>();
+            for (int i = 0; i < rot.Length; i++)
+                for (int h = 0; h < 2 * slices; h++)
+                    for (int w = 0; w < 2 * slices; w++)
+                    {
+                        int current = i * (2 * slices + 1) * (2 * slices + 1) + h * (2 * slices + 1) + w;
+                        indexListSurfaces.AddRange(new[] { current, current + 1, current + 2 * slices + 2, current + 2 * slices + 1 });
 
-                            indexListEdges.AddRange(new[] { current, current + 1, current, current + 2 * slices + 1 });
-                            if (h == 2 * slices - 1)
-                                indexListEdges.AddRange(new[] { current + 2 * slices + 2, current + 2 * slices + 1 });
-                            if (w == 2 * slices - 1)
-                                indexListEdges.AddRange(new[] { current + 1, current + 2 * slices + 2 });
-                        }
-                types.Add(PT.Quads);
-                indices.Add(indexListSurfaces.ToArray());
+                        indexListEdges.AddRange(new[] { current, current + 1, current, current + 2 * slices + 1 });
+                        if (h == 2 * slices - 1)
+                            indexListEdges.AddRange(new[] { current + 2 * slices + 2, current + 2 * slices + 1 });
+                        if (w == 2 * slices - 1)
+                            indexListEdges.AddRange(new[] { current + 1, current + 2 * slices + 2 });
+                    }
+            types.Add(PT.Quads);
+            indices.Add(indexListSurfaces.ToArray());
 
-                types.Add(PT.Lines);
-                indices.Add(indexListEdges.ToArray());
+            types.Add(PT.Lines);
+            indices.Add(indexListEdges.ToArray());
 
-                Indices = indices.ToArray();
-                Types = types.ToArray();
-            }
+            Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+            TypeCounts = indices.Select(i => i.Length).ToArray();
+            Types = types.ToArray();
+
         }
     }
 
@@ -805,9 +926,18 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Sphere : Ellipsoid
     {
+        private static int defaultSlices = 2;
+        public new static int DefaultSlices { 
+            get =>defaultSlices;
+            set 
+            {
+                defaultSlices = value;
+                SetDefaultSphere();
+            } 
+        }
         public double Radius;
 
-        public Sphere(Vector3DBase o, double radius, Material mat, DrawingMode mode, int slices = DefaultSlices)
+        public Sphere(Vector3DBase o, double radius, Material mat, DrawingMode mode, int slices = 0)
           : this(new V3d(o.X, o.Y, o.Z), radius, mat, mode, slices) { }
 
         /// <summary>
@@ -818,18 +948,28 @@ namespace Crystallography.OpenGL
         /// <param name="mat">素材</param>
         /// <param name="mode">描画モード</param>
         /// <param name="slices">分割数.　6*(2*slices+1)^2 の頂点が生成される</param>
-        public Sphere(V3d o, double radius, Material mat, DrawingMode mode, int slices = DefaultSlices)
+        public Sphere(V3d o, double radius, Material mat, DrawingMode mode, int slices = 0)
            : base(o, new V3d(radius, 0, 0), new V3d(0, radius, 0), new V3d(0, 0, radius), mat, mode, slices)
         { Radius = radius; }
 
-        public static readonly Vertex[] DefaultVertices;
-        public static readonly int[][] DefaultIndices;
-        public static readonly PT[] DefaultTypes;
+        public static Vertex[] DefaultVertices;
+        public static uint[] DefaultIndices;
+        public static int[] DefaultTypeCounts;
+        public static PT[] DefaultTypes;
 
         static Sphere()
         {
+            SetDefaultSphere();
+        }
+        static void SetDefaultSphere()
+        {
+            DefaultVertices = null;
+            DefaultIndices = null;
+            DefaultTypeCounts = null;
+            DefaultTypes = null;
             var sphere = new Sphere(new V3d(0, 0, 0), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices);
             DefaultIndices = sphere.Indices;
+            DefaultTypeCounts = sphere.TypeCounts;
             DefaultVertices = sphere.Vertices;
             DefaultTypes = sphere.Types;
         }
@@ -837,7 +977,7 @@ namespace Crystallography.OpenGL
 
     #endregion
 
-   
+
     #region パイプ、円錐、円柱
 
     /// <summary>
@@ -846,17 +986,16 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Pipe : GLObject
     {
-        public const int DefaultSlices = 4;
-        public const int DefaultStacks = 8;
+        public static (int Slices, int Stacks) Default = (1, 8);
 
         public double Radius1, Radius2;
         public V3d Origin, Vector;
 
-        public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode, slices, stacks) { }
+        public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode,sole, slices, stacks) { }
 
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-            : this(o, vec, r1, r2, mat, mat, mode, slices, stacks) { }
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole =true, int slices = 0, int stacks = 0)
+            : this(o, vec, r1, r2, mat, mat, mode, sole, slices, stacks) { }
 
         /// <summary>
         /// パイプ
@@ -870,84 +1009,112 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">円周の分割数</param>
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks) 
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole=true, int slices = 0, int stacks = 0)
             : base(mat1, mode)
         {
-            ShowClippedSection = true;
+
+
+            ShowClippedSection = false;
             Origin = o;
             Vector = vec;
+            var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
+
             Radius1 = r1;
             Radius2 = r2;
             if (mat1.Color == mat2.Color && mat1.Ambient == mat2.Ambient &&
                 mat1.Emission == mat2.Emission && mat1.Diffuse == mat2.Diffuse &&
                 mat1.Specular == mat2.Specular && mat1.SpecularPower == mat2.SpecularPower)
                 UseFixedColor = true;
+            else
+                UseFixedColor = false;
 
             var height = vec.Length;
             CircumscribedSphereCenter = new V4d(new V3d(o + vec / 2.0), 1);
             var maxR = Math.Max(r1, r2);
             CircumscribedSphereRadius = Math.Sqrt(height * height / 4 + maxR * maxR);
 
-            if (slices == DefaultSlices && stacks == DefaultStacks && r1 == r2 && Cylinder.DefaultIndices != null && UseFixedColor)//デフォルトのシリンダーの場合
+            if (slices == 0 && stacks == 0)
             {
-                var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
-                var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
-                transMat.Column3 = new V4d(o, 1);
-
-                Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
-                Indices = Cylinder.DefaultIndices;
-                Types = Cylinder.DefaultTypes;
-            }
-            else if (slices == DefaultSlices && stacks == DefaultStacks &&  r2 ==0 && Cone.DefaultIndices != null && UseFixedColor)//デフォルトのコーンの場合
-            {
-                var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
-                var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
-                transMat.Column3 = new V4d(o, 1);
-
-                Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
-                Indices = Cone.DefaultIndices;
-                Types = Cone.DefaultTypes;
-            }
-            else
-            {
-                List<V3d> v = new List<V3d>(), n = new List<V3d>();
-                List<V4f> c = new List<V4f>();
-                //まず側面
-                for (int h = 0; h <= slices; h++)
-                    for (int t = 0; t < stacks; t++)
+                if (r1 == r2)//Crylinderの場合
+                {
+                    if (Cylinder.DefaultIndices != null && UseFixedColor)
                     {
-                        double sin = Math.Sin((double)t / stacks * Math.PI * 2), cos = Math.Cos((double)t / stacks * Math.PI * 2);
-                        double r = r1 * (1 - (double)h / slices) + r2 * h / slices;
-                        double z = (double)h / slices * height;
-                        v.Add(new V3d(r * sin, r * cos, z));
-                        n.Add(new V3d(r2 * height * sin, r2 * height * cos, -r2 * (r2 - r1)));
-                        c.Add(h < slices / 2 ? mat1.ColorV : mat2.ColorV);
-                    }
+                        var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
+                        transMat.Column3 = new V4d(o, 1);
 
-                var current = 0;
-                var indiceSide = new List<int>();
-                for (int h = 0; h < slices; h++)
-                    for (int t = 0; t < stacks; t++)
+                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
+                        Indices = Cylinder.DefaultIndices;
+                        TypeCounts = Cylinder.DefaultTypeCounts;
+                        Types = Cylinder.DefaultTypes;
+                        return;
+                    }
+                    slices = Cylinder.Default.Slices;
+                    stacks = Cylinder.Default.Stacks;
+                }
+                else if (r2 == 0)//Coneの場合
+                {
+                    if (Cone.DefaultIndices != null && UseFixedColor)
                     {
-                        current = h * stacks + t;
-                        if (t < stacks - 1)
-                            indiceSide.AddRange(new[] { current, current + stacks, current + 1 + stacks, current + 1 });
-                        else
-                            indiceSide.AddRange(new[] { current, current + stacks, current + 1, current + 1 - stacks });
+                        var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
+                        transMat.Column3 = new V4d(o, 1);
+
+                        Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
+                        Indices = Cone.DefaultIndices;
+                        TypeCounts = Cone.DefaultTypeCounts;
+                        Types = Cone.DefaultTypes;
+                        return;
                     }
-                var types = new List<PT>();
-                var indices = new List<int[]>();
+                    slices = Cone.Default.Slices;
+                    stacks = Cone.Default.Stacks;
+                }
+                else
+                {
+                    slices = Default.Slices;
+                    stacks = Default.Stacks;
+                }
 
-                types.Add(PT.Quads);
-                indices.Add(indiceSide.ToArray());
+            }
 
-                types.Add(PT.LineLoop);
-                indices.Add(indiceSide.ToArray());
+            List<V3d> v = new List<V3d>(), n = new List<V3d>();
+            List<V4f> c = new List<V4f>();
+            //まず側面
+            for (int h = 0; h <= slices; h++)
+                for (int t = 0; t < stacks; t++)
+                {
+                    double sin = Math.Sin((double)t / stacks * Math.PI * 2), cos = Math.Cos((double)t / stacks * Math.PI * 2);
+                    double r = r1 * (1 - (double)h / slices) + r2 * h / slices;
+                    double z = (double)h / slices * height;
+                    v.Add(new V3d(r * sin, r * cos, z));
+                    n.Add(new V3d(r2 * height * sin, r2 * height * cos, -r2 * (r2 - r1)));
+                    c.Add(h < slices / 2 ? mat1.ColorV : mat2.ColorV);
+                }
 
-                types.Add(PT.Points);
-                indices.Add(Enumerable.Range(0, v.Count).ToArray());
+            var current = 0;
+            var indiceSide = new List<int>();
+            for (int h = 0; h < slices; h++)
+                for (int t = 0; t < stacks; t++)
+                {
+                    current = h * stacks + t;
+                    if (t < stacks - 1)
+                        indiceSide.AddRange(new[] { current, current + stacks, current + 1 + stacks, current + 1 });
+                    else
+                        indiceSide.AddRange(new[] { current, current + stacks, current + 1, current + 1 - stacks });
+                }
+            var types = new List<PT>();
+            var indices = new List<int[]>();
 
-                //底面
+            types.Add(PT.Quads);
+            indices.Add(indiceSide.ToArray());
+
+            types.Add(PT.LineLoop);
+            indices.Add(indiceSide.ToArray());
+
+            types.Add(PT.Points);
+            indices.Add(Enumerable.Range(0, v.Count).ToArray());
+
+            //底面
+            if (sole)
+            {
                 //始点側
                 if (r1 > 0)
                 {
@@ -986,17 +1153,16 @@ namespace Crystallography.OpenGL
                     types.Add(PT.TriangleFan);
                     indices.Add(indicesBottom.ToArray());
                 }
-
-                var rotMat = GLGeometry.CreateRotationFromZ(vec);
-
-                var vList = new List<Vertex>();
-                for (int i = 0; i < v.Count; i++)
-                    vList.Add(new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]));
-
-                Vertices = vList.ToArray();
-                Indices = indices.ToArray();
-                Types = types.ToArray();
             }
+
+            var vList = new List<Vertex>();
+            for (int i = 0; i < v.Count; i++)
+                vList.Add(new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]));
+
+            Vertices = vList.ToArray();
+            Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+            TypeCounts = indices.Select(i => i.Length).ToArray();
+            Types = types.ToArray();
         }
     }
 
@@ -1006,12 +1172,25 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cone : Pipe
     {
-        public static readonly Vertex[] DefaultVertices;
-        public static readonly int[][] DefaultIndices;
-        public static readonly PT[] DefaultTypes;
+        private static (int Slices,int Stacks) _Default = (1,8);
+        public new static (int Slices, int Stacks) Default
+        {
+            get => _Default;
+            set
+            {
+                _Default = value;
+                SetDefaultCone();
+            }
+        } 
 
-        public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, slices, stacks) { }
+
+        public static  Vertex[] DefaultVertices;
+        public static  uint[] DefaultIndices;
+        public static  int[] DefaultTypeCounts;
+        public static  PT[] DefaultTypes;
+
+        public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode,sole, slices, stacks) { }
 
         /// <summary>
         /// 円錐
@@ -1024,17 +1203,27 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cone(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-           : base(o, vec, 0, r, mat, mode, slices, stacks)
+        public Cone(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : base(o, vec, 0, r, mat, mode, sole, slices, stacks)
         { }
 
         static Cone()
         {
-            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices, DefaultStacks);
+            SetDefaultCone();
+        }
+        static void SetDefaultCone()
+        {
+            DefaultVertices = null;
+            DefaultIndices = null;
+            DefaultTypeCounts = null;
+            DefaultTypes = null;
+            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges,true, 0, 0);
             DefaultIndices = cone.Indices;
+            DefaultTypeCounts = cone.TypeCounts;
             DefaultVertices = cone.Vertices;
             DefaultTypes = cone.Types;
         }
+
     }
 
     /// <summary>
@@ -1043,15 +1232,27 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cylinder : Pipe
     {
-        public static readonly Vertex[] DefaultVertices;
-        public static readonly int[][] DefaultIndices;
-        public static readonly PT[] DefaultTypes;
-        public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, slices, stacks) { }
+        private static (int Slices, int Stacks) _Default = (1, 8);
+        public new static (int Slices, int Stacks) Default
+        {
+            get => _Default;
+            set
+            {
+                _Default = value;
+                SetDefaultCylinder();
+            }
+        }
+
+        public static  Vertex[] DefaultVertices;
+        public static  uint[] DefaultIndices;
+        public static  int[] DefaultTypeCounts;
+        public static  PT[] DefaultTypes;
+        public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode,sole, slices, stacks) { }
 
 
-        public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode, slices, stacks) { }
+        public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode,sole, slices, stacks) { }
 
 
 
@@ -1066,16 +1267,26 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-           : base(o, vec, r, r, mat, mode, slices, stacks) { }
+        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole =true, int slices = 0, int stacks = 0)
+           : base(o, vec, r, r, mat, mode,sole, slices, stacks) { }
 
-        public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, int slices = DefaultSlices, int stacks = DefaultStacks)
-         : base(o, vec, r, r, mat1, mat2, mode, slices, stacks) { }
+        public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+         : base(o, vec, r, r, mat1, mat2, mode,sole, slices, stacks) { }
 
         static Cylinder()
         {
-            var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices, DefaultStacks);
+            SetDefaultCylinder();
+        }
+
+        static void SetDefaultCylinder()
+        {
+            DefaultVertices = null;
+            DefaultIndices = null;
+            DefaultTypeCounts = null;
+            DefaultTypes = null;
+            var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, true, 0, 0);
             DefaultIndices = cylinder.Indices;
+            DefaultTypeCounts = cylinder.TypeCounts;
             DefaultVertices = cylinder.Vertices;
             DefaultTypes = cylinder.Types;
         }
@@ -1184,13 +1395,14 @@ namespace Crystallography.OpenGL
             types.Add(PT.Lines);
             indices.Add(indexListEdges.ToArray());
 
-            Indices = indices.ToArray();
+            Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+            TypeCounts = indices.Select(i => i.Length).ToArray();
             Types = types.ToArray();
         }
     }
     #endregion
 
-    
+
     #region メッシュ
     /// <summary>
     /// メッシュ
@@ -1243,7 +1455,8 @@ namespace Crystallography.OpenGL
                 }
 
             Vertices = vList.ToArray();
-            Indices = new[] { indicesList.ToArray() };
+            Indices = indicesList.Select(i=>(uint)i).ToArray();
+            TypeCounts = new[] { indicesList.Count() };
 
             Types = new[] { PrimitiveType.Quads };
         }

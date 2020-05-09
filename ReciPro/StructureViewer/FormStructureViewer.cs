@@ -105,10 +105,8 @@ namespace ReciPro
             formAtom.formStructureViewer = this;
             AddOwnedForm(formAtom);
 
-            //ここでGLコントロールを追加
-            // 
+            #region デザイナが壊れないようにここでGLコントロールを追加
             // glControlAxes
-            // 
             glControlAxes = new GLControlAlpha
             {
                 AllowMouseRotation = false,
@@ -122,25 +120,22 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
-                Size = new Size(60, 60),
+                Size = new Size(numericBoxAxesSize.ValueInteger, numericBoxAxesSize.ValueInteger),
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Left
             };
             glControlAxes.MouseMove += glControlAxes_MouseMove;
 
-
-            // 
             // glControlLight
-            // 
-            glControlLight = new Crystallography.OpenGL.GLControlAlpha
+            glControlLight = new GLControlAlpha
             {
                 AllowMouseRotation = false,
                 AllowMouseScaling = false,
                 AllowMouseTranslating = false,
-                BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D,
+                BorderStyle = BorderStyle.Fixed3D,
                 DisablingOpenGL = false,
                 MaxHeight = 1,
                 MaxWidth = 1,
@@ -148,20 +143,18 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
-                Size = new Size(60, 60),
+                Size = new Size(numericBoxLightSize.ValueInteger, numericBoxLightSize.ValueInteger),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
-        };
+            };
             glControlLight.MouseMove += glControlLight_MouseMove;
 
 
-            // 
             // glControlMain
-            // 
-            glControlMain = new Crystallography.OpenGL.GLControlAlpha
+            glControlMain = new GLControlAlpha
             {
                 AllowMouseRotation = false,
                 AllowMouseScaling = true,
@@ -174,7 +167,7 @@ namespace ReciPro
                 NodeCoefficient = 4,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.NotAlways,
+                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
@@ -182,25 +175,38 @@ namespace ReciPro
             glControlMain.MouseDown += panelMain_MouseDown;
             glControlMain.MouseMove += glControlMain_MouseMove;
 
-
-            // 
-            // splitContainer1.Panel1
-            // 
+            // splitContainer1.Panel1にglControlを追加
             splitContainer1.Panel1.Controls.Add(glControlAxes);
             splitContainer1.Panel1.Controls.Add(glControlLight);
             splitContainer1.Panel1.Controls.Add(glControlMain);
             glControlAxes.Location = new Point(0, glControlMain.Height - glControlAxes.Height);
 
+            #endregion
 
+            #region GLコントロールの初期化
             glControlLight.AddObjects(new Sphere(new V3(0, 0, 0), 1.0, new Material(C4.Gray, 0.2, 0.7, 0.7, 50, 0.2), DrawingMode.Surfaces));
             glControlMain.LightPosition = glControlLight.LightPosition = glControlAxes.LightPosition = new V3(100, 100, 100);
             glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
             glControlLight.ProjWidth = glControlAxes.ProjWidth = 2.2;
             glControlMain.ProjWidth = 3f;
+            #endregion
 
-            tabControlBoundOption.ItemSize = new Size(0, 1);
+            #region ビデオカードの設定
+            foreach (var info in glControlMain.GraphicsInfo)
+            {
+                labelGraphicsCard.Text += info.Product + "  ";
+                labelGraphicsDriver.Text += info.Version + "  ";
+            }
+            labelOpenGLversion.Text += glControlMain.GLVersionCurrent;
 
-            //各種ユーザーコントロール
+            if (glControlMain.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
+                 comboBoxRenderignQuality.SelectedIndex = 1;
+            else
+                comboBoxRenderignQuality.SelectedIndex = 0;
+
+            #endregion
+        
+            #region 各種ユーザーコントロールの追加
             boundControl = formMain.crystalControl.boundControl;
             latticePlaneControl = formMain.crystalControl.latticePlaneControl;
             atomControl = formMain.crystalControl.atomControl;
@@ -217,8 +223,22 @@ namespace ReciPro
             bondControl.ItemsChanged += BondControl_BondsChanged;
             atomControl.ItemsChanged += AtomControl_ItemsChanged;
 
+            #endregion
+
+
+            #region コントロールの追加設定
 
             flowLayoutPanelLegend.AutoSize = true;
+            flowLayoutPanelLegend.SendToBack();
+
+            tabControlBoundOption.ItemSize = new Size(0, 1);
+
+            comboBoxProjectionMode.SelectedIndex = 0;
+            comboBoxTransparency.SelectedIndex = 0;
+
+            checkBoxDepthCueing_CheckedChanged(new object(), new EventArgs());
+
+            #endregion
         }
 
 
@@ -226,7 +246,7 @@ namespace ReciPro
         #endregion コンストラクタ
 
         #region 結晶軸行列を設定
-        private void initAxesMatrix()
+            private void initAxesMatrix()
         {
 
             axes.Row0 = new V3(Crystal.A_Axis.X, Crystal.B_Axis.X, Crystal.C_Axis.X);
@@ -252,6 +272,8 @@ namespace ReciPro
         /// </summary>
         private void initBounds()
         {
+            
+
             sw.Restart();
 
             bounds = new List<(V4 prm, Color color)>();
@@ -363,7 +385,6 @@ namespace ReciPro
 
             textBoxInformation.AppendText("Generation of aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
-
         public void setAtomsP()
         {
             var list = new List<(int Index, V3 Pos, Material Mat, double Radius)>();
@@ -394,14 +415,15 @@ namespace ReciPro
         {
             sw.Restart();
             //まず、頂点原子の辞書を作る
+
+            var bonds = bondControl.GetAll().Where(b => b.Enabled).ToList();
             var dic = new Dictionary<string, (int Index, V3 Origin, double Radius, bool IsInside, Material BondMat, Material PolyMat, int SerialNumber)[]>();
-            var GLObjectsP = GLObjects.AsParallel();
-            foreach (var bond in bondControl.GetAll().Where(b => b.Enabled))
+            bonds.ForEach(bond =>
             {
                 foreach (var element in new[] { bond.Element1, bond.Element2 })
                 {
                     if (!dic.ContainsKey(element))
-                        dic.Add(element, GLObjectsP.Select((Obj, Index) => (Obj, Index))
+                        dic.Add(element, GLObjects.Select((Obj, Index) => (Obj, Index))
                        .Where(e => e.Obj.Tag is atomID id && Crystal.Atoms[id.Index].ElementName == element).Select(e =>
                        {
                            var s = e.Obj as Sphere;
@@ -410,13 +432,14 @@ namespace ReciPro
                            return (e.Index, s.Origin, s.Radius, (s.Tag as atomID).IsInside, BondMat, PolyMat, s.SerialNumber);
                        }).ToArray());
                 }
-            }
+            });
 
             //bondsとpolyhedraを追加
-            foreach (var bond in bondControl.GetAll().Where(b => b.Enabled))
+            bonds.ForEach(bond =>
             {
                 double min2 = bond.MinLength * bond.MinLength * 0.01, max2 = bond.MaxLength * bond.MaxLength * 0.01;
                 double radius = bond.Radius * 0.1;
+
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
 
                 Parallel.ForEach(dic[bond.Element1].Where(e => e.IsInside), c =>
@@ -427,21 +450,27 @@ namespace ReciPro
                     {
                         foreach (var v in vertices) //Bond
                         {
-                            var d = Math.Min(c.Radius, v.Radius) / 2;//Center半径とOrigin半径の小さい方の半分の値を食い込ませる。
-                            var vec1 = v.Origin - c.Origin;//中心間を結ぶベクトル
-                            var length1 = (v.Origin - c.Origin).Length;//中心間を結ぶベクトルの長さ
-                            var o = c.Origin + (c.Radius - d) / length1 * vec1;
-                            var vec = (1 + (d * 2 - c.Radius - v.Radius) / length1) * vec1;
+                            var vec = v.Origin - c.Origin;//中心間を結ぶベクトル
+                            var length = vec.Length;//中心間を結ぶベクトルの長さ
+                            var m = c.Origin + (length - c.Radius - v.Radius) * vec / length;//中間地点
 
-                            var cylinder = new Cylinder(o, vec, radius, c.BondMat, v.BondMat, DrawingMode.Surfaces, 8, 8)
+                            var cylinder1 = new Cylinder(c.Origin, m - c.Origin, radius, c.BondMat, DrawingMode.Surfaces)
+                            { Tag = new bondID(c.SerialNumber, v.SerialNumber), ShowClippedSection = false, Rendered = bond.ShowBond };
+
+                            var cylinder2 = new Cylinder(m, v.Origin - m, radius, v.BondMat, DrawingMode.Surfaces)
                             { Tag = new bondID(c.SerialNumber, v.SerialNumber), ShowClippedSection = false, Rendered = bond.ShowBond };
 
                             lock (lockObj)
-                                GLObjects.Add(cylinder);
+                            {
+                                GLObjects.Add(cylinder1);
+                                GLObjects.Add(cylinder2);
+                                GLObjects[v.Index].Rendered = true;
+                            }
                         }
                         if (vertices.Count == 3)
                         {
-                            var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron };
+                            var polygon = new Polygon(vertices.Select(v => v.Origin).ToArray(), c.PolyMat, polyhedronMode)
+                            { Rendered = bond.ShowPolyhedron };
                             lock (lockObj)
                                 GLObjects.Add(polygon);
                         }
@@ -449,16 +478,13 @@ namespace ReciPro
                         {
                             var polyhedron = new Polyhedron(vertices.Select(v => v.Origin).ToArray(), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false };
+
                             lock (lockObj)
-                                GLObjects.Add(polyhedron);
+                                GLObjects.AddRange(polyhedron.ToPolygons());
                         }
-
-                        lock (lockObj)
-                            vertices.ForEach(v => GLObjects[v.Index].Rendered = true);
-
                     }
                 });
-            }
+            });
             textBoxInformation.AppendText("Generation of bonds & polyhedra: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
@@ -491,6 +517,8 @@ namespace ReciPro
         }
         #endregion
 
+        #region GLObjectsをシェーダに転送
+
         /// <summary>
         /// GLObjectsを転送する
         /// </summary>
@@ -502,7 +530,8 @@ namespace ReciPro
             toolStripLabelStatusInitialization.Text += " and sent to OpenGL (" + sw.ElapsedMilliseconds + " ms.)    ";
             textBoxInformation.AppendText("Trasfer: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
-        }
+        } 
+        #endregion
 
         #region 単位格子面オブジェクトを生成
         /// <summary>
@@ -520,11 +549,12 @@ namespace ReciPro
 
             var cellVertices = new[] { new V3(0), axes.Column0, axes.Column1, axes.Column2, axes.Column0 + axes.Column1, axes.Column1 + axes.Column2, axes.Column2 + axes.Column0, axes.Column0 + axes.Column1 + axes.Column2 };
             var translation = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
-
             cellVertices = cellVertices.Select(v => v - translation).ToArray();
+            
             var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value, 0.2, 0.8, 0.8, 50, 0.2);
             var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces);
             cellPlane.Tag = new cellID();
+            
             var cellEdgeMat = new Material(colorControlCellEdge.Argb, 1, 0.2, 0.8, 0.8, 50, 0.2);
             var cellEdge = new Polyhedron(cellVertices, cellEdgeMat, DrawingMode.Edges);
             cellEdge.Tag = new cellID();
@@ -539,10 +569,13 @@ namespace ReciPro
                 cellEdge.Rendered = checkBoxCellShowEdge.Checked;
             }
 
-            GLObjects.Add(cellPlane);
-            glControlMain.AddObjects(cellPlane);
-            GLObjects.Add(cellEdge);
-            glControlMain.AddObjects(cellEdge);
+            var planes = cellPlane.ToPolygons();
+            GLObjects.AddRange(planes);
+            glControlMain.AddObjects(planes);
+
+            var edges = cellEdge.ToPolygons();
+            GLObjects.AddRange(edges);
+            glControlMain.AddObjects(edges);
 
             textBoxInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
@@ -635,6 +668,8 @@ namespace ReciPro
         }
         #endregion
 
+        #region 結晶構造をセッティング (SetGLObjects)
+
         /// <summary>
         /// 結晶構造をセッティング
         /// </summary>
@@ -683,7 +718,8 @@ namespace ReciPro
             setAxesControl();//結晶軸を表示するGLControl
 
             Draw(); //
-        }
+        } 
+        #endregion
 
         #region Draw
 
@@ -1020,7 +1056,7 @@ namespace ReciPro
         private void toolStripButtonLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
         private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e)
-        => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.NotAlways : GLControlAlpha.RenderingTransparencyModes.Always;
+        => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.ZSORT : GLControlAlpha.RenderingTransparencyModes.OIT;
 
         private void toolStripButtonLegend_CheckedChanged(object sender, EventArgs e) => SetLegend();
 
@@ -1204,6 +1240,9 @@ namespace ReciPro
                 glControlMain.SkipRendering = true;
 
                 var atoms = atomControl.GetAll();
+                if (atoms.Length == 0)
+                    return;
+
                 flowLayoutPanelLegend.SuspendLayout();
 
                 for (int i = 0; i < Math.Max(atoms.Length, legendControls.Count); i++)
@@ -1222,7 +1261,7 @@ namespace ReciPro
                                 NodeCoefficient = 1,
                                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                                 ProjWidth = 2.2D,
-                                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
                                 LightPosition = glControlLight.LightPosition,
                                 WorldMatrix = glControlLight.WorldMatrix,
                                 ViewFrom = glControlLight.ViewFrom
@@ -1271,7 +1310,6 @@ namespace ReciPro
         #endregion
 
         #region 凡例、光源方向、結晶軸のサイズ変更
-
         private void numericBoxLegendSize_ValueChanged(object sender, EventArgs e)
         {
             SetLegend();
@@ -1305,9 +1343,87 @@ namespace ReciPro
             SetGLObjects(formMain.crystalControl.Crystal);
         }
 
-    
+
 
 
         #endregion
+
+        #region 描画品質を決定
+        private void comboBoxRenderignQuality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxRenderignQuality.SelectedIndex == 0)
+            {
+                glControlMain.NodeCoefficient = 4;
+                Cone.Default = (1, 8);
+                Cylinder.Default = (1, 8);
+                Sphere.DefaultSlices = 2;
+
+            }
+            else if (comboBoxRenderignQuality.SelectedIndex == 1)
+            {
+                glControlMain.NodeCoefficient = 16;
+                Cone.Default = (1, 16);
+                Cylinder.Default = (1, 16);
+                Sphere.DefaultSlices = 3;
+
+            }
+            else
+            {
+                glControlMain.NodeCoefficient = 32;
+                Cone.Default = (1, 32);
+                Cylinder.Default = (1, 32);
+                Sphere.DefaultSlices = 5;
+            }
+            if (atomControl != null)
+                SetGLObjects(formMain.crystalControl.Crystal);
+        }
+
+        private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxTransparency.SelectedIndex==0)
+                glControlMain.RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            else
+                glControlMain.RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.OIT;
+            
+            if (atomControl != null)
+                SetGLObjects(formMain.crystalControl.Crystal);
+        }
+
+        #endregion
+
+        #region ProjectionMode (Perspectiveか、Orhographicか)などの設定
+        private void comboBoxProjectionMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            trackBarPerspective.Enabled = comboBoxProjectionMode.SelectedIndex == 1;
+
+            glControlMain.ProjectionMode = comboBoxProjectionMode.SelectedIndex == 0 ?
+                    GLControlAlpha.ProjectionModes.Orhographic : GLControlAlpha.ProjectionModes.Perspective;
+        }
+
+        private void trackBarPerspective_Scroll(object sender, EventArgs e)
+        {
+            var x = Math.Pow(51.0, 1.0 / 100.0);
+            glControlMain.SetPerspectiveDistance(Math.Pow(x,trackBarPerspective.Value)-1);
+        }
+
+        #endregion
+
+        #region Depth cueingの設定
+         
+        private void checkBoxDepthCueing_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBoxDepthCueing.Enabled = checkBoxDepthCueing.Checked;
+            //なぜか更新されないことがあるので、2回実行する
+            glControlMain.SetDepthCueing(checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingNear.Value / 10.0, trackBarAdvancedDepthCueingFar.Value / 10.0);
+            glControlMain.SetDepthCueing(checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingNear.Value / 10.0, trackBarAdvancedDepthCueingFar.Value / 10.0);
+        }
+        private bool trackBarAdvanced2_ValueChanged(object sender, double value)
+        {
+            checkBoxDepthCueing_CheckedChanged(sender, new EventArgs());
+            return false;
+        }
+        #endregion
+
+
     }
 }

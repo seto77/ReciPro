@@ -41,7 +41,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStructureViewer));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-          
             this.flowLayoutPanelLegend = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageBounds = new System.Windows.Forms.TabPage();
@@ -102,11 +101,25 @@
             this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
             this.tabPageInformation = new System.Windows.Forms.TabPage();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelGraphicsCard = new System.Windows.Forms.Label();
+            this.labelGraphicsDriver = new System.Windows.Forms.Label();
+            this.labelOpenGLversion = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.buttonLikeVesta = new System.Windows.Forms.Button();
-            this.numericBoxLightSize = new Crystallography.Controls.NumericBox();
-            this.numericBoxAxesSize = new Crystallography.Controls.NumericBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericBoxLegendSize = new Crystallography.Controls.NumericBox();
+            this.numericBoxAxesSize = new Crystallography.Controls.NumericBox();
+            this.numericBoxLightSize = new Crystallography.Controls.NumericBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.comboBoxTransparency = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBoxRenderignQuality = new System.Windows.Forms.ComboBox();
+            this.checkBoxDepthCueing = new System.Windows.Forms.CheckBox();
+            this.groupBoxDepthCueing = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxProjectionMode = new System.Windows.Forms.ComboBox();
+            this.trackBarPerspective = new System.Windows.Forms.TrackBar();
+            this.buttonLikeVesta = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonBoost = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -151,6 +164,10 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trackBarAdvancedDepthCueingFar = new Crystallography.Controls.TrackBarAdvanced();
+            this.trackBarAdvancedDepthCueingNear = new Crystallography.Controls.TrackBarAdvanced();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -171,7 +188,14 @@
             this.flowLayoutPanel3.SuspendLayout();
             this.tabPageCoordinateInfromatin.SuspendLayout();
             this.tabPageInformation.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBoxDepthCueing.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPerspective)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -181,17 +205,14 @@
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
-
             // 
             // splitContainer1.Panel1
-            //
+            // 
             this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanelLegend);
-
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
-           
             // 
             // flowLayoutPanelLegend
             // 
@@ -338,7 +359,7 @@
             this.numericBoxCRange.ShowFraction = true;
             this.numericBoxCRange.ShowPositiveSign = false;
             this.numericBoxCRange.ShowUpDown = true;
-            this.numericBoxCRange.SkipEventDuringInput = false;
+            this.numericBoxCRange.SkipEventDuringInput = true;
             this.numericBoxCRange.SmartIncrement = false;
             this.numericBoxCRange.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxCRange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -372,7 +393,7 @@
             this.numericBoxBRange.ShowFraction = true;
             this.numericBoxBRange.ShowPositiveSign = false;
             this.numericBoxBRange.ShowUpDown = true;
-            this.numericBoxBRange.SkipEventDuringInput = false;
+            this.numericBoxBRange.SkipEventDuringInput = true;
             this.numericBoxBRange.SmartIncrement = false;
             this.numericBoxBRange.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxBRange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -406,7 +427,7 @@
             this.numericBoxARange.ShowFraction = true;
             this.numericBoxARange.ShowPositiveSign = false;
             this.numericBoxARange.ShowUpDown = true;
-            this.numericBoxARange.SkipEventDuringInput = false;
+            this.numericBoxARange.SkipEventDuringInput = true;
             this.numericBoxARange.SmartIncrement = false;
             this.numericBoxARange.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxARange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -440,7 +461,7 @@
             this.numericBoxCCenter.ShowFraction = true;
             this.numericBoxCCenter.ShowPositiveSign = false;
             this.numericBoxCCenter.ShowUpDown = true;
-            this.numericBoxCCenter.SkipEventDuringInput = false;
+            this.numericBoxCCenter.SkipEventDuringInput = true;
             this.numericBoxCCenter.SmartIncrement = false;
             this.numericBoxCCenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxCCenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -474,7 +495,7 @@
             this.numericBoxBCenter.ShowFraction = true;
             this.numericBoxBCenter.ShowPositiveSign = false;
             this.numericBoxBCenter.ShowUpDown = true;
-            this.numericBoxBCenter.SkipEventDuringInput = false;
+            this.numericBoxBCenter.SkipEventDuringInput = true;
             this.numericBoxBCenter.SmartIncrement = false;
             this.numericBoxBCenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxBCenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -508,7 +529,7 @@
             this.numericBoxACenter.ShowFraction = true;
             this.numericBoxACenter.ShowPositiveSign = false;
             this.numericBoxACenter.ShowUpDown = true;
-            this.numericBoxACenter.SkipEventDuringInput = false;
+            this.numericBoxACenter.SkipEventDuringInput = true;
             this.numericBoxACenter.SmartIncrement = false;
             this.numericBoxACenter.TextBoxBackColor = System.Drawing.SystemColors.Window;
             this.numericBoxACenter.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
@@ -728,12 +749,12 @@
             // 
             // colorControlCellPlane
             // 
-            this.colorControlCellPlane.Argb = -4144897;
+            this.colorControlCellPlane.Argb = -4144960;
             resources.ApplyResources(this.colorControlCellPlane, "colorControlCellPlane");
-            this.colorControlCellPlane.Blue = 255;
-            this.colorControlCellPlane.BlueF = 1F;
+            this.colorControlCellPlane.Blue = 192;
+            this.colorControlCellPlane.BlueF = 0.7529412F;
             this.colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.colorControlCellPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlCellPlane.Green = 192;
             this.colorControlCellPlane.GreenF = 0.7529412F;
@@ -744,12 +765,12 @@
             // 
             // colorControlCellEdge
             // 
-            this.colorControlCellEdge.Argb = -8355585;
+            this.colorControlCellEdge.Argb = -8355712;
             resources.ApplyResources(this.colorControlCellEdge, "colorControlCellEdge");
-            this.colorControlCellEdge.Blue = 255;
-            this.colorControlCellEdge.BlueF = 1F;
+            this.colorControlCellEdge.Blue = 128;
+            this.colorControlCellEdge.BlueF = 0.5019608F;
             this.colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.colorControlCellEdge.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlCellEdge.Green = 128;
             this.colorControlCellEdge.GreenF = 0.5019608F;
@@ -1032,9 +1053,9 @@
             // tabPageInformation
             // 
             this.tabPageInformation.Controls.Add(this.textBoxInformation);
+            this.tabPageInformation.Controls.Add(this.flowLayoutPanel4);
             resources.ApplyResources(this.tabPageInformation, "tabPageInformation");
             this.tabPageInformation.Name = "tabPageInformation";
-            this.tabPageInformation.UseVisualStyleBackColor = true;
             // 
             // textBoxInformation
             // 
@@ -1042,55 +1063,83 @@
             this.textBoxInformation.Name = "textBoxInformation";
             this.textBoxInformation.ReadOnly = true;
             // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
+            this.flowLayoutPanel4.Controls.Add(this.labelGraphicsCard);
+            this.flowLayoutPanel4.Controls.Add(this.labelGraphicsDriver);
+            this.flowLayoutPanel4.Controls.Add(this.labelOpenGLversion);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // labelGraphicsCard
+            // 
+            resources.ApplyResources(this.labelGraphicsCard, "labelGraphicsCard");
+            this.labelGraphicsCard.Name = "labelGraphicsCard";
+            // 
+            // labelGraphicsDriver
+            // 
+            resources.ApplyResources(this.labelGraphicsDriver, "labelGraphicsDriver");
+            this.labelGraphicsDriver.Name = "labelGraphicsDriver";
+            // 
+            // labelOpenGLversion
+            // 
+            resources.ApplyResources(this.labelOpenGLversion, "labelOpenGLversion");
+            this.labelOpenGLversion.Name = "labelOpenGLversion";
+            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.checkBoxDepthCueing);
+            this.tabPage1.Controls.Add(this.groupBoxDepthCueing);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.buttonLikeVesta);
-            this.tabPage1.Controls.Add(this.numericBoxLightSize);
-            this.tabPage1.Controls.Add(this.numericBoxAxesSize);
-            this.tabPage1.Controls.Add(this.numericBoxLegendSize);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
-            // buttonLikeVesta
+            // groupBox2
             // 
-            resources.ApplyResources(this.buttonLikeVesta, "buttonLikeVesta");
-            this.buttonLikeVesta.Name = "buttonLikeVesta";
-            this.buttonLikeVesta.UseVisualStyleBackColor = true;
-            this.buttonLikeVesta.Click += new System.EventHandler(this.buttonLikeVesta_Click);
+            this.groupBox2.Controls.Add(this.numericBoxLegendSize);
+            this.groupBox2.Controls.Add(this.numericBoxAxesSize);
+            this.groupBox2.Controls.Add(this.numericBoxLightSize);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
-            // numericBoxLightSize
+            // numericBoxLegendSize
             // 
-            this.numericBoxLightSize.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxLightSize, "numericBoxLightSize");
-            this.numericBoxLightSize.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLightSize.DecimalPlaces = 0;
-            this.numericBoxLightSize.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLightSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLightSize.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLightSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLightSize.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxLightSize.Maximum = 200D;
-            this.numericBoxLightSize.Minimum = 0D;
-            this.numericBoxLightSize.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxLightSize.MouseSpeed = 1D;
-            this.numericBoxLightSize.Multiline = false;
-            this.numericBoxLightSize.Name = "numericBoxLightSize";
-            this.numericBoxLightSize.RadianValue = 1.3962634015954636D;
-            this.numericBoxLightSize.ReadOnly = true;
-            this.numericBoxLightSize.RestrictLimitValue = true;
-            this.numericBoxLightSize.ShowFraction = false;
-            this.numericBoxLightSize.ShowPositiveSign = false;
-            this.numericBoxLightSize.ShowUpDown = true;
-            this.numericBoxLightSize.SkipEventDuringInput = true;
-            this.numericBoxLightSize.SmartIncrement = true;
-            this.numericBoxLightSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxLightSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxLightSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxLightSize.ThonsandsSeparator = true;
-            this.numericBoxLightSize.UpDown_Increment = 1D;
-            this.numericBoxLightSize.Value = 80D;
-            this.numericBoxLightSize.WordWrap = true;
-            this.numericBoxLightSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLightSize_ValueChanged);
+            this.numericBoxLegendSize.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxLegendSize, "numericBoxLegendSize");
+            this.numericBoxLegendSize.BackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLegendSize.DecimalPlaces = 0;
+            this.numericBoxLegendSize.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLegendSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLegendSize.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLegendSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLegendSize.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxLegendSize.Maximum = 200D;
+            this.numericBoxLegendSize.Minimum = 0D;
+            this.numericBoxLegendSize.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxLegendSize.MouseSpeed = 1D;
+            this.numericBoxLegendSize.Multiline = false;
+            this.numericBoxLegendSize.Name = "numericBoxLegendSize";
+            this.numericBoxLegendSize.RadianValue = 0.87266462599716477D;
+            this.numericBoxLegendSize.ReadOnly = false;
+            this.numericBoxLegendSize.RestrictLimitValue = true;
+            this.numericBoxLegendSize.ShowFraction = false;
+            this.numericBoxLegendSize.ShowPositiveSign = false;
+            this.numericBoxLegendSize.ShowUpDown = true;
+            this.numericBoxLegendSize.SkipEventDuringInput = true;
+            this.numericBoxLegendSize.SmartIncrement = true;
+            this.numericBoxLegendSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxLegendSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxLegendSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxLegendSize.ThonsandsSeparator = true;
+            this.numericBoxLegendSize.UpDown_Increment = 1D;
+            this.numericBoxLegendSize.Value = 50D;
+            this.numericBoxLegendSize.WordWrap = true;
+            this.numericBoxLegendSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLegendSize_ValueChanged);
             // 
             // numericBoxAxesSize
             // 
@@ -1126,39 +1175,132 @@
             this.numericBoxAxesSize.WordWrap = true;
             this.numericBoxAxesSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxAxesSize_ValueChanged);
             // 
-            // numericBoxLegendSize
+            // numericBoxLightSize
             // 
-            this.numericBoxLegendSize.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxLegendSize, "numericBoxLegendSize");
-            this.numericBoxLegendSize.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLegendSize.DecimalPlaces = 0;
-            this.numericBoxLegendSize.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLegendSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLegendSize.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBoxLegendSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxLegendSize.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxLegendSize.Maximum = 200D;
-            this.numericBoxLegendSize.Minimum = 0D;
-            this.numericBoxLegendSize.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxLegendSize.MouseSpeed = 1D;
-            this.numericBoxLegendSize.Multiline = false;
-            this.numericBoxLegendSize.Name = "numericBoxLegendSize";
-            this.numericBoxLegendSize.RadianValue = 0.87266462599716477D;
-            this.numericBoxLegendSize.ReadOnly = false;
-            this.numericBoxLegendSize.RestrictLimitValue = true;
-            this.numericBoxLegendSize.ShowFraction = false;
-            this.numericBoxLegendSize.ShowPositiveSign = false;
-            this.numericBoxLegendSize.ShowUpDown = true;
-            this.numericBoxLegendSize.SkipEventDuringInput = true;
-            this.numericBoxLegendSize.SmartIncrement = true;
-            this.numericBoxLegendSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxLegendSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxLegendSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxLegendSize.ThonsandsSeparator = true;
-            this.numericBoxLegendSize.UpDown_Increment = 1D;
-            this.numericBoxLegendSize.Value = 50D;
-            this.numericBoxLegendSize.WordWrap = true;
-            this.numericBoxLegendSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLegendSize_ValueChanged);
+            this.numericBoxLightSize.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxLightSize, "numericBoxLightSize");
+            this.numericBoxLightSize.BackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLightSize.DecimalPlaces = 0;
+            this.numericBoxLightSize.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLightSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLightSize.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLightSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLightSize.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxLightSize.Maximum = 200D;
+            this.numericBoxLightSize.Minimum = 0D;
+            this.numericBoxLightSize.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxLightSize.MouseSpeed = 1D;
+            this.numericBoxLightSize.Multiline = false;
+            this.numericBoxLightSize.Name = "numericBoxLightSize";
+            this.numericBoxLightSize.RadianValue = 1.3962634015954636D;
+            this.numericBoxLightSize.ReadOnly = true;
+            this.numericBoxLightSize.RestrictLimitValue = true;
+            this.numericBoxLightSize.ShowFraction = false;
+            this.numericBoxLightSize.ShowPositiveSign = false;
+            this.numericBoxLightSize.ShowUpDown = true;
+            this.numericBoxLightSize.SkipEventDuringInput = true;
+            this.numericBoxLightSize.SmartIncrement = true;
+            this.numericBoxLightSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxLightSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxLightSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxLightSize.ThonsandsSeparator = true;
+            this.numericBoxLightSize.UpDown_Increment = 1D;
+            this.numericBoxLightSize.Value = 80D;
+            this.numericBoxLightSize.WordWrap = true;
+            this.numericBoxLightSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLightSize_ValueChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.comboBoxTransparency);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // comboBoxTransparency
+            // 
+            this.comboBoxTransparency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTransparency.DropDownWidth = 250;
+            this.comboBoxTransparency.FormattingEnabled = true;
+            this.comboBoxTransparency.Items.AddRange(new object[] {
+            resources.GetString("comboBoxTransparency.Items"),
+            resources.GetString("comboBoxTransparency.Items1")});
+            resources.ApplyResources(this.comboBoxTransparency, "comboBoxTransparency");
+            this.comboBoxTransparency.Name = "comboBoxTransparency";
+            this.comboBoxTransparency.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransparency_SelectedIndexChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.comboBoxRenderignQuality);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // comboBoxRenderignQuality
+            // 
+            this.comboBoxRenderignQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRenderignQuality.FormattingEnabled = true;
+            this.comboBoxRenderignQuality.Items.AddRange(new object[] {
+            resources.GetString("comboBoxRenderignQuality.Items"),
+            resources.GetString("comboBoxRenderignQuality.Items1"),
+            resources.GetString("comboBoxRenderignQuality.Items2")});
+            resources.ApplyResources(this.comboBoxRenderignQuality, "comboBoxRenderignQuality");
+            this.comboBoxRenderignQuality.Name = "comboBoxRenderignQuality";
+            this.comboBoxRenderignQuality.SelectedIndexChanged += new System.EventHandler(this.comboBoxRenderignQuality_SelectedIndexChanged);
+            // 
+            // checkBoxDepthCueing
+            // 
+            resources.ApplyResources(this.checkBoxDepthCueing, "checkBoxDepthCueing");
+            this.checkBoxDepthCueing.Checked = true;
+            this.checkBoxDepthCueing.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDepthCueing.Name = "checkBoxDepthCueing";
+            this.checkBoxDepthCueing.UseVisualStyleBackColor = true;
+            this.checkBoxDepthCueing.CheckedChanged += new System.EventHandler(this.checkBoxDepthCueing_CheckedChanged);
+            // 
+            // groupBoxDepthCueing
+            // 
+            this.groupBoxDepthCueing.Controls.Add(this.trackBarAdvancedDepthCueingNear);
+            this.groupBoxDepthCueing.Controls.Add(this.label6);
+            this.groupBoxDepthCueing.Controls.Add(this.trackBarAdvancedDepthCueingFar);
+            this.groupBoxDepthCueing.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBoxDepthCueing, "groupBoxDepthCueing");
+            this.groupBoxDepthCueing.Name = "groupBoxDepthCueing";
+            this.groupBoxDepthCueing.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.comboBoxProjectionMode);
+            this.groupBox1.Controls.Add(this.trackBarPerspective);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // comboBoxProjectionMode
+            // 
+            this.comboBoxProjectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProjectionMode.FormattingEnabled = true;
+            this.comboBoxProjectionMode.Items.AddRange(new object[] {
+            resources.GetString("comboBoxProjectionMode.Items"),
+            resources.GetString("comboBoxProjectionMode.Items1")});
+            resources.ApplyResources(this.comboBoxProjectionMode, "comboBoxProjectionMode");
+            this.comboBoxProjectionMode.Name = "comboBoxProjectionMode";
+            this.comboBoxProjectionMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxProjectionMode_SelectedIndexChanged);
+            // 
+            // trackBarPerspective
+            // 
+            resources.ApplyResources(this.trackBarPerspective, "trackBarPerspective");
+            this.trackBarPerspective.Maximum = 120;
+            this.trackBarPerspective.Name = "trackBarPerspective";
+            this.trackBarPerspective.SmallChange = 10;
+            this.trackBarPerspective.TickFrequency = 3;
+            this.trackBarPerspective.Value = 100;
+            this.trackBarPerspective.Scroll += new System.EventHandler(this.trackBarPerspective_Scroll);
+            // 
+            // buttonLikeVesta
+            // 
+            resources.ApplyResources(this.buttonLikeVesta, "buttonLikeVesta");
+            this.buttonLikeVesta.Name = "buttonLikeVesta";
+            this.buttonLikeVesta.UseVisualStyleBackColor = true;
+            this.buttonLikeVesta.Click += new System.EventHandler(this.buttonLikeVesta_Click);
             // 
             // toolStrip1
             // 
@@ -1457,6 +1599,50 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
+            // trackBarAdvancedDepthCueingFar
+            // 
+            resources.ApplyResources(this.trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
+            this.trackBarAdvancedDepthCueingFar.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
+            this.trackBarAdvancedDepthCueingFar.LogScrollBar = false;
+            this.trackBarAdvancedDepthCueingFar.Maximum = 30D;
+            this.trackBarAdvancedDepthCueingFar.Minimum = -30D;
+            this.trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
+            this.trackBarAdvancedDepthCueingFar.NumericBoxSize = 84;
+            this.trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedDepthCueingFar.Smart_Increment = true;
+            this.trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedDepthCueingFar.UpDown_Increment = 1D;
+            this.trackBarAdvancedDepthCueingFar.Value = -15D;
+            this.trackBarAdvancedDepthCueingFar.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
+            // 
+            // trackBarAdvancedDepthCueingNear
+            // 
+            resources.ApplyResources(this.trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
+            this.trackBarAdvancedDepthCueingNear.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
+            this.trackBarAdvancedDepthCueingNear.LogScrollBar = false;
+            this.trackBarAdvancedDepthCueingNear.Maximum = 30D;
+            this.trackBarAdvancedDepthCueingNear.Minimum = -30D;
+            this.trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
+            this.trackBarAdvancedDepthCueingNear.NumericBoxSize = 84;
+            this.trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedDepthCueingNear.Smart_Increment = true;
+            this.trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedDepthCueingNear.UpDown_Increment = 1D;
+            this.trackBarAdvancedDepthCueingNear.Value = 5D;
+            this.trackBarAdvancedDepthCueingNear.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -1500,8 +1686,17 @@
             this.tabPageCoordinateInfromatin.ResumeLayout(false);
             this.tabPageInformation.ResumeLayout(false);
             this.tabPageInformation.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBoxDepthCueing.ResumeLayout(false);
+            this.groupBoxDepthCueing.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPerspective)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1626,5 +1821,23 @@
         private System.Windows.Forms.Button buttonLikeVesta;
         private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
+        private System.Windows.Forms.Label labelGraphicsDriver;
+        private System.Windows.Forms.Label labelGraphicsCard;
+        private System.Windows.Forms.Label labelOpenGLversion;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TrackBar trackBarPerspective;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.CheckBox checkBoxDepthCueing;
+        private System.Windows.Forms.GroupBox groupBoxDepthCueing;
+        private System.Windows.Forms.ComboBox comboBoxRenderignQuality;
+        private System.Windows.Forms.ComboBox comboBoxProjectionMode;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox comboBoxTransparency;
+        private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedDepthCueingNear;
+        private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedDepthCueingFar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

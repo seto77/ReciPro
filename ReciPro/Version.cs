@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.770(2020/05/09)  Improved rendering quality of 'Structure Viewer'." +
             "\r\n ver4.769(2020/05/06)  Improved GUI on 'Structure Viewer'." +
             "\r\n ver4.768(2020/05/06)  Improved GUI on 'Structure Viewer'." +
             "\r\n ver4.767(2020/05/05)  Improved rendering speed of 'Structure Viewer' and fixed some bugs." +

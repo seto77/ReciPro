@@ -13,6 +13,7 @@ using Mat4f = OpenTK.Matrix4;
 using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
+using System.Management;
 
 namespace Crystallography.OpenGL
 {
@@ -26,6 +27,7 @@ namespace Crystallography.OpenGL
 
         private Clip Clip = null;
         private List<GLObject> glObjects = new List<GLObject>();
+        private ParallelQuery<GLObject> glObjectsP;
         private GLObject quad = null;
 
         private int eyePositionIndex = 0;
@@ -36,6 +38,10 @@ namespace Crystallography.OpenGL
         private int passOIT1Index = 0;
         private int passOIT2Index = 0;
         private int passNormalIndex = 0;
+
+        private int depthCueingNearIndex = 0;
+        private int depthCueingFarIndex = 0;
+        private int depthCueingEnabledIndex = 0;
         #endregion フィールド
 
         #region Enum
@@ -46,7 +52,7 @@ namespace Crystallography.OpenGL
 
         public enum TranslatingModes { Object, View }
 
-        public enum RenderingTransparencyModes { Always, NotAlways, Never }
+        public enum RenderingTransparencyModes { OIT, ZSORT}
 
         #endregion Enum
 
@@ -54,10 +60,10 @@ namespace Crystallography.OpenGL
         public new MouseEventHandler MouseMove;
         public new MouseEventHandler MouseDown;
         public new MouseEventHandler MouseUp;
-       
+
         public new PaintEventHandler Paint;
 
- 
+
         /// <summary>
         /// WorldMatrixが変化したときに発生するイベント. 
         /// </summary>
@@ -169,7 +175,7 @@ namespace Crystallography.OpenGL
         /// Order Independent Transparency modeを有効にするかどうか
         /// </summary>
         [Category("Rendering properties")]
-        public RenderingTransparencyModes RenderingTransparency { get; set; } = RenderingTransparencyModes.NotAlways;
+        public RenderingTransparencyModes RenderingTransparency { get; set; } = RenderingTransparencyModes.ZSORT;
 
         /// <summary>
         /// バックグラウンドカラー
@@ -234,6 +240,8 @@ namespace Crystallography.OpenGL
                 }
             }
         }
+
+        public List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>(); 
 
         /// <summary>
         /// カメラの位置
@@ -324,7 +332,6 @@ namespace Crystallography.OpenGL
         #endregion プロパティ
 
         #region ロード関連
-        private System.Timers.Timer timer = new System.Timers.Timer(100);
         private GLControl glControl = new GLControl();
         private Graphics glControlGraphics;
 
@@ -337,14 +344,17 @@ namespace Crystallography.OpenGL
 
             if (DesignMode) return;
 
-               // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-            glControl = new OpenTK.GLControl(new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8))
+             glObjectsP = glObjects.AsParallel();
+
+            // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
+            var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, 1);
+            glControl = new GLControl(gMode)
             {
                 AutoScaleMode = AutoScaleMode.Dpi,
                 BackColor = Color.White,
                 Location = new Point(0, 0),
                 Name = "glControl",
-                Size = new Size(this.Size.Width, this.Size.Height),
+                Size = new Size(Size.Width, Size.Height),
                 Dock = DockStyle.Fill,
                 TabIndex = 1,
                 VSync = false,
@@ -360,7 +370,23 @@ namespace Crystallography.OpenGL
 
             Controls.Add(glControl);
 
+            //ビデオカード検索
+            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
+            foreach (var envVar in searcher.Get())
+                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
 
+            if (GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
+            {
+                Cone.Default = (1, 16);
+                Pipe.Default = (1, 16);
+                Sphere.DefaultSlices = 3;
+            }
+            else
+            {
+                Cone.Default = (1, 8);
+                Pipe.Default = (1, 8);
+                Sphere.DefaultSlices = 2;
+            }
         }
 
        
@@ -392,6 +418,10 @@ namespace Crystallography.OpenGL
             projMatrixIndex = GL.GetUniformLocation(Program, "ProjMatrix");
             worldMatrixIndex = GL.GetUniformLocation(Program, "WorldMatrix");
 
+            depthCueingEnabledIndex = GL.GetUniformLocation(Program, "DepthCueing");
+            depthCueingFarIndex = GL.GetUniformLocation(Program, "Far");
+            depthCueingNearIndex = GL.GetUniformLocation(Program, "Near");
+
             passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
             passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
             passNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
@@ -404,14 +434,8 @@ namespace Crystallography.OpenGL
             quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(1, 1, 1, 1, 1, 1, 1, 1, 1), DrawingMode.Surfaces);
             quad.Generate(Program);
 
-            timer.AutoReset = false;
-            timer.Elapsed += Timer_Elapsed;
-        }
-
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            Render(true);
-            timer.Stop();
+            GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
+            GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
         }
 
         #region　Shaderの作成
@@ -521,6 +545,14 @@ namespace Crystallography.OpenGL
             foreach (var obj in objs)
                 obj.Generate(Program);
             glObjects.AddRange(objs);
+            
+           /* foreach (var obj in objs)
+            {
+                obj.Indices = null;
+                obj.Vertices = null;
+            }
+            GC.Collect();
+            */
         }
 
         public void DeleteObjects(GLObject obj)
@@ -562,26 +594,20 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// レンダリング
         /// </summary>
-        public void Render(bool oit = false)
+        public void Render()
         {
             if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
             {
-                Invoke(new Action(() => Render(oit)), null);
+                Invoke(new Action(() => Render()), null);
                 return;
             }
-            timer.Stop();
 
             if (SkipRendering || Program < 1)
                 return;
 
-            if (RenderingTransparency == RenderingTransparencyModes.Always)
-                oit = true;
-            else if (RenderingTransparency == RenderingTransparencyModes.Never)
-                oit = false;
-
             glControl.MakeCurrent();
 
-            if (glObjects == null || glObjects.Count == 0 || glObjects.All(obj => obj.Rendered == false))
+            if (glObjects == null || glObjects.Count == 0 || glObjectsP.All(obj => obj.Rendered == false))
             {
                 GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
@@ -599,8 +625,12 @@ namespace Crystallography.OpenGL
             GL.UniformMatrix4(projMatrixIndex, false, ref projMatrixF);
             GL.UniformMatrix4(worldMatrixIndex, false, ref worldMatrixF);
 
-            if (oit)//oitモードの時、 CullFace無効、DepthTest無効、
+            if (RenderingTransparency == RenderingTransparencyModes.OIT)//oitモードの時、 CullFace無効、DepthTest無効、
             {
+                GL.Disable(EnableCap.LineSmooth);
+                GL.Disable(EnableCap.PolygonSmooth);
+                GL.Disable(EnableCap.Blend);
+
                 GL.Disable(EnableCap.CullFace);
                 GL.Disable(EnableCap.DepthTest);
                 var bgcolor = BackgroundColor.ToV4f();
@@ -630,6 +660,11 @@ namespace Crystallography.OpenGL
             }
             else//通常モードの時、 CullFace有効、DepthTest有効
             {
+                GL.Enable(EnableCap.LineSmooth);
+                GL.Enable(EnableCap.PolygonSmooth);
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
                 GL.Enable(EnableCap.CullFace);
                 GL.CullFace(CullFaceMode.Back);
                 GL.Enable(EnableCap.DepthTest);
@@ -638,14 +673,22 @@ namespace Crystallography.OpenGL
                 GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                 GL.ClearColor(BackgroundColor);
+
+                //描画対称に透明なものが一つでもあるとき
+                if (glObjectsP.Any(o => o.Rendered && o.Material.ColorV.W != 1))
+                {
+                    var rot = worldMatrix.Inverted();
+                    glObjectsP.ForAll(o => o.Z = !o.Rendered || o.Material.ColorV.W == 1 ? double.NegativeInfinity : rot.Mult(o.CircumscribedSphereCenter).Z);
+                    glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
+                }
+
                 glObjects.ForEach(o => o.Render(Clip));// draw scene
             }
+
             glControl.SwapBuffers();//swap
             GL.Finish();
 
             Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
-
-            timer.Start();
         }
 
         #endregion
@@ -685,13 +728,7 @@ namespace Crystallography.OpenGL
             else if (e.Button == MouseButtons.Right && AllowMouseScaling)
             {
                 if ((ModifierKeys & Keys.Control) == Keys.Control && ProjectionMode == ProjectionModes.Perspective)
-                {
-                    SkipRendering = true;
-                    viewFrom *= (float)(1 + dy * 0.005);
-                    setViewMatrix();
-                    SkipRendering = false;
-                    setProjMatrix();
-                }
+                    SetPerspectiveDistance(viewFrom.Length * (float)(1 + dy * 0.005));
                 else
                 {
                     var coeff = 1 + dy * 0.005;
@@ -702,6 +739,8 @@ namespace Crystallography.OpenGL
 
             lastMousePosition = new Point(e.X, e.Y);
         }
+
+     
 
         private void GlControl_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -730,6 +769,16 @@ namespace Crystallography.OpenGL
 
         #endregion
 
+        public void SetPerspectiveDistance(double distance)
+        {
+            SkipRendering = true;
+            viewFrom = viewFrom.Normalized() * distance;
+            setViewMatrix();
+            SkipRendering = false;
+            setProjMatrix();
+
+        }
+
         #region GLControlのイベント
 
         private void glControl_Paint(object sender, PaintEventArgs e)
@@ -757,6 +806,20 @@ namespace Crystallography.OpenGL
 
             return BitmapConverter.FlipVertically(bmp);
         }
+
+        #endregion
+
+        #region Depth Cueingの設定
+
+        public void SetDepthCueing(bool enabled, double near, double far)
+        {
+            GL.Uniform1(depthCueingEnabledIndex, enabled ? 1 : 0);
+            GL.Uniform1(depthCueingNearIndex, (float)near);
+            GL.Uniform1(depthCueingFarIndex, (float)far);
+            GL.Finish();
+            Render();
+        }
+
 
         #endregion
     }

@@ -185,7 +185,6 @@ namespace Crystallography.Controls
                 }
             }
         }
-
         #region Crystalクラスを画面下部 から生成/にセット
 
 

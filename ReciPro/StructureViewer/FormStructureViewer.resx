@@ -128,94 +128,6 @@
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
-  <data name="glControlAxes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="glControlAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="glControlAxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 416</value>
-  </data>
-  <data name="glControlAxes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="glControlAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 80</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="glControlAxes.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;glControlAxes.Name" xml:space="preserve">
-    <value>glControlAxes</value>
-  </data>
-  <data name="&gt;&gt;glControlAxes.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;glControlAxes.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;glControlAxes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="glControlLight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="glControlLight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="glControlLight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="glControlLight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 80</value>
-  </data>
-  <data name="glControlLight.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;glControlLight.Name" xml:space="preserve">
-    <value>glControlLight</value>
-  </data>
-  <data name="&gt;&gt;glControlLight.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;glControlLight.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;glControlLight.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="glControlMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="glControlMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="glControlMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="glControlMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="glControlMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>601, 496</value>
-  </data>
-  <data name="glControlMain.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;glControlMain.Name" xml:space="preserve">
-    <value>glControlMain</value>
-  </data>
-  <data name="&gt;&gt;glControlMain.Type" xml:space="preserve">
-    <value>Crystallography.OpenGL.GLControlAlpha, Crystallography.OpenGL, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;glControlMain.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;glControlMain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="flowLayoutPanelLegend.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -234,6 +146,7 @@
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 496</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="flowLayoutPanelLegend.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
   </data>
@@ -247,7 +160,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelLegend.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -547,7 +460,7 @@
     <value>numericBoxCRange</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -604,7 +517,7 @@
     <value>numericBoxBRange</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -661,7 +574,7 @@
     <value>numericBoxARange</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -718,7 +631,7 @@
     <value>numericBoxCCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -775,7 +688,7 @@
     <value>numericBoxBCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -832,7 +745,7 @@
     <value>numericBoxACenter</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
@@ -1150,7 +1063,7 @@
     <value>numericBoxBoundPlanesOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -1565,7 +1478,7 @@
     <value>numericBoxCellPlaneAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1619,7 +1532,7 @@
     <value>colorControlCellPlane</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1673,7 +1586,7 @@
     <value>colorControlCellEdge</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1730,7 +1643,7 @@
     <value>numericBoxCellTransrationC</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1787,7 +1700,7 @@
     <value>numericBoxCellTransrationB</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1844,7 +1757,7 @@
     <value>numericBoxCellTransrationA</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -2318,7 +2231,7 @@
     <value>numericBoxLatticePlaneOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -2405,7 +2318,7 @@
     <value>atomCoordinateTable1</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Parent" xml:space="preserve">
     <value>tabPageCoordinateInfromatin</value>
@@ -2450,7 +2363,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>641, 227</value>
+    <value>641, 214</value>
   </data>
   <data name="textBoxInformation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2466,6 +2379,135 @@
   </data>
   <data name="&gt;&gt;textBoxInformation.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="labelGraphicsCard.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="labelGraphicsCard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelGraphicsCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="labelGraphicsCard.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelGraphicsCard.Text" xml:space="preserve">
+    <value>Graphics card:  </value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsCard.Name" xml:space="preserve">
+    <value>labelGraphicsCard</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsCard.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsCard.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelGraphicsDriver.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="labelGraphicsDriver.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGraphicsDriver.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 0</value>
+  </data>
+  <data name="labelGraphicsDriver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
+  </data>
+  <data name="labelGraphicsDriver.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelGraphicsDriver.Text" xml:space="preserve">
+    <value>Graphics driver:  </value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsDriver.Name" xml:space="preserve">
+    <value>labelGraphicsDriver</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsDriver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsDriver.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;labelGraphicsDriver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelOpenGLversion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="labelOpenGLversion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelOpenGLversion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="labelOpenGLversion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 13</value>
+  </data>
+  <data name="labelOpenGLversion.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelOpenGLversion.Text" xml:space="preserve">
+    <value>OpenGL version:  </value>
+  </data>
+  <data name="&gt;&gt;labelOpenGLversion.Name" xml:space="preserve">
+    <value>labelOpenGLversion</value>
+  </data>
+  <data name="&gt;&gt;labelOpenGLversion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOpenGLversion.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;labelOpenGLversion.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="flowLayoutPanel4.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 217</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>641, 13</value>
+  </data>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>tabPageInformation</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2494,156 +2536,6 @@
   <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="buttonLikeVesta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonLikeVesta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonLikeVesta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonLikeVesta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonLikeVesta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>556, 6</value>
-  </data>
-  <data name="buttonLikeVesta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 27</value>
-  </data>
-  <data name="buttonLikeVesta.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonLikeVesta.Text" xml:space="preserve">
-    <value>I like Vesta!!</value>
-  </data>
-  <data name="&gt;&gt;buttonLikeVesta.Name" xml:space="preserve">
-    <value>buttonLikeVesta</value>
-  </data>
-  <data name="&gt;&gt;buttonLikeVesta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLikeVesta.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;buttonLikeVesta.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxLightSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLightSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxLightSize.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxLightSize.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
-    <value>Light ball size</value>
-  </data>
-  <data name="numericBoxLightSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 86</value>
-  </data>
-  <data name="numericBoxLightSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxLightSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxLightSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxLightSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxLightSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 27</value>
-  </data>
-  <data name="numericBoxLightSize.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxLightSize.Name" xml:space="preserve">
-    <value>numericBoxLightSize</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLightSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLightSize.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLightSize.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxAxesSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAxesSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxesSize.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxAxesSize.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
-    <value>Axes size</value>
-  </data>
-  <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 51</value>
-  </data>
-  <data name="numericBoxAxesSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxAxesSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxAxesSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxAxesSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 27</value>
-  </data>
-  <data name="numericBoxAxesSize.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Name" xml:space="preserve">
-    <value>numericBoxAxesSize</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="numericBoxLegendSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -2666,7 +2558,7 @@
     <value>Legend size</value>
   </data>
   <data name="numericBoxLegendSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 16</value>
+    <value>4, 23</value>
   </data>
   <data name="numericBoxLegendSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2693,13 +2585,562 @@
     <value>numericBoxLegendSize</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.6.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxAxesSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxAxesSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxesSize.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
+    <value>Axes size</value>
+  </data>
+  <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 23</value>
+  </data>
+  <data name="numericBoxAxesSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxAxesSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxAxesSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 27</value>
+  </data>
+  <data name="numericBoxAxesSize.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Name" xml:space="preserve">
+    <value>numericBoxAxesSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxLightSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxLightSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxLightSize.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLightSize.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
+    <value>Light ball size</value>
+  </data>
+  <data name="numericBoxLightSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>247, 23</value>
+  </data>
+  <data name="numericBoxLightSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLightSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxLightSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxLightSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxLightSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 27</value>
+  </data>
+  <data name="numericBoxLightSize.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxLightSize.Name" xml:space="preserve">
+    <value>numericBoxLightSize</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLightSize.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLightSize.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLightSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>387, 52</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Sub control size</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxTransparency.Items" xml:space="preserve">
+    <value>Approximate (Z depth sorting)</value>
+  </data>
+  <data name="comboBoxTransparency.Items1" xml:space="preserve">
+    <value>Perfect (Order Independent Transparency)</value>
+  </data>
+  <data name="comboBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="comboBoxTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 25</value>
+  </data>
+  <data name="comboBoxTransparency.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTransparency.Name" xml:space="preserve">
+    <value>comboBoxTransparency</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTransparency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTransparency.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTransparency.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 58</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 52</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Transparency mode</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxRenderignQuality.Items" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="comboBoxRenderignQuality.Items1" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="comboBoxRenderignQuality.Items2" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="comboBoxRenderignQuality.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="comboBoxRenderignQuality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 25</value>
+  </data>
+  <data name="comboBoxRenderignQuality.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRenderignQuality.Name" xml:space="preserve">
+    <value>comboBoxRenderignQuality</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRenderignQuality.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRenderignQuality.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRenderignQuality.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 0</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 52</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Rendering quality</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDepthCueing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDepthCueing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 112</value>
+  </data>
+  <data name="checkBoxDepthCueing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 21</value>
+  </data>
+  <data name="checkBoxDepthCueing.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxDepthCueing.Text" xml:space="preserve">
+    <value>Depth cueing</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDepthCueing.Name" xml:space="preserve">
+    <value>checkBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDepthCueing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDepthCueing.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDepthCueing.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 52</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 24</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingNear.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Name" xml:space="preserve">
+    <value>trackBarAdvancedDepthCueingNear</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Parent" xml:space="preserve">
+    <value>groupBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 28</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Far</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 23</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 24</value>
+  </data>
+  <data name="trackBarAdvancedDepthCueingFar.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Name" xml:space="preserve">
+    <value>trackBarAdvancedDepthCueingFar</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.9.1002, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Parent" xml:space="preserve">
+    <value>groupBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 57</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Near</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBoxDepthCueing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 113</value>
+  </data>
+  <data name="groupBoxDepthCueing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>387, 83</value>
+  </data>
+  <data name="groupBoxDepthCueing.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBoxDepthCueing.Text" xml:space="preserve">
+    <value>  </value>
+  </data>
+  <data name="&gt;&gt;groupBoxDepthCueing.Name" xml:space="preserve">
+    <value>groupBoxDepthCueing</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDepthCueing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDepthCueing.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxDepthCueing.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="comboBoxProjectionMode.Items" xml:space="preserve">
+    <value>Orhographic</value>
+  </data>
+  <data name="comboBoxProjectionMode.Items1" xml:space="preserve">
+    <value>Perspective</value>
+  </data>
+  <data name="comboBoxProjectionMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 25</value>
+  </data>
+  <data name="comboBoxProjectionMode.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProjectionMode.Name" xml:space="preserve">
+    <value>comboBoxProjectionMode</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProjectionMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProjectionMode.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxProjectionMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="trackBarPerspective.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarPerspective.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="trackBarPerspective.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="trackBarPerspective.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 24</value>
+  </data>
+  <data name="trackBarPerspective.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;trackBarPerspective.Name" xml:space="preserve">
+    <value>trackBarPerspective</value>
+  </data>
+  <data name="&gt;&gt;trackBarPerspective.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarPerspective.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarPerspective.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 55</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>387, 52</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Projection</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonLikeVesta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonLikeVesta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonLikeVesta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonLikeVesta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonLikeVesta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>560, 206</value>
+  </data>
+  <data name="buttonLikeVesta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 27</value>
+  </data>
+  <data name="buttonLikeVesta.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonLikeVesta.Text" xml:space="preserve">
+    <value>I like Vesta!!</value>
+  </data>
+  <data name="&gt;&gt;buttonLikeVesta.Name" xml:space="preserve">
+    <value>buttonLikeVesta</value>
+  </data>
+  <data name="&gt;&gt;buttonLikeVesta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLikeVesta.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;buttonLikeVesta.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>

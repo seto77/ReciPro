@@ -1,13 +1,13 @@
 #version 430 core
 
-//#pragma optionNV(ifcvt none)
-//#pragma optionNV(inline all)
-//#pragma optionNV(strict on)
-//#pragma optionNV(unroll all)
+#pragma optionNV(ifcvt none)
+#pragma optionNV(inline all)
+#pragma optionNV(strict on)
+#pragma optionNV(unroll all)
 
 layout(early_fragment_tests) in;
 
-#define MAX_FRAGMENTS 75
+#define MAX_FRAGMENTS 200
 
 uniform uint MaxNodes;
 
@@ -21,6 +21,11 @@ uniform float SpecularPower = 128.0;
 uniform vec4 BgColor = vec4(1, 1, 1, 1);
 uniform bool IgnoreNormalSides = false;
 
+//Depth Cueing
+uniform bool DepthCueing = false;
+uniform float Far = -2.5;
+uniform float Near = 0.5;
+
 // Input from vertex shader
 in VertexData
 {
@@ -28,6 +33,7 @@ in VertexData
 	vec3 Light;//Light direction
 	vec3 View;//View direction
 	vec4 Color;//Color
+	float Z;//Depth
 } fs_in;
 
 struct NodeType {
@@ -72,7 +78,19 @@ vec4 setColor()
 		emission = max(dot(normal, view), 0.0) * Emission * c;
 		diffuse = max(dot(normal, light), 0.0) * Diffuse * c;
 	}
-	return vec4(diffuse + specular + ambient + emission, fs_in.Color.a);
+
+	vec4 color = vec4(diffuse + specular + ambient + emission, fs_in.Color.a);
+
+	if(DepthCueing)
+		if (fs_in.Z < Near)
+		{
+			if (fs_in.Z < Far)
+				color = BgColor;
+			else
+				color = mix(color, BgColor, (Near - fs_in.Z) / (Near - Far));
+		}
+
+	return color;
 }
 
 subroutine(RenderPassType)
@@ -157,8 +175,9 @@ void passOIT2()
 	}
 	*/
 
-	/*
+	
 	//bubble sort
+	/*
 	int j, i;
 	NodeType tempNode;
 	for(i = 0; i < count - 1; i++)
@@ -175,8 +194,9 @@ void passOIT2()
 	}
 	*/
 
-	/*
+	
 	//merge sort
+	/*
 	int i, j1, j2, k;
 	int a, b, c;
 	int step = 1;
@@ -235,9 +255,7 @@ void passOIT2()
 	// Traverse the array, and combine the colors using the alpha channel.
 	vec4 color = BgColor;
 	for (int i = 0; i < count; i++)
-	{
 		color = mix(color, frags[i].color, frags[i].color.a);
-	}
 	color.a = 1;
 	// Output the final color
 	FragColor = color;
@@ -253,3 +271,7 @@ void main()
 {
 	RenderPass();
 }
+
+
+
+

@@ -1,9 +1,9 @@
 ﻿#version 430 core
 
-//#pragma optionNV(ifcvt none)
-//#pragma optionNV(inline all)
-//#pragma optionNV(strict on)
-//#pragma optionNV(unroll all)
+#pragma optionNV(ifcvt none)
+#pragma optionNV(inline all)
+#pragma optionNV(strict on)
+#pragma optionNV(unroll all)
 
 // Per-vertex inputs
 layout(location = 2) in vec4 Position;
@@ -31,12 +31,16 @@ out VertexData
 	vec3 Light;//Light direction
 	vec3 View;//View direction
 	vec4 Color;//Color
+	float Z;//Depth
 } vs_out;
 
 void main(void)
 {
 	// Calculate view-space coordinate
 	vec4 P = WorldMatrix * Position;
+
+	// Calculate the clip-space position of each vertex
+	vec4 pos = ProjMatrix * ViewMatrix * P;
 
 	// Calculate normal in view-space
 	vs_out.Normal = mat3(WorldMatrix) * Normal;
@@ -47,19 +51,21 @@ void main(void)
 	// Calculate view vector
 	vs_out.View = EyePosition - P.xyz;
 
+	//Z depth
+	vs_out.Z = P.z;
+
 	//Copy color
-	if (UseFixedColor)
-		vs_out.Color = FixedColor;
+	if (UseFixedColor) 
+		vs_out.Color= FixedColor;
 	else
 		vs_out.Color = Color;
 
 	// Calculate the clip-space position of each vertex
-	gl_Position = ProjMatrix * ViewMatrix * P;
-
 	for (int i = 0; i < ClipNum; i++)
 	{
 		gl_ClipDistance[i] = dot(Position, ClipPlanes[i]);
 	}
-}
 
+	gl_Position = pos;
+}
 //Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle の位置No.15531 - 15557).Pearson Education.Kindle 版.

@@ -200,7 +200,7 @@ namespace ReciPro
                     NodeCoefficient = 1,
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                     ProjWidth = 4D,
-                    RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.Never,
+                    RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
                     RotationMode = GLControlAlpha.RotationModes.Object,
                     TranslatingMode = GLControlAlpha.TranslatingModes.View
                 };
@@ -212,11 +212,12 @@ namespace ReciPro
                 glControlAxes.Dock = DockStyle.Fill;
                 glControlAxes.BringToFront();
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
                 regKey.SetValue("DisableOpenGL", true);
-                this.Close();
+               // this.Close();
             }
 
             commonDialog.Text = "Now Loading...Initializing OpenGL.";
@@ -538,10 +539,10 @@ namespace ReciPro
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FormCalculator.Close();
-            FormStereonet.Close();
-            FormStructureViewer.Close();
-            FormDiffractionSimulator.Close();
+            //FormCalculator.Close();
+            //FormStereonet.Close();
+            //FormStructureViewer.Close();
+            //FormDiffractionSimulator.Close();
             e.Cancel = false;
             SaveInitialRegistry();
             ChangeClipboardChain(this.Handle, NextHandle);
