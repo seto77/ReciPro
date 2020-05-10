@@ -122,11 +122,9 @@ namespace ReciPro
         /// </summary>
         public FormMain()
         {
-            InitializeComponent();
-
             if (DesignMode)
                 return;
-            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
+
             RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
             try
             {
@@ -142,6 +140,9 @@ namespace ReciPro
             }
             catch { }
 
+            InitializeComponent();
+            
+            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
         }
 
 
@@ -154,7 +155,6 @@ namespace ReciPro
         {
             if (DesignMode) return;
             sw.Restart();
-
 
             //#if !DEBUG
             //Ngen.Compile(new string[] { "Crystallography.dll", "Crystallography.Control.dll", "GLSharp.dll", "OpenTK.dll", "OpenTK.GLU.dll", "ReciPro.exe" });
@@ -197,12 +197,9 @@ namespace ReciPro
                     Width = groupBoxCurrentDirection.ClientSize.Width - 10,
                     Height = groupBoxCurrentDirection.ClientSize.Width - 10,
                     Name = "glControlAxes",
-                    NodeCoefficient = 1,
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                     ProjWidth = 4D,
-                    FragShader = GLControlAlpha.FragShaders.ZSORT,
                     RotationMode = GLControlAlpha.RotationModes.Object,
-                    TranslatingMode = GLControlAlpha.TranslatingModes.View
                 };
                 glControlAxes.Paint += new PaintEventHandler(glControlAxes_Paint);
                 glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
@@ -413,7 +410,6 @@ namespace ReciPro
                 toolStripButtonStructureViewer.Visible = false;
                 glControlAxes.Visible = false;
             }
-
         }
 
         public bool YusaGonioMode { get; set; } = false;
@@ -551,7 +547,6 @@ namespace ReciPro
             for (int i = 0; i < listBox.Items.Count; i++)
                 cry.Add((Crystal)listBox.Items[i]);
             ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
-
         }
 
         #region ƒŒƒWƒXƒgƒŠ‘€ì
@@ -1137,7 +1132,6 @@ namespace ReciPro
             try
             {
                 if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
-                    //Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/ja/ReciProHelp.html");
                     Process.Start("doc\\ReciProManual(ja).pdf");
                 else
                     Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/en/ReciProHelp.html");
@@ -1482,17 +1476,6 @@ namespace ReciPro
             labelCurrentIndexU.Text = bestIndex.U.ToString();
             labelCurrentIndexV.Text = bestIndex.V.ToString();
             labelCurrentIndexW.Text = bestIndex.W.ToString();
-        }
-
-        private void tableLayoutPanel3_MouseDown(object sender, MouseEventArgs e)
-        {
-            /* if (e.Button == MouseButtons.Right && e.Clicks == 2)
-             {
-                 FormRotationMatrix formRotationMatrix = new FormRotationMatrix();
-                 formRotationMatrix.FormMain = this;
-                 formRotationMatrix.Show();
-             }
-             */
         }
 
         private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)

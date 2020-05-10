@@ -306,6 +306,9 @@
     <EmbeddedResource Include="FormAboutMe.ja.resx">
       <DependentUpon>FormAboutMe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormImageSimulator.ja.resx">
+      <DependentUpon>FormImageSimulator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormImageSimulator.resx">
       <DependentUpon>FormImageSimulator.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SpotID\FormSpotDetails.resx">
       <DependentUpon>FormSpotDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpotID\FormSpotID.ja.resx">
+      <DependentUpon>FormSpotID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpotID\FormSpotID.resx">
       <DependentUpon>FormSpotID.cs</DependentUpon>

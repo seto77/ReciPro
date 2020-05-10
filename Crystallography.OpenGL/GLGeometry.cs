@@ -26,7 +26,7 @@ namespace Crystallography.OpenGL
                 norm = -norm;
 
             //座標変換 (XY平面に投影)
-            M3d rot = CreateRotationToZ(norm);
+            var rot = CreateRotationToZ(norm);
 
             var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z)).ToList();
 

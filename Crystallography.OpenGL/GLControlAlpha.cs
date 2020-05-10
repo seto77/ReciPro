@@ -860,6 +860,7 @@ namespace Crystallography.OpenGL
 
         #endregion
 
+        #region Perspective distanceの設定
         public void SetPerspectiveDistance(double distance)
         {
             SkipRendering = true;
@@ -868,7 +869,8 @@ namespace Crystallography.OpenGL
             SkipRendering = false;
             setProjMatrix();
 
-        }
+        } 
+        #endregion
 
         #region GLControlのイベント
 
