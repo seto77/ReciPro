@@ -37,7 +37,6 @@ namespace Crystallography.OpenGL
         private int worldMatrixIndex = 0;
         private int passOIT1Index = 0;
         private int passOIT2Index = 0;
-        private int passNormalIndex = 0;
 
         private int depthCueingNearIndex = 0;
         private int depthCueingFarIndex = 0;
@@ -52,7 +51,7 @@ namespace Crystallography.OpenGL
 
         public enum TranslatingModes { Object, View }
 
-        public enum RenderingTransparencyModes { OIT, ZSORT}
+        public enum FragShaders { OIT, ZSORT}
 
         #endregion Enum
 
@@ -95,50 +94,135 @@ namespace Crystallography.OpenGL
             }
         }
 
+
+        #region OpengGLのバージョン関連
+
         /// <summary>
         /// OpenGLのバージョン (3桁整数, 430など)
         /// </summary>
-        private int verCur = 0;
-
-        public string GLVersionCurrent
+        public int Version { get; set; } = 0;
+        /// <summary>
+        /// OpenGLのバージョン (文字列, 4.3.0など)
+        /// </summary>
+        public string VersionStr
         {
             get
             {
-                int v1 = verCur / 100, v2 = (verCur - v1 * 100) / 10, v3 = verCur - v1 * 100 - v2 * 10;
-                return v1.ToString() + "." + v2.ToString() + "." + v3.ToString();
+                int v1 = Version / 100, v2 = (Version - v1 * 100) / 10, v3 = Version - v1 * 100 - v2 * 10;
+                return (Version / 100).ToString() + "." + v2.ToString() + "." + v3.ToString();
             }
         }
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
+        /// </summary>
+        public int VersionForZsort { get; } = 330;
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public string VersionForZsortStr { get => "3.3.0"; }
 
-        private int verReq { get; } = 430;
-        public string GLVersionRequired { get => "4.3.0"; }
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
+        /// </summary>
+        public int VersionForOIT { get; } = 430;
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public string VersionForOITStr { get => "4.3.0"; }
 
-        public bool GLRequirement { get => verCur >= verReq; }
+        /// <summary>
+        /// OpenGLのバージョンが最低要件を満たしているかどうか
+        /// </summary>
+        public bool VersionRequirement { get => (Version >= VersionForZsort) || (Version >= VersionForOIT); }
 
+        #endregion
+    
         private int Program { get; set; } = -1;
 
+        public bool DisablingOpenGL { get; set; } = false;
+
+
+        #region OIT関連
         // This is the maximum supported framebuffer width and height. We
         // could support higher resolutions, but this is reasonable for
         // this application
 
         /// <summary>
-        /// 画像の最大幅
+        /// 画像の最大幅 (OITのパラメータ)
         /// </summary>
         [Category("Rendering properties")]
         public int MaxWidth { get; set; } = 2560;
 
         /// <summary>
-        /// 画像の最大高さ
+        /// 画像の最大高さ (OITのパラメータ)
         /// </summary>
         [Category("Rendering properties")]
         public int MaxHeight { get; set; } = 1440;
 
         /// <summary>
-        /// 最大ノード数を決める係数. NodeCoefficient * MaxWidth * MaxHeight * 24 bytes　(=5*float+ 1*uint)  分のメモリーが確保される
+        /// OIT時の最大ノード数を決める係数. NodeCoefficient * MaxWidth * MaxHeight * 24 bytes　(=5*float+ 1*uint)  分のメモリーが確保される
         /// ここの数値をどれくらい大きくするか。オリジナルでは20にしていたが。。。
+        /// この値を変更しても、SetShader()は実行されない (その後FragShaderを変更する必要あり)。
         /// </summary>
         [Category("Rendering properties")]
-        public int NodeCoefficient { get; set; } = 4;
+        public int NodeCoefficient { get; set; } = 0;
 
+
+        /// <summary>
+        /// OIT時に、どれだけの数の重なり合いを考慮するかをパラメータ.
+        /// </summary>
+        [Category("Rendering properties")]
+        public int MaxFragments { get; set; } = 100;
+
+        #endregion
+
+        /// <summary>
+        /// 透明度計算としてZsort(要330以上) あるいはOIT (Order Independent Transparency, 要430以上)を選択. 
+        /// 値が(同じ値でも)設定されたとき、SetShader()が実行され、GPUにfrag shaderが転送される.
+        /// </summary>
+        [Category("Rendering properties")]
+        public FragShaders FragShader
+        {
+            get => fragShader;
+            set
+            {
+                //OITはver430以上でのみ有効にできる
+                if (value == FragShaders.OIT && Version < 430)
+                    return;
+                
+                if (!DesignMode)
+                {
+                    var flag = fragShader != value;
+                    fragShader = value;
+                    SetGLcontrol(flag);
+                }
+                
+            }
+        }
+        private FragShaders fragShader = FragShaders.ZSORT;
+
+
+
+        #region Depth Cueing
+        /// <summary>
+        /// Depth cueingのプロパティ。変更すると、SetDepthCueing()が走る.
+        /// </summary>
+        [Category("Rendering properties")]
+        public (bool Enabled, double Zfar, double Znear) DepthCueing {
+            get => depthCueing;
+            set
+            {
+                depthCueing = value;
+                if(!DesignMode && Program != -1)
+                    setDepthCueing();
+            } 
+        }
+
+        private (bool Enabled, double Zfar, double Znear) depthCueing = (false, -1.5, 0.5);
+
+        #endregion
+
+        #region マウス関連
         /// <summary>
         /// マウスによる回転操作を許可するか
         /// </summary>
@@ -163,19 +247,15 @@ namespace Crystallography.OpenGL
         [Category("Mouse Operation")]
         public TranslatingModes TranslatingMode { get; set; } = TranslatingModes.View;
 
+        #endregion
+
+
         /// <summary>
         /// 投影モード
         /// </summary>
         [Category("Rendering properties")]
         public ProjectionModes ProjectionMode { get => projectionMode; set { projectionMode = value; setProjMatrix(); } }
-
         private ProjectionModes projectionMode = ProjectionModes.Orhographic;
-
-        /// <summary>
-        /// Order Independent Transparency modeを有効にするかどうか
-        /// </summary>
-        [Category("Rendering properties")]
-        public RenderingTransparencyModes RenderingTransparency { get; set; } = RenderingTransparencyModes.ZSORT;
 
         /// <summary>
         /// バックグラウンドカラー
@@ -183,8 +263,9 @@ namespace Crystallography.OpenGL
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Category("Rendering properties")]
         public Col4 BackgroundColor { get => backgroundColor; set { backgroundColor = value; Render(); } }
-
         private Col4 backgroundColor = Col4.White;
+
+        #region Geometry関連
 
         /// <summary>
         /// 光源(Light)の位置
@@ -241,7 +322,7 @@ namespace Crystallography.OpenGL
             }
         }
 
-        public List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>(); 
+        public List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>();
 
         /// <summary>
         /// カメラの位置
@@ -325,124 +406,151 @@ namespace Crystallography.OpenGL
                 ProjMatrix = Mat4d.CreateOrthographicOffCenter(left, right, bottom, top, -1000, 1000);
             else
                 ProjMatrix = Mat4d.CreatePerspectiveOffCenter(left * coeff, right * coeff, bottom * coeff, top * coeff, zNear, 1000);
-        }
+        } 
+        #endregion
 
-        public bool DisablingOpenGL { get; set; } = false;
-
+       
         #endregion プロパティ
 
         #region ロード関連
         private GLControl glControl = new GLControl();
         private Graphics glControlGraphics;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public GLControlAlpha()
         {
-            if (DisablingOpenGL)
-                return;
-
             InitializeComponent();
 
-            if (DesignMode) return;
+            if (DisablingOpenGL || DesignMode)
+                return;
 
-             glObjectsP = glObjects.AsParallel();
-
-            // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-            var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, 1);
-            glControl = new GLControl(gMode)
-            {
-                AutoScaleMode = AutoScaleMode.Dpi,
-                BackColor = Color.White,
-                Location = new Point(0, 0),
-                Name = "glControl",
-                Size = new Size(Size.Width, Size.Height),
-                Dock = DockStyle.Fill,
-                TabIndex = 1,
-                VSync = false,
-            };
-            glControl.Load += glControl_Load;
-            glControl.Paint += glControl_Paint;
-            glControl.MouseDown += glControl_MouseDown;
-            glControl.MouseMove += glControl_MouseMove;
-            glControl.MouseUp += glControl_MouseUp;
-            glControl.Resize += glControl_Resize;
-
-            glControl.MouseWheel += GlControl_MouseWheel;
-
-            Controls.Add(glControl);
+            SetGLcontrol(true);
+            
+            glObjectsP = glObjects.AsParallel();
 
             //ビデオカード検索
             var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
             foreach (var envVar in searcher.Get())
                 GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
 
-            if (GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
-            {
-                Cone.Default = (1, 16);
-                Pipe.Default = (1, 16);
-                Sphere.DefaultSlices = 3;
-            }
-            else
-            {
-                Cone.Default = (1, 8);
-                Pipe.Default = (1, 8);
-                Sphere.DefaultSlices = 2;
-            }
+            //Defaultなオブジェクトを作成
+            var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
+            Cone.Default = (1, flag ? 16 : 8);
+            Pipe.Default = (1, flag ? 16 : 8);
+            Sphere.DefaultSlices = flag ? 3 : 2;
+
+            setViewMatrix();
+            setProjMatrix();
         }
 
-       
-        
-        private void glControl_Load(object sender, EventArgs e)
+        private void SetGLcontrol(bool renewControl)
         {
-            if (DesignMode) return;
+            if (DesignMode || DisablingOpenGL) return;
 
-            if (DisablingOpenGL)
-                return;
+            if (renewControl)//glControlを再初期化
+            {
+                SuspendLayout();
+                if (glControl != null)
+                    glControl.Dispose();
 
-            //バージョンチェック
-            var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' });
-            verCur = Convert.ToInt32(ver[0]) * 100 + Convert.ToInt32(ver[1]) * 10 + Convert.ToInt32(ver[2]);
-            if (verCur < verReq)
-                return;
+                Controls.Clear();
+                // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
+                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
+                glControl = new GLControl(gMode)
+                {
+                    AutoScaleMode = AutoScaleMode.Dpi,
+                    BackColor = Color.White,
+                    Name = "glControl",
+                    Dock = DockStyle.Fill,
+                    VSync = false,
+                };
+                Controls.Add(glControl);
 
-            glControlGraphics = glControl.CreateGraphics();
+                glControl.Paint += glControl_Paint;
+                glControl.MouseDown += glControl_MouseDown;
+                glControl.MouseMove += glControl_MouseMove;
+                glControl.MouseWheel += GlControl_MouseWheel;
+                glControl.MouseUp += glControl_MouseUp;
+                glControl.Resize += glControl_Resize;
+               
+                ResumeLayout();
+                glControlGraphics = glControl.CreateGraphics();
+            }//glControlの再初期化ここまで
 
             glControl.MakeCurrent();
+            
+            //バージョンチェック
+            var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' });
+            Version = Convert.ToInt32(ver[0]) * 100 + Convert.ToInt32(ver[1]) * 10 + Convert.ToInt32(ver[2]);
+            if (Version < VersionForZsort)
+                return;
 
-            Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, Properties.Resources.frag);
-
+            //Shader転送
+            if (FragShader == FragShaders.ZSORT)
+                Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, Properties.Resources.fragZSORT);
+            else
+            {
+                var frag = Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", "MAX_FRAGMENTS " + MaxFragments.ToString());
+                Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
+            }
             GL.UseProgram(Program);
 
+            //Shader storage初期化
+            if (FragShader == FragShaders.OIT)
+                initShaderStorage();
+
+            //Index取得
             eyePositionIndex = GL.GetUniformLocation(Program, "EyePosition");
             lightPositionIndex = GL.GetUniformLocation(Program, "LightPosition");
             viewMatrixIndex = GL.GetUniformLocation(Program, "ViewMatrix");
             projMatrixIndex = GL.GetUniformLocation(Program, "ProjMatrix");
             worldMatrixIndex = GL.GetUniformLocation(Program, "WorldMatrix");
-
             depthCueingEnabledIndex = GL.GetUniformLocation(Program, "DepthCueing");
             depthCueingFarIndex = GL.GetUniformLocation(Program, "Far");
             depthCueingNearIndex = GL.GetUniformLocation(Program, "Near");
 
-            passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-            passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-            passNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+            GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
+            
+            if (FragShader == FragShaders.OIT)
+            {//oitモードの時、 DepthTest無効、
+                GL.Disable(EnableCap.DepthTest);
 
-            initShaderStorage();
+                passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+                passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
 
-            setViewMatrix();
-            setProjMatrix();
+                quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(1, 1, 1, 1, 1, 1, 1, 1, 1), DrawingMode.Surfaces);
+                quad.Generate(Program);
 
-            quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(1, 1, 1, 1, 1, 1, 1, 1, 1), DrawingMode.Surfaces);
-            quad.Generate(Program);
+            }
+            else
+            {//Zsortモードの時、DepthTest有効
+                //GL.Enable(EnableCap.CullFace);
+                //GL.CullFace(CullFaceMode.Back);
+                GL.Enable(EnableCap.DepthTest);
+                GL.DepthMask(true);
 
-            GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
-            GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
+                GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
+                GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);
+                GL.Hint(HintTarget.PointSmoothHint, HintMode.Nicest);
+
+                GL.Enable(EnableCap.LineSmooth);
+                GL.Enable(EnableCap.PolygonSmooth);
+                GL.Enable(EnableCap.Blend);
+                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            }
+            if (glObjects.Count > 0)
+                glObjects[0].Generate(Program, true);
+
+            Clip?.Generate(Program);
+            setDepthCueing();
         }
 
-        #region　Shaderの作成
+        #region　Shaderの作成 (CreateShader)
         /// <summary>
-        /// シェーダーを作成する。ロード時に1回だけ呼ばれる
+        /// シェーダーを作成する。SetShaderから呼ばれる
         /// </summary>
-
         /// <param name="vertexShaderCode"></param>
         /// <param name="fragmentShaderCode"></param>
         /// <returns></returns>
@@ -609,7 +717,6 @@ namespace Crystallography.OpenGL
 
             if (glObjects == null || glObjects.Count == 0 || glObjectsP.All(obj => obj.Rendered == false))
             {
-                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                 GL.ClearColor(BackgroundColor);
                 glControl.SwapBuffers();//swap
@@ -625,14 +732,8 @@ namespace Crystallography.OpenGL
             GL.UniformMatrix4(projMatrixIndex, false, ref projMatrixF);
             GL.UniformMatrix4(worldMatrixIndex, false, ref worldMatrixF);
 
-            if (RenderingTransparency == RenderingTransparencyModes.OIT)//oitモードの時、 CullFace無効、DepthTest無効、
+            if (FragShader == FragShaders.OIT)//oitモードの時
             {
-                GL.Disable(EnableCap.LineSmooth);
-                GL.Disable(EnableCap.PolygonSmooth);
-                GL.Disable(EnableCap.Blend);
-
-                GL.Disable(EnableCap.CullFace);
-                GL.Disable(EnableCap.DepthTest);
                 var bgcolor = BackgroundColor.ToV4f();
                 GL.Uniform4(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
 
@@ -656,21 +757,10 @@ namespace Crystallography.OpenGL
                 GL.UniformMatrix4(viewMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(projMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(worldMatrixIndex, false, ref m4id);
-                quad.Render(null);// Draw a screen filler
+                quad?.Render(null);// Draw a screen filler
             }
-            else//通常モードの時、 CullFace有効、DepthTest有効
+            else//Zsortモードの時
             {
-                GL.Enable(EnableCap.LineSmooth);
-                GL.Enable(EnableCap.PolygonSmooth);
-                GL.Enable(EnableCap.Blend);
-                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-
-                GL.Enable(EnableCap.CullFace);
-                GL.CullFace(CullFaceMode.Back);
-                GL.Enable(EnableCap.DepthTest);
-                GL.DepthMask(true);
-
-                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
                 GL.ClearColor(BackgroundColor);
 
@@ -681,7 +771,6 @@ namespace Crystallography.OpenGL
                     glObjectsP.ForAll(o => o.Z = !o.Rendered || o.Material.ColorV.W == 1 ? double.NegativeInfinity : rot.Mult(o.CircumscribedSphereCenter).Z);
                     glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
                 }
-
                 glObjects.ForEach(o => o.Render(Clip));// draw scene
             }
 
@@ -811,11 +900,11 @@ namespace Crystallography.OpenGL
 
         #region Depth Cueingの設定
 
-        public void SetDepthCueing(bool enabled, double near, double far)
+        private void setDepthCueing()
         {
-            GL.Uniform1(depthCueingEnabledIndex, enabled ? 1 : 0);
-            GL.Uniform1(depthCueingNearIndex, (float)near);
-            GL.Uniform1(depthCueingFarIndex, (float)far);
+            GL.Uniform1(depthCueingEnabledIndex, DepthCueing.Enabled ? 1 : 0);
+            GL.Uniform1(depthCueingNearIndex, (float)DepthCueing.Znear);
+            GL.Uniform1(depthCueingFarIndex, (float)DepthCueing.Zfar);
             GL.Finish();
             Render();
         }

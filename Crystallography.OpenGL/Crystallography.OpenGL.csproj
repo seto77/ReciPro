@@ -123,7 +123,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Shaders\frag.c" />
+    <Content Include="Shaders\fragOIT.c" />
+    <Content Include="Shaders\fragZSORT.c" />
     <Content Include="Shaders\geom.c" />
     <Content Include="Shaders\vert.c" />
   </ItemGroup>

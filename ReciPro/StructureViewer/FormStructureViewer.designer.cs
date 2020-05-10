@@ -116,13 +116,15 @@
             this.comboBoxRenderignQuality = new System.Windows.Forms.ComboBox();
             this.checkBoxDepthCueing = new System.Windows.Forms.CheckBox();
             this.groupBoxDepthCueing = new System.Windows.Forms.GroupBox();
+            this.trackBarAdvancedDepthCueingNear = new Crystallography.Controls.TrackBarAdvanced();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trackBarAdvancedDepthCueingFar = new Crystallography.Controls.TrackBarAdvanced();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxProjectionMode = new System.Windows.Forms.ComboBox();
             this.trackBarPerspective = new System.Windows.Forms.TrackBar();
             this.buttonLikeVesta = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonBoost = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCrystalAxes = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLightDirection = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLegend = new System.Windows.Forms.ToolStripButton();
@@ -164,10 +166,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trackBarAdvancedDepthCueingFar = new Crystallography.Controls.TrackBarAdvanced();
-            this.trackBarAdvancedDepthCueingNear = new Crystallography.Controls.TrackBarAdvanced();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1266,6 +1264,50 @@
             this.groupBoxDepthCueing.Name = "groupBoxDepthCueing";
             this.groupBoxDepthCueing.TabStop = false;
             // 
+            // trackBarAdvancedDepthCueingNear
+            // 
+            resources.ApplyResources(this.trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
+            this.trackBarAdvancedDepthCueingNear.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
+            this.trackBarAdvancedDepthCueingNear.LogScrollBar = false;
+            this.trackBarAdvancedDepthCueingNear.Maximum = 30D;
+            this.trackBarAdvancedDepthCueingNear.Minimum = -30D;
+            this.trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
+            this.trackBarAdvancedDepthCueingNear.NumericBoxSize = 84;
+            this.trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedDepthCueingNear.Smart_Increment = true;
+            this.trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedDepthCueingNear.UpDown_Increment = 1D;
+            this.trackBarAdvancedDepthCueingNear.Value = 5D;
+            this.trackBarAdvancedDepthCueingNear.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // trackBarAdvancedDepthCueingFar
+            // 
+            resources.ApplyResources(this.trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
+            this.trackBarAdvancedDepthCueingFar.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
+            this.trackBarAdvancedDepthCueingFar.LogScrollBar = false;
+            this.trackBarAdvancedDepthCueingFar.Maximum = 30D;
+            this.trackBarAdvancedDepthCueingFar.Minimum = -30D;
+            this.trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
+            this.trackBarAdvancedDepthCueingFar.NumericBoxSize = 84;
+            this.trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedDepthCueingFar.Smart_Increment = true;
+            this.trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedDepthCueingFar.UpDown_Increment = 1D;
+            this.trackBarAdvancedDepthCueingFar.Value = -15D;
+            this.trackBarAdvancedDepthCueingFar.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBoxProjectionMode);
@@ -1306,8 +1348,6 @@
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonBoost,
-            this.toolStripSeparator2,
             this.toolStripButtonCrystalAxes,
             this.toolStripButtonLightDirection,
             this.toolStripButtonLegend,
@@ -1317,19 +1357,6 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Stretch = true;
-            // 
-            // toolStripButtonBoost
-            // 
-            this.toolStripButtonBoost.CheckOnClick = true;
-            this.toolStripButtonBoost.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripButtonBoost, "toolStripButtonBoost");
-            this.toolStripButtonBoost.Name = "toolStripButtonBoost";
-            this.toolStripButtonBoost.CheckedChanged += new System.EventHandler(this.toolStripButtonBoost_CheckedChanged);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // toolStripButtonCrystalAxes
             // 
@@ -1599,50 +1626,6 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // trackBarAdvancedDepthCueingFar
-            // 
-            resources.ApplyResources(this.trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
-            this.trackBarAdvancedDepthCueingFar.ControlHeight = 24;
-            this.trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
-            this.trackBarAdvancedDepthCueingFar.LogScrollBar = false;
-            this.trackBarAdvancedDepthCueingFar.Maximum = 30D;
-            this.trackBarAdvancedDepthCueingFar.Minimum = -30D;
-            this.trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
-            this.trackBarAdvancedDepthCueingFar.NumericBoxSize = 84;
-            this.trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarAdvancedDepthCueingFar.Smart_Increment = true;
-            this.trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.trackBarAdvancedDepthCueingFar.UpDown_Increment = 1D;
-            this.trackBarAdvancedDepthCueingFar.Value = -15D;
-            this.trackBarAdvancedDepthCueingFar.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
-            // 
-            // trackBarAdvancedDepthCueingNear
-            // 
-            resources.ApplyResources(this.trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
-            this.trackBarAdvancedDepthCueingNear.ControlHeight = 24;
-            this.trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
-            this.trackBarAdvancedDepthCueingNear.LogScrollBar = false;
-            this.trackBarAdvancedDepthCueingNear.Maximum = 30D;
-            this.trackBarAdvancedDepthCueingNear.Minimum = -30D;
-            this.trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
-            this.trackBarAdvancedDepthCueingNear.NumericBoxSize = 84;
-            this.trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarAdvancedDepthCueingNear.Smart_Increment = true;
-            this.trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.trackBarAdvancedDepthCueingNear.UpDown_Increment = 1D;
-            this.trackBarAdvancedDepthCueingNear.Value = 5D;
-            this.trackBarAdvancedDepthCueingNear.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -1747,8 +1730,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyLegendToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem copyAxesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyLightToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButtonBoost;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonCrystalAxes;
         private System.Windows.Forms.ToolStripButton toolStripButtonLightDirection;
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;

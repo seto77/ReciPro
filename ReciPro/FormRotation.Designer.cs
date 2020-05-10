@@ -590,7 +590,7 @@
             this.glControlExpObjects.NodeCoefficient = 1;
             this.glControlExpObjects.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlExpObjects.ProjWidth = 0.8D;
-            this.glControlExpObjects.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlExpObjects.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlExpObjects.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlExpObjects.Size = new System.Drawing.Size(130, 130);
             this.glControlExpObjects.TabIndex = 96;
@@ -614,7 +614,7 @@
             this.glControlExpAxes.NodeCoefficient = 1;
             this.glControlExpAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlExpAxes.ProjWidth = 2.4D;
-            this.glControlExpAxes.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlExpAxes.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlExpAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlExpAxes.Size = new System.Drawing.Size(130, 130);
             this.glControlExpAxes.TabIndex = 96;
@@ -640,7 +640,7 @@
             this.glControlExpGonio.NodeCoefficient = 1;
             this.glControlExpGonio.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlExpGonio.ProjWidth = 4D;
-            this.glControlExpGonio.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlExpGonio.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlExpGonio.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlExpGonio.Size = new System.Drawing.Size(264, 264);
             this.glControlExpGonio.TabIndex = 96;
@@ -913,7 +913,7 @@
             this.glControlReciProObjects.NodeCoefficient = 1;
             this.glControlReciProObjects.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlReciProObjects.ProjWidth = 0.8D;
-            this.glControlReciProObjects.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlReciProObjects.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlReciProObjects.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlReciProObjects.Size = new System.Drawing.Size(130, 130);
             this.glControlReciProObjects.TabIndex = 96;
@@ -937,7 +937,7 @@
             this.glControlReciProAxes.NodeCoefficient = 1;
             this.glControlReciProAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlReciProAxes.ProjWidth = 2.4D;
-            this.glControlReciProAxes.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlReciProAxes.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlReciProAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlReciProAxes.Size = new System.Drawing.Size(130, 130);
             this.glControlReciProAxes.TabIndex = 96;
@@ -963,7 +963,7 @@
             this.glControlReciProGonio.NodeCoefficient = 1;
             this.glControlReciProGonio.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
             this.glControlReciProGonio.ProjWidth = 4D;
-            this.glControlReciProGonio.RenderingTransparency = Crystallography.OpenGL.GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            this.glControlReciProGonio.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
             this.glControlReciProGonio.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
             this.glControlReciProGonio.Size = new System.Drawing.Size(264, 264);
             this.glControlReciProGonio.TabIndex = 96;

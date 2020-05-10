@@ -130,7 +130,7 @@ namespace Crystallography.OpenGL
     /// </summary>
     abstract public class GLObject
     {
-        #region static private なフィールド
+        #region static private な フィールド & プロパティ
         static internal int EmissionLocation { get; set; } = -1;
 
         static internal int AmbientLocation { get; set; } = -1;
@@ -143,11 +143,9 @@ namespace Crystallography.OpenGL
         static internal int IgnoreNormalSidesLocation { get; set; } = -1;
         static internal int RenderPassLocation { get; set; } = -1;
 
-        static internal int PassOIT1Index { get; set; } = -1;
-        static internal int PassOIT2Index { get; set; } = -1;
-
+        static internal int PassOIT1Index  = -1;
+        static internal int PassOIT2Index  = -1;
         static internal int PassNormalIndex = -1;
-
         static internal int PositionLocation { get; set; } = -1;
         static internal int NormalLocation { get; set; } = -1;
         static internal int ColorLocation { get; set; } = -1;
@@ -155,6 +153,7 @@ namespace Crystallography.OpenGL
 
         #endregion
 
+        #region internalな フィールド & プロパティ
 
         internal int VBO, VAO, EBO;
         internal int Program = -1;
@@ -174,8 +173,9 @@ namespace Crystallography.OpenGL
         /// 各タイプの順番リストの長さ
         /// </summary>
         internal int[] TypeCounts;
+        #endregion
 
-        #region publicなフィールド
+        #region publicな フィールド & プロパティ
 
         /// <summary>
         /// 自由に情報を格納するためのTag
@@ -234,6 +234,7 @@ namespace Crystallography.OpenGL
 
         #endregion publicなフィールド
 
+        #region コンストラクタ、デストラクタ
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -254,11 +255,14 @@ namespace Crystallography.OpenGL
             GL.DeleteVertexArrays(1, ref VAO);
         }
 
+        #endregion
+        
+        
         /// <summary>
         /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
         /// </summary>
         /// <param name="program"></param>
-        public void Generate(int program)
+        public void Generate(int program, bool renewLocation = false)
         {
             if (program < 0 || Vertices == null || Vertices.Length == 0)
                 return;
@@ -280,7 +284,7 @@ namespace Crystallography.OpenGL
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
 
             //Locationを取得
-            if (EmissionLocation == -1)
+            if (EmissionLocation == -1 || renewLocation)
                 SetLocation(program);
 
             //頂点位置
@@ -423,12 +427,14 @@ namespace Crystallography.OpenGL
                 }
                 else///クリップセクションを表示する場合
                 {
-                    GL.GetUniformSubroutine(ShaderType.FragmentShader, RenderPassLocation, out int renderPassIndex);  //レンダーパスを取得
                     GL.Enable(EnableCap.StencilTest);//Stencilテスト有効
                     foreach (var i in indices)
                     {
                         DepthTest(false);//Depthテスト無効
-                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassNormalIndex);//サブルーチンを通常パスにする
+                        
+                        if(PassNormalIndex!=-1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassNormalIndex);//サブルーチンをNormalにする
+                        
                         GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
                         GL.Enable(EnableCap.CullFace);//CullFace有効
@@ -445,15 +451,17 @@ namespace Crystallography.OpenGL
                         //ここまででステンシル完成(0以外が有効)
 
                         //ここからクリップ平面を描画
-                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref renderPassIndex);//サブルーチンを元に戻す
+                        if (PassOIT1Index != -1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassOIT1Index);//サブルーチンをOIT1に戻す
+
                         GL.ColorMask(true, true, true, true);
                         GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
                         GL.Disable(EnableCap.CullFace);//CullFace無効化
                         clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
-                        DepthTest(renderPassIndex == PassNormalIndex);//Depthテストを元に戻す (通常モードは有効)
+                        DepthTest(PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
                         clip.Render(i, Material);//i番目のクリップ面を描画
                     }
-                    GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す (通常モードは有効)
+                    //GLable(false, EnableCap.CullFace);//CullFaceを元に戻す (Z-sortモードは有効)
                     GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
                     clip.EnableClips(indices);//全クリップ有効化
                     Render(); //物体全体の描画
@@ -542,7 +550,6 @@ namespace Crystallography.OpenGL
             if (count > 0)
                 GL.Uniform4(ClipPlanesLocation, indices.Count(), PrmsF.Where((v, i) => indices.Contains(i / 4)).ToArray());
         }
-
         public static void DisableAllClips()
         {
             for (int i = 0; i < 8; i++)

@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.771(2020/05/10)  Changed: Open GL 3.3 (or higher) is required for 'Structure Viewer'." +
             "\r\n ver4.770(2020/05/09)  Improved rendering quality of 'Structure Viewer'." +
             "\r\n ver4.769(2020/05/06)  Improved GUI on 'Structure Viewer'." +
             "\r\n ver4.768(2020/05/06)  Improved GUI on 'Structure Viewer'." +

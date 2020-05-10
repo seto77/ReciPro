@@ -1,13 +1,13 @@
 #version 430 core
 
-#pragma optionNV(ifcvt none)
-#pragma optionNV(inline all)
-#pragma optionNV(strict on)
-#pragma optionNV(unroll all)
+//#pragma optionNV(ifcvt none)
+//#pragma optionNV(inline all)
+//#pragma optionNV(strict on)
+//#pragma optionNV(unroll all)
 
 layout(early_fragment_tests) in;
 
-#define MAX_FRAGMENTS 200
+#define MAX_FRAGMENTS ##
 
 uniform uint MaxNodes;
 

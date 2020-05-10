@@ -1,9 +1,9 @@
-﻿#version 430 core
+﻿#version 330 core
 
-#pragma optionNV(ifcvt none)
-#pragma optionNV(inline all)
-#pragma optionNV(strict on)
-#pragma optionNV(unroll all)
+//#pragma optionNV(ifcvt none)
+//#pragma optionNV(inline all)
+//#pragma optionNV(strict on)
+//#pragma optionNV(unroll all)
 
 // Per-vertex inputs
 layout(location = 2) in vec4 Position;

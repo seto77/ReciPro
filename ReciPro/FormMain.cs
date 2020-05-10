@@ -200,7 +200,7 @@ namespace ReciPro
                     NodeCoefficient = 1,
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                     ProjWidth = 4D,
-                    RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
+                    FragShader = GLControlAlpha.FragShaders.ZSORT,
                     RotationMode = GLControlAlpha.RotationModes.Object,
                     TranslatingMode = GLControlAlpha.TranslatingModes.View
                 };
@@ -403,11 +403,11 @@ namespace ReciPro
             {
                 toolStripButtonStructureViewer.Visible = false;
             }
-            else if (!glControlAxes.GLRequirement)
+            else if (!glControlAxes.VersionRequirement)
             {
                 MessageBox.Show(
-                     "Open GL ver " + glControlAxes.GLVersionCurrent + " is running on the current environment." + ".\r\n" +
-                     "Because ReciPro requires OpenGL ver " + glControlAxes.GLVersionRequired +
+                     "Open GL ver " + glControlAxes.VersionStr + " is running on the current environment." + ".\r\n" +
+                     "Because ReciPro requires OpenGL ver " + glControlAxes.VersionForZsortStr +
                      " or later for rendering 3D objects, the functions are currently disabled. Sorry."
                      , "Caution!");
                 toolStripButtonStructureViewer.Visible = false;

@@ -70,7 +70,7 @@ namespace Crystallography.OpenGL.Properties {
         ///
         ///layout(early_fragment_tests) in;
         ///
-        ///#define MAX_FRAGMENTS 75
+        ///#define MAX_FRAGMENTS ##
         ///
         ///uniform uint MaxNodes;
         ///
@@ -82,16 +82,46 @@ namespace Crystallography.OpenGL.Properties {
         ///uniform vec3 SpecularColor = vec3(1.0);
         ///uniform float SpecularPower = 128.0;
         ///uniform vec4 BgColor = vec4(1, 1, 1, 1);
-        ///unifo [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///uniform bool IgnoreNormalS [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string frag {
+        internal static string fragOIT {
             get {
-                return ResourceManager.GetString("frag", resourceCulture);
+                return ResourceManager.GetString("fragOIT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   #version 420 core
+        ///   #version 430 core
+        ///
+        /////#pragma optionNV(ifcvt none)
+        /////#pragma optionNV(inline all)
+        /////#pragma optionNV(strict on)
+        /////#pragma optionNV(unroll all)
+        ///
+        ///layout(early_fragment_tests) in;
+        ///
+        ///#define MAX_FRAGMENTS ##
+        ///
+        ///uniform uint MaxNodes;
+        ///
+        ///// Material properties
+        ///uniform float Emission = 0.2;
+        ///uniform float Ambient = 0.2;
+        ///uniform float Diffuse = 0.7;
+        ///uniform float Specular = 0.5;
+        ///uniform vec3 SpecularColor = vec3(1.0);
+        ///uniform float SpecularPower = 128.0;
+        ///uniform vec4 BgColor = vec4(1, 1, 1, 1);
+        ///uniform bool IgnoreNormalS [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string fragZSORT {
+            get {
+                return ResourceManager.GetString("fragZSORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   #version 430 core
         ///
         ///layout(triangles) in;
         ///layout(triangle_strip, max_vertices = 6) out;
@@ -119,7 +149,8 @@ namespace Crystallography.OpenGL.Properties {
         ///	int i;
         ///	for (i = 0; i &lt; gs_in.length(); i++)
         ///	{
-        ///		gl_Position = gl_in[i].gl [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///		gl_Position = gl_in[i].gl_Position;
+        ///		gs_out.Normal = [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string geom {
             get {
@@ -128,7 +159,7 @@ namespace Crystallography.OpenGL.Properties {
         }
         
         /// <summary>
-        ///   #version 430 core
+        ///   #version 330 core
         ///
         /////#pragma optionNV(ifcvt none)
         /////#pragma optionNV(inline all)
@@ -144,7 +175,9 @@ namespace Crystallography.OpenGL.Properties {
         ///uniform mat4 ViewMatrix; // view matrix
         ///uniform mat4 ProjMatrix; // projection matrix
         ///uniform vec3 LightPosition; // Position of light
-        ///uniform vec3 EyePosition;// Position of eye [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///uniform vec3 EyePosition;// Position of eye
+        ///
+        ///// A, B, C, an [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string vert {
             get {

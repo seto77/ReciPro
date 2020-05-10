@@ -120,7 +120,7 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
+                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
@@ -143,7 +143,7 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
+                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
@@ -167,7 +167,7 @@ namespace ReciPro
                 NodeCoefficient = 4,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
+                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
@@ -197,7 +197,7 @@ namespace ReciPro
                 labelGraphicsCard.Text += info.Product + "  ";
                 labelGraphicsDriver.Text += info.Version + "  ";
             }
-            labelOpenGLversion.Text += glControlMain.GLVersionCurrent;
+            labelOpenGLversion.Text += glControlMain.VersionStr;
 
             if (glControlMain.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
                  comboBoxRenderignQuality.SelectedIndex = 1;
@@ -1055,9 +1055,6 @@ namespace ReciPro
 
         private void toolStripButtonLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
-        private void toolStripButtonBoost_CheckedChanged(object sender, EventArgs e)
-        => glControlMain.RenderingTransparency = toolStripButtonBoost.Checked ? GLControlAlpha.RenderingTransparencyModes.ZSORT : GLControlAlpha.RenderingTransparencyModes.OIT;
-
         private void toolStripButtonLegend_CheckedChanged(object sender, EventArgs e) => SetLegend();
 
         #endregion
@@ -1261,7 +1258,7 @@ namespace ReciPro
                                 NodeCoefficient = 1,
                                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                                 ProjWidth = 2.2D,
-                                RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT,
+                                FragShader = GLControlAlpha.FragShaders.ZSORT,
                                 LightPosition = glControlLight.LightPosition,
                                 WorldMatrix = glControlLight.WorldMatrix,
                                 ViewFrom = glControlLight.ViewFrom
@@ -1380,11 +1377,25 @@ namespace ReciPro
 
         private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxTransparency.SelectedIndex==0)
-                glControlMain.RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.ZSORT;
+            if (comboBoxTransparency.SelectedIndex == 0)
+            {
+                glControlMain.NodeCoefficient = 0;
+                glControlMain.FragShader = GLControlAlpha.FragShaders.ZSORT;
+            }
             else
-                glControlMain.RenderingTransparency = GLControlAlpha.RenderingTransparencyModes.OIT;
-            
+            {
+                if (glControlMain.Version < glControlMain.VersionForOIT)
+                {
+                    MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n"+
+                        " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");
+                    comboBoxTransparency.SelectedIndex = 0;
+                    return;
+                }
+                ;
+                glControlMain.NodeCoefficient = 20;
+                glControlMain.MaxFragments = 120;
+                glControlMain.FragShader = GLControlAlpha.FragShaders.OIT;
+            }
             if (atomControl != null)
                 SetGLObjects(formMain.crystalControl.Crystal);
         }
@@ -1409,13 +1420,13 @@ namespace ReciPro
         #endregion
 
         #region Depth cueingの設定
-         
+
         private void checkBoxDepthCueing_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxDepthCueing.Enabled = checkBoxDepthCueing.Checked;
             //なぜか更新されないことがあるので、2回実行する
-            glControlMain.SetDepthCueing(checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingNear.Value / 10.0, trackBarAdvancedDepthCueingFar.Value / 10.0);
-            glControlMain.SetDepthCueing(checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingNear.Value / 10.0, trackBarAdvancedDepthCueingFar.Value / 10.0);
+            glControlMain.DepthCueing = (checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
+            glControlMain.DepthCueing = (checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
         }
         private bool trackBarAdvanced2_ValueChanged(object sender, double value)
         {
