@@ -60,6 +60,8 @@ namespace ReciPro
         private Crystallography.OpenGL.GLControlAlpha glControlMain;
         private Crystallography.OpenGL.GLControlAlpha glControlAxes;
 
+        (double ambient, double diffuse, double specular, double specularPow, double emission) defaultMat = (0.2, 0.5, 0.6, 4, 0.4);
+
         #endregion
 
         #region ローカルクラス
@@ -184,7 +186,7 @@ namespace ReciPro
             #endregion
 
             #region GLコントロールの初期化
-            glControlLight.AddObjects(new Sphere(new V3(0, 0, 0), 1.0, new Material(C4.Gray, 0.2, 0.7, 0.7, 50, 0.2), DrawingMode.Surfaces));
+            glControlLight.AddObjects(new Sphere(new V3(0, 0, 0), 1.0, new Material(C4.Gray, defaultMat), DrawingMode.Surfaces));
             glControlMain.LightPosition = glControlLight.LightPosition = glControlAxes.LightPosition = new V3(100, 100, 100);
             glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
             glControlLight.ProjWidth = glControlAxes.ProjWidth = 2.2;
@@ -303,7 +305,7 @@ namespace ReciPro
 
         #endregion
 
-        #region Bounds (境界面) GLObjects の生成
+        #region Bounds (境界面) の GLObjects の生成
 
         /// <summary>
         /// 境界面オブジェクトを生成
@@ -427,8 +429,8 @@ namespace ReciPro
                        .Where(e => e.Obj.Tag is atomID id && Crystal.Atoms[id.Index].ElementName == element).Select(e =>
                        {
                            var s = e.Obj as Sphere;
-                           var BondMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.BondTransParency), 0.2, 0.5, 0.6, 4, 0.4);
-                           var PolyMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.PolyhedronTransParency), 0.2, 0.5, 0.6, 4, 0.4);
+                           var BondMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.BondTransParency), defaultMat);
+                           var PolyMat = new Material(new C4(s.Material.Color.R, s.Material.Color.G, s.Material.Color.B, bond.PolyhedronTransParency), defaultMat);
                            return (e.Index, s.Origin, s.Radius, (s.Tag as atomID).IsInside, BondMat, PolyMat, s.SerialNumber);
                        }).ToArray());
                 }
@@ -480,7 +482,8 @@ namespace ReciPro
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false };
 
                             lock (lockObj)
-                                GLObjects.AddRange(polyhedron.ToPolygons());
+                                GLObjects.AddRange(polyhedron.ToPolygons(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 0 : 0));
+                            //order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、取りあえずゼロに
                         }
                     }
                 });
@@ -551,25 +554,25 @@ namespace ReciPro
             var translation = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
             cellVertices = cellVertices.Select(v => v - translation).ToArray();
             
-            var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value, 0.2, 0.8, 0.8, 50, 0.2);
+            var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value, defaultMat);
             var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces);
             cellPlane.Tag = new cellID();
-            
-            var cellEdgeMat = new Material(colorControlCellEdge.Argb, 1, 0.2, 0.8, 0.8, 50, 0.2);
+
+            var cellEdgeMat = new Material(colorControlCellEdge.Argb, 1.0, defaultMat);
             var cellEdge = new Polyhedron(cellVertices, cellEdgeMat, DrawingMode.Edges);
             cellEdge.Tag = new cellID();
 
             //cellPlane.UseFixedColor = true;
             cellPlane.Rendered = false;
             cellEdge.Rendered = false;
-
             if (checkBoxUnitCell.Checked)
             {
                 cellPlane.Rendered = checkBoxCellShowPlane.Checked;
                 cellEdge.Rendered = checkBoxCellShowEdge.Checked;
             }
 
-            var planes = cellPlane.ToPolygons();
+            //ZSortの時は、order=4で256分割
+            var planes = cellPlane.ToPolygons(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 4 : 0);
             GLObjects.AddRange(planes);
             glControlMain.AddObjects(planes);
 
@@ -580,6 +583,10 @@ namespace ReciPro
             textBoxInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
             Draw();
+
+
+            //テストコード
+          //  new Polygon(new[] { new V3 (0,0,0), new V3(1, 0, 0), new V3(0, 1, 0) }, cellEdgeMat, DrawingMode.Edges).Decompose();
         }
         #endregion
 
@@ -606,7 +613,7 @@ namespace ReciPro
 
             foreach (var (prms, t, color) in latticePlanes)
             {
-                var mat = new Material(color.ToArgb(), numericBoxLatticePlaneOpacity.Value, 0.2, 0.8, 0.8, 50, 0.2);
+                var mat = new Material(color.ToArgb(), numericBoxLatticePlaneOpacity.Value, defaultMat);
                 int n = 0;
                 var flag = true;
                 var prm = new[] { prms.X, prms.Y, prms.Z, 0 };
@@ -617,12 +624,23 @@ namespace ReciPro
                         verticesList.Add(Geometriy.GetClippedPolygon(new[] { prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D }, boundArray));
 
                     flag = false;
-                    foreach (var vertices in verticesList.Where(v => v.Length >= 3))
+                    foreach (var verticesArray in verticesList.Where(v => v.Length >= 3))
                     {
-                        var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges);
-                        polygon.Tag = new latticeID();
-                        GLObjects.Add(polygon);
-                        glControlMain.AddObjects(polygon);
+                        var vertices = verticesArray.Select(v => new V3(v[0], v[1], v[2])).ToArray();
+
+                        var plane = new Polygon(vertices, mat, DrawingMode.Surfaces);
+                        var edge = new Polygon(vertices, mat, DrawingMode.Edges);
+
+                        plane.Tag = edge.Tag = new latticeID();
+
+                        var planesSub = plane.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 4 : 0);
+
+                        GLObjects.AddRange(planesSub);
+                        glControlMain.AddObjects(planesSub);
+
+                        GLObjects.Add(edge);
+                        glControlMain.AddObjects(edge);
+
                         flag = true;
                     }
                     n++;

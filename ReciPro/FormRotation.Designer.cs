@@ -61,18 +61,14 @@
             this.buttonViewAlongBeam = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.glControlExpObjects = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlExpAxes = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlExpGonio = new Crystallography.OpenGL.GLControlAlpha();
+ 
             this.numericBoxExp3 = new Crystallography.Controls.NumericBox();
             this.numericBoxExp2 = new Crystallography.Controls.NumericBox();
             this.numericBoxExp1 = new Crystallography.Controls.NumericBox();
             this.numericBoxPhi = new Crystallography.Controls.NumericBox();
             this.numericBoxTheta = new Crystallography.Controls.NumericBox();
             this.numericBoxPsi = new Crystallography.Controls.NumericBox();
-            this.glControlReciProObjects = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlReciProAxes = new Crystallography.OpenGL.GLControlAlpha();
-            this.glControlReciProGonio = new Crystallography.OpenGL.GLControlAlpha();
+
             this.numericBox11 = new Crystallography.Controls.NumericBox();
             this.numericBox12 = new Crystallography.Controls.NumericBox();
             this.numericBox13 = new Crystallography.Controls.NumericBox();
@@ -212,11 +208,9 @@
             this.groupBox1.Controls.Add(this.numericBoxPhi);
             this.groupBox1.Controls.Add(this.numericBoxTheta);
             this.groupBox1.Controls.Add(this.numericBoxPsi);
-            this.groupBox1.Controls.Add(this.glControlReciProObjects);
-            this.groupBox1.Controls.Add(this.glControlReciProAxes);
+
             this.groupBox1.Controls.Add(this.buttonPaste);
             this.groupBox1.Controls.Add(this.buttonCopy);
-            this.groupBox1.Controls.Add(this.glControlReciProGonio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
@@ -429,9 +423,7 @@
             this.groupBox2.Controls.Add(this.checkBoxFix2nd);
             this.groupBox2.Controls.Add(this.checkBoxFix1st);
             this.groupBox2.Controls.Add(this.checkBoxEnable2nd);
-            this.groupBox2.Controls.Add(this.glControlExpObjects);
-            this.groupBox2.Controls.Add(this.glControlExpAxes);
-            this.groupBox2.Controls.Add(this.glControlExpGonio);
+
             this.groupBox2.Controls.Add(this.numericBoxExp3);
             this.groupBox2.Controls.Add(this.numericBoxExp2);
             this.groupBox2.Controls.Add(this.numericBoxExp1);
@@ -572,80 +564,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(351, 47);
             this.panel2.TabIndex = 103;
-            // 
-            // glControlExpObjects
-            // 
-            this.glControlExpObjects.AllowMouseRotation = true;
-            this.glControlExpObjects.AllowMouseScaling = false;
-            this.glControlExpObjects.AllowMouseTranslating = false;
-            this.glControlExpObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlExpObjects.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlExpObjects.DisablingOpenGL = false;
-            this.glControlExpObjects.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpObjects.Location = new System.Drawing.Point(273, 248);
-            this.glControlExpObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlExpObjects.MaxHeight = 1;
-            this.glControlExpObjects.MaxWidth = 1;
-            this.glControlExpObjects.Name = "glControlExpObjects";
-            this.glControlExpObjects.NodeCoefficient = 1;
-            this.glControlExpObjects.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlExpObjects.ProjWidth = 0.8D;
-            this.glControlExpObjects.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlExpObjects.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlExpObjects.Size = new System.Drawing.Size(130, 130);
-            this.glControlExpObjects.TabIndex = 96;
-            this.glControlExpObjects.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlExpObjects.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
-            // 
-            // glControlExpAxes
-            // 
-            this.glControlExpAxes.AllowMouseRotation = true;
-            this.glControlExpAxes.AllowMouseScaling = false;
-            this.glControlExpAxes.AllowMouseTranslating = false;
-            this.glControlExpAxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlExpAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlExpAxes.DisablingOpenGL = false;
-            this.glControlExpAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpAxes.Location = new System.Drawing.Point(273, 114);
-            this.glControlExpAxes.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlExpAxes.MaxHeight = 1;
-            this.glControlExpAxes.MaxWidth = 1;
-            this.glControlExpAxes.Name = "glControlExpAxes";
-            this.glControlExpAxes.NodeCoefficient = 1;
-            this.glControlExpAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlExpAxes.ProjWidth = 2.4D;
-            this.glControlExpAxes.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlExpAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlExpAxes.Size = new System.Drawing.Size(130, 130);
-            this.glControlExpAxes.TabIndex = 96;
-            this.glControlExpAxes.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlExpAxes.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
-            // 
-            // glControlExpGonio
-            // 
-            this.glControlExpGonio.AllowMouseRotation = true;
-            this.glControlExpGonio.AllowMouseScaling = true;
-            this.glControlExpGonio.AllowMouseTranslating = false;
-            this.glControlExpGonio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlExpGonio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlExpGonio.DisablingOpenGL = false;
-            this.glControlExpGonio.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlExpGonio.Location = new System.Drawing.Point(5, 114);
-            this.glControlExpGonio.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlExpGonio.MaxHeight = 1;
-            this.glControlExpGonio.MaxWidth = 1;
-            this.glControlExpGonio.Name = "glControlExpGonio";
-            this.glControlExpGonio.NodeCoefficient = 1;
-            this.glControlExpGonio.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlExpGonio.ProjWidth = 4D;
-            this.glControlExpGonio.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlExpGonio.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlExpGonio.Size = new System.Drawing.Size(264, 264);
-            this.glControlExpGonio.TabIndex = 96;
-            this.glControlExpGonio.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlExpGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
+         
             // 
             // numericBoxExp3
             // 
@@ -895,80 +814,7 @@
             this.numericBoxPsi.UpDown_Increment = 1D;
             this.numericBoxPsi.Value = 0D;
             this.numericBoxPsi.WordWrap = true;
-            // 
-            // glControlReciProObjects
-            // 
-            this.glControlReciProObjects.AllowMouseRotation = true;
-            this.glControlReciProObjects.AllowMouseScaling = false;
-            this.glControlReciProObjects.AllowMouseTranslating = false;
-            this.glControlReciProObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlReciProObjects.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlReciProObjects.DisablingOpenGL = false;
-            this.glControlReciProObjects.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlReciProObjects.Location = new System.Drawing.Point(273, 248);
-            this.glControlReciProObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlReciProObjects.MaxHeight = 1;
-            this.glControlReciProObjects.MaxWidth = 1;
-            this.glControlReciProObjects.Name = "glControlReciProObjects";
-            this.glControlReciProObjects.NodeCoefficient = 1;
-            this.glControlReciProObjects.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlReciProObjects.ProjWidth = 0.8D;
-            this.glControlReciProObjects.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlReciProObjects.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlReciProObjects.Size = new System.Drawing.Size(130, 130);
-            this.glControlReciProObjects.TabIndex = 96;
-            this.glControlReciProObjects.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlReciProObjects.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
-            // 
-            // glControlReciProAxes
-            // 
-            this.glControlReciProAxes.AllowMouseRotation = true;
-            this.glControlReciProAxes.AllowMouseScaling = false;
-            this.glControlReciProAxes.AllowMouseTranslating = false;
-            this.glControlReciProAxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlReciProAxes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlReciProAxes.DisablingOpenGL = false;
-            this.glControlReciProAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlReciProAxes.Location = new System.Drawing.Point(273, 114);
-            this.glControlReciProAxes.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlReciProAxes.MaxHeight = 1;
-            this.glControlReciProAxes.MaxWidth = 1;
-            this.glControlReciProAxes.Name = "glControlReciProAxes";
-            this.glControlReciProAxes.NodeCoefficient = 1;
-            this.glControlReciProAxes.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlReciProAxes.ProjWidth = 2.4D;
-            this.glControlReciProAxes.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlReciProAxes.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlReciProAxes.Size = new System.Drawing.Size(130, 130);
-            this.glControlReciProAxes.TabIndex = 96;
-            this.glControlReciProAxes.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlReciProAxes.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
-            // 
-            // glControlReciProGonio
-            // 
-            this.glControlReciProGonio.AllowMouseRotation = true;
-            this.glControlReciProGonio.AllowMouseScaling = true;
-            this.glControlReciProGonio.AllowMouseTranslating = false;
-            this.glControlReciProGonio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.glControlReciProGonio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.glControlReciProGonio.DisablingOpenGL = false;
-            this.glControlReciProGonio.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.glControlReciProGonio.Location = new System.Drawing.Point(5, 114);
-            this.glControlReciProGonio.Margin = new System.Windows.Forms.Padding(0);
-            this.glControlReciProGonio.MaxHeight = 1;
-            this.glControlReciProGonio.MaxWidth = 1;
-            this.glControlReciProGonio.Name = "glControlReciProGonio";
-            this.glControlReciProGonio.NodeCoefficient = 1;
-            this.glControlReciProGonio.ProjectionMode = Crystallography.OpenGL.GLControlAlpha.ProjectionModes.Orhographic;
-            this.glControlReciProGonio.ProjWidth = 4D;
-            this.glControlReciProGonio.FragShader = Crystallography.OpenGL.GLControlAlpha.FragShaders.ZSORT;
-            this.glControlReciProGonio.RotationMode = Crystallography.OpenGL.GLControlAlpha.RotationModes.Object;
-            this.glControlReciProGonio.Size = new System.Drawing.Size(264, 264);
-            this.glControlReciProGonio.TabIndex = 96;
-            this.glControlReciProGonio.TranslatingMode = Crystallography.OpenGL.GLControlAlpha.TranslatingModes.View;
-            this.glControlReciProGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
+            
             // 
             // numericBox11
             // 
@@ -1424,7 +1270,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonCopy;
         private System.Windows.Forms.Button buttonPaste;
-        private Crystallography.OpenGL.GLControlAlpha glControlReciProGonio;
+
         private System.Windows.Forms.Button buttonViewIsometric;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton1stX;
@@ -1442,14 +1288,11 @@
         private Crystallography.Controls.NumericBox numericBoxExp1;
         private Crystallography.Controls.NumericBox numericBoxExp2;
         private Crystallography.Controls.NumericBox numericBoxExp3;
-        private Crystallography.OpenGL.GLControlAlpha glControlExpGonio;
+
         private System.Windows.Forms.CheckBox checkBoxLink;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
-        private Crystallography.OpenGL.GLControlAlpha glControlReciProObjects;
-        private Crystallography.OpenGL.GLControlAlpha glControlReciProAxes;
-        private Crystallography.OpenGL.GLControlAlpha glControlExpObjects;
-        private Crystallography.OpenGL.GLControlAlpha glControlExpAxes;
+
         private System.Windows.Forms.Button buttonViewAlongBeam;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;

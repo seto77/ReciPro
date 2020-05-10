@@ -60,6 +60,13 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static C4 ToC4(this V3f v, float A) => new C4(v.X, v.Y, v.Z, A);
 
+        /// <summary>
+        /// 拡張メソッド.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static V3d ToV3d(this V3f v) => new V3d(v.X, v.Y, v.Z);
+
         #endregion V4fに関する拡張メソッド
 
 
@@ -80,7 +87,17 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static C4 ToC4(this V4f v) => new C4(v.X, v.Y, v.Z, v.W);
 
+
+        /// <summary>
+        /// 拡張メソッド.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static V3d ToV3d(this V4f v) => new V3d(v.X, v.Y, v.Z);
+
         #endregion V4fに関する拡張メソッド
+
+
 
         #region V4dに関する拡張メソッド
 
@@ -97,6 +114,8 @@ namespace Crystallography.OpenGL
         /// <param name="v"></param>
         /// <returns></returns>
         public static V3f ToV3f(this V4d v) => new V3f((float)v.X, (float)v.Y, (float)v.Z);
+
+
 
         /// <summary>
         /// 拡張メソッド.
@@ -136,6 +155,9 @@ namespace Crystallography.OpenGL
         /// <param name="c"></param>
         /// <returns></returns>
         public static V3f ToV3f(this C4 c) => new V3f(c.R, c.G, c.B);
+
+
+
 
         #endregion C4に関する拡張メソッド
 

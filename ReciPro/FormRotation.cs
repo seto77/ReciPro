@@ -50,10 +50,9 @@ namespace ReciPro
         #endregion
 
         #region フィールド
-
         private bool skip = false;
         public FormMain FormMain;
-
+        (double ambient, double diffuse, double specular, double specularPow, double emission) defaultMat = (0.2, 0.5, 0.6, 4, 0.4);
         #endregion
 
 
@@ -127,6 +126,17 @@ namespace ReciPro
 
         #endregion
 
+
+        private GLControlAlpha glControlReciProObjects;
+        private GLControlAlpha glControlReciProAxes;
+        private GLControlAlpha glControlExpObjects;
+        private GLControlAlpha glControlExpAxes;
+        private GLControlAlpha glControlReciProGonio;
+        private GLControlAlpha glControlExpGonio;
+
+
+        #region コンストラクタ
+
         /// <summary>
         /// 起動時
         /// </summary>
@@ -134,6 +144,124 @@ namespace ReciPro
         /// <param name="e"></param>
         private void FormRotationMatrix_Load(object sender, EventArgs e)
         {
+            #region glControlの追加 (デザイナが壊れるため)
+
+            // 
+            // glControlReciProObjects
+            // 
+            this.glControlReciProObjects = new GLControlAlpha
+            {
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(273, 248),
+                Margin = new Padding(0),
+                Name = "glControlReciProObjects",
+                NodeCoefficient = 1,
+                ProjWidth = 0.8D,
+                Size = new Size(130, 130),
+            };
+            this.glControlReciProObjects.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
+
+            // 
+            // glControlReciProAxes
+            // 
+            this.glControlReciProAxes = new GLControlAlpha
+            {
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(273, 114),
+                Margin = new Padding(0),
+                Name = "glControlReciProAxes",
+                NodeCoefficient = 1,
+                ProjWidth = 2.4D,
+                Size = new Size(130, 130),
+            };
+            glControlReciProAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
+
+            // 
+            // glControlReciProGonio
+            // 
+            this.glControlReciProGonio = new GLControlAlpha
+            {
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(5, 114),
+                Margin = new Padding(0),
+                Name = "glControlReciProGonio",
+                ProjWidth = 4D,
+                Size = new Size(264, 264),
+            };
+            glControlReciProGonio.WorldMatrixChanged += new EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
+
+            // 
+            // glControlExpObjects
+            // 
+            this.glControlExpObjects = new GLControlAlpha
+            {
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(273, 248),
+                Margin = new Padding(0),
+                Name = "glControlExpObjects",
+                ProjWidth = 0.8D,
+                Size = new Size(130, 130),
+            };
+            this.glControlExpObjects.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
+            // 
+            // glControlExpAxes
+            // 
+            this.glControlExpAxes = new GLControlAlpha
+            {
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(273, 114),
+                Margin = new System.Windows.Forms.Padding(0),
+                Name = "glControlExpAxes",
+                ProjWidth = 2.4D,
+                Size = new Size(130, 130),
+            };
+            this.glControlExpAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
+            // 
+            // glControlExpGonio
+            // 
+            this.glControlExpGonio = new GLControlAlpha
+            {
+                AllowMouseTranslating = false,
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                Location = new Point(5, 114),
+                Margin = new Padding(0),
+                Name = "glControlExpGonio",
+                ProjWidth = 4D,
+                Size = new Size(264, 264),
+            };
+            this.glControlExpGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
+
+
+            groupBox2.Controls.Add(glControlExpObjects);
+            groupBox2.Controls.Add(glControlExpAxes);
+            groupBox2.Controls.Add(glControlExpGonio);
+
+            groupBox1.Controls.Add(glControlReciProObjects);
+            groupBox1.Controls.Add(glControlReciProAxes);
+            groupBox1.Controls.Add(glControlReciProGonio);
+
+            #endregion
             glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
             SetRotation();
 
@@ -145,6 +273,10 @@ namespace ReciPro
             numericBoxTheta.TextBoxForeColor = numericBoxExp2.TextBoxForeColor =
             numericBoxPsi.TextBoxForeColor = numericBoxExp3.TextBoxForeColor = Color.FromArgb(255, 255, 255, 255);
         }
+
+        #endregion
+
+
 
         /// <summary>
         /// Link状態の時、FormMainから呼ばれる。rotにもっとも近い回転行列をExperimetal coordinatesの
@@ -244,7 +376,7 @@ namespace ReciPro
         private void setAxes(GLControlAlpha gl)
         {
             gl.DeleteAllObjects();
-            var mat = new Material(C4.White, 0.2, 0.7, 0.8, 50, 0.2);
+            var mat = new Material(C4.White, defaultMat);
             var obj = new List<GLObject>();
             var r = 0.065;
             //X軸
@@ -281,7 +413,7 @@ namespace ReciPro
 
             var r = 0.05;
             var obj = new List<GLObject>();
-            var mat = new Material(C4.White, 0.2, 0.7, 0.8, 50, 0.2);
+            var mat = new Material(C4.White, defaultMat);
 
             var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
 
@@ -353,7 +485,7 @@ namespace ReciPro
 
             var r = 0.05;
             var obj = new List<GLObject>();
-            var mat = new Material(C4.Gray, 0.2, 0.7, 0.8, 50, 0.2);
+            var mat = new Material(C4.Gray, defaultMat);
 
             var rot = Matrix3D.Rot(dir[0], angle[0]);
             if (dir.Length > 1)

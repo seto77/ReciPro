@@ -521,8 +521,7 @@ namespace Crystallography.OpenGL
                 passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
 
                 quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(1, 1, 1, 1, 1, 1, 1, 1, 1), DrawingMode.Surfaces);
-                quad.Generate(Program);
-
+                quad.Generate(Program,false);
             }
             else
             {//Zsortモードの時、DepthTest有効
@@ -734,6 +733,8 @@ namespace Crystallography.OpenGL
 
             if (FragShader == FragShaders.OIT)//oitモードの時
             {
+                
+
                 var bgcolor = BackgroundColor.ToV4f();
                 GL.Uniform4(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
 
@@ -757,6 +758,7 @@ namespace Crystallography.OpenGL
                 GL.UniformMatrix4(viewMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(projMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(worldMatrixIndex, false, ref m4id);
+                quad.Generate(Program, false);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
                 quad?.Render(null);// Draw a screen filler
             }
             else//Zsortモードの時
@@ -902,6 +904,7 @@ namespace Crystallography.OpenGL
 
         private void setDepthCueing()
         {
+            glControl.MakeCurrent();
             GL.Uniform1(depthCueingEnabledIndex, DepthCueing.Enabled ? 1 : 0);
             GL.Uniform1(depthCueingNearIndex, (float)DepthCueing.Znear);
             GL.Uniform1(depthCueingFarIndex, (float)DepthCueing.Zfar);
