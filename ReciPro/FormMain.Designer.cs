@@ -30,7 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -106,6 +105,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -155,8 +155,8 @@
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.timer = new System.Windows.Forms.Timer();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -951,6 +951,7 @@
             this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
             this.groupBoxCurrentDirection.Controls.Add(this.tableLayoutPanel6);
             this.groupBoxCurrentDirection.Controls.Add(this.numericBoxMaxUVW);
+            this.groupBoxCurrentDirection.Controls.Add(this.label7);
             this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
             this.groupBoxCurrentDirection.TabStop = false;
             this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
@@ -1039,6 +1040,12 @@
             this.numericBoxMaxUVW.Value = 30D;
             this.numericBoxMaxUVW.WordWrap = true;
             this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Name = "label7";
             // 
             // toolStrip1
             // 
@@ -1594,6 +1601,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label7;
     }
 }
 

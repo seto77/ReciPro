@@ -15,11 +15,11 @@ namespace Crystallography
         [Key(1)]
         public string Element2;
         [Key(2)]
-        public float MinLength;
+        public float MinLength;//nm単位
         [Key(3)]
-        public float MaxLength;
+        public float MaxLength;//nm単位
         [Key(4)]
-        public float Radius;
+        public float Radius;//nm単位
         [Key(5)]
         public float BondTransParency;
         [Key(6)]
@@ -43,14 +43,20 @@ namespace Crystallography
         [Key(15)]
         public int ArgbEdge;
         
-        public string[] ElementList;
+        
         [Key(16)]
         public bool Enabled = true;
         [Key(17)]
         public bool ShowBond = true;
         [Key(18)]
         public bool UseFixedColor = false;
-        
+
+        public string[] ElementList;
+
+        //2020/05/11追加 (標準の単位をnmに変更したための対処)
+        public bool NanometerUnit = false;
+
+
         [XmlIgnore]
         //[ProtoIgnore]
         [IgnoreMember]
@@ -91,6 +97,8 @@ namespace Crystallography
             EdgeLineWidth = edgeLineWidth;
 
             UseFixedColor = false;
+
+            NanometerUnit = true;
         }
 
         public Bonds(bool enabled,

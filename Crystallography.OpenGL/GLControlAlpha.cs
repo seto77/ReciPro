@@ -115,11 +115,11 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
         /// </summary>
-        public int VersionForZsort { get; } = 330;
+        public int VersionForZsort { get; } = 150;
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
         /// </summary>
-        public string VersionForZsortStr { get => "3.3.0"; }
+        public string VersionForZsortStr { get => "1.5.0"; }
 
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
@@ -457,7 +457,7 @@ namespace Crystallography.OpenGL
 
                 Controls.Clear();
                 // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
+                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat,24 /*GraphicsMode.Default.Depth*/, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
                 glControl = new GLControl(gMode)
                 {
                     AutoScaleMode = AutoScaleMode.Dpi,
@@ -733,8 +733,6 @@ namespace Crystallography.OpenGL
 
             if (FragShader == FragShaders.OIT)//oitモードの時
             {
-                
-
                 var bgcolor = BackgroundColor.ToV4f();
                 GL.Uniform4(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
 
@@ -758,7 +756,7 @@ namespace Crystallography.OpenGL
                 GL.UniformMatrix4(viewMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(projMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(worldMatrixIndex, false, ref m4id);
-                quad.Generate(Program, false);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
+                quad?.Generate(Program, false);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
                 quad?.Render(null);// Draw a screen filler
             }
             else//Zsortモードの時

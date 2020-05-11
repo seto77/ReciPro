@@ -1,4 +1,4 @@
-﻿#version 330 core
+﻿#version 150 core
 
 //#pragma optionNV(ifcvt none)
 //#pragma optionNV(inline all)
@@ -6,9 +6,9 @@
 //#pragma optionNV(unroll all)
 
 // Per-vertex inputs
-layout(location = 2) in vec4 Position;
-layout(location = 3) in vec3 Normal;
-layout(location = 4) in vec4 Color;
+/*layout(location = 2) */in vec4 Position;
+/*layout(location = 3) */in vec3 Normal;
+/*layout(location = 4) */in vec4 Color;
 
 uniform mat4 WorldMatrix; //world matrix
 uniform mat4 ViewMatrix; // view matrix

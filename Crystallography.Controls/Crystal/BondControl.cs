@@ -46,7 +46,7 @@ namespace Crystallography.Controls
             table = dataSet.DataTableBond;
         }
 
-        #region Bondsクラスを画面下部　から生成 /　にセット
+        #region Bondsクラスを画面下部　から生成 /　にセット. 表示の単位は Å だが、中身は nm 単位.
         public Bonds GetFromInterface()
         {
             if (ElementList.Length < 1 || comboBoxBondingAtom1.Text == "" || comboBoxBondingAtom2.Text == "")
@@ -54,8 +54,8 @@ namespace Crystallography.Controls
             else
                 return new Bonds(
                     true, ElementList, comboBoxBondingAtom1.Text, comboBoxBondingAtom2.Text,
-                    numericBoxBondMinLength.Value, numericBoxBondMaxLength.Value,
-                    checkBoxShowBonds.Checked, numericBoxBondRadius.Value, numericBoxBondAlpha.Value,
+                    numericBoxBondMinLength.Value / 10.0, numericBoxBondMaxLength.Value / 10.0,
+                    checkBoxShowBonds.Checked, numericBoxBondRadius.Value / 10.0, numericBoxBondAlpha.Value,
                     checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked, 
                     checkBoxShowInnerBonds.Checked, numericBoxPolyhedronAlpha.Value, 
                     checkBoxShowEdges.Checked,numericBoxEdgeWidth.Value);
@@ -67,9 +67,9 @@ namespace Crystallography.Controls
             checkBoxShowBonds.Checked = b.ShowBond;
             comboBoxBondingAtom1.Text = b.Element1;
             comboBoxBondingAtom2.Text = b.Element2;
-            numericBoxBondMinLength.Value = b.MinLength;
-            numericBoxBondMaxLength.Value = b.MaxLength;
-            numericBoxBondRadius.Value = b.Radius;
+            numericBoxBondMinLength.Value = b.MinLength * 10;
+            numericBoxBondMaxLength.Value = b.MaxLength * 10;
+            numericBoxBondRadius.Value = b.Radius * 10;
             numericBoxBondAlpha.Value = b.BondTransParency;
             colorControlBond.Color = Color.FromArgb(b.ArgbBond);
             numericBoxPolyhedronAlpha.Value = b.PolyhedronTransParency;

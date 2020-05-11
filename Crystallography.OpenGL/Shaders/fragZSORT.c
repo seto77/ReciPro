@@ -1,4 +1,4 @@
-#version 330 core
+#version 150 core
 
 //#pragma optionNV(ifcvt none)
 //#pragma optionNV(inline all)
@@ -32,7 +32,7 @@ in VertexData
 	float Z;//Depth
 } fs_in;
 
-layout(location = 0) out vec4 FragColor;
+/*layout(location = 0) */out vec4 FragColor;
 
 void main()
 {

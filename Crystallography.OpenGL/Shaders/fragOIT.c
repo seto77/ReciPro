@@ -48,7 +48,7 @@ layout(binding = 0, std430) buffer linkedLists {
 	NodeType nodes[];
 };
 
-layout(location = 0) out vec4 FragColor;
+/*layout(location = 0) */out vec4 FragColor;
 
 subroutine void RenderPassType();
 subroutine uniform RenderPassType RenderPass;

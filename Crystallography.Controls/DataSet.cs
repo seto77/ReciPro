@@ -110,8 +110,8 @@ namespace Crystallography.Controls
                 dr[EnabledColumn] = bonds.Enabled;
                 dr[CenterColumn] = bonds.Element1;
                 dr[VertexColumn] = bonds.Element2;
-                dr[_Max_len_Column] = bonds.MaxLength;
-                dr[_Min_len_Column] = bonds.MinLength;
+                dr[_Max_len_Column] = (bonds.MaxLength * 10.0).ToString("f4");//表示はÅ単位
+                dr[_Min_len_Column] = (bonds.MinLength * 10.0).ToString("f4");//表示はÅ単位
                 //dr[Bond_colorColumn] = ColorImage(bonds.ArgbBond);
                 //dr[Polyhedron_colorColumn] = ColorImage(bonds.ArgbPolyhedron);
                 dr[Show_bondsColumn] = bonds.ShowBond;

@@ -36,7 +36,8 @@ namespace Crystallography.Controls
         }
 
         #region　Boundを画面下部から生成 / Boundを画面下部にセット
-        public Bound GetFromInterface() => new Bound(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value/10, colorControl.Argb);
+        public Bound GetFromInterface()
+            => new Bound(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value / 10, colorControl.Argb);
 
         public void SetToInterface(Bound b)
         {

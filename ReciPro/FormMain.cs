@@ -185,6 +185,10 @@ namespace ReciPro
             try { ReadInitialRegistry(); }
             catch { MessageBox.Show("failed reading registries."); }
 
+           
+
+            commonDialog.Text = "Now Loading...Initializing OpenGL.";
+            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.1);
             //ここでglControlコントロールを追加. Mac環境の対応のため。
             try
             {
@@ -208,19 +212,21 @@ namespace ReciPro
                 groupBoxCurrentDirection.Controls.Add(glControlAxes);
                 glControlAxes.Dock = DockStyle.Fill;
                 glControlAxes.BringToFront();
+                glControlAxes.LightPosition = new Vec3(100, 100, 100);
+                glControlAxes.ProjWidth = 2.4;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                #if DEBUG
+                    MessageBox.Show(ex.Message);
+                #endif
+
+                disableOpneGLToolStripMenuItem.Checked = true;
+
                 RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
                 regKey.SetValue("DisableOpenGL", true);
-               // this.Close();
+                // this.Close();
             }
-
-            commonDialog.Text = "Now Loading...Initializing OpenGL.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.1);
-            glControlAxes.LightPosition = new Vec3(100, 100, 100);
-            glControlAxes.ProjWidth = 2.4;
             Application.DoEvents();
 
 
@@ -398,7 +404,10 @@ namespace ReciPro
 
             if (disableOpneGLToolStripMenuItem.Checked)
             {
-                toolStripButtonStructureViewer.Visible = false;
+                toolStripButtonStructureViewer.Enabled = false;
+                toolStripButtonRotation.Enabled = false;
+                if(glControlAxes!=null)
+                    glControlAxes.Visible = false;
             }
             else if (!glControlAxes.VersionRequirement)
             {
@@ -407,7 +416,8 @@ namespace ReciPro
                      "Because ReciPro requires OpenGL ver " + glControlAxes.VersionForZsortStr +
                      " or later for rendering 3D objects, the functions are currently disabled. Sorry."
                      , "Caution!");
-                toolStripButtonStructureViewer.Visible = false;
+                toolStripButtonStructureViewer.Enabled = false;
+                toolStripButtonRotation.Enabled = false;
                 glControlAxes.Visible = false;
             }
         }
@@ -549,7 +559,7 @@ namespace ReciPro
             ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
         }
 
-        #region レジストリ操作
+#region レジストリ操作
 
         //レジストリの読み込み
         private void ReadInitialRegistry()
@@ -734,7 +744,7 @@ namespace ReciPro
             regKey.Close();
         }
 
-        #endregion レジストリ操作
+#endregion レジストリ操作
 
         public bool skipDrawing = false;
 
@@ -769,7 +779,7 @@ namespace ReciPro
             }
         }
 
-        #region ToolStripButtonのイベント
+#region ToolStripButtonのイベント
 
         private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
 
@@ -795,7 +805,7 @@ namespace ReciPro
 
         private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
 
-        #endregion ToolStripButtonのイベント
+#endregion ToolStripButtonのイベント
 
         private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -803,7 +813,7 @@ namespace ReciPro
             formAboutMe.ShowDialog();
         }
 
-        #region 回転ボタン
+#region 回転ボタン
 
         //角度リセットボタン
         private void buttonReset_Click(object sender, EventArgs e)
@@ -864,9 +874,9 @@ namespace ReciPro
             Rotate(rotationAxisAnimation, angle);
         }
 
-        #endregion 回転ボタン
+#endregion 回転ボタン
 
-        #region ベクトルでの回転指定
+#region ベクトルでの回転指定
 
         private void buttonSetVector_Click(object sender, EventArgs e)
         {
@@ -928,9 +938,9 @@ namespace ReciPro
             SetRotation(matrix);
         }
 
-        #endregion ベクトルでの回転指定
+#endregion ベクトルでの回転指定
 
-        #region オイラー角度を直接入力したばあい
+#region オイラー角度を直接入力したばあい
 
         public bool SkipEulerChange = false;
 
@@ -975,9 +985,9 @@ namespace ReciPro
             SkipEulerChange = false;
         }
 
-        #endregion オイラー角度を直接入力したばあい
+#endregion オイラー角度を直接入力したばあい
 
-        #region リストボックス関連
+#region リストボックス関連
 
         private void buttonUpper_Click(object sender, EventArgs e)
         {
@@ -1046,9 +1056,9 @@ namespace ReciPro
             DrawAxes();
         }
 
-        #endregion リストボックス関連
+#endregion リストボックス関連
 
-        #region FileMenu
+#region FileMenu
 
         //結晶データの読み込み
         private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1125,7 +1135,7 @@ namespace ReciPro
             }
         }
 
-        #endregion FileMenu
+#endregion FileMenu
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1204,10 +1214,18 @@ namespace ReciPro
         #region Axisの描画関連
 
         //軸の情報を表示する部分
-        public void DrawAxes() => glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
+        public void DrawAxes()
+        {
+            if (glControlAxes == null) 
+                return;
+            glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
+        }
 
         private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
         {
+            if (glControlAxes == null || Crystal.A==0 || Crystal.B==0 || Crystal.C==0) 
+                return;
+
             var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
             var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
             var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
@@ -1227,14 +1245,11 @@ namespace ReciPro
             glControlAxes.AddObjects(obj);
         }
 
-        private void panelAxes_Paint(object sender, PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            DrawAxes();
-        }
-
         private void glControlAxes_Paint(object sender, PaintEventArgs e)
         {
+            if (glControlAxes == null) 
+                return;
+
             e.Graphics.DrawString("a", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Red), new PointF(0, 0));
             e.Graphics.DrawString("b", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Green), new PointF(14, 0));
             e.Graphics.DrawString("c", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Blue), new PointF(28, 0));
@@ -1242,6 +1257,8 @@ namespace ReciPro
 
         private void panelAxes_MouseDown(object sender, MouseEventArgs e)
         {
+            if (glControlAxes == null) return;
+
             glControlAxes.Focus();
             if (e.Button == MouseButtons.Right && e.Clicks == 2)
             {
@@ -1255,6 +1272,8 @@ namespace ReciPro
 
         private void panelAxes_MouseMove(object sender, MouseEventArgs e)
         {
+            if (glControlAxes == null) return;
+
             if (e.Button == MouseButtons.Left)
             {
                 int dx = e.X - lastPosAxes.X, dy = lastPosAxes.Y - e.Y;
@@ -1263,7 +1282,7 @@ namespace ReciPro
             lastPosAxes = e.Location;
         }
 
-        #endregion Axisの描画関連
+#endregion Axisの描画関連
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1322,7 +1341,7 @@ namespace ReciPro
         private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
             => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
-        #region ProgramUpdates
+#region ProgramUpdates
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripProgressBar.Visible = true;
@@ -1408,7 +1427,7 @@ namespace ReciPro
         private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
             => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
-        #endregion
+#endregion
 
         private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
 

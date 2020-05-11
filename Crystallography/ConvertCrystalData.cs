@@ -85,16 +85,31 @@ namespace Crystallography
                     {
                         System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
                         cry = (Crystal[])serializer.Deserialize(fs);
-                        //fs.Close();
+                        #region //Bondクラスの単位を オングストロームからnmに変更したための対処
+                        foreach(var c in cry)
+                        {
+                            foreach(var b in c.Bonds)
+                                if(!b.NanometerUnit)
+                                {
+                                    b.MaxLength *= 0.1f;
+                                    b.MinLength *= 0.1f;
+                                    b.Radius *= 0.1f;
+                                    b.NanometerUnit = true;
+                                }
+                        }    
+
+                        #endregion
+
+
                     }
                 }
                 catch { }
             }
             else if (filename.EndsWith("out"))//SMAP形式を読み込んだとき
             {
-                List<string> stringList = new List<string>();
+                var stringList = new List<string>();
                 string strTemp;
-                System.IO.StreamReader reader = new System.IO.StreamReader(filename);
+                var reader = new System.IO.StreamReader(filename);
                 while ((strTemp = reader.ReadLine()) != null)
                     stringList.Add(strTemp);
                 reader.Close();
@@ -856,7 +871,7 @@ namespace Crystallography
                 if (list2.Contains(e1) && list2.Contains(e2))
                 {
                     bonds.Add(new Bonds(true, list, list[list2.IndexOf(e1)], list[list2.IndexOf(e2)],
-                        min, max, true, 0.1, 1, false, true, true, true, 0.7, true, 0));
+                        min / 10.0, max / 10.0, true, 0.01, 1, false, true, true, true, 0.7, true, 0));
                 }
             }
             c.Bonds = bonds.ToArray();
