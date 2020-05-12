@@ -190,7 +190,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 46</value>
+    <value>367, 72</value>
   </data>
   <data name="buttonSetRange2.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -223,7 +223,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 95</value>
+    <value>367, 125</value>
   </data>
   <data name="buttonSetRange4.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 72</value>
+    <value>367, 98</value>
   </data>
   <data name="buttonSetRange3.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -378,6 +378,39 @@
   <data name="&gt;&gt;buttonSetCenter3.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="buttonSetRange0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSetRange0.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
+  </data>
+  <data name="buttonSetRange0.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSetRange0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 20</value>
+  </data>
+  <data name="buttonSetRange0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 26</value>
+  </data>
+  <data name="buttonSetRange0.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonSetRange0.Text" xml:space="preserve">
+    <value>(±¼ ±¼ ±¼)</value>
+  </data>
+  <data name="&gt;&gt;buttonSetRange0.Name" xml:space="preserve">
+    <value>buttonSetRange0</value>
+  </data>
+  <data name="&gt;&gt;buttonSetRange0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSetRange0.Parent" xml:space="preserve">
+    <value>tabPageBoundUnitcell</value>
+  </data>
+  <data name="&gt;&gt;buttonSetRange0.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="buttonSetRange1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -388,7 +421,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 20</value>
+    <value>367, 46</value>
   </data>
   <data name="buttonSetRange1.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 26</value>
@@ -409,7 +442,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;buttonSetRange1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="numericBoxCRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -460,13 +493,13 @@
     <value>numericBoxCRange</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="numericBoxBRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -517,13 +550,13 @@
     <value>numericBoxBRange</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="numericBoxARange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -574,13 +607,13 @@
     <value>numericBoxARange</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="numericBoxCCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -631,13 +664,13 @@
     <value>numericBoxCCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="numericBoxBCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -688,13 +721,13 @@
     <value>numericBoxBCenter</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="numericBoxACenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -745,13 +778,13 @@
     <value>numericBoxACenter</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -784,7 +817,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -817,7 +850,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -850,7 +883,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -883,7 +916,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="tabPageBoundUnitcell.Location" type="System.Drawing.Point, System.Drawing">
     <value>47, 4</value>
@@ -1063,7 +1096,7 @@
     <value>numericBoxBoundPlanesOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -1478,7 +1511,7 @@
     <value>numericBoxCellPlaneAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellPlaneAlpha.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1532,7 +1565,7 @@
     <value>colorControlCellPlane</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1586,7 +1619,7 @@
     <value>colorControlCellEdge</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1643,7 +1676,7 @@
     <value>numericBoxCellTransrationC</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationC.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1700,7 +1733,7 @@
     <value>numericBoxCellTransrationB</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -1757,7 +1790,7 @@
     <value>numericBoxCellTransrationA</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTransrationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -2231,7 +2264,7 @@
     <value>numericBoxLatticePlaneOpacity</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -2318,7 +2351,7 @@
     <value>atomCoordinateTable1</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Parent" xml:space="preserve">
     <value>tabPageCoordinateInfromatin</value>
@@ -2536,6 +2569,33 @@
   <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="checkBoxGroupByElement.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGroupByElement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 25</value>
+  </data>
+  <data name="checkBoxGroupByElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 21</value>
+  </data>
+  <data name="checkBoxGroupByElement.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxGroupByElement.Text" xml:space="preserve">
+    <value>Group by element</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGroupByElement.Name" xml:space="preserve">
+    <value>checkBoxGroupByElement</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGroupByElement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGroupByElement.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGroupByElement.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxLegendSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -2585,13 +2645,13 @@
     <value>numericBoxLegendSize</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericBoxAxesSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2642,13 +2702,13 @@
     <value>numericBoxAxesSize</value>
   </data>
   <data name="&gt;&gt;numericBoxAxesSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxesSize.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;numericBoxAxesSize.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="numericBoxLightSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2699,19 +2759,19 @@
     <value>numericBoxLightSize</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 52</value>
+    <value>636, 52</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2759,7 +2819,7 @@
     <value>0</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 55</value>
+    <value>504, 131</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 52</value>
@@ -2813,7 +2873,7 @@
     <value>0</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 0</value>
+    <value>504, 76</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 52</value>
@@ -2897,7 +2957,7 @@
     <value>trackBarAdvancedDepthCueingNear</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Type" xml:space="preserve">
-    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Parent" xml:space="preserve">
     <value>groupBoxDepthCueing</value>
@@ -2969,7 +3029,7 @@
     <value>trackBarAdvancedDepthCueingFar</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Type" xml:space="preserve">
-    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.9.1104, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.5.12.1127, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Parent" xml:space="preserve">
     <value>groupBoxDepthCueing</value>

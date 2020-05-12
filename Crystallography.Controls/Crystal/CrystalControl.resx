@@ -169,7 +169,7 @@
     <value>numericBoxZnumber</value>
   </data>
   <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -226,7 +226,7 @@
     <value>numericBoxVolume</value>
   </data>
   <data name="&gt;&gt;numericBoxVolume.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxVolume.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -283,7 +283,7 @@
     <value>numericBoxDensity</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -337,7 +337,7 @@
     <value>colorControl</value>
   </data>
   <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -427,7 +427,7 @@
     <value>symmetryControl</value>
   </data>
   <data name="&gt;&gt;symmetryControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.SymmetryControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.SymmetryControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symmetryControl.Parent" xml:space="preserve">
     <value>panel5</value>
@@ -520,7 +520,7 @@
     <value>atomControl</value>
   </data>
   <data name="&gt;&gt;atomControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;atomControl.Parent" xml:space="preserve">
     <value>tabPageAtom</value>
@@ -667,7 +667,7 @@
     <value>bondControl</value>
   </data>
   <data name="&gt;&gt;bondControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bondControl.Parent" xml:space="preserve">
     <value>tabPageBondsPolyhedra</value>
@@ -1096,7 +1096,7 @@
     <value>numericBoxEOS_C</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_C.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_C.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1153,7 +1153,7 @@
     <value>numericBoxEOS_B</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_B.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_B.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1273,7 +1273,7 @@
     <value>numericBoxEOS_A</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_A.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_A.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1330,7 +1330,7 @@
     <value>numericBoxEOS_KperT</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KperT.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KperT.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1387,7 +1387,7 @@
     <value>numericBoxEOS_Gamma0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Gamma0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Gamma0.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2035,7 +2035,7 @@
     <value>numericBoxEOS_Theta0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Theta0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Theta0.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2092,7 +2092,7 @@
     <value>numericBoxEOS_Q</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Q.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Q.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2461,7 +2461,7 @@
     <value>numericalTextBoxEOS_V0perMol</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxEOS_V0perMol.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxEOS_V0perMol.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2518,7 +2518,7 @@
     <value>numericBoxEOS_V0perCell</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perCell.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perCell.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2575,7 +2575,7 @@
     <value>numericBoxEOS_KT0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KT0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KT0.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2797,7 +2797,7 @@
     <value>numericBoxEOS_KprimeT0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KprimeT0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KprimeT0.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2941,7 +2941,7 @@
     <value>numericBoxEOS_T0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_T0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_T0.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -2998,7 +2998,7 @@
     <value>numericalTextBoxTemperature</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTemperature.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTemperature.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -3055,7 +3055,7 @@
     <value>numericBoxPressure</value>
   </data>
   <data name="&gt;&gt;numericBoxPressure.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPressure.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -3109,7 +3109,7 @@
     <value>elasticityControl1</value>
   </data>
   <data name="&gt;&gt;elasticityControl1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ElasticityControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ElasticityControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;elasticityControl1.Parent" xml:space="preserve">
     <value>tabPageElasticity</value>
@@ -3193,7 +3193,7 @@
     <value>numericalTextBoxHill</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxHill.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxHill.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3827,7 +3827,7 @@
     <value>numericalTextBoxStress33</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress33.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3884,7 +3884,7 @@
     <value>numericalTextBoxStress22</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress22.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3941,7 +3941,7 @@
     <value>numericalTextBoxStress11</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress11.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3998,7 +3998,7 @@
     <value>numericalTextBoxStress23</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress23.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4055,7 +4055,7 @@
     <value>numericalTextBoxStress13</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress13.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4112,7 +4112,7 @@
     <value>numericalTextBoxStress12</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStress12.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4169,7 +4169,7 @@
     <value>numericalTextBoxStrain33</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain33.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4226,7 +4226,7 @@
     <value>numericalTextBoxStrain11</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain11.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4283,7 +4283,7 @@
     <value>numericalTextBoxStrain22</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain22.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4340,7 +4340,7 @@
     <value>numericalTextBoxStrain12</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain12.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4397,7 +4397,7 @@
     <value>numericalTextBoxStrain23</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain23.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4454,7 +4454,7 @@
     <value>numericalTextBoxStrain13</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxStrain13.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4559,7 +4559,7 @@
     <value>poleFigureControl</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.PoleFigureControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.PoleFigureControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Parent" xml:space="preserve">
     <value>tabPagePolycrystalline</value>
@@ -4943,7 +4943,7 @@
     <value>boundControl</value>
   </data>
   <data name="&gt;&gt;boundControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.BoundControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.BoundControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;boundControl.Parent" xml:space="preserve">
     <value>tabPageBounds</value>
@@ -5000,7 +5000,7 @@
     <value>latticePlaneControl</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.LatticePlaneControl, Crystallography.Controls, Version=2020.5.11.912, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.LatticePlaneControl, Crystallography.Controls, Version=2020.5.12.841, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.Parent" xml:space="preserve">
     <value>tabPageLatticePlane</value>

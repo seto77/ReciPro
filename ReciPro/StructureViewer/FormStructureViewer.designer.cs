@@ -166,6 +166,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonSetRange0 = new System.Windows.Forms.Button();
+            this.checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -264,6 +266,7 @@
             this.tabPageBoundUnitcell.Controls.Add(this.buttonSetCenter1);
             this.tabPageBoundUnitcell.Controls.Add(this.buttonCenter2);
             this.tabPageBoundUnitcell.Controls.Add(this.buttonSetCenter3);
+            this.tabPageBoundUnitcell.Controls.Add(this.buttonSetRange0);
             this.tabPageBoundUnitcell.Controls.Add(this.buttonSetRange1);
             this.tabPageBoundUnitcell.Controls.Add(this.numericBoxCRange);
             this.tabPageBoundUnitcell.Controls.Add(this.numericBoxBRange);
@@ -1098,6 +1101,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxGroupByElement);
             this.groupBox2.Controls.Add(this.numericBoxLegendSize);
             this.groupBox2.Controls.Add(this.numericBoxAxesSize);
             this.groupBox2.Controls.Add(this.numericBoxLightSize);
@@ -1626,6 +1630,21 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
+            // buttonSetRange0
+            // 
+            resources.ApplyResources(this.buttonSetRange0, "buttonSetRange0");
+            this.buttonSetRange0.Name = "buttonSetRange0";
+            this.buttonSetRange0.Tag = "0.25";
+            this.buttonSetRange0.UseVisualStyleBackColor = true;
+            this.buttonSetRange0.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // checkBoxGroupByElement
+            // 
+            resources.ApplyResources(this.checkBoxGroupByElement, "checkBoxGroupByElement");
+            this.checkBoxGroupByElement.Name = "checkBoxGroupByElement";
+            this.checkBoxGroupByElement.UseVisualStyleBackColor = true;
+            this.checkBoxGroupByElement.CheckedChanged += new System.EventHandler(this.numericBoxLegendSize_ValueChanged);
+            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -1674,6 +1693,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBoxDepthCueing.ResumeLayout(false);
@@ -1820,5 +1840,7 @@
         private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedDepthCueingFar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonSetRange0;
+        private System.Windows.Forms.CheckBox checkBoxGroupByElement;
     }
 }

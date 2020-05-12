@@ -4,6 +4,12 @@ using System.Drawing;
 using System.Text;
 using System.Linq;
 using System.IO;
+using System.Linq.Expressions;
+using System.Linq.Dynamic;
+using MathNet.Numerics.LinearAlgebra.Complex;
+using OpenTK;
+using System.Linq.Dynamic.Core;
+using V3 = OpenTK.Vector3d;
 
 namespace Crystallography
 {
@@ -282,7 +288,7 @@ namespace Crystallography
                     }
                     return crystal;
                 }
-                catch
+                catch (Exception e)
                 {
                     return null;
                 }
@@ -2009,15 +2015,14 @@ namespace Crystallography
             }
             //ここまででCIF_Groupクラスのリストが完成
 
-            //重複するCIFのlabelがあったときは、最初を残して、あとは削除する
-
-            for (int i = 0; i < CIF.Count; i++)
-                for (int j = i + 1; j < CIF.Count; j++)
-                    if (CIF[i].items.Count == 1 && CIF[j].items.Count == 1 && CIF[i].items[0].label == CIF[j].items[0].label)
-                    {
-                        CIF.RemoveAt(j);
-                        j--;
-                    }
+            //重複するCIFのlabelがあったときは、最初を残して、あとは削除する => 消す必要なし. 
+            //for (int i = 0; i < CIF.Count; i++)
+            //    for (int j = i + 1; j < CIF.Count; j++)
+            //        if (CIF[i].items.Count == 1 && CIF[j].items.Count == 1 && CIF[i].items[0].label == CIF[j].items[0].label)
+            //        {
+            //            CIF.RemoveAt(j);
+            //            j--;
+            //        }
 
             double a = 0, b = 0, c = 0, alpha = 90, beta = 90, gamma = 90;
             double a_err = 0, b_err = 0, c_err = 0, alpha_err = 0, beta_err = 0, gamma_err = 0;
@@ -2026,6 +2031,8 @@ namespace Crystallography
             string journal = "", spaceGroupNameHM = "", spaceGroupNameHall = "", chemical_formula_sum = "", chemical_formula_structural = "";
             int symmetry_Int_Tables_number = -1;
             List<string> author = new List<string>();
+            List<string> operations = new List<string>();
+
 
             for (int i = 0; i < CIF.Count; i++)
                 for (int j = 0; j < CIF[i].items.Count; j++)
@@ -2088,11 +2095,19 @@ namespace Crystallography
                         case "_symmetry_Int_Tables_number": int.TryParse(data, out symmetry_Int_Tables_number); break;
                         case "_chemical_formula_sum": chemical_formula_sum = data; break;
                         case "_chemical_formula_structural": chemical_formula_structural = data; break;
+                        case "_space_group_symop_operation_xyz": operations.Add(data);break;
+                        case "_symmetry_equiv_pos_as_xyz": operations.Add(data);break;
                     }
                 }
+
+
             if (name == "" || name == "?" || name == "? ?" || name.Trim() == "")
                 name = chemical_formula_sum;
 
+
+
+            #region 空間群を調べる部分
+            //空間群を検索
             int sgnum = 0;
             if (spaceGroupNameHM == "" && spaceGroupNameHall == "")
                 sgnum = 0;
@@ -2100,6 +2115,61 @@ namespace Crystallography
                 sgnum = SearchSGseriesNumberForCIF(spaceGroupNameHM, spaceGroupNameHall, symmetry_Int_Tables_number, a, b, c, alpha, beta, gamma);
             if (sgnum == -1)
                 return null;
+
+            #region 対象操作がCIFファイル中に記載されている場合は、本当に現在の空間群でよいかどうかをチェック
+            var p = new V3(0.111, 0.234, 0.457);//適当な一般位置
+            var tempAtom = WyckoffPosition.GetEquivalentAtomsPosition((p.X, p.Y, p.Z), sgnum).Atom;
+            var shift = new V3(0, 0, 0);
+            if (operations.Count != 0 && operations.Count == tempAtom.Count)
+            {
+                var th = 0.0000001;
+                var prms = new[] { "x", "y", "z" }.Select(s => Expression.Parameter(typeof(double), s)).ToArray();
+                //文字列からラムダ式を返すローカル関数
+                Func<double, double, double, V3> func(string sExpr)
+                {
+                    try
+                    {
+                        sExpr = sExpr.Replace(",+", ",").TrimStart(new[] { '+' });
+                        sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}";//分子に小数点を加える
+                       
+                        var f = DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
+                        return (x, y, z) => { var d = f(x, y, z); return new V3(d[0], d[1], d[2]); };
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
+                    }
+                }
+
+                var funcs = operations.Select(s => func(s)).ToArray();
+                if (funcs.All(f => f != null))
+                {
+                    var shiftCandidates = new[] { 0, 0.125, 0.25, -0.125, -0.25 };
+
+                    var temp = tempAtom.Select(a => norm(new V3(a.X, a.Y, a.Z))).ToList();
+                    temp.Sort((o1, o2) => Math.Abs(o1.X-o2.X)> th ? o1.X.CompareTo(o2.X) : (Math.Abs(o1.Y - o2.Y)>th ? o1.Y.CompareTo(o2.Y) : o1.Z.CompareTo(o2.Z)));
+                    var source = temp.Select((pos, i) => (pos, i)).ToList();
+
+                    var match = false;
+                    foreach (var sX in shiftCandidates)
+                        foreach (var sY in shiftCandidates)
+                            foreach (var sZ in shiftCandidates)
+                                if (!match)
+                                {
+                                    var target = funcs.Select(f => f(p.X + sX, p.Y + sY, p.Z + sZ)).Select(r => norm(new V3(r.X - sX, r.Y - sY, r.Z - sY))).ToList();
+                                    target.Sort((o1, o2) => Math.Abs(o1.X - o2.X) > th ? o1.X.CompareTo(o2.X) : (Math.Abs(o1.Y - o2.Y) > th ? o1.Y.CompareTo(o2.Y) : o1.Z.CompareTo(o2.Z)));
+                                    if (source.All(o => (o.pos - target[o.i]).Length < th))
+                                    {
+                                        match = true;
+                                        shift = new V3(sX, sY, sZ);
+                                    }
+
+                                }
+                }
+            }
+            #endregion
+
+            #endregion
 
             bool isHex = (sgnum >= 430 && sgnum <= 488);
 
@@ -2152,17 +2222,17 @@ namespace Crystallography
                         case "_atom_site_type_symbol": atomSymbol = data; break;
                         case "_atom_site_label": atomLabel = data; break;
                         case "_atom_site_fract_x":
-                            x = ConvertToDoubleForCIF(data, isHex);
+                            x = ConvertToDoubleForCIF(data, isHex)+ shift.X;
                             x_err = ConvertErrForCIF(data);
                             break;
 
                         case "_atom_site_fract_y":
-                            y = ConvertToDoubleForCIF(data, isHex);
+                            y = ConvertToDoubleForCIF(data, isHex) + shift.Y;
                             y_err = ConvertErrForCIF(data);
                             break;
 
                         case "_atom_site_fract_z":
-                            z = ConvertToDoubleForCIF(data, isHex);
+                            z = ConvertToDoubleForCIF(data, isHex) + shift.Z;
                             z_err = ConvertErrForCIF(data);
                             break;
 
@@ -2312,6 +2382,8 @@ namespace Crystallography
                 }
             }
 
+
+
             if (journalNameFull != "" || journalCodenASTM != "") journal += journalNameFull + " " + journalCodenASTM;
             if (issue != "") journal += ", " + issue;
             if (volume != "") journal += ", " + volume;
@@ -2348,6 +2420,19 @@ namespace Crystallography
             SetOpenGL_property(crystal);
 
             return crystal;
+        }
+
+        private static V3 norm(V3 v)
+        {
+            var d = new[] { v.X, v.Y, v.Z };
+            for (int i = 0; i < 3; i++)
+            {
+                while (d[i] > 0.9999999)
+                    d[i]--;
+                while (d[i] < -0.0000001)
+                    d[i]++;
+            }
+            return new V3(d[0],d[1],d[2]);
         }
 
         private static double ConvertToDoubleForCIF(string x)

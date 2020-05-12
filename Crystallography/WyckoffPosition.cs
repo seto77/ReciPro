@@ -171,7 +171,7 @@ namespace Crystallography
         /// <param name="Pos"></param>
         /// <param name="SymmetrySeriesNumber"></param>
         /// <returns></returns>
-        public static Atoms GetEquivalentAtomsPosition(Vector3D Pos, int SymmetrySeriesNumber)
+        public static Atoms GetEquivalentAtomsPosition((double X, double Y, double Z) Pos, int SymmetrySeriesNumber)
         {
             Atoms atoms = new Atoms();
             var wykc = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber];
@@ -208,5 +208,7 @@ namespace Crystallography
             }
             return atoms;
         }
+        public static Atoms GetEquivalentAtomsPosition(Vector3D Pos, int SymmetrySeriesNumber)
+            => GetEquivalentAtomsPosition((Pos.X, Pos.Y, Pos.Z), SymmetrySeriesNumber);
     }
 }

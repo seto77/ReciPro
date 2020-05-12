@@ -1298,15 +1298,22 @@ namespace ReciPro
                 var size = new Size(numericBoxLegendSize.ValueInteger, numericBoxLegendSize.ValueInteger);
                 glControlMain.SkipRendering = true;
 
-                var atoms = atomControl.GetAll();
-                if (atoms.Length == 0)
+                var atoms = atomControl.GetAll().ToList();
+                if (atoms.Count == 0)
                     return;
+
+                if(checkBoxGroupByElement.Checked)
+                {
+                    foreach (var num in atoms.Select(a => a.AtomicNumber).Distinct().ToList())
+                        while (atoms.Count(a => a.AtomicNumber == num) > 1)
+                            atoms.Remove(atoms.First(a => a.AtomicNumber == num));
+                }
 
                 flowLayoutPanelLegend.SuspendLayout();
 
-                for (int i = 0; i < Math.Max(atoms.Length, legendControls.Count); i++)
+                for (int i = 0; i < Math.Max(atoms.Count, legendControls.Count); i++)
                 {
-                    if (i < atoms.Length)
+                    if (i < atoms.Count)
                     {
                         if (legendControls.Count <= i)
                         {
@@ -1339,7 +1346,8 @@ namespace ReciPro
                             legendPanels[i].Controls.Add(legendControls[i]);
                             legendPanels[i].Controls.Add(legendLabels[i]);
                         }
-                        legendLabels[i].Text = atoms[i].Label;
+                        legendLabels[i].Text = checkBoxGroupByElement.Checked ?
+                            atoms[i].AtomicNumber.ToString() +": "+ AtomConstants.AtomicName(atoms[i].AtomicNumber) : atoms[i].Label;
                         legendControls[i].DeleteAllObjects();
                         legendControls[i].Size = size;
                         
@@ -1351,7 +1359,7 @@ namespace ReciPro
                 flowLayoutPanelLegend.ResumeLayout();
 
                 var maxRadius = atoms.Max(a => a.Radius);
-                for (int i = 0; i < atoms.Length; i++)
+                for (int i = 0; i < atoms.Count; i++)
                 {
                     legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2 + 3, 0, 0, 0);
                     legendControls[i].AddObjects(
