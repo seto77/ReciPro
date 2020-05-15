@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Crystallography
@@ -187,14 +188,27 @@ namespace Crystallography
 
             for (int j = wykc.Length - 1; j >= 0; j--)
             {
-                if (wykc[j].CheckPosition(Pos.X, Pos.Y, Pos.Z))
-                {
-                    multi = wykc[j].Multiplicity;
-                    wyckLet = wykc[j].WyckoffLetter;
-                    siteSym = wykc[j].SiteSymmetry;
-                    wyckNum = j;
+
+                //2020/05/15 一部のtrigonal, hexagonalで正しい判定が出来ない問題の対応
+                // (0.2, 0.1, 0)という座標は (x, -x, 0), (x, 2x, 0), (-2x, -x, 0)というワイコフ位置 (P321, 3j)
+                // にもかかわらず、正しく判定することが出来ない. そのため、もっとも低対称性で再生した位置全てに対して判定を
+                // おこない、一回でもOKだったらそのワイコフ位置だと判定する
+
+                var pos = SymmetrySeriesNumber >= 438 && SymmetrySeriesNumber <= 488 ?
+                    atoms.Atom.Select(a => (a.X, a.Y, a.Z)).ToArray() : new[] { (Pos.X, Pos.Y, Pos.Z) };
+
+
+                foreach (var p in pos)
+                    if (wykc[j].CheckPosition(p.X,p.Y,p.Z))
+                    {
+                        multi = wykc[j].Multiplicity;
+                        wyckLet = wykc[j].WyckoffLetter;
+                        siteSym = wykc[j].SiteSymmetry;
+                        wyckNum = j;
+                        break;
+                    }
+                if (multi != 0)
                     break;
-                }
             }
 
             if (atoms.WyckoffLeter.ToCharArray()[0] > wyckLet.ToCharArray()[0])
