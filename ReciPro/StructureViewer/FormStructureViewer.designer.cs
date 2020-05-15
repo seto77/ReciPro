@@ -52,6 +52,7 @@
             this.buttonSetCenter1 = new System.Windows.Forms.Button();
             this.buttonCenter2 = new System.Windows.Forms.Button();
             this.buttonSetCenter3 = new System.Windows.Forms.Button();
+            this.buttonSetRange0 = new System.Windows.Forms.Button();
             this.buttonSetRange1 = new System.Windows.Forms.Button();
             this.numericBoxCRange = new Crystallography.Controls.NumericBox();
             this.numericBoxBRange = new Crystallography.Controls.NumericBox();
@@ -107,6 +108,7 @@
             this.labelOpenGLversion = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             this.numericBoxLegendSize = new Crystallography.Controls.NumericBox();
             this.numericBoxAxesSize = new Crystallography.Controls.NumericBox();
             this.numericBoxLightSize = new Crystallography.Controls.NumericBox();
@@ -123,7 +125,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxProjectionMode = new System.Windows.Forms.ComboBox();
             this.trackBarPerspective = new System.Windows.Forms.TrackBar();
-            this.buttonLikeVesta = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonCrystalAxes = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLightDirection = new System.Windows.Forms.ToolStripButton();
@@ -131,6 +132,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonLikeVesta = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,8 +168,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSetRange0 = new System.Windows.Forms.Button();
-            this.checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -328,6 +328,14 @@
             this.buttonSetCenter3.Tag = "0.5";
             this.buttonSetCenter3.UseVisualStyleBackColor = true;
             this.buttonSetCenter3.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
+            // 
+            // buttonSetRange0
+            // 
+            resources.ApplyResources(this.buttonSetRange0, "buttonSetRange0");
+            this.buttonSetRange0.Name = "buttonSetRange0";
+            this.buttonSetRange0.Tag = "0.25";
+            this.buttonSetRange0.UseVisualStyleBackColor = true;
+            this.buttonSetRange0.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
             // 
             // buttonSetRange1
             // 
@@ -1095,7 +1103,6 @@
             this.tabPage1.Controls.Add(this.checkBoxDepthCueing);
             this.tabPage1.Controls.Add(this.groupBoxDepthCueing);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.buttonLikeVesta);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
@@ -1108,6 +1115,13 @@
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // checkBoxGroupByElement
+            // 
+            resources.ApplyResources(this.checkBoxGroupByElement, "checkBoxGroupByElement");
+            this.checkBoxGroupByElement.Name = "checkBoxGroupByElement";
+            this.checkBoxGroupByElement.UseVisualStyleBackColor = true;
+            this.checkBoxGroupByElement.CheckedChanged += new System.EventHandler(this.numericBoxLegendSize_ValueChanged);
             // 
             // numericBoxLegendSize
             // 
@@ -1341,13 +1355,6 @@
             this.trackBarPerspective.Value = 100;
             this.trackBarPerspective.Scroll += new System.EventHandler(this.trackBarPerspective_Scroll);
             // 
-            // buttonLikeVesta
-            // 
-            resources.ApplyResources(this.buttonLikeVesta, "buttonLikeVesta");
-            this.buttonLikeVesta.Name = "buttonLikeVesta";
-            this.buttonLikeVesta.UseVisualStyleBackColor = true;
-            this.buttonLikeVesta.Click += new System.EventHandler(this.buttonLikeVesta_Click);
-            // 
             // toolStrip1
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
@@ -1357,9 +1364,9 @@
             this.toolStripButtonLegend,
             this.toolStripSeparator3,
             this.toolStripLabelStatusInitialization,
-            this.toolStripLabelStatusRendering});
+            this.toolStripLabelStatusRendering,
+            this.toolStripButtonLikeVesta});
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Stretch = true;
             // 
             // toolStripButtonCrystalAxes
@@ -1407,6 +1414,16 @@
             // 
             this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
             resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
+            // 
+            // toolStripButtonLikeVesta
+            // 
+            this.toolStripButtonLikeVesta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonLikeVesta.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.toolStripButtonLikeVesta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLikeVesta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.toolStripButtonLikeVesta, "toolStripButtonLikeVesta");
+            this.toolStripButtonLikeVesta.Name = "toolStripButtonLikeVesta";
+            this.toolStripButtonLikeVesta.Click += new System.EventHandler(this.toolStripButtonLikeVesta_Click);
             // 
             // menuStrip1
             // 
@@ -1529,7 +1546,7 @@
             // 
             this.iLikeVESTAToolStripMenuItem.Name = "iLikeVESTAToolStripMenuItem";
             resources.ApplyResources(this.iLikeVESTAToolStripMenuItem, "iLikeVESTAToolStripMenuItem");
-            this.iLikeVESTAToolStripMenuItem.Click += new System.EventHandler(this.buttonLikeVesta_Click);
+            this.iLikeVESTAToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonLikeVesta_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -1629,21 +1646,6 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // buttonSetRange0
-            // 
-            resources.ApplyResources(this.buttonSetRange0, "buttonSetRange0");
-            this.buttonSetRange0.Name = "buttonSetRange0";
-            this.buttonSetRange0.Tag = "0.25";
-            this.buttonSetRange0.UseVisualStyleBackColor = true;
-            this.buttonSetRange0.Click += new System.EventHandler(this.buttonSetCenterOrRange_Click);
-            // 
-            // checkBoxGroupByElement
-            // 
-            resources.ApplyResources(this.checkBoxGroupByElement, "checkBoxGroupByElement");
-            this.checkBoxGroupByElement.Name = "checkBoxGroupByElement";
-            this.checkBoxGroupByElement.UseVisualStyleBackColor = true;
-            this.checkBoxGroupByElement.CheckedChanged += new System.EventHandler(this.numericBoxLegendSize_ValueChanged);
             // 
             // FormStructureViewer
             // 
@@ -1819,7 +1821,6 @@
         private Crystallography.Controls.NumericBox numericBoxAxesSize;
         private Crystallography.Controls.NumericBox numericBoxLegendSize;
         private System.Windows.Forms.Button buttonSetRange4;
-        private System.Windows.Forms.Button buttonLikeVesta;
         private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
         private System.Windows.Forms.Label labelGraphicsDriver;
@@ -1842,5 +1843,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonSetRange0;
         private System.Windows.Forms.CheckBox checkBoxGroupByElement;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
     }
 }

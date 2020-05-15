@@ -61,7 +61,7 @@ namespace Crystallography.Controls
                 dr.k = bound.Index.K;
                 dr.l = bound.Index.L;
                 dr.Equivalency = bound.Equivalency;
-                dr.Distance = bound.Distance.ToString("f3");
+                dr.Distance = (bound.Distance * 10).ToString("f3");
                 dr.MultipleOfD = bound.MultipleOfD.ToString("f3");
 
                 dr.Color = ColorImage(bound.ColorArgb);

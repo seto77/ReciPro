@@ -13,6 +13,8 @@ namespace Crystallography
     [Serializable()]
     public class Atoms : System.IEquatable<Atoms>, ICloneable
     {
+
+        
         public object Clone()
         {
             Atoms atoms = (Atoms)this.MemberwiseClone();
@@ -23,7 +25,7 @@ namespace Crystallography
 
         public int ID;
 
-        [XmlIgnoreAttribute]
+        [XmlIgnore]
         public List<Vector3D> Atom = new List<Vector3D>();
 
         public double X, Y, Z;
@@ -37,16 +39,16 @@ namespace Crystallography
 
         public string Label;
 
-        [XmlIgnoreAttribute]
+        [XmlIgnore]
         public string ElementName;
 
-        [XmlIgnoreAttribute]
+        [XmlIgnore]
         public string WyckoffLeter, SiteSymmetry;
 
-        [XmlIgnoreAttribute]
+        [XmlIgnore]
         public int WyckoffNumber;
 
-        [XmlIgnoreAttribute]
+        [XmlIgnore]
         public int Multiplicity;
 
         public DiffuseScatteringFactor Dsf;
@@ -57,38 +59,37 @@ namespace Crystallography
         //public string str;
 
         public int Argb;
-        public float Ambient = 0.1f;//環境光
-        public float Diffusion = 0.8f;//拡散光
-        public float Emission = 0.2f;//自己証明
-        public float Shininess = 50f;//反射光の強度
-        public float Specular = 0.7f;//反射光
-        public float Transparency = 1f;
+       
 
         public float Radius = 0.6f;
 
+
+        public float Ambient = Material.DefaultTexture.Ambient;//環境光
+        public float Diffusion = Material.DefaultTexture.Diffuse;//拡散光
+        public float Emission = Material.DefaultTexture.Emission;//自己証明
+        public float Shininess = Material.DefaultTexture.SpecularPow;//反射光の強度
+        public float Specular = Material.DefaultTexture.Specular;//反射光
         [XmlIgnore]
-        public (float Radius, int Argb, float Ambient, float Diffusion, float Specular, float Shininess, float Emission,  float Transparency) Material
+        public (float Ambient, float Diffusion, float Specular, float Shininess, float Emission) Texture
         {
-            get => (Radius, Argb, Ambient, Diffusion, Specular, Shininess, Emission,  Transparency);
+            get => (Ambient, Diffusion, Specular, Shininess, Emission);
             set
             {
-                Radius = value.Radius; 
-                Argb = value.Argb; 
                 Ambient = value.Ambient; 
                 Diffusion = value.Diffusion; 
                 Specular = value.Specular;
                 Shininess = value.Shininess;
                 Emission = value.Emission;
-                Transparency = value.Transparency;
             }
         }
-
+        
         #region コンストラクタ
 
         public Atoms()
         {
             //Atom = new List<Vector3D>();
         }
+
 
         /// <summary>
         /// ワイコフポジションだけ指定して、原子位置は実態のないコンストラクタ
@@ -125,6 +126,18 @@ namespace Crystallography
             Isotope = isotope;
         }
 
+        /// <summary>
+        /// 基本コンストラクタ
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="atomicNumber"></param>
+        /// <param name="subXray"></param>
+        /// <param name="subElectron"></param>
+        /// <param name="isotope"></param>
+        /// <param name="symmetrySeriesNumber"></param>
+        /// <param name="pos"></param>
+        /// <param name="occ"></param>
+        /// <param name="dsf"></param>
         public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
             Vector3D pos, double occ, DiffuseScatteringFactor dsf)
         {
@@ -132,10 +145,10 @@ namespace Crystallography
 
             Label = label;
 
-            this.Occ = occ;
-            this.X = pos.X;
-            this.Y = pos.Y;
-            this.Z = pos.Z;
+            Occ = occ;
+            X = pos.X;
+            Y = pos.Y;
+            Z = pos.Z;
 
             var temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
             WyckoffLeter = temp.WyckoffLeter;
@@ -153,48 +166,57 @@ namespace Crystallography
             ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atomicNumber);
         }
 
+        /// <summary>
+        /// 基本コンストラクタ + エラー
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="atomicNumber"></param>
+        /// <param name="subXray"></param>
+        /// <param name="subElectron"></param>
+        /// <param name="isotope"></param>
+        /// <param name="symmetrySeriesNumber"></param>
+        /// <param name="pos"></param>
+        /// <param name="pos_err"></param>
+        /// <param name="occ"></param>
+        /// <param name="occ_err"></param>
+        /// <param name="dsf"></param>
         public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-           Vector3D pos, Vector3D pos_err, double occ, double occ_err,
-            DiffuseScatteringFactor dsf,
-            AtomMaterial mat, float radius)
+           Vector3D pos, Vector3D pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
+            :this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos,  occ, dsf)
         {
-            SymmetrySeriesNumber = symmetrySeriesNumber;
 
-            Label = label;
-            X = pos.X;
-            Y = pos.Y;
-            Z = pos.Z;
-            Occ = occ;
             X_err = pos_err.X;
             Y_err = pos_err.Y;
             Z_err = pos_err.Z;
             Occ_err = occ_err;
+        }
 
-            Atoms temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
-            WyckoffLeter = temp.WyckoffLeter;
-            SiteSymmetry = temp.SiteSymmetry;
-            Multiplicity = temp.Multiplicity;
-            WyckoffNumber = temp.WyckoffNumber;
-
-            Atom = temp.Atom;
-            this.Dsf = dsf;
-
-            SubNumberXray = subXray;
-            SubNumberElectron = subElectron;
-            Isotope = isotope;
-            AtomicNumber = atomicNumber;
-            ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atomicNumber);
-
-            this.Radius = radius;
+        /// <summary>
+        /// 基本コンストラクタ + エラー + Material
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="atomicNumber"></param>
+        /// <param name="subXray"></param>
+        /// <param name="subElectron"></param>
+        /// <param name="isotope"></param>
+        /// <param name="symmetrySeriesNumber"></param>
+        /// <param name="pos"></param>
+        /// <param name="pos_err"></param>
+        /// <param name="occ"></param>
+        /// <param name="occ_err"></param>
+        /// <param name="dsf"></param>
+        /// <param name="mat"></param>
+        /// <param name="radius"></param>
+        public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
+           Vector3D pos, Vector3D pos_err, double occ, double occ_err,
+            DiffuseScatteringFactor dsf,Material mat, float radius)
+            :this (label,atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos,  pos_err, occ, occ_err, dsf)
+        {
+            Radius = radius;
             if (mat != null)
             {
-                this.Argb = mat.Argb;
-                this.Ambient = mat.Ambient;//環境光
-                this.Diffusion = mat.Diffusion;//拡散光
-                this.Emission = mat.Emission;//自己証明
-                this.Shininess = mat.Shininess;//反射光の強度
-                this.Specular = mat.Specular;//反射光
-                this.Transparency = mat.Transparency;//透明度
+                Argb = mat.Argb;
+                Texture = mat.Texture;
             }
         } 
         #endregion
@@ -223,7 +245,7 @@ namespace Crystallography
         public void ResetVesta()
         {
             #region Vestaの色設定
-            Material = ( 0.5f, Color.FromArgb(128, 128, 128).ToArgb(), 0.2f, 0.5f, 0.6f, 4.0f, 0.4f, 1.0f); 
+            Texture = Material.DefaultTexture; 
             switch (AtomicNumber)
             {
                 case 1: Radius = (float)(0.46 * 0.4); Argb = Color.FromArgb(255, 204, 204).ToArgb(); break;

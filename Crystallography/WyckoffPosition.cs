@@ -153,16 +153,14 @@ namespace Crystallography
             return false;
         }
 
-        private const double Th = 0.00001;
-
         private static bool chk(double d1, double d2)
         {
             double d = d1 - d2;
-            while (d > 0.999)
+            while (d > 0.5)
                 d--;
-            while (d < -0.001)
+            while (d < -0.5)
                 d++;
-            return Math.Abs(d) < Th;
+            return Math.Abs(d) < SymmetryStatic.Th;
         }
 
         /// <summary>

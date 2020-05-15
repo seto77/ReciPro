@@ -490,7 +490,7 @@ namespace Crystallography
         /// <summary>
         /// Crystal2クラスに変換します。
         /// </summary>
-        public Crystal2 ToCrystal2() => Crystal2.GetCrystal2(this);
+        public Crystal2 ToCrystal2() => Crystal2.FromCrystal(this);
 
         /// <summary>
         /// 格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する
@@ -1144,7 +1144,7 @@ namespace Crystallography
             SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLentgh, null);
 
             //強度の順にソート
-            SortPlaneByIntensity[] s = new SortPlaneByIntensity[this.Plane.Count];
+            var s = new SortPlaneByIntensity[this.Plane.Count];
             for (int i = 0; i < Plane.Count; i++)
                 s[i] = new SortPlaneByIntensity(Plane[i].d, Plane[i].Intensity);
 

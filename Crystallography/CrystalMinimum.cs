@@ -60,8 +60,8 @@ namespace Crystallography
         public Int16 sym;
         [Key(15)]
         public List<Atoms2> atoms;
-        [Key(16)]
-        public List<Bonds> bonds;
+        //[Key(16)]
+        //public List<Bonds> bonds;
         [Key(17)]
         public double[] d;//強度8位までのd値
         [Key(18)]
@@ -70,66 +70,59 @@ namespace Crystallography
         public Crystal2()
         {
             atoms = new List<Atoms2>();
-            bonds = new List<Bonds>();
+            //bonds = new List<Bonds>();
         }
 
         public static Crystal GetCrystal(Crystal2 c)
         {
-            List<Atoms> atom = new List<Atoms>();
+           var atom = new List<Atoms>();
             foreach (Atoms2 a in c.atoms)
             {
                 double[] X_err = a.X_err != null ? new double[] { a.X_err[0], a.X_err[1], a.X_err[2] } : new double[] { 0, 0, 0 };
                 double[] Occ = a.Occ.Length == 2 ? new double[] { a.Occ[0], a.Occ[1] } : new double[] { a.Occ[0], 0 };
-                //double[] Biso = new double[2];
-                float[] Mat = a.Mat != null ? new float[] { a.Mat[0] / 100f, a.Mat[0] / 100f, a.Mat[1] / 100f, a.Mat[2] / 100f, (float)a.Mat[3] / 100f, a.Mat[4] / 100f, a.Mat[5] / 100f }
-                    : new float[] { 0.1f, 0.8f, 0.7f, 50f, 0.2f, 1.0f };
-
                 atom.Add(new Atoms(a.Label, a.AtomNo, a.SubXray, a.SubElectron, a.Isotope, c.sym,
                     new Vector3D(a.X[0], a.X[1], a.X[2], false), new Vector3D(X_err[0], X_err[1], X_err[2]), Occ[0], Occ[1],
-                    new DiffuseScatteringFactor(a.IsIso, a.Biso, a.Baniso)
-                    , new AtomMaterial(a.Argb, Mat[0], Mat[1], Mat[2], Mat[3], Mat[4], Mat[5]), a.Rad));
+                    new DiffuseScatteringFactor(a.IsIso, a.Biso, a.Baniso)));
+
+                atom[atom.Count - 1].ResetVesta();
             }
+
+            var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
+
             Crystal crystal = new Crystal(
                 (c.a, c.b, c.c, c.alpha, c.beta, c.gamma), null,
                 c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(),
-                atom.ToArray(), (c.note, c.auth, GetFullJournal(c.jour), GetFullTitle(c.sect)), c.bonds.ToArray());
+                atom.ToArray(), (c.note, c.auth, GetFullJournal(c.jour), GetFullTitle(c.sect)), bonds);
 
             return crystal;
         }
 
-        public static Crystal2 GetCrystal2(Crystal c)
+        public static Crystal2 FromCrystal(Crystal c)
         {
             if (c == null) return null;
-            Crystal2 crystal = new Crystal2();
-            crystal.a = c.A; crystal.b = c.B; crystal.c = c.C;
-            crystal.alpha = c.Alpha; crystal.beta = c.Beta; crystal.gamma = c.Gamma;
-            crystal.sym = (short)c.SymmetrySeriesNumber;
-            crystal.name = c.Name;
-            crystal.note = c.Note;
-            crystal.argb = c.Argb;
-            crystal.auth = c.PublAuthorName;
-            crystal.sect = GetShortTitle(c.PublSectionTitle);
-            crystal.jour = GetShortJournal(c.Journal);
-            crystal.formula = c.ChemicalFormulaSum;
+            Crystal2 c2 = new Crystal2();
+            c2.a = c.A; c2.b = c.B; c2.c = c.C;
+            c2.alpha = c.Alpha; c2.beta = c.Beta; c2.gamma = c.Gamma;
+            c2.sym = (short)c.SymmetrySeriesNumber;
+            c2.name = c.Name;
+            c2.note = c.Note;
+            c2.argb = c.Argb;
+            c2.auth = c.PublAuthorName;
+            c2.sect = GetShortTitle(c.PublSectionTitle);
+            c2.jour = GetShortJournal(c.Journal);
+            c2.formula = c.ChemicalFormulaSum;
 
-            crystal.density = c.Density;
-            crystal.atoms = new List<Atoms2>();
-            crystal.bonds = c.Bonds.ToList();
-            //c.Atoms[0].Asf =
-            //for (int i = 0; i < c.Atoms.Length; i++)
-            //    c.Atoms[i].Asf = new AtomicScatteringFactor(c.Atoms[i].AtomicNumber, c.Atoms[i].SubNumberXray, c.Atoms[i].SubNumberElectron);
-            try
-            {
-                crystal.d = c.GetDspacingList(0.1, 0.1);
-            }
+            c2.density = c.Density;
+
+            try { c2.d = c.GetDspacingList(0.1, 0.1); }
             catch { return null; }
 
+            c2.atoms = new List<Atoms2>();
             foreach (Atoms a in c.Atoms)
-                crystal.atoms.Add(new Atoms2(a.Label, a.AtomicNumber, a.SubNumberXray, a.SubNumberElectron,
-                    new Vector3D(a.X, a.Y, a.Z, false), new Vector3D(a.X_err, a.Y_err, a.Z_err), a.Occ, a.Occ_err,
-                    a.Dsf,
-                    new AtomMaterial(a.Argb, a.Ambient, a.Diffusion, a.Specular, a.Shininess, a.Emission, a.Transparency), a.Radius));
-            return crystal;
+                c2.atoms.Add(new Atoms2(a.Label, a.AtomicNumber, a.SubNumberXray, a.SubNumberElectron,
+                    new Vector3D(a.X, a.Y, a.Z, false), new Vector3D(a.X_err, a.Y_err, a.Z_err), a.Occ, a.Occ_err, a.Dsf));
+
+            return c2;
         }
 
         public static string GetFullJournal(string shortJournal)
@@ -190,49 +183,47 @@ namespace Crystallography
             string journal = "";
             if (fullJournal != null)
                 journal = fullJournal;
-            // if (journal.Contains("##"))
-            {
-                journal = journal.Replace("American Mineralogist", "##01");
-                journal = journal.Replace("Canadian Mineralogist", "##02");
-                journal = journal.Replace("Acta Crystallographica", "##03");
-                journal = journal.Replace("Bulletin de la Societe Francaise de Mineralogie et de Cristallographie", "##04");
-                journal = journal.Replace("Bulletin of the Chemical Society of Japan", "##05");
-                journal = journal.Replace("Canadian Journal of Chemistry", "##06");
-                journal = journal.Replace("Chemische Berichte", "##07");
-                journal = journal.Replace("Clays and Clay Minerals", "##08");
-                journal = journal.Replace("Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences", "##09");
-                journal = journal.Replace("Contributions to Mineralogy and Petrology", "##10");
-                journal = journal.Replace("Doklady Akademii Nauk SSSR", "##11");
-                journal = journal.Replace("Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B: Geologichni Khimichni ta Biologichni Nauki", "##12");
-                journal = journal.Replace("European Journal of Mineralogy", "##13");
-                journal = journal.Replace("Gazzetta Chimica Italiana", "##14");
-                journal = journal.Replace("Inorganic Chemistry", "##15");
-                journal = journal.Replace("Inorganica Chimica Acta", "##16");
-                journal = journal.Replace("Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy", "##17");
-                journal = journal.Replace("Journal of Chemical Physics", "##18");
-                journal = journal.Replace("Journal of Inorganic and Nuclear Chemistry", "##19");
-                journal = journal.Replace("Journal of Physical Chemistry", "##20");
-                journal = journal.Replace("Journal of Solid State Chemistry", "##21");
-                journal = journal.Replace("Journal of the American Ceramic Society", "##22");
-                journal = journal.Replace("Journal of the American Chemical Society", "##23");
-                journal = journal.Replace("Journal of the Chemical Society", "##24");
-                journal = journal.Replace("Journal of the Less-Common Metals", "##25");
-                journal = journal.Replace("Kristallografiya", "##26");
-                journal = journal.Replace("Materials Research Bulletin", "##27");
-                journal = journal.Replace("Mineralogical Magazine", "##28");
-                journal = journal.Replace("Nature", "##29");
-                journal = journal.Replace("Naturwissenschaften", "##30");
-                journal = journal.Replace("Neues Jahrbuch fuer Mineralogie. Monatshefte", "##31");
-                journal = journal.Replace("Neues Jahrbuch fur Mineralogie, Monatshefte", "##32");
-                journal = journal.Replace("Physics and Chemistry of Minerals", "##33");
-                journal = journal.Replace("Zeitschrift fuer Anorganische und Allgemeine Chemie", "##34");
-                journal = journal.Replace("Zeitschrift fuer Kristallographie", "##35");
-                journal = journal.Replace("Zeitschrift fur Kristallographie", "##36");
-                journal = journal.Replace("Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences", "##37");
-                journal = journal.Replace("Dalton transactions", "##38");
-                journal = journal.Replace("Journal of Organic Chemistry", "##39");
-            }
+            journal = journal.Replace("American Mineralogist", "##01");
+            journal = journal.Replace("Canadian Mineralogist", "##02");
+            journal = journal.Replace("Acta Crystallographica", "##03");
+            journal = journal.Replace("Bulletin de la Societe Francaise de Mineralogie et de Cristallographie", "##04");
+            journal = journal.Replace("Bulletin of the Chemical Society of Japan", "##05");
+            journal = journal.Replace("Canadian Journal of Chemistry", "##06");
+            journal = journal.Replace("Chemische Berichte", "##07");
+            journal = journal.Replace("Clays and Clay Minerals", "##08");
+            journal = journal.Replace("Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences", "##09");
+            journal = journal.Replace("Contributions to Mineralogy and Petrology", "##10");
+            journal = journal.Replace("Doklady Akademii Nauk SSSR", "##11");
+            journal = journal.Replace("Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B: Geologichni Khimichni ta Biologichni Nauki", "##12");
+            journal = journal.Replace("European Journal of Mineralogy", "##13");
+            journal = journal.Replace("Gazzetta Chimica Italiana", "##14");
+            journal = journal.Replace("Inorganic Chemistry", "##15");
+            journal = journal.Replace("Inorganica Chimica Acta", "##16");
+            journal = journal.Replace("Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy", "##17");
+            journal = journal.Replace("Journal of Chemical Physics", "##18");
+            journal = journal.Replace("Journal of Inorganic and Nuclear Chemistry", "##19");
+            journal = journal.Replace("Journal of Physical Chemistry", "##20");
+            journal = journal.Replace("Journal of Solid State Chemistry", "##21");
+            journal = journal.Replace("Journal of the American Ceramic Society", "##22");
+            journal = journal.Replace("Journal of the American Chemical Society", "##23");
+            journal = journal.Replace("Journal of the Chemical Society", "##24");
+            journal = journal.Replace("Journal of the Less-Common Metals", "##25");
+            journal = journal.Replace("Kristallografiya", "##26");
+            journal = journal.Replace("Materials Research Bulletin", "##27");
+            journal = journal.Replace("Mineralogical Magazine", "##28");
+            journal = journal.Replace("Nature", "##29");
+            journal = journal.Replace("Naturwissenschaften", "##30");
+            journal = journal.Replace("Neues Jahrbuch fuer Mineralogie. Monatshefte", "##31");
+            journal = journal.Replace("Neues Jahrbuch fur Mineralogie, Monatshefte", "##32");
+            journal = journal.Replace("Physics and Chemistry of Minerals", "##33");
+            journal = journal.Replace("Zeitschrift fuer Anorganische und Allgemeine Chemie", "##34");
+            journal = journal.Replace("Zeitschrift fuer Kristallographie", "##35");
+            journal = journal.Replace("Zeitschrift fur Kristallographie", "##36");
+            journal = journal.Replace("Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences", "##37");
+            journal = journal.Replace("Dalton transactions", "##38");
+            journal = journal.Replace("Journal of Organic Chemistry", "##39");
             return journal;
+
         }
 
         public static string GetFullTitle(string shortTitle)
@@ -281,78 +272,6 @@ namespace Crystallography
     }
 
     [Serializable()]
-    public class Atoms2_old
-    {
-        public string Label;
-        public double X, Y, Z;
-        public double X_err, Y_err, Z_err;
-        public double Occ, Occ_err;
-        public Int16 SubXray;//SubNumberForXray
-        public Int16 SubElectron;//SubNumberForElectron
-        public Int16 AtomNo; //atomic number
-
-        public bool IsIso;
-        public double Biso, B11, B22, B33, B12, B23, B31;
-        public double Biso_err, B11_err, B22_err, B33_err, B12_err, B23_err, B31_err;
-
-        public float rad;
-        public int argb;//色
-        public float amb = 0.1f;//環境光
-        public float dif = 0.8f;//拡散光
-        public float emi = 0.2f;//自己証明
-        public float shi = 50f;//反射光の強度
-        public float spe = 0.7f;//反射光
-        public float tra = 1f;//透明度
-
-        public double[] Isotope = null;
-
-        public Atoms2_old(string label, int atomNo, int sfx, int sfe, Vector3D pos, Vector3D pos_err, double occ, double occ_err,
-            DiffuseScatteringFactor dsf
-            , AtomMaterial mat, float radius)
-        {
-            X = pos.X;
-            Y = pos.Y;
-            Z = pos.Z;
-
-            X_err = pos_err.X;
-            Y_err = pos_err.Y;
-            Z_err = pos_err.Z;
-
-            Label = label;
-            Occ = occ;
-            Occ_err = occ_err;
-            SubXray = (short)sfx;
-            SubElectron = (short)sfe;
-            AtomNo = (short)atomNo;
-            IsIso = dsf.IsIso;
-            Biso = dsf.Biso;
-            B11 = dsf.B11;
-            B22 = dsf.B22;
-            B33 = dsf.B33;
-            B12 = dsf.B12;
-            B23 = dsf.B23;
-            B31 = dsf.B31;
-            Biso_err = dsf.Biso_err;
-            B11_err = dsf.B11_err;
-            B22_err = dsf.B22_err;
-            B33_err = dsf.B33_err;
-            B12_err = dsf.B12_err;
-            B23_err = dsf.B23_err;
-            B31_err = dsf.B31_err;
-
-            this.rad = radius;
-            this.argb = mat.Argb;//色
-            this.amb = mat.Ambient;//環境光
-            this.dif = mat.Diffusion;//拡散光
-            this.emi = mat.Emission;//自己証明
-            this.shi = mat.Shininess;//反射光の強度
-            this.spe = mat.Specular;//反射光
-            this.tra = mat.Transparency;//透明度
-        }
-    }
-
-    //[ProtoContract]
-    [Serializable()]
     [MessagePackObject]
     public class Atoms2
     {
@@ -376,32 +295,15 @@ namespace Crystallography
         public float[] Biso;//Biso, Biso_errの順番
         [Key(9)]
         public float[] Baniso;//B11, B22, B33, B12, B23, B31, B11_err, B22_err, B33_err, B12_err, B23_err, B31_errの順番
-        [Key(10)]
-        public float Rad;
-        [Key(11)]
-        public int Argb;
-        [Key(12)]
-        public byte[] Mat;//amb,dif,emi,shi,spe,traの順番
         [Key(13)]
         public double[] Isotope;
-
-
-
-        /*public float amb = 0.1f;//環境光
-        public float dif = 0.8f;//拡散光
-        public float emi = 0.2f;//自己証明
-        public float shi = 50f;//反射光の強度
-        public float spe = 0.7f;//反射光
-        public float tra = 1f;//透明度
-        */
 
         public Atoms2()
         {
             
         }
         public Atoms2(string label, int atomNo, int sfx, int sfe, Vector3D pos, Vector3D pos_err, double occ, double occ_err,
-            DiffuseScatteringFactor dsf
-            , AtomMaterial mat, float radius)
+            DiffuseScatteringFactor dsf)
         {
              X = new float[] {  (float)pos.X, (float)pos.Y,  (float)pos.Z };
 
@@ -436,10 +338,15 @@ namespace Crystallography
                     Baniso = new float[] { (float)dsf.B11, (float)dsf.B22, (float)dsf.B33, (float)dsf.B12, (float)dsf.B23, (float)dsf.B31 };
             }
 
-            Rad = radius;
-            Argb = mat.Argb;//色
-            if (mat.Ambient != 0.1f || mat.Diffusion != 0.8f || mat.Emission != 0.2f || mat.Shininess != 50f || mat.Specular != 0.7f || mat.Transparency != 1.0f)
-                Mat = new byte[] { (byte)(mat.Ambient * 100), (byte)(mat.Diffusion * 100), (byte)(mat.Emission * 100), (byte)mat.Shininess, (byte)(mat.Specular * 100), (byte)(mat.Transparency * 100) };
+            //Rad = radius;
+            //Argb = mat.Argb;//色
+            //Mat = new[] { 
+            //    (byte)(mat.Ambient * 100), 
+            //    (byte)(mat.Diffuse * 100), 
+            //    (byte)(mat.Specular * 100), 
+            //    (byte)(mat.SpecularPower*10), 
+            //    (byte)(mat.Emission * 100), 
+            //};
         }
     }
 }

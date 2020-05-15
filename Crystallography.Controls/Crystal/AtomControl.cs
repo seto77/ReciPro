@@ -168,17 +168,17 @@ namespace Crystallography.Controls
 
         #region マテリアル プロパティ
         [Category("Material properties")]
-        public double Ambient { get => numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
+        public float Ambient { get => (float)numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
         [Category("Material properties")]
-        public double Diffusion { get => numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
+        public float Diffusion { get => (float)numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
         [Category("Material properties")]
-        public double Specular { get => numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
+        public float Specular { get => (float)numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
         [Category("Material properties")]
-        public double Shininess { get => numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
+        public float Shininess { get => (float)numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
         [Category("Material properties")]
-        public double Emission { get => numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
+        public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
         [Category("Material properties")]
-        public double Alpha { get => numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
+        public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
         [Category("Material properties")]
         public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; }
         [Category("Material properties")]
@@ -396,7 +396,11 @@ namespace Crystallography.Controls
             table.Replace(atoms, i);
             var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
             foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
-                a.Material = atoms.Material;
+            { 
+                a.Texture = atoms.Texture;
+                a.Radius = atoms.Radius;
+                a.Argb = atoms.Argb;
+            }
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -459,7 +463,7 @@ namespace Crystallography.Controls
 
             Ambient = atoms.Ambient; Diffusion = atoms.Diffusion; Emission = atoms.Emission; Shininess = atoms.Shininess; Specular = atoms.Specular;
 
-            Radius = atoms.Radius; Alpha = atoms.Transparency; AtomColor = Color.FromArgb(atoms.Argb);
+            Radius = atoms.Radius; AtomColor = Color.FromArgb(atoms.Argb); Alpha = Color.FromArgb(atoms.Argb).A / 255f;
         }
 
 
@@ -470,7 +474,7 @@ namespace Crystallography.Controls
         private Atoms GetFromInterface()
         {
             var dsf = new DiffuseScatteringFactor(Istoropy, Biso, B11, B22, B33, B12, B23, B13, BisoErr, B11Err, B22Err, B33Err, B12Err, B23Err, B13Err);
-            var material = new AtomMaterial(AtomColor.ToArgb(), Ambient, Diffusion, Specular, Shininess, Emission, Alpha);
+            var material = new Material(AtomColor.ToArgb(), (Ambient, Diffusion, Specular, Shininess, Emission), Alpha);
 
             var atoms = new Atoms(Label, AtomNo, AtomSubNoXray, AtomSubNoElectron, IsotopicComposition,
                 SymmetrySeriesNumber, new Vector3D(X, Y, Z), new Vector3D(XErr, YErr, ZErr), Occ, OccErr, dsf,

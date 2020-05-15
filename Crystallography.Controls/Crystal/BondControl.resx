@@ -154,7 +154,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;checkBoxShowPolyhedron.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="comboBoxBondingAtom1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -223,7 +223,7 @@
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;comboBoxBondingAtom2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label58.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -256,7 +256,7 @@
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;label58.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="label57.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +289,7 @@
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;label57.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="label39.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -328,7 +328,7 @@
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="label40.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +361,7 @@
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -412,7 +412,7 @@
     <value>numericBoxPolyhedronAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Parent" xml:space="preserve">
     <value>groupBoxPolyhedron</value>
@@ -505,7 +505,7 @@
     <value>numericBoxEdgeWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Parent" xml:space="preserve">
     <value>groupBoxEdge</value>
@@ -685,43 +685,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;groupBoxPolyhedron.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBoxShowBonds.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="checkBoxShowBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowBonds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, -1</value>
-  </data>
-  <data name="checkBoxShowBonds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxShowBonds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 19</value>
-  </data>
-  <data name="checkBoxShowBonds.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxShowBonds.Text" xml:space="preserve">
-    <value>Show Bonds</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowBonds.Name" xml:space="preserve">
-    <value>checkBoxShowBonds</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowBonds.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowBonds.Parent" xml:space="preserve">
-    <value>groupBoxBonds</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowBonds.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="numericBoxBondAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -772,13 +736,13 @@
     <value>numericBoxBondAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="numericBoxBondRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -829,13 +793,13 @@
     <value>numericBoxBondRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="numericBoxBondMaxLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -886,13 +850,13 @@
     <value>numericBoxBondMaxLength</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="numericBoxBondMinLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -943,13 +907,13 @@
     <value>numericBoxBondMinLength</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="groupBoxBonds.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -958,13 +922,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxBonds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>267, 105</value>
+    <value>271, 105</value>
   </data>
   <data name="groupBoxBonds.TabIndex" type="System.Int32, mscorlib">
     <value>120</value>
-  </data>
-  <data name="groupBoxBonds.Text" xml:space="preserve">
-    <value>Bonds</value>
   </data>
   <data name="&gt;&gt;groupBoxBonds.Name" xml:space="preserve">
     <value>groupBoxBonds</value>
@@ -976,6 +937,42 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;groupBoxBonds.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxShowBonds.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxShowBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowBonds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 0</value>
+  </data>
+  <data name="checkBoxShowBonds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="checkBoxShowBonds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 19</value>
+  </data>
+  <data name="checkBoxShowBonds.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxShowBonds.Text" xml:space="preserve">
+    <value>Show Bonds</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowBonds.Name" xml:space="preserve">
+    <value>checkBoxShowBonds</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowBonds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowBonds.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowBonds.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
@@ -1207,7 +1204,7 @@
     <value>colorControlEdges</value>
   </data>
   <data name="&gt;&gt;colorControlEdges.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlEdges.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1264,7 +1261,7 @@
     <value>colorControlPlyhedron</value>
   </data>
   <data name="&gt;&gt;colorControlPlyhedron.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlPlyhedron.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1321,7 +1318,7 @@
     <value>colorControlBond</value>
   </data>
   <data name="&gt;&gt;colorControlBond.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.5.1547, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBond.Parent" xml:space="preserve">
     <value>panel1</value>

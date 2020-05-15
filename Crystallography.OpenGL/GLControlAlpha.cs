@@ -457,7 +457,7 @@ namespace Crystallography.OpenGL
 
                 Controls.Clear();
                 // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat,24 /*GraphicsMode.Default.Depth*/, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
+                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat,GraphicsMode.Default.Depth, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
                 glControl = new GLControl(gMode)
                 {
                     AutoScaleMode = AutoScaleMode.Dpi,
@@ -520,7 +520,7 @@ namespace Crystallography.OpenGL
                 passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
                 passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
 
-                quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(1, 1, 1, 1, 1, 1, 1, 1, 1), DrawingMode.Surfaces);
+                quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(0), DrawingMode.Surfaces);
                 quad.Generate(Program,false);
             }
             else
@@ -765,10 +765,10 @@ namespace Crystallography.OpenGL
                 GL.ClearColor(BackgroundColor);
 
                 //描画対称に透明なものが一つでもあるとき
-                if (glObjectsP.Any(o => o.Rendered && o.Material.ColorV.W != 1))
+                if (glObjectsP.Any(o => o.Rendered && o.Material.Color.A != 1))
                 {
                     var rot = worldMatrix.Inverted();
-                    glObjectsP.ForAll(o => o.Z = !o.Rendered || o.Material.ColorV.W == 1 ? double.NegativeInfinity : rot.Mult(o.CircumscribedSphereCenter).Z);
+                    glObjectsP.ForAll(o => o.Z = !o.Rendered || o.Material.Color.A == 1 ? double.NegativeInfinity : rot.Mult(o.CircumscribedSphereCenter).Z);
                     glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
                 }
                 glObjects.ForEach(o => o.Render(Clip));// draw scene
@@ -914,5 +914,10 @@ namespace Crystallography.OpenGL
 
 
         #endregion
+
+        public static void DrawString(string str, double fontSize)
+        {
+            // ポリゴン色とテクスチャ色の合成方法
+        }
     }
 }

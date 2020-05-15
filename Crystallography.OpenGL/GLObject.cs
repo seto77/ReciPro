@@ -51,92 +51,7 @@ namespace Crystallography.OpenGL
     #endregion
 
 
-    #region Material 素材　クラス
-    /// <summary>
-    /// 素材要素
-    /// </summary>
-    public struct Material
-    {
-        /// <summary>
-        /// Color
-        /// </summary>
-        public C4 Color { get => _Color; set { _Color = value; ColorV = new V4f(_Color.R, _Color.G, _Color.B, _Color.A); } }
-
-        private C4 _Color;
-        internal V4f ColorV;
-
-        /// <summary>
-        /// 放射 (=自己発光). 法線と始点が一致する場合に強くなる
-        /// </summary>
-        public float Emission { get; set; }
-
-        /// <summary>
-        /// 環境光.この量だけ底上げされる。
-        /// </summary>
-        public float Ambient { get; set; }
-
-        /// <summary>
-        /// 拡散光. 法線と光源が一致する場合に強くなる
-        /// </summary>
-        public float Diffuse { get; set; }
-
-        /// <summary>
-        /// 反射光. 入射角度と反射角度が等しい場合に強くなる
-        /// </summary>
-        public float Specular { get; set; }
-
-        /// <summary>
-        /// 表面の粗さ. 高くすると、反射光領域は小さく、強度は強くなる。
-        /// </summary>
-        public float SpecularPower { get; set; }
-
-        public Material(C4 color, float ambient, float diffuse, float specular, float specularPow, float emission)
-        {
-            _Color = color;
-            ColorV = new V4f(_Color.R, _Color.G, _Color.B, _Color.A);
-            Ambient = ambient;
-            Diffuse = diffuse;
-            Specular = specular;
-            SpecularPower = specularPow;
-            Emission = emission;
-        }
-        //public Material(C4 color, (float ambient, float diffuse, float specular, float specularPow, float emission) mat)
-        //    : this(color, mat.ambient, mat.diffuse, mat.specular, mat.specularPow, mat.emission) { }
-
-        public Material(C4 color, double ambient, double diffuse, double specular, double specularPow, double emission)
-            : this(color, (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission) { }
-
-        public Material(C4 color, (double ambient, double diffuse, double specular, double specularPow, double emission) mat)
-            : this(color, (float)mat.ambient, (float)mat.diffuse, (float)mat.specular, (float)mat.specularPow, (float)mat.emission) { }
-
-
-        public Material(int argb, double ambient, double diffuse, double specular, double specularPow, double emission)
-           : this(new C4(System.Drawing.Color.FromArgb(argb).R / 255f, System.Drawing.Color.FromArgb(argb).G / 255f, System.Drawing.Color.FromArgb(argb).B / 255f, System.Drawing.Color.FromArgb(argb).A / 255f),
-                 (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission)
-        { }
-
-        public Material(int argb, (double ambient, double diffuse, double specular, double specularPow, double emission) mat)
-          : this(new C4(System.Drawing.Color.FromArgb(argb).R / 255f, System.Drawing.Color.FromArgb(argb).G / 255f, System.Drawing.Color.FromArgb(argb).B / 255f, System.Drawing.Color.FromArgb(argb).A / 255f),
-                (float)mat.ambient, (float)mat.diffuse, (float)mat.specular, (float)mat.specularPow, (float)mat.emission)
-        { }
-
-        public Material(int argb, double tranparency, double ambient, double diffuse, double specular, double specularPow, double emission)
-           : this(new C4(System.Drawing.Color.FromArgb(argb).R / 255f, System.Drawing.Color.FromArgb(argb).G / 255f, System.Drawing.Color.FromArgb(argb).B / 255f, (float)tranparency),
-                 (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission)
-        { }
-        public Material(int argb, double tranparency, (double ambient, double diffuse, double specular, double specularPow, double emission) mat)
-           : this(new C4(System.Drawing.Color.FromArgb(argb).R / 255f, System.Drawing.Color.FromArgb(argb).G / 255f, System.Drawing.Color.FromArgb(argb).B / 255f, (float)tranparency),
-                 (float)mat.ambient, (float)mat.diffuse, (float)mat.specular, (float)mat.specularPow, (float)mat.emission)
-        { }
-
-        public Material(double red, double green, double blue, double alpha, double ambient, double diffuse, double specular, double specularPow, double emission)
-            : this(new C4((float)red, (float)green, (float)blue, (float)alpha), (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission) { }
-
-        public Material(System.Drawing.Color color, double ambient, double diffuse, double specular, double specularPow, double emission)
-            : this(new C4(color.R / 255f, color.G / 255f, color.B / 255f, color.A / 255f), (float)ambient, (float)diffuse, (float)specular, (float)specularPow, (float)emission) { }
-
-        }
-    #endregion
+   
 
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8 }
 
@@ -396,20 +311,20 @@ namespace Crystallography.OpenGL
                 GL.Uniform1(UseFixedColorLocation, UseFixedColor ? 1 : 0);
 
             if (renew || prms.col != Material.ColorV)
-                GL.Uniform4(FixedColorLocation, ref Material.ColorV);
+                GL.Uniform4(FixedColorLocation, Material.ColorV);
 
             if (renew || IgnoreNormalSides != prms.ignoreNormal)
                 GL.Uniform1(IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);
 
-            if (IgnoreNormalSides)
-            {
-                GLable(false, EnableCap.CullFace);//CullFace無効化
-                GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);
-                GL.GetUniformSubroutine(ShaderType.FragmentShader, RenderPassLocation, out int renderPassIndex);  //レンダーパスを取得
-                GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す
-            }
-            else
-                GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);
+            //if (IgnoreNormalSides)
+            //{
+            //    GLable(false, EnableCap.CullFace);//CullFace無効化
+            //    GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);
+            //    GL.GetUniformSubroutine(ShaderType.FragmentShader, RenderPassLocation, out int renderPassIndex);  //レンダーパスを取得
+            //    GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す
+            //}
+            //else
+                GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
 
             prms = (Program, emi, amb,dif,spe, Material.SpecularPower,Material.ColorV, IgnoreNormalSides, UseFixedColor);
         }
@@ -447,10 +362,10 @@ namespace Crystallography.OpenGL
                     foreach (var i in indices)
                     {
                         DepthTest(false);//Depthテスト無効
-                        
-                        if(PassNormalIndex!=-1)//OITモードの場合は
+
+                        if (PassNormalIndex != -1)//OITモードの場合は
                             GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassNormalIndex);//サブルーチンをNormalにする
-                        
+
                         GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
                         GL.Enable(EnableCap.CullFace);//CullFace有効
@@ -477,7 +392,6 @@ namespace Crystallography.OpenGL
                         DepthTest(PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
                         clip.Render(i, Material);//i番目のクリップ面を描画
                     }
-                    //GLable(false, EnableCap.CullFace);//CullFaceを元に戻す (Z-sortモードは有効)
                     GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
                     clip.EnableClips(indices);//全クリップ有効化
                     Render(); //物体全体の描画
@@ -527,7 +441,7 @@ namespace Crystallography.OpenGL
                 for (int j = 0; j < pts.Length; j++)
                     pts[j] = rot.Mult(pts[j]) - norm * prms.W * 1.0005;
 
-                var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(1, 0, 0, 1, 0, 1, 0, 0, 0), DrawingMode.Surfaces)
+                var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(0), DrawingMode.Surfaces)
                 {
                     UseFixedColor = true,
                     IgnoreNormalSides = false,
@@ -1102,7 +1016,7 @@ namespace Crystallography.OpenGL
             DefaultIndices = null;
             DefaultTypeCounts = null;
             DefaultTypes = null;
-            var sphere = new Sphere(new V3d(0, 0, 0), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, DefaultSlices);
+            var sphere = new Sphere(new V3d(0, 0, 0), 1, new Material(0), DrawingMode.Edges, DefaultSlices);
             DefaultIndices = sphere.Indices;
             DefaultTypeCounts = sphere.TypeCounts;
             DefaultVertices = sphere.Vertices;
@@ -1352,7 +1266,7 @@ namespace Crystallography.OpenGL
             DefaultIndices = null;
             DefaultTypeCounts = null;
             DefaultTypes = null;
-            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges,true, 0, 0);
+            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges,true, 0, 0);
             DefaultIndices = cone.Indices;
             DefaultTypeCounts = cone.TypeCounts;
             DefaultVertices = cone.Vertices;
@@ -1419,7 +1333,7 @@ namespace Crystallography.OpenGL
             DefaultIndices = null;
             DefaultTypeCounts = null;
             DefaultTypes = null;
-            var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0, 0, 0, 0, 0, 0), DrawingMode.Edges, true, 0, 0);
+            var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges, true, 0, 0);
             DefaultIndices = cylinder.Indices;
             DefaultTypeCounts = cylinder.TypeCounts;
             DefaultVertices = cylinder.Vertices;

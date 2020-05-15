@@ -179,7 +179,8 @@ namespace Crystallography.Controls
                     {
                         Atoms a = crystal.Atoms[i];
                         crystal.Atoms[i] = new Atoms(a.Label, a.AtomicNumber, a.SubNumberXray, a.SubNumberElectron, a.Isotope, a.SymmetrySeriesNumber,
-                            pos, new Vector3D(a.X_err, a.Y_err, a.Z_err), occ, a.Occ_err, a.Dsf, new AtomMaterial(a.Argb, a.Ambient, a.Diffusion, a.Specular, a.Shininess, a.Emission, a.Transparency), a.Radius);
+                            pos, new Vector3D(a.X_err, a.Y_err, a.Z_err), occ, a.Occ_err, a.Dsf,
+                            new Material(a.Argb, a.Texture), a.Radius);
                         crystal.GetFormulaAndDensity();
                     }
                 }
@@ -409,7 +410,7 @@ namespace Crystallography.Controls
         {
             GenerateFromInterface();
             if (crystal != null)
-                Clipboard.SetDataObject(Crystal2.GetCrystal2(crystal), true, 3, 10);
+                Clipboard.SetDataObject(Crystal2.FromCrystal(crystal), true, 3, 10);
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)

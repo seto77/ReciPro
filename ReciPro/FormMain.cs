@@ -1231,15 +1231,12 @@ namespace ReciPro
             var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
 
             var obj = new List<GLObject>();
-            var mat = new Material(Col4.White, 0.2, 0.5, 0.6, 4, 0.4);
             for (int i = 0; i < 3; i++)
             {
-                mat.Color = color[i];
-                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, mat, DrawingMode.Surfaces));
-                obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, mat, DrawingMode.Surfaces));
+                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
+                obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
             }
-            mat.Color = Col4.Gray;
-            obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, mat, DrawingMode.Surfaces));
+            obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, new Material(Col4.Gray), DrawingMode.Surfaces));
 
             glControlAxes.DeleteAllObjects();
             glControlAxes.AddObjects(obj);

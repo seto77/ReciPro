@@ -376,25 +376,23 @@ namespace ReciPro
         private void setAxes(GLControlAlpha gl)
         {
             gl.DeleteAllObjects();
-            var mat = new Material(C4.White, defaultMat);
             var obj = new List<GLObject>();
             var r = 0.065;
             //X軸
-            mat.Color = new C4(0.8f, 0f, 0f, 1f);
-            obj.Add(new Cylinder(new V3(-1, 0, 0), new V3(2, 0, 0), r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(new V3(1.1, 0, 0), new V3(-0.2, 0, 0), r * 2, mat, DrawingMode.Surfaces));//矢
+            var c = new C4(0.8f, 0f, 0f, 1f);
+            obj.Add(new Cylinder(new V3(-1, 0, 0), new V3(2, 0, 0), r, new Material(c), DrawingMode.Surfaces));//軸
+            obj.Add(new Cone(new V3(1.1, 0, 0), new V3(-0.2, 0, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
             //Y軸
-            mat.Color = new C4(0f, 0.6f, 0f, 1f);
-            obj.Add(new Cylinder(new V3(0, -1, 0), new V3(0, 2, 0), r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(new V3(0, 1.1, 0), new V3(0, -0.2, 0), r * 2, mat, DrawingMode.Surfaces));//矢
+            c = new C4(0f, 0.6f, 0f, 1f);
+            obj.Add(new Cylinder(new V3(0, -1, 0), new V3(0, 2, 0), r, new Material(c), DrawingMode.Surfaces));//軸
+            obj.Add(new Cone(new V3(0, 1.1, 0), new V3(0, -0.2, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
             //Z軸
-            mat.Color = new C4(0f, 0f, 0.8f, 1f);
-            obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, mat, DrawingMode.Surfaces));//軸
-            obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, mat, DrawingMode.Surfaces));//矢
+            c = new C4(0f, 0f, 0.8f, 1f);
+            obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, new Material(c), DrawingMode.Surfaces));//軸
+            obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, new Material(c), DrawingMode.Surfaces));//矢
 
             //中央の球
-            mat.Color = C4.Gray;
-            obj.Add(new Sphere(new V3(0, 0, 0), r * 2, mat, DrawingMode.Surfaces));
+            obj.Add(new Sphere(new V3(0, 0, 0), r * 2, new Material(C4.Gray), DrawingMode.Surfaces));
 
             gl.AddObjects(obj);
             gl.Refresh();
@@ -413,53 +411,52 @@ namespace ReciPro
 
             var r = 0.05;
             var obj = new List<GLObject>();
-            var mat = new Material(C4.White, defaultMat);
 
             var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
 
             //1st
-            mat.Color = new C4(0.8f, 0.8f, 0f, 1f);
-            obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+            var c = new C4(0.8f, 0.8f, 0f, 1f);
+            obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
 
             if (!checkBoxEnable2nd.Checked)//2ndが存在しない時
             {
-                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 3.8, r, mat, DrawingMode.Surfaces));//軸
-                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], new V3(dir[0].Z, dir[0].X, dir[0].Y)), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 3.8, r, new Material(c), DrawingMode.Surfaces));//軸
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], new V3(dir[0].Z, dir[0].X, dir[0].Y)), 1.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
             }
             else //2ndが存在する時
             {
-                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
-                obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, new Material(c), DrawingMode.Surfaces));//軸
+                obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, new Material(c), DrawingMode.Surfaces));//軸
                 //1stトーラスの法線は、1st軸と2nd軸が直交する方向
-                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
 
                 //以下2nd
                 var rot01 = rot[0] * rot[1];
-                mat.Color = new C4(0f, 0.8f, 0.8f, 1f);
+                c = new C4(0f, 0.8f, 0.8f, 1f);
                 var n = rot[0] * dir[1];
-                obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
                 if (!checkBoxEnable3rd.Checked)
                 {
-                    obj.Add(new Cylinder(n * 1.9, -n * 3.8, r, mat, DrawingMode.Surfaces));//軸
-                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], new V3(dir[1].Z, dir[1].X, dir[1].Y)), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                    obj.Add(new Cylinder(n * 1.9, -n * 3.8, r, new Material(c), DrawingMode.Surfaces));//軸
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], new V3(dir[1].Z, dir[1].X, dir[1].Y)), 1.1, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
                 }
                 else
                 {
-                    obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, mat, DrawingMode.Surfaces));//軸
-                    obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, new Material(c), DrawingMode.Surfaces));//軸
+                    obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, new Material(c), DrawingMode.Surfaces));//軸
                     //2ndトーラスの法線は、2nd軸と3rd軸が直交する方向
-                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
 
                     //以下、3rd
-                    mat.Color = new C4(0.8f, 0f, 0.8f, 1f);
+                    c = new C4(0.8f, 0f, 0.8f, 1f);
                     var rot012 = rot[0] * rot[1] * rot[2];
                     n = rot[0] * rot[1] * dir[2];
-                    obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
-                    obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                    obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, new Material(c), DrawingMode.Surfaces));//軸
+                    obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
                     if (dir[2].Z == 0)
-                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
                     else
-                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
                 }
             }
 
@@ -485,7 +482,6 @@ namespace ReciPro
 
             var r = 0.05;
             var obj = new List<GLObject>();
-            var mat = new Material(C4.Gray, defaultMat);
 
             var rot = Matrix3D.Rot(dir[0], angle[0]);
             if (dir.Length > 1)
@@ -496,19 +492,17 @@ namespace ReciPro
             if (checkBoxLink.Checked && gl.Name.Contains("Ex"))
                 rot = RotReciPro;
 
-            obj.Add(new Sphere(new V3(0, 0, 0), r * 6, mat, DrawingMode.Surfaces));
+            obj.Add(new Sphere(new V3(0, 0, 0), r * 6, new Material(C4.Gray), DrawingMode.Surfaces));
             var nX = rot * new V3(r * 6, 0, 0);
             var nY = rot * new V3(0, r * 6, 0);
             var nZ = rot * new V3(0, 0, r * 6);
-            mat.Color = C4.Red;
-            obj.Add(new Sphere(nX, r * 2, mat, DrawingMode.Surfaces));
-            obj.Add(new Sphere(-nX, r * 1.5, mat, DrawingMode.Surfaces));
-            mat.Color = C4.Green;
-            obj.Add(new Sphere(nY, r * 2, mat, DrawingMode.Surfaces));
-            obj.Add(new Sphere(-nY, r * 1.5, mat, DrawingMode.Surfaces));
-            mat.Color = C4.Blue;
-            obj.Add(new Sphere(nZ, r * 2, mat, DrawingMode.Surfaces));
-            obj.Add(new Sphere(-nZ, r * 1.5, mat, DrawingMode.Surfaces));
+           
+            obj.Add(new Sphere(nX, r * 2, new Material(C4.Red), DrawingMode.Surfaces));
+            obj.Add(new Sphere(-nX, r * 1.5, new Material(C4.Red), DrawingMode.Surfaces));
+            obj.Add(new Sphere(nY, r * 2, new Material(C4.Green), DrawingMode.Surfaces));
+            obj.Add(new Sphere(-nY, r * 1.5, new Material(C4.Green), DrawingMode.Surfaces));
+            obj.Add(new Sphere(nZ, r * 2, new Material(C4.Blue), DrawingMode.Surfaces));
+            obj.Add(new Sphere(-nZ, r * 1.5, new Material(C4.Blue), DrawingMode.Surfaces));
             return obj;
         }
         #endregion

@@ -265,7 +265,6 @@
             // groupBoxBonds
             // 
             this.groupBoxBonds.Controls.Add(this.comboBoxBondingAtom1);
-            this.groupBoxBonds.Controls.Add(this.checkBoxShowBonds);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondAlpha);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondRadius);
             this.groupBoxBonds.Controls.Add(this.label39);
@@ -589,6 +588,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.checkBoxShowBonds);
             this.panel2.Controls.Add(this.groupBoxBonds);
             this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
             this.panel2.Controls.Add(this.groupBoxPolyhedron);

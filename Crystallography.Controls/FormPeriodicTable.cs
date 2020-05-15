@@ -8,7 +8,21 @@ namespace Crystallography.Controls
 {
     public partial class FormPeriodicTable : Form
     {
+        public int[] Includes => button.Where(b => b.BackColor == IncludeColor).Select(b => (int)b.Tag).ToArray();
+        public string[] IncludesStr => Includes.Select(i => i.ToString("000")).ToArray();
+
+        public int[] Excludes => button.Where(b => b.BackColor == ExcludeColor).Select(b => (int)b.Tag).ToArray();
+        public string[] ExcludesStr => Excludes.Select(i => i.ToString("000")).ToArray();
+
+
         private List<Button> button = new List<Button>();
+
+        private Color ExcludeColor = Color.LightCoral;
+        private Color IncludeColor = Color.LightBlue;
+        private Color NeutralColor = Color.LightYellow;
+
+
+
 
         public FormPeriodicTable()
         {
@@ -18,6 +32,7 @@ namespace Crystallography.Controls
             {
                 button.Add(new Button());
                 button[i].Size = new Size(0, 0);
+                button[i].Tag = i;
             }
 
             #region テキストの設定
@@ -139,12 +154,11 @@ namespace Crystallography.Controls
             for (int i = 1; i < 112; i++)
             {
                 button[i].AutoSize = true;
-                button[i].AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-                //button[i].Size = new Size(width, height);
-                button[i].Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                button[i].AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                button[i].Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
                 if (i != 0)
                 {
-                    this.Controls.Add(button[i]);
+                    Controls.Add(button[i]);
                     button[i].Click += new EventHandler(button_Click);
                     button[i].BackColor = Color.LightYellow;
                 }
@@ -187,21 +201,12 @@ namespace Crystallography.Controls
 
         private void button_Click(object sender, EventArgs e)
         {
-            if (((Button)sender).BackColor == Color.LightYellow)
-                ((Button)sender).BackColor = Color.LightBlue;
-            else if (((Button)sender).BackColor == Color.LightBlue)
-                ((Button)sender).BackColor = Color.LightCoral;
+            if (((Button)sender).BackColor == NeutralColor)
+                ((Button)sender).BackColor = IncludeColor;
+            else if (((Button)sender).BackColor == IncludeColor)
+                ((Button)sender).BackColor = ExcludeColor;
             else
-                ((Button)sender).BackColor = Color.LightYellow;
-
-            textBoxQueryInclude.Text = textBoxQueryExclude.Text = "";
-            for (int i = 1; i <= 111; i++)
-            {
-                if (button[i].BackColor == Color.LightBlue)
-                    textBoxQueryInclude.Text += i.ToString("000") + " ";
-                if (button[i].BackColor == Color.LightCoral)
-                    textBoxQueryExclude.Text += i.ToString("000") + " ";
-            }
+                ((Button)sender).BackColor = NeutralColor;
         }
 
         private void FormPeriodicTable_FormClosing(object sender, FormClosingEventArgs e)
@@ -217,29 +222,22 @@ namespace Crystallography.Controls
 
         private void buttonMayInclude_Click(object sender, EventArgs e)
         {
-            textBoxQueryInclude.Text = textBoxQueryExclude.Text = "";
             for (int i = 1; i <= 111; i++)
-                button[i].BackColor = Color.LightYellow;
+                button[i].BackColor = NeutralColor;
         }
 
         private void buttonMustInclude_Click(object sender, EventArgs e)
         {
-            textBoxQueryInclude.Text = textBoxQueryExclude.Text = "";
             for (int i = 1; i <= 111; i++)
             {
-                button[i].BackColor = Color.LightBlue;
-                textBoxQueryInclude.Text += i.ToString("000") + " ";
+                button[i].BackColor = IncludeColor;
             }
         }
 
         private void buttonMustExclude_Click(object sender, EventArgs e)
         {
-            textBoxQueryInclude.Text = textBoxQueryExclude.Text = "";
             for (int i = 1; i <= 111; i++)
-            {
-                button[i].BackColor = Color.LightCoral;
-                textBoxQueryExclude.Text += i.ToString("000") + " ";
-            }
+                button[i].BackColor = ExcludeColor;
         }
 
         private void FormPeriodicTable_Load(object sender, EventArgs e)

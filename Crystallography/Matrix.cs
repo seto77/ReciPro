@@ -1094,7 +1094,7 @@ namespace Crystallography
 
         public override string ToString()
         {
-            return text;
+            return text!="" ? text: $"{X}, {Y}, {Z}";
         }
 
         public static Vector3D RandomVector(Random rn)

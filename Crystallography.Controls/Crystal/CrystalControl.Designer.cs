@@ -392,8 +392,8 @@
             // 
             // atomControl
             // 
-            this.atomControl.Alpha = 0D;
-            this.atomControl.Ambient = 0D;
+            this.atomControl.Alpha = 0F;
+            this.atomControl.Ambient = 0F;
             this.atomControl.AppearanceTabVisible = false;
             this.atomControl.AtomColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.atomControl.AtomicPositionError = false;
@@ -417,9 +417,9 @@
             this.atomControl.BisoErr = 0D;
             this.atomControl.DebyeWallerError = false;
             this.atomControl.DebyeWallerTabVisible = true;
-            this.atomControl.Diffusion = 0D;
+            this.atomControl.Diffusion = 0F;
             this.atomControl.ElementAndPositionTabVisible = true;
-            this.atomControl.Emission = 0D;
+            this.atomControl.Emission = 0F;
             this.atomControl.IsotopicComposition = null;
             this.atomControl.Istoropy = false;
             this.atomControl.Label = "";
@@ -430,9 +430,9 @@
             this.atomControl.Radius = 0D;
             this.atomControl.ScatteringFactorTabVisible = true;
             this.atomControl.SelectedTabIndex = 0;
-            this.atomControl.Shininess = 0D;
+            this.atomControl.Shininess = 0F;
             this.atomControl.SkipEvent = false;
-            this.atomControl.Specular = 0D;
+            this.atomControl.Specular = 0F;
             this.atomControl.SymmetrySeriesNumber = 0;
             this.atomControl.X = 0D;
             this.atomControl.XErr = 0D;

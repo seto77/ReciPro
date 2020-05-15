@@ -12,12 +12,12 @@ layout(early_fragment_tests) in;
 uniform uint MaxNodes;
 
 // Material properties
-uniform float Emission = 0.2;
-uniform float Ambient = 0.2;
-uniform float Diffuse = 0.7;
-uniform float Specular = 0.5;
+uniform float Ambient = 0.2; 
+uniform float Diffuse = 0.5;
+uniform float Specular = 0.6;
+uniform float SpecularPower = 4.0;
+uniform float Emission = 0.4;
 uniform vec3 SpecularColor = vec3(1.0);
-uniform float SpecularPower = 128.0;
 uniform vec4 BgColor = vec4(1, 1, 1, 1);
 uniform bool IgnoreNormalSides = false;
 
