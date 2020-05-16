@@ -412,7 +412,7 @@
     <value>numericBoxPolyhedronAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Parent" xml:space="preserve">
     <value>groupBoxPolyhedron</value>
@@ -505,7 +505,7 @@
     <value>numericBoxEdgeWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Parent" xml:space="preserve">
     <value>groupBoxEdge</value>
@@ -736,7 +736,7 @@
     <value>numericBoxBondAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
@@ -793,7 +793,7 @@
     <value>numericBoxBondRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
@@ -850,7 +850,7 @@
     <value>numericBoxBondMaxLength</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
@@ -907,7 +907,7 @@
     <value>numericBoxBondMinLength</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Parent" xml:space="preserve">
     <value>groupBoxBonds</value>
@@ -1084,7 +1084,7 @@
     <value>     </value>
   </data>
   <data name="enabledDataGridViewCheckBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>25</value>
   </data>
   <data name="centerDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Center</value>
@@ -1098,16 +1098,16 @@
   <data name="vertexDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <data name="maxLenDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Max len.</value>
-  </data>
-  <data name="maxLenDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
   <data name="minLenDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Min len.</value>
   </data>
   <data name="minLenDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="maxLenDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Max len.</value>
+  </data>
+  <data name="maxLenDataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
   <data name="showBondsDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
@@ -1204,7 +1204,7 @@
     <value>colorControlEdges</value>
   </data>
   <data name="&gt;&gt;colorControlEdges.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlEdges.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1261,7 +1261,7 @@
     <value>colorControlPlyhedron</value>
   </data>
   <data name="&gt;&gt;colorControlPlyhedron.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlPlyhedron.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1318,7 +1318,7 @@
     <value>colorControlBond</value>
   </data>
   <data name="&gt;&gt;colorControlBond.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.15.645, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.16.742, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBond.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1521,48 +1521,6 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>550, 350</value>
   </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>enabledDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;centerDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>centerDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;centerDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>vertexDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>maxLenDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>minLenDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showBondsDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>showBondsDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;showBondsDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showPolyhedronDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>showPolyhedronDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;showPolyhedronDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
     <value>bindingSource</value>
   </data>
@@ -1706,6 +1664,48 @@
   </data>
   <data name="&gt;&gt;Vertex.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>enabledDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centerDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>centerDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;centerDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>vertexDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>minLenDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>maxLenDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showBondsDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>showBondsDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;showBondsDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showPolyhedronDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>showPolyhedronDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;showPolyhedronDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>BondInputControl</value>

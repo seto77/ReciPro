@@ -420,7 +420,8 @@ namespace ReciPro
                 toolStripButtonRotation.Enabled = false;
                 glControlAxes.Visible = false;
             }
-        }
+
+          }
 
         public bool YusaGonioMode { get; set; } = false;
 

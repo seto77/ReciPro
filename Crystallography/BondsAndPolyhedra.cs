@@ -150,8 +150,8 @@ namespace Crystallography
         /// </summary>
         /// <param name="atomicNumbers"></param>
         /// <returns></returns>
-        public static Bonds[] GetVestaBonds(IEnumerable<int> atomicNumbers) => GetVestaBonds(atomicNumbers.Select(n => n.ToString() + ": " + AtomConstants.AtomicName(n)));
-        
+        public static Bonds[] GetVestaBonds(IEnumerable<int> atomicNumbers) => GetVestaBonds(atomicNumbers.Select(n => $"{n}: {AtomConstants.AtomicName(n)}"));
+
         /// <summary>
         /// Vesta標準のボンドを生成. 入力形式は、 "26: Fe" のような原子番号と元素記号のセットにした文字列の配列
         /// </summary>
@@ -165,19 +165,41 @@ namespace Crystallography
             var bonds = new List<Bonds>();
 
             foreach ((string e1, string e2, double min, double max) in bondCandidates)
-            {
                 if (list2.Contains(e1) && list2.Contains(e2))
                 {
                     bonds.Add(new Bonds(true, list, list[list2.IndexOf(e1)], list[list2.IndexOf(e2)],
-						min / 10.0, max / 10.0, true, 0.01, 1, false, true, true, true, 0.7, true, 0));
+                        min / 10.0, max / 10.0, true, 0.01, 1, false, true, true, true, 0.7, true, 0));
                 }
+           
+            //CationとAnionが両方含まれている場合は、同種原子の結合を除去
+            if (Anions.Any(anion => list.Contains(anion)) && Cations.Any(cation => list.Contains(cation)))
+            {
+                Anions.ForEach(anion => bonds.Remove(bonds.Find(b => b.Element1 == anion && b.Element2 == anion)));
+                Cations.ForEach(cation => bonds.Remove(bonds.Find(b => b.Element1 == cation && b.Element2 == cation)));
             }
+
             return bonds.ToArray();
 
 
         }
+        
 
+        static Bonds()
+        {
+            var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };
+            Anions = anionNum.Select(n => $"{n}: {AtomConstants.AtomicName(n)}").ToList();
 
+            var cationNum = new List<int>();
+            cationNum.AddRange(Enumerable.Range(3, 5));
+            cationNum.AddRange(Enumerable.Range(11, 5));
+            cationNum.AddRange(Enumerable.Range(19, 15));
+            cationNum.AddRange(Enumerable.Range(37, 15));
+            cationNum.AddRange(Enumerable.Range(55, 20));
+            Cations = cationNum.Select(n => $"{n}: {AtomConstants.AtomicName(n)}").ToList();
+        }
+
+        public static List<string> Cations;
+        public static List<string> Anions;
 
         public static (string e1, string e2, double min, double max)[] bondCandidates = new[]
         {

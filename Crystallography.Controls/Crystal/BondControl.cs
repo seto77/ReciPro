@@ -14,25 +14,36 @@ namespace Crystallography.Controls
     public partial class BondInputControl : UserControl
     {
         #region プロパティ, フィールド、イベントハンドラ
-        public bool SkipEvent { get; set; } = false;
 
-        private string[] elementList = new string[0];
-        public string[] ElementList
+        public Crystal Crystal
         {
-            get => elementList;
-            set
+            get => crystal; set
             {
-                if (value != null)
-                    if (value.Length != elementList.Length || !elementList.SequenceEqual(value))
+                crystal = value;
+
+                if (crystal != null)
+                {
+                    ElementList = crystal.Atoms.Select(a => a.ElementName).Distinct().ToArray();
+                    if (ElementList != null && ElementList.Length != 0)
                     {
-                        elementList = value;
                         comboBoxBondingAtom1.Items.Clear();
-                        comboBoxBondingAtom1.Items.AddRange(elementList.Distinct().ToArray());
+                        comboBoxBondingAtom1.Items.AddRange(ElementList);
                         comboBoxBondingAtom2.Items.Clear();
-                        comboBoxBondingAtom2.Items.AddRange(elementList.Distinct().ToArray());
+                        comboBoxBondingAtom2.Items.AddRange(ElementList);
                     }
+                    table.Clear();
+                    AddRange(crystal.Bonds);
+                   
+                }
             }
         }
+        private Crystal crystal = null;
+
+        public string[] ElementList { get; set; } = null;
+        public bool SkipEvent { get; set; } = false;
+
+
+        
 
         private DataSet.DataTableBondDataTable table;
 
@@ -104,6 +115,7 @@ namespace Crystallography.Controls
             if (bonds != null)
                 table.Add(bonds);
 
+            crystal.Bonds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -115,9 +127,14 @@ namespace Crystallography.Controls
         {
             if (bonds != null)
             {
+                SkipEvent = true;
                 foreach (var b in bonds)
                     table.Add(b);
+
+                crystal.Bonds = GetAll();
+                SkipEvent = false;
                 ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(new object(), new EventArgs());
             }
         }
 
@@ -128,7 +145,9 @@ namespace Crystallography.Controls
         public void Delete(int i)
         {
             table.Remove(i);
+            crystal.Bonds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
+
         }
 
         /// <summary>
@@ -139,6 +158,7 @@ namespace Crystallography.Controls
         public void Replace(Bonds bonds, int i)
         {
             table.Replace(bonds, i);
+            crystal.Bonds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -148,6 +168,7 @@ namespace Crystallography.Controls
         public void Clear()
         {
             table.Clear();
+            crystal.Bonds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -239,14 +260,16 @@ namespace Crystallography.Controls
             if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == 0)
-                    table.Get(bindingSource.Position).Enabled = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                    table.Get(bindingSource.Position).Enabled 
+                        = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 else if (e.ColumnIndex == 5)
-                    table.Get(bindingSource.Position).ShowBond = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                    table.Get(bindingSource.Position).ShowBond 
+                        = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 else if (e.ColumnIndex == 6)
-                    table.Get(bindingSource.Position).ShowPolyhedron = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-               
+                    table.Get(bindingSource.Position).ShowPolyhedron 
+                        = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 ItemsChanged?.Invoke(this, new EventArgs());
-                bindingSource_PositionChanged(sender, new EventArgs());
+                bindingSource_PositionChanged(sender,new EventArgs());
             }
         }
         #endregion

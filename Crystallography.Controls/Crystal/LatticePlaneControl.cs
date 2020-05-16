@@ -14,7 +14,20 @@ namespace Crystallography.Controls
     {
         #region プロパティ, フィールド, イベントハンドラ
         public bool SkipEvent { get; set; } = false;
-        public Crystal Crystal { get; set; } = null;
+        public Crystal Crystal
+        {
+            get => crystal; 
+            set
+            {
+                crystal = value;
+                if (crystal != null)
+                {
+                    table.Clear();
+                    AddRange(Crystal.LatticePlanes);
+                }
+            }
+        }
+        private Crystal crystal = null;
 
         public event EventHandler ItemsChanged;
 
@@ -60,6 +73,7 @@ namespace Crystallography.Controls
             if (plane != null && plane.Index!=(0,0,0))
             {
                 table.Add(plane);
+            crystal.LatticePlanes = GetAll();
                 ItemsChanged?.Invoke(this, new EventArgs());
             }
         }
@@ -72,9 +86,13 @@ namespace Crystallography.Controls
         {
             if (planes != null)
             {
+                SkipEvent = true;
                 foreach (var b in planes.Where(p => p.Index != (0, 0, 0)))
                     table.Add(b);
+                SkipEvent = false;
+                crystal.LatticePlanes = GetAll();
                 ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(this, new EventArgs());
             }
         }
 
@@ -85,6 +103,7 @@ namespace Crystallography.Controls
         public void Delete(int i)
         {
             table.Remove(i);
+            crystal.LatticePlanes = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -96,6 +115,7 @@ namespace Crystallography.Controls
         public void Replace(LatticePlane bounds, int i)
         {
             table.Replace(bounds, i);
+            crystal.LatticePlanes = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -105,6 +125,7 @@ namespace Crystallography.Controls
         public void Clear()
         {
             table.Clear();
+            crystal.LatticePlanes = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 

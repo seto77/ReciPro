@@ -82,7 +82,6 @@ namespace Crystallography.Controls
                 if (crystal != null)
                 {
                     Enabled = !crystal.FlexibleMode;
-                    checkSpecialNumber();
 
                     SetToInterface();
                     //原子位置チェック (strain controlで選択した後、原子位置が変になってしまう問題の修正. 2017/05/29)
@@ -137,6 +136,7 @@ namespace Crystallography.Controls
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
             formScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
             formSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
+            //atomControl.dataGridView.Columns["enabledColumn"].Visible = false;
         }
         #endregion
 
@@ -152,40 +152,6 @@ namespace Crystallography.Controls
         private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e)
             => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
-        private void checkSpecialNumber()
-        {
-            //三方あるいは六方
-            // if (crystal.Symmetry.SeriesNumber < 430 && crystal.Symmetry.SeriesNumber > 488) return;
-            for (int i = 0; i < crystal.Atoms.Length; i++)
-            {
-                var pos = new Vector3D(
-                    ((int)Math.Round(crystal.Atoms[i].X * 1000000)) / 1000000.0,
-                    ((int)Math.Round(crystal.Atoms[i].Y * 1000000)) / 1000000.0,
-                    ((int)Math.Round(crystal.Atoms[i].Z * 1000000)) / 1000000.0);
-                var occ = ((int)Math.Round(crystal.Atoms[i].Occ * 1000000)) / 1000000.0;
-
-                //bool flag = false;
-                for (int j = 0; j < rationalNumbers.Length; j++)
-                {
-                    if (Math.Abs(rationalNumbers[j] - pos.X) < 0.0001) { pos.X = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - pos.Y) < 0.0001) { pos.Y = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - pos.Z) < 0.0001) { pos.Z = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - occ) < 0.0001) { occ = rationalNumbers[j]; }
-                }
-                //if (flag)
-                {
-                    //  Atoms temp = SymmetryStatic.GetEquivalentAtomsPosition(pos, crystal.SymmetrySeriesNumber);
-                    //  if (temp.Atom.Count != crystal.Atoms[i].Atom.Count)
-                    {
-                        Atoms a = crystal.Atoms[i];
-                        crystal.Atoms[i] = new Atoms(a.Label, a.AtomicNumber, a.SubNumberXray, a.SubNumberElectron, a.Isotope, a.SymmetrySeriesNumber,
-                            pos, new Vector3D(a.X_err, a.Y_err, a.Z_err), occ, a.Occ_err, a.Dsf,
-                            new Material(a.Argb, a.Texture), a.Radius);
-                        crystal.GetFormulaAndDensity();
-                    }
-                }
-            }
-        }
         #region Crystalクラスを画面下部 から生成/にセット
 
 
@@ -292,25 +258,18 @@ namespace Crystallography.Controls
             }
 
             //Atomsコントロール
-            atomControl.SymmetrySeriesNumber = SymmetrySeriesNumber;
-            atomControl.Clear();
-            atomControl.AddRange(Crystal.Atoms);
-
+            atomControl.Crystal = crystal;
 
             //Bondコントロール
-            bondControl.ElementList = Crystal.Atoms.Select(a => a.ElementName).ToArray();//Bonds&Polyhedra中のコンボボックスの変更
-            bondControl.Clear();//listBoxBondsAndPolyhedraにBondsを追加
-            bondControl.AddRange(Crystal.Bonds);
+            bondControl.Crystal = crystal;
 
             //Boundsコントロール
-            boundControl.Crystal = Crystal;
-            boundControl.Clear();
-            boundControl.AddRange(Crystal.Bounds);
+            boundControl.Crystal = crystal;
 
             //LatticePlaneコントロール
             latticePlaneControl.Crystal = Crystal;
-            latticePlaneControl.Clear();
-            latticePlaneControl.AddRange(crystal.LatticePlanes);
+            //latticePlaneControl.Clear();
+            //latticePlaneControl.AddRange(crystal.LatticePlanes);
 
             //EOS関連
             numericBoxPressure.Value = 0;

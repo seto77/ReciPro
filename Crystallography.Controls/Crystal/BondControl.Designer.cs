@@ -46,22 +46,15 @@
             this.checkBoxShowVertexAtoms = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCenterAtom = new System.Windows.Forms.CheckBox();
             this.groupBoxBonds = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowBonds = new System.Windows.Forms.CheckBox();
             this.numericBoxBondAlpha = new Crystallography.Controls.NumericBox();
             this.numericBoxBondRadius = new Crystallography.Controls.NumericBox();
             this.numericBoxBondMaxLength = new Crystallography.Controls.NumericBox();
             this.numericBoxBondMinLength = new Crystallography.Controls.NumericBox();
+            this.checkBoxShowBonds = new System.Windows.Forms.CheckBox();
             this.buttonAddBond = new System.Windows.Forms.Button();
             this.buttonChangeBond = new System.Windows.Forms.Button();
             this.buttonDeleteBond = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.enabledDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.centerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vertexDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.showBondsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.showPolyhedronDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -91,6 +84,13 @@
             this.Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Center = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vertex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enabledDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.centerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vertexDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.showBondsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.showPolyhedronDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBoxPolyhedron.SuspendLayout();
             this.groupBoxEdge.SuspendLayout();
             this.groupBoxBonds.SuspendLayout();
@@ -278,15 +278,6 @@
             this.groupBoxBonds.Name = "groupBoxBonds";
             this.groupBoxBonds.TabStop = false;
             // 
-            // checkBoxShowBonds
-            // 
-            resources.ApplyResources(this.checkBoxShowBonds, "checkBoxShowBonds");
-            this.checkBoxShowBonds.Checked = true;
-            this.checkBoxShowBonds.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowBonds.Name = "checkBoxShowBonds";
-            this.checkBoxShowBonds.UseVisualStyleBackColor = true;
-            this.checkBoxShowBonds.CheckedChanged += new System.EventHandler(this.checkBoxShowBonds_CheckedChanged);
-            // 
             // numericBoxBondAlpha
             // 
             this.numericBoxBondAlpha.AllowMouseControl = false;
@@ -419,6 +410,15 @@
             this.numericBoxBondMinLength.Value = 0.1D;
             this.numericBoxBondMinLength.WordWrap = true;
             // 
+            // checkBoxShowBonds
+            // 
+            resources.ApplyResources(this.checkBoxShowBonds, "checkBoxShowBonds");
+            this.checkBoxShowBonds.Checked = true;
+            this.checkBoxShowBonds.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowBonds.Name = "checkBoxShowBonds";
+            this.checkBoxShowBonds.UseVisualStyleBackColor = true;
+            this.checkBoxShowBonds.CheckedChanged += new System.EventHandler(this.checkBoxShowBonds_CheckedChanged);
+            // 
             // buttonAddBond
             // 
             this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
@@ -458,8 +458,8 @@
             this.enabledDataGridViewCheckBoxColumn1,
             this.centerDataGridViewTextBoxColumn1,
             this.vertexDataGridViewTextBoxColumn1,
-            this.maxLenDataGridViewTextBoxColumn1,
             this.minLenDataGridViewTextBoxColumn1,
+            this.maxLenDataGridViewTextBoxColumn1,
             this.showBondsDataGridViewCheckBoxColumn,
             this.showPolyhedronDataGridViewCheckBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
@@ -471,52 +471,6 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // enabledDataGridViewCheckBoxColumn1
-            // 
-            this.enabledDataGridViewCheckBoxColumn1.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn1, "enabledDataGridViewCheckBoxColumn1");
-            this.enabledDataGridViewCheckBoxColumn1.Name = "enabledDataGridViewCheckBoxColumn1";
-            // 
-            // centerDataGridViewTextBoxColumn1
-            // 
-            this.centerDataGridViewTextBoxColumn1.DataPropertyName = "Center";
-            resources.ApplyResources(this.centerDataGridViewTextBoxColumn1, "centerDataGridViewTextBoxColumn1");
-            this.centerDataGridViewTextBoxColumn1.Name = "centerDataGridViewTextBoxColumn1";
-            this.centerDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // vertexDataGridViewTextBoxColumn1
-            // 
-            this.vertexDataGridViewTextBoxColumn1.DataPropertyName = "Vertex";
-            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn1, "vertexDataGridViewTextBoxColumn1");
-            this.vertexDataGridViewTextBoxColumn1.Name = "vertexDataGridViewTextBoxColumn1";
-            this.vertexDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // maxLenDataGridViewTextBoxColumn1
-            // 
-            this.maxLenDataGridViewTextBoxColumn1.DataPropertyName = "Max len.";
-            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn1, "maxLenDataGridViewTextBoxColumn1");
-            this.maxLenDataGridViewTextBoxColumn1.Name = "maxLenDataGridViewTextBoxColumn1";
-            this.maxLenDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // minLenDataGridViewTextBoxColumn1
-            // 
-            this.minLenDataGridViewTextBoxColumn1.DataPropertyName = "Min len.";
-            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn1, "minLenDataGridViewTextBoxColumn1");
-            this.minLenDataGridViewTextBoxColumn1.Name = "minLenDataGridViewTextBoxColumn1";
-            this.minLenDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // showBondsDataGridViewCheckBoxColumn
-            // 
-            this.showBondsDataGridViewCheckBoxColumn.DataPropertyName = "Show bonds";
-            resources.ApplyResources(this.showBondsDataGridViewCheckBoxColumn, "showBondsDataGridViewCheckBoxColumn");
-            this.showBondsDataGridViewCheckBoxColumn.Name = "showBondsDataGridViewCheckBoxColumn";
-            // 
-            // showPolyhedronDataGridViewCheckBoxColumn
-            // 
-            this.showPolyhedronDataGridViewCheckBoxColumn.DataPropertyName = "Show Polyhedron";
-            resources.ApplyResources(this.showPolyhedronDataGridViewCheckBoxColumn, "showPolyhedronDataGridViewCheckBoxColumn");
-            this.showPolyhedronDataGridViewCheckBoxColumn.Name = "showPolyhedronDataGridViewCheckBoxColumn";
             // 
             // bindingSource
             // 
@@ -751,6 +705,56 @@
             this.Vertex.Name = "Vertex";
             this.Vertex.ReadOnly = true;
             // 
+            // enabledDataGridViewCheckBoxColumn1
+            // 
+            this.enabledDataGridViewCheckBoxColumn1.DataPropertyName = "Enabled";
+            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn1, "enabledDataGridViewCheckBoxColumn1");
+            this.enabledDataGridViewCheckBoxColumn1.Name = "enabledDataGridViewCheckBoxColumn1";
+            // 
+            // centerDataGridViewTextBoxColumn1
+            // 
+            this.centerDataGridViewTextBoxColumn1.DataPropertyName = "Center";
+            resources.ApplyResources(this.centerDataGridViewTextBoxColumn1, "centerDataGridViewTextBoxColumn1");
+            this.centerDataGridViewTextBoxColumn1.Name = "centerDataGridViewTextBoxColumn1";
+            this.centerDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.centerDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vertexDataGridViewTextBoxColumn1
+            // 
+            this.vertexDataGridViewTextBoxColumn1.DataPropertyName = "Vertex";
+            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn1, "vertexDataGridViewTextBoxColumn1");
+            this.vertexDataGridViewTextBoxColumn1.Name = "vertexDataGridViewTextBoxColumn1";
+            this.vertexDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.vertexDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // minLenDataGridViewTextBoxColumn1
+            // 
+            this.minLenDataGridViewTextBoxColumn1.DataPropertyName = "Min len.";
+            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn1, "minLenDataGridViewTextBoxColumn1");
+            this.minLenDataGridViewTextBoxColumn1.Name = "minLenDataGridViewTextBoxColumn1";
+            this.minLenDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.minLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // maxLenDataGridViewTextBoxColumn1
+            // 
+            this.maxLenDataGridViewTextBoxColumn1.DataPropertyName = "Max len.";
+            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn1, "maxLenDataGridViewTextBoxColumn1");
+            this.maxLenDataGridViewTextBoxColumn1.Name = "maxLenDataGridViewTextBoxColumn1";
+            this.maxLenDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.maxLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // showBondsDataGridViewCheckBoxColumn
+            // 
+            this.showBondsDataGridViewCheckBoxColumn.DataPropertyName = "Show bonds";
+            resources.ApplyResources(this.showBondsDataGridViewCheckBoxColumn, "showBondsDataGridViewCheckBoxColumn");
+            this.showBondsDataGridViewCheckBoxColumn.Name = "showBondsDataGridViewCheckBoxColumn";
+            // 
+            // showPolyhedronDataGridViewCheckBoxColumn
+            // 
+            this.showPolyhedronDataGridViewCheckBoxColumn.DataPropertyName = "Show Polyhedron";
+            resources.ApplyResources(this.showPolyhedronDataGridViewCheckBoxColumn, "showPolyhedronDataGridViewCheckBoxColumn");
+            this.showPolyhedronDataGridViewCheckBoxColumn.Name = "showPolyhedronDataGridViewCheckBoxColumn";
+            // 
             // BondInputControl
             // 
             resources.ApplyResources(this, "$this");
@@ -834,8 +838,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn centerDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn vertexDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maxLenDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn minLenDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxLenDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn showBondsDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn showPolyhedronDataGridViewCheckBoxColumn;
     }

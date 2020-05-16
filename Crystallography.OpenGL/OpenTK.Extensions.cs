@@ -1,4 +1,7 @@
-﻿using C4 = OpenTK.Graphics.Color4;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using C4 = OpenTK.Graphics.Color4;
 using M3d = OpenTK.Matrix3d;
 using M3f = OpenTK.Matrix3;
 using M4d = OpenTK.Matrix4d;
@@ -25,7 +28,7 @@ namespace Crystallography.OpenGL
 
         #endregion V2dに関する拡張メソッド
 
-        #region V3dに関する拡張メソッド
+        #region V3dに関するメソッド
 
         /// <summary>
         /// 拡張メソッド.
@@ -67,9 +70,10 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static V3d ToV3d(this V3f v) => new V3d(v.X, v.Y, v.Z);
 
+
+     
+
         #endregion V4fに関する拡張メソッド
-
-
 
         #region V4fに関する拡張メソッド
 
@@ -96,8 +100,6 @@ namespace Crystallography.OpenGL
         public static V3d ToV3d(this V4f v) => new V3d(v.X, v.Y, v.Z);
 
         #endregion V4fに関する拡張メソッド
-
-
 
         #region V4dに関する拡張メソッド
 
@@ -284,5 +286,23 @@ namespace Crystallography.OpenGL
            );
 
         #endregion M3dに関する拡張メソッド
+
+
+        public static V3f Average(IEnumerable<V3f> vectors)
+        {
+            var average = new V3f(0, 0, 0);
+            foreach (var v in vectors)
+                average += v;
+            return average / vectors.Count();
+        }
+
+        public static V3d Average(IEnumerable<V3d> vectors)
+        {
+            var average = new V3d(0, 0, 0);
+            foreach (var v in vectors)
+                average += v;
+            return average / vectors.Count();
+        }
+
     }
 }

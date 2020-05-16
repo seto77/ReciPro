@@ -836,6 +836,8 @@ namespace Crystallography.Controls {
             
             private global::System.Data.DataColumn columnAtom;
             
+            private global::System.Data.DataColumn columnEnabled;
+            
             private global::System.Data.DataColumn columnLabel;
             
             private global::System.Data.DataColumn columnElement;
@@ -892,6 +894,14 @@ namespace Crystallography.Controls {
             public global::System.Data.DataColumn AtomColumn {
                 get {
                     return this.columnAtom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EnabledColumn {
+                get {
+                    return this.columnEnabled;
                 }
             }
             
@@ -1004,10 +1014,11 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTableAtomRow AddDataTableAtomRow(object Atom, string Label, string Element, string X, string Y, string Z, string _Occ_, string _Multi_, string _Wyck__Let_, string _Site_Sym_) {
+            public DataTableAtomRow AddDataTableAtomRow(object Atom, bool Enabled, string Label, string Element, string X, string Y, string Z, string _Occ_, string _Multi_, string _Wyck__Let_, string _Site_Sym_) {
                 DataTableAtomRow rowDataTableAtomRow = ((DataTableAtomRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Atom,
+                        Enabled,
                         Label,
                         Element,
                         X,
@@ -1040,6 +1051,7 @@ namespace Crystallography.Controls {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnAtom = base.Columns["Atom"];
+                this.columnEnabled = base.Columns["Enabled"];
                 this.columnLabel = base.Columns["Label"];
                 this.columnElement = base.Columns["Element"];
                 this.columnX = base.Columns["X"];
@@ -1056,6 +1068,8 @@ namespace Crystallography.Controls {
             private void InitClass() {
                 this.columnAtom = new global::System.Data.DataColumn("Atom", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAtom);
+                this.columnEnabled = new global::System.Data.DataColumn("Enabled", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnabled);
                 this.columnLabel = new global::System.Data.DataColumn("Label", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLabel);
                 this.columnElement = new global::System.Data.DataColumn("Element", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2658,6 +2672,22 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Enabled {
+                get {
+                    try {
+                        return ((bool)(this[this.tableDataTableAtom.EnabledColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableAtom\' にある列 \'Enabled\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableAtom.EnabledColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Label {
                 get {
                     try {
@@ -2810,6 +2840,18 @@ namespace Crystallography.Controls {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetAtomNull() {
                 this[this.tableDataTableAtom.AtomColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEnabledNull() {
+                return this.IsNull(this.tableDataTableAtom.EnabledColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEnabledNull() {
+                this[this.tableDataTableAtom.EnabledColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

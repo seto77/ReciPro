@@ -82,6 +82,11 @@ namespace Crystallography
                 Emission = value.Emission;
             }
         }
+
+        /// <summary>
+        /// OpenGLの描画時に有効にするかどうか
+        /// </summary>
+        public bool GLEnabled = true;
         
         #region コンストラクタ
 

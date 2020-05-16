@@ -555,83 +555,18 @@ namespace Crystallography.OpenGL
         }
 
         /// <summary>
-        /// 多角形を分解する (TriangleFanのみ)
+        /// 多角形を分解する (Quadsにして返す)
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
         public Polygon[] Decompose(int order = 1)
         {
-            V3d[][] decompose(V3d[] srcVertex, int ord)
-            {
-                if (ord == 0)//ゼロの場合、これ以上分解しない
-                {
-                    //中心を追加し、引数を追加し、配列にして返す
-                    var resultVertex = new List<V3d> { new V3d(srcVertex.Average(s => s.X), srcVertex.Average(s => s.Y), srcVertex.Average(s => s.Z)) };
-                    resultVertex.AddRange(srcVertex);
-                    return new[] { resultVertex.ToArray() };
-                }
-                else
-                {
-                    var newVertices = new List<V3d>();
-                    //頂点と、頂点間の中点を、交互に追加. 偶数番目が中点になるように.
-                    newVertices.Add((srcVertex[srcVertex.Length - 1] + srcVertex[0]) / 2);
-                    newVertices.Add(srcVertex[0]);
-                    for (int i = 1; i < srcVertex.Length; i++)
-                    {
-                        newVertices.Add((srcVertex[i - 1] + srcVertex[i]) / 2);
-                        newVertices.Add(srcVertex[i]);
-                    }
-
-                    //中心を算出
-                    var center = new V3d(srcVertex.Average(s => s.X), srcVertex.Average(s => s.Y), srcVertex.Average(s => s.Z));
-
-                    //中心と新しい頂点を組み合わせて、出来れば凸な4角形、無理なら3角形を作る
-                    var resultVertices = new List<V3d[]>();
-                    int n0 = 0, n1 = 1, n2 = 2;
-                    while (true)
-                    {
-                        if (n2 < newVertices.Count && n0 % 2 == 0) // n0が奇数(すなわち中点)で、四角形を作る余裕があるとき
-                        {
-                            var temp4 = new[] { center, newVertices[n0], newVertices[n1], newVertices[n2] };
-                            var pInfo = GLGeometry.PolygonInfo(temp4, V3d.Zero);
-                            if (pInfo.Indices.Length == 5) //四角形が凸になるか判定
-                                resultVertices.Add(temp4);
-                            else
-                                resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
-                        }
-                        else
-                            resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
-
-                        if (resultVertices[resultVertices.Count - 1].Length == 4)
-                        {
-                            if (n2 == 0)
-                                break;
-                            n0 += 2; n1 += 2; n2 += 2;
-                        }
-                        else
-                        {
-                            if (n1 == 0)
-                                break;
-                            n0++; n1++; n2++;
-                        }
-
-                        n1 = n1 < newVertices.Count ? n1 : n1 - newVertices.Count;
-                        n2 = n2 < newVertices.Count ? n2 : n2 - newVertices.Count;
-                    }
-                    //新しく出来た頂点群を再帰的に分割する
-                    return resultVertices.SelectMany(v => decompose(v, ord - 1)).ToArray();
-                }
-            }
-
-
-            //ここから
+            //ここから本体
             var inputs = new List<V3d>();
             for (int i = 1; i < TypeCounts[0]-1; i++)
                 inputs.Add(Vertices[Indices[i]].Position.ToV3d());
             
             var outputs = decompose(inputs.ToArray(), order);
-
-            var rn = new Random();
 
             var results = new Polygon[outputs.Length];
             for(int i=0; i< results.Length; i++)
@@ -641,25 +576,87 @@ namespace Crystallography.OpenGL
                 results[i].IgnoreNormalSides = true;//裏表を無視する
                 
                 results[i].Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Color)).ToArray();
-                results[i].Types = new[] { PT.TriangleFan };
+                results[i].Types = new[] { PT.Quads };
 
-                var indices = new List<uint>(Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val));
-                indices.Add(1);
-                results[i].Indices = indices.ToArray();
+                results[i].Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray();
 
-                results[i].TypeCounts = new[] { indices.Count };
+                results[i].TypeCounts = new[] { results[i].Indices.Length};
 
-                var center = outputs[i][0];
+                var center = Extensions.Average(outputs[i]);
                 results[i].CircumscribedSphereCenter = new V4d(center, 1);
                 results[i].CircumscribedSphereRadius = outputs[i].Max(v => (v - center).Length);
 
                 results[i].Tag = Tag;
                 results[i].Rendered = Rendered;
 
-              //  results[i].Material.ColorV = new V4f((float)rn.NextDouble(), (float)rn.NextDouble(), (float)rn.NextDouble(), 1);
+                //results[i].Material.Color = new C4((float)rn.NextDouble(), (float)rn.NextDouble(), (float)rn.NextDouble(), 1);
             }
 
             return results.ToArray();
+        }
+
+
+        /// <summary>
+        /// Decomposeから呼びばれる再帰的関数
+        /// </summary>
+        /// <param name="srcVertex"></param>
+        /// <param name="ord"></param>
+        /// <returns></returns>
+        static V3d[][] decompose(V3d[] srcVertex, int ord)
+        {
+            if (ord == 0)//ゼロの場合、これ以上分解しない
+            {
+                return new[] { srcVertex };
+            }
+            else
+            {
+                //頂点と、頂点間の中点を、交互に追加. 偶数番目が中点になるように.
+                var newVertices = new List<V3d>();
+                newVertices.Add((srcVertex[srcVertex.Length - 1] + srcVertex[0]) / 2);
+                newVertices.Add(srcVertex[0]);
+                for (int i = 1; i < srcVertex.Length; i++)
+                {
+                    newVertices.Add((srcVertex[i - 1] + srcVertex[i]) / 2);
+                    newVertices.Add(srcVertex[i]);
+                }
+
+                var center = Extensions.Average(srcVertex);//中心を算出
+
+                //中心と新しい頂点を組み合わせて、可能であれば凸な4角形、無理なら3角形を作る
+                var resultVertices = new List<V3d[]>();
+                int n0 = 0, n1 = 1, n2 = 2;
+                while (true)
+                {
+                    if (n2 < newVertices.Count && n0 % 2 == 0) // n0が奇数(すなわち中点)で、四角形を作る余裕があるとき
+                    {
+                        var quads = new[] { center, newVertices[n0], newVertices[n1], newVertices[n2] };
+                        if (GLGeometry.PolygonInfo(quads, V3d.Zero).Indices.Length == 5) //四角形が凸になるか判定
+                            resultVertices.Add(quads);
+                        else
+                            resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
+                    }
+                    else
+                        resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
+
+                    if (resultVertices[resultVertices.Count - 1].Length == 4)//四角形の時
+                    {
+                        if (n2 == 0)
+                            break;
+                        n0 += 2; n1 += 2; n2 += 2;
+                    }
+                    else//三角形の時
+                    {
+                        if (n1 == 0)
+                            break;
+                        n0++; n1++; n2++;
+                    }
+
+                    n1 = n1 < newVertices.Count ? n1 : n1 - newVertices.Count;
+                    n2 = n2 < newVertices.Count ? n2 : n2 - newVertices.Count;
+                }
+                //新しく出来た頂点群を再帰的に分割する
+                return resultVertices.SelectMany(v => decompose(v, ord - 1)).ToArray();
+            }
         }
     }
 
@@ -804,11 +801,11 @@ namespace Crystallography.OpenGL
         /// PolyhedronをPolygonに分解する.
         /// orderを指定すると、分解したPolygonをさらに分割する.
         /// </summary>
-        public Polygon[] ToPolygons(int order = 0) 
+        public Polygon[] ToPolygons(int order = 0)
         {
-            var p =new Polygon[Types.Length / 3];
+            var p = new Polygon[Types.Length / 3];
 
-            for(int i=0, offsetIndices = 0, offsetVetices = 0; i< p.Length; i++)
+            for (int i = 0, offsetIndices = 0, offsetVetices = 0; i < p.Length; i++)
             {
                 p[i] = new Polygon(Material, Mode);
 
@@ -836,8 +833,11 @@ namespace Crystallography.OpenGL
             if (order == 0)
                 return p;
             else
-                return p.SelectMany(o => o.Decompose(order)).ToArray();
-        
+            {
+                var polygons = p.SelectMany(o => o.Decompose(order)).ToArray();
+                return polygons;
+
+            }
         }
     }
 

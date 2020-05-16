@@ -415,6 +415,7 @@
             this.atomControl.B33Err = 0D;
             this.atomControl.Biso = 0D;
             this.atomControl.BisoErr = 0D;
+            this.atomControl.Crystal = null;
             this.atomControl.DebyeWallerError = false;
             this.atomControl.DebyeWallerTabVisible = true;
             this.atomControl.Diffusion = 0F;
@@ -433,7 +434,6 @@
             this.atomControl.Shininess = 0F;
             this.atomControl.SkipEvent = false;
             this.atomControl.Specular = 0F;
-            this.atomControl.SymmetrySeriesNumber = 0;
             this.atomControl.X = 0D;
             this.atomControl.XErr = 0D;
             this.atomControl.Y = 0D;
@@ -477,7 +477,8 @@
             // bondControl
             // 
             resources.ApplyResources(this.bondControl, "bondControl");
-            this.bondControl.ElementList = new string[0];
+            this.bondControl.Crystal = null;
+            this.bondControl.ElementList = null;
             this.bondControl.Name = "bondControl";
             this.bondControl.SkipEvent = false;
             // 

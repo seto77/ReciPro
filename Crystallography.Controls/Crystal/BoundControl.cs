@@ -15,7 +15,22 @@ namespace Crystallography.Controls
     {
         #region プロパティ
         public bool SkipEvent { get; set; } = false;
-        public Crystal Crystal { get; set; } = null;
+       // public Crystal Crystal { get; set; } = null;
+
+        public Crystal Crystal
+        {
+            get => crystal; set
+            {
+                crystal = value;
+                if (crystal != null)
+                {
+                    table.Clear();
+                    AddRange(Crystal.Bounds);
+                }
+            }
+        }
+        private Crystal crystal = null;
+
         private (int H, int K, int L) index { get => (numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger); }
 
         private bool equivalency {get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
@@ -63,8 +78,10 @@ namespace Crystallography.Controls
             if (bounds != null && bounds.Index != (0, 0, 0))
             {
                 table.Add(bounds);
+                Crystal.Bounds = GetAll();
                 ItemsChanged?.Invoke(this, new EventArgs());
             }
+            
         }
 
         /// <summary>
@@ -75,9 +92,13 @@ namespace Crystallography.Controls
         {
             if (bounds != null)
             {
+                SkipEvent = true;
                 foreach (var b in bounds.Where(b => b.Index != (0, 0, 0)))
                     table.Add(b);
+                SkipEvent = false;
+                Crystal.Bounds = GetAll();
                 ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(this, new EventArgs());
             }
         }
 
@@ -88,6 +109,7 @@ namespace Crystallography.Controls
         public void Delete(int i)
         {
             table.Remove(i);
+            Crystal.Bounds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -99,6 +121,7 @@ namespace Crystallography.Controls
         public void Replace(Bound bounds, int i)
         {
             table.Replace(bounds, i);
+            Crystal.Bounds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
@@ -108,6 +131,7 @@ namespace Crystallography.Controls
         public void Clear()
         {
             table.Clear();
+            Crystal.Bounds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 

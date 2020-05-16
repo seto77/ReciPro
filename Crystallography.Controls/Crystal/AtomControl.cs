@@ -11,12 +11,31 @@ namespace Crystallography.Controls
     public partial class AtomControl : UserControl
     {
         #region プロパティ, フィールド, イベントハンドラ
+
+        public Crystal Crystal
+        {
+            get => crystal; set
+            {
+                crystal = value;
+                
+                if (crystal != null)
+                {
+                    table.Clear();
+                    AddRange(Crystal.Atoms);
+                    //なぜかEnabledカラムのVisibleが予期せず変わってしまうことがあるので、appearanceTabVisibleを使う.
+                    dataGridView.Columns["enabledColumn"].Visible = appearanceTabVisible;
+                }
+            }
+        }
+        private Crystal crystal = null;
+
+        public int SymmetrySeriesNumber { get=> crystal !=null ? crystal.SymmetrySeriesNumber: 0;} 
+
         DataSet.DataTableAtomDataTable table;
         public bool SkipEvent { get; set; } = false;
-        public int SymmetrySeriesNumber { get; set; } = 0;
+        
 
         private bool details1 = false;
-
         public bool AtomicPositionError
         {
             set
@@ -44,7 +63,6 @@ namespace Crystallography.Controls
         }
 
         private bool details2 = false;
-
         public bool DebyeWallerError
         {
             set
@@ -71,7 +89,6 @@ namespace Crystallography.Controls
             }
             get => details2;
         }
-
         public bool Istoropy
         {
             set
@@ -212,7 +229,15 @@ namespace Crystallography.Controls
         public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
         #endregion
 
+        /// <summary>
+        /// 原子のパラメータが変更された時のイベント
+        /// </summary>
         public event EventHandler ItemsChanged;
+
+        /// <summary>
+        /// GLEnabledチェックが変更された時だけのイベント. (今のところFormStructureだけが受け取る)
+        /// </summary>
+        public event EventHandler GLEnableChanged;
 
         #endregion プロパティ
 
@@ -226,10 +251,12 @@ namespace Crystallography.Controls
             //   toolTip.SetTooltipToUsercontrol(this);
 
             //なぜか一部のnumericBoxのUp/Downが消えてしまうので、対処
-
             numericBoxAmbient.ShowUpDown = numericBoxDiffusion.ShowUpDown = numericBoxSpecular.ShowUpDown = numericBoxShininess.ShowUpDown =
                 numericBoxEmission.ShowUpDown = numericBoxAlpha.ShowUpDown = numericBoxAtomRadius.ShowUpDown = true;
+
+            dataGridView.Columns["enabledColumn"].Visible = false;
         }
+
         #endregion
 
         #region タブベージの表示/非表示制御
@@ -361,9 +388,16 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void AddRange(IEnumerable<Atoms> atoms)
         {
-            foreach (var a in atoms)
-                table.Add(a);
-            ItemsChanged?.Invoke(this, new EventArgs());
+            if (atoms != null)
+            {
+                SkipEvent = true;
+                foreach (var a in atoms)
+                    table.Add(a);
+                SkipEvent = false;
+                ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(new object(), new EventArgs());
+            }
+            
         }
 
         /// <summary>
@@ -419,7 +453,7 @@ namespace Crystallography.Controls
         /// </summary>
         public void ResetSymmetry(int symmetrySeriesNumber)
         {
-            SymmetrySeriesNumber = symmetrySeriesNumber;
+            //SymmetrySeriesNumber = symmetrySeriesNumber;
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 var a = table.Get(i);
@@ -640,6 +674,22 @@ namespace Crystallography.Controls
             buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
         }
 
+        private void dataGridViewAtom_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+               Crystal.Atoms[e.RowIndex].GLEnabled= table.Get(e.RowIndex).GLEnabled 
+                    = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                GLEnableChanged?.Invoke(this, new EventArgs());
+            }
+        }
 
+        private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            //チェックボックスが変わると即座に反映させる
+            var x = dataGridView.CurrentCellAddress.X;
+            if ((x == 0) && dataGridView.IsCurrentCellDirty)
+                dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
+        }
     }
 }
