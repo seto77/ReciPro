@@ -69,7 +69,7 @@ namespace ReciPro
         private GLControlAlpha glControlMain;
         private GLControlAlpha glControlAxes;
 
-        private ReaderWriterLockSlim lockObj = new ReaderWriterLockSlim();
+        private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
 
         #endregion
 
@@ -395,9 +395,9 @@ namespace ReciPro
                         var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces);
                         sphere.Rendered = min > -0.0000001;
                         sphere.Tag = new atomID(o.Index, sphere.Rendered);
-                        lockObj.EnterWriteLock();
+                        rwLock.EnterWriteLock();
                         try { GLObjects.Add(sphere); }
-                        finally { lockObj.ExitWriteLock(); }
+                        finally { rwLock.ExitWriteLock(); }
                     }
                 }
             });
@@ -480,11 +480,16 @@ namespace ReciPro
                 var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
                 Parallel.ForEach(dic1[bond.Element1], c =>
                 {
-                    var vertices = dic1[bond.Element2].Where(v => (v.O - c.O).LengthSquared < max2 && (v.O - c.O).LengthSquared > min2 && c.Serial != v.Serial).ToArray();
+                    var vertices = dic1[bond.Element2].Where(v =>
+                    {
+                        var d = (v.O - c.O).LengthSquared;
+                        return d < max2 && d > min2 && c.Serial != v.Serial;
+                    }).ToArray();
+
                     int m = vertices.Length, i = c.AtomIndex;
                     if (m != 0)
                     {
-                        lockObj.EnterWriteLock();
+                        rwLock.EnterWriteLock();
                         try
                         {
                             if (!coord.TryGetValue(i, out int n))//まだcoordに何も追加されていない場合
@@ -502,7 +507,7 @@ namespace ReciPro
                                 dic2.Add(c, vertices);
                             }
                         }
-                        finally { lockObj.ExitWriteLock(); }
+                        finally { rwLock.ExitWriteLock(); }
                     }
                 });
 
@@ -510,27 +515,33 @@ namespace ReciPro
                 Parallel.ForEach(dic2.Keys, c =>
                 {
                     var vertices = dic2[c];
+
+                    rwLock.EnterWriteLock();
+                    try
+                    {
+                        GLObjects[c.ObjIndex].Rendered = true;
+                        foreach (var v in vertices) GLObjects[v.ObjIndex].Rendered = true;
+                    }
+                    finally { rwLock.ExitWriteLock(); }
+
+                    
                     foreach (var v in vertices) //Bond
                     {
                         var vec = v.O - c.O;//中心間を結ぶベクトル
-                        var length = vec.Length;//中心間を結ぶベクトルの長さ
-                        var m = c.O + (length + c.R - v.R) * vec / 2 / length;//中間地点
+                        var m = (1 + (c.R - v.R) / vec.Length) * vec / 2 ;//中間地点
 
-                        var cylinder1 = new Cylinder(c.O, m - c.O, radius, c.BondMat, DrawingMode.Surfaces)
-                        { Tag = new bondID(c.Serial, v.Serial), ShowClippedSection = true, Rendered = bond.ShowBond };
+                        var cyl1 = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces);
+                        var cyl2 = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces);
+                        cyl1.Tag = cyl2.Tag = new bondID(c.Serial, v.Serial);
+                        cyl1.Rendered = cyl2.Rendered = bond.ShowBond;
 
-                        var cylinder2 = new Cylinder(m, v.O - m, radius, v.BondMat, DrawingMode.Surfaces)
-                        { Tag = new bondID(c.Serial, v.Serial), ShowClippedSection = true, Rendered = bond.ShowBond };
-
-                        lockObj.EnterWriteLock();
+                        rwLock.EnterWriteLock();
                         try
                         {
-                            GLObjects.Add(cylinder1);
-                            GLObjects.Add(cylinder2);
-                            GLObjects[c.ObjIndex].Rendered = true;
-                            GLObjects[v.ObjIndex].Rendered = true;
+                            GLObjects.Add(cyl1);
+                            GLObjects.Add(cyl2);
                         }
-                        finally { lockObj.ExitWriteLock(); }
+                        finally { rwLock.ExitWriteLock(); }
                     }
                     if (bond.ShowPolyhedron)
                     {
@@ -538,19 +549,19 @@ namespace ReciPro
                         {
                             var polygon = new Polygon(vertices.Select(v => v.O).ToArray(), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron };
-                            
-                            lockObj.EnterWriteLock();
+
+                            rwLock.EnterWriteLock();
                             try { GLObjects.Add(polygon); }
-                            finally { lockObj.ExitWriteLock(); }
+                            finally { rwLock.ExitWriteLock(); }
                         }
                         else if (vertices.Count() > 3)
                         {
                             var polyhedron = new Polyhedron(vertices.Select(v => v.O).ToArray(), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false };
 
-                            lockObj.EnterWriteLock();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
-                            try { GLObjects.AddRange(polyhedron.ToPolygons()); }
-                            finally { lockObj.ExitWriteLock(); }
+                            rwLock.EnterWriteLock();
+                            try { GLObjects.AddRange(polyhedron.ToPolygons()); }//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                            finally { rwLock.ExitWriteLock(); }
                         }
                     }
                 });

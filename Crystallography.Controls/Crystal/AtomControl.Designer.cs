@@ -43,6 +43,8 @@
             this.radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
             this.radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
+            this.numericBoxBiso = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxBisoerr = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelX_ = new System.Windows.Forms.Label();
             this.flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,15 +56,27 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
+            this.numericalTextBox1 = new Crystallography.Controls.NumericBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.numericalTextBox2 = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
+            this.numericalTextBox3 = new Crystallography.Controls.NumericBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.numericalTextBox4 = new Crystallography.Controls.NumericBox();
             this.checkBoxDetailAtomicPositionError = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageElementAndPosition = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.numericalTextBoxOccerr = new Crystallography.Controls.NumericBox();
+            this.numericTextBoxOcc = new Crystallography.Controls.NumericBox();
+            this.numericTextBoxZ = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxYerr = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxXerr = new Crystallography.Controls.NumericBox();
+            this.numericTextBoxY = new Crystallography.Controls.NumericBox();
+            this.numericTextBoxX = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxZerr = new Crystallography.Controls.NumericBox();
             this.tabPageOriginShift = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonOriginShiftPlus = new System.Windows.Forms.RadioButton();
@@ -78,10 +92,25 @@
             this.buttonOriginShift9 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonOriginShiftCustom = new System.Windows.Forms.Button();
+            this.numericBoxOriginShiftZ = new Crystallography.Controls.NumericBox();
+            this.numericBoxOriginShiftY = new Crystallography.Controls.NumericBox();
+            this.numericBoxOriginShiftX = new Crystallography.Controls.NumericBox();
             this.tabPageDebyeWaller = new System.Windows.Forms.TabPage();
             this.checkBoxDetailsDebyeWallerError = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelAniso2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.numericalTextBoxB22 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB22err = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB23 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB23err = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB33 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB33err = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanelAniso1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.numericalTextBoxB11 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB11err = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB12 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB12err = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB13 = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxB13err = new Crystallography.Controls.NumericBox();
             this.tabPageScatteringFactor = new System.Windows.Forms.TabPage();
             this.richTextBoxIsotope = new System.Windows.Forms.RichTextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -93,12 +122,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
+            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
+            this.numericBoxEmission = new Crystallography.Controls.NumericBox();
+            this.numericBoxShininess = new Crystallography.Controls.NumericBox();
+            this.numericBoxSpecular = new Crystallography.Controls.NumericBox();
+            this.numericBoxDiffusion = new Crystallography.Controls.NumericBox();
+            this.numericBoxAmbient = new Crystallography.Controls.NumericBox();
+            this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonChangeToSameElement = new System.Windows.Forms.Button();
             this.buttonAddAtom = new System.Windows.Forms.Button();
@@ -107,8 +144,6 @@
             this.buttonAtomDown = new System.Windows.Forms.Button();
             this.buttonDeleteAtom = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,43 +156,8 @@
             this.siteSymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
-            this.numericalTextBoxOccerr = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxOcc = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxZ = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxYerr = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxXerr = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxY = new Crystallography.Controls.NumericBox();
-            this.numericTextBoxX = new Crystallography.Controls.NumericBox();
-            this.numericBoxBiso = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxBisoerr = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox1 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox2 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox3 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox4 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxZerr = new Crystallography.Controls.NumericBox();
-            this.numericBoxOriginShiftZ = new Crystallography.Controls.NumericBox();
-            this.numericBoxOriginShiftY = new Crystallography.Controls.NumericBox();
-            this.numericBoxOriginShiftX = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB22 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB22err = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB23 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB23err = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB33 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB33err = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB11 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB11err = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB12 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB12err = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB13 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxB13err = new Crystallography.Controls.NumericBox();
-            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
-            this.numericBoxEmission = new Crystallography.Controls.NumericBox();
-            this.numericBoxShininess = new Crystallography.Controls.NumericBox();
-            this.numericBoxSpecular = new Crystallography.Controls.NumericBox();
-            this.numericBoxDiffusion = new Crystallography.Controls.NumericBox();
-            this.numericBoxAmbient = new Crystallography.Controls.NumericBox();
-            this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
-            this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanelIso.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
@@ -173,9 +173,9 @@
             this.tabPageScatteringFactor.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButtonIsotoropy
@@ -198,6 +198,70 @@
             this.flowLayoutPanelIso.Controls.Add(this.numericBoxBiso);
             this.flowLayoutPanelIso.Controls.Add(this.numericalTextBoxBisoerr);
             this.flowLayoutPanelIso.Name = "flowLayoutPanelIso";
+            // 
+            // numericBoxBiso
+            // 
+            this.numericBoxBiso.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxBiso, "numericBoxBiso");
+            this.numericBoxBiso.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBiso.DecimalPlaces = -1;
+            this.numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBiso.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBiso.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxBiso.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxBiso.Maximum = double.PositiveInfinity;
+            this.numericBoxBiso.Minimum = double.NegativeInfinity;
+            this.numericBoxBiso.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxBiso.MouseSpeed = 1D;
+            this.numericBoxBiso.Multiline = false;
+            this.numericBoxBiso.Name = "numericBoxBiso";
+            this.numericBoxBiso.RadianValue = 0D;
+            this.numericBoxBiso.ReadOnly = false;
+            this.numericBoxBiso.RestrictLimitValue = true;
+            this.numericBoxBiso.ShowFraction = false;
+            this.numericBoxBiso.ShowPositiveSign = false;
+            this.numericBoxBiso.SkipEventDuringInput = false;
+            this.numericBoxBiso.SmartIncrement = true;
+            this.numericBoxBiso.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxBiso.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxBiso.ThonsandsSeparator = true;
+            this.numericBoxBiso.UpDown_Increment = 1D;
+            this.numericBoxBiso.Value = 0D;
+            this.numericBoxBiso.WordWrap = true;
+            // 
+            // numericalTextBoxBisoerr
+            // 
+            this.numericalTextBoxBisoerr.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBoxBisoerr, "numericalTextBoxBisoerr");
+            this.numericalTextBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxBisoerr.DecimalPlaces = -1;
+            this.numericalTextBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxBisoerr.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxBisoerr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxBisoerr.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBoxBisoerr.Maximum = double.PositiveInfinity;
+            this.numericalTextBoxBisoerr.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxBisoerr.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericalTextBoxBisoerr.MouseSpeed = 1D;
+            this.numericalTextBoxBisoerr.Multiline = false;
+            this.numericalTextBoxBisoerr.Name = "numericalTextBoxBisoerr";
+            this.numericalTextBoxBisoerr.RadianValue = 0D;
+            this.numericalTextBoxBisoerr.ReadOnly = false;
+            this.numericalTextBoxBisoerr.RestrictLimitValue = true;
+            this.numericalTextBoxBisoerr.ShowFraction = false;
+            this.numericalTextBoxBisoerr.ShowPositiveSign = false;
+            this.numericalTextBoxBisoerr.SkipEventDuringInput = false;
+            this.numericalTextBoxBisoerr.SmartIncrement = true;
+            this.numericalTextBoxBisoerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBoxBisoerr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxBisoerr.ThonsandsSeparator = true;
+            this.numericalTextBoxBisoerr.UpDown_Increment = 1D;
+            this.numericalTextBoxBisoerr.Value = 0D;
+            this.numericalTextBoxBisoerr.WordWrap = true;
             // 
             // flowLayoutPanel1
             // 
@@ -362,10 +426,74 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
+            // numericalTextBox1
+            // 
+            this.numericalTextBox1.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBox1, "numericalTextBox1");
+            this.numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox1.DecimalPlaces = -1;
+            this.numericalTextBox1.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBox1.Maximum = double.PositiveInfinity;
+            this.numericalTextBox1.Minimum = double.NegativeInfinity;
+            this.numericalTextBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericalTextBox1.MouseSpeed = 1D;
+            this.numericalTextBox1.Multiline = false;
+            this.numericalTextBox1.Name = "numericalTextBox1";
+            this.numericalTextBox1.RadianValue = 0D;
+            this.numericalTextBox1.ReadOnly = false;
+            this.numericalTextBox1.RestrictLimitValue = true;
+            this.numericalTextBox1.ShowFraction = true;
+            this.numericalTextBox1.ShowPositiveSign = false;
+            this.numericalTextBox1.SkipEventDuringInput = false;
+            this.numericalTextBox1.SmartIncrement = true;
+            this.numericalTextBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBox1.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBox1.ThonsandsSeparator = true;
+            this.numericalTextBox1.UpDown_Increment = 1D;
+            this.numericalTextBox1.Value = 0D;
+            this.numericalTextBox1.WordWrap = true;
+            // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            // 
+            // numericalTextBox2
+            // 
+            this.numericalTextBox2.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBox2, "numericalTextBox2");
+            this.numericalTextBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox2.DecimalPlaces = -1;
+            this.numericalTextBox2.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBox2.Maximum = double.PositiveInfinity;
+            this.numericalTextBox2.Minimum = double.NegativeInfinity;
+            this.numericalTextBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericalTextBox2.MouseSpeed = 1D;
+            this.numericalTextBox2.Multiline = false;
+            this.numericalTextBox2.Name = "numericalTextBox2";
+            this.numericalTextBox2.RadianValue = 0D;
+            this.numericalTextBox2.ReadOnly = false;
+            this.numericalTextBox2.RestrictLimitValue = true;
+            this.numericalTextBox2.ShowFraction = true;
+            this.numericalTextBox2.ShowPositiveSign = false;
+            this.numericalTextBox2.SkipEventDuringInput = false;
+            this.numericalTextBox2.SmartIncrement = true;
+            this.numericalTextBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBox2.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBox2.ThonsandsSeparator = true;
+            this.numericalTextBox2.UpDown_Increment = 1D;
+            this.numericalTextBox2.Value = 0D;
+            this.numericalTextBox2.WordWrap = true;
             // 
             // flowLayoutPanel9
             // 
@@ -381,10 +509,74 @@
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
             // 
+            // numericalTextBox3
+            // 
+            this.numericalTextBox3.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBox3, "numericalTextBox3");
+            this.numericalTextBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox3.DecimalPlaces = -1;
+            this.numericalTextBox3.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBox3.Maximum = double.PositiveInfinity;
+            this.numericalTextBox3.Minimum = double.NegativeInfinity;
+            this.numericalTextBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericalTextBox3.MouseSpeed = 1D;
+            this.numericalTextBox3.Multiline = false;
+            this.numericalTextBox3.Name = "numericalTextBox3";
+            this.numericalTextBox3.RadianValue = 0D;
+            this.numericalTextBox3.ReadOnly = false;
+            this.numericalTextBox3.RestrictLimitValue = true;
+            this.numericalTextBox3.ShowFraction = true;
+            this.numericalTextBox3.ShowPositiveSign = false;
+            this.numericalTextBox3.SkipEventDuringInput = false;
+            this.numericalTextBox3.SmartIncrement = true;
+            this.numericalTextBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBox3.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBox3.ThonsandsSeparator = true;
+            this.numericalTextBox3.UpDown_Increment = 1D;
+            this.numericalTextBox3.Value = 0D;
+            this.numericalTextBox3.WordWrap = true;
+            // 
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
+            // 
+            // numericalTextBox4
+            // 
+            this.numericalTextBox4.AllowMouseControl = false;
+            resources.ApplyResources(this.numericalTextBox4, "numericalTextBox4");
+            this.numericalTextBox4.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox4.DecimalPlaces = -1;
+            this.numericalTextBox4.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox4.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBox4.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBox4.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericalTextBox4.Maximum = double.PositiveInfinity;
+            this.numericalTextBox4.Minimum = double.NegativeInfinity;
+            this.numericalTextBox4.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericalTextBox4.MouseSpeed = 1D;
+            this.numericalTextBox4.Multiline = false;
+            this.numericalTextBox4.Name = "numericalTextBox4";
+            this.numericalTextBox4.RadianValue = 0D;
+            this.numericalTextBox4.ReadOnly = false;
+            this.numericalTextBox4.RestrictLimitValue = true;
+            this.numericalTextBox4.ShowFraction = true;
+            this.numericalTextBox4.ShowPositiveSign = false;
+            this.numericalTextBox4.SkipEventDuringInput = false;
+            this.numericalTextBox4.SmartIncrement = true;
+            this.numericalTextBox4.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericalTextBox4.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericalTextBox4.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBox4.ThonsandsSeparator = true;
+            this.numericalTextBox4.UpDown_Increment = 1D;
+            this.numericalTextBox4.Value = 0D;
+            this.numericalTextBox4.WordWrap = true;
             // 
             // checkBoxDetailAtomicPositionError
             // 
@@ -439,549 +631,6 @@
             this.tableLayoutPanel1.Controls.Add(this.comboBoxAtom, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.numericalTextBoxZerr, 4, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // tabPageOriginShift
-            // 
-            this.tabPageOriginShift.Controls.Add(this.flowLayoutPanel3);
-            this.tabPageOriginShift.Controls.Add(this.label7);
-            this.tabPageOriginShift.Controls.Add(this.buttonOriginShiftCustom);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftZ);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftY);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftX);
-            resources.ApplyResources(this.tabPageOriginShift, "tabPageOriginShift");
-            this.tabPageOriginShift.Name = "tabPageOriginShift";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftPlus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftMinus);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift1);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift2);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift8);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift7);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift6);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift5);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift4);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift3);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift9);
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
-            // radioButtonOriginShiftPlus
-            // 
-            resources.ApplyResources(this.radioButtonOriginShiftPlus, "radioButtonOriginShiftPlus");
-            this.radioButtonOriginShiftPlus.Checked = true;
-            this.radioButtonOriginShiftPlus.Name = "radioButtonOriginShiftPlus";
-            this.radioButtonOriginShiftPlus.TabStop = true;
-            this.radioButtonOriginShiftPlus.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonOriginShiftMinus
-            // 
-            resources.ApplyResources(this.radioButtonOriginShiftMinus, "radioButtonOriginShiftMinus");
-            this.radioButtonOriginShiftMinus.Name = "radioButtonOriginShiftMinus";
-            this.radioButtonOriginShiftMinus.UseVisualStyleBackColor = true;
-            // 
-            // buttonOriginShift1
-            // 
-            resources.ApplyResources(this.buttonOriginShift1, "buttonOriginShift1");
-            this.buttonOriginShift1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift1.Name = "buttonOriginShift1";
-            this.buttonOriginShift1.Tag = "0.125 0.125 0.125";
-            this.buttonOriginShift1.UseVisualStyleBackColor = false;
-            this.buttonOriginShift1.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift2
-            // 
-            resources.ApplyResources(this.buttonOriginShift2, "buttonOriginShift2");
-            this.buttonOriginShift2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift2.Name = "buttonOriginShift2";
-            this.buttonOriginShift2.Tag = "0.25 0.25 0.25";
-            this.buttonOriginShift2.UseVisualStyleBackColor = false;
-            this.buttonOriginShift2.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift8
-            // 
-            resources.ApplyResources(this.buttonOriginShift8, "buttonOriginShift8");
-            this.buttonOriginShift8.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift8.Name = "buttonOriginShift8";
-            this.buttonOriginShift8.Tag = "0.25 -0.25 0.25";
-            this.buttonOriginShift8.UseVisualStyleBackColor = false;
-            this.buttonOriginShift8.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift7
-            // 
-            resources.ApplyResources(this.buttonOriginShift7, "buttonOriginShift7");
-            this.buttonOriginShift7.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift7.Name = "buttonOriginShift7";
-            this.buttonOriginShift7.Tag = "0.25 -0.25 0";
-            this.buttonOriginShift7.UseVisualStyleBackColor = false;
-            this.buttonOriginShift7.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift6
-            // 
-            resources.ApplyResources(this.buttonOriginShift6, "buttonOriginShift6");
-            this.buttonOriginShift6.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift6.Name = "buttonOriginShift6";
-            this.buttonOriginShift6.Tag = "0.25 0.25 0";
-            this.buttonOriginShift6.UseVisualStyleBackColor = false;
-            this.buttonOriginShift6.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift5
-            // 
-            resources.ApplyResources(this.buttonOriginShift5, "buttonOriginShift5");
-            this.buttonOriginShift5.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift5.Name = "buttonOriginShift5";
-            this.buttonOriginShift5.Tag = "0 0.25 0.25";
-            this.buttonOriginShift5.UseVisualStyleBackColor = false;
-            this.buttonOriginShift5.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift4
-            // 
-            resources.ApplyResources(this.buttonOriginShift4, "buttonOriginShift4");
-            this.buttonOriginShift4.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift4.Name = "buttonOriginShift4";
-            this.buttonOriginShift4.Tag = "0.25 0 0.25";
-            this.buttonOriginShift4.UseVisualStyleBackColor = false;
-            this.buttonOriginShift4.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift3
-            // 
-            resources.ApplyResources(this.buttonOriginShift3, "buttonOriginShift3");
-            this.buttonOriginShift3.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift3.Name = "buttonOriginShift3";
-            this.buttonOriginShift3.Tag = "0 0.25 0.125";
-            this.buttonOriginShift3.UseVisualStyleBackColor = false;
-            this.buttonOriginShift3.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // buttonOriginShift9
-            // 
-            resources.ApplyResources(this.buttonOriginShift9, "buttonOriginShift9");
-            this.buttonOriginShift9.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift9.Name = "buttonOriginShift9";
-            this.buttonOriginShift9.Tag = "0 0.25 -0.125";
-            this.buttonOriginShift9.UseVisualStyleBackColor = false;
-            this.buttonOriginShift9.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // buttonOriginShiftCustom
-            // 
-            resources.ApplyResources(this.buttonOriginShiftCustom, "buttonOriginShiftCustom");
-            this.buttonOriginShiftCustom.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShiftCustom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShiftCustom.Name = "buttonOriginShiftCustom";
-            this.buttonOriginShiftCustom.Tag = "+0.5";
-            this.buttonOriginShiftCustom.UseVisualStyleBackColor = false;
-            this.buttonOriginShiftCustom.Click += new System.EventHandler(this.buttonOriginShift_Click);
-            // 
-            // tabPageDebyeWaller
-            // 
-            this.tabPageDebyeWaller.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageDebyeWaller.Controls.Add(this.checkBoxDetailsDebyeWallerError);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso2);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso1);
-            this.tabPageDebyeWaller.Controls.Add(this.radioButtonAnisotropy);
-            this.tabPageDebyeWaller.Controls.Add(this.radioButtonIsotoropy);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelIso);
-            resources.ApplyResources(this.tabPageDebyeWaller, "tabPageDebyeWaller");
-            this.tabPageDebyeWaller.Name = "tabPageDebyeWaller";
-            this.toolTip.SetToolTip(this.tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
-            // 
-            // checkBoxDetailsDebyeWallerError
-            // 
-            resources.ApplyResources(this.checkBoxDetailsDebyeWallerError, "checkBoxDetailsDebyeWallerError");
-            this.checkBoxDetailsDebyeWallerError.Name = "checkBoxDetailsDebyeWallerError";
-            this.checkBoxDetailsDebyeWallerError.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsDebyeWallerError.CheckedChanged += new System.EventHandler(this.checkBoxDebyeWallerError_CheckedChanged);
-            // 
-            // flowLayoutPanelAniso2
-            // 
-            resources.ApplyResources(this.flowLayoutPanelAniso2, "flowLayoutPanelAniso2");
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB22);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB22err);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB23);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB23err);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB33);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB33err);
-            this.flowLayoutPanelAniso2.Name = "flowLayoutPanelAniso2";
-            // 
-            // flowLayoutPanelAniso1
-            // 
-            resources.ApplyResources(this.flowLayoutPanelAniso1, "flowLayoutPanelAniso1");
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB11);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB11err);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB12);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB12err);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB13);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB13err);
-            this.flowLayoutPanelAniso1.Name = "flowLayoutPanelAniso1";
-            // 
-            // tabPageScatteringFactor
-            // 
-            this.tabPageScatteringFactor.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageScatteringFactor.Controls.Add(this.richTextBoxIsotope);
-            this.tabPageScatteringFactor.Controls.Add(this.label34);
-            this.tabPageScatteringFactor.Controls.Add(this.buttonEditIsotopeAbundance);
-            this.tabPageScatteringFactor.Controls.Add(this.label5);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorElectron);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxNeutron);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorXray);
-            this.tabPageScatteringFactor.Controls.Add(this.label6);
-            this.tabPageScatteringFactor.Controls.Add(this.label4);
-            resources.ApplyResources(this.tabPageScatteringFactor, "tabPageScatteringFactor");
-            this.tabPageScatteringFactor.Name = "tabPageScatteringFactor";
-            this.tabPageScatteringFactor.UseWaitCursor = true;
-            // 
-            // richTextBoxIsotope
-            // 
-            resources.ApplyResources(this.richTextBoxIsotope, "richTextBoxIsotope");
-            this.richTextBoxIsotope.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxIsotope.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxIsotope.Name = "richTextBoxIsotope";
-            this.richTextBoxIsotope.ReadOnly = true;
-            this.richTextBoxIsotope.UseWaitCursor = true;
-            // 
-            // label34
-            // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
-            this.label34.UseWaitCursor = true;
-            // 
-            // buttonEditIsotopeAbundance
-            // 
-            resources.ApplyResources(this.buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
-            this.buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
-            this.buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
-            this.buttonEditIsotopeAbundance.UseWaitCursor = true;
-            this.buttonEditIsotopeAbundance.Click += new System.EventHandler(this.buttonEditIsotopeAbundance_Click);
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            this.label5.UseWaitCursor = true;
-            // 
-            // comboBoxScatteringFactorElectron
-            // 
-            this.comboBoxScatteringFactorElectron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScatteringFactorElectron.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
-            this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
-            this.comboBoxScatteringFactorElectron.UseWaitCursor = true;
-            this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
-            // 
-            // comboBoxNeutron
-            // 
-            this.comboBoxNeutron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxNeutron.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxNeutron, "comboBoxNeutron");
-            this.comboBoxNeutron.Items.AddRange(new object[] {
-            resources.GetString("comboBoxNeutron.Items"),
-            resources.GetString("comboBoxNeutron.Items1")});
-            this.comboBoxNeutron.Name = "comboBoxNeutron";
-            this.comboBoxNeutron.UseWaitCursor = true;
-            this.comboBoxNeutron.SelectedIndexChanged += new System.EventHandler(this.comboBoxNeutron_SelectedIndexChanged);
-            // 
-            // comboBoxScatteringFactorXray
-            // 
-            this.comboBoxScatteringFactorXray.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScatteringFactorXray.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
-            this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
-            this.comboBoxScatteringFactorXray.UseWaitCursor = true;
-            this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            this.label6.UseWaitCursor = true;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            this.label4.UseWaitCursor = true;
-            // 
-            // tabPageAppearance
-            // 
-            this.tabPageAppearance.Controls.Add(this.numericBoxAlpha);
-            this.tabPageAppearance.Controls.Add(this.numericBoxEmission);
-            this.tabPageAppearance.Controls.Add(this.numericBoxShininess);
-            this.tabPageAppearance.Controls.Add(this.numericBoxSpecular);
-            this.tabPageAppearance.Controls.Add(this.numericBoxDiffusion);
-            this.tabPageAppearance.Controls.Add(this.numericBoxAmbient);
-            this.tabPageAppearance.Controls.Add(this.numericBoxAtomRadius);
-            this.tabPageAppearance.Controls.Add(this.label10);
-            this.tabPageAppearance.Controls.Add(this.label37);
-            this.tabPageAppearance.Controls.Add(this.label38);
-            this.tabPageAppearance.Controls.Add(this.label11);
-            this.tabPageAppearance.Controls.Add(this.label35);
-            this.tabPageAppearance.Controls.Add(this.label36);
-            this.tabPageAppearance.Controls.Add(this.colorControlAtomColor);
-            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
-            this.tabPageAppearance.Name = "tabPageAppearance";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // label35
-            // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
-            // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
-            // 
-            // buttonChangeToSameElement
-            // 
-            this.buttonChangeToSameElement.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChangeToSameElement, "buttonChangeToSameElement");
-            this.buttonChangeToSameElement.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChangeToSameElement.Name = "buttonChangeToSameElement";
-            this.buttonChangeToSameElement.UseVisualStyleBackColor = false;
-            this.buttonChangeToSameElement.Click += new System.EventHandler(this.buttonChangeToSameElement_Click);
-            // 
-            // buttonAddAtom
-            // 
-            this.buttonAddAtom.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonAddAtom, "buttonAddAtom");
-            this.buttonAddAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonAddAtom.Name = "buttonAddAtom";
-            this.buttonAddAtom.UseVisualStyleBackColor = false;
-            this.buttonAddAtom.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonAtomUp
-            // 
-            resources.ApplyResources(this.buttonAtomUp, "buttonAtomUp");
-            this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomUp.Name = "buttonAtomUp";
-            this.buttonAtomUp.UseVisualStyleBackColor = true;
-            this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
-            // 
-            // buttonChange
-            // 
-            this.buttonChange.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChange, "buttonChange");
-            this.buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChange.Name = "buttonChange";
-            this.buttonChange.UseVisualStyleBackColor = false;
-            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
-            // 
-            // buttonAtomDown
-            // 
-            resources.ApplyResources(this.buttonAtomDown, "buttonAtomDown");
-            this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomDown.Name = "buttonAtomDown";
-            this.buttonAtomDown.UseVisualStyleBackColor = true;
-            this.buttonAtomDown.Click += new System.EventHandler(this.buttonDown_Click);
-            // 
-            // buttonDeleteAtom
-            // 
-            resources.ApplyResources(this.buttonDeleteAtom, "buttonDeleteAtom");
-            this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAtom.Name = "buttonDeleteAtom";
-            this.buttonDeleteAtom.UseVisualStyleBackColor = false;
-            this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.enabledColumn,
-            this.labelDataGridViewTextBoxColumn,
-            this.elementDataGridViewTextBoxColumn,
-            this.xDataGridViewTextBoxColumn,
-            this.yDataGridViewTextBoxColumn,
-            this.zDataGridViewTextBoxColumn,
-            this.occDataGridViewTextBoxColumn,
-            this.multiDataGridViewTextBoxColumn,
-            this.wyckLetDataGridViewTextBoxColumn,
-            this.siteSymDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtom_CellValueChanged);
-            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonAddAtom);
-            this.panel1.Controls.Add(this.buttonChangeToSameElement);
-            this.panel1.Controls.Add(this.buttonAtomUp);
-            this.panel1.Controls.Add(this.buttonChange);
-            this.panel1.Controls.Add(this.buttonAtomDown);
-            this.panel1.Controls.Add(this.buttonDeleteAtom);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // enabledColumn
-            // 
-            this.enabledColumn.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledColumn, "enabledColumn");
-            this.enabledColumn.Name = "enabledColumn";
-            this.enabledColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // labelDataGridViewTextBoxColumn
-            // 
-            this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F);
-            this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
-            this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
-            this.labelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.labelDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // elementDataGridViewTextBoxColumn
-            // 
-            this.elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
-            this.elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
-            this.elementDataGridViewTextBoxColumn.ReadOnly = true;
-            this.elementDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.elementDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // xDataGridViewTextBoxColumn
-            // 
-            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
-            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
-            this.xDataGridViewTextBoxColumn.ReadOnly = true;
-            this.xDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // yDataGridViewTextBoxColumn
-            // 
-            this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
-            this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
-            this.yDataGridViewTextBoxColumn.ReadOnly = true;
-            this.yDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // zDataGridViewTextBoxColumn
-            // 
-            this.zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
-            this.zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
-            this.zDataGridViewTextBoxColumn.ReadOnly = true;
-            this.zDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // occDataGridViewTextBoxColumn
-            // 
-            this.occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F);
-            this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
-            this.occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
-            this.occDataGridViewTextBoxColumn.ReadOnly = true;
-            this.occDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // multiDataGridViewTextBoxColumn
-            // 
-            this.multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F);
-            this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
-            this.multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
-            this.multiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.multiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wyckLetDataGridViewTextBoxColumn
-            // 
-            this.wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F);
-            this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
-            this.wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
-            this.wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wyckLetDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // siteSymDataGridViewTextBoxColumn
-            // 
-            this.siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F);
-            this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
-            this.siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
-            this.siteSymDataGridViewTextBoxColumn.ReadOnly = true;
-            this.siteSymDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // bindingSource
-            // 
-            this.bindingSource.DataMember = "DataTableAtom";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // numericalTextBoxOccerr
             // 
@@ -1207,198 +856,6 @@
             this.numericTextBoxX.Value = 0D;
             this.numericTextBoxX.WordWrap = true;
             // 
-            // numericBoxBiso
-            // 
-            this.numericBoxBiso.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBoxBiso, "numericBoxBiso");
-            this.numericBoxBiso.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.DecimalPlaces = -1;
-            this.numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxBiso.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxBiso.Maximum = double.PositiveInfinity;
-            this.numericBoxBiso.Minimum = double.NegativeInfinity;
-            this.numericBoxBiso.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxBiso.MouseSpeed = 1D;
-            this.numericBoxBiso.Multiline = false;
-            this.numericBoxBiso.Name = "numericBoxBiso";
-            this.numericBoxBiso.RadianValue = 0D;
-            this.numericBoxBiso.ReadOnly = false;
-            this.numericBoxBiso.RestrictLimitValue = true;
-            this.numericBoxBiso.ShowFraction = false;
-            this.numericBoxBiso.ShowPositiveSign = false;
-            this.numericBoxBiso.SkipEventDuringInput = false;
-            this.numericBoxBiso.SmartIncrement = true;
-            this.numericBoxBiso.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxBiso.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxBiso.ThonsandsSeparator = true;
-            this.numericBoxBiso.UpDown_Increment = 1D;
-            this.numericBoxBiso.Value = 0D;
-            this.numericBoxBiso.WordWrap = true;
-            // 
-            // numericalTextBoxBisoerr
-            // 
-            this.numericalTextBoxBisoerr.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxBisoerr, "numericalTextBoxBisoerr");
-            this.numericalTextBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxBisoerr.DecimalPlaces = -1;
-            this.numericalTextBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxBisoerr.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxBisoerr.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBoxBisoerr.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxBisoerr.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxBisoerr.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxBisoerr.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericalTextBoxBisoerr.MouseSpeed = 1D;
-            this.numericalTextBoxBisoerr.Multiline = false;
-            this.numericalTextBoxBisoerr.Name = "numericalTextBoxBisoerr";
-            this.numericalTextBoxBisoerr.RadianValue = 0D;
-            this.numericalTextBoxBisoerr.ReadOnly = false;
-            this.numericalTextBoxBisoerr.RestrictLimitValue = true;
-            this.numericalTextBoxBisoerr.ShowFraction = false;
-            this.numericalTextBoxBisoerr.ShowPositiveSign = false;
-            this.numericalTextBoxBisoerr.SkipEventDuringInput = false;
-            this.numericalTextBoxBisoerr.SmartIncrement = true;
-            this.numericalTextBoxBisoerr.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxBisoerr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxBisoerr.ThonsandsSeparator = true;
-            this.numericalTextBoxBisoerr.UpDown_Increment = 1D;
-            this.numericalTextBoxBisoerr.Value = 0D;
-            this.numericalTextBoxBisoerr.WordWrap = true;
-            // 
-            // numericalTextBox1
-            // 
-            this.numericalTextBox1.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBox1, "numericalTextBox1");
-            this.numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox1.DecimalPlaces = -1;
-            this.numericalTextBox1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBox1.Maximum = double.PositiveInfinity;
-            this.numericalTextBox1.Minimum = double.NegativeInfinity;
-            this.numericalTextBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericalTextBox1.MouseSpeed = 1D;
-            this.numericalTextBox1.Multiline = false;
-            this.numericalTextBox1.Name = "numericalTextBox1";
-            this.numericalTextBox1.RadianValue = 0D;
-            this.numericalTextBox1.ReadOnly = false;
-            this.numericalTextBox1.RestrictLimitValue = true;
-            this.numericalTextBox1.ShowFraction = true;
-            this.numericalTextBox1.ShowPositiveSign = false;
-            this.numericalTextBox1.SkipEventDuringInput = false;
-            this.numericalTextBox1.SmartIncrement = true;
-            this.numericalTextBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBox1.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox1.ThonsandsSeparator = true;
-            this.numericalTextBox1.UpDown_Increment = 1D;
-            this.numericalTextBox1.Value = 0D;
-            this.numericalTextBox1.WordWrap = true;
-            // 
-            // numericalTextBox2
-            // 
-            this.numericalTextBox2.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBox2, "numericalTextBox2");
-            this.numericalTextBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox2.DecimalPlaces = -1;
-            this.numericalTextBox2.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBox2.Maximum = double.PositiveInfinity;
-            this.numericalTextBox2.Minimum = double.NegativeInfinity;
-            this.numericalTextBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericalTextBox2.MouseSpeed = 1D;
-            this.numericalTextBox2.Multiline = false;
-            this.numericalTextBox2.Name = "numericalTextBox2";
-            this.numericalTextBox2.RadianValue = 0D;
-            this.numericalTextBox2.ReadOnly = false;
-            this.numericalTextBox2.RestrictLimitValue = true;
-            this.numericalTextBox2.ShowFraction = true;
-            this.numericalTextBox2.ShowPositiveSign = false;
-            this.numericalTextBox2.SkipEventDuringInput = false;
-            this.numericalTextBox2.SmartIncrement = true;
-            this.numericalTextBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBox2.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox2.ThonsandsSeparator = true;
-            this.numericalTextBox2.UpDown_Increment = 1D;
-            this.numericalTextBox2.Value = 0D;
-            this.numericalTextBox2.WordWrap = true;
-            // 
-            // numericalTextBox3
-            // 
-            this.numericalTextBox3.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBox3, "numericalTextBox3");
-            this.numericalTextBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox3.DecimalPlaces = -1;
-            this.numericalTextBox3.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBox3.Maximum = double.PositiveInfinity;
-            this.numericalTextBox3.Minimum = double.NegativeInfinity;
-            this.numericalTextBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericalTextBox3.MouseSpeed = 1D;
-            this.numericalTextBox3.Multiline = false;
-            this.numericalTextBox3.Name = "numericalTextBox3";
-            this.numericalTextBox3.RadianValue = 0D;
-            this.numericalTextBox3.ReadOnly = false;
-            this.numericalTextBox3.RestrictLimitValue = true;
-            this.numericalTextBox3.ShowFraction = true;
-            this.numericalTextBox3.ShowPositiveSign = false;
-            this.numericalTextBox3.SkipEventDuringInput = false;
-            this.numericalTextBox3.SmartIncrement = true;
-            this.numericalTextBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBox3.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox3.ThonsandsSeparator = true;
-            this.numericalTextBox3.UpDown_Increment = 1D;
-            this.numericalTextBox3.Value = 0D;
-            this.numericalTextBox3.WordWrap = true;
-            // 
-            // numericalTextBox4
-            // 
-            this.numericalTextBox4.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBox4, "numericalTextBox4");
-            this.numericalTextBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox4.DecimalPlaces = -1;
-            this.numericalTextBox4.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox4.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox4.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBox4.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBox4.Maximum = double.PositiveInfinity;
-            this.numericalTextBox4.Minimum = double.NegativeInfinity;
-            this.numericalTextBox4.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericalTextBox4.MouseSpeed = 1D;
-            this.numericalTextBox4.Multiline = false;
-            this.numericalTextBox4.Name = "numericalTextBox4";
-            this.numericalTextBox4.RadianValue = 0D;
-            this.numericalTextBox4.ReadOnly = false;
-            this.numericalTextBox4.RestrictLimitValue = true;
-            this.numericalTextBox4.ShowFraction = true;
-            this.numericalTextBox4.ShowPositiveSign = false;
-            this.numericalTextBox4.SkipEventDuringInput = false;
-            this.numericalTextBox4.SmartIncrement = true;
-            this.numericalTextBox4.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBox4.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBox4.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox4.ThonsandsSeparator = true;
-            this.numericalTextBox4.UpDown_Increment = 1D;
-            this.numericalTextBox4.Value = 0D;
-            this.numericalTextBox4.WordWrap = true;
-            // 
             // numericalTextBoxZerr
             // 
             this.numericalTextBoxZerr.AllowMouseControl = false;
@@ -1430,6 +887,152 @@
             this.numericalTextBoxZerr.UpDown_Increment = 1D;
             this.numericalTextBoxZerr.Value = 0D;
             this.numericalTextBoxZerr.WordWrap = true;
+            // 
+            // tabPageOriginShift
+            // 
+            this.tabPageOriginShift.Controls.Add(this.flowLayoutPanel3);
+            this.tabPageOriginShift.Controls.Add(this.label7);
+            this.tabPageOriginShift.Controls.Add(this.buttonOriginShiftCustom);
+            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftZ);
+            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftY);
+            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftX);
+            resources.ApplyResources(this.tabPageOriginShift, "tabPageOriginShift");
+            this.tabPageOriginShift.Name = "tabPageOriginShift";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftPlus);
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftMinus);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift1);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift2);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift8);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift7);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift6);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift5);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift4);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift3);
+            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift9);
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // radioButtonOriginShiftPlus
+            // 
+            resources.ApplyResources(this.radioButtonOriginShiftPlus, "radioButtonOriginShiftPlus");
+            this.radioButtonOriginShiftPlus.Checked = true;
+            this.radioButtonOriginShiftPlus.Name = "radioButtonOriginShiftPlus";
+            this.radioButtonOriginShiftPlus.TabStop = true;
+            this.radioButtonOriginShiftPlus.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonOriginShiftMinus
+            // 
+            resources.ApplyResources(this.radioButtonOriginShiftMinus, "radioButtonOriginShiftMinus");
+            this.radioButtonOriginShiftMinus.Name = "radioButtonOriginShiftMinus";
+            this.radioButtonOriginShiftMinus.UseVisualStyleBackColor = true;
+            // 
+            // buttonOriginShift1
+            // 
+            resources.ApplyResources(this.buttonOriginShift1, "buttonOriginShift1");
+            this.buttonOriginShift1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift1.Name = "buttonOriginShift1";
+            this.buttonOriginShift1.Tag = "0.125 0.125 0.125";
+            this.buttonOriginShift1.UseVisualStyleBackColor = false;
+            this.buttonOriginShift1.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift2
+            // 
+            resources.ApplyResources(this.buttonOriginShift2, "buttonOriginShift2");
+            this.buttonOriginShift2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift2.Name = "buttonOriginShift2";
+            this.buttonOriginShift2.Tag = "0.25 0.25 0.25";
+            this.buttonOriginShift2.UseVisualStyleBackColor = false;
+            this.buttonOriginShift2.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift8
+            // 
+            resources.ApplyResources(this.buttonOriginShift8, "buttonOriginShift8");
+            this.buttonOriginShift8.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift8.Name = "buttonOriginShift8";
+            this.buttonOriginShift8.Tag = "0.25 -0.25 0.25";
+            this.buttonOriginShift8.UseVisualStyleBackColor = false;
+            this.buttonOriginShift8.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift7
+            // 
+            resources.ApplyResources(this.buttonOriginShift7, "buttonOriginShift7");
+            this.buttonOriginShift7.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift7.Name = "buttonOriginShift7";
+            this.buttonOriginShift7.Tag = "0.25 -0.25 0";
+            this.buttonOriginShift7.UseVisualStyleBackColor = false;
+            this.buttonOriginShift7.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift6
+            // 
+            resources.ApplyResources(this.buttonOriginShift6, "buttonOriginShift6");
+            this.buttonOriginShift6.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift6.Name = "buttonOriginShift6";
+            this.buttonOriginShift6.Tag = "0.25 0.25 0";
+            this.buttonOriginShift6.UseVisualStyleBackColor = false;
+            this.buttonOriginShift6.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift5
+            // 
+            resources.ApplyResources(this.buttonOriginShift5, "buttonOriginShift5");
+            this.buttonOriginShift5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift5.Name = "buttonOriginShift5";
+            this.buttonOriginShift5.Tag = "0 0.25 0.25";
+            this.buttonOriginShift5.UseVisualStyleBackColor = false;
+            this.buttonOriginShift5.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift4
+            // 
+            resources.ApplyResources(this.buttonOriginShift4, "buttonOriginShift4");
+            this.buttonOriginShift4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift4.Name = "buttonOriginShift4";
+            this.buttonOriginShift4.Tag = "0.25 0 0.25";
+            this.buttonOriginShift4.UseVisualStyleBackColor = false;
+            this.buttonOriginShift4.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift3
+            // 
+            resources.ApplyResources(this.buttonOriginShift3, "buttonOriginShift3");
+            this.buttonOriginShift3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift3.Name = "buttonOriginShift3";
+            this.buttonOriginShift3.Tag = "0 0.25 0.125";
+            this.buttonOriginShift3.UseVisualStyleBackColor = false;
+            this.buttonOriginShift3.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // buttonOriginShift9
+            // 
+            resources.ApplyResources(this.buttonOriginShift9, "buttonOriginShift9");
+            this.buttonOriginShift9.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShift9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShift9.Name = "buttonOriginShift9";
+            this.buttonOriginShift9.Tag = "0 0.25 -0.125";
+            this.buttonOriginShift9.UseVisualStyleBackColor = false;
+            this.buttonOriginShift9.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // buttonOriginShiftCustom
+            // 
+            resources.ApplyResources(this.buttonOriginShiftCustom, "buttonOriginShiftCustom");
+            this.buttonOriginShiftCustom.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOriginShiftCustom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonOriginShiftCustom.Name = "buttonOriginShiftCustom";
+            this.buttonOriginShiftCustom.Tag = "+0.5";
+            this.buttonOriginShiftCustom.UseVisualStyleBackColor = false;
+            this.buttonOriginShiftCustom.Click += new System.EventHandler(this.buttonOriginShift_Click);
             // 
             // numericBoxOriginShiftZ
             // 
@@ -1526,6 +1129,37 @@
             this.numericBoxOriginShiftX.UpDown_Increment = 1D;
             this.numericBoxOriginShiftX.Value = 0D;
             this.numericBoxOriginShiftX.WordWrap = true;
+            // 
+            // tabPageDebyeWaller
+            // 
+            this.tabPageDebyeWaller.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDebyeWaller.Controls.Add(this.checkBoxDetailsDebyeWallerError);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso2);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso1);
+            this.tabPageDebyeWaller.Controls.Add(this.radioButtonAnisotropy);
+            this.tabPageDebyeWaller.Controls.Add(this.radioButtonIsotoropy);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelIso);
+            resources.ApplyResources(this.tabPageDebyeWaller, "tabPageDebyeWaller");
+            this.tabPageDebyeWaller.Name = "tabPageDebyeWaller";
+            this.toolTip.SetToolTip(this.tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
+            // 
+            // checkBoxDetailsDebyeWallerError
+            // 
+            resources.ApplyResources(this.checkBoxDetailsDebyeWallerError, "checkBoxDetailsDebyeWallerError");
+            this.checkBoxDetailsDebyeWallerError.Name = "checkBoxDetailsDebyeWallerError";
+            this.checkBoxDetailsDebyeWallerError.UseVisualStyleBackColor = true;
+            this.checkBoxDetailsDebyeWallerError.CheckedChanged += new System.EventHandler(this.checkBoxDebyeWallerError_CheckedChanged);
+            // 
+            // flowLayoutPanelAniso2
+            // 
+            resources.ApplyResources(this.flowLayoutPanelAniso2, "flowLayoutPanelAniso2");
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB22);
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB22err);
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB23);
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB23err);
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB33);
+            this.flowLayoutPanelAniso2.Controls.Add(this.numericalTextBoxB33err);
+            this.flowLayoutPanelAniso2.Name = "flowLayoutPanelAniso2";
             // 
             // numericalTextBoxB22
             // 
@@ -1719,6 +1353,17 @@
             this.numericalTextBoxB33err.Value = 0D;
             this.numericalTextBoxB33err.WordWrap = true;
             // 
+            // flowLayoutPanelAniso1
+            // 
+            resources.ApplyResources(this.flowLayoutPanelAniso1, "flowLayoutPanelAniso1");
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB11);
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB11err);
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB12);
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB12err);
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB13);
+            this.flowLayoutPanelAniso1.Controls.Add(this.numericalTextBoxB13err);
+            this.flowLayoutPanelAniso1.Name = "flowLayoutPanelAniso1";
+            // 
             // numericalTextBoxB11
             // 
             this.numericalTextBoxB11.AllowMouseControl = false;
@@ -1910,6 +1555,112 @@
             this.numericalTextBoxB13err.UpDown_Increment = 1D;
             this.numericalTextBoxB13err.Value = 0D;
             this.numericalTextBoxB13err.WordWrap = true;
+            // 
+            // tabPageScatteringFactor
+            // 
+            this.tabPageScatteringFactor.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageScatteringFactor.Controls.Add(this.richTextBoxIsotope);
+            this.tabPageScatteringFactor.Controls.Add(this.label34);
+            this.tabPageScatteringFactor.Controls.Add(this.buttonEditIsotopeAbundance);
+            this.tabPageScatteringFactor.Controls.Add(this.label5);
+            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorElectron);
+            this.tabPageScatteringFactor.Controls.Add(this.comboBoxNeutron);
+            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorXray);
+            this.tabPageScatteringFactor.Controls.Add(this.label6);
+            this.tabPageScatteringFactor.Controls.Add(this.label4);
+            resources.ApplyResources(this.tabPageScatteringFactor, "tabPageScatteringFactor");
+            this.tabPageScatteringFactor.Name = "tabPageScatteringFactor";
+            this.tabPageScatteringFactor.UseWaitCursor = true;
+            // 
+            // richTextBoxIsotope
+            // 
+            resources.ApplyResources(this.richTextBoxIsotope, "richTextBoxIsotope");
+            this.richTextBoxIsotope.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxIsotope.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxIsotope.Name = "richTextBoxIsotope";
+            this.richTextBoxIsotope.ReadOnly = true;
+            this.richTextBoxIsotope.UseWaitCursor = true;
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            this.label34.UseWaitCursor = true;
+            // 
+            // buttonEditIsotopeAbundance
+            // 
+            resources.ApplyResources(this.buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
+            this.buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
+            this.buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
+            this.buttonEditIsotopeAbundance.UseWaitCursor = true;
+            this.buttonEditIsotopeAbundance.Click += new System.EventHandler(this.buttonEditIsotopeAbundance_Click);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            this.label5.UseWaitCursor = true;
+            // 
+            // comboBoxScatteringFactorElectron
+            // 
+            this.comboBoxScatteringFactorElectron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxScatteringFactorElectron.DropDownWidth = 120;
+            resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
+            this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
+            this.comboBoxScatteringFactorElectron.UseWaitCursor = true;
+            this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
+            // 
+            // comboBoxNeutron
+            // 
+            this.comboBoxNeutron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxNeutron.DropDownWidth = 120;
+            resources.ApplyResources(this.comboBoxNeutron, "comboBoxNeutron");
+            this.comboBoxNeutron.Items.AddRange(new object[] {
+            resources.GetString("comboBoxNeutron.Items"),
+            resources.GetString("comboBoxNeutron.Items1")});
+            this.comboBoxNeutron.Name = "comboBoxNeutron";
+            this.comboBoxNeutron.UseWaitCursor = true;
+            this.comboBoxNeutron.SelectedIndexChanged += new System.EventHandler(this.comboBoxNeutron_SelectedIndexChanged);
+            // 
+            // comboBoxScatteringFactorXray
+            // 
+            this.comboBoxScatteringFactorXray.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxScatteringFactorXray.DropDownWidth = 120;
+            resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
+            this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
+            this.comboBoxScatteringFactorXray.UseWaitCursor = true;
+            this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            this.label6.UseWaitCursor = true;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            this.label4.UseWaitCursor = true;
+            // 
+            // tabPageAppearance
+            // 
+            this.tabPageAppearance.Controls.Add(this.numericBoxAlpha);
+            this.tabPageAppearance.Controls.Add(this.numericBoxEmission);
+            this.tabPageAppearance.Controls.Add(this.numericBoxShininess);
+            this.tabPageAppearance.Controls.Add(this.numericBoxSpecular);
+            this.tabPageAppearance.Controls.Add(this.numericBoxDiffusion);
+            this.tabPageAppearance.Controls.Add(this.numericBoxAmbient);
+            this.tabPageAppearance.Controls.Add(this.numericBoxAtomRadius);
+            this.tabPageAppearance.Controls.Add(this.label10);
+            this.tabPageAppearance.Controls.Add(this.label37);
+            this.tabPageAppearance.Controls.Add(this.label38);
+            this.tabPageAppearance.Controls.Add(this.label11);
+            this.tabPageAppearance.Controls.Add(this.label35);
+            this.tabPageAppearance.Controls.Add(this.label36);
+            this.tabPageAppearance.Controls.Add(this.colorControlAtomColor);
+            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
+            this.tabPageAppearance.Name = "tabPageAppearance";
             // 
             // numericBoxAlpha
             // 
@@ -2142,6 +1893,36 @@
             this.numericBoxAtomRadius.Value = 0D;
             this.numericBoxAtomRadius.WordWrap = true;
             // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
+            // 
             // colorControlAtomColor
             // 
             this.colorControlAtomColor.Argb = -986896;
@@ -2156,6 +1937,225 @@
             this.colorControlAtomColor.Name = "colorControlAtomColor";
             this.colorControlAtomColor.Red = 240;
             this.colorControlAtomColor.RedF = 0.9411765F;
+            // 
+            // buttonChangeToSameElement
+            // 
+            this.buttonChangeToSameElement.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonChangeToSameElement, "buttonChangeToSameElement");
+            this.buttonChangeToSameElement.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonChangeToSameElement.Name = "buttonChangeToSameElement";
+            this.buttonChangeToSameElement.UseVisualStyleBackColor = false;
+            this.buttonChangeToSameElement.Click += new System.EventHandler(this.buttonChangeToSameElement_Click);
+            // 
+            // buttonAddAtom
+            // 
+            this.buttonAddAtom.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonAddAtom, "buttonAddAtom");
+            this.buttonAddAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonAddAtom.Name = "buttonAddAtom";
+            this.buttonAddAtom.UseVisualStyleBackColor = false;
+            this.buttonAddAtom.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonAtomUp
+            // 
+            resources.ApplyResources(this.buttonAtomUp, "buttonAtomUp");
+            this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAtomUp.Name = "buttonAtomUp";
+            this.buttonAtomUp.UseVisualStyleBackColor = true;
+            this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
+            // 
+            // buttonChange
+            // 
+            this.buttonChange.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonChange, "buttonChange");
+            this.buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.UseVisualStyleBackColor = false;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
+            // 
+            // buttonAtomDown
+            // 
+            resources.ApplyResources(this.buttonAtomDown, "buttonAtomDown");
+            this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAtomDown.Name = "buttonAtomDown";
+            this.buttonAtomDown.UseVisualStyleBackColor = true;
+            this.buttonAtomDown.Click += new System.EventHandler(this.buttonDown_Click);
+            // 
+            // buttonDeleteAtom
+            // 
+            resources.ApplyResources(this.buttonDeleteAtom, "buttonDeleteAtom");
+            this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAtom.Name = "buttonDeleteAtom";
+            this.buttonDeleteAtom.UseVisualStyleBackColor = false;
+            this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.enabledColumn,
+            this.labelDataGridViewTextBoxColumn,
+            this.elementDataGridViewTextBoxColumn,
+            this.xDataGridViewTextBoxColumn,
+            this.yDataGridViewTextBoxColumn,
+            this.zDataGridViewTextBoxColumn,
+            this.occDataGridViewTextBoxColumn,
+            this.multiDataGridViewTextBoxColumn,
+            this.wyckLetDataGridViewTextBoxColumn,
+            this.siteSymDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.bindingSource;
+            resources.ApplyResources(this.dataGridView, "dataGridView");
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView.RowTemplate.Height = 21;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtom_CellValueChanged);
+            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // enabledColumn
+            // 
+            this.enabledColumn.DataPropertyName = "Enabled";
+            resources.ApplyResources(this.enabledColumn, "enabledColumn");
+            this.enabledColumn.Name = "enabledColumn";
+            this.enabledColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // labelDataGridViewTextBoxColumn
+            // 
+            this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F);
+            this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
+            this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
+            this.labelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.labelDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // elementDataGridViewTextBoxColumn
+            // 
+            this.elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
+            this.elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
+            this.elementDataGridViewTextBoxColumn.ReadOnly = true;
+            this.elementDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.elementDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // xDataGridViewTextBoxColumn
+            // 
+            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
+            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
+            this.xDataGridViewTextBoxColumn.ReadOnly = true;
+            this.xDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // yDataGridViewTextBoxColumn
+            // 
+            this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
+            this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
+            this.yDataGridViewTextBoxColumn.ReadOnly = true;
+            this.yDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // zDataGridViewTextBoxColumn
+            // 
+            this.zDataGridViewTextBoxColumn.DataPropertyName = "Z";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
+            this.zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
+            this.zDataGridViewTextBoxColumn.ReadOnly = true;
+            this.zDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // occDataGridViewTextBoxColumn
+            // 
+            this.occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F);
+            this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
+            this.occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
+            this.occDataGridViewTextBoxColumn.ReadOnly = true;
+            this.occDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // multiDataGridViewTextBoxColumn
+            // 
+            this.multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F);
+            this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
+            this.multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
+            this.multiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.multiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wyckLetDataGridViewTextBoxColumn
+            // 
+            this.wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F);
+            this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
+            this.wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
+            this.wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
+            this.wyckLetDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // siteSymDataGridViewTextBoxColumn
+            // 
+            this.siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F);
+            this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
+            this.siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
+            this.siteSymDataGridViewTextBoxColumn.ReadOnly = true;
+            this.siteSymDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // bindingSource
+            // 
+            this.bindingSource.DataMember = "DataTableAtom";
+            this.bindingSource.DataSource = this.dataSet;
+            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonAddAtom);
+            this.panel1.Controls.Add(this.buttonChangeToSameElement);
+            this.panel1.Controls.Add(this.buttonAtomUp);
+            this.panel1.Controls.Add(this.buttonChange);
+            this.panel1.Controls.Add(this.buttonAtomDown);
+            this.panel1.Controls.Add(this.buttonDeleteAtom);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // AtomControl
             // 
@@ -2192,9 +2192,9 @@
             this.tabPageAppearance.ResumeLayout(false);
             this.tabPageAppearance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

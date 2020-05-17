@@ -15,6 +15,7 @@ using C4 = OpenTK.Graphics.Color4;
 using M4d = OpenTK.Matrix4d;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
+using OpenTK;
 
 #endregion 定義
 
@@ -28,30 +29,27 @@ namespace Crystallography.OpenGL
     /// </summary>
     public struct Vertex
     {
-        public readonly V4f Position;
+        public readonly V3f Position;
         public readonly V3f Normal;
-        public readonly V4f Color;
+        public readonly int Argb;
 
-        public Vertex(V3f position, V3f normal, V4f color)
+        public Vertex(V3f position, V3f normal, int argb)
         {
-            Position = new V4f(position, 1);
+            Position = position;// new V4f(position, 1);
             Normal = normal;
-            Color = color;
+            Argb = argb;
         }
 
-        public Vertex(V4f position, V3f normal, V4f color)
+        public Vertex(V4f position, V3f normal, int argb)
         {
-            Position = position;
+            Position = new V3f(position);
             Normal = normal;
-            Color = color;
+            Argb = argb;
         }
 
         public static readonly int Stride = Marshal.SizeOf(default(Vertex));
     }
     #endregion
-
-
-   
 
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8 }
 
@@ -63,14 +61,13 @@ namespace Crystallography.OpenGL
     {
         #region static private な フィールド & プロパティ
         static internal int EmissionLocation { get; set; } = -1;
-
         static internal int AmbientLocation { get; set; } = -1;
         static internal int DiffuseLocation { get; set; } = -1;
         static internal int SpecularLocation { get; set; } = -1;
         static internal int SpecularPowerLocation { get; set; } = -1;
 
-        static internal int UseFixedColorLocation { get; set; } = -1;
-        static internal int FixedColorLocation { get; set; } = -1;
+        static internal int UseFixedArgbLocation { get; set; } = -1;
+        static internal int FixedArgbLocation { get; set; } = -1;
         static internal int IgnoreNormalSidesLocation { get; set; } = -1;
         static internal int RenderPassLocation { get; set; } = -1;
 
@@ -79,8 +76,7 @@ namespace Crystallography.OpenGL
         static internal int PassNormalIndex = -1;
         static internal int PositionLocation { get; set; } = -1;
         static internal int NormalLocation { get; set; } = -1;
-        static internal int ColorLocation { get; set; } = -1;
-
+        static internal int ArgbLocation { get; set; } = -1;
 
         #endregion
 
@@ -156,7 +152,7 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// trueの時は(Vertexの色ではなく)Material構造体中のColorが使われる
         /// </summary>
-        public bool UseFixedColor = true;
+        public bool UseFixedArgb = true;
 
         /// <summary>
         /// Z sorting で透明度を計算する時のZを一時期的に格納する変数
@@ -220,13 +216,13 @@ namespace Crystallography.OpenGL
 
             //頂点位置
             GL.EnableVertexAttribArray(PositionLocation);
-            GL.VertexAttribPointer(PositionLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
+            GL.VertexAttribPointer(PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
             //法線
             GL.EnableVertexAttribArray(NormalLocation);
-            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, V4f.SizeInBytes);
+            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, V3f.SizeInBytes);
             //色
-            GL.EnableVertexAttribArray(ColorLocation);
-            GL.VertexAttribPointer(ColorLocation, 4, VertexAttribPointerType.Float, false, Vertex.Stride, V4f.SizeInBytes + V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(ArgbLocation);
+            GL.VertexAttribPointer(ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 2 * V3f.SizeInBytes);
 
         }
 
@@ -238,8 +234,8 @@ namespace Crystallography.OpenGL
         {
             PositionLocation = GL.GetAttribLocation(Program, "Position");
             NormalLocation = GL.GetAttribLocation(Program, "Normal");
-            ColorLocation = GL.GetAttribLocation(Program, "Color");
-            if (PositionLocation == -1 || NormalLocation == -1 || ColorLocation == -1)
+            ArgbLocation = GL.GetAttribLocation(Program, "Argb");
+            if (PositionLocation == -1 || NormalLocation == -1 || ArgbLocation == -1)
                 throw new Exception("cannot find location!");
 
             EmissionLocation = GL.GetUniformLocation(Program, "Emission");
@@ -247,9 +243,9 @@ namespace Crystallography.OpenGL
             DiffuseLocation = GL.GetUniformLocation(Program, "Diffuse");
             SpecularLocation = GL.GetUniformLocation(Program, "Specular");
             SpecularPowerLocation = GL.GetUniformLocation(Program, "SpecularPower");
-            UseFixedColorLocation = GL.GetUniformLocation(Program, "UseFixedColor");
+            UseFixedArgbLocation = GL.GetUniformLocation(Program, "UseFixedArgb");
             IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
-            FixedColorLocation = GL.GetUniformLocation(Program, "FixedColor");
+            FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
            
             PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
             PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
@@ -307,11 +303,11 @@ namespace Crystallography.OpenGL
             if (renew || prms.spePow != Material.SpecularPower)
                 GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
 
-            if (renew || prms.UseFixedColor != UseFixedColor)
-                GL.Uniform1(UseFixedColorLocation, UseFixedColor ? 1 : 0);
+            if (renew || prms.UseFixedArgb != UseFixedArgb)
+                GL.Uniform1(UseFixedArgbLocation, UseFixedArgb ? 1 : 0);
 
-            if (renew || prms.col != Material.ColorV)
-                GL.Uniform4(FixedColorLocation, Material.ColorV);
+            if (renew || prms.argb != Material.Argb)
+                GL.Uniform1(FixedArgbLocation, Material.Argb);
 
             if (renew || IgnoreNormalSides != prms.ignoreNormal)
                 GL.Uniform1(IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);
@@ -326,10 +322,10 @@ namespace Crystallography.OpenGL
             //else
                 GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
 
-            prms = (Program, emi, amb,dif,spe, Material.SpecularPower,Material.ColorV, IgnoreNormalSides, UseFixedColor);
+            prms = (Program, emi, amb,dif,spe, Material.SpecularPower,Material.Argb, IgnoreNormalSides, UseFixedArgb);
         }
-        static private (int Program, float emi, float amb, float dif, float spe, float spePow, V4f col, bool ignoreNormal, bool UseFixedColor)
-             prms = (-1, 0 ,0, 0, 0, 0, new V4f(), false, false);
+        static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb)
+             prms = (-1, 0 ,0, 0, 0, 0, 0, false, false);
 
 
         /// <summary>
@@ -443,7 +439,7 @@ namespace Crystallography.OpenGL
 
                 var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(0), DrawingMode.Surfaces)
                 {
-                    UseFixedColor = true,
+                    UseFixedArgb = true,
                     IgnoreNormalSides = false,
                     Types = new[] { PT.TriangleFan }
                 };
@@ -527,8 +523,8 @@ namespace Crystallography.OpenGL
             var centerF = polygonInfo.Center.ToV3f();
             var tempList = polygonInfo.Indices;
 
-            var veticesList = new List<Vertex>(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.ColorV)));
-            veticesList.Add(new Vertex(centerF, normF, mat.ColorV));
+            var veticesList = new List<Vertex>(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)));
+            veticesList.Add(new Vertex(centerF, normF, mat.Argb));
 
             var indicesList = new List<int> { veticesList.Count - 1 };
             indicesList.AddRange(tempList);
@@ -575,7 +571,7 @@ namespace Crystallography.OpenGL
                 results[i].ShowClippedSection = false;//クリップ断面は表示しない
                 results[i].IgnoreNormalSides = true;//裏表を無視する
                 
-                results[i].Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Color)).ToArray();
+                results[i].Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Argb)).ToArray();
                 results[i].Types = new[] { PT.Quads };
 
                 results[i].Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray();
@@ -770,8 +766,8 @@ namespace Crystallography.OpenGL
             {
                 var polygonInfo = GLGeometry.PolygonInfo(cand.ToArray(), center);
 
-                vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.ColorV)));//多面体頂点を追加
-                vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.ColorV));//多面体中心を追加
+                vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
+                vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
 
                 var iTemp = new List<int>(new[] { vList.Count - 1 });//多面体中心のインデックスを追加
                 var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
@@ -903,7 +899,7 @@ namespace Crystallography.OpenGL
                 {
                     if (Sphere.DefaultIndices != null)
                     {
-                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), v.Normal, mat.ColorV)).ToArray();
+                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position,1)), v.Normal, mat.Argb)).ToArray();
                         Indices = Sphere.DefaultIndices;
                         TypeCounts = Sphere.DefaultTypeCounts;
                         Types = Sphere.DefaultTypes;
@@ -932,7 +928,7 @@ namespace Crystallography.OpenGL
                     {
                         var n = new V4d(V3d.Normalize(rot[i].Mult(new V3d(w, h, slices))), 1);
                         var v = transMat.Mult(n);
-                        vList.Add(new Vertex(v.ToV3f(), n.ToV3f(), mat.ColorV));
+                        vList.Add(new Vertex(v.ToV3f(), n.ToV3f(), mat.Argb));
                     }
             Vertices = vList.ToArray();
 
@@ -1044,7 +1040,7 @@ namespace Crystallography.OpenGL
             : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode,sole, slices, stacks) { }
 
         public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole =true, int slices = 0, int stacks = 0)
-            : this(o, vec, r1, r2, mat, mat, mode, sole, slices, stacks) { }
+            : this(o, vec, r1, r2, mat, null, mode, sole, slices, stacks) { }
 
         /// <summary>
         /// パイプ
@@ -1061,24 +1057,23 @@ namespace Crystallography.OpenGL
         public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole=true, int slices = 0, int stacks = 0)
             : base(mat1, mode)
         {
-
-
-            ShowClippedSection = false;
+            ShowClippedSection = true;
             Origin = o;
             Vector = vec;
             var rotMat = GLGeometry.CreateRotationFromZ(vec);//回転行列を計算
 
             Radius1 = r1;
             Radius2 = r2;
-            if (mat1.Color == mat2.Color && mat1.Ambient == mat2.Ambient &&
-                mat1.Emission == mat2.Emission && mat1.Diffuse == mat2.Diffuse &&
-                mat1.Specular == mat2.Specular && mat1.SpecularPower == mat2.SpecularPower)
-                UseFixedColor = true;
+            if (mat2 == null)
+            {
+                UseFixedArgb = true;
+                mat2 = mat1;
+            }
             else
-                UseFixedColor = false;
+                UseFixedArgb = false;
 
             var height = vec.Length;
-            CircumscribedSphereCenter = new V4d(new V3d(o + vec / 2.0), 1);
+            CircumscribedSphereCenter = new V4d(o + vec / 2.0, 1);
             var maxR = Math.Max(r1, r2);
             CircumscribedSphereRadius = Math.Sqrt(height * height / 4 + maxR * maxR);
 
@@ -1086,12 +1081,12 @@ namespace Crystallography.OpenGL
             {
                 if (r1 == r2)//Crylinderの場合
                 {
-                    if (Cylinder.DefaultIndices != null && UseFixedColor)
+                    if (Cylinder.DefaultIndices != null && UseFixedArgb)
                     {
                         var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                         transMat.Column3 = new V4d(o, 1);
 
-                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
+                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position,1)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
                         Indices = Cylinder.DefaultIndices;
                         TypeCounts = Cylinder.DefaultTypeCounts;
                         Types = Cylinder.DefaultTypes;
@@ -1102,12 +1097,12 @@ namespace Crystallography.OpenGL
                 }
                 else if (r2 == 0)//Coneの場合
                 {
-                    if (Cone.DefaultIndices != null && UseFixedColor)
+                    if (Cone.DefaultIndices != null && UseFixedArgb)
                     {
                         var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                         transMat.Column3 = new V4d(o, 1);
 
-                        Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(v.Position), rotMat.Mult(v.Normal), mat1.ColorV)).ToArray();
+                        Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
                         Indices = Cone.DefaultIndices;
                         TypeCounts = Cone.DefaultTypeCounts;
                         Types = Cone.DefaultTypes;
@@ -1125,7 +1120,7 @@ namespace Crystallography.OpenGL
             }
 
             List<V3d> v = new List<V3d>(), n = new List<V3d>();
-            List<V4f> c = new List<V4f>();
+            List<int> c = new List<int>();
             //まず側面
             for (int h = 0; h <= slices; h++)
                 for (int t = 0; t < stacks; t++)
@@ -1135,7 +1130,7 @@ namespace Crystallography.OpenGL
                     double z = (double)h / slices * height;
                     v.Add(new V3d(r * sin, r * cos, z));
                     n.Add(new V3d(r2 * height * sin, r2 * height * cos, -r2 * (r2 - r1)));
-                    c.Add(h < slices / 2 ? mat1.ColorV : mat2.ColorV);
+                    c.Add(h < slices / 2 ? mat1.Argb : mat2.Argb);
                 }
 
             var current = 0;
@@ -1169,14 +1164,14 @@ namespace Crystallography.OpenGL
                 {
                     v.Add(new V3d(0, 0, 0));
                     n.Add(-vZ);
-                    c.Add(mat1.ColorV);
+                    c.Add(mat1.Argb);
                     var indicesTop = new List<int> { v.Count - 1 };
                     int center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[t]);
                         n.Add(-vZ);
-                        c.Add(mat1.ColorV);
+                        c.Add(mat1.Argb);
                         indicesTop.Add(v.Count - 1);
                     }
                     indicesTop.Add(v.Count - stacks);
@@ -1188,14 +1183,14 @@ namespace Crystallography.OpenGL
                 {
                     v.Add(new V3d(0, 0, height));
                     n.Add(vZ);
-                    c.Add(mat2.ColorV);
+                    c.Add(mat2.Argb);
                     var indicesBottom = new List<int> { v.Count - 1 };
                     int center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[(slices + 1) * stacks - t - 1]);
                         n.Add(vZ);
-                        c.Add(mat2.ColorV);
+                        c.Add(mat2.Argb);
                         indicesBottom.Add(v.Count - 1);
                     }
                     indicesBottom.Add(v.Count - stacks);
@@ -1406,7 +1401,7 @@ namespace Crystallography.OpenGL
             {
                 var position = transMat.Mult(circleVertex[i].Position.ToV4d());
                 var normal = transMat.Mult(circleVertex[i].Normal.ToV4d());
-                vList.Add(new Vertex(position.ToV3f(), normal.ToV3f(), mat.ColorV));
+                vList.Add(new Vertex(position.ToV3f(), normal.ToV3f(), mat.Argb));
             }
             //最後に、surfacesやedgeを計算しやすくするため、最初のslices個分の頂点を追加
             for (int i = 0; i < slices2; i++)
@@ -1492,7 +1487,7 @@ namespace Crystallography.OpenGL
                             norm = -norm;
                     }
                     var c = positions[index].Z * maxColor + (1 - positions[index].Z) * minColor;
-                    vList[index] = new Vertex(positions[index], norm, c);
+                    vList[index] = new Vertex(positions[index], norm, new C4(c.X, c.Y, c.Z, c.W).ToArgb());
                 }
 
             var indicesList = new List<int>();
@@ -1508,6 +1503,21 @@ namespace Crystallography.OpenGL
             TypeCounts = new[] { indicesList.Count() };
 
             Types = new[] { PrimitiveType.Quads };
+        }
+    }
+    #endregion
+
+    #region 文字
+    /// <summary>
+    /// メッシュ
+    /// </summary>
+    public class Text : GLObject
+    {
+        public Text(string str, float size, Material mat, DrawingMode mode) : base(mat, mode)
+        {
+
+
+        
         }
     }
     #endregion

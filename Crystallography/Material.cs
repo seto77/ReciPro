@@ -21,14 +21,9 @@ namespace Crystallography
 
         #region プロパティ、フィールド
         /// <summary>
-        /// Materialの色. OpenTK.Graphics.Color4 構造体. GLObjectの設定に必要.
+        /// Materialの色. OpenTK.Graphics.Color4 構造体. 
         /// </summary>
         public C4 Color { get; set; }
-
-        /// <summary>
-        /// Materialの色. (読み取り専用) OpenTK.Graphics.Vector4f 構造体 
-        /// </summary>
-        public V4f ColorV=> new V4f(Color.R, Color.G, Color.B, Color.A);
 
         /// <summary>
         /// Materialの色を表す Argb (読み取り専用)

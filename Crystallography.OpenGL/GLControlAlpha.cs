@@ -14,6 +14,8 @@ using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
 using System.Management;
+using QuickFont;
+using QuickFont.Configuration;
 
 namespace Crystallography.OpenGL
 {
@@ -406,10 +408,10 @@ namespace Crystallography.OpenGL
                 ProjMatrix = Mat4d.CreateOrthographicOffCenter(left, right, bottom, top, -1000, 1000);
             else
                 ProjMatrix = Mat4d.CreatePerspectiveOffCenter(left * coeff, right * coeff, bottom * coeff, top * coeff, zNear, 1000);
-        } 
+        }
         #endregion
 
-       
+
         #endregion プロパティ
 
         #region ロード関連
@@ -443,12 +445,18 @@ namespace Crystallography.OpenGL
 
             setViewMatrix();
             setProjMatrix();
+
+        
+
+            
+
         }
 
         private void SetGLcontrol(bool renewControl)
         {
             if (DesignMode || DisablingOpenGL) return;
 
+            #region glControlの初期化
             if (renewControl)//glControlを再初期化
             {
                 SuspendLayout();
@@ -478,6 +486,7 @@ namespace Crystallography.OpenGL
                 ResumeLayout();
                 glControlGraphics = glControl.CreateGraphics();
             }//glControlの再初期化ここまで
+            #endregion
 
             glControl.MakeCurrent();
             
@@ -539,6 +548,31 @@ namespace Crystallography.OpenGL
                 GL.Enable(EnableCap.Blend);
                 GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             }
+
+            GL.Enable(EnableCap.Texture2D);
+            var texture = GL.GenTexture();//テクスチャ用バッファの生成
+            GL.BindTexture(TextureTarget.Texture2D, texture); //テクスチャ用バッファのひもづけ
+                                                              //テクスチャの設定
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            //テクスチャの色情報を作成
+            int size = 8;
+            float[,,] colors = new float[size, size, 4];
+            for (int i = 0; i < colors.GetLength(0); i++)
+            {
+                for (int j = 0; j < colors.GetLength(1); j++)
+                {
+                    colors[i, j, 0] = (float)i / size;
+                    colors[i, j, 1] = (float)j / size;
+                    colors[i, j, 2] = 0.0f;
+                    colors[i, j, 3] = 1.0f;
+                }
+            }
+            //テクスチャ用バッファに色情報を流し込む
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, size, size, 0, PixelFormat.Rgba, PixelType.Float, colors);
+
+
+
             if (glObjects.Count > 0)
                 glObjects[0].Generate(Program, true);
 
@@ -601,7 +635,6 @@ namespace Crystallography.OpenGL
         #endregion ロード関連
 
         #region Shader Storage の初期化
-
         /// <summary>
         /// Shader Storage の初期化
         /// </summary>
@@ -630,7 +663,6 @@ namespace Crystallography.OpenGL
             GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
             GL.BufferData(BufferTarget.PixelUnpackBuffer, headPtrClearBuf.Length * sizeof(uint), headPtrClearBuf, BufferUsageHint.StaticDraw);
         }
-
         #endregion Shader Storage の初期化
 
         #endregion
@@ -773,6 +805,21 @@ namespace Crystallography.OpenGL
                 }
                 glObjects.ForEach(o => o.Render(Clip));// draw scene
             }
+
+
+            //var w =new OpenTK.GameWindow();
+            
+           
+            
+            //var _myFont = new QFont("Fonts/HappySans.ttf", 12, new QFontBuilderConfiguration(true));
+            ////  var _myFont2 = new QFont("basics.qfont", new QFontBuilderConfiguration(true));
+            //var _drawing = new QFontDrawing();
+
+            //_drawing.DrawingPrimitives.Clear();
+            //_drawing.Print(_myFont, "text1", new Vec3f(0,0,1), QFontAlignment.Left);
+
+            //// after all changes do update buffer data and extend it's size if needed.
+            //_drawing.RefreshBuffers();
 
             glControl.SwapBuffers();//swap
             GL.Finish();

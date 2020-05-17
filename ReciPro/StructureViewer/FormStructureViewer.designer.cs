@@ -1787,7 +1787,6 @@
         private Crystallography.Controls.NumericBox numericBoxCCenter;
         private Crystallography.Controls.NumericBox numericBoxBCenter;
         private Crystallography.Controls.NumericBox numericBoxACenter;
-        private System.Windows.Forms.BindingSource bindingSourceAtoms;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

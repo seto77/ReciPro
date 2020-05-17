@@ -52,7 +52,6 @@ namespace ReciPro
         #region フィールド
         private bool skip = false;
         public FormMain FormMain;
-        (double ambient, double diffuse, double specular, double specularPow, double emission) defaultMat = (0.2, 0.5, 0.6, 4, 0.4);
         #endregion
 
 
