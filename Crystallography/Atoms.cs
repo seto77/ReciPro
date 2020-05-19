@@ -84,6 +84,11 @@ namespace Crystallography
         }
 
         /// <summary>
+        /// OpenGL描画時に、ラベルを表示するか
+        /// </summary>
+        public bool ShowLabel = false;
+
+        /// <summary>
         /// OpenGLの描画時に有効にするかどうか
         /// </summary>
         public bool GLEnabled = true;
@@ -214,7 +219,7 @@ namespace Crystallography
         /// <param name="radius"></param>
         public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
            Vector3D pos, Vector3D pos_err, double occ, double occ_err,
-            DiffuseScatteringFactor dsf,Material mat, float radius)
+            DiffuseScatteringFactor dsf,Material mat, float radius, bool glEnabled=true, bool showLabel=false)
             :this (label,atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos,  pos_err, occ, occ_err, dsf)
         {
             Radius = radius;
@@ -223,6 +228,9 @@ namespace Crystallography
                 Argb = mat.Argb;
                 Texture = mat.Texture;
             }
+            GLEnabled = glEnabled;
+            ShowLabel = showLabel;
+
         } 
         #endregion
 

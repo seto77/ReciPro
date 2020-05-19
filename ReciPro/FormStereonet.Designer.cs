@@ -57,15 +57,26 @@ namespace ReciPro
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.colorControlSmallCircle = new Crystallography.Controls.ColorControl();
+            this.colorControlGreatCircle = new Crystallography.Controls.ColorControl();
             this.label4 = new System.Windows.Forms.Label();
+            this.colorControlString = new Crystallography.Controls.ColorControl();
+            this.colorControlUniqueAxis = new Crystallography.Controls.ColorControl();
+            this.colorControlUniquePlane = new Crystallography.Controls.ColorControl();
             this.labelUniqueAxis = new System.Windows.Forms.Label();
+            this.colorControlGeneralAxis = new Crystallography.Controls.ColorControl();
             this.labelGeneralAxis = new System.Windows.Forms.Label();
             this.labelUniquePlane = new System.Windows.Forms.Label();
             this.labelGeneralPlane = new System.Windows.Forms.Label();
+            this.colorControlGeneralPlane = new Crystallography.Controls.ColorControl();
+            this.colorControlBackGround = new Crystallography.Controls.ColorControl();
             this.labelBackGround = new System.Windows.Forms.Label();
+            this.colorControl90DegLine = new Crystallography.Controls.ColorControl();
             this.label90DegLine = new System.Windows.Forms.Label();
             this.label10DegLine = new System.Windows.Forms.Label();
+            this.colorControl10DegLine = new Crystallography.Controls.ColorControl();
             this.label1DegLine = new System.Windows.Forms.Label();
+            this.colorControl1DegLine = new Crystallography.Controls.ColorControl();
             this.labelString = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -122,6 +133,15 @@ namespace ReciPro
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.numericalTextBoxRxSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRySpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRzSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxTotalTime = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxAngularSpeed = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRyStep = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRadialAngle = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRyOscillation = new Crystallography.Controls.NumericBox();
+            this.numericalTextBoxRzOscillation = new Crystallography.Controls.NumericBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,6 +165,9 @@ namespace ReciPro
             this.listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             this.checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericBox3 = new Crystallography.Controls.NumericBox();
+            this.numericBox2 = new Crystallography.Controls.NumericBox();
+            this.numericBox1 = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonRange = new System.Windows.Forms.RadioButton();
             this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
@@ -152,29 +175,6 @@ namespace ReciPro
             this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.numericBox3 = new Crystallography.Controls.NumericBox();
-            this.numericBox2 = new Crystallography.Controls.NumericBox();
-            this.numericBox1 = new Crystallography.Controls.NumericBox();
-            this.colorControlSmallCircle = new Crystallography.Controls.ColorControl();
-            this.colorControlGreatCircle = new Crystallography.Controls.ColorControl();
-            this.colorControlString = new Crystallography.Controls.ColorControl();
-            this.colorControlUniqueAxis = new Crystallography.Controls.ColorControl();
-            this.colorControlUniquePlane = new Crystallography.Controls.ColorControl();
-            this.colorControlGeneralAxis = new Crystallography.Controls.ColorControl();
-            this.colorControlGeneralPlane = new Crystallography.Controls.ColorControl();
-            this.colorControlBackGround = new Crystallography.Controls.ColorControl();
-            this.colorControl90DegLine = new Crystallography.Controls.ColorControl();
-            this.colorControl10DegLine = new Crystallography.Controls.ColorControl();
-            this.colorControl1DegLine = new Crystallography.Controls.ColorControl();
-            this.numericalTextBoxRxSpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRySpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRzSpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxTotalTime = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxAngularSpeed = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRyStep = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRadialAngle = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRyOscillation = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxRzOscillation = new Crystallography.Controls.NumericBox();
             this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
@@ -405,16 +405,127 @@ namespace ReciPro
             this.groupBox1.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
+            // colorControlSmallCircle
+            // 
+            this.colorControlSmallCircle.Argb = -16256;
+            resources.ApplyResources(this.colorControlSmallCircle, "colorControlSmallCircle");
+            this.colorControlSmallCircle.Blue = 128;
+            this.colorControlSmallCircle.BlueF = 0.5019608F;
+            this.colorControlSmallCircle.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlSmallCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.colorControlSmallCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlSmallCircle.Green = 192;
+            this.colorControlSmallCircle.GreenF = 0.7529412F;
+            this.colorControlSmallCircle.Name = "colorControlSmallCircle";
+            this.colorControlSmallCircle.Red = 255;
+            this.colorControlSmallCircle.RedF = 1F;
+            this.colorControlSmallCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlGreatCircle
+            // 
+            this.colorControlGreatCircle.Argb = -32768;
+            resources.ApplyResources(this.colorControlGreatCircle, "colorControlGreatCircle");
+            this.colorControlGreatCircle.Blue = 0;
+            this.colorControlGreatCircle.BlueF = 0F;
+            this.colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGreatCircle.Green = 128;
+            this.colorControlGreatCircle.GreenF = 0.5019608F;
+            this.colorControlGreatCircle.Name = "colorControlGreatCircle";
+            this.colorControlGreatCircle.Red = 255;
+            this.colorControlGreatCircle.RedF = 1F;
+            this.colorControlGreatCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            // 
+            // colorControlString
+            // 
+            this.colorControlString.Argb = -16777216;
+            resources.ApplyResources(this.colorControlString, "colorControlString");
+            this.colorControlString.BackColor = System.Drawing.Color.Black;
+            this.colorControlString.Blue = 0;
+            this.colorControlString.BlueF = 0F;
+            this.colorControlString.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlString.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlString.Green = 0;
+            this.colorControlString.GreenF = 0F;
+            this.colorControlString.Name = "colorControlString";
+            this.colorControlString.Red = 0;
+            this.colorControlString.RedF = 0F;
+            this.colorControlString.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
+            this.colorControlString.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlUniqueAxis
+            // 
+            this.colorControlUniqueAxis.Argb = -7667712;
+            resources.ApplyResources(this.colorControlUniqueAxis, "colorControlUniqueAxis");
+            this.colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
+            this.colorControlUniqueAxis.Blue = 0;
+            this.colorControlUniqueAxis.BlueF = 0F;
+            this.colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlUniqueAxis.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlUniqueAxis.Green = 0;
+            this.colorControlUniqueAxis.GreenF = 0F;
+            this.colorControlUniqueAxis.Name = "colorControlUniqueAxis";
+            this.colorControlUniqueAxis.Red = 139;
+            this.colorControlUniqueAxis.RedF = 0.5450981F;
+            this.colorControlUniqueAxis.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
+            this.colorControlUniqueAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlUniquePlane
+            // 
+            this.colorControlUniquePlane.Argb = -16751616;
+            resources.ApplyResources(this.colorControlUniquePlane, "colorControlUniquePlane");
+            this.colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
+            this.colorControlUniquePlane.Blue = 0;
+            this.colorControlUniquePlane.BlueF = 0F;
+            this.colorControlUniquePlane.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            this.colorControlUniquePlane.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlUniquePlane.Green = 100;
+            this.colorControlUniquePlane.GreenF = 0.3921569F;
+            this.colorControlUniquePlane.Name = "colorControlUniquePlane";
+            this.colorControlUniquePlane.Red = 0;
+            this.colorControlUniquePlane.RedF = 0F;
+            this.colorControlUniquePlane.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
+            this.colorControlUniquePlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
             // 
             // labelUniqueAxis
             // 
             resources.ApplyResources(this.labelUniqueAxis, "labelUniqueAxis");
             this.labelUniqueAxis.Name = "labelUniqueAxis";
             this.toolTip1.SetToolTip(this.labelUniqueAxis, resources.GetString("labelUniqueAxis.ToolTip"));
+            // 
+            // colorControlGeneralAxis
+            // 
+            this.colorControlGeneralAxis.Argb = -65536;
+            resources.ApplyResources(this.colorControlGeneralAxis, "colorControlGeneralAxis");
+            this.colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.colorControlGeneralAxis.Blue = 0;
+            this.colorControlGeneralAxis.BlueF = 0F;
+            this.colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlGeneralAxis.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGeneralAxis.Green = 0;
+            this.colorControlGeneralAxis.GreenF = 0F;
+            this.colorControlGeneralAxis.Name = "colorControlGeneralAxis";
+            this.colorControlGeneralAxis.Red = 255;
+            this.colorControlGeneralAxis.RedF = 1F;
+            this.colorControlGeneralAxis.TabStop = false;
+            this.colorControlGeneralAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
             // 
             // labelGeneralAxis
             // 
@@ -434,11 +545,69 @@ namespace ReciPro
             this.labelGeneralPlane.Name = "labelGeneralPlane";
             this.toolTip1.SetToolTip(this.labelGeneralPlane, resources.GetString("labelGeneralPlane.ToolTip"));
             // 
+            // colorControlGeneralPlane
+            // 
+            this.colorControlGeneralPlane.Argb = -14578910;
+            resources.ApplyResources(this.colorControlGeneralPlane, "colorControlGeneralPlane");
+            this.colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.colorControlGeneralPlane.Blue = 34;
+            this.colorControlGeneralPlane.BlueF = 0.1333333F;
+            this.colorControlGeneralPlane.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
+            this.colorControlGeneralPlane.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlGeneralPlane.Green = 139;
+            this.colorControlGeneralPlane.GreenF = 0.5450981F;
+            this.colorControlGeneralPlane.Name = "colorControlGeneralPlane";
+            this.colorControlGeneralPlane.Red = 33;
+            this.colorControlGeneralPlane.RedF = 0.1294118F;
+            this.colorControlGeneralPlane.TabStop = false;
+            this.colorControlGeneralPlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
+            // colorControlBackGround
+            // 
+            this.colorControlBackGround.Argb = -1;
+            resources.ApplyResources(this.colorControlBackGround, "colorControlBackGround");
+            this.colorControlBackGround.BackColor = System.Drawing.Color.White;
+            this.colorControlBackGround.Blue = 255;
+            this.colorControlBackGround.BlueF = 1F;
+            this.colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlBackGround.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlBackGround.Green = 255;
+            this.colorControlBackGround.GreenF = 1F;
+            this.colorControlBackGround.Name = "colorControlBackGround";
+            this.colorControlBackGround.Red = 255;
+            this.colorControlBackGround.RedF = 1F;
+            this.colorControlBackGround.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
+            this.colorControlBackGround.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
             // labelBackGround
             // 
             resources.ApplyResources(this.labelBackGround, "labelBackGround");
             this.labelBackGround.Name = "labelBackGround";
             this.toolTip1.SetToolTip(this.labelBackGround, resources.GetString("labelBackGround.ToolTip"));
+            // 
+            // colorControl90DegLine
+            // 
+            this.colorControl90DegLine.Argb = -16776961;
+            resources.ApplyResources(this.colorControl90DegLine, "colorControl90DegLine");
+            this.colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
+            this.colorControl90DegLine.Blue = 255;
+            this.colorControl90DegLine.BlueF = 1F;
+            this.colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl90DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.colorControl90DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl90DegLine.Green = 0;
+            this.colorControl90DegLine.GreenF = 0F;
+            this.colorControl90DegLine.Name = "colorControl90DegLine";
+            this.colorControl90DegLine.Red = 0;
+            this.colorControl90DegLine.RedF = 0F;
+            this.colorControl90DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
+            this.colorControl90DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
             // 
             // label90DegLine
             // 
@@ -452,11 +621,51 @@ namespace ReciPro
             this.label10DegLine.Name = "label10DegLine";
             this.toolTip1.SetToolTip(this.label10DegLine, resources.GetString("label10DegLine.ToolTip"));
             // 
+            // colorControl10DegLine
+            // 
+            this.colorControl10DegLine.Argb = -8355585;
+            resources.ApplyResources(this.colorControl10DegLine, "colorControl10DegLine");
+            this.colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.colorControl10DegLine.Blue = 255;
+            this.colorControl10DegLine.BlueF = 1F;
+            this.colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl10DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.colorControl10DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl10DegLine.Green = 128;
+            this.colorControl10DegLine.GreenF = 0.5019608F;
+            this.colorControl10DegLine.Name = "colorControl10DegLine";
+            this.colorControl10DegLine.Red = 128;
+            this.colorControl10DegLine.RedF = 0.5019608F;
+            this.colorControl10DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
+            this.colorControl10DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
+            // 
             // label1DegLine
             // 
             resources.ApplyResources(this.label1DegLine, "label1DegLine");
             this.label1DegLine.Name = "label1DegLine";
             this.toolTip1.SetToolTip(this.label1DegLine, resources.GetString("label1DegLine.ToolTip"));
+            // 
+            // colorControl1DegLine
+            // 
+            this.colorControl1DegLine.Argb = -4144897;
+            resources.ApplyResources(this.colorControl1DegLine, "colorControl1DegLine");
+            this.colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.colorControl1DegLine.Blue = 255;
+            this.colorControl1DegLine.BlueF = 1F;
+            this.colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl1DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.colorControl1DegLine.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControl1DegLine.Green = 192;
+            this.colorControl1DegLine.GreenF = 0.7529412F;
+            this.colorControl1DegLine.Name = "colorControl1DegLine";
+            this.colorControl1DegLine.Red = 192;
+            this.colorControl1DegLine.RedF = 0.7529412F;
+            this.colorControl1DegLine.TabStop = false;
+            this.toolTip1.SetToolTip(this.colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
+            this.colorControl1DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
             // 
             // labelString
             // 
@@ -926,521 +1135,6 @@ namespace ReciPro
             resources.ApplyResources(this.label22, "label22");
             this.label22.Name = "label22";
             // 
-            // menuStrip1
-            // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Name = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveImageToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.pageSetupToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.printToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            // 
-            // saveImageToolStripMenuItem
-            // 
-            this.saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asImageToolStripMenuItem,
-            this.asMetafileToolStripMenuItem1});
-            this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-            resources.ApplyResources(this.saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
-            // 
-            // asImageToolStripMenuItem
-            // 
-            this.asImageToolStripMenuItem.Name = "asImageToolStripMenuItem";
-            resources.ApplyResources(this.asImageToolStripMenuItem, "asImageToolStripMenuItem");
-            this.asImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
-            // 
-            // asMetafileToolStripMenuItem1
-            // 
-            resources.ApplyResources(this.asMetafileToolStripMenuItem1, "asMetafileToolStripMenuItem1");
-            this.asMetafileToolStripMenuItem1.Name = "asMetafileToolStripMenuItem1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asBitmapToolStripMenuItem,
-            this.asMetafileToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            // 
-            // asBitmapToolStripMenuItem
-            // 
-            this.asBitmapToolStripMenuItem.Name = "asBitmapToolStripMenuItem";
-            resources.ApplyResources(this.asBitmapToolStripMenuItem, "asBitmapToolStripMenuItem");
-            this.asBitmapToolStripMenuItem.Click += new System.EventHandler(this.copyImageToClipboardToolStripMenuItem_Click);
-            // 
-            // asMetafileToolStripMenuItem
-            // 
-            this.asMetafileToolStripMenuItem.Name = "asMetafileToolStripMenuItem";
-            resources.ApplyResources(this.asMetafileToolStripMenuItem, "asMetafileToolStripMenuItem");
-            this.asMetafileToolStripMenuItem.Click += new System.EventHandler(this.copyMetafileToClipboardToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // pageSetupToolStripMenuItem
-            // 
-            this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-            resources.ApplyResources(this.pageSetupToolStripMenuItem, "pageSetupToolStripMenuItem");
-            this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
-            // 
-            // printPreviewToolStripMenuItem
-            // 
-            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            resources.ApplyResources(this.printPreviewToolStripMenuItem, "printPreviewToolStripMenuItem");
-            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.AutoPopDelay = 10000;
-            this.toolTip1.InitialDelay = 500;
-            this.toolTip1.ReshowDelay = 100;
-            // 
-            // labelHU
-            // 
-            resources.ApplyResources(this.labelHU, "labelHU");
-            this.labelHU.Name = "labelHU";
-            this.toolTip1.SetToolTip(this.labelHU, resources.GetString("labelHU.ToolTip"));
-            // 
-            // printPreviewDialog1
-            // 
-            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.panelSpecifiedIndices);
-            this.groupBox5.Controls.Add(this.panel2);
-            this.groupBox5.Controls.Add(this.flowLayoutPanel3);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
-            // panelSpecifiedIndices
-            // 
-            this.panelSpecifiedIndices.Controls.Add(this.buttonRemoveIndex);
-            this.panelSpecifiedIndices.Controls.Add(this.buttonAddIndex);
-            this.panelSpecifiedIndices.Controls.Add(this.listBoxSpecifiedIndices);
-            this.panelSpecifiedIndices.Controls.Add(this.checkBoxIncludingEquivalentPlanes);
-            resources.ApplyResources(this.panelSpecifiedIndices, "panelSpecifiedIndices");
-            this.panelSpecifiedIndices.Name = "panelSpecifiedIndices";
-            // 
-            // buttonRemoveIndex
-            // 
-            resources.ApplyResources(this.buttonRemoveIndex, "buttonRemoveIndex");
-            this.buttonRemoveIndex.Name = "buttonRemoveIndex";
-            this.buttonRemoveIndex.UseVisualStyleBackColor = true;
-            this.buttonRemoveIndex.Click += new System.EventHandler(this.buttonRemoveIndex_Click);
-            // 
-            // buttonAddIndex
-            // 
-            resources.ApplyResources(this.buttonAddIndex, "buttonAddIndex");
-            this.buttonAddIndex.Name = "buttonAddIndex";
-            this.buttonAddIndex.UseVisualStyleBackColor = true;
-            this.buttonAddIndex.Click += new System.EventHandler(this.buttonAddIndex_Click);
-            // 
-            // listBoxSpecifiedIndices
-            // 
-            resources.ApplyResources(this.listBoxSpecifiedIndices, "listBoxSpecifiedIndices");
-            this.listBoxSpecifiedIndices.FormattingEnabled = true;
-            this.listBoxSpecifiedIndices.Name = "listBoxSpecifiedIndices";
-            // 
-            // checkBoxIncludingEquivalentPlanes
-            // 
-            resources.ApplyResources(this.checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
-            this.checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
-            this.checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
-            this.checkBoxIncludingEquivalentPlanes.CheckedChanged += new System.EventHandler(this.checkBoxIncludingEquivalentPlanes_CheckedChanged);
-            // 
-            // panel2
-            // 
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Controls.Add(this.numericBox3);
-            this.panel2.Controls.Add(this.numericBox2);
-            this.panel2.Controls.Add(this.numericBox1);
-            this.panel2.Controls.Add(this.labelHU);
-            this.panel2.Name = "panel2";
-            // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
-            // radioButtonRange
-            // 
-            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
-            this.radioButtonRange.Checked = true;
-            this.radioButtonRange.Name = "radioButtonRange";
-            this.radioButtonRange.TabStop = true;
-            this.radioButtonRange.UseVisualStyleBackColor = true;
-            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
-            // 
-            // radioButtonSpecifiedIndices
-            // 
-            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
-            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
-            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.groupBox5);
-            this.panel3.Controls.Add(this.groupBox2);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
-            // 
-            // graphicsBox
-            // 
-            resources.ApplyResources(this.graphicsBox, "graphicsBox");
-            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.graphicsBox.Name = "graphicsBox";
-            this.graphicsBox.TabStop = false;
-            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
-            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
-            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
-            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
-            // 
-            // pageSetupDialog1
-            // 
-            this.pageSetupDialog1.Document = this.printDocument1;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // numericBox3
-            // 
-            this.numericBox3.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox3, "numericBox3");
-            this.numericBox3.BackColor = System.Drawing.Color.Transparent;
-            this.numericBox3.DecimalPlaces = -2;
-            this.numericBox3.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox3.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBox3.Maximum = 20D;
-            this.numericBox3.Minimum = 0D;
-            this.numericBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox3.MouseSpeed = 1D;
-            this.numericBox3.Multiline = false;
-            this.numericBox3.Name = "numericBox3";
-            this.numericBox3.RadianValue = 0D;
-            this.numericBox3.ReadOnly = false;
-            this.numericBox3.RestrictLimitValue = true;
-            this.numericBox3.ShowFraction = false;
-            this.numericBox3.ShowPositiveSign = false;
-            this.numericBox3.ShowUpDown = true;
-            this.numericBox3.SkipEventDuringInput = false;
-            this.numericBox3.SmartIncrement = false;
-            this.numericBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBox3.ThonsandsSeparator = true;
-            this.numericBox3.UpDown_Increment = 1D;
-            this.numericBox3.Value = 0D;
-            this.numericBox3.WordWrap = true;
-            // 
-            // numericBox2
-            // 
-            this.numericBox2.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox2, "numericBox2");
-            this.numericBox2.BackColor = System.Drawing.Color.Transparent;
-            this.numericBox2.DecimalPlaces = -2;
-            this.numericBox2.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox2.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBox2.Maximum = 20D;
-            this.numericBox2.Minimum = 0D;
-            this.numericBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox2.MouseSpeed = 1D;
-            this.numericBox2.Multiline = false;
-            this.numericBox2.Name = "numericBox2";
-            this.numericBox2.RadianValue = 0D;
-            this.numericBox2.ReadOnly = false;
-            this.numericBox2.RestrictLimitValue = true;
-            this.numericBox2.ShowFraction = false;
-            this.numericBox2.ShowPositiveSign = false;
-            this.numericBox2.ShowUpDown = true;
-            this.numericBox2.SkipEventDuringInput = false;
-            this.numericBox2.SmartIncrement = false;
-            this.numericBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBox2.ThonsandsSeparator = true;
-            this.numericBox2.UpDown_Increment = 1D;
-            this.numericBox2.Value = 0D;
-            this.numericBox2.WordWrap = true;
-            // 
-            // numericBox1
-            // 
-            this.numericBox1.AllowMouseControl = false;
-            resources.ApplyResources(this.numericBox1, "numericBox1");
-            this.numericBox1.BackColor = System.Drawing.Color.Transparent;
-            this.numericBox1.DecimalPlaces = -2;
-            this.numericBox1.FooterBackColor = System.Drawing.Color.Transparent;
-            this.numericBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox1.HeaderBackColor = System.Drawing.Color.Transparent;
-            this.numericBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBox1.Maximum = 20D;
-            this.numericBox1.Minimum = 0D;
-            this.numericBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBox1.MouseSpeed = 1D;
-            this.numericBox1.Multiline = false;
-            this.numericBox1.Name = "numericBox1";
-            this.numericBox1.RadianValue = 0D;
-            this.numericBox1.ReadOnly = false;
-            this.numericBox1.RestrictLimitValue = true;
-            this.numericBox1.ShowFraction = false;
-            this.numericBox1.ShowPositiveSign = false;
-            this.numericBox1.ShowUpDown = true;
-            this.numericBox1.SkipEventDuringInput = false;
-            this.numericBox1.SmartIncrement = false;
-            this.numericBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBox1.ThonsandsSeparator = true;
-            this.numericBox1.UpDown_Increment = 1D;
-            this.numericBox1.Value = 0D;
-            this.numericBox1.WordWrap = true;
-            // 
-            // colorControlSmallCircle
-            // 
-            this.colorControlSmallCircle.Argb = -16256;
-            resources.ApplyResources(this.colorControlSmallCircle, "colorControlSmallCircle");
-            this.colorControlSmallCircle.Blue = 128;
-            this.colorControlSmallCircle.BlueF = 0.5019608F;
-            this.colorControlSmallCircle.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlSmallCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.colorControlSmallCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlSmallCircle.Green = 192;
-            this.colorControlSmallCircle.GreenF = 0.7529412F;
-            this.colorControlSmallCircle.Name = "colorControlSmallCircle";
-            this.colorControlSmallCircle.Red = 255;
-            this.colorControlSmallCircle.RedF = 1F;
-            this.colorControlSmallCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlGreatCircle
-            // 
-            this.colorControlGreatCircle.Argb = -32768;
-            resources.ApplyResources(this.colorControlGreatCircle, "colorControlGreatCircle");
-            this.colorControlGreatCircle.Blue = 0;
-            this.colorControlGreatCircle.BlueF = 0F;
-            this.colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlGreatCircle.Green = 128;
-            this.colorControlGreatCircle.GreenF = 0.5019608F;
-            this.colorControlGreatCircle.Name = "colorControlGreatCircle";
-            this.colorControlGreatCircle.Red = 255;
-            this.colorControlGreatCircle.RedF = 1F;
-            this.colorControlGreatCircle.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlString
-            // 
-            this.colorControlString.Argb = -16777216;
-            resources.ApplyResources(this.colorControlString, "colorControlString");
-            this.colorControlString.BackColor = System.Drawing.Color.Black;
-            this.colorControlString.Blue = 0;
-            this.colorControlString.BlueF = 0F;
-            this.colorControlString.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlString.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlString.Green = 0;
-            this.colorControlString.GreenF = 0F;
-            this.colorControlString.Name = "colorControlString";
-            this.colorControlString.Red = 0;
-            this.colorControlString.RedF = 0F;
-            this.colorControlString.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
-            this.colorControlString.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlUniqueAxis
-            // 
-            this.colorControlUniqueAxis.Argb = -7667712;
-            resources.ApplyResources(this.colorControlUniqueAxis, "colorControlUniqueAxis");
-            this.colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
-            this.colorControlUniqueAxis.Blue = 0;
-            this.colorControlUniqueAxis.BlueF = 0F;
-            this.colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlUniqueAxis.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlUniqueAxis.Green = 0;
-            this.colorControlUniqueAxis.GreenF = 0F;
-            this.colorControlUniqueAxis.Name = "colorControlUniqueAxis";
-            this.colorControlUniqueAxis.Red = 139;
-            this.colorControlUniqueAxis.RedF = 0.5450981F;
-            this.colorControlUniqueAxis.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
-            this.colorControlUniqueAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlUniquePlane
-            // 
-            this.colorControlUniquePlane.Argb = -16751616;
-            resources.ApplyResources(this.colorControlUniquePlane, "colorControlUniquePlane");
-            this.colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
-            this.colorControlUniquePlane.Blue = 0;
-            this.colorControlUniquePlane.BlueF = 0F;
-            this.colorControlUniquePlane.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            this.colorControlUniquePlane.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlUniquePlane.Green = 100;
-            this.colorControlUniquePlane.GreenF = 0.3921569F;
-            this.colorControlUniquePlane.Name = "colorControlUniquePlane";
-            this.colorControlUniquePlane.Red = 0;
-            this.colorControlUniquePlane.RedF = 0F;
-            this.colorControlUniquePlane.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
-            this.colorControlUniquePlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlGeneralAxis
-            // 
-            this.colorControlGeneralAxis.Argb = -65536;
-            resources.ApplyResources(this.colorControlGeneralAxis, "colorControlGeneralAxis");
-            this.colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.colorControlGeneralAxis.Blue = 0;
-            this.colorControlGeneralAxis.BlueF = 0F;
-            this.colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlGeneralAxis.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlGeneralAxis.Green = 0;
-            this.colorControlGeneralAxis.GreenF = 0F;
-            this.colorControlGeneralAxis.Name = "colorControlGeneralAxis";
-            this.colorControlGeneralAxis.Red = 255;
-            this.colorControlGeneralAxis.RedF = 1F;
-            this.colorControlGeneralAxis.TabStop = false;
-            this.colorControlGeneralAxis.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlGeneralPlane
-            // 
-            this.colorControlGeneralPlane.Argb = -14578910;
-            resources.ApplyResources(this.colorControlGeneralPlane, "colorControlGeneralPlane");
-            this.colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.colorControlGeneralPlane.Blue = 34;
-            this.colorControlGeneralPlane.BlueF = 0.1333333F;
-            this.colorControlGeneralPlane.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
-            this.colorControlGeneralPlane.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlGeneralPlane.Green = 139;
-            this.colorControlGeneralPlane.GreenF = 0.5450981F;
-            this.colorControlGeneralPlane.Name = "colorControlGeneralPlane";
-            this.colorControlGeneralPlane.Red = 33;
-            this.colorControlGeneralPlane.RedF = 0.1294118F;
-            this.colorControlGeneralPlane.TabStop = false;
-            this.colorControlGeneralPlane.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControlBackGround
-            // 
-            this.colorControlBackGround.Argb = -1;
-            resources.ApplyResources(this.colorControlBackGround, "colorControlBackGround");
-            this.colorControlBackGround.BackColor = System.Drawing.Color.White;
-            this.colorControlBackGround.Blue = 255;
-            this.colorControlBackGround.BlueF = 1F;
-            this.colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlBackGround.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlBackGround.Green = 255;
-            this.colorControlBackGround.GreenF = 1F;
-            this.colorControlBackGround.Name = "colorControlBackGround";
-            this.colorControlBackGround.Red = 255;
-            this.colorControlBackGround.RedF = 1F;
-            this.colorControlBackGround.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
-            this.colorControlBackGround.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControl90DegLine
-            // 
-            this.colorControl90DegLine.Argb = -16776961;
-            resources.ApplyResources(this.colorControl90DegLine, "colorControl90DegLine");
-            this.colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            this.colorControl90DegLine.Blue = 255;
-            this.colorControl90DegLine.BlueF = 1F;
-            this.colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl90DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.colorControl90DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControl90DegLine.Green = 0;
-            this.colorControl90DegLine.GreenF = 0F;
-            this.colorControl90DegLine.Name = "colorControl90DegLine";
-            this.colorControl90DegLine.Red = 0;
-            this.colorControl90DegLine.RedF = 0F;
-            this.colorControl90DegLine.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
-            this.colorControl90DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControl10DegLine
-            // 
-            this.colorControl10DegLine.Argb = -8355585;
-            resources.ApplyResources(this.colorControl10DegLine, "colorControl10DegLine");
-            this.colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.colorControl10DegLine.Blue = 255;
-            this.colorControl10DegLine.BlueF = 1F;
-            this.colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl10DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.colorControl10DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControl10DegLine.Green = 128;
-            this.colorControl10DegLine.GreenF = 0.5019608F;
-            this.colorControl10DegLine.Name = "colorControl10DegLine";
-            this.colorControl10DegLine.Red = 128;
-            this.colorControl10DegLine.RedF = 0.5019608F;
-            this.colorControl10DegLine.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
-            this.colorControl10DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
-            // colorControl1DegLine
-            // 
-            this.colorControl1DegLine.Argb = -4144897;
-            resources.ApplyResources(this.colorControl1DegLine, "colorControl1DegLine");
-            this.colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.colorControl1DegLine.Blue = 255;
-            this.colorControl1DegLine.BlueF = 1F;
-            this.colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl1DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.colorControl1DegLine.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControl1DegLine.Green = 192;
-            this.colorControl1DegLine.GreenF = 0.7529412F;
-            this.colorControl1DegLine.Name = "colorControl1DegLine";
-            this.colorControl1DegLine.Red = 192;
-            this.colorControl1DegLine.RedF = 0.7529412F;
-            this.colorControl1DegLine.TabStop = false;
-            this.toolTip1.SetToolTip(this.colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
-            this.colorControl1DegLine.ColorChanged += new System.EventHandler(this.colorControl_ColorChanged);
-            // 
             // numericalTextBoxRxSpeed
             // 
             this.numericalTextBoxRxSpeed.AllowMouseControl = false;
@@ -1729,6 +1423,315 @@ namespace ReciPro
             this.numericalTextBoxRzOscillation.Value = 8D;
             this.numericalTextBoxRzOscillation.WordWrap = true;
             // 
+            // menuStrip1
+            // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveImageToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.toolStripSeparator1,
+            this.pageSetupToolStripMenuItem,
+            this.printPreviewToolStripMenuItem,
+            this.printToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // saveImageToolStripMenuItem
+            // 
+            this.saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asImageToolStripMenuItem,
+            this.asMetafileToolStripMenuItem1});
+            this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
+            resources.ApplyResources(this.saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
+            // 
+            // asImageToolStripMenuItem
+            // 
+            this.asImageToolStripMenuItem.Name = "asImageToolStripMenuItem";
+            resources.ApplyResources(this.asImageToolStripMenuItem, "asImageToolStripMenuItem");
+            this.asImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // asMetafileToolStripMenuItem1
+            // 
+            resources.ApplyResources(this.asMetafileToolStripMenuItem1, "asMetafileToolStripMenuItem1");
+            this.asMetafileToolStripMenuItem1.Name = "asMetafileToolStripMenuItem1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asBitmapToolStripMenuItem,
+            this.asMetafileToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
+            // asBitmapToolStripMenuItem
+            // 
+            this.asBitmapToolStripMenuItem.Name = "asBitmapToolStripMenuItem";
+            resources.ApplyResources(this.asBitmapToolStripMenuItem, "asBitmapToolStripMenuItem");
+            this.asBitmapToolStripMenuItem.Click += new System.EventHandler(this.copyImageToClipboardToolStripMenuItem_Click);
+            // 
+            // asMetafileToolStripMenuItem
+            // 
+            this.asMetafileToolStripMenuItem.Name = "asMetafileToolStripMenuItem";
+            resources.ApplyResources(this.asMetafileToolStripMenuItem, "asMetafileToolStripMenuItem");
+            this.asMetafileToolStripMenuItem.Click += new System.EventHandler(this.copyMetafileToClipboardToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // pageSetupToolStripMenuItem
+            // 
+            this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
+            resources.ApplyResources(this.pageSetupToolStripMenuItem, "pageSetupToolStripMenuItem");
+            this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
+            // 
+            // printPreviewToolStripMenuItem
+            // 
+            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
+            resources.ApplyResources(this.printPreviewToolStripMenuItem, "printPreviewToolStripMenuItem");
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            resources.ApplyResources(this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
+            // 
+            // labelHU
+            // 
+            resources.ApplyResources(this.labelHU, "labelHU");
+            this.labelHU.Name = "labelHU";
+            this.toolTip1.SetToolTip(this.labelHU, resources.GetString("labelHU.ToolTip"));
+            // 
+            // printPreviewDialog1
+            // 
+            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.panelSpecifiedIndices);
+            this.groupBox5.Controls.Add(this.panel2);
+            this.groupBox5.Controls.Add(this.flowLayoutPanel3);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // panelSpecifiedIndices
+            // 
+            this.panelSpecifiedIndices.Controls.Add(this.buttonRemoveIndex);
+            this.panelSpecifiedIndices.Controls.Add(this.buttonAddIndex);
+            this.panelSpecifiedIndices.Controls.Add(this.listBoxSpecifiedIndices);
+            this.panelSpecifiedIndices.Controls.Add(this.checkBoxIncludingEquivalentPlanes);
+            resources.ApplyResources(this.panelSpecifiedIndices, "panelSpecifiedIndices");
+            this.panelSpecifiedIndices.Name = "panelSpecifiedIndices";
+            // 
+            // buttonRemoveIndex
+            // 
+            resources.ApplyResources(this.buttonRemoveIndex, "buttonRemoveIndex");
+            this.buttonRemoveIndex.Name = "buttonRemoveIndex";
+            this.buttonRemoveIndex.UseVisualStyleBackColor = true;
+            this.buttonRemoveIndex.Click += new System.EventHandler(this.buttonRemoveIndex_Click);
+            // 
+            // buttonAddIndex
+            // 
+            resources.ApplyResources(this.buttonAddIndex, "buttonAddIndex");
+            this.buttonAddIndex.Name = "buttonAddIndex";
+            this.buttonAddIndex.UseVisualStyleBackColor = true;
+            this.buttonAddIndex.Click += new System.EventHandler(this.buttonAddIndex_Click);
+            // 
+            // listBoxSpecifiedIndices
+            // 
+            resources.ApplyResources(this.listBoxSpecifiedIndices, "listBoxSpecifiedIndices");
+            this.listBoxSpecifiedIndices.FormattingEnabled = true;
+            this.listBoxSpecifiedIndices.Name = "listBoxSpecifiedIndices";
+            // 
+            // checkBoxIncludingEquivalentPlanes
+            // 
+            resources.ApplyResources(this.checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
+            this.checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
+            this.checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
+            this.checkBoxIncludingEquivalentPlanes.CheckedChanged += new System.EventHandler(this.checkBoxIncludingEquivalentPlanes_CheckedChanged);
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.numericBox3);
+            this.panel2.Controls.Add(this.numericBox2);
+            this.panel2.Controls.Add(this.numericBox1);
+            this.panel2.Controls.Add(this.labelHU);
+            this.panel2.Name = "panel2";
+            // 
+            // numericBox3
+            // 
+            this.numericBox3.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox3, "numericBox3");
+            this.numericBox3.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.DecimalPlaces = -2;
+            this.numericBox3.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox3.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox3.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox3.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox3.Maximum = 20D;
+            this.numericBox3.Minimum = 0D;
+            this.numericBox3.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox3.MouseSpeed = 1D;
+            this.numericBox3.Multiline = false;
+            this.numericBox3.Name = "numericBox3";
+            this.numericBox3.RadianValue = 0.034906585039886591D;
+            this.numericBox3.ReadOnly = false;
+            this.numericBox3.RestrictLimitValue = true;
+            this.numericBox3.ShowFraction = false;
+            this.numericBox3.ShowPositiveSign = false;
+            this.numericBox3.ShowUpDown = true;
+            this.numericBox3.SkipEventDuringInput = false;
+            this.numericBox3.SmartIncrement = false;
+            this.numericBox3.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox3.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox3.ThonsandsSeparator = true;
+            this.numericBox3.UpDown_Increment = 1D;
+            this.numericBox3.Value = 2D;
+            this.numericBox3.WordWrap = true;
+            this.numericBox3.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // numericBox2
+            // 
+            this.numericBox2.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox2, "numericBox2");
+            this.numericBox2.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.DecimalPlaces = -2;
+            this.numericBox2.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox2.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox2.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox2.Maximum = 20D;
+            this.numericBox2.Minimum = 0D;
+            this.numericBox2.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox2.MouseSpeed = 1D;
+            this.numericBox2.Multiline = false;
+            this.numericBox2.Name = "numericBox2";
+            this.numericBox2.RadianValue = 0.034906585039886591D;
+            this.numericBox2.ReadOnly = false;
+            this.numericBox2.RestrictLimitValue = true;
+            this.numericBox2.ShowFraction = false;
+            this.numericBox2.ShowPositiveSign = false;
+            this.numericBox2.ShowUpDown = true;
+            this.numericBox2.SkipEventDuringInput = false;
+            this.numericBox2.SmartIncrement = false;
+            this.numericBox2.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox2.ThonsandsSeparator = true;
+            this.numericBox2.UpDown_Increment = 1D;
+            this.numericBox2.Value = 2D;
+            this.numericBox2.WordWrap = true;
+            this.numericBox2.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // numericBox1
+            // 
+            this.numericBox1.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBox1, "numericBox1");
+            this.numericBox1.BackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.DecimalPlaces = -2;
+            this.numericBox1.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox1.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBox1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBox1.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBox1.Maximum = 20D;
+            this.numericBox1.Minimum = 0D;
+            this.numericBox1.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBox1.MouseSpeed = 1D;
+            this.numericBox1.Multiline = false;
+            this.numericBox1.Name = "numericBox1";
+            this.numericBox1.RadianValue = 0.034906585039886591D;
+            this.numericBox1.ReadOnly = false;
+            this.numericBox1.RestrictLimitValue = true;
+            this.numericBox1.ShowFraction = false;
+            this.numericBox1.ShowPositiveSign = false;
+            this.numericBox1.ShowUpDown = true;
+            this.numericBox1.SkipEventDuringInput = false;
+            this.numericBox1.SmartIncrement = false;
+            this.numericBox1.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBox1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox1.ThonsandsSeparator = true;
+            this.numericBox1.UpDown_Increment = 1D;
+            this.numericBox1.Value = 2D;
+            this.numericBox1.WordWrap = true;
+            this.numericBox1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // radioButtonRange
+            // 
+            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
+            this.radioButtonRange.Checked = true;
+            this.radioButtonRange.Name = "radioButtonRange";
+            this.radioButtonRange.TabStop = true;
+            this.radioButtonRange.UseVisualStyleBackColor = true;
+            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
+            // 
+            // radioButtonSpecifiedIndices
+            // 
+            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
+            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
+            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupBox5);
+            this.panel3.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // graphicsBox
+            // 
+            resources.ApplyResources(this.graphicsBox, "graphicsBox");
+            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.graphicsBox.Name = "graphicsBox";
+            this.graphicsBox.TabStop = false;
+            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
+            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
+            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
+            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
+            // 
+            // pageSetupDialog1
+            // 
+            this.pageSetupDialog1.Document = this.printDocument1;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
+            // 
             // scalablePictureBoxAdvanced1
             // 
             this.scalablePictureBoxAdvanced1.CopyButtonVisible = true;
@@ -1749,7 +1752,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -228);
+            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -814);
             this.scalablePictureBoxAdvanced1.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced1.StatusLabel = " ";
             this.scalablePictureBoxAdvanced1.StatusProgress = 0D;
@@ -1778,7 +1781,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -228);
+            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -814);
             this.scalablePictureBoxAdvanced2.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced2.StatusLabel = " ";
             this.scalablePictureBoxAdvanced2.StatusProgress = 0D;

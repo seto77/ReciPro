@@ -200,6 +200,9 @@ namespace Crystallography.Controls
         public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; }
         [Category("Material properties")]
         public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; }
+        [Category("Material properties")]
+        public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; }
+
 
         #endregion
 
@@ -434,6 +437,7 @@ namespace Crystallography.Controls
                 a.Texture = atoms.Texture;
                 a.Radius = atoms.Radius;
                 a.Argb = atoms.Argb;
+                a.ShowLabel = atoms.ShowLabel;
             }
             ItemsChanged?.Invoke(this, new EventArgs());
         }
@@ -498,6 +502,9 @@ namespace Crystallography.Controls
             Ambient = atoms.Ambient; Diffusion = atoms.Diffusion; Emission = atoms.Emission; Shininess = atoms.Shininess; Specular = atoms.Specular;
 
             Radius = atoms.Radius; AtomColor = Color.FromArgb(atoms.Argb); Alpha = Color.FromArgb(atoms.Argb).A / 255f;
+
+            ShowLabel = atoms.ShowLabel;
+           
         }
 
 
@@ -512,7 +519,7 @@ namespace Crystallography.Controls
 
             var atoms = new Atoms(Label, AtomNo, AtomSubNoXray, AtomSubNoElectron, IsotopicComposition,
                 SymmetrySeriesNumber, new Vector3D(X, Y, Z), new Vector3D(XErr, YErr, ZErr), Occ, OccErr, dsf,
-                material, (float)Radius);
+                material, (float)Radius, true, ShowLabel);
             return atoms;
         }
         #endregion

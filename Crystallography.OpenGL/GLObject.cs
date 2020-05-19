@@ -10,12 +10,12 @@ using V4f = OpenTK.Vector4;
 using V4d = OpenTK.Vector4d;
 using V3f = OpenTK.Vector3;
 using V3d = OpenTK.Vector3d;
+using V2f = OpenTK.Vector2;
 using V2d = OpenTK.Vector2d;
 using C4 = OpenTK.Graphics.Color4;
 using M4d = OpenTK.Matrix4d;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
-using OpenTK;
 
 #endregion 定義
 
@@ -29,30 +29,50 @@ namespace Crystallography.OpenGL
     /// </summary>
     public struct Vertex
     {
-        public readonly V3f Position;
-        public readonly V3f Normal;
+        /// <summary>
+        /// 0: テクスチャ無しポリゴン、1: テクスチャ有りポリゴン、2: 文字列. 
+        /// 文字列の場合はNormalが中心座標, Positionは中心からのシフト量(X,Yはピクセル単位、Zはワールド単位で、回転の影響を受けない)を表す. 
+        /// </summary>
+        public readonly int Mode;
+
         public readonly int Argb;
+
+        public readonly V3f Position;
+
+        public readonly V3f Normal;
+
+        public readonly V2f Uv;
+
 
         public Vertex(V3f position, V3f normal, int argb)
         {
-            Position = position;// new V4f(position, 1);
+            Position = position;
             Normal = normal;
             Argb = argb;
+            Uv = new V2f(0, 0);
+            Mode = 0;
+        }
+        public Vertex(V4f position, V3f normal, int argb) : this(new V3f(position), normal, argb) { }
+
+        public Vertex(V3f position, V3f normal, V2f uv, int argb, int mode)
+        {
+            Position = position;
+            Normal = normal;
+            Argb = argb;
+            Uv = uv;
+            Mode = mode;
         }
 
-        public Vertex(V4f position, V3f normal, int argb)
-        {
-            Position = new V3f(position);
-            Normal = normal;
-            Argb = argb;
-        }
+
 
         public static readonly int Stride = Marshal.SizeOf(default(Vertex));
     }
     #endregion
 
-    public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8 }
-
+    #region Enum
+    public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8, Text = 16 }
+    #endregion
+  
     #region GLObjectクラス (抽象クラス)
     /// <summary>
     /// OpenGLで描画するオブジェクトを表現する抽象クラス
@@ -60,23 +80,27 @@ namespace Crystallography.OpenGL
     abstract public class GLObject
     {
         #region static private な フィールド & プロパティ
+
+        static internal int TextureLocation { get; set; } = 1;
         static internal int EmissionLocation { get; set; } = -1;
         static internal int AmbientLocation { get; set; } = -1;
         static internal int DiffuseLocation { get; set; } = -1;
         static internal int SpecularLocation { get; set; } = -1;
         static internal int SpecularPowerLocation { get; set; } = -1;
-
         static internal int UseFixedArgbLocation { get; set; } = -1;
         static internal int FixedArgbLocation { get; set; } = -1;
         static internal int IgnoreNormalSidesLocation { get; set; } = -1;
         static internal int RenderPassLocation { get; set; } = -1;
 
-        static internal int PassOIT1Index  = -1;
-        static internal int PassOIT2Index  = -1;
+        static internal int PassOIT1Index = -1;
+        static internal int PassOIT2Index = -1;
         static internal int PassNormalIndex = -1;
         static internal int PositionLocation { get; set; } = -1;
         static internal int NormalLocation { get; set; } = -1;
         static internal int ArgbLocation { get; set; } = -1;
+
+        static internal int UvLocation { get; set; } = -1;
+        static internal int ModeLocation { get; set; } = -1;
 
         #endregion
 
@@ -183,8 +207,8 @@ namespace Crystallography.OpenGL
         }
 
         #endregion
-        
-        
+
+
         /// <summary>
         /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
         /// </summary>
@@ -214,15 +238,33 @@ namespace Crystallography.OpenGL
             if (EmissionLocation == -1 || renewLocation)
                 SetLocation(program);
 
-            //頂点位置
-            GL.EnableVertexAttribArray(PositionLocation);
-            GL.VertexAttribPointer(PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
-            //法線
-            GL.EnableVertexAttribArray(NormalLocation);
-            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, V3f.SizeInBytes);
+
+            //モード
+            GL.EnableVertexAttribArray(ModeLocation);
+            GL.VertexAttribPointer(ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
             //色
             GL.EnableVertexAttribArray(ArgbLocation);
-            GL.VertexAttribPointer(ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 2 * V3f.SizeInBytes);
+            GL.VertexAttribPointer(ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeof(int));
+            //頂点位置
+            GL.EnableVertexAttribArray(PositionLocation);
+            GL.VertexAttribPointer(PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int));
+            //法線
+            GL.EnableVertexAttribArray(NormalLocation);
+            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeof(int) + V3f.SizeInBytes);
+            //テクスチャ座標
+            GL.EnableVertexAttribArray(UvLocation);
+            GL.VertexAttribPointer(UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int) + 2 * V3f.SizeInBytes);
+
+            if (this is TextObject t && t.Colors != null)
+            {
+                GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
+                // テクスチャをバインドする
+                GL.BindTexture(TextureTarget.Texture2D, t.TextureNumber);
+                //テクスチャ用バッファに色情報を流し込む
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Size[0], t.Size[1], 0, PixelFormat.Rgba, PixelType.UnsignedByte, t.Colors);
+                // テクスチャのアンバインド
+                GL.BindTexture(TextureTarget.Texture2D, 0);
+            }
 
         }
 
@@ -232,11 +274,15 @@ namespace Crystallography.OpenGL
         /// <param name="Program"></param>
         public void SetLocation(int Program)
         {
+            ModeLocation = GL.GetAttribLocation(Program, "ObjType");
+            ArgbLocation = GL.GetAttribLocation(Program, "Argb");
             PositionLocation = GL.GetAttribLocation(Program, "Position");
             NormalLocation = GL.GetAttribLocation(Program, "Normal");
-            ArgbLocation = GL.GetAttribLocation(Program, "Argb");
-            if (PositionLocation == -1 || NormalLocation == -1 || ArgbLocation == -1)
+            UvLocation = GL.GetAttribLocation(Program, "Uv");
+            if (ModeLocation==-1 || UvLocation == -1 || PositionLocation == -1 || NormalLocation == -1 || ArgbLocation == -1)
                 throw new Exception("cannot find location!");
+
+            TextureLocation = GL.GetUniformLocation(Program, "Texture");
 
             EmissionLocation = GL.GetUniformLocation(Program, "Emission");
             AmbientLocation = GL.GetUniformLocation(Program, "Ambient");
@@ -246,7 +292,7 @@ namespace Crystallography.OpenGL
             UseFixedArgbLocation = GL.GetUniformLocation(Program, "UseFixedArgb");
             IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
             FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
-           
+
             PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
             PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
             PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
@@ -257,24 +303,36 @@ namespace Crystallography.OpenGL
         /// </summary>
         private void Render()
         {
+            if (this is TextObject text)
+            {
+                GL.Uniform1(TextureLocation, 0);
+                GL.BindTexture(TextureTarget.Texture2D, text.TextureNumber);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToBorder);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToBorder);
+            }
+
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
             for (int i = 0, offset = 0; i < Types.Length; i++)
             {
                 var t = Types[i];
                 var len = TypeCounts[i];
-                if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t== PT.Quads) 
-                    && (Mode == DrawingMode.Surfaces || Mode == DrawingMode.SurfacesAndEdges))
+                if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t == PT.Quads)
+                    && (Mode == DrawingMode.Surfaces || Mode == DrawingMode.SurfacesAndEdges || Mode == DrawingMode.Text))
                     SetMaterialAndDrawElements(true, t, len, offset);
                 else
                 {
-                    if ((t == PT.Lines || t == PT.LinesAdjacency || t== PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
+                    if ((t == PT.Lines || t == PT.LinesAdjacency || t == PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
                         SetMaterialAndDrawElements(false, Types[i], len, offset);
                     else if (t == PT.Points && Mode == DrawingMode.Points)
                         SetMaterialAndDrawElements(false, t, len, offset);
                 }
                 offset += len * sizeof(uint);
             }
+
+          
         }
 
         /// <summary>
@@ -283,12 +341,12 @@ namespace Crystallography.OpenGL
         /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
-            var renew =  prms.Program != Program;
+            var renew = prms.Program != Program;
 
             (float emi, float amb, float dif, float spe) = drawSurfaces ?
                 (Material.Emission, Material.Ambient, Material.Diffuse, Material.Specular) : (0f, 1f, 0f, 0f);
-                
-            if(renew || emi != prms.emi)
+
+            if (renew || emi != prms.emi)
                 GL.Uniform1(EmissionLocation, emi);
 
             if (renew || amb != prms.amb)
@@ -299,7 +357,7 @@ namespace Crystallography.OpenGL
 
             if (renew || spe != prms.spe)
                 GL.Uniform1(SpecularLocation, spe);
-            
+
             if (renew || prms.spePow != Material.SpecularPower)
                 GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
 
@@ -320,12 +378,12 @@ namespace Crystallography.OpenGL
             //    GLable(renderPassIndex == PassNormalIndex, EnableCap.CullFace);//CullFaceを元に戻す
             //}
             //else
-                GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
+            GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
 
-            prms = (Program, emi, amb,dif,spe, Material.SpecularPower,Material.Argb, IgnoreNormalSides, UseFixedArgb);
+            prms = (Program, emi, amb, dif, spe, Material.SpecularPower, Material.Argb, IgnoreNormalSides, UseFixedArgb);
         }
         static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb)
-             prms = (-1, 0 ,0, 0, 0, 0, 0, false, false);
+             prms = (-1, 0, 0, 0, 0, 0, 0, false, false);
 
 
         /// <summary>
@@ -495,7 +553,7 @@ namespace Crystallography.OpenGL
 
         }
 
-        public Polygon(Vector3DBase[] vertices, Material mat, DrawingMode mode) 
+        public Polygon(Vector3DBase[] vertices, Material mat, DrawingMode mode)
             : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode)
         {
         }
@@ -545,7 +603,7 @@ namespace Crystallography.OpenGL
             lists.Add(indicesList.ToArray());
             types.Add(PT.Points);
 
-            Indices = lists.SelectMany(i=>i).Select(i=>(uint)i).ToArray();
+            Indices = lists.SelectMany(i => i).Select(i => (uint)i).ToArray();
             TypeCounts = lists.Select(i => i.Length).ToArray();
             Types = types.ToArray();
         }
@@ -559,24 +617,24 @@ namespace Crystallography.OpenGL
         {
             //ここから本体
             var inputs = new List<V3d>();
-            for (int i = 1; i < TypeCounts[0]-1; i++)
+            for (int i = 1; i < TypeCounts[0] - 1; i++)
                 inputs.Add(Vertices[Indices[i]].Position.ToV3d());
-            
+
             var outputs = decompose(inputs.ToArray(), order);
 
             var results = new Polygon[outputs.Length];
-            for(int i=0; i< results.Length; i++)
+            for (int i = 0; i < results.Length; i++)
             {
                 results[i] = new Polygon(Material, Mode);
                 results[i].ShowClippedSection = false;//クリップ断面は表示しない
                 results[i].IgnoreNormalSides = true;//裏表を無視する
-                
+
                 results[i].Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Argb)).ToArray();
                 results[i].Types = new[] { PT.Quads };
 
                 results[i].Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray();
 
-                results[i].TypeCounts = new[] { results[i].Indices.Length};
+                results[i].TypeCounts = new[] { results[i].Indices.Length };
 
                 var center = Extensions.Average(outputs[i]);
                 results[i].CircumscribedSphereCenter = new V4d(center, 1);
@@ -716,7 +774,6 @@ namespace Crystallography.OpenGL
 
     #endregion
 
-
     #region 多面体、立方体
     /// <summary>
     /// 多面体 (凸多面体)
@@ -848,7 +905,6 @@ namespace Crystallography.OpenGL
 
     #endregion
 
-   
     #region 球体 楕円球、真球
     /// <summary>
     /// 楕円球 (原点と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される
@@ -899,7 +955,7 @@ namespace Crystallography.OpenGL
                 {
                     if (Sphere.DefaultIndices != null)
                     {
-                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position,1)), v.Normal, mat.Argb)).ToArray();
+                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position, 1)), v.Normal, mat.Argb)).ToArray();
                         Indices = Sphere.DefaultIndices;
                         TypeCounts = Sphere.DefaultTypeCounts;
                         Types = Sphere.DefaultTypes;
@@ -972,13 +1028,14 @@ namespace Crystallography.OpenGL
     public class Sphere : Ellipsoid
     {
         private static int defaultSlices = 2;
-        public new static int DefaultSlices { 
-            get =>defaultSlices;
-            set 
+        public new static int DefaultSlices
+        {
+            get => defaultSlices;
+            set
             {
                 defaultSlices = value;
                 SetDefaultSphere();
-            } 
+            }
         }
         public double Radius;
 
@@ -1022,7 +1079,6 @@ namespace Crystallography.OpenGL
 
     #endregion
 
-
     #region パイプ、円錐、円柱
 
     /// <summary>
@@ -1037,9 +1093,9 @@ namespace Crystallography.OpenGL
         public V3d Origin, Vector;
 
         public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode,sole, slices, stacks) { }
+            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode, sole, slices, stacks) { }
 
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole =true, int slices = 0, int stacks = 0)
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : this(o, vec, r1, r2, mat, null, mode, sole, slices, stacks) { }
 
         /// <summary>
@@ -1054,7 +1110,7 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">円周の分割数</param>
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole=true, int slices = 0, int stacks = 0)
+        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : base(mat1, mode)
         {
             ShowClippedSection = true;
@@ -1086,7 +1142,7 @@ namespace Crystallography.OpenGL
                         var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                         transMat.Column3 = new V4d(o, 1);
 
-                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position,1)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
+                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position, 1)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
                         Indices = Cylinder.DefaultIndices;
                         TypeCounts = Cylinder.DefaultTypeCounts;
                         Types = Cylinder.DefaultTypes;
@@ -1216,7 +1272,7 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cone : Pipe
     {
-        private static (int Slices,int Stacks) _Default = (1,8);
+        private static (int Slices, int Stacks) _Default = (1, 8);
         public new static (int Slices, int Stacks) Default
         {
             get => _Default;
@@ -1225,16 +1281,16 @@ namespace Crystallography.OpenGL
                 _Default = value;
                 SetDefaultCone();
             }
-        } 
+        }
 
 
-        public static  Vertex[] DefaultVertices;
-        public static  uint[] DefaultIndices;
-        public static  int[] DefaultTypeCounts;
-        public static  PT[] DefaultTypes;
+        public static Vertex[] DefaultVertices;
+        public static uint[] DefaultIndices;
+        public static int[] DefaultTypeCounts;
+        public static PT[] DefaultTypes;
 
         public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode,sole, slices, stacks) { }
+            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { }
 
         /// <summary>
         /// 円錐
@@ -1261,7 +1317,7 @@ namespace Crystallography.OpenGL
             DefaultIndices = null;
             DefaultTypeCounts = null;
             DefaultTypes = null;
-            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges,true, 0, 0);
+            var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges, true, 0, 0);
             DefaultIndices = cone.Indices;
             DefaultTypeCounts = cone.TypeCounts;
             DefaultVertices = cone.Vertices;
@@ -1287,16 +1343,16 @@ namespace Crystallography.OpenGL
             }
         }
 
-        public static  Vertex[] DefaultVertices;
-        public static  uint[] DefaultIndices;
-        public static  int[] DefaultTypeCounts;
-        public static  PT[] DefaultTypes;
+        public static Vertex[] DefaultVertices;
+        public static uint[] DefaultIndices;
+        public static int[] DefaultTypeCounts;
+        public static PT[] DefaultTypes;
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode,sole, slices, stacks) { }
+           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { }
 
 
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode,sole, slices, stacks) { }
+           : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode, sole, slices, stacks) { }
 
 
 
@@ -1311,11 +1367,11 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole =true, int slices = 0, int stacks = 0)
-           : base(o, vec, r, r, mat, mode,sole, slices, stacks) { }
+        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : base(o, vec, r, r, mat, mode, sole, slices, stacks) { }
 
         public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-         : base(o, vec, r, r, mat1, mat2, mode,sole, slices, stacks) { }
+         : base(o, vec, r, r, mat1, mat2, mode, sole, slices, stacks) { }
 
         static Cylinder()
         {
@@ -1337,7 +1393,6 @@ namespace Crystallography.OpenGL
     }
 
     #endregion
-
 
     #region Torus (ドーナッツ)
     /// <summary>
@@ -1446,7 +1501,6 @@ namespace Crystallography.OpenGL
     }
     #endregion
 
-
     #region メッシュ
     /// <summary>
     /// メッシュ
@@ -1499,7 +1553,7 @@ namespace Crystallography.OpenGL
                 }
 
             Vertices = vList.ToArray();
-            Indices = indicesList.Select(i=>(uint)i).ToArray();
+            Indices = indicesList.Select(i => (uint)i).ToArray();
             TypeCounts = new[] { indicesList.Count() };
 
             Types = new[] { PrimitiveType.Quads };
@@ -1507,18 +1561,112 @@ namespace Crystallography.OpenGL
     }
     #endregion
 
-    #region 文字
+    #region 文字オブジェクト
     /// <summary>
-    /// メッシュ
+    /// 文字オブジェクト
     /// </summary>
-    public class Text : GLObject
+    public class TextObject : GLObject
     {
-        public Text(string str, float size, Material mat, DrawingMode mode) : base(mat, mode)
+        static public Dictionary<(string Text, float FontSize, int Argb, bool edge), (int TextureNumber, int Width, int Height)> TextureDictionary
+             = new Dictionary<(string Text, float FontSize, int Argb, bool edge), (int TextureNumber, int Width, int Height)>();
+
+        public int TextureNumber = -1;
+        public byte[] Colors = null;
+        public int[] Size = null;
+
+        public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
+            : this(text, fontSize, new V3d(position.X, position.Y, position.Z), popout, whiteEdge, mat) { }
+        public TextObject(string text, float fontSize, V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
 
+            text = text.Trim();
+            if (text != "")
+            {
+                int width, height;
 
-        
+
+                if (!TextureDictionary.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
+                {
+                    var fnt = new System.Drawing.Font("Tahoma", fontSize);//フォントオブジェクトの作成
+                    var strSize = System.Windows.Forms.TextRenderer.MeasureText(text, fnt, new System.Drawing.Size(600, 100), System.Windows.Forms.TextFormatFlags.NoPadding); //文字列を描画するときの大きさを計測する
+                    var bmp = new System.Drawing.Bitmap(strSize.Width+2, strSize.Height+2);
+                    var g = System.Drawing.Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                    if (whiteEdge)
+                        foreach(var (x, y) in new[] {(0f,0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
+                            g.DrawString(text, fnt, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(128, System.Drawing.Color.White)), new System.Drawing.RectangleF(x, y, bmp.Width, bmp.Height));
+                    
+                    g.DrawString(text, fnt, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(mat.Argb)), new System.Drawing.RectangleF(1f, 1f, bmp.Width, bmp.Height));
+                    fnt.Dispose();//リソースを解放する
+                    g.Dispose();//リソースを解放する
+
+                    width = bmp.Width;
+                    height = bmp.Height;
+
+                    var argbList = BitmapConverter.ToByteARGB(bmp).ToList();//データの並び順はBGRA
+                    #region  余白の部分をトリムする
+
+                    while (argbList.Where((b, i) => i < width * 4).All(b => b == 0))
+                    {
+                        argbList.RemoveRange(0, width * 4);
+                        height--;
+                    }
+                    while (argbList.Where((b, i) => i >= (height - 1) * width * 4).All(b => b == 0))
+                    {
+                        argbList.RemoveRange((height - 1) * width * 4, width * 4);
+                        height--;
+                    }
+
+                    while (argbList.Where((b, i) => i % (width * 4) == 3).All(b => b == 0))
+                    {
+                        for (int h = height - 1; h >= 0; h--)
+                            argbList.RemoveRange(h * width * 4, 4);
+                        width--;
+                    }
+                    while (argbList.Where((b, i) => i % (width * 4) == width * 4 - 1).All(b => b == 0))
+                    {
+                        for (int h = height; h > 0; h--)
+                            argbList.RemoveRange(h * width * 4 - 4, 4);
+                        width--;
+                    }
+                    #endregion
+
+                    Size = new[] { width, height };
+
+                    Colors = argbList.ToArray();
+                    //並び順をRGBAに変更
+                    for (int i = 0; i < Colors.Length; i += 4) { var t = Colors[i]; Colors[i] = Colors[i + 2]; Colors[i + 2] = t; }
+
+                    //空いてるテクスチャID番号を調べ、TextureNumberに格納 (実際の転送はGenerateで行う)
+                    TextureNumber = GL.GenTexture();
+                    //辞書に登録
+                    TextureDictionary.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNumber, width, height));
+                }
+                else
+                {
+                    TextureNumber = obj.TextureNumber;
+                    width = obj.Width;
+                    height = obj.Height;
+                }
+
+                ShowClippedSection = false;//クリップ断面は表示しない
+
+                Vertices = new[] {
+                    new Vertex(new V3f(-width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(0,0), mat.Argb, 2),
+                    new Vertex(new V3f(+width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(1,0), mat.Argb, 2),
+                    new Vertex(new V3f(+width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(1,1), mat.Argb, 2),
+                    new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2)
+                    }.ToArray();
+
+                CircumscribedSphereCenter = new V4d(position, 1);
+                Types = new[] { PT.Quads };
+                Indices = Enumerable.Range(0, 4).Select(val => (uint)val).ToArray();
+                TypeCounts = new[] { 4 };
+            }
         }
     }
+
+
     #endregion
+
 }

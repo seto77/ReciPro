@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.775(2020/05/19)  Improved: Rendering of text label in OpenGL windows. Fixed: Stereoent drawing." +
             "\r\n ver4.774(2020/05/15)  Fixed bugs for Wykcoff position discriminator for trigonal and hexagonal symmetries." +
             "\r\n ver4.773(2020/05/12)  Improved importing CIF file." +
             "\r\n ver4.772(2020/05/12)  Changed: Open GL 1.5 (or higher) is required for 'Structure Viewer'." +

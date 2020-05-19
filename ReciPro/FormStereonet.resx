@@ -822,7 +822,7 @@ scheme</value>
     <value>colorControlSmallCircle</value>
   </data>
   <data name="&gt;&gt;colorControlSmallCircle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlSmallCircle.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -876,7 +876,7 @@ scheme</value>
     <value>colorControlGreatCircle</value>
   </data>
   <data name="&gt;&gt;colorControlGreatCircle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlGreatCircle.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -969,7 +969,7 @@ scheme</value>
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1026,7 +1026,7 @@ scheme</value>
     <value>colorControlUniqueAxis</value>
   </data>
   <data name="&gt;&gt;colorControlUniqueAxis.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlUniqueAxis.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1083,7 +1083,7 @@ scheme</value>
     <value>colorControlUniquePlane</value>
   </data>
   <data name="&gt;&gt;colorControlUniquePlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlUniquePlane.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1176,7 +1176,7 @@ scheme</value>
     <value>colorControlGeneralAxis</value>
   </data>
   <data name="&gt;&gt;colorControlGeneralAxis.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlGeneralAxis.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1347,7 +1347,7 @@ scheme</value>
     <value>colorControlGeneralPlane</value>
   </data>
   <data name="&gt;&gt;colorControlGeneralPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlGeneralPlane.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1404,7 +1404,7 @@ scheme</value>
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1497,7 +1497,7 @@ scheme</value>
     <value>colorControl90DegLine</value>
   </data>
   <data name="&gt;&gt;colorControl90DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl90DegLine.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1632,7 +1632,7 @@ scheme</value>
     <value>colorControl10DegLine</value>
   </data>
   <data name="&gt;&gt;colorControl10DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl10DegLine.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1731,7 +1731,7 @@ scheme</value>
     <value>colorControl1DegLine</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -3453,7 +3453,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRxSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRxSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3462,7 +3462,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRxSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRxSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3474,7 +3474,7 @@ scheme</value>
     <value>numericalTextBoxRxSpeed</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRxSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRxSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3510,7 +3510,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRySpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRySpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3519,7 +3519,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRySpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRySpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3531,7 +3531,7 @@ scheme</value>
     <value>numericalTextBoxRySpeed</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRySpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRySpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3567,7 +3567,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRzSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRzSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3576,7 +3576,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRzSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRzSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3588,7 +3588,7 @@ scheme</value>
     <value>numericalTextBoxRzSpeed</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRzSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRzSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3624,7 +3624,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxTotalTime.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxTotalTime.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3633,7 +3633,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxTotalTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxTotalTime.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3645,7 +3645,7 @@ scheme</value>
     <value>numericalTextBoxTotalTime</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTotalTime.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTotalTime.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3681,7 +3681,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxAngularSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxAngularSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3690,7 +3690,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxAngularSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxAngularSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3702,7 +3702,7 @@ scheme</value>
     <value>numericalTextBoxAngularSpeed</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAngularSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxAngularSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3738,7 +3738,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRyStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRyStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3747,7 +3747,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRyStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRyStep.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3759,7 +3759,7 @@ scheme</value>
     <value>numericalTextBoxRyStep</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRyStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRyStep.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3795,7 +3795,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRadialAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRadialAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3804,7 +3804,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRadialAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRadialAngle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3816,7 +3816,7 @@ scheme</value>
     <value>numericalTextBoxRadialAngle</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRadialAngle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRadialAngle.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3852,7 +3852,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRyOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRyOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3861,7 +3861,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRyOscillation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRyOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3873,7 +3873,7 @@ scheme</value>
     <value>numericalTextBoxRyOscillation</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRyOscillation.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRyOscillation.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -3909,7 +3909,7 @@ scheme</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxRzOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBoxRzOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3918,7 +3918,7 @@ scheme</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericalTextBoxRzOscillation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 22</value>
+    <value>52, 24</value>
   </data>
   <data name="numericalTextBoxRzOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3930,7 +3930,7 @@ scheme</value>
     <value>numericalTextBoxRzOscillation</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRzOscillation.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxRzOscillation.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -4309,9 +4309,6 @@ scheme</value>
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
   </data>
-  <data name="printPreviewDialog1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="printPreviewDialog1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4406,7 +4403,7 @@ scheme</value>
     <value>3, 39</value>
   </data>
   <data name="listBoxSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 242</value>
+    <value>159, 225</value>
   </data>
   <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4436,7 +4433,7 @@ scheme</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 287</value>
+    <value>3, 285</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 38</value>
@@ -4464,10 +4461,10 @@ equivalent indices</value>
     <value>Fill</value>
   </data>
   <data name="panelSpecifiedIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 113</value>
+    <value>3, 115</value>
   </data>
   <data name="panelSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 328</value>
+    <value>164, 326</value>
   </data>
   <data name="panelSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4521,7 +4518,7 @@ equivalent indices</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox3.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBox3.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4530,7 +4527,7 @@ equivalent indices</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
+    <value>52, 25</value>
   </data>
   <data name="numericBox3.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -4542,7 +4539,7 @@ equivalent indices</value>
     <value>numericBox3</value>
   </data>
   <data name="&gt;&gt;numericBox3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox3.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -4578,7 +4575,7 @@ equivalent indices</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBox2.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4587,7 +4584,7 @@ equivalent indices</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
+    <value>52, 25</value>
   </data>
   <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -4599,7 +4596,7 @@ equivalent indices</value>
     <value>numericBox2</value>
   </data>
   <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -4635,7 +4632,7 @@ equivalent indices</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4644,7 +4641,7 @@ equivalent indices</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
+    <value>52, 25</value>
   </data>
   <data name="numericBox1.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -4656,7 +4653,7 @@ equivalent indices</value>
     <value>numericBox1</value>
   </data>
   <data name="&gt;&gt;numericBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox1.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -4671,7 +4668,7 @@ equivalent indices</value>
     <value>3, 71</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 42</value>
+    <value>164, 44</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4881,7 +4878,7 @@ equivalent indices</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 0</value>
+    <value>410, -586</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4890,7 +4887,7 @@ equivalent indices</value>
     <value>scalablePictureBoxAdvanced1</value>
   </data>
   <data name="&gt;&gt;scalablePictureBoxAdvanced1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -4902,7 +4899,7 @@ equivalent indices</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 0</value>
+    <value>410, -586</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4911,7 +4908,7 @@ equivalent indices</value>
     <value>scalablePictureBoxAdvanced2</value>
   </data>
   <data name="&gt;&gt;scalablePictureBoxAdvanced2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.5.4.2228, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -4998,9 +4995,6 @@ equivalent indices</value>
         AAAAAAAA+B8AAOAHAADAAwAAilEAAIpRAAAKVAAAel4AAAAAAAAAAAAAel4AAApQAACqVQAAilkAAMAD
         AADgBwAA+B8AAA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>

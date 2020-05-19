@@ -12,13 +12,13 @@ layout(early_fragment_tests) in;
 uniform uint MaxNodes;
 
 // Material properties
-uniform float Ambient = 0.2; 
-uniform float Diffuse = 0.5;
-uniform float Specular = 0.6;
-uniform float SpecularPower = 4.0;
-uniform float Emission = 0.4;
+uniform float Emission = 0.2;
+uniform float Ambient = 0.2;
+uniform float Diffuse = 0.7;
+uniform float Specular = 0.5;
 uniform vec3 SpecularColor = vec3(1.0);
-uniform vec4 BgColor = vec4(1, 1, 1, 1);
+uniform float SpecularPower = 128.0;
+uniform vec3 BgColor = vec3(1, 1, 1);
 uniform bool IgnoreNormalSides = false;
 
 //Depth Cueing
@@ -26,14 +26,18 @@ uniform bool DepthCueing = false;
 uniform float Far = -2.5;
 uniform float Near = 0.5;
 
+uniform sampler2D Texture;
+
 // Input from vertex shader
 in VertexData
 {
+	float WithTexture;//-1: without texture, +1: with texture
 	vec3 Normal;//Normal direction
 	vec3 Light;//Light direction
 	vec3 View;//View direction
 	vec4 Color;//Color
 	float Z;//Depth
+	vec2 Uv;//texture coordinates
 } fs_in;
 
 struct NodeType {
@@ -55,42 +59,57 @@ subroutine uniform RenderPassType RenderPass;
 
 vec4 setColor()
 {
-	// Normalize the incoming N, L, and V vectors
-	vec3 normal = normalize(fs_in.Normal);
-	vec3 light = normalize(fs_in.Light);
-	vec3 view = normalize(fs_in.View);
-	vec3 c = vec3(fs_in.Color);
-	// Calculate R locally
-	vec3 ref = reflect(-light, normal);
-
-	// Compute the diffuse and specular components for each fragment
-	vec3 ambient = Ambient * c;
-	vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
-	vec3 emission;
-	vec3 diffuse;
-	if (IgnoreNormalSides)
+	vec3 c3;
+	float a;
+	//Without texture
+	if (fs_in.WithTexture < 0)
 	{
-		emission = max(abs(dot(normal, view)), 0.0) * Emission * c;
-		diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * c;
+		// Normalize the incoming N, L, and V vectors
+		vec3 normal = normalize(fs_in.Normal);
+		vec3 light = normalize(fs_in.Light);
+		vec3 view = normalize(fs_in.View);
+		vec3 inColor = vec3(fs_in.Color);
+		// Calculate R locally
+		vec3 ref = reflect(-light, normal);
+
+		// Compute the diffuse and specular components for each fragment
+		vec3 ambient = Ambient * inColor;
+		vec3 specular = pow(max(dot(ref, view), 0), SpecularPower) * Specular * SpecularColor;
+		vec3 emission;
+		vec3 diffuse;
+
+		if (IgnoreNormalSides)
+		{
+			emission = max(abs(dot(normal, view)), 0) * Emission * inColor;
+			diffuse = max(abs(dot(normal, light)), 0) * Diffuse * inColor;
+		}
+		else
+		{
+			emission = max(dot(normal, view), 0) * Emission * inColor;
+			diffuse = max(dot(normal, light), 0) * Diffuse * inColor;
+		}
+
+		c3 = vec3(diffuse + specular + ambient + emission);
+		a = fs_in.Color.a;
 	}
+	//With texture
 	else
 	{
-		emission = max(dot(normal, view), 0.0) * Emission * c;
-		diffuse = max(dot(normal, light), 0.0) * Diffuse * c;
+		vec4 c = texture2D(Texture, fs_in.Uv);
+		c3 = vec3(c);
+		a = c.a;
 	}
 
-	vec4 color = vec4(diffuse + specular + ambient + emission, fs_in.Color.a);
-
-	if(DepthCueing)
+	if (DepthCueing)
 		if (fs_in.Z < Near)
 		{
 			if (fs_in.Z < Far)
-				color = BgColor;
+				c3 = BgColor;
 			else
-				color = mix(color, BgColor, (Near - fs_in.Z) / (Near - Far));
+				c3 = mix(c3, BgColor, (Near - fs_in.Z) / (Near - Far));
 		}
 
-	return color;
+	return vec4(c3, a);// Write final color to the framebuffer
 }
 
 subroutine(RenderPassType)
@@ -175,7 +194,7 @@ void passOIT2()
 	}
 	*/
 
-	
+
 	//bubble sort
 	/*
 	int j, i;
@@ -194,7 +213,7 @@ void passOIT2()
 	}
 	*/
 
-	
+
 	//merge sort
 	/*
 	int i, j1, j2, k;
@@ -253,7 +272,7 @@ void passOIT2()
 	}
 
 	// Traverse the array, and combine the colors using the alpha channel.
-	vec4 color = BgColor;
+	vec4 color = vec4(BgColor,1);
 	for (int i = 0; i < count; i++)
 		color = mix(color, frags[i].color, frags[i].color.a);
 	color.a = 1;

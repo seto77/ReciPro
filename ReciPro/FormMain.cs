@@ -205,7 +205,6 @@ namespace ReciPro
                     ProjWidth = 4D,
                     RotationMode = GLControlAlpha.RotationModes.Object,
                 };
-                glControlAxes.Paint += new PaintEventHandler(glControlAxes_Paint);
                 glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
                 glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
 
@@ -217,9 +216,10 @@ namespace ReciPro
             }
             catch (Exception ex)
             {
-                #if DEBUG
+#if DEBUG
+                    MessageBox.Show("Error during initializing GLcontrol");
                     MessageBox.Show(ex.Message);
-                #endif
+#endif
 
                 disableOpneGLToolStripMenuItem.Checked = true;
 
@@ -1230,27 +1230,18 @@ namespace ReciPro
             var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
             var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
             var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
-
+            var label = new []{ "a", "b", "c" };
             var obj = new List<GLObject>();
             for (int i = 0; i < 3; i++)
             {
                 obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
                 obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
+                obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
             }
             obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, new Material(Col4.Gray), DrawingMode.Surfaces));
 
             glControlAxes.DeleteAllObjects();
             glControlAxes.AddObjects(obj);
-        }
-
-        private void glControlAxes_Paint(object sender, PaintEventArgs e)
-        {
-            if (glControlAxes == null) 
-                return;
-
-            e.Graphics.DrawString("a", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Red), new PointF(0, 0));
-            e.Graphics.DrawString("b", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Green), new PointF(14, 0));
-            e.Graphics.DrawString("c", new Font("Times", 14, FontStyle.Italic | FontStyle.Bold), new SolidBrush(Color.Blue), new PointF(28, 0));
         }
 
         private void panelAxes_MouseDown(object sender, MouseEventArgs e)

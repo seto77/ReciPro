@@ -715,6 +715,8 @@ namespace Crystallography
 
         public (double X, double Y, double Z) Tuple => (X, Y, Z);
 
+        public Vector3d TK  => new Vector3d(X, Y, Z);
+
 
         internal static Vector3DBase Normarize(Vector3DBase v)
         {
@@ -751,6 +753,8 @@ namespace Crystallography
             if (aCos < -1) return Math.PI / 2;
             return Math.Acos(aCos);
         }
+
+        
 
         public override string ToString() => string.Format("({0}, {1}, {2})", this.X, this.Y, this.Z);
     }

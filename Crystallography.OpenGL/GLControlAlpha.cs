@@ -33,6 +33,7 @@ namespace Crystallography.OpenGL
         private GLObject quad = null;
 
         private int eyePositionIndex = 0;
+        private int viewportSizeIndex = 0;
         private int lightPositionIndex = 0;
         private int viewMatrixIndex = 0;
         private int projMatrixIndex = 0;
@@ -401,6 +402,7 @@ namespace Crystallography.OpenGL
 
         private void setProjMatrix()
         {
+
             double x = projCenter.X, y = projCenter.Y, w = ProjWidth / 2, h = ProjWidth * ProjAspect / 2;
             double left = x - w, right = x + w, bottom = y - h, top = y + h;
             double zNear = 1f, coeff = zNear / viewFrom.Length;
@@ -445,11 +447,6 @@ namespace Crystallography.OpenGL
 
             setViewMatrix();
             setProjMatrix();
-
-        
-
-            
-
         }
 
         private void SetGLcontrol(bool renewControl)
@@ -511,6 +508,7 @@ namespace Crystallography.OpenGL
                 initShaderStorage();
 
             //Index取得
+            viewportSizeIndex = GL.GetUniformLocation(Program, "ViewportSize");
             eyePositionIndex = GL.GetUniformLocation(Program, "EyePosition");
             lightPositionIndex = GL.GetUniformLocation(Program, "LightPosition");
             viewMatrixIndex = GL.GetUniformLocation(Program, "ViewMatrix");
@@ -549,35 +547,17 @@ namespace Crystallography.OpenGL
                 GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             }
 
-            GL.Enable(EnableCap.Texture2D);
-            var texture = GL.GenTexture();//テクスチャ用バッファの生成
-            GL.BindTexture(TextureTarget.Texture2D, texture); //テクスチャ用バッファのひもづけ
-                                                              //テクスチャの設定
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
-            //テクスチャの色情報を作成
-            int size = 8;
-            float[,,] colors = new float[size, size, 4];
-            for (int i = 0; i < colors.GetLength(0); i++)
-            {
-                for (int j = 0; j < colors.GetLength(1); j++)
-                {
-                    colors[i, j, 0] = (float)i / size;
-                    colors[i, j, 1] = (float)j / size;
-                    colors[i, j, 2] = 0.0f;
-                    colors[i, j, 3] = 1.0f;
-                }
-            }
-            //テクスチャ用バッファに色情報を流し込む
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, size, size, 0, PixelFormat.Rgba, PixelType.Float, colors);
-
-
-
             if (glObjects.Count > 0)
                 glObjects[0].Generate(Program, true);
 
             Clip?.Generate(Program);
             setDepthCueing();
+
+
+            GL.Enable(EnableCap.Texture2D);
+          
+
+           
         }
 
         #region　Shaderの作成 (CreateShader)
@@ -599,7 +579,12 @@ namespace Crystallography.OpenGL
             GL.GetShaderInfoLog(vshader, out string info);
             GL.GetShader(vshader, ShaderParameter.CompileStatus, out int status_code);
             if (status_code != 1)
+            {
+#if DEBUG
+                MessageBox.Show("Error in vertex shader ");
+#endif
                 throw new ApplicationException(info);
+            }
 
             /*
             // Geometry shader
@@ -617,8 +602,12 @@ namespace Crystallography.OpenGL
             GL.GetShaderInfoLog(fshader, out info);
             GL.GetShader(fshader, ShaderParameter.CompileStatus, out status_code);
             if (status_code != 1)
+            {
+#if DEBUG
+                MessageBox.Show("Error in fragment shader ");
+#endif
                 throw new ApplicationException(info);
-
+            }
             int program = GL.CreateProgram();
             GL.AttachShader(program, vshader);
             //GL.AttachShader(program, gshader);
@@ -755,18 +744,26 @@ namespace Crystallography.OpenGL
             }
 
             GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+            GL.Uniform2(viewportSizeIndex, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
 
             //マトリックスをセット
-            GL.Uniform3(eyePositionIndex, ref viewFromF);
-            GL.Uniform3(lightPositionIndex, ref lightPositionF);
+            GL.Uniform3(eyePositionIndex, viewFromF);
+            GL.Uniform3(lightPositionIndex, lightPositionF);
             GL.UniformMatrix4(viewMatrixIndex, false, ref viewMatrixF);
             GL.UniformMatrix4(projMatrixIndex, false, ref projMatrixF);
             GL.UniformMatrix4(worldMatrixIndex, false, ref worldMatrixF);
 
+            var vp1 = Mat4d.Mult(viewMatrix, projMatrix).Mult(new Vector4(1, 0, 1, 1));
+            var vp2 = Mat4d.Mult(viewMatrix, projMatrix).Mult(new Vector4(1, 0, -1, 1));
+            var pv1 = Mat4d.Mult(projMatrix, viewMatrix).Mult(new Vector4(1, 0, 1, 1));
+            var pv2 = Mat4d.Mult(projMatrix, viewMatrix).Mult(new Vector4(1, 0, -1, 1));
+
+
+
             if (FragShader == FragShaders.OIT)//oitモードの時
             {
-                var bgcolor = BackgroundColor.ToV4f();
-                GL.Uniform4(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
+                var bgcolor = BackgroundColor.ToV3f();
+                GL.Uniform3(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
 
                 //clearBuffers();
                 uint zero = 0;
@@ -797,30 +794,14 @@ namespace Crystallography.OpenGL
                 GL.ClearColor(BackgroundColor);
 
                 //描画対称に透明なものが一つでもあるとき
-                if (glObjectsP.Any(o => o.Rendered && o.Material.Color.A != 1))
+                if (glObjectsP.Any(o => o.Rendered && (o.Material.Color.A != 1 || o is TextObject)))
                 {
                     var rot = worldMatrix.Inverted();
-                    glObjectsP.ForAll(o => o.Z = !o.Rendered || o.Material.Color.A == 1 ? double.NegativeInfinity : rot.Mult(o.CircumscribedSphereCenter).Z);
+                    glObjectsP.ForAll(o => o.Z = o.Rendered && (o.Material.Color.A != 1 || o is TextObject) ? rot.Mult(o.CircumscribedSphereCenter).Z : double.NegativeInfinity);
                     glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
                 }
                 glObjects.ForEach(o => o.Render(Clip));// draw scene
             }
-
-
-            //var w =new OpenTK.GameWindow();
-            
-           
-            
-            //var _myFont = new QFont("Fonts/HappySans.ttf", 12, new QFontBuilderConfiguration(true));
-            ////  var _myFont2 = new QFont("basics.qfont", new QFontBuilderConfiguration(true));
-            //var _drawing = new QFontDrawing();
-
-            //_drawing.DrawingPrimitives.Clear();
-            //_drawing.Print(_myFont, "text1", new Vec3f(0,0,1), QFontAlignment.Left);
-
-            //// after all changes do update buffer data and extend it's size if needed.
-            //_drawing.RefreshBuffers();
-
             glControl.SwapBuffers();//swap
             GL.Finish();
 
@@ -891,7 +872,7 @@ namespace Crystallography.OpenGL
 
         private void glControl_MouseDown(object sender, MouseEventArgs e)
         {
-            MouseDown?.Invoke(sender, e);
+            MouseDown?.Invoke(this, e);
 
             //右ダブルクリックは、Orthographic <=> Perspective の切り替え
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && (ModifierKeys & Keys.Control) == Keys.Control)
@@ -910,6 +891,7 @@ namespace Crystallography.OpenGL
         {
             SkipRendering = true;
             viewFrom = viewFrom.Normalized() * distance;
+            viewFromF = viewFromF.Normalized() * (float)distance;
             setViewMatrix();
             SkipRendering = false;
             setProjMatrix();
@@ -962,9 +944,5 @@ namespace Crystallography.OpenGL
 
         #endregion
 
-        public static void DrawString(string str, double fontSize)
-        {
-            // ポリゴン色とテクスチャ色の合成方法
-        }
     }
 }

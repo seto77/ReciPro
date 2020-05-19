@@ -148,6 +148,34 @@ namespace Crystallography
             return values;
         }
 
+        /// <summary>
+        /// 32bitビットマップ画像から、BGRAの順で各ピクセルの情報をもつbyte配列を返す。Lengthは width * height * 4 となる。
+        /// </summary>
+        /// <param name="bmp"></param>
+        /// <returns></returns>
+        public static byte[] ToByteARGB(Bitmap bmp)
+        {
+            if (bmp.PixelFormat == PixelFormat.Format32bppArgb)
+            {
+                var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
+                var argbValues = new byte[bmpData.Stride * bmp.Height];
+                Marshal.Copy(bmpData.Scan0, argbValues, 0, bmpData.Stride * bmp.Height);
+                bmp.UnlockBits(bmpData);
+
+                if (argbValues.Length == bmp.Width * bmp.Height * 4)
+                    return argbValues;
+                else
+                {
+                    var values = new byte[bmp.Width * bmp.Height * 4];
+                    for (int y = 0; y < bmp.Height; y++)
+                        Array.Copy(argbValues, bmpData.Stride * y, values, y * bmp.Width * 4, bmp.Width * 4);
+                    return values;
+                }
+            }
+            else
+                return null;
+        }
+
         public static Byte[] ToByteGray(Bitmap Bmp)
         {
             BitmapData bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);

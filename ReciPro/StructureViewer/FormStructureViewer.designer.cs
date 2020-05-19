@@ -107,6 +107,12 @@
             this.labelGraphicsDriver = new System.Windows.Forms.Label();
             this.labelOpenGLversion = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.colorControlLabelColor = new Crystallography.Controls.ColorControl();
+            this.radioButtonUseMaterialColor = new System.Windows.Forms.RadioButton();
+            this.radioButtonLabelUseFixedColor = new System.Windows.Forms.RadioButton();
+            this.numericBoxLabelSize = new Crystallography.Controls.NumericBox();
+            this.checkBoxLabelWhiteEdge = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             this.numericBoxLegendSize = new Crystallography.Controls.NumericBox();
@@ -190,6 +196,7 @@
             this.tabPageInformation.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1097,6 +1104,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.groupBox3);
@@ -1105,6 +1113,91 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.colorControlLabelColor);
+            this.groupBox4.Controls.Add(this.radioButtonUseMaterialColor);
+            this.groupBox4.Controls.Add(this.radioButtonLabelUseFixedColor);
+            this.groupBox4.Controls.Add(this.numericBoxLabelSize);
+            this.groupBox4.Controls.Add(this.checkBoxLabelWhiteEdge);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // colorControlLabelColor
+            // 
+            this.colorControlLabelColor.Argb = -16777216;
+            resources.ApplyResources(this.colorControlLabelColor, "colorControlLabelColor");
+            this.colorControlLabelColor.Blue = 0;
+            this.colorControlLabelColor.BlueF = 0F;
+            this.colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlLabelColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlLabelColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlLabelColor.Green = 0;
+            this.colorControlLabelColor.GreenF = 0F;
+            this.colorControlLabelColor.Name = "colorControlLabelColor";
+            this.colorControlLabelColor.Red = 0;
+            this.colorControlLabelColor.RedF = 0F;
+            this.colorControlLabelColor.ColorChanged += new System.EventHandler(this.numericBoxLabelSize_ValueChanged);
+            // 
+            // radioButtonUseMaterialColor
+            // 
+            resources.ApplyResources(this.radioButtonUseMaterialColor, "radioButtonUseMaterialColor");
+            this.radioButtonUseMaterialColor.Checked = true;
+            this.radioButtonUseMaterialColor.Name = "radioButtonUseMaterialColor";
+            this.radioButtonUseMaterialColor.TabStop = true;
+            this.radioButtonUseMaterialColor.UseVisualStyleBackColor = true;
+            this.radioButtonUseMaterialColor.CheckedChanged += new System.EventHandler(this.numericBoxLabelSize_ValueChanged);
+            // 
+            // radioButtonLabelUseFixedColor
+            // 
+            resources.ApplyResources(this.radioButtonLabelUseFixedColor, "radioButtonLabelUseFixedColor");
+            this.radioButtonLabelUseFixedColor.Name = "radioButtonLabelUseFixedColor";
+            this.radioButtonLabelUseFixedColor.UseVisualStyleBackColor = true;
+            // 
+            // numericBoxLabelSize
+            // 
+            this.numericBoxLabelSize.AllowMouseControl = false;
+            resources.ApplyResources(this.numericBoxLabelSize, "numericBoxLabelSize");
+            this.numericBoxLabelSize.BackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLabelSize.DecimalPlaces = 0;
+            this.numericBoxLabelSize.FooterBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLabelSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLabelSize.HeaderBackColor = System.Drawing.Color.Transparent;
+            this.numericBoxLabelSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxLabelSize.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.numericBoxLabelSize.Maximum = 200D;
+            this.numericBoxLabelSize.Minimum = 0D;
+            this.numericBoxLabelSize.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
+            this.numericBoxLabelSize.MouseSpeed = 1D;
+            this.numericBoxLabelSize.Multiline = false;
+            this.numericBoxLabelSize.Name = "numericBoxLabelSize";
+            this.numericBoxLabelSize.RadianValue = 0.20943951023931953D;
+            this.numericBoxLabelSize.ReadOnly = false;
+            this.numericBoxLabelSize.RestrictLimitValue = true;
+            this.numericBoxLabelSize.ShowFraction = false;
+            this.numericBoxLabelSize.ShowPositiveSign = false;
+            this.numericBoxLabelSize.ShowUpDown = true;
+            this.numericBoxLabelSize.SkipEventDuringInput = true;
+            this.numericBoxLabelSize.SmartIncrement = true;
+            this.numericBoxLabelSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
+            this.numericBoxLabelSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxLabelSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxLabelSize.ThonsandsSeparator = true;
+            this.numericBoxLabelSize.UpDown_Increment = 1D;
+            this.numericBoxLabelSize.Value = 12D;
+            this.numericBoxLabelSize.WordWrap = true;
+            this.numericBoxLabelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLabelSize_ValueChanged);
+            // 
+            // checkBoxLabelWhiteEdge
+            // 
+            resources.ApplyResources(this.checkBoxLabelWhiteEdge, "checkBoxLabelWhiteEdge");
+            this.checkBoxLabelWhiteEdge.Checked = true;
+            this.checkBoxLabelWhiteEdge.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLabelWhiteEdge.Name = "checkBoxLabelWhiteEdge";
+            this.checkBoxLabelWhiteEdge.UseVisualStyleBackColor = true;
+            this.checkBoxLabelWhiteEdge.CheckedChanged += new System.EventHandler(this.numericBoxLabelSize_ValueChanged);
             // 
             // groupBox2
             // 
@@ -1235,7 +1328,7 @@
             // comboBoxTransparency
             // 
             this.comboBoxTransparency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTransparency.DropDownWidth = 250;
+            this.comboBoxTransparency.DropDownWidth = 400;
             this.comboBoxTransparency.FormattingEnabled = true;
             this.comboBoxTransparency.Items.AddRange(new object[] {
             resources.GetString("comboBoxTransparency.Items"),
@@ -1694,6 +1787,8 @@
             this.flowLayoutPanel4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1843,5 +1938,11 @@
         private System.Windows.Forms.Button buttonSetRange0;
         private System.Windows.Forms.CheckBox checkBoxGroupByElement;
         private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
+        private Crystallography.Controls.NumericBox numericBoxLabelSize;
+        private Crystallography.Controls.ColorControl colorControlLabelColor;
+        private System.Windows.Forms.RadioButton radioButtonUseMaterialColor;
+        private System.Windows.Forms.RadioButton radioButtonLabelUseFixedColor;
     }
 }

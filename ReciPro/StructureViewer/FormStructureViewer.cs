@@ -57,7 +57,7 @@ namespace ReciPro
 
         private List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
         private List<Label> legendLabels = new List<Label>();
-        private List<FlowLayoutPanel> legendPanels = new List<FlowLayoutPanel>();
+        private List<FlowLayoutPanel> legendFlowLayoutPanels = new List<FlowLayoutPanel>();
 
         private Stopwatch sw = new Stopwatch();
 
@@ -185,7 +185,7 @@ namespace ReciPro
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
             };
-            glControlMain.MouseDown += panelMain_MouseDown;
+            glControlMain.MouseDown += glControlMain_MouseDown;
             glControlMain.MouseMove += glControlMain_MouseMove;
 
             // splitContainer1.Panel1にglControlを追加
@@ -200,7 +200,8 @@ namespace ReciPro
             glControlLight.AddObjects(new Sphere(new V3(0, 0, 0), 1.0, new Material(C4.Gray), DrawingMode.Surfaces));
             glControlMain.LightPosition = glControlLight.LightPosition = glControlAxes.LightPosition = new V3(100, 100, 100);
             glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
-            glControlLight.ProjWidth = glControlAxes.ProjWidth = 2.2;
+            glControlLight.ProjWidth = 2.2;
+            glControlAxes.ProjWidth = 2.4;
             glControlMain.ProjWidth = 3f;
             #endregion
 
@@ -599,6 +600,26 @@ namespace ReciPro
         }
         #endregion
 
+        #region ラベルの文字を描画
+        private void setLabel()
+        {
+            sw.Restart();
+
+            GLObjects.Where(o => o.Rendered && o is Sphere s).ToList().ForEach(o =>
+            {
+                var s = o as Sphere;
+                var id = s.Tag as atomID;
+                var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
+                var text = new TextObject(enabledAtoms[id.Index].Label, 
+                    (float)numericBoxLabelSize.Value, s.Origin, s.Radius+0.01, checkBoxLabelWhiteEdge.Checked, mat)
+                { Rendered = enabledAtoms[id.Index].ShowLabel };
+                GLObjects.Add(text);
+            });
+            textBoxInformation.AppendText("Generation of label objects: " + sw.ElapsedMilliseconds + "ms.\r\n");
+        }
+
+        #endregion
+
         #region GLObjectsをシェーダに転送
 
         /// <summary>
@@ -606,6 +627,7 @@ namespace ReciPro
         /// </summary>
         private void transferGLObjects()
         {
+           
             sw.Restart();
             glControlMain.DeleteAllObjects();
             glControlMain.AddObjects(GLObjects);
@@ -746,12 +768,14 @@ namespace ReciPro
             var color = new[] { C4.Red, C4.Green, C4.Blue };
 
             var obj = new List<GLObject>();
+            var label = new[] { "a", "b", "c" }; 
             for (int i = 0; i < 3; i++)
             {
-                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
+                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]),DrawingMode.Surfaces));
                 obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
+                obj.Add(new TextObject(label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
             }
-            obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray), DrawingMode.Surfaces));
+            obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray),DrawingMode.Surfaces));
 
             glControlAxes.DeleteAllObjects();
             glControlAxes.AddObjects(obj);
@@ -801,6 +825,8 @@ namespace ReciPro
             setAtoms();//原子オブジェクトを生成
 
             setBondsAndPolyhera();//結合と多面体オブジェクトを生成
+
+            setLabel();//
 
             removeObjects();//余計な原子を削除
 
@@ -941,7 +967,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panelMain_MouseDown(object sender, MouseEventArgs e)
+        private void glControlMain_MouseDown(object sender, MouseEventArgs e)
         {
             if ((e.Button == MouseButtons.Left && e.Clicks == 2) || (e.Button == MouseButtons.Right && e.Clicks == 1))
             {
@@ -1333,7 +1359,6 @@ namespace ReciPro
             {
                 var size = new Size(numericBoxLegendSize.ValueInteger, numericBoxLegendSize.ValueInteger);
 
-
                 var atoms = atomControl.GetAll().Where(a=>a.GLEnabled).ToList();
                 if (atoms.Count == 0)
                     return;
@@ -1359,6 +1384,7 @@ namespace ReciPro
                     {
                         if (legendControls.Count <= i)
                         {
+                            //GLControlAlpha作成
                             legendControls.Add(new GLControlAlpha
                             {
                                 AllowMouseRotation = false,
@@ -1374,10 +1400,14 @@ namespace ReciPro
                                 WorldMatrix = glControlLight.WorldMatrix,
                                 ViewFrom = glControlLight.ViewFrom
                             });
-
+                            legendControls[i].MouseDown += legendControl_MouseClick;
+                            
+                            //Label作成
                             legendLabels.Add(new Label { Font = Font, AutoSize = true });
 
-                            legendPanels.Add(new FlowLayoutPanel
+
+                            //FlowLayoutPanel作成
+                            legendFlowLayoutPanels.Add(new FlowLayoutPanel
                             {
                                 AutoSize = true,
                                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
@@ -1385,18 +1415,20 @@ namespace ReciPro
                                 Margin = new Padding(1, 1, 1, 8),
                             });
 
-                            legendPanels[i].Controls.Add(legendControls[i]);
-                            legendPanels[i].Controls.Add(legendLabels[i]);
+                            legendFlowLayoutPanels[i].Controls.Add(legendControls[i]);
+                            legendFlowLayoutPanels[i].Controls.Add(legendLabels[i]);
                         }
                         legendLabels[i].Text = checkBoxGroupByElement.Checked ?
                             atoms[i].AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atoms[i].AtomicNumber) : atoms[i].Label;
+                        legendControls[i].Tag = legendLabels[i].Text;
                         legendControls[i].DeleteAllObjects();
                         legendControls[i].Size = size;
+                        
 
-                        flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
+                        flowLayoutPanelLegend.Controls.Add(legendFlowLayoutPanels[i]);
                     }
                     else
-                        flowLayoutPanelLegend.Controls.Remove(legendPanels[i]);
+                        flowLayoutPanelLegend.Controls.Remove(legendFlowLayoutPanels[i]);
                 }
                 flowLayoutPanelLegend.ResumeLayout();
 
@@ -1407,12 +1439,30 @@ namespace ReciPro
                     legendControls[i].AddObjects(
                         new Sphere(new V3(0, 0, 0), atoms[i].Radius / maxRadius, new Material(atoms[i].Argb, atoms[i].Texture), DrawingMode.Surfaces));
                     legendControls[i].LightPosition = glControlLight.LightPosition;
+                    
                 }
                 glControlMain.SkipRendering = false;
             }
             
 
             textBoxInformation.AppendText("Generation of legend control: " + sw.ElapsedMilliseconds + "ms.\r\n");
+        }
+
+        private void legendControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Clicks == 2 && e.Button == MouseButtons.Left)
+            {
+                var s = (sender as GLControlAlpha).Tag as string;
+
+                var list = enabledAtoms.Where(a => checkBoxGroupByElement.Checked ? a.ElementName == s : a.Label == s).ToList();
+
+                if (list.Count != 0)
+                {
+                    var showLabel = !list[0].ShowLabel;
+                    list.ForEach(a => a.ShowLabel = showLabel);
+                    SetGLObjects();
+                }
+            }
         }
 
         #endregion
@@ -1537,8 +1587,15 @@ namespace ReciPro
             return false;
         }
 
+
         #endregion
 
-      
+        #region ラベルの色やフォントサイズ関連ｎ
+        private void numericBoxLabelSize_ValueChanged(object sender, EventArgs e)
+        {
+            colorControlLabelColor.Enabled = radioButtonLabelUseFixedColor.Checked;
+            SetGLObjects();
+        } 
+        #endregion
     }
 }

@@ -159,7 +159,7 @@ namespace ReciPro
                 Margin = new Padding(0),
                 Name = "glControlReciProObjects",
                 NodeCoefficient = 1,
-                ProjWidth = 0.8D,
+                ProjWidth = 1D,
                 Size = new Size(130, 130),
             };
             this.glControlReciProObjects.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
@@ -178,7 +178,7 @@ namespace ReciPro
                 Margin = new Padding(0),
                 Name = "glControlReciProAxes",
                 NodeCoefficient = 1,
-                ProjWidth = 2.4D,
+                ProjWidth = 2.8D,
                 Size = new Size(130, 130),
             };
             glControlReciProAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
@@ -195,7 +195,7 @@ namespace ReciPro
                 Location = new Point(5, 114),
                 Margin = new Padding(0),
                 Name = "glControlReciProGonio",
-                ProjWidth = 4D,
+                ProjWidth = 5D,
                 Size = new Size(264, 264),
             };
             glControlReciProGonio.WorldMatrixChanged += new EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
@@ -213,7 +213,7 @@ namespace ReciPro
                 Location = new Point(273, 248),
                 Margin = new Padding(0),
                 Name = "glControlExpObjects",
-                ProjWidth = 0.8D,
+                ProjWidth = 1D,
                 Size = new Size(130, 130),
             };
             this.glControlExpObjects.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
@@ -230,7 +230,7 @@ namespace ReciPro
                 Location = new Point(273, 114),
                 Margin = new System.Windows.Forms.Padding(0),
                 Name = "glControlExpAxes",
-                ProjWidth = 2.4D,
+                ProjWidth = 2.8D,
                 Size = new Size(130, 130),
             };
             this.glControlExpAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
@@ -246,7 +246,7 @@ namespace ReciPro
                 Location = new Point(5, 114),
                 Margin = new Padding(0),
                 Name = "glControlExpGonio",
-                ProjWidth = 4D,
+                ProjWidth = 5D,
                 Size = new Size(264, 264),
             };
             this.glControlExpGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
@@ -348,9 +348,6 @@ namespace ReciPro
 
                 
             }
-
-
-
             //ReciPro coordinatesの描画
             var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };
             var angleReciPro = new[] { FormMain.Phi, FormMain.Theta, FormMain.Psi };
@@ -378,17 +375,22 @@ namespace ReciPro
             var obj = new List<GLObject>();
             var r = 0.065;
             //X軸
-            var c = new C4(0.8f, 0f, 0f, 1f);
+            var c = new C4(0.7f, 0.5f, 0.5f, 1f);
             obj.Add(new Cylinder(new V3(-1, 0, 0), new V3(2, 0, 0), r, new Material(c), DrawingMode.Surfaces));//軸
             obj.Add(new Cone(new V3(1.1, 0, 0), new V3(-0.2, 0, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
+            obj.Add(new TextObject("X", 11, new V3(1.25, 0, 0), 0, true, new Material(c)));
+
             //Y軸
-            c = new C4(0f, 0.6f, 0f, 1f);
+            c = new C4(0.5f, 0.7f, 0.5f, 1f);
             obj.Add(new Cylinder(new V3(0, -1, 0), new V3(0, 2, 0), r, new Material(c), DrawingMode.Surfaces));//軸
             obj.Add(new Cone(new V3(0, 1.1, 0), new V3(0, -0.2, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
+            obj.Add(new TextObject("Y", 11, new V3(0, 1.25, 0), 0, true, new Material(c)));
+
             //Z軸
-            c = new C4(0f, 0f, 0.8f, 1f);
+            c = new C4(0.5f, 0.5f, 0.7f, 1f);
             obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, new Material(c), DrawingMode.Surfaces));//軸
             obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, new Material(c), DrawingMode.Surfaces));//矢
+            obj.Add(new TextObject("Z", 11, new V3(0,0,1.25), 0, true, new Material(c)));
 
             //中央の球
             obj.Add(new Sphere(new V3(0, 0, 0), r * 2, new Material(C4.Gray), DrawingMode.Surfaces));
@@ -414,48 +416,53 @@ namespace ReciPro
             var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
 
             //1st
-            var c = new C4(0.8f, 0.8f, 0f, 1f);
-            obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
+            var mat = new Material( new C4(0.8f, 0.8f, 0f, 1f));
+            obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+            obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat));
 
             if (!checkBoxEnable2nd.Checked)//2ndが存在しない時
             {
-                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 3.8, r, new Material(c), DrawingMode.Surfaces));//軸
-                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], new V3(dir[0].Z, dir[0].X, dir[0].Y)), 1.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 3.8, r, mat, DrawingMode.Surfaces));//軸
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], new V3(dir[0].Z, dir[0].X, dir[0].Y)), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
             }
             else //2ndが存在する時
             {
-                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, new Material(c), DrawingMode.Surfaces));//軸
-                obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, new Material(c), DrawingMode.Surfaces));//軸
+                obj.Add(new Cylinder(dir[0] * -1.9, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
+                obj.Add(new Cylinder(dir[0] * 1.6, dir[0] * 0.3, r, mat, DrawingMode.Surfaces));//軸
                 //1stトーラスの法線は、1st軸と2nd軸が直交する方向
-                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                obj.Add(new Torus(new V3(0, 0, 0), rot[0] * V3.Cross(dir[0], dir[1]), 1.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
 
                 //以下2nd
                 var rot01 = rot[0] * rot[1];
-                c = new C4(0f, 0.8f, 0.8f, 1f);
+                mat = new Material(new C4(0f, 0.8f, 0.8f, 1f));
                 var n = rot[0] * dir[1];
-                obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
+                obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Θ" : "2nd", 12, n * 2.0 + n.Normalized() * 0.01, 0.05, true, mat));
+
                 if (!checkBoxEnable3rd.Checked)
                 {
-                    obj.Add(new Cylinder(n * 1.9, -n * 3.8, r, new Material(c), DrawingMode.Surfaces));//軸
-                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], new V3(dir[1].Z, dir[1].X, dir[1].Y)), 1.1, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                    obj.Add(new Cylinder(n * 1.9, -n * 3.8, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], new V3(dir[1].Z, dir[1].X, dir[1].Y)), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
                 }
                 else
                 {
-                    obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, new Material(c), DrawingMode.Surfaces));//軸
-                    obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, new Material(c), DrawingMode.Surfaces));//軸
+                    obj.Add(new Cylinder(n * 1.9, -n * 0.8, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Cylinder(-n * 1.9, n * 0.8, r, mat, DrawingMode.Surfaces));//軸
                     //2ndトーラスの法線は、2nd軸と3rd軸が直交する方向
-                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                    obj.Add(new Torus(new V3(0, 0, 0), rot01 * V3.Cross(dir[1], dir[2]), 1.1, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
 
                     //以下、3rd
-                    c = new C4(0.8f, 0f, 0.8f, 1f);
+                    mat = new Material(new C4(0.8f, 0f, 0.8f, 1f));
                     var rot012 = rot[0] * rot[1] * rot[2];
                     n = rot[0] * rot[1] * dir[2];
-                    obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, new Material(c), DrawingMode.Surfaces));//軸
-                    obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, new Material(c), DrawingMode.Surfaces));//矢
+                    obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
+                    obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
+                    obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Ψ" : "3rd", 12, n * 1.45 + n.Normalized() * 0.01, 0.05, true, mat));
+
                     if (dir[2].Z == 0)
-                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
                     else
-                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, new Material(c), DrawingMode.Surfaces));//トーラス
+                        obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 1, 0), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
                 }
             }
 
@@ -478,7 +485,8 @@ namespace ReciPro
         //球体オブジェクトを生成
         private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
-
+            var (a, b, c) = (FormMain.Crystal.A_Axis.TK.Normalized(), FormMain.Crystal.B_Axis.TK.Normalized(), FormMain.Crystal.C_Axis.TK.Normalized());
+            
             var r = 0.05;
             var obj = new List<GLObject>();
 
@@ -492,16 +500,24 @@ namespace ReciPro
                 rot = RotReciPro;
 
             obj.Add(new Sphere(new V3(0, 0, 0), r * 6, new Material(C4.Gray), DrawingMode.Surfaces));
-            var nX = rot * new V3(r * 6, 0, 0);
-            var nY = rot * new V3(0, r * 6, 0);
-            var nZ = rot * new V3(0, 0, r * 6);
+            var nX = rot * a * 6 * r;
+            var nY = rot * b * 6 * r;
+            var nZ = rot * c * 6 * r;
            
             obj.Add(new Sphere(nX, r * 2, new Material(C4.Red), DrawingMode.Surfaces));
+            obj.Add(new TextObject("+a", 11, nX + nX.Normalized() * r * 2 , r * 2 + 0.01, true, new Material(C4.Red)));
             obj.Add(new Sphere(-nX, r * 1.5, new Material(C4.Red), DrawingMode.Surfaces));
+            obj.Add(new TextObject("-a", 11, -nX - nX.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Red)));
+           
             obj.Add(new Sphere(nY, r * 2, new Material(C4.Green), DrawingMode.Surfaces));
+            obj.Add(new TextObject("+b", 11, nY + nY.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Green)));
             obj.Add(new Sphere(-nY, r * 1.5, new Material(C4.Green), DrawingMode.Surfaces));
+            obj.Add(new TextObject("-b", 11, -nY - nY.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Green)));
+            
             obj.Add(new Sphere(nZ, r * 2, new Material(C4.Blue), DrawingMode.Surfaces));
+            obj.Add(new TextObject("+c", 11, nZ + nZ.Normalized() * r * 1.5 , r * 2 + 0.01, true, new Material(C4.Blue)));
             obj.Add(new Sphere(-nZ, r * 1.5, new Material(C4.Blue), DrawingMode.Surfaces));
+            obj.Add(new TextObject("-c", 11, -nZ - nZ.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Blue)));
             return obj;
         }
         #endregion

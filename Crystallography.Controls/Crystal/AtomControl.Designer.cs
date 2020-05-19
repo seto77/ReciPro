@@ -158,6 +158,7 @@
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBoxShowLabel = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelIso.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
@@ -1645,6 +1646,7 @@
             // 
             // tabPageAppearance
             // 
+            this.tabPageAppearance.Controls.Add(this.checkBoxShowLabel);
             this.tabPageAppearance.Controls.Add(this.numericBoxAlpha);
             this.tabPageAppearance.Controls.Add(this.numericBoxEmission);
             this.tabPageAppearance.Controls.Add(this.numericBoxShininess);
@@ -2157,6 +2159,12 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // checkBoxShowLabel
+            // 
+            resources.ApplyResources(this.checkBoxShowLabel, "checkBoxShowLabel");
+            this.checkBoxShowLabel.Name = "checkBoxShowLabel";
+            this.checkBoxShowLabel.UseVisualStyleBackColor = true;
+            // 
             // AtomControl
             // 
             resources.ApplyResources(this, "$this");
@@ -2319,5 +2327,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn wyckLetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn siteSymDataGridViewTextBoxColumn;
         public System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.CheckBox checkBoxShowLabel;
     }
 }
