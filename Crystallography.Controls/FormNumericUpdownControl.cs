@@ -17,15 +17,15 @@ namespace Crystallography.Controls
         {
             if (Control != null)
             {
-                Control.DecimalPlaces = (int)numericalTextBoxDecimalPlace.Value;
-                Control.Increment = (decimal)numericalTextBoxDecimalIncrement.Value;
+                Control.DecimalPlaces = (int)numericBoxDecimalPlace.Value;
+                Control.Increment = (decimal)numericBoxDecimalIncrement.Value;
             }
         }
 
         private void FormNumericUpdownControl_Load(object sender, EventArgs e)
         {
-            numericalTextBoxDecimalPlace.Value = (int)Control.DecimalPlaces;
-            numericalTextBoxDecimalIncrement.Value = (double)Control.Increment;
+            numericBoxDecimalPlace.Value = (int)Control.DecimalPlaces;
+            numericBoxDecimalIncrement.Value = (double)Control.Increment;
         }
     }
 }

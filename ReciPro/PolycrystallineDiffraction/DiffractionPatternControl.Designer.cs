@@ -60,8 +60,8 @@
             this.groupBoxGeometry = new System.Windows.Forms.GroupBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.numericalTextBoxTau = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxPhi = new Crystallography.Controls.NumericBox();
+            this.numericBoxTau = new Crystallography.Controls.NumericBox();
+            this.numericBoxPhi = new Crystallography.Controls.NumericBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarBgH = new System.Windows.Forms.TrackBar();
@@ -77,36 +77,36 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.numericalTextBoxConvergentAngle = new Crystallography.Controls.NumericBox();
+            this.numericBoxConvergentAngle = new Crystallography.Controls.NumericBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.waveLengthControl = new Crystallography.Controls.WaveLengthControl();
-            this.numericalTextBoxMonochromaticity = new Crystallography.Controls.NumericBox();
+            this.numericBoxMonochromaticity = new Crystallography.Controls.NumericBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numericUpDownImageWidth = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
-            this.numericalTextBoxImageResolution = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxMonitorResolution = new Crystallography.Controls.NumericBox();
+            this.numericBoxImageResolution = new Crystallography.Controls.NumericBox();
+            this.numericBoxMonitorResolution = new Crystallography.Controls.NumericBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericalTextBoxCameraLength = new Crystallography.Controls.NumericBox();
+            this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.numericUpDownImageHeight = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericalTextBoxCenterY = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxCenterX = new Crystallography.Controls.NumericBox();
+            this.numericBoxCenterY = new Crystallography.Controls.NumericBox();
+            this.numericBoxCenterX = new Crystallography.Controls.NumericBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.checkBoxFilmBlur = new System.Windows.Forms.CheckBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.numericalTextBoxFilmBlur = new Crystallography.Controls.NumericBox();
+            this.numericBoxFilmBlur = new Crystallography.Controls.NumericBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxMaskDiffractionPeaks = new System.Windows.Forms.CheckBox();
             this.checkBoxMaskManual = new System.Windows.Forms.CheckBox();
@@ -542,8 +542,8 @@
             // 
             this.groupBoxGeometry.Controls.Add(this.label29);
             this.groupBoxGeometry.Controls.Add(this.label28);
-            this.groupBoxGeometry.Controls.Add(this.numericalTextBoxTau);
-            this.groupBoxGeometry.Controls.Add(this.numericalTextBoxPhi);
+            this.groupBoxGeometry.Controls.Add(this.numericBoxTau);
+            this.groupBoxGeometry.Controls.Add(this.numericBoxPhi);
             this.groupBoxGeometry.Controls.Add(this.label5);
             this.groupBoxGeometry.Controls.Add(this.label4);
             this.groupBoxGeometry.Enabled = false;
@@ -579,50 +579,40 @@
             this.label28.TabIndex = 189;
             this.label28.Text = "°";
             // 
-            // numericalTextBoxTau
+            // numericBoxTau
             // 
-            this.numericalTextBoxTau.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTau.DecimalPlaces = 1;
-            this.numericalTextBoxTau.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxTau.Location = new System.Drawing.Point(126, 16);
-            this.numericalTextBoxTau.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxTau.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxTau.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxTau.Multiline = false;
-            this.numericalTextBoxTau.Name = "numericalTextBoxTau";
-            this.numericalTextBoxTau.RadianValue = 0D;
-            this.numericalTextBoxTau.ReadOnly = false;
-            this.numericalTextBoxTau.ShowFraction = false;
-            this.numericalTextBoxTau.ShowPositiveSign = false;
-            this.numericalTextBoxTau.Size = new System.Drawing.Size(44, 23);
-            this.numericalTextBoxTau.TabIndex = 5;
-            this.numericalTextBoxTau.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxTau.Value = 0D;
-            this.numericalTextBoxTau.WordWrap = true;
+                       this.numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTau.DecimalPlaces = 1;
+            this.numericBoxTau.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxTau.Location = new System.Drawing.Point(126, 16);
+            this.numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxTau.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxTau.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxTau.Name = "numericBoxTau";
+            this.numericBoxTau.RadianValue = 0D;
+                        
+            this.numericBoxTau.ShowPositiveSign = false;
+            this.numericBoxTau.Size = new System.Drawing.Size(44, 23);
+            this.numericBoxTau.TabIndex = 5;
+            this.numericBoxTau.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+                                    // 
+            // numericBoxPhi
             // 
-            // numericalTextBoxPhi
-            // 
-            this.numericalTextBoxPhi.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPhi.DecimalPlaces = 1;
-            this.numericalTextBoxPhi.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxPhi.Location = new System.Drawing.Point(24, 17);
-            this.numericalTextBoxPhi.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxPhi.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxPhi.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxPhi.Multiline = false;
-            this.numericalTextBoxPhi.Name = "numericalTextBoxPhi";
-            this.numericalTextBoxPhi.RadianValue = 0D;
-            this.numericalTextBoxPhi.ReadOnly = false;
-            this.numericalTextBoxPhi.ShowFraction = false;
-            this.numericalTextBoxPhi.ShowPositiveSign = false;
-            this.numericalTextBoxPhi.Size = new System.Drawing.Size(44, 23);
-            this.numericalTextBoxPhi.TabIndex = 5;
-            this.numericalTextBoxPhi.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxPhi.Value = 0D;
-            this.numericalTextBoxPhi.WordWrap = true;
-            // 
+                       this.numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPhi.DecimalPlaces = 1;
+            this.numericBoxPhi.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxPhi.Location = new System.Drawing.Point(24, 17);
+            this.numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxPhi.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxPhi.Name = "numericBoxPhi";
+            this.numericBoxPhi.RadianValue = 0D;
+                        
+            this.numericBoxPhi.ShowPositiveSign = false;
+            this.numericBoxPhi.Size = new System.Drawing.Size(44, 23);
+            this.numericBoxPhi.TabIndex = 5;
+            this.numericBoxPhi.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+                                    // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -794,13 +784,13 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.numericalTextBoxConvergentAngle);
+            this.groupBox5.Controls.Add(this.numericBoxConvergentAngle);
             this.groupBox5.Controls.Add(this.label46);
             this.groupBox5.Controls.Add(this.label45);
             this.groupBox5.Controls.Add(this.label44);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.waveLengthControl);
-            this.groupBox5.Controls.Add(this.numericalTextBoxMonochromaticity);
+            this.groupBox5.Controls.Add(this.numericBoxMonochromaticity);
             this.groupBox5.Location = new System.Drawing.Point(6, 60);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(277, 169);
@@ -808,27 +798,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wave source";
             // 
-            // numericalTextBoxConvergentAngle
+            // numericBoxConvergentAngle
             // 
-            this.numericalTextBoxConvergentAngle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxConvergentAngle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxConvergentAngle.DecimalPlaces = -1;
-            this.numericalTextBoxConvergentAngle.Location = new System.Drawing.Point(129, 114);
-            this.numericalTextBoxConvergentAngle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxConvergentAngle.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxConvergentAngle.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxConvergentAngle.Multiline = false;
-            this.numericalTextBoxConvergentAngle.Name = "numericalTextBoxConvergentAngle";
-            this.numericalTextBoxConvergentAngle.RadianValue = 0.00034906585039886593D;
-            this.numericalTextBoxConvergentAngle.ReadOnly = false;
-            this.numericalTextBoxConvergentAngle.ShowFraction = false;
-            this.numericalTextBoxConvergentAngle.ShowPositiveSign = false;
-            this.numericalTextBoxConvergentAngle.Size = new System.Drawing.Size(45, 23);
-            this.numericalTextBoxConvergentAngle.TabIndex = 191;
-            this.numericalTextBoxConvergentAngle.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxConvergentAngle.Value = 0.02D;
-            this.numericalTextBoxConvergentAngle.WordWrap = true;
-            // 
+                       this.numericBoxConvergentAngle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxConvergentAngle.DecimalPlaces = -1;
+            this.numericBoxConvergentAngle.Location = new System.Drawing.Point(129, 114);
+            this.numericBoxConvergentAngle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericBoxConvergentAngle.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxConvergentAngle.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxConvergentAngle.Name = "numericBoxConvergentAngle";
+            this.numericBoxConvergentAngle.RadianValue = 0.00034906585039886593D;
+                        
+            this.numericBoxConvergentAngle.ShowPositiveSign = false;
+            this.numericBoxConvergentAngle.Size = new System.Drawing.Size(45, 23);
+            this.numericBoxConvergentAngle.TabIndex = 191;
+            this.numericBoxConvergentAngle.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxConvergentAngle.Value = 0.02D;
+                        // 
             // label46
             // 
             this.label46.AutoSize = true;
@@ -893,51 +879,46 @@
             this.waveLengthControl.XrayWaveSourceElementNumber = 0;
             this.waveLengthControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
             // 
-            // numericalTextBoxMonochromaticity
+            // numericBoxMonochromaticity
             // 
-            this.numericalTextBoxMonochromaticity.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxMonochromaticity.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMonochromaticity.DecimalPlaces = -1;
-            this.numericalTextBoxMonochromaticity.Location = new System.Drawing.Point(130, 142);
-            this.numericalTextBoxMonochromaticity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxMonochromaticity.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxMonochromaticity.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxMonochromaticity.Multiline = false;
-            this.numericalTextBoxMonochromaticity.Name = "numericalTextBoxMonochromaticity";
-            this.numericalTextBoxMonochromaticity.RadianValue = 0D;
-            this.numericalTextBoxMonochromaticity.ReadOnly = false;
-            this.numericalTextBoxMonochromaticity.ShowFraction = false;
-            this.numericalTextBoxMonochromaticity.ShowPositiveSign = false;
-            this.numericalTextBoxMonochromaticity.Size = new System.Drawing.Size(44, 23);
-            this.numericalTextBoxMonochromaticity.TabIndex = 191;
-            this.numericalTextBoxMonochromaticity.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxMonochromaticity.Value = 0D;
-            this.numericalTextBoxMonochromaticity.WordWrap = true;
-            // 
+                       this.numericBoxMonochromaticity.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMonochromaticity.DecimalPlaces = -1;
+            this.numericBoxMonochromaticity.Location = new System.Drawing.Point(130, 142);
+            this.numericBoxMonochromaticity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericBoxMonochromaticity.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxMonochromaticity.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxMonochromaticity.Name = "numericBoxMonochromaticity";
+            this.numericBoxMonochromaticity.RadianValue = 0D;
+                        
+            this.numericBoxMonochromaticity.ShowPositiveSign = false;
+            this.numericBoxMonochromaticity.Size = new System.Drawing.Size(44, 23);
+            this.numericBoxMonochromaticity.TabIndex = 191;
+            this.numericBoxMonochromaticity.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+                                    // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.numericUpDownImageWidth);
             this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.numericalTextBoxImageResolution);
-            this.groupBox4.Controls.Add(this.numericalTextBoxMonitorResolution);
+            this.groupBox4.Controls.Add(this.numericBoxImageResolution);
+            this.groupBox4.Controls.Add(this.numericBoxMonitorResolution);
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.numericalTextBoxCameraLength);
+            this.groupBox4.Controls.Add(this.numericBoxCameraLength);
             this.groupBox4.Controls.Add(this.label31);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label30);
             this.groupBox4.Controls.Add(this.numericUpDownImageHeight);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.numericalTextBoxCenterY);
-            this.groupBox4.Controls.Add(this.numericalTextBoxCenterX);
+            this.groupBox4.Controls.Add(this.numericBoxCenterY);
+            this.groupBox4.Controls.Add(this.numericBoxCenterX);
             this.groupBox4.Controls.Add(this.label37);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label33);
             this.groupBox4.Controls.Add(this.label39);
             this.groupBox4.Controls.Add(this.checkBoxFilmBlur);
             this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.numericalTextBoxFilmBlur);
+            this.groupBox4.Controls.Add(this.numericBoxFilmBlur);
             this.groupBox4.Location = new System.Drawing.Point(3, 230);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(280, 219);
@@ -981,50 +962,42 @@
             this.label20.TabIndex = 67;
             this.label20.Text = "mm/pixel";
             // 
-            // numericalTextBoxImageResolution
+            // numericBoxImageResolution
             // 
-            this.numericalTextBoxImageResolution.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxImageResolution.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxImageResolution.DecimalPlaces = 5;
-            this.numericalTextBoxImageResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxImageResolution.Location = new System.Drawing.Point(119, 124);
-            this.numericalTextBoxImageResolution.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxImageResolution.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxImageResolution.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxImageResolution.Multiline = false;
-            this.numericalTextBoxImageResolution.Name = "numericalTextBoxImageResolution";
-            this.numericalTextBoxImageResolution.RadianValue = 0.0034906585039886592D;
-            this.numericalTextBoxImageResolution.ReadOnly = false;
-            this.numericalTextBoxImageResolution.ShowFraction = false;
-            this.numericalTextBoxImageResolution.ShowPositiveSign = false;
-            this.numericalTextBoxImageResolution.Size = new System.Drawing.Size(77, 23);
-            this.numericalTextBoxImageResolution.TabIndex = 5;
-            this.numericalTextBoxImageResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxImageResolution.Value = 0.2D;
-            this.numericalTextBoxImageResolution.WordWrap = true;
+                       this.numericBoxImageResolution.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxImageResolution.DecimalPlaces = 5;
+            this.numericBoxImageResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxImageResolution.Location = new System.Drawing.Point(119, 124);
+            this.numericBoxImageResolution.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxImageResolution.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxImageResolution.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxImageResolution.Name = "numericBoxImageResolution";
+            this.numericBoxImageResolution.RadianValue = 0.0034906585039886592D;
+                        
+            this.numericBoxImageResolution.ShowPositiveSign = false;
+            this.numericBoxImageResolution.Size = new System.Drawing.Size(77, 23);
+            this.numericBoxImageResolution.TabIndex = 5;
+            this.numericBoxImageResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxImageResolution.Value = 0.2D;
+                        // 
+            // numericBoxMonitorResolution
             // 
-            // numericalTextBoxMonitorResolution
-            // 
-            this.numericalTextBoxMonitorResolution.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxMonitorResolution.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMonitorResolution.DecimalPlaces = 5;
-            this.numericalTextBoxMonitorResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxMonitorResolution.Location = new System.Drawing.Point(119, 156);
-            this.numericalTextBoxMonitorResolution.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxMonitorResolution.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxMonitorResolution.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxMonitorResolution.Multiline = false;
-            this.numericalTextBoxMonitorResolution.Name = "numericalTextBoxMonitorResolution";
-            this.numericalTextBoxMonitorResolution.RadianValue = 0.0017453292519943296D;
-            this.numericalTextBoxMonitorResolution.ReadOnly = false;
-            this.numericalTextBoxMonitorResolution.ShowFraction = false;
-            this.numericalTextBoxMonitorResolution.ShowPositiveSign = false;
-            this.numericalTextBoxMonitorResolution.Size = new System.Drawing.Size(77, 23);
-            this.numericalTextBoxMonitorResolution.TabIndex = 5;
-            this.numericalTextBoxMonitorResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxMonitorResolution.Value = 0.1D;
-            this.numericalTextBoxMonitorResolution.WordWrap = true;
-            this.numericalTextBoxMonitorResolution.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxMonitorResolution_ValueChanged);
+                       this.numericBoxMonitorResolution.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMonitorResolution.DecimalPlaces = 5;
+            this.numericBoxMonitorResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxMonitorResolution.Location = new System.Drawing.Point(119, 156);
+            this.numericBoxMonitorResolution.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxMonitorResolution.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxMonitorResolution.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxMonitorResolution.Name = "numericBoxMonitorResolution";
+            this.numericBoxMonitorResolution.RadianValue = 0.0017453292519943296D;
+                        
+            this.numericBoxMonitorResolution.ShowPositiveSign = false;
+            this.numericBoxMonitorResolution.Size = new System.Drawing.Size(77, 23);
+            this.numericBoxMonitorResolution.TabIndex = 5;
+            this.numericBoxMonitorResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxMonitorResolution.Value = 0.1D;
+                        this.numericBoxMonitorResolution.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMonitorResolution_ValueChanged);
             // 
             // label32
             // 
@@ -1059,28 +1032,24 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Camera Length";
             // 
-            // numericalTextBoxCameraLength
+            // numericBoxCameraLength
             // 
-            this.numericalTextBoxCameraLength.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCameraLength.DecimalPlaces = 5;
-            this.numericalTextBoxCameraLength.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxCameraLength.Location = new System.Drawing.Point(116, 20);
-            this.numericalTextBoxCameraLength.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxCameraLength.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxCameraLength.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxCameraLength.Multiline = false;
-            this.numericalTextBoxCameraLength.Name = "numericalTextBoxCameraLength";
-            this.numericalTextBoxCameraLength.RadianValue = 5.2359877559829888D;
-            this.numericalTextBoxCameraLength.ReadOnly = false;
-            this.numericalTextBoxCameraLength.ShowFraction = false;
-            this.numericalTextBoxCameraLength.ShowPositiveSign = false;
-            this.numericalTextBoxCameraLength.Size = new System.Drawing.Size(93, 23);
-            this.numericalTextBoxCameraLength.TabIndex = 5;
-            this.numericalTextBoxCameraLength.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxCameraLength.Value = 300D;
-            this.numericalTextBoxCameraLength.WordWrap = true;
-            // 
+                       this.numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCameraLength.DecimalPlaces = 5;
+            this.numericBoxCameraLength.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxCameraLength.Location = new System.Drawing.Point(116, 20);
+            this.numericBoxCameraLength.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCameraLength.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxCameraLength.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxCameraLength.Name = "numericBoxCameraLength";
+            this.numericBoxCameraLength.RadianValue = 5.2359877559829888D;
+                        
+            this.numericBoxCameraLength.ShowPositiveSign = false;
+            this.numericBoxCameraLength.Size = new System.Drawing.Size(93, 23);
+            this.numericBoxCameraLength.TabIndex = 5;
+            this.numericBoxCameraLength.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxCameraLength.Value = 300D;
+                        // 
             // label31
             // 
             this.label31.AutoSize = true;
@@ -1150,50 +1119,42 @@
             this.label10.TabIndex = 67;
             this.label10.Text = "Height";
             // 
-            // numericalTextBoxCenterY
+            // numericBoxCenterY
             // 
-            this.numericalTextBoxCenterY.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxCenterY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCenterY.DecimalPlaces = -1;
-            this.numericalTextBoxCenterY.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxCenterY.Location = new System.Drawing.Point(165, 87);
-            this.numericalTextBoxCenterY.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxCenterY.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxCenterY.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxCenterY.Multiline = false;
-            this.numericalTextBoxCenterY.Name = "numericalTextBoxCenterY";
-            this.numericalTextBoxCenterY.RadianValue = 6.9813170079773181D;
-            this.numericalTextBoxCenterY.ReadOnly = false;
-            this.numericalTextBoxCenterY.ShowFraction = false;
-            this.numericalTextBoxCenterY.ShowPositiveSign = false;
-            this.numericalTextBoxCenterY.Size = new System.Drawing.Size(57, 23);
-            this.numericalTextBoxCenterY.TabIndex = 5;
-            this.numericalTextBoxCenterY.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxCenterY.Value = 400D;
-            this.numericalTextBoxCenterY.WordWrap = true;
+                       this.numericBoxCenterY.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCenterY.DecimalPlaces = -1;
+            this.numericBoxCenterY.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxCenterY.Location = new System.Drawing.Point(165, 87);
+            this.numericBoxCenterY.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCenterY.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxCenterY.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxCenterY.Name = "numericBoxCenterY";
+            this.numericBoxCenterY.RadianValue = 6.9813170079773181D;
+                        
+            this.numericBoxCenterY.ShowPositiveSign = false;
+            this.numericBoxCenterY.Size = new System.Drawing.Size(57, 23);
+            this.numericBoxCenterY.TabIndex = 5;
+            this.numericBoxCenterY.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxCenterY.Value = 400D;
+                        // 
+            // numericBoxCenterX
             // 
-            // numericalTextBoxCenterX
-            // 
-            this.numericalTextBoxCenterX.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxCenterX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCenterX.DecimalPlaces = -1;
-            this.numericalTextBoxCenterX.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxCenterX.Location = new System.Drawing.Point(55, 87);
-            this.numericalTextBoxCenterX.Margin = new System.Windows.Forms.Padding(0);
-            this.numericalTextBoxCenterX.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxCenterX.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxCenterX.Multiline = false;
-            this.numericalTextBoxCenterX.Name = "numericalTextBoxCenterX";
-            this.numericalTextBoxCenterX.RadianValue = 6.9813170079773181D;
-            this.numericalTextBoxCenterX.ReadOnly = false;
-            this.numericalTextBoxCenterX.ShowFraction = false;
-            this.numericalTextBoxCenterX.ShowPositiveSign = false;
-            this.numericalTextBoxCenterX.Size = new System.Drawing.Size(57, 23);
-            this.numericalTextBoxCenterX.TabIndex = 4;
-            this.numericalTextBoxCenterX.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxCenterX.Value = 400D;
-            this.numericalTextBoxCenterX.WordWrap = true;
-            // 
+                       this.numericBoxCenterX.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCenterX.DecimalPlaces = -1;
+            this.numericBoxCenterX.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxCenterX.Location = new System.Drawing.Point(55, 87);
+            this.numericBoxCenterX.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCenterX.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxCenterX.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxCenterX.Name = "numericBoxCenterX";
+            this.numericBoxCenterX.RadianValue = 6.9813170079773181D;
+                        
+            this.numericBoxCenterX.ShowPositiveSign = false;
+            this.numericBoxCenterX.Size = new System.Drawing.Size(57, 23);
+            this.numericBoxCenterX.TabIndex = 4;
+            this.numericBoxCenterX.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            this.numericBoxCenterX.Value = 400D;
+                        // 
             // label37
             // 
             this.label37.AutoSize = true;
@@ -1261,27 +1222,22 @@
             this.label40.TabIndex = 67;
             this.label40.Text = "μm";
             // 
-            // numericalTextBoxFilmBlur
+            // numericBoxFilmBlur
             // 
-            this.numericalTextBoxFilmBlur.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxFilmBlur.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxFilmBlur.DecimalPlaces = -1;
-            this.numericalTextBoxFilmBlur.Location = new System.Drawing.Point(108, 187);
-            this.numericalTextBoxFilmBlur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxFilmBlur.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericalTextBoxFilmBlur.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericalTextBoxFilmBlur.Multiline = false;
-            this.numericalTextBoxFilmBlur.Name = "numericalTextBoxFilmBlur";
-            this.numericalTextBoxFilmBlur.RadianValue = 0D;
-            this.numericalTextBoxFilmBlur.ReadOnly = false;
-            this.numericalTextBoxFilmBlur.ShowFraction = false;
-            this.numericalTextBoxFilmBlur.ShowPositiveSign = false;
-            this.numericalTextBoxFilmBlur.Size = new System.Drawing.Size(45, 23);
-            this.numericalTextBoxFilmBlur.TabIndex = 191;
-            this.numericalTextBoxFilmBlur.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
-            this.numericalTextBoxFilmBlur.Value = 0D;
-            this.numericalTextBoxFilmBlur.WordWrap = true;
-            // 
+                       this.numericBoxFilmBlur.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxFilmBlur.DecimalPlaces = -1;
+            this.numericBoxFilmBlur.Location = new System.Drawing.Point(108, 187);
+            this.numericBoxFilmBlur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericBoxFilmBlur.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxFilmBlur.MinimumSize = new System.Drawing.Size(1, 23);
+                       this.numericBoxFilmBlur.Name = "numericBoxFilmBlur";
+            this.numericBoxFilmBlur.RadianValue = 0D;
+                        
+            this.numericBoxFilmBlur.ShowPositiveSign = false;
+            this.numericBoxFilmBlur.Size = new System.Drawing.Size(45, 23);
+            this.numericBoxFilmBlur.TabIndex = 191;
+            this.numericBoxFilmBlur.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+                                    // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.checkBoxMaskDiffractionPeaks);
@@ -1738,8 +1694,8 @@
         public System.Windows.Forms.GroupBox groupBoxBackground;
         private System.Windows.Forms.CheckBox checkBoxInitialBackground;
         public System.Windows.Forms.Label label9;
-        private Crystallography.Controls.NumericBox numericalTextBoxConvergentAngle;
-        private Crystallography.Controls.NumericBox numericalTextBoxFilmBlur;
+        private Crystallography.Controls.NumericBox numericBoxConvergentAngle;
+        private Crystallography.Controls.NumericBox numericBoxFilmBlur;
         private System.Windows.Forms.Button buttonSaveMask;
         private System.Windows.Forms.Button buttonSaveBackGround;
         public System.Windows.Forms.NumericUpDown numericUpDownMaxInt;
@@ -1771,7 +1727,7 @@
         private System.Windows.Forms.CheckBox checkBoxMaskDiffractionPeaks;
         public System.Windows.Forms.GroupBox groupBoxPeakIndices;
         private System.Windows.Forms.Button buttonMaskAll;
-        private Crystallography.Controls.NumericBox numericalTextBoxMonochromaticity;
+        private Crystallography.Controls.NumericBox numericBoxMonochromaticity;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox textBoxDiffractionInformation;
         private System.Windows.Forms.Button buttonSaveImage;
@@ -1786,8 +1742,8 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private Crystallography.Controls.NumericBox numericalTextBoxCenterY;
-        public Crystallography.Controls.NumericBox numericalTextBoxCenterX;
+        private Crystallography.Controls.NumericBox numericBoxCenterY;
+        public Crystallography.Controls.NumericBox numericBoxCenterX;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label19;
@@ -1802,10 +1758,10 @@
         private System.Windows.Forms.Label label12;
         public Crystallography.Controls.WaveLengthControl waveLengthControl;
         private System.Windows.Forms.Label label13;
-        private Crystallography.Controls.NumericBox numericalTextBoxImageResolution;
-        private Crystallography.Controls.NumericBox numericalTextBoxMonitorResolution;
-        private Crystallography.Controls.NumericBox numericalTextBoxCameraLength;
-        private Crystallography.Controls.NumericBox numericalTextBoxPhi;
-        private Crystallography.Controls.NumericBox numericalTextBoxTau;
+        private Crystallography.Controls.NumericBox numericBoxImageResolution;
+        private Crystallography.Controls.NumericBox numericBoxMonitorResolution;
+        private Crystallography.Controls.NumericBox numericBoxCameraLength;
+        private Crystallography.Controls.NumericBox numericBoxPhi;
+        private Crystallography.Controls.NumericBox numericBoxTau;
     }
 }

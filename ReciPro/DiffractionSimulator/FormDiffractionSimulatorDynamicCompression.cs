@@ -119,12 +119,11 @@ namespace ReciPro
             CrystalControl.Crystal = OriginalCrystal;
 
             CrystalControl.SetToInterface();
-            FormDiffractionSimulator.setVector();
+            FormDiffractionSimulator.SetVector();
             FormDiffractionSimulator.Draw();
         }
 
-        private object lockObj1 = new object(), lockObj2 = new object();
-        private Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new Stopwatch();
 
         /// <summary>
         /// 実行ボタン
@@ -306,7 +305,7 @@ namespace ReciPro
                 // ここまで
 
                 //候補となるgの絞り込み
-                FormDiffractionSimulator.setVector(true);
+                FormDiffractionSimulator.SetVector(true);
                 List<Vector3D> gVector = new List<Vector3D>();
                 foreach (var g in FormDiffractionSimulator.formMain.Crystal.VectorOfG.Where(g => g.Flag && g.RelativeIntensity > 1E-6))
                 {

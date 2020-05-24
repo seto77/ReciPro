@@ -117,7 +117,7 @@ namespace Crystallography.Controls
 
 
         //候補の数値
-        private double[] rationalNumbers = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
+        private readonly double[] rationalNumbers = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
 
         #endregion
 
@@ -163,9 +163,8 @@ namespace Crystallography.Controls
             if (SkipEvent) return;
             SkipEvent = true;
 
-            var cell = symmetryControl.CellConstants;
-
-            if (cell.A < 0 || cell.B < 0 || cell.C < 0 || cell.Alpha > Math.PI || cell.Beta > Math.PI || cell.Gamma > Math.PI)
+            var (A, B, C, Alpha, Beta, Gamma) = symmetryControl.CellConstants;
+            if (A < 0 || B < 0 || C < 0 || Alpha > Math.PI || Beta > Math.PI || Gamma > Math.PI)
             {
                 SkipEvent = false;
                 MessageBox.Show("Input valid cell constants");
@@ -208,7 +207,7 @@ namespace Crystallography.Controls
                 crystal.EOSCondition.N = n / crystal.ChemicalFormulaZ;
             crystal.DoesUseEOS = checkBoxUseEOS.Checked;
             crystal.EOSCondition.Note = textBoxEOS_Note.Text;
-            crystal.EOSCondition.Temperature = numericalTextBoxTemperature.Value;
+            crystal.EOSCondition.Temperature = numericBoxTemperature.Value;
             #endregion
 
 
@@ -290,8 +289,8 @@ namespace Crystallography.Controls
             radioButtonBirchMurnaghan.Checked = crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Birch_Murnaghan;
             radioButtonVinet.Checked = crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Vinet;
             textBoxEOS_Note.Text = crystal.EOSCondition.Note;
-            numericalTextBoxTemperature.Value = crystal.EOSCondition.Temperature;
-            numericalTextBoxEOS_State_ValueChanged(new object(), new EventArgs());
+            numericBoxTemperature.Value = crystal.EOSCondition.Temperature;
+            numericBoxEOS_State_ValueChanged(new object(), new EventArgs());
 
             //弾性定数関連
             elasticityControl1.Stiffness = DenseMatrix.OfArray(crystal.ElasticStiffness);
@@ -387,12 +386,12 @@ namespace Crystallography.Controls
         }
 
         #region EOSタブの入力設定
-        private void numericalTextBoxEOS_State_ValueChanged(object sender, EventArgs e)
+        private void numericBoxEOS_State_ValueChanged(object sender, EventArgs e)
         {
             if (SkipEvent) return;
             SkipEvent = true;
-            if (numericalTextBoxEOS_V0perMol.ReadOnly && !double.IsNaN(numericBoxEOS_V0perCell.Value))
-                numericalTextBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
+            if (numericBoxEOS_V0perMol.ReadOnly && !double.IsNaN(numericBoxEOS_V0perCell.Value))
+                numericBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
             SkipEvent = false;
             GenerateFromInterface();
 
@@ -402,30 +401,30 @@ namespace Crystallography.Controls
             SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perCell_Click2(object sender, EventArgs e)
+        private void numericBoxEOS_V0perCell_Click2(object sender, EventArgs e)
         {
             if (SkipEvent) return;
             SkipEvent = true;
             numericBoxEOS_V0perCell.ReadOnly = false;
-            numericalTextBoxEOS_V0perMol.ReadOnly = true;
+            numericBoxEOS_V0perMol.ReadOnly = true;
             SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perMol_Click2(object sender, EventArgs e)
+        private void numericBoxEOS_V0perMol_Click2(object sender, EventArgs e)
         {
             if (SkipEvent) return;
             SkipEvent = true;
             numericBoxEOS_V0perCell.ReadOnly = true;
-            numericalTextBoxEOS_V0perMol.ReadOnly = false;
+            numericBoxEOS_V0perMol.ReadOnly = false;
             SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perMol_ValueChanged(object sender, EventArgs e)
+        private void numericBoxEOS_V0perMol_ValueChanged(object sender, EventArgs e)
         {
             if (SkipEvent) return;
             SkipEvent = true;
-            if (numericalTextBoxEOS_V0perMol.ReadOnly == false)
-                numericBoxEOS_V0perCell.Value = numericalTextBoxEOS_V0perMol.Value / 6.0221367 * 10 * crystal.ChemicalFormulaZ;
+            if (numericBoxEOS_V0perMol.ReadOnly == false)
+                numericBoxEOS_V0perCell.Value = numericBoxEOS_V0perMol.Value / 6.0221367 * 10 * crystal.ChemicalFormulaZ;
             SkipEvent = false;
         }
 
@@ -575,20 +574,20 @@ namespace Crystallography.Controls
                         seed++;
                     }
 
-                    var euler1 = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[seed]);
-                    var euler = new double[] { euler1.Phi, euler1.Theta, euler1.Psi };
+                    var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[seed]);
+                    var euler = new double[] { Phi, Theta, Psi };
                     string str = "";
                     foreach (double angle in euler)
                     {
                         double d = (angle > 0 ? angle : angle + 2 * Math.PI) / Math.PI * 180;
                         if (d >= 100)
-                            str += d.ToString("000.00") + "\t";
+                            str += $"{d:000.00}\t";
                         else if (d >= 10)
-                            str += d.ToString("00.000") + "\t";
+                            str += $"{d:00.000}\t";
                         else
-                            str += d.ToString("0.0000") + "\t";
+                            str += $"{d:0.0000}\t";
                     }
-                    sw.WriteLine("1\t0\t0\t0\t0\t" + str + "0\t0\t0");
+                    sw.WriteLine($"1\t0\t0\t0\t0\t{str}0\t0\t0");
                 }
                 sw.Close();
             }
@@ -611,9 +610,7 @@ namespace Crystallography.Controls
                 using (StreamWriter sw = new StreamWriter(dlg.FileName))
                 {
                     sw.WriteLine("Sample Name:\t" + Crystal.Name);
-                    sw.WriteLine("Cell constants:\t"
-                        + Crystal.A.ToString() + "\t" + Crystal.B.ToString() + "\t" + Crystal.C.ToString() + "\t"
-                        + (crystal.Alpha / Math.PI * 180).ToString() + "\t" + (crystal.Beta / Math.PI * 180).ToString() + "\t" + (crystal.Gamma / Math.PI * 180).ToString());
+                    sw.WriteLine($"Cell constants:\t{Crystal.A}\t{Crystal.B}\t{Crystal.C}\t{crystal.Alpha / Math.PI * 180}\t{crystal.Beta / Math.PI * 180}\t{crystal.Gamma / Math.PI * 180}");
                     sw.WriteLine("Space group:\t" + Crystal.Symmetry.SpaceGroupHMfullStr);
                     sw.WriteLine("");
                     sw.WriteLine("Euler angles refer to Sample Coordinate system");
@@ -639,8 +636,8 @@ namespace Crystallography.Controls
                     for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
                     {
                         string str = i.ToString() + "\t";
-                        var euler1 = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
-                        var euler = new double[] { euler1.Phi, euler1.Theta, euler1.Psi };
+                        var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
+                        var euler = new double[] { Phi, Theta, Psi };
 
                         foreach (double angle in euler)
                         {

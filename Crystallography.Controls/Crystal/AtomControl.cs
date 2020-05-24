@@ -46,7 +46,7 @@ namespace Crystallography.Controls
                     tableLayoutPanel1.ColumnStyles[4].SizeType = tableLayoutPanel1.ColumnStyles[7].SizeType = SizeType.Absolute;
                     tableLayoutPanel1.ColumnStyles[4].Width = tableLayoutPanel1.ColumnStyles[7].Width = 0;
 
-                    numericalTextBoxXerr.TabStop = numericalTextBoxYerr.TabStop = numericalTextBoxZerr.TabStop = numericalTextBoxOccerr.TabStop = false;
+                    numericBoxXerr.TabStop = numericBoxYerr.TabStop = numericBoxZerr.TabStop = numericBoxOccerr.TabStop = false;
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace Crystallography.Controls
                     tableLayoutPanel1.ColumnStyles[1].Width = tableLayoutPanel1.ColumnStyles[3].Width = tableLayoutPanel1.ColumnStyles[4].Width
                         = tableLayoutPanel1.ColumnStyles[6].Width = tableLayoutPanel1.ColumnStyles[7].Width = 20;
 
-                    numericalTextBoxXerr.TabStop = numericalTextBoxYerr.TabStop = numericalTextBoxZerr.TabStop = numericalTextBoxOccerr.TabStop = true;
+                    numericBoxXerr.TabStop = numericBoxYerr.TabStop = numericBoxZerr.TabStop = numericBoxOccerr.TabStop = true;
                 }
             }
             get => details1;
@@ -70,21 +70,21 @@ namespace Crystallography.Controls
                 details2 = value;
                 if (value == false)
                 {
-                    numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
-                        numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 60;
+                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 60;
 
-                    numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
-                    = numericalTextBoxB23err.Visible = numericalTextBoxB33err.Visible = false;
+                    numericBoxBisoerr.Visible = numericBoxB11err.Visible = numericBoxB12err.Visible = numericBoxB13err.Visible = numericBoxB22err.Visible
+                    = numericBoxB23err.Visible = numericBoxB33err.Visible = false;
                 }
                 else
                 {
-                    numericBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
-                        numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 45;
+                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 45;
 
-                    numericalTextBoxBisoerr.Visible = numericBoxBiso.Visible =
-                    numericalTextBoxB33err.Visible = numericalTextBoxB23err.Visible =
-                    numericalTextBoxB22err.Visible = numericalTextBoxB13err.Visible =
-                    numericalTextBoxB12err.Visible = numericalTextBoxB11err.Visible = true;
+                    numericBoxBisoerr.Visible = numericBoxBiso.Visible =
+                    numericBoxB33err.Visible = numericBoxB23err.Visible =
+                    numericBoxB22err.Visible = numericBoxB13err.Visible =
+                    numericBoxB12err.Visible = numericBoxB11err.Visible = true;
                 }
             }
             get => details2;
@@ -105,57 +105,57 @@ namespace Crystallography.Controls
         [Category("Atom")]
         public double Biso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
         [Category("Atom")]
-        public double BisoErr { set => numericalTextBoxBisoerr.Value = value; get => numericalTextBoxBisoerr.Value; }
+        public double BisoErr { set => numericBoxBisoerr.Value = value; get => numericBoxBisoerr.Value; }
         [Category("Atom")]
-        public double B11 { set => numericalTextBoxB11.Value = value; get => numericalTextBoxB11.Value; }
+        public double B11 { set => numericBoxB11.Value = value; get => numericBoxB11.Value; }
         [Category("Atom")]
-        public double B11Err { set => numericalTextBoxB11err.Value = value; get => numericalTextBoxB11err.Value; }
+        public double B11Err { set => numericBoxB11err.Value = value; get => numericBoxB11err.Value; }
         [Category("Atom")]
-        public double B12 { set => numericalTextBoxB12.Value = value; get => numericalTextBoxB12.Value; }
+        public double B12 { set => numericBoxB12.Value = value; get => numericBoxB12.Value; }
         [Category("Atom")]
-        public double B12Err { set => numericalTextBoxB12err.Value = value; get => numericalTextBoxB12err.Value; }
+        public double B12Err { set => numericBoxB12err.Value = value; get => numericBoxB12err.Value; }
         [Category("Atom")]
-        public double B13 { set => numericalTextBoxB13.Value = value; get => numericalTextBoxB13.Value; }
+        public double B13 { set => numericBoxB13.Value = value; get => numericBoxB13.Value; }
         [Category("Atom")]
-        public double B13Err { set => numericalTextBoxB13err.Value = value; get => numericalTextBoxB13err.Value; }
+        public double B13Err { set => numericBoxB13err.Value = value; get => numericBoxB13err.Value; }
         [Category("Atom")]
-        public double B22 { set => numericalTextBoxB22.Value = value; get => numericalTextBoxB22.Value; }
+        public double B22 { set => numericBoxB22.Value = value; get => numericBoxB22.Value; }
         [Category("Atom")]
-        public double B22Err { set => numericalTextBoxB22err.Value = value; get => numericalTextBoxB22err.Value; }
+        public double B22Err { set => numericBoxB22err.Value = value; get => numericBoxB22err.Value; }
         [Category("Atom")]
-        public double B23 { set => numericalTextBoxB23.Value = value; get { return numericalTextBoxB23.Value; } }
+        public double B23 { set => numericBoxB23.Value = value; get { return numericBoxB23.Value; } }
         [Category("Atom")]
-        public double B23Err { set { numericalTextBoxB23err.Value = value; } get { return numericalTextBoxB23err.Value; } }
+        public double B23Err { set { numericBoxB23err.Value = value; } get { return numericBoxB23err.Value; } }
         [Category("Atom")]
-        public double B33 { set { numericalTextBoxB33.Value = value; } get { return numericalTextBoxB33.Value; } }
+        public double B33 { set { numericBoxB33.Value = value; } get { return numericBoxB33.Value; } }
         [Category("Atom")]
-        public double B33Err { set { numericalTextBoxB33err.Value = value; } get { return numericalTextBoxB33err.Value; } }
+        public double B33Err { set { numericBoxB33err.Value = value; } get { return numericBoxB33err.Value; } }
         #endregion
 
         #region 原子位置 プロパティ
         [Category("Atom")]
-        public double X { set { numericTextBoxX.Value = value; } get { return numericTextBoxX.Value; } }
+        public double X { set { numericBoxX.Value = value; } get { return numericBoxX.Value; } }
 
         [Category("Atom")]
-        public double XErr { set { numericalTextBoxXerr.Value = value; } get { return numericalTextBoxXerr.Value; } }
+        public double XErr { set { numericBoxXerr.Value = value; } get { return numericBoxXerr.Value; } }
 
         [Category("Atom")]
-        public double Y { set { numericTextBoxY.Value = value; } get { return numericTextBoxY.Value; } }
+        public double Y { set { numericBoxY.Value = value; } get { return numericBoxY.Value; } }
 
         [Category("Atom")]
-        public double YErr { set { numericalTextBoxYerr.Value = value; } get { return numericalTextBoxYerr.Value; } }
+        public double YErr { set { numericBoxYerr.Value = value; } get { return numericBoxYerr.Value; } }
 
         [Category("Atom")]
-        public double Z { set { numericTextBoxZ.Value = value; } get { return numericTextBoxZ.Value; } }
+        public double Z { set { numericBoxZ.Value = value; } get { return numericBoxZ.Value; } }
 
         [Category("Atom")]
-        public double ZErr { set => numericalTextBoxZerr.Value = value; get => numericalTextBoxZerr.Value; }
+        public double ZErr { set => numericBoxZerr.Value = value; get => numericBoxZerr.Value; }
         #endregion
 
         [Category("Atom")]
-        public double Occ { set => numericTextBoxOcc.Value = value; get => numericTextBoxOcc.Value; }
+        public double Occ { set => numericBoxOcc.Value = value; get => numericBoxOcc.Value; }
         [Category("Atom")]
-        public double OccErr { set => numericalTextBoxOccerr.Value = value; get => numericalTextBoxOccerr.Value; }
+        public double OccErr { set => numericBoxOccerr.Value = value; get => numericBoxOccerr.Value; }
         [Category("Atom")]
         public string Label { set => textBoxLabel.Text = value; get => textBoxLabel.Text; }
         [Category("Atom")]
@@ -363,9 +363,7 @@ namespace Crystallography.Controls
 
         private void buttonEditIsotopeAbundance_Click(object sender, EventArgs e)
         {
-            FormIsotopeComposition formIsotopeComposition = new FormIsotopeComposition();
-            formIsotopeComposition.AtomNumber = AtomNo;
-            formIsotopeComposition.IsotopicComposition = isotopicComposition;
+            var formIsotopeComposition = new FormIsotopeComposition { AtomNumber = AtomNo, IsotopicComposition = isotopicComposition };
             if (formIsotopeComposition.ShowDialog() == DialogResult.OK)
                 IsotopicComposition = formIsotopeComposition.IsotopicComposition;
         }

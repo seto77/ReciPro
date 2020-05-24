@@ -32,9 +32,9 @@
             this.label64 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.numericalTextBoxLength = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxDvalue = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxGlength = new Crystallography.Controls.NumericBox();
+            this.numericBoxLength = new Crystallography.Controls.NumericBox();
+            this.numericBoxDvalue = new Crystallography.Controls.NumericBox();
+            this.numericBoxGlength = new Crystallography.Controls.NumericBox();
             this.SuspendLayout();
             // 
             // label72
@@ -83,62 +83,52 @@
             this.label50.TabIndex = 71;
             this.label50.Text = "mm";
             // 
-            // numericalTextBoxLength
+            // numericBoxLength
             // 
-            this.numericalTextBoxLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxLength.DecimalPlaces = -1;
-            this.numericalTextBoxLength.Location = new System.Drawing.Point(0, 0);
-            this.numericalTextBoxLength.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxLength.Multiline = false;
-            this.numericalTextBoxLength.Name = "numericalTextBoxLength";
-            this.numericalTextBoxLength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxLength.RadianValue = 0D;
-            this.numericalTextBoxLength.ReadOnly = false;
-            this.numericalTextBoxLength.ShowFraction = false;
-            this.numericalTextBoxLength.Size = new System.Drawing.Size(50, 21);
-            this.numericalTextBoxLength.TabIndex = 75;
-            this.numericalTextBoxLength.Value = 0D;
-            this.numericalTextBoxLength.WordWrap = true;
-            this.numericalTextBoxLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxLength_ValueChanged);
-            this.numericalTextBoxLength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxlength_Click);
+            this.numericBoxLength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLength.DecimalPlaces = -1;
+            this.numericBoxLength.Location = new System.Drawing.Point(0, 0);
+            this.numericBoxLength.Margin = new System.Windows.Forms.Padding(1);
+                       this.numericBoxLength.Name = "numericBoxLength";
+            this.numericBoxLength.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxLength.RadianValue = 0D;
+                        
+            this.numericBoxLength.Size = new System.Drawing.Size(50, 21);
+            this.numericBoxLength.TabIndex = 75;
+                                    this.numericBoxLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLength_ValueChanged);
+            this.numericBoxLength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxlength_Click);
             // 
-            // numericalTextBoxDvalue
+            // numericBoxDvalue
             // 
-            this.numericalTextBoxDvalue.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxDvalue.DecimalPlaces = -1;
-            this.numericalTextBoxDvalue.Location = new System.Drawing.Point(82, 0);
-            this.numericalTextBoxDvalue.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxDvalue.Multiline = false;
-            this.numericalTextBoxDvalue.Name = "numericalTextBoxDvalue";
-            this.numericalTextBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxDvalue.RadianValue = 0D;
-            this.numericalTextBoxDvalue.ReadOnly = true;
-            this.numericalTextBoxDvalue.ShowFraction = false;
-            this.numericalTextBoxDvalue.Size = new System.Drawing.Size(50, 21);
-            this.numericalTextBoxDvalue.TabIndex = 75;
-            this.numericalTextBoxDvalue.Value = 0D;
-            this.numericalTextBoxDvalue.WordWrap = true;
-            this.numericalTextBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxDvalue_ValueChanged);
-            this.numericalTextBoxDvalue.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxDvalue_Click);
+            this.numericBoxDvalue.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDvalue.DecimalPlaces = -1;
+            this.numericBoxDvalue.Location = new System.Drawing.Point(82, 0);
+            this.numericBoxDvalue.Margin = new System.Windows.Forms.Padding(1);
+                       this.numericBoxDvalue.Name = "numericBoxDvalue";
+            this.numericBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxDvalue.RadianValue = 0D;
+            this.numericBoxDvalue.ReadOnly = true;
+            
+            this.numericBoxDvalue.Size = new System.Drawing.Size(50, 21);
+            this.numericBoxDvalue.TabIndex = 75;
+                                    this.numericBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_ValueChanged);
+            this.numericBoxDvalue.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_Click);
             // 
-            // numericalTextBoxGlength
+            // numericBoxGlength
             // 
-            this.numericalTextBoxGlength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxGlength.DecimalPlaces = -1;
-            this.numericalTextBoxGlength.Location = new System.Drawing.Point(154, 0);
-            this.numericalTextBoxGlength.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxGlength.Multiline = false;
-            this.numericalTextBoxGlength.Name = "numericalTextBoxGlength";
-            this.numericalTextBoxGlength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxGlength.RadianValue = 0D;
-            this.numericalTextBoxGlength.ReadOnly = true;
-            this.numericalTextBoxGlength.ShowFraction = false;
-            this.numericalTextBoxGlength.Size = new System.Drawing.Size(50, 21);
-            this.numericalTextBoxGlength.TabIndex = 75;
-            this.numericalTextBoxGlength.Value = 0D;
-            this.numericalTextBoxGlength.WordWrap = true;
-            this.numericalTextBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxGlength_ValueChanged);
-            this.numericalTextBoxGlength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxGlength_Click);
+            this.numericBoxGlength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGlength.DecimalPlaces = -1;
+            this.numericBoxGlength.Location = new System.Drawing.Point(154, 0);
+            this.numericBoxGlength.Margin = new System.Windows.Forms.Padding(1);
+                       this.numericBoxGlength.Name = "numericBoxGlength";
+            this.numericBoxGlength.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxGlength.RadianValue = 0D;
+            this.numericBoxGlength.ReadOnly = true;
+            
+            this.numericBoxGlength.Size = new System.Drawing.Size(50, 21);
+            this.numericBoxGlength.TabIndex = 75;
+                                    this.numericBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_ValueChanged);
+            this.numericBoxGlength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_Click);
             // 
             // InputBox
             // 
@@ -146,9 +136,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.numericalTextBoxGlength);
-            this.Controls.Add(this.numericalTextBoxDvalue);
-            this.Controls.Add(this.numericalTextBoxLength);
+            this.Controls.Add(this.numericBoxGlength);
+            this.Controls.Add(this.numericBoxDvalue);
+            this.Controls.Add(this.numericBoxLength);
             this.Controls.Add(this.label72);
             this.Controls.Add(this.label64);
             this.Controls.Add(this.label60);
@@ -166,8 +156,8 @@
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label50;
-        private Crystallography.Controls.NumericBox numericalTextBoxLength;
-        private Crystallography.Controls.NumericBox numericalTextBoxDvalue;
-        private Crystallography.Controls.NumericBox numericalTextBoxGlength;
+        private Crystallography.Controls.NumericBox numericBoxLength;
+        private Crystallography.Controls.NumericBox numericBoxDvalue;
+        private Crystallography.Controls.NumericBox numericBoxGlength;
     }
 }

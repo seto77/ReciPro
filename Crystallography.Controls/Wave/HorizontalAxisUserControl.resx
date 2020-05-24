@@ -1417,58 +1417,58 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwoTheta.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.FooterText" xml:space="preserve">
+  <data name="numericBoxTwoTheta.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTwoTheta.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwoTheta.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.HeaderText" xml:space="preserve">
+  <data name="numericBoxTwoTheta.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 0</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 22</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTwoTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="numericalTextBoxTwoTheta.ToolTip" xml:space="preserve">
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTwoTheta.Name" xml:space="preserve">
-    <value>numericalTextBoxTwoTheta</value>
+  <data name="&gt;&gt;numericBoxTwoTheta.Name" xml:space="preserve">
+    <value>numericBoxTwoTheta</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTwoTheta.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTwoTheta.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.4.24.1042, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTwoTheta.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTwoTheta.Parent" xml:space="preserve">
     <value>flowLayoutPanel13</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTwoTheta.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTwoTheta.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
@@ -1711,58 +1711,58 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTofTakeOffAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.FooterText" xml:space="preserve">
+  <data name="numericBoxTofTakeOffAngle.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.HeaderText" xml:space="preserve">
+  <data name="numericBoxTofTakeOffAngle.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 0</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTofTakeOffAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 22</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTofTakeOffAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofTakeOffAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTofTakeOffAngle.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="numericalTextBoxTofTakeOffAngle.ToolTip" xml:space="preserve">
+  <data name="numericBoxTofTakeOffAngle.ToolTip" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofTakeOffAngle.Name" xml:space="preserve">
-    <value>numericalTextBoxTofTakeOffAngle</value>
+  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Name" xml:space="preserve">
+    <value>numericBoxTofTakeOffAngle</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofTakeOffAngle.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.4.24.1042, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofTakeOffAngle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Parent" xml:space="preserve">
     <value>flowLayoutPanel10</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofTakeOffAngle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofTakeOffAngle.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
@@ -1867,58 +1867,58 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxTofDistance.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTofDistance.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxTofDistance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofDistance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofDistance.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofDistance.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofDistance.FooterText" xml:space="preserve">
+  <data name="numericBoxTofDistance.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTofDistance.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTofDistance.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTofDistance.HeaderText" xml:space="preserve">
+  <data name="numericBoxTofDistance.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTofDistance.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxTofDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 0</value>
   </data>
-  <data name="numericalTextBoxTofDistance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTofDistance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxTofDistance.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofDistance.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 22</value>
   </data>
-  <data name="numericalTextBoxTofDistance.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofDistance.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxTofDistance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTofDistance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxTofDistance.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTofDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 22</value>
   </data>
-  <data name="numericalTextBoxTofDistance.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTofDistance.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="numericalTextBoxTofDistance.ToolTip" xml:space="preserve">
+  <data name="numericBoxTofDistance.ToolTip" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofDistance.Name" xml:space="preserve">
-    <value>numericalTextBoxTofDistance</value>
+  <data name="&gt;&gt;numericBoxTofDistance.Name" xml:space="preserve">
+    <value>numericBoxTofDistance</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofDistance.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofDistance.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.4.24.1042, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofDistance.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofDistance.Parent" xml:space="preserve">
     <value>flowLayoutPanel11</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTofDistance.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofDistance.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">

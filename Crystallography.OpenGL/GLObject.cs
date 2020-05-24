@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL4;
+using System.Windows.Forms;
+using System.Drawing;
 
 #region 定義
 
@@ -209,11 +211,12 @@ namespace Crystallography.OpenGL
         #endregion
 
 
+
         /// <summary>
         /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
         /// </summary>
         /// <param name="program"></param>
-        public void Generate(int program, bool renewLocation = false)
+        public void Generate(int program)
         {
             if (program < 0 || Vertices == null || Vertices.Length == 0)
                 return;
@@ -235,9 +238,8 @@ namespace Crystallography.OpenGL
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
 
             //Locationを取得
-            if (EmissionLocation == -1 || renewLocation)
+            if (EmissionLocation == -1)
                 SetLocation(program);
-
 
             //モード
             GL.EnableVertexAttribArray(ModeLocation);
@@ -255,24 +257,24 @@ namespace Crystallography.OpenGL
             GL.EnableVertexAttribArray(UvLocation);
             GL.VertexAttribPointer(UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int) + 2 * V3f.SizeInBytes);
 
-            if (this is TextObject t && t.Colors != null)
+            //TextObjectの場合は、ここでテクスチャーを転送
+            if (this is TextObject t && t.TextureNum != -1 && t.Texture != null)
             {
-                GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
                 // テクスチャをバインドする
-                GL.BindTexture(TextureTarget.Texture2D, t.TextureNumber);
+                GL.BindTexture(TextureTarget.Texture2D, t.TextureNum);
                 //テクスチャ用バッファに色情報を流し込む
-                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Size[0], t.Size[1], 0, PixelFormat.Rgba, PixelType.UnsignedByte, t.Colors);
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Size[0], t.Size[1], 0, PixelFormat.Rgba, PixelType.UnsignedByte, t.Texture);
                 // テクスチャのアンバインド
                 GL.BindTexture(TextureTarget.Texture2D, 0);
-            }
 
+            }
         }
 
         /// <summary>
         /// パラメータのロケーションをセット
         /// </summary>
         /// <param name="Program"></param>
-        public void SetLocation(int Program)
+        public static void SetLocation(int Program)
         {
             ModeLocation = GL.GetAttribLocation(Program, "ObjType");
             ArgbLocation = GL.GetAttribLocation(Program, "Argb");
@@ -303,10 +305,10 @@ namespace Crystallography.OpenGL
         /// </summary>
         private void Render()
         {
-            if (this is TextObject text)
+            if (this is TextObject text && text.TextureNum != -1)
             {
                 GL.Uniform1(TextureLocation, 0);
-                GL.BindTexture(TextureTarget.Texture2D, text.TextureNumber);
+                GL.BindTexture(TextureTarget.Texture2D, text.TextureNum);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToBorder);
@@ -362,7 +364,7 @@ namespace Crystallography.OpenGL
                 GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
 
             if (renew || prms.UseFixedArgb != UseFixedArgb)
-                GL.Uniform1(UseFixedArgbLocation, UseFixedArgb ? 1 : 0);
+                GL.Uniform1(UseFixedArgbLocation, UseFixedArgb ? 1 : 0);//Trueが1なのはなぜか分からないが、これで動く。
 
             if (renew || prms.argb != Material.Argb)
                 GL.Uniform1(FixedArgbLocation, Material.Argb);
@@ -1567,36 +1569,33 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class TextObject : GLObject
     {
-        static public Dictionary<(string Text, float FontSize, int Argb, bool edge), (int TextureNumber, int Width, int Height)> TextureDictionary
-             = new Dictionary<(string Text, float FontSize, int Argb, bool edge), (int TextureNumber, int Width, int Height)>();
+        private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)> dic
+            = new Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)>();
 
-        public int TextureNumber = -1;
-        public byte[] Colors = null;
+        public int TextureNum = -1;
         public int[] Size = null;
+        public byte[] Texture = null;
 
         public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
             : this(text, fontSize, new V3d(position.X, position.Y, position.Z), popout, whiteEdge, mat) { }
         public TextObject(string text, float fontSize, V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
-
             text = text.Trim();
             if (text != "")
             {
                 int width, height;
-
-
-                if (!TextureDictionary.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
+                if (!dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
                 {
-                    var fnt = new System.Drawing.Font("Tahoma", fontSize);//フォントオブジェクトの作成
-                    var strSize = System.Windows.Forms.TextRenderer.MeasureText(text, fnt, new System.Drawing.Size(600, 100), System.Windows.Forms.TextFormatFlags.NoPadding); //文字列を描画するときの大きさを計測する
-                    var bmp = new System.Drawing.Bitmap(strSize.Width+2, strSize.Height+2);
-                    var g = System.Drawing.Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
+                    var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
+                    var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100), TextFormatFlags.NoPadding); //文字列を描画するときの大きさを計測する
+                    var bmp = new Bitmap(strSize.Width + 2, strSize.Height + 2);
+                    var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
                     if (whiteEdge)
                         foreach(var (x, y) in new[] {(0f,0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
-                            g.DrawString(text, fnt, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(128, System.Drawing.Color.White)), new System.Drawing.RectangleF(x, y, bmp.Width, bmp.Height));
+                            g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(128, Color.White)), new RectangleF(x, y, bmp.Width, bmp.Height));
                     
-                    g.DrawString(text, fnt, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(mat.Argb)), new System.Drawing.RectangleF(1f, 1f, bmp.Width, bmp.Height));
+                    g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(mat.Argb)), new RectangleF(1f, 1f, bmp.Width, bmp.Height));
                     fnt.Dispose();//リソースを解放する
                     g.Dispose();//リソースを解放する
 
@@ -1604,8 +1603,8 @@ namespace Crystallography.OpenGL
                     height = bmp.Height;
 
                     var argbList = BitmapConverter.ToByteARGB(bmp).ToList();//データの並び順はBGRA
+              
                     #region  余白の部分をトリムする
-
                     while (argbList.Where((b, i) => i < width * 4).All(b => b == 0))
                     {
                         argbList.RemoveRange(0, width * 4);
@@ -1631,20 +1630,19 @@ namespace Crystallography.OpenGL
                     }
                     #endregion
 
-                    Size = new[] { width, height };
-
-                    Colors = argbList.ToArray();
                     //並び順をRGBAに変更
-                    for (int i = 0; i < Colors.Length; i += 4) { var t = Colors[i]; Colors[i] = Colors[i + 2]; Colors[i + 2] = t; }
+                    for (int i = 0; i < argbList.Count; i += 4) { var t = argbList[i]; argbList[i] = argbList[i + 2]; argbList[i + 2] = t; }
 
                     //空いてるテクスチャID番号を調べ、TextureNumberに格納 (実際の転送はGenerateで行う)
-                    TextureNumber = GL.GenTexture();
+                    TextureNum = GL.GenTexture();
                     //辞書に登録
-                    TextureDictionary.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNumber, width, height));
+                    dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, width,height));
+                    Size = new[] { width, height };
+                    Texture = argbList.ToArray();
                 }
                 else
                 {
-                    TextureNumber = obj.TextureNumber;
+                    TextureNum = obj.TextureNum;
                     width = obj.Width;
                     height = obj.Height;
                 }
@@ -1655,8 +1653,7 @@ namespace Crystallography.OpenGL
                     new Vertex(new V3f(-width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(0,0), mat.Argb, 2),
                     new Vertex(new V3f(+width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(1,0), mat.Argb, 2),
                     new Vertex(new V3f(+width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(1,1), mat.Argb, 2),
-                    new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2)
-                    }.ToArray();
+                    new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2) };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
                 Types = new[] { PT.Quads };

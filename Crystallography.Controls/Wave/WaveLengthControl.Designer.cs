@@ -35,11 +35,11 @@
             this.radioButtonElectron = new System.Windows.Forms.RadioButton();
             this.comboBoxXrayLine = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanelEnergy = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericalTextBoxEnergy = new Crystallography.Controls.NumericBox();
+            this.numericBoxEnergy = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanelElement = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelWaveLength = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericalTextBoxWaveLength = new Crystallography.Controls.NumericBox();
+            this.numericBoxWaveLength = new Crystallography.Controls.NumericBox();
             this.radioButtonNeutron = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanelWaveSource = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMain = new System.Windows.Forms.FlowLayoutPanel();
@@ -204,32 +204,25 @@
             // flowLayoutPanelEnergy
             // 
             resources.ApplyResources(this.flowLayoutPanelEnergy, "flowLayoutPanelEnergy");
-            this.flowLayoutPanelEnergy.Controls.Add(this.numericalTextBoxEnergy);
+            this.flowLayoutPanelEnergy.Controls.Add(this.numericBoxEnergy);
             this.flowLayoutPanelEnergy.Name = "flowLayoutPanelEnergy";
             // 
-            // numericalTextBoxEnergy
+            // numericBoxEnergy
             // 
-            resources.ApplyResources(this.numericalTextBoxEnergy, "numericalTextBoxEnergy");
-            this.numericalTextBoxEnergy.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxEnergy.DecimalPlaces = -1;
-            this.numericalTextBoxEnergy.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxEnergy.FooterText = "keV";
-            this.numericalTextBoxEnergy.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxEnergy.HeaderText = "Energy";
-            this.numericalTextBoxEnergy.Multiline = false;
-            this.numericalTextBoxEnergy.Name = "numericalTextBoxEnergy";
-            this.numericalTextBoxEnergy.RadianValue = 0D;
-            this.numericalTextBoxEnergy.ReadOnly = false;
-            this.numericalTextBoxEnergy.ShowFraction = false;
-            this.numericalTextBoxEnergy.ShowPositiveSign = false;
-            this.numericalTextBoxEnergy.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxEnergy.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxEnergy.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxEnergy.ToolTip = "test";
-            this.toolTip.SetToolTip(this.numericalTextBoxEnergy, resources.GetString("numericalTextBoxEnergy.ToolTip"));
-            this.numericalTextBoxEnergy.Value = 0D;
-            this.numericalTextBoxEnergy.WordWrap = true;
-            this.numericalTextBoxEnergy.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxEnergy_ValueChanged);
+            resources.ApplyResources(this.numericBoxEnergy, "numericBoxEnergy");
+            this.numericBoxEnergy.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEnergy.DecimalPlaces = -1;
+                        this.numericBoxEnergy.FooterText = "keV";
+                        this.numericBoxEnergy.HeaderText = "Energy";
+                       this.numericBoxEnergy.Name = "numericBoxEnergy";
+            this.numericBoxEnergy.RadianValue = 0D;
+                        
+            this.numericBoxEnergy.ShowPositiveSign = false;
+                        this.numericBoxEnergy.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxEnergy.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxEnergy.ToolTip = "test";
+            this.toolTip.SetToolTip(this.numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
+                                    this.numericBoxEnergy.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEnergy_ValueChanged);
             // 
             // flowLayoutPanelElement
             // 
@@ -247,32 +240,24 @@
             // flowLayoutPanelWaveLength
             // 
             resources.ApplyResources(this.flowLayoutPanelWaveLength, "flowLayoutPanelWaveLength");
-            this.flowLayoutPanelWaveLength.Controls.Add(this.numericalTextBoxWaveLength);
+            this.flowLayoutPanelWaveLength.Controls.Add(this.numericBoxWaveLength);
             this.flowLayoutPanelWaveLength.Name = "flowLayoutPanelWaveLength";
             // 
-            // numericalTextBoxWaveLength
+            // numericBoxWaveLength
             // 
-            resources.ApplyResources(this.numericalTextBoxWaveLength, "numericalTextBoxWaveLength");
-            this.numericalTextBoxWaveLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxWaveLength.DecimalPlaces = -1;
-            this.numericalTextBoxWaveLength.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxWaveLength.FooterText = "Å";
-            this.numericalTextBoxWaveLength.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxWaveLength.HeaderText = "Wave length";
-            this.numericalTextBoxWaveLength.Multiline = false;
-            this.numericalTextBoxWaveLength.Name = "numericalTextBoxWaveLength";
-            this.numericalTextBoxWaveLength.RadianValue = 0D;
-            this.numericalTextBoxWaveLength.ReadOnly = false;
-            this.numericalTextBoxWaveLength.ShowFraction = false;
-            this.numericalTextBoxWaveLength.ShowPositiveSign = false;
-            this.numericalTextBoxWaveLength.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxWaveLength.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxWaveLength.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxWaveLength.ToolTip = "";
-            this.toolTip.SetToolTip(this.numericalTextBoxWaveLength, resources.GetString("numericalTextBoxWaveLength.ToolTip"));
-            this.numericalTextBoxWaveLength.Value = 0D;
-            this.numericalTextBoxWaveLength.WordWrap = true;
-            this.numericalTextBoxWaveLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxWaveLength_ValueChanged);
+            resources.ApplyResources(this.numericBoxWaveLength, "numericBoxWaveLength");
+            this.numericBoxWaveLength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWaveLength.DecimalPlaces = -1;
+                        this.numericBoxWaveLength.FooterText = "Å";
+                        this.numericBoxWaveLength.HeaderText = "Wave length";
+                       this.numericBoxWaveLength.Name = "numericBoxWaveLength";
+            this.numericBoxWaveLength.RadianValue = 0D;
+                        
+            this.numericBoxWaveLength.ShowPositiveSign = false;
+                        this.numericBoxWaveLength.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxWaveLength.ToolTip = "";
+            this.toolTip.SetToolTip(this.numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
+                                    this.numericBoxWaveLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxWaveLength_ValueChanged);
             // 
             // radioButtonNeutron
             // 
@@ -322,11 +307,11 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxXRayElement;
-        private NumericBox numericalTextBoxWaveLength;
+        private NumericBox numericBoxWaveLength;
         private System.Windows.Forms.RadioButton radioButtonXray;
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.ComboBox comboBoxXrayLine;
-        private NumericBox numericalTextBoxEnergy;
+        private NumericBox numericBoxEnergy;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergy;
         //private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWaveLength;

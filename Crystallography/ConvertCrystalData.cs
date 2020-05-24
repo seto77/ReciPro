@@ -15,11 +15,6 @@ namespace Crystallography
 {
 	public class ConvertCrystalData
 	{
-		static public long a1 = 0;
-		static public long a2 = 0;
-		static public long a3 = 0;
-		static public long a4 = 0;
-
 		public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
 		{
 			try
@@ -87,28 +82,23 @@ namespace Crystallography
 				#endregion old code
 				try
 				{
-					using (var fs = new System.IO.FileStream(filename, System.IO.FileMode.Open))
-					{
-						System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
-						cry = (Crystal[])serializer.Deserialize(fs);
-						#region //Bondクラスの単位を オングストロームからnmに変更したための対処
-						foreach(var c in cry)
-						{
-							foreach(var b in c.Bonds)
-								if(!b.NanometerUnit)
-								{
-									b.MaxLength *= 0.1f;
-									b.MinLength *= 0.1f;
-									b.Radius *= 0.1f;
-									b.NanometerUnit = true;
-								}
-						}    
-
-						#endregion
-
-
-					}
-				}
+                    using var fs = new FileStream(filename, FileMode.Open);
+                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
+                    cry = (Crystal[])serializer.Deserialize(fs);
+                    #region //Bondクラスの単位を オングストロームからnmに変更したための対処
+                    foreach (var c in cry)
+                    {
+                        foreach (var b in c.Bonds)
+                            if (!b.NanometerUnit)
+                            {
+                                b.MaxLength *= 0.1f;
+                                b.MinLength *= 0.1f;
+                                b.Radius *= 0.1f;
+                                b.NanometerUnit = true;
+                            }
+                    }
+                    #endregion
+                }
 				catch { }
 			}
 			else if (filename.EndsWith("out"))//SMAP形式を読み込んだとき
@@ -190,11 +180,8 @@ namespace Crystallography
 				for (; line < str.Length; line++)
 					if (str[line].StartsWith("No ="))
 					{
-						Crystal tempCrystal = new Crystal(
-							(a, b, c, alpha, beta, gamma),
-							null, spaceGroupSeriesNum,
-							ChemicalFormula.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries)[1].Trim() + "-" + (n++).ToString()
-							, Color.Blue);
+						Crystal tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
+							ChemicalFormula.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries)[1].Trim() + "-" + (n++).ToString(), Color.Blue);
 						tempCrystal.Note = wavelength + "  " + ChemicalFormula + "\r\n" + str[line];
 						line++;
 						for (; line < str.Length; line++)
@@ -290,12 +277,17 @@ namespace Crystallography
 				}
 				catch (Exception e)
 				{
+					#if DEBUG
+                    System.Windows.Forms.MessageBox.Show(e.Message);
+					#endif
+
+
 					return null;
 				}
 			}
 	}
 
-		#region amcファイルの読み込み
+#region amcファイルの読み込み
 
 		/// <summary>
 		/// amcファイルの読み込み
@@ -307,9 +299,7 @@ namespace Crystallography
 			int n = 0;
 
 			string Name;
-			string AuthorName = "";
-			string Reference = "";
-			string Title = "";
+			string AuthorName, Reference, Title;
 			double xShift, yShift, zShift;
 			xShift = yShift = zShift = 0;
 			Crystal crystal;
@@ -566,7 +556,7 @@ namespace Crystallography
 			SgName = SgName.Replace("*", "");
 
 
-			#region
+#region
 			
 
 			if (SgName == "Pm3") SgName = "Pm-3";
@@ -697,7 +687,7 @@ namespace Crystallography
 			else if (SgName == "C2/c" && Beta == 90.0 && Gamma == 90.0) SgName = "C2/c11";
 			else if (SgName == "B2/n" && Beta == 90.0 && Gamma == 90.0) SgName = "B2/n11";
 			else if (SgName == "I2/b" && Beta == 90.0 && Gamma == 90.0) SgName = "I2/b11";
-			#endregion amcファイルの読み込み
+#endregion amcファイルの読み込み
 
 			//文字列を含んでいて、かつ、文字数が少ない空間群を選択する (C1とC121などを見分けるため)
 			int length = int.MaxValue;
@@ -744,23 +734,23 @@ namespace Crystallography
 				return null;
 		}
 
-		#endregion
+#endregion
 
-		#region OpenGLのためのBond設定
+#region OpenGLのためのBond設定
 		public static void SetOpenGL_property(Crystal c)
 		{
 			foreach (Atoms a in c.Atoms)
 				a.ResetVesta();
 			c.Bonds = Bonds.GetVestaBonds(c.Atoms.Select(a => a.ElementName).Distinct());
 
-			#region お蔵入り
+#region お蔵入り
 			/*
 			//先ず原子の色、半径を設定
 			foreach (Atoms a in c.Atoms)
 			{
 				switch (a.ElementName)
 				{
-					#region イオン半径、色を設定
+#region イオン半径、色を設定
 					case "1: H": a.Radius = 0.005f; a.Argb = Color.FromArgb(98, 11, 181).ToArgb(); break;
 					case "2: He": a.Radius = 0.05f; a.Argb = Color.FromArgb(137, 250, 106).ToArgb(); break;
 					case "3: Li": a.Radius = 0.38f; a.Argb = Color.FromArgb(43, 200, 157).ToArgb(); break;
@@ -859,13 +849,13 @@ namespace Crystallography
 					case "96: Cm": a.Radius = 0.425f; a.Argb = Color.FromArgb(217, 174, 152).ToArgb(); break;
 					case "97: Bk": a.Radius = 0.415f; a.Argb = Color.FromArgb(54, 244, 120).ToArgb(); break;
 					case "98: Cf": a.Radius = 0.4105f; a.Argb = Color.FromArgb(161, 45, 164).ToArgb(); break;
-						#endregion イオン半径、色を設定
+#endregion イオン半径、色を設定
 				}
 				if (!elementList.Contains(a.ElementName))
 					elementList.Add(a.ElementName);
 			}
 			*/
-			#endregion
+#endregion
 
 
 		}
@@ -874,7 +864,7 @@ namespace Crystallography
 
 
 
-		#endregion
+#endregion
 		private static double ConvertToDouble(string str)
 		{
 			return ConvertToDouble(str, false);
@@ -927,7 +917,7 @@ namespace Crystallography
 			}
 		}
 
-		#region CIFファイルの読み込み
+#region CIFファイルの読み込み
 
 		/// <summary>
 		/// CIFファイルを読み込む
@@ -1025,8 +1015,7 @@ namespace Crystallography
 
 			for (int n = 0; n < str.Length; n++)
 			{
-				cif_Group = new CIF_Group();
-				cif_Group.items = new List<CIF_Item>();
+				cif_Group = new CIF_Group { items = new List<CIF_Item>() };
 
 				if (str[n].Trim().StartsWith("_"))
 				{//単体アイテムのとき
@@ -1173,7 +1162,7 @@ namespace Crystallography
 
 
 
-			#region 空間群を調べる部分
+#region 空間群を調べる部分
 			//空間群を検索
 			int sgnum = 0;
 			if (spaceGroupNameHM == "" && spaceGroupNameHall == "")
@@ -1183,7 +1172,7 @@ namespace Crystallography
 			if (sgnum == -1)
 				return null;
 
-			#region 対象操作がCIFファイル中に記載されている場合は、本当に現在の空間群でよいかどうかをチェック
+#region 対象操作がCIFファイル中に記載されている場合は、本当に現在の空間群でよいかどうかをチェック
 			var p = new V3(0.111, 0.234, 0.457);//適当な一般位置
 			var tempAtom = WyckoffPosition.GetEquivalentAtomsPosition((p.X, p.Y, p.Z), sgnum).Atom;
 			var shift = new V3(0, 0, 0);
@@ -1204,6 +1193,9 @@ namespace Crystallography
 					}
 					catch (Exception e)
 					{
+						#if DEBUG
+                        System.Windows.Forms.MessageBox.Show(e.Message);
+						#endif
 						return null;
 					}
 				}
@@ -1234,9 +1226,9 @@ namespace Crystallography
 								}
 				}
 			}
-			#endregion
+#endregion
 
-			#endregion
+#endregion
 
 			bool isHex = (sgnum >= 430 && sgnum <= 488);
 
@@ -1515,13 +1507,9 @@ namespace Crystallography
 			if (x.IndexOf("(") > -1)
 				x = x.Remove(x.IndexOf("("));
 
-			double X = 0;
-			double.TryParse(x, out X);
+			double.TryParse(x, out var X);
 
-			if (isHex)
-				return ConvertToDoubleForHexagonalSetting(X);
-			else
-				return X;
+			return isHex ? ConvertToDoubleForHexagonalSetting(X) : X;
 		}
 
 		private static double ConvertErrForCIF(string x)
@@ -1535,8 +1523,7 @@ namespace Crystallography
 				int n = (y.Length - y.IndexOf(".") - 1);
 
 				x = x.Remove(0, x.IndexOf("(")).Trim('(').Trim(')');
-				double X;
-				double.TryParse(x, out X);
+				double.TryParse(x, out var X);
 
 				return Math.Pow(10, -n) * X;
 			}
@@ -1681,7 +1668,7 @@ namespace Crystallography
 			SgNameHM = SgNameHM.Replace("  ", " ");
 
 			string temp = SgNameHM.Replace(" ", "");
-			#region
+#region
 			if (temp == "Pm3") SgNameHM = "P m -3";
 			else if (temp == "Pn3") SgNameHM = "P n -3";
 			else if (temp == "Fm3") SgNameHM = "F m -3";
@@ -1810,7 +1797,7 @@ namespace Crystallography
 			else if (temp == "C2/c" && Beta == 90.0 && Gamma == 90.0) SgNameHM = "C 2/c 1 1";
 			else if (temp == "B2/n" && Beta == 90.0 && Gamma == 90.0) SgNameHM = "B 2/n 1 1";
 			else if (temp == "I2/b" && Beta == 90.0 && Gamma == 90.0) SgNameHM = "I 2/b 1 1";
-			#endregion
+#endregion
 
 			//文字列を含んでいて、かつ、文字数が少ない空間群を選択する (C1とC121などを見分けるため)
 
@@ -1880,19 +1867,8 @@ namespace Crystallography
 			}
 		}
 
-		#endregion
+#endregion
 
-		/// <summary>
-		/// 原子情報から自動的にBondsを検索
-		/// </summary>
-		/// <param name="atoms"></param>
-		/// <returns></returns>
-		public static List<Bonds> GetBonds(List<Atoms> atoms)
-		{
-			List<Bonds> bonds = new List<Bonds>();
-
-			return bonds;
-		}
 
 		public static double ConvertToDoubleForHexagonalSetting(double x)
 		{
@@ -1923,7 +1899,7 @@ namespace Crystallography
 
 			sb.AppendLine("_journal_name '" + crystal.Journal + "'");
 
-			#region 論文タイトル
+#region 論文タイトル
 			sb.AppendLine("_publ_section_title");
 			sb.AppendLine(";");
 			string title = "";
@@ -1939,7 +1915,7 @@ namespace Crystallography
 			if (title != "")
 				sb.AppendLine(title);
 			sb.AppendLine(";");
-			#endregion
+#endregion
 
 			sb.AppendLine("_chemical_formula_sum '" + crystal.ChemicalFormulaSum + "'");
 			sb.AppendLine("_cell_length_a " + (crystal.A * 10).ToString("f6"));
@@ -1960,7 +1936,7 @@ namespace Crystallography
 			sb.AppendLine("_symmetry_space_group_name_H-M '" + hm + "'");
 			sb.AppendLine("_symmetry_space_group_name_Hall '" + sym.SpaceGroupHallStr + "'");
 
-			#region 原子の等価位置
+#region 原子の等価位置
 			sb.AppendLine("loop_");
 			sb.AppendLine("_symmetry_equiv_pos_as_xyz");
 			bool[][] flag = new bool[0][];
@@ -2010,9 +1986,9 @@ namespace Crystallography
 					sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
 				}
 			}
-			#endregion
+#endregion
 
-			#region 各原子の情報
+#region 各原子の情報
 			sb.AppendLine("loop_");
 			sb.AppendLine("_atom_site_label");
 			sb.AppendLine("_atom_site_type_symbol");
@@ -2056,7 +2032,7 @@ namespace Crystallography
 							);
 				}
 			}
-			#endregion
+#endregion
 
 			return sb.ToString();
 		}

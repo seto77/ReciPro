@@ -11,6 +11,23 @@ layout(early_fragment_tests) in;
 
 uniform uint MaxNodes;
 
+struct NodeType {
+	vec4 color;
+	float depth;
+	uint next;
+};
+
+layout(binding = 0, r32ui) uniform uimage2D headPointers;
+layout(binding = 0, offset = 0) uniform atomic_uint nextNodeCounter;
+layout(binding = 0, std430) buffer linkedLists {
+	NodeType nodes[];
+};
+
+
+
+subroutine void RenderPassType();
+subroutine uniform RenderPassType RenderPass;
+
 // Material properties
 uniform float Emission = 0.2;
 uniform float Ambient = 0.2;
@@ -40,22 +57,7 @@ in VertexData
 	vec2 Uv;//texture coordinates
 } fs_in;
 
-struct NodeType {
-	vec4 color;
-	float depth;
-	uint next;
-};
-
-layout(binding = 0, r32ui) uniform uimage2D headPointers;
-layout(binding = 0, offset = 0) uniform atomic_uint nextNodeCounter;
-layout(binding = 0, std430) buffer linkedLists {
-	NodeType nodes[];
-};
-
 /*layout(location = 0) */out vec4 FragColor;
-
-subroutine void RenderPassType();
-subroutine uniform RenderPassType RenderPass;
 
 vec4 setColor()
 {

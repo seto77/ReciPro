@@ -85,7 +85,7 @@ namespace ReciPro
             comboBoxGradient.SelectedIndex = 0;
         }
 
-        private Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new Stopwatch();
 
         private void buttonExecute_Click(object sender, EventArgs e)
         {

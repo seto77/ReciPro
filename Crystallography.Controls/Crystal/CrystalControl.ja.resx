@@ -366,10 +366,10 @@
   <data name="numericBoxEOS_Q.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 24</value>
   </data>
-  <data name="numericalTextBoxEOS_V0perMol.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxEOS_V0perMol.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxEOS_V0perMol.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxEOS_V0perMol.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 24</value>
   </data>
   <data name="numericBoxEOS_V0perCell.MaximumSize" type="System.Drawing.Size, System.Drawing">
@@ -399,10 +399,10 @@
   <data name="numericBoxEOS_T0.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 27</value>
   </data>
-  <data name="numericalTextBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
   </data>
-  <data name="numericalTextBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 27</value>
   </data>
   <data name="numericBoxPressure.MaximumSize" type="System.Drawing.Size, System.Drawing">
@@ -411,85 +411,85 @@
   <data name="numericBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 27</value>
   </data>
-  <data name="numericalTextBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxHill.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHill.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 123</value>
   </data>
-  <data name="numericalTextBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
-  <data name="numericalTextBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 24</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">

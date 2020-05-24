@@ -1,4 +1,7 @@
-﻿namespace ReciPro
+﻿using Crystallography.Controls;
+using System.Windows.Forms;
+
+namespace ReciPro
 {
     partial class FormDiffractionSimulatorDynamicCompression
     {
@@ -149,168 +152,119 @@
             // 
             // numericBoxCompressedThetaB
             // 
-            this.numericBoxCompressedThetaB.AllowMouseControl = false;
-            this.numericBoxCompressedThetaB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCompressedThetaB.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCompressedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaB.DecimalPlaces = -2;
             this.numericBoxCompressedThetaB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaB.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaB.FooterText = "deg/ns";
-            this.numericBoxCompressedThetaB.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaB.HeaderText = "b";
+                        this.numericBoxCompressedThetaB.FooterText = "deg/ns";
+                        this.numericBoxCompressedThetaB.HeaderText = "b";
             this.numericBoxCompressedThetaB.Location = new System.Drawing.Point(17, 104);
             this.numericBoxCompressedThetaB.Margin = new System.Windows.Forms.Padding(14, 0, 0, 0);
             this.numericBoxCompressedThetaB.Maximum = 10000D;
             this.numericBoxCompressedThetaB.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxCompressedThetaB.Minimum = 0D;
             this.numericBoxCompressedThetaB.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxCompressedThetaB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCompressedThetaB.MouseSpeed = 1D;
-            this.numericBoxCompressedThetaB.Multiline = false;
-            this.numericBoxCompressedThetaB.Name = "numericBoxCompressedThetaB";
+                       this.numericBoxCompressedThetaB.Name = "numericBoxCompressedThetaB";
             this.numericBoxCompressedThetaB.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedThetaB.RadianValue = 0.0087266462599716477D;
-            this.numericBoxCompressedThetaB.ReadOnly = false;
-            this.numericBoxCompressedThetaB.RestrictLimitValue = true;
+                        this.numericBoxCompressedThetaB.RestrictLimitValue = true;
             this.numericBoxCompressedThetaB.ShowFraction = false;
             this.numericBoxCompressedThetaB.ShowPositiveSign = false;
-            this.numericBoxCompressedThetaB.ShowUpDown = false;
-            this.numericBoxCompressedThetaB.Size = new System.Drawing.Size(120, 25);
+                        this.numericBoxCompressedThetaB.Size = new System.Drawing.Size(120, 25);
             this.numericBoxCompressedThetaB.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaB.SmartIncrement = true;
             this.numericBoxCompressedThetaB.TabIndex = 2;
-            this.numericBoxCompressedThetaB.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCompressedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCompressedThetaB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaB.ThonsandsSeparator = true;
+                        this.numericBoxCompressedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedThetaB.ThonsandsSeparator = true;
             this.numericBoxCompressedThetaB.ToolTip = "";
             this.numericBoxCompressedThetaB.UpDown_Increment = 1D;
             this.numericBoxCompressedThetaB.Value = 0.5D;
-            this.numericBoxCompressedThetaB.WordWrap = true;
-            // 
+                        // 
             // numericBoxCompressedOmega
             // 
-            this.numericBoxCompressedOmega.AllowMouseControl = false;
-            this.numericBoxCompressedOmega.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCompressedOmega.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCompressedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmega.DecimalPlaces = -2;
             this.numericBoxCompressedOmega.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmega.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmega.FooterText = "deg/ns";
-            this.numericBoxCompressedOmega.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmega.HeaderText = "ω";
+                        this.numericBoxCompressedOmega.FooterText = "deg/ns";
+                        this.numericBoxCompressedOmega.HeaderText = "ω";
             this.numericBoxCompressedOmega.Location = new System.Drawing.Point(14, 21);
             this.numericBoxCompressedOmega.Margin = new System.Windows.Forms.Padding(12, 0, 0, 3);
             this.numericBoxCompressedOmega.Maximum = 10000D;
             this.numericBoxCompressedOmega.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxCompressedOmega.Minimum = 0D;
             this.numericBoxCompressedOmega.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxCompressedOmega.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCompressedOmega.MouseSpeed = 1D;
-            this.numericBoxCompressedOmega.Multiline = false;
-            this.numericBoxCompressedOmega.Name = "numericBoxCompressedOmega";
+                       this.numericBoxCompressedOmega.Name = "numericBoxCompressedOmega";
             this.numericBoxCompressedOmega.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedOmega.RadianValue = 0.00017453292519943296D;
-            this.numericBoxCompressedOmega.ReadOnly = false;
-            this.numericBoxCompressedOmega.RestrictLimitValue = true;
+                        this.numericBoxCompressedOmega.RestrictLimitValue = true;
             this.numericBoxCompressedOmega.ShowFraction = false;
             this.numericBoxCompressedOmega.ShowPositiveSign = false;
-            this.numericBoxCompressedOmega.ShowUpDown = false;
-            this.numericBoxCompressedOmega.Size = new System.Drawing.Size(124, 25);
+                        this.numericBoxCompressedOmega.Size = new System.Drawing.Size(124, 25);
             this.numericBoxCompressedOmega.SkipEventDuringInput = false;
             this.numericBoxCompressedOmega.SmartIncrement = true;
             this.numericBoxCompressedOmega.TabIndex = 2;
-            this.numericBoxCompressedOmega.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCompressedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCompressedOmega.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmega.ThonsandsSeparator = true;
+                        this.numericBoxCompressedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedOmega.ThonsandsSeparator = true;
             this.numericBoxCompressedOmega.ToolTip = "";
             this.numericBoxCompressedOmega.UpDown_Increment = 1D;
             this.numericBoxCompressedOmega.Value = 0.01D;
-            this.numericBoxCompressedOmega.WordWrap = true;
-            // 
+                        // 
             // numericBoxCompressedThetaA
             // 
-            this.numericBoxCompressedThetaA.AllowMouseControl = false;
-            this.numericBoxCompressedThetaA.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCompressedThetaA.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCompressedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaA.DecimalPlaces = -2;
             this.numericBoxCompressedThetaA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaA.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaA.FooterText = "deg";
-            this.numericBoxCompressedThetaA.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaA.HeaderText = "a";
+                        this.numericBoxCompressedThetaA.FooterText = "deg";
+                        this.numericBoxCompressedThetaA.HeaderText = "a";
             this.numericBoxCompressedThetaA.Location = new System.Drawing.Point(18, 77);
             this.numericBoxCompressedThetaA.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.numericBoxCompressedThetaA.Maximum = 10000D;
             this.numericBoxCompressedThetaA.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxCompressedThetaA.Minimum = 0D;
             this.numericBoxCompressedThetaA.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxCompressedThetaA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCompressedThetaA.MouseSpeed = 1D;
-            this.numericBoxCompressedThetaA.Multiline = false;
-            this.numericBoxCompressedThetaA.Name = "numericBoxCompressedThetaA";
+                       this.numericBoxCompressedThetaA.Name = "numericBoxCompressedThetaA";
             this.numericBoxCompressedThetaA.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedThetaA.RadianValue = 0D;
-            this.numericBoxCompressedThetaA.ReadOnly = false;
-            this.numericBoxCompressedThetaA.RestrictLimitValue = true;
+                        this.numericBoxCompressedThetaA.RestrictLimitValue = true;
             this.numericBoxCompressedThetaA.ShowFraction = false;
             this.numericBoxCompressedThetaA.ShowPositiveSign = false;
-            this.numericBoxCompressedThetaA.ShowUpDown = false;
-            this.numericBoxCompressedThetaA.Size = new System.Drawing.Size(102, 25);
+                        this.numericBoxCompressedThetaA.Size = new System.Drawing.Size(102, 25);
             this.numericBoxCompressedThetaA.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaA.SmartIncrement = true;
             this.numericBoxCompressedThetaA.TabIndex = 2;
-            this.numericBoxCompressedThetaA.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCompressedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCompressedThetaA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedThetaA.ThonsandsSeparator = true;
+                        this.numericBoxCompressedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedThetaA.ThonsandsSeparator = true;
             this.numericBoxCompressedThetaA.ToolTip = "";
             this.numericBoxCompressedThetaA.UpDown_Increment = 1D;
-            this.numericBoxCompressedThetaA.Value = 0D;
-            this.numericBoxCompressedThetaA.WordWrap = true;
-            // 
+                                    // 
             // numericBoxCompressedOmegaSigma
             // 
-            this.numericBoxCompressedOmegaSigma.AllowMouseControl = false;
-            this.numericBoxCompressedOmegaSigma.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCompressedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCompressedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmegaSigma.DecimalPlaces = -2;
             this.numericBoxCompressedOmegaSigma.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmegaSigma.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmegaSigma.FooterText = "deg/ns";
-            this.numericBoxCompressedOmegaSigma.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmegaSigma.HeaderText = "σ_ω";
+                        this.numericBoxCompressedOmegaSigma.FooterText = "deg/ns";
+                        this.numericBoxCompressedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxCompressedOmegaSigma.Location = new System.Drawing.Point(2, 49);
             this.numericBoxCompressedOmegaSigma.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.numericBoxCompressedOmegaSigma.Maximum = 10000D;
             this.numericBoxCompressedOmegaSigma.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxCompressedOmegaSigma.Minimum = 0D;
             this.numericBoxCompressedOmegaSigma.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxCompressedOmegaSigma.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCompressedOmegaSigma.MouseSpeed = 1D;
-            this.numericBoxCompressedOmegaSigma.Multiline = false;
-            this.numericBoxCompressedOmegaSigma.Name = "numericBoxCompressedOmegaSigma";
+                       this.numericBoxCompressedOmegaSigma.Name = "numericBoxCompressedOmegaSigma";
             this.numericBoxCompressedOmegaSigma.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedOmegaSigma.RadianValue = 0.00017453292519943296D;
-            this.numericBoxCompressedOmegaSigma.ReadOnly = false;
-            this.numericBoxCompressedOmegaSigma.RestrictLimitValue = true;
+                        this.numericBoxCompressedOmegaSigma.RestrictLimitValue = true;
             this.numericBoxCompressedOmegaSigma.ShowFraction = false;
             this.numericBoxCompressedOmegaSigma.ShowPositiveSign = false;
-            this.numericBoxCompressedOmegaSigma.ShowUpDown = false;
-            this.numericBoxCompressedOmegaSigma.Size = new System.Drawing.Size(136, 25);
+                        this.numericBoxCompressedOmegaSigma.Size = new System.Drawing.Size(136, 25);
             this.numericBoxCompressedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxCompressedOmegaSigma.SmartIncrement = true;
             this.numericBoxCompressedOmegaSigma.TabIndex = 2;
-            this.numericBoxCompressedOmegaSigma.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCompressedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCompressedOmegaSigma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCompressedOmegaSigma.ThonsandsSeparator = true;
+                        this.numericBoxCompressedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedOmegaSigma.ThonsandsSeparator = true;
             this.numericBoxCompressedOmegaSigma.ToolTip = "";
             this.numericBoxCompressedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxCompressedOmegaSigma.Value = 0.01D;
-            this.numericBoxCompressedOmegaSigma.WordWrap = true;
-            // 
+                        // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.numericBoxReleasedThetaB);
@@ -326,168 +280,119 @@
             // 
             // numericBoxReleasedThetaB
             // 
-            this.numericBoxReleasedThetaB.AllowMouseControl = false;
-            this.numericBoxReleasedThetaB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxReleasedThetaB.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxReleasedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaB.DecimalPlaces = -2;
             this.numericBoxReleasedThetaB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaB.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaB.FooterText = "deg/ns";
-            this.numericBoxReleasedThetaB.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaB.HeaderText = "b";
+                        this.numericBoxReleasedThetaB.FooterText = "deg/ns";
+                        this.numericBoxReleasedThetaB.HeaderText = "b";
             this.numericBoxReleasedThetaB.Location = new System.Drawing.Point(18, 104);
             this.numericBoxReleasedThetaB.Margin = new System.Windows.Forms.Padding(14, 0, 0, 0);
             this.numericBoxReleasedThetaB.Maximum = 10000D;
             this.numericBoxReleasedThetaB.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxReleasedThetaB.Minimum = 0D;
             this.numericBoxReleasedThetaB.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxReleasedThetaB.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxReleasedThetaB.MouseSpeed = 1D;
-            this.numericBoxReleasedThetaB.Multiline = false;
-            this.numericBoxReleasedThetaB.Name = "numericBoxReleasedThetaB";
+                       this.numericBoxReleasedThetaB.Name = "numericBoxReleasedThetaB";
             this.numericBoxReleasedThetaB.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedThetaB.RadianValue = 0.0087266462599716477D;
-            this.numericBoxReleasedThetaB.ReadOnly = false;
-            this.numericBoxReleasedThetaB.RestrictLimitValue = true;
+                        this.numericBoxReleasedThetaB.RestrictLimitValue = true;
             this.numericBoxReleasedThetaB.ShowFraction = false;
             this.numericBoxReleasedThetaB.ShowPositiveSign = false;
-            this.numericBoxReleasedThetaB.ShowUpDown = false;
-            this.numericBoxReleasedThetaB.Size = new System.Drawing.Size(120, 25);
+                        this.numericBoxReleasedThetaB.Size = new System.Drawing.Size(120, 25);
             this.numericBoxReleasedThetaB.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaB.SmartIncrement = true;
             this.numericBoxReleasedThetaB.TabIndex = 2;
-            this.numericBoxReleasedThetaB.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxReleasedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxReleasedThetaB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaB.ThonsandsSeparator = true;
+                        this.numericBoxReleasedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedThetaB.ThonsandsSeparator = true;
             this.numericBoxReleasedThetaB.ToolTip = "";
             this.numericBoxReleasedThetaB.UpDown_Increment = 1D;
             this.numericBoxReleasedThetaB.Value = 0.5D;
-            this.numericBoxReleasedThetaB.WordWrap = true;
-            // 
+                        // 
             // numericBoxReleasedOmegaSigma
             // 
-            this.numericBoxReleasedOmegaSigma.AllowMouseControl = false;
-            this.numericBoxReleasedOmegaSigma.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxReleasedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxReleasedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmegaSigma.DecimalPlaces = -2;
             this.numericBoxReleasedOmegaSigma.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmegaSigma.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmegaSigma.FooterText = "deg/ns";
-            this.numericBoxReleasedOmegaSigma.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmegaSigma.HeaderText = "σ_ω";
+                        this.numericBoxReleasedOmegaSigma.FooterText = "deg/ns";
+                        this.numericBoxReleasedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxReleasedOmegaSigma.Location = new System.Drawing.Point(4, 49);
             this.numericBoxReleasedOmegaSigma.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxReleasedOmegaSigma.Maximum = 10000D;
             this.numericBoxReleasedOmegaSigma.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxReleasedOmegaSigma.Minimum = 0D;
             this.numericBoxReleasedOmegaSigma.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxReleasedOmegaSigma.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxReleasedOmegaSigma.MouseSpeed = 1D;
-            this.numericBoxReleasedOmegaSigma.Multiline = false;
-            this.numericBoxReleasedOmegaSigma.Name = "numericBoxReleasedOmegaSigma";
+                       this.numericBoxReleasedOmegaSigma.Name = "numericBoxReleasedOmegaSigma";
             this.numericBoxReleasedOmegaSigma.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedOmegaSigma.RadianValue = 0.0087266462599716477D;
-            this.numericBoxReleasedOmegaSigma.ReadOnly = false;
-            this.numericBoxReleasedOmegaSigma.RestrictLimitValue = true;
+                        this.numericBoxReleasedOmegaSigma.RestrictLimitValue = true;
             this.numericBoxReleasedOmegaSigma.ShowFraction = false;
             this.numericBoxReleasedOmegaSigma.ShowPositiveSign = false;
-            this.numericBoxReleasedOmegaSigma.ShowUpDown = false;
-            this.numericBoxReleasedOmegaSigma.Size = new System.Drawing.Size(136, 25);
+                        this.numericBoxReleasedOmegaSigma.Size = new System.Drawing.Size(136, 25);
             this.numericBoxReleasedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxReleasedOmegaSigma.SmartIncrement = true;
             this.numericBoxReleasedOmegaSigma.TabIndex = 2;
-            this.numericBoxReleasedOmegaSigma.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxReleasedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxReleasedOmegaSigma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmegaSigma.ThonsandsSeparator = true;
+                        this.numericBoxReleasedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedOmegaSigma.ThonsandsSeparator = true;
             this.numericBoxReleasedOmegaSigma.ToolTip = "";
             this.numericBoxReleasedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxReleasedOmegaSigma.Value = 0.5D;
-            this.numericBoxReleasedOmegaSigma.WordWrap = true;
-            // 
+                        // 
             // numericBoxReleasedOmega
             // 
-            this.numericBoxReleasedOmega.AllowMouseControl = false;
-            this.numericBoxReleasedOmega.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxReleasedOmega.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxReleasedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmega.DecimalPlaces = -2;
             this.numericBoxReleasedOmega.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmega.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmega.FooterText = "deg/ns";
-            this.numericBoxReleasedOmega.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmega.HeaderText = "ω";
+                        this.numericBoxReleasedOmega.FooterText = "deg/ns";
+                        this.numericBoxReleasedOmega.HeaderText = "ω";
             this.numericBoxReleasedOmega.Location = new System.Drawing.Point(16, 21);
             this.numericBoxReleasedOmega.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxReleasedOmega.Maximum = 10000D;
             this.numericBoxReleasedOmega.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxReleasedOmega.Minimum = 0D;
             this.numericBoxReleasedOmega.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxReleasedOmega.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxReleasedOmega.MouseSpeed = 1D;
-            this.numericBoxReleasedOmega.Multiline = false;
-            this.numericBoxReleasedOmega.Name = "numericBoxReleasedOmega";
+                       this.numericBoxReleasedOmega.Name = "numericBoxReleasedOmega";
             this.numericBoxReleasedOmega.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedOmega.RadianValue = 0.0087266462599716477D;
-            this.numericBoxReleasedOmega.ReadOnly = false;
-            this.numericBoxReleasedOmega.RestrictLimitValue = true;
+                        this.numericBoxReleasedOmega.RestrictLimitValue = true;
             this.numericBoxReleasedOmega.ShowFraction = false;
             this.numericBoxReleasedOmega.ShowPositiveSign = false;
-            this.numericBoxReleasedOmega.ShowUpDown = false;
-            this.numericBoxReleasedOmega.Size = new System.Drawing.Size(124, 25);
+                        this.numericBoxReleasedOmega.Size = new System.Drawing.Size(124, 25);
             this.numericBoxReleasedOmega.SkipEventDuringInput = false;
             this.numericBoxReleasedOmega.SmartIncrement = true;
             this.numericBoxReleasedOmega.TabIndex = 2;
-            this.numericBoxReleasedOmega.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxReleasedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxReleasedOmega.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedOmega.ThonsandsSeparator = true;
+                        this.numericBoxReleasedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedOmega.ThonsandsSeparator = true;
             this.numericBoxReleasedOmega.ToolTip = "";
             this.numericBoxReleasedOmega.UpDown_Increment = 1D;
             this.numericBoxReleasedOmega.Value = 0.5D;
-            this.numericBoxReleasedOmega.WordWrap = true;
-            // 
+                        // 
             // numericBoxReleasedThetaA
             // 
-            this.numericBoxReleasedThetaA.AllowMouseControl = false;
-            this.numericBoxReleasedThetaA.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxReleasedThetaA.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxReleasedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaA.DecimalPlaces = -2;
             this.numericBoxReleasedThetaA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaA.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaA.FooterText = "deg";
-            this.numericBoxReleasedThetaA.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaA.HeaderText = "a";
+                        this.numericBoxReleasedThetaA.FooterText = "deg";
+                        this.numericBoxReleasedThetaA.HeaderText = "a";
             this.numericBoxReleasedThetaA.Location = new System.Drawing.Point(20, 77);
             this.numericBoxReleasedThetaA.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.numericBoxReleasedThetaA.Maximum = 10000D;
             this.numericBoxReleasedThetaA.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxReleasedThetaA.Minimum = 0D;
             this.numericBoxReleasedThetaA.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxReleasedThetaA.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxReleasedThetaA.MouseSpeed = 1D;
-            this.numericBoxReleasedThetaA.Multiline = false;
-            this.numericBoxReleasedThetaA.Name = "numericBoxReleasedThetaA";
+                       this.numericBoxReleasedThetaA.Name = "numericBoxReleasedThetaA";
             this.numericBoxReleasedThetaA.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedThetaA.RadianValue = 0D;
-            this.numericBoxReleasedThetaA.ReadOnly = false;
-            this.numericBoxReleasedThetaA.RestrictLimitValue = true;
+                        this.numericBoxReleasedThetaA.RestrictLimitValue = true;
             this.numericBoxReleasedThetaA.ShowFraction = false;
             this.numericBoxReleasedThetaA.ShowPositiveSign = false;
-            this.numericBoxReleasedThetaA.ShowUpDown = false;
-            this.numericBoxReleasedThetaA.Size = new System.Drawing.Size(102, 25);
+                        this.numericBoxReleasedThetaA.Size = new System.Drawing.Size(102, 25);
             this.numericBoxReleasedThetaA.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaA.SmartIncrement = true;
             this.numericBoxReleasedThetaA.TabIndex = 2;
-            this.numericBoxReleasedThetaA.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxReleasedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxReleasedThetaA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxReleasedThetaA.ThonsandsSeparator = true;
+                        this.numericBoxReleasedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedThetaA.ThonsandsSeparator = true;
             this.numericBoxReleasedThetaA.ToolTip = "";
             this.numericBoxReleasedThetaA.UpDown_Increment = 1D;
-            this.numericBoxReleasedThetaA.Value = 0D;
-            this.numericBoxReleasedThetaA.WordWrap = true;
-            // 
+                                    // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.numericBoxEOS_K0);
@@ -501,86 +406,61 @@
             // 
             // numericBoxEOS_K0
             // 
-            this.numericBoxEOS_K0.AllowMouseControl = false;
-            this.numericBoxEOS_K0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxEOS_K0.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxEOS_K0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_K0.DecimalPlaces = -2;
             this.numericBoxEOS_K0.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_K0.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_K0.FooterText = "GPa";
-            this.numericBoxEOS_K0.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_K0.HeaderText = "K0";
+                        this.numericBoxEOS_K0.FooterText = "GPa";
+                        this.numericBoxEOS_K0.HeaderText = "K0";
             this.numericBoxEOS_K0.Location = new System.Drawing.Point(14, 18);
             this.numericBoxEOS_K0.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxEOS_K0.Maximum = 10000D;
             this.numericBoxEOS_K0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_K0.Minimum = 0D;
             this.numericBoxEOS_K0.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxEOS_K0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEOS_K0.MouseSpeed = 1D;
-            this.numericBoxEOS_K0.Multiline = false;
-            this.numericBoxEOS_K0.Name = "numericBoxEOS_K0";
+                       this.numericBoxEOS_K0.Name = "numericBoxEOS_K0";
             this.numericBoxEOS_K0.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEOS_K0.RadianValue = 0.647866218340295D;
-            this.numericBoxEOS_K0.ReadOnly = false;
-            this.numericBoxEOS_K0.RestrictLimitValue = true;
+                        this.numericBoxEOS_K0.RestrictLimitValue = true;
             this.numericBoxEOS_K0.ShowFraction = false;
             this.numericBoxEOS_K0.ShowPositiveSign = false;
-            this.numericBoxEOS_K0.ShowUpDown = false;
-            this.numericBoxEOS_K0.Size = new System.Drawing.Size(114, 25);
+                        this.numericBoxEOS_K0.Size = new System.Drawing.Size(114, 25);
             this.numericBoxEOS_K0.SkipEventDuringInput = false;
             this.numericBoxEOS_K0.SmartIncrement = true;
             this.numericBoxEOS_K0.TabIndex = 2;
-            this.numericBoxEOS_K0.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxEOS_K0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxEOS_K0.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_K0.ThonsandsSeparator = true;
+                        this.numericBoxEOS_K0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxEOS_K0.ThonsandsSeparator = true;
             this.numericBoxEOS_K0.ToolTip = "";
             this.numericBoxEOS_K0.UpDown_Increment = 1D;
             this.numericBoxEOS_K0.Value = 37.12D;
-            this.numericBoxEOS_K0.WordWrap = true;
-            // 
+                        // 
             // numericBoxEOS_Kprime
             // 
-            this.numericBoxEOS_Kprime.AllowMouseControl = false;
-            this.numericBoxEOS_Kprime.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxEOS_Kprime.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxEOS_Kprime.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_Kprime.DecimalPlaces = -2;
             this.numericBoxEOS_Kprime.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_Kprime.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_Kprime.FooterText = "";
-            this.numericBoxEOS_Kprime.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_Kprime.HeaderText = "K\'0";
+                                                this.numericBoxEOS_Kprime.HeaderText = "K\'0";
             this.numericBoxEOS_Kprime.Location = new System.Drawing.Point(12, 44);
             this.numericBoxEOS_Kprime.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxEOS_Kprime.Maximum = 10000D;
             this.numericBoxEOS_Kprime.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Kprime.Minimum = 0D;
             this.numericBoxEOS_Kprime.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxEOS_Kprime.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEOS_Kprime.MouseSpeed = 1D;
-            this.numericBoxEOS_Kprime.Multiline = false;
-            this.numericBoxEOS_Kprime.Name = "numericBoxEOS_Kprime";
+                       this.numericBoxEOS_Kprime.Name = "numericBoxEOS_Kprime";
             this.numericBoxEOS_Kprime.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEOS_Kprime.RadianValue = 0.10454522219446034D;
-            this.numericBoxEOS_Kprime.ReadOnly = false;
-            this.numericBoxEOS_Kprime.RestrictLimitValue = true;
+                        this.numericBoxEOS_Kprime.RestrictLimitValue = true;
             this.numericBoxEOS_Kprime.ShowFraction = false;
             this.numericBoxEOS_Kprime.ShowPositiveSign = false;
-            this.numericBoxEOS_Kprime.ShowUpDown = false;
-            this.numericBoxEOS_Kprime.Size = new System.Drawing.Size(83, 25);
+                        this.numericBoxEOS_Kprime.Size = new System.Drawing.Size(83, 25);
             this.numericBoxEOS_Kprime.SkipEventDuringInput = false;
             this.numericBoxEOS_Kprime.SmartIncrement = true;
             this.numericBoxEOS_Kprime.TabIndex = 2;
-            this.numericBoxEOS_Kprime.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxEOS_Kprime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxEOS_Kprime.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxEOS_Kprime.ThonsandsSeparator = true;
+                        this.numericBoxEOS_Kprime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxEOS_Kprime.ThonsandsSeparator = true;
             this.numericBoxEOS_Kprime.ToolTip = "";
             this.numericBoxEOS_Kprime.UpDown_Increment = 1D;
             this.numericBoxEOS_Kprime.Value = 5.99D;
-            this.numericBoxEOS_Kprime.WordWrap = true;
-            // 
+                        // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.numericBoxShockedPlaneH);
@@ -596,29 +476,20 @@
             // 
             // numericBoxShockedPlaneH
             // 
-            this.numericBoxShockedPlaneH.AllowMouseControl = false;
-            this.numericBoxShockedPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxShockedPlaneH.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxShockedPlaneH.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneH.DecimalPlaces = -2;
             this.numericBoxShockedPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneH.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneH.FooterText = "";
-            this.numericBoxShockedPlaneH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneH.HeaderText = "(";
+                                                this.numericBoxShockedPlaneH.HeaderText = "(";
             this.numericBoxShockedPlaneH.Location = new System.Drawing.Point(3, 33);
             this.numericBoxShockedPlaneH.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxShockedPlaneH.Maximum = 10D;
             this.numericBoxShockedPlaneH.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxShockedPlaneH.Minimum = -10D;
             this.numericBoxShockedPlaneH.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxShockedPlaneH.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxShockedPlaneH.MouseSpeed = 1D;
-            this.numericBoxShockedPlaneH.Multiline = false;
-            this.numericBoxShockedPlaneH.Name = "numericBoxShockedPlaneH";
+                       this.numericBoxShockedPlaneH.Name = "numericBoxShockedPlaneH";
             this.numericBoxShockedPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxShockedPlaneH.RadianValue = 0.017453292519943295D;
-            this.numericBoxShockedPlaneH.ReadOnly = false;
-            this.numericBoxShockedPlaneH.RestrictLimitValue = true;
+                        this.numericBoxShockedPlaneH.RestrictLimitValue = true;
             this.numericBoxShockedPlaneH.ShowFraction = false;
             this.numericBoxShockedPlaneH.ShowPositiveSign = false;
             this.numericBoxShockedPlaneH.ShowUpDown = true;
@@ -626,40 +497,28 @@
             this.numericBoxShockedPlaneH.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneH.SmartIncrement = false;
             this.numericBoxShockedPlaneH.TabIndex = 2;
-            this.numericBoxShockedPlaneH.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxShockedPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxShockedPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneH.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneH.ThonsandsSeparator = true;
             this.numericBoxShockedPlaneH.ToolTip = "";
             this.numericBoxShockedPlaneH.UpDown_Increment = 1D;
             this.numericBoxShockedPlaneH.Value = 1D;
-            this.numericBoxShockedPlaneH.WordWrap = true;
-            // 
+                        // 
             // numericBoxShockedPlaneK
             // 
-            this.numericBoxShockedPlaneK.AllowMouseControl = false;
-            this.numericBoxShockedPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxShockedPlaneK.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxShockedPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneK.DecimalPlaces = -2;
             this.numericBoxShockedPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneK.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneK.FooterText = "";
-            this.numericBoxShockedPlaneK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneK.HeaderText = "";
+                                                this.numericBoxShockedPlaneK.HeaderText = "";
             this.numericBoxShockedPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxShockedPlaneK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxShockedPlaneK.Maximum = 10D;
             this.numericBoxShockedPlaneK.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxShockedPlaneK.Minimum = -10D;
             this.numericBoxShockedPlaneK.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxShockedPlaneK.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxShockedPlaneK.MouseSpeed = 1D;
-            this.numericBoxShockedPlaneK.Multiline = false;
-            this.numericBoxShockedPlaneK.Name = "numericBoxShockedPlaneK";
+                       this.numericBoxShockedPlaneK.Name = "numericBoxShockedPlaneK";
             this.numericBoxShockedPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxShockedPlaneK.RadianValue = 0D;
-            this.numericBoxShockedPlaneK.ReadOnly = false;
-            this.numericBoxShockedPlaneK.RestrictLimitValue = true;
+                        this.numericBoxShockedPlaneK.RestrictLimitValue = true;
             this.numericBoxShockedPlaneK.ShowFraction = false;
             this.numericBoxShockedPlaneK.ShowPositiveSign = false;
             this.numericBoxShockedPlaneK.ShowUpDown = true;
@@ -667,40 +526,28 @@
             this.numericBoxShockedPlaneK.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneK.SmartIncrement = false;
             this.numericBoxShockedPlaneK.TabIndex = 2;
-            this.numericBoxShockedPlaneK.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxShockedPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxShockedPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneK.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneK.ThonsandsSeparator = true;
             this.numericBoxShockedPlaneK.ToolTip = "";
             this.numericBoxShockedPlaneK.UpDown_Increment = 1D;
-            this.numericBoxShockedPlaneK.Value = 0D;
-            this.numericBoxShockedPlaneK.WordWrap = true;
-            // 
+                                    // 
             // numericBoxShockedPlaneL
             // 
-            this.numericBoxShockedPlaneL.AllowMouseControl = false;
-            this.numericBoxShockedPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxShockedPlaneL.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxShockedPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneL.DecimalPlaces = -2;
             this.numericBoxShockedPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneL.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneL.FooterText = ")";
-            this.numericBoxShockedPlaneL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneL.HeaderText = "";
+                        this.numericBoxShockedPlaneL.FooterText = ")";
+                        this.numericBoxShockedPlaneL.HeaderText = "";
             this.numericBoxShockedPlaneL.Location = new System.Drawing.Point(91, 33);
             this.numericBoxShockedPlaneL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxShockedPlaneL.Maximum = 1000D;
             this.numericBoxShockedPlaneL.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxShockedPlaneL.Minimum = 0D;
             this.numericBoxShockedPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxShockedPlaneL.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxShockedPlaneL.MouseSpeed = 1D;
-            this.numericBoxShockedPlaneL.Multiline = false;
-            this.numericBoxShockedPlaneL.Name = "numericBoxShockedPlaneL";
+                       this.numericBoxShockedPlaneL.Name = "numericBoxShockedPlaneL";
             this.numericBoxShockedPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxShockedPlaneL.RadianValue = 0D;
-            this.numericBoxShockedPlaneL.ReadOnly = false;
-            this.numericBoxShockedPlaneL.RestrictLimitValue = true;
+                        this.numericBoxShockedPlaneL.RestrictLimitValue = true;
             this.numericBoxShockedPlaneL.ShowFraction = false;
             this.numericBoxShockedPlaneL.ShowPositiveSign = false;
             this.numericBoxShockedPlaneL.ShowUpDown = true;
@@ -708,15 +555,11 @@
             this.numericBoxShockedPlaneL.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneL.SmartIncrement = false;
             this.numericBoxShockedPlaneL.TabIndex = 2;
-            this.numericBoxShockedPlaneL.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxShockedPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxShockedPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxShockedPlaneL.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneL.ThonsandsSeparator = true;
             this.numericBoxShockedPlaneL.ToolTip = "";
             this.numericBoxShockedPlaneL.UpDown_Increment = 1D;
-            this.numericBoxShockedPlaneL.Value = 0D;
-            this.numericBoxShockedPlaneL.WordWrap = true;
-            // 
+                                    // 
             // buttonExecute
             // 
             this.buttonExecute.AutoSize = true;
@@ -799,45 +642,33 @@
             // 
             // numericBoxUp
             // 
-            this.numericBoxUp.AllowMouseControl = false;
-            this.numericBoxUp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxUp.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxUp.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxUp.DecimalPlaces = -2;
             this.numericBoxUp.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUp.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUp.FooterText = "km/s";
-            this.numericBoxUp.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUp.HeaderText = "Us";
+                        this.numericBoxUp.FooterText = "km/s";
+                        this.numericBoxUp.HeaderText = "Us";
             this.numericBoxUp.Location = new System.Drawing.Point(7, 24);
             this.numericBoxUp.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxUp.Maximum = 10000D;
             this.numericBoxUp.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxUp.Minimum = 0D;
             this.numericBoxUp.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxUp.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxUp.MouseSpeed = 1D;
-            this.numericBoxUp.Multiline = false;
-            this.numericBoxUp.Name = "numericBoxUp";
+                       this.numericBoxUp.Name = "numericBoxUp";
             this.numericBoxUp.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxUp.RadianValue = 0.09599310885968812D;
-            this.numericBoxUp.ReadOnly = false;
-            this.numericBoxUp.RestrictLimitValue = true;
+                        this.numericBoxUp.RestrictLimitValue = true;
             this.numericBoxUp.ShowFraction = false;
             this.numericBoxUp.ShowPositiveSign = false;
-            this.numericBoxUp.ShowUpDown = false;
-            this.numericBoxUp.Size = new System.Drawing.Size(143, 25);
+                        this.numericBoxUp.Size = new System.Drawing.Size(143, 25);
             this.numericBoxUp.SkipEventDuringInput = false;
             this.numericBoxUp.SmartIncrement = true;
             this.numericBoxUp.TabIndex = 2;
-            this.numericBoxUp.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxUp.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxUp.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUp.ThonsandsSeparator = true;
+                        this.numericBoxUp.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxUp.ThonsandsSeparator = true;
             this.numericBoxUp.ToolTip = "";
             this.numericBoxUp.UpDown_Increment = 1D;
             this.numericBoxUp.Value = 5.5D;
-            this.numericBoxUp.WordWrap = true;
-            // 
+                        // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.radioButtonReleasedIsotropic);
@@ -863,45 +694,33 @@
             // 
             // numericBoxUr
             // 
-            this.numericBoxUr.AllowMouseControl = false;
-            this.numericBoxUr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxUr.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxUr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxUr.DecimalPlaces = -2;
             this.numericBoxUr.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUr.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUr.FooterText = "km/s";
-            this.numericBoxUr.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUr.HeaderText = "Ur";
+                        this.numericBoxUr.FooterText = "km/s";
+                        this.numericBoxUr.HeaderText = "Ur";
             this.numericBoxUr.Location = new System.Drawing.Point(7, 24);
             this.numericBoxUr.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxUr.Maximum = 10000D;
             this.numericBoxUr.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxUr.Minimum = 0D;
             this.numericBoxUr.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxUr.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxUr.MouseSpeed = 1D;
-            this.numericBoxUr.Multiline = false;
-            this.numericBoxUr.Name = "numericBoxUr";
+                       this.numericBoxUr.Name = "numericBoxUr";
             this.numericBoxUr.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxUr.RadianValue = 0.09599310885968812D;
-            this.numericBoxUr.ReadOnly = false;
-            this.numericBoxUr.RestrictLimitValue = true;
+                        this.numericBoxUr.RestrictLimitValue = true;
             this.numericBoxUr.ShowFraction = false;
             this.numericBoxUr.ShowPositiveSign = false;
-            this.numericBoxUr.ShowUpDown = false;
-            this.numericBoxUr.Size = new System.Drawing.Size(143, 25);
+                        this.numericBoxUr.Size = new System.Drawing.Size(143, 25);
             this.numericBoxUr.SkipEventDuringInput = false;
             this.numericBoxUr.SmartIncrement = true;
             this.numericBoxUr.TabIndex = 2;
-            this.numericBoxUr.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxUr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxUr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxUr.ThonsandsSeparator = true;
+                        this.numericBoxUr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxUr.ThonsandsSeparator = true;
             this.numericBoxUr.ToolTip = "";
             this.numericBoxUr.UpDown_Increment = 1D;
             this.numericBoxUr.Value = 5.5D;
-            this.numericBoxUr.WordWrap = true;
-            // 
+                        // 
             // radioButtonReleasedUniaxial
             // 
             this.radioButtonReleasedUniaxial.AutoSize = true;
@@ -929,45 +748,33 @@
             // 
             // numericBoxMassAbsorption
             // 
-            this.numericBoxMassAbsorption.AllowMouseControl = false;
-            this.numericBoxMassAbsorption.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMassAbsorption.DecimalPlaces = -2;
             this.numericBoxMassAbsorption.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxMassAbsorption.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxMassAbsorption.FooterText = "cm^2/g";
-            this.numericBoxMassAbsorption.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxMassAbsorption.HeaderText = "";
+                        this.numericBoxMassAbsorption.FooterText = "cm^2/g";
+                        this.numericBoxMassAbsorption.HeaderText = "";
             this.numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
             this.numericBoxMassAbsorption.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxMassAbsorption.Maximum = 10000D;
             this.numericBoxMassAbsorption.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxMassAbsorption.Minimum = 0D;
             this.numericBoxMassAbsorption.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxMassAbsorption.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxMassAbsorption.MouseSpeed = 1D;
-            this.numericBoxMassAbsorption.Multiline = false;
-            this.numericBoxMassAbsorption.Name = "numericBoxMassAbsorption";
+                       this.numericBoxMassAbsorption.Name = "numericBoxMassAbsorption";
             this.numericBoxMassAbsorption.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxMassAbsorption.RadianValue = 0.33196162372932142D;
-            this.numericBoxMassAbsorption.ReadOnly = false;
-            this.numericBoxMassAbsorption.RestrictLimitValue = true;
+                        this.numericBoxMassAbsorption.RestrictLimitValue = true;
             this.numericBoxMassAbsorption.ShowFraction = false;
             this.numericBoxMassAbsorption.ShowPositiveSign = false;
-            this.numericBoxMassAbsorption.ShowUpDown = false;
-            this.numericBoxMassAbsorption.Size = new System.Drawing.Size(97, 25);
+                        this.numericBoxMassAbsorption.Size = new System.Drawing.Size(97, 25);
             this.numericBoxMassAbsorption.SkipEventDuringInput = false;
             this.numericBoxMassAbsorption.SmartIncrement = true;
             this.numericBoxMassAbsorption.TabIndex = 2;
-            this.numericBoxMassAbsorption.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxMassAbsorption.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxMassAbsorption.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxMassAbsorption.ThonsandsSeparator = true;
+                        this.numericBoxMassAbsorption.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxMassAbsorption.ThonsandsSeparator = true;
             this.numericBoxMassAbsorption.ToolTip = "";
             this.numericBoxMassAbsorption.UpDown_Increment = 1D;
             this.numericBoxMassAbsorption.Value = 19.02D;
-            this.numericBoxMassAbsorption.WordWrap = true;
-            // 
+                        // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1078,29 +885,21 @@
             // 
             // numericBoxOmegaStep
             // 
-            this.numericBoxOmegaStep.AllowMouseControl = false;
-            this.numericBoxOmegaStep.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxOmegaStep.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxOmegaStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaStep.DecimalPlaces = 2;
             this.numericBoxOmegaStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaStep.FooterText = "° step ×";
-            this.numericBoxOmegaStep.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaStep.HeaderText = "";
+                        this.numericBoxOmegaStep.FooterText = "° step ×";
+                        this.numericBoxOmegaStep.HeaderText = "";
             this.numericBoxOmegaStep.Location = new System.Drawing.Point(0, 0);
             this.numericBoxOmegaStep.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxOmegaStep.Maximum = 360D;
             this.numericBoxOmegaStep.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxOmegaStep.Minimum = -360D;
             this.numericBoxOmegaStep.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxOmegaStep.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxOmegaStep.MouseSpeed = 1D;
-            this.numericBoxOmegaStep.Multiline = false;
-            this.numericBoxOmegaStep.Name = "numericBoxOmegaStep";
+                       this.numericBoxOmegaStep.Name = "numericBoxOmegaStep";
             this.numericBoxOmegaStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxOmegaStep.RadianValue = 0.0017453292519943296D;
-            this.numericBoxOmegaStep.ReadOnly = false;
-            this.numericBoxOmegaStep.RestrictLimitValue = true;
+                        this.numericBoxOmegaStep.RestrictLimitValue = true;
             this.numericBoxOmegaStep.ShowFraction = false;
             this.numericBoxOmegaStep.ShowPositiveSign = true;
             this.numericBoxOmegaStep.ShowUpDown = true;
@@ -1108,40 +907,29 @@
             this.numericBoxOmegaStep.SkipEventDuringInput = false;
             this.numericBoxOmegaStep.SmartIncrement = true;
             this.numericBoxOmegaStep.TabIndex = 2;
-            this.numericBoxOmegaStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxOmegaStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxOmegaStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaStep.ThonsandsSeparator = true;
+                        this.numericBoxOmegaStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxOmegaStep.ThonsandsSeparator = true;
             this.numericBoxOmegaStep.ToolTip = "";
             this.numericBoxOmegaStep.UpDown_Increment = 0.1D;
             this.numericBoxOmegaStep.Value = 0.1D;
-            this.numericBoxOmegaStep.WordWrap = true;
-            // 
+                        // 
             // numericBoxOmegaTimes
             // 
-            this.numericBoxOmegaTimes.AllowMouseControl = false;
-            this.numericBoxOmegaTimes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxOmegaTimes.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxOmegaTimes.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaTimes.DecimalPlaces = 0;
             this.numericBoxOmegaTimes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaTimes.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaTimes.FooterText = "times";
-            this.numericBoxOmegaTimes.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaTimes.HeaderText = "";
+                        this.numericBoxOmegaTimes.FooterText = "times";
+                        this.numericBoxOmegaTimes.HeaderText = "";
             this.numericBoxOmegaTimes.Location = new System.Drawing.Point(116, 0);
             this.numericBoxOmegaTimes.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxOmegaTimes.Maximum = 100D;
             this.numericBoxOmegaTimes.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxOmegaTimes.Minimum = 1D;
             this.numericBoxOmegaTimes.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxOmegaTimes.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxOmegaTimes.MouseSpeed = 1D;
-            this.numericBoxOmegaTimes.Multiline = false;
-            this.numericBoxOmegaTimes.Name = "numericBoxOmegaTimes";
+                       this.numericBoxOmegaTimes.Name = "numericBoxOmegaTimes";
             this.numericBoxOmegaTimes.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxOmegaTimes.RadianValue = 0.17453292519943295D;
-            this.numericBoxOmegaTimes.ReadOnly = false;
-            this.numericBoxOmegaTimes.RestrictLimitValue = true;
+                        this.numericBoxOmegaTimes.RestrictLimitValue = true;
             this.numericBoxOmegaTimes.ShowFraction = false;
             this.numericBoxOmegaTimes.ShowPositiveSign = false;
             this.numericBoxOmegaTimes.ShowUpDown = true;
@@ -1149,15 +937,12 @@
             this.numericBoxOmegaTimes.SkipEventDuringInput = false;
             this.numericBoxOmegaTimes.SmartIncrement = true;
             this.numericBoxOmegaTimes.TabIndex = 2;
-            this.numericBoxOmegaTimes.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxOmegaTimes.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxOmegaTimes.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxOmegaTimes.ThonsandsSeparator = true;
+                        this.numericBoxOmegaTimes.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxOmegaTimes.ThonsandsSeparator = true;
             this.numericBoxOmegaTimes.ToolTip = "";
             this.numericBoxOmegaTimes.UpDown_Increment = 0.1D;
             this.numericBoxOmegaTimes.Value = 10D;
-            this.numericBoxOmegaTimes.WordWrap = true;
-            // 
+                        // 
             // checkBoxOmegaStep
             // 
             this.checkBoxOmegaStep.AutoSize = true;
@@ -1171,29 +956,20 @@
             // 
             // numericBoxDivisionOfRotationAngle
             // 
-            this.numericBoxDivisionOfRotationAngle.AllowMouseControl = false;
-            this.numericBoxDivisionOfRotationAngle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDivisionOfRotationAngle.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDivisionOfRotationAngle.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivisionOfRotationAngle.DecimalPlaces = -2;
             this.numericBoxDivisionOfRotationAngle.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAngle.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAngle.FooterText = "";
-            this.numericBoxDivisionOfRotationAngle.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAngle.HeaderText = "rotation speed";
+                                                this.numericBoxDivisionOfRotationAngle.HeaderText = "rotation speed";
             this.numericBoxDivisionOfRotationAngle.Location = new System.Drawing.Point(203, 21);
             this.numericBoxDivisionOfRotationAngle.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxDivisionOfRotationAngle.Maximum = 10000D;
             this.numericBoxDivisionOfRotationAngle.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDivisionOfRotationAngle.Minimum = 0D;
             this.numericBoxDivisionOfRotationAngle.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDivisionOfRotationAngle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxDivisionOfRotationAngle.MouseSpeed = 1D;
-            this.numericBoxDivisionOfRotationAngle.Multiline = false;
-            this.numericBoxDivisionOfRotationAngle.Name = "numericBoxDivisionOfRotationAngle";
+                       this.numericBoxDivisionOfRotationAngle.Name = "numericBoxDivisionOfRotationAngle";
             this.numericBoxDivisionOfRotationAngle.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDivisionOfRotationAngle.RadianValue = 0.17453292519943295D;
-            this.numericBoxDivisionOfRotationAngle.ReadOnly = false;
-            this.numericBoxDivisionOfRotationAngle.RestrictLimitValue = true;
+                        this.numericBoxDivisionOfRotationAngle.RestrictLimitValue = true;
             this.numericBoxDivisionOfRotationAngle.ShowFraction = false;
             this.numericBoxDivisionOfRotationAngle.ShowPositiveSign = false;
             this.numericBoxDivisionOfRotationAngle.ShowUpDown = true;
@@ -1201,40 +977,28 @@
             this.numericBoxDivisionOfRotationAngle.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAngle.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAngle.TabIndex = 2;
-            this.numericBoxDivisionOfRotationAngle.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDivisionOfRotationAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDivisionOfRotationAngle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAngle.ThonsandsSeparator = true;
+                        this.numericBoxDivisionOfRotationAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDivisionOfRotationAngle.ThonsandsSeparator = true;
             this.numericBoxDivisionOfRotationAngle.ToolTip = "";
             this.numericBoxDivisionOfRotationAngle.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAngle.Value = 10D;
-            this.numericBoxDivisionOfRotationAngle.WordWrap = true;
-            // 
+                        // 
             // numericBoxDivisionOfRotationAxis
             // 
-            this.numericBoxDivisionOfRotationAxis.AllowMouseControl = false;
-            this.numericBoxDivisionOfRotationAxis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDivisionOfRotationAxis.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDivisionOfRotationAxis.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivisionOfRotationAxis.DecimalPlaces = -2;
             this.numericBoxDivisionOfRotationAxis.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAxis.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAxis.FooterText = "";
-            this.numericBoxDivisionOfRotationAxis.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAxis.HeaderText = "Division of rotation axis";
+                                                this.numericBoxDivisionOfRotationAxis.HeaderText = "Division of rotation axis";
             this.numericBoxDivisionOfRotationAxis.Location = new System.Drawing.Point(6, 21);
             this.numericBoxDivisionOfRotationAxis.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxDivisionOfRotationAxis.Maximum = 360D;
             this.numericBoxDivisionOfRotationAxis.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDivisionOfRotationAxis.Minimum = 10D;
             this.numericBoxDivisionOfRotationAxis.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDivisionOfRotationAxis.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxDivisionOfRotationAxis.MouseSpeed = 1D;
-            this.numericBoxDivisionOfRotationAxis.Multiline = false;
-            this.numericBoxDivisionOfRotationAxis.Name = "numericBoxDivisionOfRotationAxis";
+                       this.numericBoxDivisionOfRotationAxis.Name = "numericBoxDivisionOfRotationAxis";
             this.numericBoxDivisionOfRotationAxis.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDivisionOfRotationAxis.RadianValue = 1.0471975511965976D;
-            this.numericBoxDivisionOfRotationAxis.ReadOnly = false;
-            this.numericBoxDivisionOfRotationAxis.RestrictLimitValue = true;
+                        this.numericBoxDivisionOfRotationAxis.RestrictLimitValue = true;
             this.numericBoxDivisionOfRotationAxis.ShowFraction = false;
             this.numericBoxDivisionOfRotationAxis.ShowPositiveSign = false;
             this.numericBoxDivisionOfRotationAxis.ShowUpDown = true;
@@ -1242,15 +1006,12 @@
             this.numericBoxDivisionOfRotationAxis.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAxis.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAxis.TabIndex = 2;
-            this.numericBoxDivisionOfRotationAxis.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDivisionOfRotationAxis.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDivisionOfRotationAxis.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDivisionOfRotationAxis.ThonsandsSeparator = true;
+                        this.numericBoxDivisionOfRotationAxis.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDivisionOfRotationAxis.ThonsandsSeparator = true;
             this.numericBoxDivisionOfRotationAxis.ToolTip = "";
             this.numericBoxDivisionOfRotationAxis.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAxis.Value = 60D;
-            this.numericBoxDivisionOfRotationAxis.WordWrap = true;
-            // 
+                        // 
             // trackBarAdvancedBack
             // 
             this.trackBarAdvancedBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -1426,29 +1187,20 @@
             // 
             // numericBoxSlipPlaneH
             // 
-            this.numericBoxSlipPlaneH.AllowMouseControl = false;
-            this.numericBoxSlipPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxSlipPlaneH.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxSlipPlaneH.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneH.DecimalPlaces = -2;
             this.numericBoxSlipPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneH.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneH.FooterText = "";
-            this.numericBoxSlipPlaneH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneH.HeaderText = "(";
+                                                this.numericBoxSlipPlaneH.HeaderText = "(";
             this.numericBoxSlipPlaneH.Location = new System.Drawing.Point(3, 33);
             this.numericBoxSlipPlaneH.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSlipPlaneH.Maximum = 10D;
             this.numericBoxSlipPlaneH.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxSlipPlaneH.Minimum = -10D;
             this.numericBoxSlipPlaneH.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxSlipPlaneH.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxSlipPlaneH.MouseSpeed = 1D;
-            this.numericBoxSlipPlaneH.Multiline = false;
-            this.numericBoxSlipPlaneH.Name = "numericBoxSlipPlaneH";
+                       this.numericBoxSlipPlaneH.Name = "numericBoxSlipPlaneH";
             this.numericBoxSlipPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxSlipPlaneH.RadianValue = 0.017453292519943295D;
-            this.numericBoxSlipPlaneH.ReadOnly = false;
-            this.numericBoxSlipPlaneH.RestrictLimitValue = true;
+                        this.numericBoxSlipPlaneH.RestrictLimitValue = true;
             this.numericBoxSlipPlaneH.ShowFraction = false;
             this.numericBoxSlipPlaneH.ShowPositiveSign = false;
             this.numericBoxSlipPlaneH.ShowUpDown = true;
@@ -1456,40 +1208,28 @@
             this.numericBoxSlipPlaneH.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneH.SmartIncrement = false;
             this.numericBoxSlipPlaneH.TabIndex = 2;
-            this.numericBoxSlipPlaneH.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxSlipPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxSlipPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneH.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneH.ThonsandsSeparator = true;
             this.numericBoxSlipPlaneH.ToolTip = "";
             this.numericBoxSlipPlaneH.UpDown_Increment = 1D;
             this.numericBoxSlipPlaneH.Value = 1D;
-            this.numericBoxSlipPlaneH.WordWrap = true;
-            // 
+                        // 
             // numericBoxSlipPlaneK
             // 
-            this.numericBoxSlipPlaneK.AllowMouseControl = false;
-            this.numericBoxSlipPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxSlipPlaneK.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxSlipPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneK.DecimalPlaces = -2;
             this.numericBoxSlipPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneK.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneK.FooterText = "";
-            this.numericBoxSlipPlaneK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneK.HeaderText = "";
+                                                this.numericBoxSlipPlaneK.HeaderText = "";
             this.numericBoxSlipPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxSlipPlaneK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSlipPlaneK.Maximum = 10D;
             this.numericBoxSlipPlaneK.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxSlipPlaneK.Minimum = -10D;
             this.numericBoxSlipPlaneK.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxSlipPlaneK.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxSlipPlaneK.MouseSpeed = 1D;
-            this.numericBoxSlipPlaneK.Multiline = false;
-            this.numericBoxSlipPlaneK.Name = "numericBoxSlipPlaneK";
+                       this.numericBoxSlipPlaneK.Name = "numericBoxSlipPlaneK";
             this.numericBoxSlipPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxSlipPlaneK.RadianValue = 0D;
-            this.numericBoxSlipPlaneK.ReadOnly = false;
-            this.numericBoxSlipPlaneK.RestrictLimitValue = true;
+                        this.numericBoxSlipPlaneK.RestrictLimitValue = true;
             this.numericBoxSlipPlaneK.ShowFraction = false;
             this.numericBoxSlipPlaneK.ShowPositiveSign = false;
             this.numericBoxSlipPlaneK.ShowUpDown = true;
@@ -1497,40 +1237,28 @@
             this.numericBoxSlipPlaneK.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneK.SmartIncrement = false;
             this.numericBoxSlipPlaneK.TabIndex = 2;
-            this.numericBoxSlipPlaneK.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxSlipPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxSlipPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneK.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneK.ThonsandsSeparator = true;
             this.numericBoxSlipPlaneK.ToolTip = "";
             this.numericBoxSlipPlaneK.UpDown_Increment = 1D;
-            this.numericBoxSlipPlaneK.Value = 0D;
-            this.numericBoxSlipPlaneK.WordWrap = true;
-            // 
+                                    // 
             // numericBoxSlipPlaneL
             // 
-            this.numericBoxSlipPlaneL.AllowMouseControl = false;
-            this.numericBoxSlipPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxSlipPlaneL.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxSlipPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneL.DecimalPlaces = -2;
             this.numericBoxSlipPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneL.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneL.FooterText = ")";
-            this.numericBoxSlipPlaneL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneL.HeaderText = "";
+                        this.numericBoxSlipPlaneL.FooterText = ")";
+                        this.numericBoxSlipPlaneL.HeaderText = "";
             this.numericBoxSlipPlaneL.Location = new System.Drawing.Point(91, 33);
             this.numericBoxSlipPlaneL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSlipPlaneL.Maximum = 1000D;
             this.numericBoxSlipPlaneL.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxSlipPlaneL.Minimum = 0D;
             this.numericBoxSlipPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxSlipPlaneL.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxSlipPlaneL.MouseSpeed = 1D;
-            this.numericBoxSlipPlaneL.Multiline = false;
-            this.numericBoxSlipPlaneL.Name = "numericBoxSlipPlaneL";
+                       this.numericBoxSlipPlaneL.Name = "numericBoxSlipPlaneL";
             this.numericBoxSlipPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxSlipPlaneL.RadianValue = 0D;
-            this.numericBoxSlipPlaneL.ReadOnly = false;
-            this.numericBoxSlipPlaneL.RestrictLimitValue = true;
+                        this.numericBoxSlipPlaneL.RestrictLimitValue = true;
             this.numericBoxSlipPlaneL.ShowFraction = false;
             this.numericBoxSlipPlaneL.ShowPositiveSign = false;
             this.numericBoxSlipPlaneL.ShowUpDown = true;
@@ -1538,15 +1266,11 @@
             this.numericBoxSlipPlaneL.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneL.SmartIncrement = false;
             this.numericBoxSlipPlaneL.TabIndex = 2;
-            this.numericBoxSlipPlaneL.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxSlipPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxSlipPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxSlipPlaneL.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneL.ThonsandsSeparator = true;
             this.numericBoxSlipPlaneL.ToolTip = "";
             this.numericBoxSlipPlaneL.UpDown_Increment = 1D;
-            this.numericBoxSlipPlaneL.Value = 0D;
-            this.numericBoxSlipPlaneL.WordWrap = true;
-            // 
+                                    // 
             // label5
             // 
             this.label5.AutoSize = true;

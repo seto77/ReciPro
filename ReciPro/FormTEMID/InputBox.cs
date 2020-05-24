@@ -25,63 +25,63 @@ namespace ReciPro
 
         public double Length
         {
-            set => numericalTextBoxLength.Value = value;
-            get => numericalTextBoxLength.Value;
+            set => numericBoxLength.Value = value;
+            get => numericBoxLength.Value;
         }
 
         public delegate void MyEventHandler(object sender, EventArgs e);
 
         public event MyEventHandler ValueChanged;
 
-        private void numericalTextBoxlength_Click(object sender, EventArgs e)
+        private void numericBoxlength_Click(object sender, EventArgs e)
         {
-            numericalTextBoxLength.ReadOnly = false;
-            numericalTextBoxGlength.ReadOnly = true;
-            numericalTextBoxDvalue.ReadOnly = true;
+            numericBoxLength.ReadOnly = false;
+            numericBoxGlength.ReadOnly = true;
+            numericBoxDvalue.ReadOnly = true;
         }
 
-        private void numericalTextBoxDvalue_Click(object sender, EventArgs e)
+        private void numericBoxDvalue_Click(object sender, EventArgs e)
         {
-            numericalTextBoxLength.ReadOnly = true;
-            numericalTextBoxGlength.ReadOnly = true;
-            numericalTextBoxDvalue.ReadOnly = false;
+            numericBoxLength.ReadOnly = true;
+            numericBoxGlength.ReadOnly = true;
+            numericBoxDvalue.ReadOnly = false;
         }
 
-        private void numericalTextBoxGlength_Click(object sender, EventArgs e)
+        private void numericBoxGlength_Click(object sender, EventArgs e)
         {
-            numericalTextBoxLength.ReadOnly = true;
-            numericalTextBoxGlength.ReadOnly = false;
-            numericalTextBoxDvalue.ReadOnly = true;
+            numericBoxLength.ReadOnly = true;
+            numericBoxGlength.ReadOnly = false;
+            numericBoxDvalue.ReadOnly = true;
         }
 
         private bool skipValueChangedEvent = false;
 
-        private void numericalTextBoxLength_ValueChanged(object sender, EventArgs e)
+        private void numericBoxLength_ValueChanged(object sender, EventArgs e)
         {
             if (skipValueChangedEvent) return;
             skipValueChangedEvent = true;
-            numericalTextBoxDvalue.Value = 10 * waveLength / 2 / Math.Sin(Math.Atan(numericalTextBoxLength.Value / cameraLength) / 2);
-            numericalTextBoxGlength.Value = 1 / numericalTextBoxDvalue.Value * 10;
+            numericBoxDvalue.Value = 10 * waveLength / 2 / Math.Sin(Math.Atan(numericBoxLength.Value / cameraLength) / 2);
+            numericBoxGlength.Value = 1 / numericBoxDvalue.Value * 10;
             skipValueChangedEvent = false;
             ValueChanged(this, e);
         }
 
-        private void numericalTextBoxDvalue_ValueChanged(object sender, EventArgs e)
+        private void numericBoxDvalue_ValueChanged(object sender, EventArgs e)
         {
             if (skipValueChangedEvent) return;
             skipValueChangedEvent = true;
-            numericalTextBoxLength.Value = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / numericalTextBoxDvalue.Value * 10));
-            numericalTextBoxGlength.Value = 1 / numericalTextBoxDvalue.Value * 10;
+            numericBoxLength.Value = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / numericBoxDvalue.Value * 10));
+            numericBoxGlength.Value = 1 / numericBoxDvalue.Value * 10;
             skipValueChangedEvent = false;
             ValueChanged(this, e);
         }
 
-        private void numericalTextBoxGlength_ValueChanged(object sender, EventArgs e)
+        private void numericBoxGlength_ValueChanged(object sender, EventArgs e)
         {
             if (skipValueChangedEvent) return;
             skipValueChangedEvent = true;
-            numericalTextBoxDvalue.Value = 1 / numericalTextBoxGlength.Value * 10;
-            numericalTextBoxLength.Value = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / numericalTextBoxDvalue.Value * 10));
+            numericBoxDvalue.Value = 1 / numericBoxGlength.Value * 10;
+            numericBoxLength.Value = cameraLength * Math.Tan(2 * Math.Asin(waveLength / 2 / numericBoxDvalue.Value * 10));
             skipValueChangedEvent = false;
             ValueChanged(this, e);
         }

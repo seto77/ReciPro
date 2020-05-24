@@ -605,46 +605,46 @@
   <data name="flowLayoutPanelEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="numericalTextBoxEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="numericalTextBoxEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
-  <data name="numericalTextBoxEnergy.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxEnergy.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 25</value>
   </data>
-  <data name="numericalTextBoxEnergy.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
-  <data name="numericalTextBoxEnergy.ToolTip" xml:space="preserve">
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Inuput wave energy</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxEnergy.Name" xml:space="preserve">
-    <value>numericalTextBoxEnergy</value>
+  <data name="&gt;&gt;numericBoxEnergy.Name" xml:space="preserve">
+    <value>numericBoxEnergy</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxEnergy.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericalTextBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;numericBoxEnergy.Type" xml:space="preserve">
+    <value>Crystallography.Controls.numericBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxEnergy.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxEnergy.Parent" xml:space="preserve">
     <value>flowLayoutPanelEnergy</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxEnergy.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxEnergy.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
@@ -746,46 +746,46 @@
   <data name="flowLayoutPanelWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="numericalTextBoxWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxWaveLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxWaveLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="numericalTextBoxWaveLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxWaveLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
-  <data name="numericalTextBoxWaveLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxWaveLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 25</value>
   </data>
-  <data name="numericalTextBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
-  <data name="numericalTextBoxWaveLength.ToolTip" xml:space="preserve">
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
     <value>Input wave length</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxWaveLength.Name" xml:space="preserve">
-    <value>numericalTextBoxWaveLength</value>
+  <data name="&gt;&gt;numericBoxWaveLength.Name" xml:space="preserve">
+    <value>numericBoxWaveLength</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxWaveLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericalTextBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;numericBoxWaveLength.Type" xml:space="preserve">
+    <value>Crystallography.Controls.numericBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxWaveLength.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxWaveLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveLength</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxWaveLength.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxWaveLength.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanelWaveLength.Location" type="System.Drawing.Point, System.Drawing">

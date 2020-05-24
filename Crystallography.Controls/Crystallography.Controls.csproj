@@ -341,6 +341,12 @@
       <DependentUpon>FormMacroList.cs</DependentUpon>
     </Compile>
     <Compile Include="Macro\Macro.cs" />
+    <Compile Include="Numeric\NumericBoxWithMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Numeric\NumericBoxWithMenu.Designer.cs">
+      <DependentUpon>NumericBoxWithMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaclaControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -518,6 +524,9 @@
     <EmbeddedResource Include="Numeric\NumericBox.ja.resx">
       <DependentUpon>NumericBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Numeric\NumericBoxWithMenu.resx">
+      <DependentUpon>NumericBoxWithMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaclaControl.resx">
       <DependentUpon>SaclaControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -635,7 +644,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crystallography\Crystallography.csproj">
+    <ProjectReference Include="..\..\Crystallography\Crystallography\Crystallography.csproj">
       <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
       <Name>Crystallography</Name>
     </ProjectReference>

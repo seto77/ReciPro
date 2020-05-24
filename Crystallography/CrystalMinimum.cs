@@ -100,19 +100,24 @@ namespace Crystallography
         public static Crystal2 FromCrystal(Crystal c)
         {
             if (c == null) return null;
-            Crystal2 c2 = new Crystal2();
-            c2.a = c.A; c2.b = c.B; c2.c = c.C;
-            c2.alpha = c.Alpha; c2.beta = c.Beta; c2.gamma = c.Gamma;
-            c2.sym = (short)c.SymmetrySeriesNumber;
-            c2.name = c.Name;
-            c2.note = c.Note;
-            c2.argb = c.Argb;
-            c2.auth = c.PublAuthorName;
-            c2.sect = GetShortTitle(c.PublSectionTitle);
-            c2.jour = GetShortJournal(c.Journal);
-            c2.formula = c.ChemicalFormulaSum;
-
-            c2.density = c.Density;
+            Crystal2 c2 = new Crystal2
+            {
+                a = c.A,
+                b = c.B,
+                c = c.C,
+                alpha = c.Alpha,
+                beta = c.Beta,
+                gamma = c.Gamma,
+                sym = (short)c.SymmetrySeriesNumber,
+                name = c.Name,
+                note = c.Note,
+                argb = c.Argb,
+                auth = c.PublAuthorName,
+                sect = GetShortTitle(c.PublSectionTitle),
+                jour = GetShortJournal(c.Journal),
+                formula = c.ChemicalFormulaSum,
+                density = c.Density
+            };
 
             try { c2.d = c.GetDspacingList(0.1, 0.1); }
             catch { return null; }

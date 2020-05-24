@@ -14,18 +14,6 @@ namespace ReciPro
 
         partial class DataTableGrainDataTable
         {
-            /*   public Matrix3D[] Matrices
-               {
-                   get
-                   {
-                       var mList = new List<Matrix3D>();
-                       for (int i = 0; i < this.Count; i++)
-                           mList.Add((Matrix3D)this.Rows[i]["Matrix"]);
-                       return mList.ToArray();
-                   }
-               }
-               */
-
             public void Add(FormSpotID.Grain grain)
             {
                 DataRow dr = NewDataTableGrainRow();
@@ -334,7 +322,7 @@ namespace ReciPro
                     this.Rows[i]["No"] = i;
             }
 
-            public void setHKL(int index, string hkl)
+            public void SetHKL(int index, string hkl)
             {
                 if (index < 0 || index > Rows.Count)
                     return;

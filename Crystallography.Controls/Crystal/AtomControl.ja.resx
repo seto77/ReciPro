@@ -188,10 +188,10 @@
     <value>誤差
 表示</value>
   </data>
-  <data name="numericalTextBoxOccerr.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxOccerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>390, 0</value>
   </data>
-  <data name="numericalTextBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 24</value>
   </data>
   <data name="numericTextBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
@@ -206,16 +206,16 @@
   <data name="numericTextBoxZ.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
-  <data name="numericalTextBoxYerr.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxYerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 24</value>
   </data>
-  <data name="numericalTextBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
-  <data name="numericalTextBoxXerr.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxXerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 0</value>
   </data>
-  <data name="numericalTextBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
   <data name="numericTextBoxY.Location" type="System.Drawing.Point, System.Drawing">
@@ -230,10 +230,10 @@
   <data name="numericTextBoxX.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
-  <data name="numericalTextBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 48</value>
   </data>
-  <data name="numericalTextBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">

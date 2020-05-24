@@ -900,64 +900,64 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericalTextBoxAxisU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxAxisU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxAxisU.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxAxisU.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxAxisU.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisU.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxAxisU.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisU.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisU.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisU.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisU.FooterText" xml:space="preserve">
+  <data name="numericBoxAxisU.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisU.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisU.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisU.HeaderText" xml:space="preserve">
+  <data name="numericBoxAxisU.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 4</value>
   </data>
-  <data name="numericalTextBoxAxisU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisU.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisU.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxAxisU.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisU.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxAxisU.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisU.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxAxisU.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxAxisU.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxAxisU.ToolTip" xml:space="preserve">
+  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisU.Name" xml:space="preserve">
-    <value>numericalTextBoxAxisU</value>
+  <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
+    <value>numericBoxAxisU</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisU.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisU.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisU.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisU.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisU.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisU.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
@@ -1038,124 +1038,124 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericalTextBoxAxisV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxAxisV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxAxisV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxAxisV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxAxisV.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisV.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxAxisV.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisV.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisV.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisV.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisV.FooterText" xml:space="preserve">
+  <data name="numericBoxAxisV.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisV.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisV.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisV.HeaderText" xml:space="preserve">
+  <data name="numericBoxAxisV.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 4</value>
   </data>
-  <data name="numericalTextBoxAxisV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisV.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisV.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxAxisV.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisV.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxAxisV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxAxisV.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxAxisV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericalTextBoxAxisV.ToolTip" xml:space="preserve">
+  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisV.Name" xml:space="preserve">
-    <value>numericalTextBoxAxisV</value>
+  <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
+    <value>numericBoxAxisV</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisV.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisV.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisV.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisV.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisV.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisV.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericalTextBoxAxisW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxAxisW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxAxisW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxAxisW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxAxisW.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxAxisW.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisW.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisW.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisW.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisW.FooterText" xml:space="preserve">
+  <data name="numericBoxAxisW.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisW.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAxisW.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAxisW.HeaderText" xml:space="preserve">
+  <data name="numericBoxAxisW.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 4</value>
   </data>
-  <data name="numericalTextBoxAxisW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAxisW.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisW.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxAxisW.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisW.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxAxisW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAxisW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxAxisW.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxAxisW.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericalTextBoxAxisW.ToolTip" xml:space="preserve">
+  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisW.Name" xml:space="preserve">
-    <value>numericalTextBoxAxisW</value>
+  <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
+    <value>numericBoxAxisW</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisW.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisW.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisW.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisW.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAxisW.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAxisW.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1195,7 +1195,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1203,184 +1203,184 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericalTextBoxPlaneL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxPlaneL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxPlaneL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxPlaneL.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneL.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneL.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneL.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneL.FooterText" xml:space="preserve">
+  <data name="numericBoxPlaneL.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneL.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneL.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneL.HeaderText" xml:space="preserve">
+  <data name="numericBoxPlaneL.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 4</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneL.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneL.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericalTextBoxPlaneL.ToolTip" xml:space="preserve">
+  <data name="numericBoxPlaneL.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneL.Name" xml:space="preserve">
-    <value>numericalTextBoxPlaneL</value>
+  <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
+    <value>numericBoxPlaneL</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneL.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneL.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneL.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneL.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxPlaneH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxPlaneH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxPlaneH.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxPlaneH.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneH.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneH.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneH.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneH.FooterText" xml:space="preserve">
+  <data name="numericBoxPlaneH.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneH.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneH.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneH.HeaderText" xml:space="preserve">
+  <data name="numericBoxPlaneH.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 4</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneH.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneH.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneH.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericalTextBoxPlaneH.ToolTip" xml:space="preserve">
+  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneH.Name" xml:space="preserve">
-    <value>numericalTextBoxPlaneH</value>
+  <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
+    <value>numericBoxPlaneH</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneH.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneH.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneH.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneH.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericalTextBoxPlaneK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxPlaneK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxPlaneK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxPlaneK.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneK.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneK.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneK.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneK.FooterText" xml:space="preserve">
+  <data name="numericBoxPlaneK.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneK.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPlaneK.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxPlaneK.HeaderText" xml:space="preserve">
+  <data name="numericBoxPlaneK.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 4</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneK.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneK.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 23</value>
   </data>
-  <data name="numericalTextBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericalTextBoxPlaneK.ToolTip" xml:space="preserve">
+  <data name="numericBoxPlaneK.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneK.Name" xml:space="preserve">
-    <value>numericalTextBoxPlaneK</value>
+  <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
+    <value>numericBoxPlaneK</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneK.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneK.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxPlaneK.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneK.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
@@ -1504,7 +1504,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericalTextBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericalTextBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

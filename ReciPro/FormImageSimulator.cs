@@ -444,8 +444,6 @@ namespace ReciPro
         //作成したイメージをscalablePictureBoxに転送
         public void setPseudoBitamap(PseudoBitmap[,] image)
         {
-
-
             var row = image.GetLength(0);
             var col = image.GetLength(1);
 
@@ -492,7 +490,6 @@ namespace ReciPro
                 tableLayoutPanel.ResumeLayout();
             }
 
-            //if(pictureBoxes[0, 0].ScrollBarVisible)
             pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
         }
 
@@ -563,8 +560,6 @@ namespace ReciPro
                     b.DrawingAreaChanged += PictureBox_DrawingAreaChanged;
                 }
         }
-
-
 
         #endregion
 
@@ -915,8 +910,6 @@ namespace ReciPro
                             }
                     }
                 });
-
-
 
                 //メタファイルをセーブしたりコピーしたりするときのアクション
                 var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>

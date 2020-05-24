@@ -134,10 +134,10 @@ namespace ReciPro
                     {
                         if (dataSet.DataTableBethe.Rows[i][j] == DBNull.Value)
                             need = true;
-                        else if (rows[i][j] is double && !double.IsInfinity((double)rows[i][j]))
-                            need = (double)dataSet.DataTableBethe.Rows[i][j] != (double)rows[i][j];
-                        else if (rows[i][j] is int)
-                            need = (int)dataSet.DataTableBethe.Rows[i][j] != (int)rows[i][j];
+                        else if (rows[i][j] is double d && !double.IsInfinity(d))
+                            need = (double)dataSet.DataTableBethe.Rows[i][j] != d;
+                        else if (rows[i][j] is int val)
+                            need = (int)dataSet.DataTableBethe.Rows[i][j] != val;
                     }
                 }
                 else

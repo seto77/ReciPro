@@ -89,9 +89,9 @@ namespace Crystallography.Controls
             {
                 try
                 {
-                    if (numericalTextBoxTwoTheta.Value != Convert.ToDouble(value))
+                    if (numericBoxTwoTheta.Value != Convert.ToDouble(value))
                     {
-                        numericalTextBoxTwoTheta.Value = Convert.ToDouble(value);
+                        numericBoxTwoTheta.Value = Convert.ToDouble(value);
 
                         if (AxisPropertyChanged != null)
                             AxisPropertyChanged();
@@ -101,7 +101,7 @@ namespace Crystallography.Controls
             }
             get
             {
-                return numericalTextBoxTwoTheta.Value.ToString();
+                return numericBoxTwoTheta.Value.ToString();
             }
         }
 
@@ -112,14 +112,14 @@ namespace Crystallography.Controls
         {
             set
             {
-                if (value > 0 && numericalTextBoxTwoTheta.Value != value / Math.PI * 180.0)
+                if (value > 0 && numericBoxTwoTheta.Value != value / Math.PI * 180.0)
                 {
-                    numericalTextBoxTwoTheta.Value = value / Math.PI * 180.0;
+                    numericBoxTwoTheta.Value = value / Math.PI * 180.0;
                     if (AxisPropertyChanged != null)
                         AxisPropertyChanged();
                 }
             }
-            get { return numericalTextBoxTwoTheta.Value / 180.0 * Math.PI; }
+            get { return numericBoxTwoTheta.Value / 180.0 * Math.PI; }
         }
 
         public EnergyUnitEnum EnergyUnit
@@ -144,7 +144,7 @@ namespace Crystallography.Controls
             {
                 try
                 {
-                    numericalTextBoxTofTakeOffAngle.Value = Convert.ToDouble(value);
+                    numericBoxTofTakeOffAngle.Value = Convert.ToDouble(value);
 
                     if (AxisPropertyChanged != null)
                         AxisPropertyChanged();
@@ -153,7 +153,7 @@ namespace Crystallography.Controls
             }
             get
             {
-                return numericalTextBoxTofTakeOffAngle.Value.ToString();
+                return numericBoxTofTakeOffAngle.Value.ToString();
             }
         }
 
@@ -164,14 +164,14 @@ namespace Crystallography.Controls
         {
             set
             {
-                if (value > 0 && numericalTextBoxTofTakeOffAngle.Value != value / Math.PI * 180.0)
+                if (value > 0 && numericBoxTofTakeOffAngle.Value != value / Math.PI * 180.0)
                 {
-                    numericalTextBoxTofTakeOffAngle.Value = value / Math.PI * 180.0;
+                    numericBoxTofTakeOffAngle.Value = value / Math.PI * 180.0;
                     if (AxisPropertyChanged != null)
                         AxisPropertyChanged();
                 }
             }
-            get { return numericalTextBoxTofTakeOffAngle.Value / 180.0 * Math.PI; }
+            get { return numericBoxTofTakeOffAngle.Value / 180.0 * Math.PI; }
         }
 
         /// <summary>
@@ -183,9 +183,9 @@ namespace Crystallography.Controls
             {
                 try
                 {
-                    if (numericalTextBoxTofDistance.Value != value)
+                    if (numericBoxTofDistance.Value != value)
                     {
-                        numericalTextBoxTofDistance.Value = value;
+                        numericBoxTofDistance.Value = value;
 
                         if (AxisPropertyChanged != null)
                             AxisPropertyChanged();
@@ -195,7 +195,7 @@ namespace Crystallography.Controls
             }
             get
             {
-                return numericalTextBoxTofDistance.Value;
+                return numericBoxTofDistance.Value;
             }
         }
 
@@ -307,12 +307,12 @@ namespace Crystallography.Controls
             }
         }
 
-        private void numericalTextBoxWaveLength_ValueChanged(object sender, EventArgs e)
+        private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
         {
             AxisPropertyChanged?.Invoke();
         }
 
-        private void numericalTextBoxTwoTheta_ValueChanged(object sender, EventArgs e)
+        private void numericBoxTwoTheta_ValueChanged(object sender, EventArgs e)
         {
             AxisPropertyChanged?.Invoke();
         }

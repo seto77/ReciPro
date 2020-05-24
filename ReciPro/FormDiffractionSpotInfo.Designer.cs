@@ -896,9 +896,6 @@
             // 
             // numericBoxEffectiveDigit
             // 
-            this.numericBoxEffectiveDigit.AllowMouseControl = false;
-            this.numericBoxEffectiveDigit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxEffectiveDigit.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEffectiveDigit.DecimalPlaces = -2;
             this.numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI Symbol", 11F);
             this.numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -906,35 +903,24 @@
             this.numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
             this.numericBoxEffectiveDigit.HeaderText = "Effective digit";
             this.numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
-            this.numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxEffectiveDigit.Maximum = 16D;
             this.numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEffectiveDigit.Minimum = 1D;
             this.numericBoxEffectiveDigit.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxEffectiveDigit.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEffectiveDigit.MouseSpeed = 1D;
-            this.numericBoxEffectiveDigit.Multiline = false;
-            this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
+                        this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
             this.numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
-            this.numericBoxEffectiveDigit.ReadOnly = false;
-            this.numericBoxEffectiveDigit.RestrictLimitValue = true;
-            this.numericBoxEffectiveDigit.ShowFraction = false;
-            this.numericBoxEffectiveDigit.ShowPositiveSign = false;
-            this.numericBoxEffectiveDigit.ShowUpDown = true;
+                        this.numericBoxEffectiveDigit.RestrictLimitValue = true;
+                                    this.numericBoxEffectiveDigit.ShowUpDown = true;
             this.numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 25);
             this.numericBoxEffectiveDigit.SkipEventDuringInput = false;
             this.numericBoxEffectiveDigit.SmartIncrement = false;
             this.numericBoxEffectiveDigit.TabIndex = 3;
-            this.numericBoxEffectiveDigit.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxEffectiveDigit.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 11.25F);
             this.numericBoxEffectiveDigit.ThonsandsSeparator = true;
             this.numericBoxEffectiveDigit.ToolTip = "";
-            this.numericBoxEffectiveDigit.UpDown_Increment = 1D;
             this.numericBoxEffectiveDigit.Value = 4D;
-            this.numericBoxEffectiveDigit.WordWrap = true;
-            this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
+                        this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
             // 
             // button1
             // 

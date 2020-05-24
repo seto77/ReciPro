@@ -49,27 +49,27 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.numericalTextBox66 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox56 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox46 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox36 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox26 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox55 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox45 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox35 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox16 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox25 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox44 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox34 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox15 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox24 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox33 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox14 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox23 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox13 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox22 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox12 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox11 = new Crystallography.Controls.NumericBox();
+            this.numericBox66 = new Crystallography.Controls.NumericBox();
+            this.numericBox56 = new Crystallography.Controls.NumericBox();
+            this.numericBox46 = new Crystallography.Controls.NumericBox();
+            this.numericBox36 = new Crystallography.Controls.NumericBox();
+            this.numericBox26 = new Crystallography.Controls.NumericBox();
+            this.numericBox55 = new Crystallography.Controls.NumericBox();
+            this.numericBox45 = new Crystallography.Controls.NumericBox();
+            this.numericBox35 = new Crystallography.Controls.NumericBox();
+            this.numericBox16 = new Crystallography.Controls.NumericBox();
+            this.numericBox25 = new Crystallography.Controls.NumericBox();
+            this.numericBox44 = new Crystallography.Controls.NumericBox();
+            this.numericBox34 = new Crystallography.Controls.NumericBox();
+            this.numericBox15 = new Crystallography.Controls.NumericBox();
+            this.numericBox24 = new Crystallography.Controls.NumericBox();
+            this.numericBox33 = new Crystallography.Controls.NumericBox();
+            this.numericBox14 = new Crystallography.Controls.NumericBox();
+            this.numericBox23 = new Crystallography.Controls.NumericBox();
+            this.numericBox13 = new Crystallography.Controls.NumericBox();
+            this.numericBox22 = new Crystallography.Controls.NumericBox();
+            this.numericBox12 = new Crystallography.Controls.NumericBox();
+            this.numericBox11 = new Crystallography.Controls.NumericBox();
             this.radioButtonCompliance = new System.Windows.Forms.RadioButton();
             this.radioButtonStiffness = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
@@ -326,488 +326,383 @@
             this.label14.TabIndex = 83;
             this.label14.Text = "c55";
             // 
-            // numericalTextBox66
+            // numericBox66
             // 
-            this.numericalTextBox66.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox66.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox66.DecimalPlaces = -1;
-            this.numericalTextBox66.Location = new System.Drawing.Point(410, 120);
-            this.numericalTextBox66.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox66.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox66.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox66.Multiline = false;
-            this.numericalTextBox66.Name = "numericalTextBox66";
-            this.numericalTextBox66.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox66.RadianValue = 0D;
-            this.numericalTextBox66.ReadOnly = false;
-            this.numericalTextBox66.ShowFraction = false;
-            this.numericalTextBox66.ShowPositiveSign = false;
-            this.numericalTextBox66.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox66.TabIndex = 62;
-            this.numericalTextBox66.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox66.Value = 0D;
-            this.numericalTextBox66.WordWrap = true;
-            this.numericalTextBox66.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox66.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox66.DecimalPlaces = -1;
+            this.numericBox66.Location = new System.Drawing.Point(410, 120);
+            this.numericBox66.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox66.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox66.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox66.Name = "numericBox66";
+            this.numericBox66.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox66.RadianValue = 0D;
+                        
+            this.numericBox66.ShowPositiveSign = false;
+            this.numericBox66.Size = new System.Drawing.Size(49, 22);
+            this.numericBox66.TabIndex = 62;
+            this.numericBox66.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox66.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox56
+            // numericBox56
             // 
-            this.numericalTextBox56.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox56.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox56.DecimalPlaces = -1;
-            this.numericalTextBox56.Location = new System.Drawing.Point(410, 96);
-            this.numericalTextBox56.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox56.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox56.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox56.Multiline = false;
-            this.numericalTextBox56.Name = "numericalTextBox56";
-            this.numericalTextBox56.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox56.RadianValue = 0D;
-            this.numericalTextBox56.ReadOnly = false;
-            this.numericalTextBox56.ShowFraction = false;
-            this.numericalTextBox56.ShowPositiveSign = false;
-            this.numericalTextBox56.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox56.TabIndex = 61;
-            this.numericalTextBox56.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox56.Value = 0D;
-            this.numericalTextBox56.WordWrap = true;
-            this.numericalTextBox56.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox56.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox56.DecimalPlaces = -1;
+            this.numericBox56.Location = new System.Drawing.Point(410, 96);
+            this.numericBox56.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox56.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox56.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox56.Name = "numericBox56";
+            this.numericBox56.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox56.RadianValue = 0D;
+                        
+            this.numericBox56.ShowPositiveSign = false;
+            this.numericBox56.Size = new System.Drawing.Size(49, 22);
+            this.numericBox56.TabIndex = 61;
+            this.numericBox56.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox56.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox46
+            // numericBox46
             // 
-            this.numericalTextBox46.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox46.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox46.DecimalPlaces = -1;
-            this.numericalTextBox46.Location = new System.Drawing.Point(410, 72);
-            this.numericalTextBox46.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox46.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox46.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox46.Multiline = false;
-            this.numericalTextBox46.Name = "numericalTextBox46";
-            this.numericalTextBox46.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox46.RadianValue = 0D;
-            this.numericalTextBox46.ReadOnly = false;
-            this.numericalTextBox46.ShowFraction = false;
-            this.numericalTextBox46.ShowPositiveSign = false;
-            this.numericalTextBox46.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox46.TabIndex = 64;
-            this.numericalTextBox46.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox46.Value = 0D;
-            this.numericalTextBox46.WordWrap = true;
-            this.numericalTextBox46.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox46.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox46.DecimalPlaces = -1;
+            this.numericBox46.Location = new System.Drawing.Point(410, 72);
+            this.numericBox46.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox46.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox46.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox46.Name = "numericBox46";
+            this.numericBox46.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox46.RadianValue = 0D;
+                        
+            this.numericBox46.ShowPositiveSign = false;
+            this.numericBox46.Size = new System.Drawing.Size(49, 22);
+            this.numericBox46.TabIndex = 64;
+            this.numericBox46.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox46.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox36
+            // numericBox36
             // 
-            this.numericalTextBox36.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox36.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox36.DecimalPlaces = -1;
-            this.numericalTextBox36.Location = new System.Drawing.Point(410, 48);
-            this.numericalTextBox36.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox36.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox36.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox36.Multiline = false;
-            this.numericalTextBox36.Name = "numericalTextBox36";
-            this.numericalTextBox36.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox36.RadianValue = 0D;
-            this.numericalTextBox36.ReadOnly = false;
-            this.numericalTextBox36.ShowFraction = false;
-            this.numericalTextBox36.ShowPositiveSign = false;
-            this.numericalTextBox36.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox36.TabIndex = 63;
-            this.numericalTextBox36.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox36.Value = 0D;
-            this.numericalTextBox36.WordWrap = true;
-            this.numericalTextBox36.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox36.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox36.DecimalPlaces = -1;
+            this.numericBox36.Location = new System.Drawing.Point(410, 48);
+            this.numericBox36.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox36.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox36.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox36.Name = "numericBox36";
+            this.numericBox36.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox36.RadianValue = 0D;
+                        
+            this.numericBox36.ShowPositiveSign = false;
+            this.numericBox36.Size = new System.Drawing.Size(49, 22);
+            this.numericBox36.TabIndex = 63;
+            this.numericBox36.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox36.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox26
+            // numericBox26
             // 
-            this.numericalTextBox26.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox26.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox26.DecimalPlaces = -1;
-            this.numericalTextBox26.Location = new System.Drawing.Point(410, 24);
-            this.numericalTextBox26.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox26.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox26.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox26.Multiline = false;
-            this.numericalTextBox26.Name = "numericalTextBox26";
-            this.numericalTextBox26.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox26.RadianValue = 0D;
-            this.numericalTextBox26.ReadOnly = false;
-            this.numericalTextBox26.ShowFraction = false;
-            this.numericalTextBox26.ShowPositiveSign = false;
-            this.numericalTextBox26.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox26.TabIndex = 60;
-            this.numericalTextBox26.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox26.Value = 0D;
-            this.numericalTextBox26.WordWrap = true;
-            this.numericalTextBox26.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox26.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox26.DecimalPlaces = -1;
+            this.numericBox26.Location = new System.Drawing.Point(410, 24);
+            this.numericBox26.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox26.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox26.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox26.Name = "numericBox26";
+            this.numericBox26.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox26.RadianValue = 0D;
+                        
+            this.numericBox26.ShowPositiveSign = false;
+            this.numericBox26.Size = new System.Drawing.Size(49, 22);
+            this.numericBox26.TabIndex = 60;
+            this.numericBox26.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox26.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox55
+            // numericBox55
             // 
-            this.numericalTextBox55.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox55.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox55.DecimalPlaces = -1;
-            this.numericalTextBox55.Location = new System.Drawing.Point(333, 96);
-            this.numericalTextBox55.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox55.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox55.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox55.Multiline = false;
-            this.numericalTextBox55.Name = "numericalTextBox55";
-            this.numericalTextBox55.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox55.RadianValue = 0D;
-            this.numericalTextBox55.ReadOnly = false;
-            this.numericalTextBox55.ShowFraction = false;
-            this.numericalTextBox55.ShowPositiveSign = false;
-            this.numericalTextBox55.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox55.TabIndex = 56;
-            this.numericalTextBox55.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox55.Value = 0D;
-            this.numericalTextBox55.WordWrap = true;
-            this.numericalTextBox55.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox55.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox55.DecimalPlaces = -1;
+            this.numericBox55.Location = new System.Drawing.Point(333, 96);
+            this.numericBox55.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox55.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox55.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox55.Name = "numericBox55";
+            this.numericBox55.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox55.RadianValue = 0D;
+                        
+            this.numericBox55.ShowPositiveSign = false;
+            this.numericBox55.Size = new System.Drawing.Size(49, 22);
+            this.numericBox55.TabIndex = 56;
+            this.numericBox55.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox55.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox45
+            // numericBox45
             // 
-            this.numericalTextBox45.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox45.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox45.DecimalPlaces = -1;
-            this.numericalTextBox45.Location = new System.Drawing.Point(333, 72);
-            this.numericalTextBox45.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox45.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox45.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox45.Multiline = false;
-            this.numericalTextBox45.Name = "numericalTextBox45";
-            this.numericalTextBox45.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox45.RadianValue = 0D;
-            this.numericalTextBox45.ReadOnly = false;
-            this.numericalTextBox45.ShowFraction = false;
-            this.numericalTextBox45.ShowPositiveSign = false;
-            this.numericalTextBox45.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox45.TabIndex = 59;
-            this.numericalTextBox45.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox45.Value = 0D;
-            this.numericalTextBox45.WordWrap = true;
-            this.numericalTextBox45.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox45.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox45.DecimalPlaces = -1;
+            this.numericBox45.Location = new System.Drawing.Point(333, 72);
+            this.numericBox45.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox45.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox45.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox45.Name = "numericBox45";
+            this.numericBox45.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox45.RadianValue = 0D;
+                        
+            this.numericBox45.ShowPositiveSign = false;
+            this.numericBox45.Size = new System.Drawing.Size(49, 22);
+            this.numericBox45.TabIndex = 59;
+            this.numericBox45.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox45.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox35
+            // numericBox35
             // 
-            this.numericalTextBox35.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox35.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox35.DecimalPlaces = -1;
-            this.numericalTextBox35.Location = new System.Drawing.Point(333, 48);
-            this.numericalTextBox35.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox35.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox35.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox35.Multiline = false;
-            this.numericalTextBox35.Name = "numericalTextBox35";
-            this.numericalTextBox35.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox35.RadianValue = 0D;
-            this.numericalTextBox35.ReadOnly = false;
-            this.numericalTextBox35.ShowFraction = false;
-            this.numericalTextBox35.ShowPositiveSign = false;
-            this.numericalTextBox35.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox35.TabIndex = 58;
-            this.numericalTextBox35.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox35.Value = 0D;
-            this.numericalTextBox35.WordWrap = true;
-            this.numericalTextBox35.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox35.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox35.DecimalPlaces = -1;
+            this.numericBox35.Location = new System.Drawing.Point(333, 48);
+            this.numericBox35.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox35.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox35.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox35.Name = "numericBox35";
+            this.numericBox35.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox35.RadianValue = 0D;
+                        
+            this.numericBox35.ShowPositiveSign = false;
+            this.numericBox35.Size = new System.Drawing.Size(49, 22);
+            this.numericBox35.TabIndex = 58;
+            this.numericBox35.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox35.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox16
+            // numericBox16
             // 
-            this.numericalTextBox16.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox16.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox16.DecimalPlaces = -1;
-            this.numericalTextBox16.Location = new System.Drawing.Point(410, 0);
-            this.numericalTextBox16.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox16.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox16.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox16.Multiline = false;
-            this.numericalTextBox16.Name = "numericalTextBox16";
-            this.numericalTextBox16.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox16.RadianValue = 0D;
-            this.numericalTextBox16.ReadOnly = false;
-            this.numericalTextBox16.ShowFraction = false;
-            this.numericalTextBox16.ShowPositiveSign = false;
-            this.numericalTextBox16.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox16.TabIndex = 71;
-            this.numericalTextBox16.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox16.Value = 0D;
-            this.numericalTextBox16.WordWrap = true;
-            this.numericalTextBox16.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox16.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox16.DecimalPlaces = -1;
+            this.numericBox16.Location = new System.Drawing.Point(410, 0);
+            this.numericBox16.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox16.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox16.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox16.Name = "numericBox16";
+            this.numericBox16.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox16.RadianValue = 0D;
+                        
+            this.numericBox16.ShowPositiveSign = false;
+            this.numericBox16.Size = new System.Drawing.Size(49, 22);
+            this.numericBox16.TabIndex = 71;
+            this.numericBox16.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox16.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox25
+            // numericBox25
             // 
-            this.numericalTextBox25.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox25.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox25.DecimalPlaces = -1;
-            this.numericalTextBox25.Location = new System.Drawing.Point(333, 24);
-            this.numericalTextBox25.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox25.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox25.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox25.Multiline = false;
-            this.numericalTextBox25.Name = "numericalTextBox25";
-            this.numericalTextBox25.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox25.RadianValue = 0D;
-            this.numericalTextBox25.ReadOnly = false;
-            this.numericalTextBox25.ShowFraction = false;
-            this.numericalTextBox25.ShowPositiveSign = false;
-            this.numericalTextBox25.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox25.TabIndex = 70;
-            this.numericalTextBox25.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox25.Value = 0D;
-            this.numericalTextBox25.WordWrap = true;
-            this.numericalTextBox25.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox25.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox25.DecimalPlaces = -1;
+            this.numericBox25.Location = new System.Drawing.Point(333, 24);
+            this.numericBox25.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox25.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox25.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox25.Name = "numericBox25";
+            this.numericBox25.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox25.RadianValue = 0D;
+                        
+            this.numericBox25.ShowPositiveSign = false;
+            this.numericBox25.Size = new System.Drawing.Size(49, 22);
+            this.numericBox25.TabIndex = 70;
+            this.numericBox25.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox25.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox44
+            // numericBox44
             // 
-            this.numericalTextBox44.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox44.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox44.DecimalPlaces = -1;
-            this.numericalTextBox44.Location = new System.Drawing.Point(256, 72);
-            this.numericalTextBox44.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox44.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox44.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox44.Multiline = false;
-            this.numericalTextBox44.Name = "numericalTextBox44";
-            this.numericalTextBox44.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox44.RadianValue = 0D;
-            this.numericalTextBox44.ReadOnly = false;
-            this.numericalTextBox44.ShowFraction = false;
-            this.numericalTextBox44.ShowPositiveSign = false;
-            this.numericalTextBox44.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox44.TabIndex = 69;
-            this.numericalTextBox44.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox44.Value = 0D;
-            this.numericalTextBox44.WordWrap = true;
-            this.numericalTextBox44.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox44.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox44.DecimalPlaces = -1;
+            this.numericBox44.Location = new System.Drawing.Point(256, 72);
+            this.numericBox44.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox44.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox44.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox44.Name = "numericBox44";
+            this.numericBox44.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox44.RadianValue = 0D;
+                        
+            this.numericBox44.ShowPositiveSign = false;
+            this.numericBox44.Size = new System.Drawing.Size(49, 22);
+            this.numericBox44.TabIndex = 69;
+            this.numericBox44.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox44.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox34
+            // numericBox34
             // 
-            this.numericalTextBox34.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox34.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox34.DecimalPlaces = -1;
-            this.numericalTextBox34.Location = new System.Drawing.Point(256, 48);
-            this.numericalTextBox34.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox34.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox34.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox34.Multiline = false;
-            this.numericalTextBox34.Name = "numericalTextBox34";
-            this.numericalTextBox34.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox34.RadianValue = 0D;
-            this.numericalTextBox34.ReadOnly = false;
-            this.numericalTextBox34.ShowFraction = false;
-            this.numericalTextBox34.ShowPositiveSign = false;
-            this.numericalTextBox34.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox34.TabIndex = 66;
-            this.numericalTextBox34.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox34.Value = 0D;
-            this.numericalTextBox34.WordWrap = true;
-            this.numericalTextBox34.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox34.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox34.DecimalPlaces = -1;
+            this.numericBox34.Location = new System.Drawing.Point(256, 48);
+            this.numericBox34.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox34.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox34.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox34.Name = "numericBox34";
+            this.numericBox34.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox34.RadianValue = 0D;
+                        
+            this.numericBox34.ShowPositiveSign = false;
+            this.numericBox34.Size = new System.Drawing.Size(49, 22);
+            this.numericBox34.TabIndex = 66;
+            this.numericBox34.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox34.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox15
+            // numericBox15
             // 
-            this.numericalTextBox15.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox15.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox15.DecimalPlaces = -1;
-            this.numericalTextBox15.Location = new System.Drawing.Point(333, 0);
-            this.numericalTextBox15.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox15.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox15.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox15.Multiline = false;
-            this.numericalTextBox15.Name = "numericalTextBox15";
-            this.numericalTextBox15.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox15.RadianValue = 0D;
-            this.numericalTextBox15.ReadOnly = false;
-            this.numericalTextBox15.ShowFraction = false;
-            this.numericalTextBox15.ShowPositiveSign = false;
-            this.numericalTextBox15.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox15.TabIndex = 65;
-            this.numericalTextBox15.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox15.Value = 0D;
-            this.numericalTextBox15.WordWrap = true;
-            this.numericalTextBox15.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox15.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox15.DecimalPlaces = -1;
+            this.numericBox15.Location = new System.Drawing.Point(333, 0);
+            this.numericBox15.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox15.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox15.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox15.Name = "numericBox15";
+            this.numericBox15.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox15.RadianValue = 0D;
+                        
+            this.numericBox15.ShowPositiveSign = false;
+            this.numericBox15.Size = new System.Drawing.Size(49, 22);
+            this.numericBox15.TabIndex = 65;
+            this.numericBox15.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox15.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox24
+            // numericBox24
             // 
-            this.numericalTextBox24.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox24.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox24.DecimalPlaces = -1;
-            this.numericalTextBox24.Location = new System.Drawing.Point(256, 24);
-            this.numericalTextBox24.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox24.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox24.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox24.Multiline = false;
-            this.numericalTextBox24.Name = "numericalTextBox24";
-            this.numericalTextBox24.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox24.RadianValue = 0D;
-            this.numericalTextBox24.ReadOnly = false;
-            this.numericalTextBox24.ShowFraction = false;
-            this.numericalTextBox24.ShowPositiveSign = false;
-            this.numericalTextBox24.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox24.TabIndex = 68;
-            this.numericalTextBox24.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox24.Value = 0D;
-            this.numericalTextBox24.WordWrap = true;
-            this.numericalTextBox24.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox24.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox24.DecimalPlaces = -1;
+            this.numericBox24.Location = new System.Drawing.Point(256, 24);
+            this.numericBox24.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox24.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox24.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox24.Name = "numericBox24";
+            this.numericBox24.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox24.RadianValue = 0D;
+                        
+            this.numericBox24.ShowPositiveSign = false;
+            this.numericBox24.Size = new System.Drawing.Size(49, 22);
+            this.numericBox24.TabIndex = 68;
+            this.numericBox24.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox24.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox33
+            // numericBox33
             // 
-            this.numericalTextBox33.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox33.DecimalPlaces = -1;
-            this.numericalTextBox33.Location = new System.Drawing.Point(179, 48);
-            this.numericalTextBox33.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox33.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox33.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox33.Multiline = false;
-            this.numericalTextBox33.Name = "numericalTextBox33";
-            this.numericalTextBox33.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox33.RadianValue = 0D;
-            this.numericalTextBox33.ReadOnly = false;
-            this.numericalTextBox33.ShowFraction = false;
-            this.numericalTextBox33.ShowPositiveSign = false;
-            this.numericalTextBox33.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox33.TabIndex = 46;
-            this.numericalTextBox33.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox33.Value = 0D;
-            this.numericalTextBox33.WordWrap = true;
-            this.numericalTextBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox33.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox33.DecimalPlaces = -1;
+            this.numericBox33.Location = new System.Drawing.Point(179, 48);
+            this.numericBox33.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox33.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox33.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox33.Name = "numericBox33";
+            this.numericBox33.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox33.RadianValue = 0D;
+                        
+            this.numericBox33.ShowPositiveSign = false;
+            this.numericBox33.Size = new System.Drawing.Size(49, 22);
+            this.numericBox33.TabIndex = 46;
+            this.numericBox33.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox14
+            // numericBox14
             // 
-            this.numericalTextBox14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox14.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox14.DecimalPlaces = -1;
-            this.numericalTextBox14.Location = new System.Drawing.Point(256, 0);
-            this.numericalTextBox14.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox14.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox14.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox14.Multiline = false;
-            this.numericalTextBox14.Name = "numericalTextBox14";
-            this.numericalTextBox14.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox14.RadianValue = 0D;
-            this.numericalTextBox14.ReadOnly = false;
-            this.numericalTextBox14.ShowFraction = false;
-            this.numericalTextBox14.ShowPositiveSign = false;
-            this.numericalTextBox14.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox14.TabIndex = 45;
-            this.numericalTextBox14.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox14.Value = 0D;
-            this.numericalTextBox14.WordWrap = true;
-            this.numericalTextBox14.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox14.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox14.DecimalPlaces = -1;
+            this.numericBox14.Location = new System.Drawing.Point(256, 0);
+            this.numericBox14.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox14.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox14.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox14.Name = "numericBox14";
+            this.numericBox14.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox14.RadianValue = 0D;
+                        
+            this.numericBox14.ShowPositiveSign = false;
+            this.numericBox14.Size = new System.Drawing.Size(49, 22);
+            this.numericBox14.TabIndex = 45;
+            this.numericBox14.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox14.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox23
+            // numericBox23
             // 
-            this.numericalTextBox23.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox23.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox23.DecimalPlaces = -1;
-            this.numericalTextBox23.Location = new System.Drawing.Point(179, 24);
-            this.numericalTextBox23.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox23.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox23.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox23.Multiline = false;
-            this.numericalTextBox23.Name = "numericalTextBox23";
-            this.numericalTextBox23.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox23.RadianValue = 0D;
-            this.numericalTextBox23.ReadOnly = false;
-            this.numericalTextBox23.ShowFraction = false;
-            this.numericalTextBox23.ShowPositiveSign = false;
-            this.numericalTextBox23.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox23.TabIndex = 42;
-            this.numericalTextBox23.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox23.Value = 0D;
-            this.numericalTextBox23.WordWrap = true;
-            this.numericalTextBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox23.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox23.DecimalPlaces = -1;
+            this.numericBox23.Location = new System.Drawing.Point(179, 24);
+            this.numericBox23.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox23.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox23.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox23.Name = "numericBox23";
+            this.numericBox23.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox23.RadianValue = 0D;
+                        
+            this.numericBox23.ShowPositiveSign = false;
+            this.numericBox23.Size = new System.Drawing.Size(49, 22);
+            this.numericBox23.TabIndex = 42;
+            this.numericBox23.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox13
+            // numericBox13
             // 
-            this.numericalTextBox13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox13.DecimalPlaces = -1;
-            this.numericalTextBox13.Location = new System.Drawing.Point(179, 0);
-            this.numericalTextBox13.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox13.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox13.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox13.Multiline = false;
-            this.numericalTextBox13.Name = "numericalTextBox13";
-            this.numericalTextBox13.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox13.RadianValue = 0D;
-            this.numericalTextBox13.ReadOnly = false;
-            this.numericalTextBox13.ShowFraction = false;
-            this.numericalTextBox13.ShowPositiveSign = false;
-            this.numericalTextBox13.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox13.TabIndex = 53;
-            this.numericalTextBox13.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox13.Value = 0D;
-            this.numericalTextBox13.WordWrap = true;
-            this.numericalTextBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox13.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox13.DecimalPlaces = -1;
+            this.numericBox13.Location = new System.Drawing.Point(179, 0);
+            this.numericBox13.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox13.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox13.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox13.Name = "numericBox13";
+            this.numericBox13.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox13.RadianValue = 0D;
+                        
+            this.numericBox13.ShowPositiveSign = false;
+            this.numericBox13.Size = new System.Drawing.Size(49, 22);
+            this.numericBox13.TabIndex = 53;
+            this.numericBox13.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox22
+            // numericBox22
             // 
-            this.numericalTextBox22.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox22.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox22.DecimalPlaces = -1;
-            this.numericalTextBox22.Location = new System.Drawing.Point(103, 24);
-            this.numericalTextBox22.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox22.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox22.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox22.Multiline = false;
-            this.numericalTextBox22.Name = "numericalTextBox22";
-            this.numericalTextBox22.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox22.RadianValue = 0D;
-            this.numericalTextBox22.ReadOnly = false;
-            this.numericalTextBox22.ShowFraction = false;
-            this.numericalTextBox22.ShowPositiveSign = false;
-            this.numericalTextBox22.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox22.TabIndex = 52;
-            this.numericalTextBox22.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox22.Value = 0D;
-            this.numericalTextBox22.WordWrap = true;
-            this.numericalTextBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox22.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox22.DecimalPlaces = -1;
+            this.numericBox22.Location = new System.Drawing.Point(103, 24);
+            this.numericBox22.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox22.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox22.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox22.Name = "numericBox22";
+            this.numericBox22.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox22.RadianValue = 0D;
+                        
+            this.numericBox22.ShowPositiveSign = false;
+            this.numericBox22.Size = new System.Drawing.Size(49, 22);
+            this.numericBox22.TabIndex = 52;
+            this.numericBox22.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox12
+            // numericBox12
             // 
-            this.numericalTextBox12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox12.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox12.DecimalPlaces = -1;
-            this.numericalTextBox12.Location = new System.Drawing.Point(103, 0);
-            this.numericalTextBox12.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox12.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox12.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox12.Multiline = false;
-            this.numericalTextBox12.Name = "numericalTextBox12";
-            this.numericalTextBox12.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox12.RadianValue = 0D;
-            this.numericalTextBox12.ReadOnly = false;
-            this.numericalTextBox12.ShowFraction = false;
-            this.numericalTextBox12.ShowPositiveSign = false;
-            this.numericalTextBox12.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox12.TabIndex = 47;
-            this.numericalTextBox12.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox12.Value = 0D;
-            this.numericalTextBox12.WordWrap = true;
-            this.numericalTextBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox12.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox12.DecimalPlaces = -1;
+            this.numericBox12.Location = new System.Drawing.Point(103, 0);
+            this.numericBox12.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox12.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox12.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox12.Name = "numericBox12";
+            this.numericBox12.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox12.RadianValue = 0D;
+                        
+            this.numericBox12.ShowPositiveSign = false;
+            this.numericBox12.Size = new System.Drawing.Size(49, 22);
+            this.numericBox12.TabIndex = 47;
+            this.numericBox12.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
-            // numericalTextBox11
+            // numericBox11
             // 
-            this.numericalTextBox11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox11.DecimalPlaces = -1;
-            this.numericalTextBox11.Location = new System.Drawing.Point(27, 0);
-            this.numericalTextBox11.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox11.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBox11.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBox11.Multiline = false;
-            this.numericalTextBox11.Name = "numericalTextBox11";
-            this.numericalTextBox11.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox11.RadianValue = 0D;
-            this.numericalTextBox11.ReadOnly = false;
-            this.numericalTextBox11.ShowFraction = false;
-            this.numericalTextBox11.ShowPositiveSign = false;
-            this.numericalTextBox11.Size = new System.Drawing.Size(49, 22);
-            this.numericalTextBox11.TabIndex = 49;
-            this.numericalTextBox11.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBox11.Value = 0D;
-            this.numericalTextBox11.WordWrap = true;
-            this.numericalTextBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxElasticiry_ValueChanged);
+                       this.numericBox11.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox11.DecimalPlaces = -1;
+            this.numericBox11.Location = new System.Drawing.Point(27, 0);
+            this.numericBox11.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox11.MaximumSize = new System.Drawing.Size(1000, 22);
+            this.numericBox11.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBox11.Name = "numericBox11";
+            this.numericBox11.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox11.RadianValue = 0D;
+                        
+            this.numericBox11.ShowPositiveSign = false;
+            this.numericBox11.Size = new System.Drawing.Size(49, 22);
+            this.numericBox11.TabIndex = 49;
+            this.numericBox11.TextFont = new System.Drawing.Font("Arial", 9.75F);
+                                    this.numericBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // radioButtonCompliance
             // 
@@ -841,27 +736,27 @@
             this.AutoSize = true;
             this.Controls.Add(this.radioButtonStiffness);
             this.Controls.Add(this.radioButtonCompliance);
-            this.Controls.Add(this.numericalTextBox66);
-            this.Controls.Add(this.numericalTextBox56);
-            this.Controls.Add(this.numericalTextBox46);
-            this.Controls.Add(this.numericalTextBox36);
-            this.Controls.Add(this.numericalTextBox26);
-            this.Controls.Add(this.numericalTextBox55);
-            this.Controls.Add(this.numericalTextBox45);
-            this.Controls.Add(this.numericalTextBox35);
-            this.Controls.Add(this.numericalTextBox16);
-            this.Controls.Add(this.numericalTextBox25);
-            this.Controls.Add(this.numericalTextBox44);
-            this.Controls.Add(this.numericalTextBox34);
-            this.Controls.Add(this.numericalTextBox15);
-            this.Controls.Add(this.numericalTextBox24);
-            this.Controls.Add(this.numericalTextBox33);
-            this.Controls.Add(this.numericalTextBox14);
-            this.Controls.Add(this.numericalTextBox23);
-            this.Controls.Add(this.numericalTextBox13);
-            this.Controls.Add(this.numericalTextBox22);
-            this.Controls.Add(this.numericalTextBox12);
-            this.Controls.Add(this.numericalTextBox11);
+            this.Controls.Add(this.numericBox66);
+            this.Controls.Add(this.numericBox56);
+            this.Controls.Add(this.numericBox46);
+            this.Controls.Add(this.numericBox36);
+            this.Controls.Add(this.numericBox26);
+            this.Controls.Add(this.numericBox55);
+            this.Controls.Add(this.numericBox45);
+            this.Controls.Add(this.numericBox35);
+            this.Controls.Add(this.numericBox16);
+            this.Controls.Add(this.numericBox25);
+            this.Controls.Add(this.numericBox44);
+            this.Controls.Add(this.numericBox34);
+            this.Controls.Add(this.numericBox15);
+            this.Controls.Add(this.numericBox24);
+            this.Controls.Add(this.numericBox33);
+            this.Controls.Add(this.numericBox14);
+            this.Controls.Add(this.numericBox23);
+            this.Controls.Add(this.numericBox13);
+            this.Controls.Add(this.numericBox22);
+            this.Controls.Add(this.numericBox12);
+            this.Controls.Add(this.numericBox11);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label16);
@@ -893,26 +788,26 @@
         #endregion
 
         private System.Windows.Forms.Label label100;
-        private NumericBox numericalTextBox66;
-        private NumericBox numericalTextBox56;
-        private NumericBox numericalTextBox46;
-        private NumericBox numericalTextBox36;
-        private NumericBox numericalTextBox26;
-        private NumericBox numericalTextBox45;
-        private NumericBox numericalTextBox35;
-        private NumericBox numericalTextBox16;
-        private NumericBox numericalTextBox25;
-        private NumericBox numericalTextBox44;
-        private NumericBox numericalTextBox34;
-        private NumericBox numericalTextBox15;
-        private NumericBox numericalTextBox24;
-        private NumericBox numericalTextBox33;
-        private NumericBox numericalTextBox14;
-        private NumericBox numericalTextBox23;
-        private NumericBox numericalTextBox13;
-        private NumericBox numericalTextBox22;
-        private NumericBox numericalTextBox12;
-        private NumericBox numericalTextBox11;
+        private NumericBox numericBox66;
+        private NumericBox numericBox56;
+        private NumericBox numericBox46;
+        private NumericBox numericBox36;
+        private NumericBox numericBox26;
+        private NumericBox numericBox45;
+        private NumericBox numericBox35;
+        private NumericBox numericBox16;
+        private NumericBox numericBox25;
+        private NumericBox numericBox44;
+        private NumericBox numericBox34;
+        private NumericBox numericBox15;
+        private NumericBox numericBox24;
+        private NumericBox numericBox33;
+        private NumericBox numericBox14;
+        private NumericBox numericBox23;
+        private NumericBox numericBox13;
+        private NumericBox numericBox22;
+        private NumericBox numericBox12;
+        private NumericBox numericBox11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
@@ -932,7 +827,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label33;
-        private NumericBox numericalTextBox55;
+        private NumericBox numericBox55;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RadioButton radioButtonCompliance;
         private System.Windows.Forms.RadioButton radioButtonStiffness;

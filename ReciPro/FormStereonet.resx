@@ -3425,517 +3425,517 @@ scheme</value>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRxSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRxSpeed.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRxSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRxSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.FooterText" xml:space="preserve">
+  <data name="numericBoxRxSpeed.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRxSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRxSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.HeaderText" xml:space="preserve">
+  <data name="numericBoxRxSpeed.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRxSpeed.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRxSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 21</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRxSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRxSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRxSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRxSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRxSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRxSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRxSpeed.ToolTip" xml:space="preserve">
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRxSpeed.Name" xml:space="preserve">
-    <value>numericalTextBoxRxSpeed</value>
+  <data name="&gt;&gt;numericBoxRxSpeed.Name" xml:space="preserve">
+    <value>numericBoxRxSpeed</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRxSpeed.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRxSpeed.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRxSpeed.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRxSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRxSpeed.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRxSpeed.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <data name="numericalTextBoxRySpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRySpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRySpeed.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRySpeed.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRySpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRySpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRySpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRySpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRySpeed.FooterText" xml:space="preserve">
+  <data name="numericBoxRySpeed.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRySpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRySpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRySpeed.HeaderText" xml:space="preserve">
+  <data name="numericBoxRySpeed.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRySpeed.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRySpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 154</value>
   </data>
-  <data name="numericalTextBoxRySpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRySpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRySpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRySpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRySpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRySpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRySpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRySpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRySpeed.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRySpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRySpeed.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRySpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRySpeed.ToolTip" xml:space="preserve">
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRySpeed.Name" xml:space="preserve">
-    <value>numericalTextBoxRySpeed</value>
+  <data name="&gt;&gt;numericBoxRySpeed.Name" xml:space="preserve">
+    <value>numericBoxRySpeed</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRySpeed.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRySpeed.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRySpeed.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRySpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRySpeed.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRySpeed.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRzSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzSpeed.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.FooterText" xml:space="preserve">
+  <data name="numericBoxRzSpeed.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRzSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.HeaderText" xml:space="preserve">
+  <data name="numericBoxRzSpeed.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRzSpeed.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRzSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 91</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRzSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRzSpeed.ToolTip" xml:space="preserve">
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzSpeed.Name" xml:space="preserve">
-    <value>numericalTextBoxRzSpeed</value>
+  <data name="&gt;&gt;numericBoxRzSpeed.Name" xml:space="preserve">
+    <value>numericBoxRzSpeed</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzSpeed.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzSpeed.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzSpeed.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzSpeed.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzSpeed.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <data name="numericalTextBoxTotalTime.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTotalTime.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxTotalTime.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTotalTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTotalTime.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTotalTime.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTotalTime.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTotalTime.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxTotalTime.FooterText" xml:space="preserve">
+  <data name="numericBoxTotalTime.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTotalTime.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTotalTime.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTotalTime.HeaderText" xml:space="preserve">
+  <data name="numericBoxTotalTime.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxTotalTime.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxTotalTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 296</value>
   </data>
-  <data name="numericalTextBoxTotalTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTotalTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxTotalTime.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTotalTime.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxTotalTime.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTotalTime.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxTotalTime.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTotalTime.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxTotalTime.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTotalTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxTotalTime.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTotalTime.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxTotalTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxTotalTime.Name" xml:space="preserve">
-    <value>numericalTextBoxTotalTime</value>
+  <data name="&gt;&gt;numericBoxTotalTime.Name" xml:space="preserve">
+    <value>numericBoxTotalTime</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTotalTime.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTotalTime.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTotalTime.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTotalTime.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTotalTime.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTotalTime.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxAngularSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAngularSpeed.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAngularSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAngularSpeed.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.FooterText" xml:space="preserve">
+  <data name="numericBoxAngularSpeed.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.HeaderText" xml:space="preserve">
+  <data name="numericBoxAngularSpeed.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxAngularSpeed.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAngularSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 274</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAngularSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAngularSpeed.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAngularSpeed.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxAngularSpeed.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAngularSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxAngularSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxAngularSpeed.ToolTip" xml:space="preserve">
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxAngularSpeed.Name" xml:space="preserve">
-    <value>numericalTextBoxAngularSpeed</value>
+  <data name="&gt;&gt;numericBoxAngularSpeed.Name" xml:space="preserve">
+    <value>numericBoxAngularSpeed</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAngularSpeed.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAngularSpeed.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAngularSpeed.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAngularSpeed.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxAngularSpeed.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAngularSpeed.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <data name="numericalTextBoxRyStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRyStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRyStep.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyStep.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyStep.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyStep.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRyStep.FooterText" xml:space="preserve">
+  <data name="numericBoxRyStep.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyStep.HeaderText" xml:space="preserve">
+  <data name="numericBoxRyStep.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRyStep.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRyStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 202</value>
   </data>
-  <data name="numericalTextBoxRyStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRyStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRyStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRyStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRyStep.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRyStep.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRyStep.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRyStep.ToolTip" xml:space="preserve">
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyStep.Name" xml:space="preserve">
-    <value>numericalTextBoxRyStep</value>
+  <data name="&gt;&gt;numericBoxRyStep.Name" xml:space="preserve">
+    <value>numericBoxRyStep</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyStep.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyStep.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyStep.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyStep.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyStep.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyStep.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRadialAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRadialAngle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRadialAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRadialAngle.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.FooterText" xml:space="preserve">
+  <data name="numericBoxRadialAngle.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRadialAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRadialAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.HeaderText" xml:space="preserve">
+  <data name="numericBoxRadialAngle.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRadialAngle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRadialAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 250</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRadialAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRadialAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRadialAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRadialAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRadialAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRadialAngle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRadialAngle.ToolTip" xml:space="preserve">
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRadialAngle.Name" xml:space="preserve">
-    <value>numericalTextBoxRadialAngle</value>
+  <data name="&gt;&gt;numericBoxRadialAngle.Name" xml:space="preserve">
+    <value>numericBoxRadialAngle</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRadialAngle.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRadialAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRadialAngle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRadialAngle.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRadialAngle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRadialAngle.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRyOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyOscillation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyOscillation.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.FooterText" xml:space="preserve">
+  <data name="numericBoxRyOscillation.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRyOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRyOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.HeaderText" xml:space="preserve">
+  <data name="numericBoxRyOscillation.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRyOscillation.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRyOscillation.Location" type="System.Drawing.Point, System.Drawing">
     <value>158, 178</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRyOscillation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRyOscillation.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRyOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRyOscillation.ToolTip" xml:space="preserve">
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyOscillation.Name" xml:space="preserve">
-    <value>numericalTextBoxRyOscillation</value>
+  <data name="&gt;&gt;numericBoxRyOscillation.Name" xml:space="preserve">
+    <value>numericBoxRyOscillation</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyOscillation.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyOscillation.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyOscillation.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyOscillation.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRyOscillation.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRyOscillation.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxRzOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzOscillation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzOscillation.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.FooterText" xml:space="preserve">
+  <data name="numericBoxRzOscillation.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRzOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxRzOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.HeaderText" xml:space="preserve">
+  <data name="numericBoxRzOscillation.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxRzOscillation.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxRzOscillation.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 115</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzOscillation.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzOscillation.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxRzOscillation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxRzOscillation.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxRzOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxRzOscillation.ToolTip" xml:space="preserve">
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzOscillation.Name" xml:space="preserve">
-    <value>numericalTextBoxRzOscillation</value>
+  <data name="&gt;&gt;numericBoxRzOscillation.Name" xml:space="preserve">
+    <value>numericBoxRzOscillation</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzOscillation.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzOscillation.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.19.646, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzOscillation.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzOscillation.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxRzOscillation.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxRzOscillation.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">

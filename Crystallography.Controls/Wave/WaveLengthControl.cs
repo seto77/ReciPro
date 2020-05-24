@@ -38,10 +38,10 @@ namespace Crystallography.Controls
         {
             set
             {
-                numericalTextBoxEnergy.TextFont = value;
-                numericalTextBoxWaveLength.TextFont = value;
+                numericBoxEnergy.TextFont = value;
+                numericBoxWaveLength.TextFont = value;
             }
-            get { return numericalTextBoxWaveLength.TextFont; }
+            get { return numericBoxWaveLength.TextFont; }
         }
 
         public bool showWaveSource = true;
@@ -68,7 +68,7 @@ namespace Crystallography.Controls
             {
                 try
                 {
-                    numericalTextBoxWaveLength.Value = Convert.ToDouble(value);
+                    numericBoxWaveLength.Value = Convert.ToDouble(value);
                     comboBoxXRayElement.SelectedIndex = 0;
                 }
                 catch
@@ -77,7 +77,7 @@ namespace Crystallography.Controls
             }
             get
             {
-                return numericalTextBoxWaveLength.Text;
+                return numericBoxWaveLength.Text;
             }
         }
 
@@ -95,10 +95,10 @@ namespace Crystallography.Controls
                         comboBoxXRayElement.SelectedIndex = 0;
                     skipEvent = false;
 
-                    numericalTextBoxWaveLength.Value = value * 10.0;
+                    numericBoxWaveLength.Value = value * 10.0;
                 }
             }
-            get=>numericalTextBoxWaveLength.Value / 10.0;
+            get=>numericBoxWaveLength.Value / 10.0;
         }
 
         /// <summary>
@@ -176,11 +176,11 @@ namespace Crystallography.Controls
             set
             {
                 if (value > 0)
-                    numericalTextBoxEnergy.Value = value;
+                    numericBoxEnergy.Value = value;
             }
             get
             {
-                return numericalTextBoxEnergy.Value;
+                return numericBoxEnergy.Value;
             }
         }
 
@@ -197,13 +197,13 @@ namespace Crystallography.Controls
             {
                 try
                 {
-                    numericalTextBoxEnergy.Value = Convert.ToDouble(value);
+                    numericBoxEnergy.Value = Convert.ToDouble(value);
                 }
                 catch { }
             }
             get
             {
-                return numericalTextBoxEnergy.Value.ToString();
+                return numericBoxEnergy.Value.ToString();
             }
         }
 
@@ -256,7 +256,7 @@ namespace Crystallography.Controls
                 comboBoxXrayLine.Visible = false;
                 comboBoxXRayElement.Width = 100;
                 flowLayoutPanelEnergy.Enabled = true;
-                numericalTextBoxWaveLength.Enabled = true;
+                numericBoxWaveLength.Enabled = true;
             }
             else
             {
@@ -264,7 +264,7 @@ namespace Crystallography.Controls
                 comboBoxXrayLine.Visible = true;
                 flowLayoutPanelEnergy.Enabled = false;
 
-                numericalTextBoxWaveLength.Enabled = false;
+                numericBoxWaveLength.Enabled = false;
 
                 comboBoxXrayLine.Items.Clear();
                 XrayLine[] temp = (XrayLine[])Enum.GetValues(typeof(XrayLine));
@@ -298,8 +298,8 @@ namespace Crystallography.Controls
                 if (!double.IsNaN(d))
                 {
                     skipEvent = true;
-                    numericalTextBoxWaveLength.Value = d;
-                    numericalTextBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericalTextBoxWaveLength.Value / 10) / 1000;
+                    numericBoxWaveLength.Value = d;
+                    numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000;
                     skipEvent = false;
                     WavelengthChanged?.Invoke(this, new EventArgs());
                 }
@@ -316,21 +316,21 @@ namespace Crystallography.Controls
             if (radioButtonXray.Checked)
             {
                 flowLayoutPanelElement.Visible = true;
-                numericalTextBoxEnergy.FooterText = "keV";
+                numericBoxEnergy.FooterText = "keV";
             }
             else
             {
                 flowLayoutPanelElement.Visible = false;
                 flowLayoutPanelEnergy.Visible = true;
                 flowLayoutPanelEnergy.Enabled = true;
-                numericalTextBoxWaveLength.Enabled = true;
+                numericBoxWaveLength.Enabled = true;
 
                 if (radioButtonElectron.Checked)
-                    numericalTextBoxEnergy.FooterText = "kV";
+                    numericBoxEnergy.FooterText = "kV";
                 else if (radioButtonNeutron.Checked)
-                    numericalTextBoxEnergy.FooterText = "meV";
+                    numericBoxEnergy.FooterText = "meV";
             }
-            numericalTextBoxWaveLength_ValueChanged(sender, e);
+            numericBoxWaveLength_ValueChanged(sender, e);
             WaveSourceChanged?.Invoke(sender, e);
 
         }
@@ -342,18 +342,18 @@ namespace Crystallography.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void numericalTextBoxWaveLength_ValueChanged(object sender, EventArgs e)
+        private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
         {
             
             if (skipEvent) return;
 
             skipEvent = true;
             if (radioButtonXray.Checked)
-                numericalTextBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericalTextBoxWaveLength.Value / 10) / 1000;
+                numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000;
             else if (radioButtonElectron.Checked)
-                numericalTextBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToElectronEnergy(numericalTextBoxWaveLength.Value / 10);
+                numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToElectronEnergy(numericBoxWaveLength.Value / 10);
             else
-                numericalTextBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToNeutronEnergy(numericalTextBoxWaveLength.Value / 10) / 1.0E6;
+                numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToNeutronEnergy(numericBoxWaveLength.Value / 10) / 1.0E6;
             skipEvent = false;
             WavelengthChanged?.Invoke(this, new EventArgs());
         }
@@ -363,16 +363,16 @@ namespace Crystallography.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void numericalTextBoxEnergy_ValueChanged(object sender, EventArgs e)
+        private void numericBoxEnergy_ValueChanged(object sender, EventArgs e)
         {
             if (skipEvent) return;
             skipEvent = true;
             if (radioButtonXray.Checked) //X線の時
-                numericalTextBoxWaveLength.Value = UniversalConstants.Convert.EnergyToXrayWaveLength(numericalTextBoxEnergy.Value * 1000) * 10;
+                numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToXrayWaveLength(numericBoxEnergy.Value * 1000) * 10;
             else if (radioButtonElectron.Checked)//電子線の時
-                numericalTextBoxWaveLength.Value = UniversalConstants.Convert.EnergyToElectronWaveLength(numericalTextBoxEnergy.Value) * 10;
+                numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToElectronWaveLength(numericBoxEnergy.Value) * 10;
             else//中性子
-                numericalTextBoxWaveLength.Value = UniversalConstants.Convert.EnergyToNeutronWaveLength(numericalTextBoxEnergy.Value * 1.0E6) * 10;
+                numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToNeutronWaveLength(numericBoxEnergy.Value * 1.0E6) * 10;
             skipEvent = false;
             WavelengthChanged?.Invoke(this, new EventArgs());
         }

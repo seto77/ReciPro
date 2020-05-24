@@ -234,13 +234,10 @@
     <Compile Include="DeepCopy.cs" />
     <Compile Include="DiffractionOptics.cs" />
     <Compile Include="DigitalMicrograph.cs" />
-    <Compile Include="archive\DuplicateKeyedSortedList.cs" />
-    <Compile Include="archive\DuplicateKeySortedList.cs" />
     <Compile Include="DynamicTheory.cs" />
     <Compile Include="NativeWrapper.cs" />
     <Compile Include="Elasticity.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="archive\FftwInterop.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ImageProcessor.cs" />
     <Compile Include="Language.cs" />
@@ -256,7 +253,6 @@
     <Compile Include="GraphicsAlpha.cs" />
     <Compile Include="ImageIO.cs" />
     <Compile Include="Material.cs" />
-    <Compile Include="archive\MersenneTwister.cs" />
     <Compile Include="Ngen.cs" />
     <Compile Include="PdiFile.cs" />
     <Compile Include="ProgramUpdates.cs" />
@@ -345,6 +341,5 @@
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets'))" />
   </Target>
 </Project>

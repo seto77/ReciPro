@@ -705,7 +705,7 @@ namespace ReciPro
 
                     DataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
                     if (d.Length == 17 && d[15] != "")
-                        DataSet.DataTableSpot.setHKL(i, d[15]);
+                        DataSet.DataTableSpot.SetHKL(i, d[15]);
 
                 }
 
@@ -1186,11 +1186,11 @@ namespace ReciPro
                     for (int i = 0; i < DataSet.DataTableSpot.Count; i++)
                     {
                         var index = g.Indices.Where(index => index.No == i).ToArray();
-                        DataSet.DataTableSpot.setHKL(i, index.Length != 1 ? "" : $"{index[0].H} {index[0].K} {index[0].L}");
+                        DataSet.DataTableSpot.SetHKL(i, index.Length != 1 ? "" : $"{index[0].H} {index[0].K} {index[0].L}");
                     }
-                    DataSet.DataTableSpot.setHKL(DataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
+                    DataSet.DataTableSpot.SetHKL(DataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
                     foreach (var (No, H, K, L) in g.Indices)
-                        DataSet.DataTableSpot.setHKL(No, $" {H} {K} {L}");
+                        DataSet.DataTableSpot.SetHKL(No, $" {H} {K} {L}");
                     skipEvent = false;
 
                     //シンボルを更新

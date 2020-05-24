@@ -451,10 +451,10 @@
   <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 8</value>
   </data>
-  <data name="numericalTextBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 4</value>
   </data>
-  <data name="numericalTextBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 23</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
@@ -472,13 +472,13 @@
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
   </data>
-  <data name="numericalTextBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 4</value>
   </data>
-  <data name="numericalTextBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 23</value>
   </data>
-  <data name="numericalTextBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 23</value>
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
@@ -493,28 +493,28 @@
   <data name="tableLayoutPanel7.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericalTextBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="numericalTextBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 4</value>
   </data>
-  <data name="numericalTextBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="numericalTextBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 4</value>
   </data>
-  <data name="numericalTextBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="numericalTextBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">

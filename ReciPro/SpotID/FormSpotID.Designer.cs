@@ -238,67 +238,33 @@ namespace ReciPro
             // numericBoxCameraLength
             // 
             resources.ApplyResources(this.numericBoxCameraLength, "numericBoxCameraLength");
-            this.numericBoxCameraLength.AllowMouseControl = false;
             this.numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCameraLength.DecimalPlaces = -2;
-            this.numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxCameraLength.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCameraLength.Maximum = 10000D;
+                                                                       this.numericBoxCameraLength.Maximum = 10000D;
             this.numericBoxCameraLength.Minimum = 0D;
-            this.numericBoxCameraLength.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxCameraLength.MouseSpeed = 1D;
-            this.numericBoxCameraLength.Multiline = false;
-            this.numericBoxCameraLength.Name = "numericBoxCameraLength";
+                        this.numericBoxCameraLength.Name = "numericBoxCameraLength";
             this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
-            this.numericBoxCameraLength.ReadOnly = false;
-            this.numericBoxCameraLength.RestrictLimitValue = true;
-            this.numericBoxCameraLength.ShowFraction = false;
-            this.numericBoxCameraLength.ShowPositiveSign = false;
-            this.numericBoxCameraLength.SkipEventDuringInput = false;
+                        this.numericBoxCameraLength.RestrictLimitValue = true;
+                                    this.numericBoxCameraLength.SkipEventDuringInput = false;
             this.numericBoxCameraLength.SmartIncrement = true;
-            this.numericBoxCameraLength.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCameraLength.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCameraLength.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCameraLength.ThonsandsSeparator = true;
-            this.numericBoxCameraLength.UpDown_Increment = 1D;
-            this.numericBoxCameraLength.Value = 1000D;
-            this.numericBoxCameraLength.WordWrap = true;
-            // 
+                                                this.numericBoxCameraLength.ThonsandsSeparator = true;
+                        this.numericBoxCameraLength.Value = 1000D;
+                        // 
             // numericBoxPixelSize
             // 
             resources.ApplyResources(this.numericBoxPixelSize, "numericBoxPixelSize");
-            this.numericBoxPixelSize.AllowMouseControl = false;
             this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelSize.DecimalPlaces = -2;
-            this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxPixelSize.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPixelSize.Maximum = 100D;
+                                                                       this.numericBoxPixelSize.Maximum = 100D;
             this.numericBoxPixelSize.Minimum = 0D;
-            this.numericBoxPixelSize.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxPixelSize.MouseSpeed = 1D;
-            this.numericBoxPixelSize.Multiline = false;
-            this.numericBoxPixelSize.Name = "numericBoxPixelSize";
+                        this.numericBoxPixelSize.Name = "numericBoxPixelSize";
             this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-            this.numericBoxPixelSize.ReadOnly = false;
-            this.numericBoxPixelSize.RestrictLimitValue = true;
-            this.numericBoxPixelSize.ShowFraction = false;
-            this.numericBoxPixelSize.ShowPositiveSign = false;
-            this.numericBoxPixelSize.SkipEventDuringInput = false;
+                        this.numericBoxPixelSize.RestrictLimitValue = true;
+                                    this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
-            this.numericBoxPixelSize.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxPixelSize.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxPixelSize.ThonsandsSeparator = true;
-            this.numericBoxPixelSize.UpDown_Increment = 1D;
-            this.numericBoxPixelSize.Value = 0.05D;
-            this.numericBoxPixelSize.WordWrap = true;
-            // 
+                                                this.numericBoxPixelSize.ThonsandsSeparator = true;
+                        this.numericBoxPixelSize.Value = 0.05D;
+                        // 
             // waveLengthControl1
             // 
             resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
@@ -343,135 +309,67 @@ namespace ReciPro
             // numericBoxSemiangle
             // 
             resources.ApplyResources(this.numericBoxSemiangle, "numericBoxSemiangle");
-            this.numericBoxSemiangle.AllowMouseControl = false;
             this.numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSemiangle.DecimalPlaces = 1;
-            this.numericBoxSemiangle.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxSemiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxSemiangle.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxSemiangle.Maximum = 10D;
+                                                                       this.numericBoxSemiangle.Maximum = 10D;
             this.numericBoxSemiangle.Minimum = 1D;
-            this.numericBoxSemiangle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxSemiangle.MouseSpeed = 1D;
-            this.numericBoxSemiangle.Multiline = false;
-            this.numericBoxSemiangle.Name = "numericBoxSemiangle";
+                        this.numericBoxSemiangle.Name = "numericBoxSemiangle";
             this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
-            this.numericBoxSemiangle.ReadOnly = false;
-            this.numericBoxSemiangle.RestrictLimitValue = true;
-            this.numericBoxSemiangle.ShowFraction = false;
-            this.numericBoxSemiangle.ShowPositiveSign = false;
-            this.numericBoxSemiangle.ShowUpDown = true;
-            this.numericBoxSemiangle.SkipEventDuringInput = true;
-            this.numericBoxSemiangle.SmartIncrement = true;
-            this.numericBoxSemiangle.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxSemiangle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+                        this.numericBoxSemiangle.RestrictLimitValue = true;
+                                    this.numericBoxSemiangle.ShowUpDown = true;
+                        this.numericBoxSemiangle.SmartIncrement = true;
+                                    this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
             this.numericBoxSemiangle.ThonsandsSeparator = true;
-            this.numericBoxSemiangle.UpDown_Increment = 1D;
-            this.numericBoxSemiangle.Value = 2D;
-            this.numericBoxSemiangle.WordWrap = true;
-            // 
+                        this.numericBoxSemiangle.Value = 2D;
+                        // 
             // numericBoxMaxNumOfG
             // 
             resources.ApplyResources(this.numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            this.numericBoxMaxNumOfG.AllowMouseControl = false;
             this.numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMaxNumOfG.DecimalPlaces = -2;
-            this.numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxMaxNumOfG.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxMaxNumOfG.Maximum = 2048D;
+                                                                       this.numericBoxMaxNumOfG.Maximum = 2048D;
             this.numericBoxMaxNumOfG.Minimum = 1D;
-            this.numericBoxMaxNumOfG.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxMaxNumOfG.MouseSpeed = 1D;
-            this.numericBoxMaxNumOfG.Multiline = false;
-            this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+                        this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
-            this.numericBoxMaxNumOfG.ReadOnly = false;
-            this.numericBoxMaxNumOfG.RestrictLimitValue = true;
-            this.numericBoxMaxNumOfG.ShowFraction = false;
-            this.numericBoxMaxNumOfG.ShowPositiveSign = false;
-            this.numericBoxMaxNumOfG.ShowUpDown = true;
-            this.numericBoxMaxNumOfG.SkipEventDuringInput = true;
-            this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxMaxNumOfG.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+                        this.numericBoxMaxNumOfG.RestrictLimitValue = true;
+                                    this.numericBoxMaxNumOfG.ShowUpDown = true;
+                        this.numericBoxMaxNumOfG.SmartIncrement = true;
+                                    this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
             this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
-            this.numericBoxMaxNumOfG.UpDown_Increment = 1D;
-            this.numericBoxMaxNumOfG.Value = 400D;
-            this.numericBoxMaxNumOfG.WordWrap = true;
-            // 
+                        this.numericBoxMaxNumOfG.Value = 400D;
+                        // 
             // numericBoxAcceptableError
             // 
             resources.ApplyResources(this.numericBoxAcceptableError, "numericBoxAcceptableError");
-            this.numericBoxAcceptableError.AllowMouseControl = false;
             this.numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAcceptableError.DecimalPlaces = -2;
-            this.numericBoxAcceptableError.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxAcceptableError.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxAcceptableError.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxAcceptableError.Maximum = 10D;
+                                                                       this.numericBoxAcceptableError.Maximum = 10D;
             this.numericBoxAcceptableError.Minimum = 0.1D;
-            this.numericBoxAcceptableError.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxAcceptableError.MouseSpeed = 1D;
-            this.numericBoxAcceptableError.Multiline = false;
-            this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
+                        this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
             this.numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
-            this.numericBoxAcceptableError.ReadOnly = false;
-            this.numericBoxAcceptableError.RestrictLimitValue = true;
-            this.numericBoxAcceptableError.ShowFraction = false;
-            this.numericBoxAcceptableError.ShowPositiveSign = false;
-            this.numericBoxAcceptableError.ShowUpDown = true;
+                        this.numericBoxAcceptableError.RestrictLimitValue = true;
+                                    this.numericBoxAcceptableError.ShowUpDown = true;
             this.numericBoxAcceptableError.SkipEventDuringInput = false;
             this.numericBoxAcceptableError.SmartIncrement = true;
-            this.numericBoxAcceptableError.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxAcceptableError.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxAcceptableError.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxAcceptableError.ThonsandsSeparator = true;
-            this.numericBoxAcceptableError.UpDown_Increment = 1D;
-            this.numericBoxAcceptableError.Value = 2D;
-            this.numericBoxAcceptableError.WordWrap = true;
-            // 
+                                                this.numericBoxAcceptableError.ThonsandsSeparator = true;
+                        this.numericBoxAcceptableError.Value = 2D;
+                        // 
             // numericBoxMaxGrainNum
             // 
             resources.ApplyResources(this.numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
-            this.numericBoxMaxGrainNum.AllowMouseControl = false;
             this.numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMaxGrainNum.DecimalPlaces = -2;
-            this.numericBoxMaxGrainNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxMaxGrainNum.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxMaxGrainNum.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxMaxGrainNum.Maximum = 10D;
+                                                                       this.numericBoxMaxGrainNum.Maximum = 10D;
             this.numericBoxMaxGrainNum.Minimum = 0.1D;
-            this.numericBoxMaxGrainNum.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxMaxGrainNum.MouseSpeed = 1D;
-            this.numericBoxMaxGrainNum.Multiline = false;
-            this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
+                        this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
             this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
-            this.numericBoxMaxGrainNum.ReadOnly = false;
-            this.numericBoxMaxGrainNum.RestrictLimitValue = true;
-            this.numericBoxMaxGrainNum.ShowFraction = false;
-            this.numericBoxMaxGrainNum.ShowPositiveSign = false;
-            this.numericBoxMaxGrainNum.ShowUpDown = true;
+                        this.numericBoxMaxGrainNum.RestrictLimitValue = true;
+                                    this.numericBoxMaxGrainNum.ShowUpDown = true;
             this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
             this.numericBoxMaxGrainNum.SmartIncrement = false;
-            this.numericBoxMaxGrainNum.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxMaxGrainNum.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
-            this.numericBoxMaxGrainNum.UpDown_Increment = 1D;
-            this.numericBoxMaxGrainNum.Value = 2D;
-            this.numericBoxMaxGrainNum.WordWrap = true;
-            // 
+                                                this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
+                        this.numericBoxMaxGrainNum.Value = 2D;
+                        // 
             // checkBoxShowCalcSpotSymbol
             // 
             resources.ApplyResources(this.checkBoxShowCalcSpotSymbol, "checkBoxShowCalcSpotSymbol");
@@ -756,36 +654,20 @@ namespace ReciPro
             // numericBoxDonut
             // 
             resources.ApplyResources(this.numericBoxDonut, "numericBoxDonut");
-            this.numericBoxDonut.AllowMouseControl = false;
             this.numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDonut.DecimalPlaces = -2;
-            this.numericBoxDonut.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxDonut.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxDonut.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDonut.Maximum = 100D;
+                                                                       this.numericBoxDonut.Maximum = 100D;
             this.numericBoxDonut.Minimum = 1D;
-            this.numericBoxDonut.MouseDirection = Crystallography.VH_DirectionEnum.Horizontal;
-            this.numericBoxDonut.MouseSpeed = 1D;
-            this.numericBoxDonut.Multiline = false;
-            this.numericBoxDonut.Name = "numericBoxDonut";
+                        this.numericBoxDonut.Name = "numericBoxDonut";
             this.numericBoxDonut.RadianValue = 0.087266462599716474D;
-            this.numericBoxDonut.ReadOnly = false;
-            this.numericBoxDonut.RestrictLimitValue = true;
-            this.numericBoxDonut.ShowFraction = false;
-            this.numericBoxDonut.ShowPositiveSign = false;
-            this.numericBoxDonut.ShowUpDown = true;
+                        this.numericBoxDonut.RestrictLimitValue = true;
+                                    this.numericBoxDonut.ShowUpDown = true;
             this.numericBoxDonut.SkipEventDuringInput = false;
             this.numericBoxDonut.SmartIncrement = true;
-            this.numericBoxDonut.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDonut.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
+                                    this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.numericBoxDonut.ThonsandsSeparator = true;
-            this.numericBoxDonut.UpDown_Increment = 1D;
-            this.numericBoxDonut.Value = 5D;
-            this.numericBoxDonut.WordWrap = true;
-            // 
+                        this.numericBoxDonut.Value = 5D;
+                        // 
             // checkBoxDetailsSpot
             // 
             resources.ApplyResources(this.checkBoxDetailsSpot, "checkBoxDetailsSpot");
@@ -1034,102 +916,51 @@ namespace ReciPro
             // numericBoxNearestNeighbor
             // 
             resources.ApplyResources(this.numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
-            this.numericBoxNearestNeighbor.AllowMouseControl = false;
             this.numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxNearestNeighbor.DecimalPlaces = 0;
-            this.numericBoxNearestNeighbor.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxNearestNeighbor.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxNearestNeighbor.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxNearestNeighbor.Maximum = 1000D;
+                                                                       this.numericBoxNearestNeighbor.Maximum = 1000D;
             this.numericBoxNearestNeighbor.Minimum = 1D;
-            this.numericBoxNearestNeighbor.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxNearestNeighbor.MouseSpeed = 1D;
-            this.numericBoxNearestNeighbor.Multiline = false;
-            this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
+                        this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
             this.numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
-            this.numericBoxNearestNeighbor.ReadOnly = false;
-            this.numericBoxNearestNeighbor.RestrictLimitValue = true;
-            this.numericBoxNearestNeighbor.ShowFraction = false;
-            this.numericBoxNearestNeighbor.ShowPositiveSign = false;
-            this.numericBoxNearestNeighbor.ShowUpDown = true;
+                        this.numericBoxNearestNeighbor.RestrictLimitValue = true;
+                                    this.numericBoxNearestNeighbor.ShowUpDown = true;
             this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
             this.numericBoxNearestNeighbor.SmartIncrement = true;
-            this.numericBoxNearestNeighbor.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxNearestNeighbor.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxNearestNeighbor.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
-            this.numericBoxNearestNeighbor.UpDown_Increment = 1D;
-            this.numericBoxNearestNeighbor.Value = 10D;
-            this.numericBoxNearestNeighbor.WordWrap = true;
-            // 
+                                                this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
+                        this.numericBoxNearestNeighbor.Value = 10D;
+                        // 
             // numericBoxNumberOfSpots
             // 
             resources.ApplyResources(this.numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
-            this.numericBoxNumberOfSpots.AllowMouseControl = false;
             this.numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxNumberOfSpots.DecimalPlaces = 0;
-            this.numericBoxNumberOfSpots.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxNumberOfSpots.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxNumberOfSpots.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxNumberOfSpots.Maximum = 1000D;
+                                                                       this.numericBoxNumberOfSpots.Maximum = 1000D;
             this.numericBoxNumberOfSpots.Minimum = 1D;
-            this.numericBoxNumberOfSpots.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxNumberOfSpots.MouseSpeed = 1D;
-            this.numericBoxNumberOfSpots.Multiline = false;
-            this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
+                        this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
             this.numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
-            this.numericBoxNumberOfSpots.ReadOnly = false;
-            this.numericBoxNumberOfSpots.RestrictLimitValue = true;
-            this.numericBoxNumberOfSpots.ShowFraction = false;
-            this.numericBoxNumberOfSpots.ShowPositiveSign = false;
-            this.numericBoxNumberOfSpots.ShowUpDown = true;
+                        this.numericBoxNumberOfSpots.RestrictLimitValue = true;
+                                    this.numericBoxNumberOfSpots.ShowUpDown = true;
             this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
             this.numericBoxNumberOfSpots.SmartIncrement = true;
-            this.numericBoxNumberOfSpots.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxNumberOfSpots.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxNumberOfSpots.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
-            this.numericBoxNumberOfSpots.UpDown_Increment = 1D;
-            this.numericBoxNumberOfSpots.Value = 30D;
-            this.numericBoxNumberOfSpots.WordWrap = true;
-            // 
+                                                this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
+                        this.numericBoxNumberOfSpots.Value = 30D;
+                        // 
             // numericBoxFittingRange
             // 
             resources.ApplyResources(this.numericBoxFittingRange, "numericBoxFittingRange");
-            this.numericBoxFittingRange.AllowMouseControl = false;
             this.numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFittingRange.DecimalPlaces = 1;
-            this.numericBoxFittingRange.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.FooterForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxFittingRange.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxFittingRange.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxFittingRange.Maximum = 100D;
+                                                                       this.numericBoxFittingRange.Maximum = 100D;
             this.numericBoxFittingRange.Minimum = 0D;
-            this.numericBoxFittingRange.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxFittingRange.MouseSpeed = 1D;
-            this.numericBoxFittingRange.Multiline = false;
-            this.numericBoxFittingRange.Name = "numericBoxFittingRange";
+                        this.numericBoxFittingRange.Name = "numericBoxFittingRange";
             this.numericBoxFittingRange.RadianValue = 0.3490658503988659D;
-            this.numericBoxFittingRange.ReadOnly = false;
-            this.numericBoxFittingRange.RestrictLimitValue = true;
-            this.numericBoxFittingRange.ShowFraction = false;
-            this.numericBoxFittingRange.ShowPositiveSign = false;
-            this.numericBoxFittingRange.ShowUpDown = true;
+                        this.numericBoxFittingRange.RestrictLimitValue = true;
+                                    this.numericBoxFittingRange.ShowUpDown = true;
             this.numericBoxFittingRange.SkipEventDuringInput = false;
             this.numericBoxFittingRange.SmartIncrement = true;
-            this.numericBoxFittingRange.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxFittingRange.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxFittingRange.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxFittingRange.ThonsandsSeparator = true;
-            this.numericBoxFittingRange.UpDown_Increment = 1D;
-            this.numericBoxFittingRange.Value = 20D;
-            this.numericBoxFittingRange.WordWrap = true;
-            this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
+                                                this.numericBoxFittingRange.ThonsandsSeparator = true;
+                        this.numericBoxFittingRange.Value = 20D;
+                        this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
             // 
             // buttonCopyToClipboad
             // 

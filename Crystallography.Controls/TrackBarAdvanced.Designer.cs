@@ -54,29 +54,19 @@
             // 
             // numericBox
             // 
-            this.numericBox.AllowMouseControl = false;
-            this.numericBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBox.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBox.BackColor = System.Drawing.SystemColors.Control;
             this.numericBox.DecimalPlaces = -2;
             this.numericBox.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox.FooterText = "";
-            this.numericBox.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox.HeaderText = "";
+                                                this.numericBox.HeaderText = "";
             this.numericBox.Location = new System.Drawing.Point(0, 1);
             this.numericBox.Margin = new System.Windows.Forms.Padding(0);
             this.numericBox.Maximum = double.PositiveInfinity;
             this.numericBox.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBox.Minimum = double.NegativeInfinity;
-            this.numericBox.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBox.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBox.MouseSpeed = 1D;
-            this.numericBox.Multiline = false;
-            this.numericBox.Name = "numericBox";
+                        this.numericBox.MinimumSize = new System.Drawing.Size(1, 25);
+                       this.numericBox.Name = "numericBox";
             this.numericBox.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBox.RadianValue = 0D;
-            this.numericBox.ReadOnly = false;
-            this.numericBox.RestrictLimitValue = true;
+                        this.numericBox.RestrictLimitValue = true;
             this.numericBox.ShowFraction = false;
             this.numericBox.ShowPositiveSign = false;
             this.numericBox.ShowUpDown = true;
@@ -84,15 +74,11 @@
             this.numericBox.SkipEventDuringInput = true;
             this.numericBox.SmartIncrement = true;
             this.numericBox.TabIndex = 2;
-            this.numericBox.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBox.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBox.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBox.ThonsandsSeparator = true;
+                        this.numericBox.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBox.ThonsandsSeparator = true;
             this.numericBox.ToolTip = "";
             this.numericBox.UpDown_Increment = 1D;
-            this.numericBox.Value = 0D;
-            this.numericBox.WordWrap = true;
-            this.numericBox.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
+                                    this.numericBox.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // splitContainer
             // 

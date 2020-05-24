@@ -137,28 +137,18 @@ namespace ReciPro
             {
                 lastPanelSize = graphicsBox.ClientSize;
 
-                FormDiffractionSimulatorGeometry = new FormDiffractionSimulatorGeometry
-                {
-                    FormDiffractionSimulator = this
-                };
+                FormDiffractionSimulatorGeometry = new FormDiffractionSimulatorGeometry { FormDiffractionSimulator = this };
                 FormDiffractionSimulatorGeometry.comboBoxGradient.SelectedIndex = 0;
                 FormDiffractionSimulatorGeometry.comboBoxScale1.SelectedIndex = 1;
                 FormDiffractionSimulatorGeometry.comboBoxScale2.SelectedIndex = 0;
                 FormDiffractionSimulatorGeometry.VisibleChanged += FormDiffractionSimulatorGeometry_VisibleChanged;
 
-                FormDiffractionBeamTable = new FormDiffractionSpotInfo();
-                FormDiffractionBeamTable.FormDiffractionSimulator = this;
+                FormDiffractionBeamTable = new FormDiffractionSpotInfo { FormDiffractionSimulator = this };
 
-                FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression();
-                FormDiffractionSimulatorDynamicCompression.FormDiffractionSimulator = this;
+                FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this };
             }
             if (FormDiffractionSimulatorCBED == null)
-            {
-                FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED
-                {
-                    FormDiffractionSimulator = this
-                };
-            }
+                FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED { FormDiffractionSimulator = this };
 
             Draw();
         }
@@ -171,7 +161,7 @@ namespace ReciPro
             if (this.Visible)
             {
                 DisplayCenter = new PointD(0, 0);
-                setVector();
+                SetVector();
                 panelMain.BringToFront();
                 Draw();
                 graphicsBox.Refresh();
@@ -896,7 +886,7 @@ namespace ReciPro
         {
             if (Visible == false) return;
             SetProjection();
-            setVector();
+            SetVector();
             Draw();
         }
 
@@ -925,7 +915,7 @@ namespace ReciPro
             if (SkipEvent) return;
 
             if (graphicsBox.ClientSize.Width == 0 || graphicsBox.ClientSize.Height == 0) return; //最小化されたときなど
-            setVector();
+            SetVector();
             Draw();
 
             SkipEvent = true;
@@ -942,7 +932,7 @@ namespace ReciPro
         public bool CancelSetVector { get; set; } = false;
 
         //逆格子ベクトルを設定する
-        public void setVector(bool renewCrystal = false)
+        public void SetVector(bool renewCrystal = false)
         {
             if (formMain == null) return;
             if (CancelSetVector) return;
@@ -1023,7 +1013,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public PointD convertScreenToDetector(int x, int y) => new PointD(
+        private PointD convertScreenToDetector(int x, int y) => new PointD(
                 (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
                 (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
 
@@ -1032,7 +1022,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public PointD convertScreenToDetector(Point p) => convertScreenToDetector(p.X, p.Y);
+        private PointD convertScreenToDetector(Point p) => convertScreenToDetector(p.X, p.Y);
 
         /// <summary>
         /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
@@ -1040,7 +1030,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Vector3DBase convertScreenToReal(int x, int y)
+        private Vector3DBase convertScreenToReal(int x, int y)
         {
             PointD p = convertScreenToDetector(x, y);//まずフィルム上の位置を取得
             return convertDetectorToReal(p.X, p.Y);//実空間の座標に変換
@@ -1052,7 +1042,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Vector3DBase convertScreenToReciprocal(int x, int y, bool originalCoordinate)
+        private Vector3DBase convertScreenToReciprocal(int x, int y, bool originalCoordinate)
             => convertRealToReciprocal(convertScreenToReal(x, y), originalCoordinate);
 
         /// <summary>
@@ -1061,7 +1051,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public PointD convertDetectorToScreen(double x, double y) => new PointD(
+        private PointD convertDetectorToScreen(double x, double y) => new PointD(
                 (x + DisplayCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
                 (y + DisplayCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
 
@@ -1071,7 +1061,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
-        public PointD convertDetectorToScreen(PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
+        private PointD convertDetectorToScreen(PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
 
         /// <summary>
         /// 座標変換 検出器(Detector)上の点(Foot中心, mm単位) を 実空間座標(mm単位, ３次元座標)に変換
@@ -1079,7 +1069,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Vector3DBase convertDetectorToReal(double x, double y) =>
+        private Vector3DBase convertDetectorToReal(double x, double y) =>
         #region 座標変換の計算式
             // (CosPhi, SinPhi, 0) の周りに Tau回転する行列は、
             //   Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
@@ -1096,18 +1086,19 @@ namespace ReciPro
         /// <param name="v"></param>
         /// <param name="originalCoordinate"></param>
         /// <returns></returns>
-        public Vector3DBase convertRealToReciprocal(Vector3DBase v, bool originalCoordinate)
+        private Vector3DBase convertRealToReciprocal(Vector3DBase v, bool originalCoordinate)
         {
-            double len = Math.Sqrt(v.X2Y2);
-            double twoTheta = Math.Atan2(len, v.Z);
+            var len = Math.Sqrt(v.X2Y2);
+            var twoTheta = Math.Atan2(len, v.Z);
 
             double sinTheta = Math.Sin(twoTheta / 2), sinThetaSquare = sinTheta * sinTheta;
-            double Z = EwaldRadius * (1 - Math.Cos(twoTheta));
+            var Z = EwaldRadius * (1 - Math.Cos(twoTheta));
 
-            double temp = 1 / len * Math.Sqrt((4 * sinThetaSquare * EwaldRadius * EwaldRadius) - Z * Z);
+            var temp = 1 / len * Math.Sqrt((4 * sinThetaSquare * EwaldRadius * EwaldRadius) - Z * Z);
             double X = v.X * temp, Y = -v.Y * temp;
 
             return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * new Vector3DBase(X, Y, Z) : new Vector3DBase(X, Y, Z);
+
         }
 
         /// <summary>
@@ -1125,7 +1116,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
-        public PointD convertReciprocalToDetector(Vector3DBase g)
+        private PointD convertReciprocalToDetector(Vector3DBase g)
         {
             var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
             var coeff = CameraLength2 / v.Z;
@@ -1138,7 +1129,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
-        public bool IsScreenArea(PointD pt, int margin = 0)
+        private bool IsScreenArea(PointD pt, int margin = 0)
         {
             var clientPt = convertDetectorToScreen(pt);
             return clientPt.X > margin && clientPt.Y > margin
@@ -1157,7 +1148,7 @@ namespace ReciPro
         //formMainから結晶を設定されたとき
         internal void SetCrystal()
         {
-            setVector(true);
+            SetVector(true);
             Draw();
         }
 
@@ -1207,7 +1198,7 @@ namespace ReciPro
         {
             if (e.Button == MouseButtons.Middle)
             {
-                setVector();
+                SetVector();
                 Draw();
             }
 
@@ -1337,7 +1328,7 @@ namespace ReciPro
             }
             else
                 checkBoxExtinctionLattice.Enabled = true;
-            setVector();
+            SetVector();
             Draw();
         }
 
@@ -1400,7 +1391,7 @@ namespace ReciPro
 
         private void toolStripButtonDiffractionSpots_CheckedChanged(object sender, EventArgs e)
         {
-            setVector();
+            SetVector();
 
             if (sender is ToolStripButton button)
             {
@@ -1479,7 +1470,7 @@ namespace ReciPro
         {
             if (this.Visible == false) return;
 
-            setVector();
+            SetVector();
 
             Draw();
         }
@@ -1513,7 +1504,7 @@ namespace ReciPro
         private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
         {
             flowLayoutPanelGaussianOption.Enabled = radioButtonPointSpread.Checked;
-            setVector();
+            SetVector();
             trackBarIntensityForPointSpread.Enabled = radioButtonPointSpread.Checked;
             checkBoxLogScale.Enabled = radioButtonPointSpread.Checked;
 
@@ -1561,7 +1552,7 @@ namespace ReciPro
 
 
 
-            setVector();
+            SetVector();
             Draw();
         }
 
@@ -1745,7 +1736,7 @@ namespace ReciPro
                 else
                     trackBarStrSize.Value = strSize;
 
-                setVector();
+                SetVector();
 
                 SaveOrCopy(save, asImage, drawOverlappedImage);
 
@@ -1753,7 +1744,7 @@ namespace ReciPro
                 Resolution = originalResolution;
                 trackBarStrSize.Value = originalStringSize;
                 DisplayCenter = originalFoot;
-                setVector();
+                SetVector();
                 graphicsBox.Visible = true;
                 Draw();
                 graphicsBox.Refresh();
@@ -1776,7 +1767,7 @@ namespace ReciPro
                 graphicsBox.Size = originalSize;
                 Resolution = originalResolution;
                 DisplayCenter = originalFoot;
-                setVector();
+                SetVector();
                 graphicsBox.Visible = true;
                 Draw();
                 graphicsBox.Refresh();
@@ -1815,7 +1806,7 @@ namespace ReciPro
 
         private void checkBoxUseCrystalColor_CheckedChanged(object sender, EventArgs e)
         {
-            setVector();
+            SetVector();
             Draw();
         }
 

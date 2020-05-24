@@ -304,9 +304,7 @@
             // 
             // numericBoxDustScratchesRadius
             // 
-            this.numericBoxDustScratchesRadius.AllowMouseControl = false;
-            this.numericBoxDustScratchesRadius.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDustScratchesRadius.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDustScratchesRadius.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDustScratchesRadius.DecimalPlaces = 1;
             this.numericBoxDustScratchesRadius.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDustScratchesRadius.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -319,14 +317,10 @@
             this.numericBoxDustScratchesRadius.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDustScratchesRadius.Minimum = 0D;
             this.numericBoxDustScratchesRadius.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDustScratchesRadius.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxDustScratchesRadius.MouseSpeed = 1D;
-            this.numericBoxDustScratchesRadius.Multiline = false;
-            this.numericBoxDustScratchesRadius.Name = "numericBoxDustScratchesRadius";
+                       this.numericBoxDustScratchesRadius.Name = "numericBoxDustScratchesRadius";
             this.numericBoxDustScratchesRadius.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDustScratchesRadius.RadianValue = 0.017453292519943295D;
-            this.numericBoxDustScratchesRadius.ReadOnly = false;
-            this.numericBoxDustScratchesRadius.RestrictLimitValue = true;
+                        this.numericBoxDustScratchesRadius.RestrictLimitValue = true;
             this.numericBoxDustScratchesRadius.ShowFraction = false;
             this.numericBoxDustScratchesRadius.ShowPositiveSign = false;
             this.numericBoxDustScratchesRadius.ShowUpDown = true;
@@ -334,27 +328,21 @@
             this.numericBoxDustScratchesRadius.SkipEventDuringInput = false;
             this.numericBoxDustScratchesRadius.SmartIncrement = false;
             this.numericBoxDustScratchesRadius.TabIndex = 43;
-            this.numericBoxDustScratchesRadius.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDustScratchesRadius.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDustScratchesRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDustScratchesRadius.ThonsandsSeparator = true;
+                        this.numericBoxDustScratchesRadius.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDustScratchesRadius.ThonsandsSeparator = true;
             this.numericBoxDustScratchesRadius.ToolTip = "";
             this.numericBoxDustScratchesRadius.UpDown_Increment = 0.5D;
             this.numericBoxDustScratchesRadius.Value = 1D;
             this.numericBoxDustScratchesRadius.Visible = false;
-            this.numericBoxDustScratchesRadius.WordWrap = true;
-            this.numericBoxDustScratchesRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
+                        this.numericBoxDustScratchesRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
             // 
             // numericBoxDustScratchesThreshold
             // 
-            this.numericBoxDustScratchesThreshold.AllowMouseControl = false;
-            this.numericBoxDustScratchesThreshold.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDustScratchesThreshold.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDustScratchesThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDustScratchesThreshold.DecimalPlaces = 0;
             this.numericBoxDustScratchesThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDustScratchesThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxDustScratchesThreshold.FooterText = "";
-            this.numericBoxDustScratchesThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+                        this.numericBoxDustScratchesThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDustScratchesThreshold.HeaderText = "Threshold";
             this.numericBoxDustScratchesThreshold.Location = new System.Drawing.Point(237, 0);
             this.numericBoxDustScratchesThreshold.Margin = new System.Windows.Forms.Padding(0);
@@ -362,14 +350,10 @@
             this.numericBoxDustScratchesThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDustScratchesThreshold.Minimum = 0D;
             this.numericBoxDustScratchesThreshold.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDustScratchesThreshold.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxDustScratchesThreshold.MouseSpeed = 1D;
-            this.numericBoxDustScratchesThreshold.Multiline = false;
-            this.numericBoxDustScratchesThreshold.Name = "numericBoxDustScratchesThreshold";
+                       this.numericBoxDustScratchesThreshold.Name = "numericBoxDustScratchesThreshold";
             this.numericBoxDustScratchesThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.numericBoxDustScratchesThreshold.RadianValue = 0.052359877559829883D;
-            this.numericBoxDustScratchesThreshold.ReadOnly = false;
-            this.numericBoxDustScratchesThreshold.RestrictLimitValue = true;
+                        this.numericBoxDustScratchesThreshold.RestrictLimitValue = true;
             this.numericBoxDustScratchesThreshold.ShowFraction = false;
             this.numericBoxDustScratchesThreshold.ShowPositiveSign = false;
             this.numericBoxDustScratchesThreshold.ShowUpDown = true;
@@ -377,16 +361,13 @@
             this.numericBoxDustScratchesThreshold.SkipEventDuringInput = false;
             this.numericBoxDustScratchesThreshold.SmartIncrement = true;
             this.numericBoxDustScratchesThreshold.TabIndex = 43;
-            this.numericBoxDustScratchesThreshold.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDustScratchesThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDustScratchesThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDustScratchesThreshold.ThonsandsSeparator = true;
+                        this.numericBoxDustScratchesThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDustScratchesThreshold.ThonsandsSeparator = true;
             this.numericBoxDustScratchesThreshold.ToolTip = "";
             this.numericBoxDustScratchesThreshold.UpDown_Increment = 1D;
             this.numericBoxDustScratchesThreshold.Value = 3D;
             this.numericBoxDustScratchesThreshold.Visible = false;
-            this.numericBoxDustScratchesThreshold.WordWrap = true;
-            this.numericBoxDustScratchesThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
+                        this.numericBoxDustScratchesThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
             // 
             // flowLayoutPanelGaussianBlur2
             // 
@@ -414,9 +395,7 @@
             // 
             // numericBoxGaussianRadius
             // 
-            this.numericBoxGaussianRadius.AllowMouseControl = false;
-            this.numericBoxGaussianRadius.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxGaussianRadius.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxGaussianRadius.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGaussianRadius.DecimalPlaces = 1;
             this.numericBoxGaussianRadius.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxGaussianRadius.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -429,14 +408,10 @@
             this.numericBoxGaussianRadius.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxGaussianRadius.Minimum = 0D;
             this.numericBoxGaussianRadius.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxGaussianRadius.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxGaussianRadius.MouseSpeed = 1D;
-            this.numericBoxGaussianRadius.Multiline = false;
-            this.numericBoxGaussianRadius.Name = "numericBoxGaussianRadius";
+                       this.numericBoxGaussianRadius.Name = "numericBoxGaussianRadius";
             this.numericBoxGaussianRadius.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxGaussianRadius.RadianValue = 0.017453292519943295D;
-            this.numericBoxGaussianRadius.ReadOnly = false;
-            this.numericBoxGaussianRadius.RestrictLimitValue = true;
+                        this.numericBoxGaussianRadius.RestrictLimitValue = true;
             this.numericBoxGaussianRadius.ShowFraction = false;
             this.numericBoxGaussianRadius.ShowPositiveSign = false;
             this.numericBoxGaussianRadius.ShowUpDown = true;
@@ -444,16 +419,13 @@
             this.numericBoxGaussianRadius.SkipEventDuringInput = false;
             this.numericBoxGaussianRadius.SmartIncrement = true;
             this.numericBoxGaussianRadius.TabIndex = 43;
-            this.numericBoxGaussianRadius.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxGaussianRadius.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxGaussianRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxGaussianRadius.ThonsandsSeparator = true;
+                        this.numericBoxGaussianRadius.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxGaussianRadius.ThonsandsSeparator = true;
             this.numericBoxGaussianRadius.ToolTip = "";
             this.numericBoxGaussianRadius.UpDown_Increment = 1D;
             this.numericBoxGaussianRadius.Value = 1D;
             this.numericBoxGaussianRadius.Visible = false;
-            this.numericBoxGaussianRadius.WordWrap = true;
-            this.numericBoxGaussianRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
+                        this.numericBoxGaussianRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.imageFilterProperty_Changed);
             // 
             // panelUpper
             // 

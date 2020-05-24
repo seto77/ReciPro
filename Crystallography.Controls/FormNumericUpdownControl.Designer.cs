@@ -32,8 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.numericalTextBoxDecimalIncrement = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxDecimalPlace = new Crystallography.Controls.NumericBox();
+            this.numericBoxDecimalIncrement = new Crystallography.Controls.NumericBox();
+            this.numericBoxDecimalPlace = new Crystallography.Controls.NumericBox();
             this.SuspendLayout();
             // 
             // label1
@@ -75,38 +75,32 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // numericalTextBoxDecimalIncrement
+            // numericBoxDecimalIncrement
             // 
-            this.numericalTextBoxDecimalIncrement.DecimalPlaces = -1;
-            this.numericalTextBoxDecimalIncrement.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxDecimalIncrement.Location = new System.Drawing.Point(94, 3);
-            this.numericalTextBoxDecimalIncrement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxDecimalIncrement.Multiline = false;
-            this.numericalTextBoxDecimalIncrement.Name = "numericalTextBoxDecimalIncrement";
-            this.numericalTextBoxDecimalIncrement.RadianValue = 0;
-            this.numericalTextBoxDecimalIncrement.ReadOnly = false;
-            this.numericalTextBoxDecimalIncrement.ShowFraction = false;
-            this.numericalTextBoxDecimalIncrement.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxDecimalIncrement.TabIndex = 0;
-            this.numericalTextBoxDecimalIncrement.Value = 0;
-            this.numericalTextBoxDecimalIncrement.WordWrap = true;
+            this.numericBoxDecimalIncrement.DecimalPlaces = -1;
+            this.numericBoxDecimalIncrement.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxDecimalIncrement.Location = new System.Drawing.Point(94, 3);
+            this.numericBoxDecimalIncrement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+                       this.numericBoxDecimalIncrement.Name = "numericBoxDecimalIncrement";
+            this.numericBoxDecimalIncrement.RadianValue = 0;
+                        
+            this.numericBoxDecimalIncrement.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxDecimalIncrement.TabIndex = 0;
+            this.numericBoxDecimalIncrement.Value = 0;
+                        // 
+            // numericBoxDecimalPlace
             // 
-            // numericalTextBoxDecimalPlace
-            // 
-            this.numericalTextBoxDecimalPlace.DecimalPlaces = -1;
-            this.numericalTextBoxDecimalPlace.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxDecimalPlace.Location = new System.Drawing.Point(94, 28);
-            this.numericalTextBoxDecimalPlace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxDecimalPlace.Multiline = false;
-            this.numericalTextBoxDecimalPlace.Name = "numericalTextBoxDecimalPlace";
-            this.numericalTextBoxDecimalPlace.RadianValue = 0;
-            this.numericalTextBoxDecimalPlace.ReadOnly = false;
-            this.numericalTextBoxDecimalPlace.ShowFraction = false;
-            this.numericalTextBoxDecimalPlace.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxDecimalPlace.TabIndex = 0;
-            this.numericalTextBoxDecimalPlace.Value = 0;
-            this.numericalTextBoxDecimalPlace.WordWrap = true;
-            // 
+            this.numericBoxDecimalPlace.DecimalPlaces = -1;
+            this.numericBoxDecimalPlace.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxDecimalPlace.Location = new System.Drawing.Point(94, 28);
+            this.numericBoxDecimalPlace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+                       this.numericBoxDecimalPlace.Name = "numericBoxDecimalPlace";
+            this.numericBoxDecimalPlace.RadianValue = 0;
+                        
+            this.numericBoxDecimalPlace.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxDecimalPlace.TabIndex = 0;
+            this.numericBoxDecimalPlace.Value = 0;
+                        // 
             // FormNumericUpdownControl
             // 
             this.AcceptButton = this.buttonOK;
@@ -119,8 +113,8 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericalTextBoxDecimalIncrement);
-            this.Controls.Add(this.numericalTextBoxDecimalPlace);
+            this.Controls.Add(this.numericBoxDecimalIncrement);
+            this.Controls.Add(this.numericBoxDecimalPlace);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -137,8 +131,8 @@
 
         #endregion
 
-        private NumericBox numericalTextBoxDecimalPlace;
-        private NumericBox numericalTextBoxDecimalIncrement;
+        private NumericBox numericBoxDecimalPlace;
+        private NumericBox numericBoxDecimalIncrement;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonOK;

@@ -70,25 +70,25 @@
             this.buttonSearchUnrelatedOrientations = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.checkBoxYusaGonioScan = new System.Windows.Forms.CheckBox();
-            this.numericalTextBoxRxSpeed = new Crystallography.Controls.NumericBox();
+            this.numericBoxRxSpeed = new Crystallography.Controls.NumericBox();
             this.checkBoxYusaGonio_ValidRx = new System.Windows.Forms.CheckBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.numericalTextBoxYusaGonioRySpeed = new Crystallography.Controls.NumericBox();
+            this.numericBoxYusaGonioRySpeed = new Crystallography.Controls.NumericBox();
             this.label51 = new System.Windows.Forms.Label();
-            this.numericalTextBoxYusaGonioRzSpeed = new Crystallography.Controls.NumericBox();
+            this.numericBoxYusaGonioRzSpeed = new Crystallography.Controls.NumericBox();
             this.label53 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.radioButtonZigzagScan = new System.Windows.Forms.RadioButton();
             this.label54 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.numericalTextBoxYusaGonioRyStep = new Crystallography.Controls.NumericBox();
+            this.numericBoxYusaGonioRyStep = new Crystallography.Controls.NumericBox();
             this.label55 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.numericalTextBoxYusaGonioRyOscillation = new Crystallography.Controls.NumericBox();
+            this.numericBoxYusaGonioRyOscillation = new Crystallography.Controls.NumericBox();
             this.label56 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.numericalTextBoxYusaGonioRzOscillation = new Crystallography.Controls.NumericBox();
+            this.numericBoxYusaGonioRzOscillation = new Crystallography.Controls.NumericBox();
             this.label57 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -400,8 +400,7 @@
             // 
             // numericBoxCrystalNumPerStepThreshold
             // 
-            this.numericBoxCrystalNumPerStepThreshold.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
             this.numericBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,12 +413,10 @@
             this.numericBoxCrystalNumPerStepThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
             this.numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxCrystalNumPerStepThreshold.Multiline = false;
-            this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
+                       this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
             this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
-            this.numericBoxCrystalNumPerStepThreshold.ReadOnly = false;
-            this.numericBoxCrystalNumPerStepThreshold.RestrictLimitValue = true;
+                        this.numericBoxCrystalNumPerStepThreshold.RestrictLimitValue = true;
             this.numericBoxCrystalNumPerStepThreshold.ShowFraction = false;
             this.numericBoxCrystalNumPerStepThreshold.ShowPositiveSign = false;
             this.numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
@@ -427,20 +424,17 @@
             this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
             this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
             this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
-            this.numericBoxCrystalNumPerStepThreshold.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCrystalNumPerStepThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCrystalNumPerStepThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxCrystalNumPerStepThreshold.ThonsandsSeparator = true;
             this.numericBoxCrystalNumPerStepThreshold.ToolTip = "";
             this.numericBoxCrystalNumPerStepThreshold.UpDown_Increment = 1D;
             this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
             this.numericBoxCrystalNumPerStepThreshold.Visible = false;
-            this.numericBoxCrystalNumPerStepThreshold.WordWrap = true;
-            // 
+                        // 
             // numericBoxDirectionalDensityThreshold
             // 
-            this.numericBoxDirectionalDensityThreshold.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
             this.numericBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -453,12 +447,10 @@
             this.numericBoxDirectionalDensityThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
             this.numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxDirectionalDensityThreshold.Multiline = false;
-            this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
+                       this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
             this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
-            this.numericBoxDirectionalDensityThreshold.ReadOnly = false;
-            this.numericBoxDirectionalDensityThreshold.RestrictLimitValue = true;
+                        this.numericBoxDirectionalDensityThreshold.RestrictLimitValue = true;
             this.numericBoxDirectionalDensityThreshold.ShowFraction = false;
             this.numericBoxDirectionalDensityThreshold.ShowPositiveSign = false;
             this.numericBoxDirectionalDensityThreshold.ShowUpDown = true;
@@ -466,19 +458,16 @@
             this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
             this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
             this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
-            this.numericBoxDirectionalDensityThreshold.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDirectionalDensityThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDirectionalDensityThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
             this.numericBoxDirectionalDensityThreshold.ToolTip = "";
             this.numericBoxDirectionalDensityThreshold.UpDown_Increment = 1D;
             this.numericBoxDirectionalDensityThreshold.Value = 1D;
-            this.numericBoxDirectionalDensityThreshold.WordWrap = true;
-            // 
+                        // 
             // numericBoxDirectionalDensity
             // 
-            this.numericBoxDirectionalDensity.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.DecimalPlaces = 2;
             this.numericBoxDirectionalDensity.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -491,12 +480,10 @@
             this.numericBoxDirectionalDensity.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxDirectionalDensity.Minimum = 0.1D;
             this.numericBoxDirectionalDensity.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxDirectionalDensity.Multiline = false;
-            this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
+                       this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
             this.numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
-            this.numericBoxDirectionalDensity.ReadOnly = false;
-            this.numericBoxDirectionalDensity.RestrictLimitValue = true;
+                        this.numericBoxDirectionalDensity.RestrictLimitValue = true;
             this.numericBoxDirectionalDensity.ShowFraction = false;
             this.numericBoxDirectionalDensity.ShowPositiveSign = false;
             this.numericBoxDirectionalDensity.ShowUpDown = true;
@@ -504,19 +491,16 @@
             this.numericBoxDirectionalDensity.SkipEventDuringInput = false;
             this.numericBoxDirectionalDensity.SmartIncrement = true;
             this.numericBoxDirectionalDensity.TabIndex = 407;
-            this.numericBoxDirectionalDensity.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxDirectionalDensity.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDirectionalDensity.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxDirectionalDensity.ThonsandsSeparator = true;
             this.numericBoxDirectionalDensity.ToolTip = "";
             this.numericBoxDirectionalDensity.UpDown_Increment = 1D;
             this.numericBoxDirectionalDensity.Value = 20D;
-            this.numericBoxDirectionalDensity.WordWrap = true;
-            // 
+                        // 
             // numericBoxInheritabiliryThreshold
             // 
-            this.numericBoxInheritabiliryThreshold.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
             this.numericBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -529,12 +513,10 @@
             this.numericBoxInheritabiliryThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxInheritabiliryThreshold.Minimum = 0D;
             this.numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxInheritabiliryThreshold.Multiline = false;
-            this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
+                       this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
             this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
-            this.numericBoxInheritabiliryThreshold.ReadOnly = false;
-            this.numericBoxInheritabiliryThreshold.RestrictLimitValue = true;
+                        this.numericBoxInheritabiliryThreshold.RestrictLimitValue = true;
             this.numericBoxInheritabiliryThreshold.ShowFraction = false;
             this.numericBoxInheritabiliryThreshold.ShowPositiveSign = false;
             this.numericBoxInheritabiliryThreshold.ShowUpDown = true;
@@ -542,20 +524,17 @@
             this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
             this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
             this.numericBoxInheritabiliryThreshold.TabIndex = 407;
-            this.numericBoxInheritabiliryThreshold.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxInheritabiliryThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxInheritabiliryThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxInheritabiliryThreshold.ThonsandsSeparator = true;
             this.numericBoxInheritabiliryThreshold.ToolTip = "";
             this.numericBoxInheritabiliryThreshold.UpDown_Increment = 1D;
             this.numericBoxInheritabiliryThreshold.Value = 96D;
             this.numericBoxInheritabiliryThreshold.Visible = false;
-            this.numericBoxInheritabiliryThreshold.WordWrap = true;
-            // 
+                        // 
             // numericBoxInheritabiliry
             // 
-            this.numericBoxInheritabiliry.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliry.DecimalPlaces = 2;
             this.numericBoxInheritabiliry.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -568,12 +547,10 @@
             this.numericBoxInheritabiliry.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxInheritabiliry.Minimum = 0D;
             this.numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxInheritabiliry.Multiline = false;
-            this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
+                       this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
             this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
-            this.numericBoxInheritabiliry.ReadOnly = false;
-            this.numericBoxInheritabiliry.RestrictLimitValue = true;
+                        this.numericBoxInheritabiliry.RestrictLimitValue = true;
             this.numericBoxInheritabiliry.ShowFraction = false;
             this.numericBoxInheritabiliry.ShowPositiveSign = false;
             this.numericBoxInheritabiliry.ShowUpDown = true;
@@ -581,19 +558,16 @@
             this.numericBoxInheritabiliry.SkipEventDuringInput = false;
             this.numericBoxInheritabiliry.SmartIncrement = true;
             this.numericBoxInheritabiliry.TabIndex = 407;
-            this.numericBoxInheritabiliry.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxInheritabiliry.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxInheritabiliry.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxInheritabiliry.ThonsandsSeparator = true;
             this.numericBoxInheritabiliry.ToolTip = "";
             this.numericBoxInheritabiliry.UpDown_Increment = 1D;
             this.numericBoxInheritabiliry.Value = 10D;
-            this.numericBoxInheritabiliry.WordWrap = true;
-            // 
+                        // 
             // numericBoxCrystalNumPerStep
             // 
-            this.numericBoxCrystalNumPerStep.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
+                       this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
             this.numericBoxCrystalNumPerStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -606,12 +580,10 @@
             this.numericBoxCrystalNumPerStep.MaximumSize = new System.Drawing.Size(1000, 23);
             this.numericBoxCrystalNumPerStep.Minimum = 1E-06D;
             this.numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxCrystalNumPerStep.Multiline = false;
-            this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
+                       this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
             this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
-            this.numericBoxCrystalNumPerStep.ReadOnly = false;
-            this.numericBoxCrystalNumPerStep.RestrictLimitValue = true;
+                        this.numericBoxCrystalNumPerStep.RestrictLimitValue = true;
             this.numericBoxCrystalNumPerStep.ShowFraction = false;
             this.numericBoxCrystalNumPerStep.ShowPositiveSign = false;
             this.numericBoxCrystalNumPerStep.ShowUpDown = true;
@@ -619,15 +591,13 @@
             this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
             this.numericBoxCrystalNumPerStep.SmartIncrement = true;
             this.numericBoxCrystalNumPerStep.TabIndex = 407;
-            this.numericBoxCrystalNumPerStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxCrystalNumPerStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCrystalNumPerStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxCrystalNumPerStep.ThonsandsSeparator = true;
             this.numericBoxCrystalNumPerStep.ToolTip = "";
             this.numericBoxCrystalNumPerStep.UpDown_Increment = 1D;
             this.numericBoxCrystalNumPerStep.Value = 0.5D;
-            this.numericBoxCrystalNumPerStep.WordWrap = true;
-            // 
+                        // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.checkBoxRefineConvergence);
@@ -874,25 +844,25 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.checkBoxYusaGonioScan);
-            this.groupBox7.Controls.Add(this.numericalTextBoxRxSpeed);
+            this.groupBox7.Controls.Add(this.numericBoxRxSpeed);
             this.groupBox7.Controls.Add(this.checkBoxYusaGonio_ValidRx);
             this.groupBox7.Controls.Add(this.label52);
-            this.groupBox7.Controls.Add(this.numericalTextBoxYusaGonioRySpeed);
+            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRySpeed);
             this.groupBox7.Controls.Add(this.label51);
-            this.groupBox7.Controls.Add(this.numericalTextBoxYusaGonioRzSpeed);
+            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRzSpeed);
             this.groupBox7.Controls.Add(this.label53);
             this.groupBox7.Controls.Add(this.label50);
             this.groupBox7.Controls.Add(this.radioButtonZigzagScan);
             this.groupBox7.Controls.Add(this.label54);
             this.groupBox7.Controls.Add(this.label49);
-            this.groupBox7.Controls.Add(this.numericalTextBoxYusaGonioRyStep);
+            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRyStep);
             this.groupBox7.Controls.Add(this.label55);
             this.groupBox7.Controls.Add(this.label48);
-            this.groupBox7.Controls.Add(this.numericalTextBoxYusaGonioRyOscillation);
+            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRyOscillation);
             this.groupBox7.Controls.Add(this.label56);
             this.groupBox7.Controls.Add(this.label60);
             this.groupBox7.Controls.Add(this.label47);
-            this.groupBox7.Controls.Add(this.numericalTextBoxYusaGonioRzOscillation);
+            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRzOscillation);
             this.groupBox7.Controls.Add(this.label57);
             this.groupBox7.Controls.Add(this.label59);
             this.groupBox7.Controls.Add(this.checkBox2);
@@ -919,44 +889,34 @@
             this.checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
             this.checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
             // 
-            // numericalTextBoxRxSpeed
+            // numericBoxRxSpeed
             // 
-            this.numericalTextBoxRxSpeed.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxRxSpeed.DecimalPlaces = -1;
-            this.numericalTextBoxRxSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxRxSpeed.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxRxSpeed.FooterText = "";
-            this.numericalTextBoxRxSpeed.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxRxSpeed.HeaderText = "";
-            this.numericalTextBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
-            this.numericalTextBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxRxSpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxRxSpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxRxSpeed.Multiline = false;
-            this.numericalTextBoxRxSpeed.Name = "numericalTextBoxRxSpeed";
-            this.numericalTextBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxRxSpeed.RadianValue = 0.31415926535897931D;
-            this.numericalTextBoxRxSpeed.ReadOnly = false;
-            this.numericalTextBoxRxSpeed.RestrictLimitValue = true;
-            this.numericalTextBoxRxSpeed.ShowFraction = false;
-            this.numericalTextBoxRxSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxRxSpeed.ShowUpDown = false;
-            this.numericalTextBoxRxSpeed.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxRxSpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxRxSpeed.SmartIncrement = true;
-            this.numericalTextBoxRxSpeed.TabIndex = 103;
-            this.numericalTextBoxRxSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxRxSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxRxSpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxRxSpeed.ToolTip = "";
-            this.numericalTextBoxRxSpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxRxSpeed.Value = 18D;
-            this.numericalTextBoxRxSpeed.WordWrap = true;
-            // 
+                       this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxRxSpeed.DecimalPlaces = -1;
+            this.numericBoxRxSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxRxSpeed.HeaderText = "";
+            this.numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
+            this.numericBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxRxSpeed.Maximum = double.PositiveInfinity;
+            this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxRxSpeed.Name = "numericBoxRxSpeed";
+            this.numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
+                        this.numericBoxRxSpeed.RestrictLimitValue = true;
+            
+            this.numericBoxRxSpeed.ShowPositiveSign = false;
+                        this.numericBoxRxSpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxRxSpeed.SkipEventDuringInput = false;
+            this.numericBoxRxSpeed.SmartIncrement = true;
+            this.numericBoxRxSpeed.TabIndex = 103;
+                        this.numericBoxRxSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRxSpeed.ThonsandsSeparator = true;
+            this.numericBoxRxSpeed.ToolTip = "";
+            this.numericBoxRxSpeed.UpDown_Increment = 1D;
+            this.numericBoxRxSpeed.Value = 18D;
+                        // 
             // checkBoxYusaGonio_ValidRx
             // 
             this.checkBoxYusaGonio_ValidRx.AutoSize = true;
@@ -980,44 +940,34 @@
             this.label52.TabIndex = 14;
             this.label52.Text = "motor speed";
             // 
-            // numericalTextBoxYusaGonioRySpeed
+            // numericBoxYusaGonioRySpeed
             // 
-            this.numericalTextBoxYusaGonioRySpeed.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxYusaGonioRySpeed.DecimalPlaces = -1;
-            this.numericalTextBoxYusaGonioRySpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRySpeed.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRySpeed.FooterText = "";
-            this.numericalTextBoxYusaGonioRySpeed.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRySpeed.HeaderText = "";
-            this.numericalTextBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
-            this.numericalTextBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRySpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxYusaGonioRySpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxYusaGonioRySpeed.Multiline = false;
-            this.numericalTextBoxYusaGonioRySpeed.Name = "numericalTextBoxYusaGonioRySpeed";
-            this.numericalTextBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
-            this.numericalTextBoxYusaGonioRySpeed.ReadOnly = false;
-            this.numericalTextBoxYusaGonioRySpeed.RestrictLimitValue = true;
-            this.numericalTextBoxYusaGonioRySpeed.ShowFraction = false;
-            this.numericalTextBoxYusaGonioRySpeed.ShowPositiveSign = false;
-            this.numericalTextBoxYusaGonioRySpeed.ShowUpDown = false;
-            this.numericalTextBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxYusaGonioRySpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxYusaGonioRySpeed.SmartIncrement = true;
-            this.numericalTextBoxYusaGonioRySpeed.TabIndex = 109;
-            this.numericalTextBoxYusaGonioRySpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxYusaGonioRySpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxYusaGonioRySpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxYusaGonioRySpeed.ToolTip = "";
-            this.numericalTextBoxYusaGonioRySpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxYusaGonioRySpeed.Value = 1D;
-            this.numericalTextBoxYusaGonioRySpeed.WordWrap = true;
-            // 
+                       this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRySpeed.DecimalPlaces = -1;
+            this.numericBoxYusaGonioRySpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxYusaGonioRySpeed.HeaderText = "";
+            this.numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
+            this.numericBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRySpeed.Maximum = double.PositiveInfinity;
+            this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
+            this.numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
+                        this.numericBoxYusaGonioRySpeed.RestrictLimitValue = true;
+            
+            this.numericBoxYusaGonioRySpeed.ShowPositiveSign = false;
+                        this.numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
+            this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
+            this.numericBoxYusaGonioRySpeed.TabIndex = 109;
+                        this.numericBoxYusaGonioRySpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRySpeed.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRySpeed.ToolTip = "";
+            this.numericBoxYusaGonioRySpeed.UpDown_Increment = 1D;
+            this.numericBoxYusaGonioRySpeed.Value = 1D;
+                        // 
             // label51
             // 
             this.label51.AutoSize = true;
@@ -1029,44 +979,34 @@
             this.label51.TabIndex = 16;
             this.label51.Text = "oscillation";
             // 
-            // numericalTextBoxYusaGonioRzSpeed
+            // numericBoxYusaGonioRzSpeed
             // 
-            this.numericalTextBoxYusaGonioRzSpeed.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxYusaGonioRzSpeed.DecimalPlaces = -1;
-            this.numericalTextBoxYusaGonioRzSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzSpeed.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzSpeed.FooterText = "";
-            this.numericalTextBoxYusaGonioRzSpeed.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzSpeed.HeaderText = "";
-            this.numericalTextBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
-            this.numericalTextBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRzSpeed.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxYusaGonioRzSpeed.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxYusaGonioRzSpeed.Multiline = false;
-            this.numericalTextBoxYusaGonioRzSpeed.Name = "numericalTextBoxYusaGonioRzSpeed";
-            this.numericalTextBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
-            this.numericalTextBoxYusaGonioRzSpeed.ReadOnly = false;
-            this.numericalTextBoxYusaGonioRzSpeed.RestrictLimitValue = true;
-            this.numericalTextBoxYusaGonioRzSpeed.ShowFraction = false;
-            this.numericalTextBoxYusaGonioRzSpeed.ShowPositiveSign = false;
-            this.numericalTextBoxYusaGonioRzSpeed.ShowUpDown = false;
-            this.numericalTextBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
-            this.numericalTextBoxYusaGonioRzSpeed.SmartIncrement = true;
-            this.numericalTextBoxYusaGonioRzSpeed.TabIndex = 106;
-            this.numericalTextBoxYusaGonioRzSpeed.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxYusaGonioRzSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxYusaGonioRzSpeed.ThonsandsSeparator = true;
-            this.numericalTextBoxYusaGonioRzSpeed.ToolTip = "";
-            this.numericalTextBoxYusaGonioRzSpeed.UpDown_Increment = 1D;
-            this.numericalTextBoxYusaGonioRzSpeed.Value = 2D;
-            this.numericalTextBoxYusaGonioRzSpeed.WordWrap = true;
-            // 
+                       this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzSpeed.DecimalPlaces = -1;
+            this.numericBoxYusaGonioRzSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxYusaGonioRzSpeed.HeaderText = "";
+            this.numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
+            this.numericBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRzSpeed.Maximum = double.PositiveInfinity;
+            this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
+            this.numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
+                        this.numericBoxYusaGonioRzSpeed.RestrictLimitValue = true;
+            
+            this.numericBoxYusaGonioRzSpeed.ShowPositiveSign = false;
+                        this.numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
+            this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
+            this.numericBoxYusaGonioRzSpeed.TabIndex = 106;
+                        this.numericBoxYusaGonioRzSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRzSpeed.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRzSpeed.ToolTip = "";
+            this.numericBoxYusaGonioRzSpeed.UpDown_Increment = 1D;
+            this.numericBoxYusaGonioRzSpeed.Value = 2D;
+                        // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -1125,44 +1065,34 @@
             this.label49.TabIndex = 25;
             this.label49.Text = "step";
             // 
-            // numericalTextBoxYusaGonioRyStep
+            // numericBoxYusaGonioRyStep
             // 
-            this.numericalTextBoxYusaGonioRyStep.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxYusaGonioRyStep.DecimalPlaces = -1;
-            this.numericalTextBoxYusaGonioRyStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyStep.FooterText = "";
-            this.numericalTextBoxYusaGonioRyStep.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyStep.HeaderText = "";
-            this.numericalTextBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
-            this.numericalTextBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRyStep.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxYusaGonioRyStep.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxYusaGonioRyStep.Multiline = false;
-            this.numericalTextBoxYusaGonioRyStep.Name = "numericalTextBoxYusaGonioRyStep";
-            this.numericalTextBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
-            this.numericalTextBoxYusaGonioRyStep.ReadOnly = false;
-            this.numericalTextBoxYusaGonioRyStep.RestrictLimitValue = true;
-            this.numericalTextBoxYusaGonioRyStep.ShowFraction = false;
-            this.numericalTextBoxYusaGonioRyStep.ShowPositiveSign = false;
-            this.numericalTextBoxYusaGonioRyStep.ShowUpDown = false;
-            this.numericalTextBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxYusaGonioRyStep.SkipEventDuringInput = false;
-            this.numericalTextBoxYusaGonioRyStep.SmartIncrement = true;
-            this.numericalTextBoxYusaGonioRyStep.TabIndex = 111;
-            this.numericalTextBoxYusaGonioRyStep.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxYusaGonioRyStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxYusaGonioRyStep.ThonsandsSeparator = true;
-            this.numericalTextBoxYusaGonioRyStep.ToolTip = "";
-            this.numericalTextBoxYusaGonioRyStep.UpDown_Increment = 1D;
-            this.numericalTextBoxYusaGonioRyStep.Value = 0.2D;
-            this.numericalTextBoxYusaGonioRyStep.WordWrap = true;
-            // 
+                       this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyStep.DecimalPlaces = -1;
+            this.numericBoxYusaGonioRyStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxYusaGonioRyStep.HeaderText = "";
+            this.numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
+            this.numericBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRyStep.Maximum = double.PositiveInfinity;
+            this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
+            this.numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
+                        this.numericBoxYusaGonioRyStep.RestrictLimitValue = true;
+            
+            this.numericBoxYusaGonioRyStep.ShowPositiveSign = false;
+                        this.numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
+            this.numericBoxYusaGonioRyStep.SmartIncrement = true;
+            this.numericBoxYusaGonioRyStep.TabIndex = 111;
+                        this.numericBoxYusaGonioRyStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRyStep.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRyStep.ToolTip = "";
+            this.numericBoxYusaGonioRyStep.UpDown_Increment = 1D;
+            this.numericBoxYusaGonioRyStep.Value = 0.2D;
+                        // 
             // label55
             // 
             this.label55.AutoSize = true;
@@ -1186,44 +1116,34 @@
             this.label48.TabIndex = 27;
             this.label48.Text = "±";
             // 
-            // numericalTextBoxYusaGonioRyOscillation
+            // numericBoxYusaGonioRyOscillation
             // 
-            this.numericalTextBoxYusaGonioRyOscillation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxYusaGonioRyOscillation.DecimalPlaces = -1;
-            this.numericalTextBoxYusaGonioRyOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyOscillation.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyOscillation.FooterText = "";
-            this.numericalTextBoxYusaGonioRyOscillation.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRyOscillation.HeaderText = "";
-            this.numericalTextBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
-            this.numericalTextBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRyOscillation.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxYusaGonioRyOscillation.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxYusaGonioRyOscillation.Multiline = false;
-            this.numericalTextBoxYusaGonioRyOscillation.Name = "numericalTextBoxYusaGonioRyOscillation";
-            this.numericalTextBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
-            this.numericalTextBoxYusaGonioRyOscillation.ReadOnly = false;
-            this.numericalTextBoxYusaGonioRyOscillation.RestrictLimitValue = true;
-            this.numericalTextBoxYusaGonioRyOscillation.ShowFraction = false;
-            this.numericalTextBoxYusaGonioRyOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxYusaGonioRyOscillation.ShowUpDown = false;
-            this.numericalTextBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
-            this.numericalTextBoxYusaGonioRyOscillation.SmartIncrement = true;
-            this.numericalTextBoxYusaGonioRyOscillation.TabIndex = 110;
-            this.numericalTextBoxYusaGonioRyOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxYusaGonioRyOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxYusaGonioRyOscillation.ThonsandsSeparator = true;
-            this.numericalTextBoxYusaGonioRyOscillation.ToolTip = "";
-            this.numericalTextBoxYusaGonioRyOscillation.UpDown_Increment = 1D;
-            this.numericalTextBoxYusaGonioRyOscillation.Value = 4D;
-            this.numericalTextBoxYusaGonioRyOscillation.WordWrap = true;
-            // 
+                       this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyOscillation.DecimalPlaces = -1;
+            this.numericBoxYusaGonioRyOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxYusaGonioRyOscillation.HeaderText = "";
+            this.numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
+            this.numericBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRyOscillation.Maximum = double.PositiveInfinity;
+            this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
+            this.numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
+                        this.numericBoxYusaGonioRyOscillation.RestrictLimitValue = true;
+            
+            this.numericBoxYusaGonioRyOscillation.ShowPositiveSign = false;
+                        this.numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
+            this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
+            this.numericBoxYusaGonioRyOscillation.TabIndex = 110;
+                        this.numericBoxYusaGonioRyOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRyOscillation.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRyOscillation.ToolTip = "";
+            this.numericBoxYusaGonioRyOscillation.UpDown_Increment = 1D;
+            this.numericBoxYusaGonioRyOscillation.Value = 4D;
+                        // 
             // label56
             // 
             this.label56.AutoSize = true;
@@ -1257,44 +1177,34 @@
             this.label47.TabIndex = 26;
             this.label47.Text = "±";
             // 
-            // numericalTextBoxYusaGonioRzOscillation
+            // numericBoxYusaGonioRzOscillation
             // 
-            this.numericalTextBoxYusaGonioRzOscillation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxYusaGonioRzOscillation.DecimalPlaces = -1;
-            this.numericalTextBoxYusaGonioRzOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzOscillation.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzOscillation.FooterText = "";
-            this.numericalTextBoxYusaGonioRzOscillation.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxYusaGonioRzOscillation.HeaderText = "";
-            this.numericalTextBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
-            this.numericalTextBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRzOscillation.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxYusaGonioRzOscillation.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxYusaGonioRzOscillation.Multiline = false;
-            this.numericalTextBoxYusaGonioRzOscillation.Name = "numericalTextBoxYusaGonioRzOscillation";
-            this.numericalTextBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
-            this.numericalTextBoxYusaGonioRzOscillation.ReadOnly = false;
-            this.numericalTextBoxYusaGonioRzOscillation.RestrictLimitValue = true;
-            this.numericalTextBoxYusaGonioRzOscillation.ShowFraction = false;
-            this.numericalTextBoxYusaGonioRzOscillation.ShowPositiveSign = false;
-            this.numericalTextBoxYusaGonioRzOscillation.ShowUpDown = false;
-            this.numericalTextBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 22);
-            this.numericalTextBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
-            this.numericalTextBoxYusaGonioRzOscillation.SmartIncrement = true;
-            this.numericalTextBoxYusaGonioRzOscillation.TabIndex = 107;
-            this.numericalTextBoxYusaGonioRzOscillation.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxYusaGonioRzOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxYusaGonioRzOscillation.ThonsandsSeparator = true;
-            this.numericalTextBoxYusaGonioRzOscillation.ToolTip = "";
-            this.numericalTextBoxYusaGonioRzOscillation.UpDown_Increment = 1D;
-            this.numericalTextBoxYusaGonioRzOscillation.Value = 4D;
-            this.numericalTextBoxYusaGonioRzOscillation.WordWrap = true;
-            // 
+                       this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzOscillation.DecimalPlaces = -1;
+            this.numericBoxYusaGonioRzOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+                                                this.numericBoxYusaGonioRzOscillation.HeaderText = "";
+            this.numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
+            this.numericBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRzOscillation.Maximum = double.PositiveInfinity;
+            this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
+                        this.numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+                       this.numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
+            this.numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
+                        this.numericBoxYusaGonioRzOscillation.RestrictLimitValue = true;
+            
+            this.numericBoxYusaGonioRzOscillation.ShowPositiveSign = false;
+                        this.numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
+            this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;
+            this.numericBoxYusaGonioRzOscillation.TabIndex = 107;
+                        this.numericBoxYusaGonioRzOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRzOscillation.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRzOscillation.ToolTip = "";
+            this.numericBoxYusaGonioRzOscillation.UpDown_Increment = 1D;
+            this.numericBoxYusaGonioRzOscillation.Value = 4D;
+                        // 
             // label57
             // 
             this.label57.AutoSize = true;
@@ -1694,13 +1604,13 @@
         private System.Windows.Forms.CheckBox checkBoxRefineStress;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.CheckBox checkBoxRefinePreferredOrientation;
-        public Crystallography.Controls.NumericBox numericalTextBoxRxSpeed;
-        public Crystallography.Controls.NumericBox numericalTextBoxYusaGonioRySpeed;
-        public Crystallography.Controls.NumericBox numericalTextBoxYusaGonioRzSpeed;
+        public Crystallography.Controls.NumericBox numericBoxRxSpeed;
+        public Crystallography.Controls.NumericBox numericBoxYusaGonioRySpeed;
+        public Crystallography.Controls.NumericBox numericBoxYusaGonioRzSpeed;
         public System.Windows.Forms.RadioButton radioButtonZigzagScan;
-        public Crystallography.Controls.NumericBox numericalTextBoxYusaGonioRyStep;
-        public Crystallography.Controls.NumericBox numericalTextBoxYusaGonioRyOscillation;
-        public Crystallography.Controls.NumericBox numericalTextBoxYusaGonioRzOscillation;
+        public Crystallography.Controls.NumericBox numericBoxYusaGonioRyStep;
+        public Crystallography.Controls.NumericBox numericBoxYusaGonioRyOscillation;
+        public Crystallography.Controls.NumericBox numericBoxYusaGonioRzOscillation;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label47;

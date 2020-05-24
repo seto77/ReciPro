@@ -629,7 +629,7 @@ namespace Crystallography
             for (z = 2; z <= Math.Abs(u) || z <= Math.Abs(v) || z <= Math.Abs(w); z++)
                 if ((u % z == 0) && (v % z == 0) && (w % z == 0))
                 {
-                    u = u / z; v = v / z; w = w / z; z = 1;
+                    u /= z; v /= z; w /= z; z = 1;
                 }
             return $" {u} {v} {w}";
         }
@@ -808,7 +808,7 @@ namespace Crystallography
                         for (int l = -lMax; l <= lMax; l++)
                             if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax && SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi))
                             {
-                                Plane temp = new Plane();
+                                var temp = new Plane();
                                 // if (!excludeForbiddenPlane | (temp.strCondition = SymmetryStatic.CheckExtinctionRule(h, k, l, Symmetry)).Length == 0)
                                 if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
@@ -1361,7 +1361,7 @@ namespace Crystallography
                             i--;
                         }
                     }
-                    denom = denom / (int)Num[0];
+                    denom /= (int)Num[0];
                 }
 
                 ChemicalFormulaSum = "";

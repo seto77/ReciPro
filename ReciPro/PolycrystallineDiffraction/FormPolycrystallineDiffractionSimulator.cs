@@ -177,8 +177,8 @@ namespace ReciPro
             int width = (int)numericUpDownImageWidth.Value;
             int height = (int)numericUpDownImageHeight.Value;
             double res = (double)numericUpDownResolution.Value;
-            double centerX = numericalTextBoxCenterX.Value;
-            double centerY = numericalTextBoxCenterY.Value;
+            double centerX = numericBoxCenterX.Value;
+            double centerY = numericBoxCenterY.Value;
             double cameraLength = (double)numericUpDownCamaraLength.Value;
 
             DiffractionPatternControl dpc;
@@ -202,8 +202,8 @@ namespace ReciPro
             {
                 gonio.Valid = true;
                 gonio.Rx = checkBoxYusaGonio_ValidRx.Checked;
-                gonio.Ry_OscillationRange = numericalTextBoxYusaGonioRyOscillation.Value;
-                gonio.Rz_OscillationRange = numericalTextBoxYusaGonioRzOscillation.Value;
+                gonio.Ry_OscillationRange = numericBoxYusaGonioRyOscillation.Value;
+                gonio.Rz_OscillationRange = numericBoxYusaGonioRzOscillation.Value;
             }
 
             sw.Restart();
@@ -1027,8 +1027,8 @@ return residual;
                         int width = (int)numericUpDownImageWidth.Value;
                         int height = (int)numericUpDownImageHeight.Value;
                         double res = (double)numericUpDownResolution.Value;
-                        double centerX = numericalTextBoxCenterX.Value;
-                        double centerY = numericalTextBoxCenterY.Value;
+                        double centerX = numericBoxCenterX.Value;
+                        double centerY = numericBoxCenterY.Value;
                         double cameraLength = (double)numericUpDownCamaraLength.Value;
 
                         DiffractionPatternControl dpc;
@@ -1159,8 +1159,8 @@ return residual;
             {
                 gonio.Valid = true;
                 gonio.Rx = checkBoxYusaGonio_ValidRx.Checked;
-                gonio.Ry_OscillationRange = numericalTextBoxYusaGonioRyOscillation.Value;
-                gonio.Rz_OscillationRange = numericalTextBoxYusaGonioRzOscillation.Value;
+                gonio.Ry_OscillationRange = numericBoxYusaGonioRyOscillation.Value;
+                gonio.Rz_OscillationRange = numericBoxYusaGonioRzOscillation.Value;
             }
 
             sw.Restart();

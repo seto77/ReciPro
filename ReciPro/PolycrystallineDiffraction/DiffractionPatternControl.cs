@@ -31,8 +31,8 @@ namespace ReciPro
 
         public double Cameralength
         {
-            set => numericalTextBoxCameraLength.Value = value;
-            get => numericalTextBoxCameraLength.Value;
+            set => numericBoxCameraLength.Value = value;
+            get => numericBoxCameraLength.Value;
         }
 
         public double Wavelength
@@ -71,14 +71,14 @@ namespace ReciPro
 
         public double Convergence
         {
-            set => numericalTextBoxConvergentAngle.RadianValue = value;
-            get => numericalTextBoxConvergentAngle.RadianValue;
+            set => numericBoxConvergentAngle.RadianValue = value;
+            get => numericBoxConvergentAngle.RadianValue;
         }
 
         public double ConvergenceDegree
         {
-            set => numericalTextBoxConvergentAngle.Value = value;
-            get => numericalTextBoxConvergentAngle.Value;
+            set => numericBoxConvergentAngle.Value = value;
+            get => numericBoxConvergentAngle.Value;
         }
 
         private double monochromaticity = 0;
@@ -90,8 +90,8 @@ namespace ReciPro
                 monochromaticity = value;
                 try
                 {
-                    if (numericalTextBoxMonochromaticity.Value != value * 100.0)
-                        numericalTextBoxMonochromaticity.Value = value * 100.0;
+                    if (numericBoxMonochromaticity.Value != value * 100.0)
+                        numericBoxMonochromaticity.Value = value * 100.0;
                 }
                 catch { }
             }
@@ -130,8 +130,8 @@ namespace ReciPro
         /// </summary>
         public double Resolution
         {
-            get => numericalTextBoxImageResolution.Value;
-            set => numericalTextBoxImageResolution.Value = value;
+            get => numericBoxImageResolution.Value;
+            set => numericBoxImageResolution.Value = value;
         }
 
         /// <summary>
@@ -139,8 +139,8 @@ namespace ReciPro
         /// </summary>
         public double Phi
         {
-            set => numericalTextBoxPhi.RadianValue = value;
-            get => numericalTextBoxPhi.RadianValue;
+            set => numericBoxPhi.RadianValue = value;
+            get => numericBoxPhi.RadianValue;
         }
 
         /// <summary>
@@ -148,8 +148,8 @@ namespace ReciPro
         /// </summary>
         public double Tau
         {
-            set => numericalTextBoxTau.RadianValue = value;
-            get => numericalTextBoxTau.RadianValue;
+            set => numericBoxTau.RadianValue = value;
+            get => numericBoxTau.RadianValue;
         }
 
         /// <summary>
@@ -173,11 +173,11 @@ namespace ReciPro
 
                 center = value;
 
-                numericalTextBoxCenterX.Value = center.X;
-                numericalTextBoxCenterY.Value = center.Y;
+                numericBoxCenterX.Value = center.X;
+                numericBoxCenterY.Value = center.Y;
                 DetectorProperty.Center = value;
             }
-            get => new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
+            get => new PointD(numericBoxCenterX.Value, numericBoxCenterY.Value);
         }
 
         private AreaDetector detectorProperty = null;
@@ -249,9 +249,9 @@ namespace ReciPro
                     this.Invoke(new callBack(delegate { FilmBlur = value; }));
                     return;
                 }
-                numericalTextBoxFilmBlur.Value = value;
+                numericBoxFilmBlur.Value = value;
             }
-            get => numericalTextBoxFilmBlur.Value;
+            get => numericBoxFilmBlur.Value;
         }
 
         #region ピクセル配列群
@@ -318,9 +318,9 @@ namespace ReciPro
             for (int j = 0; j < Weight.Length; j++)
                 Weight[j] = SrcPixels[j] > 0.1 ? 1 / SrcPixels[j] : 10;
 
-            numericalTextBoxImageResolution.Value = resolution;
-            numericalTextBoxCenterX.Value = center.X;
-            numericalTextBoxCenterY.Value = center.Y;
+            numericBoxImageResolution.Value = resolution;
+            numericBoxCenterX.Value = center.X;
+            numericBoxCenterY.Value = center.Y;
 
             Profile p = setFrequencyProfile(srcPixels);
 
@@ -947,7 +947,7 @@ namespace ReciPro
             else
             {
                 skipEvent = true;
-                numericalTextBoxMonitorResolution.Value = scalablePictureBox.Zoom * numericalTextBoxImageResolution.Value;
+                numericBoxMonitorResolution.Value = scalablePictureBox.Zoom * numericBoxImageResolution.Value;
                 skipEvent = false;
             }
 
@@ -1754,10 +1754,10 @@ namespace ReciPro
 
         private bool skipEvent = false;
 
-        private void numericalTextBoxMonitorResolution_ValueChanged(object sender, EventArgs e)
+        private void numericBoxMonitorResolution_ValueChanged(object sender, EventArgs e)
         {
             if (skipEvent) return;
-            scalablePictureBox.Zoom = numericalTextBoxMonitorResolution.Value / numericalTextBoxImageResolution.Value;
+            scalablePictureBox.Zoom = numericBoxMonitorResolution.Value / numericBoxImageResolution.Value;
             scalablePictureBox_MouseUp2(new object(), new MouseEventArgs(new MouseButtons(), 0, 0, 0, 0), new PointD());
         }
 
@@ -1884,7 +1884,7 @@ namespace ReciPro
 
         public void ContolEnabled(bool flag) => groupBoxBackground.Enabled = groupBoxGeometry.Enabled = checkBoxInitialBackground.Enabled = flag;
 
-        private void numericalTextBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericalTextBoxCenterX.Value, numericalTextBoxCenterY.Value);
+        private void numericBoxCenterX_ValueChanged(object sender, EventArgs e) => center = new PointD(numericBoxCenterX.Value, numericBoxCenterY.Value);
 
         private delegate void SetPlaneIndexCallBack();
 

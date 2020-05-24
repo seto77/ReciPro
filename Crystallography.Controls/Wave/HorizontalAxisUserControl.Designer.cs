@@ -70,7 +70,7 @@
             this.radioButtonEnergyUnitKev = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericalTextBoxTwoTheta = new Crystallography.Controls.NumericBox();
+            this.numericBoxTwoTheta = new Crystallography.Controls.NumericBox();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanelNeutronTOF = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
@@ -78,11 +78,11 @@
             this.radioButtonTofUnitNanoSec = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericalTextBoxTofTakeOffAngle = new Crystallography.Controls.NumericBox();
+            this.numericBoxTofTakeOffAngle = new Crystallography.Controls.NumericBox();
             this.label10 = new System.Windows.Forms.Label();
             this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericalTextBoxTofDistance = new Crystallography.Controls.NumericBox();
+            this.numericBoxTofDistance = new Crystallography.Controls.NumericBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
@@ -407,7 +407,7 @@
             // 
             resources.ApplyResources(this.flowLayoutPanel13, "flowLayoutPanel13");
             this.flowLayoutPanel13.Controls.Add(this.label7);
-            this.flowLayoutPanel13.Controls.Add(this.numericalTextBoxTwoTheta);
+            this.flowLayoutPanel13.Controls.Add(this.numericBoxTwoTheta);
             this.flowLayoutPanel13.Controls.Add(this.label4);
             this.flowLayoutPanel13.Name = "flowLayoutPanel13";
             // 
@@ -416,34 +416,24 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // numericalTextBoxTwoTheta
+            // numericBoxTwoTheta
             // 
-            this.numericalTextBoxTwoTheta.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxTwoTheta, "numericalTextBoxTwoTheta");
-            this.numericalTextBoxTwoTheta.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTwoTheta.DecimalPlaces = -1;
-            this.numericalTextBoxTwoTheta.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxTwoTheta.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTwoTheta.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxTwoTheta.MouseSpeed = 1D;
-            this.numericalTextBoxTwoTheta.Multiline = false;
-            this.numericalTextBoxTwoTheta.Name = "numericalTextBoxTwoTheta";
-            this.numericalTextBoxTwoTheta.RadianValue = 0D;
-            this.numericalTextBoxTwoTheta.ReadOnly = false;
-            this.numericalTextBoxTwoTheta.RestrictLimitValue = true;
-            this.numericalTextBoxTwoTheta.ShowFraction = false;
-            this.numericalTextBoxTwoTheta.ShowPositiveSign = false;
-            this.numericalTextBoxTwoTheta.ShowUpDown = false;
-            this.numericalTextBoxTwoTheta.SkipEventDuringInput = false;
-            this.numericalTextBoxTwoTheta.SmartIncrement = true;
-            this.numericalTextBoxTwoTheta.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxTwoTheta.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxTwoTheta.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBoxTwoTheta.ThonsandsSeparator = true;
-            this.numericalTextBoxTwoTheta.UpDown_Increment = 1D;
-            this.numericalTextBoxTwoTheta.Value = 0D;
-            this.numericalTextBoxTwoTheta.WordWrap = true;
-            this.numericalTextBoxTwoTheta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxTwoTheta_ValueChanged);
+            resources.ApplyResources(this.numericBoxTwoTheta, "numericBoxTwoTheta");
+            this.numericBoxTwoTheta.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwoTheta.DecimalPlaces = -1;
+            this.numericBoxTwoTheta.Maximum = double.PositiveInfinity;
+                                   this.numericBoxTwoTheta.Name = "numericBoxTwoTheta";
+            this.numericBoxTwoTheta.RadianValue = 0D;
+                        this.numericBoxTwoTheta.RestrictLimitValue = true;
+            
+            this.numericBoxTwoTheta.ShowPositiveSign = false;
+                        this.numericBoxTwoTheta.SkipEventDuringInput = false;
+            this.numericBoxTwoTheta.SmartIncrement = true;
+                        this.numericBoxTwoTheta.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxTwoTheta.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBoxTwoTheta.ThonsandsSeparator = true;
+            this.numericBoxTwoTheta.UpDown_Increment = 1D;
+                                    this.numericBoxTwoTheta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
             // 
             // label4
             // 
@@ -483,7 +473,7 @@
             // 
             resources.ApplyResources(this.flowLayoutPanel10, "flowLayoutPanel10");
             this.flowLayoutPanel10.Controls.Add(this.label11);
-            this.flowLayoutPanel10.Controls.Add(this.numericalTextBoxTofTakeOffAngle);
+            this.flowLayoutPanel10.Controls.Add(this.numericBoxTofTakeOffAngle);
             this.flowLayoutPanel10.Controls.Add(this.label10);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             // 
@@ -492,34 +482,25 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // numericalTextBoxTofTakeOffAngle
+            // numericBoxTofTakeOffAngle
             // 
-            this.numericalTextBoxTofTakeOffAngle.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxTofTakeOffAngle, "numericalTextBoxTofTakeOffAngle");
-            this.numericalTextBoxTofTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTofTakeOffAngle.DecimalPlaces = -1;
-            this.numericalTextBoxTofTakeOffAngle.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxTofTakeOffAngle.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTofTakeOffAngle.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxTofTakeOffAngle.MouseSpeed = 1D;
-            this.numericalTextBoxTofTakeOffAngle.Multiline = false;
-            this.numericalTextBoxTofTakeOffAngle.Name = "numericalTextBoxTofTakeOffAngle";
-            this.numericalTextBoxTofTakeOffAngle.RadianValue = 1.5707963267948966D;
-            this.numericalTextBoxTofTakeOffAngle.ReadOnly = false;
-            this.numericalTextBoxTofTakeOffAngle.RestrictLimitValue = true;
-            this.numericalTextBoxTofTakeOffAngle.ShowFraction = false;
-            this.numericalTextBoxTofTakeOffAngle.ShowPositiveSign = false;
-            this.numericalTextBoxTofTakeOffAngle.ShowUpDown = false;
-            this.numericalTextBoxTofTakeOffAngle.SkipEventDuringInput = false;
-            this.numericalTextBoxTofTakeOffAngle.SmartIncrement = true;
-            this.numericalTextBoxTofTakeOffAngle.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxTofTakeOffAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxTofTakeOffAngle.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBoxTofTakeOffAngle.ThonsandsSeparator = true;
-            this.numericalTextBoxTofTakeOffAngle.UpDown_Increment = 1D;
-            this.numericalTextBoxTofTakeOffAngle.Value = 90D;
-            this.numericalTextBoxTofTakeOffAngle.WordWrap = true;
-            this.numericalTextBoxTofTakeOffAngle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxTwoTheta_ValueChanged);
+            resources.ApplyResources(this.numericBoxTofTakeOffAngle, "numericBoxTofTakeOffAngle");
+            this.numericBoxTofTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTofTakeOffAngle.DecimalPlaces = -1;
+            this.numericBoxTofTakeOffAngle.Maximum = double.PositiveInfinity;
+                                   this.numericBoxTofTakeOffAngle.Name = "numericBoxTofTakeOffAngle";
+            this.numericBoxTofTakeOffAngle.RadianValue = 1.5707963267948966D;
+                        this.numericBoxTofTakeOffAngle.RestrictLimitValue = true;
+            
+            this.numericBoxTofTakeOffAngle.ShowPositiveSign = false;
+                        this.numericBoxTofTakeOffAngle.SkipEventDuringInput = false;
+            this.numericBoxTofTakeOffAngle.SmartIncrement = true;
+                        this.numericBoxTofTakeOffAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxTofTakeOffAngle.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBoxTofTakeOffAngle.ThonsandsSeparator = true;
+            this.numericBoxTofTakeOffAngle.UpDown_Increment = 1D;
+            this.numericBoxTofTakeOffAngle.Value = 90D;
+                        this.numericBoxTofTakeOffAngle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
             // 
             // label10
             // 
@@ -530,7 +511,7 @@
             // 
             resources.ApplyResources(this.flowLayoutPanel11, "flowLayoutPanel11");
             this.flowLayoutPanel11.Controls.Add(this.label2);
-            this.flowLayoutPanel11.Controls.Add(this.numericalTextBoxTofDistance);
+            this.flowLayoutPanel11.Controls.Add(this.numericBoxTofDistance);
             this.flowLayoutPanel11.Controls.Add(this.label1);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
             // 
@@ -539,34 +520,25 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // numericalTextBoxTofDistance
+            // numericBoxTofDistance
             // 
-            this.numericalTextBoxTofDistance.AllowMouseControl = false;
-            resources.ApplyResources(this.numericalTextBoxTofDistance, "numericalTextBoxTofDistance");
-            this.numericalTextBoxTofDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTofDistance.DecimalPlaces = -1;
-            this.numericalTextBoxTofDistance.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxTofDistance.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTofDistance.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxTofDistance.MouseSpeed = 1D;
-            this.numericalTextBoxTofDistance.Multiline = false;
-            this.numericalTextBoxTofDistance.Name = "numericalTextBoxTofDistance";
-            this.numericalTextBoxTofDistance.RadianValue = 0.73303828583761843D;
-            this.numericalTextBoxTofDistance.ReadOnly = false;
-            this.numericalTextBoxTofDistance.RestrictLimitValue = true;
-            this.numericalTextBoxTofDistance.ShowFraction = false;
-            this.numericalTextBoxTofDistance.ShowPositiveSign = false;
-            this.numericalTextBoxTofDistance.ShowUpDown = false;
-            this.numericalTextBoxTofDistance.SkipEventDuringInput = false;
-            this.numericalTextBoxTofDistance.SmartIncrement = true;
-            this.numericalTextBoxTofDistance.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxTofDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericalTextBoxTofDistance.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericalTextBoxTofDistance.ThonsandsSeparator = true;
-            this.numericalTextBoxTofDistance.UpDown_Increment = 1D;
-            this.numericalTextBoxTofDistance.Value = 42D;
-            this.numericalTextBoxTofDistance.WordWrap = true;
-            this.numericalTextBoxTofDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxTwoTheta_ValueChanged);
+            resources.ApplyResources(this.numericBoxTofDistance, "numericBoxTofDistance");
+            this.numericBoxTofDistance.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTofDistance.DecimalPlaces = -1;
+            this.numericBoxTofDistance.Maximum = double.PositiveInfinity;
+                                   this.numericBoxTofDistance.Name = "numericBoxTofDistance";
+            this.numericBoxTofDistance.RadianValue = 0.73303828583761843D;
+                        this.numericBoxTofDistance.RestrictLimitValue = true;
+            
+            this.numericBoxTofDistance.ShowPositiveSign = false;
+                        this.numericBoxTofDistance.SkipEventDuringInput = false;
+            this.numericBoxTofDistance.SmartIncrement = true;
+                        this.numericBoxTofDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+            this.numericBoxTofDistance.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBoxTofDistance.ThonsandsSeparator = true;
+            this.numericBoxTofDistance.UpDown_Increment = 1D;
+            this.numericBoxTofDistance.Value = 42D;
+                        this.numericBoxTofDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
             // 
             // label1
             // 
@@ -652,18 +624,18 @@
         private System.Windows.Forms.RadioButton radioButtonEnergy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBoxTwoTheta;
-        private Crystallography.Controls.NumericBox numericalTextBoxTwoTheta;
+        private Crystallography.Controls.NumericBox numericBoxTwoTheta;
         private WaveLengthControl waveLengthControl;
         private System.Windows.Forms.RadioButton radioButtonTOF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private NumericBox numericalTextBoxTofDistance;
+        private NumericBox numericBoxTofDistance;
         private System.Windows.Forms.RadioButton radioButtonNeutron;
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.RadioButton radioButtonXray;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label10;
-        private NumericBox numericalTextBoxTofTakeOffAngle;
+        private NumericBox numericBoxTofTakeOffAngle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.RadioButton radioButtonMonochro;
         private System.Windows.Forms.RadioButton radioButtonFlatWhite;

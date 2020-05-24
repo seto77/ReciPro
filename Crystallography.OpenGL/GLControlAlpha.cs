@@ -14,8 +14,6 @@ using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
 using System.Management;
-using QuickFont;
-using QuickFont.Configuration;
 
 namespace Crystallography.OpenGL
 {
@@ -528,7 +526,7 @@ namespace Crystallography.OpenGL
                 passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
 
                 quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(0), DrawingMode.Surfaces);
-                quad.Generate(Program,false);
+                quad.Generate(Program);
             }
             else
             {//Zsortモードの時、DepthTest有効
@@ -547,8 +545,7 @@ namespace Crystallography.OpenGL
                 GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             }
 
-            if (glObjects.Count > 0)
-                glObjects[0].Generate(Program, true);
+            GLObject.SetLocation(Program);
 
             Clip?.Generate(Program);
             setDepthCueing();
@@ -785,7 +782,7 @@ namespace Crystallography.OpenGL
                 GL.UniformMatrix4(viewMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(projMatrixIndex, false, ref m4id);
                 GL.UniformMatrix4(worldMatrixIndex, false, ref m4id);
-                quad?.Generate(Program, false);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
+                quad?.Generate(Program);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
                 quad?.Render(null);// Draw a screen filler
             }
             else//Zsortモードの時

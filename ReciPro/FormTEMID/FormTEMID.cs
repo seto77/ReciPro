@@ -55,33 +55,33 @@ namespace ReciPro
 
             checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged(new object(), new EventArgs());
 
-            photo1 = new PhotoInformation(inputBoxP1L1.Length, inputBoxP1L2.Length, inputBoxP1L3.Length, numericalTextBoxP1Theta.RadianValue,
+            photo1 = new PhotoInformation(inputBoxP1L1.Length, inputBoxP1L2.Length, inputBoxP1L3.Length, numericBoxP1Theta.RadianValue,
                 (double)numericUpDownPhoto1L1Err.Value / 100, (double)numericUpDownPhoto1L2Err.Value / 100, (double)numericUpDownPhoto1L3Err.Value / 100, (double)numericUpDownPhoto1ThetaErr.Value / 180 * Math.PI,
-                numericalTextBoxP1Tilt1.RadianValue, numericalTextBoxP1Tilt2.RadianValue, (double)numericUpDownPhoto1Tilt1Err.Value / 180 * Math.PI, (double)numericUpDownPhoto1Tilt2Err.Value / 180 * Math.PI,
+                numericBoxP1Tilt1.RadianValue, numericBoxP1Tilt2.RadianValue, (double)numericUpDownPhoto1Tilt1Err.Value / 180 * Math.PI, (double)numericUpDownPhoto1Tilt2Err.Value / 180 * Math.PI,
                 radioButtonPhoto1Mode1.Checked, waveLength, cameraLength);
 
             if (photo1.IsTriangleMode)
-                numericalTextBoxP1Theta.RadianValue = photo1.Paintable ? photo1.Theta : 0;
+                numericBoxP1Theta.RadianValue = photo1.Paintable ? photo1.Theta : 0;
             else
                 inputBoxP1L3.Length = photo1.Paintable ? photo1.L3 : 0;
 
-            photo2 = new PhotoInformation(inputBoxP2L1.Length, inputBoxP2L2.Length, inputBoxP2L3.Length, numericalTextBoxP2Theta.RadianValue,
+            photo2 = new PhotoInformation(inputBoxP2L1.Length, inputBoxP2L2.Length, inputBoxP2L3.Length, numericBoxP2Theta.RadianValue,
                 (double)numericUpDownPhoto2L1Err.Value / 100, (double)numericUpDownPhoto2L2Err.Value / 100, (double)numericUpDownPhoto2L3Err.Value / 100, (double)numericUpDownPhoto2ThetaErr.Value / 180 * Math.PI,
-                numericalTextBoxP2Tilt1.RadianValue, numericalTextBoxP2Tilt2.RadianValue, (double)(numericUpDownPhoto2Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto2Tilt2Err.Value) / 180 * Math.PI,
+                numericBoxP2Tilt1.RadianValue, numericBoxP2Tilt2.RadianValue, (double)(numericUpDownPhoto2Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto2Tilt2Err.Value) / 180 * Math.PI,
                 radioButtonPhoto2Mode1.Checked, waveLength, cameraLength);
 
             if (photo2.IsTriangleMode)
-                numericalTextBoxP2Theta.RadianValue = photo2.Paintable ? photo2.Theta : 0;
+                numericBoxP2Theta.RadianValue = photo2.Paintable ? photo2.Theta : 0;
             else
                 inputBoxP2L3.Length = photo2.Paintable ? photo2.L3 : 0;
 
-            photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP2L3.Length, numericalTextBoxP3Theta.RadianValue,
+            photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP2L3.Length, numericBoxP3Theta.RadianValue,
                 (double)numericUpDownPhoto3L1Err.Value / 100, (double)numericUpDownPhoto3L2Err.Value / 100, (double)numericUpDownPhoto3L3Err.Value / 100, (double)numericUpDownPhoto3ThetaErr.Value / 180 * Math.PI,
-                numericalTextBoxP3Tilt1.RadianValue, numericalTextBoxP3Tilt2.RadianValue, (double)(numericUpDownPhoto3Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto3Tilt2Err.Value) / 180 * Math.PI,
+                numericBoxP3Tilt1.RadianValue, numericBoxP3Tilt2.RadianValue, (double)(numericUpDownPhoto3Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto3Tilt2Err.Value) / 180 * Math.PI,
                 radioButtonPhoto3Mode1.Checked, waveLength, cameraLength);
 
             if (photo3.IsTriangleMode)
-                numericalTextBoxP3Theta.RadianValue = photo3.Paintable ? photo3.Theta : 0;
+                numericBoxP3Theta.RadianValue = photo3.Paintable ? photo3.Theta : 0;
             else
                 inputBoxP3L3.Length = photo3.Paintable ? photo3.L3 : 0;
 
@@ -261,11 +261,11 @@ namespace ReciPro
         private void radioButtonPhoto1Mode1_CheckedChanged(object sender, EventArgs e)
         {
             inputBoxP1L3.Enabled = numericUpDownPhoto1L3Err.Enabled = !radioButtonPhoto1Mode2.Checked;
-            numericalTextBoxP1Theta.Enabled = numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
+            numericBoxP1Theta.Enabled = numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
             inputBoxP2L3.Enabled = numericUpDownPhoto2L3Err.Enabled = !radioButtonPhoto2Mode2.Checked;
-            numericalTextBoxP2Theta.Enabled = numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
+            numericBoxP2Theta.Enabled = numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
             inputBoxP3L3.Enabled = numericUpDownPhoto3L3Err.Enabled = !radioButtonPhoto3Mode2.Checked;
-            numericalTextBoxP3Theta.Enabled = numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
+            numericBoxP3Theta.Enabled = numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
             textBox_TextChanged(new object(), new EventArgs());
         }
 

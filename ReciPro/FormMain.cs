@@ -185,7 +185,7 @@ namespace ReciPro
             try { ReadInitialRegistry(); }
             catch { MessageBox.Show("failed reading registries."); }
 
-           
+
 
             commonDialog.Text = "Now Loading...Initializing OpenGL.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.1);
@@ -233,43 +233,27 @@ namespace ReciPro
             commonDialog.Text = "Now Loading...Initializing 'Rotation' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.15);
             Application.DoEvents();
-            FormRotation = new FormRotationMatrix
-            {
-                FormMain = this,
-                Visible = false
-            };
+            FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
 
 
             commonDialog.Text = "Now Loading...Initializing 'Structure Viewer' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.2);
             Application.DoEvents();
-            FormStructureViewer = new FormStructureViewer
-            {
-                formMain = this,
-                Visible = false
-            };
+            FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
             FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
             commonDialog.Text = "Now Loading...Initializing 'Stereonet' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.3);
             Application.DoEvents();
-            FormStereonet = new FormStereonet
-            {
-                formMain = this,
-                Visible = false
-            };
+            FormStereonet = new FormStereonet { formMain = this, Visible = false };
             FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
             commonDialog.Text = "Now Loading...Initializing 'Crystal diffraction' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.4);
             Application.DoEvents();
-            FormDiffractionSimulator = new FormDiffractionSimulator
-            {
-                formMain = this,
-                Visible = false
-            };
+            FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
             FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
@@ -291,22 +275,14 @@ namespace ReciPro
             commonDialog.Text = "Now Loading...Initializing 'Powder diffraction' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.5);
             Application.DoEvents();
-            FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator
-            {
-                formMain = this,
-                Visible = false
-            };
+            FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
             FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
             commonDialog.Text = "Now Loading...Initializing 'TEM ID' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.6);
             Application.DoEvents();
             //  t = sw.ElapsedMilliseconds;
-            FormTEMID = new FormTEMID
-            {
-                formMain = this,
-                Visible = false
-            };
+            FormTEMID = new FormTEMID { formMain = this, Visible = false };
             FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormTEMID.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormTEMID.Visible = false;
@@ -315,22 +291,14 @@ namespace ReciPro
             commonDialog.Text = "Now Loading...Initializing 'Spot ID' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.7);
             Application.DoEvents();
-            FormSpotID = new FormSpotID
-            {
-                FormMain = this,
-                Visible = false
-            };
+            FormSpotID = new FormSpotID { FormMain = this, Visible = false };
 
             commonDialog.Text = "Now Loading...Initializing 'Calculator' form.";
             commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.8);
             Application.DoEvents();
             //  toolStripStatusLabelCalcTime.Text += "formTEMID " + (sw.ElapsedMilliseconds-t).ToString() + "  ";
 
-            FormCalculator = new FormCalculator
-            {
-                Owner = this,
-                Visible = false
-            };
+            FormCalculator = new FormCalculator { Owner = this, Visible = false };
             FormCalculator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormCalculator.FormClosing += new FormClosingEventHandler(formCalculator_FormClosing);
@@ -406,7 +374,7 @@ namespace ReciPro
             {
                 toolStripButtonStructureViewer.Enabled = false;
                 toolStripButtonRotation.Enabled = false;
-                if(glControlAxes!=null)
+                if (glControlAxes != null)
                     glControlAxes.Visible = false;
             }
             else if (!glControlAxes.VersionRequirement)
@@ -421,7 +389,7 @@ namespace ReciPro
                 glControlAxes.Visible = false;
             }
 
-          }
+        }
 
         public bool YusaGonioMode { get; set; } = false;
 
@@ -457,8 +425,8 @@ namespace ReciPro
                 else
                 {
                     var  newAxis = checkBoxFixAxis.Checked ?
-                         Crystals[i].RotationMatrix * (numericalTextBoxAxisU.Value * Crystal.A_Axis + numericalTextBoxAxisV.Value * Crystal.B_Axis + numericalTextBoxAxisW.Value * Crystal.C_Axis):
-                         Crystals[i].RotationMatrix * (numericalTextBoxPlaneH.Value * Crystal.A_Star + numericalTextBoxPlaneK.Value * Crystal.B_Star + numericalTextBoxPlaneL.Value * Crystal.C_Star);
+                         Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis):
+                         Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);
                     if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                         rot = Matrix3D.Rot(newAxis, angle);
                     else
@@ -882,8 +850,8 @@ namespace ReciPro
         private void buttonSetVector_Click(object sender, EventArgs e)
         {
             if (Crystal == null) return;
-            double u = numericalTextBoxAxisU.Value, v = numericalTextBoxAxisV.Value, w = numericalTextBoxAxisW.Value;
-            double h = numericalTextBoxPlaneH.Value, k = numericalTextBoxPlaneK.Value, l = numericalTextBoxPlaneL.Value;
+            double u = numericBoxAxisU.Value, v = numericBoxAxisV.Value, w = numericBoxAxisW.Value;
+            double h = numericBoxPlaneH.Value, k = numericBoxPlaneK.Value, l = numericBoxPlaneL.Value;
 
             Vector3D xVector, yVector, zVector;
             Vector3D aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
@@ -1296,7 +1264,7 @@ namespace ReciPro
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fileName.Length == 1 && (fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out") || fileName[0].ToLower().EndsWith("cdb2")))
             {
-                DialogResult dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
+                var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
                     "Option", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Cancel)
                     return;
@@ -1409,7 +1377,9 @@ namespace ReciPro
             }
             catch (Exception e)
             {
-
+                #if DEBUG
+                MessageBox.Show(e.Message);
+                #endif
             }
             skipProgressEvent = false;
         }
@@ -1499,7 +1469,7 @@ namespace ReciPro
 
         private void checkBoxFixAxis_CheckedChanged(object sender, EventArgs e)
         {
-            if (numericalTextBoxAxisU.Value == 0 && numericalTextBoxAxisV.Value == 0 && numericalTextBoxAxisW.Value == 0)
+            if (numericBoxAxisU.Value == 0 && numericBoxAxisV.Value == 0 && numericBoxAxisW.Value == 0)
             {
                 checkBoxFixAxis.Checked = false;
                 return;
@@ -1510,7 +1480,7 @@ namespace ReciPro
 
         private void checkBoxFixPlane_CheckedChanged(object sender, EventArgs e)
         {
-            if (numericalTextBoxPlaneH.Value == 0 && numericalTextBoxPlaneK.Value == 0 && numericalTextBoxPlaneL.Value == 0)
+            if (numericBoxPlaneH.Value == 0 && numericBoxPlaneK.Value == 0 && numericBoxPlaneL.Value == 0)
             {
                 checkBoxFixePlane.Checked = false;
                 return;

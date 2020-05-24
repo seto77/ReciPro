@@ -53,27 +53,27 @@ namespace Crystallography.Controls
                 radioButtonCompliance.Checked = true;
                 compliance = value;
                 skip = true;
-                numericalTextBox11.Value = value[0, 0];
-                numericalTextBox12.Value = value[0, 1];
-                numericalTextBox13.Value = value[0, 2];
-                numericalTextBox14.Value = value[0, 3];
-                numericalTextBox15.Value = value[0, 4];
-                numericalTextBox16.Value = value[0, 5];
-                numericalTextBox22.Value = value[1, 1];
-                numericalTextBox23.Value = value[1, 2];
-                numericalTextBox24.Value = value[1, 3];
-                numericalTextBox25.Value = value[1, 4];
-                numericalTextBox26.Value = value[1, 5];
-                numericalTextBox33.Value = value[2, 2];
-                numericalTextBox34.Value = value[2, 3];
-                numericalTextBox35.Value = value[2, 4];
-                numericalTextBox36.Value = value[2, 5];
-                numericalTextBox44.Value = value[3, 3];
-                numericalTextBox45.Value = value[3, 4];
-                numericalTextBox46.Value = value[3, 5];
-                numericalTextBox55.Value = value[4, 4];
-                numericalTextBox56.Value = value[4, 5];
-                numericalTextBox66.Value = value[5, 5];
+                numericBox11.Value = value[0, 0];
+                numericBox12.Value = value[0, 1];
+                numericBox13.Value = value[0, 2];
+                numericBox14.Value = value[0, 3];
+                numericBox15.Value = value[0, 4];
+                numericBox16.Value = value[0, 5];
+                numericBox22.Value = value[1, 1];
+                numericBox23.Value = value[1, 2];
+                numericBox24.Value = value[1, 3];
+                numericBox25.Value = value[1, 4];
+                numericBox26.Value = value[1, 5];
+                numericBox33.Value = value[2, 2];
+                numericBox34.Value = value[2, 3];
+                numericBox35.Value = value[2, 4];
+                numericBox36.Value = value[2, 5];
+                numericBox44.Value = value[3, 3];
+                numericBox45.Value = value[3, 4];
+                numericBox46.Value = value[3, 5];
+                numericBox55.Value = value[4, 4];
+                numericBox56.Value = value[4, 5];
+                numericBox66.Value = value[5, 5];
                 skip = false;
                 SetElasticity();
                 stiffness = compliance.TryInverse();
@@ -95,27 +95,27 @@ namespace Crystallography.Controls
                 radioButtonStiffness.Checked = true;
                 stiffness = value;
                 skip = true;
-                numericalTextBox11.Value = value[0, 0];
-                numericalTextBox12.Value = value[0, 1];
-                numericalTextBox13.Value = value[0, 2];
-                numericalTextBox14.Value = value[0, 3];
-                numericalTextBox15.Value = value[0, 4];
-                numericalTextBox16.Value = value[0, 5];
-                numericalTextBox22.Value = value[1, 1];
-                numericalTextBox23.Value = value[1, 2];
-                numericalTextBox24.Value = value[1, 3];
-                numericalTextBox25.Value = value[1, 4];
-                numericalTextBox26.Value = value[1, 5];
-                numericalTextBox33.Value = value[2, 2];
-                numericalTextBox34.Value = value[2, 3];
-                numericalTextBox35.Value = value[2, 4];
-                numericalTextBox36.Value = value[2, 5];
-                numericalTextBox44.Value = value[3, 3];
-                numericalTextBox45.Value = value[3, 4];
-                numericalTextBox46.Value = value[3, 5];
-                numericalTextBox55.Value = value[4, 4];
-                numericalTextBox56.Value = value[4, 5];
-                numericalTextBox66.Value = value[5, 5];
+                numericBox11.Value = value[0, 0];
+                numericBox12.Value = value[0, 1];
+                numericBox13.Value = value[0, 2];
+                numericBox14.Value = value[0, 3];
+                numericBox15.Value = value[0, 4];
+                numericBox16.Value = value[0, 5];
+                numericBox22.Value = value[1, 1];
+                numericBox23.Value = value[1, 2];
+                numericBox24.Value = value[1, 3];
+                numericBox25.Value = value[1, 4];
+                numericBox26.Value = value[1, 5];
+                numericBox33.Value = value[2, 2];
+                numericBox34.Value = value[2, 3];
+                numericBox35.Value = value[2, 4];
+                numericBox36.Value = value[2, 5];
+                numericBox44.Value = value[3, 3];
+                numericBox45.Value = value[3, 4];
+                numericBox46.Value = value[3, 5];
+                numericBox55.Value = value[4, 4];
+                numericBox56.Value = value[4, 5];
+                numericBox66.Value = value[5, 5];
                 skip = false;
 
                 SetElasticity();
@@ -134,11 +134,11 @@ namespace Crystallography.Controls
         {
             Symmetry tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
             //いったんすべてをEnabled=trueにする
-            numericalTextBox13.Enabled = numericalTextBox23.Enabled =
-            numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-            numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled =
-            numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled =
-            numericalTextBox22.Enabled = numericalTextBox33.Enabled = numericalTextBox55.Enabled = numericalTextBox66.Enabled = true;
+            numericBox13.Enabled = numericBox23.Enabled =
+            numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+            numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled =
+            numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled =
+            numericBox22.Enabled = numericBox33.Enabled = numericBox55.Enabled = numericBox66.Enabled = true;
             switch (tempSym.CrystalSystemStr)
             {
                 case "Unknown": break;
@@ -149,120 +149,120 @@ namespace Crystallography.Controls
                     switch (tempSym.MainAxis)
                     {
                         case "a":
-                            numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled =
-                            numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled =
-                            numericalTextBox45.Enabled = numericalTextBox46.Enabled = false;
+                            numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled =
+                            numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled =
+                            numericBox45.Enabled = numericBox46.Enabled = false;
 
-                            numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value =
-                            numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value =
-                            numericalTextBox45.Value = numericalTextBox46.Value = 0;
+                            numericBox15.Value = numericBox25.Value = numericBox35.Value =
+                            numericBox16.Value = numericBox26.Value = numericBox36.Value =
+                            numericBox45.Value = numericBox46.Value = 0;
                             break;
 
                         case "b":
-                            numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                            numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled =
-                            numericalTextBox45.Enabled = numericalTextBox56.Enabled = false;
+                            numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                            numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled =
+                            numericBox45.Enabled = numericBox56.Enabled = false;
 
-                            numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                            numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value =
-                            numericalTextBox45.Value = numericalTextBox56.Value = 0;
+                            numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                            numericBox16.Value = numericBox26.Value = numericBox36.Value =
+                            numericBox45.Value = numericBox56.Value = 0;
                             break;
 
                         case "c":
-                            numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                            numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled =
-                            numericalTextBox46.Enabled = numericalTextBox56.Enabled = false;
+                            numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                            numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled =
+                            numericBox46.Enabled = numericBox56.Enabled = false;
 
-                            numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                            numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value =
-                            numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                            numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                            numericBox15.Value = numericBox25.Value = numericBox35.Value =
+                            numericBox46.Value = numericBox56.Value = 0;
                             break;
                     }
                     break;
 
                 case "orthorhombic":
-                    numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                    numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled =
-                    numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled = false;
+                    numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                    numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled =
+                    numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled = false;
 
-                    numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                    numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                    numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                    numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                    numericBox15.Value = numericBox25.Value = numericBox35.Value = numericBox45.Value =
+                    numericBox16.Value = numericBox26.Value = numericBox36.Value = numericBox46.Value = numericBox56.Value = 0;
                     break;
 
                 case "tetragonal":
                     if (tempSym.PointGroupHMStr == "4" || tempSym.PointGroupHMStr == "-4" || tempSym.PointGroupHMStr == "4/m")
                     {
-                        numericalTextBox22.Enabled = numericalTextBox23.Enabled =
-                        numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                        numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled = numericalTextBox55.Enabled =
-                        numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled = false;
+                        numericBox22.Enabled = numericBox23.Enabled =
+                        numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                        numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled = numericBox55.Enabled =
+                        numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled = false;
 
-                        numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                        numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                        numericalTextBox36.Value = numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                        numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                        numericBox15.Value = numericBox25.Value = numericBox35.Value = numericBox45.Value =
+                        numericBox36.Value = numericBox46.Value = numericBox56.Value = 0;
                     }
                     else
                     {
-                        numericalTextBox22.Enabled = numericalTextBox23.Enabled = numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                        numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled = numericalTextBox55.Enabled =
-                        numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled = false;
+                        numericBox22.Enabled = numericBox23.Enabled = numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                        numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled = numericBox55.Enabled =
+                        numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled = false;
 
-                        numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                        numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                        numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                        numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                        numericBox15.Value = numericBox25.Value = numericBox35.Value = numericBox45.Value =
+                        numericBox16.Value = numericBox26.Value = numericBox36.Value = numericBox46.Value = numericBox56.Value = 0;
                     }
                     break;
 
                 case "trigonal":
                     if (tempSym.PointGroupHMStr == "3" || tempSym.PointGroupHMStr == "-3")
                     {
-                        numericalTextBox22.Enabled = numericalTextBox23.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                        numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled = numericalTextBox55.Enabled =
-                        numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled =
-                        numericalTextBox66.Enabled = false;
+                        numericBox22.Enabled = numericBox23.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                        numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled = numericBox55.Enabled =
+                        numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled =
+                        numericBox66.Enabled = false;
 
-                        numericalTextBox34.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                        numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = 0;
+                        numericBox34.Value = numericBox35.Value = numericBox45.Value =
+                        numericBox16.Value = numericBox26.Value = numericBox36.Value = 0;
                     }
                     else
                     {
-                        numericalTextBox22.Enabled = numericalTextBox23.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                        numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled = numericalTextBox55.Enabled =
-                        numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled =
-                        numericalTextBox66.Enabled = false;
+                        numericBox22.Enabled = numericBox23.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                        numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled = numericBox55.Enabled =
+                        numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled =
+                        numericBox66.Enabled = false;
 
-                        numericalTextBox34.Value = numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value =
-                        numericalTextBox45.Value = numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = numericalTextBox46.Value = 0;
+                        numericBox34.Value = numericBox15.Value = numericBox25.Value = numericBox35.Value =
+                        numericBox45.Value = numericBox16.Value = numericBox26.Value = numericBox36.Value = numericBox46.Value = 0;
                     }
                     break;
 
                 case "hexagonal":
-                    numericalTextBox22.Enabled = numericalTextBox23.Enabled = numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                    numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled =
-                    numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled =
-                    numericalTextBox55.Enabled = numericalTextBox66.Enabled = false;
+                    numericBox22.Enabled = numericBox23.Enabled = numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                    numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled =
+                    numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled =
+                    numericBox55.Enabled = numericBox66.Enabled = false;
 
-                    numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                    numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                    numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                    numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                    numericBox15.Value = numericBox25.Value = numericBox35.Value = numericBox45.Value =
+                    numericBox16.Value = numericBox26.Value = numericBox36.Value = numericBox46.Value = numericBox56.Value = 0;
                     break;
 
                 case "cubic":
-                    numericalTextBox13.Enabled = numericalTextBox23.Enabled = numericalTextBox14.Enabled = numericalTextBox24.Enabled = numericalTextBox34.Enabled =
-                    numericalTextBox15.Enabled = numericalTextBox25.Enabled = numericalTextBox35.Enabled = numericalTextBox45.Enabled =
-                    numericalTextBox16.Enabled = numericalTextBox26.Enabled = numericalTextBox36.Enabled = numericalTextBox46.Enabled = numericalTextBox56.Enabled =
-                    numericalTextBox22.Enabled = numericalTextBox33.Enabled = numericalTextBox55.Enabled = numericalTextBox66.Enabled = false;
+                    numericBox13.Enabled = numericBox23.Enabled = numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
+                    numericBox15.Enabled = numericBox25.Enabled = numericBox35.Enabled = numericBox45.Enabled =
+                    numericBox16.Enabled = numericBox26.Enabled = numericBox36.Enabled = numericBox46.Enabled = numericBox56.Enabled =
+                    numericBox22.Enabled = numericBox33.Enabled = numericBox55.Enabled = numericBox66.Enabled = false;
 
-                    numericalTextBox14.Value = numericalTextBox24.Value = numericalTextBox34.Value =
-                    numericalTextBox15.Value = numericalTextBox25.Value = numericalTextBox35.Value = numericalTextBox45.Value =
-                    numericalTextBox16.Value = numericalTextBox26.Value = numericalTextBox36.Value = numericalTextBox46.Value = numericalTextBox56.Value = 0;
+                    numericBox14.Value = numericBox24.Value = numericBox34.Value =
+                    numericBox15.Value = numericBox25.Value = numericBox35.Value = numericBox45.Value =
+                    numericBox16.Value = numericBox26.Value = numericBox36.Value = numericBox46.Value = numericBox56.Value = 0;
                     break;
             }
-            numericalTextBoxElasticiry_ValueChanged(numericalTextBox11, new EventArgs());
+            numericBoxElasticiry_ValueChanged(numericBox11, new EventArgs());
         }
 
-        private void numericalTextBoxElasticiry_ValueChanged(object sender, EventArgs e)
+        private void numericBoxElasticiry_ValueChanged(object sender, EventArgs e)
         {
             if (skip) return;
             if (((NumericBox)sender).Enabled == false) return;
@@ -272,83 +272,83 @@ namespace Crystallography.Controls
                 case "tetragonal":
                     if (tempSym.PointGroupHMStr == "4" || tempSym.PointGroupHMStr == "-4" || tempSym.PointGroupHMStr == "4/m")
                     {
-                        numericalTextBox22.Value = numericalTextBox11.Value;
-                        numericalTextBox23.Value = numericalTextBox13.Value;
-                        numericalTextBox26.Value = -numericalTextBox16.Value;
-                        numericalTextBox55.Value = numericalTextBox44.Value;
+                        numericBox22.Value = numericBox11.Value;
+                        numericBox23.Value = numericBox13.Value;
+                        numericBox26.Value = -numericBox16.Value;
+                        numericBox55.Value = numericBox44.Value;
                     }
                     else
                     {
-                        numericalTextBox22.Value = numericalTextBox11.Value;
-                        numericalTextBox23.Value = numericalTextBox13.Value;
-                        numericalTextBox55.Value = numericalTextBox44.Value;
+                        numericBox22.Value = numericBox11.Value;
+                        numericBox23.Value = numericBox13.Value;
+                        numericBox55.Value = numericBox44.Value;
                     }
                     break;
 
                 case "trigonal":
                     if (tempSym.PointGroupHMStr == "3" || tempSym.PointGroupHMStr == "-3")
                     {
-                        numericalTextBox22.Value = numericalTextBox11.Value;
-                        numericalTextBox23.Value = numericalTextBox13.Value;
-                        numericalTextBox24.Value = -numericalTextBox14.Value;
-                        numericalTextBox25.Value = -numericalTextBox15.Value;
-                        numericalTextBox46.Value = -numericalTextBox15.Value;
-                        numericalTextBox56.Value = numericalTextBox14.Value;
-                        numericalTextBox55.Value = numericalTextBox44.Value;
-                        numericalTextBox66.Value = (numericalTextBox11.Value - numericalTextBox11.Value) / 2;
+                        numericBox22.Value = numericBox11.Value;
+                        numericBox23.Value = numericBox13.Value;
+                        numericBox24.Value = -numericBox14.Value;
+                        numericBox25.Value = -numericBox15.Value;
+                        numericBox46.Value = -numericBox15.Value;
+                        numericBox56.Value = numericBox14.Value;
+                        numericBox55.Value = numericBox44.Value;
+                        numericBox66.Value = (numericBox11.Value - numericBox11.Value) / 2;
                     }
                     else
                     {
-                        numericalTextBox22.Value = numericalTextBox11.Value;
-                        numericalTextBox23.Value = numericalTextBox13.Value;
-                        numericalTextBox24.Value = -numericalTextBox14.Value;
-                        numericalTextBox56.Value = numericalTextBox14.Value;
-                        numericalTextBox55.Value = numericalTextBox44.Value;
-                        numericalTextBox66.Value = (numericalTextBox11.Value - numericalTextBox12.Value) / 2;
+                        numericBox22.Value = numericBox11.Value;
+                        numericBox23.Value = numericBox13.Value;
+                        numericBox24.Value = -numericBox14.Value;
+                        numericBox56.Value = numericBox14.Value;
+                        numericBox55.Value = numericBox44.Value;
+                        numericBox66.Value = (numericBox11.Value - numericBox12.Value) / 2;
                     }
 
                     break;
 
                 case "hexagonal":
-                    numericalTextBox22.Value = numericalTextBox11.Value;
-                    numericalTextBox66.Value = (numericalTextBox11.Value - numericalTextBox12.Value) / 2;
-                    numericalTextBox23.Value = numericalTextBox13.Value;
-                    numericalTextBox55.Value = numericalTextBox44.Value;
+                    numericBox22.Value = numericBox11.Value;
+                    numericBox66.Value = (numericBox11.Value - numericBox12.Value) / 2;
+                    numericBox23.Value = numericBox13.Value;
+                    numericBox55.Value = numericBox44.Value;
                     break;
 
                 case "cubic":
-                    numericalTextBox22.Value = numericalTextBox33.Value = numericalTextBox11.Value;
-                    numericalTextBox55.Value = numericalTextBox66.Value = numericalTextBox44.Value;
-                    numericalTextBox13.Value = numericalTextBox23.Value = numericalTextBox12.Value;
+                    numericBox22.Value = numericBox33.Value = numericBox11.Value;
+                    numericBox55.Value = numericBox66.Value = numericBox44.Value;
+                    numericBox13.Value = numericBox23.Value = numericBox12.Value;
                     break;
             }
             var mtx = new DenseMatrix(6, 6);
-            mtx[0, 0] = mtx[0, 0] = numericalTextBox11.Value;
-            mtx[0, 1] = mtx[1, 0] = numericalTextBox12.Value;
-            mtx[0, 2] = mtx[2, 0] = numericalTextBox13.Value;
-            mtx[0, 3] = mtx[3, 0] = numericalTextBox14.Value;
-            mtx[0, 4] = mtx[4, 0] = numericalTextBox15.Value;
-            mtx[0, 5] = mtx[5, 0] = numericalTextBox16.Value;
+            mtx[0, 0] = mtx[0, 0] = numericBox11.Value;
+            mtx[0, 1] = mtx[1, 0] = numericBox12.Value;
+            mtx[0, 2] = mtx[2, 0] = numericBox13.Value;
+            mtx[0, 3] = mtx[3, 0] = numericBox14.Value;
+            mtx[0, 4] = mtx[4, 0] = numericBox15.Value;
+            mtx[0, 5] = mtx[5, 0] = numericBox16.Value;
 
-            mtx[1, 1] = numericalTextBox22.Value;
-            mtx[1, 2] = mtx[2, 1] = numericalTextBox23.Value;
-            mtx[1, 3] = mtx[3, 1] = numericalTextBox24.Value;
-            mtx[1, 4] = mtx[4, 1] = numericalTextBox25.Value;
-            mtx[1, 5] = mtx[5, 1] = numericalTextBox26.Value;
+            mtx[1, 1] = numericBox22.Value;
+            mtx[1, 2] = mtx[2, 1] = numericBox23.Value;
+            mtx[1, 3] = mtx[3, 1] = numericBox24.Value;
+            mtx[1, 4] = mtx[4, 1] = numericBox25.Value;
+            mtx[1, 5] = mtx[5, 1] = numericBox26.Value;
 
-            mtx[2, 2] = numericalTextBox33.Value;
-            mtx[2, 3] = mtx[3, 2] = numericalTextBox34.Value;
-            mtx[2, 4] = mtx[4, 2] = numericalTextBox35.Value;
-            mtx[2, 5] = mtx[5, 2] = numericalTextBox36.Value;
+            mtx[2, 2] = numericBox33.Value;
+            mtx[2, 3] = mtx[3, 2] = numericBox34.Value;
+            mtx[2, 4] = mtx[4, 2] = numericBox35.Value;
+            mtx[2, 5] = mtx[5, 2] = numericBox36.Value;
 
-            mtx[3, 3] = numericalTextBox44.Value;
-            mtx[3, 4] = mtx[4, 3] = numericalTextBox45.Value;
-            mtx[3, 5] = mtx[5, 3] = numericalTextBox46.Value;
+            mtx[3, 3] = numericBox44.Value;
+            mtx[3, 4] = mtx[4, 3] = numericBox45.Value;
+            mtx[3, 5] = mtx[5, 3] = numericBox46.Value;
 
-            mtx[4, 4] = numericalTextBox55.Value;
-            mtx[4, 5] = mtx[5, 4] = numericalTextBox56.Value;
+            mtx[4, 4] = numericBox55.Value;
+            mtx[4, 5] = mtx[5, 4] = numericBox56.Value;
 
-            mtx[5, 5] = numericalTextBox66.Value;
+            mtx[5, 5] = numericBox66.Value;
 
             if (radioButtonStiffness.Checked)
             {

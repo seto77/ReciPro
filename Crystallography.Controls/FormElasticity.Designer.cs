@@ -28,187 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericalTextBox9 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox8 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox7 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox6 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox5 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox4 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox3 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox2 = new Crystallography.Controls.NumericBox();
-            this.numericalTextBox1 = new Crystallography.Controls.NumericBox();
+            this.numericBox9 = new Crystallography.Controls.NumericBox();
+            this.numericBox8 = new Crystallography.Controls.NumericBox();
+            this.numericBox7 = new Crystallography.Controls.NumericBox();
+            this.numericBox6 = new Crystallography.Controls.NumericBox();
+            this.numericBox5 = new Crystallography.Controls.NumericBox();
+            this.numericBox4 = new Crystallography.Controls.NumericBox();
+            this.numericBox3 = new Crystallography.Controls.NumericBox();
+            this.numericBox2 = new Crystallography.Controls.NumericBox();
+            this.numericBox1 = new Crystallography.Controls.NumericBox();
             this.SuspendLayout();
             // 
-            // numericalTextBox9
+            // numericBox9
             // 
-            this.numericalTextBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox9.DecimalPlaces = -1;
-            this.numericalTextBox9.Location = new System.Drawing.Point(246, 245);
-            this.numericalTextBox9.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox9.Multiline = false;
-            this.numericalTextBox9.Name = "numericalTextBox9";
-            this.numericalTextBox9.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox9.RadianValue = 0D;
-            this.numericalTextBox9.ReadOnly = false;
-            this.numericalTextBox9.ShowFraction = false;
-            this.numericalTextBox9.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox9.TabIndex = 0;
-            this.numericalTextBox9.Value = 0D;
-            this.numericalTextBox9.WordWrap = true;
+            this.numericBox9.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox9.DecimalPlaces = -1;
+            this.numericBox9.Location = new System.Drawing.Point(246, 245);
+            this.numericBox9.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox9.Name = "numericBox9";
+            this.numericBox9.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox9.RadianValue = 0D;
+
+            this.numericBox9.Size = new System.Drawing.Size(61, 21);
+            this.numericBox9.TabIndex = 0;
+                                    // 
+            // numericBox8
             // 
-            // numericalTextBox8
+            this.numericBox8.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox8.DecimalPlaces = -1;
+            this.numericBox8.Location = new System.Drawing.Point(246, 222);
+            this.numericBox8.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox8.Name = "numericBox8";
+            this.numericBox8.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox8.RadianValue = 0D;
+
+            this.numericBox8.Size = new System.Drawing.Size(61, 21);
+            this.numericBox8.TabIndex = 0;
+                                    // 
+            // numericBox7
             // 
-            this.numericalTextBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox8.DecimalPlaces = -1;
-            this.numericalTextBox8.Location = new System.Drawing.Point(246, 222);
-            this.numericalTextBox8.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox8.Multiline = false;
-            this.numericalTextBox8.Name = "numericalTextBox8";
-            this.numericalTextBox8.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox8.RadianValue = 0D;
-            this.numericalTextBox8.ReadOnly = false;
-            this.numericalTextBox8.ShowFraction = false;
-            this.numericalTextBox8.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox8.TabIndex = 0;
-            this.numericalTextBox8.Value = 0D;
-            this.numericalTextBox8.WordWrap = true;
+            this.numericBox7.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox7.DecimalPlaces = -1;
+            this.numericBox7.Enabled = false;
+            this.numericBox7.Location = new System.Drawing.Point(183, 245);
+            this.numericBox7.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox7.Name = "numericBox7";
+            this.numericBox7.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox7.RadianValue = 0D;
+
+            this.numericBox7.Size = new System.Drawing.Size(61, 21);
+            this.numericBox7.TabIndex = 0;
+                                    // 
+            // numericBox6
             // 
-            // numericalTextBox7
+            this.numericBox6.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox6.DecimalPlaces = -1;
+            this.numericBox6.Location = new System.Drawing.Point(246, 199);
+            this.numericBox6.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox6.Name = "numericBox6";
+            this.numericBox6.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox6.RadianValue = 0D;
+
+            this.numericBox6.Size = new System.Drawing.Size(61, 21);
+            this.numericBox6.TabIndex = 0;
+                                    // 
+            // numericBox5
             // 
-            this.numericalTextBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox7.DecimalPlaces = -1;
-            this.numericalTextBox7.Enabled = false;
-            this.numericalTextBox7.Location = new System.Drawing.Point(183, 245);
-            this.numericalTextBox7.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox7.Multiline = false;
-            this.numericalTextBox7.Name = "numericalTextBox7";
-            this.numericalTextBox7.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox7.RadianValue = 0D;
-            this.numericalTextBox7.ReadOnly = false;
-            this.numericalTextBox7.ShowFraction = false;
-            this.numericalTextBox7.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox7.TabIndex = 0;
-            this.numericalTextBox7.Value = 0D;
-            this.numericalTextBox7.WordWrap = true;
+            this.numericBox5.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox5.DecimalPlaces = -1;
+            this.numericBox5.Location = new System.Drawing.Point(183, 222);
+            this.numericBox5.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox5.Name = "numericBox5";
+            this.numericBox5.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox5.RadianValue = 0D;
+
+            this.numericBox5.Size = new System.Drawing.Size(61, 21);
+            this.numericBox5.TabIndex = 0;
+                                    // 
+            // numericBox4
             // 
-            // numericalTextBox6
+            this.numericBox4.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox4.DecimalPlaces = -1;
+            this.numericBox4.Enabled = false;
+            this.numericBox4.Location = new System.Drawing.Point(120, 245);
+            this.numericBox4.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox4.Name = "numericBox4";
+            this.numericBox4.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox4.RadianValue = 0D;
+
+            this.numericBox4.Size = new System.Drawing.Size(61, 21);
+            this.numericBox4.TabIndex = 0;
+                                    // 
+            // numericBox3
             // 
-            this.numericalTextBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox6.DecimalPlaces = -1;
-            this.numericalTextBox6.Location = new System.Drawing.Point(246, 199);
-            this.numericalTextBox6.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox6.Multiline = false;
-            this.numericalTextBox6.Name = "numericalTextBox6";
-            this.numericalTextBox6.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox6.RadianValue = 0D;
-            this.numericalTextBox6.ReadOnly = false;
-            this.numericalTextBox6.ShowFraction = false;
-            this.numericalTextBox6.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox6.TabIndex = 0;
-            this.numericalTextBox6.Value = 0D;
-            this.numericalTextBox6.WordWrap = true;
+            this.numericBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox3.DecimalPlaces = -1;
+            this.numericBox3.Location = new System.Drawing.Point(183, 199);
+            this.numericBox3.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox3.Name = "numericBox3";
+            this.numericBox3.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox3.RadianValue = 0D;
+
+            this.numericBox3.Size = new System.Drawing.Size(61, 21);
+            this.numericBox3.TabIndex = 0;
+                                    // 
+            // numericBox2
             // 
-            // numericalTextBox5
+            this.numericBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox2.DecimalPlaces = -1;
+            this.numericBox2.Enabled = false;
+            this.numericBox2.Location = new System.Drawing.Point(120, 222);
+            this.numericBox2.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox2.Name = "numericBox2";
+            this.numericBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox2.RadianValue = 0D;
+
+            this.numericBox2.Size = new System.Drawing.Size(61, 21);
+            this.numericBox2.TabIndex = 0;
+                                    // 
+            // numericBox1
             // 
-            this.numericalTextBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox5.DecimalPlaces = -1;
-            this.numericalTextBox5.Location = new System.Drawing.Point(183, 222);
-            this.numericalTextBox5.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox5.Multiline = false;
-            this.numericalTextBox5.Name = "numericalTextBox5";
-            this.numericalTextBox5.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox5.RadianValue = 0D;
-            this.numericalTextBox5.ReadOnly = false;
-            this.numericalTextBox5.ShowFraction = false;
-            this.numericalTextBox5.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox5.TabIndex = 0;
-            this.numericalTextBox5.Value = 0D;
-            this.numericalTextBox5.WordWrap = true;
-            // 
-            // numericalTextBox4
-            // 
-            this.numericalTextBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox4.DecimalPlaces = -1;
-            this.numericalTextBox4.Enabled = false;
-            this.numericalTextBox4.Location = new System.Drawing.Point(120, 245);
-            this.numericalTextBox4.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox4.Multiline = false;
-            this.numericalTextBox4.Name = "numericalTextBox4";
-            this.numericalTextBox4.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox4.RadianValue = 0D;
-            this.numericalTextBox4.ReadOnly = false;
-            this.numericalTextBox4.ShowFraction = false;
-            this.numericalTextBox4.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox4.TabIndex = 0;
-            this.numericalTextBox4.Value = 0D;
-            this.numericalTextBox4.WordWrap = true;
-            // 
-            // numericalTextBox3
-            // 
-            this.numericalTextBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox3.DecimalPlaces = -1;
-            this.numericalTextBox3.Location = new System.Drawing.Point(183, 199);
-            this.numericalTextBox3.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox3.Multiline = false;
-            this.numericalTextBox3.Name = "numericalTextBox3";
-            this.numericalTextBox3.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox3.RadianValue = 0D;
-            this.numericalTextBox3.ReadOnly = false;
-            this.numericalTextBox3.ShowFraction = false;
-            this.numericalTextBox3.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox3.TabIndex = 0;
-            this.numericalTextBox3.Value = 0D;
-            this.numericalTextBox3.WordWrap = true;
-            // 
-            // numericalTextBox2
-            // 
-            this.numericalTextBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox2.DecimalPlaces = -1;
-            this.numericalTextBox2.Enabled = false;
-            this.numericalTextBox2.Location = new System.Drawing.Point(120, 222);
-            this.numericalTextBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox2.Multiline = false;
-            this.numericalTextBox2.Name = "numericalTextBox2";
-            this.numericalTextBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox2.RadianValue = 0D;
-            this.numericalTextBox2.ReadOnly = false;
-            this.numericalTextBox2.ShowFraction = false;
-            this.numericalTextBox2.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox2.TabIndex = 0;
-            this.numericalTextBox2.Value = 0D;
-            this.numericalTextBox2.WordWrap = true;
-            // 
-            // numericalTextBox1
-            // 
-            this.numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox1.DecimalPlaces = -1;
-            this.numericalTextBox1.Location = new System.Drawing.Point(120, 199);
-            this.numericalTextBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox1.Multiline = false;
-            this.numericalTextBox1.Name = "numericalTextBox1";
-            this.numericalTextBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.numericalTextBox1.RadianValue = 0D;
-            this.numericalTextBox1.ReadOnly = false;
-            this.numericalTextBox1.ShowFraction = false;
-            this.numericalTextBox1.Size = new System.Drawing.Size(61, 21);
-            this.numericalTextBox1.TabIndex = 0;
-            this.numericalTextBox1.Value = 0D;
-            this.numericalTextBox1.WordWrap = true;
-            // 
+            this.numericBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox1.DecimalPlaces = -1;
+            this.numericBox1.Location = new System.Drawing.Point(120, 199);
+            this.numericBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.numericBox1.Name = "numericBox1";
+            this.numericBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.numericBox1.RadianValue = 0D;
+
+            this.numericBox1.Size = new System.Drawing.Size(61, 21);
+            this.numericBox1.TabIndex = 0;
+                                    // 
             // FormElasticity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 449);
-            this.Controls.Add(this.numericalTextBox9);
-            this.Controls.Add(this.numericalTextBox8);
-            this.Controls.Add(this.numericalTextBox7);
-            this.Controls.Add(this.numericalTextBox6);
-            this.Controls.Add(this.numericalTextBox5);
-            this.Controls.Add(this.numericalTextBox4);
-            this.Controls.Add(this.numericalTextBox3);
-            this.Controls.Add(this.numericalTextBox2);
-            this.Controls.Add(this.numericalTextBox1);
+            this.Controls.Add(this.numericBox9);
+            this.Controls.Add(this.numericBox8);
+            this.Controls.Add(this.numericBox7);
+            this.Controls.Add(this.numericBox6);
+            this.Controls.Add(this.numericBox5);
+            this.Controls.Add(this.numericBox4);
+            this.Controls.Add(this.numericBox3);
+            this.Controls.Add(this.numericBox2);
+            this.Controls.Add(this.numericBox1);
             this.Name = "FormElasticity";
             this.Text = "FormElasticity";
             this.ResumeLayout(false);
@@ -217,14 +181,14 @@
 
         #endregion
 
-        private NumericBox numericalTextBox1;
-        private NumericBox numericalTextBox2;
-        private NumericBox numericalTextBox3;
-        private NumericBox numericalTextBox4;
-        private NumericBox numericalTextBox5;
-        private NumericBox numericalTextBox6;
-        private NumericBox numericalTextBox7;
-        private NumericBox numericalTextBox8;
-        private NumericBox numericalTextBox9;
+        private NumericBox numericBox1;
+        private NumericBox numericBox2;
+        private NumericBox numericBox3;
+        private NumericBox numericBox4;
+        private NumericBox numericBox5;
+        private NumericBox numericBox6;
+        private NumericBox numericBox7;
+        private NumericBox numericBox8;
+        private NumericBox numericBox9;
     }
 }

@@ -605,6 +605,9 @@ namespace ReciPro
         {
             sw.Restart();
 
+            if (comboBoxTransparency.SelectedIndex == 1)//OITモードの時は描画しない
+                return;
+
             GLObjects.Where(o => o.Rendered && o is Sphere s).ToList().ForEach(o =>
             {
                 var s = o as Sphere;
@@ -627,7 +630,6 @@ namespace ReciPro
         /// </summary>
         private void transferGLObjects()
         {
-           
             sw.Restart();
             glControlMain.DeleteAllObjects();
             glControlMain.AddObjects(GLObjects);
@@ -1503,7 +1505,6 @@ namespace ReciPro
         {
             if (comboBoxRenderignQuality.SelectedIndex == 0)
             {
-                glControlMain.NodeCoefficient = 4;
                 Cone.Default = (1, 8);
                 Cylinder.Default = (1, 8);
                 Sphere.DefaultSlices = 2;
@@ -1511,7 +1512,6 @@ namespace ReciPro
             }
             else if (comboBoxRenderignQuality.SelectedIndex == 1)
             {
-                glControlMain.NodeCoefficient = 16;
                 Cone.Default = (1, 16);
                 Cylinder.Default = (1, 16);
                 Sphere.DefaultSlices = 3;
@@ -1519,7 +1519,6 @@ namespace ReciPro
             }
             else
             {
-                glControlMain.NodeCoefficient = 32;
                 Cone.Default = (1, 32);
                 Cylinder.Default = (1, 32);
                 Sphere.DefaultSlices = 5;
@@ -1544,11 +1543,11 @@ namespace ReciPro
                     comboBoxTransparency.SelectedIndex = 0;
                     return;
                 }
-                ;
-                glControlMain.NodeCoefficient = 20;
-                glControlMain.MaxFragments = 120;
+                glControlMain.NodeCoefficient = 10;
+                glControlMain.MaxFragments = 75;
                 glControlMain.FragShader = GLControlAlpha.FragShaders.OIT;
             }
+
             if (atomControl != null)
                 SetGLObjects(formMain.crystalControl.Crystal);
         }
@@ -1590,7 +1589,7 @@ namespace ReciPro
 
         #endregion
 
-        #region ラベルの色やフォントサイズ関連ｎ
+        #region ラベルの色やフォントサイズ関連
         private void numericBoxLabelSize_ValueChanged(object sender, EventArgs e)
         {
             colorControlLabelColor.Enabled = radioButtonLabelUseFixedColor.Checked;

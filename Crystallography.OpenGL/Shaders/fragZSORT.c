@@ -82,16 +82,12 @@ void main()
 	}
 
 	if (DepthCueing)
-		if (fs_in.Z < Near)
-		{
-			if (fs_in.Z < Far)
-				c3 = BgColor;
-			else
-				c3 = mix(c3, BgColor, (Near - fs_in.Z) / (Near - Far));
-		}
+	{ 
+		float x = clamp((Near - fs_in.Z) / (Near - Far), 0, 1);
+		c3 = mix(c3, BgColor, x);
+	}
 
 	FragColor = vec4( c3,a);// Write final color to the framebuffer
-
 }
 
 

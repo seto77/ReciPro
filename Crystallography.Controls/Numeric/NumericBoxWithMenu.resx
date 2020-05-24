@@ -117,114 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="comboBoxXRayElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 0</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 3</value>
-  </data>
-  <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
-  </data>
-  <data name="radioButtonXray.Text" xml:space="preserve">
-    <value>X線</value>
-  </data>
-  <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 0</value>
-  </data>
-  <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 22</value>
-  </data>
-  <data name="radioButtonElectron.Text" xml:space="preserve">
-    <value>電子線</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>波長</value>
-  </data>
-  <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 0</value>
-  </data>
-  <data name="labelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="labelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
-  </data>
-  <data name="labelEnergy.Text" xml:space="preserve">
-    <value>エネルギー</value>
-  </data>
-  <data name="labelEnergyUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 3</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 25</value>
-  </data>
-  <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 24</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>元素</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 25</value>
-  </data>
-  <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 0</value>
-  </data>
-  <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 0</value>
-  </data>
-  <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 22</value>
-  </data>
-  <data name="radioButtonNeutron.Text" xml:space="preserve">
-    <value>中性子線</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 25</value>
-  </data>
-  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 78</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 103</value>
-  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="contextMenuStripUpDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>107, 17</value>
+  </metadata>
+  <metadata name="contextMenuStripBody.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>303, 17</value>
+  </metadata>
 </root>

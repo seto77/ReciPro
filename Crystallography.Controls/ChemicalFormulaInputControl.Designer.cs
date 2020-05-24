@@ -44,9 +44,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericalTextBoxValence = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxWeight = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxMolarRatio = new Crystallography.Controls.NumericBox();
+            this.numericBoxValence = new Crystallography.Controls.NumericBox();
+            this.numericBoxWeight = new Crystallography.Controls.NumericBox();
+            this.numericBoxMolarRatio = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelOxide.SuspendLayout();
             this.flowLayoutPanelComposition.SuspendLayout();
@@ -63,7 +63,7 @@
             this.flowLayoutPanel1.Controls.Add(this.label4);
             this.flowLayoutPanel1.Controls.Add(this.comboBoxElement);
             this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.numericalTextBoxValence);
+            this.flowLayoutPanel1.Controls.Add(this.numericBoxValence);
             this.flowLayoutPanel1.Controls.Add(this.checkBoxCompound);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -273,7 +273,7 @@
             this.flowLayoutPanelWeight.AutoSize = true;
             this.flowLayoutPanelWeight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelWeight.Controls.Add(this.label6);
-            this.flowLayoutPanelWeight.Controls.Add(this.numericalTextBoxWeight);
+            this.flowLayoutPanelWeight.Controls.Add(this.numericBoxWeight);
             this.flowLayoutPanelWeight.Controls.Add(this.label9);
             this.flowLayoutPanelWeight.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelWeight.Margin = new System.Windows.Forms.Padding(0);
@@ -306,7 +306,7 @@
             this.flowLayoutPanelMolarRatio.AutoSize = true;
             this.flowLayoutPanelMolarRatio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelMolarRatio.Controls.Add(this.label7);
-            this.flowLayoutPanelMolarRatio.Controls.Add(this.numericalTextBoxMolarRatio);
+            this.flowLayoutPanelMolarRatio.Controls.Add(this.numericBoxMolarRatio);
             this.flowLayoutPanelMolarRatio.Location = new System.Drawing.Point(145, 0);
             this.flowLayoutPanelMolarRatio.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelMolarRatio.Name = "flowLayoutPanelMolarRatio";
@@ -348,65 +348,50 @@
             this.flowLayoutPanel4.Size = new System.Drawing.Size(203, 34);
             this.flowLayoutPanel4.TabIndex = 6;
             // 
-            // numericalTextBoxValence
+            // numericBoxValence
             // 
-            this.numericalTextBoxValence.AutoSize = true;
-            this.numericalTextBoxValence.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxValence.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxValence.DecimalPlaces = -1;
-            this.numericalTextBoxValence.Location = new System.Drawing.Point(222, 4);
-            this.numericalTextBoxValence.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
-            this.numericalTextBoxValence.Multiline = false;
-            this.numericalTextBoxValence.Name = "numericalTextBoxValence";
-            this.numericalTextBoxValence.RadianValue = 0D;
-            this.numericalTextBoxValence.ReadOnly = false;
-            this.numericalTextBoxValence.ShowFraction = false;
-            this.numericalTextBoxValence.ShowPositiveSign = true;
-            this.numericalTextBoxValence.Size = new System.Drawing.Size(38, 25);
-            this.numericalTextBoxValence.TabIndex = 8;
-            this.numericalTextBoxValence.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numericalTextBoxValence.Value = 0D;
-            this.numericalTextBoxValence.WordWrap = true;
-            this.numericalTextBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxValence_ValueChanged);
+            this.numericBoxValence.AutoSize = true;
+                       this.numericBoxValence.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxValence.DecimalPlaces = -1;
+            this.numericBoxValence.Location = new System.Drawing.Point(222, 4);
+            this.numericBoxValence.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
+                       this.numericBoxValence.Name = "numericBoxValence";
+            this.numericBoxValence.RadianValue = 0D;
+                        
+            this.numericBoxValence.ShowPositiveSign = true;
+            this.numericBoxValence.Size = new System.Drawing.Size(38, 25);
+            this.numericBoxValence.TabIndex = 8;
+            this.numericBoxValence.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+                                    this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
             // 
-            // numericalTextBoxWeight
+            // numericBoxWeight
             // 
-            this.numericalTextBoxWeight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxWeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxWeight.DecimalPlaces = -1;
-            this.numericalTextBoxWeight.Location = new System.Drawing.Point(51, 4);
-            this.numericalTextBoxWeight.Margin = new System.Windows.Forms.Padding(0, 4, 1, 0);
-            this.numericalTextBoxWeight.Multiline = false;
-            this.numericalTextBoxWeight.Name = "numericalTextBoxWeight";
-            this.numericalTextBoxWeight.RadianValue = 0D;
-            this.numericalTextBoxWeight.ReadOnly = false;
-            this.numericalTextBoxWeight.ShowFraction = false;
-            this.numericalTextBoxWeight.ShowPositiveSign = false;
-            this.numericalTextBoxWeight.Size = new System.Drawing.Size(73, 25);
-            this.numericalTextBoxWeight.TabIndex = 8;
-            this.numericalTextBoxWeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numericalTextBoxWeight.Value = 0D;
-            this.numericalTextBoxWeight.WordWrap = true;
+                       this.numericBoxWeight.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWeight.DecimalPlaces = -1;
+            this.numericBoxWeight.Location = new System.Drawing.Point(51, 4);
+            this.numericBoxWeight.Margin = new System.Windows.Forms.Padding(0, 4, 1, 0);
+                       this.numericBoxWeight.Name = "numericBoxWeight";
+            this.numericBoxWeight.RadianValue = 0D;
+                        
+            this.numericBoxWeight.ShowPositiveSign = false;
+            this.numericBoxWeight.Size = new System.Drawing.Size(73, 25);
+            this.numericBoxWeight.TabIndex = 8;
+            this.numericBoxWeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+                                    // 
+            // numericBoxMolarRatio
             // 
-            // numericalTextBoxMolarRatio
-            // 
-            this.numericalTextBoxMolarRatio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBoxMolarRatio.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMolarRatio.DecimalPlaces = -1;
-            this.numericalTextBoxMolarRatio.Location = new System.Drawing.Point(77, 4);
-            this.numericalTextBoxMolarRatio.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
-            this.numericalTextBoxMolarRatio.Multiline = false;
-            this.numericalTextBoxMolarRatio.Name = "numericalTextBoxMolarRatio";
-            this.numericalTextBoxMolarRatio.RadianValue = 0D;
-            this.numericalTextBoxMolarRatio.ReadOnly = false;
-            this.numericalTextBoxMolarRatio.ShowFraction = false;
-            this.numericalTextBoxMolarRatio.ShowPositiveSign = false;
-            this.numericalTextBoxMolarRatio.Size = new System.Drawing.Size(43, 25);
-            this.numericalTextBoxMolarRatio.TabIndex = 8;
-            this.numericalTextBoxMolarRatio.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numericalTextBoxMolarRatio.Value = 0D;
-            this.numericalTextBoxMolarRatio.WordWrap = true;
-            // 
+                       this.numericBoxMolarRatio.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarRatio.DecimalPlaces = -1;
+            this.numericBoxMolarRatio.Location = new System.Drawing.Point(77, 4);
+            this.numericBoxMolarRatio.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
+                       this.numericBoxMolarRatio.Name = "numericBoxMolarRatio";
+            this.numericBoxMolarRatio.RadianValue = 0D;
+                        
+            this.numericBoxMolarRatio.ShowPositiveSign = false;
+            this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 25);
+            this.numericBoxMolarRatio.TabIndex = 8;
+            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+                                    // 
             // ChemicalFormulaInputControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
@@ -443,7 +428,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxElement;
         private System.Windows.Forms.Label label5;
-        private NumericBox numericalTextBoxValence;
+        private NumericBox numericBoxValence;
         private System.Windows.Forms.CheckBox checkBoxCompound;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOxide;
         private System.Windows.Forms.ComboBox comboBoxCompound;
@@ -451,11 +436,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelComposition;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWeight;
         private System.Windows.Forms.Label label6;
-        private NumericBox numericalTextBoxWeight;
+        private NumericBox numericBoxWeight;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMolarRatio;
         private System.Windows.Forms.Label label7;
-        private NumericBox numericalTextBoxMolarRatio;
+        private NumericBox numericBoxMolarRatio;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
     }

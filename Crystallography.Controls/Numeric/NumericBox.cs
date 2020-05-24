@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -66,19 +67,23 @@ namespace Crystallography.Controls
         /// <summary>
         /// UpDownボタンが有効な場合、Incrementを取得/設定
         /// </summary>
+        [DefaultValue(1.0)]
         [Category("Value properties")]
-        public double UpDown_Increment { set; get; } = 1;
+        public double UpDown_Increment { set; get; } = 1.0;
 
+
+        /// <summary>
+        /// UpDownボタンが有効な場合、Incrementを自動で調整するかどうか
+        /// </summary>
+        [DefaultValue(false)]
         [Category("Value properties")]
-        public bool SmartIncrement { set { smartIncrementToolStripMenuItem.Checked = value; toolStripComboBoxIncrement.Enabled = !value; } get { return smartIncrementToolStripMenuItem.Checked; } }
+        public bool SmartIncrement { set; get; } = false;
 
-        private double maximum = double.PositiveInfinity;
-      
         /// <summary>
         /// 最大値
         /// </summary>
+        [DefaultValue(double.PositiveInfinity)]
         [Category("Value properties")]
-
         public double Maximum
         {
             set
@@ -89,22 +94,16 @@ namespace Crystallography.Controls
 
                     if (RestrictLimitValue && Value > maximum)
                         Value = maximum;
-
-                    string text = Maximum.ToString(DecimalPlaces >= 0 ? "f" + DecimalPlaces.ToString() : "");
-                    text = separateThousands(text);
-                    if (!text.StartsWith("-") && ShowPositiveSign && text != "0")
-                        text = "+" + text;
-                    toolStripTextBoxMaximum.Text = text;
                 }
             }
             get => maximum;
         }
-
-        private double minimum = double.NegativeInfinity;
+        private double maximum = double.PositiveInfinity;
      
         /// <summary>
         /// 最小値
         /// </summary>
+        [DefaultValue(double.NegativeInfinity)]
         [Category("Value properties")]
         public double Minimum
         {
@@ -116,23 +115,21 @@ namespace Crystallography.Controls
 
                     if (RestrictLimitValue && Value < Minimum)
                         Value = Minimum;
-
-                    string text = Minimum.ToString(DecimalPlaces >= 0 ? "f" + DecimalPlaces.ToString() : "");
-                    text = separateThousands(text);
-                    if (!text.StartsWith("-") && ShowPositiveSign && text != "0")
-                        text = "+" + text;
-                    toolStripTextBoxMimimum.Text = text;
                 }
             }
             get => minimum;
         }
+        private double minimum = double.NegativeInfinity;
 
         /// <summary>
         /// Maximum, Minimumの範囲に入力値を制限する。範囲外の場合は、自動的にどちらかの場合に変更される
         /// </summary>
+        [DefaultValue(true)]
         [Category("Value properties")]
-        public bool RestrictLimitValue { set => toolStripMenuItemRestrictLimit.Checked = value; get => toolStripMenuItemRestrictLimit.Checked; }
+        public bool RestrictLimitValue { set; get; } = true;
 
+
+        [DefaultValue("")]
         [Localizable(true)]
         public string ToolTip
         {
@@ -148,57 +145,73 @@ namespace Crystallography.Controls
         [Category("Value properties")]
         public double MinimalStep { get { return DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1; } }
 
-        #region ヘッダー＆フッター
+        #region ヘッダー＆フッター の文字、フォント、色
         /// <summary>
         /// 数値の前に表示するテキスト
         /// </summary>
+        [DefaultValue("")]
         [Localizable(true)]
         [Category("Font && Color")]
         public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }
 
         [Category("Font && Color")]
+        [DefaultValue(typeof(Padding), "0,0,0,0")]
+
         public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
 
         [Localizable(true)]
+        [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
         [Category("Font && Color")]
 
         public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
 
+        [DefaultValue(typeof(Color), "ControlText")]
         [Category("Font && Color")]
         public Color HeaderForeColor { set => labelHeader.ForeColor = value; get => labelHeader.ForeColor; }
+       
+        [DefaultValue(typeof(Color), "Transparent")]
         [Category("Font && Color")]
         public Color HeaderBackColor { set => labelHeader.BackColor = value; get => labelHeader.BackColor; }
 
         /// <summary>
         /// 数値の後に表示するテキスト
         /// </summary>
+        [DefaultValue("")]
         [Category("Font && Color")]
         [Localizable(true)]
         public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
 
         [Category("Font && Color")]
+        [DefaultValue(typeof(Padding), "0,0,0,0")]
         [Localizable(true)]
         public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
 
         [Category("Font && Color")]
+        [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
         [Localizable(true)]
         public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
        
+        [DefaultValue(typeof(Color), "ControlText")]
         [Category("Font && Color")]
         public Color FooterForeColor { set => labelFooter.ForeColor = value; get => labelFooter.ForeColor; }
        
+        [DefaultValue(typeof(Color), "Transparent")]
         [Category("Font && Color")]
         public Color FooterBackColor { set => labelFooter.BackColor = value; get => labelFooter.BackColor; }
         #endregion
-
+    
+        
+        [DefaultValue(typeof(Color), "WindowText")]
         [Category("Font && Color")]
         public Color TextBoxForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
+
+        [DefaultValue(typeof(Color), "Window")]
         [Category("Font && Color")]
         public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
 
+        [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
         [Category("Font && Color")]
-
         /// <summary>
         /// font
         /// </summary>
@@ -223,17 +236,20 @@ namespace Crystallography.Controls
             get { return textBox.Font; }
         }
 
-        [Category("Appearance properties")]
+
         /// <summary>
         /// ＋を表示するかどうか
         /// </summary>
+        [DefaultValue(false)]
+        [Category("Appearance properties")]
         public bool ShowPositiveSign { set; get; } = false;
 
-        private double numericalValue = 0;
+        
 
         /// <summary>
         /// コントロールが保持している値
         /// </summary>
+        [DefaultValue(0.0)]
         [Category("Value properties")]
         public double Value
         {
@@ -259,26 +275,34 @@ namespace Crystallography.Controls
             }
             get => numericalValue;
         }
-        [Category("Value properties")]
+        private double numericalValue = 0;
 
+        /// <summary>
+        /// コントロールが保持している値の整数値 (getのみ)
+        /// </summary>
+        [Category("Value properties")]
+        [DefaultValue(0)]
         public int ValueInteger { get => (int)numericalValue; }
 
         /// <summary>
-        /// Radianとして値を入力。
+        /// Radianとして値を入力/取得
         /// </summary>
+        [DefaultValue(0.0)]
         [Category("Value properties")]
         public double RadianValue { set => Value = value * 180.0 / Math.PI; get => Value / 180.0 * Math.PI; }
 
         /// <summary>
         /// 3桁区切りでカンマを表示させる
         /// </summary>
+        [DefaultValue(false)]
         [Category("Appearance properties")]
-        public bool ThonsandsSeparator { set => thousandsSeparatorToolStripMenuItem.Checked = value; get => thousandsSeparatorToolStripMenuItem.Checked; }
+        public bool ThonsandsSeparator { set { thonsandsSeparator = value; textBox.Text = GetString(); } get => thonsandsSeparator; } 
+        private bool thonsandsSeparator = false;
 
-        // private int decimalPlaces = -1;
         /// <summary>
         /// 小数点以下の桁数
         /// </summary>
+        [DefaultValue(-1)]
         [Category("Appearance properties")]
         public int DecimalPlaces
         {
@@ -286,21 +310,32 @@ namespace Crystallography.Controls
             {
                 if (value >= -1 && value < 11)
                 {
-                    toolStripComboBoxDecimalPlaces.SelectedIndex = value + 1;
+                    decimalPlaces = value;
                     textBox.Text = GetString();
                 }
             }
-            get => toolStripComboBoxDecimalPlaces.SelectedIndex - 1;
+            get => decimalPlaces;
         }
+        private int decimalPlaces = -1;
+
+        /// <summary>
+        /// 小数点以下のゼロの記号を削除するかどうか
+        /// </summary>
+        [DefaultValue(false)]
+        [Category("Appearance properties")]
+        public bool TrimEndZero { get; set; } = false;
 
         /// <summary>
         /// 読み取り専用かどうか
         /// </summary>
+        [DefaultValue(false)]
+        [Category("Appearance properties")]
         public bool ReadOnly { set => textBox.ReadOnly = value; get => textBox.ReadOnly; }
 
         /// <summary>
         /// 複数行表示をするかどうか
         /// </summary>
+        [DefaultValue(false)]
         [Category("Appearance properties")]
         public bool Multiline
         {
@@ -321,16 +356,33 @@ namespace Crystallography.Controls
                     MaximumSize = new Size(1000, textBox.Height);
                 }
             }
-            get { return textBox.Multiline; }
+            get => textBox.Multiline;
         }
 
+        /// <summary>
+        /// 値が分数に出来る場合、分数表示をするか
+        /// </summary>
         [Category("Appearance properties")]
+        [DefaultValue(false)]
         public bool ShowFraction { set; get; } = false;
 
+        
+        /// <summary>
+        /// 値が三角関数に出来る場合、三角関数で表示するか
+        /// </summary>
+        [DefaultValue(false)]
+        [Category("Appearance properties")]
+        public bool ShowTrigonomeric { set; get; } = false;
+
+        [DefaultValue("0")]
         public new string Text { set => textBox.Text = value; get => numericalValue.ToString(); }
 
         [Category("Appearance properties")]
+        [DefaultValue(true)]
         public bool WordWrap { set => textBox.WordWrap = value; get => textBox.WordWrap; }
+
+        [DefaultValue(true)]
+        public bool SkipEventDuringInput { set; get; } = true;
 
         #endregion プロパティ
 
@@ -342,7 +394,7 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             if (DesignMode) return;
-            toolStripComboBoxMouseDirection.SelectedIndex = 0;
+            
         }
 
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -350,11 +402,9 @@ namespace Crystallography.Controls
             if ((e.KeyChar == 13 && ModifierKeys == Keys.Shift) || (e.KeyChar == 10 && ModifierKeys == Keys.Control))
                 e.Handled = true;
         }
-
-        public bool SkipEventDuringInput { set; get; }
+      
 
         private bool skipTextChangeEvent = false;//テキストチェンジイベント自体をキャンセルする　
-
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             if (DesignMode)
@@ -391,12 +441,6 @@ namespace Crystallography.Controls
             }
             catch { }
         }
-
-        private void adjustTextBaseLine()
-        {
-        }
-
-        public bool ValidRange(double d) => d <= Maximum && d >= Minimum;
 
         private void textBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -452,11 +496,13 @@ namespace Crystallography.Controls
             }
         }
 
+
+        static readonly double threshold = 0.0000000001;
         /// <summary>
         /// 現在のnumericalValueからテキストボックスの文字列を設定する
         /// </summary>
         /// <returns></returns>
-        private string GetString()
+        internal string GetString()
         {
             if (InvokeRequired)
                 return (string)Invoke(new Func<string>(GetString), null);
@@ -465,25 +511,31 @@ namespace Crystallography.Controls
             if (double.IsNaN(numericalValue))
                 return double.NaN.ToString();
 
-            if (ShowFraction) //分数で表示するとき
+            if (numericalValue!=0 && ShowFraction) //分数で表示するとき
             {
                 int j = (int)Math.Ceiling(numericalValue - 1);
-                if (Math.Abs(numericalValue - j - 1.0 / 2.0) < 0.0000000001) text = (1 + 2 * j).ToString() + "/2";
-                else if (Math.Abs(numericalValue - j - 1.0 / 3.0) < 0.0000000001) text = (1 + 3 * j).ToString() + "/3";
-                else if (Math.Abs(numericalValue - j - 2.0 / 3.0) < 0.0000000001) text = (2 + 3 * j).ToString() + "/3";
-                else if (Math.Abs(numericalValue - j - 1.0 / 4.0) < 0.0000000001) text = (1 + 4 * j).ToString() + "/4";
-                else if (Math.Abs(numericalValue - j - 3.0 / 4.0) < 0.0000000001) text = (3 + 4 * j).ToString() + "/4";
-                else if (Math.Abs(numericalValue - j - 1.0 / 6.0) < 0.0000000001) text = (1 + 6 * j).ToString() + "/6";
-                else if (Math.Abs(numericalValue - j - 5.0 / 6.0) < 0.0000000001) text = (5 + 6 * j).ToString() + "/6";
-                else if (Math.Abs(numericalValue - j - 1.0 / 12.0) < 0.0000000001) text = (1 + 12 * j).ToString() + "/12";
-                else if (Math.Abs(numericalValue - j - 5.0 / 12.0) < 0.0000000001) text = (5 + 12 * j).ToString() + "/12";
-                else if (Math.Abs(numericalValue - j - 7.0 / 12.0) < 0.0000000001) text = (7 + 12 * j).ToString() + "/12";
-                else if (Math.Abs(numericalValue - j - 11.0 / 12.0) < 0.0000000001) text = (11 + 12 * j).ToString() + "/12";
+                foreach (var denom in new[] { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12 })
+                    for (int i = 1; i < denom && text ==""; i++)
+                        if ((i == 1 || denom % i != 0) && Math.Abs(numericalValue - j - i / (double)denom) < threshold)
+                            text = $"{i + (denom * j)}/{denom}";
+            }
+            if(numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains("/"))//三角関数で表示 (既に分数表示されているときは除く)
+            {
+                //sin関数は -89 <= x <= 89の範囲で1刻み (度単位)
+                foreach (var a in Enumerable.Range(-89, 179))
+                    if (a != 0 && Math.Abs(numericalValue - Math.Sin(a / 180.0 * Math.PI)) < threshold)
+                    {
+                        text = $"sin({a})";
+                        break;
+                    }
             }
 
             if (text == "")
             {
-                text = numericalValue.ToString(DecimalPlaces >= 0 ? "f" + DecimalPlaces.ToString() : "");
+                text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
+                if(TrimEndZero && text.Contains("."))
+                    text=  text.TrimEnd(new[] { '0' }).TrimEnd(new[] { '.'});
+
                 text = separateThousands(text);
             }
             if (!text.StartsWith("-") && ShowPositiveSign && text != "0")
@@ -520,7 +572,7 @@ namespace Crystallography.Controls
             TextFont = textBox.Font;
         }
 
-        private void NumericalTextBox_SizeChanged(object sender, EventArgs e)
+        private void numericBox_SizeChanged(object sender, EventArgs e)
         {
             if (Multiline == false)
             {
@@ -528,11 +580,6 @@ namespace Crystallography.Controls
                 MinimumSize = new Size(1, textBox.Height);
                 MaximumSize = new Size(1000, textBox.Height);
             }
-        }
-
-        internal void SetToolTip(string p)
-        {
-            throw new NotImplementedException();
         }
 
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
@@ -602,24 +649,6 @@ namespace Crystallography.Controls
             numericUpDown.ValueChanged += numericUpDown_ValueChanged;
         }
 
-        private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            SmartIncrement = smartIncrementToolStripMenuItem.Checked;
-        }
-
-        private void toolStripComboBoxIncrement_TextUpdate(object sender, EventArgs e)
-        {
-            double.TryParse(toolStripComboBoxIncrement.Text, out double inc);
-            if (inc > 0)
-                UpDown_Increment = inc;
-        }
-
-        private void toolStripComboBoxIncrement_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            double.TryParse(toolStripComboBoxIncrement.Text, out double inc); ;
-            if (inc > 0)
-                UpDown_Increment = inc;
-        }
 
         private void textBox_Leave(object sender, EventArgs e)
         {
@@ -630,116 +659,6 @@ namespace Crystallography.Controls
                 SkipEventDuringInput = true;
             }
         }
-
-        private void toolStripComboBoxDecimalPlaces_SelectedIndexChanged(object sender, EventArgs e)
-            => textBox.Text = GetString();
-
-        private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            textBox.Text = GetString();
-        }
-
-        private void toolStripTextBoxMaximum_KeyDown(object sender, KeyEventArgs e)
-        {
-        }
-
-        private void toolStripTextBoxMaximum_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == '\b');
-        }
-
-        private void contextMenuStripBody_Closing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            double.TryParse(toolStripTextBoxMimimum.Text, out double min);
-            if (min < Maximum && Minimum != min)
-            {
-                Minimum = min;
-                LimitChanged?.Invoke(this, e);
-            }
-            double.TryParse(toolStripTextBoxMaximum.Text, out double max);
-            if (max > Minimum && Maximum != max)
-            {
-                Maximum = max;
-                LimitChanged?.Invoke(this, e);
-            }
-
-            double.TryParse(toolStripTextBoxMouseSpeed.Text, out double speed);
-            if (speed > 0)
-                mouseSpeed = speed;
-        }
-
-        private void toolStripMenuItemRestrictLimit_CheckedChanged(object sender, EventArgs e)
-        {
-            toolStripMenuItem1.Enabled = toolStripMenuItem2.Enabled = toolStripMenuItemRestrictLimit.Checked;
-        }
-
-        #region マウスコントロールモード
-
-        public bool AllowMouseControl { get { return allowMouseContlolToolStripMenuItem.Checked; } set { allowMouseContlolToolStripMenuItem.Checked = value; } }
-
-        public VH_DirectionEnum MouseDirection
-        {
-            get { return toolStripComboBoxMouseDirection.SelectedIndex == 0 ? VH_DirectionEnum.Vertical : VH_DirectionEnum.Horizontal; }
-            set { toolStripComboBoxMouseDirection.SelectedIndex = VH_DirectionEnum.Vertical == value ? 0 : 1; }
-        }
-
-        private double mouseSpeed = 1;
-
-        public double MouseSpeed
-        {
-            set
-            {
-                if (value > 0)
-                {
-                    mouseSpeed = value;
-                    string text = mouseSpeed.ToString();
-                    //text = separateThousands(text);
-                    toolStripTextBoxMouseSpeed.Text = text;
-                }
-            }
-            get { return mouseSpeed; }
-        }
-
-        private Point justBeforeMousePosition = new Point();
-        private bool mouseMoving = false;
-
-        private void textBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Middle && mouseMoving && AllowMouseControl)
-            {
-                int delta = MouseDirection == VH_DirectionEnum.Vertical ? justBeforeMousePosition.Y - e.Y : e.X - justBeforeMousePosition.X;
-
-                Value += delta * MouseSpeed;
-
-                justBeforeMousePosition = e.Location;
-            }
-        }
-
-        private void textBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Middle)
-            {
-                mouseMoving = true;
-                justBeforeMousePosition = e.Location;
-            }
-        }
-
-        private void textBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseMoving = false;
-        }
-
-        private void allowMouseContlolToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            toolStripMenuItem3.Enabled = toolStripMenuItem4.Enabled = allowMouseContlolToolStripMenuItem.Checked;
-        }
-
-        private void toolStripTextBoxMouseSpeed_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == '\b');
-        }
-
-        #endregion マウスコントロールモード
 
         private void textBox_Enter(object sender, EventArgs e)
         {

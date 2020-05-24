@@ -65,10 +65,10 @@ namespace Crystallography.Controls
             SetStrainedCrystal();
             skipCrystalChangedEvent = false;
 
-            numericalTextBoxStrain_ValueChanged(new object(), new EventArgs());
+            numericBoxStrain_ValueChanged(new object(), new EventArgs());
         }
 
-        private void numericalTextBoxStrain_ValueChanged(object sender, EventArgs e)
+        private void numericBoxStrain_ValueChanged(object sender, EventArgs e)
         {
             skipCrystalChangedEvent = true;
             var m = StrainMatrix * new Matrix3D(originalCrystal.A_Axis, originalCrystal.B_Axis, originalCrystal.C_Axis);//この歪の計算は間違っている！直さなければ。。。
@@ -156,7 +156,7 @@ namespace Crystallography.Controls
                     CrystalControl.Crystal.AddAtoms(atom);
                 }
             CrystalControl.SetToInterface();
-            numericalTextBoxStrain_ValueChanged(new object(), new EventArgs());
+            numericBoxStrain_ValueChanged(new object(), new EventArgs());
 
             skipCrystalChangedEvent = false;
         }

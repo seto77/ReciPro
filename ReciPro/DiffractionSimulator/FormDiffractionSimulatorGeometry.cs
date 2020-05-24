@@ -41,12 +41,12 @@ namespace ReciPro
         //public double CameraLength1 { set { numericBoxCameraLength1.Value = value; } get { return numericBoxCameraLength1.Value; } }
         public double CameraLength2 { set => numericBoxCameraLength2.Value = value; get => numericBoxCameraLength2.Value; }
 
-        public int DetectorWidth { set => numericalTextBoxPixelWidth.Value = value; get => (int)numericalTextBoxPixelWidth.Value; }
-        public int DetectorHeight { set => numericalTextBoxPixelHeight.Value = value; get => (int)numericalTextBoxPixelHeight.Value; }
-        public double DetectorPixelSize { set => numericalTextBoxPixelSize.Value = value; get => numericalTextBoxPixelSize.Value; }
+        public int DetectorWidth { set => numericBoxPixelWidth.Value = value; get => (int)numericBoxPixelWidth.Value; }
+        public int DetectorHeight { set => numericBoxPixelHeight.Value = value; get => (int)numericBoxPixelHeight.Value; }
+        public double DetectorPixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
 
-        public double FootX { set => numericalTextBoxFootX.Value = value; get => numericalTextBoxFootX.Value; }
-        public double FootY { set => numericalTextBoxFootY.Value = value; get => numericalTextBoxFootY.Value; }
+        public double FootX { set => numericBoxFootX.Value = value; get => numericBoxFootX.Value; }
+        public double FootY { set => numericBoxFootY.Value = value; get => numericBoxFootY.Value; }
 
         public bool ShowDetectorArea { get => checkBoxDetectorSizePosition.Checked; set => checkBoxDetectorSizePosition.Checked = value; }
 
@@ -82,20 +82,20 @@ namespace ReciPro
 
         private void numericBoxCameraLength2_ValueChanged(object sender, EventArgs e)
         {
-            var cosTau = Math.Cos(numericBoxTau.RadianValue);
+            //var cosTau = Math.Cos(numericBoxTau.RadianValue);
             //numericBoxCameraLength1.Value = cosTau > 0.0000001 ? numericBoxCameraLength2.Value / cosTau : double.PositiveInfinity;
 
             if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時)
                 FormDiffractionSimulator.numericUpDownCamaraLength2.Value = (decimal)CameraLength2;
 
-            FormDiffractionSimulator.setVector();
+            FormDiffractionSimulator.SetVector();
 
             FormDiffractionSimulator.Draw();
         }
 
         private void numericBoxTau_ValueChanged(object sender, EventArgs e)
         {
-            FormDiffractionSimulator.setVector();
+            FormDiffractionSimulator.SetVector();
 
             CosTau = Math.Cos(Tau);
             CosTauSquare = CosTau * CosTau;
@@ -278,7 +278,7 @@ namespace ReciPro
             FormDiffractionSimulator.Draw();
         }
 
-        private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericalTextBoxPixelHeight.Enabled = numericalTextBoxPixelWidth.Enabled = textBoxFileName.Text == "";
+        private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericBoxPixelHeight.Enabled = numericBoxPixelWidth.Enabled = textBoxFileName.Text == "";
 
         private void trackBarPictureOpacity1_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
@@ -296,17 +296,17 @@ namespace ReciPro
                         d[n++] = pseudBitmap.SrcValuesGray[x + y * width];
                     }
                 pseudBitmap.SrcValuesGray = d;
-                numericalTextBoxPixelWidth.Value = pseudBitmap.Width = height;
-                numericalTextBoxPixelHeight.Value = pseudBitmap.Height = width;
+                numericBoxPixelWidth.Value = pseudBitmap.Width = height;
+                numericBoxPixelHeight.Value = pseudBitmap.Height = width;
                 OverlappedImage = pseudBitmap.GetImage();
                 FormDiffractionSimulator.SkipDrawing = false;
             }
             else
             {
                 FormDiffractionSimulator.SkipDrawing = true;
-                int temp = (int)numericalTextBoxPixelWidth.Value;
-                numericalTextBoxPixelWidth.Value = numericalTextBoxPixelHeight.Value;
-                numericalTextBoxPixelHeight.Value = temp;
+                int temp = (int)numericBoxPixelWidth.Value;
+                numericBoxPixelWidth.Value = numericBoxPixelHeight.Value;
+                numericBoxPixelHeight.Value = temp;
                 FormDiffractionSimulator.SkipDrawing = false;
             }
         }
