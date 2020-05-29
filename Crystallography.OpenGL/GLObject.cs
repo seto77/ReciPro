@@ -46,7 +46,6 @@ namespace Crystallography.OpenGL
 
         public readonly V2f Uv;
 
-
         public Vertex(V3f position, V3f normal, int argb)
         {
             Position = position;
@@ -66,8 +65,6 @@ namespace Crystallography.OpenGL
             Mode = mode;
         }
 
-
-
         public static readonly int Stride = Marshal.SizeOf(default(Vertex));
     }
     #endregion
@@ -75,38 +72,47 @@ namespace Crystallography.OpenGL
     #region Enum
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8, Text = 16 }
     #endregion
-  
+
+
+    public class Location
+    {
+        internal int TextureLocation { get; set; } = 1;
+        internal int EmissionLocation { get; set; } = -1;
+        internal int AmbientLocation { get; set; } = -1;
+        internal int DiffuseLocation { get; set; } = -1;
+        internal int SpecularLocation { get; set; } = -1;
+        internal int SpecularPowerLocation { get; set; } = -1;
+        internal int UseFixedArgbLocation { get; set; } = -1;
+        internal int FixedArgbLocation { get; set; } = -1;
+        internal int IgnoreNormalSidesLocation { get; set; } = -1;
+        internal int RenderPassLocation { get; set; } = -1;
+
+        internal int PassOIT1Index = -1;
+        internal int PassOIT2Index = -1;
+        internal int PassNormalIndex = -1;
+        internal int PositionLocation { get; set; } = -1;
+        internal int NormalLocation { get; set; } = -1;
+        internal int ArgbLocation { get; set; } = -1;
+
+        internal int UvLocation { get; set; } = -1;
+        internal int ModeLocation { get; set; } = -1;
+        internal int ObjectMatrixLocation { get; set; } = -1;
+
+
+
+    }
+
+
+
     #region GLObjectクラス (抽象クラス)
     /// <summary>
     /// OpenGLで描画するオブジェクトを表現する抽象クラス
     /// </summary>
     abstract public class GLObject
     {
-        public enum Templates { None, Sphere, Cone, Cylinder}
-
         #region static private な フィールド & プロパティ
 
-        static internal int TextureLocation { get; set; } = 1;
-        static internal int EmissionLocation { get; set; } = -1;
-        static internal int AmbientLocation { get; set; } = -1;
-        static internal int DiffuseLocation { get; set; } = -1;
-        static internal int SpecularLocation { get; set; } = -1;
-        static internal int SpecularPowerLocation { get; set; } = -1;
-        static internal int UseFixedArgbLocation { get; set; } = -1;
-        static internal int FixedArgbLocation { get; set; } = -1;
-        static internal int IgnoreNormalSidesLocation { get; set; } = -1;
-        static internal int RenderPassLocation { get; set; } = -1;
-
-        static internal int PassOIT1Index = -1;
-        static internal int PassOIT2Index = -1;
-        static internal int PassNormalIndex = -1;
-        static internal int PositionLocation { get; set; } = -1;
-        static internal int NormalLocation { get; set; } = -1;
-        static internal int ArgbLocation { get; set; } = -1;
-
-        static internal int UvLocation { get; set; } = -1;
-        static internal int ModeLocation { get; set; } = -1;
-        static internal int ObjectMatrixLocation { get; set; } = -1;
+        static private Dictionary<int, Location> Location = new Dictionary<int, Location>();
 
         #endregion
 
@@ -134,10 +140,6 @@ namespace Crystallography.OpenGL
         #endregion
 
         #region publicな フィールド & プロパティ
-
-
-        public Templates Template = Templates.None;
-
         /// <summary>
         /// 自由に情報を格納するためのTag
         /// </summary>
@@ -235,49 +237,60 @@ namespace Crystallography.OpenGL
         /// <param name="program"></param>
         public void Generate(int program)
         {
-            if (program < 0 || Vertices == null || Vertices.Length == 0)
+            if (program < 0 || Vertices == null || Vertices.Length == 0) 
                 return;
+
             Program = program;
 
             //Locationを取得
-            if (EmissionLocation == -1)
-                SetLocation(program);
+            if (!Location.ContainsKey(Program))
+            {
+                Location.Add(Program, new Location());
+                SetLocation(Program);
+            }
+            //Default形状であれば、VAO, VBO, EBOをセットしておしまい。
+            var dic = this is Sphere s && s.UseDefault ? Sphere.DefaultDictionary : this is Cylinder c && c.UseDefault ? Cylinder.DefaultDictionary : null;
+            if (dic != null && dic.TryGetValue(Program, out var objects))
+            {
+                VBO = objects.VBO;
+                EBO = objects.EBO;
+                VAO = objects.VAO;
+                return;
+            }
 
-            //Template形状であれば、VAO, VBO, EBOをセットしておしまい。
-            if ((Template == Templates.Sphere && Sphere.DefaultDictionary.TryGetValue(Program, out (int VBO, int VAO, int EBO) objects)) ||
-                (Template == Templates.Cylinder && Cylinder.DefaultDictionary.TryGetValue(Program, out objects)))
-            { VAO = objects.VAO; VBO = objects.VBO; EBO = objects.EBO; return; }
+            //VBO, EBO, VAO の数値(名前?)を取得
+            GL.GenBuffers(1, out VBO); 
+            GL.GenBuffers(1, out EBO); 
+            GL.GenVertexArrays(1, out VAO);
+            dic?.Add(Program, (VBO, VAO, EBO));
 
             // VBO作成
-            GL.GenBuffers(1, out VBO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
             GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(Vertices.Length * Vertex.Stride), Vertices, BufferUsageHint.DynamicDraw);
 
             // EBO作成
-            GL.GenBuffers(1, out EBO);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
             GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeof(uint) * Indices.Length), Indices, BufferUsageHint.DynamicDraw);
 
             // VAO作成
-            GL.GenVertexArrays(1, out VAO);
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-           
+
             //モード
-            GL.EnableVertexAttribArray(ModeLocation);
-            GL.VertexAttribPointer(ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
+            GL.EnableVertexAttribArray(Location[Program].ModeLocation);
+            GL.VertexAttribPointer(Location[Program].ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
             //色
-            GL.EnableVertexAttribArray(ArgbLocation);
-            GL.VertexAttribPointer(ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeof(int));
+            GL.EnableVertexAttribArray(Location[Program].ArgbLocation);
+            GL.VertexAttribPointer(Location[Program].ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeof(int));
             //頂点位置
-            GL.EnableVertexAttribArray(PositionLocation);
-            GL.VertexAttribPointer(PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int));
+            GL.EnableVertexAttribArray(Location[Program].PositionLocation);
+            GL.VertexAttribPointer(Location[Program].PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int));
             //法線
-            GL.EnableVertexAttribArray(NormalLocation);
-            GL.VertexAttribPointer(NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeof(int) + V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(Location[Program].NormalLocation);
+            GL.VertexAttribPointer(Location[Program].NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeof(int) + V3f.SizeInBytes);
             //テクスチャ座標
-            GL.EnableVertexAttribArray(UvLocation);
-            GL.VertexAttribPointer(UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int) + 2 * V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(Location[Program].UvLocation);
+            GL.VertexAttribPointer(Location[Program].UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int) + 2 * V3f.SizeInBytes);
 
             //TextObjectの場合は、ここでテクスチャーを転送
             if (this is TextObject t && t.TextureNum != -1 && t.Texture != null)
@@ -289,45 +302,41 @@ namespace Crystallography.OpenGL
                 // テクスチャのアンバインド
                 GL.BindTexture(TextureTarget.Texture2D, 0);
             }
-
-
-            if (Template == Templates.Sphere)
-                Sphere.DefaultDictionary.Add(Program, (VBO, VAO, EBO));
-            else if (Template == Templates.Cylinder)
-                Cylinder.DefaultDictionary.Add(Program, (VBO, VAO, EBO));
         }
 
         /// <summary>
         /// パラメータのロケーションをセット
         /// </summary>
         /// <param name="Program"></param>
-        public static void SetLocation(int Program)
+        public void SetLocation(int Program)
         {
-            ModeLocation = GL.GetAttribLocation(Program, "ObjType");
-            ArgbLocation = GL.GetAttribLocation(Program, "Argb");
-            PositionLocation = GL.GetAttribLocation(Program, "Position");
-            NormalLocation = GL.GetAttribLocation(Program, "Normal");
-            UvLocation = GL.GetAttribLocation(Program, "Uv");
-            if (ModeLocation==-1 || UvLocation == -1 || PositionLocation == -1 || NormalLocation == -1 || ArgbLocation == -1)
+
+            Location[Program].ModeLocation = GL.GetAttribLocation(Program, "ObjType");
+            Location[Program].ArgbLocation = GL.GetAttribLocation(Program, "Argb");
+            Location[Program].PositionLocation = GL.GetAttribLocation(Program, "Position");
+            Location[Program].NormalLocation = GL.GetAttribLocation(Program, "Normal");
+            Location[Program].UvLocation = GL.GetAttribLocation(Program, "Uv");
+            if (Location[Program].ModeLocation ==-1 || Location[Program].UvLocation == -1 || Location[Program].PositionLocation == -1
+                || Location[Program].NormalLocation == -1 || Location[Program].ArgbLocation == -1)
                 throw new Exception("cannot find location!");
 
-            ObjectMatrixLocation = GL.GetUniformLocation(Program, "ObjectMatrix");
+            Location[Program].ObjectMatrixLocation = GL.GetUniformLocation(Program, "ObjectMatrix");
 
-            TextureLocation = GL.GetUniformLocation(Program, "Texture");
+            Location[Program].TextureLocation = GL.GetUniformLocation(Program, "Texture");
 
-            EmissionLocation = GL.GetUniformLocation(Program, "Emission");
-            AmbientLocation = GL.GetUniformLocation(Program, "Ambient");
-            DiffuseLocation = GL.GetUniformLocation(Program, "Diffuse");
-            SpecularLocation = GL.GetUniformLocation(Program, "Specular");
-            SpecularPowerLocation = GL.GetUniformLocation(Program, "SpecularPower");
-            UseFixedArgbLocation = GL.GetUniformLocation(Program, "UseFixedArgb");
-            IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
-            FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
+            Location[Program].EmissionLocation = GL.GetUniformLocation(Program, "Emission");
+            Location[Program].AmbientLocation = GL.GetUniformLocation(Program, "Ambient");
+            Location[Program].DiffuseLocation = GL.GetUniformLocation(Program, "Diffuse");
+            Location[Program].SpecularLocation = GL.GetUniformLocation(Program, "Specular");
+            Location[Program].SpecularPowerLocation = GL.GetUniformLocation(Program, "SpecularPower");
+            Location[Program].UseFixedArgbLocation = GL.GetUniformLocation(Program, "UseFixedArgb");
+            Location[Program].IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
+            Location[Program].FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
 
-            PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-            PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-            PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-            RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+                Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+                Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+                Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+                Location[Program].RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
         }
 
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
@@ -336,7 +345,7 @@ namespace Crystallography.OpenGL
         {
             if (this is TextObject text && text.TextureNum != -1)
             {
-                GL.Uniform1(TextureLocation, 0);
+                GL.Uniform1(Location[Program].TextureLocation, 0);
                 GL.BindTexture(TextureTarget.Texture2D, text.TextureNum);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
@@ -362,8 +371,6 @@ namespace Crystallography.OpenGL
                 }
                 offset += len * sizeof(uint);
             }
-
-          
         }
 
         /// <summary>
@@ -372,7 +379,7 @@ namespace Crystallography.OpenGL
         /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
-            GL.UniformMatrix4(ObjectMatrixLocation, false, ref ObjectMatrix);
+            GL.UniformMatrix4(Location[Program].ObjectMatrixLocation, false, ref ObjectMatrix);
 
             var renew = prms.Program != Program;
 
@@ -380,28 +387,28 @@ namespace Crystallography.OpenGL
                 (Material.Emission, Material.Ambient, Material.Diffuse, Material.Specular) : (0f, 1f, 0f, 0f);
 
             if (renew || emi != prms.emi)
-                GL.Uniform1(EmissionLocation, emi);
+                GL.Uniform1(Location[Program].EmissionLocation, emi);
 
             if (renew || amb != prms.amb)
-                GL.Uniform1(AmbientLocation, amb);
+                GL.Uniform1(Location[Program].AmbientLocation, amb);
 
             if (renew || dif != prms.dif)
-                GL.Uniform1(DiffuseLocation, dif);
+                GL.Uniform1(Location[Program].DiffuseLocation, dif);
 
             if (renew || spe != prms.spe)
-                GL.Uniform1(SpecularLocation, spe);
+                GL.Uniform1(Location[Program].SpecularLocation, spe);
 
             if (renew || prms.spePow != Material.SpecularPower)
-                GL.Uniform1(SpecularPowerLocation, Material.SpecularPower);
+                GL.Uniform1(Location[Program].SpecularPowerLocation, Material.SpecularPower);
 
             if (renew || prms.UseFixedArgb != UseFixedArgb)
-                GL.Uniform1(UseFixedArgbLocation, UseFixedArgb ? 1 : 0);//Trueが1なのはなぜか分からないが、これで動く。
+                GL.Uniform1(Location[Program].UseFixedArgbLocation, UseFixedArgb ? 1 : 0);//Trueが1なのはなぜか分からないが、これで動く。
 
             if (renew || prms.argb != Material.Argb)
-                GL.Uniform1(FixedArgbLocation, Material.Argb);
+                GL.Uniform1(Location[Program].FixedArgbLocation, Material.Argb);
 
             if (renew || IgnoreNormalSides != prms.ignoreNormal)
-                GL.Uniform1(IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);
+                GL.Uniform1(Location[Program].IgnoreNormalSidesLocation, IgnoreNormalSides ? 1 : 0);
 
             //if (IgnoreNormalSides)
             //{
@@ -450,8 +457,8 @@ namespace Crystallography.OpenGL
                     {
                         DepthTest(false);//Depthテスト無効
 
-                        if (PassNormalIndex != -1)//OITモードの場合は
-                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassNormalIndex);//サブルーチンをNormalにする
+                        if (Location[Program].PassNormalIndex != -1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassNormalIndex);//サブルーチンをNormalにする
 
                         GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
@@ -469,14 +476,14 @@ namespace Crystallography.OpenGL
                         //ここまででステンシル完成(0以外が有効)
 
                         //ここからクリップ平面を描画
-                        if (PassOIT1Index != -1)//OITモードの場合は
-                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref PassOIT1Index);//サブルーチンをOIT1に戻す
+                        if (Location[Program].PassOIT1Index != -1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassOIT1Index);//サブルーチンをOIT1に戻す
 
                         GL.ColorMask(true, true, true, true);
                         GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
                         GL.Disable(EnableCap.CullFace);//CullFace無効化
                         clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
-                        DepthTest(PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
+                        DepthTest(Location[Program].PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
                         clip.Render(i, Material);//i番目のクリップ面を描画
                     }
                     GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
@@ -501,7 +508,6 @@ namespace Crystallography.OpenGL
             else GL.Disable(cap);
         }
     }
-
     #endregion
 
     #region クリップ
@@ -984,7 +990,6 @@ namespace Crystallography.OpenGL
                         Indices = Sphere.DefaultIndices;
                         TypeCounts = Sphere.DefaultTypeCounts;
                         Types = Sphere.DefaultTypes;
-                        Template = Templates.Sphere;
                         ObjectMatrix = new M4d(new V4d(v1, 0), new V4d(v2, 0), new V4d(v3, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
@@ -1056,22 +1061,8 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Sphere : Ellipsoid
     {
-        /// <summary>
-        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-        /// </summary>
-        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
-
-        private static int defaultSlices = 3;
-        public new static int DefaultSlices
-        {
-            get => defaultSlices;
-            set
-            {
-                defaultSlices = value;
-                SetDefaultSphere();
-            }
-        }
         public double Radius;
+        public bool UseDefault { get; set; } = false;
 
         public Sphere(Vector3DBase o, double radius, Material mat, DrawingMode mode, int slices = 0)
           : this(new V3d(o.X, o.Y, o.Z), radius, mat, mode, slices) { }
@@ -1086,17 +1077,22 @@ namespace Crystallography.OpenGL
         /// <param name="slices">分割数.　6*(2*slices+1)^2 の頂点が生成される</param>
         public Sphere(V3d o, double radius, Material mat, DrawingMode mode, int slices = 0)
            : base(o, new V3d(radius, 0, 0), new V3d(0, radius, 0), new V3d(0, 0, radius), mat, mode, slices)
-        { Radius = radius; }
+        { Radius = radius; UseDefault = slices == 0; }
+
+        public new static int DefaultSlices { get => defaultSlices; set { defaultSlices = value; SetDefaultSphere(); } }
+        private static int defaultSlices = 3;
 
         public static Vertex[] DefaultVertices;
         public static uint[] DefaultIndices;
         public static int[] DefaultTypeCounts;
         public static PT[] DefaultTypes;
 
-        static Sphere()
-        {
-            SetDefaultSphere();
-        }
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+
+        static Sphere() => SetDefaultSphere();
         static void SetDefaultSphere()
         {
             DefaultVertices = null;
@@ -1177,7 +1173,6 @@ namespace Crystallography.OpenGL
                         Indices = Cylinder.DefaultIndices;
                         TypeCounts = Cylinder.DefaultTypeCounts;
                         Types = Cylinder.DefaultTypes;
-                        Template = Templates.Cylinder;
                         ObjectMatrix = new M4d(r1 * new V4d(rotMat.Column0, 0), r1 * new V4d(rotMat.Column1, 0), height * new V4d(rotMat.Column2, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
@@ -1327,8 +1322,11 @@ namespace Crystallography.OpenGL
         public static int[] DefaultTypeCounts;
         public static PT[] DefaultTypes;
 
+
+        public bool UseDefault = false;
+
         public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { }
+            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
         /// <summary>
         /// 円錐
@@ -1370,37 +1368,15 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cylinder : Pipe
     {
-        /// <summary>
-        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-        /// </summary>
-        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
-
-        private static (int Slices, int Stacks) _Default = (1, 16);
-        public new static (int Slices, int Stacks) Default
-        {
-            get => _Default;
-            set
-            {
-                _Default = value;
-                SetDefaultCylinder();
-            }
-        }
-
-        public static Vertex[] DefaultVertices;
-        public static uint[] DefaultIndices;
-        public static int[] DefaultTypeCounts;
-        public static PT[] DefaultTypes;
+        public bool UseDefault { get; set; } = false;
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { }
-
 
         public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
            : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode, sole, slices, stacks) { }
 
-
-
         /// <summary>
-        ///
+        /// 円柱 (始点の位置、始点から終点へのベクトル、半径で定義される)
         /// </summary>
         /// <param name="o">始点の位置</param>
         /// <param name="vec">始点から終点へのベクトル</param>
@@ -1411,15 +1387,27 @@ namespace Crystallography.OpenGL
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
         public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-           : base(o, vec, r, r, mat, mode, sole, slices, stacks) { }
+           : base(o, vec, r, r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
         public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-         : base(o, vec, r, r, mat1, mat2, mode, sole, slices, stacks) { }
+         : base(o, vec, r, r, mat1, mat2, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
-        static Cylinder()
-        {
-            SetDefaultCylinder();
-        }
+
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+
+        
+        public new static (int Slices, int Stacks) Default { get => _Default; set { _Default = value; SetDefaultCylinder(); } }       
+        private static (int Slices, int Stacks) _Default = (1, 16);
+
+        public static Vertex[] DefaultVertices;
+        public static uint[] DefaultIndices;
+        public static int[] DefaultTypeCounts;
+        public static PT[] DefaultTypes;
+
+        static Cylinder() => SetDefaultCylinder();
 
         static void SetDefaultCylinder()
         {

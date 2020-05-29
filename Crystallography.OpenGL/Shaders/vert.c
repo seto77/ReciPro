@@ -41,7 +41,6 @@ out VertexData
 void main(void)
 {
 	// Calculate view-space coordinate
-
 	vec3 position = vec3 (ObjectMatrix * vec4(Position, 1));
 
 	vec4 P;

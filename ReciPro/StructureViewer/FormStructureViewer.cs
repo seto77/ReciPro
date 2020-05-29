@@ -28,8 +28,6 @@ namespace ReciPro
         public FormMain formMain;
         private FormAtom formAtom;
 
-        private ReaderWriterLockSlim cacheLock = new ReaderWriterLockSlim();
-
         /// <summary>
         /// 原子位置をシフトさせるベクトル. 単位格子の描画も、このベクトルに従ってシフトする
         /// </summary>
@@ -55,11 +53,11 @@ namespace ReciPro
         private AtomControl atomControl;
         private BondInputControl bondControl;
 
-        private List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
+        private readonly List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
         private List<Label> legendLabels = new List<Label>();
         private List<FlowLayoutPanel> legendFlowLayoutPanels = new List<FlowLayoutPanel>();
 
-        private Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new Stopwatch();
 
 
         private ParallelQuery<(int Index, V3 Pos, Material Mat, double Radius)> enabledAtomsP;
@@ -67,6 +65,8 @@ namespace ReciPro
 
         private GLControlAlpha glControlLight;
         private GLControlAlpha glControlMain;
+        private GLControlAlpha glControlMainZsort;
+        private GLControlAlpha glControlMainOIT;
         private GLControlAlpha glControlAxes;
 
         private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
@@ -133,7 +133,6 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
@@ -156,7 +155,6 @@ namespace ReciPro
                 NodeCoefficient = 1,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Location = new Point(0, 0),
@@ -166,8 +164,28 @@ namespace ReciPro
             glControlLight.MouseMove += glControlLight_MouseMove;
 
 
-            // glControlMain
-            glControlMain = new GLControlAlpha
+            // glControlMainZsort
+            glControlMainZsort = new GLControlAlpha
+            {
+                AllowMouseRotation = false,
+                AllowMouseScaling = true,
+                AllowMouseTranslating = true,
+                BorderStyle = BorderStyle.Fixed3D,
+                DisablingOpenGL = false,
+                MaxHeight = 1,
+                MaxWidth = 1,
+                Name = "glControlMainZsort",
+                NodeCoefficient = 1,
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 4D,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                TranslatingMode = GLControlAlpha.TranslatingModes.View,
+                Dock = DockStyle.Fill
+            };
+            glControlMainZsort.MouseDown += glControlMain_MouseDown;
+            glControlMainZsort.MouseMove += glControlMain_MouseMove;
+
+            glControlMainOIT = new GLControlAlpha( GLControlAlpha.FragShaders.OIT)
             {
                 AllowMouseRotation = false,
                 AllowMouseScaling = true,
@@ -176,22 +194,24 @@ namespace ReciPro
                 DisablingOpenGL = false,
                 MaxHeight = 1440,
                 MaxWidth = 2560,
-                Name = "glControlMain",
-                NodeCoefficient = 4,
+                Name = "glControlMainOIT",
+                NodeCoefficient = 8,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
-                FragShader = GLControlAlpha.FragShaders.ZSORT,
                 RotationMode = GLControlAlpha.RotationModes.Object,
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
             };
-            glControlMain.MouseDown += glControlMain_MouseDown;
-            glControlMain.MouseMove += glControlMain_MouseMove;
+            glControlMainOIT.MouseDown += glControlMain_MouseDown;
+            glControlMainOIT.MouseMove += glControlMain_MouseMove;
+            glControlMainOIT.Visible = false;
+
+            glControlMain = glControlMainZsort;
 
             // splitContainer1.Panel1にglControlを追加
             splitContainer1.Panel1.Controls.Add(glControlAxes);
             splitContainer1.Panel1.Controls.Add(glControlLight);
-            splitContainer1.Panel1.Controls.Add(glControlMain);
+            splitContainer1.Panel1.Controls.Add(glControlMainZsort);
             glControlAxes.Location = new Point(0, glControlMain.Height - glControlAxes.Height);
 
             #endregion
@@ -409,6 +429,8 @@ namespace ReciPro
 
         public void setAtomsP()
         {
+            sw.Restart();
+
             var list = new List<(int Index, V3 Pos, Material Mat, double Radius)>();
             //位置が全く同じ原子が存在する場合は、最もOccが大きいものを選ぶ。それが複数ある場合は、indexが若い方を選ぶ
 
@@ -427,6 +449,8 @@ namespace ReciPro
 
             }
             enabledAtomsP = list.AsParallel();
+
+            textBoxInformation.AppendText("Selection of enabled aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
         #endregion
@@ -685,11 +709,6 @@ namespace ReciPro
 
             textBoxInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
-            Draw();
-
-
-            //テストコード
-            //  new Polygon(new[] { new V3 (0,0,0), new V3(1, 0, 0), new V3(0, 1, 0) }, cellEdgeMat, DrawingMode.Edges).Decompose();
         }
         #endregion
 
@@ -751,7 +770,6 @@ namespace ReciPro
                 }
             }
             textBoxInformation.AppendText("Generation of lattice planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
-            Draw();
         }
         #endregion
 
@@ -797,17 +815,18 @@ namespace ReciPro
         {
             if (skipSetCrystal) return;
 
-            textBoxInformation.Text = "";
+            textBoxInformation.Clear();
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
+            Crystal = _crystal ?? formMain.Crystal;
+
             if (_crystal != null)
-                SetLegend();
-
-            Crystal = _crystal == null ? formMain.Crystal : _crystal;
-
-            atomCoordinateTable1.Crystal = Crystal;//
+            {
+                atomCoordinateTable1.Crystal = Crystal;
+                textBoxInformation.AppendText("Calculate coordinates table: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            }
 
             GLObjects.Clear(); //GLObjectsを初期化
 
@@ -822,13 +841,16 @@ namespace ReciPro
             setBoundPlanes();//境界面オブジェクトを生成
 
             if (_crystal != null)
+            {
+                SetLegend();
                 setAtomsP();
+            }
 
             setAtoms();//原子オブジェクトを生成
 
             setBondsAndPolyhera();//結合と多面体オブジェクトを生成
 
-            setLabel();//
+            setLabel();//ラベルを生成
 
             removeObjects();//余計な原子を削除
 
@@ -838,7 +860,7 @@ namespace ReciPro
 
             setAxesControl();//結晶軸を表示するGLControl
 
-            Draw(); //
+            Draw();
         }
         #endregion
 
@@ -1139,6 +1161,7 @@ namespace ReciPro
         {
             groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
             setUnitCellPlanes();
+            Draw();
         }
         #endregion
 
@@ -1397,7 +1420,6 @@ namespace ReciPro
                                 NodeCoefficient = 1,
                                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                                 ProjWidth = 2.2D,
-                                FragShader = GLControlAlpha.FragShaders.ZSORT,
                                 LightPosition = glControlLight.LightPosition,
                                 WorldMatrix = glControlLight.WorldMatrix,
                                 ViewFrom = glControlLight.ViewFrom
@@ -1527,15 +1549,44 @@ namespace ReciPro
                 SetGLObjects(formMain.crystalControl.Crystal);
         }
 
+
         private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            var swap = new Action<GLControlAlpha, GLControlAlpha>((g1, g2) => {
+
+                g1.ViewFrom = g2.ViewFrom;
+                g1.ViewMatrix = g2.ViewMatrix;
+                g1.WorldMatrix = g2.WorldMatrix;
+                g1.ProjMatrix = g2.ProjMatrix;
+                g1.LightPosition = g2.LightPosition;
+                g1.ProjWidth = g2.ProjWidth;
+                g1.ProjCenter = g2.ProjCenter;
+                g1.ProjectionMode = g2.ProjectionMode;
+            });
+
+
             if (comboBoxTransparency.SelectedIndex == 0)
             {
-                glControlMain.NodeCoefficient = 0;
-                glControlMain.FragShader = GLControlAlpha.FragShaders.ZSORT;
+                if (glControlMainZsort.Visible)//変更が無かったら何もしない。
+                    return;
+                glControlMainOIT.Visible = false;
+                splitContainer1.Panel1.Controls.Remove(glControlMainOIT);
+
+                glControlMainZsort.DeleteAllObjects();
+                glControlMainOIT.DeleteAllObjects();
+
+                swap( glControlMainZsort,glControlMainOIT);
+
+                glControlMain = glControlMainZsort;
+                splitContainer1.Panel1.Controls.Add(glControlMainZsort);
+                glControlMainZsort.Visible = true;
             }
             else
             {
+                if (glControlMainOIT.Visible)//変更が無かったら何もしない。
+                    return;
+
                 if (glControlMain.Version < glControlMain.VersionForOIT)
                 {
                     MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
@@ -1543,13 +1594,25 @@ namespace ReciPro
                     comboBoxTransparency.SelectedIndex = 0;
                     return;
                 }
-                glControlMain.NodeCoefficient = 10;
-                glControlMain.MaxFragments = 75;
-                glControlMain.FragShader = GLControlAlpha.FragShaders.OIT;
+                glControlMainZsort.Visible = false;
+                splitContainer1.Panel1.Controls.Remove(glControlMainZsort);
+
+                glControlMainZsort.DeleteAllObjects();
+                glControlMainOIT.DeleteAllObjects();
+
+                swap(glControlMainOIT, glControlMainZsort);
+
+                glControlMain = glControlMainOIT;
+                splitContainer1.Panel1.Controls.Add(glControlMainOIT);
+                glControlMainOIT.Visible = true;
+                
+                checkBoxDepthCueing_CheckedChanged(sender, e);
             }
 
             if (atomControl != null)
+            {
                 SetGLObjects(formMain.crystalControl.Crystal);
+            }
         }
 
         #endregion

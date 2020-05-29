@@ -212,7 +212,6 @@
     </Compile>
     <Compile Include="AtomConstants.cs" />
     <Compile Include="AtomConstantsSub.cs" />
-    <Compile Include="AtomCoordination.cs" />
     <Compile Include="Atoms.cs">
       <SubType>Code</SubType>
     </Compile>

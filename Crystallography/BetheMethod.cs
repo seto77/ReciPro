@@ -63,7 +63,7 @@ namespace Crystallography
 
         public double SemianglePED { get; set; }
 
-        public bool IsBusy => bwCBED == null ? true : bwCBED.IsBusy;
+        public bool IsBusy => bwCBED == null || bwCBED.IsBusy;
 
         /// <summary>
         /// Disks[Z_index][G_index]

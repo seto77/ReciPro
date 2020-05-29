@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
     public partial class AtomCoordinateTable : UserControl
     {
+        ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
+        private bool skipEvent { get; set; } = false;
         public AtomCoordinateTable()
         {
             InitializeComponent();
@@ -22,9 +26,11 @@ namespace Crystallography.Controls
                 crystal = value;
                 if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0)
                 {
+                    skipEvent = true;
                     comboBox.Items.Clear();
                     for (int i = 0; i < crystal.Atoms.Length; i++)
                         comboBox.Items.Add(crystal.Atoms[i].Label);
+                    skipEvent = false;
                     comboBox.SelectedIndex = 0;
                 }
             }
@@ -48,11 +54,13 @@ namespace Crystallography.Controls
                         }
                 }
             }
-            get { return atom; }
+            get => atom;
         }
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (skipEvent) 
+                return;
             if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0 && comboBox.SelectedIndex < Crystal.Atoms.Length)
             {
                 atom = Crystal.Atoms[comboBox.SelectedIndex];
@@ -60,11 +68,15 @@ namespace Crystallography.Controls
             }
         }
 
+
+
+
+
         private void RefreshTable()
         {
             if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0 && comboBox.SelectedIndex < Crystal.Atoms.Length)
             {
-                List<CoordinatedAtom> atom = AtomCoordination.Search(Crystal, Atom, (double)numericUpDownMaxLength.Value);
+                var atom = Search(Crystal, Atom, (double)numericUpDownMaxLength.Value);
                 dataSet.Tables[0].Clear();
                 for (int i = 0; i < atom.Count; i++)
                 {
@@ -77,6 +89,51 @@ namespace Crystallography.Controls
             }
         }
 
+
+        public List<(string Label, double Distance)> Search(Crystal crystal, Atoms targetAtom, double maxLengthAngstrom)
+        {
+            var mat = 10 * crystal.MatrixReal;
+            Vector3DBase pos = mat * targetAtom.Atom[0];
+            var max2 = maxLengthAngstrom * maxLengthAngstrom;
+            var atoms = new List<(string Label, double Distance)>();
+            //まず、隣り合った単位格子の原子位置をすべて探索してCoordinatedAtom型のリストに全部入れる
+            for (int max = 0; max < 8; max++)
+            {
+                bool flag = false;
+                Parallel.For(-max, max + 1, xShift =>
+                {
+                      for (int yShift = -max; yShift <= max; yShift++)
+                          for (int zShift = -max; zShift <= max; zShift++)
+                          {
+                              if (Math.Abs(xShift) == max || Math.Abs(yShift) == max || Math.Abs(zShift) == max)
+                              {
+                                  foreach (Atoms atm in crystal.Atoms)
+                                      foreach (var v in atm.Atom)
+                                      {
+                                          var tempPos = mat * (v + new Vector3DBase(xShift, yShift, zShift));
+                                          if (max2 > (tempPos - pos).Length2)
+                                          {
+                                            rwLock.EnterWriteLock();
+                                            try
+                                            {
+                                                atoms.Add((atm.Label, (tempPos - pos).Length));
+                                                flag = true;//一個でも見つけられたら続行
+                                            }
+                                            finally { rwLock.ExitWriteLock(); }
+                                          }
+                                      }
+                              }
+                          }
+                });
+                if (flag == false && max > 2)
+                    break;
+            }
+            atoms.Sort((a1, a2) => a1.Distance.CompareTo(a2.Distance));
+            return atoms;
+        }
+
+
+
         private Bitmap bmp;
         private Graphics g;
         private Point OriginPos = new Point(30, 30);
@@ -84,7 +141,7 @@ namespace Crystallography.Controls
         private Profile profile = new Profile();
         private double BottomMargin = 0;
 
-        private void DrawGraph(List<CoordinatedAtom> atoms)
+        private void DrawGraph(List<(string Label, double Distance)> atoms)
         {
             if (pictureBox.Width <= 0 || pictureBox.Height <= 0 || atoms.Count == 0) return; bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
             g = Graphics.FromImage(bmp);
@@ -133,7 +190,7 @@ namespace Crystallography.Controls
             pictureBox.Image = bmp;
         }
 
-        private class ControlPoint : System.IComparable
+        private class ControlPoint : IComparable
         {
             public double X;
             public bool Flag;
@@ -150,7 +207,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void DrawHistogram(List<CoordinatedAtom> atoms)
+        private void DrawHistogram(List<(string Label, double Distance)> atoms)
         {
             SolidBrush solidBrush = new SolidBrush(Color.LawnGreen);
             float zero = ConvToPicBoxCoord(0, 0).Y;
@@ -163,7 +220,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void DrawLabel(List<CoordinatedAtom> atoms)
+        private void DrawLabel(List<(string Label, double Distance)> atoms)
 
         {
             PointF JustBeforePt = new PointF(-10, -10);
@@ -254,36 +311,11 @@ namespace Crystallography.Controls
 
         #endregion 座標変換関係
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
 
-        private void AtomCoordinateTable_Load(object sender, EventArgs e)
-        {
-        }
+        private void numericUpDownWidth_ValueChanged(object sender, EventArgs e) => RefreshTable();
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
+        private void numericUpDownMaxLength_ValueChanged(object sender, EventArgs e) => RefreshTable();
 
-        private void numericUpDownWidth_ValueChanged(object sender, EventArgs e)
-        {
-            RefreshTable();
-        }
-
-        private void numericUpDownMaxLength_ValueChanged(object sender, EventArgs e)
-        {
-            RefreshTable();
-        }
-
-        private void AtomCoordinateTable_Resize(object sender, EventArgs e)
-        {
-            RefreshTable();
-        }
-
-        private void AtomCoordinateTable_Resize_1(object sender, EventArgs e)
-        {
-            RefreshTable();
-        }
+        private void AtomCoordinateTable_Resize_1(object sender, EventArgs e) => RefreshTable();
     }
 }

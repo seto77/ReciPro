@@ -887,28 +887,18 @@ namespace Crystallography
         }
 
         //演算子のオーバーロード
-        public static bool operator <(Vector3D v1, Vector3D v2)
-        {
-            return (v1.X < v2.X && v1.Y < v2.Y && v1.Z < v2.Z)
-                ? true : false;
-        }
+        public static bool operator <(Vector3D v1, Vector3D v2) => v1.X < v2.X && v1.Y < v2.Y && v1.Z < v2.Z;
 
-        public static bool operator <=(Vector3D v1, Vector3D v2)
-        {
-            return (v1.X <= v2.X && v1.Y <= v2.Y && v1.Z <= v2.Z)
-                ? true : false;
-        }
+        public static bool operator <=(Vector3D v1, Vector3D v2) => v1.X <= v2.X && v1.Y <= v2.Y && v1.Z <= v2.Z;
 
         public static bool operator >(Vector3D v1, Vector3D v2)
         {
-            return (v1.X > v2.X && v1.Y > v2.Y && v1.Z > v2.Z)
-                ? true : false;
+            return (v1.X > v2.X && v1.Y > v2.Y && v1.Z > v2.Z);
         }
 
         public static bool operator >=(Vector3D v1, Vector3D v2)
         {
-            return (v1.X >= v2.X && v1.Y >= v2.Y && v1.Z >= v2.Z)
-                ? true : false;
+            return (v1.X >= v2.X && v1.Y >= v2.Y && v1.Z >= v2.Z);
         }
 
         public static Vector3D operator +(Vector3D v1, Vector3D v2)

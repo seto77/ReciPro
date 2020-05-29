@@ -1,5 +1,5 @@
-#version 150
-
+//#version 150
+#version 430 core
 //#pragma optionNV(ifcvt none)
 //#pragma optionNV(inline all)
 //#pragma optionNV(strict on)

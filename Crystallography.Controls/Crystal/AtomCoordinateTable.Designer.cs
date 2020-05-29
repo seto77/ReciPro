@@ -56,6 +56,7 @@
             // 
             // comboBox
             // 
+            this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Location = new System.Drawing.Point(82, 1);
             this.comboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -209,21 +210,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(528, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.Size = new System.Drawing.Size(15, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Å";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(357, 7);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
+            this.label5.Size = new System.Drawing.Size(15, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "Å";
             // 
@@ -245,7 +245,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AtomCoordinateTable";
             this.Size = new System.Drawing.Size(555, 201);
-            this.Load += new System.EventHandler(this.AtomCoordinateTable_Load);
             this.Resize += new System.EventHandler(this.AtomCoordinateTable_Resize_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();

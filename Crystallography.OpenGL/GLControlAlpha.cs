@@ -166,7 +166,7 @@ namespace Crystallography.OpenGL
         /// この値を変更しても、SetShader()は実行されない (その後FragShaderを変更する必要あり)。
         /// </summary>
         [Category("Rendering properties")]
-        public int NodeCoefficient { get; set; } = 0;
+        public int NodeCoefficient { get; set; } = 10;
 
 
         /// <summary>
@@ -178,30 +178,11 @@ namespace Crystallography.OpenGL
         #endregion
 
         /// <summary>
-        /// 透明度計算としてZsort(要330以上) あるいはOIT (Order Independent Transparency, 要430以上)を選択. 
+        /// 透明度計算としてZsort(要150以上) あるいはOIT (Order Independent Transparency, 要430以上)を選択. 
         /// 値が(同じ値でも)設定されたとき、SetShader()が実行され、GPUにfrag shaderが転送される.
         /// </summary>
         [Category("Rendering properties")]
-        public FragShaders FragShader
-        {
-            get => fragShader;
-            set
-            {
-                //OITはver430以上でのみ有効にできる
-                if (value == FragShaders.OIT && Version < 430)
-                    return;
-                
-                if (!DesignMode)
-                {
-                    var flag = fragShader != value;
-                    fragShader = value;
-                    SetGLcontrol(flag);
-                }
-                
-            }
-        }
-        private FragShaders fragShader = FragShaders.ZSORT;
-
+        public FragShaders FragShader { get; } = FragShaders.ZSORT;
 
 
         #region Depth Cueing
@@ -419,77 +400,53 @@ namespace Crystallography.OpenGL
         private Graphics glControlGraphics;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ. ZsortかOITかは、コンストラクタで決める. 生成後に変更はできない。
         /// </summary>
-        public GLControlAlpha()
+        public GLControlAlpha(FragShaders shaders =  FragShaders.ZSORT)
         {
             InitializeComponent();
 
             if (DisablingOpenGL || DesignMode)
                 return;
 
-            SetGLcontrol(true);
-            
-            glObjectsP = glObjects.AsParallel();
-
-            //ビデオカード検索
-            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
-            foreach (var envVar in searcher.Get())
-                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
-
-            //Defaultなオブジェクトを作成
-            var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
-            Cone.Default = (1, flag ? 16 : 8);
-            Pipe.Default = (1, flag ? 16 : 8);
-            Sphere.DefaultSlices = flag ? 3 : 2;
-
-            setViewMatrix();
-            setProjMatrix();
-        }
-
-        private void SetGLcontrol(bool renewControl)
-        {
-            if (DesignMode || DisablingOpenGL) return;
+            FragShader = shaders;
 
             #region glControlの初期化
-            if (renewControl)//glControlを再初期化
+            SuspendLayout();
+            // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
+            var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 1 : 0);
+            glControl = new GLControl(gMode)
             {
-                SuspendLayout();
-                if (glControl != null)
-                    glControl.Dispose();
+                AutoScaleMode = AutoScaleMode.Dpi,
+                BackColor = Color.White,
+                Name = "glControl",
+                Dock = DockStyle.Fill,
+                VSync = false,
+            };
+            Controls.Add(glControl);
 
-                Controls.Clear();
-                // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-                var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat,GraphicsMode.Default.Depth, 8, fragShader == FragShaders.ZSORT ? 1 : 0);
-                glControl = new GLControl(gMode)
-                {
-                    AutoScaleMode = AutoScaleMode.Dpi,
-                    BackColor = Color.White,
-                    Name = "glControl",
-                    Dock = DockStyle.Fill,
-                    VSync = false,
-                };
-                Controls.Add(glControl);
+            glControl.Paint += glControl_Paint;
+            glControl.MouseDown += glControl_MouseDown;
+            glControl.MouseMove += glControl_MouseMove;
+            glControl.MouseWheel += GlControl_MouseWheel;
+            glControl.MouseUp += glControl_MouseUp;
+            glControl.Resize += glControl_Resize;
 
-                glControl.Paint += glControl_Paint;
-                glControl.MouseDown += glControl_MouseDown;
-                glControl.MouseMove += glControl_MouseMove;
-                glControl.MouseWheel += GlControl_MouseWheel;
-                glControl.MouseUp += glControl_MouseUp;
-                glControl.Resize += glControl_Resize;
-               
-                ResumeLayout();
-                glControlGraphics = glControl.CreateGraphics();
-            }//glControlの再初期化ここまで
+            ResumeLayout();
+            glControlGraphics = glControl.CreateGraphics();
+            //glControlの再初期化ここまで
             #endregion
 
             glControl.MakeCurrent();
-            
+
             //バージョンチェック
             var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' });
             Version = Convert.ToInt32(ver[0]) * 100 + Convert.ToInt32(ver[1]) * 10 + Convert.ToInt32(ver[2]);
             if (Version < VersionForZsort)
                 return;
+            if (FragShader == FragShaders.OIT && Version < VersionForOIT)
+                return;
+
 
             //Shader転送
             var frag = FragShader == FragShaders.ZSORT ?
@@ -515,7 +472,7 @@ namespace Crystallography.OpenGL
             depthCueingNearIndex = GL.GetUniformLocation(Program, "Near");
 
             GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
-            
+
             if (FragShader == FragShaders.OIT)
             {//oitモードの時、 DepthTest無効、
                 GL.Disable(EnableCap.DepthTest);
@@ -543,17 +500,32 @@ namespace Crystallography.OpenGL
                 GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             }
 
-            GLObject.SetLocation(Program);
+            //GLObject.SetLocation(Program);
 
             Clip?.Generate(Program);
             setDepthCueing();
 
-
             GL.Enable(EnableCap.Texture2D);
-          
 
-           
+            glObjectsP = glObjects.AsParallel();
+
+            //ビデオカード検索
+            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
+            foreach (var envVar in searcher.Get())
+                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+
+            //Defaultなオブジェクトを作成
+            var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
+            Cone.Default = (1, flag ? 24 : 16);
+            Pipe.Default = (1, flag ? 24 : 16);
+            Sphere.DefaultSlices = flag ? 4 : 3;
+
+            setViewMatrix();
+            setProjMatrix();
+
+            setDepthCueing();
         }
+
 
         #region　Shaderの作成 (CreateShader)
         /// <summary>
@@ -603,6 +575,7 @@ namespace Crystallography.OpenGL
 #endif
                 throw new ApplicationException(info);
             }
+
             int program = GL.CreateProgram();
             GL.AttachShader(program, vshader);
             //GL.AttachShader(program, gshader);
@@ -748,13 +721,6 @@ namespace Crystallography.OpenGL
             GL.UniformMatrix4(projMatrixIndex, false, ref projMatrixF);
             GL.UniformMatrix4(worldMatrixIndex, false, ref worldMatrixF);
 
-            var vp1 = Mat4d.Mult(viewMatrix, projMatrix).Mult(new Vector4(1, 0, 1, 1));
-            var vp2 = Mat4d.Mult(viewMatrix, projMatrix).Mult(new Vector4(1, 0, -1, 1));
-            var pv1 = Mat4d.Mult(projMatrix, viewMatrix).Mult(new Vector4(1, 0, 1, 1));
-            var pv2 = Mat4d.Mult(projMatrix, viewMatrix).Mult(new Vector4(1, 0, -1, 1));
-
-
-
             if (FragShader == FragShaders.OIT)//oitモードの時
             {
                 var bgcolor = BackgroundColor.ToV3f();
@@ -802,7 +768,6 @@ namespace Crystallography.OpenGL
 
             Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
         }
-
         #endregion
 
         #region マウス操作
