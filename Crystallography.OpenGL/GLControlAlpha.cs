@@ -492,13 +492,11 @@ namespace Crystallography.OpenGL
                 return;
 
             //Shader転送
-            if (FragShader == FragShaders.ZSORT)
-                Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, Properties.Resources.fragZSORT);
-            else
-            {
-                var frag = Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", "MAX_FRAGMENTS " + MaxFragments.ToString());
-                Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
-            }
+            var frag = FragShader == FragShaders.ZSORT ?
+                Properties.Resources.fragZSORT :
+                Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", "MAX_FRAGMENTS " + MaxFragments.ToString());
+            Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
+
             GL.UseProgram(Program);
 
             //Shader storage初期化

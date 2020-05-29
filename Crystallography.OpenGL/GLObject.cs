@@ -16,6 +16,7 @@ using V2f = OpenTK.Vector2;
 using V2d = OpenTK.Vector2d;
 using C4 = OpenTK.Graphics.Color4;
 using M4d = OpenTK.Matrix4d;
+using M4f = OpenTK.Matrix4;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 
@@ -81,6 +82,8 @@ namespace Crystallography.OpenGL
     /// </summary>
     abstract public class GLObject
     {
+        public enum Templates { None, Sphere, Cone, Cylinder}
+
         #region static private な フィールド & プロパティ
 
         static internal int TextureLocation { get; set; } = 1;
@@ -103,12 +106,14 @@ namespace Crystallography.OpenGL
 
         static internal int UvLocation { get; set; } = -1;
         static internal int ModeLocation { get; set; } = -1;
+        static internal int ObjectMatrixLocation { get; set; } = -1;
 
         #endregion
 
         #region internalな フィールド & プロパティ
 
         internal int VBO, VAO, EBO;
+
         internal int Program = -1;
         /// <summary>
         /// 頂点
@@ -129,6 +134,9 @@ namespace Crystallography.OpenGL
         #endregion
 
         #region publicな フィールド & プロパティ
+
+
+        public Templates Template = Templates.None;
 
         /// <summary>
         /// 自由に情報を格納するためのTag
@@ -185,6 +193,12 @@ namespace Crystallography.OpenGL
         /// </summary>
         public double Z;
 
+        /// <summary>
+        /// 物体の回転状態や並進状態を表す. 
+        /// </summary>
+        public M4f ObjectMatrix = M4f.Identity;
+
+
         #endregion publicなフィールド
 
         #region コンストラクタ、デストラクタ
@@ -203,14 +217,17 @@ namespace Crystallography.OpenGL
 
         public void Dispose()
         {
+            if (Sphere.DefaultDictionary.ContainsKey(Program))
+                Sphere.DefaultDictionary.Remove(Program);
+            if (Cylinder.DefaultDictionary.ContainsKey(Program))
+                Cylinder.DefaultDictionary.Remove(Program);
+
             GL.DeleteBuffers(1, ref VBO);
             GL.DeleteBuffers(1, ref EBO);
             GL.DeleteVertexArrays(1, ref VAO);
         }
 
         #endregion
-
-
 
         /// <summary>
         /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
@@ -221,6 +238,15 @@ namespace Crystallography.OpenGL
             if (program < 0 || Vertices == null || Vertices.Length == 0)
                 return;
             Program = program;
+
+            //Locationを取得
+            if (EmissionLocation == -1)
+                SetLocation(program);
+
+            //Template形状であれば、VAO, VBO, EBOをセットしておしまい。
+            if ((Template == Templates.Sphere && Sphere.DefaultDictionary.TryGetValue(Program, out (int VBO, int VAO, int EBO) objects)) ||
+                (Template == Templates.Cylinder && Cylinder.DefaultDictionary.TryGetValue(Program, out objects)))
+            { VAO = objects.VAO; VBO = objects.VBO; EBO = objects.EBO; return; }
 
             // VBO作成
             GL.GenBuffers(1, out VBO);
@@ -236,11 +262,7 @@ namespace Crystallography.OpenGL
             GL.GenVertexArrays(1, out VAO);
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-
-            //Locationを取得
-            if (EmissionLocation == -1)
-                SetLocation(program);
-
+           
             //モード
             GL.EnableVertexAttribArray(ModeLocation);
             GL.VertexAttribPointer(ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
@@ -266,8 +288,13 @@ namespace Crystallography.OpenGL
                 GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Size[0], t.Size[1], 0, PixelFormat.Rgba, PixelType.UnsignedByte, t.Texture);
                 // テクスチャのアンバインド
                 GL.BindTexture(TextureTarget.Texture2D, 0);
-
             }
+
+
+            if (Template == Templates.Sphere)
+                Sphere.DefaultDictionary.Add(Program, (VBO, VAO, EBO));
+            else if (Template == Templates.Cylinder)
+                Cylinder.DefaultDictionary.Add(Program, (VBO, VAO, EBO));
         }
 
         /// <summary>
@@ -283,6 +310,8 @@ namespace Crystallography.OpenGL
             UvLocation = GL.GetAttribLocation(Program, "Uv");
             if (ModeLocation==-1 || UvLocation == -1 || PositionLocation == -1 || NormalLocation == -1 || ArgbLocation == -1)
                 throw new Exception("cannot find location!");
+
+            ObjectMatrixLocation = GL.GetUniformLocation(Program, "ObjectMatrix");
 
             TextureLocation = GL.GetUniformLocation(Program, "Texture");
 
@@ -343,6 +372,8 @@ namespace Crystallography.OpenGL
         /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
+            GL.UniformMatrix4(ObjectMatrixLocation, false, ref ObjectMatrix);
+
             var renew = prms.Program != Program;
 
             (float emi, float amb, float dif, float spe) = drawSurfaces ?
@@ -927,40 +958,34 @@ namespace Crystallography.OpenGL
         /// 楕円球 (中心位置と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される
         /// </summary>
         /// <param name="o">中心位置</param>
-        /// <param name="a">中心位置からのベクトル1</param>
-        /// <param name="b">中心位置からのベクトル2</param>
-        /// <param name="c">中心位置からのベクトル3</param>
+        /// <param name="v1">中心位置からのベクトル1</param>
+        /// <param name="v2">中心位置からのベクトル2</param>
+        /// <param name="v3">中心位置からのベクトル3</param>
         /// <param name="mat">素材</param>
         /// <param name="mode">描画モード</param>
         /// <param name="slices">分割数. 6*(2*slices+1)^2 の頂点が生成される. </param>
-        public Ellipsoid(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode, int slices = 0) : base(mat, mode)
+        public Ellipsoid(V3d o, V3d v1, V3d v2, V3d v3, Material mat, DrawingMode mode, int slices = 0) : base(mat, mode)
         {
             Origin = o;
-            RadiusVector1 = a;
-            RadiusVector2 = b;
-            RadiusVector3 = c;
+            RadiusVector1 = v1;
+            RadiusVector2 = v2;
+            RadiusVector3 = v3;
 
             CircumscribedSphereCenter = new V4d(o, 1);
-            CircumscribedSphereRadius = new[] { a.Length, b.Length, c.Length }.Max();
-
-            var transMat = new M4d
-            {
-                Column0 = new V4d(a, 0),
-                Column1 = new V4d(b, 0),
-                Column2 = new V4d(c, 0),
-                Column3 = new V4d(o, 1)
-            };
+            CircumscribedSphereRadius = new[] { v1.Length, v2.Length, v3.Length }.Max();
 
             if (slices == 0)
             {
-                if (a.LengthSquared == b.LengthSquared && b.LengthSquared == c.LengthSquared)
+                if (v1.LengthSquared == v2.LengthSquared && v2.LengthSquared == v3.LengthSquared)
                 {
                     if (Sphere.DefaultIndices != null)
                     {
-                        Vertices = Sphere.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position, 1)), v.Normal, mat.Argb)).ToArray();
+                        Vertices = Sphere.DefaultVertices;
                         Indices = Sphere.DefaultIndices;
                         TypeCounts = Sphere.DefaultTypeCounts;
                         Types = Sphere.DefaultTypes;
+                        Template = Templates.Sphere;
+                        ObjectMatrix = new M4d(new V4d(v1, 0), new V4d(v2, 0), new V4d(v3, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
                     else
@@ -969,6 +994,8 @@ namespace Crystallography.OpenGL
                 else
                     slices = DefaultSlices;
             }
+
+            var transMat = new M4d { Column0 = new V4d(v1, 0), Column1 = new V4d(v2, 0), Column2 = new V4d(v3, 0), Column3 = new V4d(o, 1) };
 
             //さいころの6面方向
             var rot = new[] {
@@ -1029,7 +1056,12 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Sphere : Ellipsoid
     {
-        private static int defaultSlices = 2;
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+
+        private static int defaultSlices = 3;
         public new static int DefaultSlices
         {
             get => defaultSlices;
@@ -1089,7 +1121,7 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Pipe : GLObject
     {
-        public static (int Slices, int Stacks) Default = (1, 8);
+        public static (int Slices, int Stacks) Default = (1, 16);
 
         public double Radius1, Radius2;
         public V3d Origin, Vector;
@@ -1141,13 +1173,12 @@ namespace Crystallography.OpenGL
                 {
                     if (Cylinder.DefaultIndices != null && UseFixedArgb)
                     {
-                        var transMat = new M4d(rotMat) * new M4d(r1, 0, 0, 0, 0, r1, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
-                        transMat.Column3 = new V4d(o, 1);
-
-                        Vertices = Cylinder.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position, 1)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
+                        Vertices = Cylinder.DefaultVertices;
                         Indices = Cylinder.DefaultIndices;
                         TypeCounts = Cylinder.DefaultTypeCounts;
                         Types = Cylinder.DefaultTypes;
+                        Template = Templates.Cylinder;
+                        ObjectMatrix = new M4d(r1 * new V4d(rotMat.Column0, 0), r1 * new V4d(rotMat.Column1, 0), height * new V4d(rotMat.Column2, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
                     slices = Cylinder.Default.Slices;
@@ -1274,7 +1305,12 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cone : Pipe
     {
-        private static (int Slices, int Stacks) _Default = (1, 8);
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+
+        private static (int Slices, int Stacks) _Default = (1, 16);
         public new static (int Slices, int Stacks) Default
         {
             get => _Default;
@@ -1334,7 +1370,12 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Cylinder : Pipe
     {
-        private static (int Slices, int Stacks) _Default = (1, 8);
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+
+        private static (int Slices, int Stacks) _Default = (1, 16);
         public new static (int Slices, int Stacks) Default
         {
             get => _Default;

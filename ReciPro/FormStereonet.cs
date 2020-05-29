@@ -724,7 +724,7 @@ namespace ReciPro
                 radioButtonRange.Checked ? "Å}" : "";
             panelSpecifiedIndices.Visible = !radioButtonRange.Checked;
 
-            if(radioButtonRange.Checked)
+            if (radioButtonRange.Checked)
                 numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
             else
                 numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;

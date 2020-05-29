@@ -9,6 +9,7 @@
 /*layout(location = 4) */in vec3 Normal;
 /*layout(location = 5) */in vec2 Uv;
 
+uniform mat4 ObjectMatrix; //Object matrix
 uniform mat4 WorldMatrix; //world matrix
 uniform mat4 ViewMatrix; // view matrix
 uniform mat4 ProjMatrix; // projection matrix
@@ -40,23 +41,26 @@ out VertexData
 void main(void)
 {
 	// Calculate view-space coordinate
+
+	vec3 position = vec3 (ObjectMatrix * vec4(Position, 1));
+
 	vec4 P;
 	if (ObjType == 0)
 	{
-		P = WorldMatrix * vec4(Position, 1);
+		P = WorldMatrix * vec4(position, 1);
 		// Calculate the clip-space position of each vertex
 		gl_Position = ProjMatrix * ViewMatrix * P;
 	}
 	else
 	{
-		P = WorldMatrix * vec4(Normal, 1) + vec4(0, 0, Position.z, 0);
+		P = WorldMatrix * vec4(Normal, 1) + vec4(0, 0, position.z, 0);
 		// Calculate the clip-space position of each vertex
 		vec4 P2 = ProjMatrix * ViewMatrix * P;
-		gl_Position = P2 + vec4(Position.x / ViewportSize.x * 2, Position.y / ViewportSize.y * 2, 0, 0) * abs(P2.w);
+		gl_Position = P2 + vec4(position.x / ViewportSize.x * 2, position.y / ViewportSize.y * 2, 0, 0) * abs(P2.w);
 	}
 
 	// Calculate normal vector in view-space
-	vs_out.Normal = mat3(WorldMatrix) * Normal;
+	vs_out.Normal = mat3(WorldMatrix) * mat3(ObjectMatrix) * Normal;
 
 	// Calculate light vector
 	vs_out.Light = LightPosition - P.xyz;
@@ -76,7 +80,7 @@ void main(void)
 	// Calculate the clip-space position of each vertex
 	for (int i = 0; i < ClipNum; i++)
 	{
-		gl_ClipDistance[i] = dot(vec4(Position, 1), ClipPlanes[i]);
+		gl_ClipDistance[i] = dot(vec4(position, 1), ClipPlanes[i]);
 	}
 
 	vs_out.Uv = Uv;

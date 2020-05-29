@@ -10,15 +10,13 @@ using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 //using System.Windows.Media.Media3D;
-using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra;
 
 
 namespace ReciPro
 {
     public partial class FormRotationMatrix : Form
     {
-        
+
         #region プロパティ
         /// <summary>
         ///  R_base  =R_ex ^-1 * R_reci の関係がある.
@@ -36,7 +34,7 @@ namespace ReciPro
                 var rot = Matrix3D.Rot(dir[0], numericBoxExp1.RadianValue);
                 if (dir.Length > 1)
                     rot = rot * Matrix3D.Rot(dir[1], numericBoxExp2.RadianValue);
-                if(dir.Length >2)
+                if (dir.Length > 2)
                     rot = rot * Matrix3D.Rot(dir[2], numericBoxExp3.RadianValue);
 
                 return rot;
@@ -346,7 +344,7 @@ namespace ReciPro
                 skip = false;
 
 
-                
+
             }
             //ReciPro coordinatesの描画
             var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };
@@ -390,7 +388,7 @@ namespace ReciPro
             c = new C4(0.5f, 0.5f, 0.7f, 1f);
             obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, new Material(c), DrawingMode.Surfaces));//軸
             obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, new Material(c), DrawingMode.Surfaces));//矢
-            obj.Add(new TextObject("Z", 11, new V3(0,0,1.25), 0, true, new Material(c)));
+            obj.Add(new TextObject("Z", 11, new V3(0, 0, 1.25), 0, true, new Material(c)));
 
             //中央の球
             obj.Add(new Sphere(new V3(0, 0, 0), r * 2, new Material(C4.Gray), DrawingMode.Surfaces));
@@ -416,7 +414,7 @@ namespace ReciPro
             var rot = dir.Select((d, i) => Matrix3D.Rot(d, angle[i])).ToArray();
 
             //1st
-            var mat = new Material( new C4(0.8f, 0.8f, 0f, 1f));
+            var mat = new Material(new C4(0.8f, 0.8f, 0f, 1f));
             obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
             obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat));
 
@@ -486,7 +484,7 @@ namespace ReciPro
         private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
             var (a, b, c) = (FormMain.Crystal.A_Axis.TK.Normalized(), FormMain.Crystal.B_Axis.TK.Normalized(), FormMain.Crystal.C_Axis.TK.Normalized());
-            
+
             var r = 0.05;
             var obj = new List<GLObject>();
 
@@ -503,19 +501,19 @@ namespace ReciPro
             var nX = rot * a * 6 * r;
             var nY = rot * b * 6 * r;
             var nZ = rot * c * 6 * r;
-           
+
             obj.Add(new Sphere(nX, r * 2, new Material(C4.Red), DrawingMode.Surfaces));
-            obj.Add(new TextObject("+a", 11, nX + nX.Normalized() * r * 2 , r * 2 + 0.01, true, new Material(C4.Red)));
+            obj.Add(new TextObject("+a", 11, nX + nX.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Red)));
             obj.Add(new Sphere(-nX, r * 1.5, new Material(C4.Red), DrawingMode.Surfaces));
             obj.Add(new TextObject("-a", 11, -nX - nX.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Red)));
-           
+
             obj.Add(new Sphere(nY, r * 2, new Material(C4.Green), DrawingMode.Surfaces));
             obj.Add(new TextObject("+b", 11, nY + nY.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Green)));
             obj.Add(new Sphere(-nY, r * 1.5, new Material(C4.Green), DrawingMode.Surfaces));
             obj.Add(new TextObject("-b", 11, -nY - nY.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Green)));
-            
+
             obj.Add(new Sphere(nZ, r * 2, new Material(C4.Blue), DrawingMode.Surfaces));
-            obj.Add(new TextObject("+c", 11, nZ + nZ.Normalized() * r * 1.5 , r * 2 + 0.01, true, new Material(C4.Blue)));
+            obj.Add(new TextObject("+c", 11, nZ + nZ.Normalized() * r * 1.5, r * 2 + 0.01, true, new Material(C4.Blue)));
             obj.Add(new Sphere(-nZ, r * 1.5, new Material(C4.Blue), DrawingMode.Surfaces));
             obj.Add(new TextObject("-c", 11, -nZ - nZ.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Blue)));
             return obj;
@@ -528,7 +526,7 @@ namespace ReciPro
             FormMain.toolStripButtonRotation.Checked = false;
         }
 
-        private void ButtonViewIsometric_Click(object sender, EventArgs e) 
+        private void ButtonViewIsometric_Click(object sender, EventArgs e)
             => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
 
         private void ButtonViewAlongBeam_Click(object sender, EventArgs e)
@@ -624,7 +622,7 @@ namespace ReciPro
                 v3 = new V3(0, 0, 1);
 
             return new[] { v1, v2, v3 };
-           
+
 
         }
 

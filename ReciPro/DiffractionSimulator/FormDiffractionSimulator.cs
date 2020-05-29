@@ -1449,7 +1449,7 @@ namespace ReciPro
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
             //”wŒi‚Ì•`‰æ
-            if(tab.SelectedIndex == e.Index)
+            if (tab.SelectedIndex == e.Index)
                 e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds);
             else
                 e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds);
@@ -1896,7 +1896,7 @@ namespace ReciPro
                 labelMousePositionReal.Visible =
                 checkBoxMousePositionDetailes.Checked;
 
-      
+
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
     }

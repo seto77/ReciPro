@@ -603,8 +603,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="crystalControl.Crystal" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC41LjE4LjEw
-        NDYsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAUBAAAAF0NyeXN0YWxsb2dyYXBo
+        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC41LjI0LjEx
+        NDMsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAUBAAAAF0NyeXN0YWxsb2dyYXBo
         eS5DcnlzdGFsLQAAAAhSZXNpZHVhbAZCb3VuZHMNTGF0dGljZVBsYW5lcwFBAUIBQwVBbHBoYQRCZXRh
         BUdhbW1hBUFfZXJyBUJfZXJyBUNfZXJyCUFscGhhX2VycghCZXRhX2VycglHYW1tYV9lcnIOUm90YXRp
         b25NYXRyaXgEQXJnYghSZXNlcnZlZAROYW1lBE5vdGUOUHVibEF1dGhvck5hbWUQUHVibFNlY3Rpb25U
@@ -700,7 +700,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>crystalControl</value>
   </data>
   <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -909,21 +909,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisU.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxAxisU.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisU.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisU.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxisU.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisU.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 4</value>
   </data>
@@ -945,14 +930,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisU.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
     <value>numericBoxAxisU</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisU.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1047,21 +1029,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisV.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxAxisV.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisV.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisV.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxisV.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisV.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 4</value>
   </data>
@@ -1083,14 +1050,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
     <value>numericBoxAxisV</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisV.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1106,21 +1070,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxAxisW.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisW.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisW.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxisW.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAxisW.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 4</value>
@@ -1143,14 +1092,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisW.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
     <value>numericBoxAxisW</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1212,21 +1158,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxPlaneL.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneL.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneL.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxPlaneL.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneL.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 4</value>
   </data>
@@ -1248,14 +1179,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxPlaneL.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
     <value>numericBoxPlaneL</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1271,21 +1199,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneH.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneH.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneH.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxPlaneH.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneH.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 4</value>
@@ -1308,14 +1221,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
     <value>numericBoxPlaneH</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1331,21 +1241,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneK.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneK.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneK.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxPlaneK.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPlaneK.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 4</value>
@@ -1368,14 +1263,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxPlaneK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
     <value>numericBoxPlaneK</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2190,17 +2082,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxStep.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStep.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxStep.FooterText" xml:space="preserve">
     <value>°</value>
-  </data>
-  <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxStep.HeaderText" xml:space="preserve">
     <value>Step</value>
@@ -2212,7 +2095,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2221,7 +2104,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 27</value>
+    <value>138, 25</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2236,7 +2119,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxStep</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
     <value>panel4</value>
@@ -2740,7 +2623,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 167</value>
+    <value>3, 169</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 27</value>
@@ -2968,7 +2851,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Bottom</value>
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 194</value>
+    <value>3, 196</value>
   </data>
   <data name="tableLayoutPanel6.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3006,29 +2889,17 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxMaxUVW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxMaxUVW.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxUVW.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxMaxUVW.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxMaxUVW.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxMaxUVW.HeaderText" xml:space="preserve">
     <value>u + v + w &lt;</value>
   </data>
   <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 211</value>
+    <value>3, 213</value>
   </data>
   <data name="numericBoxMaxUVW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMaxUVW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxMaxUVW.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3037,19 +2908,16 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 27</value>
+    <value>142, 25</value>
   </data>
   <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
     <value>numericBoxMaxUVW</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.18.1048, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.24.1143, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
     <value>groupBoxCurrentDirection</value>

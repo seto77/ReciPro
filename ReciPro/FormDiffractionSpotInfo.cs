@@ -241,9 +241,9 @@ namespace ReciPro
             for (int j = 0; j < dataGridView.Rows.Count; j++)
             {
                 var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[3, j].Value);
-                if (h == 0 && k == 0 && l  == 0)
+                if (h == 0 && k == 0 && l == 0)
                     sb.Append($"000 \t");
-                    //sb.Append($"{h} {k} {l} 000 \t");
+                //sb.Append($"{h} {k} {l} 000 \t");
                 else if ((h + k + l) % 2 == 0)
                     sb.Append($"{h} {k} {l} even \t");
                 else

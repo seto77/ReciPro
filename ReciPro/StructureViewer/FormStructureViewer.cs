@@ -106,7 +106,7 @@ namespace ReciPro
 
         public FormStructureViewer()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             GLObjectsP = GLObjects.AsParallel();
         }
 
@@ -214,12 +214,15 @@ namespace ReciPro
             labelOpenGLversion.Text += glControlMain.VersionStr;
 
             if (glControlMain.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
-                 comboBoxRenderignQuality.SelectedIndex = 1;
+                comboBoxRenderignQuality.SelectedIndex = 1;
             else
                 comboBoxRenderignQuality.SelectedIndex = 0;
 
+            Sphere.DefaultDictionary.Clear();
+            Cylinder.DefaultDictionary.Clear();
+
             #endregion
-        
+
             #region 各種ユーザーコントロールの追加
             boundControl = formMain.crystalControl.boundControl;
             latticePlaneControl = formMain.crystalControl.latticePlaneControl;
@@ -240,7 +243,6 @@ namespace ReciPro
 
             #endregion
 
-
             #region コントロールの追加設定
 
             flowLayoutPanelLegend.AutoSize = true;
@@ -254,8 +256,6 @@ namespace ReciPro
             checkBoxDepthCueing_CheckedChanged(new object(), new EventArgs());
 
             #endregion
-
-            
         }
         #endregion コンストラクタ
 
@@ -274,9 +274,9 @@ namespace ReciPro
             //}
             //else
             //{
-                shift = (axes.Column0 + axes.Column1 + axes.Column2) / 2;
-                numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
-           // }
+            shift = (axes.Column0 + axes.Column1 + axes.Column2) / 2;
+            numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
+            // }
         }
         #endregion
 
@@ -286,7 +286,7 @@ namespace ReciPro
         /// </summary>
         private void initBounds()
         {
-            
+
 
             sw.Restart();
 
@@ -364,8 +364,8 @@ namespace ReciPro
 
             //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、最終的には消す
             var bonds = bondControl.GetAll().Where(b => b.Enabled).ToList();
-            
-            var threshold = bonds.Count != 0 ? -bonds.Max(b => b.MaxLength)*1.01: -0.1;
+
+            var threshold = bonds.Count != 0 ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
             threshold = Math.Max(-0.5, threshold);
 
             //まず検索対象とするCellの範囲を決める (全ての原子位置は 0以上 1未満である)
@@ -405,7 +405,7 @@ namespace ReciPro
             textBoxInformation.AppendText("Generation of aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
-        
+
 
         public void setAtomsP()
         {
@@ -413,7 +413,7 @@ namespace ReciPro
             //位置が全く同じ原子が存在する場合は、最もOccが大きいものを選ぶ。それが複数ある場合は、indexが若い方を選ぶ
 
             enabledAtoms = Crystal.Atoms.Where(a => a.GLEnabled).ToArray();
-            
+
             for (int i = 0; i < enabledAtoms.Length; i++)
             {
                 var a = enabledAtoms[i];
@@ -424,7 +424,7 @@ namespace ReciPro
                     foreach (var pos in a.Atom.Select(v => new V3(v.X, v.Y, v.Z)))
                         list.Add((i, pos, mat, radius));
                 }
-               
+
             }
             enabledAtomsP = list.AsParallel();
         }
@@ -446,7 +446,7 @@ namespace ReciPro
             public Material PolyMat;
             public int Serial;
             public bondVertex(int objIndex, int atomIndex, V3 origin, double radius, Material bondMat, Material polyMat, int serial)
-            { ObjIndex = objIndex;AtomIndex = atomIndex;O = origin; R = radius;BondMat = bondMat;PolyMat = polyMat;Serial = serial; }
+            { ObjIndex = objIndex; AtomIndex = atomIndex; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
         }
 
 
@@ -525,11 +525,11 @@ namespace ReciPro
                     }
                     finally { rwLock.ExitWriteLock(); }
 
-                    
+
                     foreach (var v in vertices) //Bond
                     {
                         var vec = v.O - c.O;//中心間を結ぶベクトル
-                        var m = (1 + (c.R - v.R) / vec.Length) * vec / 2 ;//中間地点
+                        var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
 
                         var cyl1 = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces);
                         var cyl2 = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces);
@@ -613,8 +613,8 @@ namespace ReciPro
                 var s = o as Sphere;
                 var id = s.Tag as atomID;
                 var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
-                var text = new TextObject(enabledAtoms[id.Index].Label, 
-                    (float)numericBoxLabelSize.Value, s.Origin, s.Radius+0.01, checkBoxLabelWhiteEdge.Checked, mat)
+                var text = new TextObject(enabledAtoms[id.Index].Label,
+                    (float)numericBoxLabelSize.Value, s.Origin, s.Radius + 0.01, checkBoxLabelWhiteEdge.Checked, mat)
                 { Rendered = enabledAtoms[id.Index].ShowLabel };
                 GLObjects.Add(text);
             });
@@ -636,7 +636,7 @@ namespace ReciPro
             toolStripLabelStatusInitialization.Text += " and sent to OpenGL (" + sw.ElapsedMilliseconds + " ms.)    ";
             textBoxInformation.AppendText("Trasfer: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
-        } 
+        }
         #endregion
 
         #region 単位格子面オブジェクトを生成
@@ -656,7 +656,7 @@ namespace ReciPro
             var cellVertices = new[] { new V3(0), axes.Column0, axes.Column1, axes.Column2, axes.Column0 + axes.Column1, axes.Column1 + axes.Column2, axes.Column2 + axes.Column0, axes.Column0 + axes.Column1 + axes.Column2 };
             var translation = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
             cellVertices = cellVertices.Select(v => v - translation).ToArray();
-            
+
             var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value);
             var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces);
             cellPlane.Tag = new cellID();
@@ -689,7 +689,7 @@ namespace ReciPro
 
 
             //テストコード
-          //  new Polygon(new[] { new V3 (0,0,0), new V3(1, 0, 0), new V3(0, 1, 0) }, cellEdgeMat, DrawingMode.Edges).Decompose();
+            //  new Polygon(new[] { new V3 (0,0,0), new V3(1, 0, 0), new V3(0, 1, 0) }, cellEdgeMat, DrawingMode.Edges).Decompose();
         }
         #endregion
 
@@ -770,14 +770,14 @@ namespace ReciPro
             var color = new[] { C4.Red, C4.Green, C4.Blue };
 
             var obj = new List<GLObject>();
-            var label = new[] { "a", "b", "c" }; 
+            var label = new[] { "a", "b", "c" };
             for (int i = 0; i < 3; i++)
             {
-                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]),DrawingMode.Surfaces));
+                obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
                 obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
                 obj.Add(new TextObject(label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
             }
-            obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray),DrawingMode.Surfaces));
+            obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray), DrawingMode.Surfaces));
 
             glControlAxes.DeleteAllObjects();
             glControlAxes.AddObjects(obj);
@@ -839,7 +839,7 @@ namespace ReciPro
             setAxesControl();//結晶軸を表示するGLControl
 
             Draw(); //
-        } 
+        }
         #endregion
 
         #region Draw
@@ -935,7 +935,7 @@ namespace ReciPro
             {
                 var rot = getRotation(e, glControlLight.ClientSize, lastPosLight, true);
                 var rotMat = Matrix3d.CreateFromAxisAngle(-new V3(rot), rot.W);
-                if (double.IsNaN( rotMat.M11)) return;
+                if (double.IsNaN(rotMat.M11)) return;
                 var pos = rotMat.Mult(glControlLight.LightPosition);
                 if (double.IsNaN(pos.X)) return;
                 glControlLight.LightPosition = glControlMain.LightPosition = glControlAxes.LightPosition = pos;
@@ -994,14 +994,14 @@ namespace ReciPro
                         var origin = rot.Mult(new V4(sphere.Origin, 1));
                         double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
                         if (sphere.Radius * sphere.Radius > ((q2 + r2) * x * x + (r2 + p2) * y * y + (p2 + q2) * z * z - 2 * (pq * x * y + qr * y * z + rp * z * x)) / (p2 + q2 + r2))
-                          if(!depthList.ContainsKey(origin.Z))
+                            if (!depthList.ContainsKey(origin.Z))
                                 depthList.Add(origin.Z, i);
                     }
                 if (depthList.Count > 0)
                 {
                     var sphere = GLObjects[depthList.Last().Value] as Sphere;
                     textBoxInformation.AppendText(
-                        enabledAtoms[(sphere.Tag as atomID).Index].Label 
+                        enabledAtoms[(sphere.Tag as atomID).Index].Label
                         + " (" + sphere.Origin.X + ", " + sphere.Origin.Y + ", " + sphere.Origin.Z + ")\r\n");
                     //sphere.Mode = sphere.Mode == DrawingMode.SurfacesAndEdges ? DrawingMode.Surfaces : DrawingMode.SurfacesAndEdges;
                     glControlMain.Render();
@@ -1306,7 +1306,7 @@ namespace ReciPro
         #endregion
 
         #region Atom コントロール関連イベント
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) 
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
             => MoveAtomControl(tabControl.SelectedTab == tabPageAtom);
         private void MoveAtomControl(bool flag)
         {
@@ -1361,7 +1361,7 @@ namespace ReciPro
             {
                 var size = new Size(numericBoxLegendSize.ValueInteger, numericBoxLegendSize.ValueInteger);
 
-                var atoms = atomControl.GetAll().Where(a=>a.GLEnabled).ToList();
+                var atoms = atomControl.GetAll().Where(a => a.GLEnabled).ToList();
                 if (atoms.Count == 0)
                     return;
                 if (atoms.Count > 30 && !checkBoxGroupByElement.Checked)
@@ -1403,7 +1403,7 @@ namespace ReciPro
                                 ViewFrom = glControlLight.ViewFrom
                             });
                             legendControls[i].MouseDown += legendControl_MouseClick;
-                            
+
                             //Label作成
                             legendLabels.Add(new Label { Font = Font, AutoSize = true });
 
@@ -1425,7 +1425,7 @@ namespace ReciPro
                         legendControls[i].Tag = legendLabels[i].Text;
                         legendControls[i].DeleteAllObjects();
                         legendControls[i].Size = size;
-                        
+
 
                         flowLayoutPanelLegend.Controls.Add(legendFlowLayoutPanels[i]);
                     }
@@ -1441,11 +1441,11 @@ namespace ReciPro
                     legendControls[i].AddObjects(
                         new Sphere(new V3(0, 0, 0), atoms[i].Radius / maxRadius, new Material(atoms[i].Argb, atoms[i].Texture), DrawingMode.Surfaces));
                     legendControls[i].LightPosition = glControlLight.LightPosition;
-                    
+
                 }
                 glControlMain.SkipRendering = false;
             }
-            
+
 
             textBoxInformation.AppendText("Generation of legend control: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
@@ -1505,23 +1505,23 @@ namespace ReciPro
         {
             if (comboBoxRenderignQuality.SelectedIndex == 0)
             {
-                Cone.Default = (1, 8);
-                Cylinder.Default = (1, 8);
-                Sphere.DefaultSlices = 2;
-
-            }
-            else if (comboBoxRenderignQuality.SelectedIndex == 1)
-            {
                 Cone.Default = (1, 16);
                 Cylinder.Default = (1, 16);
                 Sphere.DefaultSlices = 3;
 
             }
+            else if (comboBoxRenderignQuality.SelectedIndex == 1)
+            {
+                Cone.Default = (1, 24);
+                Cylinder.Default = (1, 24);
+                Sphere.DefaultSlices = 4;
+
+            }
             else
             {
-                Cone.Default = (1, 32);
-                Cylinder.Default = (1, 32);
-                Sphere.DefaultSlices = 5;
+                Cone.Default = (1, 48);
+                Cylinder.Default = (1, 48);
+                Sphere.DefaultSlices = 6;
             }
             if (atomControl != null)
                 SetGLObjects(formMain.crystalControl.Crystal);
@@ -1538,7 +1538,7 @@ namespace ReciPro
             {
                 if (glControlMain.Version < glControlMain.VersionForOIT)
                 {
-                    MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n"+
+                    MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
                         " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");
                     comboBoxTransparency.SelectedIndex = 0;
                     return;
@@ -1566,7 +1566,7 @@ namespace ReciPro
         private void trackBarPerspective_Scroll(object sender, EventArgs e)
         {
             var x = Math.Pow(51.0, 1.0 / 100.0);
-            glControlMain.SetPerspectiveDistance(Math.Pow(x,trackBarPerspective.Value)-1);
+            glControlMain.SetPerspectiveDistance(Math.Pow(x, trackBarPerspective.Value) - 1);
         }
 
         #endregion
@@ -1594,7 +1594,7 @@ namespace ReciPro
         {
             colorControlLabelColor.Enabled = radioButtonLabelUseFixedColor.Checked;
             SetGLObjects();
-        } 
+        }
         #endregion
     }
 }

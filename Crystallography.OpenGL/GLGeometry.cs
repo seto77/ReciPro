@@ -61,15 +61,13 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static M3d CreateRotationFromZ(V3d v)
         {
-            M3d rot;
             v.Normalize();
             if (Math.Abs(v.Z - 1) < Th)
-                rot = M3d.Identity;
+                return M3d.Identity;
             else if (Math.Abs(v.Z + 1) < Th)
-                rot = M3d.CreateRotationX(Math.PI);
+                return M3d.CreateRotationX(Math.PI);
             else
-                rot = M3d.CreateFromAxisAngle(V3d.Cross(v, Z), V3d.CalculateAngle(Z, v));
-            return rot;
+                return M3d.CreateFromAxisAngle(V3d.Cross(v, Z), V3d.CalculateAngle(Z, v));
         }
 
         /// <summary>

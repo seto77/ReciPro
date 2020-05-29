@@ -39,7 +39,6 @@ namespace Crystallography
 
         public int RotationArrayValidLength { get; set; } = 0;
 
-
         public readonly bool EigenEnabled = true;
 
         /// <summary>
@@ -97,30 +96,6 @@ namespace Crystallography
             bwCBED.DoWork += cbed_DoWork;
 
             EigenEnabled = NativeWrapper.Enabled;
-
-            //var b = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix.Build.Random(1000, 1000);
-
-            //var evd = b.Evd(Symmetricity.Asymmetric);
-
-            /*MathNet.Numerics.Providers.FourierTransform.FourierTransformControl.TryUseNativeMKL();
-            int size = 4096;
-            for (int n = 0; n < 10; n++)
-            {
-                var real = MathNet.Numerics.Random.CryptoRandomSource.Doubles(size * size);
-                var imag = MathNet.Numerics.Random.CryptoRandomSource.Doubles(size * size);
-
-                Complex[] input = new Complex[size * size];
-                for (int i = 0; i < input.Length; i++)
-                    input[i] = new Complex(real[i], imag[i]);
-                MathNet.Numerics.IntegralTransforms.Fourier.Forward2D(input, size, size);
-            }*/
-
-
-
-            //InputArray.Create(, MatType.)
-            //InputArray.Create();
-
-        
         }
 
         private void Cbed_ProgressChanged(object sender, ProgressChangedEventArgs e) => CbedProgressChanged?.Invoke(sender, e);

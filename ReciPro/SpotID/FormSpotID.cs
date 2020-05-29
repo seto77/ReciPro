@@ -953,8 +953,8 @@ namespace ReciPro
                            if (backgroundWorkerSpotID.CancellationPending) break;
 
                            var obsV = rot * obsSpotsReciprocal[k];
-                            //最も近いgVectorを探す
-                            var min = double.PositiveInfinity;
+                           //最も近いgVectorを探す
+                           var min = double.PositiveInfinity;
                            Vector3D v2 = null;
                            for (int l = 0; l < gVectors[k].Count; l++)
                            {
@@ -967,7 +967,7 @@ namespace ReciPro
                            }
 
                            if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
-                            {
+                           {
                                indices.Add((k, v2.h, v2.k, v2.l));
                                obsList.Add(obsSpotsReciprocal[k]);
                                refList.Add(v2);

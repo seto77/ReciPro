@@ -3,7 +3,6 @@ using Crystallography.Controls;
 using Crystallography.Controls.Numeric;
 using Crystallography.OpenGL;
 using Microsoft.Win32;
-using OpenTK.Graphics.ES10;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -115,8 +114,8 @@ namespace ReciPro
         private readonly IProgress<(long, long, long, string)> ip;//IReport
 
         #endregion
-     
-        
+
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -141,7 +140,7 @@ namespace ReciPro
             catch { }
 
             InitializeComponent();
-            
+
             ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
         }
 
@@ -424,8 +423,8 @@ namespace ReciPro
                     rot = Matrix3D.Rot(axis, angle);
                 else
                 {
-                    var  newAxis = checkBoxFixAxis.Checked ?
-                         Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis):
+                    var newAxis = checkBoxFixAxis.Checked ?
+                         Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis) :
                          Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);
                     if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                         rot = Matrix3D.Rot(newAxis, angle);
@@ -528,7 +527,7 @@ namespace ReciPro
             ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
         }
 
-#region レジストリ操作
+        #region レジストリ操作
 
         //レジストリの読み込み
         private void ReadInitialRegistry()
@@ -713,7 +712,7 @@ namespace ReciPro
             regKey.Close();
         }
 
-#endregion レジストリ操作
+        #endregion レジストリ操作
 
         public bool skipDrawing = false;
 
@@ -748,7 +747,7 @@ namespace ReciPro
             }
         }
 
-#region ToolStripButtonのイベント
+        #region ToolStripButtonのイベント
 
         private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
 
@@ -774,7 +773,7 @@ namespace ReciPro
 
         private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
 
-#endregion ToolStripButtonのイベント
+        #endregion ToolStripButtonのイベント
 
         private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -782,7 +781,7 @@ namespace ReciPro
             formAboutMe.ShowDialog();
         }
 
-#region 回転ボタン
+        #region 回転ボタン
 
         //角度リセットボタン
         private void buttonReset_Click(object sender, EventArgs e)
@@ -843,9 +842,9 @@ namespace ReciPro
             Rotate(rotationAxisAnimation, angle);
         }
 
-#endregion 回転ボタン
+        #endregion 回転ボタン
 
-#region ベクトルでの回転指定
+        #region ベクトルでの回転指定
 
         private void buttonSetVector_Click(object sender, EventArgs e)
         {
@@ -907,9 +906,9 @@ namespace ReciPro
             SetRotation(matrix);
         }
 
-#endregion ベクトルでの回転指定
+        #endregion ベクトルでの回転指定
 
-#region オイラー角度を直接入力したばあい
+        #region オイラー角度を直接入力したばあい
 
         public bool SkipEulerChange = false;
 
@@ -954,9 +953,9 @@ namespace ReciPro
             SkipEulerChange = false;
         }
 
-#endregion オイラー角度を直接入力したばあい
+        #endregion オイラー角度を直接入力したばあい
 
-#region リストボックス関連
+        #region リストボックス関連
 
         private void buttonUpper_Click(object sender, EventArgs e)
         {
@@ -1025,9 +1024,9 @@ namespace ReciPro
             DrawAxes();
         }
 
-#endregion リストボックス関連
+        #endregion リストボックス関連
 
-#region FileMenu
+        #region FileMenu
 
         //結晶データの読み込み
         private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1104,7 +1103,7 @@ namespace ReciPro
             }
         }
 
-#endregion FileMenu
+        #endregion FileMenu
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1185,20 +1184,20 @@ namespace ReciPro
         //軸の情報を表示する部分
         public void DrawAxes()
         {
-            if (glControlAxes == null) 
+            if (glControlAxes == null)
                 return;
             glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
         }
 
         private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
         {
-            if (glControlAxes == null || Crystal.A==0 || Crystal.B==0 || Crystal.C==0) 
+            if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
                 return;
 
             var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
             var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
             var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
-            var label = new []{ "a", "b", "c" };
+            var label = new[] { "a", "b", "c" };
             var obj = new List<GLObject>();
             for (int i = 0; i < 3; i++)
             {
@@ -1239,7 +1238,7 @@ namespace ReciPro
             lastPosAxes = e.Location;
         }
 
-#endregion Axisの描画関連
+        #endregion Axisの描画関連
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1298,7 +1297,7 @@ namespace ReciPro
         private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
             => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
-#region ProgramUpdates
+        #region ProgramUpdates
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripProgressBar.Visible = true;
@@ -1377,16 +1376,16 @@ namespace ReciPro
             }
             catch (Exception e)
             {
-                #if DEBUG
+#if DEBUG
                 MessageBox.Show(e.Message);
-                #endif
+#endif
             }
             skipProgressEvent = false;
         }
         private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
             => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
-#endregion
+        #endregion
 
         private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
 

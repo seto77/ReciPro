@@ -1,4 +1,5 @@
 ﻿using Crystallography;
+using Crystallography.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
-using Crystallography.Controls;
 
 namespace ReciPro
 {

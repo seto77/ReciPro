@@ -183,7 +183,6 @@ namespace Crystallography
 
         }
         
-
         static Bonds()
         {
             var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };

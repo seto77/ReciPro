@@ -13,8 +13,6 @@ namespace Crystallography
     [Serializable()]
     public class Atoms : System.IEquatable<Atoms>, ICloneable
     {
-
-        
         public object Clone()
         {
             Atoms atoms = (Atoms)this.MemberwiseClone();
