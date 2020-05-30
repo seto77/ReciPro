@@ -984,8 +984,6 @@ namespace Crystallography
 
         #region 逆格子ベクトルの計算
 
-        private readonly object lockThis = new object();
-
         /// <summary>
         /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
         /// </summary>

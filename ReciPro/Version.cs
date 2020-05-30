@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.776(2020/05/30)  Improved: Speed up rendering of 'Structure viewer'." +
             "\r\n ver4.775(2020/05/19)  Improved: Rendering of text label in OpenGL windows. Fixed: Stereonet drawing." +
             "\r\n ver4.774(2020/05/15)  Fixed bugs for Wykcoff position discriminator for trigonal and hexagonal symmetries." +
             "\r\n ver4.773(2020/05/12)  Improved importing CIF file." +

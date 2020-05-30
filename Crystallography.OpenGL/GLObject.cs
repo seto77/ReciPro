@@ -72,8 +72,6 @@ namespace Crystallography.OpenGL
     #region Enum
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8, Text = 16 }
     #endregion
-
-
     public class Location
     {
         internal int TextureLocation { get; set; } = 1;
@@ -97,9 +95,6 @@ namespace Crystallography.OpenGL
         internal int UvLocation { get; set; } = -1;
         internal int ModeLocation { get; set; } = -1;
         internal int ObjectMatrixLocation { get; set; } = -1;
-
-
-
     }
 
 
@@ -112,7 +107,7 @@ namespace Crystallography.OpenGL
     {
         #region static private な フィールド & プロパティ
 
-        static private Dictionary<int, Location> Location = new Dictionary<int, Location>();
+        private static readonly Dictionary<int, Location> Location = new Dictionary<int, Location>();
 
         #endregion
 
@@ -262,6 +257,7 @@ namespace Crystallography.OpenGL
             GL.GenBuffers(1, out VBO); 
             GL.GenBuffers(1, out EBO); 
             GL.GenVertexArrays(1, out VAO);
+
             dic?.Add(Program, (VBO, VAO, EBO));
 
             // VBO作成
@@ -316,7 +312,7 @@ namespace Crystallography.OpenGL
             Location[Program].PositionLocation = GL.GetAttribLocation(Program, "Position");
             Location[Program].NormalLocation = GL.GetAttribLocation(Program, "Normal");
             Location[Program].UvLocation = GL.GetAttribLocation(Program, "Uv");
-            if (Location[Program].ModeLocation ==-1 || Location[Program].UvLocation == -1 || Location[Program].PositionLocation == -1
+            if (Location[Program].ModeLocation == -1 || Location[Program].UvLocation == -1 || Location[Program].PositionLocation == -1
                 || Location[Program].NormalLocation == -1 || Location[Program].ArgbLocation == -1)
                 throw new Exception("cannot find location!");
 
@@ -333,10 +329,10 @@ namespace Crystallography.OpenGL
             Location[Program].IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
             Location[Program].FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
 
-                Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-                Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-                Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-                Location[Program].RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+            Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+            Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+            Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+            Location[Program].RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
         }
 
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
@@ -1397,7 +1393,6 @@ namespace Crystallography.OpenGL
         /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
         /// </summary>
         static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
-
         
         public new static (int Slices, int Stacks) Default { get => _Default; set { _Default = value; SetDefaultCylinder(); } }       
         private static (int Slices, int Stacks) _Default = (1, 16);
@@ -1600,6 +1595,9 @@ namespace Crystallography.OpenGL
     {
         private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)> dic
             = new Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)>();
+        private static PT[] types = new[] { PT.Quads };
+        private static uint[] indices = new[]{(uint)0, (uint)1, (uint)2, (uint)3 };
+        private static int[] typeCounts = new[]{4 };
 
         public int TextureNum = -1;
         public int[] Size = null;
@@ -1621,9 +1619,9 @@ namespace Crystallography.OpenGL
                     var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
                     if (whiteEdge)
-                        foreach(var (x, y) in new[] {(0f,0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
+                        foreach (var (x, y) in new[] { (0f, 0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
                             g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(128, Color.White)), new RectangleF(x, y, bmp.Width, bmp.Height));
-                    
+
                     g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(mat.Argb)), new RectangleF(1f, 1f, bmp.Width, bmp.Height));
                     fnt.Dispose();//リソースを解放する
                     g.Dispose();//リソースを解放する
@@ -1632,7 +1630,7 @@ namespace Crystallography.OpenGL
                     height = bmp.Height;
 
                     var argbList = BitmapConverter.ToByteARGB(bmp).ToList();//データの並び順はBGRA
-              
+
                     #region  余白の部分をトリムする
                     while (argbList.Where((b, i) => i < width * 4).All(b => b == 0))
                     {
@@ -1665,7 +1663,7 @@ namespace Crystallography.OpenGL
                     //空いてるテクスチャID番号を調べ、TextureNumberに格納 (実際の転送はGenerateで行う)
                     TextureNum = GL.GenTexture();
                     //辞書に登録
-                    dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, width,height));
+                    dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, width, height));
                     Size = new[] { width, height };
                     Texture = argbList.ToArray();
                 }
@@ -1685,9 +1683,9 @@ namespace Crystallography.OpenGL
                     new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2) };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
-                Types = new[] { PT.Quads };
-                Indices = Enumerable.Range(0, 4).Select(val => (uint)val).ToArray();
-                TypeCounts = new[] { 4 };
+                Types = types;
+                Indices = indices;
+                TypeCounts = typeCounts;
             }
         }
     }

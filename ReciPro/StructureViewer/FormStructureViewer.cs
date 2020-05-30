@@ -54,8 +54,8 @@ namespace ReciPro
         private BondInputControl bondControl;
 
         private readonly List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
-        private List<Label> legendLabels = new List<Label>();
-        private List<FlowLayoutPanel> legendFlowLayoutPanels = new List<FlowLayoutPanel>();
+        private readonly List<Label> legendLabels = new List<Label>();
+        private readonly List<FlowLayoutPanel> legendFlowLayoutPanels = new List<FlowLayoutPanel>();
 
         private readonly Stopwatch sw = new Stopwatch();
 
@@ -195,7 +195,7 @@ namespace ReciPro
                 MaxHeight = 1440,
                 MaxWidth = 2560,
                 Name = "glControlMainOIT",
-                NodeCoefficient = 8,
+                NodeCoefficient = 10,
                 ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                 ProjWidth = 4D,
                 RotationMode = GLControlAlpha.RotationModes.Object,
@@ -286,7 +286,7 @@ namespace ReciPro
             axes.Row0 = new V3(Crystal.A_Axis.X, Crystal.B_Axis.X, Crystal.C_Axis.X);
             axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
             axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
-            int n = Crystal.Symmetry.CrystalSystemNumber;
+            //int n = Crystal.Symmetry.CrystalSystemNumber;
             //if (n == 5 || n == 6) //trigonalとhexagonalの時
             //{
             //    shift = new V3(0, 0, 0);
@@ -427,7 +427,7 @@ namespace ReciPro
 
 
 
-        public void setAtomsP()
+        public void SetAtomsP()
         {
             sw.Restart();
 
@@ -629,17 +629,17 @@ namespace ReciPro
         {
             sw.Restart();
 
-            if (comboBoxTransparency.SelectedIndex == 1)//OITモードの時は描画しない
-                return;
-
+            glControlMainZsort.MakeCurrent();//理由はよく分からないが、Zsort フラグメントシェーダをカレントにして、一旦generateすると、うまくバッファに転送される
             GLObjects.Where(o => o.Rendered && o is Sphere s).ToList().ForEach(o =>
             {
                 var s = o as Sphere;
                 var id = s.Tag as atomID;
                 var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
                 var text = new TextObject(enabledAtoms[id.Index].Label,
-                    (float)numericBoxLabelSize.Value, s.Origin, s.Radius + 0.01, checkBoxLabelWhiteEdge.Checked, mat)
+                     (float)numericBoxLabelSize.Value, s.Origin, s.Radius + 0.01, checkBoxLabelWhiteEdge.Checked, mat)
                 { Rendered = enabledAtoms[id.Index].ShowLabel };
+
+                text.Generate(glControlMainZsort.Program);
                 GLObjects.Add(text);
             });
             textBoxInformation.AppendText("Generation of label objects: " + sw.ElapsedMilliseconds + "ms.\r\n");
@@ -843,7 +843,7 @@ namespace ReciPro
             if (_crystal != null)
             {
                 SetLegend();
-                setAtomsP();
+                SetAtomsP();
             }
 
             setAtoms();//原子オブジェクトを生成
@@ -1468,7 +1468,6 @@ namespace ReciPro
                 glControlMain.SkipRendering = false;
             }
 
-
             textBoxInformation.AppendText("Generation of legend control: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 
@@ -1635,7 +1634,6 @@ namespace ReciPro
         #endregion
 
         #region Depth cueingの設定
-
         private void checkBoxDepthCueing_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxDepthCueing.Enabled = checkBoxDepthCueing.Checked;

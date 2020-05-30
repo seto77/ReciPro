@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
-using V2 = OpenTK.Vector2d;
 
 
 namespace Crystallography
@@ -60,7 +59,6 @@ namespace Crystallography
 
         [NonSerialized]
         public Beam[][] BeamsPED;
-
         public double SemianglePED { get; set; }
 
         public bool IsBusy => bwCBED == null || bwCBED.IsBusy;
@@ -266,8 +264,6 @@ namespace Crystallography
             public Report(int current, string solver)
             { Current = current; Solver = solver; }
         }
-
-
 
         /// <summary>
         /// 平行ビームの電子回折計算
@@ -561,7 +557,7 @@ namespace Crystallography
             {
                 if (EigenValuesPED[k] != null)
                 {
-                    int len = EigenValuesPED[k].Count();
+                    var len = EigenValuesPED[k].Count();
                     var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
                     psi0[0] = 1;
                     var alpha = EigenVectorsInversePED[k] * psi0;//アルファベクトルを求める
@@ -596,8 +592,7 @@ namespace Crystallography
                 var g = mat * beams[i].Index;
                 var (Q, P) = getQP(g, kvac, u0);
                 var psi = new Complex(Math.Sqrt(beams[i].intensity), 0);
-                beams[i] = new Beam(beams[i].Index, g, (beams[i].Freal, beams[i].Fimag), (Q,P));
-                beams[i].Psi = psi;
+                beams[i] = new Beam(beams[i].Index, g, (beams[i].Freal, beams[i].Fimag), (Q, P)) { Psi = psi };
             }
 
             //並び替え
@@ -662,8 +657,6 @@ namespace Crystallography
             }
             return (fReal, fImag);
         }
-
-    
 
         /// <summary>
         /// ポテンシャルを求める. s2の単位は nm^-2
@@ -888,7 +881,7 @@ namespace Crystallography
         }
 
         private (double Q, double P) getQP(Vector3DBase g, Vector3DBase vecK0)
-        => (vecK0.Length2 - (vecK0 + g).Length2, 2 * Surface * (vecK0 + g));
+            => (vecK0.Length2 - (vecK0 + g).Length2, 2 * Surface * (vecK0 + g));
 
         private (double Q, double P) getQP(Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)
             => getQP(g, getVecK0(kvac, u0, beamRotation));

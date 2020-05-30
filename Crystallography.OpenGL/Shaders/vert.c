@@ -44,13 +44,13 @@ void main(void)
 	vec3 position = vec3 (ObjectMatrix * vec4(Position, 1));
 
 	vec4 P;
-	if (ObjType == 0)
+	if (ObjType == 0)//Without texture
 	{
 		P = WorldMatrix * vec4(position, 1);
 		// Calculate the clip-space position of each vertex
 		gl_Position = ProjMatrix * ViewMatrix * P;
 	}
-	else
+	else//case of string
 	{
 		P = WorldMatrix * vec4(Normal, 1) + vec4(0, 0, position.z, 0);
 		// Calculate the clip-space position of each vertex

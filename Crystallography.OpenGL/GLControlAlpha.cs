@@ -30,18 +30,18 @@ namespace Crystallography.OpenGL
         private ParallelQuery<GLObject> glObjectsP;
         private GLObject quad = null;
 
-        private int eyePositionIndex = 0;
-        private int viewportSizeIndex = 0;
-        private int lightPositionIndex = 0;
-        private int viewMatrixIndex = 0;
-        private int projMatrixIndex = 0;
-        private int worldMatrixIndex = 0;
+        private int eyePositionLocation = 0;
+        private int viewportSizeLocation = 0;
+        private int lightPositionLocation = 0;
+        private int viewMatrixLocation = 0;
+        private int projMatrixLocation = 0;
+        private int worldMatrixLocation = 0;
         private int passOIT1Index = 0;
         private int passOIT2Index = 0;
 
-        private int depthCueingNearIndex = 0;
-        private int depthCueingFarIndex = 0;
-        private int depthCueingEnabledIndex = 0;
+        private int depthCueingNearLocation = 0;
+        private int depthCueingFarLocation = 0;
+        private int depthCueingEnabledLocation = 0;
         #endregion フィールド
 
         #region Enum
@@ -138,7 +138,7 @@ namespace Crystallography.OpenGL
 
         #endregion
     
-        private int Program { get; set; } = -1;
+        public int Program { get; } = -1;
 
         public bool DisablingOpenGL { get; set; } = false;
 
@@ -396,8 +396,8 @@ namespace Crystallography.OpenGL
         #endregion プロパティ
 
         #region ロード関連
-        private GLControl glControl = new GLControl();
-        private Graphics glControlGraphics;
+        private readonly GLControl glControl = new GLControl();
+        private readonly Graphics glControlGraphics;
 
         /// <summary>
         /// コンストラクタ. ZsortかOITかは、コンストラクタで決める. 生成後に変更はできない。
@@ -414,7 +414,7 @@ namespace Crystallography.OpenGL
             #region glControlの初期化
             SuspendLayout();
             // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-            var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 1 : 0);
+            var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 2 : 0);
             glControl = new GLControl(gMode)
             {
                 AutoScaleMode = AutoScaleMode.Dpi,
@@ -432,8 +432,9 @@ namespace Crystallography.OpenGL
             glControl.MouseUp += glControl_MouseUp;
             glControl.Resize += glControl_Resize;
 
-            ResumeLayout();
             glControlGraphics = glControl.CreateGraphics();
+
+            ResumeLayout();
             //glControlの再初期化ここまで
             #endregion
 
@@ -447,35 +448,32 @@ namespace Crystallography.OpenGL
             if (FragShader == FragShaders.OIT && Version < VersionForOIT)
                 return;
 
-
             //Shader転送
-            var frag = FragShader == FragShaders.ZSORT ?
-                Properties.Resources.fragZSORT :
+            var frag = FragShader == FragShaders.ZSORT ? Properties.Resources.fragZSORT :
                 Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", "MAX_FRAGMENTS " + MaxFragments.ToString());
             Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
 
             GL.UseProgram(Program);
 
-            //Shader storage初期化
-            if (FragShader == FragShaders.OIT)
-                initShaderStorage();
-
             //Index取得
-            viewportSizeIndex = GL.GetUniformLocation(Program, "ViewportSize");
-            eyePositionIndex = GL.GetUniformLocation(Program, "EyePosition");
-            lightPositionIndex = GL.GetUniformLocation(Program, "LightPosition");
-            viewMatrixIndex = GL.GetUniformLocation(Program, "ViewMatrix");
-            projMatrixIndex = GL.GetUniformLocation(Program, "ProjMatrix");
-            worldMatrixIndex = GL.GetUniformLocation(Program, "WorldMatrix");
-            depthCueingEnabledIndex = GL.GetUniformLocation(Program, "DepthCueing");
-            depthCueingFarIndex = GL.GetUniformLocation(Program, "Far");
-            depthCueingNearIndex = GL.GetUniformLocation(Program, "Near");
+            viewportSizeLocation = GL.GetUniformLocation(Program, "ViewportSize");
+            eyePositionLocation = GL.GetUniformLocation(Program, "EyePosition");
+            lightPositionLocation = GL.GetUniformLocation(Program, "LightPosition");
+            viewMatrixLocation = GL.GetUniformLocation(Program, "ViewMatrix");
+            projMatrixLocation = GL.GetUniformLocation(Program, "ProjMatrix");
+            worldMatrixLocation = GL.GetUniformLocation(Program, "WorldMatrix");
+            depthCueingEnabledLocation = GL.GetUniformLocation(Program, "DepthCueing");
+            depthCueingFarLocation = GL.GetUniformLocation(Program, "Far");
+            depthCueingNearLocation = GL.GetUniformLocation(Program, "Near");
 
             GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
+            GL.Enable(EnableCap.Texture2D);
 
             if (FragShader == FragShaders.OIT)
-            {//oitモードの時、 DepthTest無効、
-                GL.Disable(EnableCap.DepthTest);
+            {
+                initShaderStorage(); //Shader storage初期化
+
+                GL.Disable(EnableCap.DepthTest);//oitモードの時、 DepthTest無効、
 
                 passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
                 passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
@@ -500,12 +498,8 @@ namespace Crystallography.OpenGL
                 GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             }
 
-            //GLObject.SetLocation(Program);
-
             Clip?.Generate(Program);
             setDepthCueing();
-
-            GL.Enable(EnableCap.Texture2D);
 
             glObjectsP = glObjects.AsParallel();
 
@@ -621,10 +615,11 @@ namespace Crystallography.OpenGL
             GL.BufferData(BufferTarget.PixelUnpackBuffer, headPtrClearBuf.Length * sizeof(uint), headPtrClearBuf, BufferUsageHint.StaticDraw);
         }
         #endregion Shader Storage の初期化
-
         #endregion
 
         #region GlObjectの追加/削除
+
+        public void MakeCurrent() => glControl.MakeCurrent();
 
         public void AddObjects(GLObject obj)
         {
@@ -712,14 +707,14 @@ namespace Crystallography.OpenGL
             }
 
             GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
-            GL.Uniform2(viewportSizeIndex, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
+            GL.Uniform2(viewportSizeLocation, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
 
             //マトリックスをセット
-            GL.Uniform3(eyePositionIndex, viewFromF);
-            GL.Uniform3(lightPositionIndex, lightPositionF);
-            GL.UniformMatrix4(viewMatrixIndex, false, ref viewMatrixF);
-            GL.UniformMatrix4(projMatrixIndex, false, ref projMatrixF);
-            GL.UniformMatrix4(worldMatrixIndex, false, ref worldMatrixF);
+            GL.Uniform3(eyePositionLocation, viewFromF);
+            GL.Uniform3(lightPositionLocation, lightPositionF);
+            GL.UniformMatrix4(viewMatrixLocation, false, ref viewMatrixF);
+            GL.UniformMatrix4(projMatrixLocation, false, ref projMatrixF);
+            GL.UniformMatrix4(worldMatrixLocation, false, ref worldMatrixF);
 
             if (FragShader == FragShaders.OIT)//oitモードの時
             {
@@ -743,9 +738,9 @@ namespace Crystallography.OpenGL
                 GL.MemoryBarrier(MemoryBarrierFlags.ShaderStorageBarrierBit);
                 GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passOIT2Index);
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-                GL.UniformMatrix4(viewMatrixIndex, false, ref m4id);
-                GL.UniformMatrix4(projMatrixIndex, false, ref m4id);
-                GL.UniformMatrix4(worldMatrixIndex, false, ref m4id);
+                GL.UniformMatrix4(viewMatrixLocation, false, ref m4id);
+                GL.UniformMatrix4(projMatrixLocation, false, ref m4id);
+                GL.UniformMatrix4(worldMatrixLocation, false, ref m4id);
                 quad?.Generate(Program);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
                 quad?.Render(null);// Draw a screen filler
             }
@@ -894,9 +889,9 @@ namespace Crystallography.OpenGL
         private void setDepthCueing()
         {
             glControl.MakeCurrent();
-            GL.Uniform1(depthCueingEnabledIndex, DepthCueing.Enabled ? 1 : 0);
-            GL.Uniform1(depthCueingNearIndex, (float)DepthCueing.Znear);
-            GL.Uniform1(depthCueingFarIndex, (float)DepthCueing.Zfar);
+            GL.Uniform1(depthCueingEnabledLocation, DepthCueing.Enabled ? 1 : 0);
+            GL.Uniform1(depthCueingNearLocation, (float)DepthCueing.Znear);
+            GL.Uniform1(depthCueingFarLocation, (float)DepthCueing.Zfar);
             GL.Finish();
             Render();
         }

@@ -425,17 +425,11 @@ namespace Crystallography
             };
         }
 
-        private static Random Rn = new Random(System.Environment.TickCount * 2);
+        private static readonly Random Rn = new Random(Environment.TickCount * 2);
 
-        public static Matrix3D GenerateRamdomRotationMatrix()
-        {
-            return GenerateRamdomRotationMatrix(Rn);
-        }
+        public static Matrix3D GenerateRamdomRotationMatrix() => GenerateRamdomRotationMatrix(Rn);
 
-        public static Matrix3D GenerateRamdomRotationMatrix(int seed)
-        {
-            return GenerateRamdomRotationMatrix(new Random(seed));
-        }
+        public static Matrix3D GenerateRamdomRotationMatrix(int seed) => GenerateRamdomRotationMatrix(new Random(seed));
 
         public static Matrix3D GenerateRamdomRotationMatrix(Random rn)
         {
@@ -502,16 +496,14 @@ namespace Crystallography
         /// <param name="m"></param>
         /// <returns></returns>
         public static bool IsZero(Matrix3D m)
-        {
-            return m.E11 == 0 && m.E12 == 0 && m.E13 == 0 && m.E21 == 0 && m.E22 == 0 && m.E23 == 0 && m.E31 == 0 && m.E32 == 0 && m.E33 == 0;
-        }
+            => m.E11 == 0 && m.E12 == 0 && m.E13 == 0 && m.E21 == 0 && m.E22 == 0 && m.E23 == 0 && m.E31 == 0 && m.E32 == 0 && m.E33 == 0;
 
         /// <summary>
         /// É[ÉççsóÒÇ©Ç«Ç§Ç©ÇîªíË
         /// </summary>
         /// <returns></returns>
         public bool IsZero()
-        => IsZero(this);
+            => IsZero(this);
 
         /// <summary>
         /// íPà çsóÒÇ©Ç«Ç§Ç©ÇîªíË
@@ -891,65 +883,34 @@ namespace Crystallography
 
         public static bool operator <=(Vector3D v1, Vector3D v2) => v1.X <= v2.X && v1.Y <= v2.Y && v1.Z <= v2.Z;
 
-        public static bool operator >(Vector3D v1, Vector3D v2)
-        {
-            return (v1.X > v2.X && v1.Y > v2.Y && v1.Z > v2.Z);
-        }
+        public static bool operator >(Vector3D v1, Vector3D v2) => v1.X > v2.X && v1.Y > v2.Y && v1.Z > v2.Z;
 
-        public static bool operator >=(Vector3D v1, Vector3D v2)
-        {
-            return (v1.X >= v2.X && v1.Y >= v2.Y && v1.Z >= v2.Z);
-        }
+        public static bool operator >=(Vector3D v1, Vector3D v2) => v1.X >= v2.X && v1.Y >= v2.Y && v1.Z >= v2.Z;
 
         public static Vector3D operator +(Vector3D v1, Vector3D v2)
         {
+            if (v2 is null)
+                throw new ArgumentNullException(nameof(v2));
             return new Vector3D(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         }
 
-        public static Vector3D operator -(Vector3D v1, Vector3D v2)
-        {
-            return new Vector3D(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
-        }
+        public static Vector3D operator -(Vector3D v1, Vector3D v2) => new Vector3D(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
 
-        public static Vector3D operator -(Vector3D v1)
-        {
-            return new Vector3D(-v1.X, -v1.Y, -v1.Z);
-        }
+        public static Vector3D operator -(Vector3D v1) => new Vector3D(-v1.X, -v1.Y, -v1.Z);
 
-        public static Vector3D operator *(double d, Vector3D v1)
-        {
-            return new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
-        }
+        public static Vector3D operator *(double d, Vector3D v1) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(Vector3D v1, double d)
-        {
-            return new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
-        }
+        public static Vector3D operator *(Vector3D v1, double d) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(int d, Vector3D v1)
-        {
-            return new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
-        }
+        public static Vector3D operator *(int d, Vector3D v1) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(Vector3D v1, int d)
-        {
-            return new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
-        }
+        public static Vector3D operator *(Vector3D v1, int d) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static double operator *(Vector3D v1, Vector3D v2)
-        {
-            return v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
-        }
+        public static double operator *(Vector3D v1, Vector3D v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
-        public static Vector3D operator /(Vector3D v1, double d)
-        {
-            return new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
-        }
+        public static Vector3D operator /(Vector3D v1, double d) => new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
 
-        public static Vector3D operator /(Vector3D v1, int d)
-        {
-            return new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
-        }
+        public static Vector3D operator /(Vector3D v1, int d) => new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
 
         public void NormarizeThis()
         {
@@ -1086,15 +1047,9 @@ namespace Crystallography
             return new Vector3D(d[0], d[1], d[2], false);
         }
 
-        public override string ToString()
-        {
-            return text!="" ? text: $"{X}, {Y}, {Z}";
-        }
+        public override string ToString() => text != "" ? text : $"{X}, {Y}, {Z}";
 
-        public static Vector3D RandomVector(Random rn)
-        {
-            return RandomVector(rn.NextDouble(), rn.NextDouble());
-        }
+        public static Vector3D RandomVector(Random rn) => RandomVector(rn.NextDouble(), rn.NextDouble());
 
         public static Vector3D RandomVector(double rn1, double rn2)
         {
