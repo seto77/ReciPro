@@ -844,6 +844,7 @@ namespace ReciPro
             {
                 SetLegend();
                 SetAtomsP();
+                setCheckBoxShowLabelState();
             }
 
             setAtoms();//原子オブジェクトを生成
@@ -1473,7 +1474,7 @@ namespace ReciPro
 
         private void legendControl_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Clicks == 2 && e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 var s = (sender as GLControlAlpha).Tag as string;
 
@@ -1485,8 +1486,11 @@ namespace ReciPro
                     list.ForEach(a => a.ShowLabel = showLabel);
                     SetGLObjects();
                 }
+                setCheckBoxShowLabelState();
             }
         }
+
+       
 
         #endregion
 
@@ -1552,8 +1556,19 @@ namespace ReciPro
         private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            var swap = new Action<GLControlAlpha, GLControlAlpha>((g1, g2) => {
+            if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
+                return;//変更が無かったら何もしない。
 
+            if (comboBoxTransparency.SelectedIndex == 1 && glControlMain.Version < glControlMain.VersionForOIT)
+            {
+                MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
+                    " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");
+                comboBoxTransparency.SelectedIndex = 0;
+                return;
+            }
+
+            var swap = new Action<GLControlAlpha, GLControlAlpha>((g1, g2) =>
+            {
                 g1.ViewFrom = g2.ViewFrom;
                 g1.ViewMatrix = g2.ViewMatrix;
                 g1.WorldMatrix = g2.WorldMatrix;
@@ -1564,54 +1579,26 @@ namespace ReciPro
                 g1.ProjectionMode = g2.ProjectionMode;
             });
 
+            var gNew = comboBoxTransparency.SelectedIndex == 0 ? glControlMainZsort : glControlMainOIT;
+            var gOld = comboBoxTransparency.SelectedIndex == 0 ? glControlMainOIT : glControlMainZsort;
 
-            if (comboBoxTransparency.SelectedIndex == 0)
-            {
-                if (glControlMainZsort.Visible)//変更が無かったら何もしない。
-                    return;
-                glControlMainOIT.Visible = false;
-                splitContainer1.Panel1.Controls.Remove(glControlMainOIT);
+            gOld.Visible = false;
+            splitContainer1.Panel1.Controls.Remove(gOld);
 
-                glControlMainZsort.DeleteAllObjects();
-                glControlMainOIT.DeleteAllObjects();
+            gNew.DeleteAllObjects();
+            gOld.DeleteAllObjects();
 
-                swap( glControlMainZsort,glControlMainOIT);
+            swap(gNew, gOld);
 
-                glControlMain = glControlMainZsort;
-                splitContainer1.Panel1.Controls.Add(glControlMainZsort);
-                glControlMainZsort.Visible = true;
-            }
-            else
-            {
-                if (glControlMainOIT.Visible)//変更が無かったら何もしない。
-                    return;
+            glControlMain = gNew;
+            splitContainer1.Panel1.Controls.Add(gNew);
+            flowLayoutPanelLegend.SendToBack();
+            gNew.Visible = true;
 
-                if (glControlMain.Version < glControlMain.VersionForOIT)
-                {
-                    MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
-                        " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");
-                    comboBoxTransparency.SelectedIndex = 0;
-                    return;
-                }
-                glControlMainZsort.Visible = false;
-                splitContainer1.Panel1.Controls.Remove(glControlMainZsort);
-
-                glControlMainZsort.DeleteAllObjects();
-                glControlMainOIT.DeleteAllObjects();
-
-                swap(glControlMainOIT, glControlMainZsort);
-
-                glControlMain = glControlMainOIT;
-                splitContainer1.Panel1.Controls.Add(glControlMainOIT);
-                glControlMainOIT.Visible = true;
-                
-                checkBoxDepthCueing_CheckedChanged(sender, e);
-            }
+            checkBoxDepthCueing_CheckedChanged(sender, e);
 
             if (atomControl != null)
-            {
                 SetGLObjects(formMain.crystalControl.Crystal);
-            }
         }
 
         #endregion
@@ -1636,10 +1623,10 @@ namespace ReciPro
         #region Depth cueingの設定
         private void checkBoxDepthCueing_CheckedChanged(object sender, EventArgs e)
         {
-            groupBoxDepthCueing.Enabled = checkBoxDepthCueing.Checked;
+            groupBoxDepthCueing.Enabled = checkBoxDepthFadingOut.Checked;
             //なぜか更新されないことがあるので、2回実行する
-            glControlMain.DepthCueing = (checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
-            glControlMain.DepthCueing = (checkBoxDepthCueing.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
+            glControlMain.DepthCueing = (checkBoxDepthFadingOut.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
+            glControlMain.DepthCueing = (checkBoxDepthFadingOut.Checked, trackBarAdvancedDepthCueingFar.Value / 10.0, trackBarAdvancedDepthCueingNear.Value / 10.0);
         }
         private bool trackBarAdvanced2_ValueChanged(object sender, double value)
         {
@@ -1656,6 +1643,34 @@ namespace ReciPro
             colorControlLabelColor.Enabled = radioButtonLabelUseFixedColor.Checked;
             SetGLObjects();
         }
+
+        private void checkBoxShowLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SkipEvent) return;
+            if (enabledAtoms != null && enabledAtoms.Length != 0)
+            {
+                foreach (var a in enabledAtoms)
+                    a.ShowLabel = checkBoxShowLabel.Checked;
+                SetGLObjects();
+            }
+        }
+
+        private void setCheckBoxShowLabelState()
+        {
+            if (enabledAtoms == null || enabledAtoms.Length == 0)
+                return;
+
+            SkipEvent = true;
+            if (enabledAtoms.All(e => e.ShowLabel))
+                checkBoxShowLabel.CheckState = CheckState.Checked;
+            else if (enabledAtoms.All(e => !e.ShowLabel))
+                checkBoxShowLabel.CheckState = CheckState.Unchecked;
+            else
+                checkBoxShowLabel.CheckState = CheckState.Indeterminate;
+            SkipEvent = false;
+        }
+
         #endregion
+
     }
 }

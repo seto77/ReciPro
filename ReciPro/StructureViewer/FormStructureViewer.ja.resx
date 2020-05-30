@@ -400,17 +400,102 @@
   <data name="tabPageInformation.Text" xml:space="preserve">
     <value>情報</value>
   </data>
+  <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>ラベルを表示</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 23</value>
+  </data>
   <data name="radioButtonUseMaterialColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
+    <value>原子色を使う</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 48</value>
   </data>
   <data name="radioButtonLabelUseFixedColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 22</value>
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
+    <value>固定色を使う</value>
+  </data>
+  <data name="numericBoxLabelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxLabelSize.HeaderText" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="numericBoxLabelSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="numericBoxLabelSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 25</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 50</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
+    <value>87, 22</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.Text" xml:space="preserve">
+    <value>白く縁取り</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 43</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 34</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>(凡例をクリックして
+個別に設定可能)</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>ラベル</value>
   </data>
   <data name="checkBoxGroupByElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 22</value>
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxGroupByElement.Text" xml:space="preserve">
+    <value>元素でまとめる</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
+    <value>凡例のサイズ</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
+    <value>結晶軸のサイズ</value>
+  </data>
+  <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 50</value>
+  </data>
+  <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 25</value>
+  </data>
+  <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
+    <value>光源球のサイズ</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>光源, 結晶軸, 凡例の設定</value>
   </data>
   <data name="comboBoxTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 26</value>
@@ -418,11 +503,20 @@
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>504, 143</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>透明度の計算方法</value>
+  </data>
   <data name="comboBoxRenderignQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 26</value>
   </data>
-  <data name="checkBoxDepthCueing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>描画品質</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 22</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
+    <value>奥行き方向によるフェードアウト効果</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 18</value>
@@ -432,6 +526,9 @@
   </data>
   <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 26</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>投影方法</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -609,10 +706,13 @@
     <value>ファイル</value>
   </data>
   <data name="iLikeVESTAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="toolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>60, 24</value>
+  </data>
+  <data name="toolToolStripMenuItem.Text" xml:space="preserve">
+    <value>ツール</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>664, 24</value>

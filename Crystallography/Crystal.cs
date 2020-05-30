@@ -719,7 +719,7 @@ namespace Crystallography
             for (int u = -uMax; u <= uMax; u++)
                 for (int v = -vMax; v <= vMax; v++)
                     for (int w = -wMax; w <= wMax; w++)
-                        if (Crystal.CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
+                        if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
                         {
                             vec = u * A_Axis + v * B_Axis + w * C_Axis;
                             vec.Index = $"[{u}{v}{w}]";

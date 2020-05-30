@@ -323,13 +323,13 @@ namespace ReciPro
 
 
             var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\";
-            //ユーザーパスにinitial.xmlが存在しない場合は、default.xmlをinitial.xmlとしてコピー
-            if (!File.Exists(UserAppDataPath + "initial.xml"))
-                File.Copy(appPath + "default.xml", UserAppDataPath + "initial.xml", true);
+            //default.xmlをinitial.xmlとしてコピー
+            //if (!File.Exists(UserAppDataPath + "initial.xml"))
+            File.Copy(appPath + "initial.xml", UserAppDataPath + "initial.xml", true);
 
-            //ユーザーパスにdefault.xmlが存在しない場合、あるいは壊れている場合は、実行フォルダのdefault.xmlをユーザーパスにコピー
+            //ユーザーパスにdefault.xmlが存在しない場合、あるいは壊れている場合は、実行フォルダのinitial.xmlをdefault.xmlとしてユーザーパスにコピー
             if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
-                File.Copy(appPath + "default.xml", UserAppDataPath + "default.xml", true);
+                File.Copy(appPath + "initial.xml", UserAppDataPath + "default.xml", true);
 
             if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
                 File.Delete(UserAppDataPath + "ReciProSetup.msi");
