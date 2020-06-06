@@ -172,7 +172,10 @@ namespace Crystallography
         /// <returns></returns>
         public static Atoms GetEquivalentAtomsPosition((double X, double Y, double Z) Pos, int SymmetrySeriesNumber)
         {
-            Atoms atoms = new Atoms();
+            if (double.IsNaN(Pos.X) || double.IsNaN(Pos.Y) || double.IsNaN(Pos.Z))
+                return new Atoms();
+
+            var atoms = new Atoms();
             var wykc = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber];
             //まず、もっとも対称性の低いワイコフ位置で原子位置を再生
             atoms.Atom = wykc[0].GeneratePositions(Pos.X, Pos.Y, Pos.Z);

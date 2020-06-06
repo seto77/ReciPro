@@ -138,41 +138,32 @@ namespace Crystallography.Controls
                 dr[this._Site_Sym_Column] = atom.SiteSymmetry;
                 dr[this._Wyck__Let_Column] = atom.WyckoffLeter;
                 dr[this.ElementColumn] = atom.ElementName;
-                dr[this.XColumn] = GetStringFromDouble(atom.X);
-                dr[this.YColumn] = GetStringFromDouble(atom.Y);
-                dr[this.ZColumn] = GetStringFromDouble(atom.Z);
+                dr[this.XColumn] = GetStringFromDouble(atom.X, 6, true);
+                dr[this.YColumn] = GetStringFromDouble(atom.Y, 6, true);
+                dr[this.ZColumn] = GetStringFromDouble(atom.Z, 6, true);
                 dr[this._columnMulti_] = atom.Multiplicity;
-                dr[this._Occ_Column] = atom.Occ;
+                dr[this._Occ_Column] = GetStringFromDouble(atom.Occ, 6, false);
                 return dr;
             }
 
-            public static string GetStringFromDouble(double d)
+            
+            public static string GetStringFromDouble(double d, int decimalPlaces,bool fraction)
             {
                 #region 
-                if (Math.Abs(d - 0.125) < 0.000000001) return "1/8";
-                else if (Math.Abs(d - 0.375) < 0.000000001) return "3/8";
-                else if (Math.Abs(d - 0.625) < 0.000000001) return "5/8";
-                else if (Math.Abs(d - 0.875) < 0.000000001) return "7/8";
-                else if (Math.Abs(d - 0.25) < 0.000000001) return "1/4";
-                else if (Math.Abs(d - 0.75) < 0.000000001) return "3/4";
-                else if (Math.Abs(d - 0.5) < 0.000000001) return "1/2";
-                else if (Math.Abs(d - 1.0 / 3.0) < 0.000000001) return "1/3";
-                else if (Math.Abs(d - 2.0 / 3.0) < 0.000000001) return "2/3";
-                else if (Math.Abs(d - 1.0 / 6.0) < 0.000000001) return "1/6";
-                else if (Math.Abs(d - 5.0 / 6.0) < 0.000000001) return "5/6";
-                else if (Math.Abs(d - 1.0 / 12.0) < 0.000000001) return "1/12";
-                else if (Math.Abs(d - 5.0 / 12.0) < 0.000000001) return "5/12";
-                else if (Math.Abs(d - 7.0 / 12.0) < 0.000000001) return "7/12";
-                else if (Math.Abs(d - 11.0 / 12.0) < 0.000000001) return "11/12";
-                else if (Math.Abs(d - 1.0 / 24.0) < 0.000000001) return "1/24";
-                else if (Math.Abs(d - 5.0 / 24.0) < 0.000000001) return "5/24";
-                else if (Math.Abs(d - 7.0 / 24.0) < 0.000000001) return "7/24";
-                else if (Math.Abs(d - 11.0 / 24.0) < 0.000000001) return "11/24";
-                else if (Math.Abs(d - 13.0 / 24.0) < 0.000000001) return "13/24";
-                else if (Math.Abs(d - 17.0 / 24.0) < 0.000000001) return "17/24";
-                else if (Math.Abs(d - 19.0 / 24.0) < 0.000000001) return "19/24";
-                else if (Math.Abs(d - 23.0 / 24.0) < 0.000000001) return "23/24";
-                else return d.ToString("g6");
+
+                var threshold = Math.Pow(10,-decimalPlaces);
+
+                var text = "";
+                if (d != 0 &&fraction) //分数で表示するとき
+                {
+                    int j = (int)Math.Ceiling(d - 1);
+                    foreach (var denom in new[] { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 16, 24 })
+                        for (int i = 1; i < denom && text == ""; i++)
+                            if ((i == 1 || denom % i != 0) && Math.Abs(d - j - i / (double)denom) < threshold)
+                                text = $"{i + (denom * j)}/{denom}";
+                }
+
+                return text != "" ? text : d.ToString($"g{decimalPlaces}");
                 #endregion
             }
         }

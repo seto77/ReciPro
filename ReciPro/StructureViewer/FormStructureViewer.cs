@@ -114,9 +114,7 @@ namespace ReciPro
         {
             if (DesignMode) return;
 
-            formAtom = new FormAtom();
-            formAtom.formStructureViewer = this;
-            AddOwnedForm(formAtom);
+            formAtom = new FormAtom            {                formStructureViewer = this, Owner = this            };
 
             #region デザイナが壊れないようにここでGLコントロールを追加
             // glControlAxes

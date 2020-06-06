@@ -136,6 +136,9 @@
   <data name="radioButtonAnisotropy.Text" xml:space="preserve">
     <value>非等方</value>
   </data>
+  <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 4</value>
+  </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>-236, -25</value>
   </data>
@@ -191,50 +194,62 @@
   <data name="numericBoxOccerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>390, 0</value>
   </data>
-  <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
+  <data name="numericBoxOccerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
   </data>
-  <data name="numericTextBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 22</value>
+  </data>
+  <data name="numericBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
     <value>306, 0</value>
   </data>
-  <data name="numericTextBoxOcc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+  <data name="numericBoxOcc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
   </data>
-  <data name="numericTextBoxZ.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 48</value>
   </data>
-  <data name="numericTextBoxZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+  <data name="numericBoxZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
   </data>
   <data name="numericBoxYerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 24</value>
   </data>
+  <data name="numericBoxYerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
   <data name="numericBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+    <value>84, 22</value>
   </data>
   <data name="numericBoxXerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 0</value>
   </data>
-  <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+  <data name="numericBoxXerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
   </data>
-  <data name="numericTextBoxY.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxY.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 24</value>
   </data>
-  <data name="numericTextBoxY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+  <data name="numericBoxY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
   </data>
-  <data name="numericTextBoxX.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxX.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 0</value>
   </data>
-  <data name="numericTextBoxX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+  <data name="numericBoxX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
   </data>
   <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 48</value>
   </data>
+  <data name="numericBoxZerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
   <data name="numericBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
+    <value>84, 22</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>477, 74</value>
@@ -317,6 +332,12 @@
   <data name="checkBoxDetailsDebyeWallerError.Location" type="System.Drawing.Point, System.Drawing">
     <value>468, 3</value>
   </data>
+  <data name="flowLayoutPanelAniso2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 51</value>
+  </data>
+  <data name="flowLayoutPanelAniso1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 27</value>
+  </data>
   <data name="tabPageDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
@@ -371,11 +392,8 @@
   <data name="tabPageScatteringFactor.Text" xml:space="preserve">
     <value>散乱因子</value>
   </data>
-  <data name="numericBoxAtomRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxAtomRadius.HeaderText" xml:space="preserve">
-    <value>半径</value>
+  <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 22</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -413,24 +431,20 @@
   <data name="label35.Text" xml:space="preserve">
     <value>放射</value>
   </data>
-  <data name="colorControlAtomColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxAtomRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="colorControlAtomColor.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlAtomColor.FooterText" xml:space="preserve">
-    <value />
+  <data name="numericBoxAtomRadius.HeaderText" xml:space="preserve">
+    <value>半径</value>
   </data>
   <data name="colorControlAtomColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="colorControlAtomColor.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
   <data name="colorControlAtomColor.HeaderText" xml:space="preserve">
     <value>原子の色</value>
+  </data>
+  <data name="colorControlAtomColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 20</value>
   </data>
   <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -474,12 +488,6 @@
   <data name="buttonAtomUp.Text" xml:space="preserve">
     <value>上へ移動</value>
   </data>
-  <data name="buttonChangeAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonChangeAtom.Text" xml:space="preserve">
-    <value>変更</value>
-  </data>
   <data name="buttonAtomDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -519,7 +527,7 @@
   <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>サイト対称性</value>
   </data>
-  <data name="dataGridViewAtom.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 185</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">

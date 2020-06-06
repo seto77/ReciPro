@@ -35,12 +35,12 @@ namespace Crystallography.Controls
         public bool SkipEvent { get; set; } = false;
         
 
-        private bool details1 = false;
+        
         public bool AtomicPositionError
         {
             set
             {
-                details1 = value;
+                atmicPositionError = value;
                 if (value == false)
                 {
                     tableLayoutPanel1.ColumnStyles[4].SizeType = tableLayoutPanel1.ColumnStyles[7].SizeType = SizeType.Absolute;
@@ -59,27 +59,27 @@ namespace Crystallography.Controls
                     numericBoxXerr.TabStop = numericBoxYerr.TabStop = numericBoxZerr.TabStop = numericBoxOccerr.TabStop = true;
                 }
             }
-            get => details1;
+            get => atmicPositionError;
         }
+        private bool atmicPositionError = false;
 
-        private bool details2 = false;
         public bool DebyeWallerError
         {
             set
             {
-                details2 = value;
+                debyeWallerError = value;
                 if (value == false)
                 {
-                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
-                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 60;
+                    //numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                    //    numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 60;
 
                     numericBoxBisoerr.Visible = numericBoxB11err.Visible = numericBoxB12err.Visible = numericBoxB13err.Visible = numericBoxB22err.Visible
                     = numericBoxB23err.Visible = numericBoxB33err.Visible = false;
                 }
                 else
                 {
-                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
-                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 45;
+                    //numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                    //    numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 45;
 
                     numericBoxBisoerr.Visible = numericBoxBiso.Visible =
                     numericBoxB33err.Visible = numericBoxB23err.Visible =
@@ -87,9 +87,11 @@ namespace Crystallography.Controls
                     numericBoxB12err.Visible = numericBoxB11err.Visible = true;
                 }
             }
-            get => details2;
+            get => debyeWallerError;
         }
-        public bool Istoropy
+        private bool debyeWallerError = false;
+
+        public bool UseIsotropy
         {
             set
             {
@@ -101,35 +103,48 @@ namespace Crystallography.Controls
             get => radioButtonIsotoropy.Checked;
         }
 
+        public bool UseTypeU
+        {
+            set
+            {
+                if (value)
+                    radioButtonDebyeWallerTypeU.Checked = true;
+                else
+                    radioButtonDebyeWallerTypeB.Checked = true;
+            }
+            get => radioButtonDebyeWallerTypeU.Checked;
+        }
+
+
         #region 温度因子 プロパティ
         [Category("Atom")]
-        public double Biso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
+        public double Iso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
         [Category("Atom")]
-        public double BisoErr { set => numericBoxBisoerr.Value = value; get => numericBoxBisoerr.Value; }
+        public double IsoErr { set => numericBoxBisoerr.Value = value; get => numericBoxBisoerr.Value; }
         [Category("Atom")]
-        public double B11 { set => numericBoxB11.Value = value; get => numericBoxB11.Value; }
+        public double Aniso11 { set => numericBoxB11.Value = value; get => numericBoxB11.Value; }
         [Category("Atom")]
-        public double B11Err { set => numericBoxB11err.Value = value; get => numericBoxB11err.Value; }
+        public double Aniso11Err { set => numericBoxB11err.Value = value; get => numericBoxB11err.Value; }
         [Category("Atom")]
-        public double B12 { set => numericBoxB12.Value = value; get => numericBoxB12.Value; }
+        public double Aniso12 { set => numericBoxB12.Value = value; get => numericBoxB12.Value; }
         [Category("Atom")]
-        public double B12Err { set => numericBoxB12err.Value = value; get => numericBoxB12err.Value; }
+        public double Aniso12Err { set => numericBoxB12err.Value = value; get => numericBoxB12err.Value; }
         [Category("Atom")]
-        public double B13 { set => numericBoxB13.Value = value; get => numericBoxB13.Value; }
+        public double Aniso13 { set => numericBoxB13.Value = value; get => numericBoxB13.Value; }
         [Category("Atom")]
-        public double B13Err { set => numericBoxB13err.Value = value; get => numericBoxB13err.Value; }
+        public double Aniso13Err { set => numericBoxB13err.Value = value; get => numericBoxB13err.Value; }
         [Category("Atom")]
-        public double B22 { set => numericBoxB22.Value = value; get => numericBoxB22.Value; }
+        public double Aniso22 { set => numericBoxB22.Value = value; get => numericBoxB22.Value; }
         [Category("Atom")]
-        public double B22Err { set => numericBoxB22err.Value = value; get => numericBoxB22err.Value; }
+        public double Aniso22Err { set => numericBoxB22err.Value = value; get => numericBoxB22err.Value; }
         [Category("Atom")]
-        public double B23 { set => numericBoxB23.Value = value; get { return numericBoxB23.Value; } }
+        public double Aniso23 { set => numericBoxB23.Value = value; get { return numericBoxB23.Value; } }
         [Category("Atom")]
-        public double B23Err { set { numericBoxB23err.Value = value; } get { return numericBoxB23err.Value; } }
+        public double Aniso23Err { set { numericBoxB23err.Value = value; } get { return numericBoxB23err.Value; } }
         [Category("Atom")]
-        public double B33 { set { numericBoxB33.Value = value; } get { return numericBoxB33.Value; } }
+        public double Aniso33 { set { numericBoxB33.Value = value; } get { return numericBoxB33.Value; } }
         [Category("Atom")]
-        public double B33Err { set { numericBoxB33err.Value = value; } get { return numericBoxB33err.Value; } }
+        public double Aniso33Err { set { numericBoxB33err.Value = value; } get { return numericBoxB33err.Value; } }
         #endregion
 
         #region 原子位置 プロパティ
@@ -288,6 +303,23 @@ namespace Crystallography.Controls
         {
             flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
             flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
+
+            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "Dimension: None" : "Dimension: Å^2";
+        }
+
+        private void radioButtonDebyeWallerTypeU_CheckedChanged(object sender, EventArgs e)
+        {
+            var U = radioButtonDebyeWallerTypeU.Checked;
+            numericBoxBiso.HeaderText = U ? "Uiso" : "Biso";
+            numericBoxB11.HeaderText = U ? "U11" : "B11";
+            numericBoxB22.HeaderText = U ? "U22" : "B22";
+            numericBoxB33.HeaderText = U ? "U33" : "B33";
+            numericBoxB12.HeaderText = U ? "U12" : "B12";
+            numericBoxB23.HeaderText = U ? "U23" : "B23";
+            numericBoxB13.HeaderText = U ? "U13" : "B13";
+
+            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "Dimension: None" : "Dimension: Å^2";
+
         }
 
         //原子番号コンボ
@@ -490,19 +522,52 @@ namespace Crystallography.Controls
             AtomSubNoElectron = atoms.SubNumberElectron;
             IsotopicComposition = atoms.Isotope;
 
-            X = atoms.X; Y = atoms.Y; Z = atoms.Z; Occ = atoms.Occ;
-            XErr = atoms.X_err; YErr = atoms.Y_err; ZErr = atoms.Z_err; OccErr = atoms.Occ_err;
+            #region 原子位置、占有率
+            X = atoms.X; XErr = atoms.X_err;
+            Y = atoms.Y; YErr = atoms.Y_err;
+            Z = atoms.Z; ZErr = atoms.Z_err;
+            Occ = atoms.Occ; OccErr = atoms.Occ_err;
+            #endregion
 
-            Biso = atoms.Dsf.Biso; B11 = atoms.Dsf.B11; B12 = atoms.Dsf.B12; B13 = atoms.Dsf.B31; B22 = atoms.Dsf.B22; B23 = atoms.Dsf.B23; B33 = atoms.Dsf.B33;
-            BisoErr = atoms.Dsf.Biso_err; B11Err = atoms.Dsf.B11_err; B12Err = atoms.Dsf.B12_err; B13Err = atoms.Dsf.B31_err; B22Err = atoms.Dsf.B22_err; B23Err = atoms.Dsf.B23_err; B33Err = atoms.Dsf.B33_err;
-            Istoropy = atoms.Dsf.IsIso;
 
-            Ambient = atoms.Ambient; Diffusion = atoms.Diffusion; Emission = atoms.Emission; Shininess = atoms.Shininess; Specular = atoms.Specular;
+            #region 温度因子関係
+            UseIsotropy = atoms.Dsf.UseIso;
+            UseTypeU = atoms.Dsf.OriginalType == DiffuseScatteringFactor.Type.U;
 
-            Radius = atoms.Radius; AtomColor = Color.FromArgb(atoms.Argb); Alpha = Color.FromArgb(atoms.Argb).A / 255f;
+         
+            Iso = UseTypeU ? atoms.Dsf.Uiso * 100 : atoms.Dsf.Biso * 100;
+            Aniso11 = UseTypeU ? atoms.Dsf.U11 * 100 : atoms.Dsf.B11;
+            Aniso12 = UseTypeU ? atoms.Dsf.U12 * 100 : atoms.Dsf.B12;
+            Aniso13 = UseTypeU ? atoms.Dsf.U31 * 100 : atoms.Dsf.B31;
+            Aniso22 = UseTypeU ? atoms.Dsf.U22 * 100 : atoms.Dsf.B22;
+            Aniso23 = UseTypeU ? atoms.Dsf.U23 * 100 : atoms.Dsf.B23;
+            Aniso33 = UseTypeU ? atoms.Dsf.U31 * 100 : atoms.Dsf.B31;
+          
+            IsoErr = UseTypeU ? atoms.Dsf.Uiso_err * 100 : atoms.Dsf.Biso_err * 100;
+            Aniso11Err = UseTypeU ? atoms.Dsf.U11_err * 100 : atoms.Dsf.B11_err;
+            Aniso12Err = UseTypeU ? atoms.Dsf.U12_err * 100 : atoms.Dsf.B12_err;
+            Aniso13Err = UseTypeU ? atoms.Dsf.U31_err * 100 : atoms.Dsf.B31_err;
+            Aniso22Err = UseTypeU ? atoms.Dsf.U22_err * 100 : atoms.Dsf.B22_err;
+            Aniso23Err = UseTypeU ? atoms.Dsf.U23_err * 100 : atoms.Dsf.B23_err;
+            Aniso33Err = UseTypeU ? atoms.Dsf.U31_err * 100 : atoms.Dsf.B31_err;
+
+            #endregion
+
+            #region Appearance関連
+
+            Ambient = atoms.Ambient;
+            Diffusion = atoms.Diffusion;
+            Emission = atoms.Emission;
+            Shininess = atoms.Shininess;
+            Specular = atoms.Specular;
+
+            Radius = atoms.Radius;
+            AtomColor = Color.FromArgb(atoms.Argb);
+            Alpha = Color.FromArgb(atoms.Argb).A / 255f;
 
             ShowLabel = atoms.ShowLabel;
-           
+
+            #endregion
         }
 
 
@@ -512,7 +577,18 @@ namespace Crystallography.Controls
         /// <returns></returns>
         private Atoms GetFromInterface()
         {
-            var dsf = new DiffuseScatteringFactor(Istoropy, Biso, B11, B22, B33, B12, B23, B13, BisoErr, B11Err, B22Err, B33Err, B12Err, B23Err, B13Err);
+
+            var aniso = UseTypeU ?
+                new[] { Aniso11 / 100, Aniso22 / 100, Aniso33 / 100, Aniso12 / 100, Aniso23 / 100, Aniso13 / 100 } :
+                new[] { Aniso11, Aniso22, Aniso33, Aniso12, Aniso23, Aniso13 };
+
+            var anisoErr = UseTypeU ?
+                new[] { Aniso11Err / 100, Aniso22Err / 100, Aniso33Err / 100, Aniso12Err / 100, Aniso23Err / 100, Aniso13Err / 100 } :
+                new[] { Aniso11Err, Aniso22Err, Aniso33Err, Aniso12Err, Aniso23Err, Aniso13Err };
+
+            var dsf = new DiffuseScatteringFactor(UseTypeU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B,
+                UseIsotropy, Iso / 100, IsoErr / 100, aniso, anisoErr, Crystal.CellValue);
+
             var material = new Material(AtomColor.ToArgb(), (Ambient, Diffusion, Specular, Shininess, Emission), Alpha);
 
             var atoms = new Atoms(Label, AtomNo, AtomSubNoXray, AtomSubNoElectron, IsotopicComposition,
@@ -646,6 +722,9 @@ namespace Crystallography.Controls
         {
             //  this.toolTip.SetToolTip(this.listBoxAtoms, "displya element, position, symmetry seeting for each atoms.");
         }
+
+      
+
 
         private void buttonOriginShift_Click(object sender, EventArgs e)
         {

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -15,9 +11,9 @@ namespace Crystallography.Controls
         #region プロパティ、フィールド、イベントハンドラ
 
         public bool SkipEvent { get; set; } = false;
-        public int CrystalSystemIndex { get => comboBoxCrystalSystem.SelectedIndex; }
-        public int PointGroupIndex { get => comboBoxPointGroup.SelectedIndex; }
-        public int SpaceGroupIndex { get => comboBoxSpaceGroup.SelectedIndex; }
+        public int CrystalSystemIndex => comboBoxCrystalSystem.SelectedIndex;
+        public int PointGroupIndex => comboBoxPointGroup.SelectedIndex;
+        public int SpaceGroupIndex => comboBoxSpaceGroup.SelectedIndex;
 
 
         public int SymmetrySeriesNumber
@@ -64,7 +60,6 @@ namespace Crystallography.Controls
                 numericBoxBeta.RadianValue = value.Beta;
                 numericBoxGamma.RadianValue = value.Gamma;
                 SkipEvent = false;
-                
             }
         }
 
@@ -86,6 +81,18 @@ namespace Crystallography.Controls
             }
         }
 
+        public bool ShowError
+        {
+            get => checkBoxShowError.Checked;
+            set
+            {
+                SkipEvent = true;
+                checkBoxShowError.Checked = value;
+                SkipEvent = false;
+                tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width = checkBoxShowError.Checked ? 25 : 0;
+            }
+        }
+
         public event EventHandler ItemChanged;
 
         #endregion
@@ -96,6 +103,7 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             SymmetrySeriesNumber = 0;
+            tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width= 0;
         }
 
         #endregion
@@ -392,9 +400,17 @@ namespace Crystallography.Controls
             if (SkipEvent) return;
             if (!(sender as NumericBox).ReadOnly)//自分が読み込み専用でなければ
                 SetCellConstantsBySymmetry();
-        } 
+        }
+
         #endregion
 
-
+        #region エラー表示/非表示
+        private void checkBoxShowError_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SkipEvent) 
+                return;
+            ShowError = checkBoxShowError.Checked;
+        }
+        #endregion
     }
 }

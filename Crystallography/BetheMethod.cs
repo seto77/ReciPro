@@ -622,11 +622,11 @@ namespace Crystallography
                 //var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
                 var real = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
                 // 等方散乱因子の時 あるいは非等方でg=0の時
-                if (atoms.Dsf.IsIso || (index == (0, 0, 0)))
+                if (atoms.Dsf.UseIso || (index == (0, 0, 0)))
                 {
                     var m = atoms.Dsf.Biso;
                     var t = Math.Exp(-m * s2 * 0.01);
-                    if (!atoms.Dsf.IsIso && index == (0, 0, 0))// 非等方でg = 0の時 Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
+                    if (!atoms.Dsf.UseIso && index == (0, 0, 0))// 非等方でg = 0の時 Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
                     {
                         double a = Crystal.A, b = Crystal.B, c = Crystal.C;
                         m = (atoms.Dsf.B11 * a * a + atoms.Dsf.B22 * b * b + atoms.Dsf.B33 * c * c + 2 * atoms.Dsf.B12 * a * b + 2 * atoms.Dsf.B23 * b * c + 2 * atoms.Dsf.B31 * c * a) * 4.0 / 3.0;

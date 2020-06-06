@@ -1,6 +1,8 @@
+using MathNet.Numerics.Integration;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Numerics;
 using System.Xml.Serialization;
 
@@ -57,7 +59,7 @@ namespace Crystallography
         //public string str;
 
         public int Argb;
-       
+
 
         public float Radius = 0.6f;
 
@@ -73,8 +75,8 @@ namespace Crystallography
             get => (Ambient, Diffusion, Specular, Shininess, Emission);
             set
             {
-                Ambient = value.Ambient; 
-                Diffusion = value.Diffusion; 
+                Ambient = value.Ambient;
+                Diffusion = value.Diffusion;
                 Specular = value.Specular;
                 Shininess = value.Shininess;
                 Emission = value.Emission;
@@ -90,7 +92,7 @@ namespace Crystallography
         /// OpenGLの描画時に有効にするかどうか
         /// </summary>
         public bool GLEnabled = true;
-        
+
         #region コンストラクタ
 
         public Atoms()
@@ -169,7 +171,7 @@ namespace Crystallography
 
             SubNumberXray = subXray;
             SubNumberElectron = subElectron;
-            Isotope = isotope;
+            Isotope = isotope != null ? isotope : new double[0];
             AtomicNumber = atomicNumber;
             ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atomicNumber);
         }
@@ -190,7 +192,7 @@ namespace Crystallography
         /// <param name="dsf"></param>
         public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
            Vector3D pos, Vector3D pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
-            :this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos,  occ, dsf)
+            : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, occ, dsf)
         {
 
             X_err = pos_err.X;
@@ -217,8 +219,8 @@ namespace Crystallography
         /// <param name="radius"></param>
         public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
            Vector3D pos, Vector3D pos_err, double occ, double occ_err,
-            DiffuseScatteringFactor dsf,Material mat, float radius, bool glEnabled=true, bool showLabel=false)
-            :this (label,atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos,  pos_err, occ, occ_err, dsf)
+            DiffuseScatteringFactor dsf, Material mat, float radius, bool glEnabled = true, bool showLabel = false)
+            : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, pos_err, occ, occ_err, dsf)
         {
             Radius = radius;
             if (mat != null)
@@ -229,7 +231,7 @@ namespace Crystallography
             GLEnabled = glEnabled;
             ShowLabel = showLabel;
 
-        } 
+        }
         #endregion
 
         public void ResetSymmetry(int symmetrySeriesNumber)
@@ -241,22 +243,15 @@ namespace Crystallography
             SiteSymmetry = temp.SiteSymmetry;
             Multiplicity = temp.Multiplicity;
             WyckoffNumber = temp.WyckoffNumber;
-
-            //SubNumberXray = subXray;
-            //SubNumberElectron = subElectron;
-            //AtomicNumber = atomicNumber;
             ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(AtomicNumber);
 
-            if (Dsf.IsIso == false)
-                if (Dsf.B11 + Dsf.B12 + Dsf.B31 + Dsf.B22 + Dsf.B23 + Dsf.B33 == 0)
-                    Dsf.IsIso = true;
             Atom = temp.Atom;
         }
 
         public void ResetVesta()
         {
             #region Vestaの色設定
-            Texture = Material.DefaultTexture; 
+            Texture = Material.DefaultTexture;
             switch (AtomicNumber)
             {
                 case 1: Radius = (float)(0.46 * 0.4); Argb = Color.FromArgb(255, 204, 204).ToArgb(); break;
@@ -359,7 +354,7 @@ namespace Crystallography
             #endregion
         }
 
-      
+
 
         /// <summary>
         /// 多重度を保ったまま、原子位置を乱数的的に変化させる。ワイコフ位置も多重度をもとにきまる
@@ -447,7 +442,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="S2">S2: (Sin(theta)/ramda)^2</param>
         /// <returns></returns>
-        public double GetAtomicScatteringFactorForElectron(double s2) 
+        public double GetAtomicScatteringFactorForElectron(double s2)
             => AtomConstants.ElectronScattering[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
 
         /// <summary>
@@ -455,7 +450,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="s2"></param>
         /// <returns></returns>
-        public double GetAtomicScatteringFactorForXray(double s2) 
+        public double GetAtomicScatteringFactorForXray(double s2)
             => AtomConstants.XrayScattering[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
 
         public Complex GetAtomicScatteringFactorForNeutron()
@@ -1187,106 +1182,190 @@ namespace Crystallography
     [Serializable()]
     public class DiffuseScatteringFactor
     {
-        public double Biso = 0, B11 = 0, B22 = 0, B33 = 0, B12 = 0, B23 = 0, B31 = 0;
-        public double Biso_err = 0, B11_err = 0, B22_err = 0, B33_err = 0, B12_err = 0, B23_err = 0, B31_err = 0;
+        static readonly double PI2 = Math.PI * Math.PI;
+        public enum Type { U, B }
+        //Biomolecular Crystallography: Principles, Practice, and Application to Structural Biology
+        //641ページ
 
-        public bool IsIso;
 
-        public DiffuseScatteringFactor(bool isIso, double biso, double b11, double b22, double b33, double b12, double b23, double b31)
+        #region B type. Getのみ
+        public double Biso => OriginalType == Type.B ? Iso : Iso * PI2 * 8;
+        public double Biso_err => OriginalType == Type.B ? Iso_err : Iso_err * PI2 * 8;
+
+        public double B11 => OriginalType == Type.B ? Aniso11 : Aniso11 * coeff11;
+
+        public double B22 => OriginalType == Type.B ? Aniso22 : Aniso22 * coeff22;
+
+        public double B33 => OriginalType == Type.B ? Aniso33 : Aniso33 * coeff33;
+
+        public double B12 => OriginalType == Type.B ? Aniso12 : Aniso12 * coeff12;
+
+        public double B23 => OriginalType == Type.B ? Aniso23 : Aniso23 * coeff23;
+
+        public double B31 => OriginalType == Type.B ? Aniso31 : Aniso31 * coeff31;
+
+        public double B11_err => OriginalType == Type.B ? Aniso11_err : Aniso11_err * coeff11;
+
+        public double B22_err => OriginalType == Type.B ? Aniso22_err : Aniso22_err * coeff22;
+
+        public double B33_err => OriginalType == Type.B ? Aniso33_err : Aniso33_err * coeff33;
+
+        public double B12_err => OriginalType == Type.B ? Aniso12_err : Aniso12_err * coeff12;
+
+        public double B23_err => OriginalType == Type.B ? Aniso23_err : Aniso23_err * coeff23;
+
+        public double B31_err => OriginalType == Type.B ? Aniso31_err : Aniso31_err * coeff31;
+
+        #endregion
+
+        #region U type. Getのみ
+        public double Uiso => OriginalType == Type.U ? Iso : Iso / PI2 / 8;
+        public double Uiso_err => OriginalType == Type.U ? Iso_err : Iso_err / PI2 / 8;
+        public double U11 => OriginalType == Type.U ? Aniso11 : Aniso11 / coeff11;
+        public double U22 => OriginalType == Type.U ? Aniso22 : Aniso22 / coeff22;
+        public double U33 => OriginalType == Type.U ? Aniso33 : Aniso33 / coeff33;
+        public double U12 => OriginalType == Type.U ? Aniso12 : Aniso12 / coeff12;
+        public double U23 => OriginalType == Type.U ? Aniso23 : Aniso23 / coeff23;
+        public double U31 => OriginalType == Type.U ? Aniso31 : Aniso31 / coeff31;
+        public double U11_err => OriginalType == Type.U ? Aniso11_err : Aniso11_err / coeff11;
+        public double U22_err => OriginalType == Type.U ? Aniso22_err : Aniso22_err / coeff22;
+        public double U33_err => OriginalType == Type.U ? Aniso33_err : Aniso33_err / coeff33;
+        public double U12_err => OriginalType == Type.U ? Aniso12_err : Aniso12_err / coeff12;
+        public double U23_err => OriginalType == Type.U ? Aniso23_err : Aniso23_err / coeff23;
+        public double U31_err => OriginalType == Type.U ? Aniso31_err : Aniso31_err / coeff31;
+        #endregion
+
+
+        #region オリジナルの値
+        /// <summary>
+        /// 単位は nm^2
+        /// </summary>
+        public double Iso { get; set; }
+        /// <summary>
+        /// 単位は nm^2
+        /// </summary>
+        public double Iso_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso11 { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso22 { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso33 { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso12 { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso23 { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso31 { get; set; }
+
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso11_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso22_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso33_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso12_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso23_err { get; set; }
+        /// <summary>
+        /// 単位は Uの場合 nm^2,  Bの場合　無次元
+        /// </summary>
+        public double Aniso31_err { get; set; }
+
+        #endregion
+
+        public bool UseIso { get; set; }
+        public Type OriginalType { get; set; } = Type.B;
+
+        public (double A, double B, double C, double Alpha, double Beta, double Gamma) Cell
         {
-            IsIso = isIso;
-            Biso = biso;
-            B11 = b11;
-            B22 = b22;
-            B33 = b33;
-            B12 = b12;
-            B23 = b23;
-            B31 = b31;
-            Biso_err = B11_err = B22_err = B33_err = B12_err = B23_err = B31_err = 0;
-        }
-
-        //B のコンストラクタ Bはnm単位
-        public DiffuseScatteringFactor(bool isIso, double biso, double b11, double b22, double b33, double b12, double b23, double b31,
-            double biso_err, double b11_err, double b22_err, double b33_err, double b12_err, double b23_err, double b31_err)
-            : this(isIso, biso, b11, b22, b33, b12, b23, b31)
-        {
-            Biso_err = biso_err;
-            B11_err = b11_err;
-            B22_err = b22_err;
-            B33_err = b33_err;
-            B12_err = b12_err;
-            B23_err = b23_err;
-            B31_err = b31_err;
-        }
-
-        public DiffuseScatteringFactor(bool isIso, double uiso, double u11, double u22, double u33, double u12, double u23, double u31, double aStar, double bStar, double cStar)
-        {
-            double PI2 = Math.PI * Math.PI;
-            IsIso = isIso;
-            Biso = uiso * PI2 * 8;
-            B11 = u11 * PI2 * 2 * aStar * aStar;
-            B22 = u22 * PI2 * 2 * bStar * bStar;
-            B33 = u33 * PI2 * 2 * cStar * cStar;
-            B12 = u12 * PI2 * 2 * aStar * bStar;
-            B23 = u23 * PI2 * 2 * bStar * cStar;
-            B31 = u31 * PI2 * 2 * cStar * aStar;
-        }
-
-        public DiffuseScatteringFactor(bool isIso, double uiso, double u11, double u22, double u33, double u12, double u23, double u31,
-            double uiso_err, double u11_err, double u22_err, double u33_err, double u12_err, double u23_err, double u31_err, double aStar, double bStar, double cStar)
-            : this(isIso, uiso, u11, u22, u33, u12, u23, u31, aStar, bStar, cStar)
-        {
-            double PI2 = Math.PI * Math.PI;
-
-            Biso_err = uiso_err * PI2 * 8;
-            B11_err = u11_err * PI2 * 2 * aStar * aStar;
-            B22_err = u22_err * PI2 * 2 * bStar * bStar;
-            B33_err = u33_err * PI2 * 2 * cStar * cStar;
-            B12_err = u12_err * PI2 * 2 * aStar * bStar;
-            B23_err = u23_err * PI2 * 2 * bStar * cStar;
-            B31_err = u31_err * PI2 * 2 * cStar * aStar;
-        }
-
-        //B のコンストラクタ Bはnm単位
-        public DiffuseScatteringFactor(bool isIso, float[] biso, float[] baniso)
-        {
-            IsIso = isIso;
-            if (biso != null)
+            get => cell;
+            set
             {
-                Biso = biso[0];
-                if (biso.Length == 2)
-                    Biso_err = biso[1];
-            }
-            if (baniso != null)
-            {
-                B11 = baniso[0];
-                B22 = baniso[1];
-                B33 = baniso[2];
-                B12 = baniso[3];
-                B23 = baniso[4];
-                B31 = baniso[5];
-                if (baniso.Length == 12)
-                {
-                    B11_err = baniso[6];
-                    B22_err = baniso[7];
-                    B33_err = baniso[8];
-                    B12_err = baniso[9];
-                    B23_err = baniso[10];
-                    B31_err = baniso[11];
-                }
+                cell = value;
+                var cosAlpha = Math.Cos(cell.Alpha);
+                var sinAlpha = Math.Sin(cell.Alpha);
+                var cosBeta = Math.Cos(cell.Beta);
+                var sinBeta = Math.Sin(cell.Beta);
+                var cosGamma = Math.Cos(cell.Gamma);
+                var sinGamma = Math.Sin(cell.Gamma);
+                var v = cell.A * cell.B * cell.C * Math.Sqrt(1 - cosAlpha * cosAlpha - cosBeta * cosBeta - cosGamma * cosGamma + 2 * cosAlpha * cosBeta * cosGamma);
+                var aStar = cell.B * cell.C * sinAlpha / v;
+                var bStar = cell.C * cell.A * sinBeta / v;
+                var cStar = cell.A * cell.B * sinGamma / v;
+                var cosAlphaStar = (cosBeta * cosGamma - cosAlpha) / sinBeta / sinGamma;
+                var cosBetaStar = (cosGamma * cosAlpha - cosBeta) / sinGamma / sinAlpha;
+                var cosGammaStar = (cosAlpha * cosBeta - cosGamma) / sinAlpha / sinBeta;
+                coeff11 = PI2 * 2 * aStar * aStar;
+                coeff22 = PI2 * 2 * bStar * bStar;
+                coeff33 = PI2 * 2 * cStar * cStar;
+                coeff12 = PI2 * 2 * aStar * bStar * cosGammaStar;
+                coeff23 = PI2 * 2 * bStar * cStar * cosAlphaStar;
+                coeff31 = PI2 * 2 * cStar * aStar * cosBetaStar;
             }
         }
+        private (double A, double B, double C, double Alpha, double Beta, double Gamma) cell = (0, 0, 0, 0, 0, 0);
+
+        private double coeff11, coeff22, coeff33, coeff12, coeff23, coeff31;
 
         public DiffuseScatteringFactor()
         {
-            IsIso = true;
-            Biso = 0;
-            B11 = 0;
-            B22 = 0;
-            B33 = 0;
-            B12 = 0;
-            B23 = 0;
-            B31 = 0;
+        }
+
+        /// <summary>
+        /// コンストラクタ. B##は無次元, 他はnm^2. Cellの 単位は nm & radians.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="useIso"></param>
+        /// <param name="iso"></param>
+        /// <param name="iso_err"></param>
+        /// <param name="aniso"></param>
+        /// <param name="aniso_err"></param>
+        /// <param name="cell"></param>
+        public DiffuseScatteringFactor(Type t, bool useIso, double iso, double iso_err, double[] aniso, double[] aniso_err,
+            (double A, double B, double C, double Alpha, double Beta, double Gamma) cell)
+        {
+            OriginalType = t;
+            UseIso = useIso;
+            Iso = iso;
+            Iso_err = iso_err;
+            Aniso11 = aniso[0];
+            Aniso22 = aniso[1];
+            Aniso33 = aniso[2];
+            Aniso12 = aniso[3];
+            Aniso23 = aniso[4];
+            Aniso31 = aniso[5];
+            Aniso11_err = aniso_err[0];
+            Aniso22_err = aniso_err[1];
+            Aniso33_err = aniso_err[2];
+            Aniso12_err = aniso_err[3];
+            Aniso23_err = aniso_err[4];
+            Aniso31_err = aniso_err[5];
+
+            Cell = cell;
         }
     }
 }

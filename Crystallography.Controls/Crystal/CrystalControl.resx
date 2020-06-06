@@ -118,94 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxZnumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericBoxZnumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxZnumber.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxZnumber.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
-    <value>Z number</value>
-  </data>
-  <data name="numericBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="numericBoxZnumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxZnumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxZnumber.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 27</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxZnumber.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
-    <value>numericBoxZnumber</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="numericBoxVolume.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericBoxVolume.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxVolume.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxVolume.FooterText" xml:space="preserve">
     <value>Å^3</value>
-  </data>
-  <data name="numericBoxVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxVolume.HeaderText" xml:space="preserve">
     <value>Cell Volume</value>
   </data>
   <data name="numericBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 0</value>
+    <value>10, 4</value>
   </data>
   <data name="numericBoxVolume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxVolume.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -214,25 +147,23 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 27</value>
+    <value>185, 25</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxVolume.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
-  </data>
-  <data name="numericBoxVolume.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxVolume.Name" xml:space="preserve">
     <value>numericBoxVolume</value>
   </data>
   <data name="&gt;&gt;numericBoxVolume.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxVolume.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxVolume.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="numericBoxDensity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -240,29 +171,20 @@
   <data name="numericBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxDensity.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxDensity.FooterText" xml:space="preserve">
     <value>g/cm^3</value>
-  </data>
-  <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>Density</value>
   </data>
   <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 0</value>
+    <value>205, 4</value>
   </data>
   <data name="numericBoxDensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxDensity.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -271,25 +193,22 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 27</value>
+    <value>163, 25</value>
   </data>
   <data name="numericBoxDensity.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
-  </data>
-  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxDensity.Name" xml:space="preserve">
     <value>numericBoxDensity</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="colorControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,7 +238,7 @@
     <value>Profile color</value>
   </data>
   <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 30</value>
+    <value>378, 7</value>
   </data>
   <data name="colorControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 3, 3, 3</value>
@@ -337,25 +256,28 @@
     <value>colorControl</value>
   </data>
   <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 179</value>
+    <value>0, 180</value>
   </data>
   <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
+  <data name="flowLayoutPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 182</value>
+    <value>562, 181</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -371,6 +293,153 @@
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxFormula.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxFormula.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 3</value>
+  </data>
+  <data name="textBoxFormula.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="textBoxFormula.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxFormula.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxFormula.Size" type="System.Drawing.Size, System.Drawing">
+    <value>406, 41</value>
+  </data>
+  <data name="textBoxFormula.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Name" xml:space="preserve">
+    <value>textBoxFormula</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxZnumber.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericBoxZnumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxZnumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
+    <value>Z number</value>
+  </data>
+  <data name="numericBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 0</value>
+  </data>
+  <data name="numericBoxZnumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxZnumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxZnumber.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 25</value>
+  </data>
+  <data name="numericBoxZnumber.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
+    <value>numericBoxZnumber</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label90.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label90.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label90.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="label90.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label90.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 0, 0</value>
+  </data>
+  <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 19</value>
+  </data>
+  <data name="label90.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>Formula</value>
+  </data>
+  <data name="&gt;&gt;label90.Name" xml:space="preserve">
+    <value>label90</value>
+  </data>
+  <data name="&gt;&gt;label90.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label90.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 136</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 44</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="symmetryControl.CellConstants" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -418,7 +487,7 @@
     <value>3, 11, 3, 11</value>
   </data>
   <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 179</value>
+    <value>562, 136</value>
   </data>
   <data name="symmetryControl.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
@@ -427,13 +496,13 @@
     <value>symmetryControl</value>
   </data>
   <data name="&gt;&gt;symmetryControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.SymmetryControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.SymmetryControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;symmetryControl.Parent" xml:space="preserve">
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;symmetryControl.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -445,7 +514,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 361</value>
+    <value>562, 361</value>
   </data>
   <data name="panel5.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
@@ -469,7 +538,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageBasicInfo.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -511,7 +580,7 @@
     <value>446, 108</value>
   </data>
   <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="atomControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -520,7 +589,7 @@
     <value>atomControl</value>
   </data>
   <data name="&gt;&gt;atomControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.AtomControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.AtomControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;atomControl.Parent" xml:space="preserve">
     <value>tabPageAtom</value>
@@ -619,7 +688,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageAtom.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -658,7 +727,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="bondControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -667,7 +736,7 @@
     <value>bondControl</value>
   </data>
   <data name="&gt;&gt;bondControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bondControl.Parent" xml:space="preserve">
     <value>tabPageBondsPolyhedra</value>
@@ -679,7 +748,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageBondsPolyhedra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageBondsPolyhedra.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -715,7 +784,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>434, 225</value>
+    <value>450, 225</value>
   </data>
   <data name="textBoxTitle.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -739,7 +808,7 @@
     <value>109, 115</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 249</value>
+    <value>456, 249</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -835,7 +904,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 31</value>
+    <value>556, 31</value>
   </data>
   <data name="textBoxJournal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -859,7 +928,7 @@
     <value>3, 60</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 55</value>
+    <value>562, 55</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -892,7 +961,7 @@
     <value>True</value>
   </data>
   <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 33</value>
+    <value>556, 33</value>
   </data>
   <data name="textBoxMemo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -916,7 +985,7 @@
     <value>3, 3</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 57</value>
+    <value>562, 57</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -943,7 +1012,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageReference.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1053,21 +1122,6 @@
   <data name="numericBoxEOS_C.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_C.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_C.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_C.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_C.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_C.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_C.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 83</value>
   </data>
@@ -1075,7 +1129,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_C.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_C.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1084,19 +1138,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+    <value>54, 22</value>
   </data>
   <data name="numericBoxEOS_C.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="numericBoxEOS_C.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_C.Name" xml:space="preserve">
     <value>numericBoxEOS_C</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_C.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_C.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1110,21 +1161,6 @@
   <data name="numericBoxEOS_B.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_B.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_B.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_B.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_B.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_B.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_B.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 62</value>
   </data>
@@ -1132,7 +1168,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_B.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_B.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1141,19 +1177,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_B.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+    <value>54, 22</value>
   </data>
   <data name="numericBoxEOS_B.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
-  </data>
-  <data name="numericBoxEOS_B.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_B.Name" xml:space="preserve">
     <value>numericBoxEOS_B</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_B.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_B.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1230,21 +1263,6 @@
   <data name="numericBoxEOS_A.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_A.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_A.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_A.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_A.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_A.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_A.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 41</value>
   </data>
@@ -1252,7 +1270,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_A.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_A.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1261,19 +1279,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 24</value>
+    <value>54, 22</value>
   </data>
   <data name="numericBoxEOS_A.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="numericBoxEOS_A.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_A.Name" xml:space="preserve">
     <value>numericBoxEOS_A</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_A.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_A.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1287,21 +1302,6 @@
   <data name="numericBoxEOS_KperT.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_KperT.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KperT.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_KperT.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_KperT.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KperT.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_KperT.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 82</value>
   </data>
@@ -1309,7 +1309,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_KperT.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_KperT.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1318,19 +1318,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_KperT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 24</value>
+    <value>62, 22</value>
   </data>
   <data name="numericBoxEOS_KperT.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="numericBoxEOS_KperT.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_KperT.Name" xml:space="preserve">
     <value>numericBoxEOS_KperT</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KperT.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KperT.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1344,21 +1341,6 @@
   <data name="numericBoxEOS_Gamma0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_Gamma0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Gamma0.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_Gamma0.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_Gamma0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Gamma0.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_Gamma0.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 15</value>
   </data>
@@ -1366,7 +1348,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_Gamma0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_Gamma0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1375,19 +1357,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_Gamma0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 24</value>
+    <value>40, 22</value>
   </data>
   <data name="numericBoxEOS_Gamma0.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxEOS_Gamma0.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_Gamma0.Name" xml:space="preserve">
     <value>numericBoxEOS_Gamma0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Gamma0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Gamma0.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1992,21 +1971,6 @@
   <data name="numericBoxEOS_Theta0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_Theta0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Theta0.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_Theta0.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_Theta0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Theta0.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_Theta0.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 15</value>
   </data>
@@ -2014,7 +1978,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_Theta0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_Theta0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2023,19 +1987,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_Theta0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 24</value>
+    <value>35, 22</value>
   </data>
   <data name="numericBoxEOS_Theta0.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxEOS_Theta0.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_Theta0.Name" xml:space="preserve">
     <value>numericBoxEOS_Theta0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Theta0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Theta0.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2049,21 +2010,6 @@
   <data name="numericBoxEOS_Q.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_Q.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Q.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_Q.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_Q.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_Q.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_Q.Location" type="System.Drawing.Point, System.Drawing">
     <value>250, 15</value>
   </data>
@@ -2071,7 +2017,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_Q.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_Q.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2080,19 +2026,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_Q.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 24</value>
+    <value>38, 22</value>
   </data>
   <data name="numericBoxEOS_Q.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="numericBoxEOS_Q.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_Q.Name" xml:space="preserve">
     <value>numericBoxEOS_Q</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Q.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_Q.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2418,21 +2361,6 @@
   <data name="numericBoxEOS_V0perMol.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_V0perMol.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_V0perMol.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_V0perMol.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_V0perMol.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_V0perMol.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_V0perMol.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 53</value>
   </data>
@@ -2440,7 +2368,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_V0perMol.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_V0perMol.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2449,19 +2377,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_V0perMol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
+    <value>60, 22</value>
   </data>
   <data name="numericBoxEOS_V0perMol.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxEOS_V0perMol.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perMol.Name" xml:space="preserve">
     <value>numericBoxEOS_V0perMol</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perMol.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perMol.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2475,21 +2400,6 @@
   <data name="numericBoxEOS_V0perCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_V0perCell.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_V0perCell.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_V0perCell.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_V0perCell.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_V0perCell.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_V0perCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 31</value>
   </data>
@@ -2497,7 +2407,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_V0perCell.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_V0perCell.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2506,19 +2416,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_V0perCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
+    <value>60, 22</value>
   </data>
   <data name="numericBoxEOS_V0perCell.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxEOS_V0perCell.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perCell.Name" xml:space="preserve">
     <value>numericBoxEOS_V0perCell</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perCell.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_V0perCell.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2532,21 +2439,6 @@
   <data name="numericBoxEOS_KT0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_KT0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KT0.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_KT0.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_KT0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KT0.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_KT0.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 77</value>
   </data>
@@ -2554,7 +2446,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_KT0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_KT0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2563,19 +2455,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_KT0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 24</value>
+    <value>57, 22</value>
   </data>
   <data name="numericBoxEOS_KT0.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxEOS_KT0.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_KT0.Name" xml:space="preserve">
     <value>numericBoxEOS_KT0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KT0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KT0.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2754,21 +2643,6 @@
   <data name="numericBoxEOS_KprimeT0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_KprimeT0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KprimeT0.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEOS_KprimeT0.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEOS_KprimeT0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_KprimeT0.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEOS_KprimeT0.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 100</value>
   </data>
@@ -2776,7 +2650,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_KprimeT0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxEOS_KprimeT0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -2785,19 +2659,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_KprimeT0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 24</value>
+    <value>40, 22</value>
   </data>
   <data name="numericBoxEOS_KprimeT0.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxEOS_KprimeT0.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_KprimeT0.Name" xml:space="preserve">
     <value>numericBoxEOS_KprimeT0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KprimeT0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_KprimeT0.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2898,17 +2769,8 @@
   <data name="numericBoxEOS_T0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxEOS_T0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEOS_T0.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxEOS_T0.FooterText" xml:space="preserve">
     <value>K</value>
-  </data>
-  <data name="numericBoxEOS_T0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxEOS_T0.HeaderText" xml:space="preserve">
     <value>T0</value>
@@ -2920,7 +2782,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxEOS_T0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxEOS_T0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2929,19 +2791,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEOS_T0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 27</value>
+    <value>100, 25</value>
   </data>
   <data name="numericBoxEOS_T0.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxEOS_T0.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxEOS_T0.Name" xml:space="preserve">
     <value>numericBoxEOS_T0</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_T0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEOS_T0.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -2955,17 +2814,8 @@
   <data name="numericBoxTemperature.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxTemperature.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxTemperature.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxTemperature.FooterText" xml:space="preserve">
     <value>K</value>
-  </data>
-  <data name="numericBoxTemperature.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxTemperature.HeaderText" xml:space="preserve">
     <value>T</value>
@@ -2977,7 +2827,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxTemperature.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2986,19 +2836,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 27</value>
+    <value>88, 25</value>
   </data>
   <data name="numericBoxTemperature.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxTemperature.Name" xml:space="preserve">
     <value>numericBoxTemperature</value>
   </data>
   <data name="&gt;&gt;numericBoxTemperature.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTemperature.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -3012,17 +2859,8 @@
   <data name="numericBoxPressure.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="numericBoxPressure.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPressure.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxPressure.FooterText" xml:space="preserve">
     <value>GPa</value>
-  </data>
-  <data name="numericBoxPressure.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxPressure.HeaderText" xml:space="preserve">
     <value>P</value>
@@ -3034,7 +2872,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericBoxPressure.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxPressure.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3043,19 +2881,16 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 27</value>
+    <value>132, 25</value>
   </data>
   <data name="numericBoxPressure.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxPressure.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxPressure.Name" xml:space="preserve">
     <value>numericBoxPressure</value>
   </data>
   <data name="&gt;&gt;numericBoxPressure.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPressure.Parent" xml:space="preserve">
     <value>tabPageEOS</value>
@@ -3070,7 +2905,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageEOS.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3109,7 +2944,7 @@
     <value>elasticityControl1</value>
   </data>
   <data name="&gt;&gt;elasticityControl1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ElasticityControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ElasticityControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;elasticityControl1.Parent" xml:space="preserve">
     <value>tabPageElasticity</value>
@@ -3124,7 +2959,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageElasticity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageElasticity.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3150,21 +2985,6 @@
   <data name="numericBoxHill.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxHill.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxHill.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxHill.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxHill.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxHill.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxHill.Location" type="System.Drawing.Point, System.Drawing">
     <value>306, 159</value>
   </data>
@@ -3172,7 +2992,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxHill.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3181,19 +3001,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxHill.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxHill.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
-  </data>
-  <data name="numericBoxHill.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxHill.Name" xml:space="preserve">
     <value>numericBoxHill</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3784,21 +3601,6 @@
   <data name="numericBoxStress33.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress33.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress33.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress33.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress33.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress33.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress33.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 125</value>
   </data>
@@ -3806,7 +3608,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress33.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3815,19 +3617,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress33.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
-  </data>
-  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress33.Name" xml:space="preserve">
     <value>numericBoxStress33</value>
   </data>
   <data name="&gt;&gt;numericBoxStress33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress33.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3841,21 +3640,6 @@
   <data name="numericBoxStress22.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress22.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress22.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress22.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress22.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress22.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress22.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 84</value>
   </data>
@@ -3863,7 +3647,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress22.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3872,19 +3656,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress22.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress22.Name" xml:space="preserve">
     <value>numericBoxStress22</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3898,21 +3679,6 @@
   <data name="numericBoxStress11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress11.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress11.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress11.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress11.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress11.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress11.Location" type="System.Drawing.Point, System.Drawing">
     <value>209, 46</value>
   </data>
@@ -3920,7 +3686,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress11.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3929,19 +3695,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress11.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress11.Name" xml:space="preserve">
     <value>numericBoxStress11</value>
   </data>
   <data name="&gt;&gt;numericBoxStress11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress11.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -3955,21 +3718,6 @@
   <data name="numericBoxStress23.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress23.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress23.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress23.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress23.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress23.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress23.Location" type="System.Drawing.Point, System.Drawing">
     <value>307, 84</value>
   </data>
@@ -3977,7 +3725,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress23.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -3986,19 +3734,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress23.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
-  </data>
-  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress23.Name" xml:space="preserve">
     <value>numericBoxStress23</value>
   </data>
   <data name="&gt;&gt;numericBoxStress23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress23.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4012,21 +3757,6 @@
   <data name="numericBoxStress13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress13.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress13.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress13.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress13.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress13.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress13.Location" type="System.Drawing.Point, System.Drawing">
     <value>307, 46</value>
   </data>
@@ -4034,7 +3764,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress13.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4043,19 +3773,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress13.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
-  </data>
-  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress13.Name" xml:space="preserve">
     <value>numericBoxStress13</value>
   </data>
   <data name="&gt;&gt;numericBoxStress13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress13.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4069,21 +3796,6 @@
   <data name="numericBoxStress12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStress12.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress12.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStress12.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStress12.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress12.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStress12.Location" type="System.Drawing.Point, System.Drawing">
     <value>258, 46</value>
   </data>
@@ -4091,7 +3803,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStress12.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4100,19 +3812,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStress12.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStress12.Name" xml:space="preserve">
     <value>numericBoxStress12</value>
   </data>
   <data name="&gt;&gt;numericBoxStress12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStress12.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4126,21 +3835,6 @@
   <data name="numericBoxStrain33.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain33.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain33.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain33.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain33.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain33.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 121</value>
   </data>
@@ -4148,7 +3842,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain33.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4157,19 +3851,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain33.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
     <value>numericBoxStrain33</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4183,21 +3874,6 @@
   <data name="numericBoxStrain11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain11.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain11.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain11.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain11.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain11.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain11.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 46</value>
   </data>
@@ -4205,7 +3881,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain11.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4214,19 +3890,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain11.Name" xml:space="preserve">
     <value>numericBoxStrain11</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain11.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4240,21 +3913,6 @@
   <data name="numericBoxStrain22.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain22.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain22.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain22.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain22.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain22.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain22.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 84</value>
   </data>
@@ -4262,7 +3920,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain22.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4271,19 +3929,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain22.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain22.Name" xml:space="preserve">
     <value>numericBoxStrain22</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain22.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4297,21 +3952,6 @@
   <data name="numericBoxStrain12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain12.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain12.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain12.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain12.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain12.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain12.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 46</value>
   </data>
@@ -4319,7 +3959,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain12.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4328,19 +3968,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain12.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain12.Name" xml:space="preserve">
     <value>numericBoxStrain12</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain12.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4354,21 +3991,6 @@
   <data name="numericBoxStrain23.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain23.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain23.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain23.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain23.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain23.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain23.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 84</value>
   </data>
@@ -4376,7 +3998,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain23.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4385,19 +4007,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain23.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain23.Name" xml:space="preserve">
     <value>numericBoxStrain23</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain23.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4411,21 +4030,6 @@
   <data name="numericBoxStrain13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxStrain13.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain13.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStrain13.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxStrain13.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain13.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStrain13.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 46</value>
   </data>
@@ -4433,7 +4037,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 22</value>
   </data>
   <data name="numericBoxStrain13.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4442,19 +4046,16 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxStrain13.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericBoxStrain13.Name" xml:space="preserve">
     <value>numericBoxStrain13</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain13.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
@@ -4469,7 +4070,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageStrainStress.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4550,7 +4151,7 @@
     <value>4, 2, 4, 2</value>
   </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 313</value>
+    <value>568, 313</value>
   </data>
   <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -4559,7 +4160,7 @@
     <value>poleFigureControl</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.PoleFigureControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.PoleFigureControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Parent" xml:space="preserve">
     <value>tabPagePolycrystalline</value>
@@ -4616,7 +4217,7 @@
     <value>0, 27</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 27</value>
+    <value>568, 27</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>149</value>
@@ -4877,7 +4478,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 27</value>
+    <value>568, 27</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>148</value>
@@ -4901,7 +4502,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPagePolycrystalline.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4934,7 +4535,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 361</value>
+    <value>562, 361</value>
   </data>
   <data name="boundControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4943,7 +4544,7 @@
     <value>boundControl</value>
   </data>
   <data name="&gt;&gt;boundControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.BoundControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.BoundControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;boundControl.Parent" xml:space="preserve">
     <value>tabPageBounds</value>
@@ -4958,7 +4559,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageBounds.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4991,7 +4592,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 361</value>
+    <value>562, 361</value>
   </data>
   <data name="latticePlaneControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5000,7 +4601,7 @@
     <value>latticePlaneControl</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.LatticePlaneControl, Crystallography.Controls, Version=2020.5.16.1450, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.LatticePlaneControl, Crystallography.Controls, Version=2020.6.6.649, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.Parent" xml:space="preserve">
     <value>tabPageLatticePlane</value>
@@ -5015,7 +4616,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>552, 367</value>
+    <value>568, 367</value>
   </data>
   <data name="tabPageLatticePlane.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -5048,7 +4649,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 397</value>
+    <value>576, 397</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5134,86 +4735,8 @@
   <data name="&gt;&gt;contextMenuStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="textBoxFormula.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="textBoxFormula.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 0</value>
-  </data>
-  <data name="textBoxFormula.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="textBoxFormula.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxFormula.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="textBoxFormula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 25</value>
-  </data>
-  <data name="textBoxFormula.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="&gt;&gt;textBoxFormula.Name" xml:space="preserve">
-    <value>textBoxFormula</value>
-  </data>
-  <data name="&gt;&gt;textBoxFormula.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFormula.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;textBoxFormula.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label90.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label90.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label90.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label90.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 0</value>
-  </data>
-  <data name="label90.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 0</value>
-  </data>
-  <data name="label90.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 0, 0</value>
-  </data>
-  <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 19</value>
-  </data>
-  <data name="label90.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="label90.Text" xml:space="preserve">
-    <value>Formula</value>
-  </data>
-  <data name="&gt;&gt;label90.Name" xml:space="preserve">
-    <value>label90</value>
-  </data>
-  <data name="&gt;&gt;label90.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label90.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="textBoxName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+    <value>Fill</value>
   </data>
   <data name="textBoxName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -5225,7 +4748,7 @@
     <value>0, 3, 0, 0</value>
   </data>
   <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 25</value>
+    <value>475, 25</value>
   </data>
   <data name="textBoxName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5240,7 +4763,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;textBoxName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5282,7 +4805,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -5303,7 +4826,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 0</value>
+    <value>518, 0</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 25</value>
@@ -5327,7 +4850,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5342,7 +4865,7 @@
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 0</value>
+    <value>576, 0</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -5369,7 +4892,7 @@
     <value>0, 0, 0, 2</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 27</value>
+    <value>576, 27</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
@@ -5402,7 +4925,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 424</value>
+    <value>576, 424</value>
   </data>
   <data name="&gt;&gt;resetToolStripMenuItem.Name" xml:space="preserve">
     <value>resetToolStripMenuItem</value>

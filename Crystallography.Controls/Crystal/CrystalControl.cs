@@ -313,8 +313,16 @@ namespace Crystallography.Controls
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fileName.Length == 1)
             {
-                try { Crystal = ConvertCrystalData.ConvertToCrystal(fileName[0]); }
-                catch { return; }
+                try {
+                    Crystal = ConvertCrystalData.ConvertToCrystal(fileName[0]); 
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    MessageBox.Show(ex.ToString());
+#endif
+                    return;
+                }
             }
         }
 
@@ -374,7 +382,7 @@ namespace Crystallography.Controls
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < crystal.Atoms.Length; i++)
-                crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(true, 0, 0, 0, 0, 0, 0, 0);
+                crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, 0, 0, null, null, Crystal.CellValue);
         }
 
         #endregion 右クリックメニュー

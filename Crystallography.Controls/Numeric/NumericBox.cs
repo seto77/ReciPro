@@ -497,13 +497,15 @@ namespace Crystallography.Controls
         }
 
 
-        static readonly double threshold = 0.0000000001;
+       
         /// <summary>
         /// 現在のnumericalValueからテキストボックスの文字列を設定する
         /// </summary>
         /// <returns></returns>
         internal string GetString()
         {
+            var threshold = DecimalPlaces >= 0  ? Math.Pow(10,-decimalPlaces) :  0.0000000001;
+
             if (InvokeRequired)
                 return (string)Invoke(new Func<string>(GetString), null);
 
