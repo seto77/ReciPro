@@ -220,7 +220,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBiso.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxBiso.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -229,7 +229,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxBiso.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 22</value>
+    <value>96, 24</value>
   </data>
   <data name="numericBoxBiso.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -238,7 +238,7 @@
     <value>numericBoxBiso</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Parent" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
@@ -280,7 +280,7 @@
     <value>numericBoxBisoerr</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Parent" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
@@ -955,7 +955,7 @@
     <value>numericBox1</value>
   </data>
   <data name="&gt;&gt;numericBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox1.Parent" xml:space="preserve">
     <value>flowLayoutPanel8</value>
@@ -1027,7 +1027,7 @@
     <value>numericBox2</value>
   </data>
   <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
     <value>flowLayoutPanel8</value>
@@ -1150,7 +1150,7 @@
     <value>numericBox3</value>
   </data>
   <data name="&gt;&gt;numericBox3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox3.Parent" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -1222,7 +1222,7 @@
     <value>numericBox4</value>
   </data>
   <data name="&gt;&gt;numericBox4.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox4.Parent" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -1340,7 +1340,7 @@
     <value>numericBoxOccerr</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1367,7 +1367,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOcc.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxOcc.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1376,7 +1376,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxOcc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
+    <value>77, 24</value>
   </data>
   <data name="numericBoxOcc.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1385,7 +1385,7 @@
     <value>numericBoxOcc</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1412,7 +1412,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1421,7 +1421,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
+    <value>77, 24</value>
   </data>
   <data name="numericBoxZ.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1430,7 +1430,7 @@
     <value>numericBoxZ</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1463,7 +1463,7 @@
     <value>numericBoxYerr</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1496,7 +1496,7 @@
     <value>numericBoxXerr</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1523,7 +1523,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1532,7 +1532,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
+    <value>77, 24</value>
   </data>
   <data name="numericBoxY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1541,7 +1541,7 @@
     <value>numericBoxY</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1568,7 +1568,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -1577,7 +1577,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
+    <value>77, 24</value>
   </data>
   <data name="numericBoxX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1586,7 +1586,7 @@
     <value>numericBoxX</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1619,7 +1619,7 @@
     <value>numericBoxZerr</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2252,7 +2252,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxOriginShiftZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -2261,7 +2261,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxOriginShiftZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 23</value>
+    <value>46, 25</value>
   </data>
   <data name="numericBoxOriginShiftZ.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2270,7 +2270,7 @@
     <value>numericBoxOriginShiftZ</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2297,7 +2297,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxOriginShiftY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -2306,7 +2306,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxOriginShiftY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 23</value>
+    <value>46, 25</value>
   </data>
   <data name="numericBoxOriginShiftY.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2315,7 +2315,7 @@
     <value>numericBoxOriginShiftY</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2342,7 +2342,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxOriginShiftX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -2351,7 +2351,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxOriginShiftX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 23</value>
+    <value>46, 25</value>
   </data>
   <data name="numericBoxOriginShiftX.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2360,7 +2360,7 @@
     <value>numericBoxOriginShiftX</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2684,13 +2684,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB22.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB22.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2699,7 +2699,7 @@
     <value>numericBoxB22</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2726,13 +2726,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB22err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB22err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB22err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2741,7 +2741,7 @@
     <value>numericBoxB22err</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2768,13 +2768,13 @@
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB23.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB23.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2783,7 +2783,7 @@
     <value>numericBoxB23</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2810,13 +2810,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB23err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB23err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB23err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2825,7 +2825,7 @@
     <value>numericBoxB23err</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2852,13 +2852,13 @@
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB33.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB33.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2867,7 +2867,7 @@
     <value>numericBoxB33</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2894,13 +2894,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB33err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB33err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB33err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2909,7 +2909,7 @@
     <value>numericBoxB33err</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2921,7 +2921,7 @@
     <value>62, 50</value>
   </data>
   <data name="flowLayoutPanelAniso2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 22</value>
+    <value>451, 24</value>
   </data>
   <data name="flowLayoutPanelAniso2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2963,13 +2963,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB11.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2978,7 +2978,7 @@
     <value>numericBoxB11</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3005,13 +3005,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB11err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB11err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3020,7 +3020,7 @@
     <value>numericBoxB11err</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3047,13 +3047,13 @@
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB12.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB12.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3062,7 +3062,7 @@
     <value>numericBoxB12</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3089,13 +3089,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB12err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB12err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB12err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3104,7 +3104,7 @@
     <value>numericBoxB12err</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3131,13 +3131,13 @@
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB13.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>81, 24</value>
   </data>
   <data name="numericBoxB13.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3146,7 +3146,7 @@
     <value>numericBoxB13</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3173,13 +3173,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB13err.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
   <data name="numericBoxB13err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericBoxB13err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3188,7 +3188,7 @@
     <value>numericBoxB13err</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3200,7 +3200,7 @@
     <value>62, 27</value>
   </data>
   <data name="flowLayoutPanelAniso1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 22</value>
+    <value>451, 24</value>
   </data>
   <data name="flowLayoutPanelAniso1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3821,7 +3821,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -3830,7 +3830,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 23</value>
+    <value>49, 25</value>
   </data>
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3839,7 +3839,7 @@
     <value>numericBoxAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3866,7 +3866,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxEmission.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxEmission.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -3875,7 +3875,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxEmission.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 23</value>
+    <value>48, 25</value>
   </data>
   <data name="numericBoxEmission.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3884,7 +3884,7 @@
     <value>numericBoxEmission</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3911,7 +3911,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxShininess.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxShininess.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -3920,7 +3920,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxShininess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 23</value>
+    <value>48, 25</value>
   </data>
   <data name="numericBoxShininess.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3929,7 +3929,7 @@
     <value>numericBoxShininess</value>
   </data>
   <data name="&gt;&gt;numericBoxShininess.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxShininess.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3956,7 +3956,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxSpecular.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxSpecular.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -3965,7 +3965,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSpecular.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 23</value>
+    <value>48, 25</value>
   </data>
   <data name="numericBoxSpecular.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -3974,7 +3974,7 @@
     <value>numericBoxSpecular</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4001,7 +4001,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDiffusion.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxDiffusion.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4010,7 +4010,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDiffusion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 23</value>
+    <value>48, 25</value>
   </data>
   <data name="numericBoxDiffusion.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4019,7 +4019,7 @@
     <value>numericBoxDiffusion</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4046,7 +4046,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAmbient.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAmbient.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4055,7 +4055,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAmbient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 23</value>
+    <value>48, 25</value>
   </data>
   <data name="numericBoxAmbient.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4064,7 +4064,7 @@
     <value>numericBoxAmbient</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4097,7 +4097,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAtomRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAtomRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -4106,7 +4106,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAtomRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+    <value>120, 25</value>
   </data>
   <data name="numericBoxAtomRadius.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4115,7 +4115,7 @@
     <value>numericBoxAtomRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4169,7 +4169,7 @@
     <value>colorControlAtomColor</value>
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.6.6.642, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.6.6.1420, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>

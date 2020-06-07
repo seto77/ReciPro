@@ -884,13 +884,6 @@ namespace ReciPro
         #endregion Draw
 
         #region その他イベント
-
-        private void FormStructureViewer_Paint(object sender, PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Draw();
-        }
-
         private void FormStructureViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
@@ -910,6 +903,16 @@ namespace ReciPro
                     SetGLObjects(formMain.crystalControl.Crystal);
 
             MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
+        }
+
+        /// <summary>
+        /// 角度をリセットする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonResetRotation_Click(object sender, EventArgs e)
+        {
+            formMain.SetRotation(new Matrix3D());
         }
 
         #endregion その他イベント
@@ -1670,5 +1673,6 @@ namespace ReciPro
 
         #endregion
 
+       
     }
 }
