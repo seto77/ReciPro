@@ -70,14 +70,25 @@ namespace ReciPro
         #endregion クリップボード監視
 
         #region プロパティ、フィールド、イベントハンドラ
+        public FormStructureViewer FormStructureViewer;
+        public FormDiffractionSimulator FormDiffractionSimulator;
+        public FormStereonet FormStereonet;
+        public FormTEMID FormTEMID;
+        public FormSpotID FormSpotID;
+        public FormCalculator FormCalculator;
+        public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
+        public FormRotationMatrix FormRotation;
+        public FormImageSimulator FormImageSimulator;
+        private Crystallography.Controls.CommonDialog commonDialog;
 
+        private GLControlAlpha glControlAxes;
         public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
         public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
         public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
 
         public string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
-        public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }//=new Crystal();
+        public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }
 
         public Crystal[] Crystals
         {
@@ -95,26 +106,16 @@ namespace ReciPro
                 }
             }
         }
-
-        public FormStructureViewer FormStructureViewer;
-        public FormDiffractionSimulator FormDiffractionSimulator;
-        public FormStereonet FormStereonet;
-        public FormTEMID FormTEMID;
-        public FormSpotID FormSpotID;
-        public FormCalculator FormCalculator;
-        public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
-        public FormRotationMatrix FormRotation;
-        public FormImageSimulator FormImageSimulator;
-
-        private Crystallography.Controls.CommonDialog commonDialog;
-
-        private GLControlAlpha glControlAxes;
-
-        public bool skipProgressEvent { get; set; } = false;
+        public bool SkipProgressEvent { get; set; } = false;
         private readonly IProgress<(long, long, long, string)> ip;//IReport
+        public bool YusaGonioMode { get; set; } = false;
+
+        private readonly Stopwatch sw = new Stopwatch();
+        public bool SkipDrawing { get; set; } = false;
 
         #endregion
 
+        #region コンストラクト、ロード
 
         /// <summary>
         /// コンストラクタ
@@ -124,23 +125,18 @@ namespace ReciPro
             if (DesignMode)
                 return;
 
-            RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+            var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
             try
             {
                 if ((ModifierKeys & Keys.Control) == Keys.Control)
                     regKey.SetValue("DisableOpenGL", true);
 
-                string culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-                if (culture.ToLower().StartsWith("ja"))
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja");
-                else
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                var culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.ToLower().StartsWith("ja") ? "ja" : "en");
 
             }
             catch { }
-
             InitializeComponent();
-
             ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
         }
 
@@ -155,17 +151,7 @@ namespace ReciPro
             if (DesignMode) return;
             sw.Restart();
 
-            //#if !DEBUG
-            //Ngen.Compile(new string[] { "Crystallography.dll", "Crystallography.Control.dll", "GLSharp.dll", "OpenTK.dll", "OpenTK.GLU.dll", "ReciPro.exe" });
-            //Ngen.Compile();
-            //#endif
-            //  long t;
-            //  toolStripStatusLabelCalcTime.Text = "";
-            //  Stopwatch sw = new System.Diagnostics.Stopwatch();
-            //  sw.Start();
-
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
-
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
             commonDialog = new Crystallography.Controls.CommonDialog
@@ -184,10 +170,8 @@ namespace ReciPro
             try { ReadInitialRegistry(); }
             catch { MessageBox.Show("failed reading registries."); }
 
+            commonDialog.Progress =("Now Loading...Initializing OpenGL.", 0.1);
 
-
-            commonDialog.Text = "Now Loading...Initializing OpenGL.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.1);
             //ここでglControlコントロールを追加. Mac環境の対応のため。
             try
             {
@@ -216,70 +200,46 @@ namespace ReciPro
             catch (Exception ex)
             {
 #if DEBUG
-                    MessageBox.Show("Error during initializing GLcontrol");
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during initializing GLcontrol");
+                MessageBox.Show(ex.Message);
 #endif
-
                 disableOpneGLToolStripMenuItem.Checked = true;
 
-                RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+                var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
                 regKey.SetValue("DisableOpenGL", true);
                 // this.Close();
             }
-            Application.DoEvents();
 
-
-            commonDialog.Text = "Now Loading...Initializing 'Rotation' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.15);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.",  0.15);
             FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
 
-
-            commonDialog.Text = "Now Loading...Initializing 'Structure Viewer' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.2);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.",  0.2); 
             FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
             FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-            commonDialog.Text = "Now Loading...Initializing 'Stereonet' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.3);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.",  0.3); 
             FormStereonet = new FormStereonet { formMain = this, Visible = false };
             FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-            commonDialog.Text = "Now Loading...Initializing 'Crystal diffraction' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.4);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.",  0.4);
             FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
             FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
-
-            commonDialog.Text = "Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.45);
-            Application.DoEvents();
-            FormImageSimulator = new FormImageSimulator
-            {
-                FormMain = this,
-                Visible = false
-            };
+            commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.45); 
+            FormImageSimulator = new FormImageSimulator { FormMain = this, Visible = false };
             //FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             //FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             //FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
-
-            commonDialog.Text = "Now Loading...Initializing 'Powder diffraction' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.5);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.",  0.5); 
             FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
             FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
-            commonDialog.Text = "Now Loading...Initializing 'TEM ID' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.6);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.",  0.6); 
             //  t = sw.ElapsedMilliseconds;
             FormTEMID = new FormTEMID { formMain = this, Visible = false };
             FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
@@ -287,14 +247,10 @@ namespace ReciPro
             FormTEMID.Visible = false;
             FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
 
-            commonDialog.Text = "Now Loading...Initializing 'Spot ID' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.7);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.7); 
             FormSpotID = new FormSpotID { FormMain = this, Visible = false };
 
-            commonDialog.Text = "Now Loading...Initializing 'Calculator' form.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.8);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.8);
             //  toolStripStatusLabelCalcTime.Text += "formTEMID " + (sw.ElapsedMilliseconds-t).ToString() + "  ";
 
             FormCalculator = new FormCalculator { Owner = this, Visible = false };
@@ -302,26 +258,16 @@ namespace ReciPro
             FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormCalculator.FormClosing += new FormClosingEventHandler(formCalculator_FormClosing);
 
-            commonDialog.Text = "Now Loading...Initializing clipboard viewer.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.9);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.9);
             NextHandle = SetClipboardViewer(this.Handle);
 
-            commonDialog.Text = "Now Loading...Setting CrystalChanged event.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.91);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Setting CrystalChanged event.", 0.91); 
             crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
 
-            commonDialog.Text = "Now Loading...Initialize Crystal class.";
+            commonDialog.Progress = ("Now Loading...Initialize Crystal class.", 0.92);
             Crystal = new Crystal();
 
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.92);
-            Application.DoEvents();
-
-            commonDialog.Text = "Now Loading...Setting default crystal list.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.94);
-
-
+            commonDialog.Progress = ("Now Loading...Setting default crystal list.", 0.94);
             var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\";
             //default.xmlをinitial.xmlとしてコピー
             //if (!File.Exists(UserAppDataPath + "initial.xml"))
@@ -346,24 +292,16 @@ namespace ReciPro
             if (listBox.Items.Count == 0)
                 readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
-            commonDialog.Text = "Now Loading...Setting ReadMe.txt.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.96);
-            Application.DoEvents();
-
+            commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.",0.96);
             DrawAxes();
 
-            commonDialog.Text = "Now Loading...Reading registries again.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.98);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Reading registries again.",0.98);
             ReadInitialRegistry();
 
-            commonDialog.Text = "Now Loading...Recognizing Click Once application or not.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 0.99);
-            Application.DoEvents();
+            commonDialog.Progress = ("Now Loading...Recognizing Click Once application or not.",0.99);
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
-            commonDialog.Text = "Initializing has been finished successfully. You can close this window.";
-            commonDialog.progressBar.Value = (int)(commonDialog.progressBar.Maximum * 1.0);
+            commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.",1.0);
             if (commonDialog.AutomaricallyClose)
                 commonDialog.Visible = false;
 
@@ -390,127 +328,11 @@ namespace ReciPro
 
         }
 
-        public bool YusaGonioMode { get; set; } = false;
-
-
         /// <summary>
-        /// 回転量と回転角度を指定して、全フォームに回転命令を出す
+        /// クローズ時
         /// </summary>
-        /// <param name="axis"></param>
-        /// <param name="angle"></param>
-        public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
-
-        /// <summary>
-        /// 回転量と回転角度を指定して、全フォームに回転命令を出す
-        /// </summary>
-        /// <param name="axis"></param>
-        /// <param name="angle"></param>
-        public void Rotate(Vector3DBase axis, double angle)
-        {
-            axis = axis.Normarize();
-            if (angle == 0) return;
-
-            if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
-            {
-                FormRotation.setRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
-                return;
-            }
-
-            for (int i = 0; i < Crystals.Length; i++)
-            {
-                Matrix3D rot;
-                if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
-                    rot = Matrix3D.Rot(axis, angle);
-                else
-                {
-                    var newAxis = checkBoxFixAxis.Checked ?
-                         Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis) :
-                         Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);
-                    if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
-                        rot = Matrix3D.Rot(newAxis, angle);
-                    else
-                        rot = Matrix3D.Rot(newAxis, -angle);
-                }
-                Crystals[i].RotationMatrix = rot * Crystals[i].RotationMatrix;
-            }
-            SetRotation(Crystals[0].RotationMatrix);
-        }
-
-        /// <summary>
-        /// 回転行列を指定して、全フォームの回転状態をセットする
-        /// </summary>
-        /// <param name="mat"></param>
-        public void SetRotation(Matrix3D mat)
-        {
-            if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
-            {
-                Invoke(new Action(() => SetRotation(mat)), null);
-                return;
-            }
-            Crystal.RotationMatrix = mat;
-            if (FormStructureViewer.Visible)
-                FormStructureViewer.Draw();
-
-            if (FormStereonet.Visible)
-                FormStereonet.Draw();
-
-            if (FormDiffractionSimulator.Visible)
-                FormDiffractionSimulator.Draw();
-
-            if (FormImageSimulator.Visible)
-                FormImageSimulator.RotationChanged();
-
-            if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力された時
-                FormRotation.SetRotation();
-
-            DrawAxes();
-
-            if (!SkipEulerChange)//Euler Angle が直接入力されてない時
-            {
-                var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
-                SkipEulerChange = true;
-                numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-                numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-                numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
-                SkipEulerChange = false;
-
-                if (FormRotation.Visible)
-                    FormRotation.SetRotation();
-
-                SetNearestUVW();
-            }
-        }
-
-        private void FormTEMID_VisibleChanged(object sender, EventArgs e)
-        {
-            if (FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible)
-                listBox.SelectionMode = SelectionMode.MultiExtended;
-            else
-                listBox.SelectionMode = SelectionMode.One;
-        }
-
-        private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
-        {
-            if (FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible)
-                listBox.SelectionMode = SelectionMode.MultiExtended;
-            else
-                listBox.SelectionMode = SelectionMode.One;
-        }
-
-        private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
-        {
-            if (FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible)
-                listBox.SelectionMode = SelectionMode.MultiExtended;
-            else
-                listBox.SelectionMode = SelectionMode.One;
-        }
-
-        private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            FormCalculator.Visible = false;
-            e.Cancel = true;
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             //FormCalculator.Close();
@@ -526,6 +348,7 @@ namespace ReciPro
                 cry.Add((Crystal)listBox.Items[i]);
             ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
         }
+        #endregion
 
         #region レジストリ操作
 
@@ -714,8 +537,145 @@ namespace ReciPro
 
         #endregion レジストリ操作
 
-        public bool skipDrawing = false;
+        #region 回転操作
 
+
+        /// <summary>
+        /// 回転量と回転角度を指定して、全フォームに回転命令を出す
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="angle"></param>
+        public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
+
+        /// <summary>
+        /// 回転量と回転角度を指定して、全フォームに回転命令を出す
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="angle"></param>
+        public void Rotate(Vector3DBase axis, double angle)
+        {
+            axis = axis.Normarize();
+            if (angle == 0) return;
+
+            if (FormRotation.Linked)//FormRotationのリンクが有効な場合は、FormRotation側で回転状況を制御する
+            {
+                FormRotation.setRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
+                return;
+            }
+
+            for (int i = 0; i < Crystals.Length; i++)
+            {
+                Matrix3D rot;
+                if (!checkBoxFixAxis.Checked && !checkBoxFixePlane.Checked && !FormRotation.Linked)
+                    rot = Matrix3D.Rot(axis, angle);
+                else
+                {
+                    var newAxis = checkBoxFixAxis.Checked ?
+                         Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis) :
+                         Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);
+                    if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
+                        rot = Matrix3D.Rot(newAxis, angle);
+                    else
+                        rot = Matrix3D.Rot(newAxis, -angle);
+                }
+                Crystals[i].RotationMatrix = rot * Crystals[i].RotationMatrix;
+            }
+            SetRotation(Crystals[0].RotationMatrix);
+        }
+
+        /// <summary>
+        /// 回転行列を指定して、全フォームの回転状態をセットする
+        /// </summary>
+        /// <param name="mat"></param>
+        public void SetRotation(Matrix3D mat)
+        {
+            if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
+            {
+                Invoke(new Action(() => SetRotation(mat)), null);
+                return;
+            }
+            Crystal.RotationMatrix = mat;
+            if (FormStructureViewer.Visible)
+                FormStructureViewer.Draw();
+
+            if (FormStereonet.Visible)
+                FormStereonet.Draw();
+
+            if (FormDiffractionSimulator.Visible)
+                FormDiffractionSimulator.Draw();
+
+            if (FormImageSimulator.Visible)
+                FormImageSimulator.RotationChanged();
+
+            if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力された時
+                FormRotation.SetRotation();
+
+            DrawAxes();
+
+            if (!SkipEulerChange)//Euler Angle が直接入力されてない時
+            {
+                var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
+                SkipEulerChange = true;
+                numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
+                numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
+                numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+                SkipEulerChange = false;
+
+                if (FormRotation.Visible)
+                    FormRotation.SetRotation();
+
+                SetNearestUVW();
+            }
+        }
+
+        #endregion
+
+        #region 他のFunctionとの連携
+
+        private void FormTEMID_VisibleChanged(object sender, EventArgs e)
+        {
+            listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+                SelectionMode.MultiExtended : SelectionMode.One;
+        }
+
+        private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
+        {
+            listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+                SelectionMode.MultiExtended : SelectionMode.One;
+        }
+
+        private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
+        {
+            listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+                SelectionMode.MultiExtended :  SelectionMode.One;
+        }
+
+        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
+        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
+        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
+        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
+        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) => FormStereonet.Visible = toolStripButtonStereonet.Checked;
+        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) => FormRotation.Visible = toolStripButtonRotation.Checked;
+        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
+        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
+        private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
+        {
+            FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonPolycrystallineDiffraction.Checked;
+            listBox_SelectedIndexChanged(listBox, e);
+        }
+
+        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
+        private void scatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
+        private void symmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
+
+        private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormCalculator.Visible = false;
+            e.Cancel = true;
+        }
+        #endregion
+
+        #region CrystalControlからのCrystalChangedイベント
         private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
             if (crystalControl.Crystal != null)
@@ -729,7 +689,7 @@ namespace ReciPro
 
                 SetNearestUVW();
 
-                if (skipDrawing) return;
+                if (SkipDrawing) return;
 
                 if (FormStructureViewer.Visible)
                     FormStructureViewer.SetGLObjects(crystalControl.Crystal);
@@ -745,41 +705,8 @@ namespace ReciPro
                     FormImageSimulator.RotationChanged();
                 DrawAxes();
             }
-        }
-
-        #region ToolStripButtonのイベント
-
-        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
-
-        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
-
-        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
-
-        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
-
-        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) => FormStereonet.Visible = toolStripButtonStereonet.Checked;
-
-        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) => FormRotation.Visible = toolStripButtonRotation.Checked;
-
-        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
-
-        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
-
-        private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
-        {
-            FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonPolycrystallineDiffraction.Checked;
-            listBox_SelectedIndexChanged(listBox, e);
-        }
-
-        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
-
-        #endregion ToolStripButtonのイベント
-
-        private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAboutMe formAboutMe = new FormAboutMe();
-            formAboutMe.ShowDialog();
-        }
+        } 
+        #endregion
 
         #region 回転ボタン
 
@@ -840,6 +767,16 @@ namespace ReciPro
                 timerCounter = 1;
             }
             Rotate(rotationAxisAnimation, angle);
+        }
+        private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxAnimation.Checked)
+                numericBoxStep.FooterText = "°/s";
+            else
+            {
+                numericBoxStep.FooterText = "°";
+                timer.Stop();
+            }
         }
 
         #endregion 回転ボタン
@@ -1026,25 +963,7 @@ namespace ReciPro
 
         #endregion リストボックス関連
 
-        #region FileMenu
-
-        //結晶データの読み込み
-        private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
-            if (Dlg.ShowDialog() == DialogResult.OK)
-                readCrystalList(Dlg.FileName, true, true);
-        }
-
-        private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
-            if (Dlg.ShowDialog() == DialogResult.OK)
-                readCrystalList(Dlg.FileName, true, false);
-        }
-
-        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e) => readCrystalList(UserAppDataPath + "initial.xml", false, true);
-
+        #region 結晶データの読み込み/書き込み
         private void readCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
         {
             var cry = new List<Crystal>();
@@ -1103,7 +1022,26 @@ namespace ReciPro
             }
         }
 
-        #endregion FileMenu
+        #endregion
+
+        #region FileMenu
+
+        private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            if (Dlg.ShowDialog() == DialogResult.OK)
+                readCrystalList(Dlg.FileName, true, true);
+        }
+
+        private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            if (Dlg.ShowDialog() == DialogResult.OK)
+                readCrystalList(Dlg.FileName, true, false);
+        }
+
+        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e) 
+            => readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1117,13 +1055,42 @@ namespace ReciPro
             catch { }
         }
 
-        private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-            => toolTip.Active = toolTipToolStripMenuItem.Checked;
+        private void hintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
+            commonDialog.Visible = true;
 
+        }
+        private void versionHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.History;
+            commonDialog.Visible = true;
+        }
+
+        private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.License;
+            commonDialog.Visible = true;
+        }
+
+        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
+        private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked;
         private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
+        private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
-        private Stopwatch sw = new Stopwatch();
+        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
+            japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
+            Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
+        }
 
+        #endregion FileMenu
+
+        #region キーストロークイベント
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.Shift && e.KeyCode == Keys.D)
@@ -1178,6 +1145,7 @@ namespace ReciPro
             if (e.KeyValue == 17)
                 sw.Start();
         }
+        #endregion
 
         #region Axisの描画関連
 
@@ -1240,24 +1208,7 @@ namespace ReciPro
 
         #endregion Axisの描画関連
 
-        private void hintToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
-            commonDialog.Visible = true;
-
-        }
-        private void versionHistoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.History;
-            commonDialog.Visible = true;
-        }
-
-        private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.License;
-            commonDialog.Visible = true;
-        }
-
+        #region ドラッグドロップ
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
@@ -1277,25 +1228,7 @@ namespace ReciPro
         private void FormMain_DragEnter(object sender, DragEventArgs e)
             => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
-        private void crystalControl_scatteringFactor_VisibleChanged(object sender, EventArgs e)
-            => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
-
-        private void crystalControl_symmetryInformation_VisibleChanged(object sender, EventArgs e)
-            => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
-
-        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
-            japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
-            Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
-            //Language.Change(this);
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-            => Close();
-
-        private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
-            => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
+        #endregion
 
         #region ProgramUpdates
         private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1353,9 +1286,9 @@ namespace ReciPro
         private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
             int sleep = 0, bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
         {
-            if (skipProgressEvent || current > total)
+            if (SkipProgressEvent || current > total)
                 return;
-            skipProgressEvent = true;
+            SkipProgressEvent = true;
             try
             {
                 toolStripProgressBar.Maximum = int.MaxValue;
@@ -1380,14 +1313,14 @@ namespace ReciPro
                 MessageBox.Show(e.Message);
 #endif
             }
-            skipProgressEvent = false;
+            SkipProgressEvent = false;
         }
         private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
             => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
         #endregion
 
-        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
+        #region 最も近いUVWを検索
 
         private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
         {
@@ -1453,19 +1386,10 @@ namespace ReciPro
             labelCurrentIndexU.Text = bestIndex.U.ToString();
             labelCurrentIndexV.Text = bestIndex.V.ToString();
             labelCurrentIndexW.Text = bestIndex.W.ToString();
-        }
+        } 
+        #endregion
 
-        private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxAnimation.Checked)
-                numericBoxStep.FooterText = "°/s";
-            else
-            {
-                numericBoxStep.FooterText = "°";
-                timer.Stop();
-            }
-        }
-
+        #region 晶体軸/結晶面 設定
         private void checkBoxFixAxis_CheckedChanged(object sender, EventArgs e)
         {
             if (numericBoxAxisU.Value == 0 && numericBoxAxisV.Value == 0 && numericBoxAxisW.Value == 0)
@@ -1488,6 +1412,6 @@ namespace ReciPro
                 checkBoxFixAxis.Checked = false;
         }
 
-
+        #endregion
     }
 }

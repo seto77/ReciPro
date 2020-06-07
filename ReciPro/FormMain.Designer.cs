@@ -375,8 +375,8 @@
             this.crystalControl.VisibleReferenceTab = true;
             this.crystalControl.VisibleStressStrainTab = false;
             this.crystalControl.CrystalChanged += new System.EventHandler(this.crystalControl_CrystalChanged_1);
-            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.crystalControl_scatteringFactor_VisibleChanged);
-            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.crystalControl_symmetryInformation_VisibleChanged);
+            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.scatteringFactor_VisibleChanged);
+            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.symmetryInformation_VisibleChanged);
             // 
             // groupBox4
             // 

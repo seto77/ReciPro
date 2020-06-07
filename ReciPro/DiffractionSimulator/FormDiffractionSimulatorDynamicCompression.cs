@@ -235,7 +235,7 @@ namespace ReciPro
             //メインループ開始
             for (int i = 0; i < states.Count; i++)
             {
-                FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.skipDrawing = checkBoxSkipDrawing.Checked;
+                FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = checkBoxSkipDrawing.Checked;
                 var rotationList = new List<(Matrix3D rot, double weight)>();
 
                 if (states[i].depth < front)//Uncompressedの時
@@ -297,7 +297,7 @@ namespace ReciPro
                 var a = new Vector3DBase(newAxes.E11, newAxes.E21, newAxes.E31);
                 var b = new Vector3DBase(newAxes.E12, newAxes.E22, newAxes.E32);
                 var c = new Vector3DBase(newAxes.E13, newAxes.E23, newAxes.E33);
-                FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.skipDrawing = true;
+                FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = true;
                 CrystalControl.CellConstants = (a.Length, b.Length, c.Length, Vector3DBase.AngleBetVectors(b, c), Vector3DBase.AngleBetVectors(c, a), Vector3DBase.AngleBetVectors(a, b));
 
                 var corrRot = newAxes * new Matrix3D(CrystalControl.Crystal.A_Axis * 10, CrystalControl.Crystal.B_Axis * 10, CrystalControl.Crystal.C_Axis * 10).Inverse();
@@ -355,7 +355,7 @@ namespace ReciPro
 
             if (filename != "") File.Copy("temp.tif", filename, true);
 
-            FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.skipDrawing = false;
+            FormDiffractionSimulator.SkipDrawing = FormDiffractionSimulator.formMain.SkipDrawing = false;
         }
 
         private double[] getImageData(List<SpotInformation> spots)

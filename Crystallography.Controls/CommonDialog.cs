@@ -6,6 +6,19 @@ namespace Crystallography.Controls
 {
     public partial class CommonDialog : Form
     {
+        #region プロパティ,フィールド
+
+        public (string Text, double Ratio) Progress
+        {
+            set
+            {
+                this.Text = value.Text;
+                var progress = (int)(progressBar.Maximum * value.Ratio);
+                progressBar.Value = progress < progressBar.Maximum ? progress : progressBar.Maximum ;
+                Application.DoEvents();
+            }
+        }
+
         public enum DialogModeEnum { Initialize, History, License, Hint }
 
         public DialogModeEnum DialogMode
@@ -56,17 +69,9 @@ namespace Crystallography.Controls
                     Size = new Size(400, 200);
                 }
             }
-
         }
-
-        public CommonDialog()
-        {
-            InitializeComponent();
-        }
-
 
         private string software="";// e.g., "ReciPro"　
-       
         public string Software
         {
             get => software;
@@ -106,10 +111,7 @@ namespace Crystallography.Controls
             get => hint;
         }
 
-        private void setToolTips()
-        {
-            textBox.Text = hint.Length > 0 ?  hint[new Random().Next(hint.Length)]: "";
-        }
+       
 
         public bool AutomaricallyClose
         {
@@ -119,21 +121,7 @@ namespace Crystallography.Controls
 
         private int currentHintIndex = 0;
 
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            if (hint.Length > 0)
-            {
-                currentHintIndex += 1;
-                if (currentHintIndex >= hint.Length)
-                    currentHintIndex = 0;
-                textBox.Text = hint[currentHintIndex];
-            }
-        }
+      
 
 
         /// <summary>
@@ -150,10 +138,45 @@ namespace Crystallography.Controls
             "LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN " +
             "CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 
+
+        #endregion
+
+        #region コンストラクタ、ロード、クローズ
+
+        public CommonDialog()
+        {
+            InitializeComponent();
+        }
         private void CommonDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Visible = false;
+        }
+
+        #endregion
+
+        #region ボタンイベント
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            if (hint.Length > 0)
+            {
+                currentHintIndex += 1;
+                if (currentHintIndex >= hint.Length)
+                    currentHintIndex = 0;
+                textBox.Text = hint[currentHintIndex];
+            }
+        }
+        #endregion
+
+        private void setToolTips()
+        {
+            textBox.Text = hint.Length > 0 ? hint[new Random().Next(hint.Length)] : "";
         }
     }
 }
