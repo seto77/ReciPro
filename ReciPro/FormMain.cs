@@ -791,10 +791,10 @@ namespace ReciPro
 
             Vector3D xVector, yVector, zVector;
             Vector3D aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
-            Matrix3D matrixInverse = Matrix3D.Inverse(new Matrix3D(aAxis, bAxis, cAxis));
-            Vector3D aStar = new Vector3D(matrixInverse.E11, matrixInverse.E12, matrixInverse.E13);
-            Vector3D bStar = new Vector3D(matrixInverse.E21, matrixInverse.E22, matrixInverse.E23);
-            Vector3D cStar = new Vector3D(matrixInverse.E31, matrixInverse.E32, matrixInverse.E33);
+            var matrixInverse = Matrix3D.Inverse(new Matrix3D(aAxis, bAxis, cAxis));
+            var aStar = new Vector3D(matrixInverse.E11, matrixInverse.E12, matrixInverse.E13);
+            var bStar = new Vector3D(matrixInverse.E21, matrixInverse.E22, matrixInverse.E23);
+            var cStar = new Vector3D(matrixInverse.E31, matrixInverse.E32, matrixInverse.E33);
             //軸を立てるとき
             if (((Button)sender).Name == "buttonSetAxis" && !(u == 0 && v == 0 && w == 0))
             {
@@ -839,7 +839,7 @@ namespace ReciPro
 
             xVector = Vector3D.VectorProduct(yVector, zVector);
             //xVector,yVector,zVectorが(100),(010),(001)に一致すればいいのだから　
-            Matrix3D matrix = Matrix3D.Inverse(new Matrix3D(xVector, yVector, zVector));
+            var matrix = Matrix3D.Inverse(new Matrix3D(xVector, yVector, zVector));
             SetRotation(matrix);
         }
 
@@ -1211,7 +1211,7 @@ namespace ReciPro
         #region ドラッグドロップ
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
-            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            var fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fileName.Length == 1 && (fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out") || fileName[0].ToLower().EndsWith("cdb2")))
             {
                 var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
