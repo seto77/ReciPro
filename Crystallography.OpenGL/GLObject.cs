@@ -1577,12 +1577,11 @@ namespace Crystallography.OpenGL
                     int i = h * width + w;
                     indicesList.AddRange(new[] { i, i + 1, i + width + 1, i + width, });
                 }
-
             Vertices = vList.ToArray();
             Indices = indicesList.Select(i => (uint)i).ToArray();
             TypeCounts = new[] { indicesList.Count() };
 
-            Types = new[] { PrimitiveType.Quads };
+            Types = new[] { PT.Quads };
         }
     }
     #endregion

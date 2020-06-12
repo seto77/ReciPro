@@ -52,8 +52,12 @@ namespace Crystallography
         [IgnoreMember]
         public string[] CellTexts
         {
-            get => cellBytes?.Select(x => ToString(x)).ToArray();
-            set => cellBytes = value?.Select(x => ToBytes(x)).ToArray();
+            get => cellBytes == null ? null : Array.ConvertAll(cellBytes, ToString);
+            set
+            {
+                if (value != null)
+                    cellBytes = Array.ConvertAll(value, ToBytes);
+            }
         }
 
         /// <summary>
@@ -64,7 +68,7 @@ namespace Crystallography
         {
             get
             {
-                var c = CellTexts.Select(x => Decompose(x)).ToArray();
+                var c = Array.ConvertAll(CellTexts, Decompose2);
                 return ((c[0].Value, c[1].Value, c[2].Value, c[3].Value, c[4].Value, c[5].Value),
                          (c[0].Error, c[1].Error, c[2].Error, c[3].Error, c[4].Error, c[5].Error));
             }
@@ -362,6 +366,7 @@ namespace Crystallography
         }
 
         static readonly char[] toCharDic = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '/', '-', '|', 'E' };
+        static readonly Dictionary<byte, string> toStringDic = new Dictionary<byte, string>();
 
         static readonly Dictionary<char, byte> toByteDic = new Dictionary<char, byte>() {
             {'0', 0},{'1',1 },{'2', 2 },{'3', 3 },{'4', 4 }, {'5', 5 }, {'6', 6}, {'7', 7 },
@@ -414,36 +419,38 @@ namespace Crystallography
             }
         }
 
-        public static string ToString(byte[] b)
+        public static string ToString(byte[] bytes)
         {
-            if (b.Length == 0 || (b.Length == 1 && b[0] == 255))
+            if (bytes.Length == 0)
                 return "";
             else
             {
-                var s = "";
-                var flag = 0;
-                for (int i = 0; i < b.Length; i++)
-                    foreach (var val in new[] { b[i] & 0x0f, b[i] >> 4 })
-                        if (val == 13)//"|"のとき//括弧に変換
-                        {
-                            if ((flag++) == 0)//一回目
-                                s+="(";
-                            else
-                                s+=")";
-                        }
-                        else if (val != 15)
-                            s+=toCharDic[val];
-                return s;
-
+                var sb = new StringBuilder();
+                foreach (var b in bytes)
+                    sb.Append(toStringDic[b]);
+                return sb.ToString();
             }
         }
 
+        //静的コンストラクタ
+        static Crystal2()
+        {
+            for (int i = 0; i < 16; i++)
+                for (int j = 0; j < 16; j++)
+                {
+                    var s1 = i==15? "" : new string(new[] { toCharDic[i] });
+                    var s2 = j==15? "" : new string(new[] { toCharDic[j] });
 
+                    toStringDic.Add((byte)(i + j * 16), s1+s2);
+                }
+        }
+
+        private (double Value, double Error) Decompose2(string str) => Decompose(str, false);
         public static (double Value, double Error) Decompose(string str, int sgnum)
             => Decompose(str, sgnum >= 430 && sgnum <= 488);
 
         /// <summary>
-        /// 9.726(5), 1.234(12)E-6 のような文字列を、ValueとErrorに分解してタプルで返す. 
+        /// 9.726|5|, 1.234|12|E-6 のような文字列を、ValueとErrorに分解してタプルで返す. 
         /// 例外の場合は(double.NaN,double.NaN). 括弧が存在しない場合、Errorはdouble.NaN. 
         /// </summary>
         /// <param name="str"></param>
@@ -451,61 +458,53 @@ namespace Crystallography
         /// <returns></returns>
         public static (double Value, double Error) Decompose(string str, bool IsHex = false)
         {
-            try
+            str = str.ToUpper().Replace(" ", "");
+
+            var i = str.IndexOf("E");
+            var expValue = 1.0;
+            if (i > 0)
             {
-                var i = str.ToUpper().IndexOf("E");
-                var exp = "";
-                if (i > 0)
-                {
-                    exp = str.Substring(i).TrimEnd();
-                    str = str.Substring(0, i).TrimStart().TrimEnd();
-                }
-
-                string val = str, err = "";
-                i = str.IndexOf("(");
-                if (i > 0)
-                {
-                    val = str.Substring(0, i).TrimStart().TrimEnd();
-                    err = str.Substring(i + 1, str.IndexOf(")") - i - 1);
-                }
-
-                if (val.Length == 0)
-                    return (0, double.NaN);
-
-                var errVal = err != "" ? (err + exp).ToDouble() : double.NaN;
-                var decimalPlaces = val.Length - val.IndexOf(".") - 1; //小数点以下の桁数
-                if (!double.IsNaN(errVal) && decimalPlaces > 0)
-                    errVal *= Math.Pow(10, -decimalPlaces);
-                
-                if (IsHex)
-                {
-                    if (str.Contains(".0833"))
-                        return (1.0 / 12.0, errVal);
-                    else if (str.Contains(".167") || str.Contains(".1667") || str.Contains(".16667") || str.Contains(".166667"))
-                        return (1.0 / 6.0, errVal);
-                    else if (str.Contains(".333"))
-                        return (1.0 / 3.0, errVal);
-                    else if (str.Contains(".667") || str.Contains(".6667") || str.Contains(".66667") || str.Contains(".666667"))
-                        return (2.0 / 3.0, errVal);
-                    else if (str.Contains(".4167") || str.Contains(".41667") || str.Contains(".416667"))
-                        return (5.0 / 12.0, errVal);
-                    else if (str.Contains(".5833") )
-                        return (7.0 / 12.0, errVal);
-                    else if (str.Contains(".8333") )
-                        return (5.0 / 6.0, errVal);
-                    else if (str.Contains(".9167") || str.Contains(".91667") || str.Contains(".916667"))
-                        return (11.0 / 12.0, errVal);
-                }
-
-                return ((val + exp).ToDouble(), errVal);
+                double.TryParse("1" + str.Substring(i), out expValue);
+                str = str.Substring(0, i);
             }
-            catch
-            {
+
+            i = str.IndexOf("|");
+            var val = i <= 0 ? str : str.Substring(0, i);
+            var err = i <= 0 ? "" : str.Substring(i + 1, str.LastIndexOf("|") - i - 1);
+
+            if (val.Length == 0)
                 return (double.NaN, double.NaN);
+
+            if (err != "" && double.TryParse(err, out var errVal))
+            {
+                i = val.IndexOf(".");
+                if (i >= 0 && val.Length - i - 1 > 0)
+                    errVal *= Math.Pow(10, -val.Length + i + 1);
             }
+            else
+                errVal = double.NaN;
+
+            if (IsHex)
+            {
+                if (str.Contains(".0833"))
+                    return (1.0 / 12.0, errVal);
+                else if (str.Contains(".167") || str.Contains(".1667") || str.Contains(".16667") || str.Contains(".166667"))
+                    return (1.0 / 6.0, errVal);
+                else if (str.Contains(".333"))
+                    return (1.0 / 3.0, errVal);
+                else if (str.Contains(".667") || str.Contains(".6667") || str.Contains(".66667") || str.Contains(".666667"))
+                    return (2.0 / 3.0, errVal);
+                else if (str.Contains(".4167") || str.Contains(".41667") || str.Contains(".416667"))
+                    return (5.0 / 12.0, errVal);
+                else if (str.Contains(".5833"))
+                    return (7.0 / 12.0, errVal);
+                else if (str.Contains(".8333"))
+                    return (5.0 / 6.0, errVal);
+                else if (str.Contains(".9167") || str.Contains(".91667") || str.Contains(".916667"))
+                    return (11.0 / 12.0, errVal);
+            }
+            return val=="0" ? (0, errVal * expValue) : double.TryParse(val, out var valVal) ? (valVal * expValue, errVal * expValue) : (double.NaN, double.NaN);
         }
-
-
         public static string Compose(double val, double err = double.NaN)
         {
             if (double.IsNaN(val))
@@ -537,6 +536,9 @@ namespace Crystallography
                 return result;
             }
         }
+
+
+       
 
     }
 
@@ -575,8 +577,12 @@ namespace Crystallography
         [IgnoreMember]
         public string[] PositionTexts
         {
-            get => positionBytes?.Select(x => Crystal2.ToString(x)).ToArray();
-            set => positionBytes = value?.Select(x => Crystal2.ToBytes(x)).ToArray();
+            get => positionBytes == null ? null : Array.ConvertAll(positionBytes, Crystal2.ToString);
+            set
+            {
+                if(value != null)
+                    positionBytes = Array.ConvertAll(value, Crystal2.ToBytes);
+            }
         }
 
         /// <summary>
@@ -602,12 +608,13 @@ namespace Crystallography
         [IgnoreMember]
         public string[] AnisoTexts
         {
-            get => anisoBytes?.Select(x => Crystal2.ToString(x)).ToArray();
-            set => anisoBytes = value?.Select(x => Crystal2.ToBytes(x)).ToArray();
+            get => anisoBytes == null ? null : Array.ConvertAll(anisoBytes, Crystal2.ToString);
+            set
+            {
+                if(value !=null)
+                anisoBytes = Array.ConvertAll(value,Crystal2.ToBytes);
+            }
         }
-
-     
-
 
         public Atoms2() { }
         /// <summary>

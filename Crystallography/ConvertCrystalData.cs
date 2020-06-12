@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Crystallography
 {
-    public class ConvertCrystalData
+	public class ConvertCrystalData
 	{
 		public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
 		{
@@ -103,7 +103,7 @@ namespace Crystallography
 			{
 				var stringList = new List<string>();
 				string strTemp;
-				var reader = new System.IO.StreamReader(filename);
+				var reader = new StreamReader(filename);
 				while ((strTemp = reader.ReadLine()) != null)
 					stringList.Add(strTemp);
 				reader.Close();
@@ -1139,7 +1139,7 @@ namespace Crystallography
 					catch (Exception e)
 					{
 						#if DEBUG
-                        MessageBox.Show(e.Message);
+						MessageBox.Show(e.Message);
 						#endif
 						return null;
 					}
@@ -1652,165 +1652,165 @@ namespace Crystallography
 		}
 
 
-        #endregion
+		#endregion
 
 
 
-        #region CIファイルへの変換
+		#region CIファイルへの変換
 
-        public static string ConvertToCIF(Crystal crystal)
-        {
-            var sb = new StringBuilder();
-            sb.AppendLine("# This file is exported from \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"");
-            sb.AppendLine("# http://pmsl.planet.sci.kobe-u.ac.jp/~seto");
+		public static string ConvertToCIF(Crystal crystal)
+		{
+			var sb = new StringBuilder();
+			sb.AppendLine("# This file is exported from \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"");
+			sb.AppendLine("# http://pmsl.planet.sci.kobe-u.ac.jp/~seto");
 
-            sb.AppendLine("data_global");
-            sb.AppendLine("_chemical_name '" + crystal.Name + "'");
+			sb.AppendLine("data_global");
+			sb.AppendLine("_chemical_name '" + crystal.Name + "'");
 
-            sb.AppendLine("loop_");
-            sb.AppendLine("_publ_author_name");
-            foreach (string str in crystal.PublAuthorName.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                sb.AppendLine("'" + str.Trim() + "'");
+			sb.AppendLine("loop_");
+			sb.AppendLine("_publ_author_name");
+			foreach (string str in crystal.PublAuthorName.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+				sb.AppendLine("'" + str.Trim() + "'");
 
-            sb.AppendLine("_journal_name '" + crystal.Journal + "'");
+			sb.AppendLine("_journal_name '" + crystal.Journal + "'");
 
-            #region 論文タイトル
-            sb.AppendLine("_publ_section_title");
-            sb.AppendLine(";");
-            string title = "";
-            foreach (string t in crystal.PublSectionTitle.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                if ((title + " " + t).Length > 80)
-                {
-                    sb.AppendLine(title);
-                    title = "";
-                }
-                title += " " + t;
-            }
-            if (title != "")
-                sb.AppendLine(title);
-            sb.AppendLine(";");
-            #endregion
+			#region 論文タイトル
+			sb.AppendLine("_publ_section_title");
+			sb.AppendLine(";");
+			string title = "";
+			foreach (string t in crystal.PublSectionTitle.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+			{
+				if ((title + " " + t).Length > 80)
+				{
+					sb.AppendLine(title);
+					title = "";
+				}
+				title += " " + t;
+			}
+			if (title != "")
+				sb.AppendLine(title);
+			sb.AppendLine(";");
+			#endregion
 
-            sb.AppendLine("_chemical_formula_sum '" + crystal.ChemicalFormulaSum + "'");
-            sb.AppendLine("_cell_length_a " + (crystal.A * 10).ToString("f6"));
-            sb.AppendLine("_cell_length_b " + (crystal.B * 10).ToString("f6"));
-            sb.AppendLine("_cell_length_c " + (crystal.C * 10).ToString("f6"));
-            sb.AppendLine("_cell_angle_alpha " + (crystal.Alpha / Math.PI * 180).ToString("f6"));
-            sb.AppendLine("_cell_angle_beta " + (crystal.Beta / Math.PI * 180).ToString("f6"));
-            sb.AppendLine("_cell_angle_gamma " + (crystal.Gamma / Math.PI * 180).ToString("f6"));
-            sb.AppendLine("_cell_volume " + (crystal.Volume * 1000).ToString("f6"));
-            sb.AppendLine("_exptl_crystal_density_diffrn " + crystal.Density.ToString("f6"));
+			sb.AppendLine("_chemical_formula_sum '" + crystal.ChemicalFormulaSum + "'");
+			sb.AppendLine("_cell_length_a " + (crystal.A * 10).ToString("f6"));
+			sb.AppendLine("_cell_length_b " + (crystal.B * 10).ToString("f6"));
+			sb.AppendLine("_cell_length_c " + (crystal.C * 10).ToString("f6"));
+			sb.AppendLine("_cell_angle_alpha " + (crystal.Alpha / Math.PI * 180).ToString("f6"));
+			sb.AppendLine("_cell_angle_beta " + (crystal.Beta / Math.PI * 180).ToString("f6"));
+			sb.AppendLine("_cell_angle_gamma " + (crystal.Gamma / Math.PI * 180).ToString("f6"));
+			sb.AppendLine("_cell_volume " + (crystal.Volume * 1000).ToString("f6"));
+			sb.AppendLine("_exptl_crystal_density_diffrn " + crystal.Density.ToString("f6"));
 
-            Symmetry sym = crystal.Symmetry;
-            sb.AppendLine("_space_group_IT_number " + sym.SpaceGroupNumber);
-            sb.AppendLine("_symmetry_cell_setting '" + sym.CrystalSystemStr + "'");
-            string hm = sym.SpaceGroupHMStr;
-            hm = hm.Replace("Hex", "");
-            hm = hm.Replace("Rho", "");
-            sb.AppendLine("_symmetry_space_group_name_H-M '" + hm + "'");
-            sb.AppendLine("_symmetry_space_group_name_Hall '" + sym.SpaceGroupHallStr + "'");
+			Symmetry sym = crystal.Symmetry;
+			sb.AppendLine("_space_group_IT_number " + sym.SpaceGroupNumber);
+			sb.AppendLine("_symmetry_cell_setting '" + sym.CrystalSystemStr + "'");
+			string hm = sym.SpaceGroupHMStr;
+			hm = hm.Replace("Hex", "");
+			hm = hm.Replace("Rho", "");
+			sb.AppendLine("_symmetry_space_group_name_H-M '" + hm + "'");
+			sb.AppendLine("_symmetry_space_group_name_Hall '" + sym.SpaceGroupHallStr + "'");
 
-            #region 原子の等価位置
-            sb.AppendLine("loop_");
-            sb.AppendLine("_symmetry_equiv_pos_as_xyz");
-            bool[][] flag = new bool[0][];
-            if (sym.LatticeTypeStr == "P") flag = new[] { new[] { false, false, false } };
-            else if (sym.LatticeTypeStr == "A") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
-            else if (sym.LatticeTypeStr == "B") flag = new[] { new[] { false, false, false }, new[] { true, false, true } };
-            else if (sym.LatticeTypeStr == "C") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
-            else if (sym.LatticeTypeStr == "I") flag = new[] { new[] { false, false, false }, new[] { true, true, true } };
-            else if (sym.LatticeTypeStr == "F") flag = new[] { new[] { false, false, false }, new[] { false, true, true }, new[] { true, false, true }, new[] { false, true, true } };
+			#region 原子の等価位置
+			sb.AppendLine("loop_");
+			sb.AppendLine("_symmetry_equiv_pos_as_xyz");
+			bool[][] flag = new bool[0][];
+			if (sym.LatticeTypeStr == "P") flag = new[] { new[] { false, false, false } };
+			else if (sym.LatticeTypeStr == "A") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
+			else if (sym.LatticeTypeStr == "B") flag = new[] { new[] { false, false, false }, new[] { true, false, true } };
+			else if (sym.LatticeTypeStr == "C") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
+			else if (sym.LatticeTypeStr == "I") flag = new[] { new[] { false, false, false }, new[] { true, true, true } };
+			else if (sym.LatticeTypeStr == "F") flag = new[] { new[] { false, false, false }, new[] { false, true, true }, new[] { true, false, true }, new[] { false, true, true } };
 
-            foreach (string wp in SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][0].PositionStr)
-            {
-                if (sym.SpaceGroupHMsubStr != "H")
-                {
-                    for (int i = 0; i < flag.Length; i++)
-                    {
-                        string[] xyz = wp.Split(new char[] { ',' });
-                        for (int j = 0; j < flag[i].Length; j++)
-                        {
-                            if (flag[i][j])
-                            {
-                                if (xyz[j].EndsWith("+1/2")) xyz[j] = xyz[j].Replace("+1/2", "");
-                                else if (xyz[j].EndsWith("+1/4")) xyz[j] = xyz[j].Replace("+1/4", "+3/4");
-                                else if (xyz[j].EndsWith("+3/4")) xyz[j] = xyz[j].Replace("+3/4", "+1/4");
-                                else xyz[j] += "+1/2";
-                            }
-                        }
-                        sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
-                    }
-                }
-                else//R格子のHexaセッティングのとき
-                {
-                    sb.AppendLine("  '" + wp + "'");//(0,0,0)
-                                                    //(1/3,2/3,2/3)
-                    string[] xyz = wp.Split(new char[] { ',' });
-                    xyz[0] += "+1/3";
-                    xyz[1] += "+2/3";
-                    if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+1/6");
-                    else xyz[2] += "+2/3";
-                    sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
-                    //(2/3,1/3,1/3)
-                    xyz = wp.Split(new char[] { ',' });
-                    xyz[0] += "+2/3";
-                    xyz[1] += "+1/3";
-                    if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+5/6");
-                    else xyz[2] += "+1/3";
-                    sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
-                }
-            }
-            #endregion
+			foreach (string wp in SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][0].PositionStr)
+			{
+				if (sym.SpaceGroupHMsubStr != "H")
+				{
+					for (int i = 0; i < flag.Length; i++)
+					{
+						string[] xyz = wp.Split(new char[] { ',' });
+						for (int j = 0; j < flag[i].Length; j++)
+						{
+							if (flag[i][j])
+							{
+								if (xyz[j].EndsWith("+1/2")) xyz[j] = xyz[j].Replace("+1/2", "");
+								else if (xyz[j].EndsWith("+1/4")) xyz[j] = xyz[j].Replace("+1/4", "+3/4");
+								else if (xyz[j].EndsWith("+3/4")) xyz[j] = xyz[j].Replace("+3/4", "+1/4");
+								else xyz[j] += "+1/2";
+							}
+						}
+						sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+					}
+				}
+				else//R格子のHexaセッティングのとき
+				{
+					sb.AppendLine("  '" + wp + "'");//(0,0,0)
+													//(1/3,2/3,2/3)
+					string[] xyz = wp.Split(new char[] { ',' });
+					xyz[0] += "+1/3";
+					xyz[1] += "+2/3";
+					if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+1/6");
+					else xyz[2] += "+2/3";
+					sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+					//(2/3,1/3,1/3)
+					xyz = wp.Split(new char[] { ',' });
+					xyz[0] += "+2/3";
+					xyz[1] += "+1/3";
+					if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+5/6");
+					else xyz[2] += "+1/3";
+					sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+				}
+			}
+			#endregion
 
-            #region 各原子の情報
-            sb.AppendLine("loop_");
-            sb.AppendLine("_atom_site_label");
-            sb.AppendLine("_atom_site_type_symbol");
-            sb.AppendLine("_atom_site_fract_x");
-            sb.AppendLine("_atom_site_fract_y");
-            sb.AppendLine("_atom_site_fract_z");
-            sb.AppendLine("  _atom_site_occupancy");
-            sb.AppendLine("_atom_site_U_iso_or_equiv");
+			#region 各原子の情報
+			sb.AppendLine("loop_");
+			sb.AppendLine("_atom_site_label");
+			sb.AppendLine("_atom_site_type_symbol");
+			sb.AppendLine("_atom_site_fract_x");
+			sb.AppendLine("_atom_site_fract_y");
+			sb.AppendLine("_atom_site_fract_z");
+			sb.AppendLine("  _atom_site_occupancy");
+			sb.AppendLine("_atom_site_U_iso_or_equiv");
 
-            var aStar = crystal.A_Star.Length / 10;
-            var bStar = crystal.B_Star.Length / 10;
-            var cStar = crystal.C_Star.Length / 10;
-            var pi2 = Math.PI * Math.PI;
+			var aStar = crystal.A_Star.Length / 10;
+			var bStar = crystal.B_Star.Length / 10;
+			var cStar = crystal.C_Star.Length / 10;
+			var pi2 = Math.PI * Math.PI;
 
-            foreach (Atoms atom in crystal.Atoms)
-            {
-                sb.AppendLine(atom.Label + " " + AtomConstants.AtomicName(atom.AtomicNumber)
-                    + " " + atom.X.ToString("f5") + " " + atom.Y.ToString("f5") + " " + atom.Z.ToString("f5")
-                    + " " + atom.Occ.ToString("f5") + " " + (atom.Dsf.Biso / 8.0 / pi2).ToString("f5"));
-            }
+			foreach (Atoms atom in crystal.Atoms)
+			{
+				sb.AppendLine(atom.Label + " " + AtomConstants.AtomicName(atom.AtomicNumber)
+					+ " " + atom.X.ToString("f5") + " " + atom.Y.ToString("f5") + " " + atom.Z.ToString("f5")
+					+ " " + atom.Occ.ToString("f5") + " " + (atom.Dsf.Biso / 8.0 / pi2).ToString("f5"));
+			}
 
-            {
-                sb.AppendLine("loop_");
-                sb.AppendLine("_atom_site_aniso_label");
-                sb.AppendLine("_atom_site_aniso_U_11");
-                sb.AppendLine("_atom_site_aniso_U_22");
-                sb.AppendLine("_atom_site_aniso_U_33");
-                sb.AppendLine("_atom_site_aniso_U_23");
-                sb.AppendLine("_atom_site_aniso_U_13");
-                sb.AppendLine("_atom_site_aniso_U_12");
-                foreach (Atoms atom in crystal.Atoms)
-                {
-                    if (!atom.Dsf.UseIso)
-                        sb.AppendLine(atom.Label + " " +
-                            (atom.Dsf.U11).ToString("f5") + " " +
-                            (atom.Dsf.U22).ToString("f5") + " " +
-                            (atom.Dsf.U33).ToString("f5") + " " +
-                            (atom.Dsf.U23).ToString("f5") + " " +
-                            (atom.Dsf.U31).ToString("f5") + " " +
-                            (atom.Dsf.U12).ToString("f5")
-                            );
-                }
-            }
-            #endregion
+			{
+				sb.AppendLine("loop_");
+				sb.AppendLine("_atom_site_aniso_label");
+				sb.AppendLine("_atom_site_aniso_U_11");
+				sb.AppendLine("_atom_site_aniso_U_22");
+				sb.AppendLine("_atom_site_aniso_U_33");
+				sb.AppendLine("_atom_site_aniso_U_23");
+				sb.AppendLine("_atom_site_aniso_U_13");
+				sb.AppendLine("_atom_site_aniso_U_12");
+				foreach (Atoms atom in crystal.Atoms)
+				{
+					if (!atom.Dsf.UseIso)
+						sb.AppendLine(atom.Label + " " +
+							(atom.Dsf.U11).ToString("f5") + " " +
+							(atom.Dsf.U22).ToString("f5") + " " +
+							(atom.Dsf.U33).ToString("f5") + " " +
+							(atom.Dsf.U23).ToString("f5") + " " +
+							(atom.Dsf.U31).ToString("f5") + " " +
+							(atom.Dsf.U12).ToString("f5")
+							);
+				}
+			}
+			#endregion
 
-            return sb.ToString();
-        } 
-        #endregion
-    }
+			return sb.ToString();
+		} 
+		#endregion
+	}
 }
