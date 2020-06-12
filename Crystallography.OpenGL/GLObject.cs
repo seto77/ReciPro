@@ -1246,7 +1246,7 @@ namespace Crystallography.OpenGL
                     n.Add(-vZ);
                     c.Add(mat1.Argb);
                     var indicesTop = new List<int> { v.Count - 1 };
-                    int center = v.Count - 1;
+                    var center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[t]);
@@ -1265,7 +1265,7 @@ namespace Crystallography.OpenGL
                     n.Add(vZ);
                     c.Add(mat2.Argb);
                     var indicesBottom = new List<int> { v.Count - 1 };
-                    int center = v.Count - 1;
+                    var center = v.Count - 1;
                     for (int t = 0; t < stacks; t++)
                     {
                         v.Add(v[(slices + 1) * stacks - t - 1]);
@@ -1465,10 +1465,9 @@ namespace Crystallography.OpenGL
             }
 
             //次に、この円をZ軸の周りに回転させてすべての頂点を計算
-            M3d rot;
             for (int i = 1; i < slices1; i++)
             {
-                rot = M3d.CreateRotationZ((double)i / slices1 * 2 * Math.PI);
+                var rot = M3d.CreateRotationZ((double)i / slices1 * 2 * Math.PI);
                 for (int j = 0; j < slices2; j++)
                     circleVertex.Add((rot.Mult(circleVertex[j].Position), rot.Mult(circleVertex[j].Normal)));
             }

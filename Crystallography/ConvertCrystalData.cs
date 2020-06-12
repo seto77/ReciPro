@@ -7,12 +7,13 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
 using V3 = OpenTK.Vector3d;
-using System.Windows.Forms;
 
 namespace Crystallography
 {
 	public class ConvertCrystalData
 	{
+
+		#region CrystalList(xml形式)の読み込み/書き込み
 		public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
 		{
 			try
@@ -26,15 +27,16 @@ namespace Crystallography
 			catch { return false; }
 		}
 
+
 		//CrystalListを読み込むとき
 		public static Crystal[] ConvertToCrystalList(string filename)
-		{
-			Crystal[] cry = new Crystal[0];
-			if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
-			{
-				#region old code
-				//プロパティ文字列が変更にたいする対処
-				/*    try
+        {
+            Crystal[] cry = new Crystal[0];
+            if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
+            {
+                #region old code
+                //プロパティ文字列が変更にたいする対処
+                /*    try
 					{
 						StreamReader reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
 						List<string> strList = new List<string>();
@@ -76,57 +78,58 @@ namespace Crystallography
 						writer.Close();
 					}
 					catch { return null; };*/
-				//プロパティ文字列が変更にたいする対処　ここまで
-				#endregion old code
-				try
-				{
-					using var fs = new FileStream(filename, FileMode.Open);
-					System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
-					cry = (Crystal[])serializer.Deserialize(fs);
-					#region //Bondクラスの単位を オングストロームからnmに変更したための対処
-					foreach (var c in cry)
-					{
-						foreach (var b in c.Bonds)
-							if (!b.NanometerUnit)
-							{
-								b.MaxLength *= 0.1f;
-								b.MinLength *= 0.1f;
-								b.Radius *= 0.1f;
-								b.NanometerUnit = true;
-							}
-					}
-					#endregion
-				}
-				catch { }
-			}
-			else if (filename.EndsWith("out"))//SMAP形式を読み込んだとき
-			{
-				var stringList = new List<string>();
-				string strTemp;
-				var reader = new StreamReader(filename);
-				while ((strTemp = reader.ReadLine()) != null)
-					stringList.Add(strTemp);
-				reader.Close();
-				cry = ConvertFromSMAP(stringList.ToArray());
-			}
+                //プロパティ文字列が変更にたいする対処　ここまで
+                #endregion old code
+                try
+                {
+                    using var fs = new FileStream(filename, FileMode.Open);
+                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
+                    cry = (Crystal[])serializer.Deserialize(fs);
+                    #region //Bondクラスの単位を オングストロームからnmに変更したための対処
+                    foreach (var c in cry)
+                    {
+                        foreach (var b in c.Bonds)
+                            if (!b.NanometerUnit)
+                            {
+                                b.MaxLength *= 0.1f;
+                                b.MinLength *= 0.1f;
+                                b.Radius *= 0.1f;
+                                b.NanometerUnit = true;
+                            }
+                    }
+                    #endregion
+                }
+                catch { }
+            }
+            else if (filename.EndsWith("out"))//SMAP形式を読み込んだとき
+            {
+                var stringList = new List<string>();
+                string strTemp;
+                var reader = new StreamReader(filename);
+                while ((strTemp = reader.ReadLine()) != null)
+                    stringList.Add(strTemp);
+                reader.Close();
+                cry = ConvertFromSMAP(stringList.ToArray());
+            }
 
-			for (int i = 0; i < cry.Length; i++)
-			{
-				cry[i].Reset();
-				cry[i].SaveInitialCellConstants();
-			}
+            for (int i = 0; i < cry.Length; i++)
+            {
+                cry[i].Reset();
+                cry[i].SaveInitialCellConstants();
+            }
 
-			return cry;
-		}
+            return cry;
+        } 
+        #endregion
 
-		#region SMAPの出力ファイル(*.out)読込
+        #region SMAPの出力ファイル(*.out)読込
 
-		/// <summary>
-		/// SMAPのoutファイル読み込み
-		/// </summary>
-		/// <param name="str"></param>
-		/// <returns></returns>
-		public static Crystal[] ConvertFromSMAP(string[] str)
+        /// <summary>
+        /// SMAPのoutファイル読み込み
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Crystal[] ConvertFromSMAP(string[] str)
 		{
 			string wavelength = "";
 			string ChemicalFormula = "";
@@ -235,6 +238,8 @@ namespace Crystallography
 
 		#endregion SMAPの出力ファイル(*.out)読込
 
+		#region AMCとCIFの読み込みインターフェース ConvertCrystal(filename)  
+
 		public static Crystal2 ConvertToCrystal2(string fileName)
 		{
 			try
@@ -282,6 +287,7 @@ namespace Crystallography
 			}
 
 		}
+		#endregion
 
 		#region amcファイルの読み込み
 
@@ -393,11 +399,6 @@ namespace Crystallography
 			for (int i = n + 1; i < str.Length; i++)//最初のatomラベルだけ例外があるようなのでそれに対処
 				if (l[1] < str[i].Split(" ")[0].Length)
 					l[1] = str[i].Split(" ")[0].Length;
-
-			//crystal.SetAxis();
-			//var aStar = 1 / crystal.a.ToDouble();
-			//var bStar = 1 / crystal.b.ToDouble();
-			//var cStar = 1 / crystal.c.ToDouble();
 
 			//三方あるいは六方
 			bool isHex = crystal.sym >= 430 && crystal.sym <= 488;
@@ -530,8 +531,7 @@ namespace Crystallography
 			bool isAsterisk = SgName.Contains("*");
 			SgName = SgName.Replace("*", "");
 
-#region
-			
+			#region 空間群の場合分け
 
 			if (SgName == "Pm3") SgName = "Pm-3";
 			else if (SgName == "Pn3") SgName = "Pn-3";
@@ -661,7 +661,7 @@ namespace Crystallography
 			else if (SgName == "C2/c" && Beta == 90.0 && Gamma == 90.0) SgName = "C2/c11";
 			else if (SgName == "B2/n" && Beta == 90.0 && Gamma == 90.0) SgName = "B2/n11";
 			else if (SgName == "I2/b" && Beta == 90.0 && Gamma == 90.0) SgName = "I2/b11";
-#endregion amcファイルの読み込み
+			#endregion amcファイルの読み込み
 
 			//文字列を含んでいて、かつ、文字数が少ない空間群を選択する (C1とC121などを見分けるため)
 			int length = int.MaxValue;
@@ -712,143 +712,9 @@ namespace Crystallography
 				return null;
 		}
 
-#endregion
+        private static double ConvertToDouble(string str) => ConvertToDouble(str, false);
 
-		#region OpenGLのためのBond設定
-		public static void SetOpenGL_property(Crystal c)
-		{
-			foreach (Atoms a in c.Atoms)
-				a.ResetVesta();
-			c.Bonds = Bonds.GetVestaBonds(c.Atoms.Select(a => a.ElementName).Distinct());
-
-#region お蔵入り
-			/*
-			//先ず原子の色、半径を設定
-			foreach (Atoms a in c.Atoms)
-			{
-				switch (a.ElementName)
-				{
-#region イオン半径、色を設定
-					case "1: H": a.Radius = 0.005f; a.Argb = Color.FromArgb(98, 11, 181).ToArgb(); break;
-					case "2: He": a.Radius = 0.05f; a.Argb = Color.FromArgb(137, 250, 106).ToArgb(); break;
-					case "3: Li": a.Radius = 0.38f; a.Argb = Color.FromArgb(43, 200, 157).ToArgb(); break;
-					case "4: Be": a.Radius = 0.135f; a.Argb = Color.FromArgb(161, 34, 128).ToArgb(); break;
-					case "5: B": a.Radius = 0.055f; a.Argb = Color.FromArgb(249, 251, 174).ToArgb(); break;
-					case "6: C": a.Radius = 0.075f; a.Argb = Color.FromArgb(211, 45, 173).ToArgb(); break;
-					case "7: N": a.Radius = 0.08f; a.Argb = Color.FromArgb(248, 240, 241).ToArgb(); break;
-					case "8: O": a.Radius = 0.71f; a.Argb = Color.FromArgb(255, 0, 0).ToArgb(); break;
-					case "9: F": a.Radius = 0.665f; a.Argb = Color.FromArgb(153, 165, 227).ToArgb(); break;
-					case "10: Ne": a.Radius = 0.005f; a.Argb = Color.FromArgb(65, 223, 157).ToArgb(); break;
-					case "11: Na": a.Radius = 0.59f; a.Argb = Color.FromArgb(187, 195, 36).ToArgb(); break;
-					case "12: Mg": a.Radius = 0.445f; a.Argb = Color.FromArgb(193, 162, 107).ToArgb(); break;
-					case "13: Al": a.Radius = 0.195f; a.Argb = Color.FromArgb(153, 46, 158).ToArgb(); break;
-					case "14: Si": a.Radius = 0.20f; a.Argb = Color.FromArgb(0, 0, 255).ToArgb(); break;
-					case "15: P": a.Radius = 0.145f; a.Argb = Color.FromArgb(101, 199, 183).ToArgb(); break;
-					case "16: S": a.Radius = 0.92f; a.Argb = Color.FromArgb(87, 191, 62).ToArgb(); break;
-					case "17: Cl": a.Radius = 0.905f; a.Argb = Color.FromArgb(23, 36, 16).ToArgb(); break;
-					case "18: Ar": a.Radius = 0.05f; a.Argb = Color.FromArgb(203, 82, 236).ToArgb(); break;
-					case "19: K": a.Radius = 0.755f; a.Argb = Color.FromArgb(216, 96, 67).ToArgb(); break;
-					case "20: Ca": a.Radius = 0.56f; a.Argb = Color.FromArgb(35, 159, 207).ToArgb(); break;
-					case "21: Sc": a.Radius = 0.435f; a.Argb = Color.FromArgb(165, 191, 130).ToArgb(); break;
-					case "22: Ti": a.Radius = 0.25f; a.Argb = Color.FromArgb(64, 112, 111).ToArgb(); break;
-					case "23: V": a.Radius = 0.29f; a.Argb = Color.FromArgb(158, 54, 69).ToArgb(); break;
-					case "24: Cr": a.Radius = 0.3075f; a.Argb = Color.FromArgb(43, 48, 188).ToArgb(); break;
-					case "25: Mn": a.Radius = 0.29f; a.Argb = Color.FromArgb(69, 122, 233).ToArgb(); break;
-					case "26: Fe": a.Radius = 0.400f; a.Argb = Color.FromArgb(23, 239, 57).ToArgb(); break;
-					case "27: Co": a.Radius = 0.305f; a.Argb = Color.FromArgb(119, 8, 111).ToArgb(); break;
-					case "28: Ni": a.Radius = 0.3f; a.Argb = Color.FromArgb(190, 121, 182).ToArgb(); break;
-					case "29: Cu": a.Radius = 0.285f; a.Argb = Color.FromArgb(215, 226, 61).ToArgb(); break;
-					case "30: Zn": a.Radius = 0.37f; a.Argb = Color.FromArgb(122, 74, 64).ToArgb(); break;
-					case "31: Ga": a.Radius = 0.31f; a.Argb = Color.FromArgb(22, 97, 30).ToArgb(); break;
-					case "32: Ge": a.Radius = 0.265f; a.Argb = Color.FromArgb(60, 177, 233).ToArgb(); break;
-					case "33: As": a.Radius = 0.23f; a.Argb = Color.FromArgb(159, 16, 53).ToArgb(); break;
-					case "34: Se": a.Radius = 0.99f; a.Argb = Color.FromArgb(250, 56, 55).ToArgb(); break;
-					case "35: Br": a.Radius = 0.98f; a.Argb = Color.FromArgb(221, 111, 159).ToArgb(); break;
-					case "36: Kr": a.Radius = 0.05f; a.Argb = Color.FromArgb(225, 104, 113).ToArgb(); break;
-					case "37: Rb": a.Radius = 0.805f; a.Argb = Color.FromArgb(51, 135, 205).ToArgb(); break;
-					case "38: Sr": a.Radius = 0.63f; a.Argb = Color.FromArgb(158, 31, 36).ToArgb(); break;
-					case "39: Y": a.Radius = 0.45f; a.Argb = Color.FromArgb(131, 105, 94).ToArgb(); break;
-					case "40: Zr": a.Radius = 0.36f; a.Argb = Color.FromArgb(237, 15, 134).ToArgb(); break;
-					case "41: Nb": a.Radius = 0.32f; a.Argb = Color.FromArgb(236, 148, 12).ToArgb(); break;
-					case "42: Mo": a.Radius = 0.295f; a.Argb = Color.FromArgb(246, 92, 178).ToArgb(); break;
-					case "43: Tc": a.Radius = 0.3f; a.Argb = Color.FromArgb(103, 200, 138).ToArgb(); break;
-					case "44: Ru": a.Radius = 0.18f; a.Argb = Color.FromArgb(227, 4, 84).ToArgb(); break;
-					case "45: Rh": a.Radius = 0.275f; a.Argb = Color.FromArgb(191, 235, 99).ToArgb(); break;
-					case "46: Pd": a.Radius = 0.3075f; a.Argb = Color.FromArgb(150, 156, 76).ToArgb(); break;
-					case "47: Ag": a.Radius = 0.47f; a.Argb = Color.FromArgb(55, 51, 185).ToArgb(); break;
-					case "48: Cd": a.Radius = 0.475f; a.Argb = Color.FromArgb(84, 100, 150).ToArgb(); break;
-					case "49: In": a.Radius = 0.4f; a.Argb = Color.FromArgb(47, 80, 243).ToArgb(); break;
-					case "50: Sn": a.Radius = 0.345f; a.Argb = Color.FromArgb(180, 73, 238).ToArgb(); break;
-					case "51: Sb": a.Radius = 0.38f; a.Argb = Color.FromArgb(210, 79, 249).ToArgb(); break;
-					case "52: Te": a.Radius = 0.485f; a.Argb = Color.FromArgb(92, 27, 100).ToArgb(); break;
-					case "53: I": a.Radius = 1.1f; a.Argb = Color.FromArgb(224, 110, 46).ToArgb(); break;
-					case "54: Xe": a.Radius = 0.2f; a.Argb = Color.FromArgb(169, 220, 216).ToArgb(); break;
-					case "55: Cs": a.Radius = 0.87f; a.Argb = Color.FromArgb(244, 226, 13).ToArgb(); break;
-					case "56: Ba": a.Radius = 0.71f; a.Argb = Color.FromArgb(177, 2, 109).ToArgb(); break;
-					case "57: La": a.Radius = 0.58f; a.Argb = Color.FromArgb(194, 79, 196).ToArgb(); break;
-					case "58: Ce": a.Radius = 0.5715f; a.Argb = Color.FromArgb(88, 221, 142).ToArgb(); break;
-					case "59: Pr": a.Radius = 0.563f; a.Argb = Color.FromArgb(247, 156, 100).ToArgb(); break;
-					case "60: Nd": a.Radius = 0.4915f; a.Argb = Color.FromArgb(252, 189, 121).ToArgb(); break;
-					case "61: Pm": a.Radius = 0.5465f; a.Argb = Color.FromArgb(209, 104, 146).ToArgb(); break;
-					case "62: Sm": a.Radius = 0.479f; a.Argb = Color.FromArgb(133, 7, 117).ToArgb(); break;
-					case "63: Eu": a.Radius = 0.625f; a.Argb = Color.FromArgb(226, 218, 141).ToArgb(); break;
-					case "64: Gd": a.Radius = 0.5265f; a.Argb = Color.FromArgb(26, 83, 227).ToArgb(); break;
-					case "65: Tb": a.Radius = 0.52f; a.Argb = Color.FromArgb(160, 216, 140).ToArgb(); break;
-					case "66: Dy": a.Radius = 0.485f; a.Argb = Color.FromArgb(13, 71, 184).ToArgb(); break;
-					case "67: Ho": a.Radius = 0.5075f; a.Argb = Color.FromArgb(104, 109, 153).ToArgb(); break;
-					case "68: Er": a.Radius = 0.502f; a.Argb = Color.FromArgb(21, 168, 23).ToArgb(); break;
-					case "69: Tm": a.Radius = 0.497f; a.Argb = Color.FromArgb(221, 220, 184).ToArgb(); break;
-					case "70: Yb": a.Radius = 0.434f; a.Argb = Color.FromArgb(23, 151, 178).ToArgb(); break;
-					case "71: Lu": a.Radius = 0.4305f; a.Argb = Color.FromArgb(108, 190, 142).ToArgb(); break;
-					case "72: Hf": a.Radius = 0.355f; a.Argb = Color.FromArgb(84, 253, 37).ToArgb(); break;
-					case "73: Ta": a.Radius = 0.34f; a.Argb = Color.FromArgb(160, 247, 238).ToArgb(); break;
-					case "74: W": a.Radius = 0.21f; a.Argb = Color.FromArgb(4, 203, 171).ToArgb(); break;
-					case "75: Re": a.Radius = 0.275f; a.Argb = Color.FromArgb(87, 31, 14).ToArgb(); break;
-					case "76: Os": a.Radius = 0.245f; a.Argb = Color.FromArgb(218, 170, 3).ToArgb(); break;
-					case "77: Ir": a.Radius = 0.3125f; a.Argb = Color.FromArgb(245, 219, 180).ToArgb(); break;
-					case "78: Pt": a.Radius = 0.3125f; a.Argb = Color.FromArgb(43, 17, 113).ToArgb(); break;
-					case "79: Au": a.Radius = 0.425f; a.Argb = Color.FromArgb(77, 63, 211).ToArgb(); break;
-					case "80: Hg": a.Radius = 0.48f; a.Argb = Color.FromArgb(62, 50, 156).ToArgb(); break;
-					case "81: Tl": a.Radius = 0.375f; a.Argb = Color.FromArgb(80, 119, 140).ToArgb(); break;
-					case "82: Pb": a.Radius = 0.645f; a.Argb = Color.FromArgb(243, 58, 152).ToArgb(); break;
-					case "83: Bi": a.Radius = 0.515f; a.Argb = Color.FromArgb(123, 248, 40).ToArgb(); break;
-					case "84: Po": a.Radius = 0.335f; a.Argb = Color.FromArgb(213, 176, 49).ToArgb(); break;
-					case "85: At": a.Radius = 0.31f; a.Argb = Color.FromArgb(230, 228, 32).ToArgb(); break;
-					case "86: Rn": a.Radius = 0.05f; a.Argb = Color.FromArgb(115, 62, 60).ToArgb(); break;
-					case "87: Fr": a.Radius = 0.9f; a.Argb = Color.FromArgb(155, 85, 177).ToArgb(); break;
-					case "88: Ra": a.Radius = 0.85f; a.Argb = Color.FromArgb(199, 47, 152).ToArgb(); break;
-					case "89: Ac": a.Radius = 0.56f; a.Argb = Color.FromArgb(214, 227, 230).ToArgb(); break;
-					case "90: Th": a.Radius = 0.525f; a.Argb = Color.FromArgb(153, 241, 22).ToArgb(); break;
-					case "91: Pa": a.Radius = 0.45f; a.Argb = Color.FromArgb(80, 156, 227).ToArgb(); break;
-					case "92: U": a.Radius = 0.365f; a.Argb = Color.FromArgb(44, 59, 209).ToArgb(); break;
-					case "93: Np": a.Radius = 0.49f; a.Argb = Color.FromArgb(10, 253, 55).ToArgb(); break;
-					case "94: Pu": a.Radius = 0.48f; a.Argb = Color.FromArgb(95, 160, 240).ToArgb(); break;
-					case "95: Am": a.Radius = 0.425f; a.Argb = Color.FromArgb(252, 12, 39).ToArgb(); break;
-					case "96: Cm": a.Radius = 0.425f; a.Argb = Color.FromArgb(217, 174, 152).ToArgb(); break;
-					case "97: Bk": a.Radius = 0.415f; a.Argb = Color.FromArgb(54, 244, 120).ToArgb(); break;
-					case "98: Cf": a.Radius = 0.4105f; a.Argb = Color.FromArgb(161, 45, 164).ToArgb(); break;
-#endregion イオン半径、色を設定
-				}
-				if (!elementList.Contains(a.ElementName))
-					elementList.Add(a.ElementName);
-			}
-			*/
-#endregion
-
-
-		}
-
-
-
-
-
-#endregion
-		private static double ConvertToDouble(string str)
-		{
-			return ConvertToDouble(str, false);
-		}
-
-		private static double ConvertToDouble(string str, bool IsHex)
+        private static double ConvertToDouble(string str, bool IsHex)
 		{
 			try
 			{
@@ -856,11 +722,8 @@ namespace Crystallography
 					return 0;
 				else if (str.IndexOf('/') > 0)
 				{
-					string[] temp = str.Split('/');
-					if (temp.Length == 2)
-						return Convert.ToDouble(temp[0]) / Convert.ToDouble(temp[1]);
-					else
-						return 0;
+					var temp = str.Split('/');
+					return temp.Length == 2 ? Convert.ToDouble(temp[0]) / Convert.ToDouble(temp[1]) : 0;
 				}
 				else if (IsHex)
 				{
@@ -902,9 +765,9 @@ namespace Crystallography
 				return 0;
 			}
 		}
-		
-		
-		
+
+		#endregion
+
 		#region CIFファイルの読み込み
 
 		private static Crystal2 ConvertFromCIF(string fileName)
@@ -1654,8 +1517,6 @@ namespace Crystallography
 
 		#endregion
 
-
-
 		#region CIファイルへの変換
 
 		public static string ConvertToCIF(Crystal crystal)
@@ -1810,7 +1671,131 @@ namespace Crystallography
 			#endregion
 
 			return sb.ToString();
-		} 
+		}
 		#endregion
+
+		#region OpenGLのためのBond設定
+		public static void SetOpenGL_property(Crystal c)
+		{
+			foreach (Atoms a in c.Atoms)
+				a.ResetVesta();
+			c.Bonds = Bonds.GetVestaBonds(c.Atoms.Select(a => a.ElementName).Distinct());
+
+			#region お蔵入り
+			/*
+			//先ず原子の色、半径を設定
+			foreach (Atoms a in c.Atoms)
+			{
+				switch (a.ElementName)
+				{
+#region イオン半径、色を設定
+					case "1: H": a.Radius = 0.005f; a.Argb = Color.FromArgb(98, 11, 181).ToArgb(); break;
+					case "2: He": a.Radius = 0.05f; a.Argb = Color.FromArgb(137, 250, 106).ToArgb(); break;
+					case "3: Li": a.Radius = 0.38f; a.Argb = Color.FromArgb(43, 200, 157).ToArgb(); break;
+					case "4: Be": a.Radius = 0.135f; a.Argb = Color.FromArgb(161, 34, 128).ToArgb(); break;
+					case "5: B": a.Radius = 0.055f; a.Argb = Color.FromArgb(249, 251, 174).ToArgb(); break;
+					case "6: C": a.Radius = 0.075f; a.Argb = Color.FromArgb(211, 45, 173).ToArgb(); break;
+					case "7: N": a.Radius = 0.08f; a.Argb = Color.FromArgb(248, 240, 241).ToArgb(); break;
+					case "8: O": a.Radius = 0.71f; a.Argb = Color.FromArgb(255, 0, 0).ToArgb(); break;
+					case "9: F": a.Radius = 0.665f; a.Argb = Color.FromArgb(153, 165, 227).ToArgb(); break;
+					case "10: Ne": a.Radius = 0.005f; a.Argb = Color.FromArgb(65, 223, 157).ToArgb(); break;
+					case "11: Na": a.Radius = 0.59f; a.Argb = Color.FromArgb(187, 195, 36).ToArgb(); break;
+					case "12: Mg": a.Radius = 0.445f; a.Argb = Color.FromArgb(193, 162, 107).ToArgb(); break;
+					case "13: Al": a.Radius = 0.195f; a.Argb = Color.FromArgb(153, 46, 158).ToArgb(); break;
+					case "14: Si": a.Radius = 0.20f; a.Argb = Color.FromArgb(0, 0, 255).ToArgb(); break;
+					case "15: P": a.Radius = 0.145f; a.Argb = Color.FromArgb(101, 199, 183).ToArgb(); break;
+					case "16: S": a.Radius = 0.92f; a.Argb = Color.FromArgb(87, 191, 62).ToArgb(); break;
+					case "17: Cl": a.Radius = 0.905f; a.Argb = Color.FromArgb(23, 36, 16).ToArgb(); break;
+					case "18: Ar": a.Radius = 0.05f; a.Argb = Color.FromArgb(203, 82, 236).ToArgb(); break;
+					case "19: K": a.Radius = 0.755f; a.Argb = Color.FromArgb(216, 96, 67).ToArgb(); break;
+					case "20: Ca": a.Radius = 0.56f; a.Argb = Color.FromArgb(35, 159, 207).ToArgb(); break;
+					case "21: Sc": a.Radius = 0.435f; a.Argb = Color.FromArgb(165, 191, 130).ToArgb(); break;
+					case "22: Ti": a.Radius = 0.25f; a.Argb = Color.FromArgb(64, 112, 111).ToArgb(); break;
+					case "23: V": a.Radius = 0.29f; a.Argb = Color.FromArgb(158, 54, 69).ToArgb(); break;
+					case "24: Cr": a.Radius = 0.3075f; a.Argb = Color.FromArgb(43, 48, 188).ToArgb(); break;
+					case "25: Mn": a.Radius = 0.29f; a.Argb = Color.FromArgb(69, 122, 233).ToArgb(); break;
+					case "26: Fe": a.Radius = 0.400f; a.Argb = Color.FromArgb(23, 239, 57).ToArgb(); break;
+					case "27: Co": a.Radius = 0.305f; a.Argb = Color.FromArgb(119, 8, 111).ToArgb(); break;
+					case "28: Ni": a.Radius = 0.3f; a.Argb = Color.FromArgb(190, 121, 182).ToArgb(); break;
+					case "29: Cu": a.Radius = 0.285f; a.Argb = Color.FromArgb(215, 226, 61).ToArgb(); break;
+					case "30: Zn": a.Radius = 0.37f; a.Argb = Color.FromArgb(122, 74, 64).ToArgb(); break;
+					case "31: Ga": a.Radius = 0.31f; a.Argb = Color.FromArgb(22, 97, 30).ToArgb(); break;
+					case "32: Ge": a.Radius = 0.265f; a.Argb = Color.FromArgb(60, 177, 233).ToArgb(); break;
+					case "33: As": a.Radius = 0.23f; a.Argb = Color.FromArgb(159, 16, 53).ToArgb(); break;
+					case "34: Se": a.Radius = 0.99f; a.Argb = Color.FromArgb(250, 56, 55).ToArgb(); break;
+					case "35: Br": a.Radius = 0.98f; a.Argb = Color.FromArgb(221, 111, 159).ToArgb(); break;
+					case "36: Kr": a.Radius = 0.05f; a.Argb = Color.FromArgb(225, 104, 113).ToArgb(); break;
+					case "37: Rb": a.Radius = 0.805f; a.Argb = Color.FromArgb(51, 135, 205).ToArgb(); break;
+					case "38: Sr": a.Radius = 0.63f; a.Argb = Color.FromArgb(158, 31, 36).ToArgb(); break;
+					case "39: Y": a.Radius = 0.45f; a.Argb = Color.FromArgb(131, 105, 94).ToArgb(); break;
+					case "40: Zr": a.Radius = 0.36f; a.Argb = Color.FromArgb(237, 15, 134).ToArgb(); break;
+					case "41: Nb": a.Radius = 0.32f; a.Argb = Color.FromArgb(236, 148, 12).ToArgb(); break;
+					case "42: Mo": a.Radius = 0.295f; a.Argb = Color.FromArgb(246, 92, 178).ToArgb(); break;
+					case "43: Tc": a.Radius = 0.3f; a.Argb = Color.FromArgb(103, 200, 138).ToArgb(); break;
+					case "44: Ru": a.Radius = 0.18f; a.Argb = Color.FromArgb(227, 4, 84).ToArgb(); break;
+					case "45: Rh": a.Radius = 0.275f; a.Argb = Color.FromArgb(191, 235, 99).ToArgb(); break;
+					case "46: Pd": a.Radius = 0.3075f; a.Argb = Color.FromArgb(150, 156, 76).ToArgb(); break;
+					case "47: Ag": a.Radius = 0.47f; a.Argb = Color.FromArgb(55, 51, 185).ToArgb(); break;
+					case "48: Cd": a.Radius = 0.475f; a.Argb = Color.FromArgb(84, 100, 150).ToArgb(); break;
+					case "49: In": a.Radius = 0.4f; a.Argb = Color.FromArgb(47, 80, 243).ToArgb(); break;
+					case "50: Sn": a.Radius = 0.345f; a.Argb = Color.FromArgb(180, 73, 238).ToArgb(); break;
+					case "51: Sb": a.Radius = 0.38f; a.Argb = Color.FromArgb(210, 79, 249).ToArgb(); break;
+					case "52: Te": a.Radius = 0.485f; a.Argb = Color.FromArgb(92, 27, 100).ToArgb(); break;
+					case "53: I": a.Radius = 1.1f; a.Argb = Color.FromArgb(224, 110, 46).ToArgb(); break;
+					case "54: Xe": a.Radius = 0.2f; a.Argb = Color.FromArgb(169, 220, 216).ToArgb(); break;
+					case "55: Cs": a.Radius = 0.87f; a.Argb = Color.FromArgb(244, 226, 13).ToArgb(); break;
+					case "56: Ba": a.Radius = 0.71f; a.Argb = Color.FromArgb(177, 2, 109).ToArgb(); break;
+					case "57: La": a.Radius = 0.58f; a.Argb = Color.FromArgb(194, 79, 196).ToArgb(); break;
+					case "58: Ce": a.Radius = 0.5715f; a.Argb = Color.FromArgb(88, 221, 142).ToArgb(); break;
+					case "59: Pr": a.Radius = 0.563f; a.Argb = Color.FromArgb(247, 156, 100).ToArgb(); break;
+					case "60: Nd": a.Radius = 0.4915f; a.Argb = Color.FromArgb(252, 189, 121).ToArgb(); break;
+					case "61: Pm": a.Radius = 0.5465f; a.Argb = Color.FromArgb(209, 104, 146).ToArgb(); break;
+					case "62: Sm": a.Radius = 0.479f; a.Argb = Color.FromArgb(133, 7, 117).ToArgb(); break;
+					case "63: Eu": a.Radius = 0.625f; a.Argb = Color.FromArgb(226, 218, 141).ToArgb(); break;
+					case "64: Gd": a.Radius = 0.5265f; a.Argb = Color.FromArgb(26, 83, 227).ToArgb(); break;
+					case "65: Tb": a.Radius = 0.52f; a.Argb = Color.FromArgb(160, 216, 140).ToArgb(); break;
+					case "66: Dy": a.Radius = 0.485f; a.Argb = Color.FromArgb(13, 71, 184).ToArgb(); break;
+					case "67: Ho": a.Radius = 0.5075f; a.Argb = Color.FromArgb(104, 109, 153).ToArgb(); break;
+					case "68: Er": a.Radius = 0.502f; a.Argb = Color.FromArgb(21, 168, 23).ToArgb(); break;
+					case "69: Tm": a.Radius = 0.497f; a.Argb = Color.FromArgb(221, 220, 184).ToArgb(); break;
+					case "70: Yb": a.Radius = 0.434f; a.Argb = Color.FromArgb(23, 151, 178).ToArgb(); break;
+					case "71: Lu": a.Radius = 0.4305f; a.Argb = Color.FromArgb(108, 190, 142).ToArgb(); break;
+					case "72: Hf": a.Radius = 0.355f; a.Argb = Color.FromArgb(84, 253, 37).ToArgb(); break;
+					case "73: Ta": a.Radius = 0.34f; a.Argb = Color.FromArgb(160, 247, 238).ToArgb(); break;
+					case "74: W": a.Radius = 0.21f; a.Argb = Color.FromArgb(4, 203, 171).ToArgb(); break;
+					case "75: Re": a.Radius = 0.275f; a.Argb = Color.FromArgb(87, 31, 14).ToArgb(); break;
+					case "76: Os": a.Radius = 0.245f; a.Argb = Color.FromArgb(218, 170, 3).ToArgb(); break;
+					case "77: Ir": a.Radius = 0.3125f; a.Argb = Color.FromArgb(245, 219, 180).ToArgb(); break;
+					case "78: Pt": a.Radius = 0.3125f; a.Argb = Color.FromArgb(43, 17, 113).ToArgb(); break;
+					case "79: Au": a.Radius = 0.425f; a.Argb = Color.FromArgb(77, 63, 211).ToArgb(); break;
+					case "80: Hg": a.Radius = 0.48f; a.Argb = Color.FromArgb(62, 50, 156).ToArgb(); break;
+					case "81: Tl": a.Radius = 0.375f; a.Argb = Color.FromArgb(80, 119, 140).ToArgb(); break;
+					case "82: Pb": a.Radius = 0.645f; a.Argb = Color.FromArgb(243, 58, 152).ToArgb(); break;
+					case "83: Bi": a.Radius = 0.515f; a.Argb = Color.FromArgb(123, 248, 40).ToArgb(); break;
+					case "84: Po": a.Radius = 0.335f; a.Argb = Color.FromArgb(213, 176, 49).ToArgb(); break;
+					case "85: At": a.Radius = 0.31f; a.Argb = Color.FromArgb(230, 228, 32).ToArgb(); break;
+					case "86: Rn": a.Radius = 0.05f; a.Argb = Color.FromArgb(115, 62, 60).ToArgb(); break;
+					case "87: Fr": a.Radius = 0.9f; a.Argb = Color.FromArgb(155, 85, 177).ToArgb(); break;
+					case "88: Ra": a.Radius = 0.85f; a.Argb = Color.FromArgb(199, 47, 152).ToArgb(); break;
+					case "89: Ac": a.Radius = 0.56f; a.Argb = Color.FromArgb(214, 227, 230).ToArgb(); break;
+					case "90: Th": a.Radius = 0.525f; a.Argb = Color.FromArgb(153, 241, 22).ToArgb(); break;
+					case "91: Pa": a.Radius = 0.45f; a.Argb = Color.FromArgb(80, 156, 227).ToArgb(); break;
+					case "92: U": a.Radius = 0.365f; a.Argb = Color.FromArgb(44, 59, 209).ToArgb(); break;
+					case "93: Np": a.Radius = 0.49f; a.Argb = Color.FromArgb(10, 253, 55).ToArgb(); break;
+					case "94: Pu": a.Radius = 0.48f; a.Argb = Color.FromArgb(95, 160, 240).ToArgb(); break;
+					case "95: Am": a.Radius = 0.425f; a.Argb = Color.FromArgb(252, 12, 39).ToArgb(); break;
+					case "96: Cm": a.Radius = 0.425f; a.Argb = Color.FromArgb(217, 174, 152).ToArgb(); break;
+					case "97: Bk": a.Radius = 0.415f; a.Argb = Color.FromArgb(54, 244, 120).ToArgb(); break;
+					case "98: Cf": a.Radius = 0.4105f; a.Argb = Color.FromArgb(161, 45, 164).ToArgb(); break;
+#endregion イオン半径、色を設定
+				}
+				if (!elementList.Contains(a.ElementName))
+					elementList.Add(a.ElementName);
+			}
+			*/
+			#endregion
+		}
+		#endregion
+
 	}
 }

@@ -304,10 +304,7 @@ namespace ReciPro
         /// </summary>
         private void initBounds()
         {
-
-
             sw.Restart();
-
             bounds = new List<(V4 prm, Color color)>();
             foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
                 foreach (var (X, Y, Z, D) in bc.PlaneParams)
@@ -315,10 +312,7 @@ namespace ReciPro
 
             if (radioButtonBoundUnitCell.Checked || !Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))
             {//境界条件としてUnit cellが選択されているか、Planeが選択されているが描画範囲が閉じていない場合 、単位格子を境界とする
-
                 var inv = Matrix3d.Invert(axes);
-
-
                 bounds = new List<(V4 prms, Color color)>()
                 {
                     (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Gray),
@@ -588,8 +582,6 @@ namespace ReciPro
                         }
                     }
                 });
-
-
             });
             textBoxInformation.AppendText("Generation of bonds & polyhedra: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
@@ -1296,8 +1288,6 @@ namespace ReciPro
                 return;
             SetGLObjects(null);
         }
-
-
 
         #endregion
 

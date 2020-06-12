@@ -13,7 +13,6 @@ using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
 
-
 namespace Crystallography
 {
     /// <summary>
@@ -22,12 +21,19 @@ namespace Crystallography
     [Serializable]
     public class BetheMethod
     {
+        #region static readonly field
+
         private static readonly Complex One = Complex.One;
         private static readonly double TwoPi = 2 * Math.PI;
         private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;
         private static readonly Complex PiI = Math.PI * ImaginaryOne;
         private static readonly double PiSq = Math.PI * Math.PI;
         private static readonly Vector3DBase zNorm = new Vector3DBase(0, 0, 1);
+
+        #endregion
+
+        #region フィールド、プロパティ
+
         private double AccVoltage { get; set; }
         private Crystal Crystal { get; set; } = null;
         private Matrix3D BaseRotation { get; set; } = null;
@@ -80,6 +86,9 @@ namespace Crystallography
 
         private readonly object lockObj = new object();
 
+        #endregion
+
+        #region コンストラクタ
         public BetheMethod(Crystal crystal)
         {
             Crystal = crystal;
@@ -95,7 +104,9 @@ namespace Crystallography
 
             EigenEnabled = NativeWrapper.Enabled;
         }
+        #endregion
 
+        #region CBED
         private void Cbed_ProgressChanged(object sender, ProgressChangedEventArgs e) => CbedProgressChanged?.Invoke(sender, e);
 
         private void Cbed_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => CbedCompleted?.Invoke(sender, e);
@@ -203,7 +214,7 @@ namespace Crystallography
                             return (evd.EigenVectors * gammmaAlpha).ToArray();
                         }).ToArray();
                     }
-                    bwCBED.ReportProgress(0, new Report(Interlocked.Increment(ref count), reportString));//進捗状況を報告
+                    bwCBED.ReportProgress(Interlocked.Increment(ref count),  reportString);//進捗状況を報告
                     return result;
                 }).ToArray();
                 
@@ -257,13 +268,9 @@ namespace Crystallography
                 e.Cancel = true;
         }
 
-        public struct Report
-        {
-            public int Current { get; set; }
-            public string Solver { get; set; }
-            public Report(int current, string solver)
-            { Current = current; Solver = solver; }
-        }
+        #endregion
+
+        #region 平行ビーム電子回折
 
         /// <summary>
         /// 平行ビームの電子回折計算
@@ -276,7 +283,7 @@ namespace Crystallography
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
             var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
-            
+
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
 
@@ -323,7 +330,7 @@ namespace Crystallography
             var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
 
             //出射面での境界条件を考慮した位相にするため、以下の1行を追加 (20190827)
-            var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P  - 2 * k_vac * Surface.Z) * thickness)).ToArray());
+            var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
             //var p = new DiagonalMatrix(len, len, Beams.Select(b => new Complex(1, 0)).ToArray());
 
             //深さZにおけるψを求める
@@ -335,6 +342,7 @@ namespace Crystallography
             return Beams;
         }
 
+        #endregion
 
         #region Image Simulation
         public double[][] GetPotentialImage(Beam[] beams, Size size, double res, bool phase = true)
@@ -482,6 +490,7 @@ namespace Crystallography
         }
         #endregion Image Simulation
 
+        #region Precession electron diffraction
 
         /// <summary>
         /// PEDの計算
@@ -583,11 +592,11 @@ namespace Crystallography
                     else
                         compiled[beam.Index].intensity += beam.Psi.Magnitude2() / step;
                 }
-            
+
             //基準の方位でP,Q,Sなどを再セット
             var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
             var beams = compiled.Values.ToList();
-            for (int i=0; i< beams.Count; i++)
+            for (int i = 0; i < beams.Count; i++)
             {
                 var g = mat * beams[i].Index;
                 var (Q, P) = getQP(g, kvac, u0);
@@ -605,7 +614,9 @@ namespace Crystallography
             return Beams;
         }
 
+        #endregion
 
+        #region 構造因子 F
         /// <summary>
         /// 構造因子を求める. s2の単位は nm^-2
         /// </summary>
@@ -657,7 +668,9 @@ namespace Crystallography
             }
             return (fReal, fImag);
         }
+        #endregion
 
+        #region ポテンシャル U
         /// <summary>
         /// ポテンシャルを求める. s2の単位は nm^-2
         /// </summary>
@@ -687,7 +700,9 @@ namespace Crystallography
         private (Complex Real, Complex Imag) getU((int H, int K, int L) index, double s2) => getU(AccVoltage, index, s2);
 
         private Dictionary<int, (Complex, Complex)> uDictionary = new Dictionary<int, (Complex, Complex)>();
+        #endregion
 
+        #region ポテンシャルのマトリックス
         /// <summary>
         /// ポテンシャルマトリックスを求める. k0の単位はnm^-1. 
         /// </summary>
@@ -705,8 +720,9 @@ namespace Crystallography
                 }
             return potentialMatrix;
         }
+        #endregion
 
-
+        #region 固有値問題対象のマトリックス
         /// <summary>
         /// 固有値問題マトリックスを求める. k0の単位はnm^-1
         /// </summary>
@@ -714,7 +730,7 @@ namespace Crystallography
         /// <returns></returns>
         private Complex[,] getEigenProblemMatrix(Beam[] b, Complex[,] potentialMatrix = null)
         {
-            if (potentialMatrix == null|| potentialMatrix.GetLength(0)!=b.Length)
+            if (potentialMatrix == null || potentialMatrix.GetLength(0) != b.Length)
                 potentialMatrix = getPotentialMatrix(b);
 
             //A行列を決定
@@ -723,13 +739,15 @@ namespace Crystallography
             {
                 for (int j = 0; j < b.Length; j++)
                     eigenProblemMatrix[i, j] = potentialMatrix[i, j] / b[i].P;
-                
+
                 eigenProblemMatrix[i, i] += b[i].Q / b[i].P;
 
             }
             return eigenProblemMatrix;
         }
+        #endregion
 
+        #region 候補となるg vectorsの検索
         /// <summary>
         /// 候補となるgVectorを検索する.
         /// </summary>
@@ -848,6 +866,9 @@ namespace Crystallography
             return beams.ToArray();
         }
 
+        #endregion
+
+        #region 絞りの内部にあるビームのみ選び取る (HRTEM シミュレータから呼ばれる)
         public Beam[] ExtractInsideBeams(Beam[] beams, double acc, double radius, double shiftX, double shiftY)
         {
             if (double.IsInfinity(radius))
@@ -860,6 +881,9 @@ namespace Crystallography
                 return beams.Where(b => (b.Vec.ToPointD() - center).Length2 < r * r).ToArray();
             }
         }
+        #endregion
+
+        #region P, Q のリセットやゲット
 
         /// <summary>
         /// 引数のBeamsとrotationをもとに、PとQだけセットして返す。ほかのパラメータは放置. CBEDの時にみ呼ばれる。
@@ -886,7 +910,9 @@ namespace Crystallography
         private (double Q, double P) getQP(Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)
             => getQP(g, getVecK0(kvac, u0, beamRotation));
 
+        #endregion
 
+        #region K0ベクトルを求める
         /// <summary>
         /// K0ベクトルを求める。K0ベクトルは、XY方向を保存したままZ方向のみ変化する。
         /// </summary>
@@ -906,8 +932,10 @@ namespace Crystallography
             return vecKvac + x * Surface;
         }
 
+        #endregion
 
-        
+        #region Beamクラス
+
         public class Beam
         {
             /// <summary>
@@ -983,9 +1011,9 @@ namespace Crystallography
                 Fimag = f.Imag;
                 Q = prms.Q;
                 P = prms.P;
-                Rating = Math.Sqrt(Vec.Length2)* Math.Abs(Q) * Math.Abs(Q);
+                Rating = Math.Sqrt(Vec.Length2) * Math.Abs(Q) * Math.Abs(Q);
             }
-          
+
 
             public Beam(double q, double p)
             {
@@ -1008,6 +1036,9 @@ namespace Crystallography
             }
         }
 
+        #endregion
+
+        #region CBED_Diskクラス
         public class CBED_Disk
         {
             /// <summary>
@@ -1036,6 +1067,8 @@ namespace Crystallography
                 Thickness = thickness;
                 Intensity = intensity;
             }
-        }
+        } 
+        #endregion
+
     }
 }

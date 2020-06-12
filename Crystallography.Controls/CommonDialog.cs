@@ -12,7 +12,7 @@ namespace Crystallography.Controls
         {
             set
             {
-                this.Text = value.Text;
+                Text = value.Text;
                 var progress = (int)(progressBar.Maximum * value.Ratio);
                 progressBar.Value = progress < progressBar.Maximum ? progress : progressBar.Maximum ;
                 Application.DoEvents();
@@ -29,7 +29,6 @@ namespace Crystallography.Controls
                 flowLayoutPanelSoftwareInformation.Visible = true;
                 if (value == DialogModeEnum.Initialize)
                 {
-                    
                     progressBar.Visible = true;
                     checkBoxCloseWindow.Visible = true;
 
@@ -98,31 +97,12 @@ namespace Crystallography.Controls
 
         public string History { get; set; } = "";
 
-
+        public string[] Hint { set { hint = value; setToolTips(); } get => hint; }
         private string[] hint;
 
-        public string[] Hint
-        {
-            set
-            {
-                hint = value;
-                setToolTips();
-            }
-            get => hint;
-        }
-
-       
-
-        public bool AutomaricallyClose
-        {
-            set => checkBoxCloseWindow.Checked = value;
-            get => checkBoxCloseWindow.Checked;
-        }
+        public bool AutomaricallyClose { set => checkBoxCloseWindow.Checked = value; get => checkBoxCloseWindow.Checked; }
 
         private int currentHintIndex = 0;
-
-      
-
 
         /// <summary>
         /// License
@@ -174,9 +154,6 @@ namespace Crystallography.Controls
         }
         #endregion
 
-        private void setToolTips()
-        {
-            textBox.Text = hint.Length > 0 ? hint[new Random().Next(hint.Length)] : "";
-        }
+        private void setToolTips() => textBox.Text = hint.Length > 0 ? hint[new Random().Next(hint.Length)] : "";
     }
 }

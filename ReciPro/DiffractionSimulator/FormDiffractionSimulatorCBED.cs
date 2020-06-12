@@ -18,7 +18,6 @@ namespace ReciPro
         private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
         private double WaveLength => FormDiffractionSimulator.WaveLength;
         private double Thickness => numericBoxWholeThicknessStart.Value;
-
         private Crystal Crystal => FormDiffractionSimulator.formMain.Crystal;
 
         public int DivisionNumber
@@ -141,16 +140,17 @@ namespace ReciPro
         {
             if (skipProgressChangedEvent) return;
             skipProgressChangedEvent = true;
-            var report = (BetheMethod.Report)e.UserState;
+            var current = e.ProgressPercentage;
+            var solver = (string)e.UserState;
             var sec = sw.ElapsedMilliseconds / 1000.0;
-            var progress = (int)(100.0 * report.Current / DivisionNumber);
+            var progress = (int)(100.0 * current / DivisionNumber);
             if (progress <= 100)
-                toolStripProgressBar.Value = (int)(100.0 * report.Current / DivisionNumber);
-            toolStripStatusLabel2.Text = report.Solver;
+                toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
+            toolStripStatusLabel2.Text = solver;
             toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-            toolStripStatusLabel1.Text += sec / report.Current > 0.9 ? (sec / report.Current).ToString("f2") + " s.,  " : (sec / report.Current * 1000).ToString("f2") + " ms., ";
-            toolStripStatusLabel1.Text += (100.0 * report.Current / DivisionNumber).ToString("f1") + " % completed,  wait for "
-                + (sec * (DivisionNumber - report.Current) / report.Current).ToString("f2") + " s.";
+            toolStripStatusLabel1.Text += sec / current > 0.9 ? (sec / current).ToString("f2") + " s.,  " : (sec / current * 1000).ToString("f2") + " ms., ";
+            toolStripStatusLabel1.Text += (100.0 * current / DivisionNumber).ToString("f1") + " % completed,  wait for "
+                + (sec * (DivisionNumber - current) / current).ToString("f2") + " s.";
 
             Application.DoEvents();
             skipProgressChangedEvent = false;

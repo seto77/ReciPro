@@ -1417,7 +1417,6 @@ namespace ReciPro
                             bestThickness = FormMain.Crystal.Bethe.Thicknesses[t];
                             bestDirection = FormMain.Crystal.Bethe.BeamRotations[r];
                         }
-
                     }
                 }
             }
@@ -1430,17 +1429,18 @@ namespace ReciPro
         bool skipProgressChangedEvent = false;
         private void Bethe_CbedProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            
             if (skipProgressChangedEvent) return;
             skipProgressChangedEvent = true;
-            var report = (BetheMethod.Report)e.UserState;
-            var sec = sw.ElapsedMilliseconds / 1000.0;
+            var current = e.ProgressPercentage;
+            var solver = (string)e.UserState;var sec = sw.ElapsedMilliseconds / 1000.0;
             var divisionNumber = FormMain.Crystal.Bethe.RotationArrayValidLength;
-            var progress = (int)(100.0 * report.Current / divisionNumber);
+            var progress = (int)(100.0 * current / divisionNumber);
             if (progress <= 100)
-                toolStripProgressBar.Value = toolStripProgressBar.Maximum * report.Current / divisionNumber;
+                toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / divisionNumber;
             toolStripStatusLabelRefine.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
-            toolStripStatusLabelRefine.Text += sec / report.Current > 0.9 ? $"{sec / report.Current:f2} s.,  " : $"{sec / report.Current * 1000:f2} ms., ";
-            toolStripStatusLabelRefine.Text += $"{100.0 * report.Current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - report.Current) / report.Current:f2} s.";
+            toolStripStatusLabelRefine.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
+            toolStripStatusLabelRefine.Text += $"{100.0 * current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - current) / current:f2} s.";
 
             Application.DoEvents();
             skipProgressChangedEvent = false;
