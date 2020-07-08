@@ -13,6 +13,8 @@ namespace ReciPro
 {
     public partial class FormDiffractionSimulatorCBED : Form
     {
+        #region フィールド、プロパティ
+
         public FormDiffractionSimulator FormDiffractionSimulator;
 
         private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
@@ -75,6 +77,11 @@ namespace ReciPro
 
         private Matrix3D[] Rotations;
 
+        private readonly Stopwatch sw = new Stopwatch();
+
+        #endregion
+
+        #region コンストラクタ、ロード、クローズ
         public FormDiffractionSimulatorCBED()
         {
             InitializeComponent();
@@ -84,8 +91,15 @@ namespace ReciPro
             comboBoxGradient.SelectedIndex = 0;
         }
 
-        private readonly Stopwatch sw = new Stopwatch();
+        private void FormDiffractionSimulatorMultislice_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (sender == this)
+                FormDiffractionSimulator.radioButtonIntensityBethe.Checked = true;
+        }
+        #endregion
 
+        #region 実行/停止ボタン
         private void buttonExecute_Click(object sender, EventArgs e)
         {
             if (Crystal.Bethe.IsBusy) return;
@@ -132,10 +146,11 @@ namespace ReciPro
             buttonStop.Visible = false;
 
         }
+        #endregion
 
+        #region BackgroundWorkerからのProgressChanged, Completed
 
         private bool skipProgressChangedEvent = false;
-
         private void Bethe_CbedProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             if (skipProgressChangedEvent) return;
@@ -184,6 +199,9 @@ namespace ReciPro
             Application.DoEvents();
         }
 
+        #endregion
+
+        #region 生画像や表示画像の構築
         public void setImagePixelSize()
         {
             AngleResolution = Math.Acos((Matrix3D.SumOfDiagonalCompenent(Rotations[Rotations.Length / 2] * Rotations[Rotations.Length / 2 + 1].Inverse()) - 1) / 2);
@@ -194,21 +212,15 @@ namespace ReciPro
         {
             if (FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null)
                 return;
-
             setImagePixelSize();
-
             if (resetSrc)
                 SrcImage = getSrcImage();
-
             if (SrcImage == null)
                 return;
-
             if (resetDest)
                 DestImage = getDestImage(SrcImage);
-
             if (DestImage == null)
                 return;
-
             pseudoBmp = new PseudoBitmap(DestImage, numericBoxImageSize.ValueInteger);
             pseudoBmp.MaxValue = pseudoBmp.SrcValuesGrayOriginal.Max() * trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;// * 1.5;
             pseudoBmp.MinValue = pseudoBmp.SrcValuesGrayOriginal.Max() * trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
@@ -218,10 +230,7 @@ namespace ReciPro
                 pseudoBmp.SetScaleColdWarm();
 
             pseudoBmp.IsNegative = comboBoxGradient.SelectedIndex == 1;
-
-
             CBED_Image = pseudoBmp.GetImage();
-
             FormDiffractionSimulator.Draw();
             Application.DoEvents();
         }
@@ -243,12 +252,10 @@ namespace ReciPro
                 var pt = new PointD(point.X, point.Y);
                 //ptをピクセル座標に変換する
                 var diskCenter = new Point((int)(pt.X / ImagePixelSize + center.X + 0.5), (int)(pt.Y / ImagePixelSize + center.Y + 0.5));
-
                 if (diskCenter.X > -ImageWidth * 0.5 && diskCenter.Y > -ImageHeight * 0.5 && diskCenter.X < ImageWidth * 1.5 && diskCenter.Y < ImageHeight * 1.5)
                 {
                     var side = (int)Math.Sqrt(disk.Intensity.Length);
-                    int n = 0;
-                    for (int y = diskCenter.Y + side / 2; y >= diskCenter.Y - side / 2; y--)
+                    for (int y = diskCenter.Y + side / 2, n = 0; y >= diskCenter.Y - side / 2; y--)
                         for (int x = diskCenter.X + side / 2; x >= diskCenter.X - side / 2; x--)
                         {
                             if (x > -1 && x < ImageWidth && y > -1 && y < ImageHeight && (diskCenter.X - x) * (diskCenter.X - x) + (diskCenter.Y - y) * (diskCenter.Y - y) < (side * side / 4))
@@ -280,29 +287,6 @@ namespace ReciPro
             return destImage;
         }
 
-        private void FormDiffractionSimulatorMultislice_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            if (sender == this)
-                FormDiffractionSimulator.radioButtonIntensityBethe.Checked = true;
-        }
-
-        private bool trackBarAdvancedAlphaMax_ValueChanged(object sender, double value)
-        {
-            FormDiffractionSimulator.Draw();
-            return false;
-        }
-
-        private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
-
-        private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) => labelDivisionNumber.Text = "disk is divided\r\ninto " + DivisionNumber.ToString() + " points";
-
-        private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
-        {
-            trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
-            trackBarOutputThickness.Value = 0;
-        }
-
         private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
         {
             if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
@@ -320,13 +304,32 @@ namespace ReciPro
             generateImage();
         }
 
-        private void trackBarSigma_ValueChanged(object sender, EventArgs e) => generateImage(false, true);
-
-
         private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => generateImage(false, true);
+        private void trackBarGamma_ValueChanged(object sender, EventArgs e) => generateImage(false, true);
+        #endregion
+
+        #region 入力パラメータ関連のイベント
+        private bool trackBarAdvancedAlphaMax_ValueChanged(object sender, double value)
+        {
+            FormDiffractionSimulator.Draw();
+            return false;
+        }
 
         private void numericBoxMaxNumOfG_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
+        private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
+
+        private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) => labelDivisionNumber.Text = "disk is divided\r\ninto " + DivisionNumber.ToString() + " points";
+
+        private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
+            trackBarOutputThickness.Value = 0;
+        }
+       
         private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e) => numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
+
+        #endregion
+        
     }
 }

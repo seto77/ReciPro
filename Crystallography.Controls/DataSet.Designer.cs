@@ -34,6 +34,8 @@ namespace Crystallography.Controls {
         
         private DataTableLatticePlaneDataTable tableDataTableLatticePlane;
         
+        private DataTableCrystalDatabaseDataTable tableDataTableCrystalDatabase;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace Crystallography.Controls {
                 }
                 if ((ds.Tables["DataTableLatticePlane"] != null)) {
                     base.Tables.Add(new DataTableLatticePlaneDataTable(ds.Tables["DataTableLatticePlane"]));
+                }
+                if ((ds.Tables["DataTableCrystalDatabase"] != null)) {
+                    base.Tables.Add(new DataTableCrystalDatabaseDataTable(ds.Tables["DataTableCrystalDatabase"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace Crystallography.Controls {
         public DataTableLatticePlaneDataTable DataTableLatticePlane {
             get {
                 return this.tableDataTableLatticePlane;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DataTableCrystalDatabaseDataTable DataTableCrystalDatabase {
+            get {
+                return this.tableDataTableCrystalDatabase;
             }
         }
         
@@ -227,6 +242,9 @@ namespace Crystallography.Controls {
                 if ((ds.Tables["DataTableLatticePlane"] != null)) {
                     base.Tables.Add(new DataTableLatticePlaneDataTable(ds.Tables["DataTableLatticePlane"]));
                 }
+                if ((ds.Tables["DataTableCrystalDatabase"] != null)) {
+                    base.Tables.Add(new DataTableCrystalDatabaseDataTable(ds.Tables["DataTableCrystalDatabase"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace Crystallography.Controls {
                     this.tableDataTableLatticePlane.InitVars();
                 }
             }
+            this.tableDataTableCrystalDatabase = ((DataTableCrystalDatabaseDataTable)(base.Tables["DataTableCrystalDatabase"]));
+            if ((initTable == true)) {
+                if ((this.tableDataTableCrystalDatabase != null)) {
+                    this.tableDataTableCrystalDatabase.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace Crystallography.Controls {
             base.Tables.Add(this.tableDataTableBound);
             this.tableDataTableLatticePlane = new DataTableLatticePlaneDataTable();
             base.Tables.Add(this.tableDataTableLatticePlane);
+            this.tableDataTableCrystalDatabase = new DataTableCrystalDatabaseDataTable();
+            base.Tables.Add(this.tableDataTableCrystalDatabase);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace Crystallography.Controls {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDataTableLatticePlane() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeDataTableCrystalDatabase() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace Crystallography.Controls {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DataTableLatticePlaneRowChangeEventHandler(object sender, DataTableLatticePlaneRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void DataTableCrystalDatabaseRowChangeEventHandler(object sender, DataTableCrystalDatabaseRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2262,6 +2297,614 @@ namespace Crystallography.Controls {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DataTableCrystalDatabaseDataTable : global::System.Data.TypedTableBase<DataTableCrystalDatabaseRow> {
+            
+            private global::System.Data.DataColumn columnSerializedCrystal2;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnFormula;
+            
+            private global::System.Data.DataColumn columnDensity;
+            
+            private global::System.Data.DataColumn columnA;
+            
+            private global::System.Data.DataColumn columnB;
+            
+            private global::System.Data.DataColumn columnC;
+            
+            private global::System.Data.DataColumn columnAlpha;
+            
+            private global::System.Data.DataColumn columnBeta;
+            
+            private global::System.Data.DataColumn columnGamma;
+            
+            private global::System.Data.DataColumn columnCrystalSystem;
+            
+            private global::System.Data.DataColumn columnPointGroup;
+            
+            private global::System.Data.DataColumn columnSpaceGroup;
+            
+            private global::System.Data.DataColumn columnAuthors;
+            
+            private global::System.Data.DataColumn columnTitle;
+            
+            private global::System.Data.DataColumn columnJournal;
+            
+            private global::System.Data.DataColumn columnElements;
+            
+            private global::System.Data.DataColumn columnD1;
+            
+            private global::System.Data.DataColumn columnD2;
+            
+            private global::System.Data.DataColumn columnD3;
+            
+            private global::System.Data.DataColumn columnD4;
+            
+            private global::System.Data.DataColumn columnD5;
+            
+            private global::System.Data.DataColumn columnD6;
+            
+            private global::System.Data.DataColumn columnD7;
+            
+            private global::System.Data.DataColumn columnD8;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseDataTable() {
+                this.TableName = "DataTableCrystalDatabase";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DataTableCrystalDatabaseDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected DataTableCrystalDatabaseDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SerializedCrystal2Column {
+                get {
+                    return this.columnSerializedCrystal2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FormulaColumn {
+                get {
+                    return this.columnFormula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DensityColumn {
+                get {
+                    return this.columnDensity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AColumn {
+                get {
+                    return this.columnA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BColumn {
+                get {
+                    return this.columnB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CColumn {
+                get {
+                    return this.columnC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AlphaColumn {
+                get {
+                    return this.columnAlpha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BetaColumn {
+                get {
+                    return this.columnBeta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GammaColumn {
+                get {
+                    return this.columnGamma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CrystalSystemColumn {
+                get {
+                    return this.columnCrystalSystem;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PointGroupColumn {
+                get {
+                    return this.columnPointGroup;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SpaceGroupColumn {
+                get {
+                    return this.columnSpaceGroup;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AuthorsColumn {
+                get {
+                    return this.columnAuthors;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TitleColumn {
+                get {
+                    return this.columnTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn JournalColumn {
+                get {
+                    return this.columnJournal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ElementsColumn {
+                get {
+                    return this.columnElements;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D1Column {
+                get {
+                    return this.columnD1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D2Column {
+                get {
+                    return this.columnD2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D3Column {
+                get {
+                    return this.columnD3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D4Column {
+                get {
+                    return this.columnD4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D5Column {
+                get {
+                    return this.columnD5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D6Column {
+                get {
+                    return this.columnD6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D7Column {
+                get {
+                    return this.columnD7;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn D8Column {
+                get {
+                    return this.columnD8;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseRow this[int index] {
+                get {
+                    return ((DataTableCrystalDatabaseRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DataTableCrystalDatabaseRowChangeEventHandler DataTableCrystalDatabaseRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DataTableCrystalDatabaseRowChangeEventHandler DataTableCrystalDatabaseRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DataTableCrystalDatabaseRowChangeEventHandler DataTableCrystalDatabaseRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DataTableCrystalDatabaseRowChangeEventHandler DataTableCrystalDatabaseRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddDataTableCrystalDatabaseRow(DataTableCrystalDatabaseRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseRow AddDataTableCrystalDatabaseRow(
+                        object SerializedCrystal2, 
+                        string Name, 
+                        string Formula, 
+                        double Density, 
+                        double A, 
+                        double B, 
+                        double C, 
+                        double Alpha, 
+                        double Beta, 
+                        double Gamma, 
+                        string CrystalSystem, 
+                        string PointGroup, 
+                        string SpaceGroup, 
+                        string Authors, 
+                        string Title, 
+                        string Journal, 
+                        string Elements, 
+                        float D1, 
+                        float D2, 
+                        float D3, 
+                        float D4, 
+                        float D5, 
+                        float D6, 
+                        float D7, 
+                        float D8) {
+                DataTableCrystalDatabaseRow rowDataTableCrystalDatabaseRow = ((DataTableCrystalDatabaseRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        SerializedCrystal2,
+                        Name,
+                        Formula,
+                        Density,
+                        A,
+                        B,
+                        C,
+                        Alpha,
+                        Beta,
+                        Gamma,
+                        CrystalSystem,
+                        PointGroup,
+                        SpaceGroup,
+                        Authors,
+                        Title,
+                        Journal,
+                        Elements,
+                        D1,
+                        D2,
+                        D3,
+                        D4,
+                        D5,
+                        D6,
+                        D7,
+                        D8};
+                rowDataTableCrystalDatabaseRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTableCrystalDatabaseRow);
+                return rowDataTableCrystalDatabaseRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DataTableCrystalDatabaseDataTable cln = ((DataTableCrystalDatabaseDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DataTableCrystalDatabaseDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnSerializedCrystal2 = base.Columns["SerializedCrystal2"];
+                this.columnName = base.Columns["Name"];
+                this.columnFormula = base.Columns["Formula"];
+                this.columnDensity = base.Columns["Density"];
+                this.columnA = base.Columns["A"];
+                this.columnB = base.Columns["B"];
+                this.columnC = base.Columns["C"];
+                this.columnAlpha = base.Columns["Alpha"];
+                this.columnBeta = base.Columns["Beta"];
+                this.columnGamma = base.Columns["Gamma"];
+                this.columnCrystalSystem = base.Columns["CrystalSystem"];
+                this.columnPointGroup = base.Columns["PointGroup"];
+                this.columnSpaceGroup = base.Columns["SpaceGroup"];
+                this.columnAuthors = base.Columns["Authors"];
+                this.columnTitle = base.Columns["Title"];
+                this.columnJournal = base.Columns["Journal"];
+                this.columnElements = base.Columns["Elements"];
+                this.columnD1 = base.Columns["D1"];
+                this.columnD2 = base.Columns["D2"];
+                this.columnD3 = base.Columns["D3"];
+                this.columnD4 = base.Columns["D4"];
+                this.columnD5 = base.Columns["D5"];
+                this.columnD6 = base.Columns["D6"];
+                this.columnD7 = base.Columns["D7"];
+                this.columnD8 = base.Columns["D8"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnSerializedCrystal2 = new global::System.Data.DataColumn("SerializedCrystal2", typeof(object), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSerializedCrystal2);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnFormula = new global::System.Data.DataColumn("Formula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormula);
+                this.columnDensity = new global::System.Data.DataColumn("Density", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDensity);
+                this.columnA = new global::System.Data.DataColumn("A", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnA);
+                this.columnB = new global::System.Data.DataColumn("B", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnB);
+                this.columnC = new global::System.Data.DataColumn("C", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnC);
+                this.columnAlpha = new global::System.Data.DataColumn("Alpha", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAlpha);
+                this.columnBeta = new global::System.Data.DataColumn("Beta", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBeta);
+                this.columnGamma = new global::System.Data.DataColumn("Gamma", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGamma);
+                this.columnCrystalSystem = new global::System.Data.DataColumn("CrystalSystem", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCrystalSystem);
+                this.columnPointGroup = new global::System.Data.DataColumn("PointGroup", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPointGroup);
+                this.columnSpaceGroup = new global::System.Data.DataColumn("SpaceGroup", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpaceGroup);
+                this.columnAuthors = new global::System.Data.DataColumn("Authors", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuthors);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
+                this.columnJournal = new global::System.Data.DataColumn("Journal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJournal);
+                this.columnElements = new global::System.Data.DataColumn("Elements", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnElements);
+                this.columnD1 = new global::System.Data.DataColumn("D1", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD1);
+                this.columnD2 = new global::System.Data.DataColumn("D2", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD2);
+                this.columnD3 = new global::System.Data.DataColumn("D3", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD3);
+                this.columnD4 = new global::System.Data.DataColumn("D4", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD4);
+                this.columnD5 = new global::System.Data.DataColumn("D5", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD5);
+                this.columnD6 = new global::System.Data.DataColumn("D6", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD6);
+                this.columnD7 = new global::System.Data.DataColumn("D7", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD7);
+                this.columnD8 = new global::System.Data.DataColumn("D8", typeof(float), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnD8);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseRow NewDataTableCrystalDatabaseRow() {
+                return ((DataTableCrystalDatabaseRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DataTableCrystalDatabaseRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DataTableCrystalDatabaseRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DataTableCrystalDatabaseRowChanged != null)) {
+                    this.DataTableCrystalDatabaseRowChanged(this, new DataTableCrystalDatabaseRowChangeEvent(((DataTableCrystalDatabaseRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DataTableCrystalDatabaseRowChanging != null)) {
+                    this.DataTableCrystalDatabaseRowChanging(this, new DataTableCrystalDatabaseRowChangeEvent(((DataTableCrystalDatabaseRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DataTableCrystalDatabaseRowDeleted != null)) {
+                    this.DataTableCrystalDatabaseRowDeleted(this, new DataTableCrystalDatabaseRowChangeEvent(((DataTableCrystalDatabaseRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DataTableCrystalDatabaseRowDeleting != null)) {
+                    this.DataTableCrystalDatabaseRowDeleting(this, new DataTableCrystalDatabaseRowChangeEvent(((DataTableCrystalDatabaseRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveDataTableCrystalDatabaseRow(DataTableCrystalDatabaseRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet ds = new DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DataTableCrystalDatabaseDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class DataTableScatteringFactorRow : global::System.Data.DataRow {
@@ -3681,6 +4324,721 @@ namespace Crystallography.Controls {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DataTableCrystalDatabaseRow : global::System.Data.DataRow {
+            
+            private DataTableCrystalDatabaseDataTable tableDataTableCrystalDatabase;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DataTableCrystalDatabaseRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDataTableCrystalDatabase = ((DataTableCrystalDatabaseDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public object SerializedCrystal2 {
+                get {
+                    try {
+                        return ((object)(this[this.tableDataTableCrystalDatabase.SerializedCrystal2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'SerializedCrystal2\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.SerializedCrystal2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Name\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Formula {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.FormulaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Formula\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.FormulaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Density {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.DensityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Density\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.DensityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double A {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.AColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'A\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.AColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double B {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.BColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'B\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.BColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double C {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.CColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'C\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.CColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Alpha {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.AlphaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Alpha\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.AlphaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Beta {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.BetaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Beta\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.BetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Gamma {
+                get {
+                    try {
+                        return ((double)(this[this.tableDataTableCrystalDatabase.GammaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Gamma\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.GammaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CrystalSystem {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.CrystalSystemColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'CrystalSystem\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.CrystalSystemColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PointGroup {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.PointGroupColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'PointGroup\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.PointGroupColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SpaceGroup {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.SpaceGroupColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'SpaceGroup\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.SpaceGroupColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Authors {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.AuthorsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Authors\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.AuthorsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Title {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.TitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Title\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.TitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Journal {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.JournalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Journal\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.JournalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Elements {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableCrystalDatabase.ElementsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Elements\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.ElementsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D1 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D1\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D2 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D2\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D3 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D3\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D4 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D4\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D5 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D5\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D6 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D6Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D6\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D6Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D7 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D7Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D7\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D7Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public float D8 {
+                get {
+                    try {
+                        return ((float)(this[this.tableDataTableCrystalDatabase.D8Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'D8\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableCrystalDatabase.D8Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSerializedCrystal2Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.SerializedCrystal2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSerializedCrystal2Null() {
+                this[this.tableDataTableCrystalDatabase.SerializedCrystal2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableDataTableCrystalDatabase.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFormulaNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.FormulaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFormulaNull() {
+                this[this.tableDataTableCrystalDatabase.FormulaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDensityNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.DensityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDensityNull() {
+                this[this.tableDataTableCrystalDatabase.DensityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsANull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.AColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetANull() {
+                this[this.tableDataTableCrystalDatabase.AColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.BColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBNull() {
+                this[this.tableDataTableCrystalDatabase.BColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.CColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCNull() {
+                this[this.tableDataTableCrystalDatabase.CColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAlphaNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.AlphaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAlphaNull() {
+                this[this.tableDataTableCrystalDatabase.AlphaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBetaNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.BetaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBetaNull() {
+                this[this.tableDataTableCrystalDatabase.BetaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsGammaNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.GammaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetGammaNull() {
+                this[this.tableDataTableCrystalDatabase.GammaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCrystalSystemNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.CrystalSystemColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCrystalSystemNull() {
+                this[this.tableDataTableCrystalDatabase.CrystalSystemColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPointGroupNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.PointGroupColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPointGroupNull() {
+                this[this.tableDataTableCrystalDatabase.PointGroupColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSpaceGroupNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.SpaceGroupColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSpaceGroupNull() {
+                this[this.tableDataTableCrystalDatabase.SpaceGroupColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAuthorsNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.AuthorsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAuthorsNull() {
+                this[this.tableDataTableCrystalDatabase.AuthorsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTitleNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.TitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTitleNull() {
+                this[this.tableDataTableCrystalDatabase.TitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsJournalNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.JournalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetJournalNull() {
+                this[this.tableDataTableCrystalDatabase.JournalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsElementsNull() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.ElementsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetElementsNull() {
+                this[this.tableDataTableCrystalDatabase.ElementsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD1Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD1Null() {
+                this[this.tableDataTableCrystalDatabase.D1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD2Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD2Null() {
+                this[this.tableDataTableCrystalDatabase.D2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD3Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD3Null() {
+                this[this.tableDataTableCrystalDatabase.D3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD4Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD4Null() {
+                this[this.tableDataTableCrystalDatabase.D4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD5Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD5Null() {
+                this[this.tableDataTableCrystalDatabase.D5Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD6Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D6Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD6Null() {
+                this[this.tableDataTableCrystalDatabase.D6Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD7Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D7Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD7Null() {
+                this[this.tableDataTableCrystalDatabase.D7Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsD8Null() {
+                return this.IsNull(this.tableDataTableCrystalDatabase.D8Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetD8Null() {
+                this[this.tableDataTableCrystalDatabase.D8Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -3836,6 +5194,40 @@ namespace Crystallography.Controls {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTableLatticePlaneRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class DataTableCrystalDatabaseRowChangeEvent : global::System.EventArgs {
+            
+            private DataTableCrystalDatabaseRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseRowChangeEvent(DataTableCrystalDatabaseRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DataTableCrystalDatabaseRow Row {
                 get {
                     return this.eventRow;
                 }

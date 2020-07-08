@@ -56,15 +56,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
     <UseIntelTBB>false</UseIntelTBB>
     <ProfileGuidedOptimization>Disabled</ProfileGuidedOptimization>
     <UseIntelMKL>No</UseIntelMKL>
-    <SpectreMitigation>
-    </SpectreMitigation>
+    <SpectreMitigation>false</SpectreMitigation>
     <UseILP64Interfaces>false</UseILP64Interfaces>
     <UseIntelIPP>false</UseIntelIPP>
     <UseIntelDAAL>false</UseIntelDAAL>
@@ -252,8 +251,7 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <FloatingPointModel>
-      </FloatingPointModel>
+      <FloatingPointModel>Precise</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Users\seto\source\repos\Crystallography.Native\Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

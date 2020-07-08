@@ -70,6 +70,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <LangVersion>8.0</LangVersion>
     <DebugSymbols>true</DebugSymbols>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -131,6 +132,15 @@
     <Reference Include="MathNet.Numerics, Version=4.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.4.11.0\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
+    <Reference Include="MessagePack, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagePack.2.1.152\lib\netstandard2.0\MessagePack.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagePack.Annotations, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagePack.Annotations.2.1.152\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Dynamic, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Dynamic.dll</HintPath>
@@ -152,14 +162,29 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0-preview.6.20305.6\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider">
@@ -187,6 +212,12 @@
     </Compile>
     <Compile Include="ColorControl.Designer.cs">
       <DependentUpon>ColorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalDatabase\CrystalDatabaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CrystalDatabase\CrystalDatabaseControl.Designer.cs">
+      <DependentUpon>CrystalDatabaseControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Crystal\AtomCoordinateTable.cs">
       <SubType>UserControl</SubType>
@@ -353,6 +384,12 @@
     <Compile Include="ScalablePictureBoxAdvanced.Designer.cs">
       <DependentUpon>ScalablePictureBoxAdvanced.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalDatabase\SearchCrystalControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CrystalDatabase\SearchCrystalControl.Designer.cs">
+      <DependentUpon>SearchCrystalControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrackBarAdvanced.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -416,6 +453,9 @@
     <EmbeddedResource Include="ColorControl.resx">
       <DependentUpon>ColorControl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalDatabase\CrystalDatabaseControl.resx">
+      <DependentUpon>CrystalDatabaseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\AtomCoordinateTable.resx">
       <DependentUpon>AtomCoordinateTable.cs</DependentUpon>
@@ -524,6 +564,9 @@
     <EmbeddedResource Include="ScalablePictureBoxAdvanced.resx">
       <DependentUpon>ScalablePictureBoxAdvanced.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalDatabase\SearchCrystalControl.resx">
+      <DependentUpon>SearchCrystalControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrackBarAdvanced.resx">
       <DependentUpon>TrackBarAdvanced.cs</DependentUpon>

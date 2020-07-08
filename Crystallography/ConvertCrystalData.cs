@@ -6,7 +6,9 @@ using System.Linq;
 using System.IO;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
+
 using V3 = OpenTK.Vector3d;
+using System.Windows.Forms;
 
 namespace Crystallography
 {
@@ -996,7 +998,7 @@ namespace Crystallography
 						sExpr = sExpr.Replace(",+", ",").TrimStart(new[] { '+' });
 						sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}";//ï™éqÇ…è¨êîì_Çâ¡Ç¶ÇÈ
 					   
-						var f = DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
+						var f =  DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
 						return (x, y, z) => { var d = f(x, y, z); return new V3(d[0], d[1], d[2]); };
 					}
 					catch (Exception e)

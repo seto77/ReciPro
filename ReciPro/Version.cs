@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.779(2020/07/08)  Added a crystal database function, which manages 20698 crystals from AMCSD database. Fixed a bug on a dll file." +
             "\r\n ver4.778(2020/06/07)  Fixed a bug on importing CIF file." +
             "\r\n ver4.777(2020/06/06)  Improved GUI of the main window and 'structure viwer'." +
             "\r\n ver4.776(2020/05/30)  Improved: Speed up rendering of 'Structure viewer'." +

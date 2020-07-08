@@ -79,6 +79,7 @@ namespace ReciPro
         public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
         public FormRotationMatrix FormRotation;
         public FormImageSimulator FormImageSimulator;
+        public FormCrystalDatabase FormCrystalDatabase;
         private Crystallography.Controls.CommonDialog commonDialog;
 
         private GLControlAlpha glControlAxes;
@@ -223,6 +224,9 @@ namespace ReciPro
             FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
+            commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.35);
+            FormCrystalDatabase = new FormCrystalDatabase { FormMain = this, Visible = false };
+
             commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.",  0.4);
             FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
             FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
@@ -277,8 +281,12 @@ namespace ReciPro
             if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
                 File.Copy(appPath + "initial.xml", UserAppDataPath + "default.xml", true);
 
+            //ReciProSetup.msiは削除
             if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
                 File.Delete(UserAppDataPath + "ReciProSetup.msi");
+
+            //StdDbをコピー
+            File.Copy(appPath + "StdDb.cdb3", UserAppDataPath + "StdDb.cdb3", true);
 
             //UserAppDataPathに空フォルダがあったら削除
             foreach (var dir in Directory.GetDirectories(UserAppDataPath))
@@ -650,23 +658,37 @@ namespace ReciPro
                 SelectionMode.MultiExtended :  SelectionMode.One;
         }
 
-        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) => FormSpotID.Visible = toolStripButtonSpotID.Checked;
-        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
-        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
-        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
-        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) => FormStereonet.Visible = toolStripButtonStereonet.Checked;
-        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) => FormRotation.Visible = toolStripButtonRotation.Checked;
-        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
-        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
+        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) 
+            => FormSpotID.Visible = toolStripButtonSpotID.Checked;
+        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) 
+            => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
+        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) 
+            => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
+        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) 
+            => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
+        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) 
+            => FormStereonet.Visible = toolStripButtonStereonet.Checked;
+        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) 
+            => FormRotation.Visible = toolStripButtonRotation.Checked;
+        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) 
+            => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
+        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) 
+            => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
         private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
         {
             FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonPolycrystallineDiffraction.Checked;
             listBox_SelectedIndexChanged(listBox, e);
         }
 
-        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) => FormTEMID.Visible = toolStripButtonTEMID.Checked;
-        private void scatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
-        private void symmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
+        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) 
+            => FormTEMID.Visible = toolStripButtonTEMID.Checked;
+        private void scatteringFactor_VisibleChanged(object sender, EventArgs e) 
+            => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
+        private void symmetryInformation_VisibleChanged(object sender, EventArgs e) 
+            => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
+
+        private void toolStripButtonDatabase_CheckedChanged(object sender, EventArgs e) 
+            => FormCrystalDatabase.Visible = toolStripButtonDatabase.Checked;
 
         private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1413,5 +1435,6 @@ namespace ReciPro
         }
 
         #endregion
+
     }
 }

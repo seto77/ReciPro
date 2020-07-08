@@ -97,6 +97,9 @@ namespace Crystallography
 
         public static Crystal GetCrystal(Crystal2 c)
         {
+            if(c==null)
+                return null;
+
             var cell = c.Cell_nm_radian;
 
             var atom = new List<Atoms>();
@@ -503,6 +506,14 @@ namespace Crystallography
                 else if (str.Contains(".9167") || str.Contains(".91667") || str.Contains(".916667"))
                     return (11.0 / 12.0, errVal);
             }
+
+            if(val.Contains("/"))
+            {
+             var temp =   val.Split("/");
+                if (temp.Length == 2 && double.TryParse(temp[0], out var temp0) && double.TryParse(temp[1], out var temp1))
+                    return (temp0 / temp1, double.NaN);
+            }
+
             return val=="0" ? (0, errVal * expValue) : double.TryParse(val, out var valVal) ? (valVal * expValue, errVal * expValue) : (double.NaN, double.NaN);
         }
         public static string Compose(double val, double err = double.NaN)

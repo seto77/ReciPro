@@ -158,6 +158,8 @@
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonDatabase = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -925,7 +927,9 @@
             this.toolStripSeparator2,
             this.toolStripButtonSpotID,
             this.toolStripSeparator10,
-            this.toolStripButtonPolycrystallineDiffraction});
+            this.toolStripButtonPolycrystallineDiffraction,
+            this.toolStripSeparator15,
+            this.toolStripButtonDatabase});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -1250,6 +1254,18 @@
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
+            // 
+            // toolStripButtonDatabase
+            // 
+            this.toolStripButtonDatabase.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripButtonDatabase, "toolStripButtonDatabase");
+            this.toolStripButtonDatabase.Name = "toolStripButtonDatabase";
+            this.toolStripButtonDatabase.CheckedChanged += new System.EventHandler(this.toolStripButtonDatabase_CheckedChanged);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -1454,6 +1470,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        public System.Windows.Forms.ToolStripButton toolStripButtonDatabase;
     }
 }
 
