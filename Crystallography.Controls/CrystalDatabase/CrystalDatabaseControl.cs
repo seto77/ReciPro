@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
-using MessagePack;
 using System.IO;
 using System.Security.Cryptography;
-using MessagePack.Resolvers;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
 using System.Drawing;
+using MessagePack;
+using MessagePack.Resolvers;
 
 namespace Crystallography.Controls
 {
@@ -93,26 +91,26 @@ namespace Crystallography.Controls
         private void ReadDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             var filename = (string)e.Argument;
-
             try
             {
                 sw.Restart();
-                var progressStep = 500;
-                if (filename.ToLower().EndsWith("cdb2"))
-                {
-                    using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-                    var formatter = new BinaryFormatter();
-                    var total = (int)formatter.Deserialize(fs);
-                    for (int i = 0; i < total; i++)
-                    {
-                        var c = (Crystal2)formatter.Deserialize(fs);
-                        dataTable.Add(c);
+                //if (filename.ToLower().EndsWith("cdb2"))
+                //{
+                //    var progressStep = 500;
+                //    using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+                //    var formatter = new BinaryFormatter();
+                //    var total = (int)formatter.Deserialize(fs);
+                //    for (int i = 0; i < total; i++)
+                //    {
+                //        var c = (Crystal2)formatter.Deserialize(fs);
+                //        dataTable.Add(c);
 
-                        if (i > progressStep * 2 && i % progressStep == 0)
-                            report(i, total, sw.ElapsedMilliseconds, "Loading database...");
-                    }
-                }
-                else if (filename.ToLower().EndsWith("cdb3"))
+                //        if (i > progressStep * 2 && i % progressStep == 0)
+                //            report(i, total, sw.ElapsedMilliseconds, "Loading database...");
+                //    }
+                //}
+                //else 
+                if (filename.ToLower().EndsWith("cdb3"))
                 {
                     using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
                     int flag = readByte(fs), total = readInt(fs);
@@ -150,8 +148,6 @@ namespace Crystallography.Controls
                 }
                 else
                     return;
-
-                GC.Collect();
             }
             catch
             {
@@ -217,7 +213,8 @@ namespace Crystallography.Controls
                 //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
                 if (i + division >= total && byteList.Count <= thresholdBytes && filecounter == 0)
                     fs.Write(byteList.ToArray(), 0, byteList.Count);//最初のファイルに書き込んで終了
-                                                                    //最後まで来ている時か、閾値以上の容量の場合
+                
+                //最後まで来ている時か、閾値以上の容量の場合
                 else if (i + division >= total || byteList.Count > thresholdBytes)
                 {
                     if (filecounter == 0)
@@ -374,6 +371,7 @@ namespace Crystallography.Controls
         #region 結晶の追加、削除、変更
         public void AddCrystal(Crystal2 crystal2)
         {
+
             dataTable.Add(crystal2);
         }
 
@@ -398,13 +396,5 @@ namespace Crystallography.Controls
         }
         #endregion
 
-        #region その他
-
-        public string GetSourceFilename()
-        {
-            return ((Crystal2)((DataRowView)bindingSource.Current).Row[0]).fileName;
-        }
-
-        #endregion
     }
 }

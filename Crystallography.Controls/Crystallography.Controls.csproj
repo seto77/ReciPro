@@ -341,10 +341,10 @@
     <Compile Include="FormNumericUpdownControl.Designer.cs">
       <DependentUpon>FormNumericUpdownControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPeriodicTable.cs">
+    <Compile Include="CrystalDatabase\FormPeriodicTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPeriodicTable.Designer.cs">
+    <Compile Include="CrystalDatabase\FormPeriodicTable.Designer.cs">
       <DependentUpon>FormPeriodicTable.cs</DependentUpon>
     </Compile>
     <Compile Include="FormResolution.cs">
@@ -457,6 +457,9 @@
     <EmbeddedResource Include="CrystalDatabase\CrystalDatabaseControl.resx">
       <DependentUpon>CrystalDatabaseControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalDatabase\FormPeriodicTable.resx">
+      <DependentUpon>FormPeriodicTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\AtomCoordinateTable.resx">
       <DependentUpon>AtomCoordinateTable.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -538,9 +541,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNumericUpdownControl.resx">
       <DependentUpon>FormNumericUpdownControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPeriodicTable.resx">
-      <DependentUpon>FormPeriodicTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormResolution.resx">
       <DependentUpon>FormResolution.cs</DependentUpon>

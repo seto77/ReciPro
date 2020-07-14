@@ -21,9 +21,6 @@ namespace Crystallography.Controls
         private Color IncludeColor = Color.LightBlue;
         private Color NeutralColor = Color.LightYellow;
 
-
-
-
         public FormPeriodicTable()
         {
             InitializeComponent();
@@ -197,6 +194,14 @@ namespace Crystallography.Controls
 
             labelAc.Location = new Point(14, height * 8 + 4);
             for (int i = 89; i <= 103; i++) button[i].Location = new Point((i - 89 + 3) * width, height * 8);//Ac~Lr
+
+           // buttonOK.Location = new Point(button[103].Location.X + width - buttonOK.Width,
+          //      button[103].Location.Y + height + 4);
+
+           //Size = new Size(buttonOK.Location.X + buttonOK.Width + 4, buttonOK.Location.Y + buttonOK.Height + 4);
+
+
+               ;
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -242,6 +247,11 @@ namespace Crystallography.Controls
 
         private void FormPeriodicTable_Load(object sender, EventArgs e)
         {
+          //  buttonOK.Location = new Point(button[103].Location.X + button[103].Width - buttonOK.Width,
+          //        button[103].Location.Y + button[103].Height + 4);
+
+           // Size = new Size(buttonOK.Location.X + buttonOK.Width + 4, buttonOK.Location.Y + buttonOK.Height + 4);
+          //  buttonOK.BringToFront();
         }
     }
 }

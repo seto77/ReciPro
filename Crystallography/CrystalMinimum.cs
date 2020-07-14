@@ -507,11 +507,13 @@ namespace Crystallography
                     return (11.0 / 12.0, errVal);
             }
 
-            if(val.Contains("/"))
+            if (val.Contains("/"))
             {
-             var temp =   val.Split("/");
+                var temp = val.Split("/");
                 if (temp.Length == 2 && double.TryParse(temp[0], out var temp0) && double.TryParse(temp[1], out var temp1))
                     return (temp0 / temp1, double.NaN);
+                else
+                    return (double.NaN, double.NaN);
             }
 
             return val=="0" ? (0, errVal * expValue) : double.TryParse(val, out var valVal) ? (valVal * expValue, errVal * expValue) : (double.NaN, double.NaN);

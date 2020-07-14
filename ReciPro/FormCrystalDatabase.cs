@@ -25,7 +25,8 @@ namespace ReciPro
                 crystalDatabaseControl.ReadDatabase(FormMain.UserAppDataPath + "StdDB.cdb3");
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e) => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
+        private void buttonSearch_Click(object sender, EventArgs e)
+            => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 
         private void FormCrystalDatabase_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -34,8 +35,6 @@ namespace ReciPro
         }
 
         private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
-        {
-            FormMain.crystalControl.Crystal = crystalDatabaseControl.Crystal;
-        }
+            => FormMain.crystalControl.Crystal = crystalDatabaseControl.Crystal;
     }
 }

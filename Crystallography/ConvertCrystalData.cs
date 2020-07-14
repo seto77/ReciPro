@@ -6,9 +6,7 @@ using System.Linq;
 using System.IO;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
-
 using V3 = OpenTK.Vector3d;
-using System.Windows.Forms;
 
 namespace Crystallography
 {
@@ -263,7 +261,7 @@ namespace Crystallography
 			catch (Exception e)
 			{
 				#if DEBUG
-					System.Windows.Forms.MessageBox.Show(e.Message);
+					System.Windows.Forms.MessageBox.Show(fileName +" " + e.Message);
 				#endif
 				return null;
 			}
@@ -995,7 +993,7 @@ namespace Crystallography
 				{
 					try
 					{
-						sExpr = sExpr.Replace(",+", ",").TrimStart(new[] { '+' });
+						sExpr = sExpr.Replace(" ", "").Replace(",+", ",").TrimStart(new[] { '+' });
 						sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}";//分子に小数点を加える
 					   
 						var f =  DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
@@ -1004,7 +1002,7 @@ namespace Crystallography
 					catch (Exception e)
 					{
 						#if DEBUG
-						MessageBox.Show(e.Message);
+                        System.Windows.Forms.MessageBox.Show( e.Message);
 						#endif
 						return null;
 					}
@@ -1061,8 +1059,8 @@ namespace Crystallography
 				//原子の情報
 				string atomLabel="", atomSymbol="", thermalDisplaceType="";
 				string x = "", y = "", z = "", occ="1";
-				string uIso = "0", u11 = "", u22 = "", u33 = "", u12 = "", u13 = "", u23 = "";
-				string bIso = "0", b11 = "", b22 = "", b33 = "", b12 = "", b13 = "", b23 = "";
+				string uIso = "", u11 = "", u22 = "", u33 = "", u12 = "", u13 = "", u23 = "";
+				string bIso = "", b11 = "", b22 = "", b33 = "", b12 = "", b13 = "", b23 = "";
 
 				//まず基本的な原子位置や占有率などの情報を探す
 				occ = "1";
@@ -1148,6 +1146,10 @@ namespace Crystallography
 					b11 == "" && b12 == "" && b13 == "" && b22 == "" && b23 == "" && b33 == "";
 
 				var iso = isU ? uIso : bIso;
+
+				if (iso == "")
+					iso = "0";
+
 				var aniso = isU ? //11, 22, 33, 12, 23, 31の順番
 					new[] { u11,u22,u33,u12,u23,u13}:
 					new[] { b11, b22, b33, b12, b23, b13 };
@@ -1798,6 +1800,5 @@ namespace Crystallography
 			#endregion
 		}
 		#endregion
-
 	}
 }

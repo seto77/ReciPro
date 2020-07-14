@@ -35,6 +35,9 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxVolume = new Crystallography.Controls.NumericBox();
+            this.numericBoxCellMass = new Crystallography.Controls.NumericBox();
+            this.numericBoxMolarVolume = new Crystallography.Controls.NumericBox();
+            this.numericBoxMolarMass = new Crystallography.Controls.NumericBox();
             this.numericBoxDensity = new Crystallography.Controls.NumericBox();
             this.colorControl = new Crystallography.Controls.ColorControl();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -258,6 +261,9 @@
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.numericBoxVolume);
+            this.flowLayoutPanel4.Controls.Add(this.numericBoxCellMass);
+            this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarVolume);
+            this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarMass);
             this.flowLayoutPanel4.Controls.Add(this.numericBoxDensity);
             this.flowLayoutPanel4.Controls.Add(this.colorControl);
             resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
@@ -277,6 +283,51 @@
             this.numericBoxVolume.SmartIncrement = true;
             this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // numericBoxCellMass
+            // 
+            resources.ApplyResources(this.numericBoxCellMass, "numericBoxCellMass");
+            this.numericBoxCellMass.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellMass.DecimalPlaces = 4;
+            this.numericBoxCellMass.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellMass.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellMass.Name = "numericBoxCellMass";
+            this.numericBoxCellMass.ReadOnly = true;
+            this.numericBoxCellMass.RestrictLimitValue = false;
+            this.numericBoxCellMass.SkipEventDuringInput = false;
+            this.numericBoxCellMass.SmartIncrement = true;
+            this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // numericBoxMolarVolume
+            // 
+            resources.ApplyResources(this.numericBoxMolarVolume, "numericBoxMolarVolume");
+            this.numericBoxMolarVolume.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarVolume.DecimalPlaces = 4;
+            this.numericBoxMolarVolume.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarVolume.Name = "numericBoxMolarVolume";
+            this.numericBoxMolarVolume.ReadOnly = true;
+            this.numericBoxMolarVolume.RestrictLimitValue = false;
+            this.numericBoxMolarVolume.SkipEventDuringInput = false;
+            this.numericBoxMolarVolume.SmartIncrement = true;
+            this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // numericBoxMolarMass
+            // 
+            resources.ApplyResources(this.numericBoxMolarMass, "numericBoxMolarMass");
+            this.numericBoxMolarMass.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarMass.DecimalPlaces = 4;
+            this.numericBoxMolarMass.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarMass.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarMass.Name = "numericBoxMolarMass";
+            this.numericBoxMolarMass.ReadOnly = true;
+            this.numericBoxMolarMass.RestrictLimitValue = false;
+            this.numericBoxMolarMass.SkipEventDuringInput = false;
+            this.numericBoxMolarMass.SmartIncrement = true;
+            this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // numericBoxDensity
             // 
@@ -1833,5 +1884,8 @@
         private NumericBox numericBoxDensity;
         public SymmetryControl symmetryControl;
         private System.Windows.Forms.Panel panel1;
+        private NumericBox numericBoxMolarVolume;
+        private NumericBox numericBoxCellMass;
+        private NumericBox numericBoxMolarMass;
     }
 }

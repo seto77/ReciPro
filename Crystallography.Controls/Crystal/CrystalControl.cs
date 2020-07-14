@@ -246,7 +246,11 @@ namespace Crystallography.Controls
 
             numericBoxDensity.Value = Crystal.Density;
             numericBoxVolume.Value = Crystal.Volume * 1000;
+            numericBoxMolarVolume.Value = Crystal.Volume * UniversalConstants.A / Crystal.ChemicalFormulaZ * 1E-21;
             numericBoxZnumber.Value = Crystal.ChemicalFormulaZ;
+
+            numericBoxMolarMass.Value = numericBoxDensity.Value * numericBoxMolarVolume.Value;
+            numericBoxCellMass.Value = numericBoxDensity.Value * numericBoxVolume.Value;
 
             SymmetrySeriesNumber = Crystal.SymmetrySeriesNumber;//SymmetrySeriesNumberをフィールドからプロパティに変更。set{}の所でコンボボックスをセットする。(20170526)
 

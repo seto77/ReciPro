@@ -121,7 +121,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(277, 9);
+            this.label3.Location = new System.Drawing.Point(274, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 15);
@@ -166,7 +166,7 @@
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(530, 233);
+            this.buttonOK.Location = new System.Drawing.Point(476, 257);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(0);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(118, 28);
@@ -179,9 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(648, 261);
+            this.ClientSize = new System.Drawing.Size(595, 286);
             this.Controls.Add(this.buttonLa);
             this.Controls.Add(this.buttonMayInclude);
             this.Controls.Add(this.buttonMustInclude);
@@ -199,7 +197,6 @@
             this.Name = "FormPeriodicTable";
             this.Text = "Periodic Table";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPeriodicTable_FormClosing);
-            this.Load += new System.EventHandler(this.FormPeriodicTable_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

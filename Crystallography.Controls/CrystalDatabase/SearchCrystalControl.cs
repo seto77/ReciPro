@@ -1,46 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
     public partial class SearchCrystalControl : UserControl
     {
+        #region フィールド、プロパティ
+
         public FormPeriodicTable formPeriodicTable;
-
-        public SearchCrystalControl()
-        {
-            InitializeComponent();
-            formPeriodicTable = new FormPeriodicTable();
-        }
- 
-        private void checkBoxSearch_CheckedChanged(object sender, EventArgs e)
-        {
-            buttonPeriodicTable.Visible = checkBoxSearchElements.Checked;
-            if (formPeriodicTable.Visible && !checkBoxSearchElements.Checked)
-                formPeriodicTable.Visible = false;
-
-            textBoxSearchRefference.Visible = checkBoxSearchRefference.Checked;
-            textBoxSearchName.Visible = checkBoxSearchName.Checked;
-            comboBoxSearchCrystalSystem.Visible = checkBoxSearchCrystalSystem.Checked;
-            groupBoxCellParameter.Visible = checkBoxSearchCellParameter.Checked;
-            groupBoxDspacing.Visible = checkBoxDspacing.Checked;
-            groupBoxDensity.Visible = checkBoxDensity.Checked;
-        }
-
-        private void checkBoxD1_CheckedChanged(object sender, EventArgs e) => numericBoxD1.Enabled = numericBoxD1Err.Enabled = checkBoxD1.Checked;
-
-        private void checkBoxD2_CheckedChanged(object sender, EventArgs e) => numericBoxD2.Enabled = numericBoxD2Err.Enabled = checkBoxD2.Checked;
-
-        private void checkBoxD3_CheckedChanged(object sender, EventArgs e) => numericBoxD3.Enabled = numericBoxD3Err.Enabled = checkBoxD3.Checked;
-
-        private void buttonPeriodicTable_Click(object sender, EventArgs e) => formPeriodicTable.Visible = true;
 
         public string Filter
         {
@@ -108,9 +78,45 @@ namespace Crystallography.Controls
                 }
 
                 return string.Join(" AND ", filter.Where(f => f != "").Select(f => "(" + f + ")"));
-
             }
         }
+
+        #endregion
+
+        #region コンストラクタ
+        public SearchCrystalControl()
+        {
+            InitializeComponent();
+            formPeriodicTable = new FormPeriodicTable();
+        }
+
+        #endregion
+
+        #region チェックボックス
+        private void checkBoxSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonPeriodicTable.Visible = checkBoxSearchElements.Checked;
+            if (formPeriodicTable.Visible && !checkBoxSearchElements.Checked)
+                formPeriodicTable.Visible = false;
+
+            textBoxSearchRefference.Visible = checkBoxSearchRefference.Checked;
+            textBoxSearchName.Visible = checkBoxSearchName.Checked;
+            comboBoxSearchCrystalSystem.Visible = checkBoxSearchCrystalSystem.Checked;
+            groupBoxCellParameter.Visible = checkBoxSearchCellParameter.Checked;
+            groupBoxDspacing.Visible = checkBoxDspacing.Checked;
+            groupBoxDensity.Visible = checkBoxDensity.Checked;
+        }
+
+        private void checkBoxD1_CheckedChanged(object sender, EventArgs e) => numericBoxD1.Enabled = numericBoxD1Err.Enabled = checkBoxD1.Checked;
+
+        private void checkBoxD2_CheckedChanged(object sender, EventArgs e) => numericBoxD2.Enabled = numericBoxD2Err.Enabled = checkBoxD2.Checked;
+
+        private void checkBoxD3_CheckedChanged(object sender, EventArgs e) => numericBoxD3.Enabled = numericBoxD3Err.Enabled = checkBoxD3.Checked;
+
+        private void buttonPeriodicTable_Click(object sender, EventArgs e) => formPeriodicTable.Visible = true;
+
+        #endregion
+      
 
     }
 }
