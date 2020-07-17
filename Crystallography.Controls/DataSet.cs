@@ -275,7 +275,7 @@ namespace Crystallography.Controls
                 dr.Gamma = cellValues.Gamma;
                 dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
                 dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
-                dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][4];
+                dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
                 dr.Authors = c.auth;
                 dr.Title = Crystal2.GetFullTitle(c.sect);
                 dr.Journal = Crystal2.GetFullJournal(c.jour);

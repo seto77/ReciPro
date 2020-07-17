@@ -1026,7 +1026,7 @@ namespace ReciPro
         private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            new FormPDF(appPath + @"\pdf\hrtem.pdf").ShowDialog();
+            new FormPDF(appPath + @"\doc\hrtem.pdf").ShowDialog();
         }
 
         #region 画像の輝度、カラースケール、ガウシアンぼかし

@@ -1,6 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -336,7 +335,6 @@ namespace Crystallography.Controls
         }
 
         #endregion ドラッグドロップイベント
-
 
         private void buttonReset_Click(object sender, EventArgs e) => Crystal = new Crystal();
 

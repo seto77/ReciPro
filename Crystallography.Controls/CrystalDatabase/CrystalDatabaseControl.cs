@@ -61,7 +61,6 @@ namespace Crystallography.Controls
 
         #region データベース読み込み/書き込み関連
 
-
         #region バイト書き込み/読み込み
         private int readInt(Stream s) => BitConverter.ToInt32(readBytes(s, 4), 0);
         private int readByte(Stream s) => s.ReadByte();

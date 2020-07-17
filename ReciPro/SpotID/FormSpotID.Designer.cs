@@ -46,57 +46,16 @@ namespace ReciPro
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
-            this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
-            this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
-            this.buttonIdentifySpots = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericBoxSemiangle = new Crystallography.Controls.NumericBox();
-            this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
-            this.numericBoxAcceptableError = new Crystallography.Controls.NumericBox();
-            this.numericBoxMaxGrainNum = new Crystallography.Controls.NumericBox();
-            this.checkBoxShowCalcSpotSymbol = new System.Windows.Forms.CheckBox();
-            this.radioButtonMultiGrain = new System.Windows.Forms.RadioButton();
-            this.radioButtonSingleGrain = new System.Windows.Forms.RadioButton();
-            this.checkBoxShowCalcSpotLabel = new System.Windows.Forms.CheckBox();
-            this.dataGridViewGrains = new System.Windows.Forms.DataGridView();
-            this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CrystalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet = new ReciPro.DataSetReciPro();
-            this.dataGridViewCandidates = new System.Windows.Forms.DataGridView();
-            this.noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
-            this.buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
-            this.buttonStop = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
-            this.backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
-            this.buttonPixelToPixel = new System.Windows.Forms.Button();
-            this.buttonCopyMetafile = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonCopyMetafile = new System.Windows.Forms.Button();
+            this.buttonPixelToPixel = new System.Windows.Forms.Button();
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
+            this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
+            this.numericBoxFittingRange = new Crystallography.Controls.NumericBox();
+            this.numericBoxNearestNeighbor = new Crystallography.Controls.NumericBox();
             this.numericBoxDonut = new Crystallography.Controls.NumericBox();
             this.checkBoxDetailsSpot = new System.Windows.Forms.CheckBox();
             this.dataGridViewSpots = new System.Windows.Forms.DataGridView();
@@ -118,462 +77,81 @@ namespace ReciPro
             this.hkl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new ReciPro.DataSetReciPro();
             this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
             this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
             this.buttonSaveToFile = new System.Windows.Forms.Button();
-            this.numericBoxNearestNeighbor = new Crystallography.Controls.NumericBox();
-            this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
-            this.numericBoxFittingRange = new Crystallography.Controls.NumericBox();
             this.buttonCopyToClipboad = new System.Windows.Forms.Button();
             this.buttonFindSpots = new System.Windows.Forms.Button();
             this.buttonDonut = new System.Windows.Forms.Button();
             this.buttonGlobalFit = new System.Windows.Forms.Button();
-            this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
             this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
             this.buttonClearSpots = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.menuStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).BeginInit();
-            this.statusStrip1.SuspendLayout();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numericBoxSemiangle = new Crystallography.Controls.NumericBox();
+            this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
+            this.numericBoxAcceptableError = new Crystallography.Controls.NumericBox();
+            this.numericBoxMaxGrainNum = new Crystallography.Controls.NumericBox();
+            this.checkBoxShowCalcSpotSymbol = new System.Windows.Forms.CheckBox();
+            this.radioButtonMultiGrain = new System.Windows.Forms.RadioButton();
+            this.radioButtonSingleGrain = new System.Windows.Forms.RadioButton();
+            this.checkBoxShowCalcSpotLabel = new System.Windows.Forms.CheckBox();
+            this.dataGridViewGrains = new System.Windows.Forms.DataGridView();
+            this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CrystalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewCandidates = new System.Windows.Forms.DataGridView();
+            this.noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
+            this.buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
+            this.buttonIdentifySpots = new System.Windows.Forms.Button();
+            this.buttonStop = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
+            this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
+            this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
+            this.checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
+            this.backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.shortcutHintsToolStripMenuItem});
-            this.menuStrip1.Name = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            // 
-            // readToolStripMenuItem
-            // 
-            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
-            // 
-            // shortcutHintsToolStripMenuItem
-            // 
-            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
-            this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.doubleClickAddSpotToolStripMenuItem,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem3});
-            this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
-            // 
-            // doubleClickAddSpotToolStripMenuItem
-            // 
-            resources.ApplyResources(this.doubleClickAddSpotToolStripMenuItem, "doubleClickAddSpotToolStripMenuItem");
-            this.doubleClickAddSpotToolStripMenuItem.Name = "doubleClickAddSpotToolStripMenuItem";
-            // 
-            // toolStripMenuItem7
-            // 
-            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            // 
-            // toolStripMenuItem1
-            // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            // 
-            // toolStripMenuItem6
-            // 
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            // 
-            // toolStripMenuItem5
-            // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            // 
-            // toolStripMenuItem4
-            // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            // 
-            // toolStripMenuItem3
-            // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            // 
-            // checkBoxShowDebyeRing
-            // 
-            resources.ApplyResources(this.checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
-            this.checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
-            this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
-            this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
-            // 
-            // groupBox2
-            // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.numericBoxCameraLength);
-            this.groupBox2.Controls.Add(this.numericBoxPixelSize);
-            this.groupBox2.Controls.Add(this.waveLengthControl1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // numericBoxCameraLength
-            // 
-            resources.ApplyResources(this.numericBoxCameraLength, "numericBoxCameraLength");
-            this.numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.DecimalPlaces = -2;
-                                                                       this.numericBoxCameraLength.Maximum = 10000D;
-            this.numericBoxCameraLength.Minimum = 0D;
-                        this.numericBoxCameraLength.Name = "numericBoxCameraLength";
-            this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
-                        this.numericBoxCameraLength.RestrictLimitValue = true;
-                                    this.numericBoxCameraLength.SkipEventDuringInput = false;
-            this.numericBoxCameraLength.SmartIncrement = true;
-                                                this.numericBoxCameraLength.ThonsandsSeparator = true;
-                        this.numericBoxCameraLength.Value = 1000D;
-                        // 
-            // numericBoxPixelSize
-            // 
-            resources.ApplyResources(this.numericBoxPixelSize, "numericBoxPixelSize");
-            this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.DecimalPlaces = -2;
-                                                                       this.numericBoxPixelSize.Maximum = 100D;
-            this.numericBoxPixelSize.Minimum = 0D;
-                        this.numericBoxPixelSize.Name = "numericBoxPixelSize";
-            this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-                        this.numericBoxPixelSize.RestrictLimitValue = true;
-                                    this.numericBoxPixelSize.SkipEventDuringInput = false;
-            this.numericBoxPixelSize.SmartIncrement = true;
-                                                this.numericBoxPixelSize.ThonsandsSeparator = true;
-                        this.numericBoxPixelSize.Value = 0.05D;
-                        // 
-            // waveLengthControl1
-            // 
-            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
-            this.waveLengthControl1.Energy = 199.99999999999997D;
-            this.waveLengthControl1.Name = "waveLengthControl1";
-            this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.waveLengthControl1.WaveLength = 0.00250793474552456D;
-            this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
-            this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
-            // 
-            // buttonIdentifySpots
-            // 
-            resources.ApplyResources(this.buttonIdentifySpots, "buttonIdentifySpots");
-            this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
-            this.buttonIdentifySpots.Name = "buttonIdentifySpots";
-            this.buttonIdentifySpots.UseVisualStyleBackColor = false;
-            this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
-            // 
-            // groupBox3
-            // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.numericBoxSemiangle);
-            this.groupBox3.Controls.Add(this.numericBoxMaxNumOfG);
-            this.groupBox3.Controls.Add(this.numericBoxAcceptableError);
-            this.groupBox3.Controls.Add(this.numericBoxMaxGrainNum);
-            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotSymbol);
-            this.groupBox3.Controls.Add(this.radioButtonMultiGrain);
-            this.groupBox3.Controls.Add(this.radioButtonSingleGrain);
-            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotLabel);
-            this.groupBox3.Controls.Add(this.dataGridViewGrains);
-            this.groupBox3.Controls.Add(this.dataGridViewCandidates);
-            this.groupBox3.Controls.Add(this.checkBoxIgnoreMultipleDiffraction);
-            this.groupBox3.Controls.Add(this.buttonRefineThicknessAndDirection);
-            this.groupBox3.Controls.Add(this.buttonIdentifySpots);
-            this.groupBox3.Controls.Add(this.buttonStop);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // numericBoxSemiangle
-            // 
-            resources.ApplyResources(this.numericBoxSemiangle, "numericBoxSemiangle");
-            this.numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.DecimalPlaces = 1;
-                                                                       this.numericBoxSemiangle.Maximum = 10D;
-            this.numericBoxSemiangle.Minimum = 1D;
-                        this.numericBoxSemiangle.Name = "numericBoxSemiangle";
-            this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
-                        this.numericBoxSemiangle.RestrictLimitValue = true;
-                                    this.numericBoxSemiangle.ShowUpDown = true;
-                        this.numericBoxSemiangle.SmartIncrement = true;
-                                    this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
-            this.numericBoxSemiangle.ThonsandsSeparator = true;
-                        this.numericBoxSemiangle.Value = 2D;
-                        // 
-            // numericBoxMaxNumOfG
-            // 
-            resources.ApplyResources(this.numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            this.numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.DecimalPlaces = -2;
-                                                                       this.numericBoxMaxNumOfG.Maximum = 2048D;
-            this.numericBoxMaxNumOfG.Minimum = 1D;
-                        this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
-                        this.numericBoxMaxNumOfG.RestrictLimitValue = true;
-                                    this.numericBoxMaxNumOfG.ShowUpDown = true;
-                        this.numericBoxMaxNumOfG.SmartIncrement = true;
-                                    this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
-            this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
-                        this.numericBoxMaxNumOfG.Value = 400D;
-                        // 
-            // numericBoxAcceptableError
-            // 
-            resources.ApplyResources(this.numericBoxAcceptableError, "numericBoxAcceptableError");
-            this.numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.DecimalPlaces = -2;
-                                                                       this.numericBoxAcceptableError.Maximum = 10D;
-            this.numericBoxAcceptableError.Minimum = 0.1D;
-                        this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
-            this.numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
-                        this.numericBoxAcceptableError.RestrictLimitValue = true;
-                                    this.numericBoxAcceptableError.ShowUpDown = true;
-            this.numericBoxAcceptableError.SkipEventDuringInput = false;
-            this.numericBoxAcceptableError.SmartIncrement = true;
-                                                this.numericBoxAcceptableError.ThonsandsSeparator = true;
-                        this.numericBoxAcceptableError.Value = 2D;
-                        // 
-            // numericBoxMaxGrainNum
-            // 
-            resources.ApplyResources(this.numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
-            this.numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.DecimalPlaces = -2;
-                                                                       this.numericBoxMaxGrainNum.Maximum = 10D;
-            this.numericBoxMaxGrainNum.Minimum = 0.1D;
-                        this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
-            this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
-                        this.numericBoxMaxGrainNum.RestrictLimitValue = true;
-                                    this.numericBoxMaxGrainNum.ShowUpDown = true;
-            this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
-            this.numericBoxMaxGrainNum.SmartIncrement = false;
-                                                this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
-                        this.numericBoxMaxGrainNum.Value = 2D;
-                        // 
-            // checkBoxShowCalcSpotSymbol
-            // 
-            resources.ApplyResources(this.checkBoxShowCalcSpotSymbol, "checkBoxShowCalcSpotSymbol");
-            this.checkBoxShowCalcSpotSymbol.Checked = true;
-            this.checkBoxShowCalcSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
-            this.checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
-            this.checkBoxShowCalcSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // radioButtonMultiGrain
-            // 
-            resources.ApplyResources(this.radioButtonMultiGrain, "radioButtonMultiGrain");
-            this.radioButtonMultiGrain.Name = "radioButtonMultiGrain";
-            this.radioButtonMultiGrain.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonSingleGrain
-            // 
-            resources.ApplyResources(this.radioButtonSingleGrain, "radioButtonSingleGrain");
-            this.radioButtonSingleGrain.Checked = true;
-            this.radioButtonSingleGrain.Name = "radioButtonSingleGrain";
-            this.radioButtonSingleGrain.TabStop = true;
-            this.radioButtonSingleGrain.UseVisualStyleBackColor = true;
-            this.radioButtonSingleGrain.CheckedChanged += new System.EventHandler(this.radioButtonSingleGrain_CheckedChanged);
-            // 
-            // checkBoxShowCalcSpotLabel
-            // 
-            resources.ApplyResources(this.checkBoxShowCalcSpotLabel, "checkBoxShowCalcSpotLabel");
-            this.checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
-            this.checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
-            this.checkBoxShowCalcSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // dataGridViewGrains
-            // 
-            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
-            this.dataGridViewGrains.AllowUserToAddRows = false;
-            this.dataGridViewGrains.AllowUserToDeleteRows = false;
-            this.dataGridViewGrains.AllowUserToResizeRows = false;
-            this.dataGridViewGrains.AutoGenerateColumns = false;
-            this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.noDataGridViewTextBoxColumn2,
-            this.CrystalName,
-            this.assignedSpotsDataGridViewTextBoxColumn});
-            this.dataGridViewGrains.DataSource = this.bindingSourceGrains;
-            this.dataGridViewGrains.Name = "dataGridViewGrains";
-            this.dataGridViewGrains.ReadOnly = true;
-            this.dataGridViewGrains.RowHeadersVisible = false;
-            this.dataGridViewGrains.RowTemplate.Height = 21;
-            this.dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
-            // noDataGridViewTextBoxColumn2
-            // 
-            this.noDataGridViewTextBoxColumn2.DataPropertyName = "No";
-            resources.ApplyResources(this.noDataGridViewTextBoxColumn2, "noDataGridViewTextBoxColumn2");
-            this.noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
-            this.noDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // CrystalName
-            // 
-            this.CrystalName.DataPropertyName = "CrystalName";
-            resources.ApplyResources(this.CrystalName, "CrystalName");
-            this.CrystalName.Name = "CrystalName";
-            this.CrystalName.ReadOnly = true;
-            // 
-            // assignedSpotsDataGridViewTextBoxColumn
-            // 
-            this.assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
-            resources.ApplyResources(this.assignedSpotsDataGridViewTextBoxColumn, "assignedSpotsDataGridViewTextBoxColumn");
-            this.assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
-            this.assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSourceGrains
-            // 
-            this.bindingSourceGrains.DataMember = "DataTableGrain";
-            this.bindingSourceGrains.DataSource = this.DataSet;
-            this.bindingSourceGrains.CurrentChanged += new System.EventHandler(this.bindingSourceGrains_CurrentChanged);
-            // 
-            // DataSet
-            // 
-            this.DataSet.DataSetName = "DataSet";
-            this.DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewCandidates
-            // 
-            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
-            this.dataGridViewCandidates.AllowUserToAddRows = false;
-            this.dataGridViewCandidates.AllowUserToDeleteRows = false;
-            this.dataGridViewCandidates.AllowUserToResizeRows = false;
-            this.dataGridViewCandidates.AutoGenerateColumns = false;
-            this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.noDataGridViewTextBoxColumn1,
-            this.AssignedSpots});
-            this.dataGridViewCandidates.DataSource = this.bindingSourceCandidates;
-            this.dataGridViewCandidates.MultiSelect = false;
-            this.dataGridViewCandidates.Name = "dataGridViewCandidates";
-            this.dataGridViewCandidates.ReadOnly = true;
-            this.dataGridViewCandidates.RowHeadersVisible = false;
-            this.dataGridViewCandidates.RowTemplate.Height = 21;
-            this.dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
-            // noDataGridViewTextBoxColumn1
-            // 
-            this.noDataGridViewTextBoxColumn1.DataPropertyName = "No";
-            resources.ApplyResources(this.noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
-            this.noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
-            this.noDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // AssignedSpots
-            // 
-            this.AssignedSpots.DataPropertyName = "AssignedSpots";
-            resources.ApplyResources(this.AssignedSpots, "AssignedSpots");
-            this.AssignedSpots.Name = "AssignedSpots";
-            this.AssignedSpots.ReadOnly = true;
-            // 
-            // bindingSourceCandidates
-            // 
-            this.bindingSourceCandidates.DataMember = "DataTableCandidate";
-            this.bindingSourceCandidates.DataSource = this.DataSet;
-            this.bindingSourceCandidates.CurrentChanged += new System.EventHandler(this.bindingSourceCandidates_CurrentChanged);
-            // 
-            // checkBoxIgnoreMultipleDiffraction
-            // 
-            resources.ApplyResources(this.checkBoxIgnoreMultipleDiffraction, "checkBoxIgnoreMultipleDiffraction");
-            this.checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
-            this.checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
-            this.checkBoxIgnoreMultipleDiffraction.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // buttonRefineThicknessAndDirection
-            // 
-            resources.ApplyResources(this.buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
-            this.buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
-            this.buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
-            this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
-            this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
-            // 
-            // buttonStop
-            // 
-            resources.ApplyResources(this.buttonStop, "buttonStop");
-            this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonStop.ForeColor = System.Drawing.Color.White;
-            this.buttonStop.Name = "buttonStop";
-            this.buttonStop.UseVisualStyleBackColor = false;
-            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
-            // 
-            // statusStrip1
-            // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar,
-            this.toolStripStatusLabelImageFilter,
-            this.toolStripStatusLabelFindSpot,
-            this.toolStripStatusLabelIdentifySpot,
-            this.toolStripStatusLabelRefine});
-            this.statusStrip1.Name = "statusStrip1";
-            // 
-            // toolStripProgressBar
-            // 
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
-            this.toolStripProgressBar.Maximum = 10000;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            // 
-            // toolStripStatusLabelImageFilter
-            // 
-            resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
-            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
-            // 
-            // toolStripStatusLabelFindSpot
-            // 
-            resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
-            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
-            // 
-            // toolStripStatusLabelIdentifySpot
-            // 
-            resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
-            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
-            // 
-            // toolStripStatusLabelRefine
-            // 
-            resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
-            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
-            // 
-            // backgroundWorkerSpotID
-            // 
-            this.backgroundWorkerSpotID.WorkerReportsProgress = true;
-            this.backgroundWorkerSpotID.WorkerSupportsCancellation = true;
-            this.backgroundWorkerSpotID.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSpotID_DoWork);
-            this.backgroundWorkerSpotID.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSpotID_ProgressChanged);
-            this.backgroundWorkerSpotID.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSpotID_RunWorkerCompleted);
-            // 
-            // buttonPixelToPixel
-            // 
-            resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
-            this.buttonPixelToPixel.Name = "buttonPixelToPixel";
-            this.buttonPixelToPixel.UseVisualStyleBackColor = true;
-            this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
-            // 
-            // buttonCopyMetafile
-            // 
-            resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
-            this.buttonCopyMetafile.Name = "buttonCopyMetafile";
-            this.buttonCopyMetafile.UseVisualStyleBackColor = true;
-            this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
             // 
             // splitContainer1
             // 
@@ -583,23 +161,35 @@ namespace ReciPro
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.buttonCopyMetafile);
             this.splitContainer1.Panel1.Controls.Add(this.buttonPixelToPixel);
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
-            this.splitContainer1.Panel2.Controls.Add(this.checkBoxShowDebyeRing);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.checkBoxShowDebyeRing);
+            // 
+            // buttonCopyMetafile
+            // 
+            resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
+            this.buttonCopyMetafile.Name = "buttonCopyMetafile";
+            this.buttonCopyMetafile.UseVisualStyleBackColor = true;
+            this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
+            // 
+            // buttonPixelToPixel
+            // 
+            resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
+            this.buttonPixelToPixel.Name = "buttonPixelToPixel";
+            this.buttonPixelToPixel.UseVisualStyleBackColor = true;
+            this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
             // 
             // scalablePictureBoxAdvanced
             // 
-            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
+            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
@@ -616,7 +206,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(458, 613);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(453, 619);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
@@ -631,43 +221,109 @@ namespace ReciPro
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.numericBoxDonut);
             this.groupBox1.Controls.Add(this.checkBoxDetailsSpot);
             this.groupBox1.Controls.Add(this.dataGridViewSpots);
             this.groupBox1.Controls.Add(this.checkBoxShowObsSpotSymbol);
             this.groupBox1.Controls.Add(this.checkBoxShowObsSpotLabel);
             this.groupBox1.Controls.Add(this.buttonSaveToFile);
-            this.groupBox1.Controls.Add(this.numericBoxNearestNeighbor);
-            this.groupBox1.Controls.Add(this.numericBoxNumberOfSpots);
-            this.groupBox1.Controls.Add(this.numericBoxFittingRange);
             this.groupBox1.Controls.Add(this.buttonCopyToClipboad);
             this.groupBox1.Controls.Add(this.buttonFindSpots);
             this.groupBox1.Controls.Add(this.buttonDonut);
             this.groupBox1.Controls.Add(this.buttonGlobalFit);
-            this.groupBox1.Controls.Add(this.buttonResetRangeForAllSpots);
             this.groupBox1.Controls.Add(this.buttonCopmprehensiveFitting);
             this.groupBox1.Controls.Add(this.buttonClearSpots);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.numericBoxNumberOfSpots);
+            this.groupBox4.Controls.Add(this.buttonResetRangeForAllSpots);
+            this.groupBox4.Controls.Add(this.numericBoxFittingRange);
+            this.groupBox4.Controls.Add(this.numericBoxNearestNeighbor);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // numericBoxNumberOfSpots
+            // 
+            resources.ApplyResources(this.numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
+            this.numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumberOfSpots.DecimalPlaces = 0;
+            this.numericBoxNumberOfSpots.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumberOfSpots.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumberOfSpots.Maximum = 1000D;
+            this.numericBoxNumberOfSpots.Minimum = 1D;
+            this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
+            this.numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
+            this.numericBoxNumberOfSpots.ShowUpDown = true;
+            this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
+            this.numericBoxNumberOfSpots.SmartIncrement = true;
+            this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
+            this.numericBoxNumberOfSpots.Value = 30D;
+            // 
+            // buttonResetRangeForAllSpots
+            // 
+            resources.ApplyResources(this.buttonResetRangeForAllSpots, "buttonResetRangeForAllSpots");
+            this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
+            this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
+            this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
+            // 
+            // numericBoxFittingRange
+            // 
+            resources.ApplyResources(this.numericBoxFittingRange, "numericBoxFittingRange");
+            this.numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxFittingRange.DecimalPlaces = 1;
+            this.numericBoxFittingRange.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxFittingRange.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxFittingRange.Maximum = 100D;
+            this.numericBoxFittingRange.Minimum = 0D;
+            this.numericBoxFittingRange.Name = "numericBoxFittingRange";
+            this.numericBoxFittingRange.RadianValue = 0.3490658503988659D;
+            this.numericBoxFittingRange.ShowUpDown = true;
+            this.numericBoxFittingRange.SkipEventDuringInput = false;
+            this.numericBoxFittingRange.SmartIncrement = true;
+            this.numericBoxFittingRange.ThonsandsSeparator = true;
+            this.numericBoxFittingRange.Value = 20D;
+            this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
+            // 
+            // numericBoxNearestNeighbor
+            // 
+            resources.ApplyResources(this.numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
+            this.numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNearestNeighbor.DecimalPlaces = 0;
+            this.numericBoxNearestNeighbor.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNearestNeighbor.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNearestNeighbor.Maximum = 1000D;
+            this.numericBoxNearestNeighbor.Minimum = 1D;
+            this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
+            this.numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
+            this.numericBoxNearestNeighbor.ShowUpDown = true;
+            this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
+            this.numericBoxNearestNeighbor.SmartIncrement = true;
+            this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
+            this.numericBoxNearestNeighbor.Value = 10D;
+            // 
             // numericBoxDonut
             // 
             resources.ApplyResources(this.numericBoxDonut, "numericBoxDonut");
             this.numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.DecimalPlaces = -2;
-                                                                       this.numericBoxDonut.Maximum = 100D;
+            this.numericBoxDonut.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDonut.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDonut.Maximum = 100D;
             this.numericBoxDonut.Minimum = 1D;
-                        this.numericBoxDonut.Name = "numericBoxDonut";
+            this.numericBoxDonut.Name = "numericBoxDonut";
             this.numericBoxDonut.RadianValue = 0.087266462599716474D;
-                        this.numericBoxDonut.RestrictLimitValue = true;
-                                    this.numericBoxDonut.ShowUpDown = true;
+            this.numericBoxDonut.ShowUpDown = true;
             this.numericBoxDonut.SkipEventDuringInput = false;
             this.numericBoxDonut.SmartIncrement = true;
-                                    this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.numericBoxDonut.ThonsandsSeparator = true;
-                        this.numericBoxDonut.Value = 5D;
-                        // 
+            this.numericBoxDonut.Value = 5D;
+            // 
             // checkBoxDetailsSpot
             // 
             resources.ApplyResources(this.checkBoxDetailsSpot, "checkBoxDetailsSpot");
@@ -677,9 +333,9 @@ namespace ReciPro
             // 
             // dataGridViewSpots
             // 
-            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AllowUserToDeleteRows = false;
             this.dataGridViewSpots.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -884,9 +540,14 @@ namespace ReciPro
             // bindingSourceObsSpots
             // 
             this.bindingSourceObsSpots.DataMember = "DataTableSpot";
-            this.bindingSourceObsSpots.DataSource = this.DataSet;
+            this.bindingSourceObsSpots.DataSource = this.dataSet;
             this.bindingSourceObsSpots.CurrentChanged += new System.EventHandler(this.bindingSourceSpot_CurrentChanged);
             this.bindingSourceObsSpots.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceObsSpots_ListChanged);
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // checkBoxShowObsSpotSymbol
             // 
@@ -912,55 +573,6 @@ namespace ReciPro
             this.buttonSaveToFile.Name = "buttonSaveToFile";
             this.buttonSaveToFile.UseVisualStyleBackColor = true;
             this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
-            // 
-            // numericBoxNearestNeighbor
-            // 
-            resources.ApplyResources(this.numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
-            this.numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.DecimalPlaces = 0;
-                                                                       this.numericBoxNearestNeighbor.Maximum = 1000D;
-            this.numericBoxNearestNeighbor.Minimum = 1D;
-                        this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
-            this.numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
-                        this.numericBoxNearestNeighbor.RestrictLimitValue = true;
-                                    this.numericBoxNearestNeighbor.ShowUpDown = true;
-            this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
-            this.numericBoxNearestNeighbor.SmartIncrement = true;
-                                                this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
-                        this.numericBoxNearestNeighbor.Value = 10D;
-                        // 
-            // numericBoxNumberOfSpots
-            // 
-            resources.ApplyResources(this.numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
-            this.numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.DecimalPlaces = 0;
-                                                                       this.numericBoxNumberOfSpots.Maximum = 1000D;
-            this.numericBoxNumberOfSpots.Minimum = 1D;
-                        this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
-            this.numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
-                        this.numericBoxNumberOfSpots.RestrictLimitValue = true;
-                                    this.numericBoxNumberOfSpots.ShowUpDown = true;
-            this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
-            this.numericBoxNumberOfSpots.SmartIncrement = true;
-                                                this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
-                        this.numericBoxNumberOfSpots.Value = 30D;
-                        // 
-            // numericBoxFittingRange
-            // 
-            resources.ApplyResources(this.numericBoxFittingRange, "numericBoxFittingRange");
-            this.numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.DecimalPlaces = 1;
-                                                                       this.numericBoxFittingRange.Maximum = 100D;
-            this.numericBoxFittingRange.Minimum = 0D;
-                        this.numericBoxFittingRange.Name = "numericBoxFittingRange";
-            this.numericBoxFittingRange.RadianValue = 0.3490658503988659D;
-                        this.numericBoxFittingRange.RestrictLimitValue = true;
-                                    this.numericBoxFittingRange.ShowUpDown = true;
-            this.numericBoxFittingRange.SkipEventDuringInput = false;
-            this.numericBoxFittingRange.SmartIncrement = true;
-                                                this.numericBoxFittingRange.ThonsandsSeparator = true;
-                        this.numericBoxFittingRange.Value = 20D;
-                        this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
             // 
             // buttonCopyToClipboad
             // 
@@ -992,13 +604,6 @@ namespace ReciPro
             this.buttonGlobalFit.UseVisualStyleBackColor = true;
             this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
             // 
-            // buttonResetRangeForAllSpots
-            // 
-            resources.ApplyResources(this.buttonResetRangeForAllSpots, "buttonResetRangeForAllSpots");
-            this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
-            this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
-            this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
-            // 
             // buttonCopmprehensiveFitting
             // 
             resources.ApplyResources(this.buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
@@ -1022,11 +627,416 @@ namespace ReciPro
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // groupBox3
+            // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.numericBoxSemiangle);
+            this.groupBox3.Controls.Add(this.numericBoxMaxNumOfG);
+            this.groupBox3.Controls.Add(this.numericBoxAcceptableError);
+            this.groupBox3.Controls.Add(this.numericBoxMaxGrainNum);
+            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotSymbol);
+            this.groupBox3.Controls.Add(this.radioButtonMultiGrain);
+            this.groupBox3.Controls.Add(this.radioButtonSingleGrain);
+            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotLabel);
+            this.groupBox3.Controls.Add(this.dataGridViewGrains);
+            this.groupBox3.Controls.Add(this.dataGridViewCandidates);
+            this.groupBox3.Controls.Add(this.checkBoxIgnoreMultipleDiffraction);
+            this.groupBox3.Controls.Add(this.buttonRefineThicknessAndDirection);
+            this.groupBox3.Controls.Add(this.buttonIdentifySpots);
+            this.groupBox3.Controls.Add(this.buttonStop);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // numericBoxSemiangle
+            // 
+            resources.ApplyResources(this.numericBoxSemiangle, "numericBoxSemiangle");
+            this.numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxSemiangle.DecimalPlaces = 1;
+            this.numericBoxSemiangle.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxSemiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxSemiangle.Maximum = 10D;
+            this.numericBoxSemiangle.Minimum = 1D;
+            this.numericBoxSemiangle.Name = "numericBoxSemiangle";
+            this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
+            this.numericBoxSemiangle.ShowUpDown = true;
+            this.numericBoxSemiangle.SmartIncrement = true;
+            this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.numericBoxSemiangle.ThonsandsSeparator = true;
+            this.numericBoxSemiangle.Value = 2D;
+            // 
+            // numericBoxMaxNumOfG
+            // 
+            resources.ApplyResources(this.numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
+            this.numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxNumOfG.Maximum = 2048D;
+            this.numericBoxMaxNumOfG.Minimum = 1D;
+            this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+            this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
+            this.numericBoxMaxNumOfG.ShowUpDown = true;
+            this.numericBoxMaxNumOfG.SmartIncrement = true;
+            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            this.numericBoxMaxNumOfG.Value = 400D;
+            // 
+            // numericBoxAcceptableError
+            // 
+            resources.ApplyResources(this.numericBoxAcceptableError, "numericBoxAcceptableError");
+            this.numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAcceptableError.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAcceptableError.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAcceptableError.Maximum = 10D;
+            this.numericBoxAcceptableError.Minimum = 0.1D;
+            this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
+            this.numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
+            this.numericBoxAcceptableError.ShowUpDown = true;
+            this.numericBoxAcceptableError.SkipEventDuringInput = false;
+            this.numericBoxAcceptableError.SmartIncrement = true;
+            this.numericBoxAcceptableError.ThonsandsSeparator = true;
+            this.numericBoxAcceptableError.Value = 2D;
+            // 
+            // numericBoxMaxGrainNum
+            // 
+            resources.ApplyResources(this.numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
+            this.numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxGrainNum.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxGrainNum.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxGrainNum.Maximum = 10D;
+            this.numericBoxMaxGrainNum.Minimum = 0.1D;
+            this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
+            this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
+            this.numericBoxMaxGrainNum.ShowUpDown = true;
+            this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
+            this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
+            this.numericBoxMaxGrainNum.Value = 2D;
+            // 
+            // checkBoxShowCalcSpotSymbol
+            // 
+            resources.ApplyResources(this.checkBoxShowCalcSpotSymbol, "checkBoxShowCalcSpotSymbol");
+            this.checkBoxShowCalcSpotSymbol.Checked = true;
+            this.checkBoxShowCalcSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
+            this.checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
+            this.checkBoxShowCalcSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            // 
+            // radioButtonMultiGrain
+            // 
+            resources.ApplyResources(this.radioButtonMultiGrain, "radioButtonMultiGrain");
+            this.radioButtonMultiGrain.Name = "radioButtonMultiGrain";
+            this.radioButtonMultiGrain.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSingleGrain
+            // 
+            resources.ApplyResources(this.radioButtonSingleGrain, "radioButtonSingleGrain");
+            this.radioButtonSingleGrain.Checked = true;
+            this.radioButtonSingleGrain.Name = "radioButtonSingleGrain";
+            this.radioButtonSingleGrain.TabStop = true;
+            this.radioButtonSingleGrain.UseVisualStyleBackColor = true;
+            this.radioButtonSingleGrain.CheckedChanged += new System.EventHandler(this.radioButtonSingleGrain_CheckedChanged);
+            // 
+            // checkBoxShowCalcSpotLabel
+            // 
+            resources.ApplyResources(this.checkBoxShowCalcSpotLabel, "checkBoxShowCalcSpotLabel");
+            this.checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
+            this.checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
+            this.checkBoxShowCalcSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            // 
+            // dataGridViewGrains
+            // 
+            this.dataGridViewGrains.AllowUserToAddRows = false;
+            this.dataGridViewGrains.AllowUserToDeleteRows = false;
+            this.dataGridViewGrains.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
+            this.dataGridViewGrains.AutoGenerateColumns = false;
+            this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.noDataGridViewTextBoxColumn2,
+            this.CrystalName,
+            this.assignedSpotsDataGridViewTextBoxColumn});
+            this.dataGridViewGrains.DataSource = this.bindingSourceGrains;
+            this.dataGridViewGrains.Name = "dataGridViewGrains";
+            this.dataGridViewGrains.ReadOnly = true;
+            this.dataGridViewGrains.RowHeadersVisible = false;
+            this.dataGridViewGrains.RowTemplate.Height = 21;
+            this.dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            // 
+            // noDataGridViewTextBoxColumn2
+            // 
+            this.noDataGridViewTextBoxColumn2.DataPropertyName = "No";
+            resources.ApplyResources(this.noDataGridViewTextBoxColumn2, "noDataGridViewTextBoxColumn2");
+            this.noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
+            this.noDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // CrystalName
+            // 
+            this.CrystalName.DataPropertyName = "CrystalName";
+            resources.ApplyResources(this.CrystalName, "CrystalName");
+            this.CrystalName.Name = "CrystalName";
+            this.CrystalName.ReadOnly = true;
+            // 
+            // assignedSpotsDataGridViewTextBoxColumn
+            // 
+            this.assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
+            resources.ApplyResources(this.assignedSpotsDataGridViewTextBoxColumn, "assignedSpotsDataGridViewTextBoxColumn");
+            this.assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
+            this.assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceGrains
+            // 
+            this.bindingSourceGrains.DataMember = "DataTableGrain";
+            this.bindingSourceGrains.DataSource = this.dataSet;
+            this.bindingSourceGrains.CurrentChanged += new System.EventHandler(this.bindingSourceGrains_CurrentChanged);
+            // 
+            // dataGridViewCandidates
+            // 
+            this.dataGridViewCandidates.AllowUserToAddRows = false;
+            this.dataGridViewCandidates.AllowUserToDeleteRows = false;
+            this.dataGridViewCandidates.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
+            this.dataGridViewCandidates.AutoGenerateColumns = false;
+            this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.noDataGridViewTextBoxColumn1,
+            this.AssignedSpots});
+            this.dataGridViewCandidates.DataSource = this.bindingSourceCandidates;
+            this.dataGridViewCandidates.MultiSelect = false;
+            this.dataGridViewCandidates.Name = "dataGridViewCandidates";
+            this.dataGridViewCandidates.ReadOnly = true;
+            this.dataGridViewCandidates.RowHeadersVisible = false;
+            this.dataGridViewCandidates.RowTemplate.Height = 21;
+            this.dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            // 
+            // noDataGridViewTextBoxColumn1
+            // 
+            this.noDataGridViewTextBoxColumn1.DataPropertyName = "No";
+            resources.ApplyResources(this.noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
+            this.noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
+            this.noDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // AssignedSpots
+            // 
+            this.AssignedSpots.DataPropertyName = "AssignedSpots";
+            resources.ApplyResources(this.AssignedSpots, "AssignedSpots");
+            this.AssignedSpots.Name = "AssignedSpots";
+            this.AssignedSpots.ReadOnly = true;
+            // 
+            // bindingSourceCandidates
+            // 
+            this.bindingSourceCandidates.DataMember = "DataTableCandidate";
+            this.bindingSourceCandidates.DataSource = this.dataSet;
+            this.bindingSourceCandidates.CurrentChanged += new System.EventHandler(this.bindingSourceCandidates_CurrentChanged);
+            // 
+            // checkBoxIgnoreMultipleDiffraction
+            // 
+            resources.ApplyResources(this.checkBoxIgnoreMultipleDiffraction, "checkBoxIgnoreMultipleDiffraction");
+            this.checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
+            this.checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
+            this.checkBoxIgnoreMultipleDiffraction.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            // 
+            // buttonRefineThicknessAndDirection
+            // 
+            resources.ApplyResources(this.buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
+            this.buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
+            this.buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
+            this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
+            this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
+            // 
+            // buttonIdentifySpots
+            // 
+            resources.ApplyResources(this.buttonIdentifySpots, "buttonIdentifySpots");
+            this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
+            this.buttonIdentifySpots.Name = "buttonIdentifySpots";
+            this.buttonIdentifySpots.UseVisualStyleBackColor = false;
+            this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
+            // 
+            // buttonStop
+            // 
+            resources.ApplyResources(this.buttonStop, "buttonStop");
+            this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonStop.ForeColor = System.Drawing.Color.White;
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.UseVisualStyleBackColor = false;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.numericBoxCameraLength);
+            this.groupBox2.Controls.Add(this.numericBoxPixelSize);
+            this.groupBox2.Controls.Add(this.waveLengthControl1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // numericBoxCameraLength
+            // 
+            resources.ApplyResources(this.numericBoxCameraLength, "numericBoxCameraLength");
+            this.numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCameraLength.Maximum = 10000D;
+            this.numericBoxCameraLength.Minimum = 0D;
+            this.numericBoxCameraLength.Name = "numericBoxCameraLength";
+            this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
+            this.numericBoxCameraLength.SkipEventDuringInput = false;
+            this.numericBoxCameraLength.SmartIncrement = true;
+            this.numericBoxCameraLength.ThonsandsSeparator = true;
+            this.numericBoxCameraLength.Value = 1000D;
+            // 
+            // numericBoxPixelSize
+            // 
+            resources.ApplyResources(this.numericBoxPixelSize, "numericBoxPixelSize");
+            this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPixelSize.Maximum = 100D;
+            this.numericBoxPixelSize.Minimum = 0D;
+            this.numericBoxPixelSize.Name = "numericBoxPixelSize";
+            this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
+            this.numericBoxPixelSize.SkipEventDuringInput = false;
+            this.numericBoxPixelSize.SmartIncrement = true;
+            this.numericBoxPixelSize.ThonsandsSeparator = true;
+            this.numericBoxPixelSize.Value = 0.05D;
+            // 
+            // waveLengthControl1
+            // 
+            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
+            this.waveLengthControl1.Energy = 199.99999999999997D;
+            this.waveLengthControl1.Name = "waveLengthControl1";
+            this.waveLengthControl1.ShowWaveSource = true;
+            this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.waveLengthControl1.WaveLength = 0.00250793474552456D;
+            this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
+            this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
+            this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            // 
+            // checkBoxShowDebyeRing
+            // 
+            resources.ApplyResources(this.checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
+            this.checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
+            this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
+            this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.shortcutHintsToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // readToolStripMenuItem
+            // 
+            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
+            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
+            // 
+            // shortcutHintsToolStripMenuItem
+            // 
+            this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.doubleClickAddSpotToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem3});
+            this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
+            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
+            // 
+            // doubleClickAddSpotToolStripMenuItem
+            // 
+            resources.ApplyResources(this.doubleClickAddSpotToolStripMenuItem, "doubleClickAddSpotToolStripMenuItem");
+            this.doubleClickAddSpotToolStripMenuItem.Name = "doubleClickAddSpotToolStripMenuItem";
+            // 
+            // toolStripMenuItem7
+            // 
+            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            // 
+            // toolStripMenuItem1
+            // 
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            // 
+            // toolStripMenuItem6
+            // 
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            // 
+            // toolStripMenuItem5
+            // 
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            // 
+            // toolStripMenuItem4
+            // 
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            // 
+            // toolStripMenuItem3
+            // 
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar,
+            this.toolStripStatusLabelImageFilter,
+            this.toolStripStatusLabelFindSpot,
+            this.toolStripStatusLabelIdentifySpot,
+            this.toolStripStatusLabelRefine});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.Maximum = 10000;
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            // 
+            // toolStripStatusLabelImageFilter
+            // 
+            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
+            resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
+            // 
+            // toolStripStatusLabelFindSpot
+            // 
+            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
+            resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
+            // 
+            // toolStripStatusLabelIdentifySpot
+            // 
+            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
+            resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
+            // 
+            // toolStripStatusLabelRefine
+            // 
+            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
+            resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
+            // 
+            // backgroundWorkerSpotID
+            // 
+            this.backgroundWorkerSpotID.WorkerReportsProgress = true;
+            this.backgroundWorkerSpotID.WorkerSupportsCancellation = true;
+            this.backgroundWorkerSpotID.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSpotID_DoWork);
+            this.backgroundWorkerSpotID.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSpotID_ProgressChanged);
+            this.backgroundWorkerSpotID.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSpotID_RunWorkerCompleted);
+            // 
             // FormSpotID
             // 
-            resources.ApplyResources(this, "$this");
             this.AllowDrop = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -1036,18 +1046,6 @@ namespace ReciPro
             this.Load += new System.EventHandler(this.FormSpotID_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragEnter);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1056,9 +1054,23 @@ namespace ReciPro
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1100,7 +1112,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonCopyMetafile;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIdentifySpot;
         public System.Windows.Forms.BindingSource bindingSourceObsSpots;
-        public DataSetReciPro DataSet;
+        public DataSetReciPro dataSet;
         public Crystallography.Controls.ScalablePictureBoxAdvanced scalablePictureBoxAdvanced;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem shortcutHintsToolStripMenuItem;
@@ -1153,5 +1165,6 @@ namespace ReciPro
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonDonut;
         private Crystallography.Controls.NumericBox numericBoxDonut;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

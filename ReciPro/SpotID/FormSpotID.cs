@@ -30,7 +30,7 @@ namespace ReciPro
         public AreaDetector Detector;
 
         private bool skipEvent = false;
-        public PointD DirectSpot => DataSet.DataTableSpot.DirectSpotPosition;
+        public PointD DirectSpot => dataSet.DataTableSpot.DirectSpotPosition;
 
         public double PixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
         public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
@@ -76,7 +76,7 @@ namespace ReciPro
         /// <param name="fileName"></param>
         private void readImage(string fileName)
         {
-            DataSet.DataTableSpot.Clear();
+            dataSet.DataTableSpot.Clear();
             scalablePictureBoxAdvanced.ReadImage(fileName);
 
             if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
@@ -100,14 +100,14 @@ namespace ReciPro
                 var direct = new PointD(Ring.IP.CenterX, Ring.IP.CenterY);
                 var area = numericBoxFittingRange.Value;
                 var r = fit(direct);
-                DataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
+                dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
             }
 
             var p = scalablePictureBoxAdvanced.PseudoBitmap;
 
             FormSpotDetails.SetData();
 
-            DataSet.DataTableSpot.AreaDetector = new AreaDetector(p.Width, p.Height, PixelSize, DirectSpot, waveLengthControl1.Property, CameraLength);
+            dataSet.DataTableSpot.AreaDetector = new AreaDetector(p.Width, p.Height, PixelSize, DirectSpot, waveLengthControl1.Property, CameraLength);
         }
 
         /// <summary>
@@ -157,19 +157,19 @@ namespace ReciPro
                 if ((new PointD(r.PrmsPv[0], r.PrmsPv[1]) - pt).Length < 10)
                 {
                     bindingSourceObsSpots.DataMember = "";
-                    DataSet.DataTableSpot.Add(ModifierKeys == Keys.Control, FittingRange, r.PrmsPv, r.PrmsBg, r.R);
+                    dataSet.DataTableSpot.Add(ModifierKeys == Keys.Control, FittingRange, r.PrmsPv, r.PrmsBg, r.R);
                     bindingSourceObsSpots.DataMember = "DataTableSpot";
                 }
 
-                bindingSourceObsSpots.Position = DataSet.DataTableSpot.Rows.Count - 1;
+                bindingSourceObsSpots.Position = dataSet.DataTableSpot.Rows.Count - 1;
                 skipEvent = false;
-                bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemAdded, DataSet.DataTableSpot.Rows.Count - 1));
+                bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemAdded, dataSet.DataTableSpot.Rows.Count - 1));
                 toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms.";
                 return true;
             }
             else if (e.Button == MouseButtons.Left && e.Clicks == 1)//左クリック スポット選択
             {
-                var spots = DataSet.DataTableSpot.Spots;
+                var spots = dataSet.DataTableSpot.Spots;
                 if (spots != null && spots.Count > 0)
                 {
                     var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
@@ -187,19 +187,19 @@ namespace ReciPro
             else if (e.Button == MouseButtons.Right && ModifierKeys == Keys.Control)//右クリック
             {
                 skipEvent = true;
-                var spots = DataSet.DataTableSpot.Spots;
+                var spots = dataSet.DataTableSpot.Spots;
                 if (spots != null && spots.Count > 0)
                 {
                     var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
                     if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
                     {
                         bindingSourceObsSpots.DataMember = "";
-                        DataSet.DataTableSpot.Remove(spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No);
+                        dataSet.DataTableSpot.Remove(spots.First(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y) == min).No);
                         bindingSourceObsSpots.DataMember = "DataTableSpot";
                     }
                 }
 
-                if (DataSet.DataTableSpot.Rows.Count > 0)
+                if (dataSet.DataTableSpot.Rows.Count > 0)
                     bindingSourceObsSpots.Position = 0;
                 skipEvent = false;
                 bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemDeleted, 0));
@@ -218,7 +218,7 @@ namespace ReciPro
             clearStatusLabel();
             sw.Restart();
             Enabled = false;
-            var spots = ImageProcess.FindSpots(p.SrcValuesGray, p.Width, numericBoxNearestNeighbor.Value, (int)numericBoxNumberOfSpots.Value, DataSet.DataTableSpot.SpotPositions);
+            var spots = ImageProcess.FindSpots(p.SrcValuesGray, p.Width, numericBoxNearestNeighbor.Value, (int)numericBoxNumberOfSpots.Value, dataSet.DataTableSpot.SpotPositions);
             if (DirectSpot.IsNaN)//ダイレクトが未決定の場合
                 spots = spots.OrderBy(s => 1 / s.Int).ToList(); //優先順に並び替える。　条件は　①強度が大きい。(③鋭いピークである)
             else//ダイレクトが既に決められている場合
@@ -281,7 +281,7 @@ namespace ReciPro
             }
             for (int i = 0; i < results.Count; i++)
                 if (!double.IsPositiveInfinity(results[i].R))
-                    DataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
+                    dataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             bindingSourceObsSpots.DataMember = "DataTableSpot";
             toolStripStatusLabelIdentifySpot.Text += $" Fitting time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms.";
@@ -378,7 +378,7 @@ namespace ReciPro
 
         private void buttonClearSpots_Click(object sender, EventArgs e)
         {
-            DataSet.DataTableSpot.Clear();
+            dataSet.DataTableSpot.Clear();
             scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagObsSpot);
             scalablePictureBoxAdvanced.Refresh();
         }
@@ -391,29 +391,29 @@ namespace ReciPro
             bindingSourceObsSpots.DataMember = "";
 
             int n = 0;
-            var results = DataSet.DataTableSpot.Spots.Select((s, i) =>
+            var results = dataSet.DataTableSpot.Spots.Select((s, i) =>
             {
-                toolStripProgressBar.Value = n++ * toolStripProgressBar.Maximum / DataSet.DataTableSpot.Spots.Count;
+                toolStripProgressBar.Value = n++ * toolStripProgressBar.Maximum / dataSet.DataTableSpot.Spots.Count;
                 Application.DoEvents();
-                var area = DataSet.DataTableSpot.GetPrms(i).Range;
+                var area = dataSet.DataTableSpot.GetPrms(i).Range;
                 return fit(new PointD(s.X, s.Y), area);
             }).ToArray();
 
             for (int i = 0; i < results.Length; i++)
                 if (!double.IsPositiveInfinity(results[i].R))
                 {
-                    var area = DataSet.DataTableSpot.GetPrms(i).Range;
-                    DataSet.DataTableSpot.SetPrms(i, area, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
+                    var area = dataSet.DataTableSpot.GetPrms(i).Range;
+                    dataSet.DataTableSpot.SetPrms(i, area, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
                 }
 
             bindingSourceObsSpots.DataMember = "DataTableSpot";
-            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ DataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ dataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
 
         private void ButtonGlobalFit_Click(object sender, EventArgs e)
         {
-            if (DataSet.DataTableSpot.Spots.Count == 0) return;
+            if (dataSet.DataTableSpot.Spots.Count == 0) return;
             Enabled = false;
             Application.DoEvents();
             sw.Restart();
@@ -425,9 +425,9 @@ namespace ReciPro
             var prmsList = new List<(bool Direct, int No, double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)>();
             var functions = new List<MQ.Function>();
             var excludedArea = new List<int>();
-            for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)
+            for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
             {
-                var prms = DataSet.DataTableSpot.GetPrms(i);
+                var prms = dataSet.DataTableSpot.GetPrms(i);
                 prmsList.Add(prms);
                 for (int y = Math.Max(0, (int)(prms.Y0 - prms.Range - 1)); y < Math.Min(height, (int)(prms.Y0 + prms.Range + 2)); y++)
                     for (int x = Math.Max(0, (int)(prms.X0 - prms.Range - 1)); x < Math.Min(width, (int)(prms.X0 + prms.Range + 2)); x++)
@@ -487,12 +487,12 @@ namespace ReciPro
                             intensity += temp;
                         }
 
-                DataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
+                dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
 
             }
             bindingSourceObsSpots.DataMember = "DataTableSpot";
 
-            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ DataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ dataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
 
@@ -509,16 +509,16 @@ namespace ReciPro
         {
             if (skipEvent) return;
             scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagObsSpot);
-            if (DataSet.DataTableSpot.Spots != null)
+            if (dataSet.DataTableSpot.Spots != null)
             {
                 var current = -1;
                 if (bindingSourceObsSpots.Current is DataRowView view)
                     current = (int)view.Row["No"];
 
-                var direct = DataSet.DataTableSpot.DirectSpotPosition;
-                for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)
+                var direct = dataSet.DataTableSpot.DirectSpotPosition;
+                for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
                 {
-                    var p = DataSet.DataTableSpot.GetPrms(i);
+                    var p = dataSet.DataTableSpot.GetPrms(i);
                     var symbol = !p.Direct ?
                         new ScalablePictureBox.Symbol(i.ToString(), new PointD(p.X0, p.Y0), p.Range, Color.LightBlue, 5, Color.LightBlue, Color.DarkBlue) :
                         new ScalablePictureBox.Symbol(i.ToString(), new PointD(p.X0, p.Y0), p.Range, Color.Pink, 5, Color.Pink, Color.DarkRed);
@@ -545,7 +545,7 @@ namespace ReciPro
             if (bindingSourceObsSpots.Current is DataRowView view)
             {
                 var index = ((int)view.Row["No"]);
-                if (index < 0 || index >= DataSet.DataTableSpot.Spots.Count)
+                if (index < 0 || index >= dataSet.DataTableSpot.Spots.Count)
                     return;
 
                 //選択スポットをボールドに変更
@@ -554,7 +554,7 @@ namespace ReciPro
                         s.Bold = s.Label == index.ToString();
 
                 //中心位置をシフト
-                var spot = DataSet.DataTableSpot.Spots[index];
+                var spot = dataSet.DataTableSpot.Spots[index];
                 var center = new PointD(spot.X, spot.Y);
                 scalablePictureBoxAdvanced.ZoomAndCenter = (scalablePictureBoxAdvanced.ZoomAndCenter.Zoom, center);
 
@@ -572,7 +572,7 @@ namespace ReciPro
         /// <param name="e"></param>
         private void dataGridViewSpots_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (DataSet.DataTableSpot.Rows.Count > 0 && e.RowIndex >= 0)
+            if (dataSet.DataTableSpot.Rows.Count > 0 && e.RowIndex >= 0)
             {
                 var pos = bindingSourceObsSpots.Position;
                 var view = (DataRowView)bindingSourceObsSpots.Current;
@@ -583,7 +583,7 @@ namespace ReciPro
                     if (e.ColumnIndex == 0)
                     {
                         skipEvent = true;
-                        DataSet.DataTableSpot.SetDirectNo(currentIndex);
+                        dataSet.DataTableSpot.SetDirectNo(currentIndex);
                         bindingSourceObsSpots.Position = pos;
                         skipEvent = false;
                         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
@@ -593,10 +593,10 @@ namespace ReciPro
                     {
                         sw.Restart();
                         skipEvent = true;
-                        var p = DataSet.DataTableSpot.GetPrms(currentIndex);
+                        var p = dataSet.DataTableSpot.GetPrms(currentIndex);
                         var range = p.Range;
                         var r = fit(new PointD(p.X0, p.Y0), range);
-                        DataSet.DataTableSpot.SetPrms(currentIndex, range, r.PrmsPv, r.PrmsBg, r.R);
+                        dataSet.DataTableSpot.SetPrms(currentIndex, range, r.PrmsPv, r.PrmsBg, r.R);
                         skipEvent = false;
                         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
                         toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms.";
@@ -613,10 +613,10 @@ namespace ReciPro
 
         private void DataGridViewSpots_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (DataSet.DataTableSpot.Rows.Count > 0 && e.RowIndex >= 0)
+            if (dataSet.DataTableSpot.Rows.Count > 0 && e.RowIndex >= 0)
             {
                 var index = (int)((DataRowView)bindingSourceObsSpots.Current)["No"];
-                var center = new PointD(DataSet.DataTableSpot.SpotPositions[index].X, DataSet.DataTableSpot.SpotPositions[index].Y);
+                var center = new PointD(dataSet.DataTableSpot.SpotPositions[index].X, dataSet.DataTableSpot.SpotPositions[index].Y);
                 scalablePictureBoxAdvanced.ZoomAndCenter = (scalablePictureBoxAdvanced.ZoomAndCenter.Zoom * 2, center);
             }
         }
@@ -625,11 +625,11 @@ namespace ReciPro
         private void ButtonResetRangeForAllSpots_Click(object sender, EventArgs e)
         {
             bindingSourceObsSpots.DataMember = "";
-            for (int i = 0; i < DataSet.DataTableSpot.Rows.Count; i++)
+            for (int i = 0; i < dataSet.DataTableSpot.Rows.Count; i++)
             {
                 (_, _, _, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
-                    = DataSet.DataTableSpot.GetPrms(i);
-                DataSet.DataTableSpot.SetPrms(i, numericBoxFittingRange.Value, new[] { X0, Y0, H1, H2, Theta, Eta, A }, new[] { B0, Bx, By }, R);
+                    = dataSet.DataTableSpot.GetPrms(i);
+                dataSet.DataTableSpot.SetPrms(i, numericBoxFittingRange.Value, new[] { X0, Y0, H1, H2, Theta, Eta, A }, new[] { B0, Bx, By }, R);
 
             }
             bindingSourceObsSpots.DataMember = "DataTableSpot";
@@ -641,7 +641,7 @@ namespace ReciPro
 
         private void buttonCopyToClipboad_Click(object sender, EventArgs e)
         {
-            if (DataSet.DataTableSpot.Rows.Count > 1)
+            if (dataSet.DataTableSpot.Rows.Count > 1)
             {
                 var sb = new StringBuilder();
                 sb.Append("Direct\t");
@@ -701,11 +701,11 @@ namespace ReciPro
                 {
                     var d = dataList[i];
                     (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R) =
-                    DataSet.DataTableSpot.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
+                    dataSet.DataTableSpot.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
 
-                    DataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
+                    dataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
                     if (d.Length == 17 && d[15] != "")
-                        DataSet.DataTableSpot.SetHKL(i, d[15]);
+                        dataSet.DataTableSpot.SetHKL(i, d[15]);
 
                 }
 
@@ -744,9 +744,9 @@ namespace ReciPro
             if (e.Result != null && e.Result is List<List<Grain>>)
             {
                 List<List<Grain>> candidates = (List<List<Grain>>)e.Result;
-                DataSet.DataTableCandidate.Clear();
+                dataSet.DataTableCandidate.Clear();
                 for (int i = 0; i < candidates.Count; i++)
-                    DataSet.DataTableCandidate.Add(i, candidates[i]);
+                    dataSet.DataTableCandidate.Add(i, candidates[i]);
                 toolStripProgressBar.Value = toolStripProgressBar.Maximum;
                 toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2}sec.";
             }
@@ -778,7 +778,7 @@ namespace ReciPro
         private List<List<Grain>> identifySpots(List<Crystal> crystals)
         {
             var p = scalablePictureBoxAdvanced.PseudoBitmap;
-            Detector = new AreaDetector(p.Width, p.Height, numericBoxPixelSize.Value, DataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
+            Detector = new AreaDetector(p.Width, p.Height, numericBoxPixelSize.Value, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
             Detector.setMaxReciprocalZ();
 
             var crystalCount = crystals.Count;
@@ -805,7 +805,7 @@ namespace ReciPro
                 for (int i = 0; i < c.VectorOfG.Count; i++)
                     vec[j].Add(Deep.Copy(c.VectorOfG[i]));
             }
-            var obsSpots = DataSet.DataTableSpot.Spots;
+            var obsSpots = dataSet.DataTableSpot.Spots;
 
             var candidates = new List<List<Grain>>();
 
@@ -828,7 +828,7 @@ namespace ReciPro
             //まず、最初の1回チャレンジ
             for (int i = 0; i < crystalCount; i++)
             {
-                var cand = func(i, DataSet.DataTableSpot.ReciprocalVectors, null);
+                var cand = func(i, dataSet.DataTableSpot.ReciprocalVectors, null);
                 for (int j = 0; j < cand.Count; j++)
                     candidates.Add(new List<Grain>(new[] { cand[j] }));
             }
@@ -847,7 +847,7 @@ namespace ReciPro
                             foreach (Grain g in candidates[i])
                                 exceptedIndices.AddRange(g.Indices.Select(o => o.No).ToArray());
 
-                            var cand = func(j, DataSet.DataTableSpot.ReciprocalVectors, exceptedIndices.ToArray());
+                            var cand = func(j, dataSet.DataTableSpot.ReciprocalVectors, exceptedIndices.ToArray());
                             if (cand.Count == 0)
                             { candidates2.Add(candidates[i]); }
                             else
@@ -887,7 +887,7 @@ namespace ReciPro
             {
                 gVectors.Add(new List<Vector3D>());
                 //indexで指定されたd_spacingに近いg_vectorを探す
-                var d = DataSet.DataTableSpot.Dscacing[i];
+                var d = dataSet.DataTableSpot.Dscacing[i];
                 gVectors[i].AddRange(vectorOfG.Where(g => g.d > d * (1 - ToleranceLength) && g.d < d * (1 + ToleranceLength)).ToArray());
             }
 
@@ -1041,7 +1041,7 @@ namespace ReciPro
             {
                 gVectors.Add(new List<Vector3D>());
                 //indexで指定されたd_spacingに近いg_vectorを探す
-                var d = DataSet.DataTableSpot.Dscacing[i];
+                var d = dataSet.DataTableSpot.Dscacing[i];
                 gVectors[i].AddRange(FormMain.Crystal.VectorOfG.Where(g => g.d > d * (1 - toleranceLength) && g.d < d * (1 + toleranceLength)).ToArray());
             }
 
@@ -1139,9 +1139,9 @@ namespace ReciPro
                 if (bindingSourceCandidates.Current != null)
                 {
                     var c = (List<Grain>)((DataRowView)bindingSourceCandidates.Current).Row["Candidate"];
-                    DataSet.DataTableGrain.Clear();
+                    dataSet.DataTableGrain.Clear();
                     for (int i = 0; i < c.Count; i++)
-                        DataSet.DataTableGrain.Add(c[i]);
+                        dataSet.DataTableGrain.Add(c[i]);
                 }
             }
             catch { }
@@ -1161,8 +1161,8 @@ namespace ReciPro
                         if (r.Selected && r.Cells != null && r.Cells.Count > 0 && r.Cells[0] != null && r.Cells[0].Value != null)
                         {
                             var n = (int)r.Cells[0].Value;
-                            var g = (Grain)DataSet.DataTableGrain.Rows[n]["Grain"];
-                            var name = (string)DataSet.DataTableGrain.Rows[n]["CrystalName"];
+                            var g = (Grain)dataSet.DataTableGrain.Rows[n]["Grain"];
+                            var name = (string)dataSet.DataTableGrain.Rows[n]["CrystalName"];
                             //シンボルを更新
                             foreach (var spot in g.Spots)
                             {
@@ -1183,14 +1183,14 @@ namespace ReciPro
 
                     //hklを書き換え
                     skipEvent = true;
-                    for (int i = 0; i < DataSet.DataTableSpot.Count; i++)
+                    for (int i = 0; i < dataSet.DataTableSpot.Count; i++)
                     {
                         var index = g.Indices.Where(index => index.No == i).ToArray();
-                        DataSet.DataTableSpot.SetHKL(i, index.Length != 1 ? "" : $"{index[0].H} {index[0].K} {index[0].L}");
+                        dataSet.DataTableSpot.SetHKL(i, index.Length != 1 ? "" : $"{index[0].H} {index[0].K} {index[0].L}");
                     }
-                    DataSet.DataTableSpot.SetHKL(DataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
+                    dataSet.DataTableSpot.SetHKL(dataSet.DataTableSpot.DirectSpotNo, " 0 0 0");
                     foreach (var (No, H, K, L) in g.Indices)
-                        DataSet.DataTableSpot.SetHKL(No, $" {H} {K} {L}");
+                        dataSet.DataTableSpot.SetHKL(No, $" {H} {K} {L}");
                     skipEvent = false;
 
                     //シンボルを更新
@@ -1379,7 +1379,7 @@ namespace ReciPro
             FormMain.Crystal.Bethe.CbedProgressChanged -= Bethe_CbedProgressChanged;
 
             //検出しているスポットの強度を取得
-            var spots = DataSet.DataTableSpot.Spots;
+            var spots = dataSet.DataTableSpot.Spots;
 
             //現在選択しているグレインと対応させる
             var grain = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
@@ -1455,7 +1455,7 @@ namespace ReciPro
 
         private void buttonDonut_Click(object sender, EventArgs e)
         {
-            if (DataSet.DataTableSpot.Spots.Count == 0) return;
+            if (dataSet.DataTableSpot.Spots.Count == 0) return;
             Enabled = false;
             Application.DoEvents();
             sw.Restart();
@@ -1464,10 +1464,10 @@ namespace ReciPro
 
             int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
             var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
-            for (int i = 0; i < DataSet.DataTableSpot.Spots.Count; i++)
+            for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
             {
                 //現在のスポットのパラメータを取得
-                var prms = DataSet.DataTableSpot.GetPrms(i);
+                var prms = dataSet.DataTableSpot.GetPrms(i);
 
                 List<double> core = new List<double>(), mantle = new List<double>();
                 double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
@@ -1482,10 +1482,10 @@ namespace ReciPro
                             mantle.Add(srcValues[x + y * width]);
                     }
                 var intensity = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
-                DataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
+                dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
             }
             bindingSourceObsSpots.DataMember = "DataTableSpot";
-            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({DataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
+            toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
             Enabled = true;
         }
     }

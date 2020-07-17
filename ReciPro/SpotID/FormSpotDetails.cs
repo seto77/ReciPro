@@ -41,7 +41,7 @@ namespace ReciPro
                 return;
             }
 
-            var (_, _, Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, _) = FormSpotID.DataSet.DataTableSpot.GetPrms(selectedIndex);
+            var (_, _, Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, _) = FormSpotID.dataSet.DataTableSpot.GetPrms(selectedIndex);
             var funcs = new List<Marquardt.Function>
             {
                 new Marquardt.Function(Marquardt.FuncType.PV2E, X0, Y0, H1, H2, Theta, Eta, A),
