@@ -164,8 +164,8 @@ namespace Crystallography.Controls
         private void ReadDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Enabled = true;
-            ProgressChanged?.Invoke(sender, 1, $"Toatal loading time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
             bindingSource.DataMember = "DataTableCrystalDatabase";
+            ProgressChanged?.Invoke(sender, 1, $"Total loading time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
         }
 
         #endregion

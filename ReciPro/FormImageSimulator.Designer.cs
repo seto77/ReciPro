@@ -55,16 +55,17 @@ namespace ReciPro
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowUnitcell = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxLabelFontSize = new Crystallography.Controls.NumericBox();
             this.colorControlLabel = new Crystallography.Controls.ColorControl();
             this.checkBoxShowLabel = new System.Windows.Forms.CheckBox();
-            this.checkBoxRealTimeCalculation = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowUnitcell = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowScale = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxScaleLength = new Crystallography.Controls.NumericBox();
             this.colorControlScale = new Crystallography.Controls.ColorControl();
+            this.checkBoxShowScale = new System.Windows.Forms.CheckBox();
+            this.checkBoxRealTimeCalculation = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             this.radioButtonSTEM = new System.Windows.Forms.RadioButton();
@@ -72,22 +73,23 @@ namespace ReciPro
             this.groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxThickness = new Crystallography.Controls.NumericBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numericBoxAccVol = new Crystallography.Controls.NumericBox();
             this.numericBoxDefocus = new Crystallography.Controls.NumericBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxRambda = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxScherzer = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBoxInherentProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxCs = new Crystallography.Controls.NumericBox();
             this.numericBoxCc = new Crystallography.Controls.NumericBox();
             this.numericBoxDeltaV = new Crystallography.Controls.NumericBox();
             this.numericBoxBetaAgnle = new Crystallography.Controls.NumericBox();
             this.panelDummy1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxScherzer = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericBoxAccVol = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxRambda = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBoxLenzFunction = new System.Windows.Forms.GroupBox();
@@ -115,6 +117,8 @@ namespace ReciPro
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.numericBoxNumOfBlochWave = new Crystallography.Controls.NumericBox();
             this.panelDummy2 = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
@@ -184,7 +188,6 @@ namespace ReciPro
             this.radioButtonPotentialShowImag = new System.Windows.Forms.RadioButton();
             this.checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             this.checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
-            this.numericBoxNumOfBlochWave = new Crystallography.Controls.NumericBox();
             this.buttonSimulateHRTEM = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -211,9 +214,6 @@ namespace ReciPro
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -222,14 +222,16 @@ namespace ReciPro
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScaleOfIntensity)).BeginInit();
             this.flowLayoutPanelGaussianBlur2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.flowLayoutPanelLabel.SuspendLayout();
             this.flowLayoutPanelScale.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBoxSampleProperty.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBoxInherentProperty.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBoxInherentProperty.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBoxLenzFunction.SuspendLayout();
@@ -238,6 +240,7 @@ namespace ReciPro
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
             this.groupBoxNormalizeIntensity.SuspendLayout();
@@ -260,9 +263,6 @@ namespace ReciPro
             this.flowLayoutPanelRealAndImaiginary.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -461,6 +461,26 @@ namespace ReciPro
             resources.ApplyResources(this.label33, "label33");
             this.label33.Name = "label33";
             // 
+            // groupBox5
+            // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Controls.Add(this.checkBoxShowUnitcell);
+            this.groupBox5.Controls.Add(this.flowLayoutPanelLabel);
+            this.groupBox5.Controls.Add(this.checkBoxShowLabel);
+            this.groupBox5.Controls.Add(this.flowLayoutPanelScale);
+            this.groupBox5.Controls.Add(this.checkBoxShowScale);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // checkBoxShowUnitcell
+            // 
+            resources.ApplyResources(this.checkBoxShowUnitcell, "checkBoxShowUnitcell");
+            this.checkBoxShowUnitcell.Checked = true;
+            this.checkBoxShowUnitcell.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowUnitcell.Name = "checkBoxShowUnitcell";
+            this.checkBoxShowUnitcell.UseVisualStyleBackColor = true;
+            this.checkBoxShowUnitcell.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
             // flowLayoutPanelLabel
             // 
             resources.ApplyResources(this.flowLayoutPanelLabel, "flowLayoutPanelLabel");
@@ -510,30 +530,6 @@ namespace ReciPro
             this.checkBoxShowLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowLabel.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
             // 
-            // checkBoxRealTimeCalculation
-            // 
-            resources.ApplyResources(this.checkBoxRealTimeCalculation, "checkBoxRealTimeCalculation");
-            this.checkBoxRealTimeCalculation.Name = "checkBoxRealTimeCalculation";
-            this.checkBoxRealTimeCalculation.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowUnitcell
-            // 
-            resources.ApplyResources(this.checkBoxShowUnitcell, "checkBoxShowUnitcell");
-            this.checkBoxShowUnitcell.Checked = true;
-            this.checkBoxShowUnitcell.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowUnitcell.Name = "checkBoxShowUnitcell";
-            this.checkBoxShowUnitcell.UseVisualStyleBackColor = true;
-            this.checkBoxShowUnitcell.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
-            // checkBoxShowScale
-            // 
-            resources.ApplyResources(this.checkBoxShowScale, "checkBoxShowScale");
-            this.checkBoxShowScale.Checked = true;
-            this.checkBoxShowScale.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowScale.Name = "checkBoxShowScale";
-            this.checkBoxShowScale.UseVisualStyleBackColor = true;
-            this.checkBoxShowScale.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
             // flowLayoutPanelScale
             // 
             resources.ApplyResources(this.flowLayoutPanelScale, "flowLayoutPanelScale");
@@ -574,6 +570,21 @@ namespace ReciPro
             this.colorControlScale.Red = 135;
             this.colorControlScale.RedF = 0.5294118F;
             this.colorControlScale.ColorChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // checkBoxShowScale
+            // 
+            resources.ApplyResources(this.checkBoxShowScale, "checkBoxShowScale");
+            this.checkBoxShowScale.Checked = true;
+            this.checkBoxShowScale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowScale.Name = "checkBoxShowScale";
+            this.checkBoxShowScale.UseVisualStyleBackColor = true;
+            this.checkBoxShowScale.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // checkBoxRealTimeCalculation
+            // 
+            resources.ApplyResources(this.checkBoxRealTimeCalculation, "checkBoxRealTimeCalculation");
+            this.checkBoxRealTimeCalculation.Name = "checkBoxRealTimeCalculation";
+            this.checkBoxRealTimeCalculation.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -643,6 +654,33 @@ namespace ReciPro
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.numericBoxAccVol);
+            this.groupBox4.Controls.Add(this.numericBoxDefocus);
+            this.groupBox4.Controls.Add(this.flowLayoutPanel4);
+            this.groupBox4.Controls.Add(this.flowLayoutPanel3);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // numericBoxAccVol
+            // 
+            resources.ApplyResources(this.numericBoxAccVol, "numericBoxAccVol");
+            this.numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.Maximum = 1000D;
+            this.numericBoxAccVol.Minimum = 1D;
+            this.numericBoxAccVol.Name = "numericBoxAccVol";
+            this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
+            this.numericBoxAccVol.ShowUpDown = true;
+            this.numericBoxAccVol.SmartIncrement = true;
+            this.numericBoxAccVol.ThonsandsSeparator = true;
+            this.toolTip1.SetToolTip(this.numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
+            this.numericBoxAccVol.Value = 200D;
+            this.numericBoxAccVol.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxAccVol_ValueChanged);
+            // 
             // numericBoxDefocus
             // 
             resources.ApplyResources(this.numericBoxDefocus, "numericBoxDefocus");
@@ -660,6 +698,60 @@ namespace ReciPro
             this.toolTip1.SetToolTip(this.numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
             this.numericBoxDefocus.Value = -70D;
             this.numericBoxDefocus.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocus_ValueChanged);
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
+            this.flowLayoutPanel4.Controls.Add(this.label1);
+            this.flowLayoutPanel4.Controls.Add(this.textBoxRambda);
+            this.flowLayoutPanel4.Controls.Add(this.label5);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Name = "label1";
+            // 
+            // textBoxRambda
+            // 
+            this.textBoxRambda.ForeColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.textBoxRambda, "textBoxRambda");
+            this.textBoxRambda.Name = "textBoxRambda";
+            this.textBoxRambda.ReadOnly = true;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Name = "label5";
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.textBoxScherzer);
+            this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Name = "label3";
+            // 
+            // textBoxScherzer
+            // 
+            this.textBoxScherzer.ForeColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.textBoxScherzer, "textBoxScherzer");
+            this.textBoxScherzer.Name = "textBoxScherzer";
+            this.textBoxScherzer.ReadOnly = true;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Name = "label4";
             // 
             // groupBoxInherentProperty
             // 
@@ -753,77 +845,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.panelDummy1, "panelDummy1");
             this.panelDummy1.Name = "panelDummy1";
-            // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Controls.Add(this.textBoxScherzer);
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Name = "label3";
-            // 
-            // textBoxScherzer
-            // 
-            this.textBoxScherzer.ForeColor = System.Drawing.Color.DimGray;
-            resources.ApplyResources(this.textBoxScherzer, "textBoxScherzer");
-            this.textBoxScherzer.Name = "textBoxScherzer";
-            this.textBoxScherzer.ReadOnly = true;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Name = "label4";
-            // 
-            // numericBoxAccVol
-            // 
-            resources.ApplyResources(this.numericBoxAccVol, "numericBoxAccVol");
-            this.numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.Maximum = 1000D;
-            this.numericBoxAccVol.Minimum = 1D;
-            this.numericBoxAccVol.Name = "numericBoxAccVol";
-            this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
-            this.numericBoxAccVol.ShowUpDown = true;
-            this.numericBoxAccVol.SmartIncrement = true;
-            this.numericBoxAccVol.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
-            this.numericBoxAccVol.Value = 200D;
-            this.numericBoxAccVol.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxAccVol_ValueChanged);
-            // 
-            // flowLayoutPanel4
-            // 
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
-            this.flowLayoutPanel4.Controls.Add(this.label1);
-            this.flowLayoutPanel4.Controls.Add(this.textBoxRambda);
-            this.flowLayoutPanel4.Controls.Add(this.label5);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Name = "label1";
-            // 
-            // textBoxRambda
-            // 
-            this.textBoxRambda.ForeColor = System.Drawing.Color.DimGray;
-            resources.ApplyResources(this.textBoxRambda, "textBoxRambda");
-            this.textBoxRambda.Name = "textBoxRambda";
-            this.textBoxRambda.ReadOnly = true;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Name = "label5";
             // 
             // tabControl1
             // 
@@ -1117,6 +1138,29 @@ namespace ReciPro
             this.groupBox1.Controls.Add(this.tabControl2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.numericBoxNumOfBlochWave);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
+            // numericBoxNumOfBlochWave
+            // 
+            resources.ApplyResources(this.numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
+            this.numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.Maximum = 1000D;
+            this.numericBoxNumOfBlochWave.Minimum = 8D;
+            this.numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
+            this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
+            this.numericBoxNumOfBlochWave.ShowUpDown = true;
+            this.numericBoxNumOfBlochWave.SmartIncrement = true;
+            this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
+            this.numericBoxNumOfBlochWave.Value = 500D;
+            this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxNumOfBlochWave_ValueChanged);
             // 
             // panelDummy2
             // 
@@ -1695,22 +1739,6 @@ namespace ReciPro
             this.checkBoxPotentialUg.Name = "checkBoxPotentialUg";
             this.checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
-            // numericBoxNumOfBlochWave
-            // 
-            resources.ApplyResources(this.numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
-            this.numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.Maximum = 1000D;
-            this.numericBoxNumOfBlochWave.Minimum = 8D;
-            this.numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
-            this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
-            this.numericBoxNumOfBlochWave.ShowUpDown = true;
-            this.numericBoxNumOfBlochWave.SmartIncrement = true;
-            this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
-            this.numericBoxNumOfBlochWave.Value = 500D;
-            this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxNumOfBlochWave_ValueChanged);
-            // 
             // buttonSimulateHRTEM
             // 
             resources.ApplyResources(this.buttonSimulateHRTEM, "buttonSimulateHRTEM");
@@ -1886,34 +1914,6 @@ namespace ReciPro
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.numericBoxAccVol);
-            this.groupBox4.Controls.Add(this.numericBoxDefocus);
-            this.groupBox4.Controls.Add(this.flowLayoutPanel4);
-            this.groupBox4.Controls.Add(this.flowLayoutPanel3);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBoxShowUnitcell);
-            this.groupBox5.Controls.Add(this.flowLayoutPanelLabel);
-            this.groupBox5.Controls.Add(this.checkBoxShowLabel);
-            this.groupBox5.Controls.Add(this.flowLayoutPanelScale);
-            this.groupBox5.Controls.Add(this.checkBoxShowScale);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.numericBoxNumOfBlochWave);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
-            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -1940,6 +1940,8 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScaleOfIntensity)).EndInit();
             this.flowLayoutPanelGaussianBlur2.ResumeLayout(false);
             this.flowLayoutPanelGaussianBlur2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.flowLayoutPanelLabel.ResumeLayout(false);
             this.flowLayoutPanelLabel.PerformLayout();
             this.flowLayoutPanelScale.ResumeLayout(false);
@@ -1948,11 +1950,13 @@ namespace ReciPro
             this.groupBox6.PerformLayout();
             this.groupBoxSampleProperty.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBoxInherentProperty.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.groupBoxInherentProperty.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.groupBoxLenzFunction.ResumeLayout(false);
@@ -1965,6 +1969,7 @@ namespace ReciPro
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
@@ -2005,11 +2010,6 @@ namespace ReciPro
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
