@@ -140,6 +140,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelStatusInitialization = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabelStatusRendering = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonLikeVesta = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonResetRotation = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,7 +177,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1193,7 +1193,7 @@
             this.toolStripSeparator3,
             this.toolStripLabelStatusInitialization,
             this.toolStripLabelStatusRendering,
-            this.toolStripButton1,
+            this.toolStripButtonLikeVesta,
             this.toolStripButtonResetRotation});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Stretch = true;
@@ -1243,6 +1243,16 @@
             // 
             this.toolStripLabelStatusRendering.Name = "toolStripLabelStatusRendering";
             resources.ApplyResources(this.toolStripLabelStatusRendering, "toolStripLabelStatusRendering");
+            // 
+            // toolStripButtonLikeVesta
+            // 
+            this.toolStripButtonLikeVesta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonLikeVesta.BackColor = System.Drawing.Color.SteelBlue;
+            this.toolStripButtonLikeVesta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLikeVesta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.toolStripButtonLikeVesta, "toolStripButtonLikeVesta");
+            this.toolStripButtonLikeVesta.Name = "toolStripButtonLikeVesta";
+            this.toolStripButtonLikeVesta.Click += new System.EventHandler(this.toolStripButtonLikeVesta_Click);
             // 
             // toolStripButtonResetRotation
             // 
@@ -1477,15 +1487,6 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.BackColor = System.Drawing.Color.SteelBlue;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
-            // 
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
@@ -1498,6 +1499,8 @@
             this.Name = "FormStructureViewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStructureViewer_FormClosing);
             this.Load += new System.EventHandler(this.FormStructureViewer_Load);
+            this.ResizeBegin += new System.EventHandler(this.FormStructureViewer_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.FormStructureViewer_ResizeEnd);
             this.VisibleChanged += new System.EventHandler(this.FormStructureViewer_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormStructureViewer_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -1692,6 +1695,6 @@
         private System.Windows.Forms.RadioButton radioButtonLabelUseFixedColor;
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
     }
 }

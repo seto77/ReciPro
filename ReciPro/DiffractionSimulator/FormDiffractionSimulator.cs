@@ -910,8 +910,16 @@ namespace ReciPro
 
         private Size lastPanelSize = new Size(0, 0);
 
-        private void FormElectronDiffraction_Resize(object sender, EventArgs e)
+
+        private void FormDiffractionSimulator_ResizeBegin(object sender, EventArgs e)
         {
+            SuspendLayout();
+        }
+
+        private void FormElectronDiffraction_ResizeEnd(object sender, EventArgs e)
+        {
+            ResumeLayout();
+
             if (SkipEvent) return;
 
             if (graphicsBox.ClientSize.Width == 0 || graphicsBox.ClientSize.Height == 0) return; //Å¬‰»‚³‚ê‚½‚Æ‚«‚È‚Ç
@@ -1896,7 +1904,7 @@ namespace ReciPro
                 labelMousePositionReal.Visible =
                 checkBoxMousePositionDetailes.Checked;
 
-
+      
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
     }

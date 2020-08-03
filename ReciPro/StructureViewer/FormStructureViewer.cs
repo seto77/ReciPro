@@ -1431,8 +1431,7 @@ namespace ReciPro
                                 Margin = new Padding(1, 1, 1, 8),
                             });
 
-                            legendFlowLayoutPanels[i].Controls.Add(legendControls[i]);
-                            legendFlowLayoutPanels[i].Controls.Add(legendLabels[i]);
+                            legendFlowLayoutPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
                         }
                         legendLabels[i].Text = checkBoxGroupByElement.Checked ?
                             atoms[i].AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atoms[i].AtomicNumber) : atoms[i].Label;
@@ -1661,8 +1660,17 @@ namespace ReciPro
             SkipEvent = false;
         }
 
+
         #endregion
 
-       
+        private void FormStructureViewer_ResizeBegin(object sender, EventArgs e)
+        {
+           tabControl.SuspendLayout();
+        }
+
+        private void FormStructureViewer_ResizeEnd(object sender, EventArgs e)
+        {
+            tabControl.ResumeLayout();
+        }
     }
 }
