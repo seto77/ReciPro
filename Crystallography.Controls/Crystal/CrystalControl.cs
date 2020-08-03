@@ -705,5 +705,9 @@ namespace Crystallography.Controls
         {
           //このイベントは、StructureViewerなどから直接呼び出される。
         }
+
+        private void buttonSymmetryInfo_Click(object sender, EventArgs e) => formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
+
+        private void buttonScatteringFactor_Click(object sender, EventArgs e) => formScatteringFactor.Visible = !formScatteringFactor.Visible;
     }
 }

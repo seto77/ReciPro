@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymmetryControl));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.checkBoxShowError = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label48 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             this.groupBoxSymmetry = new System.Windows.Forms.GroupBox();
             this.comboBoxSpaceGroup = new System.Windows.Forms.ComboBox();
             this.comboBoxPointGroup = new System.Windows.Forms.ComboBox();
@@ -53,7 +54,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
-            this.checkBoxShowError = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.numericBoxBeta = new Crystallography.Controls.NumericBox();
             this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
             this.numericBoxGammaErr = new Crystallography.Controls.NumericBox();
@@ -79,35 +80,12 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // label28
+            // checkBoxShowError
             // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // label46
-            // 
-            resources.ApplyResources(this.label46, "label46");
-            this.label46.Name = "label46";
-            // 
-            // label47
-            // 
-            resources.ApplyResources(this.label47, "label47");
-            this.label47.Name = "label47";
-            // 
-            // label48
-            // 
-            resources.ApplyResources(this.label48, "label48");
-            this.label48.Name = "label48";
+            resources.ApplyResources(this.checkBoxShowError, "checkBoxShowError");
+            this.checkBoxShowError.Name = "checkBoxShowError";
+            this.checkBoxShowError.UseVisualStyleBackColor = true;
+            this.checkBoxShowError.CheckedChanged += new System.EventHandler(this.checkBoxShowError_CheckedChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -138,20 +116,35 @@
             this.tableLayoutPanel1.Controls.Add(this.label44, 3, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // label45
+            // label48
             // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
+            resources.ApplyResources(this.label48, "label48");
+            this.label48.Name = "label48";
             // 
-            // label44
+            // label46
             // 
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.Name = "label44";
+            resources.ApplyResources(this.label46, "label46");
+            this.label46.Name = "label46";
+            // 
+            // label47
+            // 
+            resources.ApplyResources(this.label47, "label47");
+            this.label47.Name = "label47";
             // 
             // label23
             // 
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
             // 
             // label18
             // 
@@ -167,6 +160,21 @@
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // label44
+            // 
+            resources.ApplyResources(this.label44, "label44");
+            this.label44.Name = "label44";
             // 
             // groupBoxSymmetry
             // 
@@ -254,12 +262,10 @@
             this.comboBoxSearchResult.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
             this.comboBoxSearchResult.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchResult_SelectedIndexChanged);
             // 
-            // checkBoxShowError
+            // panel1
             // 
-            resources.ApplyResources(this.checkBoxShowError, "checkBoxShowError");
-            this.checkBoxShowError.Name = "checkBoxShowError";
-            this.checkBoxShowError.UseVisualStyleBackColor = true;
-            this.checkBoxShowError.CheckedChanged += new System.EventHandler(this.checkBoxShowError_CheckedChanged);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // numericBoxBeta
             // 
@@ -422,6 +428,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBoxSymmetry);
             this.Name = "SymmetryControl";
             this.groupBox4.ResumeLayout(false);
@@ -472,5 +479,6 @@
         private System.Windows.Forms.Label label21;
         public System.Windows.Forms.ComboBox comboBoxSearchResult;
         private System.Windows.Forms.CheckBox checkBoxShowError;
+        private System.Windows.Forms.Panel panel1;
     }
 }

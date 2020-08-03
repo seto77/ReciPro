@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxShowError.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+    <value>Top, Right</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxShowError.AutoSize" type="System.Boolean, mscorlib">
@@ -133,16 +133,16 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 111</value>
+    <value>248, 109</value>
   </data>
   <data name="checkBoxShowError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 19</value>
+    <value>83, 19</value>
   </data>
   <data name="checkBoxShowError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="checkBoxShowError.Text" xml:space="preserve">
-    <value>ShowError</value>
+    <value>Show error</value>
   </data>
   <data name="&gt;&gt;checkBoxShowError.Name" xml:space="preserve">
     <value>checkBoxShowError</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
-    <value>314, 52</value>
+    <value>314, 55</value>
   </data>
   <data name="label48.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -205,7 +205,7 @@
     <value>NoControl</value>
   </data>
   <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
-    <value>314, 26</value>
+    <value>314, 27</value>
   </data>
   <data name="label46.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -247,7 +247,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxBeta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 26</value>
+    <value>184, 27</value>
   </data>
   <data name="numericBoxBeta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -274,7 +274,7 @@
     <value>numericBoxBeta</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -325,7 +325,7 @@
     <value>numericBoxAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -388,7 +388,7 @@
     <value>±</value>
   </data>
   <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 52</value>
+    <value>249, 55</value>
   </data>
   <data name="numericBoxGammaErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -412,7 +412,7 @@
     <value>numericBoxGammaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -499,7 +499,7 @@
     <value>numericBoxAlphaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -526,7 +526,7 @@
     <value>±</value>
   </data>
   <data name="numericBoxBetaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 26</value>
+    <value>249, 27</value>
   </data>
   <data name="numericBoxBetaErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -550,7 +550,7 @@
     <value>numericBoxBetaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -601,7 +601,7 @@
     <value>numericBoxA</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -655,7 +655,7 @@
     <value>NoControl</value>
   </data>
   <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 52</value>
+    <value>146, 55</value>
   </data>
   <data name="label45.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -697,7 +697,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 52</value>
+    <value>184, 55</value>
   </data>
   <data name="numericBoxGamma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -724,7 +724,7 @@
     <value>numericBoxGamma</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -742,7 +742,7 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 26</value>
+    <value>146, 27</value>
   </data>
   <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -787,7 +787,7 @@
     <value>±</value>
   </data>
   <data name="numericBoxBErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 26</value>
+    <value>81, 27</value>
   </data>
   <data name="numericBoxBErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -811,7 +811,7 @@
     <value>numericBoxBErr</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -835,7 +835,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 26</value>
+    <value>16, 27</value>
   </data>
   <data name="numericBoxB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -862,7 +862,7 @@
     <value>numericBoxB</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -880,7 +880,7 @@
     <value>NoControl</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 27</value>
   </data>
   <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -916,7 +916,7 @@
     <value>NoControl</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 52</value>
+    <value>0, 55</value>
   </data>
   <data name="label25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -952,7 +952,7 @@
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 52</value>
+    <value>168, 55</value>
   </data>
   <data name="label28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -988,7 +988,7 @@
     <value>NoControl</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 26</value>
+    <value>168, 27</value>
   </data>
   <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -1030,7 +1030,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 52</value>
+    <value>16, 55</value>
   </data>
   <data name="numericBoxC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1057,7 +1057,7 @@
     <value>numericBoxC</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1084,7 +1084,7 @@
     <value>±</value>
   </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 52</value>
+    <value>81, 55</value>
   </data>
   <data name="numericBoxCErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1108,7 +1108,7 @@
     <value>numericBoxCErr</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1159,7 +1159,7 @@
     <value>numericBoxAErr</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.6.635, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.3.322, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1216,7 +1216,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 79</value>
+    <value>330, 84</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1246,7 +1246,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 136</value>
+    <value>336, 132</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1285,7 +1285,7 @@
     <value>30</value>
   </data>
   <data name="comboBoxSpaceGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 26</value>
+    <value>133, 26</value>
   </data>
   <data name="comboBoxSpaceGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1318,7 +1318,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 26</value>
+    <value>133, 26</value>
   </data>
   <data name="comboBoxPointGroup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1375,7 +1375,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 25</value>
+    <value>133, 25</value>
   </data>
   <data name="comboBoxCrystalSystem.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1435,7 +1435,7 @@
     <value>NoControl</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 109</value>
+    <value>6, 108</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 17</value>
@@ -1495,7 +1495,7 @@
     <value>Times New Roman, 9pt</value>
   </data>
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 107</value>
+    <value>54, 106</value>
   </data>
   <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 21</value>
@@ -1561,13 +1561,13 @@
     <value>Disable</value>
   </data>
   <data name="comboBoxSearchResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 104</value>
+    <value>120, 103</value>
   </data>
   <data name="comboBoxSearchResult.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>40</value>
   </data>
   <data name="comboBoxSearchResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 26</value>
+    <value>108, 26</value>
   </data>
   <data name="comboBoxSearchResult.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1591,10 +1591,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 0</value>
+    <value>340, 0</value>
   </data>
   <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 136</value>
+    <value>236, 132</value>
   </data>
   <data name="groupBoxSymmetry.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1612,6 +1612,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxSymmetry.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 132</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1621,7 +1645,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 136</value>
+    <value>576, 132</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SymmetryControl</value>

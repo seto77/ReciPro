@@ -40,17 +40,11 @@
             this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Translation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
-            this.numericBoxL = new Crystallography.Controls.NumericBox();
-            this.numericBoxK = new Crystallography.Controls.NumericBox();
-            this.numericBoxH = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.colorControl = new Crystallography.Controls.ColorControl();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +54,13 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
+            this.numericBoxL = new Crystallography.Controls.NumericBox();
+            this.numericBoxK = new Crystallography.Controls.NumericBox();
+            this.numericBoxH = new Crystallography.Controls.NumericBox();
+            this.colorControl = new Crystallography.Controls.ColorControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -209,15 +210,6 @@
             this.Translation.ReadOnly = true;
             this.Translation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorDataGridViewTextBoxColumn.Width = 60;
-            // 
             // bindingSource
             // 
             this.bindingSource.DataMember = "DataTableLatticePlane";
@@ -250,123 +242,6 @@
             this.panel2.Size = new System.Drawing.Size(550, 49);
             this.panel2.TabIndex = 132;
             // 
-            // numericBoxDistance
-            // 
-            this.numericBoxDistance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.DecimalPlaces = -1;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDistance.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxDistance.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDistance.FooterText = "× d";
-            this.numericBoxDistance.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-                       this.numericBoxDistance.HeaderText = "";
-            this.numericBoxDistance.Location = new System.Drawing.Point(197, 17);
-            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDistance.Maximum = 0.5D;
-            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxDistance.Minimum = -0.5D;
-            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDistance.RadianValue = 0D;
-            this.numericBoxDistance.RestrictLimitValue = true;
-            this.numericBoxDistance.ShowUpDown = true;
-            this.numericBoxDistance.Size = new System.Drawing.Size(81, 27);
-            this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.SmartIncrement = false;
-            this.numericBoxDistance.TabIndex = 3;
-                        this.numericBoxDistance.ThonsandsSeparator = true;
-            this.numericBoxDistance.ToolTip = "";
-            this.numericBoxDistance.UpDown_Increment = 0.1D;
-                       // 
-            // numericBoxL
-            // 
-            this.numericBoxL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.DecimalPlaces = 0;
-            this.numericBoxL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxL.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxL.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxL.FooterText = "";
-            this.numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-                       this.numericBoxL.HeaderText = "";
-            this.numericBoxL.Location = new System.Drawing.Point(111, 17);
-            this.numericBoxL.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxL.Maximum = 10D;
-            this.numericBoxL.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxL.Minimum = -10D;
-            this.numericBoxL.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxL.Name = "numericBoxL";
-            this.numericBoxL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxL.RadianValue = 0D;
-            this.numericBoxL.RestrictLimitValue = true;
-            this.numericBoxL.ShowUpDown = true;
-            this.numericBoxL.Size = new System.Drawing.Size(40, 27);
-            this.numericBoxL.SkipEventDuringInput = false;
-            this.numericBoxL.SmartIncrement = false;
-            this.numericBoxL.TabIndex = 2;
-                        this.numericBoxL.ThonsandsSeparator = true;
-            this.numericBoxL.ToolTip = "";
-                       // 
-            // numericBoxK
-            // 
-            this.numericBoxK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.DecimalPlaces = 0;
-            this.numericBoxK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxK.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxK.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxK.FooterText = "";
-            this.numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-                       this.numericBoxK.HeaderText = "";
-            this.numericBoxK.Location = new System.Drawing.Point(65, 17);
-            this.numericBoxK.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxK.Maximum = 10D;
-            this.numericBoxK.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxK.Minimum = -10D;
-            this.numericBoxK.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxK.Name = "numericBoxK";
-            this.numericBoxK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxK.RadianValue = 0D;
-            this.numericBoxK.RestrictLimitValue = true;
-            this.numericBoxK.ShowUpDown = true;
-            this.numericBoxK.Size = new System.Drawing.Size(40, 27);
-            this.numericBoxK.SkipEventDuringInput = false;
-            this.numericBoxK.SmartIncrement = false;
-            this.numericBoxK.TabIndex = 1;
-                        this.numericBoxK.ThonsandsSeparator = true;
-            this.numericBoxK.ToolTip = "";
-                       // 
-            // numericBoxH
-            // 
-            this.numericBoxH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.DecimalPlaces = 0;
-            this.numericBoxH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxH.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxH.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.numericBoxH.FooterText = "";
-            this.numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-                       this.numericBoxH.HeaderText = "";
-            this.numericBoxH.Location = new System.Drawing.Point(20, 17);
-            this.numericBoxH.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxH.Maximum = 10D;
-            this.numericBoxH.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxH.Minimum = -10D;
-            this.numericBoxH.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxH.Name = "numericBoxH";
-            this.numericBoxH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxH.RadianValue = 0D;
-            this.numericBoxH.RestrictLimitValue = true;
-            this.numericBoxH.ShowUpDown = true;
-            this.numericBoxH.Size = new System.Drawing.Size(40, 27);
-            this.numericBoxH.SkipEventDuringInput = false;
-            this.numericBoxH.SmartIncrement = false;
-            this.numericBoxH.TabIndex = 0;
-                        this.numericBoxH.ThonsandsSeparator = true;
-            this.numericBoxH.ToolTip = "";
-                       // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -388,34 +263,6 @@
             this.label1.Size = new System.Drawing.Size(15, 21);
             this.label1.TabIndex = 90;
             this.label1.Text = "{";
-            // 
-            // colorControl
-            // 
-            this.colorControl.Argb = -16192;
-            this.colorControl.AutoSize = true;
-            this.colorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.colorControl.Blue = 192;
-            this.colorControl.BlueF = 0.7529412F;
-            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.colorControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControl.FooterMargin = new System.Windows.Forms.Padding(0);
-            this.colorControl.FooterText = "";
-            this.colorControl.Green = 192;
-            this.colorControl.GreenF = 0.7529412F;
-            this.colorControl.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.colorControl.HeaderMargin = new System.Windows.Forms.Padding(0);
-            this.colorControl.HeaderText = "Color";
-            this.colorControl.Location = new System.Drawing.Point(335, 3);
-            this.colorControl.Margin = new System.Windows.Forms.Padding(0);
-            this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 255;
-            this.colorControl.RedF = 1F;
-            this.colorControl.Size = new System.Drawing.Size(36, 35);
-            this.colorControl.TabIndex = 4;
-            this.colorControl.ToolTip = "";
             // 
             // label5
             // 
@@ -502,6 +349,149 @@
             this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn4.Width = 60;
             // 
+            // dataGridViewImageColumn5
+            // 
+            this.dataGridViewImageColumn5.DataPropertyName = "Color";
+            this.dataGridViewImageColumn5.HeaderText = "Color";
+            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            this.dataGridViewImageColumn5.ReadOnly = true;
+            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn5.Width = 60;
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // numericBoxDistance
+            // 
+            this.numericBoxDistance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDistance.FooterText = "× d";
+            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDistance.Location = new System.Drawing.Point(197, 17);
+            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDistance.Maximum = 0.5D;
+            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxDistance.Minimum = -0.5D;
+            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxDistance.Name = "numericBoxDistance";
+            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxDistance.ShowUpDown = true;
+            this.numericBoxDistance.Size = new System.Drawing.Size(81, 25);
+            this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.TabIndex = 3;
+            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.UpDown_Increment = 0.1D;
+            // 
+            // numericBoxL
+            // 
+            this.numericBoxL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.DecimalPlaces = 0;
+            this.numericBoxL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxL.Location = new System.Drawing.Point(111, 17);
+            this.numericBoxL.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxL.Maximum = 10D;
+            this.numericBoxL.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxL.Minimum = -10D;
+            this.numericBoxL.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxL.Name = "numericBoxL";
+            this.numericBoxL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxL.ShowUpDown = true;
+            this.numericBoxL.Size = new System.Drawing.Size(40, 25);
+            this.numericBoxL.SkipEventDuringInput = false;
+            this.numericBoxL.TabIndex = 2;
+            this.numericBoxL.ThonsandsSeparator = true;
+            // 
+            // numericBoxK
+            // 
+            this.numericBoxK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.DecimalPlaces = 0;
+            this.numericBoxK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxK.Location = new System.Drawing.Point(65, 17);
+            this.numericBoxK.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxK.Maximum = 10D;
+            this.numericBoxK.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxK.Minimum = -10D;
+            this.numericBoxK.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxK.Name = "numericBoxK";
+            this.numericBoxK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxK.ShowUpDown = true;
+            this.numericBoxK.Size = new System.Drawing.Size(40, 25);
+            this.numericBoxK.SkipEventDuringInput = false;
+            this.numericBoxK.TabIndex = 1;
+            this.numericBoxK.ThonsandsSeparator = true;
+            // 
+            // numericBoxH
+            // 
+            this.numericBoxH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.DecimalPlaces = 0;
+            this.numericBoxH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxH.Location = new System.Drawing.Point(20, 17);
+            this.numericBoxH.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxH.Maximum = 10D;
+            this.numericBoxH.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxH.Minimum = -10D;
+            this.numericBoxH.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxH.Name = "numericBoxH";
+            this.numericBoxH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxH.ShowUpDown = true;
+            this.numericBoxH.Size = new System.Drawing.Size(40, 25);
+            this.numericBoxH.SkipEventDuringInput = false;
+            this.numericBoxH.TabIndex = 0;
+            this.numericBoxH.ThonsandsSeparator = true;
+            // 
+            // colorControl
+            // 
+            this.colorControl.Argb = -16192;
+            this.colorControl.AutoSize = true;
+            this.colorControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.colorControl.Blue = 192;
+            this.colorControl.BlueF = 0.7529412F;
+            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.colorControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControl.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.FooterMargin = new System.Windows.Forms.Padding(0);
+            this.colorControl.FooterText = "";
+            this.colorControl.Green = 192;
+            this.colorControl.GreenF = 0.7529412F;
+            this.colorControl.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.colorControl.HeaderMargin = new System.Windows.Forms.Padding(0);
+            this.colorControl.HeaderText = "Color";
+            this.colorControl.Location = new System.Drawing.Point(335, 3);
+            this.colorControl.Margin = new System.Windows.Forms.Padding(0);
+            this.colorControl.Name = "colorControl";
+            this.colorControl.Red = 255;
+            this.colorControl.RedF = 1F;
+            this.colorControl.Size = new System.Drawing.Size(36, 35);
+            this.colorControl.TabIndex = 4;
+            this.colorControl.ToolTip = "";
+            // 
             // LatticePlaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -557,5 +547,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Translation;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
     }
 }
