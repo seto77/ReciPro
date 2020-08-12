@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
             this.ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -62,6 +62,7 @@
             this.SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -70,7 +71,8 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            this.textBoxAMCSD = new System.Windows.Forms.TextBox();
+            this.textBoxCOD = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -93,14 +95,14 @@
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
@@ -119,33 +121,33 @@
             this.titleDataGridViewTextBoxColumn,
             this.journalDataGridViewTextBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 24);
+            this.dataGridView.Location = new System.Drawing.Point(0, 88);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 44;
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1191, 130);
+            this.dataGridView.Size = new System.Drawing.Size(792, 168);
             this.dataGridView.TabIndex = 76;
             // 
             // nameDataGridViewTextBoxColumn
@@ -158,9 +160,9 @@
             // densityDataGridViewTextBoxColumn
             // 
             this.densityDataGridViewTextBoxColumn.DataPropertyName = "Density";
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            this.densityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Format = "N4";
+            dataGridViewCellStyle12.NullValue = null;
+            this.densityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.densityDataGridViewTextBoxColumn.HeaderText = "Density";
             this.densityDataGridViewTextBoxColumn.Name = "densityDataGridViewTextBoxColumn";
             this.densityDataGridViewTextBoxColumn.ReadOnly = true;
@@ -176,9 +178,9 @@
             // aDataGridViewTextBoxColumn
             // 
             this.aDataGridViewTextBoxColumn.DataPropertyName = "A";
-            dataGridViewCellStyle3.Format = "#.######";
-            dataGridViewCellStyle3.NullValue = null;
-            this.aDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Format = "#.######";
+            dataGridViewCellStyle13.NullValue = null;
+            this.aDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.aDataGridViewTextBoxColumn.HeaderText = "a";
             this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
             this.aDataGridViewTextBoxColumn.ReadOnly = true;
@@ -187,9 +189,9 @@
             // bDataGridViewTextBoxColumn
             // 
             this.bDataGridViewTextBoxColumn.DataPropertyName = "B";
-            dataGridViewCellStyle4.Format = "#.######";
-            dataGridViewCellStyle4.NullValue = null;
-            this.bDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Format = "#.######";
+            dataGridViewCellStyle14.NullValue = null;
+            this.bDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.bDataGridViewTextBoxColumn.HeaderText = "b";
             this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
             this.bDataGridViewTextBoxColumn.ReadOnly = true;
@@ -198,9 +200,9 @@
             // cDataGridViewTextBoxColumn
             // 
             this.cDataGridViewTextBoxColumn.DataPropertyName = "C";
-            dataGridViewCellStyle5.Format = "#.######";
-            dataGridViewCellStyle5.NullValue = null;
-            this.cDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Format = "#.######";
+            dataGridViewCellStyle15.NullValue = null;
+            this.cDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.cDataGridViewTextBoxColumn.HeaderText = "c";
             this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
             this.cDataGridViewTextBoxColumn.ReadOnly = true;
@@ -209,9 +211,9 @@
             // alphaDataGridViewTextBoxColumn
             // 
             this.alphaDataGridViewTextBoxColumn.DataPropertyName = "Alpha";
-            dataGridViewCellStyle6.Format = "#.######";
-            dataGridViewCellStyle6.NullValue = null;
-            this.alphaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Format = "#.######";
+            dataGridViewCellStyle16.NullValue = null;
+            this.alphaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
             this.alphaDataGridViewTextBoxColumn.HeaderText = "α";
             this.alphaDataGridViewTextBoxColumn.Name = "alphaDataGridViewTextBoxColumn";
             this.alphaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -220,9 +222,9 @@
             // betaDataGridViewTextBoxColumn
             // 
             this.betaDataGridViewTextBoxColumn.DataPropertyName = "Beta";
-            dataGridViewCellStyle7.Format = "#.######";
-            dataGridViewCellStyle7.NullValue = null;
-            this.betaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Format = "#.######";
+            dataGridViewCellStyle17.NullValue = null;
+            this.betaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.betaDataGridViewTextBoxColumn.HeaderText = "β";
             this.betaDataGridViewTextBoxColumn.Name = "betaDataGridViewTextBoxColumn";
             this.betaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -231,9 +233,9 @@
             // gammaDataGridViewTextBoxColumn
             // 
             this.gammaDataGridViewTextBoxColumn.DataPropertyName = "Gamma";
-            dataGridViewCellStyle8.Format = "#.######";
-            dataGridViewCellStyle8.NullValue = null;
-            this.gammaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Format = "#.######";
+            dataGridViewCellStyle18.NullValue = null;
+            this.gammaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.gammaDataGridViewTextBoxColumn.HeaderText = "γ";
             this.gammaDataGridViewTextBoxColumn.Name = "gammaDataGridViewTextBoxColumn";
             this.gammaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -325,14 +327,14 @@
             this.bindingNavigatorSeparator2,
             this.toolStripButtonDelete});
             this.bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.bindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.bindingNavigator.Location = new System.Drawing.Point(0, 64);
             this.bindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator.Name = "bindingNavigator";
             this.bindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator.Size = new System.Drawing.Size(1191, 24);
+            this.bindingNavigator.Size = new System.Drawing.Size(792, 24);
             this.bindingNavigator.TabIndex = 77;
             this.bindingNavigator.Text = "bindingNavigator";
             // 
@@ -342,6 +344,17 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(32, 17);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            // 
+            // toolStripButtonDelete
+            // 
+            this.toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
+            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.toolStripButtonDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDelete.Image")));
+            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
+            this.toolStripButtonDelete.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -403,16 +416,34 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
             // 
-            // toolStripButtonDelete
+            // textBoxAMCSD
             // 
-            this.toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripButtonDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDelete.Image")));
-            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
-            this.toolStripButtonDelete.Text = "Delete";
+            this.textBoxAMCSD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxAMCSD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.textBoxAMCSD.Location = new System.Drawing.Point(0, 32);
+            this.textBoxAMCSD.Multiline = true;
+            this.textBoxAMCSD.Name = "textBoxAMCSD";
+            this.textBoxAMCSD.ReadOnly = true;
+            this.textBoxAMCSD.Size = new System.Drawing.Size(792, 32);
+            this.textBoxAMCSD.TabIndex = 79;
+            this.textBoxAMCSD.Text = resources.GetString("textBoxAMCSD.Text");
+            // 
+            // textBoxCOD
+            // 
+            this.textBoxCOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCOD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.textBoxCOD.Location = new System.Drawing.Point(0, 0);
+            this.textBoxCOD.Multiline = true;
+            this.textBoxCOD.Name = "textBoxCOD";
+            this.textBoxCOD.ReadOnly = true;
+            this.textBoxCOD.Size = new System.Drawing.Size(792, 32);
+            this.textBoxCOD.TabIndex = 80;
+            this.textBoxCOD.Text = "The database is based on ”COD”. Please be sure to cite the references in the foll" +
+    "owing cite when publishing the data: https://wiki.crystallography.net/cod/citing" +
+    "/\r\n";
+            this.textBoxCOD.Visible = false;
             // 
             // CrystalDatabaseControl
             // 
@@ -420,9 +451,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.bindingNavigator);
+            this.Controls.Add(this.textBoxAMCSD);
+            this.Controls.Add(this.textBoxCOD);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "CrystalDatabaseControl";
-            this.Size = new System.Drawing.Size(1191, 154);
+            this.Size = new System.Drawing.Size(792, 256);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
@@ -467,5 +500,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
+        private System.Windows.Forms.TextBox textBoxAMCSD;
+        private System.Windows.Forms.TextBox textBoxCOD;
     }
 }

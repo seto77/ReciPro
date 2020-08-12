@@ -1665,12 +1665,12 @@ namespace ReciPro
 
         private void FormStructureViewer_ResizeBegin(object sender, EventArgs e)
         {
-           tabControl.SuspendLayout();
+           SuspendLayout();
         }
 
         private void FormStructureViewer_ResizeEnd(object sender, EventArgs e)
         {
-            tabControl.ResumeLayout();
+            ResumeLayout();
         }
     }
 }
