@@ -47,76 +47,34 @@ namespace Crystallography.Controls
     {
         private Control context;
 
-        public MacroSub(Control _context)
-        {
-            context = _context;
-        }
+        public MacroSub(Control _context) => context = _context;
 
         //スレッド間で安全にコントロールを操作する、関数群
-        public Type Execute<Type>(Expression<Func<Type>> expression)
-        {
-            return Execute<Type>(context, expression.Compile(), null);
-        }
+        public Type Execute<Type>(Expression<Func<Type>> expression) => Execute<Type>(context, expression.Compile(), null);
 
-        public void Execute(Expression<Action> expression)
-        {
-            Execute(context, expression.Compile(), null);
-        }
+        public void Execute(Expression<Action> expression) => Execute(context, expression.Compile(), null);
 
-        public bool Execute(Func<bool> func)
-        {
-            return Execute<bool>(func);
-        }
+        //public bool Execute(Func<bool> func) => Execute<bool>(func);
 
-        public string Execute(Func<string> func)
-        {
-            return Execute<string>(func);
-        }
+        //public string Execute(Func<string> func) => Execute<string>(func);
 
-        public string[] Execute(Func<string[]> func)
-        {
-            return Execute<string[]>(func);
-        }
+        //public string[] Execute(Func<string[]> func) => Execute<string[]>(func);
 
-        public double[] Execute(Func<double[]> func)
-        {
-            return Execute<double[]>(func);
-        }
+       // public double[] Execute(Func<double[]> func) => Execute<double[]>(func);
 
-        public int[] Execute(Func<int[]> func)
-        {
-            return Execute<int[]>(func);
-        }
+        //public int[] Execute(Func<int[]> func) => Execute<int[]>(func);
 
-        public int Execute(Func<int> func)
-        {
-            return Execute<int>(func);
-        }
+        //public int Execute(Func<int> func) => Execute<int>(func);
 
-        public double Execute(Func<double> func)
-        {
-            return Execute<double>(func);
-        }
+        //public double Execute(Func<double> func) => Execute<double>(func);
 
-        public Type Execute<Type>(Control _context, Delegate process)
-        {
-            return Execute<Type>(_context, process, null);
-        }
+        public Type Execute<Type>(Control _context, Delegate process) => Execute<Type>(_context, process, null);
 
-        public Type Execute<Type>(Delegate process)
-        {
-            return Execute<Type>(context, process, null);
-        }
+        public Type Execute<Type>(Delegate process) => Execute<Type>(context, process, null);
 
-        public void Execute(Control _context, Delegate process)
-        {
-            Execute(_context, process, null);
-        }
+        public void Execute(Control _context, Delegate process) => Execute(_context, process, null);
 
-        public void Execute(Delegate process)
-        {
-            Execute(context, process, null);
-        }
+        public void Execute(Delegate process) => Execute(context, process, null);
 
         public Type Execute<Type>(Control _context, Delegate process, params object[] args)
         {
