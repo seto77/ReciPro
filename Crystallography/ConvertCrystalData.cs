@@ -1567,10 +1567,10 @@ namespace Crystallography
 			sb.AppendLine("_cell_volume " + (crystal.Volume * 1000).ToString("f6"));
 			sb.AppendLine("_exptl_crystal_density_diffrn " + crystal.Density.ToString("f6"));
 
-			Symmetry sym = crystal.Symmetry;
+			var sym = crystal.Symmetry;
 			sb.AppendLine("_space_group_IT_number " + sym.SpaceGroupNumber);
 			sb.AppendLine("_symmetry_cell_setting '" + sym.CrystalSystemStr + "'");
-			string hm = sym.SpaceGroupHMStr;
+			var hm = sym.SpaceGroupHMStr;
 			hm = hm.Replace("Hex", "");
 			hm = hm.Replace("Rho", "");
 			sb.AppendLine("_symmetry_space_group_name_H-M '" + hm + "'");
@@ -1583,9 +1583,9 @@ namespace Crystallography
 			if (sym.LatticeTypeStr == "P") flag = new[] { new[] { false, false, false } };
 			else if (sym.LatticeTypeStr == "A") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
 			else if (sym.LatticeTypeStr == "B") flag = new[] { new[] { false, false, false }, new[] { true, false, true } };
-			else if (sym.LatticeTypeStr == "C") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
+			else if (sym.LatticeTypeStr == "C") flag = new[] { new[] { false, false, false }, new[] { true, true, false } };
 			else if (sym.LatticeTypeStr == "I") flag = new[] { new[] { false, false, false }, new[] { true, true, true } };
-			else if (sym.LatticeTypeStr == "F") flag = new[] { new[] { false, false, false }, new[] { false, true, true }, new[] { true, false, true }, new[] { false, true, true } };
+			else if (sym.LatticeTypeStr == "F") flag = new[] { new[] { false, false, false }, new[] { false, true, true }, new[] { true, false, true }, new[] { true, true, false } };
 
 			foreach (string wp in SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][0].PositionStr)
 			{
@@ -1604,7 +1604,7 @@ namespace Crystallography
 								else xyz[j] += "+1/2";
 							}
 						}
-						sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+						sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
 					}
 				}
 				else//R格子のHexaセッティングのとき
@@ -1616,14 +1616,14 @@ namespace Crystallography
 					xyz[1] += "+2/3";
 					if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+1/6");
 					else xyz[2] += "+2/3";
-					sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+					sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
 					//(2/3,1/3,1/3)
 					xyz = wp.Split(new char[] { ',' });
 					xyz[0] += "+2/3";
 					xyz[1] += "+1/3";
 					if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+5/6");
 					else xyz[2] += "+1/3";
-					sb.AppendLine("  '" + xyz[0] + "," + xyz[1] + "," + xyz[2] + "'");
+					sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
 				}
 			}
 			#endregion
@@ -1635,7 +1635,7 @@ namespace Crystallography
 			sb.AppendLine("_atom_site_fract_x");
 			sb.AppendLine("_atom_site_fract_y");
 			sb.AppendLine("_atom_site_fract_z");
-			sb.AppendLine("  _atom_site_occupancy");
+			sb.AppendLine("_atom_site_occupancy");
 			sb.AppendLine("_atom_site_U_iso_or_equiv");
 
 			var aStar = crystal.A_Star.Length / 10;
@@ -1643,34 +1643,24 @@ namespace Crystallography
 			var cStar = crystal.C_Star.Length / 10;
 			var pi2 = Math.PI * Math.PI;
 
-			foreach (Atoms atom in crystal.Atoms)
+			foreach (var a in crystal.Atoms)
 			{
-				sb.AppendLine(atom.Label + " " + AtomConstants.AtomicName(atom.AtomicNumber)
-					+ " " + atom.X.ToString("f5") + " " + atom.Y.ToString("f5") + " " + atom.Z.ToString("f5")
-					+ " " + atom.Occ.ToString("f5") + " " + (atom.Dsf.Biso / 8.0 / pi2).ToString("f5"));
+				sb.AppendLine($"{a.Label} {AtomConstants.AtomicName(a.AtomicNumber)} {a.X:f5} {a.Y:f5} {a.Z:f5} {a.Occ:f5} {a.Dsf.Biso / 8.0 / pi2:f5}");
 			}
 
+			sb.AppendLine("loop_");
+			sb.AppendLine("_atom_site_aniso_label");
+			sb.AppendLine("_atom_site_aniso_U_11");
+			sb.AppendLine("_atom_site_aniso_U_22");
+			sb.AppendLine("_atom_site_aniso_U_33");
+			sb.AppendLine("_atom_site_aniso_U_23");
+			sb.AppendLine("_atom_site_aniso_U_13");
+			sb.AppendLine("_atom_site_aniso_U_12");
+			foreach (var a in crystal.Atoms)
 			{
-				sb.AppendLine("loop_");
-				sb.AppendLine("_atom_site_aniso_label");
-				sb.AppendLine("_atom_site_aniso_U_11");
-				sb.AppendLine("_atom_site_aniso_U_22");
-				sb.AppendLine("_atom_site_aniso_U_33");
-				sb.AppendLine("_atom_site_aniso_U_23");
-				sb.AppendLine("_atom_site_aniso_U_13");
-				sb.AppendLine("_atom_site_aniso_U_12");
-				foreach (Atoms atom in crystal.Atoms)
-				{
-					if (!atom.Dsf.UseIso)
-						sb.AppendLine(atom.Label + " " +
-							(atom.Dsf.U11).ToString("f5") + " " +
-							(atom.Dsf.U22).ToString("f5") + " " +
-							(atom.Dsf.U33).ToString("f5") + " " +
-							(atom.Dsf.U23).ToString("f5") + " " +
-							(atom.Dsf.U31).ToString("f5") + " " +
-							(atom.Dsf.U12).ToString("f5")
-							);
-				}
+				if (!a.Dsf.UseIso)
+					sb.AppendLine($"{a.Label} {a.Dsf.U11:f5} {a.Dsf.U22:f5} {a.Dsf.U33:f5} {a.Dsf.U23:f5} {a.Dsf.U31:f5} {a.Dsf.U12:f5}"
+                        );
 			}
 			#endregion
 

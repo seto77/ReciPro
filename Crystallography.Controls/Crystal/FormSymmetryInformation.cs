@@ -218,7 +218,7 @@ namespace Crystallography.Controls
             else if (Crystal.Symmetry.LatticeTypeStr == "C")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,0)+", "", "" });
             else if (Crystal.Symmetry.LatticeTypeStr == "F")
-                dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "(1/2,0,1/2)+", "(1/2,0,1/2)+" });
+                dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "(1/2,0,1/2)+", "(0,1/2,1/2)+" });
             else if (Crystal.Symmetry.LatticeTypeStr == "I")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,1/2)+", "", "" });
             else if (Crystal.Symmetry.LatticeTypeStr == "H")
@@ -268,16 +268,5 @@ namespace Crystallography.Controls
             this.Visible = false;
         }
 
-        private void label13_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
     }
 }

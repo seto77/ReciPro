@@ -365,8 +365,8 @@ namespace Crystallography.Controls
                 var dlg = new SaveFileDialog { Filter = " *.cif| *.cif" };
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    StreamWriter sw = new StreamWriter(dlg.FileName, false);
-                    string str = ConvertCrystalData.ConvertToCIF(Crystal);
+                    var sw = new StreamWriter(dlg.FileName, false);
+                    var str = ConvertCrystalData.ConvertToCIF(Crystal);
                     sw.Write(str);
                     sw.Close();
                 }
