@@ -1,4 +1,4 @@
-#version 120
+#version 130
 //#pragma optionNV(ifcvt none)
 //#pragma optionNV(inline all)
 //#pragma optionNV(strict on)
@@ -86,7 +86,7 @@ void main()
 		c3 = mix(c3, BgColor, x);
 	}
 
-	FragColor = vec4( c3,a);// Write final color to the framebuffer
+	FragColor = vec4(c3, a);// Write final color to the framebuffer
 }
 
 
