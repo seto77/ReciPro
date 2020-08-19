@@ -10,7 +10,8 @@
 
         static public string History =
             "History" +
-            "\r\n ver4.780(2020/08/18)  Fixed bugs when exporting CIF files." +
+            "\r\n ver4.781(2020/08/19)  Loosen the restrictions on OpenGL requirements. (OpenGL 1.2 or higher)" +
+            "\r\n ver4.780(2020/08/18)  Fixed a bug when exporting face-centered symmetry to CIF format. " +
             "\r\n ver4.779(2020/07/08)  Added a crystal database function, which manages 20698 crystals from AMCSD database. Fixed a bug on a dll file." +
             "\r\n ver4.778(2020/06/07)  Fixed a bug on importing CIF file." +
             "\r\n ver4.777(2020/06/06)  Improved GUI of the main window and 'structure viwer'." +

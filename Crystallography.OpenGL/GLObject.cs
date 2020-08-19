@@ -307,11 +307,11 @@ namespace Crystallography.OpenGL
         public void SetLocation(int Program)
         {
 
-            Location[Program].ModeLocation = GL.GetAttribLocation(Program, "ObjType");
-            Location[Program].ArgbLocation = GL.GetAttribLocation(Program, "Argb");
-            Location[Program].PositionLocation = GL.GetAttribLocation(Program, "Position");
-            Location[Program].NormalLocation = GL.GetAttribLocation(Program, "Normal");
-            Location[Program].UvLocation = GL.GetAttribLocation(Program, "Uv");
+            Location[Program].ModeLocation = GL.GetAttribLocation(Program, "vObjType");
+            Location[Program].ArgbLocation = GL.GetAttribLocation(Program, "vArgb");
+            Location[Program].PositionLocation = GL.GetAttribLocation(Program, "vPosition");
+            Location[Program].NormalLocation = GL.GetAttribLocation(Program, "vNormal");
+            Location[Program].UvLocation = GL.GetAttribLocation(Program, "vUv");
             if (Location[Program].ModeLocation == -1 || Location[Program].UvLocation == -1 || Location[Program].PositionLocation == -1
                 || Location[Program].NormalLocation == -1 || Location[Program].ArgbLocation == -1)
                 throw new Exception("cannot find location!");

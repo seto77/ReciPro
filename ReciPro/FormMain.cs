@@ -174,41 +174,40 @@ namespace ReciPro
             commonDialog.Progress =("Now Loading...Initializing OpenGL.", 0.1);
 
             //ここでglControlコントロールを追加. Mac環境の対応のため。
-            try
+            if (!disableOpneGLToolStripMenuItem.Checked)
             {
-                glControlAxes = new GLControlAlpha
+                try
                 {
-                    AllowMouseRotation = false,
-                    AllowMouseScaling = false,
-                    AllowMouseTranslating = false,
-                    DisablingOpenGL = disableOpneGLToolStripMenuItem.Checked,
-                    Width = groupBoxCurrentDirection.ClientSize.Width - 10,
-                    Height = groupBoxCurrentDirection.ClientSize.Width - 10,
-                    Name = "glControlAxes",
-                    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                    ProjWidth = 4D,
-                    RotationMode = GLControlAlpha.RotationModes.Object,
-                };
-                glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
-                glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
+                    glControlAxes = new GLControlAlpha
+                    {
+                        AllowMouseRotation = false,
+                        AllowMouseScaling = false,
+                        AllowMouseTranslating = false,
+                        DisablingOpenGL = disableOpneGLToolStripMenuItem.Checked,
+                        Width = groupBoxCurrentDirection.ClientSize.Width - 10,
+                        Height = groupBoxCurrentDirection.ClientSize.Width - 10,
+                        Name = "glControlAxes",
+                        ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                        ProjWidth = 4D,
+                        RotationMode = GLControlAlpha.RotationModes.Object,
+                    };
+                    glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
+                    glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
 
-                groupBoxCurrentDirection.Controls.Add(glControlAxes);
-                glControlAxes.Dock = DockStyle.Fill;
-                glControlAxes.BringToFront();
-                glControlAxes.LightPosition = new Vec3(100, 100, 100);
-                glControlAxes.ProjWidth = 2.4;
-            }
-            catch (Exception ex)
-            {
-#if DEBUG
-                MessageBox.Show("Error during initializing GLcontrol");
-                MessageBox.Show(ex.Message);
-#endif
-                disableOpneGLToolStripMenuItem.Checked = true;
-
-                var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-                regKey.SetValue("DisableOpenGL", true);
-                // this.Close();
+                    groupBoxCurrentDirection.Controls.Add(glControlAxes);
+                    glControlAxes.Dock = DockStyle.Fill;
+                    glControlAxes.BringToFront();
+                    glControlAxes.LightPosition = new Vec3(100, 100, 100);
+                    glControlAxes.ProjWidth = 2.4;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error during initializing GLcontrol");
+                    MessageBox.Show(ex.Message);
+                    disableOpneGLToolStripMenuItem.Checked = true;
+                    var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+                    regKey.SetValue("DisableOpenGL", true);
+                }
             }
 
             commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.",  0.15);
@@ -309,7 +308,7 @@ namespace ReciPro
             commonDialog.Progress = ("Now Loading...Recognizing Click Once application or not.",0.99);
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
-            commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.",1.0);
+            commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
             if (commonDialog.AutomaricallyClose)
                 commonDialog.Visible = false;
 
@@ -322,7 +321,7 @@ namespace ReciPro
                 if (glControlAxes != null)
                     glControlAxes.Visible = false;
             }
-            else if (!glControlAxes.VersionRequirement)
+            /*else if (!glControlAxes.VersionRequirement)
             {
                 MessageBox.Show(
                      "Open GL ver " + glControlAxes.VersionStr + " is running on the current environment." + ".\r\n" +
@@ -332,7 +331,7 @@ namespace ReciPro
                 toolStripButtonStructureViewer.Enabled = false;
                 toolStripButtonRotation.Enabled = false;
                 glControlAxes.Visible = false;
-            }
+            }*/
 
         }
 

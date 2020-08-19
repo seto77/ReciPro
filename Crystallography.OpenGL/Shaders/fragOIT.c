@@ -23,8 +23,6 @@ layout(binding = 0, std430) buffer linkedLists {
 	NodeType nodes[];
 };
 
-
-
 subroutine void RenderPassType();
 subroutine uniform RenderPassType RenderPass;
 
@@ -46,16 +44,16 @@ uniform float Near = 0.5;
 uniform sampler2D Texture;
 
 // Input from vertex shader
-in VertexData
-{
-	float WithTexture;//-1: without texture, +1: with texture
-	vec3 Normal;//Normal direction
-	vec3 Light;//Light direction
-	vec3 View;//View direction
-	vec4 Color;//Color
-	float Z;//Depth
-	vec2 Uv;//texture coordinates
-} fs_in;
+//in VertexData
+//{
+in float fWithTexture;//-1: without texture, +1: with texture
+in vec3 fNormal;//Normal direction
+in vec3 fLight;//Light direction
+in vec3 fView;//View direction
+in vec4 fColor;//Color
+in float fZ;//Depth
+in vec2 fUv;//texture coordinates
+//} fs_in;
 
 /*layout(location = 0) */out vec4 FragColor;
 
@@ -64,13 +62,13 @@ vec4 setColor()
 	vec3 c3;
 	float a;
 	//Without texture
-	if (fs_in.WithTexture < 0)
+	if (fWithTexture < 0)
 	{
 		// Normalize the incoming N, L, and V vectors
-		vec3 normal = normalize(fs_in.Normal);
-		vec3 light = normalize(fs_in.Light);
-		vec3 view = normalize(fs_in.View);
-		vec3 inColor = vec3(fs_in.Color);
+		vec3 normal = normalize(fNormal);
+		vec3 light = normalize(fLight);
+		vec3 view = normalize(fView);
+		vec3 inColor = vec3(fColor);
 		// Calculate R locally
 		vec3 ref = reflect(-light, normal);
 
@@ -92,23 +90,23 @@ vec4 setColor()
 		}
 
 		c3 = vec3(diffuse + specular + ambient + emission);
-		a = fs_in.Color.a;
+		a = fColor.a;
 	}
 	//With texture
 	else
 	{
-		vec4 c = texture2D(Texture, fs_in.Uv);
+		vec4 c = texture2D(Texture, fUv);
 		c3 = vec3(c);
 		a = c.a;
 	}
 
 	if (DepthCueing)
-		if (fs_in.Z < Near)
+		if (fZ < Near)
 		{
-			if (fs_in.Z < Far)
+			if (fZ < Far)
 				c3 = BgColor;
 			else
-				c3 = mix(c3, BgColor, (Near - fs_in.Z) / (Near - Far));
+				c3 = mix(c3, BgColor, (Near - fZ) / (Near - Far));
 		}
 
 	return vec4(c3, a);// Write final color to the framebuffer

@@ -1,13 +1,13 @@
-#version 150
+#version 130
 //Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle, No.15531 - 15557).Pearson Education.Kindle version.
 
 // Per-vertex inputs
 
-/*layout(location = 1) */in int ObjType;
-/*layout(location = 2) */in int Argb;
-/*layout(location = 3) */in vec3 Position;
-/*layout(location = 4) */in vec3 Normal;
-/*layout(location = 5) */in vec2 Uv;
+/*layout(location = 1) */in int vObjType;
+/*layout(location = 2) */in int vArgb;
+/*layout(location = 3) */in vec3 vPosition;
+/*layout(location = 4) */in vec3 vNormal;
+/*layout(location = 5) */in vec2 vUv;
 
 uniform mat4 ObjectMatrix; //Object matrix
 uniform mat4 WorldMatrix; //world matrix
@@ -26,25 +26,25 @@ uniform int FixedArgb;
 uniform bool UseFixedArgb = false;
 
 // Inputs from vertex shader
-out VertexData
-{
-	float WithTexture;//-1: without texture, +1: with texture. 	
-	vec3 Normal;//Normal direction
-	vec3 Light;//Light direction
-	vec3 View;//View direction
-	vec4 Color;//Color
-	float Z;//Depth
-	vec2 Uv;//texture coordinates
+//out VertexData
+//{
+out float fWithTexture;//-1: without texture, +1: with texture. 	
+out vec3 fNormal;//Normal direction
+out vec3 fLight;//Light direction
+out vec3 fView;//View direction
+out vec4 fColor;//Color
+out float fZ;//Depth
+out vec2 fUv;//texture coordinates
 	
-} vs_out;
+//} vs_out;
 
 void main(void)
 {
 	// Calculate view-space coordinate
-	vec3 position = vec3 (ObjectMatrix * vec4(Position, 1));
+	vec3 position = vec3 (ObjectMatrix * vec4(vPosition, 1));
 
 	vec4 P;
-	if (ObjType == 0)//Without texture
+	if (vObjType == 0)//Without texture
 	{
 		P = WorldMatrix * vec4(position, 1);
 		// Calculate the clip-space position of each vertex
@@ -52,29 +52,32 @@ void main(void)
 	}
 	else//case of string
 	{
-		P = WorldMatrix * vec4(Normal, 1) + vec4(0, 0, position.z, 0);
+		P = WorldMatrix * vec4(vNormal, 1) + vec4(0, 0, position.z, 0);
 		// Calculate the clip-space position of each vertex
 		vec4 P2 = ProjMatrix * ViewMatrix * P;
 		gl_Position = P2 + vec4(position.x / ViewportSize.x * 2, position.y / ViewportSize.y * 2, 0, 0) * abs(P2.w);
 	}
 
 	// Calculate normal vector in view-space
-	vs_out.Normal = mat3(WorldMatrix) * mat3(ObjectMatrix) * Normal;
+	fNormal = mat3(WorldMatrix) * mat3(ObjectMatrix) * vNormal;
 
 	// Calculate light vector
-	vs_out.Light = LightPosition - P.xyz;
+	fLight = LightPosition - P.xyz;
 
 	// Calculate view vector
-	vs_out.View = EyePosition - P.xyz;
+	fView = EyePosition - P.xyz;
 
 	//Z depth
-	vs_out.Z = P.z;
+	fZ = P.z;
 
 	//Copy color
+	int argb;
 	if (UseFixedArgb)
-		vs_out.Color = vec4((FixedArgb >> 16 & 0xff) / 255.0, (FixedArgb >> 8 & 0xff) / 255.0, (FixedArgb & 0xff) / 255.0, (FixedArgb >> 24 & 0xff) / 255.0);
+		argb = FixedArgb;
 	else
-		vs_out.Color = vec4((Argb >> 16 & 0xff) / 255.0, (Argb >> 8 & 0xff) / 255.0, (Argb & 0xff) / 255.0, (Argb >> 24 & 0xff) / 255.0);
+		argb = vArgb;
+
+	fColor = vec4((argb >> 16 & 0xff) / 255.0, (argb >> 8 & 0xff) / 255.0, (argb & 0xff) / 255.0, (argb >> 24 & 0xff) / 255.0);
 
 	// Calculate the clip-space position of each vertex
 	for (int i = 0; i < ClipNum; i++)
@@ -82,11 +85,11 @@ void main(void)
 		gl_ClipDistance[i] = dot(vec4(position, 1), ClipPlanes[i]);
 	}
 
-	vs_out.Uv = Uv;
+	fUv = vUv;
 
-	if (ObjType == 0)
-		vs_out.WithTexture = -1;
+	if (vObjType == 0)
+		fWithTexture = -1;
 	else
-		vs_out.WithTexture = 1;
+		fWithTexture = 1;
 }
 
