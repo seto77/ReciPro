@@ -35,7 +35,7 @@ in float fZ;//Depth
 in vec2 fUv;//texture coordinates
 //} fs_in;
 
-/*layout(location = 0) */varying out vec4 FragColor;
+/*layout(location = 0) */out vec4 FragColor;
 
 void main()
 {
