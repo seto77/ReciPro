@@ -4474,11 +4474,14 @@ namespace Crystallography
 			public string Method;
 
 			/// <summary>
-			/// 引数がS2, 戻り値が振幅の関数
+			/// 引数がS2 (単位: nm^-2), 戻り値が振幅 (単位: nm)の関数
 			/// </summary>
-			public Func<double, double> Factor;
+			public Func<double, double> Factor { get; set; }
 
-			public Func<double, double, double> FactorImaginary;
+			/// <summary>
+			/// 引数がS2 (単位: nm^-2), m (単位: nm^2), 戻り値が無次元量の関数
+			/// </summary>
+			public Func<double, double, double> FactorImaginary { get; set; }
 
 			/// <summary>
 			/// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
@@ -4490,7 +4493,17 @@ namespace Crystallography
 			{
 				Valence = valence;
 				Method = methods;
-				Factor = new Func<double, double>(S2 => a1 * Math.Exp(-S2 * b1) + a2 * Math.Exp(-S2 * b2) + a3 * Math.Exp(-S2 * b3) + a4 * Math.Exp(-S2 * b4) + c);
+			
+				var a = new[] { a1, a2, a3, a4 };
+				var b = new[] { b1, b2, b3, b4 };
+				Factor = new Func<double, double>(s2 =>
+				{
+					s2 *= 0.01;//単位を修正
+					var result = 0.0;
+					for (int i = 0; i < a.Length; i++)
+						result += a[i] * Math.Exp(-s2 * b[i]);
+					return (result + c) * 0.1;
+				});
 			}
 
 			//電子線用のコンストラクタ (Five gaussian)
@@ -4498,19 +4511,24 @@ namespace Crystallography
 			{
 				Valence = valence;
 				Method = methods;
-				Factor = new Func<double, double>(s2 =>
-				a1 * Math.Exp(-s2 * b1) +
-				a2 * Math.Exp(-s2 * b2) +
-				a3 * Math.Exp(-s2 * b3) +
-				a4 * Math.Exp(-s2 * b4) +
-				a5 * Math.Exp(-s2 * b5));
 
 				var a = new[] { a1, a2, a3, a4, a5 };
 				var b = new[] { b1, b2, b3, b4, b5 };
 
+				Factor = new Func<double, double>(s2 =>
+				{
+					s2 *= 0.01;//単位を修正
+					var result = 0.0;
+					for (int i = 0; i < a.Length; i++)
+						result += a[i] * Math.Exp(-s2 * b[i]);
+					return result * 0.1;
+				});
+
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
-					double f = 0;
+					s2 *= 0.01;//単位を修正
+					m *= 100;//単位を修正
+					var f = 0.0;
 					for (int i = 0; i < a.Length; i++)
 						for (int j = 0; j < a.Length; j++)
 						{
@@ -4529,23 +4547,25 @@ namespace Crystallography
 			{
 				Valence = 0;
 				Method = "";
-				Factor = new Func<double, double>(s2 =>
-				a1 * Math.Exp(-s2 * b1) +
-				a2 * Math.Exp(-s2 * b2) +
-				a3 * Math.Exp(-s2 * b3) +
-				a4 * Math.Exp(-s2 * b4) +
-				a5 * Math.Exp(-s2 * b5) +
-				a6 * Math.Exp(-s2 * b6) +
-				a7 * Math.Exp(-s2 * b7) +
-				a8 * Math.Exp(-s2 * b8)
-				);
 
 				var a = new[] { a1, a2, a3, a4, a5, a6, a7, a8 };
 				var b = new[] { b1, b2, b3, b4, b5, b6, b7, b8 };
+				
+				Factor = new Func<double, double>(s2 =>
+				{
+					s2 *= 0.01;//単位を修正
+					var result = 0.0;
+					for (int i = 0; i < a.Length; i++)
+						result += a[i] * Math.Exp(-s2 * b[i]);
+					return result * 0.1;
+				});
+
 
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
-					double f = 0;
+					s2 *= 100;//単位を修正
+					m *= 100;//単位を修正
+					var f = 0.0;
 					for (int i = 0; i < a.Length; i++)
 						for (int j = 0; j < a.Length; j++)
 						{

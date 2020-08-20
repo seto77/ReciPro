@@ -438,17 +438,17 @@ namespace Crystallography
         */
 
         /// <summary>
-        /// //電子線の原子散乱因子を計算
+        /// //電子線の原子散乱因子を計算 s2の単位はnm^-2
         /// </summary>
-        /// <param name="S2">S2: (Sin(theta)/ramda)^2</param>
+        /// <param name="S2">S2: (sin(theta)/ramda)^2, unit is nm^-2</param>
         /// <returns></returns>
         public double GetAtomicScatteringFactorForElectron(double s2)
             => AtomConstants.ElectronScattering[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
 
         /// <summary>
-        /// X線の原子散乱因子を計算
+        /// X線の原子散乱因子を計算 s2の単位はnm^-2
         /// </summary>
-        /// <param name="s2"></param>
+        /// <param name="s2"> unit is nm^-2</param>
         /// <returns></returns>
         public double GetAtomicScatteringFactorForXray(double s2)
             => AtomConstants.XrayScattering[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
@@ -1189,31 +1189,61 @@ namespace Crystallography
 
 
         #region B type. Getのみ
+        /// <summary>
+        /// unit: nm^2
+        /// </summary>
         public double Biso => OriginalType == Type.B ? Iso : Iso * PI2 * 8;
+        /// <summary>
+        /// unit: nm^2
+        /// </summary>
         public double Biso_err => OriginalType == Type.B ? Iso_err : Iso_err * PI2 * 8;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B11 => OriginalType == Type.B ? Aniso11 : Aniso11 * coeff11;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B22 => OriginalType == Type.B ? Aniso22 : Aniso22 * coeff22;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B33 => OriginalType == Type.B ? Aniso33 : Aniso33 * coeff33;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B12 => OriginalType == Type.B ? Aniso12 : Aniso12 * coeff12;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B23 => OriginalType == Type.B ? Aniso23 : Aniso23 * coeff23;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B31 => OriginalType == Type.B ? Aniso31 : Aniso31 * coeff31;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B11_err => OriginalType == Type.B ? Aniso11_err : Aniso11_err * coeff11;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B22_err => OriginalType == Type.B ? Aniso22_err : Aniso22_err * coeff22;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B33_err => OriginalType == Type.B ? Aniso33_err : Aniso33_err * coeff33;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B12_err => OriginalType == Type.B ? Aniso12_err : Aniso12_err * coeff12;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B23_err => OriginalType == Type.B ? Aniso23_err : Aniso23_err * coeff23;
-
+        /// <summary>
+        /// unit: none
+        /// </summary>
         public double B31_err => OriginalType == Type.B ? Aniso31_err : Aniso31_err * coeff31;
 
         #endregion

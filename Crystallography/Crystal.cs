@@ -1092,7 +1092,7 @@ namespace Crystallography
             {
                 foreach (var _g in g)
                 {
-                    _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.h, _g.k, _g.l, _g.Length2/ 400.0) : 0;
+                    _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.h, _g.k, _g.l, _g.Length2/ 4.0) : 0;
                     _g.RawIntensity = _g.F.Magnitude2();
                 }
 
@@ -1400,19 +1400,19 @@ namespace Crystallography
 
         //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する
         /// <summary>
-        /// 構造因子を求める s2の単位はÅ^-2
+        /// 構造因子を求める s2の単位はnm^-2
         /// </summary>
         /// <param name="wave"></param>
         /// <param name="atomsArray"></param>
         /// <param name="h"></param>
         /// <param name="k"></param>
         /// <param name="l"></param>
-        /// <param name="s2"></param>
+        /// <param name="s2">単位はnm^-2</param>
         /// <returns></returns>
         private Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, int h, int k, int l, double s2)
         {
             #region
-            //s2 = (sin(theta)/ramda)^2 = 1 /4 /d^2
+            //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
             if (atomsArray.Length == 0)
                 return new Complex(0, 0);
             Complex F = 0;
@@ -1472,7 +1472,7 @@ namespace Crystallography
                     string[] hkl = s[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
 
-                    Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), h, k, l, 1 / Plane[i].d / Plane[i].d / 400);
+                    Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), h, k, l, 1 / Plane[i].d / Plane[i].d / 4.0);
                     Plane[i].F2[j] = Plane[i].F[j].Magnitude2();
 
                     if (waveSource == WaveSource.Xray)

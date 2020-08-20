@@ -35,7 +35,6 @@ out vec3 fView;//View direction
 out vec4 fColor;//Color
 out float fZ;//Depth
 out vec2 fUv;//texture coordinates
-	
 //} vs_out;
 
 void main(void)

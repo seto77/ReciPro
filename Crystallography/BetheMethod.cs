@@ -630,20 +630,20 @@ namespace Crystallography
             Complex fReal = 0, fImag = 0;
             foreach (var atoms in Crystal.Atoms)
             {
-                //var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
-                var real = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
+                //var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2);
+                var real = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2);
                 // 等方散乱因子の時 あるいは非等方でg=0の時
                 if (atoms.Dsf.UseIso || (index == (0, 0, 0)))
                 {
-                    var m = atoms.Dsf.Biso;
-                    var t = Math.Exp(-m * s2 * 0.01);
+                    var m = atoms.Dsf.Biso;//Bisoの単位はnm^2
+                    var t = Math.Exp(-m * s2);
                     if (!atoms.Dsf.UseIso && index == (0, 0, 0))// 非等方でg = 0の時 Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
                     {
                         double a = Crystal.A, b = Crystal.B, c = Crystal.C;
                         m = (atoms.Dsf.B11 * a * a + atoms.Dsf.B22 * b * b + atoms.Dsf.B33 * c * c + 2 * atoms.Dsf.B12 * a * b + 2 * atoms.Dsf.B23 * b * c + 2 * atoms.Dsf.B31 * c * a) * 4.0 / 3.0;
                     }
-                    //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m);//答えは無次元
-                    var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2 * 0.01, m);//答えは無次元
+                    //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2, m);//答えは無次元
+                    var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m);//答えは無次元
                     foreach (var atom in atoms.Atom)
                     {
                         var d = t * Exp(TwoPiI * (atom * index)) * atoms.Occ;
@@ -658,8 +658,8 @@ namespace Crystallography
                     {
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(index);
                         var m = atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H;
-                        //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m / s2 * 100);//答えは無次元
-                        var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2 * 0.01, m / s2 * 100);//答えは無次元
+                        //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2, m / s2);//答えは無次元
+                        var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m / s2);//答えは無次元
                         var d = Math.Exp(-m) * Exp(TwoPiI * (atom * index)) * atoms.Occ;
                         fReal += real * d;
                         fImag += imag * d;
