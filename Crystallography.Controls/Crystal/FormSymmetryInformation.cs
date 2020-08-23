@@ -6,7 +6,7 @@ namespace Crystallography.Controls
 {
     public partial class FormSymmetryInformation : Form
     {
-        public Crystal Crystal { get => CrystalControl.Crystal; }
+        public Crystal Crystal => CrystalControl.Crystal;
         public CrystalControl CrystalControl;
 
         public FormSymmetryInformation()

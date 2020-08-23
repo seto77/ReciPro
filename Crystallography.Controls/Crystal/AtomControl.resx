@@ -238,7 +238,7 @@
     <value>numericBoxBiso</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Parent" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
@@ -280,7 +280,7 @@
     <value>numericBoxBisoerr</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Parent" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
@@ -955,7 +955,7 @@
     <value>numericBox1</value>
   </data>
   <data name="&gt;&gt;numericBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox1.Parent" xml:space="preserve">
     <value>flowLayoutPanel8</value>
@@ -1027,7 +1027,7 @@
     <value>numericBox2</value>
   </data>
   <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
     <value>flowLayoutPanel8</value>
@@ -1150,7 +1150,7 @@
     <value>numericBox3</value>
   </data>
   <data name="&gt;&gt;numericBox3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox3.Parent" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -1222,7 +1222,7 @@
     <value>numericBox4</value>
   </data>
   <data name="&gt;&gt;numericBox4.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBox4.Parent" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -1340,7 +1340,7 @@
     <value>numericBoxOccerr</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1385,7 +1385,7 @@
     <value>numericBoxOcc</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1430,7 +1430,7 @@
     <value>numericBoxZ</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1463,7 +1463,7 @@
     <value>numericBoxYerr</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1496,7 +1496,7 @@
     <value>numericBoxXerr</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1541,7 +1541,7 @@
     <value>numericBoxY</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1586,7 +1586,7 @@
     <value>numericBoxX</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1619,7 +1619,7 @@
     <value>numericBoxZerr</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2270,7 +2270,7 @@
     <value>numericBoxOriginShiftZ</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2315,7 +2315,7 @@
     <value>numericBoxOriginShiftY</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2360,7 +2360,7 @@
     <value>numericBoxOriginShiftX</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2699,7 +2699,7 @@
     <value>numericBoxB22</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2741,7 +2741,7 @@
     <value>numericBoxB22err</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2783,7 +2783,7 @@
     <value>numericBoxB23</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2825,7 +2825,7 @@
     <value>numericBoxB23err</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2867,7 +2867,7 @@
     <value>numericBoxB33</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2909,7 +2909,7 @@
     <value>numericBoxB33err</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso2</value>
@@ -2978,7 +2978,7 @@
     <value>numericBoxB11</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3020,7 +3020,7 @@
     <value>numericBoxB11err</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3062,7 +3062,7 @@
     <value>numericBoxB12</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3104,7 +3104,7 @@
     <value>numericBoxB12err</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3146,7 +3146,7 @@
     <value>numericBoxB13</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3188,7 +3188,7 @@
     <value>numericBoxB13err</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -3839,7 +3839,7 @@
     <value>numericBoxAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3884,7 +3884,7 @@
     <value>numericBoxEmission</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3929,7 +3929,7 @@
     <value>numericBoxShininess</value>
   </data>
   <data name="&gt;&gt;numericBoxShininess.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxShininess.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -3974,7 +3974,7 @@
     <value>numericBoxSpecular</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4019,7 +4019,7 @@
     <value>numericBoxDiffusion</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4064,7 +4064,7 @@
     <value>numericBoxAmbient</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4115,7 +4115,7 @@
     <value>numericBoxAtomRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -4169,7 +4169,7 @@
     <value>colorControlAtomColor</value>
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.8.335, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.20.353, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>

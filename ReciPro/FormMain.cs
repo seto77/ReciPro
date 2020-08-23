@@ -546,7 +546,6 @@ namespace ReciPro
 
         #region 回転操作
 
-
         /// <summary>
         /// 回転量と回転角度を指定して、全フォームに回転命令を出す
         /// </summary>
@@ -917,7 +916,7 @@ namespace ReciPro
 
         private void buttonUpper_Click(object sender, EventArgs e)
         {
-            int n = listBox.SelectedIndex;
+            var n = listBox.SelectedIndex;
             if (n <= 0) return;
             object o = listBox.SelectedItem;
             listBox.Items.Remove(listBox.SelectedItem);
@@ -950,7 +949,7 @@ namespace ReciPro
         {
             if (listBox.SelectedIndex >= 0)
             {
-                int n = listBox.SelectedIndex;
+                var n = listBox.SelectedIndex;
                 listBox.Items.Remove(listBox.SelectedItem);
                 if (listBox.Items.Count > n)
                     listBox.SelectedIndex = n;
@@ -976,9 +975,7 @@ namespace ReciPro
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox.SelectedIndex >= 0)
-            {
                 crystalControl.Crystal = (Crystal)listBox.SelectedItem;
-            }
             DrawAxes();
         }
 
@@ -1023,10 +1020,7 @@ namespace ReciPro
             for (int i = 0; i < listBox.Items.Count; i++)
                 cry.Add((Crystal)listBox.Items[i]);
 
-            var formCrystalSelection = new FormCrystalSelection
-            {
-                LoadMode = false
-            };
+            var formCrystalSelection = new FormCrystalSelection { LoadMode = false };
             formCrystalSelection.SetCrystalList(cry);
             if (formCrystalSelection.ShowDialog() == DialogResult.OK)
             {

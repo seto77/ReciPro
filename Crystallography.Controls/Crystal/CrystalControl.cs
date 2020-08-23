@@ -714,11 +714,6 @@ namespace Crystallography.Controls
 
         private void buttonScatteringFactor_Click(object sender, EventArgs e) => formScatteringFactor.Visible = !formScatteringFactor.Visible;
 
-        private void flowLayoutPanel4_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         #region リサイズイベント中は描画を停止する
         bool registResizeEvent = false;

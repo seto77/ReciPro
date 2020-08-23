@@ -1638,14 +1638,10 @@ namespace Crystallography
 			sb.AppendLine("_atom_site_occupancy");
 			sb.AppendLine("_atom_site_U_iso_or_equiv");
 
-			var aStar = crystal.A_Star.Length / 10;
-			var bStar = crystal.B_Star.Length / 10;
-			var cStar = crystal.C_Star.Length / 10;
-			var pi2 = Math.PI * Math.PI;
-
 			foreach (var a in crystal.Atoms)
 			{
-				sb.AppendLine($"{a.Label} {AtomConstants.AtomicName(a.AtomicNumber)} {a.X:f5} {a.Y:f5} {a.Z:f5} {a.Occ:f5} {a.Dsf.Biso / 8.0 / pi2:f5}");
+				var u = double.IsNaN(a.Dsf.Uiso) ? 0 : a.Dsf.Uiso;
+				sb.AppendLine($"{a.Label} {AtomConstants.AtomicName(a.AtomicNumber)} {a.X:f5} {a.Y:f5} {a.Z:f5} {a.Occ:f5} {u:f5}");
 			}
 
 			sb.AppendLine("loop_");
@@ -1659,8 +1655,15 @@ namespace Crystallography
 			foreach (var a in crystal.Atoms)
 			{
 				if (!a.Dsf.UseIso)
-					sb.AppendLine($"{a.Label} {a.Dsf.U11:f5} {a.Dsf.U22:f5} {a.Dsf.U33:f5} {a.Dsf.U23:f5} {a.Dsf.U31:f5} {a.Dsf.U12:f5}"
-                        );
+				{
+					var u11 = double.IsNaN(a.Dsf.U11) ? 0 : a.Dsf.U11;
+					var u22 = double.IsNaN(a.Dsf.U22) ? 0 : a.Dsf.U22;
+					var u33 = double.IsNaN(a.Dsf.U33) ? 0 : a.Dsf.U33;
+					var u23 = double.IsNaN(a.Dsf.U23) ? 0 : a.Dsf.U23;
+					var u31 = double.IsNaN(a.Dsf.U31) ? 0 : a.Dsf.U31;
+					var u12 = double.IsNaN(a.Dsf.U12) ? 0 : a.Dsf.U12;
+					sb.AppendLine($"{a.Label} {u11:f5} {u22:f5} {u33:f5} {u23:f5} {u31:f5} {u12:f5}");
+				}
 			}
 			#endregion
 

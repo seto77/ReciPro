@@ -1418,7 +1418,7 @@ namespace Crystallography
             Complex F = 0;
             foreach (var atoms in atomsArray)
             {
-                Complex f = wave switch
+                var f = wave switch
                 {
                     WaveSource.Electron => new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0),
                     WaveSource.Xray => new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0),
@@ -1456,20 +1456,20 @@ namespace Crystallography
             #region
             if (Atoms == null || Atoms.Length == 0 || Plane == null) return;
 
-            double temp = double.NegativeInfinity;
+            var temp = double.NegativeInfinity;
 
             for (int i = 0; i < Plane.Count; i++)
             {
                 Plane[i].XCalc = 2 * Math.Asin(ramda / 2 / Plane[i].d);
-                double twoTheta = Plane[i].XCalc;
-                string[] s = Plane[i].strHKL.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
+                var twoTheta = Plane[i].XCalc;
+                var s = Plane[i].strHKL.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
                 Plane[i].F2 = new double[s.Length];
                 Plane[i].F = new Complex[s.Length];
                 Plane[i].eachIntensity = new double[s.Length];
 
                 for (int j = 0; j < Plane[i].F2.Length; j++)
                 {
-                    string[] hkl = s[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    var hkl = s[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
 
                     Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), h, k, l, 1 / Plane[i].d / Plane[i].d / 4.0);
