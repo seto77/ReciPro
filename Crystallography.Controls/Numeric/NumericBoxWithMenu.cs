@@ -12,6 +12,9 @@ namespace Crystallography.Controls
 {
     public partial class NumericBoxWithMenu : NumericBox
     {
+
+        bool skipEvent { get; set; } = false;
+
         new public event MyEventHandler LimitChanged;
         public NumericBoxWithMenu()
         {
@@ -28,10 +31,8 @@ namespace Crystallography.Controls
         }
 
 
-        private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            SmartIncrement = smartIncrementToolStripMenuItem.Checked;
-        }
+        private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e) 
+            => SmartIncrement = smartIncrementToolStripMenuItem.Checked;
 
         private void toolStripComboBoxIncrement_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -41,8 +42,12 @@ namespace Crystallography.Controls
         }
 
         private void toolStripComboBoxDecimalPlaces_SelectedIndexChanged(object sender, EventArgs e)
-            => DecimalPlaces = toolStripComboBoxDecimalPlaces.SelectedIndex - 1;
+        {
+            if (skipEvent)
+                return;
 
+            DecimalPlaces = toolStripComboBoxDecimalPlaces.SelectedIndex - 1;
+        }
 
         private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e) 
             => ThonsandsSeparator = thousandsSeparatorToolStripMenuItem.Checked;
@@ -145,5 +150,14 @@ namespace Crystallography.Controls
 
 
         #endregion マウスコントロールモード
+
+        private void contextMenuStripBody_Opening(object sender, CancelEventArgs e)
+        {
+            skipEvent = true;
+            toolStripComboBoxDecimalPlaces.SelectedIndex = DecimalPlaces >= 0 ? DecimalPlaces+1: 0;
+            toolStripTextBoxMaximum.Text = Maximum.ToString();
+            toolStripTextBoxMimimum.Text = Minimum.ToString();
+            skipEvent = false;
+        }
     }
 }

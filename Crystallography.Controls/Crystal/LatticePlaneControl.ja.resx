@@ -118,129 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxShowPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowPolyhedron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="checkBoxShowPolyhedron.Text" xml:space="preserve">
-    <value>多面体を表示</value>
-  </data>
-  <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 18</value>
-  </data>
-  <data name="label58.Text" xml:space="preserve">
-    <value>(頂点)</value>
-  </data>
-  <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 18</value>
-  </data>
-  <data name="label57.Text" xml:space="preserve">
-    <value>(中心)</value>
-  </data>
-  <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
-  </data>
-  <data name="label39.Text" xml:space="preserve">
-    <value>結合原子</value>
-  </data>
-  <data name="numericBoxPolyhedronAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxPolyhedronAlpha.HeaderText" xml:space="preserve">
-    <value>透明度</value>
-  </data>
-  <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowEdges.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 45</value>
-  </data>
-  <data name="checkBoxShowEdges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
-  </data>
-  <data name="checkBoxShowEdges.Text" xml:space="preserve">
-    <value>辺を表示</value>
-  </data>
-  <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
-    <value>線幅</value>
-  </data>
-  <data name="groupBoxEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 45</value>
-  </data>
-  <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowInnerBonds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
-  </data>
-  <data name="checkBoxShowInnerBonds.Text" xml:space="preserve">
-    <value>結合を表示</value>
-  </data>
-  <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowVertexAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
-  </data>
-  <data name="checkBoxShowVertexAtoms.Text" xml:space="preserve">
-    <value>頂点を表示</value>
-  </data>
-  <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowCenterAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
-  </data>
-  <data name="checkBoxShowCenterAtom.Text" xml:space="preserve">
-    <value>中心を表示</value>
-  </data>
-  <data name="numericBoxBondAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBondAlpha.HeaderText" xml:space="preserve">
-    <value>透明度</value>
-  </data>
-  <data name="numericBoxBondRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBondRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBondRadius.HeaderText" xml:space="preserve">
-    <value>半径</value>
-  </data>
-  <data name="numericBoxBondMinLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBondMinLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBondMinLength.HeaderText" xml:space="preserve">
-    <value>結合長の範囲</value>
-  </data>
-  <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowBonds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
-  </data>
-  <data name="checkBoxShowBonds.Text" xml:space="preserve">
-    <value>結合を表示</value>
-  </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -259,25 +136,35 @@
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="centerDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>中心</value>
+  <data name="Translation.HeaderText" xml:space="preserve">
+    <value>平行移動量</value>
   </data>
-  <data name="vertexDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>頂点</value>
+  <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>色</value>
   </data>
-  <data name="minLenDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>下限長</value>
+  <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="maxLenDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>上限長</value>
+  <data name="colorControl.HeaderText" xml:space="preserve">
+    <value>色</value>
   </data>
-  <data name="showBondsDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>結合の表示</value>
+  <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 38</value>
   </data>
-  <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>多面体の表示</value>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="colorControlPlyhedron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 6</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>平行移動</value>
+  </data>
+  <data name="dataGridViewImageColumn6.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dataGridViewImageColumn6.Width" type="System.Int32, mscorlib">
+    <value>60</value>
   </data>
 </root>

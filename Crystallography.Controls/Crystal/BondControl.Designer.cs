@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BondInputControl));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.checkBoxShowPolyhedron = new System.Windows.Forms.CheckBox();
             this.comboBoxBondingAtom1 = new System.Windows.Forms.ComboBox();
             this.comboBoxBondingAtom2 = new System.Windows.Forms.ComboBox();
@@ -112,14 +113,14 @@
             // 
             // comboBoxBondingAtom1
             // 
-            this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxBondingAtom1, "comboBoxBondingAtom1");
+            this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBondingAtom1.Name = "comboBoxBondingAtom1";
             // 
             // comboBoxBondingAtom2
             // 
-            this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxBondingAtom2, "comboBoxBondingAtom2");
+            this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBondingAtom2.Items.AddRange(new object[] {
             resources.GetString("comboBoxBondingAtom2.Items")});
             this.comboBoxBondingAtom2.Name = "comboBoxBondingAtom2";
@@ -146,13 +147,13 @@
             // 
             // groupBoxPolyhedron
             // 
+            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Controls.Add(this.numericBoxPolyhedronAlpha);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowEdges);
             this.groupBoxPolyhedron.Controls.Add(this.groupBoxEdge);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowInnerBonds);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowVertexAtoms);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowCenterAtom);
-            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Name = "groupBoxPolyhedron";
             this.groupBoxPolyhedron.TabStop = false;
             // 
@@ -161,11 +162,12 @@
             resources.ApplyResources(this.numericBoxPolyhedronAlpha, "numericBoxPolyhedronAlpha");
             this.numericBoxPolyhedronAlpha.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPolyhedronAlpha.DecimalPlaces = 1;
-                       this.numericBoxPolyhedronAlpha.Maximum = 1D;
+            this.numericBoxPolyhedronAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPolyhedronAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPolyhedronAlpha.Maximum = 1D;
             this.numericBoxPolyhedronAlpha.Minimum = 0D;
             this.numericBoxPolyhedronAlpha.Name = "numericBoxPolyhedronAlpha";
             this.numericBoxPolyhedronAlpha.RadianValue = 0.012217304763960307D;
-            this.numericBoxPolyhedronAlpha.RestrictLimitValue = true;
             this.numericBoxPolyhedronAlpha.ShowUpDown = true;
             this.numericBoxPolyhedronAlpha.SkipEventDuringInput = false;
             this.numericBoxPolyhedronAlpha.SmartIncrement = true;
@@ -173,7 +175,7 @@
             this.numericBoxPolyhedronAlpha.ThonsandsSeparator = true;
             this.numericBoxPolyhedronAlpha.UpDown_Increment = 0.1D;
             this.numericBoxPolyhedronAlpha.Value = 0.7D;
-                        // 
+            // 
             // checkBoxShowEdges
             // 
             resources.ApplyResources(this.checkBoxShowEdges, "checkBoxShowEdges");
@@ -185,8 +187,8 @@
             // 
             // groupBoxEdge
             // 
-            this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
             resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
+            this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
             this.groupBoxEdge.Name = "groupBoxEdge";
             this.groupBoxEdge.TabStop = false;
             // 
@@ -195,11 +197,12 @@
             resources.ApplyResources(this.numericBoxEdgeWidth, "numericBoxEdgeWidth");
             this.numericBoxEdgeWidth.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEdgeWidth.DecimalPlaces = 1;
-                       this.numericBoxEdgeWidth.Maximum = 1D;
+            this.numericBoxEdgeWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEdgeWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEdgeWidth.Maximum = 1D;
             this.numericBoxEdgeWidth.Minimum = 0D;
             this.numericBoxEdgeWidth.Name = "numericBoxEdgeWidth";
             this.numericBoxEdgeWidth.RadianValue = 0.012217304763960307D;
-            this.numericBoxEdgeWidth.RestrictLimitValue = true;
             this.numericBoxEdgeWidth.ShowUpDown = true;
             this.numericBoxEdgeWidth.SkipEventDuringInput = false;
             this.numericBoxEdgeWidth.SmartIncrement = true;
@@ -207,7 +210,7 @@
             this.numericBoxEdgeWidth.ThonsandsSeparator = true;
             this.numericBoxEdgeWidth.UpDown_Increment = 0.1D;
             this.numericBoxEdgeWidth.Value = 0.7D;
-                        // 
+            // 
             // checkBoxShowInnerBonds
             // 
             resources.ApplyResources(this.checkBoxShowInnerBonds, "checkBoxShowInnerBonds");
@@ -234,6 +237,7 @@
             // 
             // groupBoxBonds
             // 
+            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Controls.Add(this.comboBoxBondingAtom1);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondAlpha);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondRadius);
@@ -244,7 +248,6 @@
             this.groupBoxBonds.Controls.Add(this.label40);
             this.groupBoxBonds.Controls.Add(this.label57);
             this.groupBoxBonds.Controls.Add(this.label58);
-            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Name = "groupBoxBonds";
             this.groupBoxBonds.TabStop = false;
             // 
@@ -253,11 +256,12 @@
             resources.ApplyResources(this.numericBoxBondAlpha, "numericBoxBondAlpha");
             this.numericBoxBondAlpha.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBondAlpha.DecimalPlaces = 1;
-                       this.numericBoxBondAlpha.Maximum = 1D;
+            this.numericBoxBondAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondAlpha.Maximum = 1D;
             this.numericBoxBondAlpha.Minimum = 0D;
             this.numericBoxBondAlpha.Name = "numericBoxBondAlpha";
             this.numericBoxBondAlpha.RadianValue = 0.012217304763960307D;
-            this.numericBoxBondAlpha.RestrictLimitValue = true;
             this.numericBoxBondAlpha.ShowUpDown = true;
             this.numericBoxBondAlpha.SkipEventDuringInput = false;
             this.numericBoxBondAlpha.SmartIncrement = true;
@@ -265,17 +269,18 @@
             this.numericBoxBondAlpha.ThonsandsSeparator = true;
             this.numericBoxBondAlpha.UpDown_Increment = 0.1D;
             this.numericBoxBondAlpha.Value = 0.7D;
-                        // 
+            // 
             // numericBoxBondRadius
             // 
             resources.ApplyResources(this.numericBoxBondRadius, "numericBoxBondRadius");
             this.numericBoxBondRadius.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBondRadius.DecimalPlaces = 3;
-                       this.numericBoxBondRadius.Maximum = 9.9D;
+            this.numericBoxBondRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondRadius.Maximum = 9.9D;
             this.numericBoxBondRadius.Minimum = 0.1D;
             this.numericBoxBondRadius.Name = "numericBoxBondRadius";
             this.numericBoxBondRadius.RadianValue = 0.0017453292519943296D;
-            this.numericBoxBondRadius.RestrictLimitValue = true;
             this.numericBoxBondRadius.ShowUpDown = true;
             this.numericBoxBondRadius.SkipEventDuringInput = false;
             this.numericBoxBondRadius.SmartIncrement = true;
@@ -283,17 +288,18 @@
             this.numericBoxBondRadius.ThonsandsSeparator = true;
             this.numericBoxBondRadius.UpDown_Increment = 0.02D;
             this.numericBoxBondRadius.Value = 0.1D;
-                        // 
+            // 
             // numericBoxBondMaxLength
             // 
             resources.ApplyResources(this.numericBoxBondMaxLength, "numericBoxBondMaxLength");
             this.numericBoxBondMaxLength.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBondMaxLength.DecimalPlaces = 3;
-                       this.numericBoxBondMaxLength.Maximum = 9.9D;
+            this.numericBoxBondMaxLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondMaxLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondMaxLength.Maximum = 9.9D;
             this.numericBoxBondMaxLength.Minimum = 0.1D;
             this.numericBoxBondMaxLength.Name = "numericBoxBondMaxLength";
             this.numericBoxBondMaxLength.RadianValue = 0.027925268031909273D;
-            this.numericBoxBondMaxLength.RestrictLimitValue = true;
             this.numericBoxBondMaxLength.ShowUpDown = true;
             this.numericBoxBondMaxLength.SkipEventDuringInput = false;
             this.numericBoxBondMaxLength.SmartIncrement = true;
@@ -301,17 +307,18 @@
             this.numericBoxBondMaxLength.ThonsandsSeparator = true;
             this.numericBoxBondMaxLength.UpDown_Increment = 0.1D;
             this.numericBoxBondMaxLength.Value = 1.6D;
-                        // 
+            // 
             // numericBoxBondMinLength
             // 
             resources.ApplyResources(this.numericBoxBondMinLength, "numericBoxBondMinLength");
             this.numericBoxBondMinLength.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBondMinLength.DecimalPlaces = 3;
-                       this.numericBoxBondMinLength.Maximum = 9.9D;
+            this.numericBoxBondMinLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondMinLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBondMinLength.Maximum = 9.9D;
             this.numericBoxBondMinLength.Minimum = 0D;
             this.numericBoxBondMinLength.Name = "numericBoxBondMinLength";
             this.numericBoxBondMinLength.RadianValue = 0.0017453292519943296D;
-            this.numericBoxBondMinLength.RestrictLimitValue = true;
             this.numericBoxBondMinLength.ShowUpDown = true;
             this.numericBoxBondMinLength.SkipEventDuringInput = false;
             this.numericBoxBondMinLength.SmartIncrement = true;
@@ -319,7 +326,7 @@
             this.numericBoxBondMinLength.ThonsandsSeparator = true;
             this.numericBoxBondMinLength.UpDown_Increment = 0.1D;
             this.numericBoxBondMinLength.Value = 0.1D;
-                        // 
+            // 
             // checkBoxShowBonds
             // 
             resources.ApplyResources(this.checkBoxShowBonds, "checkBoxShowBonds");
@@ -331,8 +338,8 @@
             // 
             // buttonAddBond
             // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonAddBond.ForeColor = System.Drawing.Color.White;
             this.buttonAddBond.Name = "buttonAddBond";
             this.buttonAddBond.UseVisualStyleBackColor = false;
@@ -340,8 +347,8 @@
             // 
             // buttonChangeBond
             // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
             this.buttonChangeBond.Name = "buttonChangeBond";
             this.buttonChangeBond.UseVisualStyleBackColor = false;
@@ -358,11 +365,20 @@
             // 
             // dataGridView
             // 
+            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledDataGridViewCheckBoxColumn1,
@@ -373,7 +389,6 @@
             this.showBondsDataGridViewCheckBoxColumn,
             this.showPolyhedronDataGridViewCheckBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
@@ -396,19 +411,19 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.buttonAddBond);
             this.panel1.Controls.Add(this.colorControlEdges);
             this.panel1.Controls.Add(this.colorControlPlyhedron);
             this.panel1.Controls.Add(this.colorControlBond);
             this.panel1.Controls.Add(this.buttonChangeBond);
             this.panel1.Controls.Add(this.buttonDeleteBond);
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // colorControlEdges
             // 
-            this.colorControlEdges.Argb = -986896;
             resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
+            this.colorControlEdges.Argb = -986896;
             this.colorControlEdges.Blue = 240;
             this.colorControlEdges.BlueF = 0.9411765F;
             this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
@@ -422,8 +437,8 @@
             // 
             // colorControlPlyhedron
             // 
-            this.colorControlPlyhedron.Argb = -986896;
             resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
+            this.colorControlPlyhedron.Argb = -986896;
             this.colorControlPlyhedron.Blue = 240;
             this.colorControlPlyhedron.BlueF = 0.9411765F;
             this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
@@ -437,8 +452,8 @@
             // 
             // colorControlBond
             // 
-            this.colorControlBond.Argb = -986896;
             resources.ApplyResources(this.colorControlBond, "colorControlBond");
+            this.colorControlBond.Argb = -986896;
             this.colorControlBond.Blue = 240;
             this.colorControlBond.BlueF = 0.9411765F;
             this.colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
@@ -452,11 +467,11 @@
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.checkBoxShowBonds);
             this.panel2.Controls.Add(this.groupBoxBonds);
             this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
             this.panel2.Controls.Add(this.groupBoxPolyhedron);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // dataGridViewTextBoxColumn1

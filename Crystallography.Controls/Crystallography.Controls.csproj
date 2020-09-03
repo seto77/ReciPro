@@ -513,6 +513,9 @@
       <DependentUpon>FormScatteringFactor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\LatticePlaneControl.ja.resx">
+      <DependentUpon>LatticePlaneControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\LatticePlaneControl.resx">
       <DependentUpon>LatticePlaneControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -304,7 +304,7 @@ namespace Crystallography.Controls
             flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
             flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
 
-            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "Dimension: None" : "Dimension: Å^2";
+            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "None" : "Å²";
         }
 
         private void radioButtonDebyeWallerTypeU_CheckedChanged(object sender, EventArgs e)
@@ -318,7 +318,7 @@ namespace Crystallography.Controls
             numericBoxB23.HeaderText = U ? "U23" : "B23";
             numericBoxB13.HeaderText = U ? "U13" : "B13";
 
-            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "Dimension: None" : "Dimension: Å^2";
+            labelDimension.Text = radioButtonDebyeWallerTypeB.Checked && radioButtonAnisotropy.Checked ? "None" : "Å²";
 
         }
 

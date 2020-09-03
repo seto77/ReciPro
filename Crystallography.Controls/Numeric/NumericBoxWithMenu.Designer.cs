@@ -67,7 +67,7 @@
             this.smartIncrementToolStripMenuItem,
             this.toolStripComboBoxIncrement});
             this.incrementToolStripMenuItem.Name = "incrementToolStripMenuItem";
-            this.incrementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.incrementToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.incrementToolStripMenuItem.Text = "Increment";
             this.incrementToolStripMenuItem.CheckedChanged += new System.EventHandler(this.smartIncrementToolStripMenuItem_CheckedChanged);
             // 
@@ -132,6 +132,7 @@
             this.contextMenuStripBody.Name = "contextMenuStripBody";
             this.contextMenuStripBody.Size = new System.Drawing.Size(185, 214);
             this.contextMenuStripBody.Closing += new System.Windows.Forms.ToolStripDropDownClosingEventHandler(this.contextMenuStripBody_Closing);
+            this.contextMenuStripBody.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripBody_Opening);
             // 
             // decimalPlacesToolStripMenuItem
             // 

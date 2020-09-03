@@ -29,7 +29,7 @@ namespace Crystallography
 
 		public static PointD[] LinearAbsorptionCoefficient(int z)
 		{
-			List<PointD> pt = new List<PointD>();
+			var pt = new List<PointD>();
 			for (int n = 0; n < AtomConstantsSub.LinearAbsorptionCoefficient[z].Length; n++)
 				pt.AddRange(AtomConstantsSub.LinearAbsorptionCoefficient[z][n]);
 			return pt.ToArray();
@@ -4692,7 +4692,7 @@ namespace Crystallography
 	new ElasticScattering[]{
 		new ElasticScattering(12.2841,4.2791,7.3409,0.2784,4.0034,13.5359,2.3488,71.1692,1.0118,0,"Co: RHF"),
 		new ElasticScattering(11.2296,4.1231,7.3883,0.2726,4.7393,10.2443,0.7108,25.6466,0.9324,+2,"Co2+: RHF"),
-		new ElasticScattering(10.338,3.90969,7.88173,0.238668,4.76795,8.35583,0.725591,18.3491,118.349,+3,"Co3+: HF")},
+		new ElasticScattering(10.338,3.90969,7.88173,0.238668,4.76795,8.35583,0.725591,18.3491,0.286667,+3,"Co3+: HF")},
 	new ElasticScattering[]{
 		new ElasticScattering(12.8376,3.8785,7.292,0.2565,4.4438,12.1763,2.38,66.3421,1.0341,0,"Ni: RHF"),
 		new ElasticScattering(11.4166,3.6766,7.4005,0.2449,5.3442,8.873,0.9773,22.1626,0.8614,+2,"Ni2+: RHF"),
@@ -4745,7 +4745,7 @@ namespace Crystallography
 	new ElasticScattering[]{
 		new ElasticScattering(19.2674,0.80852,12.9182,8.43467,4.86337,24.7997,1.56756,94.2928,5.37874,0,"Ru: *RHF"),
 		new ElasticScattering(18.5638,0.847329,13.2885,8.37164,9.32602,0.017662,3.00964,22.887,-3.1892,+3,"Ru3+: *DS"),
-		new ElasticScattering(18.5003,0.844582,13.1787,8.12534,4.71304,0.036495,2.18535,20.8504,1.42357,+4,"Ru4+: *DS")},
+		new ElasticScattering(18.5003,0.844582,13.1787,8.12534,4.71304,0.36495,2.18535,20.8504,1.42357,+4,"Ru4+: *DS")},
 	new ElasticScattering[]{
 		new ElasticScattering(19.2957,0.751536,14.3501,8.21758,4.73425,25.8749,1.28918,98.6062,5.328,0,"Rh: *RHF"),
 		new ElasticScattering(18.8785,0.764252,14.1259,7.84438,3.32515,21.2487,-6.1989,-0.01036,11.8678,+3,"Rh3+: *DS"),
@@ -4784,7 +4784,7 @@ namespace Crystallography
 		new ElasticScattering(20.3524,3.552,19.1278,0.3086,10.2821,23.7128,0.9615,59.4565,3.2791,+1,"Cs1+: RHF")},
 	new ElasticScattering[]{
 		new ElasticScattering(20.3361,3.216,19.297,0.2756,10.888,20.2073,2.6959,167.202,2.7731,0,"Ba: RHF"),
-		new ElasticScattering(20.1807,3.21367,19.1136,0.28331,10.9054,20.0558,0.773634,51.746,3.02902,+2,"Ba2+: *DS")},
+		new ElasticScattering(20.1807,3.21367,19.1136,0.28331,10.9054,20.0558,0.77634,51.746,3.02902,+2,"Ba2+: *DS")},
 	new ElasticScattering[]{
 		new ElasticScattering(20.578,2.94817,19.599,0.244475,11.3727,18.7726,3.28719,133.124,2.14678,0,"La: *RHF"),
 		new ElasticScattering(20.2489,2.9207,19.3763,0.250698,11.6323,17.8211,0.336048,54.9453,2.4086,+3,"La3+: *DS")},
@@ -4867,7 +4867,7 @@ namespace Crystallography
 	new ElasticScattering[]{
 		new ElasticScattering(27.5446,0.65515,19.1584,8.70751,15.538,1.96347,5.52593,45.8149,13.1746,0,"Tl: *RHF"),
 		new ElasticScattering(21.3985,1.4711,20.4723,0.517394,18.7478,7.43463,6.82847,28.8482,12.5258,+1,"Tl1+: *DS"),
-		new ElasticScattering(30.8695,1.1008,18.3841,6.53852,11.9328,0.219074,7.00574,17.2114,9.8027,+3,"Tl3+: *DS")},
+		new ElasticScattering(30.8695,1.1008,18.3481,6.53852,11.9328,0.219074,7.00574,17.2114,9.8027,+3,"Tl3+: *DS")},
 	new ElasticScattering[]{
 		new ElasticScattering(31.0617,0.6902,13.0637,2.3576,18.442,8.618,5.9696,47.2579,13.4118,0,"Pb: RHF"),
 		new ElasticScattering(21.7886,1.3366,19.5682,0.488383,19.1406,6.7727,7.01107,23.8132,12.4734,+2,"Pb2+: *DS"),
@@ -4875,7 +4875,7 @@ namespace Crystallography
 	new ElasticScattering[]{
 		new ElasticScattering(33.3689,0.704,12.951,2.9238,16.5877,8.7937,6.4692,48.0093,13.5782,0,"Bi: RHF"),
 		new ElasticScattering(21.8053,1.2356,19.5026,6.24149,19.1053,0.469999,7.10295,20.3185,12.4711,+3,"Bi3+: *DS"),
-		new ElasticScattering(33.5364,0.91654,25.0946,0.039042,19.2497,5.71414,6.91555,12.8285,-6.7994,+5,"Bi5+: *DS")},
+		new ElasticScattering(33.5364,0.91654,25.0946,0.39042,19.2497,5.71414,6.91555,12.8285,-6.7994,+5,"Bi5+: *DS")},
 	new ElasticScattering[]{
 		new ElasticScattering(34.6726,0.700999,15.4733,3.55078,13.1138,9.55642,7.02588,47.0045,13.677,0,"Po: *RHF")},
 	new ElasticScattering[]{
