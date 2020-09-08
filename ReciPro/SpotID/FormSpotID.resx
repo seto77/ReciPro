@@ -125,38 +125,35 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
+  <data name="scalablePictureBoxAdvanced.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="scalablePictureBoxAdvanced.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="scalablePictureBoxAdvanced.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 755</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonCopyMetafile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopyMetafile.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopyMetafile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonCopyMetafile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1</value>
-  </data>
-  <data name="buttonCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 25</value>
-  </data>
-  <data name="buttonCopyMetafile.TabIndex" type="System.Int32, mscorlib">
+  <data name="scalablePictureBoxAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="buttonCopyMetafile.Text" xml:space="preserve">
-    <value>Metafile</value>
+  <data name="&gt;&gt;scalablePictureBoxAdvanced.Name" xml:space="preserve">
+    <value>scalablePictureBoxAdvanced</value>
   </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Name" xml:space="preserve">
-    <value>buttonCopyMetafile</value>
+  <data name="&gt;&gt;scalablePictureBoxAdvanced.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Parent" xml:space="preserve">
+  <data name="&gt;&gt;scalablePictureBoxAdvanced.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;buttonCopyMetafile.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;scalablePictureBoxAdvanced.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonPixelToPixel.AutoSize" type="System.Boolean, mscorlib">
@@ -165,14 +162,17 @@
   <data name="buttonPixelToPixel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="buttonPixelToPixel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="buttonPixelToPixel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="buttonPixelToPixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 1</value>
+    <value>60, 0</value>
   </data>
   <data name="buttonPixelToPixel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 25</value>
+    <value>82, 26</value>
   </data>
   <data name="buttonPixelToPixel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -187,40 +187,73 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonPixelToPixel.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;buttonPixelToPixel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>453, 781</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced.Name" xml:space="preserve">
-    <value>scalablePictureBoxAdvanced</value>
+  <data name="buttonCopyMetafile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+  <data name="buttonCopyMetafile.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced.Parent" xml:space="preserve">
+  <data name="buttonCopyMetafile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonCopyMetafile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonCopyMetafile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 26</value>
+  </data>
+  <data name="buttonCopyMetafile.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonCopyMetafile.Text" xml:space="preserve">
+    <value>Metafile</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyMetafile.Name" xml:space="preserve">
+    <value>buttonCopyMetafile</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyMetafile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyMetafile.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyMetafile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 26</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -271,7 +304,7 @@
     <value>numericBoxNumberOfSpots</value>
   </data>
   <data name="&gt;&gt;numericBoxNumberOfSpots.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumberOfSpots.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -349,7 +382,7 @@
     <value>numericBoxFittingRange</value>
   </data>
   <data name="&gt;&gt;numericBoxFittingRange.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxFittingRange.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -394,7 +427,7 @@
     <value>numericBoxNearestNeighbor</value>
   </data>
   <data name="&gt;&gt;numericBoxNearestNeighbor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNearestNeighbor.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -460,7 +493,7 @@
     <value>numericBoxDonut</value>
   </data>
   <data name="&gt;&gt;numericBoxDonut.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDonut.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1089,7 +1122,7 @@
     <value>numericBoxSemiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxSemiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSemiangle.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1134,7 +1167,7 @@
     <value>numericBoxMaxNumOfG</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1179,7 +1212,7 @@
     <value>numericBoxAcceptableError</value>
   </data>
   <data name="&gt;&gt;numericBoxAcceptableError.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAcceptableError.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1224,7 +1257,7 @@
     <value>numericBoxMaxGrainNum</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxGrainNum.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxGrainNum.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1605,7 +1638,7 @@
     <value>numericBoxCameraLength</value>
   </data>
   <data name="&gt;&gt;numericBoxCameraLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCameraLength.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1650,7 +1683,7 @@
     <value>numericBoxPixelSize</value>
   </data>
   <data name="&gt;&gt;numericBoxPixelSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPixelSize.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1683,7 +1716,7 @@
     <value>waveLengthControl1</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.7.14.401, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.9.8.1118, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1945,9 +1978,6 @@
   </data>
   <metadata name="backgroundWorkerSpotID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>880, 17</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

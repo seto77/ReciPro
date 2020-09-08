@@ -545,6 +545,7 @@
             this.radioButtonBoundUnitCell.Checked = true;
             this.radioButtonBoundUnitCell.Name = "radioButtonBoundUnitCell";
             this.radioButtonBoundUnitCell.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonBoundUnitCell, resources.GetString("radioButtonBoundUnitCell.ToolTip"));
             this.radioButtonBoundUnitCell.UseVisualStyleBackColor = true;
             this.radioButtonBoundUnitCell.CheckedChanged += new System.EventHandler(this.radioButtonUnitCell_CheckedChanged);
             // 
@@ -552,6 +553,7 @@
             // 
             resources.ApplyResources(this.radioButtonBoundPlane, "radioButtonBoundPlane");
             this.radioButtonBoundPlane.Name = "radioButtonBoundPlane";
+            this.toolTip.SetToolTip(this.radioButtonBoundPlane, resources.GetString("radioButtonBoundPlane.ToolTip"));
             this.radioButtonBoundPlane.UseVisualStyleBackColor = true;
             // 
             // tabPageAtom
@@ -627,6 +629,7 @@
             this.numericBoxCellPlaneAlpha.ShowUpDown = true;
             this.numericBoxCellPlaneAlpha.SkipEventDuringInput = false;
             this.numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellPlaneAlpha, resources.GetString("numericBoxCellPlaneAlpha.ToolTip"));
             this.numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
             this.numericBoxCellPlaneAlpha.Value = 0.3D;
             this.numericBoxCellPlaneAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
@@ -645,6 +648,7 @@
             this.colorControlCellPlane.Name = "colorControlCellPlane";
             this.colorControlCellPlane.Red = 192;
             this.colorControlCellPlane.RedF = 0.7529412F;
+            this.toolTip.SetToolTip(this.colorControlCellPlane, resources.GetString("colorControlCellPlane.ToolTip"));
             this.colorControlCellPlane.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // colorControlCellEdge
@@ -661,6 +665,7 @@
             this.colorControlCellEdge.Name = "colorControlCellEdge";
             this.colorControlCellEdge.Red = 128;
             this.colorControlCellEdge.RedF = 0.5019608F;
+            this.toolTip.SetToolTip(this.colorControlCellEdge, resources.GetString("colorControlCellEdge.ToolTip"));
             this.colorControlCellEdge.ColorChanged += new System.EventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
             // numericBoxCellTransrationC
@@ -939,6 +944,7 @@
             // 
             resources.ApplyResources(this.checkBoxShowLabel, "checkBoxShowLabel");
             this.checkBoxShowLabel.Name = "checkBoxShowLabel";
+            this.toolTip.SetToolTip(this.checkBoxShowLabel, resources.GetString("checkBoxShowLabel.ToolTip"));
             this.checkBoxShowLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowLabel_CheckedChanged);
             // 
@@ -948,6 +954,7 @@
             this.radioButtonUseMaterialColor.Checked = true;
             this.radioButtonUseMaterialColor.Name = "radioButtonUseMaterialColor";
             this.radioButtonUseMaterialColor.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonUseMaterialColor, resources.GetString("radioButtonUseMaterialColor.ToolTip"));
             this.radioButtonUseMaterialColor.UseVisualStyleBackColor = true;
             this.radioButtonUseMaterialColor.CheckedChanged += new System.EventHandler(this.numericBoxLabelSize_ValueChanged);
             // 
@@ -955,6 +962,7 @@
             // 
             resources.ApplyResources(this.radioButtonLabelUseFixedColor, "radioButtonLabelUseFixedColor");
             this.radioButtonLabelUseFixedColor.Name = "radioButtonLabelUseFixedColor";
+            this.toolTip.SetToolTip(this.radioButtonLabelUseFixedColor, resources.GetString("radioButtonLabelUseFixedColor.ToolTip"));
             this.radioButtonLabelUseFixedColor.UseVisualStyleBackColor = true;
             // 
             // numericBoxLabelSize
@@ -969,6 +977,7 @@
             this.numericBoxLabelSize.ShowUpDown = true;
             this.numericBoxLabelSize.SmartIncrement = true;
             this.numericBoxLabelSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip"));
             this.numericBoxLabelSize.Value = 12D;
             this.numericBoxLabelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLabelSize_ValueChanged);
             // 
@@ -978,6 +987,7 @@
             this.checkBoxLabelWhiteEdge.Checked = true;
             this.checkBoxLabelWhiteEdge.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLabelWhiteEdge.Name = "checkBoxLabelWhiteEdge";
+            this.toolTip.SetToolTip(this.checkBoxLabelWhiteEdge, resources.GetString("checkBoxLabelWhiteEdge.ToolTip"));
             this.checkBoxLabelWhiteEdge.UseVisualStyleBackColor = true;
             this.checkBoxLabelWhiteEdge.CheckedChanged += new System.EventHandler(this.numericBoxLabelSize_ValueChanged);
             // 
@@ -1000,6 +1010,7 @@
             // 
             resources.ApplyResources(this.checkBoxGroupByElement, "checkBoxGroupByElement");
             this.checkBoxGroupByElement.Name = "checkBoxGroupByElement";
+            this.toolTip.SetToolTip(this.checkBoxGroupByElement, resources.GetString("checkBoxGroupByElement.ToolTip"));
             this.checkBoxGroupByElement.UseVisualStyleBackColor = true;
             this.checkBoxGroupByElement.CheckedChanged += new System.EventHandler(this.numericBoxLegendSize_ValueChanged);
             // 
@@ -1015,6 +1026,7 @@
             this.numericBoxLegendSize.ShowUpDown = true;
             this.numericBoxLegendSize.SmartIncrement = true;
             this.numericBoxLegendSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip"));
             this.numericBoxLegendSize.Value = 50D;
             this.numericBoxLegendSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLegendSize_ValueChanged);
             // 
@@ -1032,6 +1044,7 @@
             this.numericBoxAxesSize.SmartIncrement = true;
             this.numericBoxAxesSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAxesSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip"));
             this.numericBoxAxesSize.Value = 80D;
             this.numericBoxAxesSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxAxesSize_ValueChanged);
             // 
@@ -1049,6 +1062,7 @@
             this.numericBoxLightSize.SmartIncrement = true;
             this.numericBoxLightSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxLightSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip"));
             this.numericBoxLightSize.Value = 80D;
             this.numericBoxLightSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLightSize_ValueChanged);
             // 
@@ -1069,6 +1083,7 @@
             resources.GetString("comboBoxTransparency.Items1")});
             resources.ApplyResources(this.comboBoxTransparency, "comboBoxTransparency");
             this.comboBoxTransparency.Name = "comboBoxTransparency";
+            this.toolTip.SetToolTip(this.comboBoxTransparency, resources.GetString("comboBoxTransparency.ToolTip"));
             this.comboBoxTransparency.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransparency_SelectedIndexChanged);
             // 
             // groupBox3
@@ -1089,6 +1104,7 @@
             resources.GetString("comboBoxRenderignQuality.Items2")});
             resources.ApplyResources(this.comboBoxRenderignQuality, "comboBoxRenderignQuality");
             this.comboBoxRenderignQuality.Name = "comboBoxRenderignQuality";
+            this.toolTip.SetToolTip(this.comboBoxRenderignQuality, resources.GetString("comboBoxRenderignQuality.ToolTip"));
             this.comboBoxRenderignQuality.SelectedIndexChanged += new System.EventHandler(this.comboBoxRenderignQuality_SelectedIndexChanged);
             // 
             // checkBoxDepthFadingOut
@@ -1097,6 +1113,7 @@
             this.checkBoxDepthFadingOut.Checked = true;
             this.checkBoxDepthFadingOut.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDepthFadingOut.Name = "checkBoxDepthFadingOut";
+            this.toolTip.SetToolTip(this.checkBoxDepthFadingOut, resources.GetString("checkBoxDepthFadingOut.ToolTip"));
             this.checkBoxDepthFadingOut.UseVisualStyleBackColor = true;
             this.checkBoxDepthFadingOut.CheckedChanged += new System.EventHandler(this.checkBoxDepthCueing_CheckedChanged);
             // 
@@ -1123,6 +1140,7 @@
             this.trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBarAdvancedDepthCueingNear.Smart_Increment = true;
             this.trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.toolTip.SetToolTip(this.trackBarAdvancedDepthCueingNear, resources.GetString("trackBarAdvancedDepthCueingNear.ToolTip"));
             this.trackBarAdvancedDepthCueingNear.UpDown_Increment = 1D;
             this.trackBarAdvancedDepthCueingNear.Value = 5D;
             this.trackBarAdvancedDepthCueingNear.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
@@ -1131,6 +1149,7 @@
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            this.toolTip.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // trackBarAdvancedDepthCueingFar
             // 
@@ -1145,6 +1164,7 @@
             this.trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBarAdvancedDepthCueingFar.Smart_Increment = true;
             this.trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.toolTip.SetToolTip(this.trackBarAdvancedDepthCueingFar, resources.GetString("trackBarAdvancedDepthCueingFar.ToolTip"));
             this.trackBarAdvancedDepthCueingFar.UpDown_Increment = 1D;
             this.trackBarAdvancedDepthCueingFar.Value = -15D;
             this.trackBarAdvancedDepthCueingFar.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvanced2_ValueChanged);
@@ -1153,6 +1173,7 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.toolTip.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // groupBox1
             // 

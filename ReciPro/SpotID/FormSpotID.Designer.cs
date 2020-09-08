@@ -133,6 +133,7 @@ namespace ReciPro
             this.toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -151,6 +152,7 @@ namespace ReciPro
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -161,9 +163,8 @@ namespace ReciPro
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonCopyMetafile);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonPixelToPixel);
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
+            this.splitContainer1.Panel1.Controls.Add(this.panel1);
             // 
             // splitContainer1.Panel2
             // 
@@ -206,7 +207,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(453, 619);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(453, 593);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
@@ -1032,6 +1033,13 @@ namespace ReciPro
             this.backgroundWorkerSpotID.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSpotID_ProgressChanged);
             this.backgroundWorkerSpotID.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSpotID_RunWorkerCompleted);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonPixelToPixel);
+            this.panel1.Controls.Add(this.buttonCopyMetafile);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // FormSpotID
             // 
             this.AllowDrop = true;
@@ -1047,7 +1055,6 @@ namespace ReciPro
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragEnter);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1071,6 +1078,8 @@ namespace ReciPro
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1166,5 +1175,6 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonDonut;
         private Crystallography.Controls.NumericBox numericBoxDonut;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Panel panel1;
     }
 }

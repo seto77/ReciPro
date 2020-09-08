@@ -489,6 +489,7 @@ namespace Crystallography
 
         #endregion コンストラクタ
 
+
         /// <summary>
         /// Crystal2クラスに変換します。
         /// </summary>
@@ -671,9 +672,13 @@ namespace Crystallography
                 );
         }
 
-        #endregion 結晶幾何学関連
-
-        //既約かどうか判定
+        /// <summary>
+        /// 既約かどうか判定
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public static bool CheckIrreducible(int a, int b, int c)
         {
             for (int n = 2; n <= new[] { a, b, c }.Max(); n++)
@@ -681,6 +686,10 @@ namespace Crystallography
                     return false;
             return true;
         }
+
+        #endregion 結晶幾何学関連
+
+
 
         #region 軸ベクトルの計算
 

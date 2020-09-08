@@ -132,13 +132,38 @@
     <value>62, 0</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>None</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>0, 28</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 781</value>
+    <value>453, 775</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 484</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>スポット情報</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 185</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>581, 102</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>459</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 11</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 76</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -157,12 +182,6 @@
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>フィッティング半径</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 11</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 76</value>
   </data>
   <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
     <value>724, 452</value>
@@ -285,12 +304,6 @@
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 484</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>スポット情報</value>
-  </data>
   <data name="numericBoxAcceptableError.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -360,9 +373,6 @@
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 185</value>
-  </data>
   <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -374,15 +384,5 @@
   </data>
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
     <value>ピクセルサイズ</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>581, 102</value>
-  </data>
-  <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>459</value>
   </data>
 </root>

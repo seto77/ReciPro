@@ -341,11 +341,11 @@ namespace Crystallography
             try
             {
                 Ring.Comments = "";
-                DigitalMicrograph.Loader t = new DigitalMicrograph.Loader(str);
+                var t = new DigitalMicrograph.Loader(str);
 
-                double pixelScale = (float)(t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0]);
-                double accVol = (double)(t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0]);
-                double pixelSize = 0.1;
+                double pixelScale = (float)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0];
+                double accVol = (double)t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0];
+                var pixelSize = 0.1;
                 //CCDカメラの場合
                 if (t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag.ContainsKey("Acquisition"))
                     pixelSize = (float)(t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Acquisition"].Tag["Device"].Tag["CCD"].Tag["Pixel Size (um)"].Values[0]);
@@ -353,9 +353,9 @@ namespace Crystallography
                 else if (t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag.ContainsKey("Dimension"))
                     pixelSize = (float)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0];
 
-                ushort[] temp = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Units"].Values.Select(c => (ushort)c).ToArray();
-                string units = new string(temp.Select(c => (char)c).ToArray()); ;
-                PixelUnitEnum unit = PixelUnitEnum.None;
+                var temp = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Units"].Values.Select(c => (ushort)c).ToArray();
+                var units = new string(temp.Select(c => (char)c).ToArray());
+                var unit = PixelUnitEnum.None;
                 if (units == "1/nm")
                     unit = PixelUnitEnum.NanoMeterInv;
                 else if (units == "µm")
@@ -407,8 +407,8 @@ namespace Crystallography
         {
             try
             {
-                uint[] img = new uint[0];
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+                var img = new uint[0];
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 int n = 0;
                 int ver = 0;
                 int imageWidth = 0, imageHeight = 0;
