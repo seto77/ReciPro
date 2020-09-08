@@ -1,3 +1,4 @@
+#region using
 using Crystallography;
 using Crystallography.Controls;
 using Crystallography.Controls.Numeric;
@@ -18,6 +19,7 @@ using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
 
+#endregion
 
 namespace ReciPro
 {
@@ -171,7 +173,7 @@ namespace ReciPro
             try { ReadInitialRegistry(); }
             catch { MessageBox.Show("failed reading registries."); }
 
-            commonDialog.Progress =("Now Loading...Initializing OpenGL.", 0.1);
+            commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);
 
             //ここでglControlコントロールを追加. Mac環境の対応のため。
             if (!disableOpneGLToolStripMenuItem.Checked)
@@ -210,15 +212,15 @@ namespace ReciPro
                 }
             }
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.",  0.15);
+            commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
             FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.",  0.2); 
+            commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.", 0.2);
             FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
             FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.",  0.3); 
+            commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.", 0.3);
             FormStereonet = new FormStereonet { formMain = this, Visible = false };
             FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
@@ -226,23 +228,23 @@ namespace ReciPro
             commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.35);
             FormCrystalDatabase = new FormCrystalDatabase { FormMain = this, Visible = false };
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.",  0.4);
+            commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.", 0.4);
             FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
             FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
-            commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.45); 
+            commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.45);
             FormImageSimulator = new FormImageSimulator { FormMain = this, Visible = false };
             //FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             //FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
             //FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.",  0.5); 
+            commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.5);
             FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
             FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
-            commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.",  0.6); 
+            commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
             //  t = sw.ElapsedMilliseconds;
             FormTEMID = new FormTEMID { formMain = this, Visible = false };
             FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
@@ -250,7 +252,7 @@ namespace ReciPro
             FormTEMID.Visible = false;
             FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
 
-            commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.7); 
+            commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.7);
             FormSpotID = new FormSpotID { FormMain = this, Visible = false };
 
             commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.8);
@@ -264,7 +266,7 @@ namespace ReciPro
             commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.9);
             NextHandle = SetClipboardViewer(this.Handle);
 
-            commonDialog.Progress = ("Now Loading...Setting CrystalChanged event.", 0.91); 
+            commonDialog.Progress = ("Now Loading...Setting CrystalChanged event.", 0.91);
             crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
 
             commonDialog.Progress = ("Now Loading...Initialize Crystal class.", 0.92);
@@ -299,13 +301,13 @@ namespace ReciPro
             if (listBox.Items.Count == 0)
                 readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
-            commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.",0.96);
+            commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.", 0.96);
             DrawAxes();
 
-            commonDialog.Progress = ("Now Loading...Reading registries again.",0.98);
+            commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
             ReadInitialRegistry();
 
-            commonDialog.Progress = ("Now Loading...Recognizing Click Once application or not.",0.99);
+            commonDialog.Progress = ("Now Loading...Recognizing Click Once application or not.", 0.99);
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
             commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
@@ -653,24 +655,24 @@ namespace ReciPro
         private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
         {
             listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-                SelectionMode.MultiExtended :  SelectionMode.One;
+                SelectionMode.MultiExtended : SelectionMode.One;
         }
 
-        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e)
             => FormSpotID.Visible = toolStripButtonSpotID.Checked;
-        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e)
             => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
-        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e)
             => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
-        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e)
             => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
-        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e)
             => FormStereonet.Visible = toolStripButtonStereonet.Checked;
-        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e) 
+        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e)
             => FormRotation.Visible = toolStripButtonRotation.Checked;
-        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
             => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
-        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e)
             => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
         private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
         {
@@ -678,14 +680,14 @@ namespace ReciPro
             listBox_SelectedIndexChanged(listBox, e);
         }
 
-        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e)
             => FormTEMID.Visible = toolStripButtonTEMID.Checked;
-        private void scatteringFactor_VisibleChanged(object sender, EventArgs e) 
+        private void scatteringFactor_VisibleChanged(object sender, EventArgs e)
             => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
-        private void symmetryInformation_VisibleChanged(object sender, EventArgs e) 
+        private void symmetryInformation_VisibleChanged(object sender, EventArgs e)
             => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
 
-        private void toolStripButtonDatabase_CheckedChanged(object sender, EventArgs e) 
+        private void toolStripButtonDatabase_CheckedChanged(object sender, EventArgs e)
             => FormCrystalDatabase.Visible = toolStripButtonDatabase.Checked;
 
         private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
@@ -725,7 +727,7 @@ namespace ReciPro
                     FormImageSimulator.RotationChanged();
                 DrawAxes();
             }
-        } 
+        }
         #endregion
 
         #region 回転ボタン
@@ -1055,7 +1057,7 @@ namespace ReciPro
                 readCrystalList(Dlg.FileName, true, false);
         }
 
-        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e) 
+        private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e)
             => readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1102,6 +1104,8 @@ namespace ReciPro
             japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
             Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
         }
+        private void githubPageToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://github.com/seto77/ReciPro");
+        private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e) => Process.Start("https://github.com/seto77/ReciPro/issues");
 
         #endregion FileMenu
 
@@ -1401,7 +1405,7 @@ namespace ReciPro
             labelCurrentIndexU.Text = bestIndex.U.ToString();
             labelCurrentIndexV.Text = bestIndex.V.ToString();
             labelCurrentIndexW.Text = bestIndex.W.ToString();
-        } 
+        }
         #endregion
 
         #region 晶体軸/結晶面 設定
@@ -1426,6 +1430,8 @@ namespace ReciPro
             if (checkBoxFixePlane.Checked)
                 checkBoxFixAxis.Checked = false;
         }
+
+
 
         #endregion
 

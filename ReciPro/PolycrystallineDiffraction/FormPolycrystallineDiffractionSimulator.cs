@@ -107,17 +107,17 @@ namespace ReciPro
             foreach (Crystal c in formMain.listBox.SelectedItems)
             {
                 var tab = new TabPage();
-                var crystalControl = new Crystallography.Controls.CrystalControl();
-                crystalControl.Crystal = c;
-
-                crystalControl.Dock = DockStyle.Fill;
-                crystalControl.VisibleAtomTab = false;
-                crystalControl.VisibleBondsPolyhedraTab = false;
-                crystalControl.VisibleEOSTab = false;
-                crystalControl.VisiblePolycrystallineTab = true;
-                crystalControl.VisibleStressStrainTab = true;
-
-                crystalControl.DefaultTabNumber = 4;
+                var crystalControl = new Crystallography.Controls.CrystalControl
+                {
+                    Crystal = c,
+                    Dock = DockStyle.Fill,
+                    VisibleAtomTab = false,
+                    VisibleBondsPolyhedraTab = false,
+                    VisibleEOSTab = false,
+                    VisiblePolycrystallineTab = true,
+                    VisibleStressStrainTab = true,
+                    DefaultTabNumber = 4
+                };
                 tab.Controls.Add(crystalControl);
                 tab.Text = c.Name;
                 tab.Padding = new Padding(3, 2, 3, 2);
@@ -903,11 +903,9 @@ return residual;
         private void saveSettngFile(string fileName)
         {
             setRefinmentSetting();
-            using (Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-            {
-                System.Runtime.Serialization.IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                formatter.Serialize(stream, setting);
-            }
+            using Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            System.Runtime.Serialization.IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, setting);
         }
 
         private void buttonLoadSetting_Click(object sender, EventArgs e)

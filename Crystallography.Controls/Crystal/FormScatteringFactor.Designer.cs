@@ -269,26 +269,28 @@
             // 
             // checkBoxHideProhibitedPlanes
             // 
+            this.checkBoxHideProhibitedPlanes.AutoSize = true;
             this.checkBoxHideProhibitedPlanes.Checked = true;
             this.checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHideProhibitedPlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.checkBoxHideProhibitedPlanes.Location = new System.Drawing.Point(305, 78);
             this.checkBoxHideProhibitedPlanes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
-            this.checkBoxHideProhibitedPlanes.Size = new System.Drawing.Size(176, 25);
+            this.checkBoxHideProhibitedPlanes.Size = new System.Drawing.Size(161, 21);
             this.checkBoxHideProhibitedPlanes.TabIndex = 8;
             this.checkBoxHideProhibitedPlanes.Text = "Hide prohibited planes";
             this.checkBoxHideProhibitedPlanes.CheckedChanged += new System.EventHandler(this.numericUpDownThresholdD_ValueChanged);
             // 
             // checkBoxHideEquivalentPlane
             // 
+            this.checkBoxHideEquivalentPlane.AutoSize = true;
             this.checkBoxHideEquivalentPlane.Checked = true;
             this.checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxHideEquivalentPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.checkBoxHideEquivalentPlane.Location = new System.Drawing.Point(305, 53);
             this.checkBoxHideEquivalentPlane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
-            this.checkBoxHideEquivalentPlane.Size = new System.Drawing.Size(181, 25);
+            this.checkBoxHideEquivalentPlane.Size = new System.Drawing.Size(159, 21);
             this.checkBoxHideEquivalentPlane.TabIndex = 8;
             this.checkBoxHideEquivalentPlane.Text = "Hide equivalent planes";
             this.checkBoxHideEquivalentPlane.CheckedChanged += new System.EventHandler(this.numericUpDownThresholdD_ValueChanged);
@@ -325,13 +327,14 @@
             // 
             // checkBoxBragBrentano
             // 
+            this.checkBoxBragBrentano.AutoSize = true;
             this.checkBoxBragBrentano.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.checkBoxBragBrentano.Location = new System.Drawing.Point(307, 1);
             this.checkBoxBragBrentano.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxBragBrentano.Name = "checkBoxBragBrentano";
-            this.checkBoxBragBrentano.Size = new System.Drawing.Size(229, 51);
+            this.checkBoxBragBrentano.Size = new System.Drawing.Size(199, 38);
             this.checkBoxBragBrentano.TabIndex = 8;
-            this.checkBoxBragBrentano.Text = "Powder diffraction intensities        (Bragg Brentano)";
+            this.checkBoxBragBrentano.Text = "Powder diffraction intensities \r\n(Bragg Brentano)";
             this.checkBoxBragBrentano.CheckedChanged += new System.EventHandler(this.checkBoxBragBrentano_CheckedChanged);
             // 
             // waveLengthControl1

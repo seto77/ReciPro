@@ -672,12 +672,10 @@ namespace ReciPro
             cellVertices = cellVertices.Select(v => v - translation).ToArray();
 
             var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value);
-            var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces);
-            cellPlane.Tag = new cellID();
+            var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces) { Tag = new cellID() };
 
             var cellEdgeMat = new Material(colorControlCellEdge.Argb, 1f);
-            var cellEdge = new Polyhedron(cellVertices, cellEdgeMat, DrawingMode.Edges);
-            cellEdge.Tag = new cellID();
+            var cellEdge = new Polyhedron(cellVertices, cellEdgeMat, DrawingMode.Edges) { Tag = new cellID() };
 
             //cellPlane.UseFixedColor = true;
             cellPlane.Rendered = false;

@@ -191,8 +191,7 @@ namespace Crystallography.Controls
                     Value = Math.Pow((numericBox.Maximum - numericBox.Minimum), (double)trackBar.Value / trackBar.Maximum) + numericBox.Minimum;
                 }
             }
-            if (ValueChanged != null)
-                ValueChanged(this, Value);
+            ValueChanged?.Invoke(this, Value);
 
             SkipTrackBarEvent = false;
         }
@@ -205,8 +204,7 @@ namespace Crystallography.Controls
             SkipNumericBoxEvent = true;
             Value = numericBox.Value;
 
-            if (ValueChanged != null)
-                ValueChanged(this, Value);
+            ValueChanged?.Invoke(this, Value);
 
             SkipNumericBoxEvent = false;
         }

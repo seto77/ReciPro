@@ -65,20 +65,12 @@ namespace Crystallography.Controls
         /// <summary>
         /// 波長をÅ単位のテキストで取得/設定
         /// </summary>
-        public string WaveLengthText
-        {
-            set { waveLengthControl.WaveLengthText = value; }
-            get { return waveLengthControl.WaveLengthText; }
-        }
+        public string WaveLengthText { set => waveLengthControl.WaveLengthText = value; get => waveLengthControl.WaveLengthText; }
 
         /// <summary>
         /// nm単位の実数で取得/設定
         /// </summary>
-        public double WaveLength
-        {
-            set { waveLengthControl.WaveLength = value; }
-            get { return waveLengthControl.WaveLength; }
-        }
+        public double WaveLength { set => waveLengthControl.WaveLength = value; get => waveLengthControl.WaveLength; }
 
         /// <summary>
         /// EDXの取り出し角 度単位で取得/設定
@@ -92,17 +84,12 @@ namespace Crystallography.Controls
                     if (numericBoxTwoTheta.Value != Convert.ToDouble(value))
                     {
                         numericBoxTwoTheta.Value = Convert.ToDouble(value);
-
-                        if (AxisPropertyChanged != null)
-                            AxisPropertyChanged();
+                        AxisPropertyChanged?.Invoke();
                     }
                 }
                 catch { }
             }
-            get
-            {
-                return numericBoxTwoTheta.Value.ToString();
-            }
+            get => numericBoxTwoTheta.Value.ToString();
         }
 
         /// <summary>
@@ -115,11 +102,10 @@ namespace Crystallography.Controls
                 if (value > 0 && numericBoxTwoTheta.Value != value / Math.PI * 180.0)
                 {
                     numericBoxTwoTheta.Value = value / Math.PI * 180.0;
-                    if (AxisPropertyChanged != null)
-                        AxisPropertyChanged();
+                    AxisPropertyChanged?.Invoke();
                 }
             }
-            get { return numericBoxTwoTheta.Value / 180.0 * Math.PI; }
+            get => numericBoxTwoTheta.Value / 180.0 * Math.PI;
         }
 
         public EnergyUnitEnum EnergyUnit
@@ -129,10 +115,7 @@ namespace Crystallography.Controls
                 radioButtonEnergyUnitEv.Checked = (value == EnergyUnitEnum.eV);
                 radioButtonEnergyUnitKev.Checked = !(value == EnergyUnitEnum.eV);
             }
-            get
-            {
-                return radioButtonEnergyUnitEv.Checked ? EnergyUnitEnum.eV : EnergyUnitEnum.KeV;
-            }
+            get => radioButtonEnergyUnitEv.Checked ? EnergyUnitEnum.eV : EnergyUnitEnum.KeV;
         }
 
         /// <summary>
@@ -145,16 +128,11 @@ namespace Crystallography.Controls
                 try
                 {
                     numericBoxTofTakeOffAngle.Value = Convert.ToDouble(value);
-
-                    if (AxisPropertyChanged != null)
-                        AxisPropertyChanged();
+                    AxisPropertyChanged?.Invoke();
                 }
                 catch { }
             }
-            get
-            {
-                return numericBoxTofTakeOffAngle.Value.ToString();
-            }
+            get => numericBoxTofTakeOffAngle.Value.ToString();
         }
 
         /// <summary>
@@ -167,11 +145,10 @@ namespace Crystallography.Controls
                 if (value > 0 && numericBoxTofTakeOffAngle.Value != value / Math.PI * 180.0)
                 {
                     numericBoxTofTakeOffAngle.Value = value / Math.PI * 180.0;
-                    if (AxisPropertyChanged != null)
-                        AxisPropertyChanged();
+                    AxisPropertyChanged?.Invoke();
                 }
             }
-            get { return numericBoxTofTakeOffAngle.Value / 180.0 * Math.PI; }
+            get => numericBoxTofTakeOffAngle.Value / 180.0 * Math.PI;
         }
 
         /// <summary>
@@ -187,16 +164,12 @@ namespace Crystallography.Controls
                     {
                         numericBoxTofDistance.Value = value;
 
-                        if (AxisPropertyChanged != null)
-                            AxisPropertyChanged();
+                        AxisPropertyChanged?.Invoke();
                     }
                 }
                 catch { }
             }
-            get
-            {
-                return numericBoxTofDistance.Value;
-            }
+            get => numericBoxTofDistance.Value;
         }
 
         /// <summary>
@@ -253,38 +226,22 @@ namespace Crystallography.Controls
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public int XrayWaveSourceElementNumber
-        {
-            set { waveLengthControl.XrayWaveSourceElementNumber = value; }
-            get { return waveLengthControl.XrayWaveSourceElementNumber; }
-        }
+        public int XrayWaveSourceElementNumber { set => waveLengthControl.XrayWaveSourceElementNumber = value; get => waveLengthControl.XrayWaveSourceElementNumber; }
 
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public XrayLine XrayWaveSourceLine
-        {
-            set { waveLengthControl.XrayWaveSourceLine = value; }
-            get { return waveLengthControl.XrayWaveSourceLine; }
-        }
+        public XrayLine XrayWaveSourceLine { set => waveLengthControl.XrayWaveSourceLine = value; get => waveLengthControl.XrayWaveSourceLine; }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public double ElectronAccVoltage
-        {
-            set { waveLengthControl.Energy = value; }
-            get { return waveLengthControl.Energy; }
-        }
+        public double ElectronAccVoltage { set => waveLengthControl.Energy = value; get => waveLengthControl.Energy; }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public string ElectronAccVoltageText
-        {
-            set { waveLengthControl.EnergyText = value; }
-            get { return waveLengthControl.EnergyText; }
-        }
+        public string ElectronAccVoltageText { set => waveLengthControl.EnergyText = value; get => waveLengthControl.EnergyText; }
 
         #endregion プロパティ
 

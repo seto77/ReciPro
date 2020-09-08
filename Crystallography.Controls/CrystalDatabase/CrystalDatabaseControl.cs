@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Diagnostics;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
 using System.Drawing;
 using MessagePack;
 using MessagePack.Resolvers;
+
+#endregion
 
 namespace Crystallography.Controls
 {
@@ -319,8 +321,8 @@ namespace Crystallography.Controls
         {
             if (!File.Exists(path))
                 return null;
-            using (var fs = new FileStream(path, FileMode.Open))
-                return MD5.Create().ComputeHash(fs);
+            using var fs = new FileStream(path, FileMode.Open);
+            return MD5.Create().ComputeHash(fs);
         }
 
         /// <summary>

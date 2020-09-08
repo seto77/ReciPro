@@ -580,11 +580,10 @@ namespace Crystallography.Controls
                     if (Math.Abs(mouseRangeStart.X - mouseRangeEnd.X) > 10 && Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y) > 10)
                     {
                         ShowAreaRectangle = true;
-                        PointD start = ConvertToSrcPt(mouseRangeStart);
-                        PointD end = ConvertToSrcPt(mouseRangeEnd);
+                        var start = ConvertToSrcPt(mouseRangeStart);
+                        var end = ConvertToSrcPt(mouseRangeEnd);
                         AreaRectangle = new RectangleD(start, end);
-                        if (MouseUp2 != null)
-                            MouseUp2(this, e, ConvertToSrcPt(e.Location));
+                        MouseUp2?.Invoke(this, e, ConvertToSrcPt(e.Location));
                     }
                     pictureBox.Refresh();
                     return;
@@ -671,8 +670,8 @@ namespace Crystallography.Controls
                         }
                         if (s.Shape == SymbolShape.Circle || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            var pen1 = new Pen(Color.FromArgb(128, s.CircleColor));
-                            pen1.Width = s.Bold ? 2f : 1f;
+                            var pen1 = new Pen(Color.FromArgb(128, s.CircleColor)) { Width = s.Bold ? 2f : 1f };
+
                             var pt = ConvertToClientPt(s.CircleCenter).ToPointF();
                             if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
                             {
@@ -682,8 +681,7 @@ namespace Crystallography.Controls
                         }
                         if (s.Shape == SymbolShape.Line)
                         {
-                            var pen1 = new Pen(Color.FromArgb(128, s.LineColor));
-                            pen1.Width = 2f;
+                            var pen1 = new Pen(Color.FromArgb(128, s.LineColor)) { Width = 2f };
                             var pt1 = ConvertToClientPt(s.LinePosition1).ToPointF();
                             var pt2 = ConvertToClientPt(s.LinePosition2).ToPointF();
                             if (pt1.X > -pictureBox.ClientSize.Width && pt1.X < 2 * pictureBox.ClientSize.Width && pt1.Y > -pictureBox.ClientSize.Height && pt1.Y < 2 * pictureBox.ClientSize.Height)
@@ -753,8 +751,7 @@ namespace Crystallography.Controls
 
         private void ScalablePictureBox_Paint(object sender, PaintEventArgs e)
         {
-            if (PaintControl != null)
-                PaintControl(sender, e);
+            PaintControl?.Invoke(sender, e);
         }
 
         /// <summary>

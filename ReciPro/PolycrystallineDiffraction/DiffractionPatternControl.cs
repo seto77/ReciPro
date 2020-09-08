@@ -1145,8 +1145,7 @@ namespace ReciPro
 
         private void Crystallites_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (ProgressChanged != null)
-                ProgressChanged(sender, e);
+            ProgressChanged?.Invoke(sender, e);
         }
 
         public void Simulate(bool resetIndex, bool renewRvector, bool renewGvector, bool doFilter, YusaGonio gonio = null)
@@ -1765,8 +1764,7 @@ namespace ReciPro
 
         private void buttonSaveBackGround_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Background file; *.bg|*.bg";
+            var dlg = new SaveFileDialog { Filter = "Background file; *.bg|*.bg" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
@@ -2024,12 +2022,9 @@ namespace ReciPro
         /// <param name="e"></param>
         private void buttonSaveImage_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.ipa|*.ipa";
+            var dlg = new SaveFileDialog { Filter = "*.ipa|*.ipa" };
             if (dlg.ShowDialog() == DialogResult.OK)
-            {
                 ImageIO.IPAImageWriter(dlg.FileName, SimulatedPixels, Resolution, new Size(ImageWidth, ImageHeight), Center, Cameralength, new WaveProperty(WaveSource, Wavelength, 0, 0, 0));
-            }
         }
     }
 }

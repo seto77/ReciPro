@@ -165,9 +165,7 @@ namespace ReciPro
         {
             InitializeComponent();
 
-            FormDiffractionSpotInfo = new FormDiffractionSpotInfo();
-            FormDiffractionSpotInfo.Visible = false;
-            FormDiffractionSpotInfo.FormImageSimulator = this;
+            FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
         }
 
         private void FormImageSimulator_FormClosing(object sender, FormClosingEventArgs e)
@@ -192,19 +190,14 @@ namespace ReciPro
             var width = pictureBoxPhaseScale.ClientRectangle.Width;
             var height = pictureBoxPhaseScale.ClientRectangle.Height;
             var temp = Enumerable.Range(0, width * height).ToList().Select(n => (double)(n % width) / width).ToArray();
-            scaleImage = new PseudoBitmap(temp, width);
-            scaleImage.MaxValue = 1;
-            scaleImage.MinValue = 0;
+            scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
             scaleImage.SetScaleRotation();
             pictureBoxPhaseScale.Image = scaleImage.GetImage();
-
 
             width = pictureBoxScaleOfIntensity.ClientRectangle.Width;
             height = pictureBoxScaleOfIntensity.ClientRectangle.Height;
             temp = Enumerable.Range(0, width * height).ToList().Select(n => (double)(n % width) / width).ToArray();
-            scaleImage = new PseudoBitmap(temp, width);
-            scaleImage.MaxValue = 1;
-            scaleImage.MinValue = 0;
+            scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
             scaleImage.SetScaleGray();
             pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
 
@@ -470,14 +463,15 @@ namespace ReciPro
                 for (int r = 0; r < row; r++)
                     for (int c = 0; c < col; c++)
                     {
-                        pictureBoxes[r, c] = new ScalablePictureBox();
-
-                        pictureBoxes[r, c].SkipEvent = true;
-                        pictureBoxes[r, c].Size = new Size(1, 1);
-                        pictureBoxes[r, c].MouseScaling = true;
-                        pictureBoxes[r, c].MouseTranslation = true;
-                        pictureBoxes[r, c].PseudoBitmap = image[r, c];
-                        pictureBoxes[r, c].ZoomAndCenter = (0, new PointD(0, 0));
+                        pictureBoxes[r, c] = new ScalablePictureBox
+                        {
+                            SkipEvent = true,
+                            Size = new Size(1, 1),
+                            MouseScaling = true,
+                            MouseTranslation = true,
+                            PseudoBitmap = image[r, c],
+                            ZoomAndCenter = (0, new PointD(0, 0))
+                        };
                         tableLayoutPanel.Controls.Add(pictureBoxes[r, c], c, r);
                         pictureBoxes[r, c].Dock = DockStyle.Fill;
                         pictureBoxes[r, c].SkipEvent = false;

@@ -663,8 +663,7 @@ namespace ReciPro
                     Clipboard.SetDataObject(sb.ToString());
                 else
                 {
-                    var dlg = new SaveFileDialog();
-                    dlg.Filter = "*.csv|*.csv";
+                    var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
                     if (dlg.ShowDialog() == DialogResult.OK)
                         using (var sw = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("shift_jis")))
                             sw.Write(sb.ToString().Replace('\t', ','));
@@ -741,9 +740,8 @@ namespace ReciPro
 
         private void backgroundWorkerSpotID_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Result != null && e.Result is List<List<Grain>>)
+            if (e.Result != null && e.Result is List<List<Grain>> candidates)
             {
-                List<List<Grain>> candidates = (List<List<Grain>>)e.Result;
                 dataSet.DataTableCandidate.Clear();
                 for (int i = 0; i < candidates.Count; i++)
                     dataSet.DataTableCandidate.Add(i, candidates[i]);

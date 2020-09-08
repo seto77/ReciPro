@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -35,20 +32,21 @@ namespace Crystallography.Controls
 
         private bool equivalency {get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
 
-        private DataSet.DataTableBoundDataTable table;
+        private readonly DataSet.DataTableBoundDataTable table;
 
         #endregion
-
 
         #region イベント
-        public event EventHandler ItemsChanged; 
+        public event EventHandler ItemsChanged;
         #endregion
 
+        #region コンストラクタ
         public BoundControl()
         {
             InitializeComponent();
             table = dataSet.DataTableBound;
-        }
+        } 
+        #endregion
 
         #region　Boundを画面下部から生成 / Boundを画面下部にセット
         public Bound GetFromInterface()
@@ -221,7 +219,6 @@ namespace Crystallography.Controls
 
 
         #endregion
-
 
         #region numericBoxのイベント
         private void numericBoxDistance_ValueChanged(object sender, EventArgs e)

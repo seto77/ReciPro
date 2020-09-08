@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BondInputControl));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.checkBoxShowPolyhedron = new System.Windows.Forms.CheckBox();
             this.comboBoxBondingAtom1 = new System.Windows.Forms.ComboBox();
             this.comboBoxBondingAtom2 = new System.Windows.Forms.ComboBox();
@@ -62,7 +62,7 @@
             this.maxLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.showBondsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.showPolyhedronDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource = new System.Windows.Forms.BindingSource();
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.colorControlEdges = new Crystallography.Controls.ColorControl();
@@ -91,7 +91,7 @@
             this.Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Center = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vertex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
             this.groupBoxPolyhedron.SuspendLayout();
             this.groupBoxEdge.SuspendLayout();
             this.groupBoxBonds.SuspendLayout();
@@ -108,54 +108,62 @@
             this.checkBoxShowPolyhedron.Checked = true;
             this.checkBoxShowPolyhedron.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowPolyhedron.Name = "checkBoxShowPolyhedron";
+            this.toolTip.SetToolTip(this.checkBoxShowPolyhedron, resources.GetString("checkBoxShowPolyhedron.ToolTip"));
             this.checkBoxShowPolyhedron.UseVisualStyleBackColor = true;
             this.checkBoxShowPolyhedron.CheckedChanged += new System.EventHandler(this.checkBoxShowPolyhedron_CheckedChanged);
             // 
             // comboBoxBondingAtom1
             // 
-            this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxBondingAtom1, "comboBoxBondingAtom1");
+            this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBondingAtom1.Name = "comboBoxBondingAtom1";
+            this.toolTip.SetToolTip(this.comboBoxBondingAtom1, resources.GetString("comboBoxBondingAtom1.ToolTip"));
             // 
             // comboBoxBondingAtom2
             // 
-            this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxBondingAtom2, "comboBoxBondingAtom2");
+            this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBondingAtom2.Items.AddRange(new object[] {
             resources.GetString("comboBoxBondingAtom2.Items")});
             this.comboBoxBondingAtom2.Name = "comboBoxBondingAtom2";
+            this.toolTip.SetToolTip(this.comboBoxBondingAtom2, resources.GetString("comboBoxBondingAtom2.ToolTip"));
             // 
             // label58
             // 
             resources.ApplyResources(this.label58, "label58");
             this.label58.Name = "label58";
+            this.toolTip.SetToolTip(this.label58, resources.GetString("label58.ToolTip"));
             // 
             // label57
             // 
             resources.ApplyResources(this.label57, "label57");
             this.label57.Name = "label57";
+            this.toolTip.SetToolTip(this.label57, resources.GetString("label57.ToolTip"));
             // 
             // label39
             // 
             resources.ApplyResources(this.label39, "label39");
             this.label39.Name = "label39";
+            this.toolTip.SetToolTip(this.label39, resources.GetString("label39.ToolTip"));
             // 
             // label40
             // 
             resources.ApplyResources(this.label40, "label40");
             this.label40.Name = "label40";
+            this.toolTip.SetToolTip(this.label40, resources.GetString("label40.ToolTip"));
             // 
             // groupBoxPolyhedron
             // 
+            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Controls.Add(this.numericBoxPolyhedronAlpha);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowEdges);
             this.groupBoxPolyhedron.Controls.Add(this.groupBoxEdge);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowInnerBonds);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowVertexAtoms);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowCenterAtom);
-            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Name = "groupBoxPolyhedron";
             this.groupBoxPolyhedron.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxPolyhedron, resources.GetString("groupBoxPolyhedron.ToolTip"));
             // 
             // numericBoxPolyhedronAlpha
             // 
@@ -173,6 +181,7 @@
             this.numericBoxPolyhedronAlpha.SmartIncrement = true;
             this.numericBoxPolyhedronAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxPolyhedronAlpha.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPolyhedronAlpha, resources.GetString("numericBoxPolyhedronAlpha.ToolTip"));
             this.numericBoxPolyhedronAlpha.UpDown_Increment = 0.1D;
             this.numericBoxPolyhedronAlpha.Value = 0.7D;
             // 
@@ -182,15 +191,17 @@
             this.checkBoxShowEdges.Checked = true;
             this.checkBoxShowEdges.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowEdges.Name = "checkBoxShowEdges";
+            this.toolTip.SetToolTip(this.checkBoxShowEdges, resources.GetString("checkBoxShowEdges.ToolTip"));
             this.checkBoxShowEdges.UseVisualStyleBackColor = true;
             this.checkBoxShowEdges.CheckedChanged += new System.EventHandler(this.checkBoxShowEdges_CheckedChanged);
             // 
             // groupBoxEdge
             // 
-            this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
             resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
+            this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
             this.groupBoxEdge.Name = "groupBoxEdge";
             this.groupBoxEdge.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxEdge, resources.GetString("groupBoxEdge.ToolTip"));
             // 
             // numericBoxEdgeWidth
             // 
@@ -208,6 +219,7 @@
             this.numericBoxEdgeWidth.SmartIncrement = true;
             this.numericBoxEdgeWidth.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxEdgeWidth.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxEdgeWidth, resources.GetString("numericBoxEdgeWidth.ToolTip"));
             this.numericBoxEdgeWidth.UpDown_Increment = 0.1D;
             this.numericBoxEdgeWidth.Value = 0.7D;
             // 
@@ -217,6 +229,7 @@
             this.checkBoxShowInnerBonds.Checked = true;
             this.checkBoxShowInnerBonds.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowInnerBonds.Name = "checkBoxShowInnerBonds";
+            this.toolTip.SetToolTip(this.checkBoxShowInnerBonds, resources.GetString("checkBoxShowInnerBonds.ToolTip"));
             this.checkBoxShowInnerBonds.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowVertexAtoms
@@ -225,6 +238,7 @@
             this.checkBoxShowVertexAtoms.Checked = true;
             this.checkBoxShowVertexAtoms.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowVertexAtoms.Name = "checkBoxShowVertexAtoms";
+            this.toolTip.SetToolTip(this.checkBoxShowVertexAtoms, resources.GetString("checkBoxShowVertexAtoms.ToolTip"));
             this.checkBoxShowVertexAtoms.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowCenterAtom
@@ -233,10 +247,12 @@
             this.checkBoxShowCenterAtom.Checked = true;
             this.checkBoxShowCenterAtom.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowCenterAtom.Name = "checkBoxShowCenterAtom";
+            this.toolTip.SetToolTip(this.checkBoxShowCenterAtom, resources.GetString("checkBoxShowCenterAtom.ToolTip"));
             this.checkBoxShowCenterAtom.UseVisualStyleBackColor = true;
             // 
             // groupBoxBonds
             // 
+            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Controls.Add(this.comboBoxBondingAtom1);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondAlpha);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondRadius);
@@ -247,9 +263,9 @@
             this.groupBoxBonds.Controls.Add(this.label40);
             this.groupBoxBonds.Controls.Add(this.label57);
             this.groupBoxBonds.Controls.Add(this.label58);
-            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Name = "groupBoxBonds";
             this.groupBoxBonds.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxBonds, resources.GetString("groupBoxBonds.ToolTip"));
             // 
             // numericBoxBondAlpha
             // 
@@ -267,6 +283,7 @@
             this.numericBoxBondAlpha.SmartIncrement = true;
             this.numericBoxBondAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBondAlpha.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxBondAlpha, resources.GetString("numericBoxBondAlpha.ToolTip"));
             this.numericBoxBondAlpha.UpDown_Increment = 0.1D;
             this.numericBoxBondAlpha.Value = 0.7D;
             // 
@@ -286,6 +303,7 @@
             this.numericBoxBondRadius.SmartIncrement = true;
             this.numericBoxBondRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBondRadius.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxBondRadius, resources.GetString("numericBoxBondRadius.ToolTip"));
             this.numericBoxBondRadius.UpDown_Increment = 0.02D;
             this.numericBoxBondRadius.Value = 0.1D;
             // 
@@ -305,6 +323,7 @@
             this.numericBoxBondMaxLength.SmartIncrement = true;
             this.numericBoxBondMaxLength.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBondMaxLength.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxBondMaxLength, resources.GetString("numericBoxBondMaxLength.ToolTip"));
             this.numericBoxBondMaxLength.UpDown_Increment = 0.1D;
             this.numericBoxBondMaxLength.Value = 1.6D;
             // 
@@ -324,6 +343,7 @@
             this.numericBoxBondMinLength.SmartIncrement = true;
             this.numericBoxBondMinLength.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxBondMinLength.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxBondMinLength, resources.GetString("numericBoxBondMinLength.ToolTip"));
             this.numericBoxBondMinLength.UpDown_Increment = 0.1D;
             this.numericBoxBondMinLength.Value = 0.1D;
             // 
@@ -333,13 +353,14 @@
             this.checkBoxShowBonds.Checked = true;
             this.checkBoxShowBonds.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowBonds.Name = "checkBoxShowBonds";
+            this.toolTip.SetToolTip(this.checkBoxShowBonds, resources.GetString("checkBoxShowBonds.ToolTip"));
             this.checkBoxShowBonds.UseVisualStyleBackColor = true;
             this.checkBoxShowBonds.CheckedChanged += new System.EventHandler(this.checkBoxShowBonds_CheckedChanged);
             // 
             // buttonAddBond
             // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonAddBond.ForeColor = System.Drawing.Color.White;
             this.buttonAddBond.Name = "buttonAddBond";
             this.toolTip.SetToolTip(this.buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
@@ -348,8 +369,8 @@
             // 
             // buttonChangeBond
             // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
             this.buttonChangeBond.Name = "buttonChangeBond";
             this.toolTip.SetToolTip(this.buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
@@ -368,11 +389,20 @@
             // 
             // dataGridView
             // 
+            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledDataGridViewCheckBoxColumn1,
@@ -383,12 +413,12 @@
             this.showBondsDataGridViewCheckBoxColumn,
             this.showPolyhedronDataGridViewCheckBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridView, resources.GetString("dataGridView.ToolTip"));
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
             // 
@@ -456,19 +486,20 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.buttonAddBond);
             this.panel1.Controls.Add(this.colorControlEdges);
             this.panel1.Controls.Add(this.colorControlPlyhedron);
             this.panel1.Controls.Add(this.colorControlBond);
             this.panel1.Controls.Add(this.buttonChangeBond);
             this.panel1.Controls.Add(this.buttonDeleteBond);
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // colorControlEdges
             // 
-            this.colorControlEdges.Argb = -986896;
             resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
+            this.colorControlEdges.Argb = -986896;
             this.colorControlEdges.Blue = 240;
             this.colorControlEdges.BlueF = 0.9411765F;
             this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
@@ -479,11 +510,12 @@
             this.colorControlEdges.Name = "colorControlEdges";
             this.colorControlEdges.Red = 240;
             this.colorControlEdges.RedF = 0.9411765F;
+            this.toolTip.SetToolTip(this.colorControlEdges, resources.GetString("colorControlEdges.ToolTip"));
             // 
             // colorControlPlyhedron
             // 
-            this.colorControlPlyhedron.Argb = -986896;
             resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
+            this.colorControlPlyhedron.Argb = -986896;
             this.colorControlPlyhedron.Blue = 240;
             this.colorControlPlyhedron.BlueF = 0.9411765F;
             this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
@@ -494,11 +526,12 @@
             this.colorControlPlyhedron.Name = "colorControlPlyhedron";
             this.colorControlPlyhedron.Red = 240;
             this.colorControlPlyhedron.RedF = 0.9411765F;
+            this.toolTip.SetToolTip(this.colorControlPlyhedron, resources.GetString("colorControlPlyhedron.ToolTip"));
             // 
             // colorControlBond
             // 
-            this.colorControlBond.Argb = -986896;
             resources.ApplyResources(this.colorControlBond, "colorControlBond");
+            this.colorControlBond.Argb = -986896;
             this.colorControlBond.Blue = 240;
             this.colorControlBond.BlueF = 0.9411765F;
             this.colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
@@ -509,15 +542,17 @@
             this.colorControlBond.Name = "colorControlBond";
             this.colorControlBond.Red = 240;
             this.colorControlBond.RedF = 0.9411765F;
+            this.toolTip.SetToolTip(this.colorControlBond, resources.GetString("colorControlBond.ToolTip"));
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.checkBoxShowBonds);
             this.panel2.Controls.Add(this.groupBoxBonds);
             this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
             this.panel2.Controls.Add(this.groupBoxPolyhedron);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            this.toolTip.SetToolTip(this.panel2, resources.GetString("panel2.ToolTip"));
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -683,6 +718,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "BondInputControl";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.groupBoxPolyhedron.ResumeLayout(false);
             this.groupBoxPolyhedron.PerformLayout();
             this.groupBoxEdge.ResumeLayout(false);

@@ -33,9 +33,9 @@ namespace ReciPro
 
                 var rot = Matrix3D.Rot(dir[0], numericBoxExp1.RadianValue);
                 if (dir.Length > 1)
-                    rot = rot * Matrix3D.Rot(dir[1], numericBoxExp2.RadianValue);
+                    rot *= Matrix3D.Rot(dir[1], numericBoxExp2.RadianValue);
                 if (dir.Length > 2)
-                    rot = rot * Matrix3D.Rot(dir[2], numericBoxExp3.RadianValue);
+                    rot *= Matrix3D.Rot(dir[2], numericBoxExp3.RadianValue);
 
                 return rot;
             }
@@ -94,16 +94,15 @@ namespace ReciPro
                 if (row1.Length != 3 || row2.Length != 3 || row3.Length != 3)
                     return;
 
-                double e11, e12, e13, e21, e22, e23, e31, e32, e33;
-                if (!double.TryParse(row1[0], out e11)) return;
-                if (!double.TryParse(row1[1], out e12)) return;
-                if (!double.TryParse(row1[2], out e13)) return;
-                if (!double.TryParse(row2[0], out e21)) return;
-                if (!double.TryParse(row2[1], out e22)) return;
-                if (!double.TryParse(row2[2], out e23)) return;
-                if (!double.TryParse(row3[0], out e31)) return;
-                if (!double.TryParse(row3[1], out e32)) return;
-                if (!double.TryParse(row3[2], out e33)) return;
+                if (!double.TryParse(row1[0], out var e11)) return;
+                if (!double.TryParse(row1[1], out var e12)) return;
+                if (!double.TryParse(row1[2], out var e13)) return;
+                if (!double.TryParse(row2[0], out var e21)) return;
+                if (!double.TryParse(row2[1], out var e22)) return;
+                if (!double.TryParse(row2[2], out var e23)) return;
+                if (!double.TryParse(row3[0], out var e31)) return;
+                if (!double.TryParse(row3[1], out var e32)) return;
+                if (!double.TryParse(row3[2], out var e33)) return;
 
                 skip = true;
                 numericBox11.Value = e11;

@@ -93,8 +93,7 @@ namespace ReciPro
 
             if (MouseRangingMode)
             {
-                Pen pen = new Pen(Brushes.Gray, 1f / (float)mag);
-                pen.DashStyle = DashStyle.Dash;
+                var pen = new Pen(Brushes.Gray, 1f / (float)mag) { DashStyle = DashStyle.Dash };
                 var start = convertClientToSrc(MouseRangeStart);
                 var end = convertClientToSrc(MouseRangeEnd);
                 g.DrawRectangle(pen, (float)Math.Min(start.X, end.X), (float)Math.Min(-start.Y, -end.Y),
@@ -554,11 +553,10 @@ namespace ReciPro
             Draw(g);
             if (bmp != null)
             {
-                var dialog = new SaveFileDialog();
-                dialog.Filter = "Picture File[*.png]|*.png;";
+                var dialog = new SaveFileDialog() { Filter = "Picture File[*.png]|*.png;" };
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filename = dialog.FileName;
+                    var filename = dialog.FileName;
                     if (!filename.EndsWith(".png")) filename += ".png";
                     bmp.Save(filename, ImageFormat.Png);
                 }
@@ -608,8 +606,8 @@ namespace ReciPro
         {
             System.Drawing.Printing.PageSettings ps = printDocument1.PrinterSettings.DefaultPageSettings;
             //用紙サイズ取得 このサイズは1/100インチ
-            float height = (ps.PaperSize.Height - ps.Margins.Top - ps.Margins.Bottom) / 100f;
-            float width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
+            var height = (ps.PaperSize.Height - ps.Margins.Top - ps.Margins.Bottom) / 100f;
+            var width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
 
             if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
             {//縦横を逆転
@@ -632,11 +630,11 @@ namespace ReciPro
         {
             if (radioButtonCircleByAxis.Checked)
             {
-                int u = (int)numericUpDownCircleU.Value;
-                int v = (int)numericUpDownCircleV.Value;
-                int w = (int)numericUpDownCircleW.Value;
+                var u = (int)numericUpDownCircleU.Value;
+                var v = (int)numericUpDownCircleV.Value;
+                var w = (int)numericUpDownCircleW.Value;
                 if (u == 0 && v == 0 && w == 0) return;
-                Vector3D vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
+                var vec = (u * formMain.Crystal.A_Axis) + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
                 vec.text = "[" + u.ToString() + " " + v.ToString() + " " + w.ToString() + "]";
                 formMain.Crystal.VectorOfPole.Add(vec);
                 checkedListBoxCircles.Items.Add(vec, true);
@@ -644,19 +642,19 @@ namespace ReciPro
             }
             else if (radioButtonCircleByPlanes.Checked)
             {
-                int h1 = (int)numericUpDownCircleH1.Value;
-                int h2 = (int)numericUpDownCircleH2.Value;
-                int k1 = (int)numericUpDownCircleK1.Value;
-                int k2 = (int)numericUpDownCircleK2.Value;
-                int l1 = (int)numericUpDownCircleL1.Value;
-                int l2 = (int)numericUpDownCircleL2.Value;
+                var h1 = (int)numericUpDownCircleH1.Value;
+                var h2 = (int)numericUpDownCircleH2.Value;
+                var k1 = (int)numericUpDownCircleK1.Value;
+                var k2 = (int)numericUpDownCircleK2.Value;
+                var l1 = (int)numericUpDownCircleL1.Value;
+                var l2 = (int)numericUpDownCircleL2.Value;
 
-                int u = k1 * l2 - k2 * l1;
-                int v = l1 * h2 - l2 * h1;
-                int w = h1 * k2 - h2 * k1;
+                var u = k1 * l2 - k2 * l1;
+                var v = l1 * h2 - l2 * h1;
+                var w = h1 * k2 - h2 * k1;
                 if (u == 0 && v == 0 && w == 0) return;
 
-                Vector3D vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
+                var vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
 
                 vec.text = "(" + h1.ToString() + " " + k1.ToString() + " " + l1.ToString() + ") & (" + h2.ToString() + " " + k2.ToString() + " " + l2.ToString() + ")";
                 formMain.Crystal.VectorOfPole.Add(vec);
@@ -698,12 +696,12 @@ namespace ReciPro
         {
             formMain.timer.Stop();
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             if (positionRecorder.Count > 0)
             {
                 for (int i = 0; i < positionRecorder.Count; i++)
                 {
-                    Vector3D v = radioButtonPlanes.Checked ? formMain.Crystal.VectorOfPlane[i] : formMain.Crystal.VectorOfAxis[i];
+                    var v = radioButtonPlanes.Checked ? formMain.Crystal.VectorOfPlane[i] : formMain.Crystal.VectorOfAxis[i];
                     sb.Append(v.ToString() + "\t\t");
                 }
                 sb.Append("\r\n");

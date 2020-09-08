@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
-    <value>475, 2</value>
+    <value>464, 2</value>
   </data>
   <data name="buttonDeleteBond.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -253,7 +253,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>550, 32</value>
+    <value>539, 32</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -322,7 +322,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>550, 288</value>
+    <value>539, 288</value>
   </data>
   <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -379,7 +379,7 @@
     <value>numericBoxDistance</value>
   </data>
   <data name="&gt;&gt;numericBoxDistance.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1140, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDistance.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -424,7 +424,7 @@
     <value>numericBoxL</value>
   </data>
   <data name="&gt;&gt;numericBoxL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1140, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxL.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -469,7 +469,7 @@
     <value>numericBoxK</value>
   </data>
   <data name="&gt;&gt;numericBoxK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1140, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxK.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -514,7 +514,7 @@
     <value>numericBoxH</value>
   </data>
   <data name="&gt;&gt;numericBoxH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1140, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxH.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -634,7 +634,7 @@
     <value>colorControl</value>
   </data>
   <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.9.3.1140, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -784,7 +784,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>550, 49</value>
+    <value>539, 49</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
@@ -865,7 +865,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>550, 337</value>
+    <value>539, 337</value>
   </data>
   <data name="&gt;&gt;dataGridViewImageColumn3.Name" xml:space="preserve">
     <value>dataGridViewImageColumn3</value>

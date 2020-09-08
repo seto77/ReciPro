@@ -160,6 +160,11 @@
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -1204,9 +1209,14 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.checkUpdatesToolStripMenuItem,
+            this.toolStripSeparator16,
             this.hintToolStripMenuItem,
             this.versionHistoryToolStripMenuItem,
             this.licenseToolStripMenuItem,
+            this.toolStripSeparator18,
+            this.githubPageToolStripMenuItem,
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1,
+            this.toolStripSeparator17,
             this.helpwebToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
@@ -1266,6 +1276,33 @@
             // 
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // githubPageToolStripMenuItem
+            // 
+            this.githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
+            resources.ApplyResources(this.githubPageToolStripMenuItem, "githubPageToolStripMenuItem");
+            this.githubPageToolStripMenuItem.Click += new System.EventHandler(this.githubPageToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
+            // 
+            // reportBugsRequestsOrCommentsToolStripMenuItem1
+            // 
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Name = "reportBugsRequestsOrCommentsToolStripMenuItem1";
+            resources.ApplyResources(this.reportBugsRequestsOrCommentsToolStripMenuItem1, "reportBugsRequestsOrCommentsToolStripMenuItem1");
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Click += new System.EventHandler(this.reportBugsRequestsOrCommentsToolStripMenuItem1_Click);
             // 
             // FormMain
             // 
@@ -1473,6 +1510,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         public System.Windows.Forms.ToolStripButton toolStripButtonDatabase;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripMenuItem githubPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.ToolStripMenuItem reportBugsRequestsOrCommentsToolStripMenuItem1;
     }
 }
 
