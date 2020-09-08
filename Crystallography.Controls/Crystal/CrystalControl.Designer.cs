@@ -247,6 +247,7 @@
             this.tabPageBasicInfo.Controls.Add(this.panel5);
             resources.ApplyResources(this.tabPageBasicInfo, "tabPageBasicInfo");
             this.tabPageBasicInfo.Name = "tabPageBasicInfo";
+            this.toolTip.SetToolTip(this.tabPageBasicInfo, resources.GetString("tabPageBasicInfo.ToolTip"));
             // 
             // panel5
             // 
@@ -280,6 +281,7 @@
             this.numericBoxVolume.SmartIncrement = true;
             this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolTip.SetToolTip(this.numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
             // 
             // numericBoxCellMass
             // 
@@ -295,6 +297,7 @@
             this.numericBoxCellMass.SmartIncrement = true;
             this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolTip.SetToolTip(this.numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
             // 
@@ -310,6 +313,7 @@
             this.numericBoxMolarVolume.SmartIncrement = true;
             this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolTip.SetToolTip(this.numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
             // 
@@ -325,6 +329,7 @@
             this.numericBoxMolarMass.SmartIncrement = true;
             this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolTip.SetToolTip(this.numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
             // 
@@ -337,6 +342,7 @@
             this.numericBoxDensity.SmartIncrement = true;
             this.numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDensity.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
             // colorControl
             // 
@@ -352,6 +358,7 @@
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 240;
             this.colorControl.RedF = 0.9411765F;
+            this.toolTip.SetToolTip(this.colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // symmetryControl
             // 
@@ -371,6 +378,7 @@
             this.tabPageAtom.Controls.Add(this.panelAtom);
             resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
             this.tabPageAtom.Name = "tabPageAtom";
+            this.toolTip.SetToolTip(this.tabPageAtom, resources.GetString("tabPageAtom.ToolTip"));
             // 
             // atomControl
             // 
@@ -1508,6 +1516,7 @@
             resources.ApplyResources(this.textBoxFormula, "textBoxFormula");
             this.textBoxFormula.Name = "textBoxFormula";
             this.textBoxFormula.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
             // 
             // numericBoxZnumber
             // 
@@ -1519,11 +1528,13 @@
             this.numericBoxZnumber.SmartIncrement = true;
             this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZnumber.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
             // 
             // label90
             // 
             resources.ApplyResources(this.label90, "label90");
             this.label90.Name = "label90";
+            this.toolTip.SetToolTip(this.label90, resources.GetString("label90.ToolTip"));
             // 
             // contextMenuStrip
             // 
@@ -1614,10 +1625,6 @@
             resources.ApplyResources(this.label22, "label22");
             this.label22.Name = "label22";
             // 
-            // toolTip
-            // 
-            this.toolTip.IsBalloon = true;
-            // 
             // buttonScatteringFactor
             // 
             resources.ApplyResources(this.buttonScatteringFactor, "buttonScatteringFactor");
@@ -1662,6 +1669,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.DoubleBuffered = true;
             this.Name = "CrystalControl";
             this.Load += new System.EventHandler(this.CrystalForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragDrop);

@@ -130,7 +130,7 @@ namespace Crystallography
                         if (Pt[pos].X < x && x < Pt[pos + 1].X)
                             return (Pt[pos].Y - Pt[pos + 1].Y) / (Pt[pos].X - Pt[pos + 1].X) * (x - Pt[pos + 1].X) + Pt[pos + 1].Y;
                         else if (Pt[pos + 1].X == x)
-                            return Pt[pos + 1].X;
+                            return Pt[pos + 1].Y;
                     }
                 return (Pt[pos].Y - Pt[pos + 1].Y) / (Pt[pos].X - Pt[pos + 1].X) * (x - Pt[pos + 1].X) + Pt[pos + 1].Y;
             }

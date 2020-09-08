@@ -74,6 +74,9 @@ namespace Crystallography.Controls
 
         #endregion Tabページの表示/非表示プロパティ
 
+
+       
+
         public Crystal Crystal
         {
             set

@@ -1429,6 +1429,8 @@ namespace Crystallography
                 if (atoms.Dsf.UseIso)
                 {
                     var T = Math.Exp(-atoms.Dsf.Biso * s2);
+                    if (double.IsNaN(T))
+                        T = 1;
                     foreach (var atom in atoms.Atom)
                         F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
                 }
@@ -1439,6 +1441,8 @@ namespace Crystallography
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
                         var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L 
                             + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
+                        if (double.IsNaN(T))
+                            T = 1;
                         F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z)) ;
                     }
                 }

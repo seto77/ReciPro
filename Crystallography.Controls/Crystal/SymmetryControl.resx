@@ -144,6 +144,12 @@
   <data name="checkBoxShowError.Text" xml:space="preserve">
     <value>Show error</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>Show error</value>
+  </data>
   <data name="&gt;&gt;checkBoxShowError.Name" xml:space="preserve">
     <value>checkBoxShowError</value>
   </data>
@@ -253,7 +259,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBeta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxBeta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -262,19 +268,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxBeta.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="numericBoxBeta.ToolTip" xml:space="preserve">
-    <value>Beta in degree</value>
+    <value>Cell constant "β" in degree</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Name" xml:space="preserve">
     <value>numericBoxBeta</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -304,7 +310,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -313,19 +319,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
-    <value>Alpha in degree</value>
+    <value>Cell constant "α" in degree</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Name" xml:space="preserve">
     <value>numericBoxAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -394,7 +400,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGammaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxGammaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -403,7 +409,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxGammaErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -412,7 +418,7 @@
     <value>numericBoxGammaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -481,7 +487,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlphaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxAlphaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -490,7 +496,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxAlphaErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -499,7 +505,7 @@
     <value>numericBoxAlphaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -532,7 +538,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBetaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxBetaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -541,7 +547,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxBetaErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -550,7 +556,7 @@
     <value>numericBoxBetaErr</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -580,7 +586,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxA.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -589,19 +595,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxA.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
-    <value>A in angstrom</value>
+    <value>Cell constant "a" in angstrom</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Name" xml:space="preserve">
     <value>numericBoxA</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -703,7 +709,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGamma.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxGamma.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -712,19 +718,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxGamma.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
-    <value>Gamma in degree</value>
+    <value>Cell constant "γ" in degree</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Name" xml:space="preserve">
     <value>numericBoxGamma</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -793,7 +799,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxBErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -802,7 +808,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxBErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -811,7 +817,7 @@
     <value>numericBoxBErr</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -841,7 +847,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxB.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -850,19 +856,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
-    <value>B in angstrom</value>
+    <value>Cell constant "b" in angstrom</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Name" xml:space="preserve">
     <value>numericBoxB</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1036,7 +1042,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxC.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxC.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1045,19 +1051,19 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxC.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
-    <value>C in angstrom</value>
+    <value>Cell constant "c" in angstrom</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Name" xml:space="preserve">
     <value>numericBoxC</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1090,7 +1096,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxCErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxCErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1099,7 +1105,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxCErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1108,7 +1114,7 @@
     <value>numericBoxCErr</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1141,7 +1147,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 23</value>
   </data>
   <data name="numericBoxAErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1150,7 +1156,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+    <value>65, 23</value>
   </data>
   <data name="numericBoxAErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1159,7 +1165,7 @@
     <value>numericBoxAErr</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.14.47, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.3.1134, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1290,6 +1296,9 @@
   <data name="comboBoxSpaceGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>Set space group in HM notation</value>
+  </data>
   <data name="&gt;&gt;comboBoxSpaceGroup.Name" xml:space="preserve">
     <value>comboBoxSpaceGroup</value>
   </data>
@@ -1322,6 +1331,9 @@
   </data>
   <data name="comboBoxPointGroup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>Set point group in HM notation</value>
   </data>
   <data name="&gt;&gt;comboBoxPointGroup.Name" xml:space="preserve">
     <value>comboBoxPointGroup</value>
@@ -1380,6 +1392,9 @@
   <data name="comboBoxCrystalSystem.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Set crystal system</value>
+  </data>
   <data name="&gt;&gt;comboBoxCrystalSystem.Name" xml:space="preserve">
     <value>comboBoxCrystalSystem</value>
   </data>
@@ -1412,6 +1427,9 @@
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Space Group</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Set space group in HM notation</value>
   </data>
   <data name="&gt;&gt;label20.Name" xml:space="preserve">
     <value>label20</value>
@@ -1446,6 +1464,9 @@
   <data name="label17.Text" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Search space group</value>
+  </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
@@ -1479,6 +1500,9 @@
   <data name="label19.Text" xml:space="preserve">
     <value>Crystal System</value>
   </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Set crystal system</value>
+  </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
   </data>
@@ -1502,6 +1526,9 @@
   </data>
   <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>Search space group</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
     <value>textBoxSearch</value>
@@ -1535,6 +1562,9 @@
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Point Group</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Set point group in HM notation</value>
   </data>
   <data name="&gt;&gt;label21.Name" xml:space="preserve">
     <value>label21</value>
@@ -1646,6 +1676,12 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>576, 132</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SymmetryControl</value>

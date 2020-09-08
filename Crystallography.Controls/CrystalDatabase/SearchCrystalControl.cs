@@ -8,9 +8,15 @@ namespace Crystallography.Controls
 {
     public partial class SearchCrystalControl : UserControl
     {
-        #region フィールド、プロパティ
+        #region フィールド、プロパティ、イベント
+
+        /// <summary>
+        /// 検索開始の合図を送るイベント
+        /// </summary>
+        public event EventHandler FilterChanged;
 
         public FormPeriodicTable formPeriodicTable;
+
 
         public string Filter
         {
@@ -115,8 +121,13 @@ namespace Crystallography.Controls
 
         private void buttonPeriodicTable_Click(object sender, EventArgs e) => formPeriodicTable.Visible = true;
 
-        #endregion
-      
 
+        #endregion
+
+        private void textBoxSearchName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter　)
+                FilterChanged?.Invoke(this, new EventArgs());
+        }
     }
 }

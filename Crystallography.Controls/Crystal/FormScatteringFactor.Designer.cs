@@ -63,6 +63,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceScatteringFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -413,5 +414,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn RelInt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

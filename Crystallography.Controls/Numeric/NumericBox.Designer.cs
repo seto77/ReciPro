@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBox));
             this.textBox = new System.Windows.Forms.TextBox();
             this.labelHeader = new System.Windows.Forms.Label();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.labelFooter = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 

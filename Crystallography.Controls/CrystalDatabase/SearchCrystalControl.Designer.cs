@@ -116,6 +116,7 @@
             this.textBoxSearchName.Size = new System.Drawing.Size(174, 25);
             this.textBoxSearchName.TabIndex = 0;
             this.textBoxSearchName.Visible = false;
+            this.textBoxSearchName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchName_KeyDown);
             // 
             // checkBoxSearchElements
             // 
@@ -169,6 +170,7 @@
             this.textBoxSearchRefference.Size = new System.Drawing.Size(173, 25);
             this.textBoxSearchRefference.TabIndex = 0;
             this.textBoxSearchRefference.Visible = false;
+            this.textBoxSearchRefference.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchName_KeyDown);
             // 
             // checkBoxSearchCrystalSystem
             // 

@@ -41,11 +41,17 @@
             this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Translation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
+            this.numericBoxL = new Crystallography.Controls.NumericBox();
+            this.numericBoxK = new Crystallography.Controls.NumericBox();
+            this.numericBoxH = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.colorControl = new Crystallography.Controls.ColorControl();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,12 +64,7 @@
             this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
-            this.numericBoxL = new Crystallography.Controls.NumericBox();
-            this.numericBoxK = new Crystallography.Controls.NumericBox();
-            this.numericBoxH = new Crystallography.Controls.NumericBox();
-            this.colorControl = new Crystallography.Controls.ColorControl();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -176,6 +177,14 @@
             this.Translation.ReadOnly = true;
             this.Translation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            resources.ApplyResources(this.colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // bindingSource
             // 
             this.bindingSource.DataMember = "DataTableLatticePlane";
@@ -204,6 +213,62 @@
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
+            // numericBoxDistance
+            // 
+            resources.ApplyResources(this.numericBoxDistance, "numericBoxDistance");
+            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.Maximum = 0.5D;
+            this.numericBoxDistance.Minimum = -0.5D;
+            this.numericBoxDistance.Name = "numericBoxDistance";
+            this.numericBoxDistance.ShowUpDown = true;
+            this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.UpDown_Increment = 0.1D;
+            // 
+            // numericBoxL
+            // 
+            resources.ApplyResources(this.numericBoxL, "numericBoxL");
+            this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.DecimalPlaces = 0;
+            this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.Maximum = 10D;
+            this.numericBoxL.Minimum = -10D;
+            this.numericBoxL.Name = "numericBoxL";
+            this.numericBoxL.ShowUpDown = true;
+            this.numericBoxL.SkipEventDuringInput = false;
+            this.numericBoxL.ThonsandsSeparator = true;
+            // 
+            // numericBoxK
+            // 
+            resources.ApplyResources(this.numericBoxK, "numericBoxK");
+            this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.DecimalPlaces = 0;
+            this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.Maximum = 10D;
+            this.numericBoxK.Minimum = -10D;
+            this.numericBoxK.Name = "numericBoxK";
+            this.numericBoxK.ShowUpDown = true;
+            this.numericBoxK.SkipEventDuringInput = false;
+            this.numericBoxK.ThonsandsSeparator = true;
+            // 
+            // numericBoxH
+            // 
+            resources.ApplyResources(this.numericBoxH, "numericBoxH");
+            this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.DecimalPlaces = 0;
+            this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.Maximum = 10D;
+            this.numericBoxH.Minimum = -10D;
+            this.numericBoxH.Name = "numericBoxH";
+            this.numericBoxH.ShowUpDown = true;
+            this.numericBoxH.SkipEventDuringInput = false;
+            this.numericBoxH.ThonsandsSeparator = true;
+            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
@@ -213,6 +278,21 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // colorControl
+            // 
+            this.colorControl.Argb = -16192;
+            resources.ApplyResources(this.colorControl, "colorControl");
+            this.colorControl.Blue = 192;
+            this.colorControl.BlueF = 0.7529412F;
+            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.colorControl.Green = 192;
+            this.colorControl.GreenF = 0.7529412F;
+            this.colorControl.Name = "colorControl";
+            this.colorControl.Red = 255;
+            this.colorControl.RedF = 1F;
             // 
             // label5
             // 
@@ -294,85 +374,6 @@
             this.dataGridViewImageColumn7.ReadOnly = true;
             this.dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            resources.ApplyResources(this.colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // numericBoxDistance
-            // 
-            resources.ApplyResources(this.numericBoxDistance, "numericBoxDistance");
-            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Maximum = 0.5D;
-            this.numericBoxDistance.Minimum = -0.5D;
-            this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.ShowUpDown = true;
-            this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.ThonsandsSeparator = true;
-            this.numericBoxDistance.UpDown_Increment = 0.1D;
-            // 
-            // numericBoxL
-            // 
-            resources.ApplyResources(this.numericBoxL, "numericBoxL");
-            this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.DecimalPlaces = 0;
-            this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.Maximum = 10D;
-            this.numericBoxL.Minimum = -10D;
-            this.numericBoxL.Name = "numericBoxL";
-            this.numericBoxL.ShowUpDown = true;
-            this.numericBoxL.SkipEventDuringInput = false;
-            this.numericBoxL.ThonsandsSeparator = true;
-            // 
-            // numericBoxK
-            // 
-            resources.ApplyResources(this.numericBoxK, "numericBoxK");
-            this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.DecimalPlaces = 0;
-            this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.Maximum = 10D;
-            this.numericBoxK.Minimum = -10D;
-            this.numericBoxK.Name = "numericBoxK";
-            this.numericBoxK.ShowUpDown = true;
-            this.numericBoxK.SkipEventDuringInput = false;
-            this.numericBoxK.ThonsandsSeparator = true;
-            // 
-            // numericBoxH
-            // 
-            resources.ApplyResources(this.numericBoxH, "numericBoxH");
-            this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.DecimalPlaces = 0;
-            this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.Maximum = 10D;
-            this.numericBoxH.Minimum = -10D;
-            this.numericBoxH.Name = "numericBoxH";
-            this.numericBoxH.ShowUpDown = true;
-            this.numericBoxH.SkipEventDuringInput = false;
-            this.numericBoxH.ThonsandsSeparator = true;
-            // 
-            // colorControl
-            // 
-            this.colorControl.Argb = -16192;
-            resources.ApplyResources(this.colorControl, "colorControl");
-            this.colorControl.Blue = 192;
-            this.colorControl.BlueF = 0.7529412F;
-            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.colorControl.Green = 192;
-            this.colorControl.GreenF = 0.7529412F;
-            this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 255;
-            this.colorControl.RedF = 1F;
-            // 
             // LatticePlaneControl
             // 
             resources.ApplyResources(this, "$this");
@@ -428,5 +429,6 @@
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

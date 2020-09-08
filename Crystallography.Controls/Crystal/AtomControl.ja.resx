@@ -139,6 +139,12 @@
   <data name="radioButtonAnisotropy.Text" xml:space="preserve">
     <value>非等方</value>
   </data>
+  <data name="numericBoxBiso.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxBiso.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 22</value>
+  </data>
   <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 24</value>
   </data>
@@ -193,6 +199,84 @@
   <data name="checkBoxDetailAtomicPositionError.Text" xml:space="preserve">
     <value>誤差
 表示</value>
+  </data>
+  <data name="numericBoxOccerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 0</value>
+  </data>
+  <data name="numericBoxOccerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 22</value>
+  </data>
+  <data name="numericBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 0</value>
+  </data>
+  <data name="numericBoxOcc.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxOcc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 48</value>
+  </data>
+  <data name="numericBoxZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxYerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 24</value>
+  </data>
+  <data name="numericBoxYerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxXerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 0</value>
+  </data>
+  <data name="numericBoxXerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 24</value>
+  </data>
+  <data name="numericBoxY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 0</value>
+  </data>
+  <data name="numericBoxX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="numericBoxX.ToolTip1" xml:space="preserve">
+    <value>Fractional coordinates of a-axis. </value>
+  </data>
+  <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 48</value>
+  </data>
+  <data name="numericBoxZerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 22</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 74</value>
   </data>
   <data name="tabPageElementAndPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -254,11 +338,29 @@
   <data name="numericBoxOriginShiftZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>508, 45</value>
   </data>
+  <data name="numericBoxOriginShiftZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 23</value>
+  </data>
   <data name="numericBoxOriginShiftY.Location" type="System.Drawing.Point, System.Drawing">
     <value>462, 45</value>
   </data>
+  <data name="numericBoxOriginShiftY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxOriginShiftY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 23</value>
+  </data>
   <data name="numericBoxOriginShiftX.Location" type="System.Drawing.Point, System.Drawing">
     <value>416, 45</value>
+  </data>
+  <data name="numericBoxOriginShiftX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxOriginShiftX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 23</value>
   </data>
   <data name="tabPageOriginShift.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -268,99 +370,6 @@
   </data>
   <data name="tabPageOriginShift.Text" xml:space="preserve">
     <value>原点シフト</value>
-  </data>
-  <data name="tabPageDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageDebyeWaller.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 72</value>
-  </data>
-  <data name="tabPageDebyeWaller.Text" xml:space="preserve">
-    <value>デバイワラー因子</value>
-  </data>
-  <data name="tabPageScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 72</value>
-  </data>
-  <data name="tabPageScatteringFactor.Text" xml:space="preserve">
-    <value>散乱因子</value>
-  </data>
-  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 72</value>
-  </data>
-  <data name="tabPageAppearance.Text" xml:space="preserve">
-    <value>表示</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 218</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>563, 103</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 74</value>
-  </data>
-  <data name="numericBoxOccerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>390, 0</value>
-  </data>
-  <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
-  </data>
-  <data name="numericBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>306, 0</value>
-  </data>
-  <data name="numericBoxOcc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 48</value>
-  </data>
-  <data name="numericBoxZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxYerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 24</value>
-  </data>
-  <data name="numericBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxXerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 0</value>
-  </data>
-  <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 24</value>
-  </data>
-  <data name="numericBoxY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 0</value>
-  </data>
-  <data name="numericBoxX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 48</value>
-  </data>
-  <data name="numericBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 24</value>
-  </data>
-  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 1</value>
-  </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 18</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -380,8 +389,11 @@
   <data name="labelDimension.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 18</value>
   </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
+  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 1</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 18</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -398,8 +410,8 @@
   <data name="radioButtonDebyeWallerTypeB.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 0</value>
   </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 21</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -409,6 +421,9 @@
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>モデル: </value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -422,11 +437,98 @@
   <data name="checkBoxDetailsDebyeWallerError.Text" xml:space="preserve">
     <value>誤差を表示</value>
   </data>
+  <data name="numericBoxB22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB22err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB22err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB23err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB23err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="numericBoxB33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB33err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB33err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
   <data name="flowLayoutPanelAniso2.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 48</value>
   </data>
+  <data name="flowLayoutPanelAniso2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 22</value>
+  </data>
+  <data name="numericBoxB11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB11err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="numericBoxB12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB12err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB12err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="numericBoxB13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 22</value>
+  </data>
+  <data name="numericBoxB13err.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 22</value>
+  </data>
+  <data name="numericBoxB13err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
   <data name="flowLayoutPanelAniso1.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 24</value>
+  </data>
+  <data name="flowLayoutPanelAniso1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 22</value>
+  </data>
+  <data name="tabPageDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageDebyeWaller.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 72</value>
+  </data>
+  <data name="tabPageDebyeWaller.Text" xml:space="preserve">
+    <value>デバイワラー因子</value>
   </data>
   <data name="richTextBoxIsotope.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 44</value>
@@ -463,6 +565,51 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>電子線</value>
+  </data>
+  <data name="tabPageScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 72</value>
+  </data>
+  <data name="tabPageScatteringFactor.Text" xml:space="preserve">
+    <value>散乱因子</value>
+  </data>
+  <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 23</value>
+  </data>
+  <data name="numericBoxEmission.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxEmission.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 23</value>
+  </data>
+  <data name="numericBoxShininess.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxShininess.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 23</value>
+  </data>
+  <data name="numericBoxSpecular.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxSpecular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 23</value>
+  </data>
+  <data name="numericBoxDiffusion.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxDiffusion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 23</value>
+  </data>
+  <data name="numericBoxAmbient.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAmbient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 23</value>
   </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 6</value>
@@ -533,6 +680,12 @@
   <data name="numericBoxAtomRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
+  <data name="numericBoxAtomRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAtomRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
   <data name="colorControlAtomColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -541,6 +694,24 @@
   </data>
   <data name="colorControlAtomColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 20</value>
+  </data>
+  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 72</value>
+  </data>
+  <data name="tabPageAppearance.Text" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 218</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>563, 103</value>
   </data>
   <data name="buttonChangeToSameElement.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

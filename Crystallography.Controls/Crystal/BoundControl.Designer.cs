@@ -72,6 +72,7 @@
             this.dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -109,34 +110,32 @@
             resources.ApplyResources(this.numericBoxDistanceD, "numericBoxDistanceD");
             this.numericBoxDistanceD.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistanceD.DecimalPlaces = 3;
-                                                                       this.numericBoxDistanceD.Maximum = 20D;
+            this.numericBoxDistanceD.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistanceD.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistanceD.Maximum = 20D;
             this.numericBoxDistanceD.Minimum = -20D;
-                        this.numericBoxDistanceD.Name = "numericBoxDistanceD";
+            this.numericBoxDistanceD.Name = "numericBoxDistanceD";
             this.numericBoxDistanceD.RadianValue = 0.017453292519943295D;
-                        this.numericBoxDistanceD.RestrictLimitValue = true;
-                                    this.numericBoxDistanceD.ShowUpDown = true;
+            this.numericBoxDistanceD.ShowUpDown = true;
             this.numericBoxDistanceD.SkipEventDuringInput = false;
-            this.numericBoxDistanceD.SmartIncrement = false;
-                                                this.numericBoxDistanceD.ThonsandsSeparator = true;
+            this.numericBoxDistanceD.ThonsandsSeparator = true;
             this.numericBoxDistanceD.UpDown_Increment = 0.1D;
             this.numericBoxDistanceD.Value = 1D;
-                        this.numericBoxDistanceD.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
+            this.numericBoxDistanceD.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
             // numericBoxDistance
             // 
             resources.ApplyResources(this.numericBoxDistance, "numericBoxDistance");
             this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.DecimalPlaces = 3;
-                                                                       this.numericBoxDistance.Maximum = 100D;
+            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.Maximum = 100D;
             this.numericBoxDistance.Minimum = -100D;
-                        this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.RadianValue = 0D;
-                        this.numericBoxDistance.RestrictLimitValue = true;
-                                    this.numericBoxDistance.ShowUpDown = false;
+            this.numericBoxDistance.Name = "numericBoxDistance";
             this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.SmartIncrement = false;
-                                                this.numericBoxDistance.ThonsandsSeparator = true;
-                                               this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
+            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
             // 
             // colorControl
             // 
@@ -158,32 +157,30 @@
             resources.ApplyResources(this.numericBoxL, "numericBoxL");
             this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxL.DecimalPlaces = 0;
-                                                                       this.numericBoxL.Maximum = 10D;
+            this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxL.Maximum = 10D;
             this.numericBoxL.Minimum = -10D;
-                        this.numericBoxL.Name = "numericBoxL";
-            this.numericBoxL.RadianValue = 0D;
-                        this.numericBoxL.RestrictLimitValue = true;
-                                    this.numericBoxL.ShowUpDown = true;
+            this.numericBoxL.Name = "numericBoxL";
+            this.numericBoxL.ShowUpDown = true;
             this.numericBoxL.SkipEventDuringInput = false;
-            this.numericBoxL.SmartIncrement = false;
-                                                this.numericBoxL.ThonsandsSeparator = true;
-                                               this.numericBoxL.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
+            this.numericBoxL.ThonsandsSeparator = true;
+            this.numericBoxL.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
             // numericBoxK
             // 
             resources.ApplyResources(this.numericBoxK, "numericBoxK");
             this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxK.DecimalPlaces = 0;
-                                                                       this.numericBoxK.Maximum = 10D;
+            this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxK.Maximum = 10D;
             this.numericBoxK.Minimum = -10D;
-                        this.numericBoxK.Name = "numericBoxK";
-            this.numericBoxK.RadianValue = 0D;
-                        this.numericBoxK.RestrictLimitValue = true;
-                                    this.numericBoxK.ShowUpDown = true;
+            this.numericBoxK.Name = "numericBoxK";
+            this.numericBoxK.ShowUpDown = true;
             this.numericBoxK.SkipEventDuringInput = false;
-            this.numericBoxK.SmartIncrement = false;
-                                                this.numericBoxK.ThonsandsSeparator = true;
-                                               this.numericBoxK.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
+            this.numericBoxK.ThonsandsSeparator = true;
+            this.numericBoxK.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
             // checkBoxEquivalency
             // 
@@ -199,16 +196,15 @@
             resources.ApplyResources(this.numericBoxH, "numericBoxH");
             this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxH.DecimalPlaces = 0;
-                                                                       this.numericBoxH.Maximum = 10D;
+            this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxH.Maximum = 10D;
             this.numericBoxH.Minimum = -10D;
-                        this.numericBoxH.Name = "numericBoxH";
-            this.numericBoxH.RadianValue = 0D;
-                        this.numericBoxH.RestrictLimitValue = true;
-                                    this.numericBoxH.ShowUpDown = true;
+            this.numericBoxH.Name = "numericBoxH";
+            this.numericBoxH.ShowUpDown = true;
             this.numericBoxH.SkipEventDuringInput = false;
-            this.numericBoxH.SmartIncrement = false;
-                                                this.numericBoxH.ThonsandsSeparator = true;
-                                               this.numericBoxH.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
+            this.numericBoxH.ThonsandsSeparator = true;
+            this.numericBoxH.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
             // label2
             // 
@@ -521,5 +517,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn10;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

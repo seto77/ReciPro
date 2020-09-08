@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BondInputControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.checkBoxShowPolyhedron = new System.Windows.Forms.CheckBox();
             this.comboBoxBondingAtom1 = new System.Windows.Forms.ComboBox();
             this.comboBoxBondingAtom2 = new System.Windows.Forms.ComboBox();
@@ -56,6 +55,13 @@
             this.buttonChangeBond = new System.Windows.Forms.Button();
             this.buttonDeleteBond = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.enabledDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.centerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vertexDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.showBondsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.showPolyhedronDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -85,13 +91,7 @@
             this.Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Center = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vertex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enabledDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.centerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vertexDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxLenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.showBondsDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.showPolyhedronDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxPolyhedron.SuspendLayout();
             this.groupBoxEdge.SuspendLayout();
             this.groupBoxBonds.SuspendLayout();
@@ -113,14 +113,14 @@
             // 
             // comboBoxBondingAtom1
             // 
-            resources.ApplyResources(this.comboBoxBondingAtom1, "comboBoxBondingAtom1");
             this.comboBoxBondingAtom1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBondingAtom1, "comboBoxBondingAtom1");
             this.comboBoxBondingAtom1.Name = "comboBoxBondingAtom1";
             // 
             // comboBoxBondingAtom2
             // 
-            resources.ApplyResources(this.comboBoxBondingAtom2, "comboBoxBondingAtom2");
             this.comboBoxBondingAtom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBondingAtom2, "comboBoxBondingAtom2");
             this.comboBoxBondingAtom2.Items.AddRange(new object[] {
             resources.GetString("comboBoxBondingAtom2.Items")});
             this.comboBoxBondingAtom2.Name = "comboBoxBondingAtom2";
@@ -147,13 +147,13 @@
             // 
             // groupBoxPolyhedron
             // 
-            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Controls.Add(this.numericBoxPolyhedronAlpha);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowEdges);
             this.groupBoxPolyhedron.Controls.Add(this.groupBoxEdge);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowInnerBonds);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowVertexAtoms);
             this.groupBoxPolyhedron.Controls.Add(this.checkBoxShowCenterAtom);
+            resources.ApplyResources(this.groupBoxPolyhedron, "groupBoxPolyhedron");
             this.groupBoxPolyhedron.Name = "groupBoxPolyhedron";
             this.groupBoxPolyhedron.TabStop = false;
             // 
@@ -187,8 +187,8 @@
             // 
             // groupBoxEdge
             // 
-            resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
             this.groupBoxEdge.Controls.Add(this.numericBoxEdgeWidth);
+            resources.ApplyResources(this.groupBoxEdge, "groupBoxEdge");
             this.groupBoxEdge.Name = "groupBoxEdge";
             this.groupBoxEdge.TabStop = false;
             // 
@@ -237,7 +237,6 @@
             // 
             // groupBoxBonds
             // 
-            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Controls.Add(this.comboBoxBondingAtom1);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondAlpha);
             this.groupBoxBonds.Controls.Add(this.numericBoxBondRadius);
@@ -248,6 +247,7 @@
             this.groupBoxBonds.Controls.Add(this.label40);
             this.groupBoxBonds.Controls.Add(this.label57);
             this.groupBoxBonds.Controls.Add(this.label58);
+            resources.ApplyResources(this.groupBoxBonds, "groupBoxBonds");
             this.groupBoxBonds.Name = "groupBoxBonds";
             this.groupBoxBonds.TabStop = false;
             // 
@@ -338,19 +338,21 @@
             // 
             // buttonAddBond
             // 
-            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
             this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
             this.buttonAddBond.ForeColor = System.Drawing.Color.White;
             this.buttonAddBond.Name = "buttonAddBond";
+            this.toolTip.SetToolTip(this.buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
             this.buttonAddBond.UseVisualStyleBackColor = false;
             this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChangeBond
             // 
-            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
             this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
             this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
             this.buttonChangeBond.Name = "buttonChangeBond";
+            this.toolTip.SetToolTip(this.buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
             this.buttonChangeBond.UseVisualStyleBackColor = false;
             this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
             // 
@@ -360,25 +362,17 @@
             this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
             this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteBond.Name = "buttonDeleteBond";
+            this.toolTip.SetToolTip(this.buttonDeleteBond, resources.GetString("buttonDeleteBond.ToolTip"));
             this.buttonDeleteBond.UseVisualStyleBackColor = false;
             this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // dataGridView
             // 
-            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledDataGridViewCheckBoxColumn1,
@@ -389,6 +383,7 @@
             this.showBondsDataGridViewCheckBoxColumn,
             this.showPolyhedronDataGridViewCheckBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
+            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
@@ -396,6 +391,56 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            // 
+            // enabledDataGridViewCheckBoxColumn1
+            // 
+            this.enabledDataGridViewCheckBoxColumn1.DataPropertyName = "Enabled";
+            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn1, "enabledDataGridViewCheckBoxColumn1");
+            this.enabledDataGridViewCheckBoxColumn1.Name = "enabledDataGridViewCheckBoxColumn1";
+            // 
+            // centerDataGridViewTextBoxColumn1
+            // 
+            this.centerDataGridViewTextBoxColumn1.DataPropertyName = "Center";
+            resources.ApplyResources(this.centerDataGridViewTextBoxColumn1, "centerDataGridViewTextBoxColumn1");
+            this.centerDataGridViewTextBoxColumn1.Name = "centerDataGridViewTextBoxColumn1";
+            this.centerDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.centerDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vertexDataGridViewTextBoxColumn1
+            // 
+            this.vertexDataGridViewTextBoxColumn1.DataPropertyName = "Vertex";
+            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn1, "vertexDataGridViewTextBoxColumn1");
+            this.vertexDataGridViewTextBoxColumn1.Name = "vertexDataGridViewTextBoxColumn1";
+            this.vertexDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.vertexDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // minLenDataGridViewTextBoxColumn1
+            // 
+            this.minLenDataGridViewTextBoxColumn1.DataPropertyName = "Min len.";
+            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn1, "minLenDataGridViewTextBoxColumn1");
+            this.minLenDataGridViewTextBoxColumn1.Name = "minLenDataGridViewTextBoxColumn1";
+            this.minLenDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.minLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // maxLenDataGridViewTextBoxColumn1
+            // 
+            this.maxLenDataGridViewTextBoxColumn1.DataPropertyName = "Max len.";
+            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn1, "maxLenDataGridViewTextBoxColumn1");
+            this.maxLenDataGridViewTextBoxColumn1.Name = "maxLenDataGridViewTextBoxColumn1";
+            this.maxLenDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.maxLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // showBondsDataGridViewCheckBoxColumn
+            // 
+            this.showBondsDataGridViewCheckBoxColumn.DataPropertyName = "Show bonds";
+            resources.ApplyResources(this.showBondsDataGridViewCheckBoxColumn, "showBondsDataGridViewCheckBoxColumn");
+            this.showBondsDataGridViewCheckBoxColumn.Name = "showBondsDataGridViewCheckBoxColumn";
+            // 
+            // showPolyhedronDataGridViewCheckBoxColumn
+            // 
+            this.showPolyhedronDataGridViewCheckBoxColumn.DataPropertyName = "Show Polyhedron";
+            resources.ApplyResources(this.showPolyhedronDataGridViewCheckBoxColumn, "showPolyhedronDataGridViewCheckBoxColumn");
+            this.showPolyhedronDataGridViewCheckBoxColumn.Name = "showPolyhedronDataGridViewCheckBoxColumn";
             // 
             // bindingSource
             // 
@@ -411,19 +456,19 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.buttonAddBond);
             this.panel1.Controls.Add(this.colorControlEdges);
             this.panel1.Controls.Add(this.colorControlPlyhedron);
             this.panel1.Controls.Add(this.colorControlBond);
             this.panel1.Controls.Add(this.buttonChangeBond);
             this.panel1.Controls.Add(this.buttonDeleteBond);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // colorControlEdges
             // 
-            resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
             this.colorControlEdges.Argb = -986896;
+            resources.ApplyResources(this.colorControlEdges, "colorControlEdges");
             this.colorControlEdges.Blue = 240;
             this.colorControlEdges.BlueF = 0.9411765F;
             this.colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
@@ -437,8 +482,8 @@
             // 
             // colorControlPlyhedron
             // 
-            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
             this.colorControlPlyhedron.Argb = -986896;
+            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
             this.colorControlPlyhedron.Blue = 240;
             this.colorControlPlyhedron.BlueF = 0.9411765F;
             this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
@@ -452,8 +497,8 @@
             // 
             // colorControlBond
             // 
-            resources.ApplyResources(this.colorControlBond, "colorControlBond");
             this.colorControlBond.Argb = -986896;
+            resources.ApplyResources(this.colorControlBond, "colorControlBond");
             this.colorControlBond.Blue = 240;
             this.colorControlBond.BlueF = 0.9411765F;
             this.colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
@@ -467,11 +512,11 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.checkBoxShowBonds);
             this.panel2.Controls.Add(this.groupBoxBonds);
             this.panel2.Controls.Add(this.checkBoxShowPolyhedron);
             this.panel2.Controls.Add(this.groupBoxPolyhedron);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // dataGridViewTextBoxColumn1
@@ -630,56 +675,6 @@
             this.Vertex.Name = "Vertex";
             this.Vertex.ReadOnly = true;
             // 
-            // enabledDataGridViewCheckBoxColumn1
-            // 
-            this.enabledDataGridViewCheckBoxColumn1.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn1, "enabledDataGridViewCheckBoxColumn1");
-            this.enabledDataGridViewCheckBoxColumn1.Name = "enabledDataGridViewCheckBoxColumn1";
-            // 
-            // centerDataGridViewTextBoxColumn1
-            // 
-            this.centerDataGridViewTextBoxColumn1.DataPropertyName = "Center";
-            resources.ApplyResources(this.centerDataGridViewTextBoxColumn1, "centerDataGridViewTextBoxColumn1");
-            this.centerDataGridViewTextBoxColumn1.Name = "centerDataGridViewTextBoxColumn1";
-            this.centerDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.centerDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // vertexDataGridViewTextBoxColumn1
-            // 
-            this.vertexDataGridViewTextBoxColumn1.DataPropertyName = "Vertex";
-            resources.ApplyResources(this.vertexDataGridViewTextBoxColumn1, "vertexDataGridViewTextBoxColumn1");
-            this.vertexDataGridViewTextBoxColumn1.Name = "vertexDataGridViewTextBoxColumn1";
-            this.vertexDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.vertexDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // minLenDataGridViewTextBoxColumn1
-            // 
-            this.minLenDataGridViewTextBoxColumn1.DataPropertyName = "Min len.";
-            resources.ApplyResources(this.minLenDataGridViewTextBoxColumn1, "minLenDataGridViewTextBoxColumn1");
-            this.minLenDataGridViewTextBoxColumn1.Name = "minLenDataGridViewTextBoxColumn1";
-            this.minLenDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.minLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // maxLenDataGridViewTextBoxColumn1
-            // 
-            this.maxLenDataGridViewTextBoxColumn1.DataPropertyName = "Max len.";
-            resources.ApplyResources(this.maxLenDataGridViewTextBoxColumn1, "maxLenDataGridViewTextBoxColumn1");
-            this.maxLenDataGridViewTextBoxColumn1.Name = "maxLenDataGridViewTextBoxColumn1";
-            this.maxLenDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.maxLenDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // showBondsDataGridViewCheckBoxColumn
-            // 
-            this.showBondsDataGridViewCheckBoxColumn.DataPropertyName = "Show bonds";
-            resources.ApplyResources(this.showBondsDataGridViewCheckBoxColumn, "showBondsDataGridViewCheckBoxColumn");
-            this.showBondsDataGridViewCheckBoxColumn.Name = "showBondsDataGridViewCheckBoxColumn";
-            // 
-            // showPolyhedronDataGridViewCheckBoxColumn
-            // 
-            this.showPolyhedronDataGridViewCheckBoxColumn.DataPropertyName = "Show Polyhedron";
-            resources.ApplyResources(this.showPolyhedronDataGridViewCheckBoxColumn, "showPolyhedronDataGridViewCheckBoxColumn");
-            this.showPolyhedronDataGridViewCheckBoxColumn.Name = "showPolyhedronDataGridViewCheckBoxColumn";
-            // 
             // BondInputControl
             // 
             resources.ApplyResources(this, "$this");
@@ -767,5 +762,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLenDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn showBondsDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn showPolyhedronDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

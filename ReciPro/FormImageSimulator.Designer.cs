@@ -43,11 +43,8 @@ namespace ReciPro
             this.pictureBoxScaleOfIntensity = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelGaussianBlur2 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxGaussianBlur = new System.Windows.Forms.CheckBox();
-            this.numericBoxGaussianRadius = new Crystallography.Controls.NumericBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.trackBarAdvancedMax = new Crystallography.Controls.TrackBarAdvanced();
             this.comboBoxScaleColorScale = new System.Windows.Forms.ComboBox();
-            this.trackBarAdvancedMin = new Crystallography.Controls.TrackBarAdvanced();
             this.label27 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -58,12 +55,8 @@ namespace ReciPro
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBoxShowUnitcell = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxLabelFontSize = new Crystallography.Controls.NumericBox();
-            this.colorControlLabel = new Crystallography.Controls.ColorControl();
             this.checkBoxShowLabel = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxScaleLength = new Crystallography.Controls.NumericBox();
-            this.colorControlScale = new Crystallography.Controls.ColorControl();
             this.checkBoxShowScale = new System.Windows.Forms.CheckBox();
             this.checkBoxRealTimeCalculation = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -71,11 +64,8 @@ namespace ReciPro
             this.radioButtonSTEM = new System.Windows.Forms.RadioButton();
             this.radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             this.groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
-            this.numericBoxThickness = new Crystallography.Controls.NumericBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.numericBoxAccVol = new Crystallography.Controls.NumericBox();
-            this.numericBoxDefocus = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxRambda = new System.Windows.Forms.TextBox();
@@ -85,27 +75,18 @@ namespace ReciPro
             this.textBoxScherzer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxInherentProperty = new System.Windows.Forms.GroupBox();
-            this.numericBoxCs = new Crystallography.Controls.NumericBox();
-            this.numericBoxCc = new Crystallography.Controls.NumericBox();
-            this.numericBoxDeltaV = new Crystallography.Controls.NumericBox();
-            this.numericBoxBetaAgnle = new Crystallography.Controls.NumericBox();
             this.panelDummy1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBoxLenzFunction = new System.Windows.Forms.GroupBox();
-            this.graphControl = new Crystallography.Controls.GraphControl();
             this.panelGraphOption = new System.Windows.Forms.Panel();
             this.buttonCopyGraph = new System.Windows.Forms.Button();
-            this.numericBoxMaxU1 = new Crystallography.Controls.NumericBox();
             this.checkBoxGraphAll = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphEc = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphPCTF = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphEs = new System.Windows.Forms.CheckBox();
             this.buttonPanel = new System.Windows.Forms.Button();
             this.groupBoxObjectAperture = new System.Windows.Forms.GroupBox();
-            this.numericBoxObjAperX = new Crystallography.Controls.NumericBox();
-            this.numericBoxObjAperRadius = new Crystallography.Controls.NumericBox();
-            this.numericBoxObjAperY = new Crystallography.Controls.NumericBox();
             this.checkBoxOpenAperture = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBoxNumOfSpots = new System.Windows.Forms.TextBox();
@@ -118,14 +99,10 @@ namespace ReciPro
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.numericBoxNumOfBlochWave = new Crystallography.Controls.NumericBox();
             this.panelDummy2 = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxWidth = new Crystallography.Controls.NumericBox();
-            this.numericBoxHeight = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericBoxResolution = new Crystallography.Controls.NumericBox();
             this.groupBoxNormalizeIntensity = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxNormalizeHigh = new System.Windows.Forms.CheckBox();
@@ -138,18 +115,12 @@ namespace ReciPro
             this.panelSerial = new System.Windows.Forms.Panel();
             this.panelSerialDefocus = new System.Windows.Forms.Panel();
             this.textBoxDefocusList = new System.Windows.Forms.TextBox();
-            this.numericBoxDefocusNum = new Crystallography.Controls.NumericBox();
-            this.numericBoxDefocusStep = new Crystallography.Controls.NumericBox();
-            this.numericBoxDefocusStart = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanelHorizontalDirection = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.radioButtonHorizontalDefocus = new System.Windows.Forms.RadioButton();
             this.radioButtonHorizontalThickness = new System.Windows.Forms.RadioButton();
             this.panelSerialThickness = new System.Windows.Forms.Panel();
-            this.numericBoxThicknessNum = new Crystallography.Controls.NumericBox();
-            this.numericBoxThicknessStep = new Crystallography.Controls.NumericBox();
             this.textBoxThicknessList = new System.Windows.Forms.TextBox();
-            this.numericBoxThicknessStart = new Crystallography.Controls.NumericBox();
             this.checkBoxSerialThickness = new System.Windows.Forms.CheckBox();
             this.checkBoxSerialDefocus = new System.Windows.Forms.CheckBox();
             this.groupBoxPartialCoherencyModel = new System.Windows.Forms.GroupBox();
@@ -189,7 +160,7 @@ namespace ReciPro
             this.checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             this.checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
             this.buttonSimulateHRTEM = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,6 +185,35 @@ namespace ReciPro
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.numericBoxGaussianRadius = new Crystallography.Controls.NumericBox();
+            this.trackBarAdvancedMax = new Crystallography.Controls.TrackBarAdvanced();
+            this.trackBarAdvancedMin = new Crystallography.Controls.TrackBarAdvanced();
+            this.numericBoxLabelFontSize = new Crystallography.Controls.NumericBox();
+            this.colorControlLabel = new Crystallography.Controls.ColorControl();
+            this.numericBoxScaleLength = new Crystallography.Controls.NumericBox();
+            this.colorControlScale = new Crystallography.Controls.ColorControl();
+            this.numericBoxThickness = new Crystallography.Controls.NumericBox();
+            this.numericBoxAccVol = new Crystallography.Controls.NumericBox();
+            this.numericBoxDefocus = new Crystallography.Controls.NumericBox();
+            this.numericBoxCs = new Crystallography.Controls.NumericBox();
+            this.numericBoxCc = new Crystallography.Controls.NumericBox();
+            this.numericBoxDeltaV = new Crystallography.Controls.NumericBox();
+            this.numericBoxBetaAgnle = new Crystallography.Controls.NumericBox();
+            this.graphControl = new Crystallography.Controls.GraphControl();
+            this.numericBoxMaxU1 = new Crystallography.Controls.NumericBox();
+            this.numericBoxObjAperX = new Crystallography.Controls.NumericBox();
+            this.numericBoxObjAperRadius = new Crystallography.Controls.NumericBox();
+            this.numericBoxObjAperY = new Crystallography.Controls.NumericBox();
+            this.numericBoxNumOfBlochWave = new Crystallography.Controls.NumericBox();
+            this.numericBoxWidth = new Crystallography.Controls.NumericBox();
+            this.numericBoxHeight = new Crystallography.Controls.NumericBox();
+            this.numericBoxResolution = new Crystallography.Controls.NumericBox();
+            this.numericBoxDefocusNum = new Crystallography.Controls.NumericBox();
+            this.numericBoxDefocusStep = new Crystallography.Controls.NumericBox();
+            this.numericBoxDefocusStart = new Crystallography.Controls.NumericBox();
+            this.numericBoxThicknessNum = new Crystallography.Controls.NumericBox();
+            this.numericBoxThicknessStep = new Crystallography.Controls.NumericBox();
+            this.numericBoxThicknessStart = new Crystallography.Controls.NumericBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -358,45 +358,10 @@ namespace ReciPro
             this.checkBoxGaussianBlur.UseVisualStyleBackColor = true;
             this.checkBoxGaussianBlur.CheckedChanged += new System.EventHandler(this.CheckBoxGaussianBlur_CheckedChanged);
             // 
-            // numericBoxGaussianRadius
-            // 
-            resources.ApplyResources(this.numericBoxGaussianRadius, "numericBoxGaussianRadius");
-            this.numericBoxGaussianRadius.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGaussianRadius.DecimalPlaces = 1;
-            this.numericBoxGaussianRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGaussianRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGaussianRadius.Maximum = 100D;
-            this.numericBoxGaussianRadius.Minimum = 0D;
-            this.numericBoxGaussianRadius.Name = "numericBoxGaussianRadius";
-            this.numericBoxGaussianRadius.RadianValue = 0.017453292519943295D;
-            this.numericBoxGaussianRadius.ShowUpDown = true;
-            this.numericBoxGaussianRadius.SkipEventDuringInput = false;
-            this.numericBoxGaussianRadius.SmartIncrement = true;
-            this.numericBoxGaussianRadius.ThonsandsSeparator = true;
-            this.numericBoxGaussianRadius.Value = 1D;
-            this.numericBoxGaussianRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxGaussianBlur_CheckedChanged);
-            // 
             // label25
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
-            // 
-            // trackBarAdvancedMax
-            // 
-            resources.ApplyResources(this.trackBarAdvancedMax, "trackBarAdvancedMax");
-            this.trackBarAdvancedMax.ControlHeight = 27;
-            this.trackBarAdvancedMax.DecimalPlaces = -1;
-            this.trackBarAdvancedMax.LogScrollBar = false;
-            this.trackBarAdvancedMax.Maximum = 65535D;
-            this.trackBarAdvancedMax.Minimum = 0D;
-            this.trackBarAdvancedMax.Name = "trackBarAdvancedMax";
-            this.trackBarAdvancedMax.NumericBoxSize = 100;
-            this.trackBarAdvancedMax.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarAdvancedMax.Smart_Increment = true;
-            this.trackBarAdvancedMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.trackBarAdvancedMax.UpDown_Increment = 1D;
-            this.trackBarAdvancedMax.Value = 65535D;
-            this.trackBarAdvancedMax.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.TrackBarAdvancedMin_ValueChanged);
             // 
             // comboBoxScaleColorScale
             // 
@@ -408,23 +373,6 @@ namespace ReciPro
             resources.ApplyResources(this.comboBoxScaleColorScale, "comboBoxScaleColorScale");
             this.comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
             this.comboBoxScaleColorScale.SelectedIndexChanged += new System.EventHandler(this.ComboBoxScaleColorScale_SelectedIndexChanged);
-            // 
-            // trackBarAdvancedMin
-            // 
-            resources.ApplyResources(this.trackBarAdvancedMin, "trackBarAdvancedMin");
-            this.trackBarAdvancedMin.ControlHeight = 27;
-            this.trackBarAdvancedMin.DecimalPlaces = -1;
-            this.trackBarAdvancedMin.LogScrollBar = false;
-            this.trackBarAdvancedMin.Maximum = 65535D;
-            this.trackBarAdvancedMin.Minimum = 0D;
-            this.trackBarAdvancedMin.Name = "trackBarAdvancedMin";
-            this.trackBarAdvancedMin.NumericBoxSize = 97;
-            this.trackBarAdvancedMin.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarAdvancedMin.Smart_Increment = true;
-            this.trackBarAdvancedMin.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.trackBarAdvancedMin.UpDown_Increment = 1D;
-            this.trackBarAdvancedMin.Value = 0D;
-            this.trackBarAdvancedMin.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.TrackBarAdvancedMin_ValueChanged);
             // 
             // label27
             // 
@@ -488,45 +436,13 @@ namespace ReciPro
             this.flowLayoutPanelLabel.Controls.Add(this.colorControlLabel);
             this.flowLayoutPanelLabel.Name = "flowLayoutPanelLabel";
             // 
-            // numericBoxLabelFontSize
-            // 
-            resources.ApplyResources(this.numericBoxLabelFontSize, "numericBoxLabelFontSize");
-            this.numericBoxLabelFontSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLabelFontSize.DecimalPlaces = 0;
-            this.numericBoxLabelFontSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLabelFontSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLabelFontSize.Maximum = 20D;
-            this.numericBoxLabelFontSize.Minimum = 1D;
-            this.numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
-            this.numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
-            this.numericBoxLabelFontSize.ShowUpDown = true;
-            this.numericBoxLabelFontSize.SkipEventDuringInput = false;
-            this.numericBoxLabelFontSize.ThonsandsSeparator = true;
-            this.numericBoxLabelFontSize.Value = 9D;
-            this.numericBoxLabelFontSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
-            // colorControlLabel
-            // 
-            this.colorControlLabel.Argb = -5374161;
-            resources.ApplyResources(this.colorControlLabel, "colorControlLabel");
-            this.colorControlLabel.Blue = 47;
-            this.colorControlLabel.BlueF = 0.1843137F;
-            this.colorControlLabel.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlLabel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(255)))), ((int)(((byte)(47)))));
-            this.colorControlLabel.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlLabel.Green = 255;
-            this.colorControlLabel.GreenF = 1F;
-            this.colorControlLabel.Name = "colorControlLabel";
-            this.colorControlLabel.Red = 173;
-            this.colorControlLabel.RedF = 0.6784314F;
-            this.colorControlLabel.ColorChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
             // checkBoxShowLabel
             // 
             resources.ApplyResources(this.checkBoxShowLabel, "checkBoxShowLabel");
             this.checkBoxShowLabel.Checked = true;
             this.checkBoxShowLabel.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowLabel.Name = "checkBoxShowLabel";
+            this.toolTip.SetToolTip(this.checkBoxShowLabel, resources.GetString("checkBoxShowLabel.ToolTip"));
             this.checkBoxShowLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowLabel.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
             // 
@@ -537,46 +453,13 @@ namespace ReciPro
             this.flowLayoutPanelScale.Controls.Add(this.colorControlScale);
             this.flowLayoutPanelScale.Name = "flowLayoutPanelScale";
             // 
-            // numericBoxScaleLength
-            // 
-            resources.ApplyResources(this.numericBoxScaleLength, "numericBoxScaleLength");
-            this.numericBoxScaleLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxScaleLength.DecimalPlaces = 1;
-            this.numericBoxScaleLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxScaleLength.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxScaleLength.Maximum = 100D;
-            this.numericBoxScaleLength.Minimum = 0.2D;
-            this.numericBoxScaleLength.Name = "numericBoxScaleLength";
-            this.numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
-            this.numericBoxScaleLength.ShowUpDown = true;
-            this.numericBoxScaleLength.SkipEventDuringInput = false;
-            this.numericBoxScaleLength.ThonsandsSeparator = true;
-            this.numericBoxScaleLength.UpDown_Increment = 0.2D;
-            this.numericBoxScaleLength.Value = 0.5D;
-            this.numericBoxScaleLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
-            // colorControlScale
-            // 
-            this.colorControlScale.Argb = -7877126;
-            resources.ApplyResources(this.colorControlScale, "colorControlScale");
-            this.colorControlScale.Blue = 250;
-            this.colorControlScale.BlueF = 0.9803922F;
-            this.colorControlScale.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlScale.Color = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(205)))), ((int)(((byte)(250)))));
-            this.colorControlScale.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScale.Green = 205;
-            this.colorControlScale.GreenF = 0.8039216F;
-            this.colorControlScale.Name = "colorControlScale";
-            this.colorControlScale.Red = 135;
-            this.colorControlScale.RedF = 0.5294118F;
-            this.colorControlScale.ColorChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
-            // 
             // checkBoxShowScale
             // 
             resources.ApplyResources(this.checkBoxShowScale, "checkBoxShowScale");
             this.checkBoxShowScale.Checked = true;
             this.checkBoxShowScale.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowScale.Name = "checkBoxShowScale";
+            this.toolTip.SetToolTip(this.checkBoxShowScale, resources.GetString("checkBoxShowScale.ToolTip"));
             this.checkBoxShowScale.UseVisualStyleBackColor = true;
             this.checkBoxShowScale.CheckedChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
             // 
@@ -584,6 +467,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.checkBoxRealTimeCalculation, "checkBoxRealTimeCalculation");
             this.checkBoxRealTimeCalculation.Name = "checkBoxRealTimeCalculation";
+            this.toolTip.SetToolTip(this.checkBoxRealTimeCalculation, resources.GetString("checkBoxRealTimeCalculation.ToolTip"));
             this.checkBoxRealTimeCalculation.UseVisualStyleBackColor = true;
             // 
             // groupBox6
@@ -599,7 +483,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.radioButtonProjectedPotential, "radioButtonProjectedPotential");
             this.radioButtonProjectedPotential.Name = "radioButtonProjectedPotential";
-            this.toolTip1.SetToolTip(this.radioButtonProjectedPotential, resources.GetString("radioButtonProjectedPotential.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonProjectedPotential, resources.GetString("radioButtonProjectedPotential.ToolTip"));
             this.radioButtonProjectedPotential.UseVisualStyleBackColor = true;
             this.radioButtonProjectedPotential.CheckedChanged += new System.EventHandler(this.RadioButtonHRTEM_CheckedChanged);
             // 
@@ -607,7 +491,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.radioButtonSTEM, "radioButtonSTEM");
             this.radioButtonSTEM.Name = "radioButtonSTEM";
-            this.toolTip1.SetToolTip(this.radioButtonSTEM, resources.GetString("radioButtonSTEM.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonSTEM, resources.GetString("radioButtonSTEM.ToolTip"));
             this.radioButtonSTEM.UseVisualStyleBackColor = true;
             this.radioButtonSTEM.CheckedChanged += new System.EventHandler(this.RadioButtonHRTEM_CheckedChanged);
             // 
@@ -626,23 +510,6 @@ namespace ReciPro
             this.groupBoxSampleProperty.Controls.Add(this.numericBoxThickness);
             this.groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             this.groupBoxSampleProperty.TabStop = false;
-            // 
-            // numericBoxThickness
-            // 
-            resources.ApplyResources(this.numericBoxThickness, "numericBoxThickness");
-            this.numericBoxThickness.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThickness.DecimalPlaces = 3;
-            this.numericBoxThickness.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThickness.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThickness.Maximum = 1000D;
-            this.numericBoxThickness.Minimum = 0.001D;
-            this.numericBoxThickness.Name = "numericBoxThickness";
-            this.numericBoxThickness.RadianValue = 0.3490658503988659D;
-            this.numericBoxThickness.ShowUpDown = true;
-            this.numericBoxThickness.SmartIncrement = true;
-            this.numericBoxThickness.ThonsandsSeparator = true;
-            this.numericBoxThickness.Value = 20D;
-            this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThickness_ValueChanged);
             // 
             // groupBox2
             // 
@@ -663,41 +530,6 @@ namespace ReciPro
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
-            // 
-            // numericBoxAccVol
-            // 
-            resources.ApplyResources(this.numericBoxAccVol, "numericBoxAccVol");
-            this.numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAccVol.Maximum = 1000D;
-            this.numericBoxAccVol.Minimum = 1D;
-            this.numericBoxAccVol.Name = "numericBoxAccVol";
-            this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
-            this.numericBoxAccVol.ShowUpDown = true;
-            this.numericBoxAccVol.SmartIncrement = true;
-            this.numericBoxAccVol.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
-            this.numericBoxAccVol.Value = 200D;
-            this.numericBoxAccVol.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxAccVol_ValueChanged);
-            // 
-            // numericBoxDefocus
-            // 
-            resources.ApplyResources(this.numericBoxDefocus, "numericBoxDefocus");
-            this.numericBoxDefocus.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocus.DecimalPlaces = 1;
-            this.numericBoxDefocus.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocus.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocus.Maximum = 1000D;
-            this.numericBoxDefocus.Minimum = -1000D;
-            this.numericBoxDefocus.Name = "numericBoxDefocus";
-            this.numericBoxDefocus.RadianValue = -1.2217304763960306D;
-            this.numericBoxDefocus.ShowUpDown = true;
-            this.numericBoxDefocus.SmartIncrement = true;
-            this.numericBoxDefocus.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
-            this.numericBoxDefocus.Value = -70D;
-            this.numericBoxDefocus.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocus_ValueChanged);
             // 
             // flowLayoutPanel4
             // 
@@ -739,6 +571,7 @@ namespace ReciPro
             resources.ApplyResources(this.label3, "label3");
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // textBoxScherzer
             // 
@@ -746,12 +579,14 @@ namespace ReciPro
             resources.ApplyResources(this.textBoxScherzer, "textBoxScherzer");
             this.textBoxScherzer.Name = "textBoxScherzer";
             this.textBoxScherzer.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxScherzer, resources.GetString("textBoxScherzer.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // groupBoxInherentProperty
             // 
@@ -762,84 +597,6 @@ namespace ReciPro
             resources.ApplyResources(this.groupBoxInherentProperty, "groupBoxInherentProperty");
             this.groupBoxInherentProperty.Name = "groupBoxInherentProperty";
             this.groupBoxInherentProperty.TabStop = false;
-            // 
-            // numericBoxCs
-            // 
-            resources.ApplyResources(this.numericBoxCs, "numericBoxCs");
-            this.numericBoxCs.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCs.DecimalPlaces = 2;
-            this.numericBoxCs.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCs.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCs.Maximum = 20D;
-            this.numericBoxCs.Minimum = -20D;
-            this.numericBoxCs.Name = "numericBoxCs";
-            this.numericBoxCs.RadianValue = 0.022689280275926284D;
-            this.numericBoxCs.ShowUpDown = true;
-            this.numericBoxCs.SmartIncrement = true;
-            this.numericBoxCs.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
-            this.numericBoxCs.UpDown_Increment = 0.1D;
-            this.numericBoxCs.Value = 1.3D;
-            this.numericBoxCs.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxCs_ValueChanged);
-            // 
-            // numericBoxCc
-            // 
-            resources.ApplyResources(this.numericBoxCc, "numericBoxCc");
-            this.numericBoxCc.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCc.DecimalPlaces = 2;
-            this.numericBoxCc.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCc.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCc.Maximum = 10D;
-            this.numericBoxCc.Minimum = 0D;
-            this.numericBoxCc.Name = "numericBoxCc";
-            this.numericBoxCc.RadianValue = 0.027925268031909273D;
-            this.numericBoxCc.RestrictLimitValue = false;
-            this.numericBoxCc.ShowUpDown = true;
-            this.numericBoxCc.SmartIncrement = true;
-            this.numericBoxCc.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
-            this.numericBoxCc.UpDown_Increment = 0.1D;
-            this.numericBoxCc.Value = 1.6D;
-            this.numericBoxCc.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // numericBoxDeltaV
-            // 
-            resources.ApplyResources(this.numericBoxDeltaV, "numericBoxDeltaV");
-            this.numericBoxDeltaV.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDeltaV.DecimalPlaces = 2;
-            this.numericBoxDeltaV.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDeltaV.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDeltaV.Maximum = 10D;
-            this.numericBoxDeltaV.Minimum = 0D;
-            this.numericBoxDeltaV.Name = "numericBoxDeltaV";
-            this.numericBoxDeltaV.RadianValue = 0.012217304763960307D;
-            this.numericBoxDeltaV.RestrictLimitValue = false;
-            this.numericBoxDeltaV.ShowUpDown = true;
-            this.numericBoxDeltaV.SmartIncrement = true;
-            this.numericBoxDeltaV.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
-            this.numericBoxDeltaV.UpDown_Increment = 0.1D;
-            this.numericBoxDeltaV.Value = 0.7D;
-            this.numericBoxDeltaV.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // numericBoxBetaAgnle
-            // 
-            resources.ApplyResources(this.numericBoxBetaAgnle, "numericBoxBetaAgnle");
-            this.numericBoxBetaAgnle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaAgnle.DecimalPlaces = 2;
-            this.numericBoxBetaAgnle.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaAgnle.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaAgnle.Maximum = 100D;
-            this.numericBoxBetaAgnle.Minimum = 0D;
-            this.numericBoxBetaAgnle.Name = "numericBoxBetaAgnle";
-            this.numericBoxBetaAgnle.RadianValue = 0.013089969389957471D;
-            this.numericBoxBetaAgnle.ShowUpDown = true;
-            this.numericBoxBetaAgnle.SmartIncrement = true;
-            this.numericBoxBetaAgnle.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxBetaAgnle, resources.GetString("numericBoxBetaAgnle.ToolTip"));
-            this.numericBoxBetaAgnle.UpDown_Increment = 0.05D;
-            this.numericBoxBetaAgnle.Value = 0.75D;
-            this.numericBoxBetaAgnle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
             // 
             // panelDummy1
             // 
@@ -873,51 +630,6 @@ namespace ReciPro
             this.groupBoxLenzFunction.Name = "groupBoxLenzFunction";
             this.groupBoxLenzFunction.TabStop = false;
             // 
-            // graphControl
-            // 
-            this.graphControl.AllowMouseOperation = true;
-            this.graphControl.BackgroundColor = System.Drawing.Color.White;
-            this.graphControl.BottomMargin = 0D;
-            this.graphControl.DivisionLineColor = System.Drawing.Color.Gray;
-            this.graphControl.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.graphControl, "graphControl");
-            this.graphControl.FixRangeHorizontal = false;
-            this.graphControl.FixRangeVertical = false;
-            this.graphControl.GraphName = "";
-            this.graphControl.HorizontalGradiationTextVisivle = true;
-            this.graphControl.Interpolation = false;
-            this.graphControl.IsIntegerX = false;
-            this.graphControl.IsIntegerY = false;
-            this.graphControl.LabelX = "X:";
-            this.graphControl.LabelY = "Y:";
-            this.graphControl.LeftMargin = 0F;
-            this.graphControl.LineColor = System.Drawing.Color.Red;
-            this.graphControl.LineWidth = 1F;
-            this.graphControl.LowerX = 0D;
-            this.graphControl.LowerY = 0D;
-            this.graphControl.MaximalX = 1D;
-            this.graphControl.MaximalY = 1D;
-            this.graphControl.MinimalX = 0D;
-            this.graphControl.MinimalY = 0D;
-            this.graphControl.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            this.graphControl.MousePositionVisible = false;
-            this.graphControl.Name = "graphControl";
-            this.graphControl.OriginPosition = new System.Drawing.Point(20, 20);
-            this.graphControl.Smoothing = false;
-            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.graphControl.UnitX = "";
-            this.graphControl.UnitY = "";
-            this.graphControl.UpperText = "";
-            this.graphControl.UpperTextVisible = false;
-            this.graphControl.UpperX = 1D;
-            this.graphControl.UpperY = 1D;
-            this.graphControl.UseLineWidth = true;
-            this.graphControl.VerticalGradiationTextVisivle = true;
-            this.graphControl.XLog = false;
-            this.graphControl.XScaleLineVisible = true;
-            this.graphControl.YLog = false;
-            this.graphControl.YScaleLineVisible = true;
-            // 
             // panelGraphOption
             // 
             this.panelGraphOption.Controls.Add(this.buttonCopyGraph);
@@ -935,24 +647,6 @@ namespace ReciPro
             this.buttonCopyGraph.Name = "buttonCopyGraph";
             this.buttonCopyGraph.UseVisualStyleBackColor = true;
             this.buttonCopyGraph.Click += new System.EventHandler(this.ButtonCopyGraph_Click);
-            // 
-            // numericBoxMaxU1
-            // 
-            resources.ApplyResources(this.numericBoxMaxU1, "numericBoxMaxU1");
-            this.numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.DecimalPlaces = 1;
-            this.numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.Maximum = 20D;
-            this.numericBoxMaxU1.Minimum = 0D;
-            this.numericBoxMaxU1.Name = "numericBoxMaxU1";
-            this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
-            this.numericBoxMaxU1.ShowUpDown = true;
-            this.numericBoxMaxU1.SmartIncrement = true;
-            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxMaxU1.ThonsandsSeparator = true;
-            this.numericBoxMaxU1.Value = 6D;
-            this.numericBoxMaxU1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
             // 
             // checkBoxGraphAll
             // 
@@ -1010,57 +704,6 @@ namespace ReciPro
             resources.ApplyResources(this.groupBoxObjectAperture, "groupBoxObjectAperture");
             this.groupBoxObjectAperture.Name = "groupBoxObjectAperture";
             this.groupBoxObjectAperture.TabStop = false;
-            // 
-            // numericBoxObjAperX
-            // 
-            resources.ApplyResources(this.numericBoxObjAperX, "numericBoxObjAperX");
-            this.numericBoxObjAperX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperX.DecimalPlaces = 1;
-            this.numericBoxObjAperX.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperX.Maximum = 100D;
-            this.numericBoxObjAperX.Minimum = -100D;
-            this.numericBoxObjAperX.Name = "numericBoxObjAperX";
-            this.numericBoxObjAperX.ShowUpDown = true;
-            this.numericBoxObjAperX.SmartIncrement = true;
-            this.numericBoxObjAperX.ThonsandsSeparator = true;
-            this.numericBoxObjAperX.UpDown_Increment = 0.5D;
-            this.numericBoxObjAperX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
-            // 
-            // numericBoxObjAperRadius
-            // 
-            resources.ApplyResources(this.numericBoxObjAperRadius, "numericBoxObjAperRadius");
-            this.numericBoxObjAperRadius.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperRadius.DecimalPlaces = 1;
-            this.numericBoxObjAperRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperRadius.Maximum = 500D;
-            this.numericBoxObjAperRadius.Minimum = 0.5D;
-            this.numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
-            this.numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
-            this.numericBoxObjAperRadius.ShowUpDown = true;
-            this.numericBoxObjAperRadius.SmartIncrement = true;
-            this.numericBoxObjAperRadius.ThonsandsSeparator = true;
-            this.toolTip1.SetToolTip(this.numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
-            this.numericBoxObjAperRadius.UpDown_Increment = 0.5D;
-            this.numericBoxObjAperRadius.Value = 12D;
-            this.numericBoxObjAperRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
-            // 
-            // numericBoxObjAperY
-            // 
-            resources.ApplyResources(this.numericBoxObjAperY, "numericBoxObjAperY");
-            this.numericBoxObjAperY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperY.DecimalPlaces = 1;
-            this.numericBoxObjAperY.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxObjAperY.Maximum = 100D;
-            this.numericBoxObjAperY.Minimum = -100D;
-            this.numericBoxObjAperY.Name = "numericBoxObjAperY";
-            this.numericBoxObjAperY.ShowUpDown = true;
-            this.numericBoxObjAperY.SmartIncrement = true;
-            this.numericBoxObjAperY.ThonsandsSeparator = true;
-            this.numericBoxObjAperY.UpDown_Increment = 0.5D;
-            this.numericBoxObjAperY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
             // 
             // checkBoxOpenAperture
             // 
@@ -1146,22 +789,6 @@ namespace ReciPro
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
-            // numericBoxNumOfBlochWave
-            // 
-            resources.ApplyResources(this.numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
-            this.numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumOfBlochWave.Maximum = 1000D;
-            this.numericBoxNumOfBlochWave.Minimum = 8D;
-            this.numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
-            this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
-            this.numericBoxNumOfBlochWave.ShowUpDown = true;
-            this.numericBoxNumOfBlochWave.SmartIncrement = true;
-            this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
-            this.numericBoxNumOfBlochWave.Value = 500D;
-            this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxNumOfBlochWave_ValueChanged);
-            // 
             // panelDummy2
             // 
             resources.ApplyResources(this.panelDummy2, "panelDummy2");
@@ -1183,59 +810,11 @@ namespace ReciPro
             this.flowLayoutPanel9.Controls.Add(this.numericBoxResolution);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
-            // numericBoxWidth
-            // 
-            resources.ApplyResources(this.numericBoxWidth, "numericBoxWidth");
-            this.numericBoxWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWidth.DecimalPlaces = 0;
-            this.numericBoxWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWidth.Maximum = 2048D;
-            this.numericBoxWidth.Minimum = 8D;
-            this.numericBoxWidth.Name = "numericBoxWidth";
-            this.numericBoxWidth.RadianValue = 8.9360857702109673D;
-            this.numericBoxWidth.ShowUpDown = true;
-            this.numericBoxWidth.SmartIncrement = true;
-            this.numericBoxWidth.ThonsandsSeparator = true;
-            this.numericBoxWidth.Value = 512D;
-            // 
-            // numericBoxHeight
-            // 
-            resources.ApplyResources(this.numericBoxHeight, "numericBoxHeight");
-            this.numericBoxHeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHeight.DecimalPlaces = 0;
-            this.numericBoxHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHeight.Maximum = 2048D;
-            this.numericBoxHeight.Minimum = 8D;
-            this.numericBoxHeight.Name = "numericBoxHeight";
-            this.numericBoxHeight.RadianValue = 8.9360857702109673D;
-            this.numericBoxHeight.ShowUpDown = true;
-            this.numericBoxHeight.SmartIncrement = true;
-            this.numericBoxHeight.ThonsandsSeparator = true;
-            this.numericBoxHeight.Value = 512D;
-            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Name = "label2";
-            // 
-            // numericBoxResolution
-            // 
-            resources.ApplyResources(this.numericBoxResolution, "numericBoxResolution");
-            this.numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxResolution.DecimalPlaces = 2;
-            this.numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxResolution.Maximum = 100D;
-            this.numericBoxResolution.Minimum = 0.01D;
-            this.numericBoxResolution.Name = "numericBoxResolution";
-            this.numericBoxResolution.RadianValue = 0.069813170079773182D;
-            this.numericBoxResolution.ShowUpDown = true;
-            this.numericBoxResolution.SmartIncrement = true;
-            this.numericBoxResolution.ThonsandsSeparator = true;
-            this.numericBoxResolution.Value = 4D;
             // 
             // groupBoxNormalizeIntensity
             // 
@@ -1336,56 +915,6 @@ namespace ReciPro
             resources.ApplyResources(this.textBoxDefocusList, "textBoxDefocusList");
             this.textBoxDefocusList.Name = "textBoxDefocusList";
             // 
-            // numericBoxDefocusNum
-            // 
-            resources.ApplyResources(this.numericBoxDefocusNum, "numericBoxDefocusNum");
-            this.numericBoxDefocusNum.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusNum.DecimalPlaces = 0;
-            this.numericBoxDefocusNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusNum.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusNum.Maximum = 20D;
-            this.numericBoxDefocusNum.Minimum = 1D;
-            this.numericBoxDefocusNum.Name = "numericBoxDefocusNum";
-            this.numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
-            this.numericBoxDefocusNum.ShowUpDown = true;
-            this.numericBoxDefocusNum.ThonsandsSeparator = true;
-            this.numericBoxDefocusNum.Value = 4D;
-            this.numericBoxDefocusNum.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
-            // 
-            // numericBoxDefocusStep
-            // 
-            resources.ApplyResources(this.numericBoxDefocusStep, "numericBoxDefocusStep");
-            this.numericBoxDefocusStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStep.DecimalPlaces = 2;
-            this.numericBoxDefocusStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStep.Maximum = 100D;
-            this.numericBoxDefocusStep.Minimum = -100D;
-            this.numericBoxDefocusStep.Name = "numericBoxDefocusStep";
-            this.numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
-            this.numericBoxDefocusStep.ShowUpDown = true;
-            this.numericBoxDefocusStep.ThonsandsSeparator = true;
-            this.numericBoxDefocusStep.UpDown_Increment = 10D;
-            this.numericBoxDefocusStep.Value = -20D;
-            this.numericBoxDefocusStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
-            // 
-            // numericBoxDefocusStart
-            // 
-            resources.ApplyResources(this.numericBoxDefocusStart, "numericBoxDefocusStart");
-            this.numericBoxDefocusStart.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStart.DecimalPlaces = 2;
-            this.numericBoxDefocusStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStart.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDefocusStart.Maximum = 1000D;
-            this.numericBoxDefocusStart.Minimum = -1000D;
-            this.numericBoxDefocusStart.Name = "numericBoxDefocusStart";
-            this.numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
-            this.numericBoxDefocusStart.ShowUpDown = true;
-            this.numericBoxDefocusStart.ThonsandsSeparator = true;
-            this.numericBoxDefocusStart.UpDown_Increment = 10D;
-            this.numericBoxDefocusStart.Value = -70D;
-            this.numericBoxDefocusStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
-            // 
             // flowLayoutPanelHorizontalDirection
             // 
             resources.ApplyResources(this.flowLayoutPanelHorizontalDirection, "flowLayoutPanelHorizontalDirection");
@@ -1423,60 +952,10 @@ namespace ReciPro
             resources.ApplyResources(this.panelSerialThickness, "panelSerialThickness");
             this.panelSerialThickness.Name = "panelSerialThickness";
             // 
-            // numericBoxThicknessNum
-            // 
-            resources.ApplyResources(this.numericBoxThicknessNum, "numericBoxThicknessNum");
-            this.numericBoxThicknessNum.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessNum.DecimalPlaces = 0;
-            this.numericBoxThicknessNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessNum.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessNum.Maximum = 20D;
-            this.numericBoxThicknessNum.Minimum = 0.1D;
-            this.numericBoxThicknessNum.Name = "numericBoxThicknessNum";
-            this.numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
-            this.numericBoxThicknessNum.ShowUpDown = true;
-            this.numericBoxThicknessNum.ThonsandsSeparator = true;
-            this.numericBoxThicknessNum.Value = 4D;
-            this.numericBoxThicknessNum.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
-            // 
-            // numericBoxThicknessStep
-            // 
-            resources.ApplyResources(this.numericBoxThicknessStep, "numericBoxThicknessStep");
-            this.numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.DecimalPlaces = 2;
-            this.numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.Maximum = 1000D;
-            this.numericBoxThicknessStep.Minimum = 1D;
-            this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
-            this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
-            this.numericBoxThicknessStep.ShowUpDown = true;
-            this.numericBoxThicknessStep.ThonsandsSeparator = true;
-            this.numericBoxThicknessStep.UpDown_Increment = 10D;
-            this.numericBoxThicknessStep.Value = 20D;
-            this.numericBoxThicknessStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
-            // 
             // textBoxThicknessList
             // 
             resources.ApplyResources(this.textBoxThicknessList, "textBoxThicknessList");
             this.textBoxThicknessList.Name = "textBoxThicknessList";
-            // 
-            // numericBoxThicknessStart
-            // 
-            resources.ApplyResources(this.numericBoxThicknessStart, "numericBoxThicknessStart");
-            this.numericBoxThicknessStart.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStart.DecimalPlaces = 2;
-            this.numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStart.Maximum = 1000D;
-            this.numericBoxThicknessStart.Minimum = 0.1D;
-            this.numericBoxThicknessStart.Name = "numericBoxThicknessStart";
-            this.numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
-            this.numericBoxThicknessStart.ShowUpDown = true;
-            this.numericBoxThicknessStart.ThonsandsSeparator = true;
-            this.numericBoxThicknessStart.UpDown_Increment = 10D;
-            this.numericBoxThicknessStart.Value = 20D;
-            this.numericBoxThicknessStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
             // 
             // checkBoxSerialThickness
             // 
@@ -1745,6 +1224,7 @@ namespace ReciPro
             this.buttonSimulateHRTEM.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonSimulateHRTEM.ForeColor = System.Drawing.Color.White;
             this.buttonSimulateHRTEM.Name = "buttonSimulateHRTEM";
+            this.toolTip.SetToolTip(this.buttonSimulateHRTEM, resources.GetString("buttonSimulateHRTEM.ToolTip"));
             this.buttonSimulateHRTEM.UseVisualStyleBackColor = false;
             this.buttonSimulateHRTEM.Click += new System.EventHandler(this.ButtonSimulate_Click);
             // 
@@ -1914,6 +1394,541 @@ namespace ReciPro
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
+            // numericBoxGaussianRadius
+            // 
+            resources.ApplyResources(this.numericBoxGaussianRadius, "numericBoxGaussianRadius");
+            this.numericBoxGaussianRadius.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGaussianRadius.DecimalPlaces = 1;
+            this.numericBoxGaussianRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGaussianRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGaussianRadius.Maximum = 100D;
+            this.numericBoxGaussianRadius.Minimum = 0D;
+            this.numericBoxGaussianRadius.Name = "numericBoxGaussianRadius";
+            this.numericBoxGaussianRadius.RadianValue = 0.017453292519943295D;
+            this.numericBoxGaussianRadius.ShowUpDown = true;
+            this.numericBoxGaussianRadius.SkipEventDuringInput = false;
+            this.numericBoxGaussianRadius.SmartIncrement = true;
+            this.numericBoxGaussianRadius.ThonsandsSeparator = true;
+            this.numericBoxGaussianRadius.Value = 1D;
+            this.numericBoxGaussianRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxGaussianBlur_CheckedChanged);
+            // 
+            // trackBarAdvancedMax
+            // 
+            resources.ApplyResources(this.trackBarAdvancedMax, "trackBarAdvancedMax");
+            this.trackBarAdvancedMax.ControlHeight = 27;
+            this.trackBarAdvancedMax.DecimalPlaces = -1;
+            this.trackBarAdvancedMax.LogScrollBar = false;
+            this.trackBarAdvancedMax.Maximum = 65535D;
+            this.trackBarAdvancedMax.Minimum = 0D;
+            this.trackBarAdvancedMax.Name = "trackBarAdvancedMax";
+            this.trackBarAdvancedMax.NumericBoxSize = 100;
+            this.trackBarAdvancedMax.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedMax.Smart_Increment = true;
+            this.trackBarAdvancedMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedMax.UpDown_Increment = 1D;
+            this.trackBarAdvancedMax.Value = 65535D;
+            this.trackBarAdvancedMax.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.TrackBarAdvancedMin_ValueChanged);
+            // 
+            // trackBarAdvancedMin
+            // 
+            resources.ApplyResources(this.trackBarAdvancedMin, "trackBarAdvancedMin");
+            this.trackBarAdvancedMin.ControlHeight = 27;
+            this.trackBarAdvancedMin.DecimalPlaces = -1;
+            this.trackBarAdvancedMin.LogScrollBar = false;
+            this.trackBarAdvancedMin.Maximum = 65535D;
+            this.trackBarAdvancedMin.Minimum = 0D;
+            this.trackBarAdvancedMin.Name = "trackBarAdvancedMin";
+            this.trackBarAdvancedMin.NumericBoxSize = 97;
+            this.trackBarAdvancedMin.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarAdvancedMin.Smart_Increment = true;
+            this.trackBarAdvancedMin.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
+            this.trackBarAdvancedMin.UpDown_Increment = 1D;
+            this.trackBarAdvancedMin.Value = 0D;
+            this.trackBarAdvancedMin.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.TrackBarAdvancedMin_ValueChanged);
+            // 
+            // numericBoxLabelFontSize
+            // 
+            resources.ApplyResources(this.numericBoxLabelFontSize, "numericBoxLabelFontSize");
+            this.numericBoxLabelFontSize.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLabelFontSize.DecimalPlaces = 0;
+            this.numericBoxLabelFontSize.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLabelFontSize.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLabelFontSize.Maximum = 20D;
+            this.numericBoxLabelFontSize.Minimum = 1D;
+            this.numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
+            this.numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
+            this.numericBoxLabelFontSize.ShowUpDown = true;
+            this.numericBoxLabelFontSize.SkipEventDuringInput = false;
+            this.numericBoxLabelFontSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip"));
+            this.numericBoxLabelFontSize.Value = 9D;
+            this.numericBoxLabelFontSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // colorControlLabel
+            // 
+            this.colorControlLabel.Argb = -5374161;
+            resources.ApplyResources(this.colorControlLabel, "colorControlLabel");
+            this.colorControlLabel.Blue = 47;
+            this.colorControlLabel.BlueF = 0.1843137F;
+            this.colorControlLabel.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlLabel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(255)))), ((int)(((byte)(47)))));
+            this.colorControlLabel.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlLabel.Green = 255;
+            this.colorControlLabel.GreenF = 1F;
+            this.colorControlLabel.Name = "colorControlLabel";
+            this.colorControlLabel.Red = 173;
+            this.colorControlLabel.RedF = 0.6784314F;
+            this.toolTip.SetToolTip(this.colorControlLabel, resources.GetString("colorControlLabel.ToolTip1"));
+            this.colorControlLabel.ColorChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // numericBoxScaleLength
+            // 
+            resources.ApplyResources(this.numericBoxScaleLength, "numericBoxScaleLength");
+            this.numericBoxScaleLength.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxScaleLength.DecimalPlaces = 1;
+            this.numericBoxScaleLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxScaleLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxScaleLength.Maximum = 100D;
+            this.numericBoxScaleLength.Minimum = 0.2D;
+            this.numericBoxScaleLength.Name = "numericBoxScaleLength";
+            this.numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
+            this.numericBoxScaleLength.ShowUpDown = true;
+            this.numericBoxScaleLength.SkipEventDuringInput = false;
+            this.numericBoxScaleLength.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxScaleLength, resources.GetString("numericBoxScaleLength.ToolTip"));
+            this.numericBoxScaleLength.UpDown_Increment = 0.2D;
+            this.numericBoxScaleLength.Value = 0.5D;
+            this.numericBoxScaleLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // colorControlScale
+            // 
+            this.colorControlScale.Argb = -7877126;
+            resources.ApplyResources(this.colorControlScale, "colorControlScale");
+            this.colorControlScale.Blue = 250;
+            this.colorControlScale.BlueF = 0.9803922F;
+            this.colorControlScale.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlScale.Color = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(205)))), ((int)(((byte)(250)))));
+            this.colorControlScale.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlScale.Green = 205;
+            this.colorControlScale.GreenF = 0.8039216F;
+            this.colorControlScale.Name = "colorControlScale";
+            this.colorControlScale.Red = 135;
+            this.colorControlScale.RedF = 0.5294118F;
+            this.toolTip.SetToolTip(this.colorControlScale, resources.GetString("colorControlScale.ToolTip1"));
+            this.colorControlScale.ColorChanged += new System.EventHandler(this.CheckBoxShowLabel_CheckedChanged);
+            // 
+            // numericBoxThickness
+            // 
+            resources.ApplyResources(this.numericBoxThickness, "numericBoxThickness");
+            this.numericBoxThickness.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThickness.DecimalPlaces = 3;
+            this.numericBoxThickness.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThickness.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThickness.Maximum = 1000D;
+            this.numericBoxThickness.Minimum = 0.001D;
+            this.numericBoxThickness.Name = "numericBoxThickness";
+            this.numericBoxThickness.RadianValue = 0.3490658503988659D;
+            this.numericBoxThickness.ShowUpDown = true;
+            this.numericBoxThickness.SmartIncrement = true;
+            this.numericBoxThickness.ThonsandsSeparator = true;
+            this.numericBoxThickness.Value = 20D;
+            this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThickness_ValueChanged);
+            // 
+            // numericBoxAccVol
+            // 
+            resources.ApplyResources(this.numericBoxAccVol, "numericBoxAccVol");
+            this.numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAccVol.Maximum = 1000D;
+            this.numericBoxAccVol.Minimum = 1D;
+            this.numericBoxAccVol.Name = "numericBoxAccVol";
+            this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
+            this.numericBoxAccVol.ShowUpDown = true;
+            this.numericBoxAccVol.SmartIncrement = true;
+            this.numericBoxAccVol.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
+            this.numericBoxAccVol.Value = 200D;
+            this.numericBoxAccVol.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxAccVol_ValueChanged);
+            // 
+            // numericBoxDefocus
+            // 
+            resources.ApplyResources(this.numericBoxDefocus, "numericBoxDefocus");
+            this.numericBoxDefocus.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocus.DecimalPlaces = 1;
+            this.numericBoxDefocus.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocus.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocus.Maximum = 1000D;
+            this.numericBoxDefocus.Minimum = -1000D;
+            this.numericBoxDefocus.Name = "numericBoxDefocus";
+            this.numericBoxDefocus.RadianValue = -1.2217304763960306D;
+            this.numericBoxDefocus.ShowUpDown = true;
+            this.numericBoxDefocus.SmartIncrement = true;
+            this.numericBoxDefocus.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
+            this.numericBoxDefocus.Value = -70D;
+            this.numericBoxDefocus.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocus_ValueChanged);
+            // 
+            // numericBoxCs
+            // 
+            resources.ApplyResources(this.numericBoxCs, "numericBoxCs");
+            this.numericBoxCs.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCs.DecimalPlaces = 2;
+            this.numericBoxCs.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCs.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCs.Maximum = 20D;
+            this.numericBoxCs.Minimum = -20D;
+            this.numericBoxCs.Name = "numericBoxCs";
+            this.numericBoxCs.RadianValue = 0.022689280275926284D;
+            this.numericBoxCs.ShowUpDown = true;
+            this.numericBoxCs.SmartIncrement = true;
+            this.numericBoxCs.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
+            this.numericBoxCs.UpDown_Increment = 0.1D;
+            this.numericBoxCs.Value = 1.3D;
+            this.numericBoxCs.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxCs_ValueChanged);
+            // 
+            // numericBoxCc
+            // 
+            resources.ApplyResources(this.numericBoxCc, "numericBoxCc");
+            this.numericBoxCc.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCc.DecimalPlaces = 2;
+            this.numericBoxCc.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCc.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCc.Maximum = 10D;
+            this.numericBoxCc.Minimum = 0D;
+            this.numericBoxCc.Name = "numericBoxCc";
+            this.numericBoxCc.RadianValue = 0.027925268031909273D;
+            this.numericBoxCc.RestrictLimitValue = false;
+            this.numericBoxCc.ShowUpDown = true;
+            this.numericBoxCc.SmartIncrement = true;
+            this.numericBoxCc.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
+            this.numericBoxCc.UpDown_Increment = 0.1D;
+            this.numericBoxCc.Value = 1.6D;
+            this.numericBoxCc.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // numericBoxDeltaV
+            // 
+            resources.ApplyResources(this.numericBoxDeltaV, "numericBoxDeltaV");
+            this.numericBoxDeltaV.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDeltaV.DecimalPlaces = 2;
+            this.numericBoxDeltaV.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDeltaV.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDeltaV.Maximum = 10D;
+            this.numericBoxDeltaV.Minimum = 0D;
+            this.numericBoxDeltaV.Name = "numericBoxDeltaV";
+            this.numericBoxDeltaV.RadianValue = 0.012217304763960307D;
+            this.numericBoxDeltaV.RestrictLimitValue = false;
+            this.numericBoxDeltaV.ShowUpDown = true;
+            this.numericBoxDeltaV.SmartIncrement = true;
+            this.numericBoxDeltaV.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
+            this.numericBoxDeltaV.UpDown_Increment = 0.1D;
+            this.numericBoxDeltaV.Value = 0.7D;
+            this.numericBoxDeltaV.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // numericBoxBetaAgnle
+            // 
+            resources.ApplyResources(this.numericBoxBetaAgnle, "numericBoxBetaAgnle");
+            this.numericBoxBetaAgnle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaAgnle.DecimalPlaces = 2;
+            this.numericBoxBetaAgnle.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaAgnle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaAgnle.Maximum = 100D;
+            this.numericBoxBetaAgnle.Minimum = 0D;
+            this.numericBoxBetaAgnle.Name = "numericBoxBetaAgnle";
+            this.numericBoxBetaAgnle.RadianValue = 0.013089969389957471D;
+            this.numericBoxBetaAgnle.ShowUpDown = true;
+            this.numericBoxBetaAgnle.SmartIncrement = true;
+            this.numericBoxBetaAgnle.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxBetaAgnle, resources.GetString("numericBoxBetaAgnle.ToolTip"));
+            this.numericBoxBetaAgnle.UpDown_Increment = 0.05D;
+            this.numericBoxBetaAgnle.Value = 0.75D;
+            this.numericBoxBetaAgnle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // graphControl
+            // 
+            this.graphControl.AllowMouseOperation = true;
+            this.graphControl.BackgroundColor = System.Drawing.Color.White;
+            this.graphControl.BottomMargin = 0D;
+            this.graphControl.DivisionLineColor = System.Drawing.Color.Gray;
+            this.graphControl.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.graphControl, "graphControl");
+            this.graphControl.FixRangeHorizontal = false;
+            this.graphControl.FixRangeVertical = false;
+            this.graphControl.GraphName = "";
+            this.graphControl.HorizontalGradiationTextVisivle = true;
+            this.graphControl.Interpolation = false;
+            this.graphControl.IsIntegerX = false;
+            this.graphControl.IsIntegerY = false;
+            this.graphControl.LabelX = "X:";
+            this.graphControl.LabelY = "Y:";
+            this.graphControl.LeftMargin = 0F;
+            this.graphControl.LineColor = System.Drawing.Color.Red;
+            this.graphControl.LineWidth = 1F;
+            this.graphControl.LowerX = 0D;
+            this.graphControl.LowerY = 0D;
+            this.graphControl.MaximalX = 1D;
+            this.graphControl.MaximalY = 1D;
+            this.graphControl.MinimalX = 0D;
+            this.graphControl.MinimalY = 0D;
+            this.graphControl.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
+            this.graphControl.MousePositionVisible = false;
+            this.graphControl.Name = "graphControl";
+            this.graphControl.OriginPosition = new System.Drawing.Point(20, 20);
+            this.graphControl.Smoothing = false;
+            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.UnitX = "";
+            this.graphControl.UnitY = "";
+            this.graphControl.UpperText = "";
+            this.graphControl.UpperTextVisible = false;
+            this.graphControl.UpperX = 1D;
+            this.graphControl.UpperY = 1D;
+            this.graphControl.UseLineWidth = true;
+            this.graphControl.VerticalGradiationTextVisivle = true;
+            this.graphControl.XLog = false;
+            this.graphControl.XScaleLineVisible = true;
+            this.graphControl.YLog = false;
+            this.graphControl.YScaleLineVisible = true;
+            // 
+            // numericBoxMaxU1
+            // 
+            resources.ApplyResources(this.numericBoxMaxU1, "numericBoxMaxU1");
+            this.numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.DecimalPlaces = 1;
+            this.numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.Maximum = 20D;
+            this.numericBoxMaxU1.Minimum = 0D;
+            this.numericBoxMaxU1.Name = "numericBoxMaxU1";
+            this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
+            this.numericBoxMaxU1.ShowUpDown = true;
+            this.numericBoxMaxU1.SmartIncrement = true;
+            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxMaxU1.ThonsandsSeparator = true;
+            this.numericBoxMaxU1.Value = 6D;
+            this.numericBoxMaxU1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // numericBoxObjAperX
+            // 
+            resources.ApplyResources(this.numericBoxObjAperX, "numericBoxObjAperX");
+            this.numericBoxObjAperX.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperX.DecimalPlaces = 1;
+            this.numericBoxObjAperX.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperX.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperX.Maximum = 100D;
+            this.numericBoxObjAperX.Minimum = -100D;
+            this.numericBoxObjAperX.Name = "numericBoxObjAperX";
+            this.numericBoxObjAperX.ShowUpDown = true;
+            this.numericBoxObjAperX.SmartIncrement = true;
+            this.numericBoxObjAperX.ThonsandsSeparator = true;
+            this.numericBoxObjAperX.UpDown_Increment = 0.5D;
+            this.numericBoxObjAperX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
+            // 
+            // numericBoxObjAperRadius
+            // 
+            resources.ApplyResources(this.numericBoxObjAperRadius, "numericBoxObjAperRadius");
+            this.numericBoxObjAperRadius.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperRadius.DecimalPlaces = 1;
+            this.numericBoxObjAperRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperRadius.Maximum = 500D;
+            this.numericBoxObjAperRadius.Minimum = 0.5D;
+            this.numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
+            this.numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
+            this.numericBoxObjAperRadius.ShowUpDown = true;
+            this.numericBoxObjAperRadius.SmartIncrement = true;
+            this.numericBoxObjAperRadius.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
+            this.numericBoxObjAperRadius.UpDown_Increment = 0.5D;
+            this.numericBoxObjAperRadius.Value = 12D;
+            this.numericBoxObjAperRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
+            // 
+            // numericBoxObjAperY
+            // 
+            resources.ApplyResources(this.numericBoxObjAperY, "numericBoxObjAperY");
+            this.numericBoxObjAperY.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperY.DecimalPlaces = 1;
+            this.numericBoxObjAperY.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxObjAperY.Maximum = 100D;
+            this.numericBoxObjAperY.Minimum = -100D;
+            this.numericBoxObjAperY.Name = "numericBoxObjAperY";
+            this.numericBoxObjAperY.ShowUpDown = true;
+            this.numericBoxObjAperY.SmartIncrement = true;
+            this.numericBoxObjAperY.ThonsandsSeparator = true;
+            this.numericBoxObjAperY.UpDown_Increment = 0.5D;
+            this.numericBoxObjAperY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxObjAperRadius_ValueChanged);
+            // 
+            // numericBoxNumOfBlochWave
+            // 
+            resources.ApplyResources(this.numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
+            this.numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNumOfBlochWave.Maximum = 1000D;
+            this.numericBoxNumOfBlochWave.Minimum = 8D;
+            this.numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
+            this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
+            this.numericBoxNumOfBlochWave.ShowUpDown = true;
+            this.numericBoxNumOfBlochWave.SmartIncrement = true;
+            this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
+            this.numericBoxNumOfBlochWave.Value = 500D;
+            this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxNumOfBlochWave_ValueChanged);
+            // 
+            // numericBoxWidth
+            // 
+            resources.ApplyResources(this.numericBoxWidth, "numericBoxWidth");
+            this.numericBoxWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWidth.DecimalPlaces = 0;
+            this.numericBoxWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWidth.Maximum = 2048D;
+            this.numericBoxWidth.Minimum = 8D;
+            this.numericBoxWidth.Name = "numericBoxWidth";
+            this.numericBoxWidth.RadianValue = 8.9360857702109673D;
+            this.numericBoxWidth.ShowUpDown = true;
+            this.numericBoxWidth.SmartIncrement = true;
+            this.numericBoxWidth.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxWidth, resources.GetString("numericBoxWidth.ToolTip"));
+            this.numericBoxWidth.Value = 512D;
+            // 
+            // numericBoxHeight
+            // 
+            resources.ApplyResources(this.numericBoxHeight, "numericBoxHeight");
+            this.numericBoxHeight.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxHeight.DecimalPlaces = 0;
+            this.numericBoxHeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxHeight.Maximum = 2048D;
+            this.numericBoxHeight.Minimum = 8D;
+            this.numericBoxHeight.Name = "numericBoxHeight";
+            this.numericBoxHeight.RadianValue = 8.9360857702109673D;
+            this.numericBoxHeight.ShowUpDown = true;
+            this.numericBoxHeight.SmartIncrement = true;
+            this.numericBoxHeight.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip"));
+            this.numericBoxHeight.Value = 512D;
+            // 
+            // numericBoxResolution
+            // 
+            resources.ApplyResources(this.numericBoxResolution, "numericBoxResolution");
+            this.numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxResolution.DecimalPlaces = 2;
+            this.numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxResolution.Maximum = 100D;
+            this.numericBoxResolution.Minimum = 0.01D;
+            this.numericBoxResolution.Name = "numericBoxResolution";
+            this.numericBoxResolution.RadianValue = 0.069813170079773182D;
+            this.numericBoxResolution.ShowUpDown = true;
+            this.numericBoxResolution.SmartIncrement = true;
+            this.numericBoxResolution.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
+            this.numericBoxResolution.Value = 4D;
+            // 
+            // numericBoxDefocusNum
+            // 
+            resources.ApplyResources(this.numericBoxDefocusNum, "numericBoxDefocusNum");
+            this.numericBoxDefocusNum.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusNum.DecimalPlaces = 0;
+            this.numericBoxDefocusNum.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusNum.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusNum.Maximum = 20D;
+            this.numericBoxDefocusNum.Minimum = 1D;
+            this.numericBoxDefocusNum.Name = "numericBoxDefocusNum";
+            this.numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
+            this.numericBoxDefocusNum.ShowUpDown = true;
+            this.numericBoxDefocusNum.ThonsandsSeparator = true;
+            this.numericBoxDefocusNum.Value = 4D;
+            this.numericBoxDefocusNum.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
+            // 
+            // numericBoxDefocusStep
+            // 
+            resources.ApplyResources(this.numericBoxDefocusStep, "numericBoxDefocusStep");
+            this.numericBoxDefocusStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStep.DecimalPlaces = 2;
+            this.numericBoxDefocusStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStep.Maximum = 100D;
+            this.numericBoxDefocusStep.Minimum = -100D;
+            this.numericBoxDefocusStep.Name = "numericBoxDefocusStep";
+            this.numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
+            this.numericBoxDefocusStep.ShowUpDown = true;
+            this.numericBoxDefocusStep.ThonsandsSeparator = true;
+            this.numericBoxDefocusStep.UpDown_Increment = 10D;
+            this.numericBoxDefocusStep.Value = -20D;
+            this.numericBoxDefocusStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
+            // 
+            // numericBoxDefocusStart
+            // 
+            resources.ApplyResources(this.numericBoxDefocusStart, "numericBoxDefocusStart");
+            this.numericBoxDefocusStart.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStart.DecimalPlaces = 2;
+            this.numericBoxDefocusStart.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStart.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDefocusStart.Maximum = 1000D;
+            this.numericBoxDefocusStart.Minimum = -1000D;
+            this.numericBoxDefocusStart.Name = "numericBoxDefocusStart";
+            this.numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
+            this.numericBoxDefocusStart.ShowUpDown = true;
+            this.numericBoxDefocusStart.ThonsandsSeparator = true;
+            this.numericBoxDefocusStart.UpDown_Increment = 10D;
+            this.numericBoxDefocusStart.Value = -70D;
+            this.numericBoxDefocusStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocusSerial_ValueChanged);
+            // 
+            // numericBoxThicknessNum
+            // 
+            resources.ApplyResources(this.numericBoxThicknessNum, "numericBoxThicknessNum");
+            this.numericBoxThicknessNum.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessNum.DecimalPlaces = 0;
+            this.numericBoxThicknessNum.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessNum.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessNum.Maximum = 20D;
+            this.numericBoxThicknessNum.Minimum = 0.1D;
+            this.numericBoxThicknessNum.Name = "numericBoxThicknessNum";
+            this.numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
+            this.numericBoxThicknessNum.ShowUpDown = true;
+            this.numericBoxThicknessNum.ThonsandsSeparator = true;
+            this.numericBoxThicknessNum.Value = 4D;
+            this.numericBoxThicknessNum.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
+            // 
+            // numericBoxThicknessStep
+            // 
+            resources.ApplyResources(this.numericBoxThicknessStep, "numericBoxThicknessStep");
+            this.numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStep.DecimalPlaces = 2;
+            this.numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStep.Maximum = 1000D;
+            this.numericBoxThicknessStep.Minimum = 1D;
+            this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
+            this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
+            this.numericBoxThicknessStep.ShowUpDown = true;
+            this.numericBoxThicknessStep.ThonsandsSeparator = true;
+            this.numericBoxThicknessStep.UpDown_Increment = 10D;
+            this.numericBoxThicknessStep.Value = 20D;
+            this.numericBoxThicknessStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
+            // 
+            // numericBoxThicknessStart
+            // 
+            resources.ApplyResources(this.numericBoxThicknessStart, "numericBoxThicknessStart");
+            this.numericBoxThicknessStart.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStart.DecimalPlaces = 2;
+            this.numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxThicknessStart.Maximum = 1000D;
+            this.numericBoxThicknessStart.Minimum = 0.1D;
+            this.numericBoxThicknessStart.Name = "numericBoxThicknessStart";
+            this.numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
+            this.numericBoxThicknessStart.ShowUpDown = true;
+            this.numericBoxThicknessStart.ThonsandsSeparator = true;
+            this.numericBoxThicknessStart.UpDown_Increment = 10D;
+            this.numericBoxThicknessStart.Value = 20D;
+            this.numericBoxThicknessStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThicknessSerial_ValueChanged);
+            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2046,7 +2061,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxThicknessStep;
         private System.Windows.Forms.CheckBox checkBoxSerialDefocus;
         private System.Windows.Forms.CheckBox checkBoxSerialThickness;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBoxPartialCoherencyModel;
         private System.Windows.Forms.RadioButton radioButtonModeTransmissionCrossCoefficient;

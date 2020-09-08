@@ -28,33 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymmetryControl));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBoxShowError = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label48 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
-            this.numericBoxBeta = new Crystallography.Controls.NumericBox();
-            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.numericBoxGammaErr = new Crystallography.Controls.NumericBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.numericBoxAlphaErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxBetaErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxA = new Crystallography.Controls.NumericBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.numericBoxGamma = new Crystallography.Controls.NumericBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.numericBoxBErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxB = new Crystallography.Controls.NumericBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.numericBoxC = new Crystallography.Controls.NumericBox();
-            this.numericBoxCErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxAErr = new Crystallography.Controls.NumericBox();
             this.label44 = new System.Windows.Forms.Label();
             this.groupBoxSymmetry = new System.Windows.Forms.GroupBox();
             this.comboBoxSpaceGroup = new System.Windows.Forms.ComboBox();
@@ -67,6 +56,19 @@
             this.label21 = new System.Windows.Forms.Label();
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.numericBoxBeta = new Crystallography.Controls.NumericBox();
+            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
+            this.numericBoxGammaErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxAlphaErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxBetaErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxA = new Crystallography.Controls.NumericBox();
+            this.numericBoxGamma = new Crystallography.Controls.NumericBox();
+            this.numericBoxBErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxB = new Crystallography.Controls.NumericBox();
+            this.numericBoxC = new Crystallography.Controls.NumericBox();
+            this.numericBoxCErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxAErr = new Crystallography.Controls.NumericBox();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxSymmetry.SuspendLayout();
@@ -84,6 +86,7 @@
             // 
             resources.ApplyResources(this.checkBoxShowError, "checkBoxShowError");
             this.checkBoxShowError.Name = "checkBoxShowError";
+            this.toolTip.SetToolTip(this.checkBoxShowError, resources.GetString("checkBoxShowError.ToolTip"));
             this.checkBoxShowError.UseVisualStyleBackColor = true;
             this.checkBoxShowError.CheckedChanged += new System.EventHandler(this.checkBoxShowError_CheckedChanged);
             // 
@@ -126,6 +129,155 @@
             resources.ApplyResources(this.label46, "label46");
             this.label46.Name = "label46";
             // 
+            // label47
+            // 
+            resources.ApplyResources(this.label47, "label47");
+            this.label47.Name = "label47";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // label44
+            // 
+            resources.ApplyResources(this.label44, "label44");
+            this.label44.Name = "label44";
+            // 
+            // groupBoxSymmetry
+            // 
+            this.groupBoxSymmetry.Controls.Add(this.comboBoxSpaceGroup);
+            this.groupBoxSymmetry.Controls.Add(this.comboBoxPointGroup);
+            this.groupBoxSymmetry.Controls.Add(this.comboBoxCrystalSystem);
+            this.groupBoxSymmetry.Controls.Add(this.label20);
+            this.groupBoxSymmetry.Controls.Add(this.label17);
+            this.groupBoxSymmetry.Controls.Add(this.label19);
+            this.groupBoxSymmetry.Controls.Add(this.textBoxSearch);
+            this.groupBoxSymmetry.Controls.Add(this.label21);
+            this.groupBoxSymmetry.Controls.Add(this.comboBoxSearchResult);
+            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
+            this.groupBoxSymmetry.Name = "groupBoxSymmetry";
+            this.groupBoxSymmetry.TabStop = false;
+            // 
+            // comboBoxSpaceGroup
+            // 
+            resources.ApplyResources(this.comboBoxSpaceGroup, "comboBoxSpaceGroup");
+            this.comboBoxSpaceGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxSpaceGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSpaceGroup.DropDownWidth = 200;
+            this.comboBoxSpaceGroup.Name = "comboBoxSpaceGroup";
+            this.toolTip.SetToolTip(this.comboBoxSpaceGroup, resources.GetString("comboBoxSpaceGroup.ToolTip"));
+            this.comboBoxSpaceGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
+            this.comboBoxSpaceGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpaceGroup_SelectedIndexChanged);
+            // 
+            // comboBoxPointGroup
+            // 
+            resources.ApplyResources(this.comboBoxPointGroup, "comboBoxPointGroup");
+            this.comboBoxPointGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxPointGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPointGroup.Name = "comboBoxPointGroup";
+            this.toolTip.SetToolTip(this.comboBoxPointGroup, resources.GetString("comboBoxPointGroup.ToolTip"));
+            this.comboBoxPointGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
+            this.comboBoxPointGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxPointGroup_SelectedIndexChanged);
+            // 
+            // comboBoxCrystalSystem
+            // 
+            resources.ApplyResources(this.comboBoxCrystalSystem, "comboBoxCrystalSystem");
+            this.comboBoxCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCrystalSystem.Items.AddRange(new object[] {
+            resources.GetString("comboBoxCrystalSystem.Items"),
+            resources.GetString("comboBoxCrystalSystem.Items1"),
+            resources.GetString("comboBoxCrystalSystem.Items2"),
+            resources.GetString("comboBoxCrystalSystem.Items3"),
+            resources.GetString("comboBoxCrystalSystem.Items4"),
+            resources.GetString("comboBoxCrystalSystem.Items5"),
+            resources.GetString("comboBoxCrystalSystem.Items6"),
+            resources.GetString("comboBoxCrystalSystem.Items7")});
+            this.comboBoxCrystalSystem.Name = "comboBoxCrystalSystem";
+            this.toolTip.SetToolTip(this.comboBoxCrystalSystem, resources.GetString("comboBoxCrystalSystem.ToolTip"));
+            this.comboBoxCrystalSystem.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrystalSystem_SelectedIndexChanged);
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            this.toolTip.SetToolTip(this.label20, resources.GetString("label20.ToolTip"));
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            this.toolTip.SetToolTip(this.label17, resources.GetString("label17.ToolTip"));
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            this.toolTip.SetToolTip(this.label19, resources.GetString("label19.ToolTip"));
+            // 
+            // textBoxSearch
+            // 
+            resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.toolTip.SetToolTip(this.textBoxSearch, resources.GetString("textBoxSearch.ToolTip"));
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            this.toolTip.SetToolTip(this.label21, resources.GetString("label21.ToolTip"));
+            // 
+            // comboBoxSearchResult
+            // 
+            resources.ApplyResources(this.comboBoxSearchResult, "comboBoxSearchResult");
+            this.comboBoxSearchResult.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSearchResult.DropDownWidth = 200;
+            this.comboBoxSearchResult.Name = "comboBoxSearchResult";
+            this.comboBoxSearchResult.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
+            this.comboBoxSearchResult.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchResult_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // numericBoxBeta
             // 
             resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
@@ -137,6 +289,7 @@
             this.numericBoxBeta.SkipEventDuringInput = false;
             this.numericBoxBeta.SmartIncrement = true;
             this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip"));
             this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxAlpha
@@ -150,12 +303,8 @@
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip"));
             this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // label47
-            // 
-            resources.ApplyResources(this.label47, "label47");
-            this.label47.Name = "label47";
             // 
             // numericBoxGammaErr
             // 
@@ -169,11 +318,6 @@
             this.numericBoxGammaErr.SmartIncrement = true;
             this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
             // 
             // numericBoxAlphaErr
             // 
@@ -214,16 +358,6 @@
             this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
-            // 
             // numericBoxGamma
             // 
             resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
@@ -236,11 +370,6 @@
             this.numericBoxGamma.SmartIncrement = true;
             this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
             // 
             // numericBoxBErr
             // 
@@ -267,26 +396,6 @@
             this.numericBoxB.SmartIncrement = true;
             this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // label24
-            // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
-            // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
             // 
             // numericBoxC
             // 
@@ -326,102 +435,6 @@
             this.numericBoxAErr.SmartIncrement = true;
             this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxAErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // label44
-            // 
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.Name = "label44";
-            // 
-            // groupBoxSymmetry
-            // 
-            this.groupBoxSymmetry.Controls.Add(this.comboBoxSpaceGroup);
-            this.groupBoxSymmetry.Controls.Add(this.comboBoxPointGroup);
-            this.groupBoxSymmetry.Controls.Add(this.comboBoxCrystalSystem);
-            this.groupBoxSymmetry.Controls.Add(this.label20);
-            this.groupBoxSymmetry.Controls.Add(this.label17);
-            this.groupBoxSymmetry.Controls.Add(this.label19);
-            this.groupBoxSymmetry.Controls.Add(this.textBoxSearch);
-            this.groupBoxSymmetry.Controls.Add(this.label21);
-            this.groupBoxSymmetry.Controls.Add(this.comboBoxSearchResult);
-            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
-            this.groupBoxSymmetry.Name = "groupBoxSymmetry";
-            this.groupBoxSymmetry.TabStop = false;
-            // 
-            // comboBoxSpaceGroup
-            // 
-            resources.ApplyResources(this.comboBoxSpaceGroup, "comboBoxSpaceGroup");
-            this.comboBoxSpaceGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxSpaceGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpaceGroup.DropDownWidth = 200;
-            this.comboBoxSpaceGroup.Name = "comboBoxSpaceGroup";
-            this.comboBoxSpaceGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
-            this.comboBoxSpaceGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpaceGroup_SelectedIndexChanged);
-            // 
-            // comboBoxPointGroup
-            // 
-            resources.ApplyResources(this.comboBoxPointGroup, "comboBoxPointGroup");
-            this.comboBoxPointGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxPointGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPointGroup.Name = "comboBoxPointGroup";
-            this.comboBoxPointGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
-            this.comboBoxPointGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxPointGroup_SelectedIndexChanged);
-            // 
-            // comboBoxCrystalSystem
-            // 
-            resources.ApplyResources(this.comboBoxCrystalSystem, "comboBoxCrystalSystem");
-            this.comboBoxCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCrystalSystem.Items.AddRange(new object[] {
-            resources.GetString("comboBoxCrystalSystem.Items"),
-            resources.GetString("comboBoxCrystalSystem.Items1"),
-            resources.GetString("comboBoxCrystalSystem.Items2"),
-            resources.GetString("comboBoxCrystalSystem.Items3"),
-            resources.GetString("comboBoxCrystalSystem.Items4"),
-            resources.GetString("comboBoxCrystalSystem.Items5"),
-            resources.GetString("comboBoxCrystalSystem.Items6"),
-            resources.GetString("comboBoxCrystalSystem.Items7")});
-            this.comboBoxCrystalSystem.Name = "comboBoxCrystalSystem";
-            this.comboBoxCrystalSystem.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrystalSystem_SelectedIndexChanged);
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
-            // 
-            // textBoxSearch
-            // 
-            resources.ApplyResources(this.textBoxSearch, "textBoxSearch");
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // comboBoxSearchResult
-            // 
-            resources.ApplyResources(this.comboBoxSearchResult, "comboBoxSearchResult");
-            this.comboBoxSearchResult.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSearchResult.DropDownWidth = 200;
-            this.comboBoxSearchResult.Name = "comboBoxSearchResult";
-            this.comboBoxSearchResult.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
-            this.comboBoxSearchResult.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchResult_SelectedIndexChanged);
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
             // 
             // SymmetryControl
             // 
@@ -480,5 +493,6 @@
         public System.Windows.Forms.ComboBox comboBoxSearchResult;
         private System.Windows.Forms.CheckBox checkBoxShowError;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
