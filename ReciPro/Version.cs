@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.783(2020/09/08)  Fixed a bug on GUI." +
             "\r\n ver4.782(2020/08/19)  Fixed a bug on OpenGL." +
             "\r\n ver4.781(2020/08/19)  Loosen the restrictions on OpenGL requirements. (OpenGL 1.3 or higher)" +
             "\r\n ver4.780(2020/08/18)  Fixed a bug when exporting face-centered symmetry to CIF format. " +
