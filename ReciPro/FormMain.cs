@@ -28,6 +28,20 @@ namespace ReciPro
         [DllImport("user32")]
         private static extern short GetAsyncKeyState(int nVirtKey);
 
+        public class WebClient2 : WebClient
+        {
+            public int Timeout { get; set; }
+            public WebClient2(int timeout) { Timeout = timeout; }
+            protected override WebRequest GetWebRequest(Uri address)
+            {
+                var request = base.GetWebRequest(address);
+                if (request != null)
+                    request.Timeout = this.Timeout;
+                return request;
+            }
+        }
+
+
         #region クリップボード監視
 
         private IntPtr NextHandle;
@@ -72,6 +86,7 @@ namespace ReciPro
         #endregion クリップボード監視
 
         #region プロパティ、フィールド、イベントハンドラ
+
         public FormStructureViewer FormStructureViewer;
         public FormDiffractionSimulator FormDiffractionSimulator;
         public FormStereonet FormStereonet;
@@ -83,8 +98,9 @@ namespace ReciPro
         public FormImageSimulator FormImageSimulator;
         public FormCrystalDatabase FormCrystalDatabase;
         private Crystallography.Controls.CommonDialog commonDialog;
-
         private GLControlAlpha glControlAxes;
+
+        public Languages Language { get => Thread.CurrentThread.CurrentUICulture.Name=="en" ? Languages.English : Languages.Japanese; }
         public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
         public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
         public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
@@ -156,6 +172,11 @@ namespace ReciPro
 
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
+
+            new WebClient2(100).DownloadFileAsync(
+                new Uri("https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"),
+                "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
+                );
 
             commonDialog = new Crystallography.Controls.CommonDialog
             {
@@ -1062,16 +1083,11 @@ namespace ReciPro
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
-                    Process.Start("doc\\ReciProManual(ja).pdf");
-                else
-                    Process.Start("doc\\ReciProManual(en).pdf");
-            }
-            catch { }
-        }
+            var fn = "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
+            var fnWeb = fn.Replace(".pdf", ".web.pdf");
+            Process.Start((File.Exists(fnWeb) && new FileInfo(fnWeb).Length > 100) ? fnWeb : fn);
 
+        }
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
             commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
@@ -1435,5 +1451,6 @@ namespace ReciPro
 
         #endregion
 
+    
     }
 }

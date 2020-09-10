@@ -151,20 +151,20 @@
             this.disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.hintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.versionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
-            this.reportBugsRequestsOrCommentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -1227,6 +1227,11 @@
             resources.ApplyResources(this.checkUpdatesToolStripMenuItem, "checkUpdatesToolStripMenuItem");
             this.checkUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkUpdatesToolStripMenuItem_Click);
             // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
+            // 
             // hintToolStripMenuItem
             // 
             this.hintToolStripMenuItem.Name = "hintToolStripMenuItem";
@@ -1244,6 +1249,28 @@
             this.licenseToolStripMenuItem.Name = "licenseToolStripMenuItem";
             resources.ApplyResources(this.licenseToolStripMenuItem, "licenseToolStripMenuItem");
             this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
+            // 
+            // githubPageToolStripMenuItem
+            // 
+            this.githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
+            resources.ApplyResources(this.githubPageToolStripMenuItem, "githubPageToolStripMenuItem");
+            this.githubPageToolStripMenuItem.Click += new System.EventHandler(this.githubPageToolStripMenuItem_Click);
+            // 
+            // reportBugsRequestsOrCommentsToolStripMenuItem1
+            // 
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Name = "reportBugsRequestsOrCommentsToolStripMenuItem1";
+            resources.ApplyResources(this.reportBugsRequestsOrCommentsToolStripMenuItem1, "reportBugsRequestsOrCommentsToolStripMenuItem1");
+            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Click += new System.EventHandler(this.reportBugsRequestsOrCommentsToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
             // 
             // helpwebToolStripMenuItem
             // 
@@ -1276,33 +1303,6 @@
             // 
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // githubPageToolStripMenuItem
-            // 
-            this.githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
-            resources.ApplyResources(this.githubPageToolStripMenuItem, "githubPageToolStripMenuItem");
-            this.githubPageToolStripMenuItem.Click += new System.EventHandler(this.githubPageToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator16
-            // 
-            this.toolStripSeparator16.Name = "toolStripSeparator16";
-            resources.ApplyResources(this.toolStripSeparator16, "toolStripSeparator16");
-            // 
-            // toolStripSeparator17
-            // 
-            this.toolStripSeparator17.Name = "toolStripSeparator17";
-            resources.ApplyResources(this.toolStripSeparator17, "toolStripSeparator17");
-            // 
-            // toolStripSeparator18
-            // 
-            this.toolStripSeparator18.Name = "toolStripSeparator18";
-            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
-            // 
-            // reportBugsRequestsOrCommentsToolStripMenuItem1
-            // 
-            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Name = "reportBugsRequestsOrCommentsToolStripMenuItem1";
-            resources.ApplyResources(this.reportBugsRequestsOrCommentsToolStripMenuItem1, "reportBugsRequestsOrCommentsToolStripMenuItem1");
-            this.reportBugsRequestsOrCommentsToolStripMenuItem1.Click += new System.EventHandler(this.reportBugsRequestsOrCommentsToolStripMenuItem1_Click);
             // 
             // FormMain
             // 

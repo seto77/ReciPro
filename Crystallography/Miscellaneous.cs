@@ -28,9 +28,7 @@ namespace Crystallography
         {
             foreach (var value in d)
             {
-                if (double.IsNaN(value))
-                    return false;
-                if (double.IsInfinity(value))
+                if (double.IsNaN(value)|| double.IsInfinity(value))
                     return false;
             }
             return true;
