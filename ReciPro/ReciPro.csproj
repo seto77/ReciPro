@@ -432,6 +432,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="doc\Hrtem.pptx" />
+    <None Include="doc\ReciProManual%28en%29.docx" />
+    <Content Include="doc\ReciProManual%28en%29.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="doc\ReciProManual%28ja%29.docx" />
     <Content Include="doc\ReciProManual%28ja%29.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
