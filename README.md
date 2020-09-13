@@ -2,8 +2,8 @@
 * *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
   * Runs on Windows with .Net Framework 4.8.
   * Now, the manual is being developed.　It's incomplete, but published below.
-    * Japanese version (under construction): https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
-    * English version (under construction): https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
+    * Japanese version: https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+    * English version: https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
