@@ -28,6 +28,7 @@ namespace ReciPro
         [DllImport("user32")]
         private static extern short GetAsyncKeyState(int nVirtKey);
 
+        #region WebClientの派生クラス
         public class WebClient2 : WebClient
         {
             public int Timeout { get; set; }
@@ -40,7 +41,7 @@ namespace ReciPro
                 return request;
             }
         }
-
+        #endregion
 
         #region クリップボード監視
 
@@ -173,6 +174,7 @@ namespace ReciPro
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
+            //WEBから最新のマニュアルファイルを取得
             new WebClient2(100).DownloadFileAsync(
                 new Uri("https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"),
                 "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
@@ -1066,16 +1068,16 @@ namespace ReciPro
 
         private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
-            if (Dlg.ShowDialog() == DialogResult.OK)
-                readCrystalList(Dlg.FileName, true, true);
+            var dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                readCrystalList(dlg.FileName, true, true);
         }
 
         private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var Dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
-            if (Dlg.ShowDialog() == DialogResult.OK)
-                readCrystalList(Dlg.FileName, true, false);
+            var dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                readCrystalList(dlg.FileName, true, false);
         }
 
         private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e)
