@@ -52,10 +52,10 @@ namespace Crystallography
             Color = color;
         }
 
-        public double MaxX { get { return Pt.Max(p => p.X); } }
-        public double MinX { get { return Pt.Min(p => p.X); } }
-        public double MaxY { get { return Pt.Max(p => p.Y); } }
-        public double MinY { get { return Pt.Min(p => p.Y); } }
+        public double MaxX => Pt.Max(p => p.X);
+        public double MinX => Pt.Min(p => p.X);
+        public double MaxY => Pt.Max(p => p.Y);
+        public double MinY => Pt.Min(p => p.Y);
 
         public Profile CopyTo()
         {
