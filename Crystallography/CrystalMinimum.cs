@@ -1,13 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Windows.Forms;
-using MathNet.Numerics;
-using MathNet.Numerics.Integration;
-//using ProtoBuf;
 using MessagePack;
 
 
@@ -144,7 +139,7 @@ namespace Crystallography
         public static Crystal2 FromCrystal(Crystal c)
         {
             if (c == null) return null;
-            Crystal2 c2 = new Crystal2
+            var c2 = new Crystal2
             {
                 sym = (short)c.SymmetrySeriesNumber,
                 name = c.Name,
@@ -417,7 +412,6 @@ namespace Crystallography
                     MessageBox.Show(e.ToString());
 #endif
                     return new[] { (byte)255 };
-
                 }
             }
         }

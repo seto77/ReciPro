@@ -38,7 +38,7 @@ namespace Crystallography
         {
             get
             {
-                string filterString = "FujiBAS2000/2500; R-AXIS4/5; ITEX; Bruker CCD; IP Display; IPAimage; Fuji FDL; Rayonix; Marresearch; Perkin Elmer; ADSC; RadIcon; general image |";
+                var filterString = "FujiBAS2000/2500; R-AXIS4/5; ITEX; Bruker CCD; IP Display; IPAimage; Fuji FDL; Rayonix; Marresearch; Perkin Elmer; ADSC; RadIcon; general image |";
                 for (int i = 0; i < ListOfExtension.Length; i++)
                     if (i < ListOfExtension.Length - 1)
                         filterString += "*." + ListOfExtension[i] + ";";
@@ -56,14 +56,14 @@ namespace Crystallography
 
         public static int convertToInt(BinaryReader br)
         {
-            byte[] b = new byte[4];
+            var b = new byte[4];
             b[3] = br.ReadByte(); b[2] = br.ReadByte(); b[1] = br.ReadByte(); b[0] = br.ReadByte();
             return BitConverter.ToInt32(b, 0);
         }
 
         public static float convertToSingle(BinaryReader br)
         {
-            byte[] b = new byte[4];
+            var b = new byte[4];
             b[3] = br.ReadByte(); b[2] = br.ReadByte(); b[1] = br.ReadByte(); b[0] = br.ReadByte();
             return BitConverter.ToSingle(b, 0);
         }
@@ -77,35 +77,35 @@ namespace Crystallography
 
         public static bool IsRAxisImage(string fileName)
         {
-            BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+            var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
             br.BaseStream.Position = 0;
-            string temp = new string(br.ReadChars(6));
+            var temp = new string(br.ReadChars(6));
             br.Close();
             return temp == "R-AXIS" || temp == "ipdsc\0";
         }
 
         public static bool IsITEXImage(string fileName)
         {
-            BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+            var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
             br.BaseStream.Position = 0;
-            string temp = new string(br.ReadChars(2));
+            var temp = new string(br.ReadChars(2));
             br.Close();
             return temp == "IM";
         }
 
         public static bool IsADSCImage(string fileName)
         {
-            BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+            var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
             br.BaseStream.Position = 0;
-            string temp = new string(br.ReadChars(16));
+            var temp = new string(br.ReadChars(16));
             br.Close();
             return temp == "{\nHEADER_BYTES= ";
         }
 
         public static bool IsTiffImage(string fileName)
         {
-            BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
-            byte[] temp = new byte[2];
+            var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+            var temp = new byte[2];
             br.Read(temp, 0, 2);
             br.Close();
             return (temp[0] == 0x49 && temp[1] == 0x49) || (temp[0] == 0x4D && temp[1] == 0x4D);
@@ -216,12 +216,13 @@ namespace Crystallography
             return result;
         }
 
+        #region SMV
         private static bool SMV(string filename)
         {
             try
             {
                 int headersize = 0;
-                using (StreamReader sr = new StreamReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
+                using (var sr = new StreamReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
                 {
                     if (sr.ReadLine() != "{")
                         return false;
@@ -230,7 +231,7 @@ namespace Crystallography
                         return false;
                     headersize = Convert.ToInt32(str.Split(new[] { '=', ';' })[1]);
                 }
-                
+
                 using BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
                 var headers = new string(br.ReadChars(headersize)).Split(new[] { '{', '}', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
                 var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(new[] { '=' })[1] == "little_endian";
@@ -286,7 +287,9 @@ namespace Crystallography
             }
             return true;
         }
+        #endregion
 
+        #region RadIcon
         public static bool RadIcon(string str)
         {
             try
@@ -334,8 +337,10 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
 
+        #region DigitalMicrograph
         private static bool DM(string str)
         {
             try
@@ -401,8 +406,10 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
 
+        #region MAR
         public static bool MAR(string str)
         {
             try
@@ -469,7 +476,10 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
+
+        #region RayonixSX200
 
         public static bool RayonixSX200(string str)
         {
@@ -495,6 +505,9 @@ namespace Crystallography
             return true;
         }
 
+        #endregion
+
+        #region GEL
         public static bool Gel(string str)
         {
             try
@@ -528,8 +541,10 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
 
+        #region MCCD
         public static bool Mccd(string str)
         {
             /*  try
@@ -581,11 +596,12 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
 
+        #region HDF5
         public static bool HDF5(string str, bool? normarize = null)
         {
-
             try
             {
                 if (Ring.IP == null)
@@ -593,7 +609,7 @@ namespace Crystallography
 
                 var hdf = new HDF(str);
 
-                var groupID2name = hdf.Paths.Where(g => g.Depth==0 && !g.Name.Contains("file_info")).First().Name;
+                var groupID2name = hdf.Paths.Where(g => g.Depth == 0 && !g.Name.Contains("file_info")).First().Name;
 
 
                 //パルスパワー読込
@@ -695,8 +711,10 @@ namespace Crystallography
                 MessageBox.Show("Can not open *.h5 file. Some dll files may be not imported properly, or the *.h5 file may be corrupeted");
                 return false;
             }
-        }
+        } 
+        #endregion
 
+        #region HIS
         public static bool HIS(string str)
         {
             try
@@ -768,18 +786,21 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
+
+        #region ITEX
 
         public static bool ITEX(string str)
         {
             try
             {
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 br.BaseStream.Position = 0;
 
                 //ヘッダ部分読み込み
 
-                int fileType = 1, length =0;
+                int fileType = 1, length = 0;
                 Ring.Comments = "";
 
                 Func<int> readData = new Func<int>(() => 0);
@@ -788,7 +809,7 @@ namespace Crystallography
 
                 var readHeader = new Func<bool>(() =>
                 {
-                    if (br.BaseStream.Length - br.BaseStream.Position<64 || new string(br.ReadChars(2)) != "IM")
+                    if (br.BaseStream.Length - br.BaseStream.Position < 64 || new string(br.ReadChars(2)) != "IM")
                         return false;
                     int commentLength = br.ReadInt16();
                     int imageWidth = br.ReadInt16();
@@ -810,14 +831,14 @@ namespace Crystallography
                     length = imageWidth * imageHeight;
                     return true;
                 });
-                
-                
+
+
                 Ring.BitsPerPixels = fileType switch { 0 => 8, 2 => 16, 3 => 32, _ => 0 };
 
                 Ring.SequentialImageIntensities = new List<List<double>>();
                 Ring.SequentialImageNames = new List<string>();
-                
-                while (readHeader() && n<500)
+
+                while (readHeader() && n < 500)
                 {
                     Ring.SequentialImageIntensities.Add(new List<double>());
                     for (int i = 0; i < length; i++)
@@ -850,6 +871,10 @@ namespace Crystallography
             }
             return true;
         }
+
+        #endregion
+
+        #region ADSC
 
         public static bool ADSC(string str)
         {
@@ -919,7 +944,10 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
+
+        #region RAXIS4
 
         public static bool Raxis4(string str, uint[] convertTable = null)
         {
@@ -1017,6 +1045,11 @@ namespace Crystallography
             return true;
         }
 
+        #endregion
+
+        #region Bruker CCD
+
+       
         public static bool Brucker(string str)
         {
             try
@@ -1101,12 +1134,14 @@ namespace Crystallography
             }
             return true;
         }
+        #endregion
 
+        #region IPF
         public static bool Ipf(string str)
         {
             try
             {
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
                 Ring.SrcImgSize = new Size(8000, 4000);
                 Ring.Intensity.Clear();
 
@@ -1135,12 +1170,14 @@ namespace Crystallography
             }
             return true;
         }
+        #endregion
 
+        #region General Image
         public static bool GeneralImage(string str)
         {
             try
             {
-                Bitmap bitmap = (Bitmap)Image.FromFile(str);
+                var bitmap = (Bitmap)Image.FromFile(str);
                 if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
                 {
                     if (bitmap.PixelFormat == PixelFormat.Format32bppArgb)
@@ -1171,7 +1208,9 @@ namespace Crystallography
             }
             return true;
         }
+        #endregion
 
+        #region BAS 2000/2500
         public static bool BAS2000or2500(string str, string[] inf)
         {
             try
@@ -1270,14 +1309,16 @@ namespace Crystallography
             return true;
             #endregion
         }
+        #endregion
 
+        #region Fuji FDL
         public static bool FujiFDL(string str)
         {
             try
             {
                 //FujiFDL
-                System.IO.StreamReader reader = new System.IO.StreamReader(str.Remove(str.Length - 3, 3) + "tem");
-                List<string> strList = new List<string>();
+                var reader = new StreamReader(str.Remove(str.Length - 3, 3) + "tem");
+                var strList = new List<string>();
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
                     strList.Add(tempstr);
@@ -1291,9 +1332,9 @@ namespace Crystallography
                 Ring.SrcImgSize = new Size(numPixelX, numPixelY);
                 int length = Ring.SrcImgSize.Width * Ring.SrcImgSize.Height;
                 //イメージデータ読みこみ
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
 
-                uint[] convertTable = new uint[65536];
+                var convertTable = new uint[65536];
 
                 bool renew = Ring.Intensity.Count != length;//前回と同じサイズではないとき
                 int n = 0;
@@ -1318,12 +1359,14 @@ namespace Crystallography
             }
             return true;
         }
+        #endregion
 
+        #region TIFF
         public static bool Tiff(string str, bool? normarize = null)
         {
             try
             {
-                Tiff.Loader t = new Tiff.Loader(str);
+                var t = new Tiff.Loader(str);
 
                 if (t.NumberOfFrames < 1)
                     return false;
@@ -1382,7 +1425,8 @@ namespace Crystallography
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
 
         public static IPAImage IPAImageGenerator(double[] data, int width, int height, PointD center, double resolution, double cameralength, WaveProperty waveProperty)
         {
@@ -1421,9 +1465,9 @@ namespace Crystallography
 
         public static void IPAImageWriter(string fileName, double[] data, double resolution, Size size, PointD center, double cameralength, WaveProperty waveProperty)
         {
-            IPAImage ipa = IPAImageGenerator(data, size.Width, size.Height, center, resolution, cameralength, waveProperty);
-            System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Create);
+            var ipa = IPAImageGenerator(data, size.Width, size.Height, center, resolution, cameralength, waveProperty);
+            var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            using var fs = new FileStream(fileName, FileMode.Create);
             bf.Serialize(fs, ipa);//シリアル化し、バイナリファイルに保存する
             fs.Close();//閉じる
         }
@@ -1481,9 +1525,9 @@ namespace Crystallography
 
         public static IPAImage GetIPA_Object(string fileName)
         {
-            System.Runtime.Serialization.Formatters.Binary.BinaryFormatter bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open);//ファイルを開く
-            IPAImage ipa = (IPAImage)bf.Deserialize(fs);
+            var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            var fs = new FileStream(fileName, FileMode.Open);//ファイルを開く
+            var ipa = (IPAImage)bf.Deserialize(fs);
             fs.Close();//閉じる
             return ipa;
         }

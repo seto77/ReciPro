@@ -17,6 +17,10 @@ namespace ReciPro
 {
     public partial class FormDiffractionSimulator : Form
     {
+        #region フィールド、プロパティ
+
+        public enum DrawingMode { None, Kinematical, BetheSAED, BetheCBED }
+
         public FormMain formMain;
 
         public double EwaldRadius => 1 / WaveLength;
@@ -48,7 +52,6 @@ namespace ReciPro
             get => numericBoxResolution.Value;
         }
 
-        public enum DrawingMode { None, Kinematical, BetheSAED, BetheCBED }
 
         public DrawingMode Mode
         {
@@ -92,7 +95,6 @@ namespace ReciPro
         public double CosTauSquare => FormDiffractionSimulatorGeometry.CosTauSquare;
         public double SinTau => FormDiffractionSimulatorGeometry.SinTau;
         public double SinTauSquare => FormDiffractionSimulatorGeometry.SinTauSquare;
-
         public double CosPhi => FormDiffractionSimulatorGeometry.CosPhi;
         public double CosPhiSquare => FormDiffractionSimulatorGeometry.CosPhiSquare;
         public double SinPhi => FormDiffractionSimulatorGeometry.SinPhi;
@@ -105,8 +107,7 @@ namespace ReciPro
         /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
         /// この行列をv＝(X,Y,CL2)に作用させると、検出器座標(X,Y)を実空間座標に変換できる。
         /// </summary>
-        public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry == null ?
-                    new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
+        public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry == null ? new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
 
 
         public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
@@ -114,6 +115,22 @@ namespace ReciPro
         /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
         /// </summary>
         public PointD DisplayCenter { get; set; } = new PointD(0, 0);
+
+        /// <summary>
+        /// コントロールイベントをスキップする
+        /// </summary>
+        public bool SkipEvent { get; set; } = false;
+
+
+        private bool skipDrawing = false;
+        /// <summary>
+        /// 描画をスキップする (コントロールイベントをスキップする場合は、SkipEventを使う)
+        /// </summary>
+        public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
+
+        #endregion
+
+        #region コンストラクタ、ロード、クローズ
 
         public FormDiffractionSimulator()
         {
@@ -153,6 +170,13 @@ namespace ReciPro
             Draw();
         }
 
+        private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            formMain.toolStripButtonElectronDiffraction.Checked = false;
+        }
+
+        #endregion
         private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e) => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
 
         //Visibleが変更されたとき
@@ -194,16 +218,7 @@ namespace ReciPro
             return true;
         }
 
-        /// <summary>
-        /// コントロールイベントをスキップする
-        /// </summary>
-        public bool SkipEvent { get; set; } = false;
-
-        private bool skipDrawing = false;
-        /// <summary>
-        /// 描画をスキップする (コントロールイベントをスキップする場合は、SkipEventを使う)
-        /// </summary>
-        public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
+        #region Draw関数。ここから、DrawScale, DrawKikuchiLine, DrawDebyeRing, DrawDiffractionSpotsが呼び出される。
 
         private void Draw(object sender, EventArgs e) => Draw();
 
@@ -300,7 +315,7 @@ namespace ReciPro
             //マウスの選択範囲描画
             if (MouseRangingMode)
             {
-                Pen pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash };
+                var pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash };
                 var rangeStart = convertScreenToDetector(MouseRangeStart).ToPointF();
                 var rangeEnd = convertScreenToDetector(MouseRangeEnd).ToPointF();
                 g.DrawRectangle(pen, Math.Min(rangeStart.X, rangeEnd.X), Math.Min(rangeStart.Y, rangeEnd.Y), Math.Abs(rangeStart.X - rangeEnd.X), Math.Abs(rangeStart.Y - rangeEnd.Y));
@@ -314,7 +329,7 @@ namespace ReciPro
                 var aperX = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperX);
                 var aperY = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperY);
 
-                Pen pen = new Pen(Brushes.LightGreen, (float)Resolution);
+                var pen = new Pen(Brushes.LightGreen, (float)Resolution);
                 g.DrawEllipse(pen, (float)(aperX - aperR), (float)(-aperY - aperR), (float)(aperR * 2), (float)(aperR * 2));
             }
 
@@ -324,15 +339,10 @@ namespace ReciPro
 
             if (FormDiffractionBeamTable.Visible && radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-        }
+        } 
+        #endregion
 
-        public struct SpotInformation
-        {
-            public double X, Y, Intensity, Sigma;
-
-            public SpotInformation(double x, double y, double intensity, double sigma)
-            { X = x; Y = y; Intensity = intensity; Sigma = sigma; }
-        }
+        #region DrawDiffractionSpots
 
         /// <summary>
         /// 回折スポットおよび指数ラベルの描画
@@ -340,12 +350,12 @@ namespace ReciPro
         /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
         /// <param name="drawLabel">ラベルを描画するかどうか</param>
         /// <param name="outputOnlySpotInformation">このフラグがTrueの場合は、画面描画は行わずにspotの情報だけを返す</param>
-        public SpotInformation[] DrawDiffractionSpots(Graphics graphics, bool drawLabel = true, bool outputOnlySpotInformation = false)
+        public (double X, double Y, double Intensity, double Sigma)[] DrawDiffractionSpots(Graphics graphics, bool drawLabel = true, bool outputOnlySpotInformation = false)
         {
             if (radioButtonPointSpread.Checked && graphics != null)
                 graphics.SmoothingMode = SmoothingMode.None;
 
-            var spotInformation = new List<SpotInformation>();
+            var spotInformation = new List<(double X, double Y, double Intensity, double Sigma)>();
 
             var alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
 
@@ -528,7 +538,7 @@ namespace ReciPro
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma;
                                     var intensity = g.RelativeIntensity / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
                                     if (intensity > 1E-10)
-                                        spotInformation.Add(new SpotInformation(pt.X, pt.Y, intensity, sigma));
+                                        spotInformation.Add((pt.X, pt.Y, intensity, sigma));
                                 }
                                 //点広がり関数で描画するとき
                                 else if (radioButtonPointSpread.Checked)
@@ -612,6 +622,9 @@ namespace ReciPro
             //垂線の足の描画ここまで
             return null;
         }
+        #endregion
+
+        #region DrawDiffractionSpostLabel
 
         public void DrawDiffractionSpotsLabel(Graphics graphics, Vector3D g, PointD pt, double radius, double error)
         {
@@ -631,6 +644,10 @@ namespace ReciPro
             }
             graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
         }
+
+        #endregion
+
+        #region DrawKikuchiLine
 
         private void DrawKikuchiLine(Graphics graphics)
         {
@@ -701,7 +718,9 @@ namespace ReciPro
                 }
             }
         }
+        #endregion
 
+        #region DrawDebyeRing
         private void DrawDebyeRing(Graphics g)
         {
             int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
@@ -736,9 +755,9 @@ namespace ReciPro
                     g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
             }
         }
+        #endregion
 
-
-
+        #region DrawScale
         private void DrawScale(Graphics g)
         {
 
@@ -844,7 +863,8 @@ namespace ReciPro
                 if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
                     g.DrawString(twoTheta.ToString() + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 与えられた点集合 pts の中から、もっとも指定した方向に近い点を返す. deg 0 : 右, deg 90: 下, deg 180: 左, deg -90:上
@@ -890,9 +910,6 @@ namespace ReciPro
             Draw();
         }
 
-        //画面がリサイズされたときに逆格子点を計算しなおす
-        //DockがFillになっていないことに注意!!
-
         /// <summary>
         /// サイズのnumericBoxが変更されたとき
         /// </summary>
@@ -908,7 +925,7 @@ namespace ReciPro
 
         }
 
-        private Size lastPanelSize = new Size(0, 0);
+        private Size lastPanelSize { get; set; } = new Size(0, 0);
 
 
         private void FormDiffractionSimulator_ResizeBegin(object sender, EventArgs e)
@@ -1147,11 +1164,7 @@ namespace ReciPro
 
         #endregion 座標変換
 
-        private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            formMain.toolStripButtonElectronDiffraction.Checked = false;
-        }
+   
 
         //formMainから結晶を設定されたとき
         internal void SetCrystal()
@@ -1429,6 +1442,9 @@ namespace ReciPro
             }
             Draw();
         }
+
+        #region TabControl関連のイベント
+
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (
@@ -1442,7 +1458,6 @@ namespace ReciPro
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
-
             var tab = (TabControl)sender;
             //タブページのテキストを取得
             var txt = tab.TabPages[e.Index].Text;
@@ -1473,6 +1488,7 @@ namespace ReciPro
             e.Graphics.DrawString(txt, tabControl.Font, brush, e.Bounds, sf);
         }
 
+        #endregion
 
         private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
         {
@@ -1505,9 +1521,11 @@ namespace ReciPro
             radioButtonBeamParallel.Checked = true;
         }
 
+        #region ドラッグドロップ
         public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e) => FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
 
         private void FormDiffractionSimulator_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
+        #endregion
 
         private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
         {
@@ -1576,7 +1594,7 @@ namespace ReciPro
             Draw();
         }
 
-
+        #region タイマー関連
         private void toolStripButtonDiffractionSpots_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && ((ToolStripButton)sender).Checked)
@@ -1634,7 +1652,7 @@ namespace ReciPro
             toolStripButtonScale.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
             Draw();
         }
-
+        #endregion
 
         #region 保存、コピー関連ｎ
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);

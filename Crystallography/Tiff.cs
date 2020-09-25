@@ -293,7 +293,7 @@ namespace Crystallography
             /// <summary>
             /// 格納しているイメージの数
             /// </summary>
-            public int NumberOfFrames { get { return Images.Count; } }
+            public int NumberOfFrames => Images.Count;
 
             public TiffByteOrder ByteOrder { get => byteOrder; set => byteOrder = value; }
 
@@ -387,8 +387,8 @@ namespace Crystallography
             public byte[] read(BinaryReader br, long position, int length, TiffByteOrder byteOrder)
             {
                 br.BaseStream.Position = position;
-                byte[] buffer = new byte[length];
-                int i = br.Read(buffer, 0, buffer.Length);
+                var buffer = new byte[length];
+                _ = br.Read(buffer, 0, buffer.Length);
                 if (byteOrder == TiffByteOrder.Intel) buffer = buffer.Reverse().ToArray();
                 return buffer;
             }
@@ -399,10 +399,10 @@ namespace Crystallography
                 //MDScaleFactor = 1;
                 bool originalEndian = BitConverter.IsLittleEndian;
 
-                BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+                var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
 
                 //まず最初の2Byteを読み込んでバイトオーダーを決める
-                byte[] temp = new byte[2];
+                var temp = new byte[2];
                 br.Read(temp, 0, 2);
                 if (temp[0] == 0x49 && temp[1] == 0x49)
                     ByteOrder = TiffByteOrder.Motorola;
@@ -414,7 +414,7 @@ namespace Crystallography
                 //次に2Byteよんでバージョン
                 Version = BitConverter.ToInt16(read(br, 2, 2, ByteOrder), 0);
 
-                long ifdPointa = long.MaxValue;
+                var ifdPointa = long.MaxValue;
                 while (ifdPointa != 0)
                 {
                     var image = new imageProperty();
@@ -627,14 +627,14 @@ namespace Crystallography
             {
                 if (byteCount == 1)
                 {
-                    byte[] temp = new byte[1];
+                    var temp = new byte[1];
                     br.Read(temp, 0, 1);
 
                     return (double)temp[0];
                 }
                 else if (byteCount == 2)
                 {
-                    byte[] temp = new byte[2];
+                    var temp = new byte[2];
                     br.Read(temp, 0, 2);
                     if (byteOrder == TiffByteOrder.Intel) temp = temp.Reverse().ToArray();
 
@@ -642,7 +642,7 @@ namespace Crystallography
                 }
                 else if (byteCount == 4)
                 {
-                    byte[] temp = new byte[4];
+                    var temp = new byte[4];
                     br.Read(temp, 0, 4);
                     if (byteOrder == TiffByteOrder.Intel) temp = temp.Reverse().ToArray();
 
@@ -657,7 +657,7 @@ namespace Crystallography
             private float toFloat(BinaryReader br, int byteCount, TiffByteOrder byteOrder)
             {
                 float intensity = 0;
-                byte[] temp = new byte[4];
+                var temp = new byte[4];
                 br.Read(temp, 0, 4);
                 intensity = BitConverter.ToSingle(temp, 0);
 

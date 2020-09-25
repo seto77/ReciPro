@@ -873,40 +873,6 @@ namespace ReciPro
 
         #endregion Draw
 
-        #region その他イベント
-        private void FormStructureViewer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            formMain.toolStripButtonStructureViewer.Checked = false;
-        }
-
-        private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.Shift && e.KeyCode == Keys.C)
-                Clipboard.SetDataObject(glControlMain.GenerateBitmap());
-        }
-
-        private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Visible)//現れたときメインウィンドウの結晶を表示する
-                if (formMain.crystalControl.Crystal != null)
-                    SetGLObjects(formMain.crystalControl.Crystal);
-
-            MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
-        }
-
-        /// <summary>
-        /// 角度をリセットする
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripButtonResetRotation_Click(object sender, EventArgs e)
-        {
-            formMain.SetRotation(new Matrix3D());
-        }
-
-        #endregion その他イベント
-
         #region マウスイベント
 
         private Point lastPosMain = new Point();
@@ -1661,14 +1627,42 @@ namespace ReciPro
 
         #endregion
 
-        private void FormStructureViewer_ResizeBegin(object sender, EventArgs e)
+        #region その他イベント
+        private void FormStructureViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
-           SuspendLayout();
+            e.Cancel = true;
+            formMain.toolStripButtonStructureViewer.Checked = false;
         }
 
-        private void FormStructureViewer_ResizeEnd(object sender, EventArgs e)
+        private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
         {
-            ResumeLayout();
+            if (e.Control && e.Shift && e.KeyCode == Keys.C)
+                Clipboard.SetDataObject(glControlMain.GenerateBitmap());
         }
+
+        private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)//現れたときメインウィンドウの結晶を表示する
+                if (formMain.crystalControl.Crystal != null)
+                    SetGLObjects(formMain.crystalControl.Crystal);
+
+            MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
+        }
+
+        /// <summary>
+        /// 角度をリセットする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtonResetRotation_Click(object sender, EventArgs e)
+        {
+            formMain.SetRotation(new Matrix3D());
+        }
+
+        private void FormStructureViewer_ResizeBegin(object sender, EventArgs e) => SuspendLayout();
+
+        private void FormStructureViewer_ResizeEnd(object sender, EventArgs e) => ResumeLayout();
+
+        #endregion その他イベント
     }
 }

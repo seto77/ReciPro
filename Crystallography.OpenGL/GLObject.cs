@@ -72,6 +72,8 @@ namespace Crystallography.OpenGL
     #region Enum
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8, Text = 16 }
     #endregion
+
+    #region クラス
     public class Location
     {
         internal int TextureLocation { get; set; } = 1;
@@ -96,8 +98,7 @@ namespace Crystallography.OpenGL
         internal int ModeLocation { get; set; } = -1;
         internal int ObjectMatrixLocation { get; set; } = -1;
     }
-
-
+    #endregion
 
     #region GLObjectクラス (抽象クラス)
     /// <summary>
@@ -577,7 +578,7 @@ namespace Crystallography.OpenGL
     }
     #endregion
 
-    #region 三角形、四角形、円盤、多角形
+    #region 三角形、四角形、円板、多角形
     /// <summary>
     /// 多角形 (凸多角形) 点集合が完全に平面に乗らない場合でも、最小二乗法で法線を求める
     /// </summary>
