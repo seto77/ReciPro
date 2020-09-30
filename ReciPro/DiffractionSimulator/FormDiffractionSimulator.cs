@@ -375,15 +375,14 @@ namespace ReciPro
 
             var radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
+            #region ガウス関数描画
             int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
             var fillCircleSpread = new Func<Color, PointD, double, double, double>((c, pt, intensity, sigma) =>
               {
                   //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
                   //intensityはスポットの積分強度、sは半値幅
                   int gradation = 32;
-
-                  var sigma2 = sigma * sigma;
-                  var coeff1 = 1 / (2 * Math.PI * sigma2);
+                  double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
 
                   var maxI = intensity * coeff1;
                   if (maxI <= 1.0 / gradation) return 0;//もし、最大強度が1/gradiationより小さかったら、何もせずに戻る
@@ -398,13 +397,10 @@ namespace ReciPro
                   //minRからmaxRまで、円を描画
                   for (int j = 0; j < gradation; j++)
                   {
-                      var ratio1 = (double)(j + 1) / gradation;
-                      var ratio2 = (double)(j + 2) / gradation;
-                      var radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius;
-                      var radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
+                      double ratio1 = (double)(j + 1) / gradation, ratio2 = (double)(j + 2) / gradation;
+                      double radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius, radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
 
                       var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
-
 
                       var alpha = (int)(255 * intensity2 * alphaCoeff);
                       if (comboBoxScaleColorScale.SelectedIndex == 1)
@@ -414,11 +410,10 @@ namespace ReciPro
                           alpha = 255;
                       }
 
-
                       var brush = new SolidBrush(Color.FromArgb(alpha, c));
                       if (j < gradation - 1 && radius2 > 0)
                       {
-                          GraphicsPath path = new GraphicsPath();
+                          var path = new GraphicsPath();
                           path.AddArc((float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(radius1 * 2), (float)(radius1 * 2), 0, 360);
                           path.AddArc((float)(pt.X - radius2), (float)(pt.Y - radius2), (float)(radius2 * 2), (float)(radius2 * 2), 0, -360);
                           graphics.FillPath(brush, path);
@@ -430,7 +425,8 @@ namespace ReciPro
                       }
                   }
                   return maxRadius;
-              });
+              }); 
+            #endregion
 
             #region 3次元ガウス関数のメモ書き
 
@@ -445,11 +441,11 @@ namespace ReciPro
 
             #endregion 3次元ガウス関数のメモ書き
 
-            double spotRadiusOnDetector = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * ExcitationError / 2));
-            double error2 = ExcitationError * ExcitationError, error3 = ExcitationError * ExcitationError * ExcitationError;
-            double sqrt2PI = Math.Sqrt(2 * Math.PI);
-            double linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
-            double logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
+            var spotRadiusOnDetector = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * ExcitationError / 2));
+            var error2 = ExcitationError * ExcitationError;
+            var sqrtTwoPI = Math.Sqrt(2 * Math.PI);
+            var linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
+            var logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
 
             if (waveLengthControl.WaveSource == WaveSource.Xray)
             {
@@ -457,13 +453,10 @@ namespace ReciPro
                 logCoeff *= 1000000;
             }
 
-            bool bethe = radioButtonIntensityBethe.Checked;
-            Stopwatch sw = new Stopwatch();
-            //toolStripStatusLabelTimeForBethe.Text = "";
-            for (int i = 0; i < formMain.Crystals.Length; i++)
+            var bethe = radioButtonIntensityBethe.Checked;
+            var sw = new Stopwatch();
+           foreach(var crystal in formMain.Crystals)
             {
-                var crystal = formMain.Crystals[i];
-
                 Vector3D[] gVector;
 
                 if (bethe)//ベーテ法による動力学回折の場合
@@ -485,7 +478,6 @@ namespace ReciPro
                     }
                     else//パラレルかCBEDの場合
                     {
-
                         var eigenValues = crystal.Bethe.EigenValues;
 
                         var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value);
@@ -511,13 +503,9 @@ namespace ReciPro
                     //逆空間 <=>実空間で、Y,Zの符号が反転していることに注意
                     if (-vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
                     {
-                        var L2 = (vec.X * vec.X) + (vec.Y * vec.Y);
-                        var dev = 0.0;
+                        double L2 = (vec.X * vec.X) + (vec.Y * vec.Y), dev = 0.0;
                         if (!bethe)
-                        {
-                            dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
-                            g.Tag = dev;
-                        }
+                            g.Tag = dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
 
                         var dev2 = dev * dev;
                         if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
@@ -536,28 +524,29 @@ namespace ReciPro
                                 else if (outputOnlySpotInformation && IsScreenArea(pt))
                                 {
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma;
-                                    var intensity = g.RelativeIntensity / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
+                                    var intensity = g.RelativeIntensity / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2);
                                     if (intensity > 1E-10)
                                         spotInformation.Add((pt.X, pt.Y, intensity, sigma));
                                 }
                                 //点広がり関数で描画するとき
                                 else if (radioButtonPointSpread.Checked)
                                 {
-                                    if (Math.Abs(dev) < 3 * ExcitationError)
+                                    if (bethe || Math.Abs(dev) < 3 * ExcitationError)
                                     {
                                         //もしg.RelativeIntensity=1で、かつcoeff=1の時、sigmaの半分のところで強度が255になるように関数の形を調整
-                                        double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma;
-                                        double intensity;
+                                        double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma, intensity;
                                         if (!logScale)
-                                            intensity = g.RelativeIntensity / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2) * linearCoeff;
+                                            intensity = bethe ?
+                                                g.RelativeIntensity * linearCoeff :
+                                                g.RelativeIntensity / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2) * linearCoeff;
                                         else
-                                            intensity = (Math.Log10(g.RelativeIntensity) + logCoeff) / (sigma * sqrt2PI) * Math.Exp(-dev2 / error2 / 2);
+                                            intensity = bethe ?
+                                                (Math.Log10(g.RelativeIntensity) + logCoeff) :
+                                                (Math.Log10(g.RelativeIntensity) + logCoeff) / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2);
 
                                         if (!double.IsNaN(intensity))
                                         {
                                             var radius = fillCircleSpread(Color.FromArgb(g.Argb), pt, intensity, sigma);
-
-
                                             if (drawLabel && trackBarStrSize.Value != 1 && intensity / (2 * Math.PI * sigma * sigma) > 0.5)
                                                 DrawDiffractionSpotsLabel(graphics, g, pt, radius, (double)g.Tag);
                                         }
@@ -566,15 +555,16 @@ namespace ReciPro
                                 //円で塗りつぶすとき
                                 else
                                 {
-                                    var sphereRadius = ExcitationError;//逆空間における逆格子点の半径
-                                    if (!bethe)
-                                        sphereRadius = ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//Kinematicな強度計算が有効の場合は、半径に、相対強度の1/3乗を掛ける
-                                    else
-                                        sphereRadius = ExcitationError * Math.Sqrt(g.RelativeIntensity);//ベーテ法の場合は、相対強度の平方根が半径に比例
+                                    //逆空間における逆格子点の半径
+                                    var sphereRadius = bethe?
+                                        ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ベーテ法の場合は、相対強度の平方根が半径に比例
+                                        ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only あるいは Kinematicの場合は、半径に相対強度の1/3乗を掛ける
 
-                                    if (Math.Abs(dev) < sphereRadius)
+                                    if (bethe || Math.Abs(dev) < sphereRadius)
                                     {
-                                        var sectionRadius = Math.Sqrt(sphereRadius * sphereRadius - dev2);//エワルド球に切られた断面上の、逆格子点の半径
+                                        var sectionRadius = bethe ? 
+                                            sphereRadius : //ベーテ法の場合はそのまま
+                                            Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
                                         var r = CameraLength2 * WaveLength * sectionRadius;
                                         fillCircle(Color.FromArgb(g.Argb), pt, r);
                                         if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
@@ -589,7 +579,7 @@ namespace ReciPro
             if (outputOnlySpotInformation)
                 return spotInformation.ToArray();
 
-            var l = (float)(spotRadiusOnDetector);
+            var l = (float)spotRadiusOnDetector;
 
             graphics.SmoothingMode = SmoothingMode.HighQuality;
 
@@ -597,7 +587,7 @@ namespace ReciPro
                 return null;
 
             //ダイレクトスポットの描画
-            PointD ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             if (IsScreenArea(ptOrigin))
             {
                 var penOrigin = new Pen(colorControlOrigin.Color, (float)Resolution);
