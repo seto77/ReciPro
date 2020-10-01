@@ -15,13 +15,13 @@ namespace Crystallography
             var tens = Math.Floor(number / 10f) % 10;
             if (tens == 1)
                 return number + "th";
-            switch (ones)
+            return ones switch
             {
-                case 1: return number + "st";
-                case 2: return number + "nd";
-                case 3: return number + "rd";
-                default: return number + "th";
-            }
+                1 => number + "st",
+                2 => number + "nd",
+                3 => number + "rd",
+                _ => number + "th",
+            };
         }
 
         public static bool IsFiniteNumber(params double[] d)

@@ -184,39 +184,20 @@ namespace Crystallography
 
             public object GetValue(BinaryReader br, TagDataTypes type)
             {
-                switch (type)
+                return type switch
                 {
-                    case TagDataTypes.SHORT:
-                        return br.ReadInt16();
-
-                    case TagDataTypes.LONG:
-                        return br.ReadInt32();
-
-                    case TagDataTypes.USHORT:
-                        return br.ReadUInt16();
-
-                    case TagDataTypes.ULONG:
-                        return br.ReadUInt32();
-
-                    case TagDataTypes.FLOAT:
-                        return br.ReadSingle();
-
-                    case TagDataTypes.DOUBLE:
-                        return br.ReadDouble();
-
-                    case TagDataTypes.BOOL:
-                        return br.ReadBoolean();
-
-                    case TagDataTypes.CHAR:
-                        return br.ReadChar();
-
-                    case TagDataTypes.I1:
-                        return br.ReadByte();
-
-                    case TagDataTypes.I8:
-                        return br.ReadUInt64();
-                }
-                return null;
+                    TagDataTypes.SHORT => br.ReadInt16(),
+                    TagDataTypes.LONG => br.ReadInt32(),
+                    TagDataTypes.USHORT => br.ReadUInt16(),
+                    TagDataTypes.ULONG => br.ReadUInt32(),
+                    TagDataTypes.FLOAT => br.ReadSingle(),
+                    TagDataTypes.DOUBLE => br.ReadDouble(),
+                    TagDataTypes.BOOL => br.ReadBoolean(),
+                    TagDataTypes.CHAR => br.ReadChar(),
+                    TagDataTypes.I1 => br.ReadByte(),
+                    TagDataTypes.I8 => br.ReadUInt64(),
+                    _ => null,
+                };
             }
         }
 
