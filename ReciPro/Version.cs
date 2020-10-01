@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.784(2020/10/01)  Updated the manuals (both English and Japanese)." +
             "\r\n ver4.783(2020/09/08)  Fixed a bug on GUI." +
             "\r\n ver4.782(2020/08/19)  Fixed a bug on OpenGL." +
             "\r\n ver4.781(2020/08/19)  Loosen the restrictions on OpenGL requirements. (OpenGL 1.3 or higher)" +
