@@ -20,7 +20,7 @@ uniform vec2 ViewportSize;// Viewport Size
 // A, B, C, and D for Ax + By + Cz + D = 0
 uniform vec4 ClipPlanes[8];
 uniform int ClipNum = 8;
-float gl_ClipDistance[8];
+out float gl_ClipDistance[8];
 
 uniform int FixedArgb;
 uniform bool UseFixedArgb = false;

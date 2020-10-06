@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="numericBoxOccerr.ToolTip1" xml:space="preserve">
-    <value />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxEmission.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericBoxY.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 24</value>
   </data>
@@ -180,6 +180,9 @@
   <data name="numericBoxZ.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -193,22 +196,19 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Name" xml:space="preserve">
     <value>numericBoxSpecular</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift2.Name" xml:space="preserve">
     <value>buttonOriginShift2</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;radioButtonOriginShiftMinus.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -249,8 +249,8 @@
   <data name="label13.Text" xml:space="preserve">
     <value>Model: </value>
   </data>
-  <data name="numericBoxAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;flowLayoutPanelPosition.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="numericBoxB11.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -285,9 +285,6 @@
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;radioButtonAnisotropy.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="buttonAddAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -308,9 +305,6 @@
   </data>
   <data name="numericBoxOriginShiftZ.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 33</value>
   </data>
   <data name="&gt;&gt;comboBoxNeutron.Parent" xml:space="preserve">
     <value>tabPageScatteringFactor</value>
@@ -369,9 +363,6 @@
   <data name="&gt;&gt;radioButtonDebyeWallerTypeB.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="comboBoxAtom.Items32" xml:space="preserve">
-    <value>33:  As</value>
-  </data>
   <data name="&gt;&gt;numericBoxYerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
@@ -386,6 +377,9 @@
   </data>
   <data name="numericBoxZ.ToolTip1" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;numericBoxXerr.Name" xml:space="preserve">
+    <value>numericBoxXerr</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -462,9 +456,6 @@
   <data name="&gt;&gt;xDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>xDataGridViewTextBoxColumn</value>
   </data>
-  <data name="&gt;&gt;radioButtonDebyeWallerTypeB.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
   <data name="buttonAtomDown.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -483,8 +474,8 @@
   <data name="wyckLetDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>72</value>
   </data>
-  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 33</value>
   </data>
   <data name="&gt;&gt;tabPageAppearance.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -567,6 +558,9 @@
   <data name="numericBoxB33.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
   <data name="comboBoxAtom.Items36" xml:space="preserve">
     <value>37:  Rb</value>
   </data>
@@ -594,11 +588,17 @@
   <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
     <value>tableLayoutPanel4</value>
   </data>
+  <data name="numericBoxOriginShiftX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxBiso.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxAtom.Items81" xml:space="preserve">
+    <value>82:  Pb</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -690,17 +690,26 @@
   <data name="numericBoxB33.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
+  <data name="labelX_.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="radioButtonOriginShiftPlus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="comboBoxAtom.Items2" xml:space="preserve">
+    <value>3:  Li</value>
+  </data>
   <data name="comboBoxAtom.Items66" xml:space="preserve">
     <value>67:  Ho</value>
   </data>
   <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 24</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -711,17 +720,26 @@
   <data name="numericBoxB33.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
   <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
     <value>flowLayoutPanel6</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="&gt;&gt;checkBoxDetailAtomicPositionError.Name" xml:space="preserve">
+    <value>checkBoxDetailAtomicPositionError</value>
+  </data>
   <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 15</value>
   </data>
   <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
     <value />
@@ -741,9 +759,6 @@
   <data name="dataGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxXerr.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -755,9 +770,6 @@
   </data>
   <data name="buttonOriginShift5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonDebyeWallerTypeU.Name" xml:space="preserve">
     <value>radioButtonDebyeWallerTypeU</value>
@@ -787,7 +799,7 @@
     <value>57:  La</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -837,8 +849,8 @@
   <data name="comboBoxAtom.Items67" xml:space="preserve">
     <value>68:  Er</value>
   </data>
-  <data name="numericBoxB11err.HeaderText" xml:space="preserve">
-    <value>±</value>
+  <data name="&gt;&gt;numericBoxB13err.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAniso1</value>
   </data>
   <data name="numericBoxSpecular.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -846,8 +858,8 @@
   <data name="radioButtonOriginShiftMinus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 3, 1, 3</value>
   </data>
-  <data name="&gt;&gt;buttonChangeToSameElement.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;numericBoxOriginShiftY.Name" xml:space="preserve">
+    <value>numericBoxOriginShiftY</value>
   </data>
   <data name="numericBoxYerr.ToolTip1" xml:space="preserve">
     <value />
@@ -855,14 +867,14 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;checkBoxDetailsDebyeWallerError.Name" xml:space="preserve">
     <value>checkBoxDetailsDebyeWallerError</value>
   </data>
   <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
+  </data>
+  <data name="&gt;&gt;buttonDeleteAtom.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="numericBoxB22err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -872,9 +884,6 @@
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="numericBoxSpecular.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="comboBoxAtom.Items63" xml:space="preserve">
     <value>64:  Gd</value>
@@ -903,20 +912,11 @@
   <data name="numericBoxBisoerr.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxXerr.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Atom</value>
-  </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
-  </data>
-  <data name="numericBoxB33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 0, 0</value>
   </data>
   <data name="buttonOriginShift2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt</value>
@@ -954,23 +954,20 @@
   <data name="&gt;&gt;comboBoxScatteringFactorElectron.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;elementDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;numericBoxB23.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAniso2</value>
+  </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxB13err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBox3.Name" xml:space="preserve">
     <value>numericBox3</value>
@@ -999,8 +996,8 @@
   <data name="numericBoxB12.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="buttonOriginShift8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10pt</value>
+  <data name="numericBoxDiffusion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 48</value>
   </data>
   <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1035,14 +1032,14 @@
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-229, 3</value>
+  <data name="&gt;&gt;tabPageDebyeWaller.Name" xml:space="preserve">
+    <value>tabPageDebyeWaller</value>
   </data>
   <data name="numericBoxB33.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxX.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -1087,7 +1084,7 @@
     <value>60, 29</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="buttonOriginShiftCustom.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1106,9 +1103,6 @@
   </data>
   <data name="comboBoxAtom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPageElementAndPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1137,9 +1131,6 @@
   <data name="&gt;&gt;numericBoxOriginShiftX.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
   </data>
-  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1161,9 +1152,6 @@
   <data name="numericBoxZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="tabPageElementAndPosition.Text" xml:space="preserve">
-    <value>Element &amp; Position</value>
-  </data>
   <data name="numericBoxDiffusion.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -1173,8 +1161,8 @@
   <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
     <value>tableLayoutPanel4</value>
   </data>
-  <data name="label17.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="numericBoxB33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
   </data>
   <data name="buttonOriginShift1.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 0</value>
@@ -1227,6 +1215,9 @@
   <data name="buttonAddAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 2</value>
   </data>
+  <data name="&gt;&gt;flowLayoutPanelIso.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="numericBoxAtomRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -1239,6 +1230,9 @@
   <data name="&gt;&gt;xDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="textBoxLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="flowLayoutPanelLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1247,6 +1241,9 @@
   </data>
   <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Name" xml:space="preserve">
     <value>numericBoxB11err</value>
@@ -1272,8 +1269,8 @@
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="flowLayoutPanelLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>117</value>
+  <data name="&gt;&gt;numericBoxZ.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;label10.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
@@ -1299,8 +1296,8 @@
   <data name="&gt;&gt;radioButtonDebyeWallerTypeB.Name" xml:space="preserve">
     <value>radioButtonDebyeWallerTypeB</value>
   </data>
-  <data name="buttonOriginShift8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;numericBoxB22err.Name" xml:space="preserve">
+    <value>numericBoxB22err</value>
   </data>
   <data name="checkBoxShowLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1326,11 +1323,11 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxOccerr" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxOcc" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxZ" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxYerr" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxXerr" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxY" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBoxLabel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBoxAtom" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxZerr" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,20,Absolute,5,Percent,20,Percent,20,Absolute,5,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="&gt;&gt;numericBoxAmbient.Name" xml:space="preserve">
+    <value>numericBoxAmbient</value>
+  </data>
   <data name="numericBoxXerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
-  </data>
-  <data name="&gt;&gt;labelX_.Name" xml:space="preserve">
-    <value>labelX_</value>
   </data>
   <data name="&gt;&gt;numericBoxY.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1338,14 +1335,17 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="numericBoxOcc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPageAppearance</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="buttonOriginShift8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1374,8 +1374,11 @@
   <data name="numericBoxB13.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 6</value>
+  </data>
   <data name="&gt;&gt;numericBoxBisoerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxOriginShiftZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1385,9 +1388,6 @@
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 32</value>
-  </data>
-  <data name="numericBoxZerr.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBox2.ToolTip" xml:space="preserve">
     <value />
@@ -1461,9 +1461,6 @@
   <data name="buttonOriginShift2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxOcc.HeaderText" xml:space="preserve">
-    <value>Occ</value>
-  </data>
   <data name="&gt;&gt;comboBoxScatteringFactorXray.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1497,11 +1494,8 @@
   <data name="&gt;&gt;multiDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonDeleteAtom.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="numericBoxB13err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="buttonOriginShift8.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1511,9 +1505,6 @@
   </data>
   <data name="numericBoxEmission.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>303, 0</value>
   </data>
   <data name="numericBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1557,9 +1548,6 @@
   <data name="comboBoxNeutron.Location" type="System.Drawing.Point, System.Drawing">
     <value>215, 3</value>
   </data>
-  <data name="&gt;&gt;numericBoxB22.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAniso2</value>
-  </data>
   <data name="numericBoxDiffusion.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -1581,20 +1569,17 @@
   <data name="buttonOriginShift5.Text" xml:space="preserve">
     <value>(0 ¼ ¼)</value>
   </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Name" xml:space="preserve">
     <value>numericBoxOccerr</value>
   </data>
-  <data name="textBoxLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="numericBoxB11.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericBoxOriginShiftY.Name" xml:space="preserve">
-    <value>numericBoxOriginShiftY</value>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 26</value>
@@ -1608,9 +1593,6 @@
   <data name="numericBoxOriginShiftX.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelPosition.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="flowLayoutPanelLabel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1618,25 +1600,19 @@
     <value>5</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="comboBoxAtom.Items41" xml:space="preserve">
-    <value>42:  Mo</value>
+  <data name="checkBoxDetailAtomicPositionError.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="comboBoxAtom.Items17" xml:space="preserve">
     <value>18:  Ar</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebyeWaller.Name" xml:space="preserve">
-    <value>tabPageDebyeWaller</value>
   </data>
   <data name="comboBoxNeutron.Items1" xml:space="preserve">
     <value>Custom isotope abundance</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Label: </value>
@@ -1648,10 +1624,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="buttonChangeToSameElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 28</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1662,17 +1635,14 @@
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxB23err.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelPosition.Parent" xml:space="preserve">
     <value>tabPageElementAndPosition</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 48</value>
@@ -1710,11 +1680,14 @@
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 0</value>
   </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="comboBoxAtom.Items20" xml:space="preserve">
     <value>21:  Sc</value>
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Name" xml:space="preserve">
     <value>numericBoxB12err</value>
@@ -1722,20 +1695,23 @@
   <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="numericBoxB22err.HeaderText" xml:space="preserve">
+    <value>±</value>
+  </data>
   <data name="numericBoxOriginShiftY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>308</value>
   </data>
-  <data name="&gt;&gt;buttonDeleteAtom.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
+    <value>Site occupancy</value>
   </data>
   <data name="buttonOriginShift5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericBoxY.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="numericBoxBisoerr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1754,9 +1730,6 @@
   </data>
   <data name="buttonOriginShift6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1780,7 +1753,10 @@
     <value>B11</value>
   </data>
   <data name="&gt;&gt;numericBoxOccerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tabPageDebyeWaller.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1848,8 +1824,8 @@
   <data name="comboBoxAtom.Items37" xml:space="preserve">
     <value>38:  Sr</value>
   </data>
-  <data name="comboBoxAtom.Items53" xml:space="preserve">
-    <value>54:  Xe</value>
+  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxEmission.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1891,10 +1867,13 @@
     <value>tabPageElementAndPosition</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="buttonOriginShiftCustom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="numericBoxB11.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1906,7 +1885,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;numericBox3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;yDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1932,14 +1911,11 @@
   <data name="flowLayoutPanelIso.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="comboBoxAtom.Items91" xml:space="preserve">
     <value>92:  U</value>
   </data>
-  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
-    <value>Add the below atom</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
   </data>
   <data name="buttonOriginShift8.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -2004,8 +1980,11 @@
   <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonOriginShift8.Name" xml:space="preserve">
-    <value>buttonOriginShift8</value>
+  <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 48</value>
+  </data>
+  <data name="numericBoxOcc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxAtomRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2055,11 +2034,11 @@
   <data name="buttonOriginShift3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;numericBoxBiso.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="numericBoxB12err.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxXerr.Name" xml:space="preserve">
-    <value>numericBoxXerr</value>
+  <data name="numericBoxXerr.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="comboBoxAtom.Items57" xml:space="preserve">
     <value>58:  Ce</value>
@@ -2070,11 +2049,11 @@
   <data name="numericBoxB13err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
   </data>
-  <data name="checkBoxDetailAtomicPositionError.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 24</value>
   </data>
   <data name="buttonAtomDown.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -2094,9 +2073,6 @@
   <data name="buttonAtomUp.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="comboBoxAtom.Items31" xml:space="preserve">
-    <value>32:  Ge</value>
-  </data>
   <data name="buttonAtomUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -2109,11 +2085,11 @@
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
-  <data name="&gt;&gt;numericBoxOriginShiftZ.Parent" xml:space="preserve">
-    <value>tabPageOriginShift</value>
-  </data>
   <data name="numericBoxXerr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxAtom.Items5" xml:space="preserve">
+    <value>6:  C</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift2.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -2217,6 +2193,12 @@
   <data name="numericBoxZ.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of c-axis (fractional format (e.g. 3/4) is also acceptable) </value>
   </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxB11err.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 0</value>
   </data>
@@ -2244,8 +2226,8 @@
   <data name="dataGridView.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxB11.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;textBoxLabel.Name" xml:space="preserve">
     <value>textBoxLabel</value>
@@ -2253,8 +2235,8 @@
   <data name="&gt;&gt;numericBoxOccerr.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxB12err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxB33err.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -2274,11 +2256,8 @@
   <data name="numericBoxB23err.HeaderText" xml:space="preserve">
     <value>±</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="buttonOriginShift4.Text" xml:space="preserve">
+    <value>(¼ 0 ¼)</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift1.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -2307,14 +2286,17 @@
   <data name="&gt;&gt;numericBoxB11.Name" xml:space="preserve">
     <value>numericBoxB11</value>
   </data>
-  <data name="&gt;&gt;buttonOriginShift5.Name" xml:space="preserve">
-    <value>buttonOriginShift5</value>
+  <data name="numericBox3.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 22</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="comboBoxAtom.Items59" xml:space="preserve">
+    <value>60:  Nd</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Name" xml:space="preserve">
     <value>numericBoxB13err</value>
+  </data>
+  <data name="buttonDeleteAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxB23err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2325,9 +2307,6 @@
   <data name="colorControlAtomColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 20</value>
   </data>
-  <data name="&gt;&gt;comboBoxAtom.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="numericBoxBiso.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -2337,8 +2316,8 @@
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 2</value>
   </data>
-  <data name="numericBoxB22err.HeaderText" xml:space="preserve">
-    <value>±</value>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>tabPageAppearance</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2358,8 +2337,8 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>flowLayoutPanel5</value>
   </data>
-  <data name="numericBoxB22err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+  <data name="numericBoxOcc.HeaderText" xml:space="preserve">
+    <value>Occ</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2403,8 +2382,8 @@
   <data name="&gt;&gt;label35.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxAmbient.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxAtomRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -2445,6 +2424,9 @@
   <data name="comboBoxAtom.Items70" xml:space="preserve">
     <value>71:  Lu</value>
   </data>
+  <data name="tabPageDebyeWaller.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="comboBoxAtom.Items97" xml:space="preserve">
     <value>98:  Cf</value>
   </data>
@@ -2472,9 +2454,6 @@
   <data name="buttonChange.ToolTip" xml:space="preserve">
     <value>Replace the selectd atom with the below atom</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPageScatteringFactor</value>
-  </data>
   <data name="tabPageScatteringFactor.Text" xml:space="preserve">
     <value>Scattering Factor</value>
   </data>
@@ -2493,8 +2472,8 @@
   <data name="buttonAtomDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;numericBoxB13err.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAniso1</value>
+  <data name="flowLayoutPanelIso.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;checkBoxDetailAtomicPositionError.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2538,8 +2517,8 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonOriginShift4.Text" xml:space="preserve">
-    <value>(¼ 0 ¼)</value>
+  <data name="numericBoxB12err.HeaderText" xml:space="preserve">
+    <value>±</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -2552,12 +2531,6 @@
   </data>
   <data name="&gt;&gt;numericBoxZ.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
-  </data>
-  <data name="numericBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxZ.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>576, 33</value>
@@ -2594,6 +2567,9 @@
   </data>
   <data name="numericBoxB23.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
+  </data>
+  <data name="&gt;&gt;zDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>zDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -2655,14 +2631,14 @@
   <data name="&gt;&gt;numericBoxY.Name" xml:space="preserve">
     <value>numericBoxY</value>
   </data>
-  <data name="numericBoxSpecular.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="&gt;&gt;tabPageElementAndPosition.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
@@ -2672,9 +2648,6 @@
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Neutron:</value>
   </data>
   <data name="colorControlAtomColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -2706,6 +2679,9 @@
   <data name="&gt;&gt;multiDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>multiDataGridViewTextBoxColumn</value>
   </data>
+  <data name="flowLayoutPanelLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>tabPageScatteringFactor</value>
   </data>
@@ -2718,9 +2694,6 @@
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 247</value>
   </data>
-  <data name="&gt;&gt;numericBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;buttonOriginShift8.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
@@ -2729,6 +2702,9 @@
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 21</value>
+  </data>
+  <data name="buttonOriginShift4.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
   </data>
   <data name="multiDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Multi.</value>
@@ -2741,6 +2717,9 @@
   </data>
   <data name="comboBoxAtom.Items40" xml:space="preserve">
     <value>41:  Nb</value>
+  </data>
+  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 20</value>
@@ -2760,6 +2739,9 @@
   <data name="numericBoxB23.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="tabPageScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>568, 75</value>
+  </data>
   <data name="buttonOriginShift8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2771,6 +2753,9 @@
   </data>
   <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="&gt;&gt;numericBoxB23err.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="radioButtonOriginShiftPlus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2826,8 +2811,11 @@
   <data name="numericBoxShininess.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
+  <data name="tabPageDebyeWaller.Size" type="System.Drawing.Size, System.Drawing">
+    <value>568, 75</value>
+  </data>
   <data name="&gt;&gt;numericBoxShininess.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2836,7 +2824,7 @@
     <value>84</value>
   </data>
   <data name="&gt;&gt;numericBox4.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
@@ -2856,11 +2844,11 @@
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
-  <data name="comboBoxScatteringFactorElectron.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;numericBox3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;radioButtonOriginShiftPlus.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="comboBoxScatteringFactorElectron.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -2940,8 +2928,8 @@
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
   </data>
-  <data name="flowLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 33</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2950,7 +2938,7 @@
     <value />
   </data>
   <data name="&gt;&gt;numericBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -2988,9 +2976,6 @@
   <data name="labelDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Label</value>
   </data>
-  <data name="radioButtonDebyeWallerTypeB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 21</value>
-  </data>
   <data name="numericBoxB33.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
@@ -3011,9 +2996,6 @@
   </data>
   <data name="&gt;&gt;buttonOriginShift3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonDebyeWallerTypeU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;comboBoxNeutron.Name" xml:space="preserve">
     <value>comboBoxNeutron</value>
@@ -3054,8 +3036,8 @@
   <data name="numericBoxB11.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="buttonDeleteAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxB22err.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 22</value>
   </data>
   <data name="numericBoxAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -3063,11 +3045,14 @@
   <data name="buttonOriginShift5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="&gt;&gt;numericBoxB33err.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;tabPageOriginShift.Name" xml:space="preserve">
     <value>tabPageOriginShift</value>
   </data>
-  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
+  <data name="buttonOriginShift2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="radioButtonOriginShiftPlus.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3087,11 +3072,14 @@
   <data name="textBoxLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="labelDimension.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="numericBoxSpecular.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="buttonOriginShiftCustom.Location" type="System.Drawing.Point, System.Drawing">
     <value>401, 16</value>
@@ -3138,8 +3126,8 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
-  <data name="comboBoxAtom.Items2" xml:space="preserve">
-    <value>3:  Li</value>
+  <data name="&gt;&gt;numericBoxBiso.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="xDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>60</value>
@@ -3150,8 +3138,11 @@
   <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;zDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>zDataGridViewTextBoxColumn</value>
+  <data name="&gt;&gt;buttonOriginShift5.Name" xml:space="preserve">
+    <value>buttonOriginShift5</value>
+  </data>
+  <data name="flowLayoutPanelIso.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;radioButtonOriginShiftMinus.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3178,7 +3169,7 @@
     <value>1, 23</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
     <value>Setting tab of Debye-Waller factor</value>
@@ -3189,8 +3180,8 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxOriginShiftY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="comboBoxAtom.Items31" xml:space="preserve">
+    <value>32:  Ge</value>
   </data>
   <data name="numericBoxB12.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -3201,29 +3192,29 @@
   <data name="&gt;&gt;siteSymDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="buttonChangeToSameElement.Text" xml:space="preserve">
     <value>Apply to Same Elements</value>
+  </data>
+  <data name="&gt;&gt;buttonOriginShift8.Name" xml:space="preserve">
+    <value>buttonOriginShift8</value>
   </data>
   <data name="comboBoxAtom.Items38" xml:space="preserve">
     <value>39:  Y</value>
   </data>
+  <data name="tabPageElementAndPosition.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
   <data name="comboBoxAtom.Items54" xml:space="preserve">
     <value>55:  Cs</value>
   </data>
-  <data name="numericBoxOriginShiftX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
     <value>Specular</value>
   </data>
   <data name="tabControl.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="colorControlAtomColor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="numericBoxB22err.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -3235,7 +3226,7 @@
     <value>2:  He</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxZerr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3247,9 +3238,12 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxOcc.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxOriginShiftY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label34.Name" xml:space="preserve">
@@ -3297,6 +3291,9 @@
   <data name="comboBoxAtom.Items14" xml:space="preserve">
     <value>15:  P</value>
   </data>
+  <data name="numericBoxB13.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="buttonDeleteAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>512, 2</value>
   </data>
@@ -3307,7 +3304,7 @@
     <value>69:  Tm</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift1.Name" xml:space="preserve">
     <value>buttonOriginShift1</value>
@@ -3315,11 +3312,11 @@
   <data name="numericBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 0</value>
   </data>
+  <data name="numericBoxXerr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AtomControl</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value />
@@ -3339,8 +3336,11 @@
   <data name="numericBoxB12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
   </data>
-  <data name="checkBoxShowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxShininess.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 48</value>
@@ -3354,9 +3354,6 @@
   <data name="&gt;&gt;buttonAtomDown.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 33</value>
-  </data>
   <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3366,8 +3363,8 @@
   <data name="numericBoxShininess.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxB22err.Name" xml:space="preserve">
-    <value>numericBoxB22err</value>
+  <data name="numericBoxSpecular.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;radioButtonOriginShiftPlus.Name" xml:space="preserve">
     <value>radioButtonOriginShiftPlus</value>
@@ -3376,13 +3373,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="radioButtonIsotoropy.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 0</value>
   </data>
-  <data name="numericBoxAmbient.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="&gt;&gt;enabledColumn.Name" xml:space="preserve">
+    <value>enabledColumn</value>
   </data>
   <data name="comboBoxAtom.Items35" xml:space="preserve">
     <value>36:  Kr</value>
@@ -3392,9 +3389,6 @@
   </data>
   <data name="buttonOriginShift1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Diffusion</value>
@@ -3411,11 +3405,14 @@
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;buttonOriginShift5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tabPageOriginShift.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;radioButtonAnisotropy.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labelX_.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3434,9 +3431,6 @@
   </data>
   <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="checkBoxDetailAtomicPositionError.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="numericBoxEmission.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3513,6 +3507,9 @@
   <data name="numericBoxB12err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
   </data>
+  <data name="comboBoxAtom.Items55" xml:space="preserve">
+    <value>56:  Ba</value>
+  </data>
   <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -3521,9 +3518,6 @@
   </data>
   <data name="flowLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="label34.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
   </data>
   <data name="comboBoxAtom.Items88" xml:space="preserve">
     <value>89:  Ac</value>
@@ -3549,9 +3543,6 @@
   <data name="comboBoxAtom.Items83" xml:space="preserve">
     <value>84:  Po</value>
   </data>
-  <data name="numericBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="buttonOriginShift4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3559,7 +3550,7 @@
     <value>15</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label37.Name" xml:space="preserve">
     <value>label37</value>
@@ -3569,6 +3560,15 @@
   </data>
   <data name="comboBoxAtom.ToolTip" xml:space="preserve">
     <value>Element</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOriginShiftPlus.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="comboBoxAtom.Items53" xml:space="preserve">
+    <value>54:  Xe</value>
   </data>
   <data name="labelDimension.ToolTip" xml:space="preserve">
     <value />
@@ -3598,10 +3598,10 @@
     <value>46, 25</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;enabledColumn.Name" xml:space="preserve">
-    <value>enabledColumn</value>
+  <data name="&gt;&gt;elementDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3612,8 +3612,8 @@
   <data name="&gt;&gt;enabledColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 15</value>
+  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
+    <value>Add the below atom</value>
   </data>
   <data name="numericBoxSpecular.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3628,13 +3628,16 @@
     <value>tabPageElementAndPosition</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericBox3.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+  <data name="numericBoxY.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxShowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3681,14 +3684,14 @@
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
   </data>
-  <data name="comboBoxAtom.Items5" xml:space="preserve">
-    <value>6:  C</value>
+  <data name="label17.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
     <value>flowLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;labelX_.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -3702,26 +3705,20 @@
   <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxB12err.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="label13.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;siteSymDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>siteSymDataGridViewTextBoxColumn</value>
   </data>
-  <data name="textBoxLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="tabPageDebyeWaller.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="numericBoxOccerr.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;numericBoxYerr.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxYerr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3741,14 +3738,8 @@
   <data name="&gt;&gt;numericBoxOccerr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;buttonOriginShift4.Name" xml:space="preserve">
-    <value>buttonOriginShift4</value>
   </data>
   <data name="colorControlAtomColor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -3773,6 +3764,9 @@
   </data>
   <data name="numericBoxOriginShiftY.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
+  </data>
+  <data name="comboBoxScatteringFactorXray.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>307</value>
@@ -3819,14 +3813,14 @@
   <data name="numericBoxB22.HeaderText" xml:space="preserve">
     <value>B12</value>
   </data>
+  <data name="numericBoxAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="label37.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
-  </data>
-  <data name="comboBoxScatteringFactorXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
   </data>
   <data name="radioButtonOriginShiftMinus.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3837,8 +3831,8 @@
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
   </data>
-  <data name="comboBoxAtom.Items75" xml:space="preserve">
-    <value>76:  Os</value>
+  <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxB11err.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -3853,11 +3847,11 @@
   <data name="label3.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1</value>
+  </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
-    <value>Site occupancy</value>
   </data>
   <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
     <value />
@@ -3868,8 +3862,11 @@
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 15</value>
   </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
+  <data name="radioButtonDebyeWallerTypeB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 21</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-229, 3</value>
   </data>
   <data name="&gt;&gt;tabPageDebyeWaller.Parent" xml:space="preserve">
     <value>tabControl</value>
@@ -3883,14 +3880,14 @@
   <data name="&gt;&gt;numericBoxBisoerr.Parent" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
   </data>
-  <data name="checkBoxDetailsDebyeWallerError.TabIndex" type="System.Int32, mscorlib">
-    <value>306</value>
-  </data>
   <data name="numericBoxZ.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>Replace</value>
+  </data>
+  <data name="buttonOriginShift5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="buttonOriginShift9.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -3931,8 +3928,8 @@
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
   </data>
-  <data name="textBoxLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="comboBoxAtom.Items41" xml:space="preserve">
+    <value>42:  Mo</value>
   </data>
   <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3955,6 +3952,9 @@
   <data name="labelX_.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 19</value>
   </data>
+  <data name="radioButtonOriginShiftMinus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 3</value>
+  </data>
   <data name="buttonDeleteAtom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -3975,9 +3975,6 @@
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4045,6 +4042,9 @@
   <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="flowLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="comboBoxAtom.Items9" xml:space="preserve">
     <value>10:  Ne</value>
   </data>
@@ -4067,13 +4067,16 @@
     <value>flowLayoutPanelAniso1</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxB11err.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
+  </data>
+  <data name="&gt;&gt;buttonOriginShift1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;buttonChangeToSameElement.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4120,9 +4123,6 @@
   <data name="comboBoxAtom.Items29" xml:space="preserve">
     <value>30:  Zn</value>
   </data>
-  <data name="buttonOriginShift2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="comboBoxAtom.Items45" xml:space="preserve">
     <value>46:  Pd</value>
   </data>
@@ -4156,8 +4156,8 @@
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;numericBoxAmbient.Name" xml:space="preserve">
-    <value>numericBoxAmbient</value>
+  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
     <value />
@@ -4189,8 +4189,8 @@
   <data name="comboBoxAtom.Items19" xml:space="preserve">
     <value>20:  Ca</value>
   </data>
-  <data name="buttonOriginShift5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxB11err.HeaderText" xml:space="preserve">
+    <value>±</value>
   </data>
   <data name="&gt;&gt;buttonOriginShift7.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -4210,12 +4210,6 @@
   <data name="buttonEditIsotopeAbundance.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="&gt;&gt;tabPageOriginShift.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="flowLayoutPanelIso.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="numericBoxX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4234,17 +4228,29 @@
   <data name="buttonOriginShiftCustom.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
+  <data name="comboBoxAtom.Items75" xml:space="preserve">
+    <value>76:  Os</value>
+  </data>
+  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="numericBoxAmbient.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="label36.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
+  </data>
+  <data name="&gt;&gt;buttonChangeToSameElement.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="buttonOriginShift1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageOriginShift.Text" xml:space="preserve">
     <value>Origin shift</value>
@@ -4270,9 +4276,6 @@
   <data name="numericBoxBisoerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
   </data>
-  <data name="&gt;&gt;radioButtonDebyeWallerTypeU.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -4281,9 +4284,6 @@
   </data>
   <data name="numericBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
-  </data>
-  <data name="&gt;&gt;labelDimension.Name" xml:space="preserve">
-    <value>labelDimension</value>
   </data>
   <data name="numericBoxB11err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4309,8 +4309,8 @@
   <data name="comboBoxAtom.Items65" xml:space="preserve">
     <value>66:  Dy</value>
   </data>
-  <data name="comboBoxAtom.Items81" xml:space="preserve">
-    <value>82:  Pb</value>
+  <data name="numericBoxB13err.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 22</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -4321,8 +4321,8 @@
   <data name="numericBoxB22.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxB33err.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxAtom.Items87" xml:space="preserve">
     <value>88:  Ra</value>
@@ -4339,8 +4339,8 @@
   <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxDiffusion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 48</value>
+  <data name="tabPageElementAndPosition.Text" xml:space="preserve">
+    <value>Element &amp; Position</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value> X-ray:</value>
@@ -4363,20 +4363,20 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonOriginShift1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
+  <data name="tabPageElementAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="numericBoxB11.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="buttonOriginShiftCustom.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -4388,7 +4388,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 3</value>
@@ -4399,14 +4399,11 @@
   <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 15</value>
   </data>
-  <data name="comboBoxAtom.Items55" xml:space="preserve">
-    <value>56:  Ba</value>
+  <data name="numericBoxAmbient.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;buttonOriginShift1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="richTextBoxIsotope.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;labelDimension.Name" xml:space="preserve">
+    <value>labelDimension</value>
   </data>
   <data name="&gt;&gt;buttonOriginShiftCustom.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4429,11 +4426,11 @@
   <data name="radioButtonIsotoropy.Text" xml:space="preserve">
     <value>Isotropy</value>
   </data>
-  <data name="&gt;&gt;checkBoxDetailAtomicPositionError.Name" xml:space="preserve">
-    <value>checkBoxDetailAtomicPositionError</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Neutron:</value>
   </data>
-  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;buttonOriginShift4.Name" xml:space="preserve">
+    <value>buttonOriginShift4</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4447,23 +4444,23 @@
   <data name="&gt;&gt;buttonOriginShift4.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
   </data>
-  <data name="flowLayoutPanelIso.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="numericBoxB13err.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="labelX_.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;labelX_.Name" xml:space="preserve">
+    <value>labelX_</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxZerr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 48</value>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 33</value>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;numericBoxAtomRadius.ZOrder" xml:space="preserve">
     <value>13</value>
@@ -4474,8 +4471,8 @@
   <data name="radioButtonIsotoropy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabPageOriginShift.Parent" xml:space="preserve">
+    <value>tabControl</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -4504,11 +4501,11 @@
   <data name="comboBoxAtom.Items85" xml:space="preserve">
     <value>86:  Rn</value>
   </data>
-  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="comboBoxScatteringFactorXray.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -4516,8 +4513,8 @@
   <data name="&gt;&gt;numericBoxB33err.Name" xml:space="preserve">
     <value>numericBoxB33err</value>
   </data>
-  <data name="tabPageDebyeWaller.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;buttonDeleteAtom.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Name" xml:space="preserve">
     <value>numericBoxB12</value>
@@ -4528,14 +4525,14 @@
   <data name="&gt;&gt;radioButtonDebyeWallerTypeU.Parent" xml:space="preserve">
     <value>flowLayoutPanel5</value>
   </data>
-  <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 24</value>
+  <data name="&gt;&gt;numericBoxOriginShiftZ.Parent" xml:space="preserve">
+    <value>tabPageOriginShift</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="richTextBoxIsotope.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Name" xml:space="preserve">
     <value>numericBoxZerr</value>
@@ -4573,8 +4570,8 @@
   <data name="&gt;&gt;occDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxB12err.HeaderText" xml:space="preserve">
-    <value>±</value>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="numericBoxYerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -4585,8 +4582,8 @@
   <data name="numericBoxB13.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
   </data>
-  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="buttonChangeToSameElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 28</value>
   </data>
   <data name="radioButtonAnisotropy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4594,8 +4591,8 @@
   <data name="numericBoxEmission.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 48</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 6</value>
+  <data name="comboBoxAtom.Items32" xml:space="preserve">
+    <value>33:  As</value>
   </data>
   <data name="buttonOriginShift9.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -4612,8 +4609,8 @@
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>309</value>
   </data>
-  <data name="comboBoxAtom.Items59" xml:space="preserve">
-    <value>60:  Nd</value>
+  <data name="numericBoxOcc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 0</value>
   </data>
   <data name="numericBoxAtomRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 25</value>
@@ -4621,8 +4618,8 @@
   <data name="&gt;&gt;buttonEditIsotopeAbundance.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="buttonOriginShift8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Parent" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
@@ -4630,8 +4627,8 @@
   <data name="&gt;&gt;comboBoxScatteringFactorElectron.Name" xml:space="preserve">
     <value>comboBoxScatteringFactorElectron</value>
   </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxZerr.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonChangeToSameElement.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4648,8 +4645,8 @@
   <data name="numericBox3.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonOriginShift4.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 33</value>
   </data>
   <data name="richTextBoxIsotope.Location" type="System.Drawing.Point, System.Drawing">
     <value>165, 27</value>
@@ -4693,14 +4690,17 @@
   <data name="&gt;&gt;numericBoxAmbient.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Atom</value>
   </data>
   <data name="&gt;&gt;tabPageAppearance.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="numericBoxB23err.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label38.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
   </data>
   <data name="comboBoxAtom.Items62" xml:space="preserve">
     <value>63:  Eu</value>
@@ -4741,8 +4741,8 @@
   <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;numericBoxXerr.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="buttonEditIsotopeAbundance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4753,8 +4753,8 @@
   <data name="&gt;&gt;flowLayoutPanelAniso1.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;numericBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="checkBoxDetailsDebyeWallerError.TabIndex" type="System.Int32, mscorlib">
+    <value>306</value>
   </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4774,11 +4774,11 @@
   <data name="buttonOriginShift2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="comboBoxScatteringFactorXray.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="textBoxLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="tabPageScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>568, 75</value>
+  <data name="numericBoxB12err.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4787,10 +4787,7 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxB22.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -4798,8 +4795,8 @@
   <data name="&gt;&gt;label38.Name" xml:space="preserve">
     <value>label38</value>
   </data>
-  <data name="numericBoxB11.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;numericBox2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="flowLayoutPanel9.ToolTip" xml:space="preserve">
     <value />
@@ -4823,10 +4820,10 @@
     <value>55, 15</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="label38.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
+  <data name="colorControlAtomColor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value />
@@ -4834,8 +4831,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Electron:</value>
   </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="buttonOriginShift2.Text" xml:space="preserve">
     <value>(¼ ¼ ¼)</value>
@@ -4847,13 +4844,13 @@
     <value>colorControlAtomColor</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="tabPageOriginShift.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelIso.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericBoxB22.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAniso2</value>
   </data>
   <data name="comboBoxAtom.Items79" xml:space="preserve">
     <value>80:  Hg</value>
@@ -4873,8 +4870,11 @@
   <data name="numericBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>341, 48</value>
   </data>
-  <data name="numericBoxB13.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxEmission.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 25</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDebyeWallerTypeU.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="numericBoxZ.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -4912,14 +4912,14 @@
   <data name="&gt;&gt;flowLayoutPanelAniso1.Name" xml:space="preserve">
     <value>flowLayoutPanelAniso1</value>
   </data>
-  <data name="&gt;&gt;buttonOriginShift5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButtonOriginShiftPlus.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="radioButtonOriginShiftMinus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 3</value>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabPageAppearance.ToolTip" xml:space="preserve">
     <value />
@@ -4966,8 +4966,8 @@
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1</value>
+  <data name="textBoxLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -4987,8 +4987,8 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;radioButtonOriginShiftPlus.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
   </data>
   <data name="enabledColumn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5002,8 +5002,8 @@
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 214</value>
   </data>
-  <data name="tabPageElementAndPosition.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5023,8 +5023,8 @@
   <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxXerr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;comboBoxAtom.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelIso.Name" xml:space="preserve">
     <value>flowLayoutPanelIso</value>
@@ -5033,7 +5033,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxB23.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -5041,14 +5041,14 @@
   <data name="buttonOriginShift9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxEmission.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 25</value>
+  <data name="numericBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxAtom.Items72" xml:space="preserve">
     <value>73:  Ta</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+  <data name="checkBoxDetailAtomicPositionError.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="colorControlAtomColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 6</value>
@@ -5078,19 +5078,19 @@
     <value>tabPageScatteringFactor</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.18.557, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.6.112, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxB23.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAniso2</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AtomControl</value>
   </data>
   <data name="numericBoxB11err.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 24</value>
   </data>
-  <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 24</value>
+  <data name="radioButtonDebyeWallerTypeU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactor</value>
   </data>
   <data name="flowLayoutPanelAniso1.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 27</value>
@@ -5101,8 +5101,8 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageDebyeWaller.Size" type="System.Drawing.Size, System.Drawing">
-    <value>568, 75</value>
+  <data name="&gt;&gt;radioButtonDebyeWallerTypeB.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
   </data>
   <data name="numericBoxB12.ToolTip" xml:space="preserve">
     <value />
