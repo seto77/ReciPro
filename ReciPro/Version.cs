@@ -10,7 +10,7 @@
 
         static public string History =
             "History" +
-            "\r\n ver4.786(2020/10/10)  Fixed bugs in 'Crystal Database' and 'Spot ID'." +
+            "\r\n ver4.786(2020/10/10)  Fixed bugs in 'Crystal Database' and improved the ’Find spots' function in 'Spot ID'." +
             "\r\n ver4.785(2020/10/06)  Fixed a problem on OpenGL with Radeon Vega graphics." +
             "\r\n ver4.784(2020/10/01)  Updated the manuals (both English and Japanese)." +
             "\r\n ver4.783(2020/09/08)  Fixed a bug on GUI." +
