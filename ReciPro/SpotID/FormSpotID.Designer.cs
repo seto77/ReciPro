@@ -47,9 +47,10 @@ namespace ReciPro
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonCopyMetafile = new System.Windows.Forms.Button();
-            this.buttonPixelToPixel = new System.Windows.Forms.Button();
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonPixelToPixel = new System.Windows.Forms.Button();
+            this.buttonCopyMetafile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
@@ -133,11 +134,11 @@ namespace ReciPro
             this.toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
@@ -152,7 +153,6 @@ namespace ReciPro
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -163,34 +163,22 @@ namespace ReciPro
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2.Controls.Add(this.checkBoxShowDebyeRing);
             // 
-            // buttonCopyMetafile
-            // 
-            resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
-            this.buttonCopyMetafile.Name = "buttonCopyMetafile";
-            this.buttonCopyMetafile.UseVisualStyleBackColor = true;
-            this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
-            // 
-            // buttonPixelToPixel
-            // 
-            resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
-            this.buttonPixelToPixel.Name = "buttonPixelToPixel";
-            this.buttonPixelToPixel.UseVisualStyleBackColor = true;
-            this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
-            // 
             // scalablePictureBoxAdvanced
             // 
-            this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
             resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
+            this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
@@ -207,7 +195,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(453, 593);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(524, 593);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
@@ -218,6 +206,27 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MouseDown2 += new Crystallography.Controls.ScalablePictureBoxAdvanced.MouseEvent(this.scalablePictureBoxAdvanced1_MouseDown2);
             this.scalablePictureBoxAdvanced.StatusChanged += new System.EventHandler(this.scalablePictureBoxAdvanced_StatusChanged);
             this.scalablePictureBoxAdvanced.FilterChanged += new System.EventHandler(this.ScalablePictureBoxAdvanced_FilterChanged);
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.buttonPixelToPixel);
+            this.panel1.Controls.Add(this.buttonCopyMetafile);
+            this.panel1.Name = "panel1";
+            // 
+            // buttonPixelToPixel
+            // 
+            resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
+            this.buttonPixelToPixel.Name = "buttonPixelToPixel";
+            this.buttonPixelToPixel.UseVisualStyleBackColor = true;
+            this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
+            // 
+            // buttonCopyMetafile
+            // 
+            resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
+            this.buttonCopyMetafile.Name = "buttonCopyMetafile";
+            this.buttonCopyMetafile.UseVisualStyleBackColor = true;
+            this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
             // 
             // groupBox1
             // 
@@ -241,11 +250,11 @@ namespace ReciPro
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.numericBoxNumberOfSpots);
             this.groupBox4.Controls.Add(this.buttonResetRangeForAllSpots);
             this.groupBox4.Controls.Add(this.numericBoxFittingRange);
             this.groupBox4.Controls.Add(this.numericBoxNearestNeighbor);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -334,9 +343,9 @@ namespace ReciPro
             // 
             // dataGridViewSpots
             // 
+            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AllowUserToDeleteRows = false;
             this.dataGridViewSpots.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -745,10 +754,10 @@ namespace ReciPro
             // 
             // dataGridViewGrains
             // 
+            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AllowUserToAddRows = false;
             this.dataGridViewGrains.AllowUserToDeleteRows = false;
             this.dataGridViewGrains.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AutoGenerateColumns = false;
             this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -791,10 +800,10 @@ namespace ReciPro
             // 
             // dataGridViewCandidates
             // 
+            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AllowUserToAddRows = false;
             this.dataGridViewCandidates.AllowUserToDeleteRows = false;
             this.dataGridViewCandidates.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AutoGenerateColumns = false;
             this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -922,26 +931,27 @@ namespace ReciPro
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.shortcutHintsToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // readToolStripMenuItem
             // 
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
             resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
+            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
             // 
             // shortcutHintsToolStripMenuItem
             // 
+            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.doubleClickAddSpotToolStripMenuItem,
             this.toolStripMenuItem7,
@@ -951,7 +961,6 @@ namespace ReciPro
             this.toolStripMenuItem4,
             this.toolStripMenuItem3});
             this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
-            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
@@ -990,40 +999,40 @@ namespace ReciPro
             // 
             // statusStrip1
             // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabelImageFilter,
             this.toolStripStatusLabelFindSpot,
             this.toolStripStatusLabelIdentifySpot,
             this.toolStripStatusLabelRefine});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Maximum = 10000;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelImageFilter
             // 
-            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
+            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             // 
             // toolStripStatusLabelFindSpot
             // 
-            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
+            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             // 
             // toolStripStatusLabelIdentifySpot
             // 
-            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
+            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             // 
             // toolStripStatusLabelRefine
             // 
-            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
+            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             // 
             // backgroundWorkerSpotID
             // 
@@ -1033,17 +1042,10 @@ namespace ReciPro
             this.backgroundWorkerSpotID.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSpotID_ProgressChanged);
             this.backgroundWorkerSpotID.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSpotID_RunWorkerCompleted);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonPixelToPixel);
-            this.panel1.Controls.Add(this.buttonCopyMetafile);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
             // FormSpotID
             // 
-            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
@@ -1059,6 +1061,8 @@ namespace ReciPro
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1078,8 +1082,6 @@ namespace ReciPro
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

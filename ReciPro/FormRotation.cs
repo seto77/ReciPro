@@ -50,78 +50,6 @@ namespace ReciPro
         #region フィールド
         private bool skip = false;
         public FormMain FormMain;
-        #endregion
-
-
-        private void numericBox6_ValueChanged(object sender, EventArgs e)
-        {
-            if (skip) return;
-            skip = true;
-            var rotMatrix = new Matrix3D(numericBox11.Value, numericBox21.Value, numericBox31.Value, numericBox12.Value, numericBox22.Value, numericBox32.Value, numericBox13.Value, numericBox23.Value, numericBox33.Value);
-            var euler = Euler.GetEulerAngle(rotMatrix);
-            numericBoxPhi.Value = euler.Phi / Math.PI * 180;
-            numericBoxTheta.Value = euler.Theta / Math.PI * 180;
-            numericBoxPsi.Value = euler.Psi / Math.PI * 180;
-
-            skip = false;
-        }
-
-
-        #region Excelのコピーペースト
-        private void buttonCopy_Click(object sender, EventArgs e)
-        {
-            var str =
-                numericBox11.Value.ToString() + "\t" + numericBox12.Value.ToString() + "\t" + numericBox13.Value.ToString() + "\n" +
-                numericBox21.Value.ToString() + "\t" + numericBox22.Value.ToString() + "\t" + numericBox23.Value.ToString() + "\n" +
-                numericBox31.Value.ToString() + "\t" + numericBox32.Value.ToString() + "\t" + numericBox33.Value.ToString();
-            Clipboard.SetDataObject(str);
-        }
-
-        private void buttonPaste_Click(object sender, EventArgs e)
-        {
-            if (Clipboard.GetDataObject().GetDataPresent(typeof(string)))
-            {
-                var data = Clipboard.GetDataObject();
-                var str = (string)data.GetData(typeof(string).ToString(), true);
-
-                var str1 = str.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                if (str1.Length < 3) return;
-
-                var row1 = str1[0].Split(new[] { '\t' }, StringSplitOptions.None);
-                var row2 = str1[1].Split(new[] { '\t' }, StringSplitOptions.None);
-                var row3 = str1[2].Split(new[] { '\t' }, StringSplitOptions.None);
-
-                if (row1.Length != 3 || row2.Length != 3 || row3.Length != 3)
-                    return;
-
-                if (!double.TryParse(row1[0], out var e11)) return;
-                if (!double.TryParse(row1[1], out var e12)) return;
-                if (!double.TryParse(row1[2], out var e13)) return;
-                if (!double.TryParse(row2[0], out var e21)) return;
-                if (!double.TryParse(row2[1], out var e22)) return;
-                if (!double.TryParse(row2[2], out var e23)) return;
-                if (!double.TryParse(row3[0], out var e31)) return;
-                if (!double.TryParse(row3[1], out var e32)) return;
-                if (!double.TryParse(row3[2], out var e33)) return;
-
-                skip = true;
-                numericBox11.Value = e11;
-                numericBox12.Value = e12;
-                numericBox13.Value = e13;
-                numericBox21.Value = e21;
-                numericBox22.Value = e22;
-                numericBox23.Value = e23;
-                numericBox31.Value = e31;
-                numericBox32.Value = e32;
-                numericBox33.Value = e33;
-                skip = false;
-
-                numericBox6_ValueChanged(sender, e);
-            }
-        }
-
-        #endregion
-
 
         private GLControlAlpha glControlReciProObjects;
         private GLControlAlpha glControlReciProAxes;
@@ -129,7 +57,7 @@ namespace ReciPro
         private GLControlAlpha glControlExpAxes;
         private GLControlAlpha glControlReciProGonio;
         private GLControlAlpha glControlExpGonio;
-
+        #endregion
 
         #region コンストラクタ
 
@@ -272,7 +200,73 @@ namespace ReciPro
 
         #endregion
 
+        #region Excelのコピーペースト
+        private void buttonCopy_Click(object sender, EventArgs e)
+        {
+            var str =
+                numericBox11.Value.ToString() + "\t" + numericBox12.Value.ToString() + "\t" + numericBox13.Value.ToString() + "\n" +
+                numericBox21.Value.ToString() + "\t" + numericBox22.Value.ToString() + "\t" + numericBox23.Value.ToString() + "\n" +
+                numericBox31.Value.ToString() + "\t" + numericBox32.Value.ToString() + "\t" + numericBox33.Value.ToString();
+            Clipboard.SetDataObject(str);
+        }
 
+        private void buttonPaste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.GetDataObject().GetDataPresent(typeof(string)))
+            {
+                var data = Clipboard.GetDataObject();
+                var str = (string)data.GetData(typeof(string).ToString(), true);
+
+                var str1 = str.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                if (str1.Length < 3) return;
+
+                var row1 = str1[0].Split(new[] { '\t' }, StringSplitOptions.None);
+                var row2 = str1[1].Split(new[] { '\t' }, StringSplitOptions.None);
+                var row3 = str1[2].Split(new[] { '\t' }, StringSplitOptions.None);
+
+                if (row1.Length != 3 || row2.Length != 3 || row3.Length != 3)
+                    return;
+
+                if (!double.TryParse(row1[0], out var e11)) return;
+                if (!double.TryParse(row1[1], out var e12)) return;
+                if (!double.TryParse(row1[2], out var e13)) return;
+                if (!double.TryParse(row2[0], out var e21)) return;
+                if (!double.TryParse(row2[1], out var e22)) return;
+                if (!double.TryParse(row2[2], out var e23)) return;
+                if (!double.TryParse(row3[0], out var e31)) return;
+                if (!double.TryParse(row3[1], out var e32)) return;
+                if (!double.TryParse(row3[2], out var e33)) return;
+
+                skip = true;
+                numericBox11.Value = e11;
+                numericBox12.Value = e12;
+                numericBox13.Value = e13;
+                numericBox21.Value = e21;
+                numericBox22.Value = e22;
+                numericBox23.Value = e23;
+                numericBox31.Value = e31;
+                numericBox32.Value = e32;
+                numericBox33.Value = e33;
+                skip = false;
+
+                numericBox6_ValueChanged(sender, e);
+            }
+        }
+
+        #endregion
+
+        private void numericBox6_ValueChanged(object sender, EventArgs e)
+        {
+            if (skip) return;
+            skip = true;
+            var rotMatrix = new Matrix3D(numericBox11.Value, numericBox21.Value, numericBox31.Value, numericBox12.Value, numericBox22.Value, numericBox32.Value, numericBox13.Value, numericBox23.Value, numericBox33.Value);
+            var euler = Euler.GetEulerAngle(rotMatrix);
+            numericBoxPhi.Value = euler.Phi / Math.PI * 180;
+            numericBoxTheta.Value = euler.Theta / Math.PI * 180;
+            numericBoxPsi.Value = euler.Psi / Math.PI * 180;
+
+            skip = false;
+        }
 
         /// <summary>
         /// Link状態の時、FormMainから呼ばれる。rotにもっとも近い回転行列をExperimetal coordinatesの

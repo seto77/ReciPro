@@ -40,6 +40,10 @@ namespace ReciPro
 
         public double FittingRange => numericBoxFittingRange.Value;
 
+        private readonly object lockObj = new object();
+
+        private readonly Stopwatch sw = new Stopwatch();
+
         #endregion プロパティ、フィールド
 
         #region ロード, クローズ関連
@@ -52,8 +56,7 @@ namespace ReciPro
 
         private void FormSpotID_Load(object sender, EventArgs e)
         {
-            FormSpotDetails = new FormSpotDetails();
-            FormSpotDetails.FormSpotID = this;
+            FormSpotDetails = new FormSpotDetails { FormSpotID = this };
         }
 
         private void FormSpotID_FormClosing(object sender, FormClosingEventArgs e)
@@ -260,12 +263,18 @@ namespace ReciPro
             #endregion テストコード
 
             bindingSourceObsSpots.DataMember = "";
+
+            //spots.RemoveRange(0,13);
+            //spots.RemoveRange(1,spots.Count-1);
+
+
             int n = 0;
             var results = spots.Select(s =>
             {
                 toolStripProgressBar.Value = n++ * toolStripProgressBar.Maximum / spots.Count;
                 Application.DoEvents();
-                return fit(new PointD(s.X, s.Y), FittingRange);
+                var val = fit(new PointD(s.X, s.Y), FittingRange);
+                return val;
             }).ToList();
 
             for (int i = 0; i < results.Count; i++)
@@ -279,6 +288,7 @@ namespace ReciPro
                         results.RemoveAt(j--);
                 }
             }
+          
             for (int i = 0; i < results.Count; i++)
                 if (!double.IsPositiveInfinity(results[i].R))
                     dataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
@@ -303,6 +313,11 @@ namespace ReciPro
             if (radius == 0)
                 radius = numericBoxFittingRange.Value;
 
+            //外れすぎていないかをチェックするfunc
+            var exclude = new Func< double, double,bool>((x, y) => Math.Abs(pt.X - x) > 1000 || Math.Abs(pt.Y - y) > 1000 ||
+                    (pt.X - x) * (pt.X - x) + (pt.Y - y) * (pt.Y - y) > radius * radius);
+
+
             //検索対象のピクセルを粗く設定
             int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
             var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
@@ -322,13 +337,13 @@ namespace ReciPro
                 new MQ.Function(MQ.FuncType.Plane, 0, 0, 0)//バックグラウンド
             };
             var r = MQ.Solve(pixels, funcs, MQ.Precision.Low);
-            if (double.IsInfinity(r.R) || Math.Abs(pt.X - r.Prms[0][0]) > 1000 || Math.Abs(pt.Y - r.Prms[0][1]) > 1000)
+            if (double.IsInfinity(r.R) || exclude(r.Prms[0][0], r.Prms[0][1]))
                 return (new[] { pt.X, pt.Y, 3.0, 3.0, 0, 0.0, 0 }, new[] { 0.0, 0, 0 }, double.PositiveInfinity);
 
             //2回目. 普通に検索
             pixels = getPixels(srcP, radius, r.Prms[0][0], r.Prms[0][1]);
             r = MQ.Solve(pixels, funcs, MQ.Precision.Medium);
-            if (double.IsInfinity(r.R) || Math.Abs(pt.X - r.Prms[0][0]) > 1000 || Math.Abs(pt.Y - r.Prms[0][1]) > 1000)
+            if (double.IsInfinity(r.R) || exclude(r.Prms[0][0], r.Prms[0][1]))
                 return (new[] { pt.X, pt.Y, 3.0, 3.0, 0, 0.0, 0 }, new[] { 0.0, 0, 0 }, double.PositiveInfinity);
 
             return (r.Prms[0], r.Prms[1], r.R);
@@ -770,8 +785,7 @@ namespace ReciPro
             skipProgressChangedEvent = false;
         }
 
-        private readonly object lockObj = new object();
-        private readonly Stopwatch sw = new Stopwatch();
+       
 
         private List<List<Grain>> identifySpots(List<Crystal> crystals)
         {
@@ -993,7 +1007,7 @@ namespace ReciPro
 
         #endregion
 
-        public class Grain : System.IComparable
+        public class Grain : IComparable
         {
             public Matrix3D Rotation;
             public double Residual;
@@ -1164,7 +1178,7 @@ namespace ReciPro
                             //シンボルを更新
                             foreach (var spot in g.Spots)
                             {
-                                ScalablePictureBox.Symbol s = new ScalablePictureBox.Symbol(
+                                var s = new ScalablePictureBox.Symbol(
                                     $"{name}{n}: {spot.h} {spot.k} {spot.l}",
                                     new PointD(spot.X, spot.Y),
                                     Color.LightGreen, Color.DarkGreen, 5);
@@ -1194,7 +1208,7 @@ namespace ReciPro
                     //シンボルを更新
                     foreach (var spot in g.Spots)
                     {
-                        ScalablePictureBox.Symbol s = new ScalablePictureBox.Symbol(
+                        var s = new ScalablePictureBox.Symbol(
                            spot.h + " " + spot.k + " " + spot.l,
                            new PointD(spot.X, spot.Y),
                             Color.LightGreen, Color.DarkGreen, 5);

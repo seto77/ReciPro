@@ -43,8 +43,7 @@ namespace Crystallography
             {
                 if (isDecimalPointCommaFlag)
                 {
-                    double temp;
-                    isDecimalPointComma = double.TryParse("1.000,01", out temp);
+                    isDecimalPointComma = double.TryParse("1.000,01", out var temp);
                     isDecimalPointCommaFlag = false;
                 }
                 return isDecimalPointComma;

@@ -71,13 +71,17 @@ namespace Crystallography
                     {//Hexaセッティングの時
                         if (Order == 2 || Order == -2)
                         {
-                            if (Direction == (0, 0, 1)) p = (-h, -k, l);
-                            else if (Direction == (1, 0, 0)) p = (h, -h - k, -l);
-                            else if (Direction == (0, 1, 0)) p = (-h - k, k, -l);
-                            else if (Direction == (1, 1, 0)) p = (k, h, -l);
-                            else if (Direction == (1, -1, 0)) p = (-k, -h, -l);
-                            else if (Direction == (2, 1, 0)) p = (-h, h + k, -l);
-                            else if (Direction == (1, 2, 0)) p = (h + k, -k, -l);
+                            p = Direction switch
+                            {
+                                (0, 0, 1) => (-h, -k, l),
+                                (1, 0, 0) => (h, -h - k, -l),
+                                (0, 1, 0) => (-h - k, k, -l),
+                                (1, 1, 0) => (k, h, -l),
+                                (1, -1, 0) => (-k, -h, -l),
+                                (2, 1, 0) => (-h, h + k, -l),
+                                (1, 2, 0) => (h + k, -k, -l),
+                                _ => p
+                            };
                         }
                         else if (Order == 3 || Order == -3)
                         {
@@ -118,6 +122,7 @@ namespace Crystallography
                         else if (Direction == (0, 1, -1)) p = (-h, -l, -k);
                         else if (Direction == (-1, 0, 1)) p = (-l, -k, -h);
                         else if (Direction == (1, -1, 0)) p = (-k, -h, -l);
+
                     }
                     else if (Order == 3 || Order == -3)
                     {

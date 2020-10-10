@@ -65,7 +65,7 @@ namespace ReciPro
                 try
                 {
                     g.Transform =
-                new System.Drawing.Drawing2D.Matrix(
+                new Matrix(
                     (float)mag, 0, 0, (float)mag,
                     (float)(graphicsBox.ClientSize.Width / 2.0 - mag * centerPt.X),
                     (float)(graphicsBox.ClientSize.Height / 2.0 + mag * centerPt.Y));//(float)centerPt.X, (float)centerPt.Y);
@@ -276,8 +276,9 @@ namespace ReciPro
         private void DrawCircles(Graphics g)
         {
             //‘å‰~•`‰æ
-            Vector3D vec; float width;
-            Pen pen = new Pen(colorControlGreatCircle.Color, 0.002f);
+            Vector3D vec; 
+            float width;
+            var pen = new Pen(colorControlGreatCircle.Color, 0.002f);
             for (int i = 0; i < checkedListBoxCircles.CheckedItems.Count; i++)
             {
                 vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * (Vector3D)(checkedListBoxCircles.CheckedItems[i]));
@@ -310,22 +311,20 @@ namespace ReciPro
                 }
                 else
                 {
-                    double sqrt = Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y);
+                    var sqrt = Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y);
                     g.DrawLine(pen, (float)(vec.Y / sqrt), (float)(vec.X / sqrt), (float)(-vec.Y / sqrt), (float)(-vec.X / sqrt));
                 }
             }
         }
 
         //Srci’PˆÊ‚È‚µj‚ðClient(pixel)‚É•ÏŠ·
-        private PointF convertSrcToClient(PointD pt) => new PointF((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
+        private PointF convertSrcToClient(PointD pt) 
+            => new PointF((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
 
         private PointF convertSrcToClient(double x, double y) => convertSrcToClient(new PointD(x, y));
 
-        private PointD convertClientToSrc(Point pt)
-        {
-            var p = new PointD(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
-            return p;
-        }
+        private PointD convertClientToSrc(Point pt) 
+            => new PointD(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
 
         private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
 
@@ -656,7 +655,7 @@ namespace ReciPro
 
                 var vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
 
-                vec.text = "(" + h1.ToString() + " " + k1.ToString() + " " + l1.ToString() + ") & (" + h2.ToString() + " " + k2.ToString() + " " + l2.ToString() + ")";
+                vec.text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})";
                 formMain.Crystal.VectorOfPole.Add(vec);
                 checkedListBoxCircles.Items.Add(vec, true);
                 Draw();

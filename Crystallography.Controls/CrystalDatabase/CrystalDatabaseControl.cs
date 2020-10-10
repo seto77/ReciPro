@@ -122,6 +122,7 @@ namespace Crystallography.Controls
                         {
                             deserialize<Crystal2[]>(b, out var byteRead).AsParallel().Select(c2 => dataTable.CreateRow(c2))
                                         .ToList().ForEach(r => dataTable.Rows.Add(r));
+
                             ReadDatabaseWorker.ReportProgress(0, report(dataTable.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                             b = b.Slice(byteRead);
                         }
@@ -150,9 +151,9 @@ namespace Crystallography.Controls
                 else
                     return;
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Failed to load database. Sorry.");
+                MessageBox.Show(ex.ToString()+"\r\nFailed to load database. Sorry.");
             }
             bindingSource.Position = 0;
         }

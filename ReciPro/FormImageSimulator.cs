@@ -532,9 +532,9 @@ namespace ReciPro
         {
             var pseud = (sender as ScalablePictureBox).PseudoBitmap;
             var info = pseud.Tag as ImageInfo;
-            labelMousePositionX.Text = "X: " + ((pt.X - info.Width / 2.0) * info.Resolution * 1000).ToString("f2") + " pm";
-            labelMousePositionY.Text = "Y: " + ((-pt.Y + info.Height / 2.0) * info.Resolution * 1000).ToString("f2") + " pm";
-            labelMousePositionValue.Text = "Value: " + pseud.GetPixelRawValue(pt).ToString("g6");
+            labelMousePositionX.Text = $"X: {(pt.X - info.Width / 2.0) * info.Resolution * 1000:f2} pm";
+            labelMousePositionY.Text = $"Y: {(-pt.Y + info.Height / 2.0) * info.Resolution * 1000:f2} pm";
+            labelMousePositionValue.Text = $"Value: {pseud.GetPixelRawValue(pt):g6}";
             return false;
         }
 

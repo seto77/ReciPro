@@ -511,8 +511,6 @@ namespace Crystallography
         public static (double[][] Prms, double[][] Error, double R)
             Solve(IEnumerable<(double[] x, double y, double w)> obsValues, IEnumerable<Function> functions, Precision precision = Precision.Medium)
         {
-
-
             #region 計算精度をセット
             int countMax = 200;
             double rambdaMax = 1E5, threshold = 1E-10;

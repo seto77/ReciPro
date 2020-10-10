@@ -584,19 +584,12 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Polygon : GLObject
     {
-        public Polygon(Material mat, DrawingMode mode) : base(mat, mode)
-        {
-
-        }
+        public Polygon(Material mat, DrawingMode mode) : base(mat, mode)        {        }
 
         public Polygon(Vector3DBase[] vertices, Material mat, DrawingMode mode)
-            : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode)
-        {
-        }
+            : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode)        {        }
 
-        public Polygon(Material mat, DrawingMode mode, params V3d[] vertices) : this(vertices.ToArray(), mat, mode)
-        {
-        }
+        public Polygon(Material mat, DrawingMode mode, params V3d[] vertices) : this(vertices.ToArray(), mat, mode)        {        }
 
         /// <summary>
         ///
