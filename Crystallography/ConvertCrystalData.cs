@@ -6,7 +6,11 @@ using System.Linq;
 using System.IO;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
+using System.Threading;
 using V3 = OpenTK.Vector3d;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Crystallography
 {
@@ -34,57 +38,59 @@ namespace Crystallography
             Crystal[] cry = new Crystal[0];
             if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
             {
-                #region old code
-                //プロパティ文字列が変更にたいする対処
-                /*    try
+				if (new FileInfo(filename).Length > 10000000)//なぜかファイルが3GBとかになったことが有ったので、それに対する対処. 10MB以上だったらスキップすることにした.
+					return cry;
+
+				#region old code
+				//プロパティ文字列が変更にたいする対処
+				try
+				{
+					var reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
+					var strList = new List<string>();
+					string tempstr;
+					while ((tempstr = reader.ReadLine()) != null)
 					{
-						StreamReader reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
-						List<string> strList = new List<string>();
-						string tempstr;
-						while ((tempstr = reader.ReadLine()) != null)
-						{
-							// "<" あるいは "</" の直後を大文字に変換
-							int index = 0;
-
-							index = tempstr.IndexOf("<");
-							if (index >= 0 && tempstr.Length > index + 1)
-							{
-								string targetString = tempstr.Substring(index + 1, 1);
-								tempstr = tempstr.Replace("<" + targetString, "<" + targetString.ToUpper());
-							}
-
-							index = tempstr.IndexOf("</");
-							if (index >= 0 && tempstr.Length > index + 2)
-							{
-								string targetString = tempstr.Substring(index + 2, 1);
-								tempstr = tempstr.Replace("</" + targetString, "</" + targetString.ToUpper());
-							}
-
-							tempstr = tempstr.Replace("Alfa", "Alpha");
-
-							//if(tempstr.IndexOf("")>0)
-
-							strList.Add(tempstr);
-						}
-
-						reader.Close();
-
-						//filename = filename + "_";//検証のためファイルネーム変更
-
-						StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("Shift_JIS"));
-						for (int i = 0; i < strList.Count; i++)
-							writer.WriteLine(strList[i]);
-						writer.Flush();
-						writer.Close();
+						tempstr = tempstr.Replace("Kprime0", "Kp0");
+						tempstr = tempstr.Replace("Birch_Murnaghan", "BM3");
+						strList.Add(tempstr);
 					}
-					catch { return null; };*/
+
+					reader.Close();
+
+					//filename = filename + "_";//検証のためファイルネーム変更
+
+					StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("Shift_JIS"));
+					for (int i = 0; i < strList.Count; i++)
+						writer.WriteLine(strList[i]);
+					writer.Flush();
+					writer.Close();
+				}
+				catch { return null; };
                 //プロパティ文字列が変更にたいする対処　ここまで
                 #endregion old code
                 try
                 {
                     using var fs = new FileStream(filename, FileMode.Open);
                     System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
-                    cry = (Crystal[])serializer.Deserialize(fs);
+
+
+					var worker = new BackgroundWorker();
+					worker.DoWork += (sender, e) => cry = (Crystal[])serializer.Deserialize(fs);
+					worker.RunWorkerAsync();
+
+					var timeout = 10000;
+					var sw = new Stopwatch();
+					for(int i=0; i< timeout; i++)
+                    {
+						if (cry.Length != 0)
+							break;
+						if (i == timeout - 1) { 
+							throw new Exception();
+						}
+						Thread.Sleep(1);
+                    }
+
+
                     #region //Bondクラスの単位を オングストロームからnmに変更したための対処
                     foreach (var c in cry)
                     {
@@ -119,7 +125,9 @@ namespace Crystallography
             }
 
             return cry;
-        } 
+        }
+
+        private static void Worker_DoWork1(object sender, DoWorkEventArgs e) => throw new NotImplementedException();
         #endregion
 
         #region SMAPの出力ファイル(*.out)読込

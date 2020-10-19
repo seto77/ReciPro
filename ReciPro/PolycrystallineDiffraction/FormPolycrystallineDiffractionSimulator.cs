@@ -1165,7 +1165,7 @@ return residual;
 
             dpc.Simulate(true, true, true, true, gonio);
 
-            toolStripStatusLabelProgress.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " sec.";
+            toolStripStatusLabelProgress.Text = $"{sw.ElapsedMilliseconds / 1000.0:#.000} sec.";
 
             sw.Restart();
             if (tabControl1.SelectedIndex != 0)
@@ -1195,7 +1195,7 @@ return residual;
             dpc.numericUpDownMaxInt.Maximum = (decimal)max;
             dpc.DiffractionInformation();
 
-            toolStripStatusLabelProgress.Text += "   " + (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " sec.";
+            toolStripStatusLabelProgress.Text += $"   {sw.ElapsedMilliseconds / 1000.0:#.000} sec.";
         }
 
         private void button1_Click(object sender, EventArgs e)

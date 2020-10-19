@@ -59,59 +59,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBoxMemo = new System.Windows.Forms.TextBox();
             this.tabPageEOS = new System.Windows.Forms.TabPage();
-            this.label83 = new System.Windows.Forms.Label();
-            this.textBoxEOS_Note = new System.Windows.Forms.TextBox();
-            this.checkBoxUseEOS = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericBoxEOS_C = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_B = new Crystallography.Controls.NumericBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButtonTdependenceK0andV0 = new System.Windows.Forms.RadioButton();
-            this.numericBoxEOS_A = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_KperT = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_Gamma0 = new Crystallography.Controls.NumericBox();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.label97 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.numericBoxEOS_Theta0 = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_Q = new Crystallography.Controls.NumericBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioButtonMieGruneisen = new System.Windows.Forms.RadioButton();
-            this.label98 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericBoxEOS_V0perMol = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_V0perCell = new Crystallography.Controls.NumericBox();
-            this.numericBoxEOS_KT0 = new Crystallography.Controls.NumericBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.numericBoxEOS_KprimeT0 = new Crystallography.Controls.NumericBox();
-            this.radioButtonVinet = new System.Windows.Forms.RadioButton();
-            this.radioButtonBirchMurnaghan = new System.Windows.Forms.RadioButton();
-            this.numericBoxEOS_T0 = new Crystallography.Controls.NumericBox();
-            this.numericBoxTemperature = new Crystallography.Controls.NumericBox();
-            this.numericBoxPressure = new Crystallography.Controls.NumericBox();
+            this.eosControl = new Crystallography.Controls.EOSControl();
             this.tabPageElasticity = new System.Windows.Forms.TabPage();
             this.elasticityControl1 = new Crystallography.Controls.ElasticityControl();
             this.tabPageStrainStress = new System.Windows.Forms.TabPage();
@@ -204,8 +152,6 @@
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPageEOS.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.tabPageElasticity.SuspendLayout();
             this.tabPageStrainStress.SuspendLayout();
             this.tabPagePolycrystalline.SuspendLayout();
@@ -363,9 +309,15 @@
             // 
             // symmetryControl
             // 
+            this.symmetryControl.A = 0D;
+            this.symmetryControl.Alpha = 0D;
+            this.symmetryControl.B = 0D;
+            this.symmetryControl.Beta = 0D;
+            this.symmetryControl.C = 0D;
             this.symmetryControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("symmetryControl.CellConstants")));
             this.symmetryControl.CellConstantsErr = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("symmetryControl.CellConstantsErr")));
             resources.ApplyResources(this.symmetryControl, "symmetryControl");
+            this.symmetryControl.Gamma = 0D;
             this.symmetryControl.Name = "symmetryControl";
             this.symmetryControl.ShowError = false;
             this.symmetryControl.SkipEvent = false;
@@ -450,6 +402,7 @@
             // contextMenuStrip2
             // 
             resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
@@ -539,473 +492,16 @@
             // tabPageEOS
             // 
             this.tabPageEOS.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageEOS.Controls.Add(this.label83);
-            this.tabPageEOS.Controls.Add(this.textBoxEOS_Note);
-            this.tabPageEOS.Controls.Add(this.checkBoxUseEOS);
-            this.tabPageEOS.Controls.Add(this.groupBox3);
-            this.tabPageEOS.Controls.Add(this.groupBox2);
-            this.tabPageEOS.Controls.Add(this.numericBoxEOS_T0);
-            this.tabPageEOS.Controls.Add(this.numericBoxTemperature);
-            this.tabPageEOS.Controls.Add(this.numericBoxPressure);
+            this.tabPageEOS.Controls.Add(this.eosControl);
             resources.ApplyResources(this.tabPageEOS, "tabPageEOS");
             this.tabPageEOS.Name = "tabPageEOS";
             // 
-            // label83
-            // 
-            resources.ApplyResources(this.label83, "label83");
-            this.label83.Name = "label83";
-            // 
-            // textBoxEOS_Note
-            // 
-            resources.ApplyResources(this.textBoxEOS_Note, "textBoxEOS_Note");
-            this.textBoxEOS_Note.Name = "textBoxEOS_Note";
-            // 
-            // checkBoxUseEOS
-            // 
-            resources.ApplyResources(this.checkBoxUseEOS, "checkBoxUseEOS");
-            this.checkBoxUseEOS.Name = "checkBoxUseEOS";
-            this.checkBoxUseEOS.UseVisualStyleBackColor = true;
-            this.checkBoxUseEOS.CheckedChanged += new System.EventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.numericBoxEOS_C);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_B);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.radioButtonTdependenceK0andV0);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_A);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_KperT);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_Gamma0);
-            this.groupBox3.Controls.Add(this.label76);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label69);
-            this.groupBox3.Controls.Add(this.label72);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label91);
-            this.groupBox3.Controls.Add(this.label95);
-            this.groupBox3.Controls.Add(this.label93);
-            this.groupBox3.Controls.Add(this.label85);
-            this.groupBox3.Controls.Add(this.label86);
-            this.groupBox3.Controls.Add(this.label96);
-            this.groupBox3.Controls.Add(this.label97);
-            this.groupBox3.Controls.Add(this.label94);
-            this.groupBox3.Controls.Add(this.label92);
-            this.groupBox3.Controls.Add(this.label84);
-            this.groupBox3.Controls.Add(this.label64);
-            this.groupBox3.Controls.Add(this.label73);
-            this.groupBox3.Controls.Add(this.label65);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_Theta0);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_Q);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.radioButtonMieGruneisen);
-            this.groupBox3.Controls.Add(this.label98);
-            this.groupBox3.Controls.Add(this.textBox2);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // numericBoxEOS_C
-            // 
-            resources.ApplyResources(this.numericBoxEOS_C, "numericBoxEOS_C");
-            this.numericBoxEOS_C.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_C.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_C.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_C.Name = "numericBoxEOS_C";
-            this.numericBoxEOS_C.RestrictLimitValue = false;
-            this.numericBoxEOS_C.SkipEventDuringInput = false;
-            this.numericBoxEOS_C.SmartIncrement = true;
-            this.numericBoxEOS_C.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_C.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_B
-            // 
-            resources.ApplyResources(this.numericBoxEOS_B, "numericBoxEOS_B");
-            this.numericBoxEOS_B.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_B.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_B.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_B.Name = "numericBoxEOS_B";
-            this.numericBoxEOS_B.RestrictLimitValue = false;
-            this.numericBoxEOS_B.SkipEventDuringInput = false;
-            this.numericBoxEOS_B.SmartIncrement = true;
-            this.numericBoxEOS_B.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_B.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            // 
-            // radioButtonTdependenceK0andV0
-            // 
-            resources.ApplyResources(this.radioButtonTdependenceK0andV0, "radioButtonTdependenceK0andV0");
-            this.radioButtonTdependenceK0andV0.Name = "radioButtonTdependenceK0andV0";
-            this.radioButtonTdependenceK0andV0.UseVisualStyleBackColor = true;
-            this.radioButtonTdependenceK0andV0.CheckedChanged += new System.EventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_A
-            // 
-            resources.ApplyResources(this.numericBoxEOS_A, "numericBoxEOS_A");
-            this.numericBoxEOS_A.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_A.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_A.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_A.Name = "numericBoxEOS_A";
-            this.numericBoxEOS_A.RestrictLimitValue = false;
-            this.numericBoxEOS_A.SkipEventDuringInput = false;
-            this.numericBoxEOS_A.SmartIncrement = true;
-            this.numericBoxEOS_A.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_A.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_KperT
-            // 
-            resources.ApplyResources(this.numericBoxEOS_KperT, "numericBoxEOS_KperT");
-            this.numericBoxEOS_KperT.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KperT.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KperT.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KperT.Name = "numericBoxEOS_KperT";
-            this.numericBoxEOS_KperT.RestrictLimitValue = false;
-            this.numericBoxEOS_KperT.SkipEventDuringInput = false;
-            this.numericBoxEOS_KperT.SmartIncrement = true;
-            this.numericBoxEOS_KperT.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_KperT.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_Gamma0
-            // 
-            resources.ApplyResources(this.numericBoxEOS_Gamma0, "numericBoxEOS_Gamma0");
-            this.numericBoxEOS_Gamma0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Gamma0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Gamma0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Gamma0.Name = "numericBoxEOS_Gamma0";
-            this.numericBoxEOS_Gamma0.RestrictLimitValue = false;
-            this.numericBoxEOS_Gamma0.SkipEventDuringInput = false;
-            this.numericBoxEOS_Gamma0.SmartIncrement = true;
-            this.numericBoxEOS_Gamma0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_Gamma0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // label76
-            // 
-            resources.ApplyResources(this.label76, "label76");
-            this.label76.Name = "label76";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label69
-            // 
-            resources.ApplyResources(this.label69, "label69");
-            this.label69.Name = "label69";
-            // 
-            // label72
-            // 
-            resources.ApplyResources(this.label72, "label72");
-            this.label72.Name = "label72";
-            // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // label91
-            // 
-            resources.ApplyResources(this.label91, "label91");
-            this.label91.Name = "label91";
-            // 
-            // label95
-            // 
-            resources.ApplyResources(this.label95, "label95");
-            this.label95.Name = "label95";
-            // 
-            // label93
-            // 
-            resources.ApplyResources(this.label93, "label93");
-            this.label93.Name = "label93";
-            // 
-            // label85
-            // 
-            resources.ApplyResources(this.label85, "label85");
-            this.label85.Name = "label85";
-            // 
-            // label86
-            // 
-            resources.ApplyResources(this.label86, "label86");
-            this.label86.Name = "label86";
-            // 
-            // label96
-            // 
-            resources.ApplyResources(this.label96, "label96");
-            this.label96.Name = "label96";
-            // 
-            // label97
-            // 
-            resources.ApplyResources(this.label97, "label97");
-            this.label97.Name = "label97";
-            // 
-            // label94
-            // 
-            resources.ApplyResources(this.label94, "label94");
-            this.label94.Name = "label94";
-            // 
-            // label92
-            // 
-            resources.ApplyResources(this.label92, "label92");
-            this.label92.Name = "label92";
-            // 
-            // label84
-            // 
-            resources.ApplyResources(this.label84, "label84");
-            this.label84.Name = "label84";
-            // 
-            // label64
-            // 
-            resources.ApplyResources(this.label64, "label64");
-            this.label64.Name = "label64";
-            // 
-            // label73
-            // 
-            resources.ApplyResources(this.label73, "label73");
-            this.label73.Name = "label73";
-            // 
-            // label65
-            // 
-            resources.ApplyResources(this.label65, "label65");
-            this.label65.Name = "label65";
-            // 
-            // numericBoxEOS_Theta0
-            // 
-            resources.ApplyResources(this.numericBoxEOS_Theta0, "numericBoxEOS_Theta0");
-            this.numericBoxEOS_Theta0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Theta0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Theta0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Theta0.Name = "numericBoxEOS_Theta0";
-            this.numericBoxEOS_Theta0.RadianValue = 5.2359877559829888D;
-            this.numericBoxEOS_Theta0.RestrictLimitValue = false;
-            this.numericBoxEOS_Theta0.SkipEventDuringInput = false;
-            this.numericBoxEOS_Theta0.SmartIncrement = true;
-            this.numericBoxEOS_Theta0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_Theta0.Value = 300D;
-            this.numericBoxEOS_Theta0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_Q
-            // 
-            resources.ApplyResources(this.numericBoxEOS_Q, "numericBoxEOS_Q");
-            this.numericBoxEOS_Q.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Q.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Q.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_Q.Name = "numericBoxEOS_Q";
-            this.numericBoxEOS_Q.RestrictLimitValue = false;
-            this.numericBoxEOS_Q.SkipEventDuringInput = false;
-            this.numericBoxEOS_Q.SmartIncrement = true;
-            this.numericBoxEOS_Q.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_Q.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // radioButtonMieGruneisen
-            // 
-            this.radioButtonMieGruneisen.Checked = true;
-            resources.ApplyResources(this.radioButtonMieGruneisen, "radioButtonMieGruneisen");
-            this.radioButtonMieGruneisen.Name = "radioButtonMieGruneisen";
-            this.radioButtonMieGruneisen.TabStop = true;
-            this.radioButtonMieGruneisen.UseVisualStyleBackColor = true;
-            this.radioButtonMieGruneisen.CheckedChanged += new System.EventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // label98
-            // 
-            resources.ApplyResources(this.label98, "label98");
-            this.label98.Name = "label98";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label75);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label67);
-            this.groupBox2.Controls.Add(this.label66);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.numericBoxEOS_V0perMol);
-            this.groupBox2.Controls.Add(this.numericBoxEOS_V0perCell);
-            this.groupBox2.Controls.Add(this.numericBoxEOS_KT0);
-            this.groupBox2.Controls.Add(this.label70);
-            this.groupBox2.Controls.Add(this.label80);
-            this.groupBox2.Controls.Add(this.label68);
-            this.groupBox2.Controls.Add(this.numericBoxEOS_KprimeT0);
-            this.groupBox2.Controls.Add(this.radioButtonVinet);
-            this.groupBox2.Controls.Add(this.radioButtonBirchMurnaghan);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // label75
-            // 
-            resources.ApplyResources(this.label75, "label75");
-            this.label75.Name = "label75";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
-            // label67
-            // 
-            resources.ApplyResources(this.label67, "label67");
-            this.label67.Name = "label67";
-            // 
-            // label66
-            // 
-            resources.ApplyResources(this.label66, "label66");
-            this.label66.Name = "label66";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // numericBoxEOS_V0perMol
-            // 
-            resources.ApplyResources(this.numericBoxEOS_V0perMol, "numericBoxEOS_V0perMol");
-            this.numericBoxEOS_V0perMol.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perMol.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perMol.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perMol.Name = "numericBoxEOS_V0perMol";
-            this.numericBoxEOS_V0perMol.RadianValue = 5.2359877559829888D;
-            this.numericBoxEOS_V0perMol.ReadOnly = true;
-            this.numericBoxEOS_V0perMol.RestrictLimitValue = false;
-            this.numericBoxEOS_V0perMol.SkipEventDuringInput = false;
-            this.numericBoxEOS_V0perMol.SmartIncrement = true;
-            this.numericBoxEOS_V0perMol.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perMol.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_V0perMol.Value = 300D;
-            this.numericBoxEOS_V0perMol.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_V0perMol_ValueChanged);
-            this.numericBoxEOS_V0perMol.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_V0perMol_Click2);
-            // 
-            // numericBoxEOS_V0perCell
-            // 
-            resources.ApplyResources(this.numericBoxEOS_V0perCell, "numericBoxEOS_V0perCell");
-            this.numericBoxEOS_V0perCell.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perCell.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perCell.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perCell.Name = "numericBoxEOS_V0perCell";
-            this.numericBoxEOS_V0perCell.RadianValue = 5.2359877559829888D;
-            this.numericBoxEOS_V0perCell.RestrictLimitValue = false;
-            this.numericBoxEOS_V0perCell.SkipEventDuringInput = false;
-            this.numericBoxEOS_V0perCell.SmartIncrement = true;
-            this.numericBoxEOS_V0perCell.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_V0perCell.Value = 300D;
-            this.numericBoxEOS_V0perCell.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            this.numericBoxEOS_V0perCell.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_V0perCell_Click2);
-            // 
-            // numericBoxEOS_KT0
-            // 
-            resources.ApplyResources(this.numericBoxEOS_KT0, "numericBoxEOS_KT0");
-            this.numericBoxEOS_KT0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KT0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KT0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KT0.Name = "numericBoxEOS_KT0";
-            this.numericBoxEOS_KT0.RestrictLimitValue = false;
-            this.numericBoxEOS_KT0.SkipEventDuringInput = false;
-            this.numericBoxEOS_KT0.SmartIncrement = true;
-            this.numericBoxEOS_KT0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_KT0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // label70
-            // 
-            resources.ApplyResources(this.label70, "label70");
-            this.label70.Name = "label70";
-            // 
-            // label80
-            // 
-            resources.ApplyResources(this.label80, "label80");
-            this.label80.Name = "label80";
-            // 
-            // label68
-            // 
-            resources.ApplyResources(this.label68, "label68");
-            this.label68.Name = "label68";
-            // 
-            // numericBoxEOS_KprimeT0
-            // 
-            resources.ApplyResources(this.numericBoxEOS_KprimeT0, "numericBoxEOS_KprimeT0");
-            this.numericBoxEOS_KprimeT0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KprimeT0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KprimeT0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_KprimeT0.Name = "numericBoxEOS_KprimeT0";
-            this.numericBoxEOS_KprimeT0.RadianValue = 0.069813170079773182D;
-            this.numericBoxEOS_KprimeT0.RestrictLimitValue = false;
-            this.numericBoxEOS_KprimeT0.SkipEventDuringInput = false;
-            this.numericBoxEOS_KprimeT0.SmartIncrement = true;
-            this.numericBoxEOS_KprimeT0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEOS_KprimeT0.Value = 4D;
-            this.numericBoxEOS_KprimeT0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // radioButtonVinet
-            // 
-            resources.ApplyResources(this.radioButtonVinet, "radioButtonVinet");
-            this.radioButtonVinet.Name = "radioButtonVinet";
-            this.radioButtonVinet.UseVisualStyleBackColor = true;
-            this.radioButtonVinet.CheckedChanged += new System.EventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // radioButtonBirchMurnaghan
-            // 
-            this.radioButtonBirchMurnaghan.Checked = true;
-            resources.ApplyResources(this.radioButtonBirchMurnaghan, "radioButtonBirchMurnaghan");
-            this.radioButtonBirchMurnaghan.Name = "radioButtonBirchMurnaghan";
-            this.radioButtonBirchMurnaghan.TabStop = true;
-            this.radioButtonBirchMurnaghan.UseVisualStyleBackColor = true;
-            this.radioButtonBirchMurnaghan.CheckedChanged += new System.EventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxEOS_T0
-            // 
-            resources.ApplyResources(this.numericBoxEOS_T0, "numericBoxEOS_T0");
-            this.numericBoxEOS_T0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_T0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_T0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_T0.Name = "numericBoxEOS_T0";
-            this.numericBoxEOS_T0.RadianValue = 5.2359877559829888D;
-            this.numericBoxEOS_T0.RestrictLimitValue = false;
-            this.numericBoxEOS_T0.SkipEventDuringInput = false;
-            this.numericBoxEOS_T0.SmartIncrement = true;
-            this.numericBoxEOS_T0.Value = 300D;
-            this.numericBoxEOS_T0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxTemperature
-            // 
-            resources.ApplyResources(this.numericBoxTemperature, "numericBoxTemperature");
-            this.numericBoxTemperature.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTemperature.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTemperature.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTemperature.Name = "numericBoxTemperature";
-            this.numericBoxTemperature.RadianValue = 5.2359877559829888D;
-            this.numericBoxTemperature.RestrictLimitValue = false;
-            this.numericBoxTemperature.SkipEventDuringInput = false;
-            this.numericBoxTemperature.SmartIncrement = true;
-            this.numericBoxTemperature.Value = 300D;
-            this.numericBoxTemperature.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_State_ValueChanged);
-            // 
-            // numericBoxPressure
-            // 
-            resources.ApplyResources(this.numericBoxPressure, "numericBoxPressure");
-            this.numericBoxPressure.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPressure.DecimalPlaces = 5;
-            this.numericBoxPressure.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPressure.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPressure.Name = "numericBoxPressure";
-            this.numericBoxPressure.ReadOnly = true;
-            this.numericBoxPressure.RestrictLimitValue = false;
-            this.numericBoxPressure.SkipEventDuringInput = false;
-            this.numericBoxPressure.SmartIncrement = true;
-            this.numericBoxPressure.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            // eosControl
+            // 
+            this.eosControl.Crystal = null;
+            resources.ApplyResources(this.eosControl, "eosControl");
+            this.eosControl.Name = "eosControl";
+            this.eosControl.SkipEvent = false;
             // 
             // tabPageElasticity
             // 
@@ -1307,6 +803,7 @@
             // 
             // contextMenuStripPoleFigure
             // 
+            this.contextMenuStripPoleFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readToolStripMenuItem,
             this.saveToolStripMenuItem,
@@ -1539,6 +1036,7 @@
             // 
             // contextMenuStrip
             // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.scatteringFactorToolStripMenuItem,
             this.symmetryInformationToolStripMenuItem,
@@ -1699,11 +1197,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPageEOS.ResumeLayout(false);
-            this.tabPageEOS.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.tabPageElasticity.ResumeLayout(false);
             this.tabPageElasticity.PerformLayout();
             this.tabPageStrainStress.ResumeLayout(false);
@@ -1756,60 +1249,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPageEOS;
-        private NumericBox numericBoxEOS_KT0;
-        private System.Windows.Forms.Label label15;
-        private NumericBox numericBoxEOS_KprimeT0;
-        private NumericBox numericBoxEOS_T0;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Label label70;
-        private NumericBox numericBoxEOS_Theta0;
-        private NumericBox numericBoxEOS_V0perCell;
-        private System.Windows.Forms.Label label76;
-        private NumericBox numericBoxEOS_Gamma0;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label65;
-        private NumericBox numericBoxEOS_Q;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.RadioButton radioButtonMieGruneisen;
-        private System.Windows.Forms.RadioButton radioButtonTdependenceK0andV0;
-        private System.Windows.Forms.Label label3;
-        private NumericBox numericBoxEOS_A;
-        private NumericBox numericBoxEOS_B;
-        private NumericBox numericBoxEOS_KperT;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label64;
-        private NumericBox numericBoxEOS_C;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.CheckBox checkBoxUseEOS;
-        private System.Windows.Forms.Label label75;
-        private NumericBox numericBoxPressure;
-        private NumericBox numericBoxTemperature;
         private NumericBox numericBoxVolume;
-        private NumericBox numericBoxEOS_V0perMol;
-        private System.Windows.Forms.Label label80;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.TextBox textBoxEOS_Note;
-        private System.Windows.Forms.Label label91;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.Label label96;
-        private System.Windows.Forms.Label label97;
-        private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.Label label92;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RadioButton radioButtonVinet;
-        private System.Windows.Forms.RadioButton radioButtonBirchMurnaghan;
         private System.Windows.Forms.ToolStripMenuItem symmetryInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.TabPage tabPageElasticity;
@@ -1891,5 +1331,6 @@
         private NumericBox numericBoxMolarMass;
         private System.Windows.Forms.Button buttonSymmetryInfo;
         private System.Windows.Forms.Button buttonScatteringFactor;
+        private EOSControl eosControl;
     }
 }

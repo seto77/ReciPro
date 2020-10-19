@@ -63,6 +63,14 @@ namespace Crystallography.Controls
             }
         }
 
+        public double A { get => numericBoxA.Value / 10; set => numericBoxA.Value = value * 10; }
+        public double B { get => numericBoxB.Value / 10; set => numericBoxB.Value = value * 10; }
+        public double C { get => numericBoxC.Value / 10; set => numericBoxC.Value = value * 10; }
+        public double Alpha { get => numericBoxAlpha.RadianValue; set => numericBoxAlpha.RadianValue = value; }
+        public double Beta { get => numericBoxBeta.RadianValue; set => numericBoxBeta.RadianValue = value; }
+        public double Gamma { get => numericBoxGamma.RadianValue; set => numericBoxGamma.RadianValue = value; }
+
+
         /// <summary>
         /// Cell constants error の get/set. 単位はnm, radian.
         /// </summary>
@@ -199,7 +207,7 @@ namespace Crystallography.Controls
         #endregion
 
         #region 空間群が変化したとき、あるいは格子定数が変化したとき呼ばれる. 対称性の制限下で格子定数を再設定
-        private void SetCellConstantsBySymmetry()
+        public void SetCellConstantsBySymmetry()
         {
             if (SkipEvent) return;
             SkipEvent = true;

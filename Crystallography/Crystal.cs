@@ -351,7 +351,8 @@ namespace Crystallography
         /// <summary>
         /// 方位とサイズを保持したCrystalliteクラス配列 (多結晶体計算時に用いる)
         /// </summary>
-       //[NonSerialized] [XmlIgnore]
+        [NonSerialized] 
+        [XmlIgnore]
         public Crystallite Crystallites;
 
         public double AngleResolution = 2;
@@ -434,6 +435,7 @@ namespace Crystallography
             RotationMatrix = new Matrix3D(rot);
             GetFormulaAndDensity();
             Bonds = bonds;
+            
         }
 
 
@@ -448,7 +450,8 @@ namespace Crystallography
           (string Note, string Authors, string Journal, string Title) reference,
           Bonds[] bonds,
           Bound[] bounds,
-          LatticePlane[] latticePlane)
+          LatticePlane[] latticePlane,
+          EOS eos)
           : this(cell, err, symmetrySeriesNumber, name, col, rot, atoms,reference,bonds)
         {
           
@@ -458,6 +461,8 @@ namespace Crystallography
             LatticePlanes = latticePlane;
             for (int i = 0; i < LatticePlanes.Length; i++)
                 LatticePlanes[i].Reset(this);
+
+            EOSCondition = eos;
         }
 
 
@@ -500,6 +505,82 @@ namespace Crystallography
         /// </summary>
         public void SetAxis()
         {
+            # region まず、対称性に即した格子定数になるように強制する
+            switch (Symmetry.CrystalSystemStr)
+            {
+                case "monoclinic":
+                    switch (Symmetry.MainAxis)
+                    {
+                        case "a":
+                            Beta = Gamma = Math.PI/2;
+                            Beta_err = Gamma_err = 0;
+                            break;
+
+                        case "b":
+                            Alpha = Gamma = Math.PI / 2;
+                            Alpha_err = Gamma_err = 0;
+
+                            break;
+
+                        case "c":
+                            Alpha = Beta = Math.PI / 2;
+                            Alpha_err = Beta_err = 0;
+                            break;
+                    }
+                    break;
+
+                case "orthorhombic":
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "tetragonal":
+                    B = A;
+                    B_err = A_err;
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "trigonal":
+                    switch (Symmetry.SpaceGroupHMStr.IndexOf("Rho") >= 0 && Symmetry.SpaceGroupHMStr.IndexOf("R") >= 0)
+                    {
+                        case false:
+                            B = A;
+                            B_err = A_err;
+                            Alpha = Beta = Math.PI / 2;
+                            Gamma = Math.PI * 2.0 / 3.0;
+                            Alpha_err = Beta_err = Gamma_err = 0;
+                            break;
+
+                        case true:
+                            C = B = A;
+                            C_err = B_err = A_err;
+
+                            Alpha = Beta = Gamma;
+                            Alpha_err = Beta_err = Gamma_err;
+                            break;
+                    }
+                    break;
+
+                case "hexagonal":
+                    B = A;
+                    B_err = A_err;
+                    Alpha = Beta =  Math.PI / 2;
+                    Gamma = Math.PI * 2.0 / 3.0;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "cubic":
+                    C = B = A;
+                    C_err = B_err = A_err;
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+            }
+            #endregion
+
+
+
             double SinAlfa = Math.Sin(Alpha); double SinBeta = Math.Sin(Beta); double SinGamma = Math.Sin(Gamma);
             double CosAlfa = Math.Cos(Alpha); double CosBeta = Math.Cos(Beta); double CosGamma = Math.Cos(Gamma);
             double a2 = A * A; double b2 = B * B; var c2 = C * C;

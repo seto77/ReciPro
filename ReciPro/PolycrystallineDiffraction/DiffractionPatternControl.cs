@@ -1128,9 +1128,10 @@ namespace ReciPro
                 }
                 if (renewDiffractionPixels)
                 {
-                    c.Crystallites.ProgressChanged += Crystallites_ProgressChanged;
+                    c.Crystallites.ProgressChanged += ProgressChanged;
                     c.Crystallites.SetDiffractedPixels(DetectorProperty);
-                    c.Crystallites.ProgressChanged -= Crystallites_ProgressChanged;
+                    c.Crystallites.ProgressChanged -= ProgressChanged;
+
                 }
 
                 double[] temp = c.Crystallites.GetSimulatedPattern(DetectorProperty, density);
@@ -1142,11 +1143,6 @@ namespace ReciPro
         }
 
         public event ProgressChangedEventHandler ProgressChanged;
-
-        private void Crystallites_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            ProgressChanged?.Invoke(sender, e);
-        }
 
         public void Simulate(bool resetIndex, bool renewRvector, bool renewGvector, bool doFilter, YusaGonio gonio = null)
         {

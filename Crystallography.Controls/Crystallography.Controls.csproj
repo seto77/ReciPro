@@ -258,6 +258,12 @@
     <Compile Include="Crystal\ElasticityControl.Designer.cs">
       <DependentUpon>ElasticityControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\EOSControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\EOSControl.Designer.cs">
+      <DependentUpon>EOSControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Crystal\FormIsotopeComposition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -496,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\ElasticityControl.resx">
       <DependentUpon>ElasticityControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\EOSControl.resx">
+      <DependentUpon>EOSControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\FormIsotopeComposition.resx">
       <DependentUpon>FormIsotopeComposition.cs</DependentUpon>

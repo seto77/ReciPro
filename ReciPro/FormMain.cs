@@ -305,6 +305,13 @@ namespace ReciPro
             if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
                 File.Copy(appPath + "initial.xml", UserAppDataPath + "default.xml", true);
 
+            //初期結晶リストを読み込み
+            readCrystalList(UserAppDataPath + "default.xml", false, true);
+
+            //何らかの理由(前回が不正終了だったなど)でdefalut.xmlが壊れている場合はinitial.xmlを読み込む
+            if (listBox.Items.Count == 0)
+                readCrystalList(UserAppDataPath + "initial.xml", false, true);
+
             //ReciProSetup.msiは削除
             if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
                 File.Delete(UserAppDataPath + "ReciProSetup.msi");
@@ -317,12 +324,7 @@ namespace ReciPro
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())
                     Directory.Delete(dir);
 
-            //初期結晶リストを読み込み
-            readCrystalList(UserAppDataPath + "default.xml", false, true);
-
-            //何らかの理由(前回が不正終了だったなど)でdefalut.xmlが壊れている場合はinitial.xmlを読み込む
-            if (listBox.Items.Count == 0)
-                readCrystalList(UserAppDataPath + "initial.xml", false, true);
+            
 
             commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.", 0.96);
             DrawAxes();
@@ -330,7 +332,6 @@ namespace ReciPro
             commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
             ReadInitialRegistry();
 
-            commonDialog.Progress = ("Now Loading...Recognizing Click Once application or not.", 0.99);
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
             commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
@@ -496,7 +497,7 @@ namespace ReciPro
                 Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\ReciPro");
                 return;
             }
-            RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+            var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
 
             if (regKey == null) return;
 
@@ -535,15 +536,17 @@ namespace ReciPro
             regKey.SetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", this.FormDiffractionSimulator.colorControlOrigin.Color.ToArgb());
             regKey.SetValue("formElectronDiffraction.pictureBoxString.BackColor", this.FormDiffractionSimulator.colorControlString.Color.ToArgb());
 
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootY", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootY.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.CameraLength2", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.CameraLength2.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorWidth", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi.ToString());
-
+            if (FormDiffractionSimulator.FormDiffractionSimulatorGeometry != null)
+            {
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootY", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootY.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.CameraLength2", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.CameraLength2.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorWidth", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau.ToString());
+                regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi.ToString());
+            }
             //regKey.SetValue("formElectronDiffraction.numericUpDownPictureResolution.Value", formElectronDiffraction.formOverlapPicture.numericUpDownPictureResolution.Value.ToString());
             regKey.SetValue("formElectronDiffraction.numericUpDownResolution.Value", FormDiffractionSimulator.numericBoxResolution.Value.ToString());
 

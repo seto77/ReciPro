@@ -362,11 +362,17 @@
             // 
             // crystalControl
             // 
+            this.crystalControl.A = 0D;
             this.crystalControl.AllowDrop = true;
+            this.crystalControl.Alpha = 0D;
             resources.ApplyResources(this.crystalControl, "crystalControl");
+            this.crystalControl.B = 0D;
+            this.crystalControl.Beta = 0D;
+            this.crystalControl.C = 0D;
             this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
             this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
             this.crystalControl.DefaultTabNumber = 0;
+            this.crystalControl.Gamma = 0D;
             this.crystalControl.Name = "crystalControl";
             this.crystalControl.ScatteringFactorVisible = false;
             this.crystalControl.SkipEvent = false;

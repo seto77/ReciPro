@@ -655,45 +655,51 @@ namespace Crystallography
         /// <returns></returns>
         public static PointD[][] GetPointsWithinRectangle(IEnumerable<PointD> sourcePoints, RectangleD area)
         {
+            var pt = sourcePoints.ToList();
             //まず、横軸の上限と下限をトリム
-            List<PointD> pt = new List<PointD>();
-            foreach (var p in sourcePoints)
-                pt.Add(p);
-            int first = pt.FindIndex(p => p.X >= area.X) - 1;
+            var first = pt.FindIndex(p => p.X >= area.X) - 1;
             if (first > 0)
                 pt.RemoveRange(0, first);
-            int last = pt.FindLastIndex(p => p.X <= area.X + area.Width) + 2;
+            var last = pt.FindLastIndex(p => p.X <= area.X + area.Width) + 2;
             if (last < pt.Count)
                 pt.RemoveRange(last, pt.Count - last);
 
-            for (int i = 0; i < pt.Count - 1; i++)
+            if (pt.Max(p => p.Y) <= area.UpperY && pt.Min(pt => pt.Y) >= area.Y)
+                return new[] { pt.ToArray() };
+            else if(pt.Max(p => p.Y) <= area.Y || pt.Min(pt => pt.Y) >= area.UpperY)
+                return new[] { new PointD[] { } };
+            else
             {
-                if (!area.IsInsde(pt[i]) || !area.IsInsde(pt[i + 1])) //どちらかが範囲外の時
+
+                for (int i = 0; i < pt.Count - 1; i++)
                 {
-                    var pts = getCrossPoint(pt[i], pt[i + 1], area);
-                    if (pts != null)
+                    if (!area.IsInsde(pt[i]) || !area.IsInsde(pt[i + 1])) //どちらかが範囲外の時
                     {
-                        pt.InsertRange(i + 1, pts);
-                        i += pts.Length;
+                        var pts = getCrossPoint(pt[i], pt[i + 1], area);
+                        if (pts != null)
+                        {
+                            pt.InsertRange(i + 1, pts);
+                            i += pts.Length;
+                        }
                     }
                 }
-            }
 
-            var results = new List<List<PointD>>();
-            for (int i = 0; i < pt.Count - 1; i++)
-            {
-                if (!area.IsInsde(pt[i]))
-                    pt.RemoveAt(i--);
-                else
+                var results = new List<List<PointD>>();
+                for (int i = 0; i < pt.Count - 1; i++)
                 {
-                    var pts = new List<PointD>();
-                    for (; i < pt.Count && area.IsInsde(pt[i]); i++)
-                        pts.Add(new PointD(pt[i]));
-                    i--;
-                    results.Add(pts);
+                    if (!area.IsInsde(pt[i]))
+                        pt.RemoveAt(i--);
+                    else
+                    {
+                        var pts = new List<PointD>();
+                        for (; i < pt.Count && area.IsInsde(pt[i]); i++)
+                            pts.Add(new PointD(pt[i]));
+                        i--;
+                        results.Add(pts);
+                    }
                 }
+                return results.Select(r => r.ToArray()).ToArray();
             }
-            return results.Select(r => r.ToArray()).ToArray();
         }
 
         /// <summary>

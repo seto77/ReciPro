@@ -11,10 +11,10 @@ namespace Crystallography
     {
         public class Property
         {
-            public double AccVoltage;
-            public double PixelSizeInMicron;
-            public PixelUnitEnum PixelUnit;
-            public double PixelScale;
+            public double AccVoltage { get; set; }
+            public double PixelSizeInMicron { get; set; }
+            public PixelUnitEnum PixelUnit { get; set; }
+            public double PixelScale { get; set; }
 
             public Property(double accVoltage, double pixelSizeInMicron, double pixelScale, PixelUnitEnum pixelUnit)
             {
@@ -32,10 +32,10 @@ namespace Crystallography
 
         public class Loader
         {
-            public int Version;
-            public long RootTagSize;
-            public ByteOrderEnum ByteOrder;
-            public long NumberOfTags;
+            public int Version { get; set; }
+            public long RootTagSize { get; set; }
+            public ByteOrderEnum ByteOrder { get; set; }
+            public long NumberOfTags { get; set; }
 
             public Dictionary<string, TagInfo> Tag = new Dictionary<string, TagInfo>();
 

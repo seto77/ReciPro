@@ -123,8 +123,9 @@
   <data name="label25.Text" xml:space="preserve">
     <value>c</value>
   </data>
-  <data name="&gt;&gt;label46.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxAlpha.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -139,10 +140,9 @@
   <data name="label26.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxCErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxGammaErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -153,20 +153,20 @@
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
   </data>
-  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 0</value>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxBetaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
+  <data name="comboBoxSearchResult.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>40</value>
   </data>
-  <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 25</value>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Name" xml:space="preserve">
     <value>numericBoxAlphaErr</value>
@@ -183,11 +183,11 @@
   <data name="numericBoxAErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Space Group</value>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>Set crystal system</value>
   </data>
-  <data name="&gt;&gt;label47.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericBoxB.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -207,8 +207,8 @@
   <data name="&gt;&gt;numericBoxBeta.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;numericBoxGamma.Name" xml:space="preserve">
-    <value>numericBoxGamma</value>
+  <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
+    <value>textBoxSearch</value>
   </data>
   <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 26</value>
@@ -221,6 +221,9 @@
   </data>
   <data name="numericBoxB.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxGammaErr.Name" xml:space="preserve">
+    <value>numericBoxGammaErr</value>
   </data>
   <data name="numericBoxBetaErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -237,20 +240,14 @@
   <data name="numericBoxA.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericBoxAErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="label19.ToolTip" xml:space="preserve">
-    <value>Set crystal system</value>
+  <data name="&gt;&gt;label46.Name" xml:space="preserve">
+    <value>label46</value>
   </data>
   <data name="numericBoxBetaErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 79</value>
-  </data>
-  <data name="label46.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
     <value>Set point group in HM notation</value>
@@ -294,11 +291,14 @@
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label28.Text" xml:space="preserve">
-    <value>γ</value>
+  <data name="numericBoxGammaErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="label25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;comboBoxSearchResult.Name" xml:space="preserve">
     <value>comboBoxSearchResult</value>
@@ -306,8 +306,8 @@
   <data name="numericBoxBErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericBoxAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;comboBoxSearchResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -324,6 +324,9 @@
   <data name="&gt;&gt;comboBoxSpaceGroup.Name" xml:space="preserve">
     <value>comboBoxSpaceGroup</value>
   </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -339,8 +342,8 @@
   <data name="comboBoxSearchResult.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="numericBoxGamma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 27</value>
@@ -367,13 +370,13 @@
     <value>1000, 25</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
     <value>Set point group in HM notation</value>
   </data>
-  <data name="numericBoxGamma.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label21.Name" xml:space="preserve">
     <value>label21</value>
@@ -387,8 +390,8 @@
   <data name="&gt;&gt;label25.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label27.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -411,20 +414,20 @@
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;comboBoxCrystalSystem.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="comboBoxSpaceGroup.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
   <data name="&gt;&gt;comboBoxCrystalSystem.Parent" xml:space="preserve">
     <value>groupBoxSymmetry</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxGammaErr.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
     <value>314, 27</value>
+  </data>
+  <data name="checkBoxShowError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="numericBoxAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -441,14 +444,11 @@
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 17</value>
   </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 0</value>
-  </data>
   <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 55</value>
   </data>
-  <data name="numericBoxC.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 25</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>b</value>
@@ -471,8 +471,8 @@
   <data name="numericBoxA.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
   </data>
-  <data name="comboBoxSearchResult.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>40</value>
+  <data name="numericBoxGamma.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="numericBoxBErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -510,14 +510,11 @@
   <data name="&gt;&gt;label48.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;numericBoxAErr.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
   <data name="&gt;&gt;label44.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="numericBoxGamma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
     <value>340, 0</value>
@@ -532,16 +529,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;label45.Name" xml:space="preserve">
-    <value>label45</value>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxBeta.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -552,11 +546,14 @@
   <data name="&gt;&gt;numericBoxA.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="numericBoxB.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+  <data name="numericBoxAErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Name" xml:space="preserve">
     <value>numericBoxBetaErr</value>
+  </data>
+  <data name="&gt;&gt;label47.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxSearch.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt</value>
@@ -576,8 +573,8 @@
   <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 45</value>
   </data>
-  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label28.Text" xml:space="preserve">
+    <value>γ</value>
   </data>
   <data name="numericBoxAlphaErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -591,23 +588,20 @@
   <data name="numericBoxCErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="numericBoxCErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="label24.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="comboBoxSearchResult.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 11.25pt</value>
-  </data>
-  <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 132</value>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;textBoxSearch.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxB.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;label21.Parent" xml:space="preserve">
     <value>groupBoxSymmetry</value>
@@ -615,17 +609,11 @@
   <data name="label45.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxB.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
   <data name="&gt;&gt;label47.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="numericBoxBeta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxBetaErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxAlphaErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -639,8 +627,8 @@
   <data name="label46.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxAErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="comboBoxSpaceGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -651,17 +639,17 @@
   <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>249, 55</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SymmetryControl</value>
-  </data>
   <data name="&gt;&gt;numericBoxGammaErr.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;numericBoxGamma.Name" xml:space="preserve">
+    <value>numericBoxGamma</value>
   </data>
   <data name="numericBoxBErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -696,20 +684,20 @@
   <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;numericBoxAErr.ZOrder" xml:space="preserve">
+    <value>22</value>
   </data>
   <data name="numericBoxC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCErr.HeaderText" xml:space="preserve">
-    <value>±</value>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
   </data>
-  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Point Group</value>
   </data>
   <data name="numericBoxBetaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>249, 27</value>
@@ -720,8 +708,8 @@
   <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="numericBoxBeta.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -735,11 +723,14 @@
   <data name="numericBoxBeta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>16</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAlphaErr.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 55</value>
@@ -753,14 +744,8 @@
   <data name="&gt;&gt;numericBoxBetaErr.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxC.Name" xml:space="preserve">
     <value>numericBoxC</value>
-  </data>
-  <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
-    <value>textBoxSearch</value>
   </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 55</value>
@@ -774,6 +759,9 @@
   <data name="numericBoxGammaErr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="&gt;&gt;label45.Name" xml:space="preserve">
+    <value>label45</value>
+  </data>
   <data name="comboBoxSpaceGroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
@@ -781,7 +769,7 @@
     <value>label18</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
     <value>17</value>
@@ -792,17 +780,17 @@
   <data name="numericBoxC.ToolTip" xml:space="preserve">
     <value>Cell constant "c" in angstrom</value>
   </data>
-  <data name="&gt;&gt;label46.Name" xml:space="preserve">
-    <value>label46</value>
+  <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 25</value>
   </data>
-  <data name="comboBoxSpaceGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxCErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 11.25pt, style=Italic</value>
   </data>
   <data name="numericBoxAlphaErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -816,14 +804,8 @@
   <data name="numericBoxAlphaErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="comboBoxCrystalSystem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="checkBoxShowError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
   </data>
   <data name="numericBoxBetaErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -831,17 +813,11 @@
   <data name="numericBoxAErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;comboBoxCrystalSystem.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 25</value>
-  </data>
-  <data name="label46.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxAlphaErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -853,7 +829,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;label47.Name" xml:space="preserve">
     <value>label47</value>
@@ -864,11 +840,11 @@
   <data name="&gt;&gt;numericBoxC.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 79</value>
   </data>
   <data name="&gt;&gt;comboBoxSearchResult.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -900,17 +876,14 @@
   <data name="&gt;&gt;label48.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBoxShowError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
     <value />
   </data>
-  <data name="label45.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 0</value>
   </data>
   <data name="numericBoxAErr.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -921,11 +894,11 @@
   <data name="checkBoxShowError.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="numericBoxBeta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="numericBoxBetaErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxGammaErr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="numericBoxCErr.HeaderText" xml:space="preserve">
+    <value>±</value>
   </data>
   <data name="&gt;&gt;label18.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -936,14 +909,11 @@
   <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;numericBoxAlpha.Name" xml:space="preserve">
     <value>numericBoxAlpha</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>$this</value>
@@ -960,20 +930,17 @@
   <data name="numericBoxAlphaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>249, 0</value>
   </data>
-  <data name="numericBoxAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="numericBoxGammaErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
   <data name="comboBoxPointGroup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxGamma.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -986,9 +953,6 @@
   </data>
   <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 25</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;label19.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1017,17 +981,14 @@
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxAErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="comboBoxSearchResult.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 11.25pt</value>
   </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="numericBoxBErr.ToolTip1" xml:space="preserve">
+    <value />
   </data>
-  <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 25</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAlphaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;numericBoxAlpha.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="numericBoxAErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
@@ -1044,20 +1005,20 @@
   <data name="label44.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Point Group</value>
-  </data>
   <data name="label47.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label44.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxAErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericBoxA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="numericBoxAErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>81, 0</value>
   </data>
   <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
     <value />
@@ -1066,7 +1027,7 @@
     <value>Show error</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxBeta.ToolTip" xml:space="preserve">
     <value>Cell constant "β" in degree</value>
@@ -1080,6 +1041,12 @@
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
   </data>
+  <data name="numericBoxA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="label46.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;numericBoxCErr.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
@@ -1089,11 +1056,11 @@
   <data name="&gt;&gt;comboBoxPointGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label23.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxCErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="numericBoxGammaErr.ToolTip1" xml:space="preserve">
     <value />
@@ -1113,11 +1080,14 @@
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label47.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGammaErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <data name="label48.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>4, 132</value>
@@ -1125,8 +1095,8 @@
   <data name="&gt;&gt;numericBoxBeta.Name" xml:space="preserve">
     <value>numericBoxBeta</value>
   </data>
-  <data name="numericBoxBErr.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1143,8 +1113,8 @@
   <data name="&gt;&gt;label48.Name" xml:space="preserve">
     <value>label48</value>
   </data>
-  <data name="&gt;&gt;numericBoxAlphaErr.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;numericBoxC.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1152,8 +1122,8 @@
   <data name="comboBoxSearchResult.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="comboBoxCrystalSystem.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 25</value>
   </data>
   <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -1170,6 +1140,9 @@
   <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="numericBoxAlpha.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -1182,11 +1155,11 @@
   <data name="numericBoxB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxGammaErr.Name" xml:space="preserve">
-    <value>numericBoxGammaErr</value>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxSymmetry.Name" xml:space="preserve">
-    <value>groupBoxSymmetry</value>
+  <data name="&gt;&gt;numericBoxB.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 25</value>
@@ -1200,8 +1173,8 @@
   <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 25</value>
   </data>
-  <data name="&gt;&gt;label48.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
     <value>Cell constant "γ" in degree</value>
@@ -1233,8 +1206,14 @@
   <data name="label17.Text" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="numericBoxGamma.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="label45.Text" xml:space="preserve">
+    <value>Å</value>
   </data>
   <data name="numericBoxB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -1254,9 +1233,6 @@
   <data name="&gt;&gt;numericBoxBErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label17.ToolTip" xml:space="preserve">
     <value>Search space group</value>
   </data>
@@ -1269,8 +1245,8 @@
   <data name="numericBoxGamma.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;label48.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1290,8 +1266,11 @@
   <data name="&gt;&gt;label24.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="numericBoxAErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAlphaErr.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 17</value>
@@ -1299,8 +1278,8 @@
   <data name="label48.Text" xml:space="preserve">
     <value>°</value>
   </data>
-  <data name="label18.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label47.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="numericBoxAErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1310,6 +1289,12 @@
   </data>
   <data name="label26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxA.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="label45.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
   </data>
   <data name="numericBoxCErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1332,23 +1317,32 @@
   <data name="&gt;&gt;groupBoxSymmetry.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="numericBoxBErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
+  </data>
   <data name="&gt;&gt;label25.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Space Group</value>
   </data>
   <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="numericBoxA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SymmetryControl</value>
   </data>
   <data name="numericBoxC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxBeta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 17</value>
@@ -1375,7 +1369,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxAErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1413,14 +1407,14 @@
   <data name="comboBoxCrystalSystem.Items4" xml:space="preserve">
     <value>tetragonal</value>
   </data>
-  <data name="&gt;&gt;numericBoxA.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>18</value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
   </data>
-  <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 11.25pt, style=Italic</value>
+  <data name="comboBoxCrystalSystem.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Parent" xml:space="preserve">
     <value>groupBoxSymmetry</value>
@@ -1428,8 +1422,8 @@
   <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 17</value>
   </data>
-  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
-    <value>Set crystal system</value>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
     <value>Cell constant "b" in angstrom</value>
@@ -1437,8 +1431,11 @@
   <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label45.Text" xml:space="preserve">
-    <value>Å</value>
+  <data name="&gt;&gt;label46.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label48.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1446,17 +1443,14 @@
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="label48.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;comboBoxPointGroup.Parent" xml:space="preserve">
     <value>groupBoxSymmetry</value>
   </data>
   <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11.25pt, style=Italic</value>
   </data>
-  <data name="numericBoxC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
   </data>
   <data name="label44.Text" xml:space="preserve">
     <value>Å</value>
@@ -1464,8 +1458,8 @@
   <data name="&gt;&gt;label45.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;groupBoxSymmetry.Name" xml:space="preserve">
+    <value>groupBoxSymmetry</value>
   </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1473,8 +1467,8 @@
   <data name="numericBoxA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxCErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="numericBoxA.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="label45.ToolTip" xml:space="preserve">
     <value />
@@ -1484,9 +1478,6 @@
   </data>
   <data name="comboBoxPointGroup.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11.25pt</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxAErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1518,11 +1509,11 @@
   <data name="numericBoxB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 108</value>
-  </data>
   <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 55</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxGamma.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 25</value>
@@ -1536,8 +1527,11 @@
   <data name="&gt;&gt;label20.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxC.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 108</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value />
@@ -1551,8 +1545,8 @@
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;numericBoxB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+  <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 132</value>
   </data>
   <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1563,8 +1557,8 @@
   <data name="numericBoxAlpha.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxB.ZOrder" xml:space="preserve">
-    <value>15</value>
+  <data name="comboBoxCrystalSystem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxSpaceGroup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1579,7 +1573,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.9.4.245, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1316, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11.25pt, style=Italic</value>
@@ -1605,17 +1602,17 @@
   <data name="numericBoxBErr.HeaderText" xml:space="preserve">
     <value>±</value>
   </data>
-  <data name="numericBoxBErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+  <data name="numericBoxC.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 25</value>
   </data>
-  <data name="label25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;numericBoxBeta.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1629,8 +1626,8 @@
   <data name="numericBoxBetaErr.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label44.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxCErr.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -1665,6 +1662,9 @@
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
+  </data>
   <data name="numericBoxCErr.ToolTip1" xml:space="preserve">
     <value />
   </data>
@@ -1677,8 +1677,8 @@
   <data name="comboBoxSearchResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 103</value>
   </data>
-  <data name="numericBoxAErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 0</value>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 55</value>
@@ -1743,17 +1743,17 @@
   <data name="comboBoxCrystalSystem.Items6" xml:space="preserve">
     <value>hexagonal</value>
   </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Set crystal system</value>
+  </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 17</value>
   </data>
-  <data name="label48.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="numericBoxB.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
   </data>
   <data name="numericBoxBetaErr.ToolTip1" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxSpaceGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1767,17 +1767,17 @@
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 27</value>
   </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ja</value>
   </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
