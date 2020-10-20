@@ -121,6 +121,11 @@ namespace Crystallography
         #endregion
 
         public double[] ToArrayRight() => new[] { E11, E12, E13, E21, E22, E23, E31, E32, E33 };
+        public double[] ToArrayRowMajorOrder() => new[] { E11, E12, E13, E21, E22, E23, E31, E32, E33 };
+        public double[] ToArrayColumnMajorOrder() => new[] { E11, E21, E31, E12, E22, E32, E13, E23, E33 };
+
+        public Matrix3d ToMatrix()
+            => new Matrix3d(E11, E12, E13, E21, E22, E23, E31, E32, E33);
 
         #region  演算子のオーバーロード
 
@@ -220,9 +225,7 @@ namespace Crystallography
         }
 
         public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
-        {
-            return new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
-        }
+            => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         /// <summary>
         /// Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。
@@ -230,20 +233,14 @@ namespace Crystallography
         /// <param name="m"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Vector3DBase operator *(Matrix3D m,(int X, int Y, int Z) v)
-        {
-            return new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
-        }
+        public static Vector3DBase operator *(Matrix3D m, (int X, int Y, int Z) v)
+            => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         public static Vector3DBase operator *(Matrix3D m, (double X, double Y, double Z) v)
-        {
-            return new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
-        }
+            => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         public static Vector3d operator *(Matrix3D m, Vector3d v)
-        {
-            return new Vector3d(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
-        }
+            => new Vector3d(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         #endregion
         public static Matrix3D Inverse(Matrix3D m)
@@ -264,82 +261,39 @@ namespace Crystallography
             return mInv;
         }
 
-        
-        
-        public Matrix3D Inverse()
-        {
-            return Matrix3D.Inverse(this);
-        }
+
+
+        public Matrix3D Inverse() => Inverse(this);
 
         public static Matrix3D Transpose(Matrix3D m)
-        {
-            return new Matrix3D(m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33);
-        }
+            => new Matrix3D(m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33);
 
-        public Matrix3D Transpose()
-        {
-            return Matrix3D.Transpose(this);
-        }
+        public Matrix3D Transpose() => Transpose(this);
 
         public static double Determinant(Matrix3D m)
-        {
-            return -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
-        }
+            => -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
 
-        public double Determinant()
-        {
-            return Determinant(this);
-        }
+        public double Determinant() => Determinant(this);
 
-        public Matrix3D ExchangeX_Y_Z()
-        {
-            return ExchangeX_Y_Z(this);
-        }
+        public Matrix3D ExchangeX_Y_Z() => ExchangeX_Y_Z(this);
 
-        public static Matrix3D ExchangeX_Y_Z(Matrix3D m)
-        {
-            return new Matrix3D(m.E11, -m.E21, -m.E31, m.E12, -m.E22, -m.E32, m.E13, -m.E23, -m.E33);
-        }
+        public static Matrix3D ExchangeX_Y_Z(Matrix3D m) => new Matrix3D(m.E11, -m.E21, -m.E31, m.E12, -m.E22, -m.E32, m.E13, -m.E23, -m.E33);
 
-        public Matrix3D ExchangeYZX()
-        {
-            return ExchangeYZX(this);
-        }
+        public Matrix3D ExchangeYZX() => ExchangeYZX(this);
 
-        public static Matrix3D ExchangeYZX(Matrix3D m)
-        {
-            return new Matrix3D(m.E21, m.E31, m.E11, m.E22, m.E32, m.E12, m.E23, m.E33, m.E13);
-        }
+        public static Matrix3D ExchangeYZX(Matrix3D m) => new Matrix3D(m.E21, m.E31, m.E11, m.E22, m.E32, m.E12, m.E23, m.E33, m.E13);
 
-        public Matrix3D ExchangeY_Z_X()
-        {
-            return ExchangeY_Z_X(this);
-        }
+        public Matrix3D ExchangeY_Z_X() => ExchangeY_Z_X(this);
 
-        public static Matrix3D ExchangeY_Z_X(Matrix3D m)
-        {
-            return new Matrix3D(-m.E21, -m.E31, m.E11, -m.E22, -m.E32, m.E12, -m.E23, -m.E33, m.E13);
-        }
+        public static Matrix3D ExchangeY_Z_X(Matrix3D m) => new Matrix3D(-m.E21, -m.E31, m.E11, -m.E22, -m.E32, m.E12, -m.E23, -m.E33, m.E13);
 
-        public Matrix3D ExchangeZXY()
-        {
-            return ExchangeZXY(this);
-        }
+        public Matrix3D ExchangeZXY() => ExchangeZXY(this);
 
-        public static Matrix3D ExchangeZXY(Matrix3D m)
-        {
-            return new Matrix3D(m.E31, m.E11, m.E21, m.E32, m.E12, m.E22, m.E33, m.E13, m.E23);
-        }
+        public static Matrix3D ExchangeZXY(Matrix3D m) => new Matrix3D(m.E31, m.E11, m.E21, m.E32, m.E12, m.E22, m.E33, m.E13, m.E23);
 
-        public Matrix3D ExchangeZ_X_Y()
-        {
-            return ExchangeZ_X_Y(this);
-        }
+        public Matrix3D ExchangeZ_X_Y() => ExchangeZ_X_Y(this);
 
-        public static Matrix3D ExchangeZ_X_Y(Matrix3D m)
-        {
-            return new Matrix3D(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
-        }
+        public static Matrix3D ExchangeZ_X_Y(Matrix3D m) => new Matrix3D(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
 
         /// <summary>
         /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
@@ -502,8 +456,7 @@ namespace Crystallography
         /// ゼロ行列かどうかを判定
         /// </summary>
         /// <returns></returns>
-        public bool IsZero()
-            => IsZero(this);
+        public bool IsZero()            => IsZero(this);
 
         /// <summary>
         /// 単位行列かどうかを判定
@@ -517,8 +470,7 @@ namespace Crystallography
         /// 単位行列かどうかを判定
         /// </summary>
         /// <returns></returns>
-        public bool IsIdentity()
-            => IsIdentity(this);
+        public bool IsIdentity()            => IsIdentity(this);
 
         /// <summary>
         /// 対角成分の和を求める
@@ -704,6 +656,9 @@ namespace Crystallography
         /// Z * Z + X * X
         /// </summary>
         public double Z2Y2 => Z * Z + X * X;
+        public double X2 => X * X;
+        public double Y2 => Y * Y;
+        public double Z2 => Z * Z;
 
         public (double X, double Y, double Z) Tuple => (X, Y, Z);
 
@@ -720,6 +675,11 @@ namespace Crystallography
         }
 
         public Vector3DBase Normarize() => Normarize(this);
+
+        public Vector3d ToVector()
+            => new Vector3d(X, Y, Z);
+
+
 
         /// <summary>
         /// 2つのベクトルの外積を返す
