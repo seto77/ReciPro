@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.788(2020/10/20)  Fixed a bug when calculating electron diffraction for crystals in AMCSD." +
             "\r\n ver4.787(2020/10/19)  Fixed bugs in 'Powder Diffraction'." +
             "\r\n ver4.786(2020/10/10)  Fixed bugs in 'Crystal Database' and improved the ’Find spots' function in 'Spot ID'." +
             "\r\n ver4.785(2020/10/06)  Fixed a problem on OpenGL with Radeon Vega graphics." +

@@ -655,9 +655,9 @@
             this.label16.ForeColor = System.Drawing.Color.Red;
             this.label16.Location = new System.Drawing.Point(403, 2);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(568, 19);
+            this.label16.Size = new System.Drawing.Size(569, 19);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumner  is \"1/nm\"," +
+            this.label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\"," +
     " not \"2π/nm\".";
             // 
             // pictureBox
@@ -896,31 +896,28 @@
             // 
             // numericBoxEffectiveDigit
             // 
-            this.numericBoxEffectiveDigit.DecimalPlaces = -2;
+            this.numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
             this.numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI Symbol", 11F);
             this.numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEffectiveDigit.FooterText = "";
             this.numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
             this.numericBoxEffectiveDigit.HeaderText = "Effective digit";
             this.numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
+            this.numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxEffectiveDigit.Maximum = 16D;
-            this.numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxEffectiveDigit.Minimum = 1D;
             this.numericBoxEffectiveDigit.MinimumSize = new System.Drawing.Size(1, 25);
-                        this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
+            this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
             this.numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
-                        this.numericBoxEffectiveDigit.RestrictLimitValue = true;
-                                    this.numericBoxEffectiveDigit.ShowUpDown = true;
-            this.numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 25);
+            this.numericBoxEffectiveDigit.ShowUpDown = true;
+            this.numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             this.numericBoxEffectiveDigit.SkipEventDuringInput = false;
-            this.numericBoxEffectiveDigit.SmartIncrement = false;
             this.numericBoxEffectiveDigit.TabIndex = 3;
             this.numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 11.25F);
             this.numericBoxEffectiveDigit.ThonsandsSeparator = true;
-            this.numericBoxEffectiveDigit.ToolTip = "";
             this.numericBoxEffectiveDigit.Value = 4D;
-                        this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
+            this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
             // 
             // button1
             // 
