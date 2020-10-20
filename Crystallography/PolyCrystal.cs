@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 using System.Diagnostics;
 using OpenTK;
+using System.Windows;
 
 namespace Crystallography
 {
@@ -25,58 +26,51 @@ namespace Crystallography
         /// 角度分解能 Degree単位
         /// </summary>
         [XmlIgnoreAttribute]
-        public double AngleResolution { get { return BaseCrystal.AngleResolution; } set { BaseCrystal.AngleResolution = value; } }
+        public double AngleResolution { get => BaseCrystal.AngleResolution; set => BaseCrystal.AngleResolution = value; }
 
         /// <summary>
         /// 一つの結晶子が受け持つ角度を分割する数
         /// </summary>
         [XmlIgnoreAttribute]
-        public int SubDivision { get { return BaseCrystal.SubDivision; } set { BaseCrystal.SubDivision = value; } }
+        public int SubDivision { get => BaseCrystal.SubDivision; set => BaseCrystal.SubDivision = value; }
 
         /// <summary>
         /// 結晶子のサイズ
         /// </summary>
         [XmlIgnoreAttribute]
-        public double GrainSize { get { return BaseCrystal.GrainSize; } set { BaseCrystal.GrainSize = value; } }
+        public double GrainSize { get => BaseCrystal.GrainSize; set => BaseCrystal.GrainSize = value; }
 
         /// <summary>
         /// 多結晶体全体のRotation　
         /// </summary>
         public Matrix3D WholeRotation = Matrix3D.IdentityMatrix;
 
-        public int SquareDivision { get { return (int)(90.0 / BaseCrystal.AngleResolution); } }
-        public int RotationDivision { get { return (int)(360.0 / BaseCrystal.AngleResolution); } }
+        public int SquareDivision => (int)(90.0 / BaseCrystal.AngleResolution);
+        public int RotationDivision => (int)(360.0 / BaseCrystal.AngleResolution);
 
         /// <summary>
         /// 全結晶子の数
         /// </summary>
-        public int TotalCrystalline { get { return 6 * SquareDivision * SquareDivision * RotationDivision; } }
+        public int TotalCrystalline => 6 * SquareDivision * SquareDivision * RotationDivision;
 
         public int ImageWidh { get; set; }
         public int ImageHeight { get; set; }
 
-        //[n][] n番目の結晶方位について、エワルド球に近い逆格子ベクトルの番号
+        /// <summary>
+        /// [n][] n番目の結晶方位について、エワルド球に近い逆格子ベクトルの番号
+        /// </summary>
         public ushort[][] ValidIndex;
 
-        //[n][m][] n番目の結晶方位の、m番目の逆格子ベクトルが、考慮すべきSubRotation番号
+        /// <summary>
+        /// [n][m][] n番目の結晶方位の、m番目の逆格子ベクトルが、考慮すべきSubRotation番号
+        /// </summary>
         public ushort[][][] ValidSubRotNum;
 
         /// <summary>
-        /// PixelIndex[n][]:ｎ番目の角度範囲の結晶子が寄与する画素の番号
-        /// PixelIntensityと同期して使う
+        /// Index[n][]:ｎ番目の角度範囲の結晶子が寄与する画素の番号
+        /// Indices[n][]:ｎ番目の角度範囲の結晶子が寄与する画素の強度
         /// </summary>
         public (int Index,double Intensity)[][] Pixel;
-
-        /// <summary>
-        /// PixelIndices[n][]:ｎ番目の角度範囲の結晶子が寄与する画素の強度
-        /// PixelIndexと同期して使う
-        /// </summary>
-        //public double[][] PixelIntensity;
-
-        /// <summary>
-        /// SpotsPosition[n][]: n番目の角度の結晶が寄与する回折スポットの位置と強度 x,y: スポット位置, z:強度
-        /// </summary>
-        //public PointD[][] SpotsPosition;
 
         /// <summary>
         /// ｎ番目の角度範囲の結晶子が受け持つ立体角
@@ -119,25 +113,12 @@ namespace Crystallography
         /// </summary>
         public int G_VectorNumber => G != null ? G.Length : -1;
 
-
+        /// <summary>
+        /// Vec: 逆格子ベクトル
+        /// Hk1, Hk2, Hk3: 逆格子ベクトルの半値幅
+        /// Intensity: 逆格子ベクトルの強度
+        /// </summary>
         public (Vector3DBase Vec, double Hk1, double Hk2, double Hk3, double Intensity, double Intensity2)[] G;
-
-        /// <summary>
-        /// 逆格子ベクトル
-        /// </summary>
-        //public Vector3DBase[] G_Vector = null;
-
-        /// <summary>
-        /// 逆格子ベクトルの半値幅
-        /// </summary>
-        //public double[] G_Hk1, G_Hk2, G_Hk3;
-
-        //public double[] G_Intensity2;
-
-        /// <summary>
-        /// 逆格子ベクトルの強度
-        /// </summary>
-        //public double[] G_Intensity = null;
 
         #endregion フィールド、プロパティ
 
@@ -697,7 +678,6 @@ namespace Crystallography
             stopwatch.Restart();
 
             Pixel = new (int Index, double Intensity)[TotalCrystalline][];
-            //PixelIntensity = new double[TotalCrystalline][];
 
             var elasticity = new Elasticity(DenseMatrix.OfArray(BaseCrystal.ElasticStiffness), Elasticity.Mode.Stiffness);
             bool strainFree = BaseCrystal.Stress.IsZero() && BaseCrystal.Strain.IsZero();
@@ -720,13 +700,11 @@ namespace Crystallography
 
             double camPerRes = detector.CameraLength / detector.Resolution;
 
-            if (ValidIndex == null)
+            if (ValidIndex == null || ValidSubRotNum==null)
             {
                 ValidIndex = new ushort[TotalCrystalline][];
                 ValidSubRotNum = new ushort[TotalCrystalline][][];
             }
-            if (ValidSubRotNum == null)
-                ValidSubRotNum = new ushort[TotalCrystalline][][];
 
             var div = 100;
 
@@ -742,7 +720,6 @@ namespace Crystallography
                            var baseRotation = new Matrix3D(Rotations[num]);
                            if (!strainFree) baseRotation = (elasticity.GetStrainByHill(BaseCrystal.Symmetry, baseRotation, BaseCrystal.Stress, BaseCrystal.Strain, BaseCrystal.HillCoefficient) + new Matrix3D()).Inverse() * baseRotation;
                            if (!rotationFree) baseRotation = WholeRotation * baseRotation;
-
 
                            #region  エワルド球に近い(回折条件に引っ掛かる)逆格子ベクトルを探索
                            var index = new List<ushort>();
