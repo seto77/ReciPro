@@ -45,7 +45,7 @@ namespace Crystallography.Controls
 
         
 
-        private DataSet.DataTableBondDataTable table;
+        private readonly DataSet.DataTableBondDataTable table;
 
         public event EventHandler ItemsChanged;
         #endregion,

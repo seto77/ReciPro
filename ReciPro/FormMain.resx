@@ -205,7 +205,7 @@
     <value>2, 2, 2, 0</value>
   </data>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 343</value>
+    <value>623, 355</value>
   </data>
   <data name="listBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -398,7 +398,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 362</value>
+    <value>3, 374</value>
   </data>
   <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -437,7 +437,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3, 1, 3, 3</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>629, 392</value>
+    <value>629, 404</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -545,7 +545,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 392</value>
+    <value>5, 404</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>629, 30</value>
@@ -603,90 +603,90 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="crystalControl.Crystal" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC4xMC4yMC44
-        NDAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAwDAAAATENyeXN0YWxsb2dyYXBo
-        eSwgVmVyc2lvbj0yMDIwLjEwLjIwLjQ1LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51
-        bGwFAQAAABdDcnlzdGFsbG9ncmFwaHkuQ3J5c3RhbCsAAAAIUmVzaWR1YWwGQm91bmRzDUxhdHRpY2VQ
-        bGFuZXMBQQFCAUMFQWxwaGEEQmV0YQVHYW1tYQVBX2VycgVCX2VycgVDX2VycglBbHBoYV9lcnIIQmV0
-        YV9lcnIJR2FtbWFfZXJyDlJvdGF0aW9uTWF0cml4BEFyZ2IIUmVzZXJ2ZWQETmFtZQROb3RlDlB1YmxB
-        dXRob3JOYW1lEFB1YmxTZWN0aW9uVGl0bGUUU3ltbWV0cnlTZXJpZXNOdW1iZXIHSm91cm5hbAtKb3Vy
-        bmFsTmFtZQ1Kb3VybmFsVm9sdW1lDEpvdXJuYWxJc3N1ZQtKb3VybmFsWWVhchBKb3VybmFsUGFnZUZp
-        cnN0D0pvdXJuYWxQYWdlTGFzdAhTeW1tZXRyeQVBdG9tcwVCb25kcwZTdHJhaW4GU3RyZXNzD0hpbGxD
-        b2VmZmljaWVudBVFbGFzdGljU3RpZmZuZXNzQXJyYXkMRU9TQ29uZGl0aW9uCkRvZXNVc2VFT1MPQW5n
-        bGVSZXNvbHV0aW9uC1N1YkRpdmlzaW9uCUdyYWluU2l6ZQJpZAAEBAAAAAAAAAAAAAAAAAQAAAEBAQEA
-        AQEBAQEBAQQEBAQEAAcEAAAAAAAGF0NyeXN0YWxsb2dyYXBoeS5Cb3VuZFtdAwAAAB5DcnlzdGFsbG9n
-        cmFwaHkuTGF0dGljZVBsYW5lW10DAAAABgYGBgYGBgYGBgYGGENyeXN0YWxsb2dyYXBoeS5NYXRyaXgz
-        RAIAAAAIAQgYQ3J5c3RhbGxvZ3JhcGh5LlN5bW1ldHJ5AgAAABdDcnlzdGFsbG9ncmFwaHkuQXRvbXNb
-        XQMAAAAXQ3J5c3RhbGxvZ3JhcGh5LkJvbmRzW10DAAAAGENyeXN0YWxsb2dyYXBoeS5NYXRyaXgzRAIA
-        AAAYQ3J5c3RhbGxvZ3JhcGh5Lk1hdHJpeDNEAgAAAAYGE0NyeXN0YWxsb2dyYXBoeS5FT1MCAAAAAQYI
-        BggCAAAAAAAAAAAAAAAJBAAAAAkFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC4xMC4yMy44
+        MTgsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAUBAAAAF0NyeXN0YWxsb2dyYXBo
+        eS5DcnlzdGFsKwAAAAhSZXNpZHVhbAZCb3VuZHMNTGF0dGljZVBsYW5lcwFBAUIBQwVBbHBoYQRCZXRh
+        BUdhbW1hBUFfZXJyBUJfZXJyBUNfZXJyCUFscGhhX2VycghCZXRhX2VycglHYW1tYV9lcnIOUm90YXRp
+        b25NYXRyaXgEQXJnYghSZXNlcnZlZAROYW1lBE5vdGUOUHVibEF1dGhvck5hbWUQUHVibFNlY3Rpb25U
+        aXRsZRRTeW1tZXRyeVNlcmllc051bWJlcgdKb3VybmFsC0pvdXJuYWxOYW1lDUpvdXJuYWxWb2x1bWUM
+        Sm91cm5hbElzc3VlC0pvdXJuYWxZZWFyEEpvdXJuYWxQYWdlRmlyc3QPSm91cm5hbFBhZ2VMYXN0CFN5
+        bW1ldHJ5BUF0b21zBUJvbmRzBlN0cmFpbgZTdHJlc3MPSGlsbENvZWZmaWNpZW50FUVsYXN0aWNTdGlm
+        Zm5lc3NBcnJheQxFT1NDb25kaXRpb24KRG9lc1VzZUVPUw9BbmdsZVJlc29sdXRpb24LU3ViRGl2aXNp
+        b24JR3JhaW5TaXplAmlkAAQEAAAAAAAAAAAAAAAABAAAAQEBAQABAQEBAQEBBAQEBAQABwQAAAAAAAYX
+        Q3J5c3RhbGxvZ3JhcGh5LkJvdW5kW10CAAAAHkNyeXN0YWxsb2dyYXBoeS5MYXR0aWNlUGxhbmVbXQIA
+        AAAGBgYGBgYGBgYGBgYYQ3J5c3RhbGxvZ3JhcGh5Lk1hdHJpeDNEAgAAAAgBCBhDcnlzdGFsbG9ncmFw
+        aHkuU3ltbWV0cnkCAAAAF0NyeXN0YWxsb2dyYXBoeS5BdG9tc1tdAgAAABdDcnlzdGFsbG9ncmFwaHku
+        Qm9uZHNbXQIAAAAYQ3J5c3RhbGxvZ3JhcGh5Lk1hdHJpeDNEAgAAABhDcnlzdGFsbG9ncmFwaHkuTWF0
+        cml4M0QCAAAABgYTQ3J5c3RhbGxvZ3JhcGh5LkVPUwIAAAABBggGCAIAAAAAAAAAAAAAAAkDAAAACQQA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        CQYAAADw8PD/AAYHAAAAAAkHAAAACQcAAAAJBwAAAAAAAAAJBwAAAAkHAAAACQcAAAAJBwAAAAkHAAAA
-        CQcAAAAJBwAAAAkIAAAACQkAAAAJCgAAAAkLAAAACQwAAAAAAAAAAAAAAAkNAAAACQ4AAAAAAAAAAAAA
-        AEAEAAAAAAAAAAAAWUAAAAAABwQAAAAAAQAAAAAAAAAEFUNyeXN0YWxsb2dyYXBoeS5Cb3VuZAIAAAAH
-        BQAAAAABAAAAAAAAAAQcQ3J5c3RhbGxvZ3JhcGh5LkxhdHRpY2VQbGFuZQIAAAAFBgAAABhDcnlzdGFs
-        bG9ncmFwaHkuTWF0cml4M0QJAAAAA0UxMQNFMTIDRTEzA0UyMQNFMjIDRTIzA0UzMQNFMzIDRTMzAAAA
-        AAAAAAAABgYGBgYGBgYGAgAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D8A
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwPwwPAAAA/gNtc2NvcmxpYiwgVmVyc2lvbj00LjAu
-        MC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0
-        ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGlj
-        S2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxb
-        U3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
-        dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAs
-        IEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dLCBtc2Nvcmxp
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJBQAAAPDw8P8ABgYAAAAACQYAAAAJ
+        BgAAAAkGAAAAAAAAAAkGAAAACQYAAAAJBgAAAAkGAAAACQYAAAAJBgAAAAkGAAAACQcAAAAJCAAAAAkJ
+        AAAACQoAAAAJCwAAAAAAAAAAAAAACQwAAAAJDQAAAAAAAAAAAAAAQAQAAAAAAAAAAABZQAAAAAAHAwAA
+        AAABAAAAAAAAAAQVQ3J5c3RhbGxvZ3JhcGh5LkJvdW5kAgAAAAcEAAAAAAEAAAAAAAAABBxDcnlzdGFs
+        bG9ncmFwaHkuTGF0dGljZVBsYW5lAgAAAAUFAAAAGENyeXN0YWxsb2dyYXBoeS5NYXRyaXgzRAkAAAAD
+        RTExA0UxMgNFMTMDRTIxA0UyMgNFMjMDRTMxA0UzMgNFMzMAAAAAAAAAAAAGBgYGBgYGBgYCAAAAAAAA
+        AAAA8D8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAPA/DA4AAAD+A21zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
+        UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZl
+        cnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRl
+        MDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
+        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uU3RyaW5nLCBtc2Nvcmxp
         YiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2
-        MTkzNGUwODkFCAAAABhDcnlzdGFsbG9ncmFwaHkuU3ltbWV0cnkZAAAAElNwYWNlR3JvdXBITXN1YlN0
-        cg9TcGFjZUdyb3VwU0ZTdHIRU3BhY2VHcm91cEhhbGxTdHIPU3BhY2VHcm91cEhNU3RyE1NwYWNlR3Jv
-        dXBITWZ1bGxTdHIITWFpbkF4aXMOTGF0dGljZVR5cGVTdHIHU3RyU0UxcAdTdHJTRTF2B1N0clNFMnAH
-        U3RyU0UydgdTdHJTRTNwB1N0clNFM3YPUG9pbnRHcm91cEhNU3RyD1BvaW50R3JvdXBTRlN0cgxMYXVl
-        R3JvdXBTdHIQQ3J5c3RhbFN5c3RlbVN0cgxTZXJpZXNOdW1iZXIQU3BhY2VHcm91cE51bWJlchNTcGFj
-        ZUdyb3VwU3ViTnVtYmVyEFBvaW50R3JvdXBOdW1iZXIPTGF1ZUdyb3VwTnVtYmVyE0NyeXN0YWxTeXN0
-        ZW1OdW1iZXIRRXh0aW5jdGlvblJ1bGVTdHITQ2hlY2tFeHRpbmN0aW9uRnVuYwEBAQEBAQEBAQEBAQEB
-        AQEBAAAAAAAABgQICAgICAg+U3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0u
-        RnVuY2A0W1tTeXN0ZW0uSW50MzIPAAAAAgAAAAkHAAAABhEAAAAHVW5rbm93bgkRAAAACREAAAAJEQAA
-        AAkHAAAACREAAAAJEQAAAAkRAAAACREAAAAJEQAAAAkRAAAACREAAAAJEQAAAAkRAAAACREAAAAJEQAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkUAAAACRUAAAAHCQAAAAABAAAAAAAAAAQVQ3J5c3RhbGxv
-        Z3JhcGh5LkF0b21zAgAAAAcKAAAAAAEAAAAAAAAABBVDcnlzdGFsbG9ncmFwaHkuQm9uZHMCAAAAAQsA
-        AAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAQwAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw0AAAAVAAAABgAAAAAAAAAAAAAA
+        MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
+        aWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUHAAAAGENyeXN0YWxs
+        b2dyYXBoeS5TeW1tZXRyeRkAAAASU3BhY2VHcm91cEhNc3ViU3RyD1NwYWNlR3JvdXBTRlN0chFTcGFj
+        ZUdyb3VwSGFsbFN0cg9TcGFjZUdyb3VwSE1TdHITU3BhY2VHcm91cEhNZnVsbFN0cghNYWluQXhpcw5M
+        YXR0aWNlVHlwZVN0cgdTdHJTRTFwB1N0clNFMXYHU3RyU0UycAdTdHJTRTJ2B1N0clNFM3AHU3RyU0Uz
+        dg9Qb2ludEdyb3VwSE1TdHIPUG9pbnRHcm91cFNGU3RyDExhdWVHcm91cFN0chBDcnlzdGFsU3lzdGVt
+        U3RyDFNlcmllc051bWJlchBTcGFjZUdyb3VwTnVtYmVyE1NwYWNlR3JvdXBTdWJOdW1iZXIQUG9pbnRH
+        cm91cE51bWJlcg9MYXVlR3JvdXBOdW1iZXITQ3J5c3RhbFN5c3RlbU51bWJlchFFeHRpbmN0aW9uUnVs
+        ZVN0chNDaGVja0V4dGluY3Rpb25GdW5jAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAGBAgICAgICD5TeXN0
+        ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMg4A
+        AAACAAAACQYAAAAGEAAAAAdVbmtub3duCRAAAAAJEAAAAAkQAAAACQYAAAAJEAAAAAkQAAAACRAAAAAJ
+        EAAAAAkQAAAACRAAAAAJEAAAAAkQAAAACRAAAAAJEAAAAAkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAACRMAAAAJFAAAAAcIAAAAAAEAAAAAAAAABBVDcnlzdGFsbG9ncmFwaHkuQXRvbXMCAAAABwkAAAAA
+        AQAAAAAAAAAEFUNyeXN0YWxsb2dyYXBoeS5Cb25kcwIAAAABCgAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCwAA
+        AAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAPDAAAABUAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUOAAAAE0NyeXN0YWxsb2dyYXBoeS5F
-        T1MWAAAAGDxFbmFibGVkPmtfX0JhY2tpbmdGaWVsZBw8Q2VsbFZvbHVtZTA+a19fQmFja2luZ0ZpZWxk
-        EzxUMD5rX19CYWNraW5nRmllbGQTPEswPmtfX0JhY2tpbmdGaWVsZBQ8S3AwPmtfX0JhY2tpbmdGaWVs
-        ZBs8S3BJbmZpbml0eT5rX19CYWNraW5nRmllbGQVPEtwcDA+a19fQmFja2luZ0ZpZWxkFzxHYW1tYTA+
-        a19fQmFja2luZ0ZpZWxkFzxUaGV0YTA+a19fQmFja2luZ0ZpZWxkEjxRPmtfX0JhY2tpbmdGaWVsZBY8
-        S3BlclQ+a19fQmFja2luZ0ZpZWxkEjxBPmtfX0JhY2tpbmdGaWVsZBI8Qj5rX19CYWNraW5nRmllbGQS
-        PEM+a19fQmFja2luZ0ZpZWxkKDxUaGVybWFsUHJlc3N1cmVBcHByb2FjaD5rX19CYWNraW5nRmllbGQr
-        PElzb3RoZXJtYWxQcmVzc3VyZUFwcHJvYWNoPmtfX0JhY2tpbmdGaWVsZBI8Wj5rX19CYWNraW5nRmll
-        bGQTPFplPmtfX0JhY2tpbmdGaWVsZBI8Tj5rX19CYWNraW5nRmllbGQVPE5vdGU+a19fQmFja2luZ0Zp
-        ZWxkHDxUZW1wZXJhdHVyZT5rX19CYWNraW5nRmllbGQZPFByZXNzdXJlPmtfX0JhY2tpbmdGaWVsZAAA
-        AAAAAAAAAAAAAAAABAQAAAABAAABBgYGBgYGBgYGBgYGBh9DcnlzdGFsbG9ncmFwaHkuVGhlcm1hbFBy
-        ZXNzdXJlAgAAACJDcnlzdGFsbG9ncmFwaHkuSXNvdGhlcm1hbFByZXNzdXJlAgAAAAYGCAYGAgAAAAAA
+        AAAAAAAAAAAAAAAAAAAABQ0AAAATQ3J5c3RhbGxvZ3JhcGh5LkVPUxkAAAAYPEVuYWJsZWQ+a19fQmFj
+        a2luZ0ZpZWxkHDxDZWxsVm9sdW1lMD5rX19CYWNraW5nRmllbGQTPFQwPmtfX0JhY2tpbmdGaWVsZBM8
+        SzA+a19fQmFja2luZ0ZpZWxkFDxLcDA+a19fQmFja2luZ0ZpZWxkGzxLcEluZmluaXR5PmtfX0JhY2tp
+        bmdGaWVsZBU8S3BwMD5rX19CYWNraW5nRmllbGQdPFZpbmV0M3JkX0l0YT5rX19CYWNraW5nRmllbGQe
+        PFZpbmV0M3JkX0JldGE+a19fQmFja2luZ0ZpZWxkHTxWaW5ldDNyZF9Qc2k+a19fQmFja2luZ0ZpZWxk
+        FzxHYW1tYTA+a19fQmFja2luZ0ZpZWxkFzxUaGV0YTA+a19fQmFja2luZ0ZpZWxkEjxRPmtfX0JhY2tp
+        bmdGaWVsZBY8S3BlclQ+a19fQmFja2luZ0ZpZWxkEjxBPmtfX0JhY2tpbmdGaWVsZBI8Qj5rX19CYWNr
+        aW5nRmllbGQSPEM+a19fQmFja2luZ0ZpZWxkKDxUaGVybWFsUHJlc3N1cmVBcHByb2FjaD5rX19CYWNr
+        aW5nRmllbGQrPElzb3RoZXJtYWxQcmVzc3VyZUFwcHJvYWNoPmtfX0JhY2tpbmdGaWVsZBI8Wj5rX19C
+        YWNraW5nRmllbGQTPFplPmtfX0JhY2tpbmdGaWVsZBI8Tj5rX19CYWNraW5nRmllbGQVPE5vdGU+a19f
+        QmFja2luZ0ZpZWxkHDxUZW1wZXJhdHVyZT5rX19CYWNraW5nRmllbGQZPFByZXNzdXJlPmtfX0JhY2tp
+        bmdGaWVsZAAAAAAAAAAAAAAAAAAAAAAABAQAAAABAAABBgYGBgYGBgYGBgYGBgYGBh9DcnlzdGFsbG9n
+        cmFwaHkuVGhlcm1hbFByZXNzdXJlAgAAACJDcnlzdGFsbG9ncmFwaHkuSXNvdGhlcm1hbFByZXNzdXJl
+        AgAAAAYGCAYGAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXq////H0NyeXN0YWxsb2dy
-        YXBoeS5UaGVybWFsUHJlc3N1cmUBAAAAB3ZhbHVlX18ACAIAAAAAAAAABen///8iQ3J5c3RhbGxvZ3Jh
-        cGh5Lklzb3RoZXJtYWxQcmVzc3VyZQEAAAAHdmFsdWVfXwAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAkHAAAAAAAAAAAAAAAAAAAAAAAAABEUAAAAAAAAAAUVAAAAPlN5c3RlbS5Db2xsZWN0aW9ucy5H
-        ZW5lcmljLkxpc3RgMVtbU3lzdGVtLkZ1bmNgNFtbU3lzdGVtLkludDMyAwAAAAZfaXRlbXMFX3NpemUI
-        X3ZlcnNpb24DAACBA1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249
-        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxb
-        U3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1
-        YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJz
-        aW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
-        OV0sW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
-        bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dW10ICA8AAAAJGQAAAAAAAAAAAAAADBoA
-        AACvA21zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9r
-        ZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAu
-        MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVt
-        LkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tl
-        eVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00
-        LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXSwg
-        bXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1i
-        NzdhNWM1NjE5MzRlMDg5BxkAAAAAAQAAAAAAAAAEG1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMhoA
-        AAAL
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXr////H0NyeXN0YWxsb2dyYXBoeS5UaGVybWFsUHJlc3N1cmUB
+        AAAAB3ZhbHVlX18ACAIAAAAAAAAABer///8iQ3J5c3RhbGxvZ3JhcGh5Lklzb3RoZXJtYWxQcmVzc3Vy
+        ZQEAAAAHdmFsdWVfXwAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkGAAAAAAAAAAAAAAAAAAAA
+        AAAAABETAAAAAAAAAAUUAAAAPlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbU3lzdGVt
+        LkZ1bmNgNFtbU3lzdGVtLkludDMyAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24DAACBA1N5c3RlbS5G
+        dW5jYDRbW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
+        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2Nvcmxp
+        YiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2
+        MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9
+        bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5TdHJpbmcsIG1z
+        Y29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+        YTVjNTYxOTM0ZTA4OV1dW10ICA4AAAAJGAAAAAAAAAAAAAAADBkAAACvA21zY29ybGliLCBWZXJzaW9u
+        PTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0s
+        W1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
+        dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVy
+        c2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+        ODldLFtTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
+        YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4w
+        LjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BxgAAAAA
+        AQAAAAAAAAAEG1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMhkAAAAL
 </value>
   </data>
   <data name="crystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -699,7 +699,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 272</value>
+    <value>623, 260</value>
   </data>
   <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -708,7 +708,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>crystalControl</value>
   </data>
   <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -729,7 +729,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>629, 296</value>
+    <value>629, 284</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -768,7 +768,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>639, 720</value>
   </data>
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>422</value>
+    <value>434</value>
   </data>
   <data name="splitContainer.SplitterWidth" type="System.Int32, mscorlib">
     <value>2</value>
@@ -942,7 +942,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxAxisU</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisU.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1062,7 +1062,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxAxisV</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisV.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1104,7 +1104,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxAxisW</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Parent" xml:space="preserve">
     <value>tableLayoutPanel5</value>
@@ -1191,7 +1191,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxPlaneL</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1233,7 +1233,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxPlaneH</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -1275,7 +1275,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxPlaneK</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
@@ -2127,7 +2127,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxStep</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
     <value>panel4</value>
@@ -2925,7 +2925,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>numericBoxMaxUVW</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.20.840, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.23.818, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
     <value>groupBoxCurrentDirection</value>

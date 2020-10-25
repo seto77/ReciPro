@@ -15,11 +15,11 @@ namespace Crystallography.Controls
         public string[] ExcludesStr => Excludes.Select(i => i.ToString("000")).ToArray();
 
 
-        private List<Button> button = new List<Button>();
+        private readonly List<Button> button = new List<Button>();
 
-        private Color ExcludeColor = Color.LightCoral;
-        private Color IncludeColor = Color.LightBlue;
-        private Color NeutralColor = Color.LightYellow;
+        private readonly Color ExcludeColor = Color.LightCoral;
+        private readonly Color IncludeColor = Color.LightBlue;
+        private readonly Color NeutralColor = Color.LightYellow;
 
         public FormPeriodicTable()
         {

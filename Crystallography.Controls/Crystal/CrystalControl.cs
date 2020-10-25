@@ -548,49 +548,47 @@ namespace Crystallography.Controls
         {
             if (crystal.Crystallites == null) return;
 
-            var dlg = new SaveFileDialog            {                Filter = "*.txt|*.txt"            };
+            var dlg = new SaveFileDialog { Filter = "*.txt|*.txt" };
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                using (StreamWriter sw = new StreamWriter(dlg.FileName))
+                using StreamWriter sw = new StreamWriter(dlg.FileName);
+                sw.WriteLine("Sample Name:\t" + Crystal.Name);
+                sw.WriteLine($"Cell constants:\t{Crystal.A}\t{Crystal.B}\t{Crystal.C}\t{crystal.Alpha / Math.PI * 180}\t{crystal.Beta / Math.PI * 180}\t{crystal.Gamma / Math.PI * 180}");
+                sw.WriteLine("Space group:\t" + Crystal.Symmetry.SpaceGroupHMfullStr);
+                sw.WriteLine("");
+                sw.WriteLine("Euler angles refer to Sample Coordinate system");
+                sw.WriteLine("No.\tEuler1\tEuler2\tEuler3\tDensity");
+
+                double sum = 0;
+
+                double[] density = new double[Crystal.Crystallites.TotalCrystalline];
+                int[] index = new int[Crystal.Crystallites.TotalCrystalline];
+                for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
                 {
-                    sw.WriteLine("Sample Name:\t" + Crystal.Name);
-                    sw.WriteLine($"Cell constants:\t{Crystal.A}\t{Crystal.B}\t{Crystal.C}\t{crystal.Alpha / Math.PI * 180}\t{crystal.Beta / Math.PI * 180}\t{crystal.Gamma / Math.PI * 180}");
-                    sw.WriteLine("Space group:\t" + Crystal.Symmetry.SpaceGroupHMfullStr);
-                    sw.WriteLine("");
-                    sw.WriteLine("Euler angles refer to Sample Coordinate system");
-                    sw.WriteLine("No.\tEuler1\tEuler2\tEuler3\tDensity");
+                    density[i] = crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
+                    index[i] = i;
+                    sum += density[i];
+                }
+                if (sender == asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem)
+                {
+                    Array.Sort(density, index);
+                    density = density.Reverse().ToArray();
+                    index = index.Reverse().ToArray();
+                }
 
-                    double sum = 0;
+                for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
+                {
+                    string str = i.ToString() + "\t";
+                    var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
+                    var euler = new double[] { Phi, Theta, Psi };
 
-                    double[] density = new double[Crystal.Crystallites.TotalCrystalline];
-                    int[] index = new int[Crystal.Crystallites.TotalCrystalline];
-                    for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
+                    foreach (double angle in euler)
                     {
-                        density[i] = crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
-                        index[i] = i;
-                        sum += density[i];
+                        double d = (angle > 0 ? angle : angle + 2 * Math.PI) / Math.PI * 180;
+                        str += d.ToString("000.0000") + "\t";
                     }
-                    if (sender == asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem)
-                    {
-                        Array.Sort(density, index);
-                        density = density.Reverse().ToArray();
-                        index = index.Reverse().ToArray();
-                    }
-
-                    for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
-                    {
-                        string str = i.ToString() + "\t";
-                        var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
-                        var euler = new double[] { Phi, Theta, Psi };
-
-                        foreach (double angle in euler)
-                        {
-                            double d = (angle > 0 ? angle : angle + 2 * Math.PI) / Math.PI * 180;
-                            str += d.ToString("000.0000") + "\t";
-                        }
-                        str += (density[i] / sum * crystal.Crystallites.TotalCrystalline).ToString();
-                        sw.WriteLine(str);
-                    }
+                    str += (density[i] / sum * crystal.Crystallites.TotalCrystalline).ToString();
+                    sw.WriteLine(str);
                 }
             }
         }

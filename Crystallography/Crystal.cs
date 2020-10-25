@@ -919,8 +919,7 @@ namespace Crystallography
                         for (int l = -lMax; l <= lMax; l++)
                             if ((d = GetLengthPlane(h, k, l)) > dMin)
                             {
-                                Plane temp = new Plane();
-                                temp.IsRootIndex = SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi);
+                                var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi) };
                                 if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
                                     temp.Multi[0] = multi;

@@ -803,7 +803,7 @@ namespace Crystallography
                 int fileType = 1, length = 0;
                 Ring.Comments = "";
 
-                Func<int> readData = new Func<int>(() => 0);
+                var readData = new Func<double>(() => 0);
 
                 int n = 0;
 
@@ -820,7 +820,7 @@ namespace Crystallography
                     if (fileType != 0 && fileType != 2 && fileType != 3)
                         return false;
 
-                    readData = fileType switch { 0 => new Func<int>(() => br.ReadByte()), 2 => (() => br.ReadInt16()), 3 => (() => br.ReadInt32()), _ => (() => 0) };
+                    readData = fileType switch { 0 => () => br.ReadByte(), 2 => () => br.ReadUInt16(), 3 => () => br.ReadUInt32(), _ => () => 0 };
 
                     br.ReadBytes(50);
 

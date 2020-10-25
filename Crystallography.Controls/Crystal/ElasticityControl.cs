@@ -77,8 +77,7 @@ namespace Crystallography.Controls
                 skip = false;
                 SetElasticity();
                 stiffness = compliance.TryInverse();
-                if (ValueChanged != null)
-                    ValueChanged(this, new EventArgs());
+                ValueChanged?.Invoke(this, new EventArgs());
             }
             get
             { return compliance; }
@@ -121,8 +120,7 @@ namespace Crystallography.Controls
                 SetElasticity();
 
                 compliance = stiffness.TryInverse();
-                if (ValueChanged != null)
-                    ValueChanged(this, new EventArgs());
+                ValueChanged?.Invoke(this, new EventArgs());
             }
             get
             { return stiffness; }
@@ -360,8 +358,7 @@ namespace Crystallography.Controls
                 compliance = mtx;
                 stiffness = mtx.TryInverse();
             }
-            if (ValueChanged != null)
-                ValueChanged(this, e);
+            ValueChanged?.Invoke(this, e);
         }
 
         private void radioButtonStiffness_CheckedChanged(object sender, EventArgs e)
@@ -371,8 +368,7 @@ namespace Crystallography.Controls
             else
                 Compliance = stiffness.TryInverse();
 
-            if (ValueChanged != null)
-                ValueChanged(this, e);
+            ValueChanged?.Invoke(this, e);
         }
     }
 }

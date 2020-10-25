@@ -1124,7 +1124,7 @@ namespace ReciPro
                         c.SetCrystallites();
                     c.Crystallites.SetGVector(c, DetectorProperty);
                     c.Crystallites.ValidIndex = null;
-                    c.Crystallites.ValidSubRotNum = null;
+                    //c.Crystallites.ValidSubRotNum = null;
                 }
                 if (renewDiffractionPixels)
                 {
@@ -1796,8 +1796,7 @@ namespace ReciPro
 
         private void buttonSaveMask_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Mask file; *.mas|*.mas";
+            var dlg = new SaveFileDialog { Filter = "Mask file; *.mas|*.mas" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 System.IO.BinaryWriter br = new System.IO.BinaryWriter(new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite));

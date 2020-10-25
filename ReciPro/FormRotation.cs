@@ -260,10 +260,10 @@ namespace ReciPro
             if (skip) return;
             skip = true;
             var rotMatrix = new Matrix3D(numericBox11.Value, numericBox21.Value, numericBox31.Value, numericBox12.Value, numericBox22.Value, numericBox32.Value, numericBox13.Value, numericBox23.Value, numericBox33.Value);
-            var euler = Euler.GetEulerAngle(rotMatrix);
-            numericBoxPhi.Value = euler.Phi / Math.PI * 180;
-            numericBoxTheta.Value = euler.Theta / Math.PI * 180;
-            numericBoxPsi.Value = euler.Psi / Math.PI * 180;
+            var (Phi, Theta, Psi) = Euler.GetEulerAngle(rotMatrix);
+            numericBoxPhi.Value = Phi / Math.PI * 180;
+            numericBoxTheta.Value = Theta / Math.PI * 180;
+            numericBoxPsi.Value = Psi / Math.PI * 180;
 
             skip = false;
         }
@@ -483,9 +483,9 @@ namespace ReciPro
 
             var rot = Matrix3D.Rot(dir[0], angle[0]);
             if (dir.Length > 1)
-                rot = rot * Matrix3D.Rot(dir[1], angle[1]);
+                rot *= Matrix3D.Rot(dir[1], angle[1]);
             if (dir.Length > 2)
-                rot = rot * Matrix3D.Rot(dir[2], angle[2]);
+                rot *= Matrix3D.Rot(dir[2], angle[2]);
 
             if (checkBoxLink.Checked && gl.Name.Contains("Ex"))
                 rot = RotReciPro;
@@ -656,11 +656,11 @@ namespace ReciPro
             if (checkBoxLink.Checked)
             {
                 skip = true;
-                var euler = Euler.GetEulerAngle(RotExp * RotBase);
+                var (Phi, Theta, Psi) = Euler.GetEulerAngle(RotExp * RotBase);
                 FormMain.SkipEulerChange = true;
-                FormMain.Phi = euler.Phi;
-                FormMain.Theta = euler.Theta;
-                FormMain.Psi = euler.Psi;
+                FormMain.Phi = Phi;
+                FormMain.Theta = Theta;
+                FormMain.Psi = Psi;
                 FormMain.SkipEulerChange = false;
                 FormMain.SetRotation(RotReciPro);
                 skip = false;

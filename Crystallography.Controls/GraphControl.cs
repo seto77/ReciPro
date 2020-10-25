@@ -740,8 +740,7 @@ namespace Crystallography.Controls
             if (UpperX > MaximalX) UpperX = MaximalX;
             if (UpperY > MaximalY) UpperY = MaximalY;
 
-            if (DrawingRangeChanged != null)
-                DrawingRangeChanged(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
+            DrawingRangeChanged?.Invoke(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
         }
 
         /// <summary>
@@ -963,8 +962,7 @@ namespace Crystallography.Controls
                 {
                     //if (!Interpolation)//補間モードではないとき
                     //{
-                    Pen pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth);
-                    pen.LineJoin = LineJoin.Round;
+                    var pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth) { LineJoin = LineJoin.Round };
                     var pts = destProfileList[j].GetPointsWithinRectangle(rect);
                     for (int i = 0; i < pts.Count(); i++)
                         if (pts[i].Count() > 1)
@@ -1295,8 +1293,7 @@ namespace Crystallography.Controls
                         lineList[selectedLineIndex] = new PointD(x, lineList[selectedLineIndex].Y);
 
                         Draw();
-                        if (LinePositionChanged != null)
-                            LinePositionChanged();
+                        LinePositionChanged?.Invoke();
                         Refresh();
                     }
                 }
@@ -1333,8 +1330,7 @@ namespace Crystallography.Controls
                     if (UpperY > MaximalY) UpperY = MaximalY;
 
                     Draw();
-                    if (DrawingRangeChanged != null)
-                        DrawingRangeChanged(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
+                    DrawingRangeChanged?.Invoke(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
                 }
                 else if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) < 10 || Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) < 10)
                 {//選択範囲が中途半端に小さすぎたら
@@ -1355,8 +1351,7 @@ namespace Crystallography.Controls
 
                     LowerX = xmin; UpperX = xmax; LowerY = ymin; UpperY = ymax;
                     Draw();
-                    if (DrawingRangeChanged != null)
-                        DrawingRangeChanged(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
+                    DrawingRangeChanged?.Invoke(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
                 }
             }
             else if (e.Button == MouseButtons.Right && (e.X - OriginPosition.X) * (PictureBoxSize.Height - e.Y - OriginPosition.Y) < 0)
@@ -1376,8 +1371,7 @@ namespace Crystallography.Controls
         {
             if (MouseRangingMode)
             {
-                Pen pen = new Pen(Brushes.Gray);
-                pen.DashStyle = DashStyle.Dash;
+                Pen pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
                 e.Graphics.DrawRectangle(pen, Math.Min(MouseRangeStart.X, MouseRangeEnd.X), Math.Min(MouseRangeStart.Y, MouseRangeEnd.Y),
                     Math.Abs(MouseRangeStart.X - MouseRangeEnd.X), Math.Abs(MouseRangeStart.Y - MouseRangeEnd.Y));
             }

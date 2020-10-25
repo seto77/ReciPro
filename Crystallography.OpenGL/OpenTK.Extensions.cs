@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using C4 = OpenTK.Graphics.Color4;
 using M3d = OpenTK.Matrix3d;
@@ -52,7 +51,6 @@ namespace Crystallography.OpenGL
         public static V4d ToV4d(this V3d v) => new V4d(v.X, v.Y, v.Z, 1);
 
         #endregion V3dに関する拡張メソッド
-
 
         #region V3fに関する拡張メソッド
 

@@ -26,8 +26,7 @@ namespace Crystallography.Controls
 
         private void numericBoxPixelWidth_ValueChanged(object sender, EventArgs e)
         {
-            if (ValueChanged != null)
-                ValueChanged(sender, e);
+            ValueChanged?.Invoke(sender, e);
         }
     }
 }

@@ -122,13 +122,13 @@ namespace Crystallography.OpenGL
         /// </summary>
         internal Vertex[] Vertices;
         /// <summary>
-        /// タイプ
-        /// </summary>
-        internal PT[] Types;
-        /// <summary>
         /// 頂点の順番リスト (全てのタイプが連結されている)
         /// </summary>
         internal uint[] Indices;
+        /// <summary>
+        /// タイプ
+        /// </summary>
+        internal PT[] Types;
         /// <summary>
         /// 各タイプの順番リストの長さ
         /// </summary>

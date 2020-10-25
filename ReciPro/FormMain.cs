@@ -268,7 +268,6 @@ namespace ReciPro
             FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
             commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
-            //  t = sw.ElapsedMilliseconds;
             FormTEMID = new FormTEMID { formMain = this, Visible = false };
             FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormTEMID.KeyUp += new KeyEventHandler(FormMain_KeyUp);
@@ -323,8 +322,6 @@ namespace ReciPro
             foreach (var dir in Directory.GetDirectories(UserAppDataPath))
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())
                     Directory.Delete(dir);
-
-            
 
             commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.", 0.96);
             DrawAxes();

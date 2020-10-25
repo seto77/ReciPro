@@ -26,6 +26,8 @@ namespace Crystallography.Controls
         {
             get
             {
+                if (crystal == null)
+                    return null;
                 var eos = new EOS
                 {
                     A = numericBoxEOS_A.Value,
@@ -38,14 +40,15 @@ namespace Crystallography.Controls
                     Kp0 = numericBoxEOS_Kp0.Value,
                     Kpp0 = numericBoxEOS_Kpp0.Value,
                     KpInfinity = numericBoxEOS_KpInfinity.Value,
+                    Vinet3rd_Ita = numericBox3rdVinetIta.Value,
+                    Vinet3rd_Beta = numericBox3rdVinetBeta.Value,
+                    Vinet3rd_Psi = numericBox3rdVinetPsi.Value,
                     Q = numericBoxEOS_Q.Value,
                     T0 = numericBoxEOS_T0.Value,
 
                     Theta0 = numericBoxEOS_Theta0.Value,
                     Note = textBoxEOS_Note.Text,
                     Temperature = numericBoxTemperature.Value,
-                    
-
                 };
                 if (radioButtonEOS_ThirdBirchMurnaghan.Checked)
                     eos.IsothermalPressureApproach = IsothermalPressure.BM3;
@@ -57,6 +60,8 @@ namespace Crystallography.Controls
                     eos.IsothermalPressureApproach = IsothermalPressure.AP2;
                 else if (radioButtonEOS_Keane.Checked)
                     eos.IsothermalPressureApproach = IsothermalPressure.Keane;
+                else if (radioButtonEOS_Vinet3rd.Checked)
+                    eos.IsothermalPressureApproach = IsothermalPressure.Vinet3;
 
                 if (radioButtonMieGruneisen.Checked)
                     eos.ThermalPressureApproach = ThermalPressure.MieGruneisen;
@@ -91,6 +96,9 @@ namespace Crystallography.Controls
 
         public void setParameters()
         {
+            if (crystal == null || crystal.EOSCondition == null)
+                return;
+
             //EOS関連
             SkipEvent = true;
 
@@ -125,6 +133,8 @@ namespace Crystallography.Controls
                 radioButtonEOS_AP2.Checked = true;
             else if (crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Keane)
                 radioButtonEOS_Keane.Checked = true;
+            else if (crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Vinet3)
+                radioButtonEOS_Vinet3rd.Checked = true;
 
             textBoxEOS_Note.Text = crystal.EOSCondition.Note;
             numericBoxTemperature.Value = crystal.EOSCondition.Temperature;
@@ -178,18 +188,14 @@ namespace Crystallography.Controls
         private void parameters_Changed(object sender, EventArgs e)
         {
             if (SkipEvent) return;
-            if (radioButtonEOS_Keane.Checked)
-            {
-                numericBoxEOS_KpInfinity.Visible = true;
-                numericBoxEOS_Kpp0.Visible = false;
-            }
-            else if (radioButtonEOS_FourthBirchMunaghan.Checked)
-            {
-                numericBoxEOS_KpInfinity.Visible = false;
-                numericBoxEOS_Kpp0.Visible = true;
-            }
-            else
-                numericBoxEOS_KpInfinity.Visible = numericBoxEOS_Kpp0.Visible = false;
+
+            numericBox3rdVinetBeta.Visible = numericBox3rdVinetIta.Visible = numericBox3rdVinetPsi.Visible = radioButtonEOS_Vinet3rd.Checked;
+
+            numericBoxEOS_Kp0.Visible = !radioButtonEOS_Vinet3rd.Checked;
+
+            numericBoxEOS_KpInfinity.Visible = radioButtonEOS_Keane.Checked;
+            
+            numericBoxEOS_Kpp0.Visible = radioButtonEOS_FourthBirchMunaghan.Checked;
 
             crystal.EOSCondition = EOScondition;
 

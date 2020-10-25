@@ -1796,7 +1796,7 @@ namespace Crystallography
 					yMax = Math.Max(i / IP.SrcWidth, yMax);
 				}
 
-			ThreadTotal = Environment.ProcessorCount;
+			ThreadTotal = Environment.ProcessorCount*2;
 #if DEBUG
 			ThreadTotal=1;
 #endif
@@ -2609,126 +2609,90 @@ namespace Crystallography
 		/// <param name="pixels"></param>
 		public static void GetProfileThreadWithTiltCorrectionNew(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels)
 		{
-			int i, j, k, width = IP.SrcWidth, jWidth;
-			double area, area1, area2;
-			int length = R2.Length;
-
-			double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY,
-				startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
-			double tempX, tempY, tempY2TanKsi;
+			int width = IP.SrcWidth, length = R2.Length;
+			double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY, startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
 
 			//x方向に0.5ピクセル進んだ時の並進ベクトル
-			tempX = pixSizeX / 2;
-			tempY = 0;
-			double slideX_X = Numer2 * tempX + Numer1 * tempY;
-			double slideX_Y = Numer1 * tempX + Numer3 * tempY;
-			double slideX_Z = Denom2 * tempX + Denom1 * tempY;
+			double tX = pixSizeX / 2, tY = 0.0;
+			(double X, double Y, double Z) slideX = (Numer2 * tX + Numer1 * tY, Numer1 * tX + Numer3 * tY, Denom2 * tX + Denom1 * tY);
 
 			//Y方向に0.5ピクセル進んだ時の並進ベクトル
-			tempY = pixSizeY / 2;
-			tempX = pixSizeY * TanKsi / 2;
-			double slideY_X = Numer2 * tempX + Numer1 * tempY;
-			double slideY_Y = Numer1 * tempX + Numer3 * tempY;
-			double slideY_Z = Denom2 * tempX + Denom1 * tempY;
+			tY = pixSizeY / 2;
+			tX = pixSizeY * TanKsi / 2;
+			(double X, double Y, double Z) slideY = (Numer2 * tX + Numer1 * tY, Numer1 * tX + Numer3 * tY, Denom2 * tX + Denom1 * tY);
 
-			double[] slideX = new double[] { slideX_X + slideY_X, slideX_X - slideY_X };
-			double[] slideY = new double[] { slideX_Y + slideY_Y, slideX_Y - slideY_Y };
-			double[] slideZ = new double[] { slideX_Z + slideY_Z, slideX_Z - slideY_Z };
-
-			double[] vx = new double[5], vy = new double[5];
-			double[] ptx = new double[5], pty = new double[5];
-
-			double x, y, z, q2, q, l2, l;//, qInv, lInv;
-			double a, b, bNew, c, r2, p;
-			int n, m, startIndex;
-			double twoTheta, devTwoTheta;
-			double numer1TempY, numer3TempY, denom1tempYFD;
-			double intensityPerArea;
-			double vxTemp;
+			(double X, double Y, double Z)[] slide = new[] { (slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z), (slideX.X - slideY.X, slideX.Y - slideY.Y, slideX.Z - slideY.Z) };
 
 			//IPの法線ベクトル
-			double detector_normal_X = Denom2;
-			double detector_normal_Y = Denom1;
-			double detector_normal_Z = -CosTau;
+			(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
 
 			//ここから積分開始
-			for (j = yMin; j < yMax; j++)
+			for (int j = yMin; j < yMax; j++)
 			{
-				tempY = (j - centerY) * pixSizeY;//IP平面上の座標系におけるY位置
-				tempY2TanKsi = tempY * TanKsi;
-				numer1TempY = Numer1 * tempY;
-				numer3TempY = Numer3 * tempY;
-				denom1tempYFD = Denom1 * tempY + fd;
+				var tempY = (j - centerY) * pixSizeY;//IP平面上の座標系におけるY位置
+				var tempY2TanKsi = tempY * TanKsi;
+				var numer1TempY = Numer1 * tempY;
+				var numer3TempY = Numer3 * tempY;
+				var denom1tempYFD = Denom1 * tempY + fd;
 
-				jWidth = j * width;
-				for (i = xMin; i < xMax; i++)
+				var jWidth = j * width;
+				for (int i = xMin; i < xMax; i++)
 				{
 					if (IsValid[i + jWidth])//マスクされていないとき
 					{
-						tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
-						//以下のx,y,zがピクセル中心の空間位置
-						x = Numer2 * tempX + numer1TempY;
-						y = Numer1 * tempX + numer3TempY;
-						z = Denom2 * tempX + denom1tempYFD;
+						var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
+																			//以下のx,y,zがピクセル中心の空間位置
+						var x = Numer2 * tempX + numer1TempY;
+						var y = Numer1 * tempX + numer3TempY;
+						var z = Denom2 * tempX + denom1tempYFD;
 
 						if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
 						{
 							//検出器中心(0,0,FD)からピクセルまでの距離
-							double distance2 = x * x + y * y + (z - fd) * (z - fd), distance = Math.Sqrt(distance2);
+							var distance = Math.Sqrt(x * x + y * y + (z - fd) * (z - fd));
 
 							//検出器のダイレクトスポット方向に縮める割合
-							double coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
+							var coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
 
 							//検出器の法線方向に進む距離
-							double slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
+							var slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
 
 							//(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palalleをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
-							x = x * coeff_detector_palallel + detector_normal_X * slide_detector_normal;
-							y = y * coeff_detector_palallel + detector_normal_Y * slide_detector_normal;
-							z = (z - fd) * coeff_detector_palallel + fd + detector_normal_Z * slide_detector_normal;
+							x = x * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
+							y = y * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
+							z = (z - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
 						}
 
-						q2 = x * x + y * y;
-						l2 = q2 + z * z;
-						q = Math.Sqrt(q2);
-						l = Math.Sqrt(l2);
+						double l2 = x * x + y * y + z * z, q = Math.Sqrt(x * x + y * y), l = Math.Sqrt(l2);
 
+						(double X, double Y)[] v = new (double X, double Y)[5], pt = new (double X, double Y)[5];
 						//四隅の頂点座標を計算
-						for (k = 0; k < 2; k++)
+						for (int k = 0; k < 2; k++)
 						{
-							a = x + slideX[k];
-							b = y + slideY[k];
-							c = z + slideZ[k];
+							double a = x + slide[k].X, b = y + slide[k].Y, c = z + slide[k].Z;
 
-							r2 = a * a + b * b + c * c;
-							bNew = (b * x - a * y) / q;
-							p = a * x + b * y + c * z;
-							vxTemp = (r2 - bNew * bNew) * l2 / p / p - 1;
-							vx[k] = vxTemp > 0 ? fd * Math.Sqrt(vxTemp) : 0;
-							vy[k] = bNew * l * fd / p;
+							var bNew = (b * x - a * y) / q;
+							var p = a * x + b * y + c * z;
+							var vxTemp = (a * a + b * b + c * c - bNew * bNew) * l2 / p / p - 1;
+							v[k].X = vxTemp > 0 ? fd * Math.Sqrt(vxTemp) : 0;
+							v[k].Y = bNew * l * fd / p;
 							if (c * l2 < z * p)
-								vx[k] = -vx[k];
-							vx[k + 2] = -vx[k];
-							vy[k + 2] = -vy[k];
+								v[k].X = -v[k].X;
+							v[k + 2].X = -v[k].X;
+							v[k + 2].Y = -v[k].Y;
 						}
-						vx[4] = vx[0];
-						vy[4] = vy[0];
+						v[4] = v[0];
 
-						area = vx[0] * (vy[1] - vy[2]) + vx[1] * (vy[2] - vy[0]) + vx[2] * (vy[0] - vy[1]);//矩形の面積
-						if (area < 0) area = -area;
+						var area = Math.Abs(v[0].X * (v[1].Y - v[2].Y) + v[1].X * (v[2].Y - v[0].Y) + v[2].X * (v[0].Y - v[1].Y));//矩形の面積
 
-						twoTheta = Math.Asin(q / l);//2θ算出
-						if (z < 0)
-							twoTheta = Math.PI - twoTheta;
-						devTwoTheta = Math.Atan(Math.Max(Math.Abs(vx[0]), Math.Abs(vx[1])) / fd);
+						var twoTheta = z >= 0 ? Math.Asin(q / l) : Math.PI - Math.Asin(q / l);//2θ算出
+						var devTwoTheta = Math.Atan(Math.Max(Math.Abs(v[0].X), Math.Abs(v[1].X)) / fd);
 
-						startIndex = (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5);
-						if (startIndex < 0)
-							startIndex = 0;
-						intensityPerArea = Intensity[i + jWidth] / area;
-						area2 = 0;
+						var startIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
+						var intensityPerArea = Intensity[i + jWidth] / area;
+						var area2 = 0.0;
 						//矩形をx=cの直線で切り取り、面積比を計算するループここから
-						for (k = startIndex; k < length; k++)
+						for (int k = startIndex; k < length; k++)
 						{
 							if (R2[k] > twoTheta + devTwoTheta)
 							{
@@ -2736,32 +2700,24 @@ namespace Crystallography
 								profile[k] += (area - area2) * intensityPerArea;
 								break;
 							}
-							c = Math.Tan(R2[k] - twoTheta) * fd;
-							n = 0;
-							for (m = 0; m < 4; m++)
+							var c = Math.Tan(R2[k] - twoTheta) * fd;
+							var n = 0;
+							for (int m = 0; m < 4; m++)
 							{
-								if (vx[m] < c)
-								{
-									ptx[n] = vx[m];
-									pty[n] = vy[m];
-									n++;
-								}
-								if ((vx[m] < c && c <= vx[m + 1]) || (vx[m] >= c && c > vx[m + 1]))
-								{
-									ptx[n] = c;
-									pty[n] = (c * vy[m + 1] - c * vy[m] - vx[m] * vy[m + 1] + vx[m + 1] * vy[m]) / (vx[m + 1] - vx[m]);
-									n++;
-								}
+								if (v[m].X < c)
+									pt[n++] = v[m];
+								if ((v[m].X < c && c <= v[m + 1].X) || (v[m].X >= c && c > v[m + 1].X))
+									pt[n++] = (c, (c * v[m + 1].Y - c * v[m].Y - v[m].X * v[m + 1].Y + v[m + 1].X * v[m].Y) / (v[m + 1].X - v[m].X));
 							}
-							if (n == 3)//0 - 1 - 2 が作る3角形
-								area1 = ptx[0] * (pty[1] - pty[2]) + ptx[1] * (pty[2] - pty[0]) + ptx[2] * (pty[0] - pty[1]);
-							else if (n == 4) // 0 - 1 - 2 -  3 が作る4角形
-								area1 = ptx[0] * (pty[1] - pty[3]) + ptx[1] * (pty[2] - pty[0]) + ptx[2] * (pty[3] - pty[1]) + ptx[3] * (pty[0] - pty[2]);
-							else if (n == 5)// 0 - 1 - 2 - 3 - 4 が作る3角形
-								area1 = ptx[0] * (pty[1] - pty[4]) + ptx[1] * (pty[2] - pty[0]) + ptx[2] * (pty[3] - pty[1]) + ptx[3] * (pty[4] - pty[2]) + ptx[4] * (pty[0] - pty[3]);
-							else
-								area1 = 0;
-							area1 = area1 > 0 ? area1 * 0.5 : area1 * -0.5;
+
+							var area1 = Math.Abs(n switch
+							{
+								3 => pt[0].X * (pt[1].Y - pt[2].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[0].Y - pt[1].Y),//0 - 1 - 2 が作る3角形
+								4 => pt[0].X * (pt[1].Y - pt[3].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[3].Y - pt[1].Y) + pt[3].X * (pt[0].Y - pt[2].Y),// 0 - 1 - 2 -  3 が作る4角形
+								5 => pt[0].X * (pt[1].Y - pt[4].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[3].Y - pt[1].Y) + pt[3].X * (pt[4].Y - pt[2].Y) + pt[4].X * (pt[0].Y - pt[3].Y),// 0 - 1 - 2 - 3 - 4 が作る3角形
+								_ => 0
+							}) * 0.5;
+							
 							pixels[k] += area1 - area2;
 							profile[k] += (area1 - area2) * intensityPerArea;
 							area2 = area1;
@@ -2770,8 +2726,8 @@ namespace Crystallography
 				}
 			}
 
-			double mag = 1 / (pixSizeX * pixSizeY);//係数
-			for (i = 0; i < pixels.Length; i++)
+			var mag = 1 / (pixSizeX * pixSizeY);//係数
+			for (int i = 0; i < pixels.Length; i++)
 				pixels[i] *= mag;
 		}
 
