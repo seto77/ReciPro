@@ -802,6 +802,7 @@ namespace ReciPro
                 c.SetCrystallites();
                 c.Crystallites.SpotShapesAngleDivision = 1;
 
+                Detector.WaveSource = WaveSource.None;//SetGvectorの中で強度計算させないようにNoneにしておく
                 if (waveLengthControl1.Property.Source == WaveSource.Electron)
                 {
                     c.GrainSize = 6;
@@ -812,7 +813,8 @@ namespace ReciPro
                     c.GrainSize = 6;
                     c.Crystallites.SetGVector(Detector, false, true, false);
                 }
-                ;
+                Detector.WaveSource = waveLengthControl1.Property.Source;//Noneから元に戻す
+
                 vec.Add(new List<Vector3D>());
                 for (int i = 0; i < c.VectorOfG.Count; i++)
                     vec[j].Add(Deep.Copy(c.VectorOfG[i]));

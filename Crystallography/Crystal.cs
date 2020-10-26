@@ -1121,16 +1121,20 @@ namespace Crystallography
             var whole = new HashSet<int> { 0 };
             const int n = 1024;
             var minG = 0.0;
-            var list = new List<(int h, int k, int l, int i)>();
+            //
             //var listP = list.AsParallel();
 
-            var maxGnum = 500000;
-            var g = new List<Vector3D>();
-            while (g.Count < maxGnum && minG < gMax)
+            double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
+            double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
+            double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
+
+            var maxGnum = 250000;
+            var gTemp1 = new List<(int h, int k, int l, double x, double y, double z, double glen)>();
+            while (gTemp1.Count < maxGnum && minG < gMax)
             {
                 minG = outer.Min(o => o.Value);
                 var outerList = outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToList();
-                list.Clear();
+                var list = new List<(int h, int k, int l, int i)>();
                 var i = 0;
                 foreach ((int h2, int k2, int l2) in direction)
                     foreach ((int h1, int k1, int l1) in outerList)
@@ -1142,43 +1146,35 @@ namespace Crystallography
                             list.Add((h, k, l, i++));
                         }
                     }
-                var gTemp = new Vector3D[list.Count * 2];
-                var outerTemp = new (int h, int k, int l, double glen)[list.Count];
-                list.ForEach(index=>
+                outerList.ForEach(target => outer.Remove(target));
+
+                var gTemp2 = list.Select(index =>
                 {
                     (int h, int k, int l, int i) = index;
-
-                    var vec1 = h * A_Star + k * B_Star + l * C_Star;
-                    var glen = vec1.Length;
-                    vec1.h = (short)h;
-                    vec1.k = (short)k;
-                    vec1.l = (short)l;
-                    vec1.d = 1 / glen;
-                    vec1.Extinction = Symmetry.CheckExtinctionRule(h, k, l);
-                    vec1.Index = $"{h} {k} {l}";
-
-                    var vec2 = -vec1;
-                    vec2.h = (short)-h;
-                    vec2.k = (short)-k;
-                    vec2.l = (short)-l;
-                    vec2.d = vec1.d;
-                    vec2.Extinction = vec1.Extinction;
-                    vec2.Index = $"{-h} {-k} {-l}";
-
-                    gTemp[i * 2] = vec1;
-                    gTemp[i * 2 + 1] = vec2;
-                    outerTemp[i] = (h, k, l, glen);
+                    var gX = h * aX + k * bX + l * cX;
+                    var gY = h * aY + k * bY + l * cY;
+                    var gZ = h * aZ + k * bZ + l * cZ;
+                    return (h, k, l, gX, gY, gZ, Math.Sqrt(gX * gX + gY * gY + gZ * gZ));
                 });
-                g.AddRange(gTemp);
-                outerList.ForEach(target => outer.Remove(target));
-                foreach (var (h, k, l, glen) in outerTemp)
+                
+                gTemp1.AddRange(gTemp2);
+                foreach (var (h, k, l, _, _, _, glen) in gTemp2)
                     outer.Add((h, k, l), glen);
             }
+            gTemp1 = gTemp1.OrderBy(g => g.glen).ToList();
+
+            var gArray = new Vector3D[gTemp1.Count * 2];
+            Parallel.For(0, gTemp1.Count, i =>
+            {
+               int h = gTemp1[i].h, k = gTemp1[i].k, l = gTemp1[i].l;
+               double gX = gTemp1[i].x, gY = gTemp1[i].y, gZ = gTemp1[i].z, d = 1 / gTemp1[i].glen;
+               var extinction = Symmetry.CheckExtinctionRule(h, k, l);
+               gArray[i * 2] = new Vector3D(gX, gY, gZ, false) { h = (short)h, k = (short)k, l = (short)l, d = d, Extinction = extinction, Index = $"{h} {k} {l}" };
+               gArray[i * 2 + 1] = new Vector3D(-gX, -gY, -gZ, false) { h = (short)-h, k = (short)-k, l = (short)-l, d = d, Extinction = extinction, Index = $"{-h} {-k} {-l}" };
+            });
 
 
-
-
-            g = g.OrderByDescending(v => v.d).ToList();
+            var g = gArray.ToList();
 
             if (wavesource != WaveSource.None)//ã≠ìxåvéZÇ∑ÇÈèÍçá 250msÇ≠ÇÁÇ¢
             {
