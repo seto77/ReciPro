@@ -17,7 +17,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="points"></param>
         /// <returns></returns>
-        public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(V3d[] points, V3d origin)
+        public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable< V3d> points, V3d origin)
         {
             var center = new V3d(points.Average(p => p.X), points.Average(p => p.Y), points.Average(p => p.Z));
             var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));

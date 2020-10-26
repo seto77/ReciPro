@@ -173,7 +173,7 @@ namespace ReciPro
             else if (e.Button == MouseButtons.Left && e.Clicks == 1)//左クリック スポット選択
             {
                 var spots = dataSet.DataTableSpot.Spots;
-                if (spots != null && spots.Count > 0)
+                if (spots != null && spots.Any())
                 {
                     var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
                     if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
@@ -191,7 +191,7 @@ namespace ReciPro
             {
                 skipEvent = true;
                 var spots = dataSet.DataTableSpot.Spots;
-                if (spots != null && spots.Count > 0)
+                if (spots != null && spots.Count!=0)
                 {
                     var min = spots.Min(s => (s.X - pt.X) * (s.X - pt.X) + (s.Y - pt.Y) * (s.Y - pt.Y));
                     if (Math.Sqrt(min) * scalablePictureBoxAdvanced.ZoomAndCenter.Zoom < 10)
@@ -826,7 +826,7 @@ namespace ReciPro
             var func = new Func<int, List<Vector3DBase>, int[], List<Grain>>((id, v2, exceptedIndices) =>
                 {
                     var cand = getRotationCandidatesFrom2Spots2(vec[id].ToArray(), v2.ToArray(), exceptedIndices)
-                                    .OrderByDescending(c => c.Indices.Count()).ToList();
+                                    .OrderByDescending(c => c.Indices.Length).ToList();
                     for (int j = 0; j < cand.Count; j++)
                     {
                         for (int k = j + 1; k < cand.Count; k++)
@@ -941,7 +941,7 @@ namespace ReciPro
                         }
                     }
                 }
-                if (max > 10 && mList.Count > 0)
+                if (max > 10 && mList.Any())
                     break;
             }
 
@@ -964,7 +964,7 @@ namespace ReciPro
                     indices = new List<(int No, int H, int K, int L)>();
 
                     for (int k = 0; k < obsSpotsReciprocal.Length; k++)
-                        if (gVectors[k].Count > 0)
+                        if (gVectors[k].Any())
                         {
                             if (backgroundWorkerSpotID.CancellationPending) break;
 

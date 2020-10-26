@@ -597,7 +597,7 @@ namespace Crystallography.OpenGL
         /// <param name="vertices"></param>
         /// <param name="mat"></param>
         /// <param name="mode"></param>
-        public Polygon(V3d[] vertices, Material mat, DrawingMode mode) : base(mat, mode)
+        public Polygon(IEnumerable< V3d> vertices, Material mat, DrawingMode mode) : base(mat, mode)
         {
             ShowClippedSection = false;//クリップ断面は表示しない
             IgnoreNormalSides = true;//裏表を無視する
@@ -809,8 +809,8 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class Polyhedron : GLObject
     {
-        public Polyhedron(Vector3DBase[] vertices, Material mat, DrawingMode mode)
-            : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)).ToArray(), mat, mode) { }
+        public Polyhedron(IEnumerable<Vector3DBase> vertices, Material mat, DrawingMode mode)
+            : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)), mat, mode) { }
 
         /// <summary>
         ///
@@ -818,19 +818,20 @@ namespace Crystallography.OpenGL
         /// <param name="vertices"></param>
         /// <param name="mat"></param>
         /// <param name="mode"></param>
-        public Polyhedron(V3d[] vertices, Material mat, DrawingMode mode) : base(mat, mode)
+        public Polyhedron(IEnumerable< V3d> vertices, Material mat, DrawingMode mode) : base(mat, mode)
         {
             var center = new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
             //任意の三点を選び、平面方程式を作り、それらが最も端面であるかを評価し、端面である場合はリストに加える
-            var candidates = new List<List<V3d>>();
-            for (int i = 0; i < vertices.Length; i++)
-                for (int j = i + 1; j < vertices.Length; j++)
-                    for (int k = j + 1; k < vertices.Length; k++)
+            var candidates = new List<V3d[]>();
+            var vrs = vertices.ToArray();
+            for (int i = 0; i < vrs.Length; i++)
+                for (int j = i + 1; j < vrs.Length; j++)
+                    for (int k = j + 1; k < vrs.Length; k++)
                     {
-                        V3d A = vertices[i], B = vertices[j], C = vertices[k];
+                        V3d A = vrs[i], B = vrs[j], C = vrs[k];
                         V3d V = new V3d(
                             (B.Y - A.Y) * (C.Z - A.Z) - (C.Y - A.Y) * (B.Z - A.Z),
                             (B.Z - A.Z) * (C.X - A.X) - (C.Z - A.Z) * (B.X - A.X),
@@ -838,42 +839,42 @@ namespace Crystallography.OpenGL
                          );
                         var d = -V3d.Dot(V, A);
 
-                        if (vertices.All(v => V3d.Dot(v, V) + d < 0.0000001) || vertices.All(v => V3d.Dot(v, V) + d > -0.0000001))
-                            if (candidates.All(cand => !(cand.Contains(vertices[i]) && cand.Contains(vertices[j]) && cand.Contains(vertices[k]))))
-                                candidates.Add(vertices.Where(v => Math.Abs(V3d.Dot(v, V) + d) < 0.0000001).ToList());
+                        if (vrs.All(v => V3d.Dot(v, V) + d < 0.0000001) || vrs.All(v => V3d.Dot(v, V) + d > -0.0000001))
+                            if (candidates.All(cand => !(cand.Contains(vrs[i]) && cand.Contains(vrs[j]) && cand.Contains(vrs[k]))))
+                                candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v, V) + d) < 0.0000001).ToArray());
                     }
 
             //各面を構成する頂点集合に対して
             var vList = new List<Vertex>();
-            var iList2 = new List<int[]>();
+            var iList2 = new List<IEnumerable< int>>();
             var types = new List<PT>();
             var offset = 0;
             foreach (var cand in candidates)
             {
-                var polygonInfo = GLGeometry.PolygonInfo(cand.ToArray(), center);
+                var polygonInfo = GLGeometry.PolygonInfo(cand, center);
 
                 vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
                 vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
 
                 var iTemp = new List<int>(new[] { vList.Count - 1 });//多面体中心のインデックスを追加
                 var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
-                iTemp.AddRange(offsetIndices.ToArray());//多面体頂点のインデックスを追加
+                iTemp.AddRange(offsetIndices);//多面体頂点のインデックスを追加
 
-                iList2.Add(iTemp.ToArray());
+                iList2.Add(iTemp);
                 types.Add(PT.TriangleFan);
 
                 offsetIndices.RemoveAt(0);
-                iList2.Add(offsetIndices.ToArray());
-                iList2.Add(offsetIndices.ToArray());
+                iList2.Add(offsetIndices);
+                iList2.Add(offsetIndices);
                 types.Add(PT.LineLoop);
                 types.Add(PT.Points);
 
-                offset += cand.Count + 1;
+                offset += cand.Length + 1;
             }
 
             Vertices = vList.ToArray();
             Indices = iList2.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = iList2.Select(i => i.Length).ToArray();
+            TypeCounts = iList2.Select(i => i.Count()).ToArray();
             Types = types.ToArray();
 
 

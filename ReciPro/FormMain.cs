@@ -1027,7 +1027,7 @@ namespace ReciPro
                 else return;
             }
 
-            if (cry.Count > 0)
+            if (cry.Any())
             {
                 if (clearPresentList)
                     listBox.Items.Clear();

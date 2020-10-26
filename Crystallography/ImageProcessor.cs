@@ -223,7 +223,7 @@ namespace Crystallography
             var d2 = distanceOfNearestSpots * distanceOfNearestSpots;
             for (int i = 0; i < mList.Count && list.Count < candidateNum; i++)
                 if (list.All(l => (mList[i].x - l.x) * (mList[i].x - l.x) + (mList[i].y - l.y) * (mList[i].y - l.y) > d2) &&
-                   (activeSpots == null || activeSpots.Count() == 0 ||
+                   (activeSpots == null || !activeSpots.Any() ||
                    activeSpots.All(s => (mList[i].x - s.X) * (mList[i].x - s.X) + (mList[i].y - s.Y) * (mList[i].y - s.Y) > d2)))
                     list.Add((mList[i].x, mList[i].y));
 

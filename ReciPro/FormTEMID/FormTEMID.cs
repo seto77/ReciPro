@@ -346,7 +346,7 @@ namespace ReciPro
 
             if (candidate.Count > 1000)
                 MessageBox.Show("Number of candidates are over 1000. Set more limeted conditions.");
-            else if (candidate.Count > 0)
+            else if (candidate.Count >0)
             {
                 double[] obsAngle = new double[]{
                     FindZoneAxis.GetAngleBetweenHolders(photo1.Tilt1, photo1.Tilt2, photo2.Tilt1, photo2.Tilt2),

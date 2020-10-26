@@ -431,14 +431,13 @@ namespace ReciPro
             for (int i = 0; i < enabledAtoms.Length; i++)
             {
                 var a = enabledAtoms[i];
-                if (enabledAtoms.Where((b, j) => i != j && a.X == b.X && a.Y == b.Y && a.Z == b.Z && (a.Occ < b.Occ || (a.Occ <= b.Occ && i > j))).Count() == 0)
+                if (enabledAtoms.Where((b, j) => i != j && a.X == b.X && a.Y == b.Y && a.Z == b.Z && (a.Occ < b.Occ || (a.Occ <= b.Occ && i > j))).Any() == false)
                 {
                     var mat = new Material(a.Argb, a.Texture);
                     var radius = a.Radius * 0.1;//nmをAに変換
                     foreach (var pos in a.Atom.Select(v => new V3(v.X, v.Y, v.Z)))
                         list.Add((i, pos, mat, radius));
                 }
-
             }
             enabledAtomsP = list.AsParallel();
 
@@ -493,7 +492,7 @@ namespace ReciPro
                 }
 
                 //中心頂点に対する、頂点のリストを一気に作成
-                var dic2 = new Dictionary<bondVertex, bondVertex[]>();//中心焦点に対する頂点リストのDictionary
+                var dic2 = new Dictionary<bondVertex, IEnumerable< bondVertex>>();//中心焦点に対する頂点リストのDictionary
                 var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
                 Parallel.ForEach(dic1[bond.Element1], c =>
                 {
@@ -501,11 +500,12 @@ namespace ReciPro
                     {
                         var d = (v.O - c.O).LengthSquared;
                         return d < max2 && d > min2 && c.Serial != v.Serial;
-                    }).ToArray();
+                    });
 
-                    int m = vertices.Length, i = c.AtomIndex;
-                    if (m != 0)
+                    
+                    if (vertices.Any())
                     {
+                        int m = vertices.Count(), i = c.AtomIndex;
                         rwLock.EnterWriteLock();
                         try
                         {
@@ -519,7 +519,7 @@ namespace ReciPro
                                 if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
                                 {
                                     coord[c.AtomIndex] = m;
-                                    dic2.Where(o => o.Key.AtomIndex == i && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
+                                    dic2.Where(o => o.Key.AtomIndex == i && o.Value.Count() < m).ToList().ForEach(o => dic2.Remove(o.Key));
                                 }
                                 dic2.Add(c, vertices);
                             }
@@ -564,7 +564,7 @@ namespace ReciPro
                     {
                         if (vertices.Count() == 3)
                         {
-                            var polygon = new Polygon(vertices.Select(v => v.O).ToArray(), c.PolyMat, polyhedronMode)
+                            var polygon = new Polygon(vertices.Select(v => v.O), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron };
 
                             rwLock.EnterWriteLock();
@@ -573,7 +573,7 @@ namespace ReciPro
                         }
                         else if (vertices.Count() > 3)
                         {
-                            var polyhedron = new Polyhedron(vertices.Select(v => v.O).ToArray(), c.PolyMat, polyhedronMode)
+                            var polyhedron = new Polyhedron(vertices.Select(v => v.O), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false };
 
                             rwLock.EnterWriteLock();
@@ -977,7 +977,7 @@ namespace ReciPro
                             if (!depthList.ContainsKey(origin.Z))
                                 depthList.Add(origin.Z, i);
                     }
-                if (depthList.Count > 0)
+                if (depthList.Any())
                 {
                     var sphere = GLObjects[depthList.Last().Value] as Sphere;
                     textBoxInformation.AppendText(

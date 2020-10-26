@@ -190,8 +190,8 @@ namespace Crystallography
                 }
             }
 
-            for(int i=0; i<dp.Count; i++)
-                dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Count>1 ? $" -{i}" : "")}";
+            for (int i = 0; i < dp.Count; i++)
+                dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Count > 1 ? $" -{i}" : "")}";
 
             if (dp.Count > 0)
                 return dp.ToArray();

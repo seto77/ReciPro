@@ -696,7 +696,7 @@ namespace ReciPro
             formMain.timer.Stop();
 
             var sb = new StringBuilder();
-            if (positionRecorder.Count > 0)
+            if (positionRecorder.Count >0)
             {
                 for (int i = 0; i < positionRecorder.Count; i++)
                 {

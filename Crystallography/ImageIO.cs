@@ -144,7 +144,7 @@ namespace Crystallography
                     while ((tempstr = reader.ReadLine()) != null)
                         strList.Add(tempstr);
 
-                    if (strList != null && strList.Count > 0 && strList[0].IndexOf("BAS_IMAGE_FILE") >= 0)//BAS2000
+                    if (strList != null && strList.Any() && strList[0].IndexOf("BAS_IMAGE_FILE") >= 0)//BAS2000
                         result = ImageIO.BAS2000or2500(str, strList.ToArray());
                     else
                         return false;

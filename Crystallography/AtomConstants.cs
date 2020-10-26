@@ -6826,7 +6826,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 							{
 								sbEdgeEnergy.AppendLine("case XrayLineEdge." + temp[j] + ": return " + temp[j + 1] + ";");
 								//edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), -((temp[j][0] - 'J') * 10 + (temp[j].Length > 1 ? temp[j][1] - '0' : 0))));
-								if (edge.Count == 0 || (edge.Count > 0 && edge[edge.Count - 1].X != Convert.ToDouble(temp[j + 1])))
+								if (edge.Count == 0 || (edge.Any() && edge[edge.Count - 1].X != Convert.ToDouble(temp[j + 1])))
 								{
 									edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.PositiveInfinity));
 									edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.NegativeInfinity));
@@ -6848,7 +6848,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 				var pf = new List<Profile> { new Profile() };
 				for (int j = 0; j < absorp.Count; j++)
 				{
-					if (double.IsPositiveInfinity(absorp[j].Y) && pf[pf.Count - 1].Pt.Count > 0)
+					if (double.IsPositiveInfinity(absorp[j].Y) && pf[pf.Count - 1].Pt.Any())
 						pf.Add(new Profile());
 					pf[pf.Count - 1].Pt.Add(absorp[j]);
 				}

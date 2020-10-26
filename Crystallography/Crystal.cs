@@ -1124,52 +1124,49 @@ namespace Crystallography
             double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
             var maxGnum = 250000;
-            var gTemp = new List<(int h, int k, int l, double x, double y, double z, double len)>();
+            var gList = new List<(int h, int k, int l, double x, double y, double z, double len)>();
 
-            while (gTemp.Count < maxGnum && (minG = outer.Min(o => o.Value)) < gMax)
+            while (gList.Count < maxGnum && (minG = outer.Min(o => o.Value)) < gMax)
             {
-                foreach ((int h1, int k1, int l1) in outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToList())
+                foreach ((int h1, int k1, int l1) in outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToArray())
                 {
                     outer.Remove((h1, k1, l1));
                     foreach ((int h2, int k2, int l2) in directions)
                     {
                         int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * 1048576 + k * 1024 + l;
-                        if (key > 0 && !whole.Contains(key))
+                        if (key > 0 && whole.Add(key))
                         {
-                            whole.Add(key);
                             double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                             var len = Math.Sqrt(x * x + y * y + z * z);
-                            gTemp.Add((h, k, l, x, y, z, len));
+                            gList.Add((h, k, l, x, y, z, len));
                             outer.Add((h, k, l), len);
                         }
                     }
                 }
             }
-            gTemp = gTemp.OrderBy(g => g.len).ToList();
+            gList = gList.OrderBy(g => g.len).ToList();
 
-            var gArray = new Vector3D[gTemp.Count * 2];
-            Parallel.For(0, gTemp.Count, i =>
+            var gArray = new Vector3D[gList.Count * 2];
+            Parallel.For(0, gList.Count, i =>
             {
-                (int h, int k, int l, double x, double y, double z, double glen) = gTemp[i];
+                (int h, int k, int l, double x, double y, double z, double glen) = gList[i];
                 var extinction = Symmetry.CheckExtinctionRule(h, k, l);
                 gArray[i * 2] = new Vector3D(x, y, z, false) { h = (short)h, k = (short)k, l = (short)l, d = 1 / glen, Extinction = extinction, Index = $"{h} {k} {l}" };
                 gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { h = (short)-h, k = (short)-k, l = (short)-l, d = 1 / glen, Extinction = extinction, Index = $"{-h} {-k} {-l}" };
             });
 
-            var g = gArray.ToList();
-
             if (wavesource != WaveSource.None)//強度計算する場合 250msくらい
             {
-                Parallel.ForEach(g, _g =>
+                Parallel.ForEach(gArray, _g =>
                 {
                      _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.h, _g.k, _g.l, _g.Length2 / 4.0) : 0;
                      _g.RawIntensity = _g.F.Magnitude2();
                 });
 
-                var maxIntensity = g.Max(v => v.RawIntensity);
-                Parallel.ForEach(g, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
+                var maxIntensity = gArray.Max(v => v.RawIntensity);
+                Parallel.ForEach(gArray, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
             }
-            VectorOfG = g; //最後に値を代入
+            VectorOfG = gArray.ToList(); //最後に値を代入
         }
 
         #endregion

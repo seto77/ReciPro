@@ -577,7 +577,7 @@ namespace Crystallography.Controls
             for (int i = 0; i < srcProfileList.Count; i++)
             {
                 Profile temp = new Profile();
-                if (srcProfileList[i] != null && srcProfileList[i].Pt != null && srcProfileList[i].Pt.Count > 0)
+                if (srcProfileList[i] != null && srcProfileList[i].Pt != null && srcProfileList[i].Pt.Any())
                     temp = convertAxis(srcProfileList[i]);
                 destProfileList.Add(temp);
                 setDrawRangeLimit();
@@ -832,10 +832,10 @@ namespace Crystallography.Controls
                     else if (mode == DrawingMode.Point)
                         DrawProfilePoint();
 
-                    if (lineList.Count > 0)
+                    if (lineList.Any())
                         DrawLine();
 
-                    if (peaks.Count > 0)
+                    if (peaks.Any())
                         DrawPeaks();
                 }
                 pictureBox.Image = Bmp;
