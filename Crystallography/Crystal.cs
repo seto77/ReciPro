@@ -580,8 +580,6 @@ namespace Crystallography
             }
             #endregion
 
-
-
             double SinAlfa = Math.Sin(Alpha); double SinBeta = Math.Sin(Beta); double SinGamma = Math.Sin(Gamma);
             double CosAlfa = Math.Cos(Alpha); double CosBeta = Math.Cos(Beta); double CosGamma = Math.Cos(Gamma);
             double a2 = A * A; double b2 = B * B; var c2 = C * C;
