@@ -164,10 +164,10 @@ namespace Crystallography
                 initializeVec();
         }
 
-        public void SetGVector(AreaDetector detector, bool applyTiltMatrix = true, bool removeZeroIntensity = true)
+        public void SetGVector(AreaDetector detector, bool applyTiltMatrix = true, bool removeZeroIntensity = true, bool calcSpotShape = true)
         {
             if (BaseCrystal != null)
-                SetGVector(BaseCrystal, detector, applyTiltMatrix, removeZeroIntensity);
+                SetGVector(BaseCrystal, detector, applyTiltMatrix, removeZeroIntensity, calcSpotShape);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Crystallography
         /// <param name="center"></param>
         /// <param name="resolution"></param>
         /// <param name="maskedArea"></param>
-        public void SetGVector(Crystal crystal, AreaDetector detector, bool applyTiltMatrix = true, bool removeZeroIntensity = true)
+        public void SetGVector(Crystal crystal, AreaDetector detector, bool applyTiltMatrix = true, bool removeZeroIntensity = true, bool calcSpotShape=true)
         {
             ImageWidh = detector.ImageWidth;
             ImageHeight = detector.ImageHeight;
@@ -259,8 +259,8 @@ namespace Crystallography
                 G[i].Intensity2 /= maxInt;
                 DeviationThreshold[i] = Math.Max(3, Math.Log10(G[i].Intensity2) * 3);//最小で3, 最大で9
             }
-
-            setSpotShapes(detector);
+            if(calcSpotShape)
+                setSpotShapes(detector);
         }
 
         /// <summary>

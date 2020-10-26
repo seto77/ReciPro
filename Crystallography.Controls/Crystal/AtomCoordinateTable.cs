@@ -10,7 +10,7 @@ namespace Crystallography.Controls
 {
     public partial class AtomCoordinateTable : UserControl
     {
-        ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
+        readonly ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
         private bool skipEvent { get; set; } = false;
         public AtomCoordinateTable()
         {
@@ -209,12 +209,12 @@ namespace Crystallography.Controls
 
         private void DrawHistogram(List<(string Label, double Distance)> atoms)
         {
-            SolidBrush solidBrush = new SolidBrush(Color.LawnGreen);
-            float zero = ConvToPicBoxCoord(0, 0).Y;
+            var solidBrush = new SolidBrush(Color.LawnGreen);
+            var zero = ConvToPicBoxCoord(0, 0).Y;
             for (int i = 0; i < profile.Pt.Count - 1; i++)
             {
-                PointF p1 = ConvToPicBoxCoord(profile.Pt[i]);
-                PointF p2 = ConvToPicBoxCoord(profile.Pt[i + 1]);
+                var p1 = ConvToPicBoxCoord(profile.Pt[i]);
+                var p2 = ConvToPicBoxCoord(profile.Pt[i + 1]);
                 if (Math.Abs(p1.X - p2.X) > 0.2)
                     g.FillRectangle(solidBrush, new RectangleF(p1.X, p1.Y, p2.X - p1.X, zero - p1.Y));
             }
@@ -223,8 +223,8 @@ namespace Crystallography.Controls
         private void DrawLabel(List<(string Label, double Distance)> atoms)
 
         {
-            PointF JustBeforePt = new PointF(-10, -10);
-            String JustBeforeLabel = "";
+            var JustBeforePt = new PointF(-10, -10);
+            var JustBeforeLabel = "";
             int times = 1;
             int shiftY = 15;
             Font font = new Font("Tahoma", 9);

@@ -805,12 +805,12 @@ namespace ReciPro
                 if (waveLengthControl1.Property.Source == WaveSource.Electron)
                 {
                     c.GrainSize = 6;
-                    c.Crystallites.SetGVector(Detector, false, checkBoxIgnoreMultipleDiffraction.Checked);
+                    c.Crystallites.SetGVector(Detector, false, checkBoxIgnoreMultipleDiffraction.Checked, false);
                 }
                 else if (waveLengthControl1.Property.Source == WaveSource.Xray)
                 {
                     c.GrainSize = 6;
-                    c.Crystallites.SetGVector(Detector, false, true);
+                    c.Crystallites.SetGVector(Detector, false, true, false);
                 }
                 ;
                 vec.Add(new List<Vector3D>());
@@ -946,63 +946,160 @@ namespace ReciPro
             var candidates = new List<Grain>();
             int counter = 0;
             Parallel.ForEach(mList, rot =>
-           {
-               var residual = 0.0;
-               var indices = new List<(int No, int H, int K, int L)>();
-               for (int n = 0; n < 4; n++)
-               {
-                   if (backgroundWorkerSpotID.CancellationPending)
-                       break;
+            //foreach(var rot in mList)
+            {
+                var result = new Matrix3D( rot);
+                var residual = 0.0;
+                var indices = new List<(int No, int H, int K, int L)>();
+                for (int n = 0; n < 4; n++)
+                {
+                    if (backgroundWorkerSpotID.CancellationPending)
+                        break;
 
-                   var obsList = new List<Vector3DBase>();
-                   var refList = new List<Vector3DBase>();
-                   int beforeCount = 0;
-                   indices = new List<(int No, int H, int K, int L)>();
+                    var obsList = new List<Vector3DBase>();
+                    var refList = new List<Vector3DBase>();
+                    int beforeCount = 0;
+                    indices = new List<(int No, int H, int K, int L)>();
 
-                   for (int k = 0; k < obsSpotsReciprocal.Length; k++)
-                       if (gVectors[k].Count > 0)
-                       {
-                           if (backgroundWorkerSpotID.CancellationPending) break;
+                    for (int k = 0; k < obsSpotsReciprocal.Length; k++)
+                        if (gVectors[k].Count > 0)
+                        {
+                            if (backgroundWorkerSpotID.CancellationPending) break;
 
-                           var obsV = rot * obsSpotsReciprocal[k];
-                           //最も近いgVectorを探す
-                           var min = double.PositiveInfinity;
-                           Vector3D v2 = null;
-                           for (int l = 0; l < gVectors[k].Count; l++)
-                           {
-                               double temp = (gVectors[k][l] - obsV).Length2;
-                               if (min > temp && !refList.Contains(gVectors[k][l]))
-                               {
-                                   v2 = gVectors[k][l];
-                                   min = temp;
-                               }
-                           }
+                            var obsV = rot * obsSpotsReciprocal[k];
+                            //最も近いgVectorを探す
+                            var min = double.PositiveInfinity;
+                            Vector3D v2 = null;
+                            for (int l = 0; l < gVectors[k].Count; l++)
+                            {
+                                double temp = (gVectors[k][l] - obsV).Length2;
+                                if (min > temp && !refList.Contains(gVectors[k][l]))
+                                {
+                                    v2 = gVectors[k][l];
+                                    min = temp;
+                                }
+                            }
 
-                           if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
-                           {
-                               indices.Add((k, v2.h, v2.k, v2.l));
-                               obsList.Add(obsSpotsReciprocal[k]);
-                               refList.Add(v2);
-                           }
-                       }
-                   if (indices.Count > 1)
-                       residual = MQ.GetRotationMatrix2(obsList.ToArray(), refList.ToArray(), ref rot, rot);
-                   if (obsList.Count == beforeCount)
-                       break;
-                   beforeCount = obsList.Count;
-               }
+                            if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
+                            {
+                                indices.Add((k, v2.h, v2.k, v2.l));
+                                obsList.Add(obsSpotsReciprocal[k]);
+                                refList.Add(v2);
+                            }
+                        }
+                    if (indices.Count > 1)
+                        (result, residual) = GetRotationMatrix2(obsList.ToArray(), refList.ToArray(), result);
+                    if (obsList.Count == beforeCount)
+                        break;
+                    beforeCount = obsList.Count;
+                }
 
-               lock (lockObj)
-               {
-                   if (indices.Count > 1)
-                       candidates.Add(new Grain(rot.Inverse(), residual, indices.ToArray()));
-                   if (counter++ % 10 == 0)
-                       backgroundWorkerSpotID.ReportProgress((int)(1000000.0 / mList.Count * counter));
-               }
-           }
+                lock (lockObj)
+                {
+                    if (indices.Count > 1)
+                        candidates.Add(new Grain(result.Inverse(), residual, indices.ToArray()));
+                    if (counter++ % 10 == 0)
+                        backgroundWorkerSpotID.ReportProgress((int)(1000000.0 / mList.Count * counter));
+                }
+            }
             );
 
             return candidates;
+        }
+
+
+        /// <summary>
+        /// 3次元ベクトル集合 v1をなるべくv2に近づけるような回転行列を求める。戻り値は、残差の二乗和を個数で割ったもの
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static (Matrix3D Rotation, double Residual) GetRotationMatrix2(Vector3DBase[] v1, Vector3DBase[] v2, Matrix3D initialRotation)
+        {
+            var func = new Func<double, double, double, double>((phi, theta, psi) =>
+            {
+                double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta), cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi), cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
+                double e11 = cosPhi * cosPsi - cosTheta * sinPhi * sinPsi, e12 = -cosPhi * sinPsi - cosTheta * sinPhi * cosPsi, e13 = sinTheta * sinPhi;
+                double e21 = sinPhi * cosPsi + cosTheta * cosPhi * sinPsi, e22 = -sinPhi * sinPsi + cosTheta * cosPhi * cosPsi, e23 = -sinTheta * cosPhi;
+                double e31 = sinPsi * sinTheta, e32 = cosPsi * sinTheta, e33 = cosTheta;
+
+                return v1.Select((v, i) =>
+                {
+                    var xDev = e11 * v.X + e12 * v.Y + e13 * v.Z - v2[i].X;
+                    var yDev = e21 * v.X + e22 * v.Y + e23 * v.Z - v2[i].Y;
+                    var zDev = e31 * v.X + e32 * v.Y + e33 * v.Z - v2[i].Z;
+                    return xDev * xDev + yDev * yDev + zDev * zDev;
+                }).Sum();
+            });
+
+            var euler = Euler.GetEulerAngle(initialRotation);
+            var r = MathNet.Numerics.FindMinimum.OfFunction(func, euler.Phi, euler.Theta, euler.Psi);
+
+            return (Euler.SetEulerAngle(r.Item1, r.Item2, r.Item3), func(r.Item1, r.Item2, r.Item3) / v1.Length);
+
+            #region 古いコード お蔵入り
+            /*
+            double phi = euler.Phi, theta = euler.Theta, psi = euler.Psi;
+            double phi_Best = 0, theta_Best = 0, psi_Best = 0;
+            var rot = initialRotation;
+
+            double ResidualSquareCurrent = double.MaxValue, ResidualSquareNew = 0;
+            int count = 0;
+
+            //現在の残差を計算
+            double step = Math.PI / 180.0 * 1.0;
+            while (count < 150)//試行回数が一定以上になった時、止める
+            {
+                for (int j2 = -1; j2 < 2; j2++)
+                {
+                    var cosTheta = Math.Cos(theta + step * j2);
+                    var sinTheta = Math.Sin(theta + step * j2);
+                    for (int j3 = -1; j3 < 2; j3++)
+                    {
+                        var cosPsi = Math.Cos(psi + step * j3);
+                        var sinPsi = Math.Sin(psi + step * j3);
+                        double zDevSum = 0;
+                        for (int i = 0; i < length; i++)
+                        {
+                            var zDev = sinPsi * sinTheta * v1[i].X + cosPsi * sinTheta * v1[i].Y + cosTheta * v1[i].Z - v2[i].Z;
+                            zDevSum += zDev * zDev;
+                        }
+
+                        for (int j1 = -1; j1 < 2; j1++)
+                        {
+                            var cosPhi = Math.Cos(phi + step * j1);
+                            var sinPhi = Math.Sin(phi + step * j1);
+                            ResidualSquareNew = zDevSum;
+                            for (int i = 0; i < length; i++)
+                            {
+                                var xDev = (cosPhi * cosPsi - cosTheta * sinPhi * sinPsi) * v1[i].X + (-cosPhi * sinPsi - cosTheta * sinPhi * cosPsi) * v1[i].Y + (sinTheta * sinPhi) * v1[i].Z - v2[i].X;
+                                var yDev = (sinPhi * cosPsi + cosTheta * cosPhi * sinPsi) * v1[i].X + (-sinPhi * sinPsi + cosTheta * cosPhi * cosPsi) * v1[i].Y + (-sinTheta * cosPhi) * v1[i].Z - v2[i].Y;
+                                ResidualSquareNew += xDev * xDev + yDev * yDev;
+                            }
+
+                            if (ResidualSquareCurrent > ResidualSquareNew)//新旧の残差の二乗和を比較
+                            {//改善したとき
+                                ResidualSquareCurrent = ResidualSquareNew;//残差の二乗和を書き換える
+                                phi_Best = phi + step * j1; theta_Best = theta + step * j2; psi_Best = psi + step * j3; //新旧パラメータを書き換える
+                            }
+                        }
+                    }
+                }
+
+                if (phi_Best == phi && psi_Best == psi & theta_Best == theta)
+                    step *= 0.7;
+                phi = phi_Best;
+                psi = psi_Best;
+                theta = theta_Best;
+                if (step < 0.01 / 180.0 * Math.PI)
+                    break;
+                count++;
+            }
+            
+            return (Euler.SetEulerAngle(phi, theta, psi), ResidualSquareCurrent / length);
+            */
+            #endregion
         }
 
         #endregion

@@ -19,15 +19,7 @@ namespace Crystallography
                 destBmp.Dispose();
         }
 
-        /// <summary>
-        /// 上下方向の反転をするかどうか
-        /// </summary>
-        public bool VerticalFlip { set; get; } = false;
-
-        /// <summary>
-        /// 左右方向の反転をするかどうか
-        /// </summary>
-        public bool HorizontalFlip { set; get; } = false;
+     
 
         static PseudoBitmap()
         {
@@ -493,12 +485,24 @@ namespace Crystallography
 
         #region プロパティ
 
+        /// <summary>
+        /// 上下方向の反転をするかどうか
+        /// </summary>
+        public bool VerticalFlip { set; get; } = false;
+
+        /// <summary>
+        /// 左右方向の反転をするかどうか
+        /// </summary>
+        public bool HorizontalFlip { set; get; } = false;
+
         public enum Scales { LinearGray, LinearColdWarm, LinearRotation, LogGray, LogColdWarm }
 
         private Scales scale = Scales.LinearGray;
-        public Scales Scale { get => scale;
-            set 
-                {
+        public Scales Scale
+        {
+            get => scale;
+            set
+            {
                 scale = value;
                 if (scale == Scales.LinearGray)
                     SetScaleGray(true);
@@ -510,8 +514,6 @@ namespace Crystallography
                     SetScaleColdWarm(false);
                 else if (scale == Scales.LinearRotation)
                     SetScaleRotation();
-
-
             }
         }
 
@@ -607,8 +609,7 @@ namespace Crystallography
         }
     */
 
-        private enum ImageSouceEnum
-        { GrayDouble, GrayUint, ColorDouble, ColorUint }
+        private enum ImageSouceEnum { GrayDouble, GrayUint, ColorDouble, ColorUint }
 
         /// <summary>
         /// グレイスケールとして表示するかどうか　(ソースがグレースケールかどうかは無関係)
@@ -719,7 +720,7 @@ namespace Crystallography
         {
             if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == false) return Color.FromArgb(0, 0, 0);
 
-            int offset = x + y * Width;
+            var offset = x + (y * Width);
             return Color.FromArgb(
                 ScaleR[Math.Max(Math.Min((int)((double)(SrcValuesR[offset] - MinValue) / (MaxValue - MinValue) * ScaleR.Length + 0.5), ScaleR.Length - 1), 0)],
                 ScaleG[Math.Max(Math.Min((int)((double)(SrcValuesG[offset] - MinValue) / (MaxValue - MinValue) * ScaleG.Length + 0.5), ScaleG.Length - 1), 0)],
@@ -727,15 +728,9 @@ namespace Crystallography
                 );
         }
 
-        public Color GetPixelColor(double x, double y)
-        {
-            return GetPixelColor((int)(x + 0.5), (int)(y + 0.5));
-        }
+        public Color GetPixelColor(double x, double y) => GetPixelColor((int)(x + 0.5), (int)(y + 0.5));
 
-        public double GetPixelRawValue(PointD pt)
-        {
-            return GetPixelRawValue(pt.X, pt.Y);
-        }
+        public double GetPixelRawValue(PointD pt) => GetPixelRawValue(pt.X, pt.Y);
 
 
         public void SetScaleColdWarm(bool linear=true)
@@ -790,10 +785,7 @@ namespace Crystallography
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public double GetPixelRawValue(double x, double y)
-        {
-            return GetPixelRawValue((int)(x + 0.5), (int)(y + 0.5));
-        }
+        public double GetPixelRawValue(double x, double y) => GetPixelRawValue((int)(x + 0.5), (int)(y + 0.5));
 
         /// <summary>
         /// グレースケールの時のx, y位置の生の強度を返す グレースケールではなかったら常に0を返す.
@@ -826,10 +818,7 @@ namespace Crystallography
                 return new Complex[] { ComplexR[y][x], ComplexG[y][x], ComplexB[y][x] };
         }
 
-        public Complex[] GetPixelComplex(double x, double y)
-        {
-            return GetPixelComplex((int)Math.Round(x), (int)Math.Round(y));
-        }
+        public Complex[] GetPixelComplex(double x, double y) => GetPixelComplex((int)Math.Round(x), (int)Math.Round(y));
 
         /// <summary>
         /// 等倍のイメージを取得する
@@ -838,10 +827,7 @@ namespace Crystallography
         /// <param name="zoom"></param>
         /// <param name="destSize"></param>
         /// <returns></returns>
-        public Bitmap GetImage()
-        {
-            return GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
-        }
+        public Bitmap GetImage() => GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
 
         /// <summary>
         /// 指定された範囲のイメージを取得する
@@ -850,11 +836,9 @@ namespace Crystallography
         /// <param name="zoom"></param>
         /// <param name="destSize"></param>
         /// <returns></returns>
-        public Bitmap GetImage(PointD srcCenter, double zoom, Size destSize)
-        {
-            if (srcCenter.IsNaN) return null;
-            return GetImage(GetDrawingArea(srcCenter, zoom, destSize), destSize);
-        }
+        public Bitmap GetImage(PointD srcCenter, double zoom, Size destSize) => srcCenter.IsNaN 
+            ? null 
+            : GetImage(GetDrawingArea(srcCenter, zoom, destSize), destSize);
 
         /// <summary>
         /// 描画範囲を得る
@@ -864,9 +848,7 @@ namespace Crystallography
         /// <param name="destSize"></param>
         /// <returns></returns>
         public RectangleD GetDrawingArea(PointD srcCenter, double zoom, Size destSize)
-        {
-            return new RectangleD(srcCenter.X - destSize.Width / zoom / 2.0, srcCenter.Y - destSize.Height / zoom / 2.0, destSize.Width / zoom, destSize.Height / zoom);
-        }
+            => new RectangleD(srcCenter.X - destSize.Width / zoom / 2.0, srcCenter.Y - destSize.Height / zoom / 2.0, destSize.Width / zoom, destSize.Height / zoom);
 
         private Bitmap destBmp;
 
@@ -901,10 +883,10 @@ namespace Crystallography
             {
                 return null;
             }
-            double zoom = (destSize.Width / srcRect.Width + (double)destSize.Height / srcRect.Height) / 2.0;
+            double zoom = (destSize.Width / srcRect.Width + destSize.Height / srcRect.Height) / 2.0;
 
-            //描画する画素位置をソース画像位置に変換するdelegateを作成
-            Point getSrcPosition(int x, int y)
+            //描画する画素位置をソース画像位置に変換するローカル関数
+            (int X, int Y) getSrcPosition(int x, int y)
             {
                 int _x, _y;
                 if (!HorizontalFlip)
@@ -916,36 +898,34 @@ namespace Crystallography
                 else
                     _y = (int)(srcRect.Y + (double)(destSize.Height - y) / destSize.Height * srcRect.Height + 0.5);
 
-                return new Point(_x, _y);
+                return (_x, _y);
             }
 
-            //入力値doubleを表示する値に変換するdelegate
+            //入力値doubleを表示する値に変換するローカル関数
             byte getValue(double rawValue, byte[] scale)
             {
-                double rawIndex = (double)(rawValue - MinValue) / (MaxValue - MinValue) * scale.Length;
-                int minIndex = (int)(Math.Min(rawIndex, scale.Length - 1) + 0.5);
-                int index = Math.Max(minIndex, 0);
-
+                var rawIndex = (double)(rawValue - MinValue) / (MaxValue - MinValue) * scale.Length;
+                var minIndex = (int)((rawIndex< scale.Length - 1 ? rawIndex : scale.Length - 1) + 0.5);
+                int index = minIndex < 0 ? 0 : minIndex;
                 return scale[index];
             }
 
             int range = (int)(1 / zoom / 2 + 0.5);
             int increase = (zoom >= 1) ? 0 : Math.Max(range / 3, 1);
 
-            int width = destBmp.Width;
-            int height = destBmp.Height;
+            int width = destBmp.Width, height = destBmp.Height;
 
             byte* p = (byte*)(void*)bmpData.Scan0;
             int nResidual = bmpData.Stride - destBmp.Width * 3;
 
             double filter;
             byte r = 0, g = 0, b = 0;
-            Point beforePt = new Point(int.MinValue, int.MinValue);
+            (int X, int Y) beforePt = (int.MinValue, int.MinValue);
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    Point pt = getSrcPosition(x, y);
+                    var pt = getSrcPosition(x, y);
                     if (pt.X == beforePt.X && pt.Y == beforePt.Y)
                     {
                         p[0] = p[-3];
@@ -954,67 +934,65 @@ namespace Crystallography
                     }
                     else if (pt.X >= 0 && pt.X < Width && pt.Y >= 0 && pt.Y < Height)//描画域内のとき
                     {
-                        int srcPosition = pt.X + pt.Y * Width;
+                        var srcPosition = pt.X + pt.Y * Width;
+                        if (increase > 0)//補完モード
                         {
-                            if (increase > 0)//補完モード
-                            {
-                                double rSum = 0, gSum = 0, bSum = 0, count = 0;
+                            double rSum = 0, gSum = 0, bSum = 0, count = 0;
 
-                                for (int j = Math.Max(pt.Y - range, 0); j <= Math.Min(pt.Y + range, Height - 1); j += increase)
-                                    for (int i = Math.Max(pt.X - range, 0); i <= Math.Min(pt.X, Width - 1); i += increase)
-                                    {
-                                        int tempPosition = i + j * Width;
-
-                                        if (IsSrcGray)
-                                            bSum += SrcValuesGray[tempPosition];
-                                        else
-                                        {
-                                            bSum += SrcValuesB[tempPosition];
-                                            if (!GrayScale)
-                                            {
-                                                gSum += SrcValuesG[tempPosition];
-                                                rSum += SrcValuesR[tempPosition];
-                                            }
-                                        }
-                                        count++;
-                                    }
-                                if (count > 0)
+                            for (int j = pt.Y - range < 0 ? 0 : pt.Y - range; j <= (pt.Y + range < Height - 1 ? pt.Y + range : Height - 1); j += increase)
+                                for (int i = pt.X - range < 0 ? 0 : pt.X - range; i <= (pt.X + range < Width - 1 ? pt.X + range : Width - 1); i += increase)
                                 {
-                                    b = getValue(bSum / count, ScaleB);
-                                    if (GrayScale)
-                                        g = r = b;
+                                    var tempPosition = i + j * Width;
+
+                                    if (IsSrcGray)
+                                        bSum += SrcValuesGray[tempPosition];
                                     else
                                     {
-                                        if (IsSrcGray)
-                                            gSum = rSum = bSum;
-                                        g = getValue(gSum / count, ScaleG);
-                                        r = getValue(rSum / count, ScaleR);
+                                        bSum += SrcValuesB[tempPosition];
+                                        if (!GrayScale)
+                                        {
+                                            gSum += SrcValuesG[tempPosition];
+                                            rSum += SrcValuesR[tempPosition];
+                                        }
                                     }
+                                    count++;
+                                }
+                            if (count > 0)
+                            {
+                                b = getValue(bSum / count, ScaleB);
+                                if (GrayScale)
+                                    g = r = b;
+                                else
+                                {
+                                    if (IsSrcGray)
+                                        gSum = rSum = bSum;
+                                    g = getValue(gSum / count, ScaleG);
+                                    r = getValue(rSum / count, ScaleR);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (IsSrcGray)
+                            {
+                                b = getValue(SrcValuesGray[srcPosition], ScaleB);
+                                if (GrayScale)
+                                    g = r = b;
+                                else
+                                {
+                                    g = getValue(SrcValuesGray[srcPosition], ScaleG);
+                                    r = getValue(SrcValuesGray[srcPosition], ScaleR);
                                 }
                             }
                             else
                             {
-                                if (IsSrcGray)
-                                {
-                                    b = getValue(SrcValuesGray[srcPosition], ScaleB);
-                                    if (GrayScale)
-                                        g = r = b;
-                                    else
-                                    {
-                                        g = getValue(SrcValuesGray[srcPosition], ScaleG);
-                                        r = getValue(SrcValuesGray[srcPosition], ScaleR);
-                                    }
-                                }
+                                b = getValue(SrcValuesB[srcPosition], ScaleB);
+                                if (GrayScale)
+                                    g = r = b;
                                 else
                                 {
-                                    b = getValue(SrcValuesB[srcPosition], ScaleB);
-                                    if (GrayScale)
-                                        g = r = b;
-                                    else
-                                    {
-                                        g = getValue(SrcValuesG[srcPosition], ScaleG);
-                                        r = getValue(SrcValuesR[srcPosition], ScaleR);
-                                    }
+                                    g = getValue(SrcValuesG[srcPosition], ScaleG);
+                                    r = getValue(SrcValuesR[srcPosition], ScaleR);
                                 }
                             }
                         }
@@ -1046,9 +1024,6 @@ namespace Crystallography
                             p[0] = (byte)(p[0] * 0.8);
                             p[1] = (byte)(p[1] * 0.8);
                             p[2] = (byte)(p[2] * 0.8 + 51);
-                            //p[0] = 255;
-                            //p[1] = 255;
-                            //p[2] = 255-  51;
                         }
                         if (Filter2Visible && Filter2 != null && Filter2[srcPosition])
                         {//B
@@ -1068,7 +1043,7 @@ namespace Crystallography
                             p[1] = (byte)(p[1] * 0.8 + 51);
                             p[2] = (byte)(p[2] * 0.8);
                         }
-                        if (Filter5Visible && Filter5 != null /*&& Filter5.Count !=0 */&& Filter5[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
+                        if (Filter5Visible && Filter5 != null && Filter5[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
                         {//BR
                             p[0] = (byte)(p[0] * 0.8 + 51);
                             p[1] = (byte)(p[2] * 0.8);
@@ -1080,8 +1055,7 @@ namespace Crystallography
                         p[0] = 0; p[1] = 127; p[2] = 0;
                     }
                     p += 3;
-                    beforePt.X = pt.X;
-                    beforePt.Y = pt.Y;
+                    beforePt = pt;
                 }
                 p += nResidual;
             }

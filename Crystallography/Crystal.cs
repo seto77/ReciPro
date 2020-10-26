@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Crystallography
@@ -1086,11 +1087,8 @@ namespace Crystallography
             if (A_Star == null) SetAxis();
 
             double dMin2 = dMin * dMin, gMax2 = 1 / dMin2, gMax = Math.Sqrt(gMax2);
-            var g = new List<Vector3D>();
-            var maxGnum = 500000;
 
             var direction = new List<(int h, int k, int l)>();
-
             #region directionÇèâä˙âª
             if (excludeLatticeCondition)
             {
@@ -1119,14 +1117,15 @@ namespace Crystallography
             var shift = direction.Select(dir => (MatrixInverse * dir).Length).Max();
 
             var outer = new Dictionary<(int h, int k, int l), double> { { (0, 0, 0), 0 } };
-            var outerP = outer.AsParallel();
-
-            var list = new List<(int h, int k, int l, int i)>();
-            var listP = list.AsParallel();
 
             var whole = new HashSet<int> { 0 };
             const int n = 1024;
             var minG = 0.0;
+            var list = new List<(int h, int k, int l, int i)>();
+            //var listP = list.AsParallel();
+
+            var maxGnum = 500000;
+            var g = new List<Vector3D>();
             while (g.Count < maxGnum && minG < gMax)
             {
                 minG = outer.Min(o => o.Value);
@@ -1145,7 +1144,7 @@ namespace Crystallography
                     }
                 var gTemp = new Vector3D[list.Count * 2];
                 var outerTemp = new (int h, int k, int l, double glen)[list.Count];
-                listP.ForAll(index =>
+                list.ForEach(index=>
                 {
                     (int h, int k, int l, int i) = index;
 
@@ -1175,6 +1174,10 @@ namespace Crystallography
                 foreach (var (h, k, l, glen) in outerTemp)
                     outer.Add((h, k, l), glen);
             }
+
+
+
+
             g = g.OrderByDescending(v => v.d).ToList();
 
             if (wavesource != WaveSource.None)//ã≠ìxåvéZÇ∑ÇÈèÍçá 250msÇ≠ÇÁÇ¢
