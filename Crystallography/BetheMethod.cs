@@ -155,10 +155,8 @@ namespace Crystallography
             uDictionary = new Dictionary<int, (Complex, Complex)>();
             var factorMatrix = getPotentialMatrix(Beams);
             //有効なRotationだけを選択
-            var beamRotationsValid = new List<Matrix3D>();
-            for (int i = 0; i < BeamRotations.Length; i++)
-                if (BeamRotations[i] != null)
-                    beamRotationsValid.Add(BeamRotations[i]);
+            var beamRotationsValid = BeamRotations.Where(rot => rot != null).ToList();
+            
             RotationArrayValidLength = beamRotationsValid.Count;
             //rotationsValidに対応するdiskValidを定義
             var diskValid = new List<Complex[][]>();
@@ -345,7 +343,7 @@ namespace Crystallography
         #endregion
 
         #region Image Simulation
-        public double[][] GetPotentialImage(Beam[] beams, Size size, double res, bool phase = true)
+        public double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
         {
             int width = size.Width, height = size.Height;
             //gList[gNUm]を全て計算

@@ -976,7 +976,7 @@ namespace ReciPro
                     int latticeColor = colorControlForbiddenLattice.Color.ToArgb();
                     string latticeType = crystal.Symmetry.LatticeTypeStr;
 
-                    foreach (var gtemp in crystal.VectorOfG.AsParallel().Where(g => g.Extinction.Length == 0))
+                    foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
                     {
                         gtemp.Flag = true;
                         gtemp.Argb = noConditionColor;
@@ -984,7 +984,7 @@ namespace ReciPro
 
                     if (!checkBoxExtinctionLattice.Checked)
                     {
-                        foreach (var gtemp in crystal.VectorOfG.AsParallel().Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
+                        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
                         {
                             gtemp.Flag = true;
                             gtemp.Argb = latticeColor;
@@ -993,7 +993,7 @@ namespace ReciPro
 
                     if (!checkBoxExtinctionAll.Checked)
                     {
-                        foreach (var gtemp in crystal.VectorOfG.AsParallel().Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
+                        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
                         {
                             gtemp.Flag = true;
                             gtemp.Argb = screwGlideColor;
@@ -1182,10 +1182,10 @@ namespace ReciPro
                 //まずフィルム上の位置を逆空間点に変換
                 var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
                 //座標を反転
-                var gVector = formMain.Crystal.VectorOfG.ToArray();
+                var gVector = formMain.Crystal.VectorOfG;
                 int num = -1;
                 var minLength = double.PositiveInfinity;
-                for (int i = 0; i < gVector.Length; i++)
+                for (int i = 0; i < gVector.Count; i++)
                 {
                     if (minLength > (gVector[i] - inversePos).Length2)
                     {

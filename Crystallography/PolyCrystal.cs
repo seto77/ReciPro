@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Xml.Schema;
 
 namespace Crystallography
 {
@@ -205,18 +206,18 @@ namespace Crystallography
                 length = max;
             }
             crystal.SetVectorOfG(detector.WaveLength / 2 / Math.Sin(Math.Atan(length / detector.CameraLength) / 2.0), detector.WaveSource);
-            List<Vector3D> temp = new List<Vector3D>();
-            for (int i = 0; i < crystal.VectorOfG.Count; i++)
+            var temp = new List<Vector3D>();
+            foreach (var g in crystal.VectorOfG)
                 if (removeZeroIntensity)
                 {
-                    if (crystal.VectorOfG[i].Extinction.Length == 0)
-                        temp.Add(crystal.VectorOfG[i]);
+                    if (g.Extinction.Length == 0)
+                        temp.Add(g);
                 }
                 else
                 {
-                    var s = crystal.VectorOfG[i].Extinction;
+                    var s = g.Extinction;
                     if (s.Length == 0 || (s[0] != "I" && s[0] != "F" && s[0] != "A" && s[0] != "B" && s[0] != "C" && s[0] != "R"))
-                        temp.Add(crystal.VectorOfG[i]);
+                        temp.Add(g);
                 }
 
             crystal.VectorOfG = temp;

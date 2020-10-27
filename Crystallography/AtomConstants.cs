@@ -43,24 +43,23 @@ namespace Crystallography
 			return pt.ToArray();
 		}
 
-		/// <summary>
-		/// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-		/// </summary>
-		/// <param name="z"></param>
-		/// <param name="line"></param>
-		/// <returns></returns>
-		public static double CharacteristicXrayEnergy(int z, XrayLine line)
-		{
-			return UniversalConstants.Convert.WavelengthToXrayEnergy(CharacteristicXrayWavelength(z, line) * 0.1) / 1000;
-		}
+        /// <summary>
+        /// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
+        /// </summary>
+        /// <param name="z"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public static double CharacteristicXrayEnergy(int z, XrayLine line)
+			=> UniversalConstants.Convert.WavelengthToXrayEnergy(CharacteristicXrayWavelength(z, line) * 0.1) / 1000;
 
-		/// <summary>
-		/// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-		/// </summary>
-		/// <param name="z"></param>
-		/// <param name="line"></param>
-		/// <returns></returns>
-		public static double CharacteristicXrayEnergy(int z, XrayLineEdge line)
+
+        /// <summary>
+        /// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
+        /// </summary>
+        /// <param name="z"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public static double CharacteristicXrayEnergy(int z, XrayLineEdge line)
 		{
 			#region
 			switch (z)
@@ -1793,11 +1792,8 @@ namespace Crystallography
 			{
 				double ka1 = CharacteristicXrayWavelength(z, XrayLine.Ka1);
 				double ka2 = CharacteristicXrayWavelength(z, XrayLine.Ka2);
-				if (double.IsNaN(ka2))
-					return ka1;
-				else
-					return (2 * ka1 + ka2) / 3;
-			}
+                return double.IsNaN(ka2) ? ka1 : (2 * ka1 + ka2) / 3;
+            }
 
 			#region
 			switch (z)
@@ -3836,8 +3832,8 @@ namespace Crystallography
 		/// <returns></returns>
 		public static double AtomicWeight(int z)
 		{
-			#region
-			switch (z)
+            #region
+            switch (z)
 			{
 				case 0: return 0;
 				case 1: return 1.007947;
@@ -4350,8 +4346,8 @@ namespace Crystallography
 		/// <returns></returns>
 		public static string AtomicName(int z)
 		{
-			#region
-			switch (z)
+            #region
+            switch (z)
 			{
 				case 1: return "H";
 				case 2: return "He";
@@ -4493,17 +4489,23 @@ namespace Crystallography
 			{
 				Valence = valence;
 				Method = methods;
-			
-				var a = new[] { a1, a2, a3, a4 };
-				var b = new[] { b1, b2, b3, b4 };
-				Factor = new Func<double, double>(s2 =>
-				{
-					s2 *= 0.01;//単位を修正
-					var result = 0.0;
-					for (int i = 0; i < a.Length; i++)
-						result += a[i] * Math.Exp(-s2 * b[i]);
-					return (result + c) * 0.1;
-				});
+
+				//var a = new[] { a1, a2, a3, a4 };
+				//var b = new[] { b1, b2, b3, b4 };
+
+				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4) };
+
+				//Factor = new Func<double, double>(s2 =>
+				//{
+				//	s2 *= 0.01;//単位を修正
+				//	var result = 0.0;
+				//	for (int i = 0; i < a.Length; i++)
+				//		result += a[i] * Math.Exp(-s2 * b[i]);
+				//	return (result + c) * 0.1;
+				//});
+
+				Factor = new Func<double, double>(s2 => (prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
+
 			}
 
 			//電子線用のコンストラクタ (Five gaussian)
@@ -4512,34 +4514,47 @@ namespace Crystallography
 				Valence = valence;
 				Method = methods;
 
-				var a = new[] { a1, a2, a3, a4, a5 };
-				var b = new[] { b1, b2, b3, b4, b5 };
+				//var a = new[] { a1, a2, a3, a4, a5 };
+				//var b = new[] { b1, b2, b3, b4, b5 };
 
-				Factor = new Func<double, double>(s2 =>
-				{
-					s2 *= 0.01;//単位を修正
-					var result = 0.0;
-					for (int i = 0; i < a.Length; i++)
-						result += a[i] * Math.Exp(-s2 * b[i]);
-					return result * 0.1;
-				});
+				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
+
+				Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
+				//{
+					//s2 *= 0.01;
+					//var result = 0.0;
+					//for (int i = 0; i < a.Length; i++)
+					//	result += a[i] * Math.Exp(-s2 * b[i]);
+					//return result * 0.1;
+				//});
 
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
 					s2 *= 0.01;//単位を修正
 					m *= 100;//単位を修正
-					var f = 0.0;
-					for (int i = 0; i < a.Length; i++)
-						for (int j = 0; j < a.Length; j++)
-						{
-							var sum = b[i] + b[j];
-							var product = b[i] * b[j];
-							if (sum != 0)
-								f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-						}
-					return Math.PI * f;
-				}
-				);
+					return prms.Sum(p1 => prms.Sum(p2 =>
+						   {
+							   var sum = p1.B + p2.B;
+							   var product = p1.B * p2.B;
+							   return sum == 0
+							   ? 0
+							   : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+						   })) * Math.PI;
+				});
+
+
+				//var f = 0.0;
+				//for (int i = 0; i < prms.Length; i++)
+				//	for (int j = 0; j < prms.Length; j++)
+				//	{
+				//		var sum = prms[i].B + prms[j].B;
+				//		var product = prms[i].B * prms[j].B;
+				//		if (sum != 0)
+				//			f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+				//	}
+				//return Math.PI * f;
+
+
 			}
 
 			//電子線用のコンストラクタ (Eight gaussian)
@@ -4548,35 +4563,51 @@ namespace Crystallography
 				Valence = 0;
 				Method = "";
 
-				var a = new[] { a1, a2, a3, a4, a5, a6, a7, a8 };
-				var b = new[] { b1, b2, b3, b4, b5, b6, b7, b8 };
-				
-				Factor = new Func<double, double>(s2 =>
-				{
-					s2 *= 0.01;//単位を修正
-					var result = 0.0;
-					for (int i = 0; i < a.Length; i++)
-						result += a[i] * Math.Exp(-s2 * b[i]);
-					return result * 0.1;
-				});
+				//var a = new[] { a1, a2, a3, a4, a5, a6, a7, a8 };
+				//var b = new[] { b1, b2, b3, b4, b5, b6, b7, b8 };
+
+				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
+
+				//Factor = new Func<double, double>(s2 =>
+				//{
+				//	s2 *= 0.01;//単位を修正
+				//	var result = 0.0;
+				//	for (int i = 0; i < a.Length; i++)
+				//		result += a[i] * Math.Exp(-s2 * b[i]);
+				//	return result * 0.1;
+				//});
+				Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
 
 
+				//FactorImaginary = new Func<double, double, double>((s2, m) =>
+				//{
+				//	s2 *= 100;//単位を修正
+				//	m *= 100;//単位を修正
+				//	var f = 0.0;
+				//	for (int i = 0; i < a.Length; i++)
+				//		for (int j = 0; j < a.Length; j++)
+				//		{
+				//			var sum = b[i] + b[j];
+				//			var product = b[i] * b[j];
+				//			if (sum != 0)
+				//				f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+				//		}
+				//	return Math.PI * f;
+				//}
+				//);
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
-					s2 *= 100;//単位を修正
+					s2 *= 0.01;//単位を修正
 					m *= 100;//単位を修正
-					var f = 0.0;
-					for (int i = 0; i < a.Length; i++)
-						for (int j = 0; j < a.Length; j++)
-						{
-							var sum = b[i] + b[j];
-							var product = b[i] * b[j];
-							if (sum != 0)
-								f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-						}
-					return Math.PI * f;
-				}
-				);
+					return prms.Sum(p1 => prms.Sum(p2 =>
+					{
+						var sum = p1.B + p2.B;
+						var product = p1.B * p2.B;
+						return sum == 0
+						? 0
+						: p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+					})) * Math.PI;
+				});
 			}
 
 			//電子線用のコンストラクタ (3 lorentian , 3 gaussian)
@@ -6596,41 +6627,36 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 #endregion
 		};
 
-		/// <summary>
-		/// 平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991
-		/// </summary>
-		/// <param name="z"></param>
-		/// <returns></returns>
-		public static double MeanExcitationEnergy(int z, int mode = 0)
-		{
-			if (mode == 0)
-				return z * (14 * (1 - Math.Exp(-0.1 * z)) + 75.5 / Math.Pow(z, z / 7.5) - z / (z + 100.0)) / 1000;
-			else if (mode == 1)
-				return z * (9.76 + 58.8 * Math.Pow(z, -1.19)) / 1000;
-			else
-				return z * (10.04 + 8.25 * Math.Exp(-z / 11.22)) / 1000;
-		}
+        /// <summary>
+        /// 平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double MeanExcitationEnergy(int z, int mode = 0) => mode switch
+        {
+            0 => z * (14 * (1 - Math.Exp(-0.1 * z)) + 75.5 / Math.Pow(z, z / 7.5) - z / (z + 100.0)) / 1000,
+            1 => z * (9.76 + 58.8 * Math.Pow(z, -1.19)) / 1000,
+            _ => z * (10.04 + 8.25 * Math.Exp(-z / 11.22)) / 1000
+        };
 
-		/// <summary>
-		/// Stopping Power Factor
-		/// </summary>
-		/// <param name="z"></param>
-		/// <param name="line"></param>
-		/// <param name="incidentEnergy"></param>
-		/// <returns></returns>
-		public static double StoppingFactor(double ec, double e0, int z)
-		{
-			return z / AtomicWeight(z) * Math.Log(1.166 * (2 * e0 + ec) / 3 / AtomConstants.MeanExcitationEnergy(z));
-		}
+        /// <summary>
+        /// Stopping Power Factor
+        /// </summary>
+        /// <param name="z"></param>
+        /// <param name="line"></param>
+        /// <param name="incidentEnergy"></param>
+        /// <returns></returns>
+        public static double StoppingFactor(double ec, double e0, int z) 
+			=> z / AtomicWeight(z) * Math.Log(1.166 * (2 * e0 + ec) / 3 / AtomConstants.MeanExcitationEnergy(z));
 
-		/// <summary>
-		/// Back Scattered Factor
-		/// </summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
-		/// <param name="z"></param>
-		/// <param name="line"></param>
-		/// <param name="incidentEnergy"></param>
-		/// <returns></returns>
-		public static double BackScatteredFactor(double ec, double e0, int z)
+        /// <summary>
+        /// Back Scattered Factor
+        /// </summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
+        /// <param name="z"></param>
+        /// <param name="line"></param>
+        /// <param name="incidentEnergy"></param>
+        /// <returns></returns>
+        public static double BackScatteredFactor(double ec, double e0, int z)
 		{
 			double u = ec / e0;
 			double r = 1;

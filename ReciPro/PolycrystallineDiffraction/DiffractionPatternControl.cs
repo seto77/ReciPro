@@ -393,11 +393,11 @@ namespace ReciPro
             if (pixels == null || pixels.Length == 0) return null;
             frequency.Clear();
             int thread = 16;
-            calcFreqDelegate[] calcFreqThread = new calcFreqDelegate[thread];
+            var calcFreqThread = new calcFreqDelegate[thread];
             for (int i = 0; i < thread; i++)
                 calcFreqThread[i] = new calcFreqDelegate((start, end) =>
                 {
-                    SortedList<uint, int> freq = new SortedList<uint, int>();
+                    var freq = new SortedList<uint, int>();
                     for (int j = start; j < end; j++)
                     {
                         if (!Filter[j])
@@ -413,7 +413,7 @@ namespace ReciPro
                     }
                     return freq;
                 });
-            IAsyncResult[] ar = new IAsyncResult[thread];
+            var ar = new IAsyncResult[thread];
             for (int i = 0; i < thread; i++)
                 ar[i] = calcFreqThread[i].BeginInvoke(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length), null, null);
             for (int i = 0; i < thread; i++)

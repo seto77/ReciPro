@@ -81,7 +81,7 @@ namespace Crystallography
         [XmlIgnore]
         public List<Vector3D> VectorOfG = new List<Vector3D>();
 
-        /// <summary>
+         /// <summary>
         /// ‹e’rüƒxƒNƒgƒ‹
         /// </summary>
         [NonSerialized]
