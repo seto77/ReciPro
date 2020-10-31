@@ -20,8 +20,6 @@ namespace Crystallography.Controls
 
         public event MyEventHandler Click2;
 
-        public event MyEventHandler LimitChanged;
-
         #endregion イベント
 
         #region プロパティ

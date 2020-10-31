@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 
 namespace Crystallography.Controls
 {
@@ -317,7 +320,7 @@ namespace Crystallography.Controls
         private bool justBeforePoleFigureMode = true;
         private bool justBeforePlanesMode = true;
         private int justBeforeCrystallineNumber = -1;
-        private uint[][] index;
+        private IEnumerable<(int Radial, int Sector)>[] Index;
 
         public object lockObject = new object();
 
@@ -334,20 +337,18 @@ namespace Crystallography.Controls
             {
                 double circumference = (i + 0.5) / radialDivision * Math.PI * 2;
                 int sectorDivision = (int)Math.Round(circumference * radialDivision, MidpointRounding.ToEven);
-                pixels[i] = new double[sectorDivision];
-                for (int j = 0; j < pixels[i].Length; j++)
-                    pixels[i][j] = 0;
+                pixels[i] = Enumerable.Repeat(0.0, sectorDivision).ToArray(); 
             }
 
             //前回の条件と同じとき
-            if (index != null && index.Length == Crystal.Crystallites.Rotations.Length)
+            if (Index != null && Index.Length == Crystal.Crystallites.Rotations.Length)
             {
                 if (x == justBeforeX && y == justBeforeY && z == justBeforeZ && angleResolution == justBeforeResolution && crystal.Crystallites.Rotations.Length == justBeforeCrystallineNumber
                   && justBeforePoleFigureMode == radioButtonPoleFigure.Checked && justBeforePlanesMode == radioButtonPlanes.Checked)
                 {
                     for (int i = 0; i < crystal.Crystallites.Rotations.Length; i++)
-                        foreach (int p in index[i])
-                            pixels[p / ushort.MaxValue][p % ushort.MaxValue] += crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
+                        foreach (var (Radial, Sector) in Index[i])
+                            pixels[Radial][Sector] += crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
                     for (int radial = 0; radial < pixels.Length; radial++)
                     {
                         double area = (1.0 + 2 * radial) / pixels[radial].Length;
@@ -358,7 +359,7 @@ namespace Crystallography.Controls
                 }
             }
             else
-                index = new uint[Crystal.Crystallites.Rotations.Length][];
+                Index = new (int Radial, int Sector)[Crystal.Crystallites.Rotations.Length][];
             justBeforeX = x; justBeforeY = y; justBeforeZ = z; justBeforeCrystallineNumber = crystal.Crystallites.Rotations.Length;
             justBeforeResolution = angleResolution; justBeforePoleFigureMode = radioButtonPoleFigure.Checked; justBeforePlanesMode = radioButtonPlanes.Checked;
 
@@ -375,19 +376,18 @@ namespace Crystallography.Controls
                     for (int k = 0; k < indices.Length; k++)
                     {
                         srcVector[k] = crystal.A_Star * indices[k].H + crystal.B_Star * indices[k].K + crystal.C_Star * indices[k].L;
-                        if (srcVector[k].Length2> 0)
+                        if (srcVector[k].Length2 > 0)
                             srcVector[k] /= srcVector[k].Length;
                     }
                 }
                 else
                 {//計算する軸指数と等価な指数を算出
                     var indices = SymmetryStatic.GenerateEquivalentAxes(x, y, z, sym);
-                    //indices = new AxisIndex[] { new AxisIndex(0, 0, 1) };
                     srcVector = new Vector3DBase[indices.Length];
                     for (int k = 0; k < indices.Length; k++)
                     {
                         srcVector[k] = crystal.A_Axis * indices[k].U + crystal.B_Axis * indices[k].V + crystal.C_Axis * indices[k].W;
-                        if (srcVector[k].Length2> 0)
+                        if (srcVector[k].Length2 > 0)
                             srcVector[k] /= srcVector[k].Length;
                     }
                 }
@@ -396,51 +396,46 @@ namespace Crystallography.Controls
             else
             {
                 srcVector = new Vector3DBase[] { new Vector3DBase(x, y, z) };
-                if (srcVector[0].Length2> 0)
+                if (srcVector[0].Length2 > 0)
                     srcVector[0] /= srcVector[0].Length;
             }
 
-            List<uint> tempIndex = new List<uint>();
+            Parallel.For(0, crystal.Crystallites.Rotations.Length, i =>
+            {
+                var rot = crystal.Crystallites.Rotations[i] * Crystallite.TiltMatrix;
+                var vectors = radioButtonPoleFigure.Checked
+                    ? srcVector.Select(src => rot * src)//PoleFigureのとき
+                    : divideVector(rot.Transpose() * srcVector[0], sym);//InversePoleFigureのとき
+
+                Index[i] = vectors.Where(v => v.Z > 0).Select(v =>
+                {
+                    var radial = (int)Math.Round(Math.Sqrt((v.X * v.X + v.Y * v.Y)/ (1 + v.Z)) * radialDivision - 0.5, MidpointRounding.ToEven);
+                    var sector = (int)Math.Round(Math.Atan2(v.Y, v.X) / 2 / Math.PI * pixels[radial].Length, MidpointRounding.ToEven);
+                    if (sector < 0)
+                        sector += pixels[radial].Length;
+                    return (radial, sector);
+                }).ToArray();//ToArrayをつけないと、エラー
+            });
+
             for (int i = 0; i < crystal.Crystallites.Rotations.Length; i++)
             {
-                tempIndex.Clear();
-                Matrix3D rot = crystal.Crystallites.Rotations[i] * Crystallite.TiltMatrix;
-
-                Vector3DBase[] vectors = new Vector3DBase[srcVector.Length];
-                if (radioButtonPoleFigure.Checked)//PoleFigureのとき
-                    for (int j = 0; j < vectors.Length; j++)
-                        vectors[j] = rot * srcVector[j];
-                else//InversePoleFigureのとき
-                    vectors = divideVector(rot.Transpose() * srcVector[0], sym);
-
-                foreach (Vector3DBase v in vectors)
-                    if (v.Z > 0)
-                    {
-                        PointD pt = new PointD(v.X / Math.Sqrt(1 + v.Z), v.Y / Math.Sqrt(1 + v.Z));
-                        int radial = (int)Math.Round(pt.Length* radialDivision - 0.5, MidpointRounding.ToEven);
-                        if (radial < pixels.Length)
-                        {
-                            int sector = (int)Math.Round(Math.Atan2(pt.Y, pt.X) / 2 / Math.PI * pixels[radial].Length, MidpointRounding.ToEven);
-                            if (sector < 0) sector += pixels[radial].Length;
-                            //lock (lockObject)
-                            pixels[radial][sector] += crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
-                            tempIndex.Add((uint)(radial * ushort.MaxValue + sector));
-                        }
-                    }
-                index[i] = tempIndex.ToArray();
+                var density = crystal.Crystallites.Density[i] * crystal.Crystallites.SolidAngle[i];
+                foreach (var (Radial, Sector) in Index[i])
+                    pixels[Radial][Sector] += density;
             }
 
             //最後に面積を計算して規格化
             for (int radial = 0; radial < pixels.Length; radial++)
             {
-                double area = (1.0 + 2 * radial) / pixels[radial].Length;
+                var area = (1.0 + 2 * radial) / pixels[radial].Length;
                 for (int sector = 0; sector < pixels[radial].Length; sector++)
                     pixels[radial][sector] /= 10000 * area;
             }
+
             return pixels;
         }
 
-        private Vector3DBase[] divideVector(Vector3DBase baseVec, Symmetry sym)
+        private IEnumerable< Vector3DBase > divideVector(Vector3DBase baseVec, Symmetry sym)
         {
             List<Vector3DBase> vec = new List<Vector3DBase>();
             double x = baseVec.X, y = baseVec.Y, z = baseVec.Z;
@@ -712,7 +707,7 @@ namespace Crystallography.Controls
                     vec.Add(new Vector3DBase(-x, +z, +y));
                     break;
             }
-            return vec.ToArray();
+            return vec;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -777,13 +772,13 @@ namespace Crystallography.Controls
 
             Random rn = new Random();
 
-            Vector3DBase a = new Vector3DBase(1, 0, 0);
-            Vector3DBase b = new Vector3DBase(0, 1, 0);
-            Vector3DBase c = new Vector3DBase(0, 0, 1);
+            var a = new Vector3DBase(1, 0, 0);
+            var b = new Vector3DBase(0, 1, 0);
+            var c = new Vector3DBase(0, 0, 1);
 
-            Vector3DBase[] v1 = divideVector(a, crystal.Symmetry);
-            Vector3DBase[] v2 = divideVector(b, crystal.Symmetry);
-            Vector3DBase[] v3 = divideVector(c, crystal.Symmetry);
+            var v1 = divideVector(a, crystal.Symmetry).ToArray();
+            var v2 = divideVector(b, crystal.Symmetry).ToArray();
+            var v3 = divideVector(c, crystal.Symmetry).ToArray();
             List<Matrix3D> symmetryMat = new List<Matrix3D>();
             for (int i = 0; i < v1.Length; i++)
                 if (new Matrix3D(v1[i], v2[i], v3[i]).Determinant() > 0)

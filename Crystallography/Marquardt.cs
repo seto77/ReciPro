@@ -197,13 +197,11 @@ namespace Crystallography
                     case FuncType.PV1:
                         Formula = (x, p) => PseudoVoigt(x[0], p[0], p[1], p[2], p[3]);
                         Constraints = p => new[] { p[0], Max(p[1], 0.1), Min(Max(p[2], 0), 1.5), Max(p[3], inf) };
-                        //new Func<double, double>[] { null, p => Max(p, 0.1), p => Min(Max(p, 0), 1.5), p => Max(p, inf) };
                         break;
 
                     case FuncType.PV2:
                         Formula = (x, p) => PseudoVoigt(x[0], x[1], p[0], p[1], p[2], p[3], p[4]);
                         Constraints = p => new[] { p[0], p[1], Max(p[2], 0.1), Min(Max(p[3], 0), 1.5), Max(p[4], inf) };
-                        //new Func<double, double>[] { null, null, p => Max(p, 0.1), p => Min(Max(p, 0), 1.5), p => Max(p, inf) };
                         break;
 
                     case FuncType.PV2E:

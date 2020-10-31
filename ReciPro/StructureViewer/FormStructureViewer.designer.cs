@@ -17,16 +17,7 @@
             {
                 components.Dispose();
             }
-            /*
-            if (contextMain != null)
-                contextMain.Dispose();
-            if (contextLight != null)
-                contextLight.Dispose();
-            if (contextLegend != null)
-                contextLegend.Dispose();
-            if (contextAxes != null)
-                contextAxes.Dispose();
-                */
+            
             base.Dispose(disposing);
         }
 

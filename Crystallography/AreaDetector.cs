@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.ServiceModel.Description;
 using System.Threading.Tasks;
 
 namespace Crystallography
@@ -71,14 +72,9 @@ namespace Crystallography
         public bool[] MaskedArea { get; set; }
 
         /// <summary>
-        /// ピクセルが対応する逆空間ベクトル
+        /// ピクセルが対応する逆空間ベクトルと面積
         /// </summary>
-        public Vector3DBase[] ReciprocalVectors { get; set; }
-
-        /// <summary>
-        /// ピクセルが対応する逆空間面積
-        /// </summary>
-        public double[] ReciprocalAreas { get; set; }
+        public ((double X, double Y, double Z) Vec, double Area)[] Reciprocal { get; set; }
 
         /// <summary>
         /// 逆空間における最大Z値
@@ -106,38 +102,22 @@ namespace Crystallography
         public Vector3DBase convertClientToReciprocalSpace(double x, double y)
         {
             //まずフィルム上の位置を取得
-            PointD p = new PointD((x - Center.X) * Resolution, -(y - Center.Y) * Resolution);
-            double pLen = p.Length;
+            double px = (x - Center.X) * Resolution, py = -(y - Center.Y) * Resolution, len = Math.Sqrt(px * px + py * py);
             //次に、それを逆空間上の点に変換
-            //まず、2θを求める
-            double twoTheta = Math.Atan(pLen / CameraLength);
-            double sinTheta = Math.Sin(twoTheta / 2);
-            double sinThetaSquare = sinTheta * sinTheta;
-            double Z = (1 - Math.Cos(twoTheta)) / WaveLength;
-            double temp = 1 / pLen * Math.Sqrt((4 * sinThetaSquare / WaveLength / WaveLength) - Z * Z);
-            return new Vector3DBase(p.X * temp, p.Y * temp, Z);
+            //まず、sinθを求める
+            double theta = Math.Atan(len / CameraLength) / 2;
+            double sin = Math.Sin(theta);
+            //var Z = (1 - Math.Cos(twoTheta)) / WaveLength;
+            var Z = 2 * sin * sin / WaveLength;
+            //var temp = 1 / pLen * Math.Sqrt((4 * sinTheta * sinTheta / WaveLength / WaveLength) - Z * Z);
+            var temp = Z / len * Math.Sqrt(1 / (sin * sin) - 1);
+            return new Vector3DBase(px * temp, py * temp, Z);
         }
 
-        private delegate double[] calcReciporocalAreaDelegate(int startHeight, int endHeight);
-
-        /// <summary>
-        /// ピクセルが対応する逆空間ベクトルを計算し、ReciprocalVectorsにセットする
-        /// </summary>
-        /// <returns></returns>
-        private void SetReciporocalVectors()
-        {
-            ReciprocalVectors = new Vector3DBase[ImageWidth * ImageHeight];
-            Parallel.For(0, ImageHeight, y =>
-            {
-                for (int x = 0; x < ImageWidth; x++)
-                    ReciprocalVectors[y * ImageWidth + x] = convertClientToReciprocalSpace(x, y);
-            });
-        }
 
         public void SetReciprocalSpace()
         {
-            SetReciporocalArea();
-            SetReciporocalVectors();
+            SetReciporocalAreaAndVectors();
             setMaxReciprocalZ();
         }
 
@@ -145,8 +125,8 @@ namespace Crystallography
         {
             if (MaskedArea == null || MaskedArea.Length != ImageLength)
             {
-                if (ReciprocalAreas != null && ReciprocalAreas.Length > 0)
-                    MaxReciproZ = new[] { ReciprocalVectors[0].Z, ReciprocalVectors[ImageWidth - 1].Z, ReciprocalVectors[(ImageHeight - 1) * ImageWidth].Z, ReciprocalVectors[ImageLength - 1].Z }.Max();
+                if (Reciprocal != null && Reciprocal.Length > 0)
+                    MaxReciproZ = new[] { Reciprocal[0].Vec.Z, Reciprocal[ImageWidth - 1].Vec.Z, Reciprocal[(ImageHeight - 1) * ImageWidth].Vec.Z, Reciprocal[ImageLength - 1].Vec.Z }.Max();
                 else
                 {
                     MaxReciproZ = new[] {
@@ -169,37 +149,24 @@ namespace Crystallography
         }
 
         /// <summary>
-        /// ピクセルが対応する逆空間の面積を計算し、ReciprocalAreasにセットする
+        /// ピクセルが対応する逆空間の面積およびベクトルを計算し、ReciprocalAreasにセットする
         /// </summary>
-        private void SetReciporocalArea()
+        private void SetReciporocalAreaAndVectors()
         {
-            int thread = Environment.ProcessorCount;
-            ReciprocalAreas = new double[ImageWidth * ImageHeight];
-            Parallel.For(0, thread, i =>
+            Reciprocal = new ((double X, double Y, double Z) Vec, double Area)[ImageWidth * ImageHeight];
+            Parallel.For(0, ImageHeight, y =>
+            {
+                for (int x = 0; x < ImageWidth; x++)
                 {
-                    Vector3DBase[] beforeBottom = new Vector3DBase[ImageWidth];
-                    Vector3DBase top, bottom, right, left, beforeRight;
-                    int start = (ImageHeight / thread) * i;
-                    int end = Math.Min((ImageHeight / thread) * (i + 1), ImageHeight);
-                    for (int x = 0; x < ImageWidth; x++)
-                        beforeBottom[x] = convertClientToReciprocalSpace(x, start - 0.5) * 10;
-                    for (int y = start; y < end; y++)
-                    {
-                        beforeRight = convertClientToReciprocalSpace(-0.5, y) * 10;
-                        for (int x = 0; x < ImageWidth; x++)
-                        {
-                            right = convertClientToReciprocalSpace(x + 0.5, y) * 10;
-                            left = beforeRight;
-                            bottom = convertClientToReciprocalSpace(x, y + 0.5) * 10;
-                            top = beforeBottom[x];
-                            ReciprocalAreas[y * ImageWidth + x] = Vector3DBase.VectorProduct(right - left, top - bottom).Length;
-                            beforeRight = right;
-                            beforeBottom[x] = bottom;
-                        }
-                    }
-                }
+                    var right = convertClientToReciprocalSpace(x + 0.5, y);
+                    var left = convertClientToReciprocalSpace(x - 0.5, y);
+                    var bottom = convertClientToReciprocalSpace(x, y + 0.5);
+                    var top = convertClientToReciprocalSpace(x, y - 0.5);
 
-                );
+                    Reciprocal[y * ImageWidth + x] = (convertClientToReciprocalSpace(x, y).Tuple, Vector3DBase.VectorProduct(right - left, top - bottom).Length);
+
+                }
+            });
         }
     }
 }

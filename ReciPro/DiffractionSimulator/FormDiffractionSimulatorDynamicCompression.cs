@@ -376,39 +376,7 @@ namespace ReciPro
             int range = 2;// (int)(s.Sigma * / fdsg.DetectorPixelSize + 0.5);//時間がかかりすぎる。どうするか。。。
             int range2 = range * range;
             var coeff1 = 1 / 2 / sigma / sigma;
-            /*
-            int threadTotal = 32;
-            double[][] dataArray = new double[32][];
 
-            Parallel.For(0, threadTotal, thread => {
-                dataArray[thread] = new double[data.Length];
-                for (int i = spots.Count / threadTotal * thread; i < Math.Min(spots.Count / threadTotal * (thread + 1), spots.Count); i++)
-                {
-                    var s = spots[i];
-                    var center = new PointD(s.X, s.Y);//ピクセル位置
-                    var centerPix = convSrcToPixelInt(center);
-                    int centerX = centerPix.X, centerY = centerPix.Y;
-                    int yMin = Math.Max(0, centerY - range), yMax = Math.Min(height, centerY + range + 1);
-                    int xMin = Math.Max(0, centerX - range), xMax = Math.Min(width, centerX + range + 1);
-                    for (int y = yMin; y < yMax; y++)
-                        for (int x = xMin; x < xMax; x++)
-                        {
-                            if ((x - centerX) * (x - centerX) + (y - centerY) * (y - centerY) <= range2)
-                            {
-                                double dev2 = (center - convPixelToSrc(x, y)).Length2();
-                                dataArray[thread][y * width + x] += s.Intensity * Math.Exp(-dev2 * coeff1);
-                            }
-                        }
-                }
-            });
-
-            for(int i= 0; i< threadTotal; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                    if (dataArray[i][j] != 0)
-                        data[j] += dataArray[i][j];
-            }
-            */
             foreach (var s in spots)
             {
                 var center = new PointD(s.X, s.Y);//ピクセル位置

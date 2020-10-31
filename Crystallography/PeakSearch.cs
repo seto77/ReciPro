@@ -498,12 +498,12 @@ namespace Crystallography
                 return double.PositiveInfinity;
             }
 
-            double[,] diff = new double[ParamNum + 2, length];
+            var diff = new double[ParamNum + 2, length];
             var Alpha = new DenseMatrix(ParamNum + 2, ParamNum + 2);
             var Beta = new DenseMatrix(ParamNum + 2, 1);
 
-            PeakFunction[] pCurrent = new PeakFunction[p.Length];
-            PeakFunction[] pNew = new PeakFunction[p.Length];
+            var pCurrent = new PeakFunction[p.Length];
+            var pNew = new PeakFunction[p.Length];
             for (int i = 0; i < p.Length; i++)
             {
                 pCurrent[i] = new PeakFunction();
@@ -513,10 +513,10 @@ namespace Crystallography
             //‚±‚±‚Ü‚Å
 
             //Int‚Ì’l‚ð‘åŽG”c‚ÉŒˆ‚ß‚é
-            double[] peakIntensity = new double[p.Length];
-            for (int i = 0; i < p.Length; i++)
+            var peakIntensity = new double[p.Length];
+            for (var i = 0; i < p.Length; i++)
             {
-                double d = double.PositiveInfinity;
+                var d = double.PositiveInfinity;
                 for (int j = 0; j < PtX.Count; j++)
                     if (d > Math.Abs(x[j] - p[i].X))
                     {

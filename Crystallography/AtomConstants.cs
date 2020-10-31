@@ -43,23 +43,23 @@ namespace Crystallography
 			return pt.ToArray();
 		}
 
-        /// <summary>
-        /// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-        /// </summary>
-        /// <param name="z"></param>
-        /// <param name="line"></param>
-        /// <returns></returns>
-        public static double CharacteristicXrayEnergy(int z, XrayLine line)
+		/// <summary>
+		/// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
+		/// </summary>
+		/// <param name="z"></param>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		public static double CharacteristicXrayEnergy(int z, XrayLine line)
 			=> UniversalConstants.Convert.WavelengthToXrayEnergy(CharacteristicXrayWavelength(z, line) * 0.1) / 1000;
 
 
-        /// <summary>
-        /// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-        /// </summary>
-        /// <param name="z"></param>
-        /// <param name="line"></param>
-        /// <returns></returns>
-        public static double CharacteristicXrayEnergy(int z, XrayLineEdge line)
+		/// <summary>
+		/// 原子番号 z, 線種 line を入力すると エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
+		/// </summary>
+		/// <param name="z"></param>
+		/// <param name="line"></param>
+		/// <returns></returns>
+		public static double CharacteristicXrayEnergy(int z, XrayLineEdge line)
 		{
 			#region
 			switch (z)
@@ -1792,8 +1792,8 @@ namespace Crystallography
 			{
 				double ka1 = CharacteristicXrayWavelength(z, XrayLine.Ka1);
 				double ka2 = CharacteristicXrayWavelength(z, XrayLine.Ka2);
-                return double.IsNaN(ka2) ? ka1 : (2 * ka1 + ka2) / 3;
-            }
+				return double.IsNaN(ka2) ? ka1 : (2 * ka1 + ka2) / 3;
+			}
 
 			#region
 			switch (z)
@@ -3825,260 +3825,256 @@ namespace Crystallography
 			return 0;
 		}
 
-		/// <summary>
-		/// 原子量を返す　引数は原子番号
-		/// </summary>
-		/// <param name="z"></param>
-		/// <returns></returns>
-		public static double AtomicWeight(int z)
-		{
-            #region
-            switch (z)
+        /// <summary>
+        /// 原子量を返す　引数は原子番号
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double AtomicWeight(int z) => z switch
+			#region
 			{
-				case 0: return 0;
-				case 1: return 1.007947;
-				case 2: return 4.0026022;
-				case 3: return 6.9412;
-				case 4: return 9.0121823;
-				case 5: return 10.8115;
-				case 6: return 12.0111;
-				case 7: return 14.006747;
-				case 8: return 15.99943;
-				case 9: return 18.99840329;
-				case 10: return 20.17976;
-				case 11: return 22.9897686;
-				case 12: return 24.30506;
-				case 13: return 26.9815395;
-				case 14: return 28.08553;
-				case 15: return 30.9737624;
-				case 16: return 32.0666;
-				case 17: return 35.45279;
-				case 18: return 39.9481;
-				case 19: return 39.09831;
-				case 20: return 40.0784;
-				case 21: return 44.9559109;
-				case 22: return 47.883;
-				case 23: return 50.94151;
-				case 24: return 51.99616;
-				case 25: return 54.938051;
-				case 26: return 55.8473;
-				case 27: return 58.933201;
-				case 28: return 58.69342;
-				case 29: return 63.5463;
-				case 30: return 65.392;
-				case 31: return 69.7231;
-				case 32: return 72.612;
-				case 33: return 74.921592;
-				case 34: return 78.963;
-				case 35: return 79.9041;
-				case 36: return 83.801;
-				case 37: return 85.46783;
-				case 38: return 87.621;
-				case 39: return 88.905852;
-				case 40: return 91.2242;
-				case 41: return 92.906382;
-				case 42: return 95.941;
-				case 43: return 99;
-				case 44: return 101.072;
-				case 45: return 102.905503;
-				case 46: return 106.421;
-				case 47: return 107.86822;
-				case 48: return 112.4118;
-				case 49: return 114.8183;
-				case 50: return 118.7107;
-				case 51: return 121.7573;
-				case 52: return 127.603;
-				case 53: return 126.904473;
-				case 54: return 131.292;
-				case 55: return 132.905435;
-				case 56: return 137.3277;
-				case 57: return 138.90552;
-				case 58: return 140.1154;
-				case 59: return 140.907653;
-				case 60: return 144.243;
-				case 61: return 145;
-				case 62: return 150.363;
-				case 63: return 151.9659;
-				case 64: return 157.253;
-				case 65: return 158.925343;
-				case 66: return 162.503;
-				case 67: return 164.930323;
-				case 68: return 167.263;
-				case 69: return 168.934213;
-				case 70: return 173.043;
-				case 71: return 174.9671;
-				case 72: return 178.492;
-				case 73: return 180.94791;
-				case 74: return 183.841;
-				case 75: return 186.2071;
-				case 76: return 190.233;
-				case 77: return 192.223;
-				case 78: return 195.083;
-				case 79: return 196.966543;
-				case 80: return 200.592;
-				case 81: return 204.38332;
-				case 82: return 207.21;
-				case 83: return 208.980373;
-				case 84: return 210;
-				case 85: return 210;
-				case 86: return 222;
-				case 87: return 223;
-				case 88: return 226;
-				case 89: return 227;
-				case 90: return 232.03811;
-				case 91: return 231.035882;
-				case 92: return 238.02891;
-				case 93: return 237;
-				case 94: return 239;
-				case 95: return 243;
-				case 96: return 247;
-				case 97: return 247;
-				case 98: return 252;
-				case 99: return 252;
-				case 100: return 257;
-				case 101: return 256;
-				case 102: return 259;
-				case 103: return 260;
-				default: return 0;
-			}
-			#endregion
-		}
+				0 => 0,
+                1 => 1.007947,
+                2 => 4.0026022,
+                3 => 6.9412,
+                4 => 9.0121823,
+                5 => 10.8115,
+                6 => 12.0111,
+                7 => 14.006747,
+                8 => 15.99943,
+                9 => 18.99840329,
+                10 => 20.17976,
+                11 => 22.9897686,
+                12 => 24.30506,
+                13 => 26.9815395,
+                14 => 28.08553,
+                15 => 30.9737624,
+                16 => 32.0666,
+                17 => 35.45279,
+                18 => 39.9481,
+                19 => 39.09831,
+                20 => 40.0784,
+                21 => 44.9559109,
+                22 => 47.883,
+                23 => 50.94151,
+                24 => 51.99616,
+                25 => 54.938051,
+                26 => 55.8473,
+                27 => 58.933201,
+                28 => 58.69342,
+                29 => 63.5463,
+                30 => 65.392,
+                31 => 69.7231,
+                32 => 72.612,
+                33 => 74.921592,
+                34 => 78.963,
+                35 => 79.9041,
+                36 => 83.801,
+                37 => 85.46783,
+                38 => 87.621,
+                39 => 88.905852,
+                40 => 91.2242,
+                41 => 92.906382,
+                42 => 95.941,
+                43 => 99,
+                44 => 101.072,
+                45 => 102.905503,
+                46 => 106.421,
+                47 => 107.86822,
+                48 => 112.4118,
+                49 => 114.8183,
+                50 => 118.7107,
+                51 => 121.7573,
+                52 => 127.603,
+                53 => 126.904473,
+                54 => 131.292,
+                55 => 132.905435,
+                56 => 137.3277,
+                57 => 138.90552,
+                58 => 140.1154,
+                59 => 140.907653,
+                60 => 144.243,
+                61 => 145,
+                62 => 150.363,
+                63 => 151.9659,
+                64 => 157.253,
+                65 => 158.925343,
+                66 => 162.503,
+                67 => 164.930323,
+                68 => 167.263,
+                69 => 168.934213,
+                70 => 173.043,
+                71 => 174.9671,
+                72 => 178.492,
+                73 => 180.94791,
+                74 => 183.841,
+                75 => 186.2071,
+                76 => 190.233,
+                77 => 192.223,
+                78 => 195.083,
+                79 => 196.966543,
+                80 => 200.592,
+                81 => 204.38332,
+                82 => 207.21,
+                83 => 208.980373,
+                84 => 210,
+                85 => 210,
+                86 => 222,
+                87 => 223,
+                88 => 226,
+                89 => 227,
+                90 => 232.03811,
+                91 => 231.035882,
+                92 => 238.02891,
+                93 => 237,
+                94 => 239,
+                95 => 243,
+                96 => 247,
+                97 => 247,
+                98 => 252,
+                99 => 252,
+                100 => 257,
+                101 => 256,
+                102 => 259,
+                103 => 260,
+                _ => 0
+            };
+        #endregion
 
-		/// <summary>
-		/// 原子量を返す　引数は原子名
-		/// </summary>
-		/// <param name="atomicName"></param>
-		/// <returns></returns>
-		public static double AtomicWeight(string atomicName)
+
+        /// <summary>
+        /// 原子量を返す　引数は原子名
+        /// </summary>
+        /// <param name="atomicName"></param>
+        /// <returns></returns>
+        public static double AtomicWeight(string atomicName)
 		{
 			return AtomicWeight(AtomicNumber(atomicName));
 		}
 
-		/// <summary>
-		/// イオン半径
-		/// </summary>
-		/// <param name="z"></param>
-		/// <returns></returns>
-		public static double AtomicRadius(int z)
-		{
-			#region
-			switch (z)
-			{
-				case 0: return 0;
-				case 1: return 1.007947;
-				case 2: return 4.0026022;
-				case 3: return 6.9412;
-				case 4: return 9.0121823;
-				case 5: return 10.8115;
-				case 6: return 12.0111;
-				case 7: return 14.006747;
-				case 8: return 15.99943;
-				case 9: return 18.99840329;
-				case 10: return 20.17976;
-				case 11: return 22.9897686;
-				case 12: return 24.30506;
-				case 13: return 26.9815395;
-				case 14: return 28.08553;
-				case 15: return 30.9737624;
-				case 16: return 32.0666;
-				case 17: return 35.45279;
-				case 18: return 39.9481;
-				case 19: return 39.09831;
-				case 20: return 40.0784;
-				case 21: return 44.9559109;
-				case 22: return 47.883;
-				case 23: return 50.94151;
-				case 24: return 51.99616;
-				case 25: return 54.938051;
-				case 26: return 55.8473;
-				case 27: return 58.933201;
-				case 28: return 58.69342;
-				case 29: return 63.5463;
-				case 30: return 65.392;
-				case 31: return 69.7231;
-				case 32: return 72.612;
-				case 33: return 74.921592;
-				case 34: return 78.963;
-				case 35: return 79.9041;
-				case 36: return 83.801;
-				case 37: return 85.46783;
-				case 38: return 87.621;
-				case 39: return 88.905852;
-				case 40: return 91.2242;
-				case 41: return 92.906382;
-				case 42: return 95.941;
-				case 43: return 99;
-				case 44: return 101.072;
-				case 45: return 102.905503;
-				case 46: return 106.421;
-				case 47: return 107.86822;
-				case 48: return 112.4118;
-				case 49: return 114.8183;
-				case 50: return 118.7107;
-				case 51: return 121.7573;
-				case 52: return 127.603;
-				case 53: return 126.904473;
-				case 54: return 131.292;
-				case 55: return 132.905435;
-				case 56: return 137.3277;
-				case 57: return 138.90552;
-				case 58: return 140.1154;
-				case 59: return 140.907653;
-				case 60: return 144.243;
-				case 61: return 145;
-				case 62: return 150.363;
-				case 63: return 151.9659;
-				case 64: return 157.253;
-				case 65: return 158.925343;
-				case 66: return 162.503;
-				case 67: return 164.930323;
-				case 68: return 167.263;
-				case 69: return 168.934213;
-				case 70: return 173.043;
-				case 71: return 174.9671;
-				case 72: return 178.492;
-				case 73: return 180.94791;
-				case 74: return 183.841;
-				case 75: return 186.2071;
-				case 76: return 190.233;
-				case 77: return 192.223;
-				case 78: return 195.083;
-				case 79: return 196.966543;
-				case 80: return 200.592;
-				case 81: return 204.38332;
-				case 82: return 207.21;
-				case 83: return 208.980373;
-				case 84: return 210;
-				case 85: return 210;
-				case 86: return 222;
-				case 87: return 223;
-				case 88: return 226;
-				case 89: return 227;
-				case 90: return 232.03811;
-				case 91: return 231.035882;
-				case 92: return 238.02891;
-				case 93: return 237;
-				case 94: return 239;
-				case 95: return 243;
-				case 96: return 247;
-				case 97: return 247;
-				case 98: return 252;
-				case 99: return 252;
-				case 100: return 257;
-				case 101: return 256;
-				case 102: return 259;
-				case 103: return 260;
-				default: return 0;
-			}
-			#endregion
-		}
+        /// <summary>
+        /// イオン半径
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double AtomicRadius(int z) => z switch
+        #region
+        {
+            0 => 0,
+            1 => 1.007947,
+            2 => 4.0026022,
+            3 => 6.9412,
+            4 => 9.0121823,
+            5 => 10.8115,
+            6 => 12.0111,
+            7 => 14.006747,
+            8 => 15.99943,
+            9 => 18.99840329,
+            10 => 20.17976,
+            11 => 22.9897686,
+            12 => 24.30506,
+            13 => 26.9815395,
+            14 => 28.08553,
+            15 => 30.9737624,
+            16 => 32.0666,
+            17 => 35.45279,
+            18 => 39.9481,
+            19 => 39.09831,
+            20 => 40.0784,
+            21 => 44.9559109,
+            22 => 47.883,
+            23 => 50.94151,
+            24 => 51.99616,
+            25 => 54.938051,
+            26 => 55.8473,
+            27 => 58.933201,
+            28 => 58.69342,
+            29 => 63.5463,
+            30 => 65.392,
+            31 => 69.7231,
+            32 => 72.612,
+            33 => 74.921592,
+            34 => 78.963,
+            35 => 79.9041,
+            36 => 83.801,
+            37 => 85.46783,
+            38 => 87.621,
+            39 => 88.905852,
+            40 => 91.2242,
+            41 => 92.906382,
+            42 => 95.941,
+            43 => 99,
+            44 => 101.072,
+            45 => 102.905503,
+            46 => 106.421,
+            47 => 107.86822,
+            48 => 112.4118,
+            49 => 114.8183,
+            50 => 118.7107,
+            51 => 121.7573,
+            52 => 127.603,
+            53 => 126.904473,
+            54 => 131.292,
+            55 => 132.905435,
+            56 => 137.3277,
+            57 => 138.90552,
+            58 => 140.1154,
+            59 => 140.907653,
+            60 => 144.243,
+            61 => 145,
+            62 => 150.363,
+            63 => 151.9659,
+            64 => 157.253,
+            65 => 158.925343,
+            66 => 162.503,
+            67 => 164.930323,
+            68 => 167.263,
+            69 => 168.934213,
+            70 => 173.043,
+            71 => 174.9671,
+            72 => 178.492,
+            73 => 180.94791,
+            74 => 183.841,
+            75 => 186.2071,
+            76 => 190.233,
+            77 => 192.223,
+            78 => 195.083,
+            79 => 196.966543,
+            80 => 200.592,
+            81 => 204.38332,
+            82 => 207.21,
+            83 => 208.980373,
+            84 => 210,
+            85 => 210,
+            86 => 222,
+            87 => 223,
+            88 => 226,
+            89 => 227,
+            90 => 232.03811,
+            91 => 231.035882,
+            92 => 238.02891,
+            93 => 237,
+            94 => 239,
+            95 => 243,
+            96 => 247,
+            97 => 247,
+            98 => 252,
+            99 => 252,
+            100 => 257,
+            101 => 256,
+            102 => 259,
+            103 => 260,
+            _ => 0,
+        };
+        #endregion
 
-		/// <summary>
-		/// イオン半径
-		/// </summary>
-		/// <param name="AtomicName"></param>
-		/// <returns></returns>
-		public static double AtomicRadius(string AtomicName)
+
+        /// <summary>
+        /// イオン半径
+        /// </summary>
+        /// <param name="AtomicName"></param>
+        /// <returns></returns>
+        public static double AtomicRadius(string AtomicName)
 		{
 			#region
 			switch (AtomicName)
@@ -4228,236 +4224,235 @@ namespace Crystallography
 				System.Globalization.TextInfo ti = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
 				atomicName = ti.ToTitleCase(atomicName);
 			}
+			
+			return atomicName switch
 			#region
-			switch (atomicName)
 			{
-				case "H": return 1;
-				case "He": return 2;
-				case "Li": return 3;
-				case "Be": return 4;
-				case "B": return 5;
-				case "C": return 6;
-				case "N": return 7;
-				case "O": return 8;
-				case "F": return 9;
-				case "Ne": return 10;
-				case "Na": return 11;
-				case "Mg": return 12;
-				case "Al": return 13;
-				case "Si": return 14;
-				case "P": return 15;
-				case "S": return 16;
-				case "Cl": return 17;
-				case "Ar": return 18;
-				case "K": return 19;
-				case "Ca": return 20;
-				case "Sc": return 21;
-				case "Ti": return 22;
-				case "V": return 23;
-				case "Cr": return 24;
-				case "Mn": return 25;
-				case "Fe": return 26;
-				case "Co": return 27;
-				case "Ni": return 28;
-				case "Cu": return 29;
-				case "Zn": return 30;
-				case "Ga": return 31;
-				case "Ge": return 32;
-				case "As": return 33;
-				case "Se": return 34;
-				case "Br": return 35;
-				case "Kr": return 36;
-				case "Rb": return 37;
-				case "Sr": return 38;
-				case "Y": return 39;
-				case "Zr": return 40;
-				case "Nb": return 41;
-				case "Mo": return 42;
-				case "Tc": return 43;
-				case "Ru": return 44;
-				case "Rh": return 45;
-				case "Pd": return 46;
-				case "Ag": return 47;
-				case "Cd": return 48;
-				case "In": return 49;
-				case "Sn": return 50;
-				case "Sb": return 51;
-				case "Te": return 52;
-				case "I": return 53;
-				case "Xe": return 54;
-				case "Cs": return 55;
-				case "Ba": return 56;
-				case "La": return 57;
-				case "Ce": return 58;
-				case "Pr": return 59;
-				case "Nd": return 60;
-				case "Pm": return 61;
-				case "Sm": return 62;
-				case "Eu": return 63;
-				case "Gd": return 64;
-				case "Tb": return 65;
-				case "Dy": return 66;
-				case "Ho": return 67;
-				case "Er": return 68;
-				case "Tm": return 69;
-				case "Yb": return 70;
-				case "Lu": return 71;
-				case "Hf": return 72;
-				case "Ta": return 73;
-				case "W": return 74;
-				case "Re": return 75;
-				case "Os": return 76;
-				case "Ir": return 77;
-				case "Pt": return 78;
-				case "Au": return 79;
-				case "Hg": return 80;
-				case "Tl": return 81;
-				case "Pb": return 82;
-				case "Bi": return 83;
-				case "Po": return 84;
-				case "At": return 85;
-				case "Rn": return 86;
-				case "Fr": return 87;
-				case "Ra": return 88;
-				case "Ac": return 89;
-				case "Th": return 90;
-				case "Pa": return 91;
-				case "U": return 92;
-				case "Np": return 93;
-				case "Pu": return 94;
-				case "Am": return 95;
-				case "Cm": return 96;
-				case "Bk": return 97;
-				case "Cf": return 98;
-				case "Es": return 99;
-				case "Fm": return 100;
-				case "Md": return 101;
-				case "No": return 102;
-				case "Lr": return 103;
-				default: return 0;
-			}
+				 "H"=> 1,
+				 "He"=> 2,
+				 "Li"=> 3,
+				 "Be"=> 4,
+				 "B"=> 5,
+				 "C"=> 6,
+				 "N"=> 7,
+				 "O"=> 8,
+				 "F"=> 9,
+				 "Ne"=> 10,
+				 "Na"=> 11,
+				 "Mg"=> 12,
+				 "Al"=> 13,
+				 "Si"=> 14,
+				 "P"=> 15,
+				 "S"=> 16,
+				 "Cl"=> 17,
+				 "Ar"=> 18,
+				 "K"=> 19,
+				 "Ca"=> 20,
+				 "Sc"=> 21,
+				 "Ti"=> 22,
+				 "V"=> 23,
+				 "Cr"=> 24,
+				 "Mn"=> 25,
+				 "Fe"=> 26,
+				 "Co"=> 27,
+				 "Ni"=> 28,
+				 "Cu"=> 29,
+				 "Zn"=> 30,
+				 "Ga"=> 31,
+				 "Ge"=> 32,
+				 "As"=> 33,
+				 "Se"=> 34,
+				 "Br"=> 35,
+				 "Kr"=> 36,
+				 "Rb"=> 37,
+				 "Sr"=> 38,
+				 "Y"=> 39,
+				 "Zr"=> 40,
+				 "Nb"=> 41,
+				 "Mo"=> 42,
+				 "Tc"=> 43,
+				 "Ru"=> 44,
+				 "Rh"=> 45,
+				 "Pd"=> 46,
+				 "Ag"=> 47,
+				 "Cd"=> 48,
+				 "In"=> 49,
+				 "Sn"=> 50,
+				 "Sb"=> 51,
+				 "Te"=> 52,
+				 "I"=> 53,
+				 "Xe"=> 54,
+				 "Cs"=> 55,
+				 "Ba"=> 56,
+				 "La"=> 57,
+				 "Ce"=> 58,
+				 "Pr"=> 59,
+				 "Nd"=> 60,
+				 "Pm"=> 61,
+				 "Sm"=> 62,
+				 "Eu"=> 63,
+				 "Gd"=> 64,
+				 "Tb"=> 65,
+				 "Dy"=> 66,
+				 "Ho"=> 67,
+				 "Er"=> 68,
+				 "Tm"=> 69,
+				 "Yb"=> 70,
+				 "Lu"=> 71,
+				 "Hf"=> 72,
+				 "Ta"=> 73,
+				 "W"=> 74,
+				 "Re"=> 75,
+				 "Os"=> 76,
+				 "Ir"=> 77,
+				 "Pt"=> 78,
+				 "Au"=> 79,
+				 "Hg"=> 80,
+				 "Tl"=> 81,
+				 "Pb"=> 82,
+				 "Bi"=> 83,
+				 "Po"=> 84,
+				 "At"=> 85,
+				 "Rn"=> 86,
+				 "Fr"=> 87,
+				 "Ra"=> 88,
+				 "Ac"=> 89,
+				 "Th"=> 90,
+				 "Pa"=> 91,
+				 "U"=> 92,
+				 "Np"=> 93,
+				 "Pu"=> 94,
+				 "Am"=> 95,
+				 "Cm"=> 96,
+				 "Bk"=> 97,
+				 "Cf"=> 98,
+				 "Es"=> 99,
+				 "Fm"=> 100,
+				 "Md"=> 101,
+				 "No"=> 102,
+				 "Lr"=> 103,
+				_ => 0
+			};
 			#endregion
 		}
 
-		/// <summary>
-		/// 原子番号を与えて、原子名を返す
-		/// </summary>
-		/// <param name="z"></param>
-		/// <returns></returns>
-		public static string AtomicName(int z)
-		{
-            #region
-            switch (z)
-			{
-				case 1: return "H";
-				case 2: return "He";
-				case 3: return "Li";
-				case 4: return "Be";
-				case 5: return "B";
-				case 6: return "C";
-				case 7: return "N";
-				case 8: return "O";
-				case 9: return "F";
-				case 10: return "Ne";
-				case 11: return "Na";
-				case 12: return "Mg";
-				case 13: return "Al";
-				case 14: return "Si";
-				case 15: return "P";
-				case 16: return "S";
-				case 17: return "Cl";
-				case 18: return "Ar";
-				case 19: return "K";
-				case 20: return "Ca";
-				case 21: return "Sc";
-				case 22: return "Ti";
-				case 23: return "V";
-				case 24: return "Cr";
-				case 25: return "Mn";
-				case 26: return "Fe";
-				case 27: return "Co";
-				case 28: return "Ni";
-				case 29: return "Cu";
-				case 30: return "Zn";
-				case 31: return "Ga";
-				case 32: return "Ge";
-				case 33: return "As";
-				case 34: return "Se";
-				case 35: return "Br";
-				case 36: return "Kr";
-				case 37: return "Rb";
-				case 38: return "Sr";
-				case 39: return "Y";
-				case 40: return "Zr";
-				case 41: return "Nb";
-				case 42: return "Mo";
-				case 43: return "Tc";
-				case 44: return "Ru";
-				case 45: return "Rh";
-				case 46: return "Pd";
-				case 47: return "Ag";
-				case 48: return "Cd";
-				case 49: return "In";
-				case 50: return "Sn";
-				case 51: return "Sb";
-				case 52: return "Te";
-				case 53: return "I";
-				case 54: return "Xe";
-				case 55: return "Cs";
-				case 56: return "Ba";
-				case 57: return "La";
-				case 58: return "Ce";
-				case 59: return "Pr";
-				case 60: return "Nd";
-				case 61: return "Pm";
-				case 62: return "Sm";
-				case 63: return "Eu";
-				case 64: return "Gd";
-				case 65: return "Tb";
-				case 66: return "Dy";
-				case 67: return "Ho";
-				case 68: return "Er";
-				case 69: return "Tm";
-				case 70: return "Yb";
-				case 71: return "Lu";
-				case 72: return "Hf";
-				case 73: return "Ta";
-				case 74: return "W";
-				case 75: return "Re";
-				case 76: return "Os";
-				case 77: return "Ir";
-				case 78: return "Pt";
-				case 79: return "Au";
-				case 80: return "Hg";
-				case 81: return "Tl";
-				case 82: return "Pb";
-				case 83: return "Bi";
-				case 84: return "Po";
-				case 85: return "At";
-				case 86: return "Rn";
-				case 87: return "Fr";
-				case 88: return "Ra";
-				case 89: return "Ac";
-				case 90: return "Th";
-				case 91: return "Pa";
-				case 92: return "U";
-				case 93: return "Np";
-				case 94: return "Pu";
-				case 95: return "Am";
-				case 96: return "Cm";
-				case 97: return "Bk";
-				case 98: return "Cf";
-				case 99: return "Es";
-				case 100: return "Fm";
-				case 101: return "Md";
-				case 102: return "No";
-				case 103: return "Lr";
-				default: return "";
-			}
-			#endregion
-		}
+        /// <summary>
+        /// 原子番号を与えて、原子名を返す
+        /// </summary>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static string AtomicName(int z) => z switch
+        #region
+        {
+            1 => "H",
+            2 => "He",
+            3 => "Li",
+            4 => "Be",
+            5 => "B",
+            6 => "C",
+            7 => "N",
+            8 => "O",
+            9 => "F",
+            10 => "Ne",
+            11 => "Na",
+            12 => "Mg",
+            13 => "Al",
+            14 => "Si",
+            15 => "P",
+            16 => "S",
+            17 => "Cl",
+            18 => "Ar",
+            19 => "K",
+            20 => "Ca",
+            21 => "Sc",
+            22 => "Ti",
+            23 => "V",
+            24 => "Cr",
+            25 => "Mn",
+            26 => "Fe",
+            27 => "Co",
+            28 => "Ni",
+            29 => "Cu",
+            30 => "Zn",
+            31 => "Ga",
+            32 => "Ge",
+            33 => "As",
+            34 => "Se",
+            35 => "Br",
+            36 => "Kr",
+            37 => "Rb",
+            38 => "Sr",
+            39 => "Y",
+            40 => "Zr",
+            41 => "Nb",
+            42 => "Mo",
+            43 => "Tc",
+            44 => "Ru",
+            45 => "Rh",
+            46 => "Pd",
+            47 => "Ag",
+            48 => "Cd",
+            49 => "In",
+            50 => "Sn",
+            51 => "Sb",
+            52 => "Te",
+            53 => "I",
+            54 => "Xe",
+            55 => "Cs",
+            56 => "Ba",
+            57 => "La",
+            58 => "Ce",
+            59 => "Pr",
+            60 => "Nd",
+            61 => "Pm",
+            62 => "Sm",
+            63 => "Eu",
+            64 => "Gd",
+            65 => "Tb",
+            66 => "Dy",
+            67 => "Ho",
+            68 => "Er",
+            69 => "Tm",
+            70 => "Yb",
+            71 => "Lu",
+            72 => "Hf",
+            73 => "Ta",
+            74 => "W",
+            75 => "Re",
+            76 => "Os",
+            77 => "Ir",
+            78 => "Pt",
+            79 => "Au",
+            80 => "Hg",
+            81 => "Tl",
+            82 => "Pb",
+            83 => "Bi",
+            84 => "Po",
+            85 => "At",
+            86 => "Rn",
+            87 => "Fr",
+            88 => "Ra",
+            89 => "Ac",
+            90 => "Th",
+            91 => "Pa",
+            92 => "U",
+            93 => "Np",
+            94 => "Pu",
+            95 => "Am",
+            96 => "Cm",
+            97 => "Bk",
+            98 => "Cf",
+            99 => "Es",
+            100 => "Fm",
+            101 => "Md",
+            102 => "No",
+            103 => "Lr",
+            _ => ""
+        };
+        #endregion
 
-		public class ElasticScattering
+
+        public class ElasticScattering
 		{
 			/// <summary>
 			/// Valence　価数
@@ -4489,23 +4484,8 @@ namespace Crystallography
 			{
 				Valence = valence;
 				Method = methods;
-
-				//var a = new[] { a1, a2, a3, a4 };
-				//var b = new[] { b1, b2, b3, b4 };
-
 				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4) };
-
-				//Factor = new Func<double, double>(s2 =>
-				//{
-				//	s2 *= 0.01;//単位を修正
-				//	var result = 0.0;
-				//	for (int i = 0; i < a.Length; i++)
-				//		result += a[i] * Math.Exp(-s2 * b[i]);
-				//	return (result + c) * 0.1;
-				//});
-
 				Factor = new Func<double, double>(s2 => (prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
-
 			}
 
 			//電子線用のコンストラクタ (Five gaussian)
@@ -4514,20 +4494,8 @@ namespace Crystallography
 				Valence = valence;
 				Method = methods;
 
-				//var a = new[] { a1, a2, a3, a4, a5 };
-				//var b = new[] { b1, b2, b3, b4, b5 };
-
 				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
-
 				Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-				//{
-					//s2 *= 0.01;
-					//var result = 0.0;
-					//for (int i = 0; i < a.Length; i++)
-					//	result += a[i] * Math.Exp(-s2 * b[i]);
-					//return result * 0.1;
-				//});
-
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
 					s2 *= 0.01;//単位を修正
@@ -4541,20 +4509,6 @@ namespace Crystallography
 							   : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
 						   })) * Math.PI;
 				});
-
-
-				//var f = 0.0;
-				//for (int i = 0; i < prms.Length; i++)
-				//	for (int j = 0; j < prms.Length; j++)
-				//	{
-				//		var sum = prms[i].B + prms[j].B;
-				//		var product = prms[i].B * prms[j].B;
-				//		if (sum != 0)
-				//			f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-				//	}
-				//return Math.PI * f;
-
-
 			}
 
 			//電子線用のコンストラクタ (Eight gaussian)
@@ -4563,38 +4517,8 @@ namespace Crystallography
 				Valence = 0;
 				Method = "";
 
-				//var a = new[] { a1, a2, a3, a4, a5, a6, a7, a8 };
-				//var b = new[] { b1, b2, b3, b4, b5, b6, b7, b8 };
-
 				var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
-
-				//Factor = new Func<double, double>(s2 =>
-				//{
-				//	s2 *= 0.01;//単位を修正
-				//	var result = 0.0;
-				//	for (int i = 0; i < a.Length; i++)
-				//		result += a[i] * Math.Exp(-s2 * b[i]);
-				//	return result * 0.1;
-				//});
 				Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-
-
-				//FactorImaginary = new Func<double, double, double>((s2, m) =>
-				//{
-				//	s2 *= 100;//単位を修正
-				//	m *= 100;//単位を修正
-				//	var f = 0.0;
-				//	for (int i = 0; i < a.Length; i++)
-				//		for (int j = 0; j < a.Length; j++)
-				//		{
-				//			var sum = b[i] + b[j];
-				//			var product = b[i] * b[j];
-				//			if (sum != 0)
-				//				f += a[i] * a[j] * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-				//		}
-				//	return Math.PI * f;
-				//}
-				//);
 				FactorImaginary = new Func<double, double, double>((s2, m) =>
 				{
 					s2 *= 0.01;//単位を修正
@@ -6627,36 +6551,36 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 #endregion
 		};
 
-        /// <summary>
-        /// 平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991
-        /// </summary>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        public static double MeanExcitationEnergy(int z, int mode = 0) => mode switch
-        {
-            0 => z * (14 * (1 - Math.Exp(-0.1 * z)) + 75.5 / Math.Pow(z, z / 7.5) - z / (z + 100.0)) / 1000,
-            1 => z * (9.76 + 58.8 * Math.Pow(z, -1.19)) / 1000,
-            _ => z * (10.04 + 8.25 * Math.Exp(-z / 11.22)) / 1000
-        };
+		/// <summary>
+		/// 平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991
+		/// </summary>
+		/// <param name="z"></param>
+		/// <returns></returns>
+		public static double MeanExcitationEnergy(int z, int mode = 0) => mode switch
+		{
+			0 => z * (14 * (1 - Math.Exp(-0.1 * z)) + 75.5 / Math.Pow(z, z / 7.5) - z / (z + 100.0)) / 1000,
+			1 => z * (9.76 + 58.8 * Math.Pow(z, -1.19)) / 1000,
+			_ => z * (10.04 + 8.25 * Math.Exp(-z / 11.22)) / 1000
+		};
 
-        /// <summary>
-        /// Stopping Power Factor
-        /// </summary>
-        /// <param name="z"></param>
-        /// <param name="line"></param>
-        /// <param name="incidentEnergy"></param>
-        /// <returns></returns>
-        public static double StoppingFactor(double ec, double e0, int z) 
+		/// <summary>
+		/// Stopping Power Factor
+		/// </summary>
+		/// <param name="z"></param>
+		/// <param name="line"></param>
+		/// <param name="incidentEnergy"></param>
+		/// <returns></returns>
+		public static double StoppingFactor(double ec, double e0, int z) 
 			=> z / AtomicWeight(z) * Math.Log(1.166 * (2 * e0 + ec) / 3 / AtomConstants.MeanExcitationEnergy(z));
 
-        /// <summary>
-        /// Back Scattered Factor
-        /// </summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
-        /// <param name="z"></param>
-        /// <param name="line"></param>
-        /// <param name="incidentEnergy"></param>
-        /// <returns></returns>
-        public static double BackScatteredFactor(double ec, double e0, int z)
+		/// <summary>
+		/// Back Scattered Factor
+		/// </summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
+		/// <param name="z"></param>
+		/// <param name="line"></param>
+		/// <param name="incidentEnergy"></param>
+		/// <returns></returns>
+		public static double BackScatteredFactor(double ec, double e0, int z)
 		{
 			double u = ec / e0;
 			double r = 1;

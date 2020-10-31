@@ -96,18 +96,19 @@ namespace ReciPro
             //formMainのlistBoxのselectedIndexの変更イベントを登録
             formMain.listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
 
-        private List<Crystallography.Controls.CrystalControl> CrystalContlols = new List<Crystallography.Controls.CrystalControl>();
+        private List<CrystalControl> CrystalContlols = new List<CrystalControl>();
 
         //formMainのlistBoxのselectedIndexが変更されたとき
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabControlCrystals.TabPages.Clear();
+            CrystalContlols.Clear();
             Crystals = new List<Crystal>();
             int n = 0;
             foreach (Crystal c in formMain.listBox.SelectedItems)
             {
                 var tab = new TabPage();
-                var crystalControl = new Crystallography.Controls.CrystalControl
+                var crystalControl = new CrystalControl
                 {
                     Crystal = c,
                     Dock = DockStyle.Fill,
@@ -1143,7 +1144,7 @@ return residual;
 
             if (tabControlCrystals.TabPages.Count == 0 || dpc.Crystals == null || dpc.Crystals.Count == 0) return;
 
-            Random rn = new Random();
+            //Random rn = new Random();
             for (int i = 0; i < dpc.Crystals.Count; i++)
                 if (dpc.Crystals[i].Crystallites == null || ModifierKeys == Keys.Control)
                 {

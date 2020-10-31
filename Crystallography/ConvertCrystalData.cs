@@ -266,9 +266,8 @@ namespace Crystallography
 			}
 			catch (Exception e)
 			{
-				#if DEBUG
+				if(AssemblyState.IsDebug)
 					System.Windows.Forms.MessageBox.Show(fileName +" " + e.Message);
-				#endif
 				return null;
 			}
 		}
@@ -286,9 +285,8 @@ namespace Crystallography
 			}
 			catch (Exception e)
 			{
-				#if DEBUG
-				System.Windows.Forms.MessageBox.Show(e.Message);
-				#endif
+				if (Crystallography.AssemblyState.IsDebug)
+					System.Windows.Forms.MessageBox.Show(e.Message);
 				return null;
 			}
 
@@ -1007,9 +1005,8 @@ namespace Crystallography
 					}
 					catch (Exception e)
 					{
-						#if DEBUG
-                        System.Windows.Forms.MessageBox.Show( e.Message);
-						#endif
+						if (AssemblyState.IsDebug)
+							System.Windows.Forms.MessageBox.Show( e.Message);
 						return null;
 					}
 				}

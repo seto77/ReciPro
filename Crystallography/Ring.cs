@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Numerics;
+using OpenTK.Graphics.ES20;
 
 namespace Crystallography
 {
@@ -1796,10 +1798,7 @@ namespace Crystallography
 					yMax = Math.Max(i / IP.SrcWidth, yMax);
 				}
 
-			ThreadTotal = Environment.ProcessorCount*2;
-#if DEBUG
-			ThreadTotal=1;
-#endif
+			ThreadTotal = Environment.ProcessorCount * 4;
 
 			p.MaxDegreeOfParallelism = ThreadTotal;
 
@@ -1896,17 +1895,41 @@ namespace Crystallography
 			//FlatPanelモードの時
 			if (iP.Camera == IntegralProperty.CameraEnum.FlatPanel)
 			{
-				//ここからスレッド起動
-				Parallel.For(0, ThreadTotal, p, i =>
+				if (IP.Mode == HorizontalAxis.Angle)
 				{
-					//GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]);
+                    if (NativeWrapper.Enabled)
+                    {
+                        var intensityArray = Intensity.ToArray();
+                        var isValidArray = IsValid.Select(val => val ? (byte)1 : (byte)0).ToArray();
+                        var r2 = R2.ToArray();
+						Parallel.For(0, ThreadTotal, i =>
+						{
+							int yMin = yThreadMin[i], yMax = yThreadMax[i];
+							var intensity = intensityArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
+							var isValid = isValidArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
 
-					//2016/12/27 変更
-					if (IP.Mode == HorizontalAxis.Angle)
-						GetProfileThreadWithTiltCorrectionNew(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]);
+							(tempProfileIntensity[i], tempContibutedPixels[i]) = NativeWrapper.Histogram(
+							   IP.SrcWidth, IP.SrcHeight,
+							   IP.CenterX, IP.CenterY,
+							   IP.PixSizeX, IP.PixSizeY,
+							   IP.FilmDistance,
+							   IP.ksi, IP.tau, IP.phi,
+							   IP.SpericalRadiusInverse,
+							   intensity.ToArray(), isValid.ToArray(),
+							   yThreadMin[i], yThreadMax[i],
+							   IP.StartAngle, IP.StepAngle,
+							   r2);
+						});
+                    }
 					else
-						GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]);
-				});
+
+                        Parallel.For(0, ThreadTotal, i =>
+							(tempProfileIntensity[i], tempContibutedPixels[i]) = GetProfileThreadWithTiltCorrectionNew(xMin, xMax, yThreadMin[i], yThreadMax[i]));
+				}
+				else
+					Parallel.For(0, ThreadTotal, p, i =>
+					GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]));
+
 				Parallel.For(0, ThreadTotal, p, i =>
 				{
 					lock (lockObj)
@@ -2607,8 +2630,11 @@ namespace Crystallography
 		/// <param name="yMax"></param>
 		/// <param name="profile"></param>
 		/// <param name="pixels"></param>
-		public static void GetProfileThreadWithTiltCorrectionNew(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels)
+		public static (double [] Profile, double[] pixels) GetProfileThreadWithTiltCorrectionNew(int xMin, int xMax, int yMin, int yMax)
 		{
+			var profile = new double[R2.Length];
+			var pixels = new double[R2.Length];
+
 			int width = IP.SrcWidth, length = R2.Length;
 			double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY, startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
 
@@ -2619,9 +2645,12 @@ namespace Crystallography
 			//Y方向に0.5ピクセル進んだ時の並進ベクトル
 			tY = pixSizeY / 2;
 			tX = pixSizeY * TanKsi / 2;
+
 			(double X, double Y, double Z) slideY = (Numer2 * tX + Numer1 * tY, Numer1 * tX + Numer3 * tY, Denom2 * tX + Denom1 * tY);
 
-			(double X, double Y, double Z)[] slide = new[] { (slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z), (slideX.X - slideY.X, slideX.Y - slideY.Y, slideX.Z - slideY.Z) };
+			(double X, double Y, double Z)[] slide = new[] { 
+				(slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z), 
+				(slideX.X - slideY.X, slideX.Y - slideY.Y, slideX.Z - slideY.Z) };
 
 			//IPの法線ベクトル
 			(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
@@ -2641,7 +2670,7 @@ namespace Crystallography
 					if (IsValid[i + jWidth])//マスクされていないとき
 					{
 						var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
-																			//以下のx,y,zがピクセル中心の空間位置
+						//以下のx,y,zがピクセル中心の空間位置
 						var x = Numer2 * tempX + numer1TempY;
 						var y = Numer1 * tempX + numer3TempY;
 						var z = Denom2 * tempX + denom1tempYFD;
@@ -2649,6 +2678,7 @@ namespace Crystallography
 						if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
 						{
 							//検出器中心(0,0,FD)からピクセルまでの距離
+							
 							var distance = Math.Sqrt(x * x + y * y + (z - fd) * (z - fd));
 
 							//検出器のダイレクトスポット方向に縮める割合
@@ -2663,10 +2693,11 @@ namespace Crystallography
 							z = (z - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
 						}
 
+
 						double l2 = x * x + y * y + z * z, q = Math.Sqrt(x * x + y * y), l = Math.Sqrt(l2);
 
-						(double X, double Y)[] v = new (double X, double Y)[5], pt = new (double X, double Y)[5];
 						//四隅の頂点座標を計算
+						var v = new (double X, double Y)[5]; 
 						for (int k = 0; k < 2; k++)
 						{
 							double a = x + slide[k].X, b = y + slide[k].Y, c = z + slide[k].Z;
@@ -2678,8 +2709,7 @@ namespace Crystallography
 							v[k].Y = bNew * l * fd / p;
 							if (c * l2 < z * p)
 								v[k].X = -v[k].X;
-							v[k + 2].X = -v[k].X;
-							v[k + 2].Y = -v[k].Y;
+							v[k + 2] = (-v[k].X, -v[k].Y);
 						}
 						v[4] = v[0];
 
@@ -2701,16 +2731,16 @@ namespace Crystallography
 								break;
 							}
 							var c = Math.Tan(R2[k] - twoTheta) * fd;
-							var n = 0;
+							var pt = new List<(double X, double Y)>();
 							for (int m = 0; m < 4; m++)
 							{
 								if (v[m].X < c)
-									pt[n++] = v[m];
+									pt.Add(v[m]);
 								if ((v[m].X < c && c <= v[m + 1].X) || (v[m].X >= c && c > v[m + 1].X))
-									pt[n++] = (c, (c * v[m + 1].Y - c * v[m].Y - v[m].X * v[m + 1].Y + v[m + 1].X * v[m].Y) / (v[m + 1].X - v[m].X));
+									pt.Add((c, (c * v[m + 1].Y - c * v[m].Y - v[m].X * v[m + 1].Y + v[m + 1].X * v[m].Y) / (v[m + 1].X - v[m].X)));
 							}
 
-							var area1 = Math.Abs(n switch
+							var area1 = Math.Abs(pt.Count switch
 							{
 								3 => pt[0].X * (pt[1].Y - pt[2].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[0].Y - pt[1].Y),//0 - 1 - 2 が作る3角形
 								4 => pt[0].X * (pt[1].Y - pt[3].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[3].Y - pt[1].Y) + pt[3].X * (pt[0].Y - pt[2].Y),// 0 - 1 - 2 -  3 が作る4角形
@@ -2729,6 +2759,8 @@ namespace Crystallography
 			var mag = 1 / (pixSizeX * pixSizeY);//係数
 			for (int i = 0; i < pixels.Length; i++)
 				pixels[i] *= mag;
+
+			return (profile, pixels);
 		}
 
 		public static PointD FindCenter(IntegralProperty iP, int radius, List<bool> mask)

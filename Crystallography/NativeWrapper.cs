@@ -42,7 +42,8 @@ namespace Crystallography
                                                 double[] results);
 
         [DllImport("Crystallography.Native.dll")]
-        private static unsafe extern void _HRTEMSolverTcc(int gDim,
+        private static unsafe extern void _HRTEMSolverTcc(
+            int gDim,
                                                 int lDim,
                                                 int rDim,
                                                 double[] gPsi,
@@ -51,6 +52,21 @@ namespace Crystallography
                                                 double[] rVec,
                                                 double[] results);
 
+
+        [DllImport("Crystallography.Native.dll")]
+        private static extern void _Histogram(
+            int width, int height,
+            double centerX, double centerY,
+            double pixSizeX, double pixSizeY,
+            double fd,
+            double ksi, double tau, double phi,
+            double SpericalRadiusInverse,
+            double[] Intensity, byte[] IsValid,
+            int yMin, int yMax,
+            double startAngle, double stepAngle,
+            double[] r2, int r2len,
+            double[] profile, double[] pixels
+        );
 
         /// <summary>
         /// Native ライブラリが有効かどうか
@@ -101,7 +117,6 @@ namespace Crystallography
                 vecArray[count++] = vec[c].Real;
                 vecArray[count++] = vec[c].Imaginary;
             }
-
             return (dim, vecArray);
         }
 
@@ -210,10 +225,12 @@ namespace Crystallography
             return result;
         }
 
+
+        #region HRTEM simulation
         static public double[] HRTEM_Solver(double[] gPsi, double[] gVec, double[] gLenz, double[] rVec, bool quasiMode)
         {
             var gDim = gPsi.Length / 2;
-            var lDim = gLenz.Length / gPsi.Length ;
+            var lDim = gLenz.Length / gPsi.Length;
             var rDim = rVec.Length / 2;
 
             var results = new double[lDim * rDim];
@@ -234,6 +251,39 @@ namespace Crystallography
                 gP.SelectMany(e => new[] { e.Vec.X, e.Vec.Y }).ToArray(),
                 gP.SelectMany(e => e.Lenz.SelectMany(l => new[] { l.Real, l.Imaginary }).ToArray()).ToArray()
                 );
+        }
+        #endregion
+
+
+        static public (double[] profile, double[] pixels) Histogram(
+            int width, int height,
+            double centerX, double centerY,
+            double pixSizeX, double pixSizeY,
+            double fd,
+            double ksi, double tau, double phi,
+            double SpericalRadiusInverse,
+            double[] Intensity, byte[] IsValid,
+            int yMin, int yMax,
+            double startAngle, double stepAngle,
+            double[] r2
+            )
+        {
+            var profile = new double[r2.Length];
+            var pixels = new double[r2.Length];
+            _Histogram(
+                width, height,
+                centerX, centerY,
+                pixSizeX, pixSizeY,
+                fd,
+                ksi, tau, phi,
+                SpericalRadiusInverse,
+                Intensity, IsValid,
+                yMin, yMax,
+                startAngle, stepAngle,
+                r2,r2.Length,
+                profile, pixels);
+
+            return (profile, pixels);
         }
     }
 }

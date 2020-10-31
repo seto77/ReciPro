@@ -243,7 +243,7 @@ namespace Crystallography
             SiteSymmetry = temp.SiteSymmetry;
             Multiplicity = temp.Multiplicity;
             WyckoffNumber = temp.WyckoffNumber;
-            ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(AtomicNumber);
+            ElementName = $"{AtomicNumber}: {AtomConstants.AtomicName(AtomicNumber)}";
 
             Atom = temp.Atom;
         }
@@ -1182,7 +1182,7 @@ namespace Crystallography
     [Serializable()]
     public class DiffuseScatteringFactor
     {
-        static readonly double PI2 = Math.PI * Math.PI;
+        const double PI2 = Math.PI * Math.PI;
         public enum Type { U, B }
         //Biomolecular Crystallography: Principles, Practice, and Application to Structural Biology
         //641ÉyÅ[ÉW

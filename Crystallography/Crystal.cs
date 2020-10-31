@@ -727,14 +727,12 @@ namespace Crystallography
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Vector3D CalcHklVector(int h, int k, int l, Vector3D a, Vector3D b, Vector3D c)
-        {
-            return new Vector3D(
+        public static Vector3D CalcHklVector(int h, int k, int l, Vector3D a, Vector3D b, Vector3D c) 
+            => new Vector3D(
                 -h * (b.Z * c.Y - b.Y * c.Z) - k * (c.Z * a.Y - c.Y * a.Z) - l * (a.Z * b.Y - a.Y * b.Z),
                 -h * (b.X * c.Z - b.Z * c.X) - k * (c.X * a.Z - c.Z * a.X) - l * (a.X * b.Z - a.Z * b.X),
                 -h * (b.Y * c.X - b.X * c.Y) - k * (c.Y * a.X - c.X * a.Y) - l * (a.Y * b.X - a.X * b.Y)
                 );
-        }
 
         /// <summary>
         /// hkl面の方向ベクトル計算
@@ -743,14 +741,12 @@ namespace Crystallography
         /// <param name="k"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        public Vector3D CalcHklVector(int h, int k, int l)
-        {
-            return new Vector3D(
+        public Vector3D CalcHklVector(int h, int k, int l) 
+            => new Vector3D(
                 -h * (B_Axis.Z * C_Axis.Y - B_Axis.Y * C_Axis.Z) - k * (C_Axis.Z * A_Axis.Y - C_Axis.Y * A_Axis.Z) - l * (A_Axis.Z * B_Axis.Y - A_Axis.Y * B_Axis.Z),
                 -h * (B_Axis.X * C_Axis.Z - B_Axis.Z * C_Axis.X) - k * (C_Axis.X * A_Axis.Z - C_Axis.Z * A_Axis.X) - l * (A_Axis.X * B_Axis.Z - A_Axis.Z * B_Axis.X),
                 -h * (B_Axis.Y * C_Axis.X - B_Axis.X * C_Axis.Y) - k * (C_Axis.Y * A_Axis.X - C_Axis.X * A_Axis.Y) - l * (A_Axis.Y * B_Axis.X - A_Axis.X * B_Axis.Y)
                 );
-        }
 
         /// <summary>
         /// 既約かどうか判定
@@ -1126,14 +1122,14 @@ namespace Crystallography
             var maxGnum = 250000;
             var gList = new List<(int h, int k, int l, double x, double y, double z, double len)>();
 
-            while (gList.Count < maxGnum && (minG = outer.Min(o => o.Value)) < gMax)
+            while (gList.Count < maxGnum && (minG = outer.Values.Min()) < gMax)
             {
                 foreach ((int h1, int k1, int l1) in outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToArray())
                 {
                     outer.Remove((h1, k1, l1));
                     foreach ((int h2, int k2, int l2) in directions)
                     {
-                        int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * 1048576 + k * 1024 + l;
+                        int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * 1024 * 1024 + k * 1024 + l;
                         if (key > 0 && whole.Add(key))
                         {
                             double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;

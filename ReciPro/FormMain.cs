@@ -1346,9 +1346,8 @@ namespace ReciPro
             }
             catch (Exception e)
             {
-#if DEBUG
-                MessageBox.Show(e.Message);
-#endif
+                if (Crystallography.AssemblyState.IsDebug)
+                    MessageBox.Show(e.Message);
             }
             SkipProgressEvent = false;
         }

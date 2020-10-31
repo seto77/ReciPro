@@ -89,9 +89,9 @@ namespace Crystallography
                 string[] tempStr = PositionStr[0].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tempStr.Length == 3)
                 {
-                    FreedomX = tempStr[0].IndexOf('x') >= 0;
-                    FreedomY = tempStr[1].IndexOf('y') >= 0;
-                    FreedomZ = tempStr[2].IndexOf('z') >= 0;
+                    FreedomX = tempStr[0].Contains('x');
+                    FreedomY = tempStr[1].Contains('y');
+                    FreedomZ = tempStr[2].Contains('z');
                 }
                 else
                     FreedomX = FreedomY = FreedomZ = true;
@@ -145,24 +145,24 @@ namespace Crystallography
         /// <returns></returns>
         public bool CheckPosition(double x, double y, double z)
         {
-            foreach (var generator in PositionGenerator)
+            static bool chk(double d1, double d2)
             {
-                var (X, Y, Z) = generator(x, y, z);
+                double d = d1 - d2;
+                while (d > 0.5)
+                    d--;
+                while (d < -0.5)
+                    d++;
+                return Math.Abs(d) < SymmetryStatic.Th;
+            }
+
+            foreach (var (X, Y, Z) in PositionGenerator.Select(generator => generator(x, y, z)))
+            {
                 if (chk(X, x) && chk(Y, y) && chk(Z, z))
                     return true;
             }
             return false;
         }
 
-        private static bool chk(double d1, double d2)
-        {
-            double d = d1 - d2;
-            while (d > 0.5)
-                d--;
-            while (d < -0.5)
-                d++;
-            return Math.Abs(d) < SymmetryStatic.Th;
-        }
 
         /// <summary>
         /// 引数の空間群による対称操作で映る原子位置(pos)の等価な原子位置をクラスAtomsでかえす

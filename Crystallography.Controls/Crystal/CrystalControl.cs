@@ -280,9 +280,8 @@ namespace Crystallography.Controls
                 }
                 catch (Exception ex)
                 {
-#if DEBUG
-                    MessageBox.Show(ex.ToString());
-#endif
+                    if (Crystallography.AssemblyState.IsDebug)
+                        MessageBox.Show(ex.ToString());
                     return;
                 }
             }

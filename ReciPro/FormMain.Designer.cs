@@ -247,6 +247,7 @@
             // 
             // splitContainer
             // 
+            this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Name = "splitContainer";

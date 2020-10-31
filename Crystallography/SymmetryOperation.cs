@@ -53,7 +53,8 @@ namespace Crystallography
             Translation = (so.Translation.U + shiftU, so.Translation.V + shiftV, so.Translation.W + shiftW);
         }
 
-        public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index) => ConvertPlaneIndex(index.H, index.K, index.L);
+        public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index) 
+            => ConvertPlaneIndex(index.H, index.K, index.L);
 
         public (int H, int K, int L) ConvertPlaneIndex(int h, int k, int l)
         {
@@ -63,13 +64,13 @@ namespace Crystallography
                 return (-h, -k, -l);
             else
             {
-                (int H, int K, int L) p = (int.MaxValue, int.MaxValue, int.MaxValue);
+                (int H, int K, int L) p = (0, 0, 0);
 
                 if (SymmetryStatic.NumArray[SeriesNumber][5] == 5 || SymmetryStatic.NumArray[SeriesNumber][5] == 6)
                 {//trigonalかHexagonalの場合
                     if (SymmetryStatic.NumArray[SeriesNumber][2] == 1)
                     {//Hexaセッティングの時
-                        if (Order == 2 || Order == -2)
+                        if (Math.Abs(Order) == 2)
                         {
                             p = Direction switch
                             {
@@ -80,69 +81,77 @@ namespace Crystallography
                                 (1, -1, 0) => (-k, -h, -l),
                                 (2, 1, 0) => (-h, h + k, -l),
                                 (1, 2, 0) => (h + k, -k, -l),
-                                _ => p
+                                _ => (0, 0, 0)
                             };
                         }
-                        else if (Order == 3 || Order == -3)
+                        else if (Math.Abs(Order) == 3)
                         {
-                            if (Direction == (0, 0, 1) && Sense == +1) p = (k, -h - k, l);
-                            else if (Direction == (0, 0, 1) && Sense == -1) p = (-h - k, h, l);
+                            if (Direction == (0, 0, 1) ) 
+                                p = Sense == +1 ? (k, -h - k, l): (-h - k, h, l);
                         }
-                        else if (Order == 6 || Order == -6)
+                        else if (Math.Abs(Order) == 6)
                         {
-                            if (Direction == (0, 0, 1) && Sense == +1) p = (h + k, -h, l);
-                            else if (Direction == (0, 0, 1) && Sense == -1) p = (-k, h + k, l);
+                            if (Direction == (0, 0, 1)) 
+                                p = Sense == +1 ? (h + k, -h, l): (-k, h + k, l);
                         }
                     }
                     else
                     {//Rhomboセッティングの時
-                        if (Order == 2 || Order == -2)
+                        if (Math.Abs(Order) == 2)
                         {
-                            if (Direction == (0, 1, -1)) p = (-h, -l, -k);
-                            else if (Direction == (-1, 0, 1)) p = (-l, -k, -h);
-                            else if (Direction == (1, -1, 0)) p = (-k, -h, -l);
+                            p = Direction switch
+                            {
+                                (0, 1, -1) => (-h, -l, -k),
+                                (-1, 0, 1) => (-l, -k, -h),
+                                (1, -1, 0) => (-k, -h, -l),
+                                _ => (0, 0, 0)
+                            };
                         }
-                        else if (Order == 3 || Order == -3)
+                        else if (Math.Abs(Order) == 3)
                         {
-                            if (Direction == (1, 1, 1) && Sense == +1) p = (k, l, h);
-                            else if (Direction == (1, 1, 1) && Sense == -1) p = (l, h, k);
+                            if (Direction == (1, 1, 1))
+                                p = Sense == +1 ? (k, l, h) : (l, h, k);
                         }
                     }
                 }
                 else
                 {//trigonalでもHexagonalでもない場合
-                    if (Order == 2 || Order == -2)
+                    if (Math.Abs(Order) == 2)
                     {
-                        if (Direction == (1, 0, 0)) p = (h, -k, -l);
-                        else if (Direction == (0, 1, 0)) p = (-h, k, -l);
-                        else if (Direction == (0, 0, 1)) p = (-h, -k, l);
-                        else if (Direction == (0, 1, 1)) p = (-h, l, k);
-                        else if (Direction == (1, 0, 1)) p = (l, -k, h);
-                        else if (Direction == (1, 1, 0)) p = (k, h, -l);
-                        else if (Direction == (0, 1, -1)) p = (-h, -l, -k);
-                        else if (Direction == (-1, 0, 1)) p = (-l, -k, -h);
-                        else if (Direction == (1, -1, 0)) p = (-k, -h, -l);
-
+                        p = Direction switch
+                        {
+                            (1, 0, 0) => (h, -k, -l),
+                            (0, 1, 0) => (-h, k, -l),
+                            (0, 0, 1) => (-h, -k, l),
+                            (0, 1, 1) => (-h, l, k),
+                            (1, 0, 1) => (l, -k, h),
+                            (1, 1, 0) => (k, h, -l),
+                            (0, 1, -1) => (-h, -l, -k),
+                            (-1, 0, 1) => (-l, -k, -h),
+                            (1, -1, 0) => (-k, -h, -l),
+                            _ => (0, 0, 0)
+                        };
                     }
-                    else if (Order == 3 || Order == -3)
+                    else if (Math.Abs(Order) == 3)
                     {
-                        if (Direction == (+1, +1, +1) && Sense == +1) p = (+k, +l, +h);
-                        else if (Direction == (+1, +1, +1) && Sense == -1) p = (+l, +h, +k);
-                        else if (Direction == (+1, -1, -1) && Sense == +1) p = (-k, +l, -h);
-                        else if (Direction == (+1, -1, -1) && Sense == -1) p = (-l, -h, +k);
-                        else if (Direction == (-1, +1, -1) && Sense == +1) p = (-k, -l, +h);
-                        else if (Direction == (-1, +1, -1) && Sense == -1) p = (+l, -h, -k);
-                        else if (Direction == (-1, -1, +1) && Sense == +1) p = (+k, -l, -h);
-                        else if (Direction == (-1, -1, +1) && Sense == -1) p = (-l, +h, -k);
+                        p = Direction switch
+                        {
+                            (+1, +1, +1) => Sense == +1 ? (+k, +l, +h) : (+l, +h, +k),
+                            (+1, -1, -1) => Sense == +1 ? (-k, +l, -h) : (-l, -h, +k),
+                            (-1, +1, -1) => Sense == +1 ? (-k, -l, +h) : (+l, -h, -k),
+                            (-1, -1, +1) => Sense == +1 ? (+k, -l, -h) : (-l, +h, -k),
+                            _ => (0, 0, 0)
+                        };
                     }
-                    else if (Order == 4 || Order == -4)
+                    else if (Math.Abs(Order) == 4)
                     {
-                        if (Direction == (1, 0, 0) && Sense == +1) p = (h, l, -k);
-                        else if (Direction == (1, 0, 0) && Sense == -1) p = (h, -l, k);
-                        else if (Direction == (0, 1, 0) && Sense == +1) p = (-l, k, h);
-                        else if (Direction == (0, 1, 0) && Sense == -1) p = (l, k, -h);
-                        else if (Direction == (0, 0, 1) && Sense == +1) p = (k, -h, l);
-                        else if (Direction == (0, 0, 1) && Sense == -1) p = (-k, h, l);
+                        p = Direction switch
+                        {
+                            (1, 0, 0) => Sense == +1 ? (h, l, -k) : (h, -l, k),
+                            (0, 1, 0) => Sense == +1 ? (-l, k, h) : (l, k, -h),
+                            (0, 0, 1) => Sense == +1 ? (k, -h, l) : (-k, h, l),
+                            _ => (0, 0, 0)
+                        };
                     }
                 }
                 return Order > 0 ? p : (-p.H, -p.K, -p.L);

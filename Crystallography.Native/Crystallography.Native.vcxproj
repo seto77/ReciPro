@@ -30,7 +30,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -94,7 +94,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\dll\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\</OutDir>
     <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -276,6 +276,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EigenFuncs.h" />
+    <ClInclude Include="Histogram.h" />
     <ClInclude Include="HRTEM.h" />
     <ClInclude Include="PseudoVoigt.h" />
     <ClInclude Include="resource.h" />
@@ -285,6 +286,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="EigenFuncs.cpp" />
+    <ClCompile Include="Histogram.cpp" />
     <ClCompile Include="HRTEM.cpp" />
     <ClCompile Include="PseudoVoigt.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -406,9 +406,8 @@ namespace Crystallography
                 }
                 catch (Exception e)
                 {
-#if DEBUG
-                    MessageBox.Show(e.ToString());
-#endif
+                    if(AssemblyState.IsDebug)
+                        MessageBox.Show(e.ToString());
                     return new[] { (byte)255 };
                 }
             }

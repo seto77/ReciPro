@@ -375,9 +375,9 @@ namespace ReciPro
             if (checkBoxHideAllAtoms.Checked) return;
 
             //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、最終的には消す
-            var bonds = bondControl.GetAll().Where(b => b.Enabled).ToList();
+            var bonds = bondControl.GetAll().Where(b => b.Enabled);
 
-            var threshold = bonds.Count != 0 ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
+            var threshold = bonds.Any() ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
             threshold = Math.Max(-0.5, threshold);
 
             //まず検索対象とするCellの範囲を決める (全ての原子位置は 0以上 1未満である)
@@ -400,7 +400,7 @@ namespace ReciPro
             //原子を追加
             enabledAtomsP.ForAll(o =>
             {
-                foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift).ToList())
+                foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift))
                 {
                     var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
                     if (min > threshold)
@@ -540,7 +540,6 @@ namespace ReciPro
                         foreach (var v in vertices) GLObjects[v.ObjIndex].Rendered = true;
                     }
                     finally { rwLock.ExitWriteLock(); }
-
 
                     foreach (var v in vertices) //Bond
                     {

@@ -14499,9 +14499,6 @@ new[]{535,2,6,2,1,1}
 					if (j == 0)
 						foreach (var p in OperationDictionary[i])
 						{
-							if (i == 532)
-							{
-							}
 							var op = OperationList[p];
 							op.SeriesNumber = i;
 							operations.AddRange(lattice switch

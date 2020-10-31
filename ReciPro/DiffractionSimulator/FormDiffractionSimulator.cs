@@ -339,7 +339,7 @@ namespace ReciPro
 
             if (FormDiffractionBeamTable.Visible && radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
-        } 
+        }
         #endregion
 
         #region DrawDiffractionSpots
@@ -361,71 +361,71 @@ namespace ReciPro
 
             bool logScale = checkBoxLogScale.Checked;
 
-            var fillCircle = new Action<Color, PointD, double>((c, pt, radius) =>
+            static void fillCircle(Graphics graphics, Color c, PointD pt, double radius, int alpha)
             {
                 if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-                    graphics.FillEllipse(new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), c)), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-            });
+                    graphics.FillEllipse(new SolidBrush(Color.FromArgb(alpha, c)), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+            }
 
-            var drawCircle = new Action<Color, PointD, double>((c, pt, radius) =>
+            static void drawCircle(Graphics graphics, Color c, PointD pt, double radius)
             {
                 if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
                     graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-            });
+            }
 
             var radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
-            #region ガウス関数描画
+            #region ガウス関数で描画するローカル関数
             int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
-            var fillCircleSpread = new Func<Color, PointD, double, double, double>((c, pt, intensity, sigma) =>
-              {
-                  //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
-                  //intensityはスポットの積分強度、sは半値幅
-                  int gradation = 32;
-                  double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
+            double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
+            {
+                //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
+                //intensityはスポットの積分強度、sは半値幅
+                int gradation = 32;
+                double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
 
-                  var maxI = intensity * coeff1;
-                  if (maxI <= 1.0 / gradation) return 0;//もし、最大強度が1/gradiationより小さかったら、何もせずに戻る
+                var maxI = intensity * coeff1;
+                if (maxI <= 1.0 / gradation) return 0;//もし、最大強度が1/gradiationより小さかったら、何もせずに戻る
 
-                  double minRadius = 0;
+                double minRadius = 0;
 
-                  if (maxI > 1)//もし中心付近が飽和する場合(強度が1以上)は、強度が　1/gradiation ～ 1 の半径範囲をgradationで分割
-                      minRadius = sigma * Math.Sqrt(-2 * Math.Log(2 * Math.PI * sigma2 / intensity));
+                if (maxI > 1)//もし中心付近が飽和する場合(強度が1以上)は、強度が　1/gradiation ～ 1 の半径範囲をgradationで分割
+                    minRadius = sigma * Math.Sqrt(-2 * Math.Log(2 * Math.PI * sigma2 / intensity));
 
-                  var maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//強度が　1/2*gradiation　になる半径を求める
+                var maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//強度が　1/2*gradiation　になる半径を求める
 
-                  //minRからmaxRまで、円を描画
-                  for (int j = 0; j < gradation; j++)
-                  {
-                      double ratio1 = (double)(j + 1) / gradation, ratio2 = (double)(j + 2) / gradation;
-                      double radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius, radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
+                //minRからmaxRまで、円を描画
+                for (int j = 0; j < gradation; j++)
+                {
+                    double ratio1 = (double)(j + 1) / gradation, ratio2 = (double)(j + 2) / gradation;
+                    double radius1 = ratio1 * minRadius + (1 - ratio1) * maxRadius, radius2 = ratio2 * minRadius + (1 - ratio2) * maxRadius;
 
-                      var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
+                    var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
 
-                      var alpha = (int)(255 * intensity2 * alphaCoeff);
-                      if (comboBoxScaleColorScale.SelectedIndex == 1)
-                      {
-                          var index = Math.Min((int)(intensity2 * 65535), 65535);
-                          c = Color.FromArgb(PseudoBitmap.BrightnessScaleLinerColorR[index], PseudoBitmap.BrightnessScaleLinerColorG[index], PseudoBitmap.BrightnessScaleLinerColorB[index]);
-                          alpha = 255;
-                      }
+                    var alpha = (int)(255 * intensity2 * alphaCoeff);
+                    if (comboBoxScaleColorScale.SelectedIndex == 1)
+                    {
+                        var index = Math.Min((int)(intensity2 * 65535), 65535);
+                        c = Color.FromArgb(PseudoBitmap.BrightnessScaleLinerColorR[index], PseudoBitmap.BrightnessScaleLinerColorG[index], PseudoBitmap.BrightnessScaleLinerColorB[index]);
+                        alpha = 255;
+                    }
 
-                      var brush = new SolidBrush(Color.FromArgb(alpha, c));
-                      if (j < gradation - 1 && radius2 > 0)
-                      {
-                          var path = new GraphicsPath();
-                          path.AddArc((float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(radius1 * 2), (float)(radius1 * 2), 0, 360);
-                          path.AddArc((float)(pt.X - radius2), (float)(pt.Y - radius2), (float)(radius2 * 2), (float)(radius2 * 2), 0, -360);
-                          graphics.FillPath(brush, path);
-                      }
-                      else
-                      {
-                          graphics.FillEllipse(brush, (float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(2 * radius1), (float)(2 * radius1));
-                          return maxRadius;
-                      }
-                  }
-                  return maxRadius;
-              }); 
+                    var brush = new SolidBrush(Color.FromArgb(alpha, c));
+                    if (j < gradation - 1 && radius2 > 0)
+                    {
+                        var path = new GraphicsPath();
+                        path.AddArc((float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(radius1 * 2), (float)(radius1 * 2), 0, 360);
+                        path.AddArc((float)(pt.X - radius2), (float)(pt.Y - radius2), (float)(radius2 * 2), (float)(radius2 * 2), 0, -360);
+                        graphics.FillPath(brush, path);
+                    }
+                    else
+                    {
+                        graphics.FillEllipse(brush, (float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(2 * radius1), (float)(2 * radius1));
+                        return maxRadius;
+                    }
+                }
+                return maxRadius;
+            }
             #endregion
 
             #region 3次元ガウス関数のメモ書き
@@ -455,7 +455,7 @@ namespace ReciPro
 
             var bethe = radioButtonIntensityBethe.Checked;
             var sw = new Stopwatch();
-           foreach(var crystal in formMain.Crystals)
+            foreach (var crystal in formMain.Crystals)
             {
                 Vector3D[] gVector;
 
@@ -518,7 +518,7 @@ namespace ReciPro
                                 if (FormDiffractionSimulatorCBED.Visible)
                                 {
                                     if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError && g.RawIntensity > 1E-20)//黄色いガイドサークルを表示
-                                        drawCircle(Color.Yellow, pt, radiusCBED);
+                                        drawCircle(graphics, Color.Yellow, pt, radiusCBED);
                                 }
                                 //ダイナミックコンプレッションモードがONの時は、描画しないで強度と座標だけを格納する
                                 else if (outputOnlySpotInformation && IsScreenArea(pt))
@@ -556,17 +556,17 @@ namespace ReciPro
                                 else
                                 {
                                     //逆空間における逆格子点の半径
-                                    var sphereRadius = bethe?
+                                    var sphereRadius = bethe ?
                                         ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ベーテ法の場合は、相対強度の平方根が半径に比例
                                         ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only あるいは Kinematicの場合は、半径に相対強度の1/3乗を掛ける
 
                                     if (bethe || Math.Abs(dev) < sphereRadius)
                                     {
-                                        var sectionRadius = bethe ? 
+                                        var sectionRadius = bethe ?
                                             sphereRadius : //ベーテ法の場合はそのまま
                                             Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
                                         var r = CameraLength2 * WaveLength * sectionRadius;
-                                        fillCircle(Color.FromArgb(g.Argb), pt, r);
+                                        fillCircle(graphics, Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                         if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
                                             DrawDiffractionSpotsLabel(graphics, g, pt, r, (double)g.Tag);
                                     }

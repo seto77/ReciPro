@@ -869,9 +869,13 @@ namespace Crystallography
         {
             if (Height == 0 || Width == 0 || srcRect.Width == 0 || srcRect.Height == 0 || destSize.Width == 0 || destSize.Height == 0) return null;
 
+            int width = destSize.Width, height = destSize.Height;
+
             //まずbmpが前回作られていなかったら作成
-            if (destBmp == null || destBmp.Width != destSize.Width || destBmp.Height != destSize.Height)
-                destBmp = new Bitmap(destSize.Width, destSize.Height, PixelFormat.Format24bppRgb);
+            if (destBmp == null || destBmp.Width != width || destBmp.Height != height)
+                destBmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+
+            
 
             //bmpをロック
             BitmapData bmpData;
@@ -883,20 +887,20 @@ namespace Crystallography
             {
                 return null;
             }
-            double zoom = (destSize.Width / srcRect.Width + destSize.Height / srcRect.Height) / 2.0;
+            double zoom = (width / srcRect.Width + height / srcRect.Height) / 2.0;
 
             //描画する画素位置をソース画像位置に変換するローカル関数
             (int X, int Y) getSrcPosition(int x, int y)
             {
                 int _x, _y;
                 if (!HorizontalFlip)
-                    _x = (int)(srcRect.X + (double)x / destSize.Width * srcRect.Width + 0.5);
+                    _x = (int)(srcRect.X + (double)x / width * srcRect.Width + 0.5);
                 else
-                    _x = (int)(srcRect.X + (double)(destSize.Width - x) / destSize.Width * srcRect.Width + 0.5);
+                    _x = (int)(srcRect.X + (double)(width - x) / width * srcRect.Width + 0.5);
                 if (!VerticalFlip)
-                    _y = (int)(srcRect.Y + (double)y / destSize.Height * srcRect.Height + 0.5);
+                    _y = (int)(srcRect.Y + (double)y / height * srcRect.Height + 0.5);
                 else
-                    _y = (int)(srcRect.Y + (double)(destSize.Height - y) / destSize.Height * srcRect.Height + 0.5);
+                    _y = (int)(srcRect.Y + (double)(height - y) / height * srcRect.Height + 0.5);
 
                 return (_x, _y);
             }
@@ -913,7 +917,7 @@ namespace Crystallography
             int range = (int)(1 / zoom / 2 + 0.5);
             int increase = (zoom >= 1) ? 0 : Math.Max(range / 3, 1);
 
-            int width = destBmp.Width, height = destBmp.Height;
+            
 
             byte* p = (byte*)(void*)bmpData.Scan0;
             int nResidual = bmpData.Stride - destBmp.Width * 3;
@@ -1093,9 +1097,9 @@ namespace Crystallography
             }
             else //カラースケールのとき
             {
-                double[][] valueR = new double[Height][];
-                double[][] valueG = new double[Height][];
-                double[][] valueB = new double[Height][];
+                var valueR = new double[Height][];
+                var valueG = new double[Height][];
+                var valueB = new double[Height][];
                 int n = 0;
                 for (int y = 0; y < Height; y++)
                 {

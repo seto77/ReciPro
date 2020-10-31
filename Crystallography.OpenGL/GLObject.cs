@@ -128,11 +128,16 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// タイプ
         /// </summary>
-        internal PT[] Types;
+        //internal PT[] Types;
         /// <summary>
         /// 各タイプの順番リストの長さ
         /// </summary>
-        internal int[] TypeCounts;
+        //internal int[] TypeCounts;
+
+
+        //プリミティブのタイプおよびそのタイプの順番リストの長さ
+        internal (PT Type, int Count)[] Primitives;
+
         #endregion
 
         #region publicな フィールド & プロパティ
@@ -352,17 +357,17 @@ namespace Crystallography.OpenGL
 
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            for (int i = 0, offset = 0; i < Types.Length; i++)
+
+            int offset = 0;
+            foreach(var (t, len) in Primitives)
             {
-                var t = Types[i];
-                var len = TypeCounts[i];
                 if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t == PT.Quads)
                     && (Mode == DrawingMode.Surfaces || Mode == DrawingMode.SurfacesAndEdges || Mode == DrawingMode.Text))
                     SetMaterialAndDrawElements(true, t, len, offset);
                 else
                 {
                     if ((t == PT.Lines || t == PT.LinesAdjacency || t == PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
-                        SetMaterialAndDrawElements(false, Types[i], len, offset);
+                        SetMaterialAndDrawElements(false, t, len, offset);
                     else if (t == PT.Points && Mode == DrawingMode.Points)
                         SetMaterialAndDrawElements(false, t, len, offset);
                 }
@@ -535,7 +540,7 @@ namespace Crystallography.OpenGL
                 {
                     UseFixedArgb = true,
                     IgnoreNormalSides = false,
-                    Types = new[] { PT.TriangleFan }
+                    Primitives = new (PT Type, int Count)[]{( PT.TriangleFan,0) }
                 };
                 Planes.Add(obj);
                 PrmsF.AddRange(prms.ToArrayF());
@@ -620,21 +625,21 @@ namespace Crystallography.OpenGL
             Vertices = veticesList.ToArray();
 
             var lists = new List<int[]>();
-            var types = new List<PT>();
+            var primitives = new List<(PT Type, int Count)>();
             //surfaces
             lists.Add(indicesList.ToArray());
-            types.Add(PT.TriangleFan);
+            primitives.Add((PT.TriangleFan,indicesList.Count));
             //edges
             indicesList.RemoveRange(0, 2);
             lists.Add(indicesList.ToArray());
-            types.Add(PT.LineLoop);
+            primitives.Add((PT.LineLoop,indicesList.Count));
             //points
             lists.Add(indicesList.ToArray());
-            types.Add(PT.Points);
+            primitives.Add((PT.Points, indicesList.Count));
 
             Indices = lists.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = lists.Select(i => i.Length).ToArray();
-            Types = types.ToArray();
+
+            Primitives = primitives.ToArray();
         }
 
         /// <summary>
@@ -646,7 +651,7 @@ namespace Crystallography.OpenGL
         {
             //ここから本体
             var inputs = new List<V3d>();
-            for (int i = 1; i < TypeCounts[0] - 1; i++)
+            for (int i = 1; i < Primitives[0].Count - 1; i++)
                 inputs.Add(Vertices[Indices[i]].Position.ToV3d());
 
             var outputs = decompose(inputs.ToArray(), order);
@@ -659,11 +664,11 @@ namespace Crystallography.OpenGL
                 results[i].IgnoreNormalSides = true;//裏表を無視する
 
                 results[i].Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Argb)).ToArray();
-                results[i].Types = new[] { PT.Quads };
+                
 
                 results[i].Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray();
 
-                results[i].TypeCounts = new[] { results[i].Indices.Length };
+                results[i].Primitives = new[] { (PT.Quads, results[i].Indices.Length) };
 
                 var center = Extensions.Average(outputs[i]);
                 results[i].CircumscribedSphereCenter = new V4d(center, 1);
@@ -759,8 +764,7 @@ namespace Crystallography.OpenGL
         /// <param name="c">頂点c</param>
         /// <param name="mat"></param>
         /// <param name="mode"></param>
-        public Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode)
-            : base(new V3d[] { a, b, c }, mat, mode) { }
+        public Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : base(new V3d[] { a, b, c }, mat, mode) { }
     }
 
     /// <summary>
@@ -825,7 +829,7 @@ namespace Crystallography.OpenGL
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
             //任意の三点を選び、平面方程式を作り、それらが最も端面であるかを評価し、端面である場合はリストに加える
-            var candidates = new List<V3d[]>();
+            var candidates = new List<IEnumerable<V3d>>();
             var vrs = vertices.ToArray();
             for (int i = 0; i < vrs.Length; i++)
                 for (int j = i + 1; j < vrs.Length; j++)
@@ -840,8 +844,8 @@ namespace Crystallography.OpenGL
                         var d = -V3d.Dot(V, A);
 
                         if (vrs.All(v => V3d.Dot(v, V) + d < 0.0000001) || vrs.All(v => V3d.Dot(v, V) + d > -0.0000001))
-                            if (candidates.All(cand => !(cand.Contains(vrs[i]) && cand.Contains(vrs[j]) && cand.Contains(vrs[k]))))
-                                candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v, V) + d) < 0.0000001).ToArray());
+                            if (candidates.All(cand => !(cand.Contains(A) && cand.Contains(B) && cand.Contains(C))))
+                                candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v, V) + d) < 0.0000001));
                     }
 
             //各面を構成する頂点集合に対して
@@ -869,14 +873,13 @@ namespace Crystallography.OpenGL
                 types.Add(PT.LineLoop);
                 types.Add(PT.Points);
 
-                offset += cand.Length + 1;
+                offset += cand.Count() + 1;
             }
 
             Vertices = vList.ToArray();
             Indices = iList2.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = iList2.Select(i => i.Count()).ToArray();
-            Types = types.ToArray();
 
+            Primitives = types.Select((t, i) => (t, iList2[i].Count())).ToArray();
 
         }
 
@@ -886,19 +889,17 @@ namespace Crystallography.OpenGL
         /// </summary>
         public Polygon[] ToPolygons(int order = 0)
         {
-            var p = new Polygon[Types.Length / 3];
+            var p = new Polygon[Primitives.Length / 3];
 
             for (int i = 0, offsetIndices = 0, offsetVetices = 0; i < p.Length; i++)
             {
                 p[i] = new Polygon(Material, Mode);
 
-                p[i].TypeCounts = new[] { TypeCounts[i * 3], TypeCounts[i * 3 + 1], TypeCounts[i * 3 + 2] };
+                p[i].Primitives = new[] { Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2] };
 
-                p[i].Types = new[] { Types[i * 3], Types[i * 3 + 1], Types[i * 3 + 2] };
-
-                p[i].Indices = new uint[p[i].TypeCounts.Sum()];
+                p[i].Indices = new uint[p[i].Primitives.Sum(o=>o.Count)];
                 Array.Copy(Indices, offsetIndices, p[i].Indices, 0, p[i].Indices.Length);
-                p[i].Indices = p[i].Indices.Select(i => (uint)(i - offsetVetices)).ToArray();
+                p[i].Indices = p[i].Indices.Select(j => (uint)(j - offsetVetices)).ToArray();
                 offsetIndices += p[i].Indices.Length;
 
                 p[i].Vertices = new Vertex[p[i].Indices.Distinct().Count()];
@@ -979,8 +980,7 @@ namespace Crystallography.OpenGL
                     {
                         Vertices = Sphere.DefaultVertices;
                         Indices = Sphere.DefaultIndices;
-                        TypeCounts = Sphere.DefaultTypeCounts;
-                        Types = Sphere.DefaultTypes;
+                        Primitives = Sphere.DefaultPrimitives;
                         ObjectMatrix = new M4d(new V4d(v1, 0), new V4d(v2, 0), new V4d(v3, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
@@ -1041,8 +1041,7 @@ namespace Crystallography.OpenGL
             indices.Add(indexListEdges.ToArray());
 
             Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = indices.Select(i => i.Length).ToArray();
-            Types = types.ToArray();
+            Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
 
         }
     }
@@ -1075,8 +1074,7 @@ namespace Crystallography.OpenGL
 
         public static Vertex[] DefaultVertices;
         public static uint[] DefaultIndices;
-        public static int[] DefaultTypeCounts;
-        public static PT[] DefaultTypes;
+        public static (PT Type, int Count)[] DefaultPrimitives;
 
         /// <summary>
         /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
@@ -1088,13 +1086,11 @@ namespace Crystallography.OpenGL
         {
             DefaultVertices = null;
             DefaultIndices = null;
-            DefaultTypeCounts = null;
-            DefaultTypes = null;
+            DefaultPrimitives = null;
             var sphere = new Sphere(new V3d(0, 0, 0), 1, new Material(0), DrawingMode.Edges, DefaultSlices);
             DefaultIndices = sphere.Indices;
-            DefaultTypeCounts = sphere.TypeCounts;
             DefaultVertices = sphere.Vertices;
-            DefaultTypes = sphere.Types;
+            DefaultPrimitives = sphere.Primitives;
         }
     }
 
@@ -1162,8 +1158,7 @@ namespace Crystallography.OpenGL
                     {
                         Vertices = Cylinder.DefaultVertices;
                         Indices = Cylinder.DefaultIndices;
-                        TypeCounts = Cylinder.DefaultTypeCounts;
-                        Types = Cylinder.DefaultTypes;
+                        Primitives = Cylinder.DefaultPrimitives;
                         ObjectMatrix = new M4d(r1 * new V4d(rotMat.Column0, 0), r1 * new V4d(rotMat.Column1, 0), height * new V4d(rotMat.Column2, 0), new V4d(o, 1)).ToM4f();
                         return;
                     }
@@ -1177,10 +1172,9 @@ namespace Crystallography.OpenGL
                         var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                         transMat.Column3 = new V4d(o, 1);
 
-                        Vertices = Cone.DefaultVertices.Select(v => new Vertex(transMat.Mult(new V4f(v.Position)), rotMat.Mult(v.Normal), mat1.Argb)).ToArray();
+                        Vertices = Cone.DefaultVertices.Select(vrs => new Vertex(transMat.Mult(new V4f(vrs.Position)), rotMat.Mult(vrs.Normal), mat1.Argb)).ToArray();
                         Indices = Cone.DefaultIndices;
-                        TypeCounts = Cone.DefaultTypeCounts;
-                        Types = Cone.DefaultTypes;
+                        Primitives = Cone.DefaultPrimitives;
                         return;
                     }
                     slices = Cone.Default.Slices;
@@ -1280,8 +1274,10 @@ namespace Crystallography.OpenGL
 
             Vertices = vList.ToArray();
             Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = indices.Select(i => i.Length).ToArray();
-            Types = types.ToArray();
+            
+            Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
+
+
         }
     }
 
@@ -1310,8 +1306,7 @@ namespace Crystallography.OpenGL
 
         public static Vertex[] DefaultVertices;
         public static uint[] DefaultIndices;
-        public static int[] DefaultTypeCounts;
-        public static PT[] DefaultTypes;
+        public static (PT Type, int Count)[] DefaultPrimitives;
 
 
         public bool UseDefault = false;
@@ -1342,13 +1337,11 @@ namespace Crystallography.OpenGL
         {
             DefaultVertices = null;
             DefaultIndices = null;
-            DefaultTypeCounts = null;
-            DefaultTypes = null;
+            DefaultPrimitives = null;
             var cone = new Cone(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges, true, 0, 0);
             DefaultIndices = cone.Indices;
-            DefaultTypeCounts = cone.TypeCounts;
             DefaultVertices = cone.Vertices;
-            DefaultTypes = cone.Types;
+            DefaultPrimitives = cone.Primitives;
         }
 
     }
@@ -1394,8 +1387,7 @@ namespace Crystallography.OpenGL
 
         public static Vertex[] DefaultVertices;
         public static uint[] DefaultIndices;
-        public static int[] DefaultTypeCounts;
-        public static PT[] DefaultTypes;
+        public static (PT Type, int Count)[] DefaultPrimitives;
 
         static Cylinder() => SetDefaultCylinder();
 
@@ -1403,13 +1395,12 @@ namespace Crystallography.OpenGL
         {
             DefaultVertices = null;
             DefaultIndices = null;
-            DefaultTypeCounts = null;
-            DefaultTypes = null;
+            DefaultPrimitives = null;
             var cylinder = new Cylinder(new V3d(0, 0, 0), new V3d(0, 0, 1), 1, new Material(0), DrawingMode.Edges, true, 0, 0);
             DefaultIndices = cylinder.Indices;
-            DefaultTypeCounts = cylinder.TypeCounts;
             DefaultVertices = cylinder.Vertices;
-            DefaultTypes = cylinder.Types;
+            DefaultPrimitives = cylinder.Primitives;
+
         }
     }
 
@@ -1515,8 +1506,8 @@ namespace Crystallography.OpenGL
             indices.Add(indexListEdges.ToArray());
 
             Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
-            TypeCounts = indices.Select(i => i.Length).ToArray();
-            Types = types.ToArray();
+            
+            Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
         }
     }
     #endregion
@@ -1573,9 +1564,8 @@ namespace Crystallography.OpenGL
                 }
             Vertices = vList.ToArray();
             Indices = indicesList.Select(i => (uint)i).ToArray();
-            TypeCounts = new[] { indicesList.Count() };
+             Primitives = new[] { (PT.Quads, indicesList.Count) };
 
-            Types = new[] { PT.Quads };
         }
     }
     #endregion
@@ -1676,9 +1666,8 @@ namespace Crystallography.OpenGL
                     new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2) };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
-                Types = types;
                 Indices = indices;
-                TypeCounts = typeCounts;
+                Primitives = types.Select((t, i) => (t, typeCounts[i])).ToArray();
             }
         }
     }

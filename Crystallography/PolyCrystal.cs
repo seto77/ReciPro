@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Xml.Schema;
+using System.Numerics;
 
 namespace Crystallography
 {
@@ -139,10 +140,7 @@ namespace Crystallography
             BaseCrystal = baseCrystal;
             setCrystallineRotation();
             setCrystallineSolidAngle();
-            Density = new double[TotalCrystalline];
-
-            for (int i = 0; i < TotalCrystalline; i++)
-                Density[i] = 1;
+            Density = Enumerable.Repeat(1.0,TotalCrystalline).ToArray();
             if (vec == null || vec[0].Length != SquareDiv)
                 initializeVec();
         }
@@ -522,60 +520,69 @@ namespace Crystallography
         /// </summary>
         public void setCrystallineRotation()
         {
-            int n = 0;
+           
             Rotations1 = new Matrix3D[SquareDiv * SquareDiv];
-            for (int y = 0; y < SquareDiv; y++)
+            Parallel.For(0, SquareDiv, y =>
+            {
+                double b = Math.Tan(((y + 0.5) / SquareDiv - 0.5) * Math.PI / 2);
                 for (int x = 0; x < SquareDiv; x++)
                 {
                     double a = Math.Tan(((x + 0.5) / SquareDiv - 0.5) * Math.PI / 2);
-                    double b = Math.Tan(((y + 0.5) / SquareDiv - 0.5) * Math.PI / 2);
                     double norm = Math.Sqrt(a * a + b * b + 1);
                     double u = a / norm, v = b / norm;
                     double cosTheta = 1 / norm, sinTheta = Math.Sqrt(1 - cosTheta * cosTheta);
                     double cosPhi = u / sinTheta, sinPhi = v / sinTheta;
                     if (sinTheta == 0)
                     { cosPhi = 1; sinPhi = 0; }
-                    Rotations1[n++] = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1) * new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
+                    Rotations1[y *SquareDiv + x] = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1) * new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
                 }
+            });
 
-            n = 0;
             Rotations2 = new Matrix3D[RotationDiv];
             for (int rot = 0; rot < RotationDiv; rot++)
             {
                 double cosKsi = Math.Cos(2 * Math.PI * rot / RotationDiv), sinKsi = Math.Sin(2 * Math.PI * rot / RotationDiv);
-                Rotations2[n++] = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
+                Rotations2[rot] = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
             }
 
-            n = 0;
-            Rotations = new Matrix3D[TotalCrystalline];
-            for (int plane = 0; plane < 6; plane++)
-                for (int y = 0; y < SquareDiv; y++)
-                    for (int x = 0; x < SquareDiv; x++)
-                        for (int rot = 0; rot < RotationDiv; rot++)
-                            Rotations[n++] = convertRotationByPlane(Rotations1[y * SquareDiv + x] * Rotations2[rot], plane);
 
-            n = 0;
+            Rotations = new Matrix3D[TotalCrystalline];
+            int m = SquareDiv * SquareDiv * RotationDiv;
+            Parallel.For(0, Rotations1.Length, i =>
+            {
+                for (int j = 0; j < Rotations2.Length; j++)
+                {
+                    var mat = Rotations1[i] * Rotations2[j];
+                    int baseIndex = i* RotationDiv +j;
+                    for (int plane = 0; plane < 6; plane++)
+                        Rotations[plane * m + baseIndex] = convertRotationByPlane(mat, plane);
+                }
+            });
+
             SubRot1 = new Matrix3D[BaseCrystal.SubDivision * BaseCrystal.SubDivision * SquareDiv * SquareDiv];
-            for (int y = 0; y < SquareDiv * BaseCrystal.SubDivision; y++)
+            Parallel.For(0, SquareDiv * BaseCrystal.SubDivision, y =>
+            {
+                double b = Math.Tan(((y + 0.5) / SquareDiv / BaseCrystal.SubDivision - 0.5) * Math.PI / 2);
+
                 for (int x = 0; x < SquareDiv * BaseCrystal.SubDivision; x++)
                 {
                     double a = Math.Tan(((x + 0.5) / SquareDiv / BaseCrystal.SubDivision - 0.5) * Math.PI / 2);
-                    double b = Math.Tan(((y + 0.5) / SquareDiv / BaseCrystal.SubDivision - 0.5) * Math.PI / 2);
                     double norm = Math.Sqrt(a * a + b * b + 1);
                     double u = a / norm, v = b / norm;
                     double cosTheta = 1 / norm, sinTheta = Math.Sqrt(1 - cosTheta * cosTheta);
                     double cosPhi = u / sinTheta, sinPhi = v / sinTheta;
                     if (sinTheta == 0)
                     { cosPhi = 1; sinPhi = 0; }
-                    SubRot1[n++] = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1) * new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
+                    SubRot1[y* SquareDiv * BaseCrystal.SubDivision + x] 
+                    = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1) * new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
                 }
+            });
 
-            n = 0;
             SubRot2 = new Matrix3D[BaseCrystal.SubDivision * RotationDiv];
             for (int rot = 0; rot < RotationDiv * BaseCrystal.SubDivision; rot++)
             {
                 double cosKsi = Math.Cos(2 * Math.PI * rot / RotationDiv / SubDiv), sinKsi = Math.Sin(2 * Math.PI * rot / RotationDiv / SubDiv);
-                SubRot2[n++] = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
+                SubRot2[rot] = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
             }
         }
 
@@ -637,22 +644,24 @@ namespace Crystallography
         {
             SolidAngle = new double[TotalCrystalline];
 
-            for (int y = 0; y < SquareDiv; y++)
+            Parallel.For(0, SquareDiv, y =>
+            {
                 for (int x = 0; x < SquareDiv; x++)
                 {
                     var pt = new List<PointD>();
                     for (double i = 0; i < 2; i++)
                         for (double j = 0; j < 2; j++)
                         {
-                            double a = Math.Tan(((x + i) / SquareDiv - 0.5) * Math.PI / 2);
-                            double b = Math.Tan(((y + j) / SquareDiv - 0.5) * Math.PI / 2);
+                            var a = Math.Tan(((x + i) / SquareDiv - 0.5) * Math.PI / 2);
+                            var b = Math.Tan(((y + j) / SquareDiv - 0.5) * Math.PI / 2);
                             pt.Add(Stereonet.ConvertVectorToSchmidt(new Vector3D(a, b, 1)) * 10);
                         }
-                    double area = Geometriy.GetPolygonalArea(new[] { pt[0], pt[1], pt[3], pt[2] });
+                    var area = Geometriy.GetPolygonalArea(new[] { pt[0], pt[1], pt[3], pt[2] });
                     for (int plane = 0; plane < 6; plane++)
                         for (int rot = 0; rot < RotationDiv; rot++)
                             SolidAngle[plane * SquareDiv * SquareDiv * RotationDiv + y * SquareDiv * RotationDiv + x * RotationDiv + rot] = area;
                 }
+            });
         }
 
         /// <summary>
@@ -683,7 +692,8 @@ namespace Crystallography
 
             double camPerRes = detector.CameraLength / detector.Resolution;
             double cX = detector.Center.X, cY = detector.Center.Y;
-            int imageWidth = detector.ImageWidth,imageHeight=detector.ImageHeight,  imageLength = detector.ImageLength;
+            int imageWidth = detector.ImageWidth, imageHeight = detector.ImageHeight;
+            uint imageLength = (uint)detector.ImageLength;
 
             if (ValidIndex == null)
                 ValidIndex = new int[TotalCrystalline][];
@@ -696,15 +706,15 @@ namespace Crystallography
                 var baseRot = new Matrix3D(Rotations[num]);
                 if (!strainFree) baseRot = (elasticity.GetStrainByHill(BaseCrystal.Symmetry, baseRot, BaseCrystal.Stress, BaseCrystal.Strain, BaseCrystal.HillCoefficient) + new Matrix3D()).Inverse() * baseRot;
                 if (!rotationFree) baseRot = WholeRotation * baseRot;
-
+                var rot = baseRot.ToArrayRowMajorOrder();
                 var result = new List<int>();
                 for (int n = 0; n < G.Length; n++)
                 {
-                    var Z = baseRot.E31 * G[n].X + baseRot.E32 * G[n].Y + baseRot.E33 * G[n].Z;
+                    var Z = rot[6] * G[n].X + rot[7] * G[n].Y + rot[8] * G[n].Z;
                     if (Z > -maxExcitationError * 2 && detector.MaxReciproZ + maxExcitationError * 2 > Z)
                     {
-                        var X = baseRot.E11 * G[n].X + baseRot.E12 * G[n].Y + baseRot.E13 * G[n].Z;
-                        var Y = baseRot.E21 * G[n].X + baseRot.E22 * G[n].Y + baseRot.E23 * G[n].Z;
+                        var X = rot[0] * G[n].X + rot[1] * G[n].Y + rot[2] * G[n].Z;
+                        var Y = rot[3] * G[n].X + rot[4] * G[n].Y + rot[5] * G[n].Z;
 
                         double rz = ewaldR - Z, rz2 = rz * rz;
                         double ptX = camPerRes / rz * X + cX;
@@ -732,9 +742,6 @@ namespace Crystallography
             #region 逆格子ベクトルの回折位置・強度計算し,Pixelに格納するローカル関数
 
             double log2 = Math.Log(2), sqrtPiLog2 = Math.Sqrt(Math.PI * log2);
-            
-            var rVec = detector.ReciprocalVectors;
-            var rArea = detector.ReciprocalAreas;
             (int Index, double Intensity)[] calculatePixel(int num)
             {
                 var rotations = getSubRotations(num);
@@ -744,11 +751,11 @@ namespace Crystallography
 
                 var result = new Dictionary<int, double>();
 
-                foreach (var rot in rotations.Select(r => r.ToArrayRowMajorOrder()))
+                foreach (var rot in rotations.Select(r => r.ToArrayRowMajorOrder()).ToArray())
+                {
                     foreach (int gNum in ValidIndex[num])
                     {
                         (var gX, var gY, var gZ, var Hk1, var Hk2, var Hk3, var Intensity, var Intensity2) = G[gNum];
-
                         var X = rot[0] * gX + rot[1] * gY + rot[2] * gZ;
                         var Y = rot[3] * gX + rot[4] * gY + rot[5] * gZ;
                         var Z = rot[6] * gX + rot[7] * gY + rot[8] * gZ;
@@ -760,20 +767,21 @@ namespace Crystallography
                         var tempIntensity = Intensity2 / subDiv3 * SolidAngle[num];
 
                         int angle = (int)((Math.Atan2(Y, X) / Math.PI + 1.0) * SpotShapesAngleDivision / 2);
-                        foreach(var index in SpotShapesSortedIndex[gNum][angle])//現在のピクセル位置から、周辺強度を計算していって、半値幅の2倍以上になったら終了
+                        foreach(var index in SpotShapesSortedIndex[gNum][angle]) //現在のピクセル位置から、周辺強度を計算していって、半値幅の2倍以上になったら終了
                         {
                             int pos = startPosition + index;
-                            if (pos > -1 && pos < imageLength)
+                            if ((uint)pos < imageLength)
                             {
-                                var temp1 = X * rVec[pos].X + Y * rVec[pos].Y - xyLength2;
-                                var temp2 = X * rVec[pos].Y - Y * rVec[pos].X;
-                                var temp3 = Z - rVec[pos].Z;
+                                var (vec, area) = detector.Reciprocal[pos];
+                                var temp1 = X * vec.X + Y * vec.Y - xyLength2;
+                                var temp2 = X * vec.Y - Y * vec.X;
+                                var temp3 = Z - vec.Z;
                                 var dev2 = temp1 * temp1 / xyLength2 / Hk1 + temp2 * temp2 / xyLength2 / Hk2 + temp3 * temp3 / Hk3;
-                                if (dev2 > DeviationThreshold[gNum] * 2)
+                                if (dev2 > DeviationThreshold[gNum] * 1.5)
                                     break;
                                 else if (dev2 < DeviationThreshold[gNum])
                                 {
-                                    var temp = sqrtPiLog2 * Math.Exp(-log2 * dev2) * tempIntensity * rArea[pos];
+                                    var temp = sqrtPiLog2 * Math.Exp(-log2 * dev2) * tempIntensity * area;
                                     if (result.ContainsKey(pos))
                                         result[pos] += temp;
                                     else
@@ -782,6 +790,7 @@ namespace Crystallography
                             }
                         }
                     }
+                }
                 return result.Select(r =>(r.Key, r.Value)).ToArray();
             }
             #endregion
@@ -823,7 +832,7 @@ namespace Crystallography
             double maxExcitationError2 = reciprocalPointSize2 + maxMonochroHK2 + maxConvergenceHK2, maxExcitationError = Math.Sqrt(maxExcitationError2);
             double maxHk2square = reciprocalPointSize2 + maxConvergenceHK2; // (-y,x,0)方向の半値幅
 
-            List<Vector3D> list = new List<Vector3D>();
+            var list = new List<Vector3D>();
             //エワルド球に近い(回折条件に引っ掛かる)逆格子ベクトルを探索
             for (int n = 0; n < G.Length; n++)
             {

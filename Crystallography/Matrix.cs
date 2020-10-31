@@ -685,8 +685,17 @@ namespace Crystallography
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-
         public static Vector3DBase VectorProduct(Vector3DBase v1, Vector3DBase v2) 
+            => new Vector3DBase(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+
+
+        /// <summary>
+        /// 2つのベクトルの外積を返す
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static Vector3DBase VectorProduct((double X, double Y, double Z) v1, (double X, double Y, double Z) v2)
             => new Vector3DBase(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
         /// <summary>
