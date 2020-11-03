@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.790(2020/11/02)  Improved: GUI of 'Diffraction Simulator'." +
             "\r\n ver4.789(2020/10/26)  Improved: Speed up drawing of 'Diffraction Simulator'." +
             "\r\n ver4.788(2020/10/20)  Fixed a bug when calculating electron diffraction for crystals in AMCSD." +
             "\r\n ver4.787(2020/10/19)  Fixed bugs in 'Powder Diffraction'." +

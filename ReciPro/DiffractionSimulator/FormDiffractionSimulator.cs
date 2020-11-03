@@ -1,4 +1,4 @@
-using Crystallography;
+ï»¿using Crystallography;
 using Crystallography.Controls;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace ReciPro
 {
     public partial class FormDiffractionSimulator : Form
     {
-        #region ƒtƒB[ƒ‹ƒhAƒvƒƒpƒeƒB
+        #region ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 
         public enum DrawingMode { None, Kinematical, BetheSAED, BetheCBED }
 
@@ -35,7 +35,7 @@ namespace ReciPro
         private Font font => new Font("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
 
         /// <summary>
-        /// ‰æ–Ê‰ğ‘œ“x mm/pix
+        /// ç”»é¢è§£åƒåº¦ mm/pix
         /// </summary>
         public double Resolution
         {
@@ -101,36 +101,43 @@ namespace ReciPro
         public double SinPhiSquare => FormDiffractionSimulatorGeometry.SinPhiSquare;
 
         /// <summary>
-        /// (CosPhi, SinPhi, 0) ‚Ìü‚è‚É Tau‰ñ“]‚·‚és—ñ
+        /// (CosPhi, SinPhi, 0) ã®å‘¨ã‚Šã« Tauå›è»¢ã™ã‚‹è¡Œåˆ—
         ///  Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
         ///  CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
         /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
-        /// ‚±‚Ìs—ñ‚ğv(X,Y,CL2)‚Éì—p‚³‚¹‚é‚ÆAŒŸoŠíÀ•W(X,Y)‚ğÀ‹óŠÔÀ•W‚É•ÏŠ·‚Å‚«‚éB
+        /// ã“ã®è¡Œåˆ—ã‚’vï¼(X,Y,CL2)ã«ä½œç”¨ã•ã›ã‚‹ã¨ã€æ¤œå‡ºå™¨åº§æ¨™(X,Y)ã‚’å®Ÿç©ºé–“åº§æ¨™ã«å¤‰æ›ã§ãã‚‹ã€‚
         /// </summary>
         public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry == null ? new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
 
 
         public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
         /// <summary>
-        /// ‰æ‘œ‚Ì’†SBŒŸoŠí(Detector)À•WŒn(FootŒ´“_)‚Å•\Œ»
+        /// ç”»åƒã®ä¸­å¿ƒã€‚æ¤œå‡ºå™¨(Detector)åº§æ¨™ç³»(FootåŸç‚¹)ã§è¡¨ç¾
         /// </summary>
         public PointD DisplayCenter { get; set; } = new PointD(0, 0);
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹ƒCƒxƒ“ƒg‚ğƒXƒLƒbƒv‚·‚é
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public bool SkipEvent { get; set; } = false;
 
 
         private bool skipDrawing = false;
         /// <summary>
-        /// •`‰æ‚ğƒXƒLƒbƒv‚·‚é (ƒRƒ“ƒgƒ[ƒ‹ƒCƒxƒ“ƒg‚ğƒXƒLƒbƒv‚·‚éê‡‚ÍASkipEvent‚ğg‚¤)
+        /// æç”»ã‚’ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ (ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚¤ãƒ™ãƒ³ãƒˆã‚’ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹å ´åˆã¯ã€SkipEventã‚’ä½¿ã†)
         /// </summary>
         public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
 
+        private Size lastPanelSize { get; set; } = new Size(0, 0);
+
+        /// <summary>
+        /// ã“ã®ãƒ•ãƒ©ã‚°ãŒtrueã®æ™‚ã¯ã€è¨ˆç®—ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹
+        /// </summary>
+        public bool CancelSetVector { get; set; } = false;
+
         #endregion
 
-        #region ƒRƒ“ƒXƒgƒ‰ƒNƒ^Aƒ[ƒhAƒNƒ[ƒY
+        #region ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€ãƒ­ãƒ¼ãƒ‰ã€ã‚¯ãƒ­ãƒ¼ã‚º
 
         public FormDiffractionSimulator()
         {
@@ -145,7 +152,7 @@ namespace ReciPro
             timerBlinkScale.Tag = true;
         }
 
-        //ƒ[ƒh‚³‚ê‚½‚Æ‚«
+        //ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸã¨ã
         public void FormElectronDiffraction_Load(object sender, EventArgs e)
         {
             comboBoxScaleColorScale.SelectedIndex = 0;
@@ -177,16 +184,20 @@ namespace ReciPro
         }
 
         #endregion
-        private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e) => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
 
-        //Visible‚ª•ÏX‚³‚ê‚½‚Æ‚«
+        #region VisibleChanged
+
+        private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e)
+            => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
+
+        //VisibleãŒå¤‰æ›´ã•ã‚ŒãŸã¨ã
         private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
             {
                 DisplayCenter = new PointD(0, 0);
                 SetVector();
-                panelMain.BringToFront();
+                tabControl.BringToFront();
                 Draw();
                 graphicsBox.Refresh();
 
@@ -200,9 +211,11 @@ namespace ReciPro
                 FormDiffractionSimulatorCBED.Visible = false;
             }
         }
+        #endregion
 
+        #region ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³è¡Œåˆ—ã®è¨­å®š
         /// <summary>
-        /// ƒvƒƒWƒFƒNƒVƒ‡ƒ“s—ñ‚Ìİ’è‚ğs‚¤B
+        /// ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³è¡Œåˆ—ã®è¨­å®šã‚’è¡Œã†ã€‚
         /// </summary>
         public bool SetProjection(Graphics g = null)
         {
@@ -217,20 +230,21 @@ namespace ReciPro
                 catch { return false; }
             return true;
         }
+        #endregion
 
-        #region DrawŠÖ”B‚±‚±‚©‚çADrawScale, DrawKikuchiLine, DrawDebyeRing, DrawDiffractionSpots‚ªŒÄ‚Ño‚³‚ê‚éB
+        #region Drawé–¢æ•°ã€‚ã“ã“ã‹ã‚‰ã€DrawScale, DrawKikuchiLine, DrawDebyeRing, DrawDiffractionSpotsãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
 
         private void Draw(object sender, EventArgs e) => Draw();
 
         /// <summary>
-        /// ‹t‹óŠÔ•`‰æŠÖ”
+        /// é€†ç©ºé–“æç”»é–¢æ•°
         /// </summary>
-        /// <param name="g">GraphicsƒIƒuƒWƒFƒNƒg‚ğw’è</param>
-        /// <param name="drawLabel">ƒ‰ƒxƒ‹‚ğ‘‚­‚ÍAtrue</param>
-        /// <param name="drawOverlappedImage">ƒI[ƒo[ƒ‰ƒbƒvƒCƒ[ƒW‚ğ•`‚­‚Ítrue. ‚½‚¾‚µAtrue‚Å‚àA‰æ‘œ‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í•`‚©‚È‚¢@</param>
+        /// <param name="g">Graphicsã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®š</param>
+        /// <param name="drawLabel">ãƒ©ãƒ™ãƒ«ã‚’æ›¸ãæ™‚ã¯ã€true</param>
+        /// <param name="drawOverlappedImage">ã‚ªãƒ¼ãƒãƒ¼ãƒ©ãƒƒãƒ—ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’æãæ™‚ã¯true. ãŸã ã—ã€trueã§ã‚‚ã€ç”»åƒãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯æã‹ãªã„ã€€</param>
         public void Draw(Graphics g = null, bool drawLabel = true, bool drawOverlappedImage = true)
         {
-            if (this.InvokeRequired)//•ÊƒXƒŒƒbƒh‚©‚çŒÄ‚Ño‚³‚ê‚½‚Æ‚« Invoke‚µ‚ÄŒÄ‚Ñ‚È‚¨‚·
+            if (this.InvokeRequired)//åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰å‘¼ã³å‡ºã•ã‚ŒãŸã¨ã Invokeã—ã¦å‘¼ã³ãªãŠã™
             {
                 this.Invoke(new Action(() => Draw(g, drawLabel, drawOverlappedImage)), null);
                 return;
@@ -244,13 +258,13 @@ namespace ReciPro
             if (formMain == null || formMain.Crystal == null || FormDiffractionSimulatorGeometry == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
                 return;
 
-            if (g == null)//ƒOƒ‰ƒtƒBƒbƒNƒXƒ{ƒbƒNƒX‚É•`‰æ‚·‚éê‡
+            if (g == null)//ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹ãƒœãƒƒã‚¯ã‚¹ã«æç”»ã™ã‚‹å ´åˆ
                 g = graphicsBox.Graphics;
 
             if (!SetProjection(g))
                 return;
 
-            //”wŒi‚ğ•`‰æ
+            //èƒŒæ™¯ã‚’æç”»
             if (drawOverlappedImage)
             {
                 var topleft = convertScreenToDetector(new Point(0, 0));
@@ -266,25 +280,25 @@ namespace ReciPro
             var fdsg = FormDiffractionSimulatorGeometry;
             var start = new PointD(-fdsg.DetectorPixelSize * fdsg.FootX, -fdsg.DetectorPixelSize * fdsg.FootY);
             var end = new PointD(fdsg.DetectorPixelSize * (fdsg.DetectorWidth - fdsg.FootX), fdsg.DetectorPixelSize * (fdsg.DetectorHeight - fdsg.FootY));
-            //‰æ‘œ‚Ìd‚Ë‡‚í‚¹
+            //ç”»åƒã®é‡ã­åˆã‚ã›
             if (drawOverlappedImage && fdsg.ShowDetectorArea && fdsg.OverlappedImage != null)
             {
-                var cm = new ColorMatrix();//ColorMatrixƒIƒuƒWƒFƒNƒg‚Ìì¬
+                var cm = new ColorMatrix();//ColorMatrixã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
                 cm.Matrix00 = cm.Matrix11 = cm.Matrix22 = cm.Matrix44 = 1;
                 cm.Matrix33 = fdsg.ImageOpacity;
-                var ia = new ImageAttributes();//ImageAttributesƒIƒuƒWƒFƒNƒg‚Ìì¬
-                ia.SetColorMatrix(cm);  //ColorMatrix‚ğİ’è‚·‚é
-                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//¶ãA‰EãA¶‰º‚Ì‡”Ô
+                var ia = new ImageAttributes();//ImageAttributesã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½œæˆ
+                ia.SetColorMatrix(cm);  //ColorMatrixã‚’è¨­å®šã™ã‚‹
+                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//å·¦ä¸Šã€å³ä¸Šã€å·¦ä¸‹ã®é †ç•ª
                 g.DrawImage(fdsg.OverlappedImage, dest, new RectangleF(0, 0, fdsg.OverlappedImage.Width, fdsg.OverlappedImage.Height), GraphicsUnit.Pixel, ia);
             }
 
-            //CBED‚Ìd‚Ë‡‚í‚¹
+            //CBEDã®é‡ã­åˆã‚ã›
             if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CBED_Image != null)
             {
                 var cbed = FormDiffractionSimulatorCBED;
                 start = new PointD(-cbed.ImagePixelSize * cbed.ImageCenterX, -cbed.ImagePixelSize * cbed.ImageCenterY);
                 end = new PointD(cbed.ImagePixelSize * (cbed.ImageWidth - cbed.ImageCenterX), cbed.ImagePixelSize * (cbed.ImageHeight - cbed.ImageCenterY));
-                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//¶ãA‰EãA¶‰º‚Ì‡”Ô
+                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//å·¦ä¸Šã€å³ä¸Šã€å·¦ä¸‹ã®é †ç•ª
                 g.DrawImage(cbed.CBED_Image, dest, new RectangleF(0, 0, cbed.ImageWidth, cbed.ImageHeight), GraphicsUnit.Pixel);
             }
 
@@ -303,7 +317,7 @@ namespace ReciPro
             if (toolStripButtonDiffractionSpots.Checked && (bool)timerBlinkSpot?.Tag)
                 DrawDiffractionSpots(g, drawLabel);
 
-            //ŒŸoŠí‚Ì˜gü
+            //æ¤œå‡ºå™¨ã®æ ç·š
             if (fdsg.ShowDetectorArea)
             {
                 start = new PointD(-fdsg.DetectorPixelSize * fdsg.FootX, -fdsg.DetectorPixelSize * fdsg.FootY);
@@ -312,7 +326,7 @@ namespace ReciPro
                 g.DrawRectangle(pen, (float)Math.Min(start.X, end.X), (float)Math.Min(start.Y, end.Y), (float)Math.Abs(start.X - end.X), (float)Math.Abs(start.Y - end.Y));
             }
 
-            //ƒ}ƒEƒX‚Ì‘I‘ğ”ÍˆÍ•`‰æ
+            //ãƒã‚¦ã‚¹ã®é¸æŠç¯„å›²æç”»
             if (MouseRangingMode)
             {
                 var pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash };
@@ -321,7 +335,7 @@ namespace ReciPro
                 g.DrawRectangle(pen, Math.Min(rangeStart.X, rangeEnd.X), Math.Min(rangeStart.Y, rangeEnd.Y), Math.Abs(rangeStart.X - rangeEnd.X), Math.Abs(rangeStart.Y - rangeEnd.Y));
             }
 
-            //‘Î•¨i‚è‚Ì”ÍˆÍ‚ğ¦‚·‰~
+            //å¯¾ç‰©çµã‚Šã®ç¯„å›²ã‚’ç¤ºã™å††
             if (formMain.toolStripButtonImageSimulation.Checked && formMain.FormImageSimulator.ImageMode == FormImageSimulator.ImageModes.HRTEM
                 && !double.IsInfinity(formMain.FormImageSimulator.ObjAperRadius))
             {
@@ -340,16 +354,38 @@ namespace ReciPro
             if (FormDiffractionBeamTable.Visible && radioButtonIntensityBethe.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         }
+
+        /// <summary>
+        /// ä¸ãˆã‚‰ã‚ŒãŸç‚¹é›†åˆ pts ã®ä¸­ã‹ã‚‰ã€ã‚‚ã£ã¨ã‚‚æŒ‡å®šã—ãŸæ–¹å‘ã«è¿‘ã„ç‚¹ã‚’è¿”ã™. deg 0 : å³, deg 90: ä¸‹, deg 180: å·¦, deg -90:ä¸Š
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
+        private PointD getLabelPosition(IEnumerable<PointD> list, PointD origin, double deg)
+        {
+            var residual = double.PositiveInfinity;
+            var result = new PointD(float.NaN, float.NaN);
+            foreach (var p in list)
+            {
+                var dev = Math.Abs((deg / 180) * Math.PI - Math.Atan2(p.Y - origin.Y, p.X - origin.X));
+                if (residual > dev)
+                {
+                    residual = dev;
+                    result = p;
+                }
+            }
+            return result;
+        }
         #endregion
 
         #region DrawDiffractionSpots
 
         /// <summary>
-        /// ‰ñÜƒXƒ|ƒbƒg‚¨‚æ‚Ñw”ƒ‰ƒxƒ‹‚Ì•`‰æ
+        /// å›æŠ˜ã‚¹ãƒãƒƒãƒˆãŠã‚ˆã³æŒ‡æ•°ãƒ©ãƒ™ãƒ«ã®æç”»
         /// </summary>
-        /// <param name="graphics">•`‰æ‘ÎÛ‚ÌƒOƒ‰ƒtƒBƒbƒNƒIƒuƒWƒFƒNƒg</param>
-        /// <param name="drawLabel">ƒ‰ƒxƒ‹‚ğ•`‰æ‚·‚é‚©‚Ç‚¤‚©</param>
-        /// <param name="outputOnlySpotInformation">‚±‚Ìƒtƒ‰ƒO‚ªTrue‚Ìê‡‚ÍA‰æ–Ê•`‰æ‚Ís‚í‚¸‚Éspot‚Ìî•ñ‚¾‚¯‚ğ•Ô‚·</param>
+        /// <param name="graphics">æç”»å¯¾è±¡ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+        /// <param name="drawLabel">ãƒ©ãƒ™ãƒ«ã‚’æç”»ã™ã‚‹ã‹ã©ã†ã‹</param>
+        /// <param name="outputOnlySpotInformation">ã“ã®ãƒ•ãƒ©ã‚°ãŒTrueã®å ´åˆã¯ã€ç”»é¢æç”»ã¯è¡Œã‚ãšã«spotã®æƒ…å ±ã ã‘ã‚’è¿”ã™</param>
         public (double X, double Y, double Intensity, double Sigma)[] DrawDiffractionSpots(Graphics graphics, bool drawLabel = true, bool outputOnlySpotInformation = false)
         {
             if (radioButtonPointSpread.Checked && graphics != null)
@@ -375,26 +411,26 @@ namespace ReciPro
 
             var radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
-            #region ƒKƒEƒXŠÖ”‚Å•`‰æ‚·‚éƒ[ƒJƒ‹ŠÖ”
+            #region ã‚¬ã‚¦ã‚¹é–¢æ•°ã§æç”»ã™ã‚‹ãƒ­ãƒ¼ã‚«ãƒ«é–¢æ•°
             int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
             double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
             {
-                //ŒvZ‚·‚é“ñŸŒ³ƒKƒEƒXŠÖ”‚ÍA f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
-                //intensity‚ÍƒXƒ|ƒbƒg‚ÌÏ•ª‹­“xAs‚Í”¼’l•
+                //è¨ˆç®—ã™ã‚‹äºŒæ¬¡å…ƒã‚¬ã‚¦ã‚¹é–¢æ•°ã¯ã€ f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
+                //intensityã¯ã‚¹ãƒãƒƒãƒˆã®ç©åˆ†å¼·åº¦ã€sã¯åŠå€¤å¹…
                 int gradation = 32;
                 double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
 
                 var maxI = intensity * coeff1;
-                if (maxI <= 1.0 / gradation) return 0;//‚à‚µAÅ‘å‹­“x‚ª1/gradiation‚æ‚è¬‚³‚©‚Á‚½‚çA‰½‚à‚¹‚¸‚É–ß‚é
+                if (maxI <= 1.0 / gradation) return 0;//ã‚‚ã—ã€æœ€å¤§å¼·åº¦ãŒ1/gradiationã‚ˆã‚Šå°ã•ã‹ã£ãŸã‚‰ã€ä½•ã‚‚ã›ãšã«æˆ»ã‚‹
 
                 double minRadius = 0;
 
-                if (maxI > 1)//‚à‚µ’†S•t‹ß‚ª–O˜a‚·‚éê‡(‹­“x‚ª1ˆÈã)‚ÍA‹­“x‚ª@1/gradiation ` 1 ‚Ì”¼Œa”ÍˆÍ‚ğgradation‚Å•ªŠ„
+                if (maxI > 1)//ã‚‚ã—ä¸­å¿ƒä»˜è¿‘ãŒé£½å’Œã™ã‚‹å ´åˆ(å¼·åº¦ãŒ1ä»¥ä¸Š)ã¯ã€å¼·åº¦ãŒã€€1/gradiation ï½ 1 ã®åŠå¾„ç¯„å›²ã‚’gradationã§åˆ†å‰²
                     minRadius = sigma * Math.Sqrt(-2 * Math.Log(2 * Math.PI * sigma2 / intensity));
 
-                var maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//‹­“x‚ª@1/2*gradiation@‚É‚È‚é”¼Œa‚ğ‹‚ß‚é
+                var maxRadius = sigma * Math.Sqrt(-2 * Math.Log(1 / coeff1 / intensity * (1.0 / gradation))) * 1.5;//å¼·åº¦ãŒã€€1/2*gradiationã€€ã«ãªã‚‹åŠå¾„ã‚’æ±‚ã‚ã‚‹
 
-                //minR‚©‚çmaxR‚Ü‚ÅA‰~‚ğ•`‰æ
+                //minRã‹ã‚‰maxRã¾ã§ã€å††ã‚’æç”»
                 for (int j = 0; j < gradation; j++)
                 {
                     double ratio1 = (double)(j + 1) / gradation, ratio2 = (double)(j + 2) / gradation;
@@ -428,18 +464,18 @@ namespace ReciPro
             }
             #endregion
 
-            #region 3ŸŒ³ƒKƒEƒXŠÖ”‚Ìƒƒ‚‘‚«
+            #region 3æ¬¡å…ƒã‚¬ã‚¦ã‚¹é–¢æ•°ã®ãƒ¡ãƒ¢æ›¸ã
 
-            /*  Ÿ‚ÌŠÖ”
+            /*  æ¬¡ã®é–¢æ•°
             I/ { s^3 * (2 pi)^(3/2)} * exp{ -(x^2+y^2+z^2) /(2 s^2) }
-            ‚ÍAÏ•ª’l‚ª I ‚ÅAƒĞ‚ªs‚Ì3ŸŒ³ƒKƒEƒXŠÖ”‚Å‚ ‚éB
+            ã¯ã€ç©åˆ†å€¤ãŒ I ã§ã€ÏƒãŒsã®3æ¬¡å…ƒã‚¬ã‚¦ã‚¹é–¢æ•°ã§ã‚ã‚‹ã€‚
 
-            z=Z ‚Ì•½–Ê‚ÅØ‚èæ‚Á‚½’f–Ê‚ÍA
+            z=Z ã®å¹³é¢ã§åˆ‡ã‚Šå–ã£ãŸæ–­é¢ã¯ã€
              I/ { s^3 * (2 pi)^(3/2)} * exp{ -Z^2 /(2 s^2)} * exp{ -(x^2+y^2) /(2 s^2) }
-            ‚Æ‚¢‚¤Œ`‚É‚È‚éB
-            ‚±‚ê‚ÍA“ñŸŒ³Ï•ª’l‚ª I/{ s * (2pi)^(1/2)} * exp{ -Z^2 /(2 s^2)} ‚Å ƒĞ‚ªs‚Ì“ñŸŒ³ƒKƒEƒXŠÖ”‚Æ“™‚µ‚¢  */
+            ã¨ã„ã†å½¢ã«ãªã‚‹ã€‚
+            ã“ã‚Œã¯ã€äºŒæ¬¡å…ƒç©åˆ†å€¤ãŒ I/{ s * (2pi)^(1/2)} * exp{ -Z^2 /(2 s^2)} ã§ ÏƒãŒsã®äºŒæ¬¡å…ƒã‚¬ã‚¦ã‚¹é–¢æ•°ã¨ç­‰ã—ã„  */
 
-            #endregion 3ŸŒ³ƒKƒEƒXŠÖ”‚Ìƒƒ‚‘‚«
+            #endregion 3æ¬¡å…ƒã‚¬ã‚¦ã‚¹é–¢æ•°ã®ãƒ¡ãƒ¢æ›¸ã
 
             var spotRadiusOnDetector = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * ExcitationError / 2));
             var error2 = ExcitationError * ExcitationError;
@@ -459,15 +495,15 @@ namespace ReciPro
             {
                 Vector3D[] gVector;
 
-                if (bethe)//ƒx[ƒe–@‚É‚æ‚é“®—ÍŠw‰ñÜ‚Ìê‡
+                if (bethe)//ãƒ™ãƒ¼ãƒ†æ³•ã«ã‚ˆã‚‹å‹•åŠ›å­¦å›æŠ˜ã®å ´åˆ
                 {
                     sw.Start();
 
                     var blochNum = FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger;
 
-                    if (radioButtonBeamPrecession.Checked)//ƒvƒŠƒZƒbƒVƒ‡ƒ“‚Ìê‡
+                    if (radioButtonBeamPrecession.Checked)//ãƒ—ãƒªã‚»ãƒƒã‚·ãƒ§ãƒ³ã®å ´åˆ
                     {
-                        var eigenValues = crystal.Bethe.EigenValuesPED;//“dqü‚Ìê‡
+                        var eigenValues = crystal.Bethe.EigenValuesPED;//é›»å­ç·šã®å ´åˆ
 
                         var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                             numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
@@ -476,7 +512,7 @@ namespace ReciPro
                         if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
                             toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {sw.ElapsedMilliseconds} ms.  ";
                     }
-                    else//ƒpƒ‰ƒŒƒ‹‚©CBED‚Ìê‡
+                    else//ãƒ‘ãƒ©ãƒ¬ãƒ«ã‹CBEDã®å ´åˆ
                     {
                         var eigenValues = crystal.Bethe.EigenValues;
 
@@ -495,12 +531,12 @@ namespace ReciPro
                 else
                     gVector = crystal.VectorOfG.ToArray();
 
-                //•`‰æ‚·‚éƒXƒ|ƒbƒg‚ğŒˆ‚ß‚é
+                //æç”»ã™ã‚‹ã‚¹ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹
                 foreach (var g in gVector.Where(g => g.Flag))
                 {
-                    var vec = bethe ? g : crystal.RotationMatrix * g;//ƒx[ƒe–@‚ÅŒvZ‚·‚éÛ‚É‚ÍA‚·‚Å‚É‰ñ“]Œã‚ÌÀ•W‚É‚È‚Á‚Ä‚¢‚éB
+                    var vec = bethe ? g : crystal.RotationMatrix * g;//ãƒ™ãƒ¼ãƒ†æ³•ã§è¨ˆç®—ã™ã‚‹éš›ã«ã¯ã€ã™ã§ã«å›è»¢å¾Œã®åº§æ¨™ã«ãªã£ã¦ã„ã‚‹ã€‚
 
-                    //‹t‹óŠÔ <=>À‹óŠÔ‚ÅAY,Z‚Ì•„†‚ª”½“]‚µ‚Ä‚¢‚é‚±‚Æ‚É’ˆÓ
+                    //é€†ç©ºé–“ <=>å®Ÿç©ºé–“ã§ã€Y,Zã®ç¬¦å·ãŒåè»¢ã—ã¦ã„ã‚‹ã“ã¨ã«æ³¨æ„
                     if (-vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
                     {
                         double L2 = (vec.X * vec.X) + (vec.Y * vec.Y), dev = 0.0;
@@ -509,18 +545,18 @@ namespace ReciPro
 
                         var dev2 = dev * dev;
                         if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
-                        //(vec.X, -vec.Y, -vec.Z + EwaldRadius) ‚Æ(SinPhi*SinTau, -CosPhi*sinTau, cosTau) ‚Ì“àÏ‚ª0‚æ‚è‘å‚«‚¢ = ‘O•ûU—)
+                        //(vec.X, -vec.Y, -vec.Z + EwaldRadius) ã¨(SinPhi*SinTau, -CosPhi*sinTau, cosTau) ã®å†…ç©ãŒ0ã‚ˆã‚Šå¤§ãã„ = å‰æ–¹æ•£ä¹±)
                         {
                             var pt = convertReciprocalToDetector(vec);
                             if (IsScreenArea(pt))
                             {
-                                //CBEDƒ‚[ƒh‚Ì
+                                //CBEDãƒ¢ãƒ¼ãƒ‰ã®æ™‚
                                 if (FormDiffractionSimulatorCBED.Visible)
                                 {
-                                    if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError && g.RawIntensity > 1E-20)//‰©F‚¢ƒKƒCƒhƒT[ƒNƒ‹‚ğ•\¦
+                                    if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError && g.RawIntensity > 1E-20)//é»„è‰²ã„ã‚¬ã‚¤ãƒ‰ã‚µãƒ¼ã‚¯ãƒ«ã‚’è¡¨ç¤º
                                         drawCircle(graphics, Color.Yellow, pt, radiusCBED);
                                 }
-                                //ƒ_ƒCƒiƒ~ƒbƒNƒRƒ“ƒvƒŒƒbƒVƒ‡ƒ“ƒ‚[ƒh‚ªON‚Ì‚ÍA•`‰æ‚µ‚È‚¢‚Å‹­“x‚ÆÀ•W‚¾‚¯‚ğŠi”[‚·‚é
+                                //ãƒ€ã‚¤ãƒŠãƒŸãƒƒã‚¯ã‚³ãƒ³ãƒ—ãƒ¬ãƒƒã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ãŒONã®æ™‚ã¯ã€æç”»ã—ãªã„ã§å¼·åº¦ã¨åº§æ¨™ã ã‘ã‚’æ ¼ç´ã™ã‚‹
                                 else if (outputOnlySpotInformation && IsScreenArea(pt))
                                 {
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma;
@@ -528,12 +564,12 @@ namespace ReciPro
                                     if (intensity > 1E-10)
                                         spotInformation.Add((pt.X, pt.Y, intensity, sigma));
                                 }
-                                //“_L‚ª‚èŠÖ”‚Å•`‰æ‚·‚é‚Æ‚«
+                                //ç‚¹åºƒãŒã‚Šé–¢æ•°ã§æç”»ã™ã‚‹ã¨ã
                                 else if (radioButtonPointSpread.Checked)
                                 {
                                     if (bethe || Math.Abs(dev) < 3 * ExcitationError)
                                     {
-                                        //‚à‚µg.RelativeIntensity=1‚ÅA‚©‚Âcoeff=1‚ÌAsigma‚Ì”¼•ª‚Ì‚Æ‚±‚ë‚Å‹­“x‚ª255‚É‚È‚é‚æ‚¤‚ÉŠÖ”‚ÌŒ`‚ğ’²®
+                                        //ã‚‚ã—g.RelativeIntensity=1ã§ã€ã‹ã¤coeff=1ã®æ™‚ã€sigmaã®åŠåˆ†ã®ã¨ã“ã‚ã§å¼·åº¦ãŒ255ã«ãªã‚‹ã‚ˆã†ã«é–¢æ•°ã®å½¢ã‚’èª¿æ•´
                                         double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma, intensity;
                                         if (!logScale)
                                             intensity = bethe ?
@@ -552,19 +588,19 @@ namespace ReciPro
                                         }
                                     }
                                 }
-                                //‰~‚Å“h‚è‚Â‚Ô‚·‚Æ‚«
+                                //å††ã§å¡—ã‚Šã¤ã¶ã™ã¨ã
                                 else
                                 {
-                                    //‹t‹óŠÔ‚É‚¨‚¯‚é‹tŠiq“_‚Ì”¼Œa
+                                    //é€†ç©ºé–“ã«ãŠã‘ã‚‹é€†æ ¼å­ç‚¹ã®åŠå¾„
                                     var sphereRadius = bethe ?
-                                        ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ƒx[ƒe–@‚Ìê‡‚ÍA‘Š‘Î‹­“x‚Ì•½•ûª‚ª”¼Œa‚É”ä—á
-                                        ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only ‚ ‚é‚¢‚Í Kinematic‚Ìê‡‚ÍA”¼Œa‚É‘Š‘Î‹­“x‚Ì1/3æ‚ğŠ|‚¯‚é
+                                        ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ãƒ™ãƒ¼ãƒ†æ³•ã®å ´åˆã¯ã€ç›¸å¯¾å¼·åº¦ã®å¹³æ–¹æ ¹ãŒåŠå¾„ã«æ¯”ä¾‹
+                                        ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only ã‚ã‚‹ã„ã¯ Kinematicã®å ´åˆã¯ã€åŠå¾„ã«ç›¸å¯¾å¼·åº¦ã®1/3ä¹—ã‚’æ›ã‘ã‚‹
 
                                     if (bethe || Math.Abs(dev) < sphereRadius)
                                     {
                                         var sectionRadius = bethe ?
-                                            sphereRadius : //ƒx[ƒe–@‚Ìê‡‚Í‚»‚Ì‚Ü‚Ü
-                                            Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only ‚ ‚é‚¢‚Í Kinematic‚Ìê‡‚ÍAƒGƒƒ‹ƒh‹…‚ÉØ‚ç‚ê‚½’f–Êã‚ÌA‹tŠiq“_‚Ì”¼Œa
+                                            sphereRadius : //ãƒ™ãƒ¼ãƒ†æ³•ã®å ´åˆã¯ãã®ã¾ã¾
+                                            Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only ã‚ã‚‹ã„ã¯ Kinematicã®å ´åˆã¯ã€ã‚¨ãƒ¯ãƒ«ãƒ‰çƒã«åˆ‡ã‚‰ã‚ŒãŸæ–­é¢ä¸Šã®ã€é€†æ ¼å­ç‚¹ã®åŠå¾„
                                         var r = CameraLength2 * WaveLength * sectionRadius;
                                         fillCircle(graphics, Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                         if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
@@ -583,10 +619,10 @@ namespace ReciPro
 
             graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-            if (FormDiffractionSimulatorCBED.Visible)//CBEDƒ‚[ƒh‚Ì‚ÍA‚±‚±‚ÅƒLƒƒƒ“ƒZƒ‹
+            if (FormDiffractionSimulatorCBED.Visible)//CBEDãƒ¢ãƒ¼ãƒ‰ã®æ™‚ã¯ã€ã“ã“ã§ã‚­ãƒ£ãƒ³ã‚»ãƒ«
                 return null;
 
-            //ƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg‚Ì•`‰æ
+            //ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆã®æç”»
             var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             if (IsScreenArea(ptOrigin))
             {
@@ -596,9 +632,9 @@ namespace ReciPro
                 //fillCircle(pictureBoxOrigin.BackColor, ptOrigin, l);
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityBethe.Checked)
                     graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + l / 2f), (float)(ptOrigin.Y + l / 2f));
-                //ƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg‚Ì•`‰æ‚±‚±‚Ü‚Å
+                //ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆã®æç”»ã“ã“ã¾ã§
             }
-            //‚ü‚Ì‘«‚Ì•`‰æ
+            //å‚ç·šã®è¶³ã®æç”»
             if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
             {
                 var penFoot = new Pen(colorControlFoot.Color, (float)Resolution);
@@ -609,7 +645,7 @@ namespace ReciPro
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
                     graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), l / 2f, l / 2f);
             }
-            //‚ü‚Ì‘«‚Ì•`‰æ‚±‚±‚Ü‚Å
+            //å‚ç·šã®è¶³ã®æç”»ã“ã“ã¾ã§
             return null;
         }
         #endregion
@@ -621,7 +657,7 @@ namespace ReciPro
             double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
             var sb = new StringBuilder();
             if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Index);
-            if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} ğ");
+            if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} â„«");
             if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
             if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
 
@@ -655,17 +691,17 @@ namespace ReciPro
 
                     Vector3D vec1 = crystal.RotationMatrix * g;
 
-                    //bool excess ‚ÍAexcess ‚Ì‚Étrue, ‚»‚¤‚Å‚È‚¢‚Æ‚«‚Ífalse
+                    //bool excess ã¯ã€excess ã®æ™‚ã«true, ãã†ã§ãªã„ã¨ãã¯false
                     var excess = vec1.Z < 0;
 
-                    //vec2‚ÍAŒŸoŠí–@ü‚ªZ²‚Æˆê’v‚·‚é‚æ‚¤‚ÉX²‚ğ‰ñ“]²‚É‰ñ“]‚³‚¹‚½ƒxƒNƒgƒ‹
+                    //vec2ã¯ã€æ¤œå‡ºå™¨æ³•ç·šãŒZè»¸ã¨ä¸€è‡´ã™ã‚‹ã‚ˆã†ã«Xè»¸ã‚’å›è»¢è»¸ã«å›è»¢ã•ã›ãŸãƒ™ã‚¯ãƒˆãƒ«
                     var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), Tau) * vec1;
 
-                    //vec3‚ÍAŒŸoŠí–@ü(Z²)‚ğ²‚Æ‚µ‚Äpsi‚¾‚¯‰ñ“]‚³‚¹‚ÄA(0,y,z)‚ÌŒ`‚É‚È‚é‚æ‚¤‚É‚µ‚½ƒxƒNƒgƒ‹
+                    //vec3ã¯ã€æ¤œå‡ºå™¨æ³•ç·š(Zè»¸)ã‚’è»¸ã¨ã—ã¦psiã ã‘å›è»¢ã•ã›ã¦ã€(0,y,z)ã®å½¢ã«ãªã‚‹ã‚ˆã†ã«ã—ãŸãƒ™ã‚¯ãƒˆãƒ«
                     var psi = Math.Atan2(vec2.X, vec2.Y);
                     var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
 
-                    //vec3norm‚ÍAvec3‚ğ‹KŠi‰»‚µ‚½ƒxƒNƒgƒ‹
+                    //vec3normã¯ã€vec3ã‚’è¦æ ¼åŒ–ã—ãŸãƒ™ã‚¯ãƒˆãƒ«
                     var vec3norm = vec3.Normarize();
                     double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
                     double cosPhi = vec3norm.Z, cos2Phi = cosPhi * cosPhi;
@@ -674,7 +710,7 @@ namespace ReciPro
                     double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
                     double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
 
-                    //Œ»İ‚ÌMatrix‚ğ•Û‘¶
+                    //ç¾åœ¨ã®Matrixã‚’ä¿å­˜
                     var original = graphics.Transform;
 
                     graphics.RotateTransform((float)(psi / Math.PI * 180));
@@ -682,7 +718,7 @@ namespace ReciPro
 
                     if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
                     {
-                        // y= sinh(x) ‚Ì‹tŠÖ”‚Í x = log{y+ sqrt(y*y+1)}
+                        // y= sinh(x) ã®é€†é–¢æ•°ã¯ x = log{y+ sqrt(y*y+1)}
                         double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
                         List<PointF> pts1 = new List<PointF>(), pts2 = new List<PointF>();
                         for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
@@ -760,7 +796,7 @@ namespace ReciPro
             var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             var originInside = IsScreenArea(originSrc);
 
-            //Azimuth‚ÌƒXƒP[ƒ‹ƒ‰ƒCƒ“ ‚±‚±‚©‚ç
+            //Azimuthã®ã‚¹ã‚±ãƒ¼ãƒ«ãƒ©ã‚¤ãƒ³ ã“ã“ã‹ã‚‰
             int azimuthStep = radioButtonScaleDivisionFine.Checked ? 5 : radioButtonScaleDivisionMedium.Checked ? 15 : 30;
             var pen = new Pen(new SolidBrush(colorControlScaleAzimuth.Color), (float)(trackBarScaleLineWidth.Value * Resolution / 2f));
 
@@ -773,7 +809,7 @@ namespace ReciPro
 
                 var crossList = new List<(PointD pt, int index)>();
                 double cos = Math.Cos(n / 180.0 * Math.PI), sin = Math.Sin(n / 180.0 * Math.PI);
-                //n“xŒX‚¢‚½•½–Ê‚ÆA‰æ‘œ‚ÌƒGƒbƒW‚ÌŒğ“_‚ğ‹‚ß‚é
+                //nåº¦å‚¾ã„ãŸå¹³é¢ã¨ã€ç”»åƒã®ã‚¨ãƒƒã‚¸ã®äº¤ç‚¹ã‚’æ±‚ã‚ã‚‹
                 for (int i = 0; i < 4; i++)
                 {
                     //  0 - 1
@@ -788,9 +824,9 @@ namespace ReciPro
                     {
                         g.DrawLine(pen, crossList[0].pt.ToPointF(), crossList[1].pt.ToPointF());
 
-                        if (checkBoxScaleLabel.Checked)//ƒ‰ƒxƒ‹•`‰æ
+                        if (checkBoxScaleLabel.Checked)//ãƒ©ãƒ™ãƒ«æç”»
                         {
-                            if (!originInside)//ƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg‚ª•`‰æ”ÍˆÍ“à‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢‚Æ‚«‚Í ’†S‚É‹ß‚¢“_‚Ííœ
+                            if (!originInside)//ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆãŒæç”»ç¯„å›²å†…ã«å«ã¾ã‚Œã¦ã„ãªã„ã¨ãã¯ ä¸­å¿ƒã«è¿‘ã„ç‚¹ã¯å‰Šé™¤
                                 crossList.Remove((crossList[0].pt - originSrc).Length > (crossList[1].pt - originSrc).Length ?
                                     crossList[1] : crossList[0]);
 
@@ -799,18 +835,18 @@ namespace ReciPro
                                 double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
                                 var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString() : (n - 180).ToString();
                                 var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
-                                g.DrawString(str + "‹", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
+                                g.DrawString(str + "Â°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
                             }
                         }
                         break;
                     }
                 }
             }
-            //Azimuth‚ÌƒXƒP[ƒ‹ƒ‰ƒCƒ“ ‚±‚±‚Ü‚Å
+            //Azimuthã®ã‚¹ã‚±ãƒ¼ãƒ«ãƒ©ã‚¤ãƒ³ ã“ã“ã¾ã§
 
-            //‚±‚±‚©‚ç2ƒÆ‚ÌƒXƒP[ƒ‹ƒ‰ƒCƒ“‚Ì•`‰æ
+            //ã“ã“ã‹ã‚‰2Î¸ã®ã‚¹ã‚±ãƒ¼ãƒ«ãƒ©ã‚¤ãƒ³ã®æç”»
 
-            //2ƒÆ‚ÌÅ‘å/Å¬’l
+            //2Î¸ã®æœ€å¤§/æœ€å°å€¤
             double max2Theta = 0, min2Theta = 0.0;
             var edges = new List<Vector3DBase>();
             edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
@@ -820,10 +856,10 @@ namespace ReciPro
             if (!originInside)
                 min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
             max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
-            //2ƒÆ‚ÌÅ‘å/Å¬’l@‚±‚±‚Ü‚Å
+            //2Î¸ã®æœ€å¤§/æœ€å°å€¤ã€€ã“ã“ã¾ã§
 
-            //•ªŠ„•‚ğ‚«‚ß‚é@‚±‚±‚©‚ç
-            //fine‚Ì‚Æ‚«‚Í20•ªŠ„ˆÈãAmedium‚Í10•ªŠ„ˆÈãAcoarse‚Í5•ªŠ„ˆÈã‚É‚È‚é‚æ‚¤‚É’²ß
+            //åˆ†å‰²å¹…ã‚’ãã‚ã‚‹ã€€ã“ã“ã‹ã‚‰
+            //fineã®ã¨ãã¯20åˆ†å‰²ä»¥ä¸Šã€mediumã¯10åˆ†å‰²ä»¥ä¸Šã€coarseã¯5åˆ†å‰²ä»¥ä¸Šã«ãªã‚‹ã‚ˆã†ã«èª¿ç¯€
             double dev = max2Theta - min2Theta;
             int thereshold = radioButtonScaleDivisionFine.Checked ? 30 : radioButtonScaleDivisionMedium.Checked ? 15 : 5;
             int stepInteger = 5, stepPow = 0;
@@ -833,7 +869,7 @@ namespace ReciPro
                 if (dev / (stepInteger = 2) / Math.Pow(10, stepPow) > thereshold) break;
                 if (dev / (stepInteger = 1) / Math.Pow(10, stepPow) > thereshold) break;
             }
-            //•ªŠ„•‚ğ‚«‚ß‚é@‚±‚±‚Ü‚Å
+            //åˆ†å‰²å¹…ã‚’ãã‚ã‚‹ã€€ã“ã“ã¾ã§
 
             int startN = (int)(min2Theta / stepInteger / Math.Pow(10, stepPow));
             int endN = (int)(max2Theta / stepInteger / Math.Pow(10, stepPow)) + 1;
@@ -851,47 +887,41 @@ namespace ReciPro
 
                 var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
                 if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
-                    g.DrawString(twoTheta.ToString() + "‹", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
+                    g.DrawString(twoTheta.ToString() + "Â°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
         } 
         #endregion
 
-        /// <summary>
-        /// —^‚¦‚ç‚ê‚½“_W‡ pts ‚Ì’†‚©‚çA‚à‚Á‚Æ‚àw’è‚µ‚½•ûŒü‚É‹ß‚¢“_‚ğ•Ô‚·. deg 0 : ‰E, deg 90: ‰º, deg 180: ¶, deg -90:ã
-        /// </summary>
-        /// <param name="list"></param>
-        /// <param name="origin"></param>
-        /// <returns></returns>
-        private PointD getLabelPosition(IEnumerable<PointD> list, PointD origin, double deg)
+        #region ãƒªã‚µã‚¤ã‚ºé–¢é€£ã‚¤ãƒ™ãƒ³ãƒˆ
+        private void FormDiffractionSimulator_ResizeBegin(object sender, EventArgs e)
         {
-            var residual = double.PositiveInfinity;
-            var result = new PointD(float.NaN, float.NaN);
-            foreach (var p in list)
-            {
-                var dev = Math.Abs((deg / 180) * Math.PI - Math.Atan2(p.Y - origin.Y, p.X - origin.X));
-                if (residual > dev)
-                {
-                    residual = dev;
-                    result = p;
-                }
-            }
-            return result;
+            SuspendLayout();
         }
 
-
-
-        /// <summary>
-        /// ƒJƒƒ‰’·2‚ª‚±‚ÌƒtƒH[ƒ€‚©‚ç•ÏX‚³‚ê‚½‚Æ‚«
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void numericUpDownCamaraLength2_ValueChanged(object sender, EventArgs e)
+        private void FormElectronDiffraction_ResizeEnd(object sender, EventArgs e)
         {
-            if (!FormDiffractionSimulatorGeometry.Visible)
-                FormDiffractionSimulatorGeometry.CameraLength2 = (double)numericUpDownCamaraLength2.Value;
-        }
+            ResumeLayout();
 
-        //‰ğ‘œ“x‚ª•ÏX‚³‚ê‚½‚Æ‚«‚É‹tŠiq“_‚ğŒvZ‚µ‚È‚¨‚·
+            if (SkipEvent) return;
+
+            if (graphicsBox.ClientSize.Width == 0 || graphicsBox.ClientSize.Height == 0) return; //æœ€å°åŒ–ã•ã‚ŒãŸã¨ããªã©
+            SetVector();
+            Draw();
+
+            SkipEvent = true;
+            numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+            numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+            SkipEvent = false;
+
+            lastPanelSize = graphicsBox.ClientSize;
+        }
+        #endregion
+
+        #region ã“ã®ãƒ•ã‚©ãƒ¼ãƒ ã§ç™ºç”Ÿã™ã‚‹ä¸€èˆ¬çš„ãªã‚¤ãƒ™ãƒ³ãƒˆ
+
+        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
+
+        //è§£åƒåº¦ãŒå¤‰æ›´ã•ã‚ŒãŸã¨ãã«é€†æ ¼å­ç‚¹ã‚’è¨ˆç®—ã—ãªãŠã™
         private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
         {
             if (Visible == false) return;
@@ -901,7 +931,7 @@ namespace ReciPro
         }
 
         /// <summary>
-        /// ƒTƒCƒY‚ÌnumericBox‚ª•ÏX‚³‚ê‚½‚Æ‚«
+        /// ç”»åƒã‚µã‚¤ã‚ºã®numericBoxãŒå¤‰æ›´ã•ã‚ŒãŸã¨ã
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -914,39 +944,34 @@ namespace ReciPro
             this.Size = new Size(this.Size.Width + dW, this.Size.Height + dH);
 
         }
-
-        private Size lastPanelSize { get; set; } = new Size(0, 0);
-
-
-        private void FormDiffractionSimulator_ResizeBegin(object sender, EventArgs e)
-        {
-            SuspendLayout();
-        }
-
-        private void FormElectronDiffraction_ResizeEnd(object sender, EventArgs e)
-        {
-            ResumeLayout();
-
-            if (SkipEvent) return;
-
-            if (graphicsBox.ClientSize.Width == 0 || graphicsBox.ClientSize.Height == 0) return; //Å¬‰»‚³‚ê‚½‚Æ‚«‚È‚Ç
-            SetVector();
-            Draw();
-
-            SkipEvent = true;
-            numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
-            numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
-            SkipEvent = false;
-
-            lastPanelSize = graphicsBox.ClientSize;
-        }
-
+       
         /// <summary>
-        /// ‚±‚Ìƒtƒ‰ƒO‚ªtrue‚Ì‚ÍAŒvZ‚ğƒLƒƒƒ“ƒZƒ‹‚·‚é
+        /// ã‚«ãƒ¡ãƒ©é•·2ãŒã“ã®ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰å¤‰æ›´ã•ã‚ŒãŸã¨ã
         /// </summary>
-        public bool CancelSetVector { get; set; } = false;
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numericUpDownCamaraLength2_ValueChanged(object sender, EventArgs e)
+        {
+            if (!FormDiffractionSimulatorGeometry.Visible)
+                FormDiffractionSimulatorGeometry.CameraLength2 = (double)numericUpDownCamaraLength2.Value;
+        }
 
-        //‹tŠiqƒxƒNƒgƒ‹‚ğİ’è‚·‚é
+        private void buttonDetailedGeometry_Click(object sender, EventArgs e)
+        {
+            FormDiffractionSimulatorGeometry.Visible = true;
+            FormDiffractionSimulatorGeometry.BringToFront();
+        }
+
+
+        private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => labelMousePositionReciprocal.Visible =
+                labelMousePositionDetector.Visible =
+                labelMousePositionReal.Visible =
+                checkBoxMousePositionDetailes.Checked;
+
+        #endregion
+
+        #region é€†æ ¼å­ãƒ™ã‚¯ãƒˆãƒ«ã‚’åˆæœŸåŒ–. 
+        //é€†æ ¼å­ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨­å®šã™ã‚‹
         public void SetVector(bool renewCrystal = false)
         {
             if (formMain == null) return;
@@ -963,7 +988,7 @@ namespace ReciPro
             WaveSource w = waveLengthControl.WaveSource;
             if (toolStripButtonDiffractionSpots.Checked)
             {
-                if (toolStripMenuItemBackLaue.Checked)//Back Laue‚Ì‚Æ‚«
+                if (toolStripMenuItemBackLaue.Checked)//Back Laueã®ã¨ã
                     minD = WaveLength / 2;
 
                 for (int i = 0; i < formMain.Crystals.Length; i++)
@@ -1016,14 +1041,14 @@ namespace ReciPro
 
             toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
         }
+        #endregion
 
-
-        #region À•W•ÏŠ·
+        #region åº§æ¨™å¤‰æ›
 
 
 
         /// <summary>
-        /// À•W•ÏŠ· ‰æ–Ê(Screen)ã‚Ì“_(pixel)‚ğŒŸoŠí(Detector)ã‚ÌˆÊ’u (mm)‚É•ÏŠ·
+        /// åº§æ¨™å¤‰æ› ç”»é¢(Screen)ä¸Šã®ç‚¹(pixel)ã‚’æ¤œå‡ºå™¨(Detector)ä¸Šã®ä½ç½® (mm)ã«å¤‰æ›
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -1033,26 +1058,26 @@ namespace ReciPro
                 (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
 
         /// <summary>
-        /// À•W•ÏŠ· ‰æ–Ê(Screen)ã‚Ì“_(pixel)‚ğŒŸoŠí(Detector)ã‚ÌˆÊ’u (mm)‚É•ÏŠ·
+        /// åº§æ¨™å¤‰æ› ç”»é¢(Screen)ä¸Šã®ç‚¹(pixel)ã‚’æ¤œå‡ºå™¨(Detector)ä¸Šã®ä½ç½® (mm)ã«å¤‰æ›
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
         private PointD convertScreenToDetector(Point p) => convertScreenToDetector(p.X, p.Y);
 
         /// <summary>
-        /// À•W•ÏŠ· ‰æ–Ê(Screen)ã‚Ì“_(pixel) ‚ğ À‹óŠÔÀ•W(mm, ‚RŸŒ³À•W)‚É•ÏŠ·
+        /// åº§æ¨™å¤‰æ› ç”»é¢(Screen)ä¸Šã®ç‚¹(pixel) ã‚’ å®Ÿç©ºé–“åº§æ¨™(mm, ï¼“æ¬¡å…ƒåº§æ¨™)ã«å¤‰æ›
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
         private Vector3DBase convertScreenToReal(int x, int y)
         {
-            PointD p = convertScreenToDetector(x, y);//‚Ü‚¸ƒtƒBƒ‹ƒ€ã‚ÌˆÊ’u‚ğæ“¾
-            return convertDetectorToReal(p.X, p.Y);//À‹óŠÔ‚ÌÀ•W‚É•ÏŠ·
+            PointD p = convertScreenToDetector(x, y);//ã¾ãšãƒ•ã‚£ãƒ«ãƒ ä¸Šã®ä½ç½®ã‚’å–å¾—
+            return convertDetectorToReal(p.X, p.Y);//å®Ÿç©ºé–“ã®åº§æ¨™ã«å¤‰æ›
         }
 
         /// <summary>
-        /// À•WŒn•ÏŠ· ‰æ–Ê(Client)ã‚Ì“_(pixel) ‚ğ ‹t‹óŠÔã‚Ì“_(mm^-1)‚É•ÏŠ· @‰ñ“]‚µ‚Ä‚¢‚éê‡‚ÍOriginalÀ•WŒn‚É–ß‚µ‚Ä•ÏŠ·B
+        /// åº§æ¨™ç³»å¤‰æ› ç”»é¢(Client)ä¸Šã®ç‚¹(pixel) ã‚’ é€†ç©ºé–“ä¸Šã®ç‚¹(mm^-1)ã«å¤‰æ› ã€€å›è»¢ã—ã¦ã„ã‚‹å ´åˆã¯Originalåº§æ¨™ç³»ã«æˆ»ã—ã¦å¤‰æ›ã€‚
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -1061,7 +1086,7 @@ namespace ReciPro
             => convertRealToReciprocal(convertScreenToReal(x, y), originalCoordinate);
 
         /// <summary>
-        /// ƒtƒBƒ‹ƒ€(Src)ã‚ÌˆÊ’u (mm)‚ğÀ•WŒn•ÏŠ· ‰æ–Ê(Client)ã‚Ì“_(pixel)‚É•ÏŠ·
+        /// ãƒ•ã‚£ãƒ«ãƒ (Src)ä¸Šã®ä½ç½® (mm)ã‚’åº§æ¨™ç³»å¤‰æ› ç”»é¢(Client)ä¸Šã®ç‚¹(pixel)ã«å¤‰æ›
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -1072,31 +1097,31 @@ namespace ReciPro
 
 
         /// <summary>
-        /// ŒŸoŠí(Detector)ã‚ÌˆÊ’u (mm)‚ğ‰æ–Ê(Screen)ã‚Ì“_(pixel)‚É•ÏŠ·
+        /// æ¤œå‡ºå™¨(Detector)ä¸Šã®ä½ç½® (mm)ã‚’ç”»é¢(Screen)ä¸Šã®ç‚¹(pixel)ã«å¤‰æ›
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
         private PointD convertDetectorToScreen(PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
 
         /// <summary>
-        /// À•W•ÏŠ· ŒŸoŠí(Detector)ã‚Ì“_(Foot’†S, mm’PˆÊ) ‚ğ À‹óŠÔÀ•W(mm’PˆÊ, ‚RŸŒ³À•W)‚É•ÏŠ·
+        /// åº§æ¨™å¤‰æ› æ¤œå‡ºå™¨(Detector)ä¸Šã®ç‚¹(Footä¸­å¿ƒ, mmå˜ä½) ã‚’ å®Ÿç©ºé–“åº§æ¨™(mmå˜ä½, ï¼“æ¬¡å…ƒåº§æ¨™)ã«å¤‰æ›
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
         private Vector3DBase convertDetectorToReal(double x, double y) =>
-        #region À•W•ÏŠ·‚ÌŒvZ®
-            // (CosPhi, SinPhi, 0) ‚Ìü‚è‚É Tau‰ñ“]‚·‚és—ñ‚ÍA
+        #region åº§æ¨™å¤‰æ›ã®è¨ˆç®—å¼
+            // (CosPhi, SinPhi, 0) ã®å‘¨ã‚Šã« Tauå›è»¢ã™ã‚‹è¡Œåˆ—ã¯ã€
             //   Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
             //   CosPhi * SinPhi * (1 - CosTau)  | Sin2Phi * (1 - CosTau) + CosTau | -CosPhi * SinTau
             //  -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau  
-            //‚±‚Ìs—ñ‚ğ(x,y,CameraLength2)‚Éì—p‚³‚¹‚ê‚Î‚æ‚¢
+            //ã“ã®è¡Œåˆ—ã‚’(x,y,CameraLength2)ã«ä½œç”¨ã•ã›ã‚Œã°ã‚ˆã„
         #endregion
             DetectorRotation * new Vector3DBase(x, y, CameraLength2);
 
 
         /// <summary>
-        /// À‹óŠÔÀ•W(mm’PˆÊ, ‚RŸŒ³À•W)‚ğ‹t‹óŠÔÀ•W‚É•ÏŠ·
+        /// å®Ÿç©ºé–“åº§æ¨™(mmå˜ä½, ï¼“æ¬¡å…ƒåº§æ¨™)ã‚’é€†ç©ºé–“åº§æ¨™ã«å¤‰æ›
         /// </summary>
         /// <param name="v"></param>
         /// <param name="originalCoordinate"></param>
@@ -1117,7 +1142,7 @@ namespace ReciPro
         }
 
         /// <summary>
-        /// ‹t‹óŠÔÀ•W‚ğÀ‹óŠÔÀ•W‚É•ÏŠ·B@ ‹t‹óŠÔÀ•W‚Ìy,z‚Ì•„†‚ğ”½“]‚·‚é‚±‚Æ‚É’ˆÓ
+        /// é€†ç©ºé–“åº§æ¨™ã‚’å®Ÿç©ºé–“åº§æ¨™ã«å¤‰æ›ã€‚ã€€ é€†ç©ºé–“åº§æ¨™ã®y,zã®ç¬¦å·ã‚’åè»¢ã™ã‚‹ã“ã¨ã«æ³¨æ„
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
@@ -1127,7 +1152,7 @@ namespace ReciPro
         // return p * d / (a * p.X + b * p.Y + c * p.Z);
 
         /// <summary>
-        /// ‹t‹óŠÔÀ•W‚ğŒŸoŠíÀ•W‚É•ÏŠ·B@ ‹t‹óŠÔÀ•W‚Ìy,z‚Ì•„†‚ğ”½“]‚·‚é‚±‚Æ‚É’ˆÓ
+        /// é€†ç©ºé–“åº§æ¨™ã‚’æ¤œå‡ºå™¨åº§æ¨™ã«å¤‰æ›ã€‚ã€€ é€†ç©ºé–“åº§æ¨™ã®y,zã®ç¬¦å·ã‚’åè»¢ã™ã‚‹ã“ã¨ã«æ³¨æ„
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
@@ -1140,7 +1165,7 @@ namespace ReciPro
 
 
         /// <summary>
-        /// ŒŸoŠíÀ•W‚Å—^‚¦‚ç‚ê‚½À•Wpt‚ªA‰æ–Ê“à‚ÉŠÜ‚Ü‚ê‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·
+        /// æ¤œå‡ºå™¨åº§æ¨™ã§ä¸ãˆã‚‰ã‚ŒãŸåº§æ¨™ptãŒã€ç”»é¢å†…ã«å«ã¾ã‚Œã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
@@ -1152,18 +1177,18 @@ namespace ReciPro
                 && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
         }
 
-        #endregion À•W•ÏŠ·
+        #endregion åº§æ¨™å¤‰æ›
 
-   
-
-        //formMain‚©‚çŒ‹»‚ğİ’è‚³‚ê‚½‚Æ‚«
+        #region formMainã‹ã‚‰çµæ™¶ã‚’è¨­å®šã•ã‚ŒãŸã¨ã
+        //formMainã‹ã‚‰çµæ™¶ã‚’è¨­å®šã•ã‚ŒãŸã¨ã
         internal void SetCrystal()
         {
             SetVector(true);
             Draw();
         }
+        #endregion
 
-        #region graphicsBox‚ÌƒCƒxƒ“ƒg
+        #region graphicsBoxã®ã‚¤ãƒ™ãƒ³ãƒˆ
 
         private bool MouseRangingMode = false;
         private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
@@ -1179,9 +1204,9 @@ namespace ReciPro
             }
             else if (e.Button == MouseButtons.Left && e.Button != MouseButtons.Right && e.Clicks == 2)
             {
-                //‚Ü‚¸ƒtƒBƒ‹ƒ€ã‚ÌˆÊ’u‚ğ‹t‹óŠÔ“_‚É•ÏŠ·
+                //ã¾ãšãƒ•ã‚£ãƒ«ãƒ ä¸Šã®ä½ç½®ã‚’é€†ç©ºé–“ç‚¹ã«å¤‰æ›
                 var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
-                //À•W‚ğ”½“]
+                //åº§æ¨™ã‚’åè»¢
                 var gVector = formMain.Crystal.VectorOfG;
                 int num = -1;
                 var minLength = double.PositiveInfinity;
@@ -1222,19 +1247,19 @@ namespace ReciPro
                 var ptEnd = convertScreenToDetector(MouseRangeEnd);
 
                 if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) < 2 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) < 2)
-                {//‘I‘ğ”ÍˆÍ‚ª‚ ‚Ü‚è‚É¬‚³‚·‚¬‚½‚çk¬
+                {//é¸æŠç¯„å›²ãŒã‚ã¾ã‚Šã«å°ã•ã™ããŸã‚‰ç¸®å°
                     if (checkBoxFixCenter.Checked)
-                        DisplayCenter = new PointD(0, 0);
+                        DisplayCenter = FixedCenter;
                     else
                         DisplayCenter = -(ptStart + ptEnd) / 2;
                     Resolution *= 1.2;
                 }
                 else if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) > 10 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) > 10)
                 {
-                    //Œ»İ‚Ìmag‚Æ’†SˆÊ’u‚©‚çAV‚µ‚¢mag‚Æ’†SˆÊ’u‚ğŒˆ’è‚·‚é
+                    //ç¾åœ¨ã®magã¨ä¸­å¿ƒä½ç½®ã‹ã‚‰ã€æ–°ã—ã„magã¨ä¸­å¿ƒä½ç½®ã‚’æ±ºå®šã™ã‚‹
 
                     if (checkBoxFixCenter.Checked)
-                        DisplayCenter = new PointD(0, 0);
+                        DisplayCenter = FixedCenter;
                     else
                         DisplayCenter = -(ptStart + ptEnd) / 2;
                     Resolution = (Math.Abs(ptStart.X - ptEnd.X) / graphicsBox.ClientSize.Width + Math.Abs(ptStart.Y - ptEnd.Y) / graphicsBox.ClientSize.Height) / 2;
@@ -1249,13 +1274,13 @@ namespace ReciPro
 
         private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //ƒ}ƒEƒXƒ|ƒCƒ“ƒ^‚Ìî•ñ‚ğ•\¦
+            //ãƒã‚¦ã‚¹ãƒã‚¤ãƒ³ã‚¿ã®æƒ…å ±ã‚’è¡¨ç¤º
 
             var detectorPos = convertScreenToDetector(e.X, e.Y);
-            labelMousePositionDetector.Text = $"Detector Coord. (origin: foot):@{detectorPos.X:f3} mm, {detectorPos.Y:f3} mm";
+            labelMousePositionDetector.Text = $"Detector Coord. (origin: foot):ã€€{detectorPos.X:f3} mm, {detectorPos.Y:f3} mm";
 
             var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-            labelMousePositionReal.Text = $"Real Coord. (origin: sample):@{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
+            labelMousePositionReal.Text = $"Real Coord. (origin: sample):ã€€{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
 
 
             var reciprocalPos = convertRealToReciprocal(realPos, false);
@@ -1266,19 +1291,19 @@ namespace ReciPro
             labelD.Text = $"d: {d:f4} nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
-            labelTwoTheta.Text = $"2ƒÆ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}‹";
+            labelTwoTheta.Text = $"2Î¸: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}Â°";
 
             //Application.DoEvents();
 
             if (e.X > tabControl.Width || e.Y > tabControl.Height - 20)
             {
-                panelMain.BringToFront();
+                graphicsBox.BringToFront();
                 graphicsBox.Refresh();
             }
 
             //PointD pt = convertClientToSrc(e.X, e.Y);
 
-            //¶ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚È‚ª‚çƒ}ƒEƒX‚ª“®‚¢‚½‚Æ‚«
+            //å·¦ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãªãŒã‚‰ãƒã‚¦ã‚¹ãŒå‹•ã„ãŸã¨ã
             if (e.Button == MouseButtons.Left)
             {
                 if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
@@ -1292,16 +1317,16 @@ namespace ReciPro
                     formMain.Rotate((0, 0, 1), -Math.Atan2(lastMousePositionDetector.X, lastMousePositionDetector.Y) + Math.Atan2(detectorPos.X, detectorPos.Y));
                 }
             }
-            //^‚ñ’†ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚È‚ª‚çƒ}ƒEƒX‚ª“®‚¢‚½‚Æ‚«
+            //çœŸã‚“ä¸­ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãªãŒã‚‰ãƒã‚¦ã‚¹ãŒå‹•ã„ãŸã¨ã
             else if (e.Button == MouseButtons.Middle)
             {
-                //ƒRƒ“ƒgƒ[ƒ‹ƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚­‚ÄA‚©‚Â’†SˆÊ’u‚ªŒÅ’è‚Å‚È‚¢‚Æ‚«
+                //ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ãªãã¦ã€ã‹ã¤ä¸­å¿ƒä½ç½®ãŒå›ºå®šã§ãªã„ã¨ã
                 if ((Control.ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
                 {
                     DisplayCenter = new PointD(DisplayCenter.X + (e.X - lastMousePositionScreen.X) * Resolution, DisplayCenter.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
                     Draw(null, false);
                 }
-                //ƒRƒ“ƒgƒ[ƒ‹ƒL[‚ª‰Ÿ‚³‚ê‚Ä‚¢‚ÄA‚©‚ÂŒŸoŠíƒGƒŠƒA‚ª•\¦‚Ì
+                //ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã¦ã„ã¦ã€ã‹ã¤æ¤œå‡ºå™¨ã‚¨ãƒªã‚¢ãŒè¡¨ç¤ºã®æ™‚
                 else if ((Control.ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
                 {
                     FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
@@ -1321,29 +1346,80 @@ namespace ReciPro
             lastMousePositionScreen = new Point(e.X, e.Y);
         }
 
-        #endregion graphicsBox‚ÌƒCƒxƒ“ƒg
-
-
-        private void tabControl_Click(object sender, EventArgs e)
+        private void graphicsBox_Resize(object sender, EventArgs e)
         {
-            panelMain.SendToBack();
-            graphicsBox.Refresh();
-        }
-
-        private void checkBoxExtinctionAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxExtinctionAll.Checked)
-            {
-                checkBoxExtinctionLattice.Enabled = false;
-                checkBoxExtinctionLattice.Checked = true;
-            }
-            else
-                checkBoxExtinctionLattice.Enabled = true;
-            SetVector();
             Draw();
         }
 
-        #region ˆóüŠÖŒW
+        #endregion graphicsBoxã®ã‚¤ãƒ™ãƒ³ãƒˆ
+
+        #region ãã®ä»–ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¢ã‚¤ãƒ†ãƒ 
+        /// <summary>
+        /// ãƒ€ã‚¤ãƒŠãƒŸãƒƒã‚¯ã‚³ãƒ³ãƒ—ãƒ¬ãƒƒã‚·ãƒ§ãƒ³
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dynamicCompressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDiffractionSimulatorGeometry.Visible = true;
+            FormDiffractionSimulatorDynamicCompression.Visible = true;
+        }
+
+        /// <summary>
+        /// ãƒ™ãƒ¼ãƒ†æ³•ã‚’èª¬æ˜ã™ã‚‹PDFã‚’è¡¨ç¤º
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void basicConceptOfBethesMethodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var f = new FormPDF(appPath + @"\doc\bethe.pdf");
+            f.ShowDialog();
+        }
+
+        /// <summary>
+        /// ãƒ—ãƒªã‚»ãƒƒãƒˆãƒ¡ãƒ‹ãƒ¥ãƒ¼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void presetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var name = (sender as ToolStripMenuItem).Text.Split(" ");
+            if (name[0].Contains("Electron"))
+            {
+                waveLengthControl.WaveSource = WaveSource.Electron;
+                waveLengthControl.Energy = name[1].ToDouble();
+
+            }
+            else if (name[0].Contains("X-ray"))
+            {
+                waveLengthControl.WaveSource = WaveSource.Xray;
+                if (name.Length == 3)
+                {
+                    waveLengthControl.XrayWaveSourceElementNumber = 0;
+                    waveLengthControl.Energy = name[1].ToDouble();
+                }
+                else
+                {
+                    if (name[3] == "(MoKÎ±â‚)")
+                    {
+                        waveLengthControl.XrayWaveSourceElementNumber = 42;
+                        waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+                    }
+                    else if (name[3] == "(CuKÎ±â‚)")
+                    {
+                        waveLengthControl.XrayWaveSourceElementNumber = 29;
+                        waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+                    }
+
+                }
+            }
+
+        }
+
+        #endregion
+
+        #region å°åˆ·é–¢ä¿‚
 
         private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1351,7 +1427,7 @@ namespace ReciPro
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
         }
 
-        // ˆóüƒvƒŒƒrƒ…[‚ğ•\¦
+        // å°åˆ·ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚’è¡¨ç¤º
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) =>
             printPreviewDialog1.ShowDialog();
 
@@ -1364,12 +1440,12 @@ namespace ReciPro
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             System.Drawing.Printing.PageSettings ps = printDocument1.PrinterSettings.DefaultPageSettings;
-            //—p†ƒTƒCƒYæ“¾ ‚±‚ÌƒTƒCƒY‚Í1/100ƒCƒ“ƒ`
+            //ç”¨ç´™ã‚µã‚¤ã‚ºå–å¾— ã“ã®ã‚µã‚¤ã‚ºã¯1/100ã‚¤ãƒ³ãƒ
             float height = (ps.PaperSize.Height - ps.Margins.Top - ps.Margins.Bottom) / 100f;
             float width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
 
             if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
-            {//c‰¡‚ğ‹t“]
+            {//ç¸¦æ¨ªã‚’é€†è»¢
                 float temp = width; width = height; height = temp;
             }
             double originalReso = numericBoxResolution.Value;
@@ -1383,7 +1459,7 @@ namespace ReciPro
             }
 
             /*
-             //‰ğ‘œ“x300dpi‚Ì‚Æ‚«‚ÌƒCƒ[ƒWƒTƒCƒY‚Í
+             //è§£åƒåº¦300dpiã®ã¨ãã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚µã‚¤ã‚ºã¯
              glString.Font = new Font("Tahoma", trackBarStrSize.Value / 10f);
              Bitmap bmp = glAlpha.GenerateBitmap(panelSimulation, (int)(width * 300), (int)(height * 300));
 
@@ -1398,27 +1474,27 @@ namespace ReciPro
              */
         }
 
-        #endregion ˆóüŠÖŒW
+        #endregion å°åˆ·é–¢ä¿‚
 
+        #region ToolStripButton, StatusStrip é–¢é€£ã®ã‚¤ãƒ™ãƒ³ãƒˆ
         private void toolStripButtonDiffractionSpots_CheckedChanged(object sender, EventArgs e)
         {
             SetVector();
 
             if (sender is ToolStripButton button)
             {
-                if (button.Name.Contains("Spot"))
+                var text = button.Text;
+                if (text.Contains("Spot"))
                     groupBoxSpotProperty.Enabled = button.Checked;
-                else
+                else if(text.Contains("Kikuchi")||text.Contains("Kikuchi")||text.Contains("Scale"))
                 {
                     TabPage page;
                     if (button.Name.Contains("Kikuchi"))
                         page = tabPageKikuchi;
                     else if (button.Name.Contains("Debye"))
                         page = tabPageDebye;
-                    else if (button.Name.Contains("Scale"))
-                        page = tabPageScale;
                     else
-                        return;
+                        page = tabPageScale;
 
                     if (button.Checked)
                     {
@@ -1433,7 +1509,41 @@ namespace ReciPro
             Draw();
         }
 
-        #region TabControlŠÖ˜A‚ÌƒCƒxƒ“ƒg
+        private void statusStrip1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.Clicks == 2)
+            {
+                var fdsg = FormDiffractionSimulatorGeometry;
+                var sb = new StringBuilder();
+                sb.AppendLine($"Crystal:\t{formMain.Crystal.Name}");
+                sb.AppendLine($"Euler Phi:\t{formMain.Phi / Math.PI * 180:f3}");
+                sb.AppendLine($"Euler Theta:\t{formMain.Theta / Math.PI * 180:f3}");
+                sb.AppendLine($"Euler Psi:\t{formMain.Psi / Math.PI * 180:f3}");
+                sb.AppendLine($"Monitor resolution:\t{Resolution}");
+                sb.AppendLine($"Camera Length2:  {CameraLength2}");
+
+                sb.AppendLine($"Spot shape:\t{(radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian")}");
+                sb.AppendLine($"Radius or Sigma:\t{numericBoxSpotRadius.Value}");
+                sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}");
+                sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
+                sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");
+                sb.AppendLine($"Detector width:\t{fdsg.DetectorWidth}");
+                sb.AppendLine($"Detector height:\t{fdsg.DetectorHeight}");
+                sb.AppendLine($"Detector pixel size:\t{fdsg.DetectorPixelSize}");
+                sb.AppendLine($"Detector foot X:\t{fdsg.FootX}");
+                sb.AppendLine($"Detector foot Y:\t{fdsg.FootY}");
+
+                Clipboard.SetDataObject(sb.ToString());
+            }
+        }
+        #endregion
+
+        #region TabControlé–¢é€£ã®ã‚¤ãƒ™ãƒ³ãƒˆ
+        private void tabControl_Click(object sender, EventArgs e)
+        {
+            tabControl.BringToFront();
+            graphicsBox.Refresh();
+        }
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -1449,10 +1559,10 @@ namespace ReciPro
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             var tab = (TabControl)sender;
-            //ƒ^ƒuƒy[ƒW‚ÌƒeƒLƒXƒg‚ğæ“¾
+            //ã‚¿ãƒ–ãƒšãƒ¼ã‚¸ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
             var txt = tab.TabPages[e.Index].Text;
 
-            //StringFormat‚ğì¬ //…•½‚’¼•ûŒü‚Ì’†‰›‚ÉAs‚ªŠ®‘S‚É•\¦‚³‚ê‚é‚æ‚¤‚É‚·‚é
+            //StringFormatã‚’ä½œæˆ //æ°´å¹³å‚ç›´æ–¹å‘ã®ä¸­å¤®ã«ã€è¡ŒãŒå®Œå…¨ã«è¡¨ç¤ºã•ã‚Œã‚‹ã‚ˆã†ã«ã™ã‚‹
             var sf = new StringFormat()
             {
                 LineAlignment = StringAlignment.Center,
@@ -1461,25 +1571,26 @@ namespace ReciPro
             };
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            //”wŒi‚Ì•`‰æ
+            //èƒŒæ™¯ã®æç”»
             if (tab.SelectedIndex == e.Index)
                 e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds);
             else
                 e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds);
 
-            //•¶šF‚ğİ’è
+            //æ–‡å­—è‰²ã‚’è¨­å®š
             var brush = new SolidBrush(tabControl.ForeColor);
             if ((!toolStripButtonDebyeRing.Checked && txt == tabPageDebye.Text) ||
                 (!toolStripButtonScale.Checked && txt == tabPageScale.Text) ||
                  (!toolStripButtonKikuchiLines.Checked && txt == tabPageKikuchi.Text))
                 brush = new SolidBrush(Color.Gray);
 
-            //Text‚Ì•`‰æ
+            //Textã®æç”»
             e.Graphics.DrawString(txt, tabControl.Font, brush, e.Bounds, sf);
         }
 
         #endregion
 
+        #region æ³¢é•·ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ã‚¤ãƒ™ãƒ³ãƒˆ
         private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
         {
             if (this.Visible == false) return;
@@ -1510,13 +1621,35 @@ namespace ReciPro
             }
             radioButtonBeamParallel.Checked = true;
         }
-
-        #region ƒhƒ‰ƒbƒOƒhƒƒbƒv
-        public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e) => FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
-
-        private void FormDiffractionSimulator_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
         #endregion
 
+        #region ãƒ‰ãƒ©ãƒƒã‚°ãƒ‰ãƒ­ãƒƒãƒ—ã‚¤ãƒ™ãƒ³ãƒˆ
+        public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e) 
+            => FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
+
+        private void FormDiffractionSimulator_DragEnter(object sender, DragEventArgs e)
+            => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
+        #endregion
+
+        #region ã‚¹ãƒãƒƒãƒˆé–¢é€£ã®è¨­å®šå¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆ
+        
+        private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
+            Draw();
+        }
+
+        private void checkBoxUseCrystalColor_CheckedChanged(object sender, EventArgs e)
+        {
+            SetVector();
+            Draw();
+        }
+
+        /// <summary>
+        /// Gaussian / Solid sphereã®åˆ‡ã‚Šæ›¿ãˆ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
         {
             flowLayoutPanelGaussianOption.Enabled = radioButtonPointSpread.Checked;
@@ -1527,7 +1660,12 @@ namespace ReciPro
             Draw();
         }
 
-        private void radioButtonKinematical_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// è¨ˆç®—æ–¹æ³• (åŠ±èµ·èª¤å·®ã€é‹å‹•å­¦ã€å‹•åŠ›å­¦)ã®ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ãŒå¤‰æ›´ã•ã‚ŒãŸã¨ã
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButtonIntensityCalculationMethod_CheckedChanged(object sender, EventArgs e)
         {
             flowLayoutPanelExtinctionOption.Enabled = radioButtonIntensityExcitation.Checked;
 
@@ -1571,20 +1709,78 @@ namespace ReciPro
             SetVector();
             Draw();
         }
-
-        private void buttonDetailedGeometry_Click(object sender, EventArgs e)
+        private void checkBoxExtinctionAll_CheckedChanged(object sender, EventArgs e)
         {
-            FormDiffractionSimulatorGeometry.Visible = true;
-            FormDiffractionSimulatorGeometry.BringToFront();
-        }
-
-        private void buttonResetCenter_Click_1(object sender, EventArgs e)
-        {
-            DisplayCenter = new PointD(0, 0);
+            if (checkBoxExtinctionAll.Checked)
+            {
+                checkBoxExtinctionLattice.Enabled = false;
+                checkBoxExtinctionLattice.Checked = true;
+            }
+            else
+                checkBoxExtinctionLattice.Enabled = true;
+            SetVector();
             Draw();
         }
 
-        #region ƒ^ƒCƒ}[ŠÖ˜A
+  
+
+        private void ButtonDetailsOfSpots_Click(object sender, EventArgs e)
+        {
+            FormDiffractionBeamTable.Visible = true;
+            FormDiffractionBeamTable.BringToFront();
+            if (radioButtonIntensityBethe.Checked)
+                FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
+        }
+
+
+        #endregion
+
+
+        #region ä¸­å¿ƒä½ç½®è¨­å®šé–¢é€£
+        private void buttonResetCenter_Click_1(object sender, EventArgs e)
+        {
+            DisplayCenter = FixedCenter;
+
+            Draw();
+        }
+
+        private PointD FixedCenter
+        {
+            get
+            {
+                if (radioButtonCenterToFoot.Checked)
+                    return new PointD(0, 0);
+                else if (radioButtonCenterToDirect.Checked)
+                    return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+                else
+                {
+                    var fdsg = FormDiffractionSimulatorGeometry;
+
+                    if (FormDiffractionSimulatorGeometry.ShowDetectorArea)
+                        return new PointD(fdsg.FootX - fdsg.DetectorWidth / 2.0, fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize;
+                    else
+                        return new PointD(0, 0);
+                }
+            }
+        }
+
+
+        private void checkBoxFixCenter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxFixCenter.Checked)
+                buttonResetCenter.PerformClick();
+            buttonResetCenter.Enabled = !checkBoxFixCenter.Checked;
+        }
+
+        private void radioButtonCenterTo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxFixCenter.Checked && (sender as RadioButton).Checked)
+                buttonResetCenter_Click_1(sender, e);
+        }
+
+        #endregion
+
+        #region ã‚¿ã‚¤ãƒãƒ¼é–¢é€£
         private void toolStripButtonDiffractionSpots_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && ((ToolStripButton)sender).Checked)
@@ -1644,7 +1840,7 @@ namespace ReciPro
         }
         #endregion
 
-        #region •Û‘¶AƒRƒs[ŠÖ˜A‚
+        #region ä¿å­˜ã€ã‚³ãƒ”ãƒ¼é–¢é€£ï½
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);
 
         private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, false, true);
@@ -1792,67 +1988,18 @@ namespace ReciPro
 
         #endregion
 
-        private void statusStrip1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right && e.Clicks == 2)
-            {
-                var fdsg = FormDiffractionSimulatorGeometry;
-                var sb = new StringBuilder();
-                sb.AppendLine($"Crystal:\t{formMain.Crystal.Name}");
-                sb.AppendLine($"Euler Phi:\t{formMain.Phi / Math.PI * 180:f3}");
-                sb.AppendLine($"Euler Theta:\t{formMain.Theta / Math.PI * 180:f3}");
-                sb.AppendLine($"Euler Psi:\t{formMain.Psi / Math.PI * 180:f3}");
-                sb.AppendLine($"Monitor resolution:\t{Resolution}");
-                sb.AppendLine($"Camera Length2:  {CameraLength2}");
+     
 
-                sb.AppendLine($"Spot shape:\t{(radioButtonCircleArea.Checked ? "Solid sphere" : "Gaussian")}");
-                sb.AppendLine($"Radius or Sigma:\t{numericBoxSpotRadius.Value}");
-                sb.AppendLine($"Intensity calculation:\t{(radioButtonIntensityExcitation.Checked ? "Excitation error only" : "Kinematical")}");
-                sb.AppendLine($"Tau:\t{Tau / Math.PI * 180}");
-                sb.AppendLine($"Image name:\t{fdsg.textBoxFileName.Text}");
-                sb.AppendLine($"Detector width:\t{fdsg.DetectorWidth}");
-                sb.AppendLine($"Detector height:\t{fdsg.DetectorHeight}");
-                sb.AppendLine($"Detector pixel size:\t{fdsg.DetectorPixelSize}");
-                sb.AppendLine($"Detector foot X:\t{fdsg.FootX}");
-                sb.AppendLine($"Detector foot Y:\t{fdsg.FootY}");
-
-                Clipboard.SetDataObject(sb.ToString());
-            }
-        }
-
-        private void checkBoxUseCrystalColor_CheckedChanged(object sender, EventArgs e)
-        {
-            SetVector();
-            Draw();
-        }
+      
 
 
-        private void dynamicCompressionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormDiffractionSimulatorGeometry.Visible = true;
-            FormDiffractionSimulatorDynamicCompression.Visible = true;
-        }
-
-        private void checkBoxFixCenter_CheckedChanged(object sender, EventArgs e)
-        {
-            buttonResetCenter.Enabled = !checkBoxFixCenter.Checked;
-            if (checkBoxFixCenter.Checked)
-                buttonResetCenter_Click_1(sender, e);
-        }
-
-        private void ButtonDetailsOfSpots_Click(object sender, EventArgs e)
-        {
-            FormDiffractionBeamTable.Visible = true;
-            FormDiffractionBeamTable.BringToFront();
-            if (radioButtonIntensityBethe.Checked)
-                FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
-        }
-
+    
+        #region ãƒ†ã‚¹ãƒˆç”¨ã‚³ãƒ¼ãƒ‰
         private void Button1_Click(object sender, EventArgs e)
         {
             var step = 0.1;
             var range = 4;
-            //-4ƒVƒOƒ}‚©‚ç+4ƒVƒOƒ}‚Ü‚ÅA0.1ƒVƒOƒ}ƒXƒeƒbƒv‚ÅB
+            //-4ã‚·ã‚°ãƒã‹ã‚‰+4ã‚·ã‚°ãƒã¾ã§ã€0.1ã‚·ã‚°ãƒã‚¹ãƒ†ãƒƒãƒ—ã§ã€‚
 
             var sum = new double[graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Height];
 
@@ -1894,26 +2041,16 @@ namespace ReciPro
             }
         }
 
-        private void basicConceptOfBethesMethodToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath + @"\doc\bethe.pdf");
-            f.ShowDialog();
-        }
+        #endregion
 
-        private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
-            Draw();
-        }
+        
 
-        private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => labelMousePositionReciprocal.Visible =
-                labelMousePositionDetector.Visible =
-                labelMousePositionReal.Visible =
-                checkBoxMousePositionDetailes.Checked;
+   
 
-      
 
-        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
+   
+
+
+
     }
 }
