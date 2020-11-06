@@ -636,14 +636,6 @@ namespace Crystallography.OpenGL
             foreach (var obj in objs)
                 obj.Generate(Program);
             glObjects.AddRange(objs);
-            
-           /* foreach (var obj in objs)
-            {
-                obj.Indices = null;
-                obj.Vertices = null;
-            }
-            GC.Collect();
-            */
         }
 
         public void DeleteObjects(GLObject obj)

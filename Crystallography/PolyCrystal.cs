@@ -681,7 +681,7 @@ namespace Crystallography
             double maxMonochroHK2 = 2 * detector.MaxReciproZ * ewaldR * monochromaticity2;   //Z
             double reciprocalPointSize = 1 / GrainSize / 2, reciprocalPointSize2 = reciprocalPointSize * reciprocalPointSize;
 
-            int subDiv3 = SubDiv * SubDiv * SubDiv;
+            var subDiv3 = SubDiv * SubDiv * SubDiv;
 
             double maxConvergenceHK = Math.Sin(BaseCrystal.AngleResolution / 180.0 * Math.PI / 2) / detector.WaveLength;//逆空間での、収束による逆格子点のにじみ(X線軸垂直な方向)
             if (SubDiv == 1)
@@ -690,7 +690,7 @@ namespace Crystallography
             double maxExcitationError2 = reciprocalPointSize2 + maxMonochroHK2 + maxConvergenceHK2, maxExcitationError = Math.Sqrt(maxExcitationError2);
             double maxHk2square = reciprocalPointSize2 + maxConvergenceHK2; // (-y,x,0)方向の半値幅
 
-            double camPerRes = detector.CameraLength / detector.Resolution;
+            var camPerRes = detector.CameraLength / detector.Resolution;
             double cX = detector.Center.X, cY = detector.Center.Y;
             int imageWidth = detector.ImageWidth, imageHeight = detector.ImageHeight;
             uint imageLength = (uint)detector.ImageLength;

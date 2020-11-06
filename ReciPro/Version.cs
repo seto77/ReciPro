@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.791(2020/11/06)  Fixed a bug when Kikuchi line drawing. Improved speed of 'Structure Viewer' drawing." +
             "\r\n ver4.790(2020/11/02)  Improved: GUI of 'Diffraction Simulator'." +
             "\r\n ver4.789(2020/10/26)  Improved: Speed up drawing of 'Diffraction Simulator'." +
             "\r\n ver4.788(2020/10/20)  Fixed a bug when calculating electron diffraction for crystals in AMCSD." +

@@ -67,9 +67,6 @@
             this.tabPageKikuchi = new System.Windows.Forms.TabPage();
             this.colorControlDefectLine = new Crystallography.Controls.ColorControl();
             this.colorControlExcessLine = new Crystallography.Controls.ColorControl();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDownMinKL = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.trackBarLineWidth = new System.Windows.Forms.TrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPageDebye = new System.Windows.Forms.TabPage();
@@ -224,6 +221,7 @@
             this.timerBlinkKikuchiLine = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkDebyeRing = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkScale = new System.Windows.Forms.Timer(this.components);
+            this.numericBoxKikuchiLineThreshold = new Crystallography.Controls.NumericBox();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -239,7 +237,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPageKikuchi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinKL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
             this.tabPageDebye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarDebyeRingWidth)).BeginInit();
@@ -609,11 +606,9 @@
             // tabPageKikuchi
             // 
             this.tabPageKikuchi.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageKikuchi.Controls.Add(this.numericBoxKikuchiLineThreshold);
             this.tabPageKikuchi.Controls.Add(this.colorControlDefectLine);
             this.tabPageKikuchi.Controls.Add(this.colorControlExcessLine);
-            this.tabPageKikuchi.Controls.Add(this.label4);
-            this.tabPageKikuchi.Controls.Add(this.numericUpDownMinKL);
-            this.tabPageKikuchi.Controls.Add(this.label3);
             this.tabPageKikuchi.Controls.Add(this.trackBarLineWidth);
             this.tabPageKikuchi.Controls.Add(this.label11);
             resources.ApplyResources(this.tabPageKikuchi, "tabPageKikuchi");
@@ -650,46 +645,6 @@
             this.colorControlExcessLine.Red = 224;
             this.colorControlExcessLine.RedF = 0.8784314F;
             this.colorControlExcessLine.ColorChanged += new System.EventHandler(this.Draw);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
-            // 
-            // numericUpDownMinKL
-            // 
-            resources.ApplyResources(this.numericUpDownMinKL, "numericUpDownMinKL");
-            this.numericUpDownMinKL.DecimalPlaces = 3;
-            this.numericUpDownMinKL.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownMinKL.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
-            this.numericUpDownMinKL.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDownMinKL.Name = "numericUpDownMinKL";
-            this.toolTip.SetToolTip(this.numericUpDownMinKL, resources.GetString("numericUpDownMinKL.ToolTip"));
-            this.numericUpDownMinKL.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            65536});
-            this.numericUpDownMinKL.ValueChanged += new System.EventHandler(this.numericUpDownResolution_ValueChanged);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // trackBarLineWidth
             // 
@@ -2002,6 +1957,19 @@
             this.timerBlinkScale.Tag = "";
             this.timerBlinkScale.Tick += new System.EventHandler(this.timerBlinkScale_Tick);
             // 
+            // numericBoxKikuchiLineThreshold
+            // 
+            this.numericBoxKikuchiLineThreshold.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.numericBoxKikuchiLineThreshold, "numericBoxKikuchiLineThreshold");
+            this.numericBoxKikuchiLineThreshold.Maximum = 10D;
+            this.numericBoxKikuchiLineThreshold.Minimum = 0D;
+            this.numericBoxKikuchiLineThreshold.Name = "numericBoxKikuchiLineThreshold";
+            this.numericBoxKikuchiLineThreshold.RadianValue = 0.0069813170079773184D;
+            this.numericBoxKikuchiLineThreshold.ShowUpDown = true;
+            this.numericBoxKikuchiLineThreshold.SmartIncrement = true;
+            this.numericBoxKikuchiLineThreshold.Value = 0.4D;
+            this.numericBoxKikuchiLineThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxKikuchiLineThreshold_ValueChanged);
+            // 
             // FormDiffractionSimulator
             // 
             this.AllowDrop = true;
@@ -2045,7 +2013,6 @@
             this.groupBox3.PerformLayout();
             this.tabPageKikuchi.ResumeLayout(false);
             this.tabPageKikuchi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinKL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).EndInit();
             this.tabPageDebye.ResumeLayout(false);
             this.tabPageDebye.PerformLayout();
@@ -2108,8 +2075,6 @@
         #endregion
         private System.Windows.Forms.CheckBox checkBoxExtinctionAll;
         private System.Windows.Forms.CheckBox checkBoxExtinctionLattice;
-        public System.Windows.Forms.NumericUpDown numericUpDownMinKL;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TrackBar trackBarLineWidth;
         private System.Windows.Forms.TrackBar trackBarStrSize;
@@ -2118,7 +2083,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageKikuchi;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
@@ -2298,5 +2262,6 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelDummy;
+        private Crystallography.Controls.NumericBox numericBoxKikuchiLineThreshold;
     }
 }

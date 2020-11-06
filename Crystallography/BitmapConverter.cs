@@ -153,7 +153,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="bmp"></param>
         /// <returns></returns>
-        public static byte[] ToByteARGB(Bitmap bmp)
+        public static byte[] ToByteBGRA(Bitmap bmp)
         {
             if (bmp.PixelFormat == PixelFormat.Format32bppArgb)
             {
@@ -174,6 +174,21 @@ namespace Crystallography
             }
             else
                 return null;
+        }
+
+        public static byte[] ToByteRGBA(Bitmap bmp)
+        {
+            var argbValues = ToByteBGRA(bmp);
+            if (argbValues != null)
+            {
+                for (int i = 0; i < argbValues.Length; i += 4)
+                {
+                    var val = argbValues[i];
+                    argbValues[i] = argbValues[i + 2];
+                    argbValues[i + 2] = val;
+                }
+            }
+            return argbValues;            
         }
 
         public static Byte[] ToByteGray(Bitmap Bmp)

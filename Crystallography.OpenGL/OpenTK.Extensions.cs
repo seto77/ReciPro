@@ -50,6 +50,8 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static V4d ToV4d(this V3d v) => new V4d(v.X, v.Y, v.Z, 1);
 
+        
+
         #endregion V3dに関する拡張メソッド
 
         #region V3fに関する拡張メソッド
@@ -285,22 +287,32 @@ namespace Crystallography.OpenGL
 
         #endregion M3dに関する拡張メソッド
 
-
+        #region その他の静的メソッド
         public static V3f Average(IEnumerable<V3f> vectors)
         {
-            var average = new V3f(0, 0, 0);
+            float x = 0, y = 0, z = 0;
             foreach (var v in vectors)
-                average += v;
-            return average / vectors.Count();
+            {
+                x += v.X;
+                y += v.Y;
+                z += v.Z;
+            }
+            var count = vectors.Count();
+            return new V3f(x / count, y / count, z / count);
         }
 
         public static V3d Average(IEnumerable<V3d> vectors)
         {
-            var average = new V3d(0, 0, 0);
+            double x = 0, y = 0, z = 0;
             foreach (var v in vectors)
-                average += v;
-            return average / vectors.Count();
+            {
+                x += v.X;
+                y += v.Y;
+                z += v.Z;
+            }
+            var count = vectors.Count();
+            return new V3d(x / count, y / count, z / count);
         }
-
+        #endregion
     }
 }

@@ -19,21 +19,22 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable< V3d> points, V3d origin)
         {
-            var center = new V3d(points.Average(p => p.X), points.Average(p => p.Y), points.Average(p => p.Z));
+            var center = Extensions.Average(points);
             var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
             var norm = new V3d(prm[0], prm[1], prm[2]);
-            if (V3d.Dot(norm, (center - origin)) < 0)
+            if (V3d.Dot(norm, center - origin) < 0)
                 norm = -norm;
 
             //座標変換 (XY平面に投影)
             var rot = CreateRotationToZ(norm);
-
             var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z)).ToList();
-
-            int i = vXY.FindIndex(p => p.LengthSquared == vXY.Max(q => q.LengthSquared));//原点から最も距離の遠い点を選ぶ
+            //原点から最も距離の遠い点を選んで、iに格納
+            var lengthSquaredArray = vXY.Select(p => p.LengthSquared).ToList();
+            var maxLength = lengthSquaredArray.Max();
+            var i = lengthSquaredArray.FindIndex(len => len == maxLength);
 
             //もう一つ点を選び、直線の方程式を産出
-            List<int> iList = new List<int>(new[] { i });
+            var iList = new List<int>(new[] { i });
             do
             {
                 for (int j = 0; j < vXY.Count; j++)

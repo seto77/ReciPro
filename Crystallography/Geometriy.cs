@@ -158,7 +158,6 @@ namespace Crystallography
         /// <param name="tauDev"></param>
         /// <param name="phi"></param>
         /// <param name="phiDev"></param>
-
         public static void GetTiltAndOffset(PointD[] EllipseCenter, double[] Radius, double CameraLength, ref PointD offset, ref PointD offsetDev,
           ref double tau, ref double tauDev, ref double phi, ref double phiDev)
         {
@@ -820,19 +819,14 @@ namespace Crystallography
         {
             //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
             //pdf‚ÍCrystallograpy/Ž‘—¿ƒtƒHƒ‹ƒ_
-
-            var ave = new Vector3DBase(points.Average(p => p.X), points.Average(p => p.Y), points.Average(p => p.Z));
+          
+            var ave = Vector3DBase.Average(points);
             var mtx = new DenseMatrix(points.Count(), 3);
             int n = 0;
-            foreach (var p in points)
-            {
-                mtx[n, 0] = p.X - ave.X;
-                mtx[n, 1] = p.Y - ave.Y;
-                mtx[n, 2] = p.Z - ave.Z;
-                n++;
-            }
-            var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
+            foreach (var p in points.Select(p => p - ave))
+                mtx.SetRow(n++,p.ToDouble());
 
+            var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
             var index = evd.EigenValues.AbsoluteMinimumIndex();
 
             double a = evd.EigenVectors[0, index], b = evd.EigenVectors[1, index], c = evd.EigenVectors[2, index], d = -(a * ave.X + b * ave.Y + c * ave.Z);

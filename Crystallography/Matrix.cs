@@ -5,6 +5,9 @@ using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
 using OpenTK;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Crystallography
 {
@@ -713,7 +716,23 @@ namespace Crystallography
             return Math.Acos(aCos);
         }
 
-        
+        /// <summary>
+        /// •½‹Ï’l‚ð•Ô‚·
+        /// </summary>
+        /// <param name="vectors"></param>
+        /// <returns></returns>
+        public static Vector3DBase Average(IEnumerable<Vector3DBase> vectors)
+        {
+            double x = 0,y = 0, z = 0;
+            foreach(var v in vectors)
+            {
+                x += v.X;
+                y += v.Y;
+                z += v.Z;
+            }
+            var count = vectors.Count();
+            return new Vector3DBase(x / count, y / count, z / count);
+        }
 
         public override string ToString() => string.Format("({0}, {1}, {2})", this.X, this.Y, this.Z);
     }

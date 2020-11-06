@@ -110,9 +110,14 @@ namespace Crystallography.OpenGL
 
         private static readonly Dictionary<int, Location> Location = new Dictionary<int, Location>();
 
+        private static readonly int sizeOfInt = sizeof(int);
+        private static readonly int sizeOfUInt = sizeof(uint);
+
         #endregion
 
         #region internalな フィールド & プロパティ
+
+
 
         internal int VBO, VAO, EBO;
 
@@ -244,13 +249,19 @@ namespace Crystallography.OpenGL
             Program = program;
 
             //Locationを取得
-            if (!Location.ContainsKey(Program))
+            if (!Location.TryGetValue(program, out var location) )
             {
                 Location.Add(Program, new Location());
                 SetLocation(Program);
+                location = Location[program];
             }
+
             //Default形状であれば、VAO, VBO, EBOをセットしておしまい。
-            var dic = this is Sphere s && s.UseDefault ? Sphere.DefaultDictionary : this is Cylinder c && c.UseDefault ? Cylinder.DefaultDictionary : null;
+            Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
+            if (this is Sphere s && s.UseDefault)
+                dic = Sphere.DefaultDictionary;
+            else if (this is Cylinder c && c.UseDefault)
+                dic = Cylinder.DefaultDictionary;
             if (dic != null && dic.TryGetValue(Program, out var objects))
             {
                 VBO = objects.VBO;
@@ -272,27 +283,27 @@ namespace Crystallography.OpenGL
 
             // EBO作成
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeof(uint) * Indices.Length), Indices, BufferUsageHint.DynamicDraw);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeOfUInt * Indices.Length), Indices, BufferUsageHint.DynamicDraw);
 
             // VAO作成
             GL.BindVertexArray(VAO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
 
             //モード
-            GL.EnableVertexAttribArray(Location[Program].ModeLocation);
-            GL.VertexAttribPointer(Location[Program].ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
+            GL.EnableVertexAttribArray(location.ModeLocation);
+            GL.VertexAttribPointer(location.ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
             //色
-            GL.EnableVertexAttribArray(Location[Program].ArgbLocation);
-            GL.VertexAttribPointer(Location[Program].ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeof(int));
+            GL.EnableVertexAttribArray(location.ArgbLocation);
+            GL.VertexAttribPointer(location.ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt);
             //頂点位置
-            GL.EnableVertexAttribArray(Location[Program].PositionLocation);
-            GL.VertexAttribPointer(Location[Program].PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int));
+            GL.EnableVertexAttribArray(location.PositionLocation);
+            GL.VertexAttribPointer(location.PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt);
             //法線
-            GL.EnableVertexAttribArray(Location[Program].NormalLocation);
-            GL.VertexAttribPointer(Location[Program].NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeof(int) + V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(location.NormalLocation);
+            GL.VertexAttribPointer(location.NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes);
             //テクスチャ座標
-            GL.EnableVertexAttribArray(Location[Program].UvLocation);
-            GL.VertexAttribPointer(Location[Program].UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeof(int) + 2 * V3f.SizeInBytes);
+            GL.EnableVertexAttribArray(location.UvLocation);
+            GL.VertexAttribPointer(location.UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes);
 
             //TextObjectの場合は、ここでテクスチャーを転送
             if (this is TextObject t && t.TextureNum != -1 && t.Texture != null)
@@ -312,7 +323,6 @@ namespace Crystallography.OpenGL
         /// <param name="Program"></param>
         public void SetLocation(int Program)
         {
-
             Location[Program].ModeLocation = GL.GetAttribLocation(Program, "vObjType");
             Location[Program].ArgbLocation = GL.GetAttribLocation(Program, "vArgb");
             Location[Program].PositionLocation = GL.GetAttribLocation(Program, "vPosition");
@@ -606,7 +616,7 @@ namespace Crystallography.OpenGL
         {
             ShowClippedSection = false;//クリップ断面は表示しない
             IgnoreNormalSides = true;//裏表を無視する
-            var center = new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
@@ -824,29 +834,26 @@ namespace Crystallography.OpenGL
         /// <param name="mode"></param>
         public Polyhedron(IEnumerable< V3d> vertices, Material mat, DrawingMode mode) : base(mat, mode)
         {
-            var center = new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            var center = Extensions.Average(vertices);
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
             //任意の三点を選び、平面方程式を作り、それらが最も端面であるかを評価し、端面である場合はリストに加える
             var candidates = new List<IEnumerable<V3d>>();
+
             var vrs = vertices.ToArray();
-            for (int i = 0; i < vrs.Length; i++)
-                for (int j = i + 1; j < vrs.Length; j++)
+            for (int i = 0; i < vrs.Length - 2; i++)
+                for (int j = i + 1; j < vrs.Length - 1; j++)
                     for (int k = j + 1; k < vrs.Length; k++)
                     {
                         V3d A = vrs[i], B = vrs[j], C = vrs[k];
-                        V3d V = new V3d(
-                            (B.Y - A.Y) * (C.Z - A.Z) - (C.Y - A.Y) * (B.Z - A.Z),
-                            (B.Z - A.Z) * (C.X - A.X) - (C.Z - A.Z) * (B.X - A.X),
-                            (B.X - A.X) * (C.Y - A.Y) - (C.X - A.X) * (B.Y - A.Y)
-                         );
-                        var d = -V3d.Dot(V, A);
+                        V3d V = V3d.Cross(C - A, A - B);
 
-                        if (vrs.All(v => V3d.Dot(v, V) + d < 0.0000001) || vrs.All(v => V3d.Dot(v, V) + d > -0.0000001))
+                        if (vrs.All(v => V3d.Dot(v - A, V) < 0.0000001) || vrs.All(v => V3d.Dot(v - A, V)  > -0.0000001))
                             if (candidates.All(cand => !(cand.Contains(A) && cand.Contains(B) && cand.Contains(C))))
-                                candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v, V) + d) < 0.0000001));
+                                candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v - A, V) ) < 0.0000001));
                     }
+
 
             //各面を構成する頂点集合に対して
             var vList = new List<Vertex>();
@@ -898,7 +905,9 @@ namespace Crystallography.OpenGL
                 p[i].Primitives = new[] { Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2] };
 
                 p[i].Indices = new uint[p[i].Primitives.Sum(o=>o.Count)];
+
                 Array.Copy(Indices, offsetIndices, p[i].Indices, 0, p[i].Indices.Length);
+
                 p[i].Indices = p[i].Indices.Select(j => (uint)(j - offsetVetices)).ToArray();
                 offsetIndices += p[i].Indices.Length;
 
@@ -1578,15 +1587,15 @@ namespace Crystallography.OpenGL
     {
         private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)> dic
             = new Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)>();
-        private static PT[] types = new[] { PT.Quads };
-        private static uint[] indices = new[]{(uint)0, (uint)1, (uint)2, (uint)3 };
-        private static int[] typeCounts = new[]{4 };
 
         public int TextureNum = -1;
         public int[] Size = null;
         public byte[] Texture = null;
 
-        public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
+        public static readonly V2f p00 = new V2f(0, 0), p01 = new V2f(0, 1), p10 = new V2f(1, 0), p11 = new V2f(1, 1);
+        public static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };
+        public static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
+    public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
             : this(text, fontSize, new V3d(position.X, position.Y, position.Z), popout, whiteEdge, mat) { }
         public TextObject(string text, float fontSize, V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
@@ -1594,25 +1603,31 @@ namespace Crystallography.OpenGL
             if (text != "")
             {
                 int width, height;
-                if (!dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
+                if (dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
+                {
+                    TextureNum = obj.TextureNum;
+                    width = obj.Width;
+                    height = obj.Height;
+                }
+                else
                 {
                     var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
                     var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100), TextFormatFlags.NoPadding); //文字列を描画するときの大きさを計測する
-                    var bmp = new Bitmap(strSize.Width + 2, strSize.Height + 2);
+                    width = strSize.Width + 2;
+                    height = strSize.Height + 2;
+
+                    var bmp = new Bitmap(width, height);
                     var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
                     g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
                     if (whiteEdge)
                         foreach (var (x, y) in new[] { (0f, 0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
-                            g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(128, Color.White)), new RectangleF(x, y, bmp.Width, bmp.Height));
+                            g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(128, Color.White)), new RectangleF(x, y, width, height));
 
-                    g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(mat.Argb)), new RectangleF(1f, 1f, bmp.Width, bmp.Height));
+                    g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(mat.Argb)), new RectangleF(1f, 1f, width, height));
                     fnt.Dispose();//リソースを解放する
                     g.Dispose();//リソースを解放する
 
-                    width = bmp.Width;
-                    height = bmp.Height;
-
-                    var argbList = BitmapConverter.ToByteARGB(bmp).ToList();//データの並び順はBGRA
+                    var argbList = BitmapConverter.ToByteRGBA(bmp).ToList();//データの並び順に注意
 
                     #region  余白の部分をトリムする
                     while (argbList.Where((b, i) => i < width * 4).All(b => b == 0))
@@ -1640,9 +1655,6 @@ namespace Crystallography.OpenGL
                     }
                     #endregion
 
-                    //並び順をRGBAに変更
-                    for (int i = 0; i < argbList.Count; i += 4) { var t = argbList[i]; argbList[i] = argbList[i + 2]; argbList[i + 2] = t; }
-
                     //空いてるテクスチャID番号を調べ、TextureNumberに格納 (実際の転送はGenerateで行う)
                     TextureNum = GL.GenTexture();
                     //辞書に登録
@@ -1650,24 +1662,22 @@ namespace Crystallography.OpenGL
                     Size = new[] { width, height };
                     Texture = argbList.ToArray();
                 }
-                else
-                {
-                    TextureNum = obj.TextureNum;
-                    width = obj.Width;
-                    height = obj.Height;
-                }
 
                 ShowClippedSection = false;//クリップ断面は表示しない
-
+                var pos = position.ToV3f();
+                var widthF = width / 2f;
+                var heightF = height / 2f;
+                var popoutF = (float)popout;
+                var argb = mat.Argb;
                 Vertices = new[] {
-                    new Vertex(new V3f(-width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(0,0), mat.Argb, 2),
-                    new Vertex(new V3f(+width/2f,+ height/2f,(float)popout), position.ToV3f() ,new V2f(1,0), mat.Argb, 2),
-                    new Vertex(new V3f(+width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(1,1), mat.Argb, 2),
-                    new Vertex(new V3f(-width/2f,- height/2f,(float)popout), position.ToV3f() ,new V2f(0,1), mat.Argb, 2) };
+                    new Vertex(new V3f(-widthF,+heightF,popoutF), pos ,p00, argb, 2),
+                    new Vertex(new V3f(+widthF,+heightF,popoutF), pos ,p10, argb, 2),
+                    new Vertex(new V3f(+widthF,-heightF,popoutF), pos ,p11, argb, 2),
+                    new Vertex(new V3f(-widthF,-heightF,popoutF), pos ,p01, argb, 2) };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
                 Indices = indices;
-                Primitives = types.Select((t, i) => (t, typeCounts[i])).ToArray();
+                Primitives = primitives;//types.Select((t, i) => (t, typeCounts[i])).ToArray();
             }
         }
     }

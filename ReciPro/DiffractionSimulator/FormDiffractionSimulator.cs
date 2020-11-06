@@ -1,4 +1,5 @@
-﻿using Crystallography;
+﻿#region using
+using Crystallography;
 using Crystallography.Controls;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-
+using System.Windows.Forms; 
+#endregion
 
 namespace ReciPro
 {
@@ -680,16 +681,13 @@ namespace ReciPro
             var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
             var penDefect = new Pen(new SolidBrush(colorControlDefectLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
             var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-
-            for (int i = 0; i < formMain.Crystals.Length; i++)
-            {
-                var crystal = formMain.Crystals[i];
-
-                foreach (var g in crystal.VectorOfG.Where(g => g.Flag))
+            //var threshold = 
+            foreach (var crystal in formMain.Crystals)
+                foreach (var g in crystal.VectorOfG_KikuchiLine)
                 {
                     double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
-                    Vector3D vec1 = crystal.RotationMatrix * g;
+                    Vector3DBase vec1 = crystal.RotationMatrix * g;
 
                     //bool excess は、excess の時にtrue, そうでないときはfalse
                     var excess = vec1.Z < 0;
@@ -742,7 +740,6 @@ namespace ReciPro
 
                     graphics.Transform = original;
                 }
-            }
         }
         #endregion
 
@@ -917,7 +914,7 @@ namespace ReciPro
         }
         #endregion
 
-        #region このフォームで発生する一般的なイベント
+        #region 一般的なイベント
 
         private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
 
@@ -967,6 +964,12 @@ namespace ReciPro
                 labelMousePositionDetector.Visible =
                 labelMousePositionReal.Visible =
                 checkBoxMousePositionDetailes.Checked;
+
+        private void numericBoxKikuchiLineThreshold_ValueChanged(object sender, EventArgs e)
+        {
+            SetVector();
+            Draw();
+        }
 
         #endregion
 
@@ -1037,7 +1040,7 @@ namespace ReciPro
             }
 
             if (toolStripButtonKikuchiLines.Checked)
-                formMain.Crystal.SetVectorOfG_KikuchiLine((double)numericUpDownMinKL.Value, WaveLength);
+                formMain.Crystal.SetVectorOfG_KikuchiLine(numericBoxKikuchiLineThreshold.Value, WaveLength);
 
             toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
         }
@@ -1293,15 +1296,11 @@ namespace ReciPro
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
             labelTwoTheta.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
 
-            //Application.DoEvents();
-
-            if (e.X > tabControl.Width || e.Y > tabControl.Height - 20)
+            if (panelMain.Controls.GetChildIndex(graphicsBox)!=0 && e.X > tabControl.Width || e.Y > tabControl.Height - 20)
             {
                 graphicsBox.BringToFront();
                 graphicsBox.Refresh();
             }
-
-            //PointD pt = convertClientToSrc(e.X, e.Y);
 
             //左ボタンが押されながらマウスが動いたとき
             if (e.Button == MouseButtons.Left)
@@ -1735,7 +1734,6 @@ namespace ReciPro
 
         #endregion
 
-
         #region 中心位置設定関連
         private void buttonResetCenter_Click_1(object sender, EventArgs e)
         {
@@ -1988,12 +1986,6 @@ namespace ReciPro
 
         #endregion
 
-     
-
-      
-
-
-    
         #region テスト用コード
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -2022,6 +2014,8 @@ namespace ReciPro
 
         }
 
+   
+
         private void Button2_Click(object sender, EventArgs e)
         {
             if (radioButtonBeamParallel.Checked && radioButtonIntensityBethe.Checked)
@@ -2042,15 +2036,6 @@ namespace ReciPro
         }
 
         #endregion
-
-        
-
-   
-
-
-   
-
-
 
     }
 }
