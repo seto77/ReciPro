@@ -765,8 +765,6 @@ namespace Crystallography
 
         #endregion 結晶幾何学関連
 
-
-
         #region 軸ベクトルの計算
 
         /// <summary>
@@ -780,7 +778,7 @@ namespace Crystallography
             foreach (var (U, V, W) in indices)
             {
                 var vec = U * A_Axis + V * B_Axis + W * C_Axis;
-                vec.Index = $"[{U}{V}{W}]";
+                vec.Text = $"[{U}{V}{W}]";
                 VectorOfAxis.Add(vec);
             }
         }
@@ -796,12 +794,12 @@ namespace Crystallography
             if (A_Axis == null) return;
             VectorOfAxis = new List<Vector3D>();
             var vec = new Vector3D();
-            vec = A_Axis; vec.Index = "[100]"; VectorOfAxis.Add(vec);
-            vec = B_Axis; vec.Index = "[010]"; VectorOfAxis.Add(vec);
-            vec = C_Axis; vec.Index = "[001]"; VectorOfAxis.Add(vec);
-            vec = -A_Axis; vec.Index = "[-100]"; VectorOfAxis.Add(vec);
-            vec = -B_Axis; vec.Index = "[0-10]"; VectorOfAxis.Add(vec);
-            vec = -C_Axis; vec.Index = "[00-1]"; VectorOfAxis.Add(vec);
+            vec = A_Axis; vec.Text = "[100]"; VectorOfAxis.Add(vec);
+            vec = B_Axis; vec.Text = "[010]"; VectorOfAxis.Add(vec);
+            vec = C_Axis; vec.Text = "[001]"; VectorOfAxis.Add(vec);
+            vec = -A_Axis; vec.Text = "[-100]"; VectorOfAxis.Add(vec);
+            vec = -B_Axis; vec.Text = "[0-10]"; VectorOfAxis.Add(vec);
+            vec = -C_Axis; vec.Text = "[00-1]"; VectorOfAxis.Add(vec);
 
             for (int u = -uMax; u <= uMax; u++)
                 for (int v = -vMax; v <= vMax; v++)
@@ -809,7 +807,7 @@ namespace Crystallography
                         if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
                         {
                             vec = u * A_Axis + v * B_Axis + w * C_Axis;
-                            vec.Index = $"[{u}{v}{w}]";
+                            vec.Text = $"[{u}{v}{w}]";
                             VectorOfAxis.Add(vec);
                         }
         }
@@ -828,7 +826,7 @@ namespace Crystallography
             foreach (var (H, K, L) in indices)
             {
                 var vec = H * A_Star + K * B_Star + L * C_Star;
-                vec.Index = $"({H}{K}{L})";
+                vec.Text = $"({H}{K}{L})";
                 VectorOfPlane.Add(vec);
             }
         }
@@ -844,12 +842,12 @@ namespace Crystallography
             VectorOfPlane = new List<Vector3D>();
             Vector3D vec;
 
-            vec = CalcHklVector(1, 0, 0); vec = vec * GetLengthPlane(1, 0, 0) / vec.d; vec.Index = "(100)"; VectorOfPlane.Add(vec);
-            vec = CalcHklVector(0, 1, 0); vec = vec * GetLengthPlane(0, 1, 0) / vec.d; vec.Index = "(010)"; VectorOfPlane.Add(vec);
-            vec = CalcHklVector(0, 0, 1); vec = vec * GetLengthPlane(0, 0, 1) / vec.d; vec.Index = "(001)"; VectorOfPlane.Add(vec);
-            vec = CalcHklVector(-1, 0, 0); vec = vec * GetLengthPlane(-1, 0, 0) / vec.d; vec.Index = "(-100)"; VectorOfPlane.Add(vec);
-            vec = CalcHklVector(0, -1, 0); vec = vec * GetLengthPlane(0, -1, 0) / vec.d; vec.Index = "(0-10)"; VectorOfPlane.Add(vec);
-            vec = CalcHklVector(0, 0, -1); vec = vec * GetLengthPlane(0, 0, -1) / vec.d; vec.Index = "(00-1)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(1, 0, 0); vec = vec * GetLengthPlane(1, 0, 0) / vec.d; vec.Text = "(100)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(0, 1, 0); vec = vec * GetLengthPlane(0, 1, 0) / vec.d; vec.Text = "(010)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(0, 0, 1); vec = vec * GetLengthPlane(0, 0, 1) / vec.d; vec.Text = "(001)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(-1, 0, 0); vec = vec * GetLengthPlane(-1, 0, 0) / vec.d; vec.Text = "(-100)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(0, -1, 0); vec = vec * GetLengthPlane(0, -1, 0) / vec.d; vec.Text = "(0-10)"; VectorOfPlane.Add(vec);
+            vec = CalcHklVector(0, 0, -1); vec = vec * GetLengthPlane(0, 0, -1) / vec.d; vec.Text = "(00-1)"; VectorOfPlane.Add(vec);
             for (int h = -hMax; h <= hMax; h++)
                 for (int k = -kMax; k <= kMax; k++)
                     for (int l = -lMax; l <= lMax; l++)
@@ -857,7 +855,7 @@ namespace Crystallography
                         {
                             vec = CalcHklVector(h, k, l);
                             vec = vec * GetLengthPlane(h, k, l) / vec.d;
-                            vec.Index = $"({h}{k}{l})";
+                            vec.Text = $"({h}{k}{l})";
                             VectorOfPlane.Add(vec);
                         }
         }
@@ -893,7 +891,7 @@ namespace Crystallography
                 for (int h = -hMax; h <= hMax; h++)//hは0からはじめる
                     for (int k = -kMax; k <= kMax; k++)
                         for (int l = -lMax; l <= lMax; l++)
-                            if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax && SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi))
+                            if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax && SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi))
                             {
                                 var temp = new Plane();
                                 // if (!excludeForbiddenPlane | (temp.strCondition = SymmetryStatic.CheckExtinctionRule(h, k, l, Symmetry)).Length == 0)
@@ -914,7 +912,7 @@ namespace Crystallography
                         for (int l = -lMax; l <= lMax; l++)
                             if ((d = GetLengthPlane(h, k, l)) > dMin)
                             {
-                                var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi) };
+                                var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi) };
                                 if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
                                     temp.Multi[0] = multi;
@@ -1080,7 +1078,7 @@ namespace Crystallography
         {
             if (A_Star == null) SetAxis();
 
-            double dMin2 = dMin * dMin, gMax2 = 1 / dMin2, gMax = Math.Sqrt(gMax2);
+            double gMax = 1 / dMin;
 
             var directions = new List<(int h, int k, int l)>();
             #region directionを初期化
@@ -1101,18 +1099,20 @@ namespace Crystallography
                 else if (Symmetry.CrystalSystemStr == "trigonal" || Symmetry.CrystalSystemStr == "hexagonal")
                     directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) });
                 else
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });
+                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });//(-1, 0, 0)は除いておく
             }
             else
-                directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });
+                directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });//(-1, 0, 0)は除いておく
 
             #endregion
 
             var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
-            var outer = new Dictionary<(int h, int k, int l), double> { { (0, 0, 0), 0 } };
+            var composeKey = new Func<int, int, int, int>((h, k, l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1);
+            var decomposeKey = new Func<int, (int h, int k, int l)>(key => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255));
 
-            var whole = new HashSet<int> { 0 };
+            var zeroKey = (255 << 20) + (255 << 10) + 255;
+            var outer = new Dictionary<int, double>() { { zeroKey, 0 } };
             var minG = 0.0;
 
             double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
@@ -1120,42 +1120,44 @@ namespace Crystallography
             double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
             var maxGnum = 250000;
-            var gList = new List<(int h, int k, int l, double x, double y, double z, double len)>();
+            var gDic = new Dictionary<int, (double x, double y, double z, double len)>() { { zeroKey, (0,0,0,0) } };
 
-            while (gList.Count < maxGnum && (minG = outer.Values.Min()) < gMax)
+            while (gDic.Count < maxGnum && (minG = outer.Values.Min()) < gMax)
             {
-                foreach ((int h1, int k1, int l1) in outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToArray())
-                {
-                    outer.Remove((h1, k1, l1));
+                var outerList = outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToList();
+                outerList.ForEach(o => outer.Remove(o));
+
+                foreach (var (h1, k1, l1) in outerList.Select(o => decomposeKey(o)))
                     foreach ((int h2, int k2, int l2) in directions)
                     {
-                        int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * 1024 * 1024 + k * 1024 + l;
-                        if (key > 0 && whole.Add(key))
+                        int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = composeKey(h, k, l);// h * 1024 * 1024 + k * 1024 + l;
+                        if (key > 0 && !gDic.ContainsKey(key))
                         {
                             double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                             var len = Math.Sqrt(x * x + y * y + z * z);
-                            gList.Add((h, k, l, x, y, z, len));
-                            outer.Add((h, k, l), len);
+                            gDic.Add(key, (x, y, z, len));
+                            outer.Add(key, len);
                         }
                     }
-                }
             }
-            gList = gList.OrderBy(g => g.len).ToList();
+            gDic.Remove(zeroKey);
 
-            var gArray = new Vector3D[gList.Count * 2];
+            var gList = gDic/*.OrderBy(g => g.Value.len)*/.ToList();//並び替えは必要ない？
+            var gArray = new Vector3D[gDic.Count() * 2];
             Parallel.For(0, gList.Count, i =>
             {
-                (int h, int k, int l, double x, double y, double z, double glen) = gList[i];
+                var (h, k, l) = decomposeKey(gList[i].Key);
+                var (x, y, z, glen) = gList[i].Value;
                 var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-                gArray[i * 2] = new Vector3D(x, y, z, false) { h = (short)h, k = (short)k, l = (short)l, d = 1 / glen, Extinction = extinction, Index = $"{h} {k} {l}" };
-                gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { h = (short)-h, k = (short)-k, l = (short)-l, d = 1 / glen, Extinction = extinction, Index = $"{-h} {-k} {-l}" };
+                gArray[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
+                gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
             });
 
             if (wavesource != WaveSource.None)//強度計算する場合 250msくらい
             {
                 Parallel.ForEach(gArray, _g =>
                 {
-                     _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.h, _g.k, _g.l, _g.Length2 / 4.0) : 0;
+                     _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, (_g.Index), _g.Length2 / 4.0) : 0;
                      _g.RawIntensity = _g.F.Magnitude2();
                 });
 
@@ -1184,9 +1186,9 @@ namespace Crystallography
                         Vector3D temp = h * A_Star + k * B_Star + l * C_Star;
                         if ((temp.d = temp.Length) < 1 / d_limit)
                         {
-                            temp.Theta = waveLength / 2 * temp.Length;
-                            temp.TanTheta = Math.Tan(temp.Theta);
-                            temp.text = $"{h} {k} {l}";
+                            //temp.Theta = waveLength / 2 * temp.Length;
+                            //temp.TanTheta = Math.Tan(temp.Theta);
+                            temp.Text = $"{h} {k} {l}";
                             VectorOfG_KikuchiLine.Add(temp);
                         }
                     }
@@ -1471,9 +1473,10 @@ namespace Crystallography
         /// <param name="l"></param>
         /// <param name="s2">単位はnm^-2</param>
         /// <returns></returns>
-        private Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, int h, int k, int l, double s2)
+        private Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2)
         {
             #region
+            (int h, int k, int l) = index;
             //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
             if (atomsArray.Length == 0)
                 return new Complex(0, 0);
@@ -1538,7 +1541,7 @@ namespace Crystallography
                     var hkl = s[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
 
-                    Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), h, k, l, 1 / Plane[i].d / Plane[i].d / 4.0);
+                    Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), (h, k, l), 1 / Plane[i].d / Plane[i].d / 4.0);
                     Plane[i].F2[j] = Plane[i].F[j].Magnitude2();
 
                     if (waveSource == WaveSource.Xray)

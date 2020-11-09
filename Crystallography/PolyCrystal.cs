@@ -869,9 +869,7 @@ namespace Crystallography
                             double intensity = (eta / (1 + dev2) + (1 - eta) * Math.Sqrt(Math.PI * Math.Log(2)) * Math.Pow(2, -dev2)) * G[n].Intensity2;
 
                             list.Add(new Vector3D(d * x + detector.Center.X, -d * y + detector.Center.Y, intensity));
-                            list[list.Count - 1].h = BaseCrystal.VectorOfG[n].h;
-                            list[list.Count - 1].k = BaseCrystal.VectorOfG[n].k;
-                            list[list.Count - 1].l = BaseCrystal.VectorOfG[n].l;
+                            list[list.Count - 1].Index = BaseCrystal.VectorOfG[n].Index;
                         }
                     }
                 }

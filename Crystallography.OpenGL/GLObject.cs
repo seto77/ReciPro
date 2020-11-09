@@ -19,6 +19,7 @@ using M4d = OpenTK.Matrix4d;
 using M4f = OpenTK.Matrix4;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
+using System.Resources;
 
 #endregion 定義
 
@@ -73,10 +74,10 @@ namespace Crystallography.OpenGL
     public enum DrawingMode { Surfaces = 1, Edges = 2, SurfacesAndEdges = 4, Points = 8, Text = 16 }
     #endregion
 
-    #region クラス
+    #region Locationクラス
     public class Location
     {
-        internal int TextureLocation { get; set; } = 1;
+        internal int TextureLocation { get; set; } = -1;
         internal int EmissionLocation { get; set; } = -1;
         internal int AmbientLocation { get; set; } = -1;
         internal int DiffuseLocation { get; set; } = -1;
@@ -104,6 +105,7 @@ namespace Crystallography.OpenGL
     /// <summary>
     /// OpenGLで描画するオブジェクトを表現する抽象クラス
     /// </summary>
+    [Guid("71D52F24-787B-4646-AC8E-2910CC38E267")]
     abstract public class GLObject
     {
         #region static private な フィールド & プロパティ
@@ -117,30 +119,23 @@ namespace Crystallography.OpenGL
 
         #region internalな フィールド & プロパティ
 
-
-
         internal int VBO, VAO, EBO;
 
         internal int Program = -1;
+
         /// <summary>
         /// 頂点
         /// </summary>
         internal Vertex[] Vertices;
+
         /// <summary>
         /// 頂点の順番リスト (全てのタイプが連結されている)
         /// </summary>
         internal uint[] Indices;
-        /// <summary>
-        /// タイプ
-        /// </summary>
-        //internal PT[] Types;
-        /// <summary>
-        /// 各タイプの順番リストの長さ
-        /// </summary>
-        //internal int[] TypeCounts;
 
-
-        //プリミティブのタイプおよびそのタイプの順番リストの長さ
+        /// <summary>
+        /// プリミティブのタイプおよびそのタイプの順番リストの長さ
+        /// </summary>
         internal (PT Type, int Count)[] Primitives;
 
         #endregion
@@ -241,87 +236,91 @@ namespace Crystallography.OpenGL
         /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
         /// </summary>
         /// <param name="program"></param>
-        public void Generate(int program)
+        /// <param name="objects"></param>
+        public static void Generate(int program, IEnumerable<GLObject> objects)
         {
-            if (program < 0 || Vertices == null || Vertices.Length == 0) 
+            if (program < 0)
                 return;
 
-            Program = program;
-
             //Locationを取得
-            if (!Location.TryGetValue(program, out var location) )
+            if (!Location.TryGetValue(program, out var location))
             {
-                Location.Add(Program, new Location());
-                SetLocation(Program);
+                Location.Add(program, new Location());
+                SetLocation(program);
                 location = Location[program];
             }
 
-            //Default形状であれば、VAO, VBO, EBOをセットしておしまい。
-            Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
-            if (this is Sphere s && s.UseDefault)
-                dic = Sphere.DefaultDictionary;
-            else if (this is Cylinder c && c.UseDefault)
-                dic = Cylinder.DefaultDictionary;
-            if (dic != null && dic.TryGetValue(Program, out var objects))
+            //GL.VertexAttribPointerのパラメータ配列を定義
+            (int loc, int size, VertexAttribPointerType type,  bool normarized, int stride, int offset)[] prms =
             {
-                VBO = objects.VBO;
-                EBO = objects.EBO;
-                VAO = objects.VAO;
-                return;
-            }
+                (location.ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
+                (location.ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
+                (location.PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
+                (location.NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
+                (location.UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
+            };
 
-            //VBO, EBO, VAO の数値(名前?)を取得
-            GL.GenBuffers(1, out VBO); 
-            GL.GenBuffers(1, out EBO); 
-            GL.GenVertexArrays(1, out VAO);
-
-            dic?.Add(Program, (VBO, VAO, EBO));
-
-            // VBO作成
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-            GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(Vertices.Length * Vertex.Stride), Vertices, BufferUsageHint.DynamicDraw);
-
-            // EBO作成
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeOfUInt * Indices.Length), Indices, BufferUsageHint.DynamicDraw);
-
-            // VAO作成
-            GL.BindVertexArray(VAO);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-
-            //モード
-            GL.EnableVertexAttribArray(location.ModeLocation);
-            GL.VertexAttribPointer(location.ModeLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0);
-            //色
-            GL.EnableVertexAttribArray(location.ArgbLocation);
-            GL.VertexAttribPointer(location.ArgbLocation, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt);
-            //頂点位置
-            GL.EnableVertexAttribArray(location.PositionLocation);
-            GL.VertexAttribPointer(location.PositionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt);
-            //法線
-            GL.EnableVertexAttribArray(location.NormalLocation);
-            GL.VertexAttribPointer(location.NormalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes);
-            //テクスチャ座標
-            GL.EnableVertexAttribArray(location.UvLocation);
-            GL.VertexAttribPointer(location.UvLocation, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes);
-
-            //TextObjectの場合は、ここでテクスチャーを転送
-            if (this is TextObject t && t.TextureNum != -1 && t.Texture != null)
+            foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
             {
-                // テクスチャをバインドする
-                GL.BindTexture(TextureTarget.Texture2D, t.TextureNum);
-                //テクスチャ用バッファに色情報を流し込む
-                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, t.Size[0], t.Size[1], 0, PixelFormat.Rgba, PixelType.UnsignedByte, t.Texture);
-                // テクスチャのアンバインド
-                GL.BindTexture(TextureTarget.Texture2D, 0);
+                o.Program = program;
+
+                //Default形状であれば、VAO, VBO, EBOをセットしておしまい。
+                Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
+                if (o is Sphere s && s.UseDefault)
+                    dic = Sphere.DefaultDictionary;
+                else if (o is Cylinder c && c.UseDefault)
+                    dic = Cylinder.DefaultDictionary;
+
+                if (dic != null && dic.TryGetValue(program, out var def))
+                {
+                    o.VBO = def.VBO;
+                    o.EBO = def.EBO;
+                    o.VAO = def.VAO;
+                }
+                else
+                {
+                    // VBO作成
+                    GL.GenBuffers(1, out o.VBO);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
+                    GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(o.Vertices.Length * Vertex.Stride), o.Vertices, BufferUsageHint.DynamicDraw);
+
+                    // EBO作成
+                    GL.GenBuffers(1, out o.EBO);
+                    GL.BindBuffer(BufferTarget.ElementArrayBuffer, o.EBO);
+                    GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeOfUInt * o.Indices.Length), o.Indices, BufferUsageHint.DynamicDraw);
+
+                    // VAO作成
+                    GL.GenVertexArrays(1, out o.VAO);
+                    GL.BindVertexArray(o.VAO);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
+
+                    foreach(var (loc, size, type, normarized, stride, offset) in prms)
+                    {
+                        GL.EnableVertexAttribArray(loc);
+                        GL.VertexAttribPointer(loc, size, type, normarized, stride, offset);
+                    }
+
+                    dic?.Add(program, (o.VBO, o.VAO, o.EBO));
+                }
             }
         }
+
+        /// <summary>
+        /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
+        /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
+        /// </summary>
+        /// <param name="program"></param>
+        public void Generate(int program)
+        {
+            Generate(program, new[] { this });
+        }
+
 
         /// <summary>
         /// パラメータのロケーションをセット
         /// </summary>
         /// <param name="Program"></param>
-        public void SetLocation(int Program)
+        public static void SetLocation(int Program)
         {
             Location[Program].ModeLocation = GL.GetAttribLocation(Program, "vObjType");
             Location[Program].ArgbLocation = GL.GetAttribLocation(Program, "vArgb");
@@ -1585,36 +1584,39 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class TextObject : GLObject
     {
-        private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)> dic
-            = new Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, int Width, int Height)>();
+        /// <summary>
+        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
+        /// </summary>
+        static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
 
-        public int TextureNum = -1;
-        public int[] Size = null;
-        public byte[] Texture = null;
+        private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)> dic
+            = new Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)>();
 
         public static readonly V2f p00 = new V2f(0, 0), p01 = new V2f(0, 1), p10 = new V2f(1, 0), p11 = new V2f(1, 1);
         public static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };
         public static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
-    public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
-            : this(text, fontSize, new V3d(position.X, position.Y, position.Z), popout, whiteEdge, mat) { }
+        public int TextureNum = -1;
+
+        public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
+            : this(text, fontSize, position.ToVector(), popout, whiteEdge, mat) { }
         public TextObject(string text, float fontSize, V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
             text = text.Trim();
             if (text != "")
             {
-                int width, height;
+                ushort width, height;
                 if (dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
-                {
+                {//辞書に登録されている場合
                     TextureNum = obj.TextureNum;
                     width = obj.Width;
                     height = obj.Height;
                 }
-                else
+                else//辞書に登録されていない場合
                 {
                     var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
-                    var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100), TextFormatFlags.NoPadding); //文字列を描画するときの大きさを計測する
-                    width = strSize.Width + 2;
-                    height = strSize.Height + 2;
+                    var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100), TextFormatFlags.NoPadding); //文字列を描画するときの大体の大きさを計測する
+                    width = (ushort)(strSize.Width + 2);
+                    height = (ushort)(strSize.Height + 2);
 
                     var bmp = new Bitmap(width, height);
                     var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
@@ -1655,12 +1657,17 @@ namespace Crystallography.OpenGL
                     }
                     #endregion
 
-                    //空いてるテクスチャID番号を調べ、TextureNumberに格納 (実際の転送はGenerateで行う)
+                    //空いてるテクスチャID番号を調べ、TextureNumberに格納 
                     TextureNum = GL.GenTexture();
+                    // テクスチャをバインドする
+                    GL.BindTexture(TextureTarget.Texture2D, TextureNum);
+                    //テクスチャ用バッファに色情報を流し込む
+                    GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, argbList.ToArray());
+                    // テクスチャのアンバインド
+                    GL.BindTexture(TextureTarget.Texture2D, 0);
+
                     //辞書に登録
                     dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, width, height));
-                    Size = new[] { width, height };
-                    Texture = argbList.ToArray();
                 }
 
                 ShowClippedSection = false;//クリップ断面は表示しない
@@ -1669,15 +1676,17 @@ namespace Crystallography.OpenGL
                 var heightF = height / 2f;
                 var popoutF = (float)popout;
                 var argb = mat.Argb;
-                Vertices = new[] {
-                    new Vertex(new V3f(-widthF,+heightF,popoutF), pos ,p00, argb, 2),
-                    new Vertex(new V3f(+widthF,+heightF,popoutF), pos ,p10, argb, 2),
-                    new Vertex(new V3f(+widthF,-heightF,popoutF), pos ,p11, argb, 2),
-                    new Vertex(new V3f(-widthF,-heightF,popoutF), pos ,p01, argb, 2) };
+                Vertices = new[] 
+                {
+                    new Vertex(new V3f(-widthF, +heightF, popoutF), pos ,p00, argb, 2),
+                    new Vertex(new V3f(+widthF, +heightF, popoutF), pos ,p10, argb, 2),
+                    new Vertex(new V3f(+widthF, -heightF, popoutF), pos ,p11, argb, 2),
+                    new Vertex(new V3f(-widthF, -heightF, popoutF), pos ,p01, argb, 2) 
+                };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
                 Indices = indices;
-                Primitives = primitives;//types.Select((t, i) => (t, typeCounts[i])).ToArray();
+                Primitives = primitives;
             }
         }
     }

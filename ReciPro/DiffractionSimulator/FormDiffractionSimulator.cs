@@ -657,7 +657,7 @@ namespace ReciPro
         {
             double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
             var sb = new StringBuilder();
-            if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Index);
+            if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Text);
             if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
             if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
             if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
@@ -731,8 +731,8 @@ namespace ReciPro
                             graphics.DrawLines(excess ? penDefect : penExcess, pts2.ToArray());
                             if (toolStripButtonIndexLabels.Checked)
                             {
-                                graphics.DrawString(g.Index, font, new SolidBrush(colorControlString.Color), pts1[pts1.Count / 2]);
-                                graphics.DrawString(g.Index, font, new SolidBrush(colorControlString.Color), pts2[pts2.Count / 2]);
+                                graphics.DrawString(g.Text, font, new SolidBrush(colorControlString.Color), pts1[pts1.Count / 2]);
+                                graphics.DrawString(g.Text, font, new SolidBrush(colorControlString.Color), pts2[pts2.Count / 2]);
                             }
                         }
                         catch { }
@@ -1226,7 +1226,7 @@ namespace ReciPro
                 var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
 
                 MessageBox.Show(
-                    $"index: {gVector[num].h} {gVector[num].k} {gVector[num].l}\r\n" +
+                    $"index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
                     $"d-spacing: {gVector[num].d:f4} nm\r\n" +
                     $"Inverse coordinate (1/nm): {vec.X:f3} ,{vec.Y:f3} ,{vec.Z:f3}\r\n"
                     + $"Exitation error: {dev:f4} /nm");

@@ -819,12 +819,12 @@ namespace Crystallography
         {
             //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
             //pdfはCrystallograpy/資料フォルダ
-          
+
             var ave = Vector3DBase.Average(points);
             var mtx = new DenseMatrix(points.Count(), 3);
             int n = 0;
             foreach (var p in points.Select(p => p - ave))
-                mtx.SetRow(n++,p.ToDouble());
+                mtx.SetRow(n++, p.ToDouble());
 
             var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
             var index = evd.EigenValues.AbsoluteMinimumIndex();
@@ -844,9 +844,9 @@ namespace Crystallography
 
             for (int i = 0; i < bounds.Length; i++)
             {
-                var n = GetClippedPolygon(i, bounds).Count();
+                var n = GetClippedPolygon(i, bounds).Length;
                 if (n >= 3)
-                    countList.Add(GetClippedPolygon(i, bounds).Count());
+                    countList.Add(GetClippedPolygon(i, bounds).Length);
             }
 
             return countList.Count >= 4;
@@ -914,18 +914,17 @@ namespace Crystallography
         /// 円錐と平面との交点(断面座標系)の集合を得る。
         /// 円錐は頂点(0,0,0), 円錐半角(alpha), 円錐中心軸は(cosPhi*sinTau, -sinPhi*sinTau, cosTau)で定義される。
         /// 断面はZ=Lを満たし、左上の点がupperLeft(断面座標系)、右上の点がlowerRight(断面座標系)で定義される矩形平面である。
-        /// 断面座標系とは、交点(X,Y,L)について、(X,Y)の部分のことである(断面の中心は(00L)である))。
+        /// 断面座標系とは、交点(X,Y,L)について、(X,Y)の部分のことである(断面の中心は(0,0,L)である))。
         /// </summary>
         /// <param name="alpha">円錐半角(alpha)</param>
         /// <param name="phi"> 円錐中心軸のパラメータ. 円錐中心軸方向は(cosPhi*sinTau, -sinPhi*sinTau, cosTau)で定義される</param>
         /// <param name="tau">円錐中心軸のパラメータ. 円錐中心軸方向は(cosPhi*sinTau, -sinPhi*sinTau, cosTau)で定義される</param>
         /// <param name="l">断面のパラメータ. 断面はZ=Lで定義される. </param>
-        /// <param name="upperLeft"></param>
-        /// <param name="lowerRight"></param>
+        /// <param name="upperLeft">矩形平面の左上座標</param>
+        /// <param name="lowerRight">矩形平面の右下座標</param>
         /// <param name="bothCone"></param>
         /// <returns></returns>
-        public static List<List<PointD>> ConicSection(double alpha, double phi, double tau, double l,
-            PointD upperLeft, PointD lowerRight, bool bothCone = false)
+        public static List<List<PointD>> ConicSection(double alpha, double phi, double tau, double l, PointD upperLeft, PointD lowerRight, bool bothCone = false)
         {
             double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
             double cosTau = Math.Cos(tau), sinTau = Math.Sin(tau), sinTau2 = sinTau * sinTau;

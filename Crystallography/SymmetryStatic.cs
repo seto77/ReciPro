@@ -13383,10 +13383,10 @@ new[]{535,2,6,2,1,1}
 		/// <param name="l"></param>
 		/// <param name="sym"></param>
 		/// <returns></returns>
-		public static bool IsRootIndex(int h, int k, int l, Symmetry sym)
+		public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym)
 		{
 			var indices = new List<(int H, int K, int L)>();
-			return IsRootIndex(h, k, l, sym, ref indices, false);
+			return IsRootIndex(index, sym, ref indices, false);
 		}
 
 		/// <summary>
@@ -13400,10 +13400,10 @@ new[]{535,2,6,2,1,1}
 		/// <param name="sym">対称性</param>
 		/// <param name="multi">多重度</param>
 		/// <returns>基底のときはtrue</returns>
-		public static bool IsRootIndex(int h, int k, int l, Symmetry sym, ref int multi)
+		public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, ref int multi)
 		{
 			var indices = new List<(int H, int K, int L)>();
-			bool result = IsRootIndex(h, k, l, sym, ref indices, false);
+			bool result = IsRootIndex(index, sym, ref indices, false);
 			multi = indices.Count;
 			return result;
 		}
@@ -13530,9 +13530,10 @@ new[]{535,2,6,2,1,1}
 		/// <param name="indices">等価な面指数の群</param>
 		/// <param name="CalcNotEvenRoot">基底でなくても等価な面指数を計算するときはtrue</param>
 		/// <returns>基底のときはtrue</returns>
-		public static bool IsRootIndex(int h, int k, int l, Symmetry sym, ref List<(int H, int K, int L)> indices, bool CalcNotEvenRoot)
+		public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, ref List<(int H, int K, int L)> indices, bool CalcNotEvenRoot)
 		{
 			#region
+			(int h, int k, int l) = index;
 			bool result = true;
 			if (h == 0 && k == 0 && l == 0)
 			{

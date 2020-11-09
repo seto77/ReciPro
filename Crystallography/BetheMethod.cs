@@ -1037,7 +1037,7 @@ namespace Crystallography
             {
                 Vector3D g = new Vector3D(Vec.X, Vec.Y, Vec.Z);
                 g.d = 1 / g.Length;
-                g.Index = H.ToString() + " " + K.ToString() + " " + L.ToString();
+                g.Text = $"{H} {K} {L}";
                 g.F = Psi;
                 g.RawIntensity = Psi.Magnitude2();
                 g.Tag = S;

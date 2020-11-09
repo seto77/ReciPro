@@ -743,64 +743,34 @@ namespace Crystallography
     [Serializable()]
     public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     {
-        public new object Clone()
-        {
-            return (Vector3D)this.MemberwiseClone();
-        }
+        public new object Clone() => (Vector3D)this.MemberwiseClone();
 
-        public double d, d2;
-
-        private double theta;
-
-        [XmlIgnore]
-        public double Theta
-        {
-            set
-            {
-                theta = value;
-                TanTheta = Math.Tan(theta);
-                Tan2Theta = Math.Tan(2 * theta);
-                Sin2Theta = Math.Sin(2 * theta);
-                Cos2Theta = Math.Cos(2 * theta);
-                CosTheta = Math.Cos(theta);
-            }
-            get { return theta; }
-        }
-
-        public double TanTheta;
-        public double Tan2Theta;
-        public double Sin2Theta;
-        public double Cos2Theta;
-        public double CosTheta;
-        public double SpostSize;
-
-        public string Index;
-        public string IndexInv;
+        public double d { get; set; }
+        public string Text { get; set; } = "";
 
         /// <summary>
         /// èâä˙ílÇÕfalse
         /// </summary>
-        public bool Flag = false;
+        public bool Flag { get; set; } = false;
 
         [XmlIgnore]
-        public string[] Extinction = new string[0];
+        public string[] Extinction { get; set; } = new string[0];
 
-        public string text = "";
+        public int Argb { get; set; }
 
-        public int Argb;
+        public (int h, int k, int l) Index { get; set; }
 
-        public short h, k, l;
-        public double RelativeIntensity = 1;
-        public double RawIntensity = 0;
-
-        [XmlIgnore]
-        public Complex F = new Complex();
+        public double RelativeIntensity { get; set; } = 1;
+        public double RawIntensity { get; set; } = 0;
 
         [XmlIgnore]
-        public object Tag;
+        public Complex F { get; set; } = new Complex();
 
         [XmlIgnore]
-        public SymmetryOperation Operation;
+        public object Tag { get; set; }
+
+        [XmlIgnore]
+        public SymmetryOperation Operation { get; set; }
 
         public int CompareTo(Vector3D v)
         {
@@ -823,20 +793,18 @@ namespace Crystallography
 
         public Vector3D(double x, double y, double z)
         {
-            Flag = false;
             X = x; Y = y; Z = z;
-            d2 = X * X + Y * Y + Z * Z;
-            d = Math.Sqrt(d2);
+            //d2 = X * X + Y * Y + Z * Z;
+            d = Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
         public Vector3D(double x, double y, double z, bool IsCalcD)
         {
-            Flag = false;
             X = x; Y = y; Z = z;
             if (IsCalcD)
             {
-                d2 = X * X + Y * Y + Z * Z;
-                d = Math.Sqrt(d2);
+                //d2 = X * X + Y * Y + Z * Z;
+                d = Math.Sqrt(X * X + Y * Y + Z * Z);
             }
         }
 
@@ -844,7 +812,6 @@ namespace Crystallography
         {
             if (v.Length == 3)
             {
-                Flag = false;
                 X = v[0]; Y = v[1]; Z = v[2];
             }
             else
@@ -855,7 +822,6 @@ namespace Crystallography
         {
             if (v.Length == 3)
             {
-                Flag = false;
                 X = v[0]; Y = v[1]; Z = v[2];
             }
             else
@@ -1033,7 +999,7 @@ namespace Crystallography
             return new Vector3D(d[0], d[1], d[2], false);
         }
 
-        public override string ToString() => text != "" ? text : $"{X}, {Y}, {Z}";
+        public override string ToString() => Text != "" ? Text : $"{X}, {Y}, {Z}";
 
         public static Vector3D RandomVector(Random rn) => RandomVector(rn.NextDouble(), rn.NextDouble());
 

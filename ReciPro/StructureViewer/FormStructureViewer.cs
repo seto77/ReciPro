@@ -602,18 +602,14 @@ namespace ReciPro
             var edge = checkBoxLabelWhiteEdge.Checked;
 
             glControlMainZsort.MakeCurrent();
-            //理由はよく分からないが、Zsort フラグメントシェーダをカレントにして、一旦generateすると、うまくバッファに転送される
-            //20201105 上記の対処をしなくても、上手く描画されるようだ。謎。
             
             foreach(var s in GLObjects.Where(o => o.Rendered && o is Sphere).Cast<Sphere>().ToArray())
             {
                 var index = (s.Tag as atomID).Index;
                 var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
-                var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat)
-                { Rendered = enabledAtoms[index].ShowLabel };
-                //text.Generate(glControlMainZsort.Program);
+                var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat) { Rendered = enabledAtoms[index].ShowLabel };
                 GLObjects.Add(text);
-            }//);
+            }
             textBoxInformation.AppendText("Generation of label objects: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }
 

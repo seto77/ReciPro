@@ -256,7 +256,7 @@ namespace ReciPro
                     {
                         g.FillEllipse(brush, new RectangleF((float)(srcPt.X - radius), (float)(-srcPt.Y - radius), (float)(radius * 2), (float)(radius * 2)));
                         if (drawString)
-                            g.DrawString(vector[n].Index, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
+                            g.DrawString(vector[n].Text, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
                     }
                 }
                 else
@@ -634,7 +634,7 @@ namespace ReciPro
                 var w = (int)numericUpDownCircleW.Value;
                 if (u == 0 && v == 0 && w == 0) return;
                 var vec = (u * formMain.Crystal.A_Axis) + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
-                vec.text = "[" + u.ToString() + " " + v.ToString() + " " + w.ToString() + "]";
+                vec.Text = "[" + u.ToString() + " " + v.ToString() + " " + w.ToString() + "]";
                 formMain.Crystal.VectorOfPole.Add(vec);
                 checkedListBoxCircles.Items.Add(vec, true);
                 Draw();
@@ -655,7 +655,7 @@ namespace ReciPro
 
                 var vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
 
-                vec.text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})";
+                vec.Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})";
                 formMain.Crystal.VectorOfPole.Add(vec);
                 checkedListBoxCircles.Items.Add(vec, true);
                 Draw();

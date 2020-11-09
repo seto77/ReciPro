@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、次を使用してビルド番号とリビジョン番号を既定に設定できます
 // 以下のように '*' を使用します:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2020.11.6.0055")]
-[assembly: AssemblyFileVersion("2020.11.6.0055")]
+[assembly: AssemblyVersion("2020.11.9.0355")]
+[assembly: AssemblyFileVersion("2020.11.9.0355")]

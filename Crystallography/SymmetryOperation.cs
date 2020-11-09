@@ -13,12 +13,12 @@ namespace Crystallography
         /// <summary>
         /// 回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか
         /// </summary>
-        public int Order { get; set; }
+        public short Order { get; set; }
 
         /// <summary>
-        /// 回転の方向. +1か-1のいずれか
+        /// 回転の方向. trueは +1か falseは -1のいずれか
         /// </summary>
-        public int Sense { get; set; }
+        public bool Sense { get; set; }
 
         /// <summary>
         /// 回転の軸.
@@ -38,8 +38,8 @@ namespace Crystallography
 
         public SymmetryOperation(int order, int sense, (int U, int V, int W) direction, (double U, double V, double W) translation)
         {
-            Order = order;
-            Sense = sense;
+            Order = (short)order;
+            Sense = sense == 1;
             Direction = direction;
             Translation = translation;
         }
@@ -86,13 +86,13 @@ namespace Crystallography
                         }
                         else if (Math.Abs(Order) == 3)
                         {
-                            if (Direction == (0, 0, 1) ) 
-                                p = Sense == +1 ? (k, -h - k, l): (-h - k, h, l);
+                            if (Direction == (0, 0, 1))
+                                p = Sense ? (k, -h - k, l) : (-h - k, h, l);
                         }
                         else if (Math.Abs(Order) == 6)
                         {
-                            if (Direction == (0, 0, 1)) 
-                                p = Sense == +1 ? (h + k, -h, l): (-k, h + k, l);
+                            if (Direction == (0, 0, 1))
+                                p = Sense ? (h + k, -h, l) : (-k, h + k, l);
                         }
                     }
                     else
@@ -110,7 +110,7 @@ namespace Crystallography
                         else if (Math.Abs(Order) == 3)
                         {
                             if (Direction == (1, 1, 1))
-                                p = Sense == +1 ? (k, l, h) : (l, h, k);
+                                p = Sense ? (k, l, h) : (l, h, k);
                         }
                     }
                 }
@@ -136,10 +136,10 @@ namespace Crystallography
                     {
                         p = Direction switch
                         {
-                            (+1, +1, +1) => Sense == +1 ? (+k, +l, +h) : (+l, +h, +k),
-                            (+1, -1, -1) => Sense == +1 ? (-k, +l, -h) : (-l, -h, +k),
-                            (-1, +1, -1) => Sense == +1 ? (-k, -l, +h) : (+l, -h, -k),
-                            (-1, -1, +1) => Sense == +1 ? (+k, -l, -h) : (-l, +h, -k),
+                            (+1, +1, +1) => Sense ? (+k, +l, +h) : (+l, +h, +k),
+                            (+1, -1, -1) => Sense ? (-k, +l, -h) : (-l, -h, +k),
+                            (-1, +1, -1) => Sense ? (-k, -l, +h) : (+l, -h, -k),
+                            (-1, -1, +1) => Sense ? (+k, -l, -h) : (-l, +h, -k),
                             _ => (0, 0, 0)
                         };
                     }
@@ -147,9 +147,9 @@ namespace Crystallography
                     {
                         p = Direction switch
                         {
-                            (1, 0, 0) => Sense == +1 ? (h, l, -k) : (h, -l, k),
-                            (0, 1, 0) => Sense == +1 ? (-l, k, h) : (l, k, -h),
-                            (0, 0, 1) => Sense == +1 ? (k, -h, l) : (-k, h, l),
+                            (1, 0, 0) => Sense ? (h, l, -k) : (h, -l, k),
+                            (0, 1, 0) => Sense ? (-l, k, h) : (l, k, -h),
+                            (0, 0, 1) => Sense ? (k, -h, l) : (-k, h, l),
                             _ => (0, 0, 0)
                         };
                     }

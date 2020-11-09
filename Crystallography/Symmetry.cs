@@ -38,11 +38,16 @@ namespace Crystallography
         [XmlIgnoreAttribute]
         public string[] ExtinctionRuleStr;
 
-        public bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex(h, k, l, this);
+        public bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex((h, k, l), this);
+
+        public bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
 
         public List<Func<int, int, int, string>> CheckExtinctionFunc { get; set; } = new List<Func<int, int, int, string>>();
 
-        public string[] CheckExtinctionRule(int h, int k, int l) 
+        public string[] CheckExtinctionRule((int h, int k, int l) index) 
+            => CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null).ToArray();
+
+        public string[] CheckExtinctionRule(int h, int k, int l)
             => CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null).ToArray();
 
         public enum CrystalSytem { Unknown, Triclinic, Monoclinic, Orthorhombic, Tetragonal, Trigonal, Hexagonal, Cubic }

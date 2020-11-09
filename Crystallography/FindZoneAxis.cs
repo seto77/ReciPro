@@ -180,8 +180,8 @@ namespace Crystallography
                             Plane plane2 = zoneAxes[i].Za2.plane2;
                             var indices1 = new List<(int H, int K, int L)>();
                             var indices2 = new List<(int H, int K, int L)>();
-                            SymmetryStatic.IsRootIndex(plane1.h, plane1.k, plane1.l, cry.Symmetry, ref indices1, true);
-                            SymmetryStatic.IsRootIndex(plane2.h, plane2.k, plane2.l, cry.Symmetry, ref indices2, true);
+                            SymmetryStatic.IsRootIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, ref indices1, true);
+                            SymmetryStatic.IsRootIndex((plane2.h, plane2.k, plane2.l), cry.Symmetry, ref indices2, true);
 
                             if (indices1.Contains((zoneAxes[j].Za2.plane1.h, zoneAxes[j].Za2.plane1.k, zoneAxes[j].Za2.plane1.l))
                               && indices2.Contains((zoneAxes[j].Za2.plane2.h, zoneAxes[j].Za2.plane2.k, zoneAxes[j].Za2.plane2.l)))
@@ -224,8 +224,8 @@ namespace Crystallography
                         Plane plane2 = zoneAxes[i].Za3.plane2;
                         var indices1 = new List<(int H, int K, int L)>();
                         var indices2 = new List<(int H, int K, int L)>();
-                        SymmetryStatic.IsRootIndex(plane1.h, plane1.k, plane1.l, cry.Symmetry, ref indices1, true);
-                        SymmetryStatic.IsRootIndex(plane2.h, plane2.k, plane2.l, cry.Symmetry, ref indices2, true);
+                        SymmetryStatic.IsRootIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, ref indices1, true);
+                        SymmetryStatic.IsRootIndex((plane2.h, plane2.k, plane2.l), cry.Symmetry, ref indices2, true);
 
                         if (indices1.Contains((zoneAxes[j].Za3.plane1.h, zoneAxes[j].Za3.plane1.k, zoneAxes[j].Za3.plane1.l))
                           && indices2.Contains((zoneAxes[j].Za3.plane2.h, zoneAxes[j].Za3.plane2.k, zoneAxes[j].Za3.plane2.l)))

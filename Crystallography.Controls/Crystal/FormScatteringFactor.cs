@@ -65,7 +65,7 @@ namespace Crystallography.Controls
                     Vector3D g = c.VectorOfG[i];
                     int multi = 0;
                     double twoTheta = 2 * Math.Asin(g.Length* waveLengthControl1.WaveLength / 2);
-                    bool irreducible = SymmetryStatic.IsRootIndex(g.h, g.k, g.l, c.Symmetry, ref multi);
+                    bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, ref multi);
                     if (irreducible && !double.IsNaN(twoTheta))
                     {
                         if (waveLengthControl1.WaveSource == WaveSource.Xray)
@@ -89,17 +89,17 @@ namespace Crystallography.Controls
             foreach (Vector3D g in c.VectorOfG)
             {
                 int multi = 0;
-                bool irreducible = SymmetryStatic.IsRootIndex(g.h, g.k, g.l, c.Symmetry, ref multi);
+                bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, ref multi);
                 if (!checkBoxHideEquivalentPlane.Checked || irreducible)
                 {
-                    var condition = c.Symmetry.CheckExtinctionRule(g.h, g.k, g.l);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);
+                    var condition = c.Symmetry.CheckExtinctionRule(g.Index);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);
                     if (!checkBoxHideProhibitedPlanes.Checked || condition.Length == 0)
                     {
                         var d = 1 / g.Length* 10;
                         var twoTheta = 2 * Math.Asin(g.Length* waveLengthControl1.WaveLength / 2) / Math.PI * 180;
                         if (double.IsNaN(twoTheta))
                             twoTheta = double.PositiveInfinity;
-                       dataSet.DataTableScatteringFactor.Add(g.h, g.k, g.l, multi, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
+                       dataSet.DataTableScatteringFactor.Add(g.Index.h, g.Index.k, g.Index.l, multi, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
                     }
                 }
             }

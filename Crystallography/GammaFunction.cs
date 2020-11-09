@@ -59,12 +59,12 @@ namespace Crystallography
 
         public static double polygamma(int k, double x)/* the derivative order number */	/* variable */
         {
-            double s = 0;	/* return value */
+            double s;	/* return value */
             double y;	/* minimum value more than `slv', adding `x' to integers */
             double x2;	/* x * x */
             double pk;	/* k! */
             double pxk;	/* pxk = pow(x, k+1)	*/
-            double slv = 0;	/* sufficient large value applied for asymptotic expansion */
+            double slv;	/* sufficient large value applied for asymptotic expansion */
             double f;
             int n;	/* [slv - x] */
             int i, j;

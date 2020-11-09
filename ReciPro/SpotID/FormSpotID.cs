@@ -921,7 +921,7 @@ namespace ReciPro
             {
                 for (int i = 0; i < max; i++)
                 {
-                    foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.h, g.k, g.l)))
+                    foreach (var vec1 in gVectors2[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
                     {
                         var angle = Vector3DBase.AngleBetVectors(obsSpotsReciprocal2[i], obsSpotsReciprocal2[max]);//i番目のスポットと、j番目のスポットのなす角度
                         if (angle > 30.0 / 180.0 * Math.PI && angle < 150.0 / 180.0 * Math.PI)
@@ -983,7 +983,7 @@ namespace ReciPro
 
                             if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
                             {
-                                indices.Add((k, v2.h, v2.k, v2.l));
+                                indices.Add((k, v2.Index.h, v2.Index.k, v2.Index.l));
                                 obsList.Add(obsSpotsReciprocal[k]);
                                 refList.Add(v2);
                             }
@@ -1088,7 +1088,7 @@ namespace ReciPro
             List<Matrix3D> mList = new List<Matrix3D>();
             for (int i = 0; i < gVectors.Count - 1; i++)
             {
-                foreach (Vector3D vec1 in gVectors[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.h, g.k, g.l)))
+                foreach (Vector3D vec1 in gVectors[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
                 {
                     for (int j = i + 1; j < gVectors.Count; j++)
                     {
@@ -1207,7 +1207,7 @@ namespace ReciPro
                             foreach (var spot in g.Spots)
                             {
                                 var s = new ScalablePictureBox.Symbol(
-                                    $"{name}{n}: {spot.h} {spot.k} {spot.l}",
+                                    $"{name}{n}: {spot.Index.h} {spot.Index.k} {spot.Index.l}",
                                     new PointD(spot.X, spot.Y),
                                     Color.LightGreen, Color.DarkGreen, 5);
                                 s.Tag = tagCalcSpot;
@@ -1237,7 +1237,7 @@ namespace ReciPro
                     foreach (var spot in g.Spots)
                     {
                         var s = new ScalablePictureBox.Symbol(
-                           spot.h + " " + spot.k + " " + spot.l,
+                           spot.Index.h + " " + spot.Index.k + " " + spot.Index.l,
                            new PointD(spot.X, spot.Y),
                             Color.LightGreen, Color.DarkGreen, 5);
                         s.Tag = tagCalcSpot;

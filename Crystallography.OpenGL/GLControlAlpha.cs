@@ -564,9 +564,8 @@ namespace Crystallography.OpenGL
             GL.GetShader(fshader, ShaderParameter.CompileStatus, out status_code);
             if (status_code != 1)
             {
-#if DEBUG
-                MessageBox.Show("Error in fragment shader ");
-#endif
+                if (Crystallography.AssemblyState.IsDebug)
+                    MessageBox.Show("Error in fragment shader ");
                 throw new ApplicationException(info);
             }
 
@@ -633,8 +632,10 @@ namespace Crystallography.OpenGL
         {
             if (Program < 1) return;
             glControl.MakeCurrent();
-            foreach (var obj in objs)
-                obj.Generate(Program);
+            //foreach (var obj in objs)
+            //    obj.Generate(Program);
+            GLObject.Generate(Program, objs);
+            
             glObjects.AddRange(objs);
         }
 
