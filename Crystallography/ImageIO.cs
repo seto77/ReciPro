@@ -517,18 +517,9 @@ namespace Crystallography
             try
             {
                 var mrc = new MRC(str);
-
-                if (Ring.Intensity.Count != imageWidth * imageHeight)//前回と同じサイズではないとき
-                {
-                    Ring.Intensity.Clear();
-                    for (int i = 0; i < imageHeight * imageWidth; i++)
-                        Ring.Intensity.Add(intensity[i]);
-                }
-                else
-                {
-                    for (int i = 0; i < imageHeight * imageWidth; i++)
-                        Ring.Intensity[i] = intensity[i];
-                }
+                Ring.SrcImgSize = new Size(mrc.NX, mrc.NY);
+                Ring.Intensity = mrc.Images[0];
+                Ring.MRC = mrc;
                 Ring.ImageType = Ring.ImageTypeEnum.MRC;
 
             return true;

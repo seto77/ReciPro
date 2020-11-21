@@ -96,7 +96,13 @@ namespace ReciPro
             }
             else if(fileName.EndsWith("mrc"))
             {
-
+                if (Ring.MRC.Pixel_size_X > 1)
+                {
+                    waveLengthControl1.WaveSource = WaveSource.Electron;
+                    waveLengthControl1.Energy = Ring.MRC.HT / 1000.0;
+                    CameraLength = Ring.MRC.Camera_length * 1000;
+                    numericBoxPixelSize.Value = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.MRC.Pixel_size_X * 1E-9 / 2));
+                }
             }
             else if (fileName.EndsWith("ipa"))
             {

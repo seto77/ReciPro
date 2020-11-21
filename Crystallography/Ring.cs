@@ -279,7 +279,7 @@ namespace Crystallography
 
 		public static DigitalMicrograph.Property DigitalMicrographProperty;
 
-		public static MRC.Property MRC_Property;
+		public static MRC MRC;
 
 		/// <summary>
 		/// 生データのピクセルあたりのビット数

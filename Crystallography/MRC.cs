@@ -822,7 +822,7 @@ namespace Crystallography
                 Alpha_tilt_min = br.ReadDouble();//752
                 Alpha_tilt_max = br.ReadDouble();//760
 
-                br.BaseStream.Position = 1024 + Metadata_size;
+                br.BaseStream.Position = 1024 + NSYMBT;// Metadata_size;
             }
             #endregion
 
@@ -839,7 +839,7 @@ namespace Crystallography
                     6 => new Func<double>(() => (double)br.ReadUInt16()),
                     _ => new Func<double>(() => 0.0)
                 };
-
+                Images = new List<List<double>>();
                 for (int z = 0; z < NZ; z++)
                 {
                     Images.Add(new List<double>());
