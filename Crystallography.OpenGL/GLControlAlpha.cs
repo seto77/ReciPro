@@ -21,27 +21,31 @@ namespace Crystallography.OpenGL
     {
         #region フィールド
         private Mat4f m4id = Mat4f.Identity;
-        private int CounterBuffer = 0, LinkedListBuffer = 1;
-        private uint[] buffers = new uint[2] { 0, 0 };
+        private readonly int CounterBuffer = 0;
+        private readonly int LinkedListBuffer = 1;
+        private readonly uint[] buffers = new uint[2] { 0, 0 };
         private uint headPtrTex = 0, clearBuf = 0;
 
         private Clip Clip = null;
-        private List<GLObject> glObjects = new List<GLObject>();
-        private ParallelQuery<GLObject> glObjectsP;
-        private GLObject quad = null;
+        private readonly List<GLObject> glObjects = new List<GLObject>();
+        private readonly ParallelQuery<GLObject> glObjectsP;
+        private readonly GLObject quad = null;
 
-        private int eyePositionLocation = 0;
-        private int viewportSizeLocation = 0;
-        private int lightPositionLocation = 0;
-        private int viewMatrixLocation = 0;
-        private int projMatrixLocation = 0;
-        private int worldMatrixLocation = 0;
+        private readonly int eyePositionLocation = 0;
+        private readonly int viewportSizeLocation = 0;
+        private readonly int lightPositionLocation = 0;
+        private readonly int viewMatrixLocation = 0;
+        private readonly int projMatrixLocation = 0;
+        private readonly int worldMatrixLocation = 0;
         private int passOIT1Index = 0;
+
+        public GLControlAlpha(int passOIT1Index) => this.passOIT1Index = passOIT1Index;
+
         private int passOIT2Index = 0;
 
-        private int depthCueingNearLocation = 0;
-        private int depthCueingFarLocation = 0;
-        private int depthCueingEnabledLocation = 0;
+        private readonly int depthCueingNearLocation = 0;
+        private readonly int depthCueingFarLocation = 0;
+        private readonly int depthCueingEnabledLocation = 0;
         #endregion フィールド
 
         #region Enum
@@ -120,24 +124,27 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
         /// </summary>
-        public string VersionForZsortStr { get => "1.5.0"; }
+        public string VersionForZsortStr => "1.5.0";
+
+        private readonly int versionForOIT = 430;
 
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
         /// </summary>
-        public int VersionForOIT { get; } = 430;
+        public int GetVersionForOIT() => versionForOIT;
+
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
         /// </summary>
-        public string VersionForOITStr { get => "4.3.0"; }
+        public string VersionForOITStr => "4.3.0";
 
         /// <summary>
         /// OpenGLのバージョンが最低要件を満たしているかどうか
         /// </summary>
-        public bool VersionRequirement { get => (Version >= VersionForZsort) || (Version >= VersionForOIT); }
+        public bool VersionRequirement => (Version >= VersionForZsort) || (Version >= GetVersionForOIT());
 
         #endregion
-    
+
         public int Program { get; } = -1;
 
         public bool DisablingOpenGL { get; set; } = false;
@@ -287,6 +294,7 @@ namespace Crystallography.OpenGL
         private Mat4f worldMatrixF = Mat4f.Identity;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         [Category("Geometry")]
         public Matrix3D WorldMatrixEx
         {
@@ -445,7 +453,7 @@ namespace Crystallography.OpenGL
             Version = Convert.ToInt32(ver[0]) * 100 + Convert.ToInt32(ver[1]) * 10 + Convert.ToInt32(ver[2]);
             if (Version < VersionForZsort)
                 return;
-            if (FragShader == FragShaders.OIT && Version < VersionForOIT)
+            if (FragShader == FragShaders.OIT && Version < GetVersionForOIT())
                 return;
 
             //Shader転送

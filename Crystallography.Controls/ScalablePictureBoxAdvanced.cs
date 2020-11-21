@@ -596,13 +596,11 @@ namespace Crystallography.Controls
         {
             if (ImageIO.ReadImage(fileName))
             {
-                PseudoBitmap = new Crystallography.PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
+                PseudoBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
 
                 ProcessImageFilter();
 
-                if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
-                {
-                }
+
             }
         }
 

@@ -746,7 +746,7 @@ namespace Crystallography
         public new object Clone() => (Vector3D)this.MemberwiseClone();
 
         public double d { get; set; }
-        public string Text { get; set; } = "";
+        public string Text { get; set; }
 
         /// <summary>
         /// ‰Šú’l‚Ífalse
@@ -754,17 +754,17 @@ namespace Crystallography
         public bool Flag { get; set; } = false;
 
         [XmlIgnore]
-        public string[] Extinction { get; set; } = new string[0];
+        public string[] Extinction { get; set; }
 
         public int Argb { get; set; }
 
         public (int h, int k, int l) Index { get; set; }
 
         public double RelativeIntensity { get; set; } = 1;
-        public double RawIntensity { get; set; } = 0;
+        public double RawIntensity { get; set; }
 
         [XmlIgnore]
-        public Complex F { get; set; } = new Complex();
+        public Complex F { get; set; }
 
         [XmlIgnore]
         public object Tag { get; set; }

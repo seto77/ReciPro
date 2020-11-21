@@ -314,8 +314,6 @@
             this.symmetryControl.B = 0D;
             this.symmetryControl.Beta = 0D;
             this.symmetryControl.C = 0D;
-            this.symmetryControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("symmetryControl.CellConstants")));
-            this.symmetryControl.CellConstantsErr = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("symmetryControl.CellConstantsErr")));
             resources.ApplyResources(this.symmetryControl, "symmetryControl");
             this.symmetryControl.Gamma = 0D;
             this.symmetryControl.Name = "symmetryControl";

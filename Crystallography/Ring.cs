@@ -194,6 +194,18 @@ namespace Crystallography
 			/// </summary>
 			SMV,
 
+			/// <summary>
+			/// RadIcon社、PFで使用されている (references\ImageExsample\BL18c 柴咲さん )
+			/// </summary>
+			RadIconPF,
+
+			/// <summary>
+			/// MRC2014ファイル. FEI社のTEMのカメラで使われる. http://www.ccpem.ac.uk/mrc_format/mrc_format.php および \references\TalosF200\Manual を参照
+			/// </summary>
+			MRC
+
+
+
 			#endregion 画像タイプ
 		}
 
@@ -266,6 +278,8 @@ namespace Crystallography
 		*/
 
 		public static DigitalMicrograph.Property DigitalMicrographProperty;
+
+		public static MRC.Property MRC_Property;
 
 		/// <summary>
 		/// 生データのピクセルあたりのビット数

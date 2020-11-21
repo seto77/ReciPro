@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections;
+using System.Buffers;
 
 namespace Crystallography
 {
@@ -94,49 +94,84 @@ namespace Crystallography
             }
         }
 
-        private static (int Dim, double[] Mat) toDoubleArray(Complex[,] mat)
+        unsafe private static (int Dim, double[] Mat) toDoubleArray(DenseMatrix mat)
+        {
+            var dim = mat.Row(0).Count;
+            var matArray = new double[dim * dim * 2];
+            fixed (double* pin = matArray)
+            {
+                var matArrayP = pin;
+                for (int c = 0; c < dim; c++)
+                    for (int r = 0; r < dim; r++)
+                    {
+                        *matArrayP++ = mat[c, r].Real;
+                        *matArrayP++ = mat[c, r].Imaginary;
+                    }
+
+                return (dim, matArray);
+            }
+        }
+
+
+        unsafe private static (int Dim, double[] Mat) toDoubleArray(Complex[,] mat)
         {
             var dim = mat.GetLength(0);
             var matArray = new double[dim * dim * 2];
-            for (int c = 0, count = 0; c < dim; c++)
-                for (int r = 0; r < dim; r++)
-                {
-                    matArray[count++] = mat[c, r].Real;
-                    matArray[count++] = mat[c, r].Imaginary;
-                }
+            fixed (double* pin = matArray)
+            {
+                var matArrayP = pin;
+                for (int c = 0; c < dim; c++)
+                    for (int r = 0; r < dim; r++)
+                    {
+                        *matArrayP++ = mat[c, r].Real;
+                        *matArrayP++ = mat[c, r].Imaginary;
+                    }
 
-            return (dim, matArray);
+                return (dim, matArray);
+            }
         }
 
-        private static (int Dim, double[] Mat) toDoubleArray(Complex[] vec)
+        unsafe private static (int Dim, double[] Mat) toDoubleArray(Complex[] vec)
         {
             var dim = vec.Length;
             var vecArray = new double[dim * 2];
-            for (int c = 0, count = 0; c < dim; c++)
+            fixed (double* pin = vecArray)
             {
-                vecArray[count++] = vec[c].Real;
-                vecArray[count++] = vec[c].Imaginary;
+                var vecArrayP = pin;
+                for (int c = 0; c < dim; c++)
+                {
+                    *vecArrayP++ = vec[c].Real;
+                    *vecArrayP++ = vec[c].Imaginary;
+                }
+                return (dim, vecArray);
             }
-            return (dim, vecArray);
         }
 
-        private static DenseMatrix toDenseMatrix(double[] mat)
+        unsafe private static DenseMatrix toDenseMatrix(Span<double> mat)
         {
-            var dim = (int)Math.Sqrt(mat.Length / 2);
-            var complex = new DenseMatrix(dim, dim);
-            for (int c = 0, count = 0; c < dim; c++)
-                for (int r = 0; r < dim; r++, count += 2)
-                    complex[c, r] = new Complex(mat[count], mat[count + 1]);
-            return complex;
+            fixed (double* pin = mat)
+            {
+                var matP = pin;
+                var dim = (int)Math.Sqrt(mat.Length / 2);
+                var complex = new DenseMatrix(dim, dim);
+                for (int c = 0; c < dim; c++)
+                    for (int r = 0; r < dim; r++, matP += 2)
+                        complex[c, r] = new Complex(*matP, *(matP+1));
+                return complex;
+            }
         }
 
-        private static DenseVector toDenseVector(double[] vec)
+        unsafe private static DenseVector toDenseVector(Span<double> vec)
         {
-            var dim = vec.Length / 2;
-            var complex = new DenseVector(dim);
-            for (int c = 0, count = 0; c < dim; c++, count += 2)
-                complex[c] = new Complex(vec[count], vec[count + 1]);
-            return complex;
+            fixed (double* pin = vec)
+            {
+                var vecP = pin;
+                var dim = vec.Length / 2;
+                var complex = new DenseVector(dim);
+                for (int c = 0; c < dim; c++, vecP += 2)
+                    complex[c] = new Complex(*vecP, *(vecP + 1));
+                return complex;
+            }
         }
 
 
@@ -146,7 +181,11 @@ namespace Crystallography
         /// </summary>
         /// <param name="mat"></param>
         /// <returns></returns>
-        static public DenseMatrix Inverse(DenseMatrix mat) => Inverse(mat.ToArray());
+        static public DenseMatrix Inverse(DenseMatrix mat)
+        {
+            var (_dim, _mat) = toDoubleArray(mat);
+            return Inverse(_dim, _mat);
+        }
 
         /// <summary>
         /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
@@ -167,9 +206,11 @@ namespace Crystallography
         /// <returns></returns>
         static public DenseMatrix Inverse(int dim, double[] _mat)
         {
-            var _inv = new double[dim * dim * 2];
+            var _inv = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             _Inverse(dim, _mat, _inv);
-            return toDenseMatrix(_inv);
+            var result = toDenseMatrix(_inv);
+            ArrayPool<double>.Shared.Return(_inv);
+            return result;
         }
         #endregion 逆行列
 
@@ -185,11 +226,16 @@ namespace Crystallography
             //matをdouble[]に変換
             var (dim, inputValues) = toDoubleArray(mat);
 
-            var values = new double[dim * 2];
-            var vectors = new double[dim * dim * 2];
+            var values = ArrayPool<double>.Shared.Rent(dim * 2);
+            var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            
             _EigenSolver(dim, inputValues, values, vectors);
+            var result = (toDenseVector(values), toDenseMatrix(vectors));
 
-            return (toDenseVector(values), toDenseMatrix(vectors));
+            ArrayPool<double>.Shared.Return(values);
+            ArrayPool<double>.Shared.Return(vectors);
+
+            return result; ;
         }
 
         #endregion 固有値
@@ -202,26 +248,30 @@ namespace Crystallography
         /// <param name="thickness"></param>
         /// <param name="coeff"></param>
         /// <returns></returns>
-        static public Complex[][] CBEDSolver(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
+        unsafe static public Complex[][] CBEDSolver(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
         {
             (int dim, double[] _potential) = toDoubleArray(potential);
 
             (_, double[] _psi0) = toDoubleArray(psi0);
 
-            var tempResult = new double[dim * thickness.Length * 2];
+            var tempResult = ArrayPool<double>.Shared.Rent(dim * thickness.Length * 2);
             _CBEDSolver(dim, _potential, _psi0, thickness.Length, thickness, coeff, tempResult);
 
-            int n = 0;
             var result = new Complex[thickness.Length][];
-            for (int t = 0; t < thickness.Length; t++)
+
+            fixed (double* pin = tempResult)
             {
-                result[t] = new Complex[dim];
-                for (int g = 0; g < dim; g++)
+                var tempResultP = pin;
+                for (int t = 0; t < thickness.Length; t++)
                 {
-                    result[t][g] = new Complex(tempResult[n], tempResult[n + 1]);
-                    n += 2;
+                    result[t] = new Complex[dim];
+                    for (int g = 0; g < dim; g++, tempResultP += 2)
+                        result[t][g] = new Complex(*tempResultP, *(tempResultP + 1));
                 }
             }
+
+            ArrayPool<double>.Shared.Return(tempResult);
+          
             return result;
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.ServiceModel.Description;
 using System.Threading.Tasks;
 
 namespace Crystallography

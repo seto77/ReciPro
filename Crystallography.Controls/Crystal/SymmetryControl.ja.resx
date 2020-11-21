@@ -133,68 +133,14 @@
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>314, 54</value>
   </data>
-  <data name="numericBoxBeta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
   <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>249, 54</value>
-  </data>
-  <data name="numericBoxGammaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxAlphaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxBetaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
   </data>
   <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 54</value>
   </data>
   <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 54</value>
-  </data>
-  <data name="numericBoxGamma.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxBErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxB.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 54</value>
@@ -205,26 +151,8 @@
   <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 54</value>
   </data>
-  <data name="numericBoxC.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 54</value>
-  </data>
-  <data name="numericBoxCErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="numericBoxAErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
-  </data>
-  <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">

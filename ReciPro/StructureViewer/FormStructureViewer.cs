@@ -470,7 +470,6 @@ namespace ReciPro
             sw.Restart();
 
             var dic1 = new Dictionary<string, bondVertex[]>();
-            var dic1P = dic1.AsParallel();
             bondControl.GetAll().Where(b => b.Enabled).ToList().ForEach(bond =>
             {
                 double min2 = bond.MinLength * bond.MinLength, max2 = bond.MaxLength * bond.MaxLength, radius = bond.Radius;
@@ -525,8 +524,8 @@ namespace ReciPro
                    }
                 });
 
+                //頂点のRenderedをTrueに変更
                 var dic2P = dic2.AsParallel();
-
                 dic2P.SelectMany(d => d.Value.Select(v2 => v2.ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
                 dic2P.Select(d => d.Key.ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
@@ -1490,7 +1489,7 @@ namespace ReciPro
             if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
                 return;//変更が無かったら何もしない。
 
-            if (comboBoxTransparency.SelectedIndex == 1 && glControlMain.Version < glControlMain.VersionForOIT)
+            if (comboBoxTransparency.SelectedIndex == 1 && glControlMain.Version < glControlMain.GetVersionForOIT())
             {
                 MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
                     " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");

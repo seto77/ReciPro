@@ -1077,32 +1077,34 @@ namespace Crystallography
         public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
         {
             if (A_Star == null) SetAxis();
+            double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
+            double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
+            double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
-            double gMax = 1 / dMin;
-
-            var directions = new List<(int h, int k, int l)>();
+            var gMax = 1 / dMin;
+            (int h, int k, int l)[] directions;
             #region directionÇèâä˙âª
             if (excludeLatticeCondition)
             {
                 if (Symmetry.LatticeTypeStr == "F")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) });
+                    directions = new [] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
                 else if (Symmetry.LatticeTypeStr == "A")
-                    directions.AddRange(new (int h, int k, int l)[] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) });
+                    directions = new [] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) };
                 else if (Symmetry.LatticeTypeStr == "B")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) });
+                    directions = new [] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) };
                 else if (Symmetry.LatticeTypeStr == "C")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) });
+                    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) };
                 else if (Symmetry.LatticeTypeStr == "I")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) });
+                    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) };
                 else if (Symmetry.LatticeTypeStr == "R" && Symmetry.SpaceGroupHMsubStr == "H")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) });
+                    directions = new [] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
                 else if (Symmetry.CrystalSystemStr == "trigonal" || Symmetry.CrystalSystemStr == "hexagonal")
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) });
+                    directions = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
                 else
-                    directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
+                    directions = new [] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
             }
             else
-                directions.AddRange(new (int h, int k, int l)[] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
+                directions = new [] { (1, 0, 0),  (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
 
             #endregion
 
@@ -1110,17 +1112,12 @@ namespace Crystallography
 
             var composeKey = new Func<int, int, int, int>((h, k, l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1);
             var decomposeKey = new Func<int, (int h, int k, int l)>(key => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255));
-
+            
+            var maxGnum = 250000;
             var zeroKey = (255 << 20) + (255 << 10) + 255;
             var outer = new Dictionary<int, double>() { { zeroKey, 0 } };
+            var gDic = new Dictionary<int, (double x, double y, double z, double len)>() { { zeroKey, (0, 0, 0, 0) } };
             var minG = 0.0;
-
-            double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
-            double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
-            double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
-
-            var maxGnum = 250000;
-            var gDic = new Dictionary<int, (double x, double y, double z, double len)>() { { zeroKey, (0,0,0,0) } };
 
             while (gDic.Count < maxGnum && (minG = outer.Values.Min()) < gMax)
             {
@@ -1128,6 +1125,7 @@ namespace Crystallography
                 outerList.ForEach(o => outer.Remove(o));
 
                 foreach (var (h1, k1, l1) in outerList.Select(o => decomposeKey(o)))
+                { 
                     foreach ((int h2, int k2, int l2) in directions)
                     {
                         int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = composeKey(h, k, l);// h * 1024 * 1024 + k * 1024 + l;
@@ -1138,7 +1136,7 @@ namespace Crystallography
                             gDic.Add(key, (x, y, z, len));
                             outer.Add(key, len);
                         }
-                    }
+                  }  }
             }
             gDic.Remove(zeroKey);
 

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Crystallography.Controls
 {
@@ -47,6 +48,8 @@ namespace Crystallography.Controls
         /// <summary>
         /// Cell constants の get/set. 単位はnm, radian.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
         {
             get => (numericBoxA.Value /10, numericBoxB.Value / 10, numericBoxC.Value / 10, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue,numericBoxGamma.RadianValue);
@@ -74,6 +77,8 @@ namespace Crystallography.Controls
         /// <summary>
         /// Cell constants error の get/set. 単位はnm, radian.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public (double AErr, double BErr, double CErr, double AlphaErr, double BetaErr, double GammaErr) CellConstantsErr
         {
             get => (numericBoxAErr.Value / 10, numericBoxBErr.Value / 10, numericBoxCErr.Value / 10,

@@ -13,8 +13,6 @@ namespace Crystallography
 
         public static (string Title, string Message, bool NeedUpdate, string URL, string Path) Check(string software, string version)
         {
-            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-                return ("Error!", "This is Click Once version. The update function is only available for msi version. Sorry.", false, "", "");//click onceの場合
             try
             {
                 using var wc = new WebClient();

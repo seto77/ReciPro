@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks.Sources;
 using System.Windows.Forms;
 
 namespace Crystallography
@@ -32,6 +33,7 @@ namespace Crystallography
             "tif",
             "png",
             "smv",
+            "mrc",
         };
 
         public static string FilterString
@@ -110,6 +112,20 @@ namespace Crystallography
             br.Close();
             return (temp[0] == 0x49 && temp[1] == 0x49) || (temp[0] == 0x4D && temp[1] == 0x4D);
         }
+
+
+        public static bool Check_PF_RAW(string fileName)
+        {
+            //references\ImageExsample\BL18c 柴咲さん　のヘッダ情報を参考
+            //最初の4バイトと、次の4バイトは、文字列であり、数値に変換可能で、"0236"と"0052"
+            var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+            var str1 =new string( br.ReadChars(4));
+            var str2 = new string(br.ReadChars(4));
+            br.Close();
+            return str1 == "0236" && str2 == "0052";
+
+        }
+
 
         /// <summary>
         /// 指定されたfileを読み込み、読み込んだ内容はRing.***に保存される。失敗したときはfalseを返す。flagはノーマライズするかどうか。
@@ -197,6 +213,8 @@ namespace Crystallography
                 result = RadIcon(str);
             else if (str.ToLower().EndsWith("smv"))//Dexela
                 result = SMV(str);
+            else if (str.ToLower().EndsWith("mrc"))
+                result = MRC(str);
             else
                 return false;
 
@@ -289,54 +307,139 @@ namespace Crystallography
         }
         #endregion
 
-        #region RadIcon
+        #region RadIcon rawファイル
         public static bool RadIcon(string str)
         {
             try
             {
-                uint[] img = new uint[0];
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
-
-                int imageWidth = 0, imageHeight = 0;
-                if (new FileInfo(str).Length == 6390144)
+                if (new FileInfo(str).Length == 6390144)//2064*1548のサイズを持つ検出器 (SACLA EH5の場合)
                 {
-                    imageWidth = 2064;
-                    imageHeight = 1548;
-                }
-                else
-                    return false;
+                    var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+                    int imageWidth = 2064, imageHeight = 1548, length = imageWidth * imageHeight;
+                    if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
+                    {
+                        Ring.Intensity.Clear();
+                        for (int y = 0; y < imageHeight; y++)
+                            for (int x = 0; x < imageWidth; x++)
+                                Ring.Intensity.Add(256 * br.ReadByte() + br.ReadByte());
+                    }
+                    else
+                    {
+                        for (int y = 0, n = 0; y < imageHeight; y++)
+                            for (int x = 0; x < imageWidth; x++, n++)
+                                Ring.Intensity[n++] = 256 * br.ReadByte() + br.ReadByte();
+                    }
+                    br.Close();
 
-                int length = imageWidth * imageHeight;
+                    Ring.BitsPerPixels = 16;
+                    Ring.SrcImgSize = new Size(imageWidth, imageHeight);
+                    Ring.ImageType = Ring.ImageTypeEnum.RadIcon;
+                    Ring.Comments = "";
 
-                if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-                {
-                    Ring.Intensity.Clear();
-                    for (int y = 0; y < imageHeight; y++)
-                        for (int x = 0; x < imageWidth; x++)
-                            Ring.Intensity.Add(256 * br.ReadByte() + br.ReadByte());
-                }
-                else
-                {
-                    int n = 0;
-                    for (int y = 0; y < imageHeight; y++)
-                        for (int x = 0; x < imageWidth; x++)
-                            Ring.Intensity[n++] = 256 * br.ReadByte() + br.ReadByte();
                 }
 
-                Ring.BitsPerPixels = 16;
+                //2020年に導入された、PFのRAWファイル形式 (references\ImageExsample\BL18c 柴咲さん  を参考せよ)
+                else if (Check_PF_RAW(str))
+                {
+                    var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+                    var offsetToFirstImage = new string(br.ReadChars(4)); 
+                    var gapBetweenImages = new string(br.ReadChars(4));
 
-                br.Close();
+                    //保存ソフト型名
+                    var software = new string(br.ReadChars(16));
+                    //センサ型式
+                    var sensor = new string(br.ReadChars(20));
+                    //画像情報 予備
+                    var temp = new string(br.ReadChars(2));
+                    //画像情報 画像の補正状態
+                    var correction = new string(br.ReadChars(1));
+                    //画像情報 画像の種別
+                    var type = new string(br.ReadChars(1));
+                    //画像情報 Y方向ビニング
+                    var binning_Y = new string(br.ReadChars(1));
+                    //画像情報 X方向ビニング
+                    var binning_X = new string(br.ReadChars(1));
+                    //画像情報 読み出し方向
+                    var direction = new string(br.ReadChars(1));
+                    //画像情報 有効ビット幅
+                    var bitLength = new string(br.ReadChars(1));
 
-                Ring.SrcImgSize = new Size(imageWidth, imageHeight);
-                Ring.ImageType = Ring.ImageTypeEnum.RadIcon;
-                Ring.Comments = "";
+                    //画像取得時の積算回数	
+                    var accumulation_number = new string(br.ReadChars(4)).ToInt();
+
+                    //露光時間(μS) ExposureTime
+                    var exposure_time = new string(br.ReadChars(8)).ToInt();
+                    //間隔(frame)
+                    var frame = new string(br.ReadChars(4)).ToInt();
+                    //格納画像枚数 Number of stored images
+                    var num_of_stored_images = new string(br.ReadChars(4)).ToInt();
+                    //使用画素欠陥データ ファイル名
+                    var filename_pixel_defects = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+                    //使用暗電流データ ファイル名
+                    var filename_dark = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+                    //使用感度補正データ ファイル名
+                    var filename_correction = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+
+                    Ring.SequentialImageIntensities = new List<List<double>>();
+                    Ring.SequentialImageNames = new List<string>();
+
+                    var read = bitLength == "7" ? new Func<double>(() => br.ReadByte()) : new Func<double>(() => br.ReadInt16());
+
+                    //画像サイズ (H)
+                    var width = new string(br.ReadChars(8)).ToInt();
+                    //画像サイズ (V)
+                    var height = new string(br.ReadChars(8)).ToInt();
+
+                    //画像読み込みループ
+                    for (int i = 0; i<num_of_stored_images; i++)
+                    {
+                        var num = new string(br.ReadChars(4)).ToInt();
+                        var time = new string(br.ReadChars(16));
+                        var option = Encoding.UTF8.GetString(br.ReadBytes(32));
+
+                        Ring.SequentialImageNames.Add(num.ToString());
+                        Ring.SequentialImageIntensities.Add(new List<double>());
+                        for (int y = 0; y < height; y++)
+                            for (int x = 0; x < width; x++)
+                                Ring.SequentialImageIntensities[i].Add(read());
+                    }
+
+                    if (Ring.Intensity.Count != Ring.SequentialImageIntensities[0].Count)//前回と同じサイズではないとき
+                    {
+                        Ring.Intensity.Clear();
+                        for (int i = 0; i < Ring.SequentialImageIntensities[0].Count; i++)
+                            Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Ring.SequentialImageIntensities[0].Count; i++)
+                            Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
+                    }
+
+                    br.Close();
+
+                    Ring.SrcImgSize = new Size(width, height);
+                    Ring.ImageType = Ring.ImageTypeEnum.RadIconPF;
+                    Ring.Comments =
+                        "Software: " + software.TrimEnd() + "\r\n" +
+                        "Sensor: " + sensor.TrimEnd() + "\r\n" +
+                        "Num. of stored images: " + num_of_stored_images.ToString() + "\r\n" +
+                        "Exposure time (us): " + exposure_time.ToString() + " ms.";
+
+                    return true;
+                }
+
+
+
+                return false;
+
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return false;
             }
-            return true;
         } 
         #endregion
 
@@ -406,8 +509,38 @@ namespace Crystallography
                 return false;
             }
             return true;
-        } 
+        }
         #endregion
+
+        private static bool MRC(string str)
+        {
+            try
+            {
+                var mrc = new MRC(str);
+
+                if (Ring.Intensity.Count != imageWidth * imageHeight)//前回と同じサイズではないとき
+                {
+                    Ring.Intensity.Clear();
+                    for (int i = 0; i < imageHeight * imageWidth; i++)
+                        Ring.Intensity.Add(intensity[i]);
+                }
+                else
+                {
+                    for (int i = 0; i < imageHeight * imageWidth; i++)
+                        Ring.Intensity[i] = intensity[i];
+                }
+                Ring.ImageType = Ring.ImageTypeEnum.MRC;
+
+            return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
+
 
         #region MAR
         public static bool MAR(string str)

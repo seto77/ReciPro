@@ -84,7 +84,7 @@ namespace ReciPro
 
             if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
             {//DigitalMicroGraphデータであればスケールの情報などを取得
-                if (Ring.DigitalMicrographProperty.PixelUnit == Crystallography.PixelUnitEnum.NanoMeterInv)
+                if (Ring.DigitalMicrographProperty.PixelUnit == PixelUnitEnum.NanoMeterInv)
                 {
                     waveLengthControl1.WaveSource = WaveSource.Electron;
                     waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
@@ -94,7 +94,11 @@ namespace ReciPro
                     double scale = Ring.DigitalMicrographProperty.PixelScale;
                 }
             }
-            if (fileName.EndsWith("ipa"))
+            else if(fileName.EndsWith("mrc"))
+            {
+
+            }
+            else if (fileName.EndsWith("ipa"))
             {
                 waveLengthControl1.WaveSource = Ring.IP.WaveProperty.Source;
                 waveLengthControl1.WaveLength = Ring.IP.WaveProperty.WaveLength;
@@ -1026,8 +1030,8 @@ namespace ReciPro
                     }).Sum();
                 });
 
-                var euler = Euler.GetEulerAngle(initialRotation);
-                var r = MathNet.Numerics.FindMinimum.OfFunction(func, euler.Phi, euler.Theta, euler.Psi);
+                var (Phi, Theta, Psi) = Euler.GetEulerAngle(initialRotation);
+                var r = MathNet.Numerics.FindMinimum.OfFunction(func, Phi, Theta, Psi);
 
                 return (Euler.SetEulerAngle(r.Item1, r.Item2, r.Item3), func(r.Item1, r.Item2, r.Item3) / v1.Length);
             }

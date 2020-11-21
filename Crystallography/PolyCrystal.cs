@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Xml.Schema;
 using System.Numerics;
+using System.Collections.Concurrent;
 
 namespace Crystallography
 {
@@ -683,12 +684,12 @@ namespace Crystallography
 
             var subDiv3 = SubDiv * SubDiv * SubDiv;
 
-            double maxConvergenceHK = Math.Sin(BaseCrystal.AngleResolution / 180.0 * Math.PI / 2) / detector.WaveLength;//逆空間での、収束による逆格子点のにじみ(X線軸垂直な方向)
+            var maxConvergenceHK = Math.Sin(BaseCrystal.AngleResolution / 180.0 * Math.PI / 2) / detector.WaveLength;//逆空間での、収束による逆格子点のにじみ(X線軸垂直な方向)
             if (SubDiv == 1)
                 maxConvergenceHK = Math.Sin(detector.Convergence / 2) / detector.WaveLength;
-            double maxConvergenceHK2 = maxConvergenceHK * maxConvergenceHK;
+            var maxConvergenceHK2 = maxConvergenceHK * maxConvergenceHK;
             double maxExcitationError2 = reciprocalPointSize2 + maxMonochroHK2 + maxConvergenceHK2, maxExcitationError = Math.Sqrt(maxExcitationError2);
-            double maxHk2square = reciprocalPointSize2 + maxConvergenceHK2; // (-y,x,0)方向の半値幅
+            var maxHk2square = reciprocalPointSize2 + maxConvergenceHK2; // (-y,x,0)方向の半値幅
 
             var camPerRes = detector.CameraLength / detector.Resolution;
             double cX = detector.Center.X, cY = detector.Center.Y;
@@ -700,7 +701,6 @@ namespace Crystallography
             Pixel = new (int Index, double Intensity)[TotalCrystalline][];
 
             #region  エワルド球に近い(回折条件に引っ掛かる)逆格子ベクトルを探索するローカル関数
-
             int[] searchValidIndex(int num)
             {
                 var baseRot = new Matrix3D(Rotations[num]);
@@ -722,14 +722,14 @@ namespace Crystallography
                         if (ptX < imageWidth - 1 && ptX > 0 && ptY < imageHeight - 1 && ptY > 0)
                         {
                             //エワルド球面が、試料近傍で平面近似できるとして計算する  楕円(x-X)^2/hk1^2 + (z-Z)^2/hk3^2 == 1 と 直線 y = X/(R-Z) x + R(1-sqrt(X^2/(R-Z)^2+1)) の連立方程式を解く
-                            double xyLength2 = X * X + Y * Y;
-                            double hk1square = maxHk2square + monochromaticity2 * xyLength2;//(x,y,0)方向の半値幅
-                            double hk3square = reciprocalPointSize2 + monochromaticity2 * Z * Z;// (0,0,z)方向の半値幅
-                            double hk3per1 = hk3square / hk1square;
-                            double sqrt = Math.Sqrt(1 + xyLength2 / rz2);
-                            double a = hk3per1 + xyLength2 / rz2;
-                            double b2 = (hk3per1 + (ewaldR * sqrt - ewaldR + Z) / rz) * (hk3per1 + (ewaldR * sqrt - ewaldR + Z) / rz) * xyLength2;
-                            double c = -hk3square * 4 + 2 * ewaldR * (ewaldR - rz * sqrt - Z) + hk3per1 * xyLength2 + ewaldR2 * xyLength2 / rz2 + Z * Z;//最初の項hk3へ書ける数値が許容半値幅の二乗
+                            var xyLength2 = X * X + Y * Y;
+                            var hk1square = maxHk2square + monochromaticity2 * xyLength2;//(x,y,0)方向の半値幅
+                            var hk3square = reciprocalPointSize2 + monochromaticity2 * Z * Z;// (0,0,z)方向の半値幅
+                            var hk3per1 = hk3square / hk1square;
+                            var sqrt = Math.Sqrt(1 + xyLength2 / rz2);
+                            var a = hk3per1 + xyLength2 / rz2;
+                            var b2 = (hk3per1 + (ewaldR * sqrt - ewaldR + Z) / rz) * (hk3per1 + (ewaldR * sqrt - ewaldR + Z) / rz) * xyLength2;
+                            var c = -hk3square * 4 + 2 * ewaldR * (ewaldR - rz * sqrt - Z) + hk3per1 * xyLength2 + ewaldR2 * xyLength2 / rz2 + Z * Z;//最初の項hk3へ書ける数値が許容半値幅の二乗
                             if (b2 - a * c >= 0)
                                 result.Add(n);
                         }
@@ -740,7 +740,6 @@ namespace Crystallography
             #endregion
 
             #region 逆格子ベクトルの回折位置・強度計算し,Pixelに格納するローカル関数
-
             double log2 = Math.Log(2), sqrtPiLog2 = Math.Sqrt(Math.PI * log2);
             (int Index, double Intensity)[] calculatePixel(int num)
             {
@@ -750,24 +749,26 @@ namespace Crystallography
                          (elasticity.GetStrainByHill(BaseCrystal.Symmetry, r, BaseCrystal.Stress, BaseCrystal.Strain, BaseCrystal.HillCoefficient) + new Matrix3D()).Inverse() * r).ToArray();
 
                 var result = new Dictionary<int, double>();
+                
+                var rotArray = rotations.Select(r => r.ToArrayRowMajorOrder()).ToArray();
 
-                foreach (var rot in rotations.Select(r => r.ToArrayRowMajorOrder()).ToArray())
+                foreach (int gNum in ValidIndex[num])
                 {
-                    foreach (int gNum in ValidIndex[num])
+                    (var gX, var gY, var gZ, var Hk1, var Hk2, var Hk3, var Intensity, var Intensity2) = G[gNum];
+                    foreach (var rot in rotArray)
                     {
-                        (var gX, var gY, var gZ, var Hk1, var Hk2, var Hk3, var Intensity, var Intensity2) = G[gNum];
                         var X = rot[0] * gX + rot[1] * gY + rot[2] * gZ;
                         var Y = rot[3] * gX + rot[4] * gY + rot[5] * gZ;
                         var Z = rot[6] * gX + rot[7] * gY + rot[8] * gZ;
                         double xyLength2 = X * X + Y * Y, xyLength = Math.Sqrt(xyLength2), rz = ewaldR - Z, rz2 = rz * rz;
                         //初期位置の計算
                         var XY = (Hk3 / Hk1 + (ewaldR * Math.Sqrt(1 + xyLength2 / rz2) - ewaldR + Z) / rz) / (Hk3 / Hk1 + xyLength2 / rz2) * xyLength;
-                        var d = camPerRes / Math.Sqrt(ewaldR2/ XY / XY - 1) / xyLength;
-                        int startPosition = (int)(-d * Y + cY + 0.5) * imageWidth + (int)(d * X + cX + 0.5);
+                        var d = camPerRes / Math.Sqrt(ewaldR2 / XY / XY - 1) / xyLength;
+                        var startPosition = (int)(-d * Y + cY + 0.5) * imageWidth + (int)(d * X + cX + 0.5);
                         var tempIntensity = Intensity2 / subDiv3 * SolidAngle[num];
 
-                        int angle = (int)((Math.Atan2(Y, X) / Math.PI + 1.0) * SpotShapesAngleDivision / 2);
-                        foreach(var index in SpotShapesSortedIndex[gNum][angle]) //現在のピクセル位置から、周辺強度を計算していって、半値幅の2倍以上になったら終了
+                        var angle = (int)((Math.Atan2(Y, X) / Math.PI + 1.0) * SpotShapesAngleDivision / 2);
+                        foreach (var index in SpotShapesSortedIndex[gNum][angle]) //現在のピクセル位置から、周辺強度を計算していって、半値幅の2倍以上になったら終了
                         {
                             int pos = startPosition + index;
                             if ((uint)pos < imageLength)
@@ -782,6 +783,7 @@ namespace Crystallography
                                 else if (dev2 < DeviationThreshold[gNum])
                                 {
                                     var temp = sqrtPiLog2 * Math.Exp(-log2 * dev2) * tempIntensity * area;
+
                                     if (result.ContainsKey(pos))
                                         result[pos] += temp;
                                     else

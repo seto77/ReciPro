@@ -35,15 +35,27 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label48 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
+            this.numericBoxBeta = new Crystallography.Controls.NumericBox();
+            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
             this.label47 = new System.Windows.Forms.Label();
+            this.numericBoxGammaErr = new Crystallography.Controls.NumericBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.numericBoxAlphaErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxBetaErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxA = new Crystallography.Controls.NumericBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.numericBoxGamma = new Crystallography.Controls.NumericBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.numericBoxBErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxB = new Crystallography.Controls.NumericBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.numericBoxC = new Crystallography.Controls.NumericBox();
+            this.numericBoxCErr = new Crystallography.Controls.NumericBox();
+            this.numericBoxAErr = new Crystallography.Controls.NumericBox();
             this.label44 = new System.Windows.Forms.Label();
             this.groupBoxSymmetry = new System.Windows.Forms.GroupBox();
             this.comboBoxSpaceGroup = new System.Windows.Forms.ComboBox();
@@ -57,18 +69,6 @@
             this.comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.numericBoxBeta = new Crystallography.Controls.NumericBox();
-            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
-            this.numericBoxGammaErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxAlphaErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxBetaErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxA = new Crystallography.Controls.NumericBox();
-            this.numericBoxGamma = new Crystallography.Controls.NumericBox();
-            this.numericBoxBErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxB = new Crystallography.Controls.NumericBox();
-            this.numericBoxC = new Crystallography.Controls.NumericBox();
-            this.numericBoxCErr = new Crystallography.Controls.NumericBox();
-            this.numericBoxAErr = new Crystallography.Controls.NumericBox();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxSymmetry.SuspendLayout();
@@ -133,17 +133,101 @@
             this.label46.Name = "label46";
             this.toolTip.SetToolTip(this.label46, resources.GetString("label46.ToolTip"));
             // 
+            // numericBoxBeta
+            // 
+            resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
+            this.numericBoxBeta.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBeta.Name = "numericBoxBeta";
+            this.numericBoxBeta.RestrictLimitValue = false;
+            this.numericBoxBeta.SkipEventDuringInput = false;
+            this.numericBoxBeta.SmartIncrement = true;
+            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip1"));
+            this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxAlpha
+            // 
+            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
+            this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlpha.Name = "numericBoxAlpha";
+            this.numericBoxAlpha.RestrictLimitValue = false;
+            this.numericBoxAlpha.SkipEventDuringInput = false;
+            this.numericBoxAlpha.SmartIncrement = true;
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip1"));
+            this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
             // label47
             // 
             resources.ApplyResources(this.label47, "label47");
             this.label47.Name = "label47";
             this.toolTip.SetToolTip(this.label47, resources.GetString("label47.ToolTip"));
             // 
+            // numericBoxGammaErr
+            // 
+            resources.ApplyResources(this.numericBoxGammaErr, "numericBoxGammaErr");
+            this.numericBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGammaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGammaErr.Name = "numericBoxGammaErr";
+            this.numericBoxGammaErr.RestrictLimitValue = false;
+            this.numericBoxGammaErr.SkipEventDuringInput = false;
+            this.numericBoxGammaErr.SmartIncrement = true;
+            this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip1"));
+            this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
             // label23
             // 
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
             this.toolTip.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
+            // 
+            // numericBoxAlphaErr
+            // 
+            resources.ApplyResources(this.numericBoxAlphaErr, "numericBoxAlphaErr");
+            this.numericBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlphaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAlphaErr.Name = "numericBoxAlphaErr";
+            this.numericBoxAlphaErr.RestrictLimitValue = false;
+            this.numericBoxAlphaErr.SkipEventDuringInput = false;
+            this.numericBoxAlphaErr.SmartIncrement = true;
+            this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip1"));
+            this.numericBoxAlphaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxBetaErr
+            // 
+            resources.ApplyResources(this.numericBoxBetaErr, "numericBoxBetaErr");
+            this.numericBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBetaErr.Name = "numericBoxBetaErr";
+            this.numericBoxBetaErr.RestrictLimitValue = false;
+            this.numericBoxBetaErr.SkipEventDuringInput = false;
+            this.numericBoxBetaErr.SmartIncrement = true;
+            this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip1"));
+            this.numericBoxBetaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxA
+            // 
+            resources.ApplyResources(this.numericBoxA, "numericBoxA");
+            this.numericBoxA.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxA.Name = "numericBoxA";
+            this.numericBoxA.RestrictLimitValue = false;
+            this.numericBoxA.SkipEventDuringInput = false;
+            this.numericBoxA.SmartIncrement = true;
+            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxA, resources.GetString("numericBoxA.ToolTip1"));
+            this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label26
             // 
@@ -157,11 +241,53 @@
             this.label45.Name = "label45";
             this.toolTip.SetToolTip(this.label45, resources.GetString("label45.ToolTip"));
             // 
+            // numericBoxGamma
+            // 
+            resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
+            this.numericBoxGamma.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGamma.Name = "numericBoxGamma";
+            this.numericBoxGamma.RestrictLimitValue = false;
+            this.numericBoxGamma.SkipEventDuringInput = false;
+            this.numericBoxGamma.SmartIncrement = true;
+            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip1"));
+            this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
             this.toolTip.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
+            // 
+            // numericBoxBErr
+            // 
+            resources.ApplyResources(this.numericBoxBErr, "numericBoxBErr");
+            this.numericBoxBErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxBErr.Name = "numericBoxBErr";
+            this.numericBoxBErr.RestrictLimitValue = false;
+            this.numericBoxBErr.SkipEventDuringInput = false;
+            this.numericBoxBErr.SmartIncrement = true;
+            this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip1"));
+            this.numericBoxBErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxB
+            // 
+            resources.ApplyResources(this.numericBoxB, "numericBoxB");
+            this.numericBoxB.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxB.Name = "numericBoxB";
+            this.numericBoxB.RestrictLimitValue = false;
+            this.numericBoxB.SkipEventDuringInput = false;
+            this.numericBoxB.SmartIncrement = true;
+            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxB, resources.GetString("numericBoxB.ToolTip1"));
+            this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label24
             // 
@@ -186,6 +312,48 @@
             resources.ApplyResources(this.label27, "label27");
             this.label27.Name = "label27";
             this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
+            // 
+            // numericBoxC
+            // 
+            resources.ApplyResources(this.numericBoxC, "numericBoxC");
+            this.numericBoxC.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxC.Name = "numericBoxC";
+            this.numericBoxC.RestrictLimitValue = false;
+            this.numericBoxC.SkipEventDuringInput = false;
+            this.numericBoxC.SmartIncrement = true;
+            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxC, resources.GetString("numericBoxC.ToolTip1"));
+            this.numericBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxCErr
+            // 
+            resources.ApplyResources(this.numericBoxCErr, "numericBoxCErr");
+            this.numericBoxCErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCErr.Name = "numericBoxCErr";
+            this.numericBoxCErr.RestrictLimitValue = false;
+            this.numericBoxCErr.SkipEventDuringInput = false;
+            this.numericBoxCErr.SmartIncrement = true;
+            this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip1"));
+            this.numericBoxCErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
+            // 
+            // numericBoxAErr
+            // 
+            resources.ApplyResources(this.numericBoxAErr, "numericBoxAErr");
+            this.numericBoxAErr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAErr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAErr.Name = "numericBoxAErr";
+            this.numericBoxAErr.RestrictLimitValue = false;
+            this.numericBoxAErr.SkipEventDuringInput = false;
+            this.numericBoxAErr.SmartIncrement = true;
+            this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.toolTip.SetToolTip(this.numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip1"));
+            this.numericBoxAErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label44
             // 
@@ -294,174 +462,6 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
-            // 
-            // numericBoxBeta
-            // 
-            resources.ApplyResources(this.numericBoxBeta, "numericBoxBeta");
-            this.numericBoxBeta.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBeta.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBeta.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBeta.Name = "numericBoxBeta";
-            this.numericBoxBeta.RestrictLimitValue = false;
-            this.numericBoxBeta.SkipEventDuringInput = false;
-            this.numericBoxBeta.SmartIncrement = true;
-            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip1"));
-            this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxAlpha
-            // 
-            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
-            this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.Name = "numericBoxAlpha";
-            this.numericBoxAlpha.RestrictLimitValue = false;
-            this.numericBoxAlpha.SkipEventDuringInput = false;
-            this.numericBoxAlpha.SmartIncrement = true;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip1"));
-            this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxGammaErr
-            // 
-            resources.ApplyResources(this.numericBoxGammaErr, "numericBoxGammaErr");
-            this.numericBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGammaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGammaErr.Name = "numericBoxGammaErr";
-            this.numericBoxGammaErr.RestrictLimitValue = false;
-            this.numericBoxGammaErr.SkipEventDuringInput = false;
-            this.numericBoxGammaErr.SmartIncrement = true;
-            this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip1"));
-            this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxAlphaErr
-            // 
-            resources.ApplyResources(this.numericBoxAlphaErr, "numericBoxAlphaErr");
-            this.numericBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlphaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlphaErr.Name = "numericBoxAlphaErr";
-            this.numericBoxAlphaErr.RestrictLimitValue = false;
-            this.numericBoxAlphaErr.SkipEventDuringInput = false;
-            this.numericBoxAlphaErr.SmartIncrement = true;
-            this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip1"));
-            this.numericBoxAlphaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxBetaErr
-            // 
-            resources.ApplyResources(this.numericBoxBetaErr, "numericBoxBetaErr");
-            this.numericBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBetaErr.Name = "numericBoxBetaErr";
-            this.numericBoxBetaErr.RestrictLimitValue = false;
-            this.numericBoxBetaErr.SkipEventDuringInput = false;
-            this.numericBoxBetaErr.SmartIncrement = true;
-            this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip1"));
-            this.numericBoxBetaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxA
-            // 
-            resources.ApplyResources(this.numericBoxA, "numericBoxA");
-            this.numericBoxA.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxA.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxA.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxA.Name = "numericBoxA";
-            this.numericBoxA.RestrictLimitValue = false;
-            this.numericBoxA.SkipEventDuringInput = false;
-            this.numericBoxA.SmartIncrement = true;
-            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxA, resources.GetString("numericBoxA.ToolTip1"));
-            this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxGamma
-            // 
-            resources.ApplyResources(this.numericBoxGamma, "numericBoxGamma");
-            this.numericBoxGamma.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGamma.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGamma.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGamma.Name = "numericBoxGamma";
-            this.numericBoxGamma.RestrictLimitValue = false;
-            this.numericBoxGamma.SkipEventDuringInput = false;
-            this.numericBoxGamma.SmartIncrement = true;
-            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip1"));
-            this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxBErr
-            // 
-            resources.ApplyResources(this.numericBoxBErr, "numericBoxBErr");
-            this.numericBoxBErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBErr.Name = "numericBoxBErr";
-            this.numericBoxBErr.RestrictLimitValue = false;
-            this.numericBoxBErr.SkipEventDuringInput = false;
-            this.numericBoxBErr.SmartIncrement = true;
-            this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip1"));
-            this.numericBoxBErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxB
-            // 
-            resources.ApplyResources(this.numericBoxB, "numericBoxB");
-            this.numericBoxB.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB.Name = "numericBoxB";
-            this.numericBoxB.RestrictLimitValue = false;
-            this.numericBoxB.SkipEventDuringInput = false;
-            this.numericBoxB.SmartIncrement = true;
-            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxB, resources.GetString("numericBoxB.ToolTip1"));
-            this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxC
-            // 
-            resources.ApplyResources(this.numericBoxC, "numericBoxC");
-            this.numericBoxC.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxC.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxC.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxC.Name = "numericBoxC";
-            this.numericBoxC.RestrictLimitValue = false;
-            this.numericBoxC.SkipEventDuringInput = false;
-            this.numericBoxC.SmartIncrement = true;
-            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxC, resources.GetString("numericBoxC.ToolTip1"));
-            this.numericBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxCErr
-            // 
-            resources.ApplyResources(this.numericBoxCErr, "numericBoxCErr");
-            this.numericBoxCErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCErr.Name = "numericBoxCErr";
-            this.numericBoxCErr.RestrictLimitValue = false;
-            this.numericBoxCErr.SkipEventDuringInput = false;
-            this.numericBoxCErr.SmartIncrement = true;
-            this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip1"));
-            this.numericBoxCErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
-            // 
-            // numericBoxAErr
-            // 
-            resources.ApplyResources(this.numericBoxAErr, "numericBoxAErr");
-            this.numericBoxAErr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAErr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAErr.Name = "numericBoxAErr";
-            this.numericBoxAErr.RestrictLimitValue = false;
-            this.numericBoxAErr.SkipEventDuringInput = false;
-            this.numericBoxAErr.SmartIncrement = true;
-            this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.toolTip.SetToolTip(this.numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip1"));
-            this.numericBoxAErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // SymmetryControl
             // 

@@ -72,6 +72,7 @@ namespace Crystallography.Controls
 
         #endregion Tabページの表示/非表示プロパティ
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Crystal Crystal
         {
             set
@@ -99,6 +100,7 @@ namespace Crystallography.Controls
         }
         private Crystal crystal;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
         { get => symmetryControl.CellConstants; set => symmetryControl.CellConstants = value; }
