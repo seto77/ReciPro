@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra;
 
 namespace Crystallography
@@ -615,240 +612,235 @@ namespace Crystallography
 
         public List<List<double>> Images { get; set; }
 
-        public class Property
-        {
-            public double AccVoltage { get; set; }
-            public double PixelSizeInMicron { get; set; }
-            public PixelUnitEnum PixelUnit { get; set; }
-            public double PixelScale { get; set; }
 
-            public Property(double accVoltage, double pixelSizeInMicron, double pixelScale, PixelUnitEnum pixelUnit)
-            {
-                AccVoltage = accVoltage;
-                PixelSizeInMicron = pixelSizeInMicron;
-                PixelScale = pixelScale;
-                PixelUnit = pixelUnit;
-            }
-        }
-
+        /// <summary>
+        /// コンストラクタ 引数のファイル名で初期化
+        /// </summary>
+        /// <param name="filename"></param>
         public MRC(string filename)
         {
-            using var br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
-
-            #region 基本ヘッダ
-            NX = br.ReadInt32();//position: 0
-            NY = br.ReadInt32();//4
-            NZ = br.ReadInt32();//8
-            MODE = br.ReadInt32();//12
-            NXSTART = br.ReadInt32();//16
-            NYSTART = br.ReadInt32();//20
-            NZSTART = br.ReadInt32();//24
-            MX = br.ReadInt32();//28
-            MY = br.ReadInt32();//32
-            MZ = br.ReadInt32();//36
-            CELLA = new double[3];
-            CELLA[0] = br.ReadSingle();//40
-            CELLA[1] = br.ReadSingle();//44
-            CELLA[2] = br.ReadSingle();//48
-            CELLB = new double[3];
-            CELLB[0] = br.ReadSingle();//52
-            CELLB[1] = br.ReadSingle();//56
-            CELLB[2] = br.ReadSingle();//60
-
-            MAPC = br.ReadInt32();//64
-            MAPR = br.ReadInt32();//68
-            MAPS = br.ReadInt32();//72
-
-            DMIN = br.ReadSingle();//76
-            DMAX = br.ReadSingle();//80
-            DMEAN = br.ReadSingle();//84
-
-            ISPG = br.ReadInt32();//88
-
-            NSYMBT = br.ReadInt32();//92
-
-            br.BaseStream.Position = 104;
-            EXTTYP = new string(br.ReadChars(4));//104
-
-            NVERSION = br.ReadInt32();//108
-
-            br.BaseStream.Position = 196;
-            ORIGIN = new double[3];
-            ORIGIN[0] = br.ReadSingle();//196
-            ORIGIN[1] = br.ReadSingle();//200
-            ORIGIN[2] = br.ReadSingle();//204
-
-            MAP = new string(br.ReadChars(4));//208
-
-            MACHST = new string(br.ReadChars(4));//212
-
-            RMS = br.ReadSingle();//216
-
-            NLABEL = br.ReadInt32();//220
-
-            LABEL = new string(br.ReadChars(800)).TrimEnd(new []{ '\0' });//224
-
-            #endregion
-
-            #region FEI1ヘッダ
-            if (EXTTYP == "FEI1")
+            try
             {
-                //イメージ、装置、アプリケーション
-                br.BaseStream.Position = 1024 + 0;
-                Metadata_size = br.ReadInt32();//0
-                Metadata_version = br.ReadInt32();//4
-                Bitmask_1 = br.ReadUInt32();//8
-                Timestamp = br.ReadDouble();//12
-                Microscope_type = new string(br.ReadChars(16));//20
-                Application = new string(br.ReadChars(16));//52
-                Application_version = new string(br.ReadChars(16));//68
+                using var br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
 
-                //電子銃
-                br.BaseStream.Position = 1024 + 84;
-                HT = br.ReadDouble();//84
-                Dose = br.ReadDouble();//92
+                #region 基本ヘッダ
+                NX = br.ReadInt32();//position: 0
+                NY = br.ReadInt32();//4
+                NZ = br.ReadInt32();//8
+                MODE = br.ReadInt32();//12
+                NXSTART = br.ReadInt32();//16
+                NYSTART = br.ReadInt32();//20
+                NZSTART = br.ReadInt32();//24
+                MX = br.ReadInt32();//28
+                MY = br.ReadInt32();//32
+                MZ = br.ReadInt32();//36
+                CELLA = new double[3];
+                CELLA[0] = br.ReadSingle();//40
+                CELLA[1] = br.ReadSingle();//44
+                CELLA[2] = br.ReadSingle();//48
+                CELLB = new double[3];
+                CELLB[0] = br.ReadSingle();//52
+                CELLB[1] = br.ReadSingle();//56
+                CELLB[2] = br.ReadSingle();//60
 
-                //ステージ
-                br.BaseStream.Position = 1024 + 100;
-                Alpha_tilt = br.ReadDouble();//100
-                Beta_tilt = br.ReadDouble();//108
-                X_Stage = br.ReadDouble();//116
-                Y_Stage = br.ReadDouble();//124
-                Z_Stage = br.ReadDouble();//132
-                Tilt_axis_angle = br.ReadDouble();//140
-                Dual_axis_rotation = br.ReadDouble();//148
+                MAPC = br.ReadInt32();//64
+                MAPR = br.ReadInt32();//68
+                MAPS = br.ReadInt32();//72
 
-                //ピクセルサイズ
-                Pixel_size_X = br.ReadDouble();//156
-                Pixel_size_Y = br.ReadDouble();//164
+                DMIN = br.ReadSingle();//76
+                DMAX = br.ReadSingle();//80
+                DMEAN = br.ReadSingle();//84
 
-                //光学系
-                br.BaseStream.Position = 1024 + 220;
-                Defocus = br.ReadDouble();//220
-                STEM_Defocus = br.ReadDouble();//228
-                Applied_defocus = br.ReadDouble();//236
-                Instrument_mode = br.ReadInt32();//244
-                Projection_mode = br.ReadInt32();//248
-                Objective_lens_mode = new string(br.ReadChars(16));//252
-                High_magnification_mode = new string(br.ReadChars(16));//268
-                Probe_mode = br.ReadInt32();//284
-                EFTEM_On = br.ReadBoolean();//288
-                Magnification = br.ReadDouble();//289
-                Bitmask_2 = br.ReadUInt32();//297
-                Camera_length = br.ReadDouble();//301
-                Spot_index = br.ReadInt32(); //309
-                Illuminated_area = br.ReadDouble();//313
-                Intensity = br.ReadDouble();//321
-                Convergence_angle = br.ReadDouble();//329
-                Illumination_mode = new string(br.ReadChars(16));//337
-                Wide_convergence_angle_range = br.ReadBoolean();//353
+                ISPG = br.ReadInt32();//88
 
-                //EFTEM イメージ
-                br.BaseStream.Position = 1024 + 354;
-                Slit_inserted = br.ReadBoolean();//354
-                Slit_width = br.ReadDouble();//355
-                Acceleration_voltage_offset = br.ReadDouble();//363
-                Drift_tube_voltage = br.ReadDouble();//371
-                Energy_shift = br.ReadDouble();//379
-                Shift_offset_X = br.ReadDouble();//387
-                Shift_offset_Y = br.ReadDouble();//395
-                Shift_X = br.ReadDouble();//403
-                Shift_Y = br.ReadDouble();//411
-                Integration_time = br.ReadDouble();//419
-                Binning_Width = br.ReadInt32();//427
-                Binning_Height = br.ReadInt32();//431
+                NSYMBT = br.ReadInt32();//92
 
-                //カメラ
-                br.BaseStream.Position = 1024 + 435;
-                Camera_name = new string(br.ReadChars(16));//435
-                Readout_area_left = br.ReadInt32();//451
-                Readout_area_top = br.ReadInt32();//455
-                Readout_area_right = br.ReadInt32();//459
-                Readout_area_bottom = br.ReadInt32();//463
-                Ceta_noise_reduction = br.ReadBoolean();//467
-                Ceta_frames_summed = br.ReadInt32();//468
-                Direct_detector_electron_counting = br.ReadBoolean();//472
-                Direct_detector_align_frames = br.ReadBoolean();//473
-                Camera_param_reserved_0 = br.ReadInt32();//474
-                Camera_param_reserved_1 = br.ReadInt32();//478
-                Camera_param_reserved_2 = br.ReadInt32();//482
-                Camera_param_reserved_3 = br.ReadInt32();//486
-                Bitmask_3 = br.ReadUInt32();//490
-                Camera_param_reserved_4 = br.ReadInt32();//494
-                Camera_param_reserved_5 = br.ReadInt32();//498
-                Camera_param_reserved_6 = br.ReadInt32();//502
-                Camera_param_reserved_7 = br.ReadInt32();//506
+                br.BaseStream.Position = 104;
+                EXTTYP = new string(br.ReadChars(4));//104
 
-                //STEM 
-                br.BaseStream.Position = 1024 + 519;
-                STEM_Detector_name = new string(br.ReadChars(16));//519
-                Gain = br.ReadDouble();//535
-                Offset = br.ReadDouble();//543
-                STEM_param_reserved_0 = br.ReadInt32();//551
-                STEM_param_reserved_1 = br.ReadInt32();//555
-                STEM_param_reserved_2 = br.ReadInt32();//559
-                STEM_param_reserved_3 = br.ReadInt32();//563
-                STEM_param_reserved_4 = br.ReadInt32();//567
+                NVERSION = br.ReadInt32();//108
 
-                //スキャン設定
-                br.BaseStream.Position = 1024 + 571;
-                Dwell_time = br.ReadDouble();//571
-                Frame_time = br.ReadDouble();//579
-                Scan_size_left = br.ReadInt32();//587
-                Scan_size_top = br.ReadInt32();//591
-                Scan_size_right = br.ReadInt32();//595
-                Scan_size_bottom = br.ReadInt32();//599
-                Full_scan_FOV_X = br.ReadDouble();//603
-                Full_scan_FOV_Y = br.ReadDouble();//611
+                br.BaseStream.Position = 196;
+                ORIGIN = new double[3];
+                ORIGIN[0] = br.ReadSingle();//196
+                ORIGIN[1] = br.ReadSingle();//200
+                ORIGIN[2] = br.ReadSingle();//204
 
-                //EDS元素マップ
-                br.BaseStream.Position = 1024 + 619;
-                Element = new string(br.ReadChars(16));//619
-                Energy_interval_lower = br.ReadDouble();//635
-                Energy_interval_higher = br.ReadDouble();//643
-                Method = br.ReadInt32();//651
+                MAP = new string(br.ReadChars(4));//208
 
-                //ドーズ
-                br.BaseStream.Position = 1024 + 655;
-                Is_dose_fraction = br.ReadBoolean();//655
-                Fraction_number = br.ReadInt32();//656
-                Start_frame = br.ReadInt32();//660
-                End_frame = br.ReadInt32();//664
+                MACHST = new string(br.ReadChars(4));//212
 
-                //再構築
-                br.BaseStream.Position = 1024 + 668;
-                Input_stack_filename = new string(br.ReadChars(80));//668
-                Bitmask_4 = br.ReadUInt32();//748
-                Alpha_tilt_min = br.ReadDouble();//752
-                Alpha_tilt_max = br.ReadDouble();//760
+                RMS = br.ReadSingle();//216
 
-                br.BaseStream.Position = 1024 + NSYMBT;// Metadata_size;
-            }
-            #endregion
+                NLABEL = br.ReadInt32();//220
 
-            //ここから画像を読み込み
-            if (NX * NY * NZ == 0)
-                Images = null;
-            else
-            {
-                var read = MODE switch
+                LABEL = new string(br.ReadChars(800)).TrimEnd(new[] { '\0' });//224
+
+                #endregion
+
+                #region FEI1ヘッダ
+                if (EXTTYP == "FEI1")
                 {
-                    0 => new Func<double>(() => (double)br.ReadByte() - 128),
-                    1 => new Func<double>(() => (double)br.ReadInt16()),
-                    2 => new Func<double>(() => (double)br.ReadSingle()),
-                    6 => new Func<double>(() => (double)br.ReadUInt16()),
-                    _ => new Func<double>(() => 0.0)
-                };
-                Images = new List<List<double>>();
-                for (int z = 0; z < NZ; z++)
-                {
-                    Images.Add(new List<double>());
-                    for (int y = 0; y < NY; y++)
-                        for (int x = 0; x < NX; x++)
-                            Images[z].Add(read());
+                    //イメージ、装置、アプリケーション
+                    br.BaseStream.Position = 1024 + 0;
+                    Metadata_size = br.ReadInt32();//0
+                    Metadata_version = br.ReadInt32();//4
+                    Bitmask_1 = br.ReadUInt32();//8
+                    Timestamp = br.ReadDouble();//12
+                    Microscope_type = new string(br.ReadChars(16));//20
+                    Application = new string(br.ReadChars(16));//52
+                    Application_version = new string(br.ReadChars(16));//68
+
+                    //電子銃
+                    br.BaseStream.Position = 1024 + 84;
+                    HT = br.ReadDouble();//84
+                    Dose = br.ReadDouble();//92
+
+                    //ステージ
+                    br.BaseStream.Position = 1024 + 100;
+                    Alpha_tilt = br.ReadDouble();//100
+                    Beta_tilt = br.ReadDouble();//108
+                    X_Stage = br.ReadDouble();//116
+                    Y_Stage = br.ReadDouble();//124
+                    Z_Stage = br.ReadDouble();//132
+                    Tilt_axis_angle = br.ReadDouble();//140
+                    Dual_axis_rotation = br.ReadDouble();//148
+
+                    //ピクセルサイズ
+                    Pixel_size_X = br.ReadDouble();//156
+                    Pixel_size_Y = br.ReadDouble();//164
+
+                    //光学系
+                    br.BaseStream.Position = 1024 + 220;
+                    Defocus = br.ReadDouble();//220
+                    STEM_Defocus = br.ReadDouble();//228
+                    Applied_defocus = br.ReadDouble();//236
+                    Instrument_mode = br.ReadInt32();//244
+                    Projection_mode = br.ReadInt32();//248
+                    Objective_lens_mode = new string(br.ReadChars(16));//252
+                    High_magnification_mode = new string(br.ReadChars(16));//268
+                    Probe_mode = br.ReadInt32();//284
+                    EFTEM_On = br.ReadBoolean();//288
+                    Magnification = br.ReadDouble();//289
+                    Bitmask_2 = br.ReadUInt32();//297
+                    Camera_length = br.ReadDouble();//301
+                    Spot_index = br.ReadInt32(); //309
+                    Illuminated_area = br.ReadDouble();//313
+                    Intensity = br.ReadDouble();//321
+                    Convergence_angle = br.ReadDouble();//329
+                    Illumination_mode = new string(br.ReadChars(16));//337
+                    Wide_convergence_angle_range = br.ReadBoolean();//353
+
+                    //EFTEM イメージ
+                    br.BaseStream.Position = 1024 + 354;
+                    Slit_inserted = br.ReadBoolean();//354
+                    Slit_width = br.ReadDouble();//355
+                    Acceleration_voltage_offset = br.ReadDouble();//363
+                    Drift_tube_voltage = br.ReadDouble();//371
+                    Energy_shift = br.ReadDouble();//379
+                    Shift_offset_X = br.ReadDouble();//387
+                    Shift_offset_Y = br.ReadDouble();//395
+                    Shift_X = br.ReadDouble();//403
+                    Shift_Y = br.ReadDouble();//411
+                    Integration_time = br.ReadDouble();//419
+                    Binning_Width = br.ReadInt32();//427
+                    Binning_Height = br.ReadInt32();//431
+
+                    //カメラ
+                    br.BaseStream.Position = 1024 + 435;
+                    Camera_name = new string(br.ReadChars(16));//435
+                    Readout_area_left = br.ReadInt32();//451
+                    Readout_area_top = br.ReadInt32();//455
+                    Readout_area_right = br.ReadInt32();//459
+                    Readout_area_bottom = br.ReadInt32();//463
+                    Ceta_noise_reduction = br.ReadBoolean();//467
+                    Ceta_frames_summed = br.ReadInt32();//468
+                    Direct_detector_electron_counting = br.ReadBoolean();//472
+                    Direct_detector_align_frames = br.ReadBoolean();//473
+                    Camera_param_reserved_0 = br.ReadInt32();//474
+                    Camera_param_reserved_1 = br.ReadInt32();//478
+                    Camera_param_reserved_2 = br.ReadInt32();//482
+                    Camera_param_reserved_3 = br.ReadInt32();//486
+                    Bitmask_3 = br.ReadUInt32();//490
+                    Camera_param_reserved_4 = br.ReadInt32();//494
+                    Camera_param_reserved_5 = br.ReadInt32();//498
+                    Camera_param_reserved_6 = br.ReadInt32();//502
+                    Camera_param_reserved_7 = br.ReadInt32();//506
+
+                    //STEM 
+                    br.BaseStream.Position = 1024 + 519;
+                    STEM_Detector_name = new string(br.ReadChars(16));//519
+                    Gain = br.ReadDouble();//535
+                    Offset = br.ReadDouble();//543
+                    STEM_param_reserved_0 = br.ReadInt32();//551
+                    STEM_param_reserved_1 = br.ReadInt32();//555
+                    STEM_param_reserved_2 = br.ReadInt32();//559
+                    STEM_param_reserved_3 = br.ReadInt32();//563
+                    STEM_param_reserved_4 = br.ReadInt32();//567
+
+                    //スキャン設定
+                    br.BaseStream.Position = 1024 + 571;
+                    Dwell_time = br.ReadDouble();//571
+                    Frame_time = br.ReadDouble();//579
+                    Scan_size_left = br.ReadInt32();//587
+                    Scan_size_top = br.ReadInt32();//591
+                    Scan_size_right = br.ReadInt32();//595
+                    Scan_size_bottom = br.ReadInt32();//599
+                    Full_scan_FOV_X = br.ReadDouble();//603
+                    Full_scan_FOV_Y = br.ReadDouble();//611
+
+                    //EDS元素マップ
+                    br.BaseStream.Position = 1024 + 619;
+                    Element = new string(br.ReadChars(16));//619
+                    Energy_interval_lower = br.ReadDouble();//635
+                    Energy_interval_higher = br.ReadDouble();//643
+                    Method = br.ReadInt32();//651
+
+                    //ドーズ
+                    br.BaseStream.Position = 1024 + 655;
+                    Is_dose_fraction = br.ReadBoolean();//655
+                    Fraction_number = br.ReadInt32();//656
+                    Start_frame = br.ReadInt32();//660
+                    End_frame = br.ReadInt32();//664
+
+                    //再構築
+                    br.BaseStream.Position = 1024 + 668;
+                    Input_stack_filename = new string(br.ReadChars(80));//668
+                    Bitmask_4 = br.ReadUInt32();//748
+                    Alpha_tilt_min = br.ReadDouble();//752
+                    Alpha_tilt_max = br.ReadDouble();//760
+
+                    br.BaseStream.Position = 1024 + NSYMBT;// Metadata_size;
                 }
+                #endregion
 
+                #region 画像強度を読み込み
+                //ここから画像を読み込み
+                if (NX * NY * NZ == 0)
+                    Images = null;
+                else
+                {
+                    var read = MODE switch
+                    {
+                        0 => new Func<double>(() => (double)br.ReadByte() - 128),
+                        1 => new Func<double>(() => (double)br.ReadInt16()),
+                        2 => new Func<double>(() => (double)br.ReadSingle()),
+                        6 => new Func<double>(() => (double)br.ReadUInt16()),
+                        _ => new Func<double>(() => 0.0)
+                    };
+                    Images = new List<List<double>>();
+                    for (int z = 0; z < NZ; z++)
+                    {
+                        Images.Add(new List<double>());
+                        for (int y = 0; y < NY; y++)
+                            for (int x = 0; x < NX; x++)
+                                Images[z].Add(read());
+                    }
+
+                }
+                #endregion
             }
+            catch { Images = null; }
 
         }
 

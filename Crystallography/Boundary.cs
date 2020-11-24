@@ -79,7 +79,7 @@ namespace Crystallography
         public (double X, double Y, double Z, double D) PlaneParam { get; set; }
 
         [XmlIgnore]
-        public Color Color { get => Color.FromArgb(ColorArgb); }
+        public Color Color => Color.FromArgb(ColorArgb);
 
         public int ColorArgb { get; set; } = Color.Gray.ToArgb();
 
