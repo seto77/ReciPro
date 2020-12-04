@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalControl));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageBasicInfo = new System.Windows.Forms.TabPage();
@@ -45,7 +44,7 @@
             this.atomControl = new Crystallography.Controls.AtomControl();
             this.panelAtom = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
             this.bondControl = new Crystallography.Controls.BondInputControl();
@@ -93,7 +92,7 @@
             this.numericBoxStrain23 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain13 = new Crystallography.Controls.NumericBox();
             this.tabPagePolycrystalline = new System.Windows.Forms.TabPage();
-            this.contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip();
             this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +118,7 @@
             this.textBoxFormula = new System.Windows.Forms.TextBox();
             this.numericBoxZnumber = new Crystallography.Controls.NumericBox();
             this.label90 = new System.Windows.Forms.Label();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
             this.scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -133,7 +132,7 @@
             this.strainControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
             this.buttonScatteringFactor = new System.Windows.Forms.Button();
             this.buttonSymmetryInfo = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
