@@ -449,8 +449,16 @@ namespace Crystallography.OpenGL
             glControl.MakeCurrent();
 
             //バージョンチェック
-            var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' });
-            Version = Convert.ToInt32(ver[0]) * 100 + Convert.ToInt32(ver[1]) * 10 + Convert.ToInt32(ver[2]);
+            var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' ,' '});
+            if (ver.Length != 3)
+                return;
+            int Version = 0;
+            if (int.TryParse(ver[0], out var temp0))
+                Version += temp0 * 100;
+            if (int.TryParse(ver[1], out var temp1))
+                Version += temp1 * 10;
+            if (int.TryParse(ver[2], out var temp2))
+                Version += temp2;
             if (Version < VersionForZsort)
                 return;
             if (FragShader == FragShaders.OIT && Version < GetVersionForOIT())

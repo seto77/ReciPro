@@ -20,6 +20,7 @@ using M4f = OpenTK.Matrix4;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 using System.Resources;
+using System.Management;
 
 #endregion 定義
 
@@ -114,6 +115,7 @@ namespace Crystallography.OpenGL
 
         private static readonly int sizeOfInt = sizeof(int);
         private static readonly int sizeOfUInt = sizeof(uint);
+        private static readonly List<(string Product, string Version)> GraphicsInfo;
 
         #endregion
 
@@ -205,6 +207,19 @@ namespace Crystallography.OpenGL
         #endregion publicなフィールド
 
         #region コンストラクタ、デストラクタ
+        /// <summary>
+        /// 静的コンストラクタ
+        /// </summary>
+        static GLObject()
+        {
+            //ビデオカード検索
+            GraphicsInfo = new List<(string Product, string Version)>();
+            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
+            foreach (var envVar in searcher.Get())
+                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+        }
+
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -344,10 +359,13 @@ namespace Crystallography.OpenGL
             Location[Program].IgnoreNormalSidesLocation = GL.GetUniformLocation(Program, "IgnoreNormalSides");
             Location[Program].FixedArgbLocation = GL.GetUniformLocation(Program, "FixedArgb");
 
-            Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-            Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-            Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-            Location[Program].RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+            if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
+            {
+                Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+                Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+                Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+                Location[Program].RenderPassLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+            }
         }
 
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生

@@ -416,10 +416,6 @@ namespace Crystallography
 
                 var ifdPointa = long.MaxValue;
 
-
-                
-                
-
                 while (ifdPointa != 0)
                 {
                     var image = new imageProperty();
@@ -432,7 +428,7 @@ namespace Crystallography
 
                     //IFDの読み込み開始
                     ifdPointa += 2;
-                    IFD[] iFD = new IFD[totalIFD];
+                    var iFD = new IFD[totalIFD];
                     for (int i = 0; i < totalIFD; i++)
                     {
                         try { iFD[i] = ReadIFD(br, (int)ifdPointa, ByteOrder); }
@@ -498,9 +494,21 @@ namespace Crystallography
                                 break;
 
                             case 282:
-                                image.XResolution = (double)iFD[i].Data[0]; break;
+                                if(iFD[i].Data[0] is int)
+                                    image.XResolution = (int)iFD[i].Data[0];
+                                else if(iFD[i].Data[0] is float)
+                                    image.XResolution = (float)iFD[i].Data[0];
+                                else if (iFD[i].Data[0] is double)
+                                    image.XResolution = (double)iFD[i].Data[0];
+                                break;
                             case 283:
-                                image.YResolution = (double)iFD[i].Data[0]; break;
+                                if (iFD[i].Data[0] is int)
+                                    image.YResolution = (int)iFD[i].Data[0]; 
+                                else if (iFD[i].Data[0] is float)
+                                    image.YResolution = (float)iFD[i].Data[0];
+                                else if (iFD[i].Data[0] is double)
+                                    image.YResolution = (double)iFD[i].Data[0];
+                                break;
                             case 284:
                                 image.ResolutionUnit = (int)iFD[i].Data[0]; break;
                             case 320:
@@ -618,8 +626,65 @@ namespace Crystallography
                     }
                     #endregion
 
-                    int n = 0;
-                    for (int i = 0; i < image.StripByteCounts.Length; i++)
+
+                    Func<double> toInt = () => 0;
+                    if (bytePerPixel == 1)
+                        toInt = () => br.ReadByte();
+                    else if (byteOrder == TiffByteOrder.Motorola)
+                    {
+                        
+                        if (bytePerPixel == 2 && image.SampleFormat == 1)
+                            toInt = () => br.ReadUInt16();
+                        else if (bytePerPixel == 2 && image.SampleFormat == 2)
+                            toInt = () => br.ReadInt16();
+                        else if (bytePerPixel == 4 && image.SampleFormat == 1)
+                            toInt = () => br.ReadUInt32();
+                        else if (bytePerPixel == 4 && image.SampleFormat == 2)
+                            toInt = () => br.ReadInt32();
+                    }
+                    else
+                    {
+                        if (bytePerPixel == 2)
+                        {
+                            if (image.SampleFormat == 1)
+                                toInt = () => 
+                                {
+                                    var temp = new byte[2];
+                                    br.Read(temp, 0, 2);
+                                    return BitConverter.ToUInt16(temp, 0);
+                                };
+                            
+                            else
+                                toInt = () =>
+                                {
+                                    var temp = new byte[2];
+                                    br.Read(temp, 0, 2);
+                                    return BitConverter.ToInt16(temp, 0);
+                                };
+                        }
+                        else if (bytePerPixel == 4)
+                        {
+                            if (image.SampleFormat == 1)
+                                toInt = () =>
+                                {
+                                    var temp = new byte[4];
+                                    br.Read(temp, 0, 4);
+                                    return BitConverter.ToUInt32(temp, 0);
+                                };
+
+                            else
+                                toInt = () =>
+                                {
+                                    var temp = new byte[4];
+                                    br.Read(temp, 0, 4);
+                                    return BitConverter.ToInt32(temp, 0);
+                                };
+                        }
+                    }
+                        
+
+
+                    for (int i = 0, n = 0; i < image.StripByteCounts.Length; i++)
                     {
                         br.BaseStream.Position = image.StripOffsets[i];
                         if (image.SampleFormat == 3)//浮動小数点データの時
@@ -632,23 +697,30 @@ namespace Crystallography
                             var sign = image.SampleFormat == 2;
                             if (image.IsGray)
                             {
-                                for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel; j++)
+
+                                if (image.MDFileTag == 2)//gelファイルの時
                                 {
-                                    var intensity = toInt(br, bytePerPixel, ByteOrder, sign);
-                                    if (image.MDFileTag == 2)//gelファイルの時
-                                        intensity = intensity * intensity;
-                                    image.Value[n++] = intensity;
+                                    for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel; j++)
+                                    {
+                                        var intensity = toInt();
+                                        image.Value[n++] = intensity * intensity;
+                                    }
+                                }
+                                else
+                                {
+                                    for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel; j++)
+                                        image.Value[n++] = toInt();
                                 }
                             }
                             else
                             {
                                 for (int j = 0; j < image.StripByteCounts[i] / bytePerPixel / bitsPerSampleLength; j++)
                                 {
-                                    image.ValueRed[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
-                                    image.ValueGreen[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
-                                    image.ValueBlue[n] = (uint)toInt(br, bytePerPixel, ByteOrder, sign);
+                                    image.ValueRed[n] = (uint)toInt();
+                                    image.ValueGreen[n] = (uint)toInt();
+                                    image.ValueBlue[n] = (uint)toInt();
                                     if (bitsPerSampleLength == 4)
-                                        toInt(br, bytePerPixel, ByteOrder, sign);
+                                        toInt();
                                     n++;
                                 }
                             }
@@ -658,6 +730,7 @@ namespace Crystallography
                 }
                 br.Close();
             }
+
 
             /// <summary>
             /// ファイルからbyteCountだけ読み込んで、数値に変換して返す。signは符号付きの場合はtrue。
@@ -703,7 +776,6 @@ namespace Crystallography
                 float intensity = 0;
                 var temp = new byte[4];
                 br.Read(temp, 0, 4);
-                intensity = BitConverter.ToSingle(temp, 0);
 
                 if (byteOrder == TiffByteOrder.Intel) temp = temp.Reverse().ToArray();
 
