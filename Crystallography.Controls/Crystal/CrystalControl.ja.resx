@@ -124,8 +124,11 @@
   <data name="numericBoxVolume.HeaderText" xml:space="preserve">
     <value>単位格子体積</value>
   </data>
+  <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
   <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 27</value>
+    <value>161, 25</value>
   </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>×10⁻²⁴ g</value>
@@ -137,10 +140,13 @@
     <value>単位格子質量</value>
   </data>
   <data name="numericBoxCellMass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 4</value>
+    <value>181, 4</value>
+  </data>
+  <data name="numericBoxCellMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxCellMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 27</value>
+    <value>195, 25</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -148,8 +154,14 @@
   <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
     <value>モル体積</value>
   </data>
+  <data name="numericBoxMolarVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 29</value>
+  </data>
+  <data name="numericBoxMolarVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
   <data name="numericBoxMolarVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 27</value>
+    <value>182, 25</value>
   </data>
   <data name="numericBoxMolarMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -158,10 +170,13 @@
     <value>モル体積</value>
   </data>
   <data name="numericBoxMolarMass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 31</value>
+    <value>202, 29</value>
+  </data>
+  <data name="numericBoxMolarMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxMolarMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 27</value>
+    <value>163, 25</value>
   </data>
   <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -169,8 +184,14 @@
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>密度</value>
   </data>
+  <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 54</value>
+  </data>
+  <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
   <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 25</value>
+    <value>135, 25</value>
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -179,7 +200,7 @@
     <value>プロファイルの色</value>
   </data>
   <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 61</value>
+    <value>155, 57</value>
   </data>
   <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 20</value>
@@ -281,14 +302,8 @@
   <data name="tabPageReference.Text" xml:space="preserve">
     <value>引用文献</value>
   </data>
-  <data name="textBoxEOS_Note.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 25</value>
-  </data>
-  <data name="checkBoxUseEOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
-  </data>
-  <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 37</value>
+  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 274</value>
   </data>
   <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -302,8 +317,86 @@
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
   </data>
+  <data name="numericBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxHill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
   <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 123</value>
+  </data>
+  <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
   </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -362,10 +455,6 @@
   <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
     <value>3, 1</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabControl.ShowToolTips" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 310</value>
   </data>
@@ -412,7 +501,7 @@
     <value>48, 0</value>
   </data>
   <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 25</value>
+    <value>254, 25</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -423,17 +512,29 @@
   <data name="label22.Text" xml:space="preserve">
     <value>結晶名</value>
   </data>
+  <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="buttonScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 0</value>
+    <value>380, 0</value>
   </data>
   <data name="buttonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 26</value>
+    <value>90, 26</value>
+  </data>
+  <data name="buttonScatteringFactor.Text" xml:space="preserve">
+    <value>構造散乱因子</value>
+  </data>
+  <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSymmetryInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 0</value>
+    <value>302, 0</value>
   </data>
   <data name="buttonSymmetryInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 26</value>
+    <value>78, 26</value>
+  </data>
+  <data name="buttonSymmetryInfo.Text" xml:space="preserve">
+    <value>対称性詳細</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 0</value>

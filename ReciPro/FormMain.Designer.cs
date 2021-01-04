@@ -44,11 +44,12 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonLower = new System.Windows.Forms.Button();
             this.buttonUpper = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.crystalControl = new Crystallography.Controls.CrystalControl();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,15 +57,9 @@
             this.buttonSetAxis = new System.Windows.Forms.Button();
             this.checkBoxFixAxis = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxAxisU = new Crystallography.Controls.NumericBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericBoxAxisV = new Crystallography.Controls.NumericBox();
-            this.numericBoxAxisW = new Crystallography.Controls.NumericBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxPlaneL = new Crystallography.Controls.NumericBox();
-            this.numericBoxPlaneH = new Crystallography.Controls.NumericBox();
-            this.numericBoxPlaneK = new Crystallography.Controls.NumericBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -84,7 +79,6 @@
             this.buttonTopRight = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.numericBoxStep = new Crystallography.Controls.NumericBox();
             this.checkBoxAnimation = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -105,7 +99,6 @@
             this.labelCurrentIndexW = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -165,6 +158,15 @@
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.crystalControl = new Crystallography.Controls.CrystalControl();
+            this.numericBoxAxisU = new Crystallography.Controls.NumericBox();
+            this.numericBoxAxisV = new Crystallography.Controls.NumericBox();
+            this.numericBoxAxisW = new Crystallography.Controls.NumericBox();
+            this.numericBoxPlaneL = new Crystallography.Controls.NumericBox();
+            this.numericBoxPlaneH = new Crystallography.Controls.NumericBox();
+            this.numericBoxPlaneK = new Crystallography.Controls.NumericBox();
+            this.numericBoxStep = new Crystallography.Controls.NumericBox();
+            this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -177,8 +179,8 @@
             this.splitContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -229,7 +231,8 @@
             // statusStrip1
             // 
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 16);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabel});
@@ -247,7 +250,6 @@
             // 
             // splitContainer
             // 
-            this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Name = "splitContainer";
@@ -255,12 +257,14 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer.Panel1.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer.Panel1.Controls.Add(this.panel2);
             resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
             // 
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.groupBox6);
+            this.splitContainer.Panel2.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer.Panel2.Controls.Add(this.panel3);
             resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
             // 
             // groupBox1
@@ -326,6 +330,20 @@
             this.buttonUpper.UseVisualStyleBackColor = false;
             this.buttonUpper.Click += new System.EventHandler(this.buttonUpper_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.crystalControl);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
             // flowLayoutPanel3
             // 
             resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
@@ -353,45 +371,11 @@
             this.buttonChange.UseVisualStyleBackColor = false;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
-            // groupBox6
+            // panel3
             // 
-            this.groupBox6.Controls.Add(this.crystalControl);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
-            // 
-            // crystalControl
-            // 
-            this.crystalControl.A = 0D;
-            this.crystalControl.AllowDrop = true;
-            this.crystalControl.Alpha = 0D;
-            resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.B = 0D;
-            this.crystalControl.Beta = 0D;
-            this.crystalControl.C = 0D;
-            this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
-            this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
-            this.crystalControl.DefaultTabNumber = 0;
-            this.crystalControl.Gamma = 0D;
-            this.crystalControl.Name = "crystalControl";
-            this.crystalControl.ScatteringFactorVisible = false;
-            this.crystalControl.SkipEvent = false;
-            this.crystalControl.SymmetryInformationVisible = false;
-            this.crystalControl.SymmetrySeriesNumber = 0;
-            this.crystalControl.VisibleAtomTab = true;
-            this.crystalControl.VisibleBasicInfoTab = true;
-            this.crystalControl.VisibleBondsPolyhedraTab = false;
-            this.crystalControl.VisibleBoundTab = false;
-            this.crystalControl.VisibleElasticityTab = true;
-            this.crystalControl.VisibleEOSTab = true;
-            this.crystalControl.VisibleLatticePlaneTab = false;
-            this.crystalControl.VisiblePolycrystallineTab = false;
-            this.crystalControl.VisibleReferenceTab = true;
-            this.crystalControl.VisibleStressStrainTab = false;
-            this.crystalControl.CrystalChanged += new System.EventHandler(this.crystalControl_CrystalChanged_1);
-            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.scatteringFactor_VisibleChanged);
-            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.symmetryInformation_VisibleChanged);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
             // 
             // groupBox4
             // 
@@ -406,8 +390,8 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.tableLayoutPanel4);
             resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Controls.Add(this.tableLayoutPanel4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
@@ -452,20 +436,6 @@
             this.tableLayoutPanel5.Controls.Add(this.numericBoxAxisW, 3, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             // 
-            // numericBoxAxisU
-            // 
-            resources.ApplyResources(this.numericBoxAxisU, "numericBoxAxisU");
-            this.numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.Maximum = 50D;
-            this.numericBoxAxisU.Minimum = -50D;
-            this.numericBoxAxisU.Name = "numericBoxAxisU";
-            this.numericBoxAxisU.ShowUpDown = true;
-            this.numericBoxAxisU.SkipEventDuringInput = false;
-            this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxAxisU.ThonsandsSeparator = true;
-            // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
@@ -475,35 +445,6 @@
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            // 
-            // numericBoxAxisV
-            // 
-            resources.ApplyResources(this.numericBoxAxisV, "numericBoxAxisV");
-            this.numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.Maximum = 50D;
-            this.numericBoxAxisV.Minimum = -50D;
-            this.numericBoxAxisV.Name = "numericBoxAxisV";
-            this.numericBoxAxisV.ShowUpDown = true;
-            this.numericBoxAxisV.SkipEventDuringInput = false;
-            this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxAxisV.ThonsandsSeparator = true;
-            // 
-            // numericBoxAxisW
-            // 
-            resources.ApplyResources(this.numericBoxAxisW, "numericBoxAxisW");
-            this.numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.DecimalPlaces = 0;
-            this.numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.Maximum = 50D;
-            this.numericBoxAxisW.Minimum = -50D;
-            this.numericBoxAxisW.Name = "numericBoxAxisW";
-            this.numericBoxAxisW.ShowUpDown = true;
-            this.numericBoxAxisW.SkipEventDuringInput = false;
-            this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxAxisW.ThonsandsSeparator = true;
             // 
             // tableLayoutPanel7
             // 
@@ -515,48 +456,6 @@
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.toolTip.SetToolTip(this.tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
-            // 
-            // numericBoxPlaneL
-            // 
-            resources.ApplyResources(this.numericBoxPlaneL, "numericBoxPlaneL");
-            this.numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.Maximum = 50D;
-            this.numericBoxPlaneL.Minimum = -50D;
-            this.numericBoxPlaneL.Name = "numericBoxPlaneL";
-            this.numericBoxPlaneL.ShowUpDown = true;
-            this.numericBoxPlaneL.SkipEventDuringInput = false;
-            this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxPlaneL.ThonsandsSeparator = true;
-            // 
-            // numericBoxPlaneH
-            // 
-            resources.ApplyResources(this.numericBoxPlaneH, "numericBoxPlaneH");
-            this.numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.Maximum = 50D;
-            this.numericBoxPlaneH.Minimum = -50D;
-            this.numericBoxPlaneH.Name = "numericBoxPlaneH";
-            this.numericBoxPlaneH.ShowUpDown = true;
-            this.numericBoxPlaneH.SkipEventDuringInput = false;
-            this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxPlaneH.ThonsandsSeparator = true;
-            // 
-            // numericBoxPlaneK
-            // 
-            resources.ApplyResources(this.numericBoxPlaneK, "numericBoxPlaneK");
-            this.numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.Maximum = 50D;
-            this.numericBoxPlaneK.Minimum = -50D;
-            this.numericBoxPlaneK.Name = "numericBoxPlaneK";
-            this.numericBoxPlaneK.ShowUpDown = true;
-            this.numericBoxPlaneK.SkipEventDuringInput = false;
-            this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.numericBoxPlaneK.ThonsandsSeparator = true;
             // 
             // label11
             // 
@@ -598,6 +497,7 @@
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // tableLayoutPanel1
             // 
@@ -706,22 +606,6 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
-            // numericBoxStep
-            // 
-            resources.ApplyResources(this.numericBoxStep, "numericBoxStep");
-            this.numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.Maximum = 360D;
-            this.numericBoxStep.Minimum = 0.001D;
-            this.numericBoxStep.Name = "numericBoxStep";
-            this.numericBoxStep.RadianValue = 0.17453292519943295D;
-            this.numericBoxStep.ShowUpDown = true;
-            this.numericBoxStep.SmartIncrement = true;
-            this.numericBoxStep.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
-            this.numericBoxStep.Value = 10D;
-            // 
             // checkBoxAnimation
             // 
             resources.ApplyResources(this.checkBoxAnimation, "checkBoxAnimation");
@@ -732,8 +616,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
             resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -891,22 +775,6 @@
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
             this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
-            // 
-            // numericBoxMaxUVW
-            // 
-            resources.ApplyResources(this.numericBoxMaxUVW, "numericBoxMaxUVW");
-            this.numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.Maximum = 100D;
-            this.numericBoxMaxUVW.Minimum = 1D;
-            this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
-            this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
-            this.numericBoxMaxUVW.ShowUpDown = true;
-            this.numericBoxMaxUVW.SkipEventDuringInput = false;
-            this.numericBoxMaxUVW.ThonsandsSeparator = true;
-            this.numericBoxMaxUVW.Value = 30D;
-            this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
             // 
             // label7
             // 
@@ -1311,6 +1179,153 @@
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // crystalControl
+            // 
+            this.crystalControl.A = 0D;
+            this.crystalControl.AllowDrop = true;
+            this.crystalControl.Alpha = 0D;
+            resources.ApplyResources(this.crystalControl, "crystalControl");
+            this.crystalControl.B = 0D;
+            this.crystalControl.Beta = 0D;
+            this.crystalControl.C = 0D;
+            this.crystalControl.DefaultTabNumber = 0;
+            this.crystalControl.Gamma = 0D;
+            this.crystalControl.Name = "crystalControl";
+            this.crystalControl.ScatteringFactorVisible = false;
+            this.crystalControl.SkipEvent = false;
+            this.crystalControl.SymmetryInformationVisible = false;
+            this.crystalControl.SymmetrySeriesNumber = 0;
+            this.crystalControl.VisibleAtomTab = true;
+            this.crystalControl.VisibleBasicInfoTab = true;
+            this.crystalControl.VisibleBondsPolyhedraTab = false;
+            this.crystalControl.VisibleBoundTab = false;
+            this.crystalControl.VisibleElasticityTab = true;
+            this.crystalControl.VisibleEOSTab = true;
+            this.crystalControl.VisibleLatticePlaneTab = false;
+            this.crystalControl.VisiblePolycrystallineTab = false;
+            this.crystalControl.VisibleReferenceTab = true;
+            this.crystalControl.VisibleStressStrainTab = false;
+            this.crystalControl.CrystalChanged += new System.EventHandler(this.crystalControl_CrystalChanged_1);
+            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.scatteringFactor_VisibleChanged);
+            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.symmetryInformation_VisibleChanged);
+            // 
+            // numericBoxAxisU
+            // 
+            resources.ApplyResources(this.numericBoxAxisU, "numericBoxAxisU");
+            this.numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisU.Maximum = 50D;
+            this.numericBoxAxisU.Minimum = -50D;
+            this.numericBoxAxisU.Name = "numericBoxAxisU";
+            this.numericBoxAxisU.ShowUpDown = true;
+            this.numericBoxAxisU.SkipEventDuringInput = false;
+            this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisU.ThonsandsSeparator = true;
+            // 
+            // numericBoxAxisV
+            // 
+            resources.ApplyResources(this.numericBoxAxisV, "numericBoxAxisV");
+            this.numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisV.Maximum = 50D;
+            this.numericBoxAxisV.Minimum = -50D;
+            this.numericBoxAxisV.Name = "numericBoxAxisV";
+            this.numericBoxAxisV.ShowUpDown = true;
+            this.numericBoxAxisV.SkipEventDuringInput = false;
+            this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisV.ThonsandsSeparator = true;
+            // 
+            // numericBoxAxisW
+            // 
+            resources.ApplyResources(this.numericBoxAxisW, "numericBoxAxisW");
+            this.numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisW.DecimalPlaces = 0;
+            this.numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxAxisW.Maximum = 50D;
+            this.numericBoxAxisW.Minimum = -50D;
+            this.numericBoxAxisW.Name = "numericBoxAxisW";
+            this.numericBoxAxisW.ShowUpDown = true;
+            this.numericBoxAxisW.SkipEventDuringInput = false;
+            this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisW.ThonsandsSeparator = true;
+            // 
+            // numericBoxPlaneL
+            // 
+            resources.ApplyResources(this.numericBoxPlaneL, "numericBoxPlaneL");
+            this.numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneL.Maximum = 50D;
+            this.numericBoxPlaneL.Minimum = -50D;
+            this.numericBoxPlaneL.Name = "numericBoxPlaneL";
+            this.numericBoxPlaneL.ShowUpDown = true;
+            this.numericBoxPlaneL.SkipEventDuringInput = false;
+            this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneL.ThonsandsSeparator = true;
+            // 
+            // numericBoxPlaneH
+            // 
+            resources.ApplyResources(this.numericBoxPlaneH, "numericBoxPlaneH");
+            this.numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneH.Maximum = 50D;
+            this.numericBoxPlaneH.Minimum = -50D;
+            this.numericBoxPlaneH.Name = "numericBoxPlaneH";
+            this.numericBoxPlaneH.ShowUpDown = true;
+            this.numericBoxPlaneH.SkipEventDuringInput = false;
+            this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneH.ThonsandsSeparator = true;
+            // 
+            // numericBoxPlaneK
+            // 
+            resources.ApplyResources(this.numericBoxPlaneK, "numericBoxPlaneK");
+            this.numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPlaneK.Maximum = 50D;
+            this.numericBoxPlaneK.Minimum = -50D;
+            this.numericBoxPlaneK.Name = "numericBoxPlaneK";
+            this.numericBoxPlaneK.ShowUpDown = true;
+            this.numericBoxPlaneK.SkipEventDuringInput = false;
+            this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneK.ThonsandsSeparator = true;
+            // 
+            // numericBoxStep
+            // 
+            resources.ApplyResources(this.numericBoxStep, "numericBoxStep");
+            this.numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStep.Maximum = 360D;
+            this.numericBoxStep.Minimum = 0.001D;
+            this.numericBoxStep.Name = "numericBoxStep";
+            this.numericBoxStep.RadianValue = 0.17453292519943295D;
+            this.numericBoxStep.ShowUpDown = true;
+            this.numericBoxStep.SmartIncrement = true;
+            this.numericBoxStep.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
+            this.numericBoxStep.Value = 10D;
+            // 
+            // numericBoxMaxUVW
+            // 
+            resources.ApplyResources(this.numericBoxMaxUVW, "numericBoxMaxUVW");
+            this.numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.Maximum = 100D;
+            this.numericBoxMaxUVW.Minimum = 1D;
+            this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
+            this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
+            this.numericBoxMaxUVW.ShowUpDown = true;
+            this.numericBoxMaxUVW.SkipEventDuringInput = false;
+            this.numericBoxMaxUVW.ThonsandsSeparator = true;
+            this.numericBoxMaxUVW.Value = 30D;
+            this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -1340,16 +1355,17 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
-            this.splitContainer.Panel1.PerformLayout();
             this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1512,8 +1528,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         public System.Windows.Forms.ToolStripButton toolStripButtonDatabase;
@@ -1522,6 +1536,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem reportBugsRequestsOrCommentsToolStripMenuItem1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
