@@ -15,6 +15,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
@@ -466,9 +467,10 @@ namespace ReciPro
                 FormDiffractionSimulator.numericBoxResolution.Value = Math.Min(Math.Max(FormDiffractionSimulator.numericBoxResolution.Minimum, resolution), FormDiffractionSimulator.numericBoxResolution.Maximum);
 
                 FormDiffractionSimulator.waveLengthControl.WaveSource =
-                    (WaveSource)System.Enum.Parse(typeof(WaveSource), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveSource", FormDiffractionSimulator.waveLengthControl.WaveSource.ToString()));
-                FormDiffractionSimulator.waveLengthControl.WaveLength =
-                    Convert.ToDouble(regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveLength", "0.0250793474552456"));
+                    (WaveSource)Enum.Parse(typeof(WaveSource), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveSource", FormDiffractionSimulator.waveLengthControl.WaveSource.ToString()));
+
+                FormDiffractionSimulator.waveLengthControl.Energy = Convert.ToDouble(regKey.GetValue("formElectronDiffraction.waveLengthControl.Energy", FormDiffractionSimulator.waveLengthControl.Energy));
+
                 FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber =
                     (int)regKey.GetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
                 FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine =
@@ -548,7 +550,8 @@ namespace ReciPro
             regKey.SetValue("formElectronDiffraction.numericUpDownResolution.Value", FormDiffractionSimulator.numericBoxResolution.Value.ToString());
 
             regKey.SetValue("formElectronDiffraction.waveLengthControl.WaveSource", FormDiffractionSimulator.waveLengthControl.WaveSource);
-            regKey.SetValue("formElectronDiffraction.waveLengthControl.WaveLength", FormDiffractionSimulator.waveLengthControl.WaveLength);
+            //regKey.SetValue("formElectronDiffraction.waveLengthControl.WaveLength", FormDiffractionSimulator.waveLengthControl.WaveLength);
+            regKey.SetValue("formElectronDiffraction.waveLengthControl.Energy", FormDiffractionSimulator.waveLengthControl.Energy);
             regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
             regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceLine", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine);
 
@@ -693,8 +696,16 @@ namespace ReciPro
             => FormStereonet.Visible = toolStripButtonStereonet.Checked;
         private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e)
             => FormRotation.Visible = toolStripButtonRotation.Checked;
-        private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
-            => FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
+
+        async private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
+        {
+            FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
+
+            //Electron diffractionを表示した直後、なぜかグラフィックボックスがグレーになってしまうので、その対処.
+            await Task.Delay(200);
+            if (FormDiffractionSimulator.Visible)
+                FormDiffractionSimulator.Draw();
+        }
         private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e)
             => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
         private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
@@ -1453,9 +1464,5 @@ namespace ReciPro
 
         #endregion
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

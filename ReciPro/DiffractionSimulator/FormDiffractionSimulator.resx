@@ -342,633 +342,6 @@
   <data name="panelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
-    <value>waveLengthControl</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
-    <value>tabPageWave</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageWave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageWave.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabPageWave.Text" xml:space="preserve">
-    <value>Wave</value>
-  </data>
-  <data name="&gt;&gt;tabPageWave.Name" xml:space="preserve">
-    <value>tabPageWave</value>
-  </data>
-  <data name="&gt;&gt;tabPageWave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageWave.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageWave.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="tabPageGeneral.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.FooterText" xml:space="preserve">
-    <value>nm⁻¹</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.HeaderText" xml:space="preserve">
-    <value>Threshold</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 9</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 25</value>
-  </data>
-  <data name="numericBoxKikuchiLineThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Name" xml:space="preserve">
-    <value>numericBoxKikuchiLineThreshold</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="colorControlDefectLine.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlDefectLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlDefectLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlDefectLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlDefectLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlDefectLine.FooterText" xml:space="preserve">
-    <value>Kikuchi line color (Defect)</value>
-  </data>
-  <data name="colorControlDefectLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlDefectLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlDefectLine.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlDefectLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 32</value>
-  </data>
-  <data name="colorControlDefectLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlDefectLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
-  </data>
-  <data name="colorControlDefectLine.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="colorControlDefectLine.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;colorControlDefectLine.Name" xml:space="preserve">
-    <value>colorControlDefectLine</value>
-  </data>
-  <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;colorControlDefectLine.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlExcessLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>Kikuchi line color (Ecxess)</value>
-  </data>
-  <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlExcessLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlExcessLine.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlExcessLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 9</value>
-  </data>
-  <data name="colorControlExcessLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlExcessLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 20</value>
-  </data>
-  <data name="colorControlExcessLine.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.Name" xml:space="preserve">
-    <value>colorControlExcessLine</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="trackBarLineWidth.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarLineWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 42</value>
-  </data>
-  <data name="trackBarLineWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
-  </data>
-  <data name="trackBarLineWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>菊池線の表示幅</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Name" xml:space="preserve">
-    <value>trackBarLineWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 41</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 17</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Line Width</value>
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value>菊池線の表示幅</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPageKikuchi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageKikuchi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageKikuchi.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageKikuchi.Text" xml:space="preserve">
-    <value>Kikuchi lines</value>
-  </data>
-  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
-    <value>菊池線に関する詳細設定</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.Name" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
-    <value>colorControlDebyeRing</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Name" xml:space="preserve">
-    <value>checkBoxDebyeRingLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Name" xml:space="preserve">
-    <value>checkBoxDebyeRingIgnoreIntensity</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Name" xml:space="preserve">
-    <value>trackBarDebyeRingWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPageDebye.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageDebye.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageDebye.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageDebye.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tabPageDebye.Text" xml:space="preserve">
-    <value>Debye rings</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.Name" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Name" xml:space="preserve">
-    <value>checkBoxScaleLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Name" xml:space="preserve">
-    <value>trackBarScaleLineWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Name" xml:space="preserve">
-    <value>colorControlScaleAzimuth</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Name" xml:space="preserve">
-    <value>colorControlScale2Theta</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tabPageScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageScale.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="tabPageScale.Text" xml:space="preserve">
-    <value>Scale</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.Name" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.Name" xml:space="preserve">
-    <value>numericBoxDev</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.Name" xml:space="preserve">
-    <value>numericBoxAcc</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
-  </data>
-  <data name="tabPageMisc.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="tabPageMisc.Text" xml:space="preserve">
-    <value>Misc</value>
-  </data>
-  <data name="&gt;&gt;tabPageMisc.Name" xml:space="preserve">
-    <value>tabPageMisc</value>
-  </data>
-  <data name="&gt;&gt;tabPageMisc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageMisc.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageMisc.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 2</value>
-  </data>
-  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 174</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
   </data>
@@ -981,35 +354,6 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="graphicsBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="graphicsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="graphicsBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 40, 0, 0</value>
-  </data>
-  <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 490</value>
-  </data>
-  <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="graphicsBox.ToolTip" xml:space="preserve">
-    <value>左ドラッグ(画面内側): 画面平行軸に関して回転
-左ドラッグ(画面外側): 画面垂直軸に関して回転
-右クリック: 縮小
-右ドラッグ: 選択範囲を拡大
-中ドラッグ: 平行移動
-左ダブルクリック: 最も近い逆格子点情報を表示</value>
-  </data>
-  <data name="graphicsBox.WaitOnLoad" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;graphicsBox.Name" xml:space="preserve">
     <value>graphicsBox</value>
   </data>
@@ -1021,27 +365,6 @@
   </data>
   <data name="&gt;&gt;graphicsBox.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="labelDummy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelDummy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="labelDummy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelDummy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="labelDummy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 24</value>
-  </data>
-  <data name="labelDummy.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="labelDummy.Text" xml:space="preserve">
-    <value>Dummy label</value>
   </data>
   <data name="&gt;&gt;labelDummy.Name" xml:space="preserve">
     <value>labelDummy</value>
@@ -1553,6 +876,144 @@
   <data name="toolStripStatusLabel3.Text" xml:space="preserve">
     <value>     </value>
   </data>
+  <data name="&gt;&gt;tabPageWave.Name" xml:space="preserve">
+    <value>tabPageWave</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Name" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Name" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Name" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Name" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>71, 22</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
+  </data>
+  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>423, 174</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
+    <value>waveLengthControl</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
+    <value>tabPageWave</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageWave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageWave.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabPageWave.Text" xml:space="preserve">
+    <value>Wave</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.Name" xml:space="preserve">
+    <value>tabPageWave</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageWave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="waveLengthControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1578,13 +1039,64 @@
     <value>waveLengthControl</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
     <value>tabPageWave</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
     <value>trackBarStrSize</value>
@@ -1659,7 +1171,7 @@
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1683,7 +1195,7 @@
     <value>colorControlFoot</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1695,7 +1207,7 @@
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1773,7 +1285,7 @@
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1864,7 +1376,7 @@
     <value>colorControlFoot</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1918,12 +1430,402 @@
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Name" xml:space="preserve">
+    <value>numericBoxKikuchiLineThreshold</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Name" xml:space="preserve">
+    <value>colorControlDefectLine</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Name" xml:space="preserve">
+    <value>colorControlExcessLine</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Name" xml:space="preserve">
+    <value>trackBarLineWidth</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabPageKikuchi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageKikuchi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageKikuchi.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageKikuchi.Text" xml:space="preserve">
+    <value>Kikuchi lines</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>菊池線に関する詳細設定</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Name" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageKikuchi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.FooterText" xml:space="preserve">
+    <value>nm⁻¹</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.HeaderText" xml:space="preserve">
+    <value>Threshold</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 9</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 25</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Name" xml:space="preserve">
+    <value>numericBoxKikuchiLineThreshold</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;numericBoxKikuchiLineThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colorControlDefectLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlDefectLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlDefectLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDefectLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDefectLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDefectLine.FooterText" xml:space="preserve">
+    <value>Kikuchi line color (Defect)</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDefectLine.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlDefectLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 32</value>
+  </data>
+  <data name="colorControlDefectLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlDefectLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="colorControlDefectLine.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="colorControlDefectLine.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Name" xml:space="preserve">
+    <value>colorControlDefectLine</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;colorControlDefectLine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlExcessLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlExcessLine.FooterText" xml:space="preserve">
+    <value>Kikuchi line color (Ecxess)</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlExcessLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 9</value>
+  </data>
+  <data name="colorControlExcessLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlExcessLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 20</value>
+  </data>
+  <data name="colorControlExcessLine.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Name" xml:space="preserve">
+    <value>colorControlExcessLine</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;colorControlExcessLine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="trackBarLineWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarLineWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarLineWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 42</value>
+  </data>
+  <data name="trackBarLineWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="trackBarLineWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>菊池線の表示幅</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Name" xml:space="preserve">
+    <value>trackBarLineWidth</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;trackBarLineWidth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 41</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 17</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Line Width</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>菊池線の表示幅</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
+    <value>colorControlDebyeRing</value>
+  </data>
+  <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;colorControlDebyeRing.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingLabel.Name" xml:space="preserve">
+    <value>checkBoxDebyeRingLabel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingLabel.Parent" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Name" xml:space="preserve">
+    <value>checkBoxDebyeRingIgnoreIntensity</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Parent" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;trackBarDebyeRingWidth.Name" xml:space="preserve">
+    <value>trackBarDebyeRingWidth</value>
+  </data>
+  <data name="&gt;&gt;trackBarDebyeRingWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarDebyeRingWidth.Parent" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;trackBarDebyeRingWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabPageDebye.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageDebye.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageDebye.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageDebye.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabPageDebye.Text" xml:space="preserve">
+    <value>Debye rings</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Name" xml:space="preserve">
+    <value>tabPageDebye</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageDebye.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="colorControlDebyeRing.AutoSize" type="System.Boolean, mscorlib">
@@ -1972,7 +1874,7 @@
     <value>colorControlDebyeRing</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
     <value>tabPageDebye</value>
@@ -2111,6 +2013,114 @@
     <value>tabPageDebye</value>
   </data>
   <data name="&gt;&gt;trackBarDebyeRingWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxScaleLabel.Name" xml:space="preserve">
+    <value>checkBoxScaleLabel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxScaleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxScaleLabel.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;checkBoxScaleLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;trackBarScaleLineWidth.Name" xml:space="preserve">
+    <value>trackBarScaleLineWidth</value>
+  </data>
+  <data name="&gt;&gt;trackBarScaleLineWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarScaleLineWidth.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;trackBarScaleLineWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;colorControlScaleAzimuth.Name" xml:space="preserve">
+    <value>colorControlScaleAzimuth</value>
+  </data>
+  <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;colorControlScaleAzimuth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;colorControlScale2Theta.Name" xml:space="preserve">
+    <value>colorControlScale2Theta</value>
+  </data>
+  <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;colorControlScale2Theta.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tabPageScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageScale.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="tabPageScale.Text" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Name" xml:space="preserve">
+    <value>tabPageScale</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageScale.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="checkBoxScaleLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -2453,7 +2463,7 @@
     <value>colorControlScaleAzimuth</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -2507,13 +2517,97 @@
     <value>colorControlScale2Theta</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
     <value>tabPageScale</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDev.Name" xml:space="preserve">
+    <value>numericBoxDev</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDev.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAcc.Name" xml:space="preserve">
+    <value>numericBoxAcc</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAcc.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 144</value>
+  </data>
+  <data name="tabPageMisc.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Name" xml:space="preserve">
+    <value>tabPageMisc</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageMisc.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="numericBoxDev.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2552,7 +2646,7 @@
     <value>numericBoxDev</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -2597,7 +2691,7 @@
     <value>numericBoxAcc</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -2739,6 +2833,80 @@
   </data>
   <data name="&gt;&gt;trackBarRotationSpeed.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="graphicsBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="graphicsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="graphicsBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 40, 0, 0</value>
+  </data>
+  <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 490</value>
+  </data>
+  <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>左ドラッグ(画面内側): 画面平行軸に関して回転
+左ドラッグ(画面外側): 画面垂直軸に関して回転
+右クリック: 縮小
+右ドラッグ: 選択範囲を拡大
+中ドラッグ: 平行移動
+左ダブルクリック: 最も近い逆格子点情報を表示</value>
+  </data>
+  <data name="graphicsBox.WaitOnLoad" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Name" xml:space="preserve">
+    <value>graphicsBox</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Type" xml:space="preserve">
+    <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelDummy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelDummy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="labelDummy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDummy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelDummy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 24</value>
+  </data>
+  <data name="labelDummy.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="labelDummy.Text" xml:space="preserve">
+    <value>Dummy label</value>
+  </data>
+  <data name="&gt;&gt;labelDummy.Name" xml:space="preserve">
+    <value>labelDummy</value>
+  </data>
+  <data name="&gt;&gt;labelDummy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDummy.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;labelDummy.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3065,7 +3233,7 @@
     <value>numericBoxClientHeight</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3077,7 +3245,7 @@
     <value>numericBoxClientWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3089,7 +3257,7 @@
     <value>numericBoxResolution</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3167,7 +3335,7 @@
     <value>numericBoxClientHeight</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3212,7 +3380,7 @@
     <value>numericBoxClientWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3257,7 +3425,7 @@
     <value>numericBoxResolution</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -4280,7 +4448,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Semiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -4292,7 +4460,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Step</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -4406,7 +4574,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Semiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -4448,7 +4616,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Step</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -4478,7 +4646,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxNumOfBlochWave</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -4490,7 +4658,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxThickness</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -4601,7 +4769,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxNumOfBlochWave</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -4646,7 +4814,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxThickness</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -5060,7 +5228,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxSpotRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -5135,7 +5303,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxSpotRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -5558,7 +5726,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlOrigin</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5570,7 +5738,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlNoCondition</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5582,7 +5750,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlScrewGlide</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5594,7 +5762,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlForbiddenLattice</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5708,7 +5876,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlOrigin</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5762,7 +5930,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlNoCondition</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5816,7 +5984,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlScrewGlide</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5870,7 +6038,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlForbiddenLattice</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.11.5.348, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.1.25.2044, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>

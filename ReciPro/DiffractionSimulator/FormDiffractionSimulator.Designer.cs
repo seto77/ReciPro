@@ -65,6 +65,7 @@
             this.colorControlFoot = new Crystallography.Controls.ColorControl();
             this.colorControlBackGround = new Crystallography.Controls.ColorControl();
             this.tabPageKikuchi = new System.Windows.Forms.TabPage();
+            this.numericBoxKikuchiLineThreshold = new Crystallography.Controls.NumericBox();
             this.colorControlDefectLine = new Crystallography.Controls.ColorControl();
             this.colorControlExcessLine = new Crystallography.Controls.ColorControl();
             this.trackBarLineWidth = new System.Windows.Forms.TrackBar();
@@ -221,7 +222,6 @@
             this.timerBlinkKikuchiLine = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkDebyeRing = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkScale = new System.Windows.Forms.Timer(this.components);
-            this.numericBoxKikuchiLineThreshold = new Crystallography.Controls.NumericBox();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -613,6 +613,19 @@
             this.tabPageKikuchi.Controls.Add(this.label11);
             resources.ApplyResources(this.tabPageKikuchi, "tabPageKikuchi");
             this.tabPageKikuchi.Name = "tabPageKikuchi";
+            // 
+            // numericBoxKikuchiLineThreshold
+            // 
+            this.numericBoxKikuchiLineThreshold.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.numericBoxKikuchiLineThreshold, "numericBoxKikuchiLineThreshold");
+            this.numericBoxKikuchiLineThreshold.Maximum = 10D;
+            this.numericBoxKikuchiLineThreshold.Minimum = 0D;
+            this.numericBoxKikuchiLineThreshold.Name = "numericBoxKikuchiLineThreshold";
+            this.numericBoxKikuchiLineThreshold.RadianValue = 0.0069813170079773184D;
+            this.numericBoxKikuchiLineThreshold.ShowUpDown = true;
+            this.numericBoxKikuchiLineThreshold.SmartIncrement = true;
+            this.numericBoxKikuchiLineThreshold.Value = 0.4D;
+            this.numericBoxKikuchiLineThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxKikuchiLineThreshold_ValueChanged);
             // 
             // colorControlDefectLine
             // 
@@ -1956,19 +1969,6 @@
             this.timerBlinkScale.Interval = 400;
             this.timerBlinkScale.Tag = "";
             this.timerBlinkScale.Tick += new System.EventHandler(this.timerBlinkScale_Tick);
-            // 
-            // numericBoxKikuchiLineThreshold
-            // 
-            this.numericBoxKikuchiLineThreshold.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.numericBoxKikuchiLineThreshold, "numericBoxKikuchiLineThreshold");
-            this.numericBoxKikuchiLineThreshold.Maximum = 10D;
-            this.numericBoxKikuchiLineThreshold.Minimum = 0D;
-            this.numericBoxKikuchiLineThreshold.Name = "numericBoxKikuchiLineThreshold";
-            this.numericBoxKikuchiLineThreshold.RadianValue = 0.0069813170079773184D;
-            this.numericBoxKikuchiLineThreshold.ShowUpDown = true;
-            this.numericBoxKikuchiLineThreshold.SmartIncrement = true;
-            this.numericBoxKikuchiLineThreshold.Value = 0.4D;
-            this.numericBoxKikuchiLineThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxKikuchiLineThreshold_ValueChanged);
             // 
             // FormDiffractionSimulator
             // 

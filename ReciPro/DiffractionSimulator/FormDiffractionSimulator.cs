@@ -198,12 +198,17 @@ namespace ReciPro
             {
                 DisplayCenter = new PointD(0, 0);
                 SetVector();
-                tabControl.BringToFront();
+
                 Draw();
-                graphicsBox.Refresh();
+                //graphicsBox.Refresh();
 
                 if (radioButtonBeamConvergence.Checked)
                     FormDiffractionSimulatorCBED.Visible = true;
+
+                //tabControl.BringToFront();
+
+
+
             }
             else
             {
@@ -886,7 +891,7 @@ namespace ReciPro
                 if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
                     g.DrawString(twoTheta.ToString() + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
-        } 
+        }
         #endregion
 
         #region リサイズ関連イベント
@@ -911,12 +916,13 @@ namespace ReciPro
             SkipEvent = false;
 
             lastPanelSize = graphicsBox.ClientSize;
+          
         }
         #endregion
 
         #region 一般的なイベント
 
-        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e) => Draw();
+        private void FormDiffractionSimulator_Paint(object sender, PaintEventArgs e)  => Draw();
 
         //解像度が変更されたときに逆格子点を計算しなおす
         private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
@@ -1286,11 +1292,11 @@ namespace ReciPro
             labelMousePositionReal.Text = $"Real Coord. (origin: sample):　{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
 
 
-            var reciprocalPos = convertRealToReciprocal(realPos, false);
-            labelMousePositionReciprocal.Text = $"Reciprocal Coord. :{reciprocalPos.X:f3} /nm, {reciprocalPos.Y:f3} /nm, {reciprocalPos.Z:f3} /nm";
+            var invPos = convertRealToReciprocal(realPos, false);
+            labelMousePositionReciprocal.Text = $"Reciprocal Coord. :{invPos.X:f3} /nm, {invPos.Y:f3} /nm, {invPos.Z:f3} /nm";
 
-            labelDinv.Text = $"1/d: {reciprocalPos.Length:f4} /nm";
-            var d = 1.0 / reciprocalPos.Length;
+            labelDinv.Text = $"1/d: {invPos.Length:f4} /nm";
+            var d = 1.0 / invPos.Length;
             labelD.Text = $"d: {d:f4} nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
@@ -1585,6 +1591,7 @@ namespace ReciPro
 
             //Textの描画
             e.Graphics.DrawString(txt, tabControl.Font, brush, e.Bounds, sf);
+        
         }
 
         #endregion
@@ -2014,7 +2021,25 @@ namespace ReciPro
 
         }
 
-   
+        private void FormDiffractionSimulator_Validated(object sender, EventArgs e)
+        {
+            Draw();
+        }
+
+        private void FormDiffractionSimulator_Activated(object sender, EventArgs e)
+        {
+            Draw();
+        }
+
+        private void FormDiffractionSimulator_Shown(object sender, EventArgs e)
+        {
+            Draw();
+        }
+
+        private void FormDiffractionSimulator_Layout(object sender, LayoutEventArgs e)
+        {
+            Draw();
+        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
