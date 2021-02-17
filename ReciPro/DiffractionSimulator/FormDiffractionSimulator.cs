@@ -200,15 +200,11 @@ namespace ReciPro
                 SetVector();
 
                 Draw();
-                //graphicsBox.Refresh();
 
                 if (radioButtonBeamConvergence.Checked)
                     FormDiffractionSimulatorCBED.Visible = true;
 
-                //tabControl.BringToFront();
-
-
-
+                tabControl.BringToFront();
             }
             else
             {
@@ -967,9 +963,7 @@ namespace ReciPro
 
 
         private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => labelMousePositionReciprocal.Visible =
-                labelMousePositionDetector.Visible =
-                labelMousePositionReal.Visible =
-                checkBoxMousePositionDetailes.Checked;
+                labelMousePositionDetector.Visible = labelMousePositionReal.Visible = checkBoxMousePositionDetailes.Checked;
 
         private void numericBoxKikuchiLineThreshold_ValueChanged(object sender, EventArgs e)
         {
@@ -985,39 +979,38 @@ namespace ReciPro
         {
             if (formMain == null) return;
             if (CancelSetVector) return;
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
 
-            double d1 = 1 / convertScreenToReciprocal(0, 0, false).Length;
-            double d2 = 1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length;
-            double d3 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length;
-            double d4 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length;
-            double minD = new[] { d1, d2, d3, d4 }.Min();
+            var d1 = 1 / convertScreenToReciprocal(0, 0, false).Length;
+            var d2 = 1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length;
+            var d3 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length;
+            var d4 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length;
+            var minD = new[] { d1, d2, d3, d4 }.Min();
             //double maxD = new[] { d1, d2, d3, d4 }.Max();
-            WaveSource w = waveLengthControl.WaveSource;
+            var w = waveLengthControl.WaveSource;
             if (toolStripButtonDiffractionSpots.Checked)
             {
                 if (toolStripMenuItemBackLaue.Checked)//Back Laueのとき
                     minD = WaveLength / 2;
 
-                for (int i = 0; i < formMain.Crystals.Length; i++)
+                foreach (var crystal in formMain.Crystals)
                 {
-                    Crystal crystal = formMain.Crystals[i];
                     crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? w : WaveSource.None);
 
-                    int noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
-                    int screwGlideColor = colorControlScrewGlide.Color.ToArgb();
-                    int latticeColor = colorControlForbiddenLattice.Color.ToArgb();
                     string latticeType = crystal.Symmetry.LatticeTypeStr;
 
                     foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
                     {
+                        var noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
                         gtemp.Flag = true;
                         gtemp.Argb = noConditionColor;
                     }
 
+
                     if (!checkBoxExtinctionLattice.Checked)
                     {
+                        var latticeColor = colorControlForbiddenLattice.Color.ToArgb();
                         foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
                         {
                             gtemp.Flag = true;
@@ -1027,6 +1020,7 @@ namespace ReciPro
 
                     if (!checkBoxExtinctionAll.Checked)
                     {
+                        var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
                         foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
                         {
                             gtemp.Flag = true;
@@ -1081,7 +1075,7 @@ namespace ReciPro
         /// <returns></returns>
         private Vector3DBase convertScreenToReal(int x, int y)
         {
-            PointD p = convertScreenToDetector(x, y);//まずフィルム上の位置を取得
+            var p = convertScreenToDetector(x, y);//まずフィルム上の位置を取得
             return convertDetectorToReal(p.X, p.Y);//実空間の座標に変換
         }
 
@@ -1845,7 +1839,7 @@ namespace ReciPro
         }
         #endregion
 
-        #region 保存、コピー関連ｎ
+        #region 保存、コピー関連
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);
 
         private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, false, true);
@@ -2019,26 +2013,6 @@ namespace ReciPro
             graphicsBox.Image = destBmp;
             Clipboard.SetDataObject(destBmp);
 
-        }
-
-        private void FormDiffractionSimulator_Validated(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private void FormDiffractionSimulator_Activated(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private void FormDiffractionSimulator_Shown(object sender, EventArgs e)
-        {
-            Draw();
-        }
-
-        private void FormDiffractionSimulator_Layout(object sender, LayoutEventArgs e)
-        {
-            Draw();
         }
 
         private void Button2_Click(object sender, EventArgs e)
