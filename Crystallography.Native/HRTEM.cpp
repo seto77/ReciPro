@@ -18,7 +18,6 @@
 #define HRTEM_EXPORTS
 #include "HRTEM.h"
 
-
 using namespace std;
 
 
@@ -48,8 +47,8 @@ extern "C" {
 					const auto real = cos(phase);
 					const auto imag = sin(phase);
 
-					auto fReal = gPsi[g * 2] * real - gPsi[g * 2 + 1] * imag;
-					auto fImag = gPsi[g * 2] * imag + gPsi[g * 2 + 1] * real;
+					const auto fReal = gPsi[g * 2] * real - gPsi[g * 2 + 1] * imag;
+					const auto fImag = gPsi[g * 2] * imag + gPsi[g * 2 + 1] * real;
 
 					for (auto l = 0; l < lDim; ++l) {
 						sumReal[l] += fReal * gLenz[(g * lDim + l) * 2] - fImag * gLenz[(g * lDim + l) * 2 + 1];
@@ -72,12 +71,6 @@ extern "C" {
 		double rVec[],
 		double results[])
 	{
-
-		vector<bool>flag(gDim);
-		flag[0] = true;
-		for (auto g = 1; g < gDim; ++g)
-			flag[g] = gVec[g * 2 - 2] != gVec[g * 2] || gVec[g * 2 - 1] != gVec[g * 2 + 1];//’¼‘O‚ÌgVec‚Æˆá‚¤‚Æ‚«‚Ì‚ÝŒvŽZ
-
 		for (auto r = 0; r < rDim; ++r)
 		{
 			double real = 0, imag = 0;
@@ -85,21 +78,21 @@ extern "C" {
 			vector<double>sumReal(lDim);
 			for (auto g = 0; g < gDim; ++g)
 			{
-				if (flag[g])
+				if (g==0 || gVec[g * 2 - 2] != gVec[g * 2] || gVec[g * 2 - 1] != gVec[g * 2 + 1])//’¼‘O‚ÌgVec‚Æˆá‚¤‚Æ‚«‚Ì‚ÝŒvŽZ
 				{
 					const auto phase = gVec[g * 2] * rX + gVec[g * 2 + 1] * rY;
 					real = cos(phase);
 					imag = sin(phase);
 				}
 
-				auto fReal = gPsi[g * 2] * real - gPsi[g * 2 + 1] * imag;
-				auto fImag = gPsi[g * 2] * imag + gPsi[g * 2 + 1] * real;
+				const auto fReal = gPsi[g * 2] * real - gPsi[g * 2 + 1] * imag;
+				const auto fImag = gPsi[g * 2] * imag + gPsi[g * 2 + 1] * real;
 
 				for (auto l = 0; l < lDim; ++l)
 					sumReal[l] += fReal * gLenz[(g * lDim + l) * 2] - fImag * gLenz[(g * lDim + l) * 2 + 1];
 			}
 
-			for (auto l = 0; l < lDim; l++)
+			for (auto l = 0; l < lDim; ++l)
 				results[l * rDim + r] = abs(sumReal[l]);
 		}
 	}
