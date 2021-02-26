@@ -527,8 +527,15 @@ namespace ReciPro
                     var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                     gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToArray();
 
-                    foreach (var g in gVector)
-                        g.Argb = formMain.Crystals.Length == 1 ? colorControlNoCondition.Argb : crystal.Argb;
+                    if (formMain.Crystals.Length == 1)
+                        foreach (var g in gVector)
+                        {
+                            var ext = crystal.Symmetry.CheckExtinctionRule(g.Index);
+                            g.Argb = ext.Length == 0 ? colorControlNoCondition.Argb : colorControlScrewGlide.Argb;
+                        }
+                    else
+                        foreach (var g in gVector)
+                            g.Argb = crystal.Argb;
                 }
                 else
                     gVector = crystal.VectorOfG.ToArray();
@@ -998,34 +1005,27 @@ namespace ReciPro
                 {
                     crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? w : WaveSource.None);
 
-                    string latticeType = crystal.Symmetry.LatticeTypeStr;
+                    var latticeType = crystal.Symmetry.LatticeTypeStr;
 
+                    var noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
                     foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
                     {
-                        var noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
                         gtemp.Flag = true;
                         gtemp.Argb = noConditionColor;
                     }
 
-
-                    if (!checkBoxExtinctionLattice.Checked)
+                    var latticeColor = colorControlForbiddenLattice.Color.ToArgb();
+                    foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
                     {
-                        var latticeColor = colorControlForbiddenLattice.Color.ToArgb();
-                        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
-                        {
-                            gtemp.Flag = true;
-                            gtemp.Argb = latticeColor;
-                        }
+                        gtemp.Flag = !checkBoxExtinctionLattice.Checked;
+                        gtemp.Argb = latticeColor;
                     }
 
-                    if (!checkBoxExtinctionAll.Checked)
+                    var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
+                    foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
                     {
-                        var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
-                        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
-                        {
-                            gtemp.Flag = true;
-                            gtemp.Argb = screwGlideColor;
-                        }
+                        gtemp.Flag = !checkBoxExtinctionAll.Checked;
+                        gtemp.Argb = screwGlideColor;
                     }
                 }
             }
@@ -1667,44 +1667,90 @@ namespace ReciPro
         /// <param name="e"></param>
         private void radioButtonIntensityCalculationMethod_CheckedChanged(object sender, EventArgs e)
         {
-            flowLayoutPanelExtinctionOption.Enabled = radioButtonIntensityExcitation.Checked;
-
-            colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Visible = radioButtonIntensityExcitation.Checked;
-
-            buttonDetailsOfSpots.Enabled = radioButtonIntensityBethe.Checked;
-
             formMain.Crystal.Bethe.MaxNumOfBloch = 0;
-
-            FormDiffractionSimulatorCBED.Visible = radioButtonBeamConvergence.Checked;
-            numericBoxSpotRadius.Enabled = !radioButtonBeamConvergence.Checked;
 
             saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
 
+            //ファイルメニューアイテムの変更
             saveCBEDPatternToolStripMenuItem.Visible = copyCBEDPatternToolStripMenuItem.Visible = radioButtonBeamConvergence.Checked;
 
-            if (radioButtonBeamConvergence.Checked)
-                radioButtonPointSpread.Checked = true;
-
-            if (!radioButtonIntensityBethe.Checked)
-                FormDiffractionBeamTable.Visible = false;
-
-            flowLayoutPanelPED.Enabled = radioButtonBeamPrecession.Checked;
-
-            if (radioButtonBeamConvergence.Checked || radioButtonBeamPrecession.Checked)
-            {
-
-                radioButtonIntensityExcitation.Enabled = false;
-                radioButtonIntensityKinematical.Enabled = false;
-                radioButtonIntensityBethe.Checked = true;
-            }
-            else
+            if(radioButtonBeamParallel.Checked)//平行ビームの場合
             {
                 radioButtonIntensityExcitation.Enabled = true;
                 radioButtonIntensityKinematical.Enabled = true;
+
+                FormDiffractionSimulatorCBED.Visible = false;
+
+                numericBoxSpotRadius.Enabled = true;
+
+                flowLayoutPanelPED.Enabled = false;
             }
-            flowLayoutPanelBethe.Enabled = radioButtonIntensityBethe.Checked;
+            else if (radioButtonBeamConvergence.Checked)//収束ビームの場合
+
+            {
+                radioButtonIntensityExcitation.Enabled = false;
+                radioButtonIntensityKinematical.Enabled = false;
+                radioButtonIntensityBethe.Checked = true;
+
+                FormDiffractionSimulatorCBED.Visible = true;
+                radioButtonPointSpread.Checked = true;
+
+                numericBoxSpotRadius.Enabled = true;
+
+                flowLayoutPanelPED.Enabled = false;
+            }
+
+            else if (radioButtonBeamPrecession.Checked)//歳差ビームの場合
+            {
+                radioButtonIntensityExcitation.Enabled = false;
+                radioButtonIntensityKinematical.Enabled = false;
+                radioButtonIntensityBethe.Checked = true;
+
+                FormDiffractionSimulatorCBED.Visible = false;
+
+                numericBoxSpotRadius.Enabled = true;
+
+                flowLayoutPanelPED.Enabled = true;
+            }
 
 
+            if (radioButtonIntensityExcitation.Checked) //励起誤差のみの場合
+            {
+                FormDiffractionBeamTable.Visible = false;
+                colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Enabled = true;
+
+                flowLayoutPanelExtinctionOption.Enabled = true;
+
+                buttonDetailsOfSpots.Enabled = false;
+                flowLayoutPanelBethe.Enabled = false;
+            }
+            else if (radioButtonIntensityKinematical.Checked) // 運動学的
+            {
+                FormDiffractionBeamTable.Visible = false;
+                colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Enabled = false;
+
+                flowLayoutPanelExtinctionOption.Enabled = false;
+
+
+                buttonDetailsOfSpots.Enabled = false;
+                flowLayoutPanelBethe.Enabled = false;
+
+
+            }
+            else if (radioButtonIntensityBethe.Checked) // 動力学的
+            {
+                FormDiffractionBeamTable.Visible = false;
+                colorControlScrewGlide.Enabled = true;
+                colorControlForbiddenLattice.Enabled = false;
+
+                flowLayoutPanelExtinctionOption.Enabled = false;
+
+                buttonDetailsOfSpots.Enabled = true;
+                flowLayoutPanelBethe.Enabled = true;
+            }
+
+
+            
 
             SetVector();
             Draw();
