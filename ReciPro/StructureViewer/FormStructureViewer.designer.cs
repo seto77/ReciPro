@@ -671,6 +671,7 @@
             this.numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
             this.numericBoxCellTransrationC.ShowUpDown = true;
             this.numericBoxCellTransrationC.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationC, resources.GetString("numericBoxCellTransrationC.ToolTip"));
             this.numericBoxCellTransrationC.UpDown_Increment = 0.1D;
             this.numericBoxCellTransrationC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
@@ -686,6 +687,7 @@
             this.numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
             this.numericBoxCellTransrationB.ShowUpDown = true;
             this.numericBoxCellTransrationB.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationB, resources.GetString("numericBoxCellTransrationB.ToolTip"));
             this.numericBoxCellTransrationB.UpDown_Increment = 0.1D;
             this.numericBoxCellTransrationB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
@@ -701,6 +703,7 @@
             this.numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
             this.numericBoxCellTransrationA.ShowUpDown = true;
             this.numericBoxCellTransrationA.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCellTransrationA, resources.GetString("numericBoxCellTransrationA.ToolTip"));
             this.numericBoxCellTransrationA.UpDown_Increment = 0.1D;
             this.numericBoxCellTransrationA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxShowUnitCell_CheckedChanged);
             // 
@@ -1030,7 +1033,6 @@
             this.numericBoxAxesSize.Minimum = 0D;
             this.numericBoxAxesSize.Name = "numericBoxAxesSize";
             this.numericBoxAxesSize.RadianValue = 1.3962634015954636D;
-            this.numericBoxAxesSize.ReadOnly = true;
             this.numericBoxAxesSize.ShowUpDown = true;
             this.numericBoxAxesSize.SmartIncrement = true;
             this.numericBoxAxesSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -1048,7 +1050,6 @@
             this.numericBoxLightSize.Minimum = 0D;
             this.numericBoxLightSize.Name = "numericBoxLightSize";
             this.numericBoxLightSize.RadianValue = 1.3962634015954636D;
-            this.numericBoxLightSize.ReadOnly = true;
             this.numericBoxLightSize.ShowUpDown = true;
             this.numericBoxLightSize.SmartIncrement = true;
             this.numericBoxLightSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -1121,7 +1122,7 @@
             // trackBarAdvancedDepthCueingNear
             // 
             resources.ApplyResources(this.trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
-            this.trackBarAdvancedDepthCueingNear.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingNear.ControlHeight = 25;
             this.trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
             this.trackBarAdvancedDepthCueingNear.LogScrollBar = false;
             this.trackBarAdvancedDepthCueingNear.Maximum = 30D;
@@ -1145,7 +1146,7 @@
             // trackBarAdvancedDepthCueingFar
             // 
             resources.ApplyResources(this.trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
-            this.trackBarAdvancedDepthCueingFar.ControlHeight = 24;
+            this.trackBarAdvancedDepthCueingFar.ControlHeight = 25;
             this.trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
             this.trackBarAdvancedDepthCueingFar.LogScrollBar = false;
             this.trackBarAdvancedDepthCueingFar.Maximum = 30D;

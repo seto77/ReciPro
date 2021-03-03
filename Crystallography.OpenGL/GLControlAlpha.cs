@@ -105,7 +105,8 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// OpenGLのバージョン (3桁整数, 430など)
         /// </summary>
-        public int Version { get; set; } = 0;
+        public int Version { get; }
+
         /// <summary>
         /// OpenGLのバージョン (文字列, 4.3.0など)
         /// </summary>
@@ -117,6 +118,7 @@ namespace Crystallography.OpenGL
                 return (Version / 100).ToString() + "." + v2.ToString() + "." + v3.ToString();
             }
         }
+
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
         /// </summary>
@@ -126,8 +128,8 @@ namespace Crystallography.OpenGL
         /// </summary>
         public string VersionForZsortStr => "1.5.0";
 
-        private readonly int versionForOIT = 430;
 
+        private int versionForOIT { get; } = 430;
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
         /// </summary>
@@ -452,7 +454,7 @@ namespace Crystallography.OpenGL
             var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' ,' '});
             if (ver.Length != 3)
                 return;
-            int Version = 0;
+            Version = 0;
             if (int.TryParse(ver[0], out var temp0))
                 Version += temp0 * 100;
             if (int.TryParse(ver[1], out var temp1))

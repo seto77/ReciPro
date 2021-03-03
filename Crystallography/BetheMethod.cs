@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿#region using
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
-using static System.Numerics.Complex;
+using static System.Numerics.Complex; 
+#endregion
 
 namespace Crystallography
 {
