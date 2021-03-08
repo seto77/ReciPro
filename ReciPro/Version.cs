@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.794(2021/03/08)  Added new algorithm for CBED calculation (matrix exponential method) " +
             "\r\n ver4.793(2021/02/26)  Fixed bugs in 'Diffraction simulator'." +
             "\r\n ver4.792(2020/12/28)  Fixed a bug on 'Parallels Desktop' for Mac (OpenGL drawing problem)." +
             "\r\n ver4.791(2020/11/06)  Fixed a bug when Kikuchi line drawing. Improved speed of 'Structure Viewer' drawing." +

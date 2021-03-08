@@ -231,18 +231,7 @@ namespace Crystallography
                 }
                 else //MtxExp_Eigenの場合
                 {
-                    /*result = new Complex[Thicknesses.Length][];
-                    var matExp = NativeWrapper.MatrixExponential(TwoPiI * Thicknesses[0] * DMat.OfArray(potentialMatrix));
-                    var vec = psi0;
-
-                    for (int i = 0; i < Thicknesses.Length; i++)
-                    {
-                        vec = matExp * vec;
-                        result[i] = vec.ToArray();
-                    }
-                    */
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-
                 }
 
                 bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
