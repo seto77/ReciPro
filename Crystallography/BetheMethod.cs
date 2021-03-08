@@ -56,10 +56,11 @@ namespace Crystallography
         public int MaxNumOfBloch { get; set; }
         public double Thickness { get; set; }
         public double[] Thicknesses { get; set; }
-        public enum Solver { Managed, MKL, Eigen, OpenCV, Auto }
+        public enum Solver { Eigen_Managed, Eigen_MKL, Eigen_Eigen, MtxExp_Eigen, Auto }
 
         public DVec EigenValues { get; set; }
         public DMat EigenVectors { get; set; }
+        public Matrix<Complex> EigenVectorsInverse { get; set; }
 
         public DVec[] EigenValuesPED { get; set; }
         public DMat[] EigenVectorsPED { get; set; }
@@ -158,89 +159,95 @@ namespace Crystallography
             var factorMatrix = getPotentialMatrix(Beams);
             //有効なRotationだけを選択
             var beamRotationsValid = BeamRotations.Where(rot => rot != null).ToList();
-            
+
             RotationArrayValidLength = beamRotationsValid.Count;
-            //rotationsValidに対応するdiskValidを定義
-            var diskValid = new List<Complex[][]>();
+
             //進捗状況報告用の各種定数を初期化
-            int count = 0, total = beamRotationsValid.Count;
-            var sw = new Stopwatch();
-            var bLen = Beams.Length;
+            int count = 0;
 
-            //ローカル関数. RotationsValid(の一部)を対象にdisks[t][g]を計算し、diskValidに追加し、最後にかかった時間を返す
-            long func (Solver solver, int thread, bool speedTest = true)
+            var solver = (Solver)((object[])e.Argument)[0];
+            var thread = (int)((object[])e.Argument)[1];
+
+            if(solver== Solver.Auto)
             {
-                if (solver == Solver.MKL)
-                    MathNet.Numerics.Control.TryUseNativeMKL();
-                else if (solver == Solver.Managed)
-                    MathNet.Numerics.Control.UseManaged();
-
-                var reportString = (solver == Solver.MKL ? "MKL" : "EIG") + thread.ToString();
-                var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
-                if (speedTest)//スピードテストのとき
+                if (NativeWrapper.Enabled)
                 {
-                    var n = Math.Min(bLen < 64 ? 512 : bLen < 128 ? 256 : bLen < 256 ? 128 : bLen < 512 ? 64 : 32, beamRotationsValid.Count);
-                    if (n == 0)
-                        return 0;
-                    beamRotationsP = beamRotationsValid.Take(n).ToArray().AsParallel().WithDegreeOfParallelism(thread);
-                    beamRotationsValid.RemoveRange(0, n);
+                    solver = Solver.MtxExp_Eigen;
+                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
                 }
-                sw.Restart();
-                //disks[t][g]を計算.
-                var disk = beamRotationsP.Select(beamRotation =>  
+                else if(MathNet.Numerics.Control.TryUseNativeMKL())
                 {
-                    if (bwCBED.CancellationPending) return null;
-                    var rotZ = beamRotation * zNorm;
-                    var coeff = 1.0 / rotZ.Z; // = 1/cosTau
+                    solver = Solver.Eigen_MKL;
+                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.25));
+                }
+                else 
+                {
+                    solver = Solver.Eigen_Managed;
+                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
+                }
+            }
+            else if (solver == Solver.Eigen_MKL)
+                solver = MathNet.Numerics.Control.TryUseNativeMKL() ? Solver.Eigen_MKL : Solver.Eigen_Managed;
+                    
+            else if (solver == Solver.Eigen_Managed)
+                MathNet.Numerics.Control.UseManaged();
 
-                    var vecK0 = getVecK0(kvac, u0, beamRotation);
+            var reportString = solver.ToString() + thread.ToString();
 
-                    var beams = reset_gVectors(Beams,BaseRotation, vecK0);//BeamsのPやQをリセット
-                    var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
-                    Complex[][] result;
+            var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
 
-                    //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
-                    if (solver == Solver.Eigen)
-                        result = NativeWrapper.CBEDSolver(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                    else
+            //diskValid[t][g]を計算.
+            var diskValid = beamRotationsP.Select(beamRotation =>
+            {
+                if (bwCBED.CancellationPending) return null;
+                var rotZ = beamRotation * zNorm;
+                var coeff = 1.0 / rotZ.Z; // = 1/cosTau
+
+                var vecK0 = getVecK0(kvac, u0, beamRotation);
+
+                var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
+                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
+                Complex[][] result;
+
+                //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
+
+                //Eigen＿Eigenの場合
+                if (solver == Solver.Eigen_Eigen)
+                {
+                    result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                }
+                //Eigen_MKL あるいは Eigen_Managedの場合    
+                else if (solver == Solver.Eigen_Managed || solver == Solver.Eigen_MKL)
+                {
+                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Unknown);
+                    var alpha = evd.EigenVectors.Inverse() * psi0;
+                    result = Thicknesses.Select(t =>
                     {
-                        var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Unknown);
-                        var alpha = evd.EigenVectors.Inverse() * psi0;
-                        result = Thicknesses.Select(t =>
-                        {
-                            //ガンマの対称行列×アルファを作成
-                            var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
-                            //深さtにおけるψを求める
-                            return (evd.EigenVectors * gammmaAlpha).ToArray();
-                        }).ToArray();
-                    }
-                    bwCBED.ReportProgress(Interlocked.Increment(ref count),  reportString);//進捗状況を報告
-                    return result;
-                }).ToArray();
-                
-                diskValid.AddRange(disk);//diskをdiskValidに加える
-                return sw.ElapsedTicks;//経過時間を返す
-            }
-
-            //ここからチューニング＆本番
-
-            if ((Solver)((object[])e.Argument)[0] == Solver.Auto)
-            {
-                if (EigenEnabled && bLen < 512 && func(Solver.Eigen, Environment.ProcessorCount) < func(Solver.MKL, 8))//eigenの方が早い場合
-                    func(Solver.Eigen, Environment.ProcessorCount, false);
-                else if (Environment.ProcessorCount <= 4)//MKLでコア数が4以下の場合
-                    func(Solver.MKL, Environment.ProcessorCount, false);
-                else//コア数4,6,8,10,12,14,16を試して最速のもので
-                {
-                    var list = new SortedList<long, int>();
-                    foreach (var t in new[] { 4, 6, 8, 10, 12, 14, 16 })
-                        if (t <= Environment.ProcessorCount)
-                            list.Add(func(Solver.MKL, t), t);
-                    func(Solver.MKL, list.Values[0], false);
+                        //ガンマの対称行列×アルファを作成
+                        var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                        //深さtにおけるψを求める
+                        return (evd.EigenVectors * gammmaAlpha).ToArray();
+                    }).ToArray();
                 }
-            }
-            else
-                func((Solver)((object[])e.Argument)[0], (int)((object[])e.Argument)[1], false);
+                else //MtxExp_Eigenの場合
+                {
+                    /*result = new Complex[Thicknesses.Length][];
+                    var matExp = NativeWrapper.MatrixExponential(TwoPiI * Thicknesses[0] * DMat.OfArray(potentialMatrix));
+                    var vec = psi0;
+
+                    for (int i = 0; i < Thicknesses.Length; i++)
+                    {
+                        vec = matExp * vec;
+                        result[i] = vec.ToArray();
+                    }
+                    */
+                    result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+
+                }
+
+                bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
+                return result;
+            }).ToArray();
 
 
             //無効なRotationも考慮してdisk[RotationIndex][Z_index][G_index]を構築
@@ -282,6 +289,7 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
+
             var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
 
             if (AccVoltage != voltage)
@@ -292,6 +300,7 @@ namespace Crystallography
             //U0を計算
             var u0 = getU(voltage, (0, 0, 0), 0).Real.Real;
             var vecK0 = getVecK0(k_vac, u0);
+
 
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValues == null || EigenVectors == null || !rotation.Equals(BaseRotation))
             {
@@ -308,33 +317,38 @@ namespace Crystallography
                 var potentialMatrix = getEigenProblemMatrix(Beams);
 
                 //A行列に関する固有値、固有ベクトルを取得 
-                if (useEigen)
+                if (useEigen) { 
                     (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
+                    EigenVectorsInverse = NativeWrapper.Inverse(EigenVectors);
+                }
                 else
                 {
                     var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
                     EigenValues = evd.EigenValues.AsArray();
                     EigenVectors = (DMat)evd.EigenVectors;
+                    EigenVectorsInverse = EigenVectors.Inverse();
                 }
-
-                //(EigenVectors, EigenValues) = RefineEigenProblem(DMat.OfArray(potentialMatrix), (DMat)evd.EigenVectors, evd.EigenValues.ToArray());
             }
-            int len = EigenValues.Count();
+
+            int len = Beams.Length;
 
             var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
             psi0[0] = 1;
 
-            var alpha = EigenVectors.Inverse() * psi0;//アルファベクトルを求める
+            var alpha = EigenVectorsInverse * psi0;//アルファベクトルを求める
 
             //ガンマの対称行列×アルファを作成
             var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
 
             //出射面での境界条件を考慮した位相にするため、以下の1行を追加 (20190827)
             var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
-            //var p = new DiagonalMatrix(len, len, Beams.Select(b => new Complex(1, 0)).ToArray());
 
             //深さZにおけるψを求める
             var psi_atZ = p * EigenVectors * gamma_alpha;
+          
+
+            
+
 
             for (int i = 0; i < Beams.Length && i < len; i++)
                 Beams[i].Psi = psi_atZ[i];
@@ -343,152 +357,6 @@ namespace Crystallography
         }
 
         #endregion
-
-        #region Image Simulation
-        public double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
-        {
-            int width = size.Width, height = size.Height;
-            //gList[gNUm]を全て計算
-            var gList = beams.Select(b => (b.Freal, b.Fimag, b.Vec.ToPointD())).ToList();
-            //imagesを初期化
-            var images = Enumerable.Range(0, 4).ToList().Select(d => new double[width * height]).ToArray();
-            //各ピクセルの計算
-            double cX = width / 2.0, cY = height / 2.0;
-            Parallel.For(0, width * height, n =>
-            {
-                var r = new PointD(n % width - cX, height - n / width - 1 - cY) * res;
-                var sums = new Complex[2];
-                foreach (var (uCry, uTher, vec) in gList)
-                {
-                    var exp = Exp(vec * r * TwoPiI);
-                    sums[0] += uCry * exp;
-                    sums[1] += uTher * exp;
-                }
-                for (var i = 0; i < sums.Length; i++)
-                {
-                    images[i * 2][n] = phase ? sums[i].Magnitude : sums[i].Real;
-                    images[i * 2 + 1][n] = phase ? sums[i].Phase : sums[i].Imaginary;
-                }
-            });
-            return images;
-        }
-
-
-
-        /// <summary>
-        /// HRTEMイメージをシミュレーションする
-        /// </summary>
-        /// <param name="beams"></param>
-        /// <param name="size"></param>
-        /// <param name="res"></param>
-        /// <param name="cs">球面収差</param>
-        /// <param name="aper"></param>
-        /// <param name="beta">単位は rad</param>
-        /// <param name="delta">Cc * ΔV/V 単位は nm</param>
-        /// <param name="defocus">配列で与える. 単位はnm</param>
-        /// <param name="quasiMode">trueの時はQuasi-coherent mode, falseの時はTransmission cross coefficient </param>
-        /// <returns>double[defocusNum][pixels]</returns>
-        public double[][] GetHRTEMImage(Beam[] beams, Size size, double res, double cs, double beta, double delta, double[] defocusses,
-                                       bool quasiMode = true, bool native = true)
-        {
-            int width = size.Width, height = size.Height;
-            double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), rambdaSq = rambda * rambda;
-            double deltaSq = delta * delta, betaSq = beta * beta;
-            var k = new PointD(0, 0);//入射ベクトルKのXY成分
-            var defLen = defocusses.Length;
-
-            //gList[gNUm]を全て計算
-            var gList = new List<(Complex Psi, PointD Vec, Complex[] Lenz)>();
-            if (quasiMode)//Quasi-coherent modeの時
-                foreach (var g in beams)
-                {
-                    var qSq = (k + g.Vec.ToPointD()).Length2;
-                    gList.Add((g.Psi, k + g.Vec.ToPointD(), defocusses.Select(defocus =>
-                        Exp(-PiI * rambda * qSq * (cs * rambdaSq * qSq / 2.0 + defocus))//球面収差
-                        * Math.Exp(-PiSq * betaSq * qSq * (defocus + rambdaSq * cs * qSq) * (defocus + rambdaSq * cs * qSq))//時間的インコヒーレンス
-                        * Math.Exp(-PiSq * rambdaSq * deltaSq * qSq * qSq / 2)//空間的インコヒーレンス
-                         ).ToArray()));
-                }
-
-            else//Transmission cross coefficient modelの時
-            {
-                var vecDic = new Dictionary<(int H, int K, int L), PointD>();
-                for (var gNum = 0; gNum < beams.Length; gNum++)
-                    for (var hNum = gNum; hNum < beams.Length; hNum++)
-                    {
-                        Beam g = beams[gNum], h = beams[hNum];
-                        PointD q1 = k + g.Vec.ToPointD(), q2 = k + h.Vec.ToPointD();
-                        double q1Sq = q1.Length2, q2Sq = q2.Length2;
-                        //gNum==hNumの時は、g.Psi.Magnitude2() が画素に伝わるだけなので、最後に強度を0~2^16に規格化する場合は、あってもなくても関係ない
-                        var psi = gNum == hNum ? g.Psi.Magnitude2() : 2 * g.Psi * Conjugate(h.Psi);
-
-                        //indexが同じものがあるかどうかを検索し、無い場合のみvecを計算する
-                        var index = (g.H - h.H, g.K - h.K, g.L - h.L);
-                        if (!vecDic.TryGetValue(index, out var vec))
-                        {
-                            vec = (g.Vec - h.Vec).ToPointD();
-                            vecDic.Add(index, vec);
-                        }
-
-                        var lenz = defocusses.Select(defocus =>
-                            Exp(-PiI * rambda * q1Sq * (cs * rambdaSq * q1Sq / 2.0 + defocus)) *  //Kai1
-                            Exp(PiI * rambda * q2Sq * (cs * rambdaSq * q2Sq / 2.0 + defocus)) *  //kai2
-                            Math.Exp(-PiSq * betaSq * (defocus * (q1 - q2) + rambdaSq * cs * (q1Sq * q1 - q2Sq * q2)).Length2) *  //eb
-                            Math.Exp(-PiSq * rambdaSq * deltaSq * (q1Sq - q2Sq) * (q1Sq - q2Sq) / 2.0) //ed
-                            ).ToArray();
-
-                        gList.Add((psi, vec, lenz));
-                    }
-            }
-            //gListを並び替え
-            gList.Sort((g1, g2) => 
-            {
-                double x = g1.Vec.X - g2.Vec.X, y = g1.Vec.Y - g2.Vec.Y;
-                return (y > 0 || (y == 0 && x > 0)) ? 1 : (y < 0 || (y == 0 && x < 0)) ? -1 : 0;
-            });
-
-            //imagesを初期化
-            var images = defocusses.Select(d => new double[width * height]).ToArray();
-
-            //各ピクセルの計算
-            double cX = width / 2.0, cY = height / 2.0;
-            if (native && NativeWrapper.Enabled)//ネイティブC++で実行 3倍速い
-            {
-                var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
-                int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
-                Parallel.For(0, divTotal, div =>
-                {
-                    int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX), res * (height - n / width - 1 - cY) }).ToArray();
-                    var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
-                    for (var i = 0; i < defLen; i++)
-                        Array.Copy(results, i * count, images[i], start, count);
-                });
-            }
-            else//Managed
-            {
-                Parallel.For(0, width * height, n =>
-                {
-                    PointD r = new PointD(n % width - cX, height - n / width - 1 - cY) * res, _vec = new PointD(double.NaN, double.NaN);
-                    var sums = new Complex[defLen];
-                    var exp = new Complex(0, 0);
-                    foreach (var (Psi, Vec, Lenz) in gList)
-                    {
-                        if (_vec != Vec)
-                            exp = Exp(Vec * r * TwoPiI);
-                        
-                        for (var (i, f) = (0, Psi * exp); i < defLen; i++)
-                            sums[i] += f * Lenz[i];
-
-                        _vec = Vec;
-                    }
-                    for (var i = 0; i < defLen; i++)
-                        images[i][n] = quasiMode ? sums[i].Magnitude2() : Math.Abs(sums[i].Real);
-                });
-            }
-            return images;
-        }
-        #endregion Image Simulation
 
         #region Precession electron diffraction
 
@@ -615,6 +483,152 @@ namespace Crystallography
         }
 
         #endregion
+
+        #region Image Simulation
+        public double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
+        {
+            int width = size.Width, height = size.Height;
+            //gList[gNUm]を全て計算
+            var gList = beams.Select(b => (b.Freal, b.Fimag, b.Vec.ToPointD())).ToList();
+            //imagesを初期化
+            var images = Enumerable.Range(0, 4).ToList().Select(d => new double[width * height]).ToArray();
+            //各ピクセルの計算
+            double cX = width / 2.0, cY = height / 2.0;
+            Parallel.For(0, width * height, n =>
+            {
+                var r = new PointD(n % width - cX, height - n / width - 1 - cY) * res;
+                var sums = new Complex[2];
+                foreach (var (uCry, uTher, vec) in gList)
+                {
+                    var exp = Exp(vec * r * TwoPiI);
+                    sums[0] += uCry * exp;
+                    sums[1] += uTher * exp;
+                }
+                for (var i = 0; i < sums.Length; i++)
+                {
+                    images[i * 2][n] = phase ? sums[i].Magnitude : sums[i].Real;
+                    images[i * 2 + 1][n] = phase ? sums[i].Phase : sums[i].Imaginary;
+                }
+            });
+            return images;
+        }
+
+
+
+        /// <summary>
+        /// HRTEMイメージをシミュレーションする
+        /// </summary>
+        /// <param name="beams"></param>
+        /// <param name="size"></param>
+        /// <param name="res"></param>
+        /// <param name="cs">球面収差</param>
+        /// <param name="aper"></param>
+        /// <param name="beta">単位は rad</param>
+        /// <param name="delta">Cc * ΔV/V 単位は nm</param>
+        /// <param name="defocus">配列で与える. 単位はnm</param>
+        /// <param name="quasiMode">trueの時はQuasi-coherent mode, falseの時はTransmission cross coefficient </param>
+        /// <returns>double[defocusNum][pixels]</returns>
+        public double[][] GetHRTEMImage(Beam[] beams, Size size, double res, double cs, double beta, double delta, double[] defocusses,
+                                       bool quasiMode = true, bool native = true)
+        {
+            int width = size.Width, height = size.Height;
+            double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), rambdaSq = rambda * rambda;
+            double deltaSq = delta * delta, betaSq = beta * beta;
+            var k = new PointD(0, 0);//入射ベクトルKのXY成分
+            var defLen = defocusses.Length;
+
+            //gList[gNUm]を全て計算
+            var gList = new List<(Complex Psi, PointD Vec, Complex[] Lenz)>();
+            if (quasiMode)//Quasi-coherent modeの時
+                foreach (var g in beams)
+                {
+                    var qSq = (k + g.Vec.ToPointD()).Length2;
+                    gList.Add((g.Psi, k + g.Vec.ToPointD(), defocusses.Select(defocus =>
+                        Exp(-PiI * rambda * qSq * (cs * rambdaSq * qSq / 2.0 + defocus))//球面収差
+                        * Math.Exp(-PiSq * betaSq * qSq * (defocus + rambdaSq * cs * qSq) * (defocus + rambdaSq * cs * qSq))//時間的インコヒーレンス
+                        * Math.Exp(-PiSq * rambdaSq * deltaSq * qSq * qSq / 2)//空間的インコヒーレンス
+                         ).ToArray()));
+                }
+
+            else//Transmission cross coefficient modelの時
+            {
+                var vecDic = new Dictionary<(int H, int K, int L), PointD>();
+                for (var gNum = 0; gNum < beams.Length; gNum++)
+                    for (var hNum = gNum; hNum < beams.Length; hNum++)
+                    {
+                        Beam g = beams[gNum], h = beams[hNum];
+                        PointD q1 = k + g.Vec.ToPointD(), q2 = k + h.Vec.ToPointD();
+                        double q1Sq = q1.Length2, q2Sq = q2.Length2;
+                        //gNum==hNumの時は、g.Psi.Magnitude2() が画素に伝わるだけなので、最後に強度を0~2^16に規格化する場合は、あってもなくても関係ない
+                        var psi = gNum == hNum ? g.Psi.Magnitude2() : 2 * g.Psi * Conjugate(h.Psi);
+
+                        //indexが同じものがあるかどうかを検索し、無い場合のみvecを計算する
+                        var index = (g.H - h.H, g.K - h.K, g.L - h.L);
+                        if (!vecDic.TryGetValue(index, out var vec))
+                        {
+                            vec = (g.Vec - h.Vec).ToPointD();
+                            vecDic.Add(index, vec);
+                        }
+
+                        var lenz = defocusses.Select(defocus =>
+                            Exp(-PiI * rambda * q1Sq * (cs * rambdaSq * q1Sq / 2.0 + defocus)) *  //Kai1
+                            Exp(PiI * rambda * q2Sq * (cs * rambdaSq * q2Sq / 2.0 + defocus)) *  //kai2
+                            Math.Exp(-PiSq * betaSq * (defocus * (q1 - q2) + rambdaSq * cs * (q1Sq * q1 - q2Sq * q2)).Length2) *  //eb
+                            Math.Exp(-PiSq * rambdaSq * deltaSq * (q1Sq - q2Sq) * (q1Sq - q2Sq) / 2.0) //ed
+                            ).ToArray();
+
+                        gList.Add((psi, vec, lenz));
+                    }
+            }
+            //gListを並び替え
+            gList.Sort((g1, g2) =>
+            {
+                double x = g1.Vec.X - g2.Vec.X, y = g1.Vec.Y - g2.Vec.Y;
+                return (y > 0 || (y == 0 && x > 0)) ? 1 : (y < 0 || (y == 0 && x < 0)) ? -1 : 0;
+            });
+
+            //imagesを初期化
+            var images = defocusses.Select(d => new double[width * height]).ToArray();
+
+            //各ピクセルの計算
+            double cX = width / 2.0, cY = height / 2.0;
+            if (native && NativeWrapper.Enabled)//ネイティブC++で実行 3倍速い
+            {
+                var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
+                int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
+                Parallel.For(0, divTotal, div =>
+                {
+                    int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
+                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX), res * (height - n / width - 1 - cY) }).ToArray();
+                    var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
+                    for (var i = 0; i < defLen; i++)
+                        Array.Copy(results, i * count, images[i], start, count);
+                });
+            }
+            else//Managed
+            {
+                Parallel.For(0, width * height, n =>
+                {
+                    PointD r = new PointD(n % width - cX, height - n / width - 1 - cY) * res, _vec = new PointD(double.NaN, double.NaN);
+                    var sums = new Complex[defLen];
+                    var exp = new Complex(0, 0);
+                    foreach (var (Psi, Vec, Lenz) in gList)
+                    {
+                        if (_vec != Vec)
+                            exp = Exp(Vec * r * TwoPiI);
+
+                        for (var (i, f) = (0, Psi * exp); i < defLen; i++)
+                            sums[i] += f * Lenz[i];
+
+                        _vec = Vec;
+                    }
+                    for (var i = 0; i < defLen; i++)
+                        images[i][n] = quasiMode ? sums[i].Magnitude2() : Math.Abs(sums[i].Real);
+                });
+            }
+            return images;
+        }
+        #endregion Image Simulation
 
         #region 構造因子 F
         /// <summary>

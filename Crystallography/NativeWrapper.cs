@@ -23,13 +23,29 @@ namespace Crystallography
                                                 double[] eigenVectors);
 
         [DllImport("Crystallography.Native.dll")]
-        private static extern void _CBEDSolver(int gDim,
+        private static extern void _MatrixExponential(int dim,
+                                               double[] mat,
+                                               double[] results);
+
+
+        [DllImport("Crystallography.Native.dll")]
+        private static extern void _CBEDSolver_Eigen(int gDim,
                                                double[] potential,
                                                double[] phi0,
                                                int tDim,
                                                double[] thickness,
                                                double coeff,
                                                double[] result);
+
+        [DllImport("Crystallography.Native.dll")]
+        private static extern void _CBEDSolver_MtxExp(int gDim,
+                                              double[] potential,
+                                              double[] phi0,
+                                              int tDim,
+                                              double tStart,
+                                              double tStep,
+                                              double coeff,
+                                              double[] result);
 
         [DllImport("Crystallography.Native.dll")]
         private static unsafe extern void _HRTEMSolverQuasi(int gDim,
@@ -206,11 +222,9 @@ namespace Crystallography
         /// <returns></returns>
         static public DenseMatrix Inverse(int dim, double[] _mat)
         {
-            var _inv = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            var _inv = new double[dim * dim * 2];
             _Inverse(dim, _mat, _inv);
-            var result = toDenseMatrix(_inv);
-            ArrayPool<double>.Shared.Return(_inv);
-            return result;
+            return toDenseMatrix(_inv);
         }
         #endregion 逆行列
 
@@ -226,19 +240,32 @@ namespace Crystallography
             //matをdouble[]に変換
             var (dim, inputValues) = toDoubleArray(mat);
 
-            var values = ArrayPool<double>.Shared.Rent(dim * 2);
-            var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
-            
+            var values = new double[dim * 2];
+            var vectors = new double[dim * dim * 2];
+
             _EigenSolver(dim, inputValues, values, vectors);
             var result = (toDenseVector(values), toDenseMatrix(vectors));
-
-            ArrayPool<double>.Shared.Return(values);
-            ArrayPool<double>.Shared.Return(vectors);
 
             return result; ;
         }
 
         #endregion 固有値
+
+        #region 行列指数関数
+        static public DenseMatrix MatrixExponential(DenseMatrix mat)
+        {
+            //matをdouble[]に変換
+            var (dim, inputValues) = toDoubleArray(mat);
+
+            var vectors = new double[dim * dim * 2];
+
+            _MatrixExponential(dim, inputValues, vectors);
+            var result = toDenseMatrix(vectors);
+
+            return result; ;
+        }
+
+        #endregion
 
         /// <summary>
         /// Eigenライブラリーを利用して、CBEDの解を求める
@@ -248,14 +275,14 @@ namespace Crystallography
         /// <param name="thickness"></param>
         /// <param name="coeff"></param>
         /// <returns></returns>
-        unsafe static public Complex[][] CBEDSolver(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
+        unsafe static public Complex[][] CBEDSolver_Eigen(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
         {
             (int dim, double[] _potential) = toDoubleArray(potential);
 
             (_, double[] _psi0) = toDoubleArray(psi0);
 
-            var tempResult = ArrayPool<double>.Shared.Rent(dim * thickness.Length * 2);
-            _CBEDSolver(dim, _potential, _psi0, thickness.Length, thickness, coeff, tempResult);
+            var tempResult = new double[dim * thickness.Length * 2];
+            _CBEDSolver_Eigen(dim, _potential, _psi0, thickness.Length, thickness, coeff, tempResult);
 
             var result = new Complex[thickness.Length][];
 
@@ -270,8 +297,41 @@ namespace Crystallography
                 }
             }
 
-            ArrayPool<double>.Shared.Return(tempResult);
-          
+            return result;
+        }
+
+        /// <summary>
+        /// Eigenライブラリーを利用して、CBEDの解を求める
+        /// </summary>
+        /// <param name="potential"></param>
+        /// <param name="psi0"></param>
+        /// <param name="thickness"></param>
+        /// <param name="coeff"></param>
+        /// <returns></returns>
+        unsafe static public Complex[][] CBEDSolver_MatExp(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
+        {
+            (int dim, double[] _potential) = toDoubleArray(potential);
+
+            (_, double[] _psi0) = toDoubleArray(psi0);
+
+            var tempResult = new double[dim * thickness.Length * 2];
+            var tStep = thickness.Length > 1 ? thickness[1] - thickness[0] : 0.0;
+
+            _CBEDSolver_MtxExp(dim, _potential, _psi0, thickness.Length, thickness[0], tStep, coeff, tempResult);
+
+            var result = new Complex[thickness.Length][];
+
+            fixed (double* pin = tempResult)
+            {
+                var tempResultP = pin;
+                for (int t = 0; t < thickness.Length; t++)
+                {
+                    result[t] = new Complex[dim];
+                    for (int g = 0; g < dim; g++, tempResultP += 2)
+                        result[t][g] = new Complex(*tempResultP, *(tempResultP + 1));
+                }
+            }
+
             return result;
         }
 

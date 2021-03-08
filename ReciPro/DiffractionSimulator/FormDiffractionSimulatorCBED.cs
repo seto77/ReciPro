@@ -126,9 +126,10 @@ namespace ReciPro
 
             var solver = comboBoxSolver.SelectedIndex switch
             {
-                1 => BetheMethod.Solver.MKL,
-                2 => BetheMethod.Solver.Eigen,
-                3 => BetheMethod.Solver.Managed,
+                1 => BetheMethod.Solver.Eigen_MKL,
+                2 => BetheMethod.Solver.Eigen_Eigen,
+                3 => BetheMethod.Solver.Eigen_Managed,
+                4 => BetheMethod.Solver.MtxExp_Eigen,
                 _ => BetheMethod.Solver.Auto
             };
 

@@ -189,6 +189,9 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 15</value>
   </data>
@@ -293,13 +296,16 @@ into 31029 points</value>
     <value>Auto</value>
   </data>
   <data name="comboBoxSolver.Items1" xml:space="preserve">
-    <value>MKL</value>
+    <value>Eigen_MKL</value>
   </data>
   <data name="comboBoxSolver.Items2" xml:space="preserve">
-    <value>Eigen</value>
+    <value>Eigen_Eigen</value>
   </data>
   <data name="comboBoxSolver.Items3" xml:space="preserve">
-    <value>Managed</value>
+    <value>Eigen_Managed</value>
+  </data>
+  <data name="comboBoxSolver.Items4" xml:space="preserve">
+    <value>MtxExp_Eigen</value>
   </data>
   <data name="comboBoxSolver.Location" type="System.Drawing.Point, System.Drawing">
     <value>396, 65</value>
@@ -359,7 +365,7 @@ into 31029 points</value>
     <value>numericBoxThread</value>
   </data>
   <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -404,7 +410,7 @@ into 31029 points</value>
     <value>numericBoxThicknessStep</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -446,7 +452,7 @@ into 31029 points</value>
     <value>numericBoxWholeThicknessStart</value>
   </data>
   <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -488,7 +494,7 @@ into 31029 points</value>
     <value>numericBoxThicknessEnd</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -515,7 +521,7 @@ into 31029 points</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -524,7 +530,7 @@ into 31029 points</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 27</value>
+    <value>191, 25</value>
   </data>
   <data name="numericBoxMaxNumOfG.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -533,7 +539,7 @@ into 31029 points</value>
     <value>numericBoxMaxNumOfG</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -712,7 +718,7 @@ into 31029 points</value>
     <value>trackBarAdvancedAlphaMax</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
-    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -736,7 +742,7 @@ into 31029 points</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxDivision.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -745,7 +751,7 @@ into 31029 points</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>87, 25</value>
   </data>
   <data name="numericBoxDivision.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -754,7 +760,7 @@ into 31029 points</value>
     <value>numericBoxDivision</value>
   </data>
   <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1337,7 +1343,7 @@ into 31029 points</value>
     <value>numericBoxImageSize</value>
   </data>
   <data name="&gt;&gt;numericBoxImageSize.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.6.12.407, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.3.8.109, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxImageSize.Parent" xml:space="preserve">
     <value>groupBoxOutput</value>
@@ -1379,10 +1385,13 @@ into 31029 points</value>
     <value>133, 17</value>
   </metadata>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 16</value>
+    <value>340, 16</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 15</value>
+    <value>19, 13</value>
   </data>
   <data name="toolStripStatusLabel2.Text" xml:space="preserve">
     <value>    </value>
@@ -1422,6 +1431,9 @@ into 31029 points</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
