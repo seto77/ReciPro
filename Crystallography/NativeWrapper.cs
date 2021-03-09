@@ -10,6 +10,7 @@ namespace Crystallography
 {
     public static class NativeWrapper
     {
+        public enum Library { None, Eigen, Cuda}
 
         [DllImport("Crystallography.Native.dll")]
         private static extern void _Inverse(int dim,
@@ -26,6 +27,21 @@ namespace Crystallography
         private static extern void _MatrixExponential(int dim,
                                                double[] mat,
                                                double[] results);
+
+
+        [DllImport("Crystallography.Cuda.dll")]
+        private static extern void MatrixExponential_Cuda(int dim,
+                                              double[] mat,
+                                              double[] results);
+        [DllImport("Crystallography.Cuda.dll")]
+        private static extern void _CBEDSolver_MtxExp_Cuda(int gDim,
+                                             double[] potential,
+                                             double[] phi0,
+                                             int tDim,
+                                             double tStart,
+                                             double tStep,
+                                             double coeff,
+                                             double[] result);
 
 
         [DllImport("Crystallography.Native.dll")]
@@ -265,10 +281,23 @@ namespace Crystallography
             return result; ;
         }
 
+        static public DenseMatrix MatrixExponential_Cuda(DenseMatrix mat)
+        {
+            //matをdouble[]に変換
+            var (dim, inputValues) = toDoubleArray(mat);
+
+            var vectors = new double[dim * dim * 2];
+
+            MatrixExponential_Cuda(dim, inputValues, vectors);
+            var result = toDenseMatrix(vectors);
+
+            return result; ;
+        }
+
         #endregion
 
         /// <summary>
-        /// Eigenライブラリーを利用して、CBEDの解を求める
+        /// Eigenライブラリーを利用して固有値解を求めて、CBEDの解を求める
         /// </summary>
         /// <param name="potential"></param>
         /// <param name="psi0"></param>
@@ -301,7 +330,7 @@ namespace Crystallography
         }
 
         /// <summary>
-        /// Eigenライブラリーを利用して、CBEDの解を求める
+        /// Eigenライブラリーを利用してMatrix exponentialを解いて、CBEDの解を求める. 
         /// </summary>
         /// <param name="potential"></param>
         /// <param name="psi0"></param>

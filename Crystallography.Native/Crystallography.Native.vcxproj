@@ -56,7 +56,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
@@ -103,7 +103,8 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>
+    </LinkIncremental>
     <TargetExt>.dll</TargetExt>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\dll</OutDir>
@@ -206,22 +207,19 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>
-      </FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>
-      </ConformanceMode>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <ConformanceMode>false</ConformanceMode>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
-      <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
       <Parallelization>false</Parallelization>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
       <UseProcessorExtensions>AVX</UseProcessorExtensions>
@@ -232,8 +230,7 @@
       </OpenMPSupport>
       <OpenMP>
       </OpenMP>
-      <LanguageStandard>
-      </LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <EnableModules>
       </EnableModules>
       <BufferSecurityCheck>
@@ -260,13 +257,16 @@
       </OmitFramePointers>
       <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
       <IntelJCCErratum>true</IntelJCCErratum>
+      <SDLCheck>true</SDLCheck>
+      <IgnoreStandardIncludePath />
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -295,9 +295,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
