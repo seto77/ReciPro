@@ -127,18 +127,14 @@ extern "C" {
 		CUDAMatrix eA(dim);
 
 		CUDAMatrix::exp(A, eA);
-
 		auto r = eA.getMatrix();
 		int n = 0;
 		for (int col = 0; col < dim; col++)
 			for (int row = 0; row < dim; row++)
 			{
-			
-				results[n++] = eA.getCell(row, col)._Val[0];
-				results[n++] = eA.getCell(row, col)._Val[1];
-				//results[n++] = (*r).real(); //eA.getCell(row, col)._Val[0];
-				//results[n++] = (*r).imag();//eA.getCell(row, col)._Val[1];
-				//r++;
+				results[n++] = (*r).real(); //eA.getCell(row, col)._Val[0];
+				results[n++] = (*r).imag();//eA.getCell(row, col)._Val[1];
+				r++;
 			}
 	}
 

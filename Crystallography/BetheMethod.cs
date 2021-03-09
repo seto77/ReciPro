@@ -165,6 +165,7 @@ namespace Crystallography
             //進捗状況報告用の各種定数を初期化
             int count = 0;
 
+            #region solver, thread の設定
             var solver = (Solver)((object[])e.Argument)[0];
             var thread = (int)((object[])e.Argument)[1];
 
@@ -188,26 +189,27 @@ namespace Crystallography
             }
             else if (solver == Solver.Eigen_MKL)
                 solver = MathNet.Numerics.Control.TryUseNativeMKL() ? Solver.Eigen_MKL : Solver.Eigen_Managed;
-                    
             else if (solver == Solver.Eigen_Managed)
                 MathNet.Numerics.Control.UseManaged();
+            #endregion
 
             var reportString = solver.ToString() + thread.ToString();
 
             var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
 
-            //diskValid[t][g]を計算.
+            //ここからdiskValid[t][g]を計算.
+            
             var diskValid = beamRotationsP.Select(beamRotation =>
             {
-            if (bwCBED.CancellationPending) return null;
-            var rotZ = beamRotation * zNorm;
-            var coeff = 1.0 / rotZ.Z; // = 1/cosTau
+                if (bwCBED.CancellationPending) return null;
+                var rotZ = beamRotation * zNorm;
+                var coeff = 1.0 / rotZ.Z; // = 1/cosTau
 
-            var vecK0 = getVecK0(kvac, u0, beamRotation);
+                var vecK0 = getVecK0(kvac, u0, beamRotation);
 
-            var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
-            var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
-            Complex[][] result;
+                var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
+                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
+                Complex[][] result;
 
                 //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
 
@@ -219,30 +221,28 @@ namespace Crystallography
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else if (solver == Solver.Eigen_Managed || solver == Solver.Eigen_MKL)
                 {
-                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Unknown);
+                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
                     var alpha = evd.EigenVectors.Inverse() * psi0;
                     result = Thicknesses.Select(t =>
                     {
-                    //ガンマの対称行列×アルファを作成
-                    var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
-                    //深さtにおけるψを求める
-                    return (evd.EigenVectors * gammmaAlpha).ToArray();
+                        //ガンマの対称行列×アルファを作成
+                        var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                        //深さtにおけるψを求める
+                        return (evd.EigenVectors * gammmaAlpha).ToArray();
                     }).ToArray();
                 }
                 else //MtxExp_Eigenの場合
                 {
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
 
-                    //var matExp = NativeWrapper.MatrixExponential_Cuda(TwoPiI * coeff * Thicknesses[0] *DMat.OfArray( potentialMatrix));
+                    //var matExp = NativeWrapper.MatrixExponential_Cuda(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix));
                     //var vec = psi0;
                     //result = new Complex[Thicknesses.Length][];
-                    //for (int i=0; i<Thicknesses.Length; i++)
+                    //for (int i = 0; i < Thicknesses.Length; i++)
                     //{
                     //    vec = matExp * vec;
                     //    result[i] = vec.ToArray();
                     //}
-
-
                 }
                 bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
                 return result;
