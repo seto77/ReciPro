@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
+using System.Windows.Forms;
 #endregion
 
 namespace Crystallography
@@ -56,7 +57,7 @@ namespace Crystallography
         public int MaxNumOfBloch { get; set; }
         public double Thickness { get; set; }
         public double[] Thicknesses { get; set; }
-        public enum Solver { Eigen_Managed, Eigen_MKL, Eigen_Eigen, MtxExp_Eigen, Auto }
+        public enum Solver { Eigen_MKL, Eigen_Eigen, MtxExp_MKL, MtxExp_Eigen, Auto }
 
         public DVec EigenValues { get; set; }
         public DMat EigenVectors { get; set; }
@@ -176,21 +177,15 @@ namespace Crystallography
                     solver = Solver.MtxExp_Eigen;
                     thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
                 }
-                else if(MathNet.Numerics.Control.TryUseNativeMKL())
+                else
                 {
                     solver = Solver.Eigen_MKL;
-                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.25));
+                    thread = MathNet.Numerics.Control.TryUseNativeMKL() ?
+                        Math.Max(1, (int)(Environment.ProcessorCount * 0.25)) :
+                        thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
                 }
-                else 
-                {
-                    solver = Solver.Eigen_Managed;
-                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
-                }
+                
             }
-            else if (solver == Solver.Eigen_MKL)
-                solver = MathNet.Numerics.Control.TryUseNativeMKL() ? Solver.Eigen_MKL : Solver.Eigen_Managed;
-            else if (solver == Solver.Eigen_Managed)
-                MathNet.Numerics.Control.UseManaged();
             #endregion
 
             var reportString = solver.ToString() + thread.ToString();
@@ -219,30 +214,43 @@ namespace Crystallography
                     result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
                 }
                 //Eigen_MKL あるいは Eigen_Managedの場合    
-                else if (solver == Solver.Eigen_Managed || solver == Solver.Eigen_MKL)
+                else if (solver == Solver.Eigen_MKL)
                 {
                     var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-                    var alpha = evd.EigenVectors.Inverse() * psi0;
+                    //var alpha = evd.EigenVectors.Inverse().Multiply(psi0);
+                    var alpha = evd.EigenVectors.LU().Solve(psi0);
                     result = Thicknesses.Select(t =>
                     {
                         //ガンマの対称行列×アルファを作成
                         var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
                         //深さtにおけるψを求める
-                        return (evd.EigenVectors * gammmaAlpha).ToArray();
+                        return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
                     }).ToArray();
                 }
-                else //MtxExp_Eigenの場合
+                else if (solver == Solver.MtxExp_Eigen)//MtxExp_Eigenの場合
                 {
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                }
+                else//MtxExp_MKLの場合 あるいは MtxExp_Managedの場合    
+                {
+                    DMat matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
+                    var vec = matExpStart.Multiply(psi0);
 
-                    //var matExp = NativeWrapper.MatrixExponential_Cuda(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix));
-                    //var vec = psi0;
-                    //result = new Complex[Thicknesses.Length][];
-                    //for (int i = 0; i < Thicknesses.Length; i++)
-                    //{
-                    //    vec = matExp * vec;
-                    //    result[i] = vec.ToArray();
-                    //}
+                    DMat matExpStep;
+                    if (Thicknesses.Length == 1)
+                        matExpStep = null;
+                    else if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
+                        matExpStep = matExpStart;
+                    else
+                        matExpStep = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * DMat.OfArray(potentialMatrix)).Exponential();
+
+                    result = new Complex[Thicknesses.Length][];
+                    for (int i = 0; i < Thicknesses.Length; i++)
+                    {
+                        if (i != 0)
+                            vec = (DVec)matExpStep.Multiply(vec);
+                        result[i] = vec.ToArray();
+                    }
                 }
                 bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
                 return result;
@@ -334,7 +342,7 @@ namespace Crystallography
             var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
             psi0[0] = 1;
 
-            var alpha = EigenVectorsInverse * psi0;//アルファベクトルを求める
+            var alpha = EigenVectorsInverse.Multiply(psi0);//アルファベクトルを求める
 
             //ガンマの対称行列×アルファを作成
             var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
@@ -343,11 +351,7 @@ namespace Crystallography
             var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
 
             //深さZにおけるψを求める
-            var psi_atZ = p * EigenVectors * gamma_alpha;
-          
-
-            
-
+            var psi_atZ = p * EigenVectors.Multiply(gamma_alpha);
 
             for (int i = 0; i < Beams.Length && i < len; i++)
                 Beams[i].Psi = psi_atZ[i];
@@ -436,11 +440,11 @@ namespace Crystallography
                     var len = EigenValuesPED[k].Count();
                     var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
                     psi0[0] = 1;
-                    var alpha = EigenVectorsInversePED[k] * psi0;//アルファベクトルを求める
+                    var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
                     //ガンマの対称行列×アルファを作成
                     var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n]).ToArray());
                     //深さZにおけるψを求める
-                    var psi_atZ = EigenVectorsPED[k] * gamma_alpha;
+                    var psi_atZ = EigenVectorsPED[k].Multiply(gamma_alpha);
                     for (int i = 0; i < BeamsPED[k].Length && i < len; i++)
                         BeamsPED[k][i].Psi = psi_atZ[i];
                 }
