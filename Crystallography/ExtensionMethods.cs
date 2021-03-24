@@ -5,6 +5,9 @@ using MathNet.Numerics.Providers.Common.Mkl;
 using System;
 using System.Numerics;
 
+using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
+using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
+
 using MC = Crystallography.MathematicalConstants;
 
 namespace Crystallography
@@ -184,7 +187,7 @@ namespace Crystallography
                 m = m.Divide(Math.Pow(2.0, k));
             }
 
-            Matrix<Complex> N = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix.CreateIdentity(m.RowCount), D = N;
+            Matrix<Complex> N = DMat.CreateIdentity(m.RowCount), D = N;
             Matrix<Complex> m_pow_j = m;
 
             for (int j = 1; j <= p; j++)
@@ -195,18 +198,19 @@ namespace Crystallography
                 if (j <= p)
                 {
                     var coeff = MC.Factorial[2 * p - j] * MC.Factorial[p] / MC.Factorial[2 * p] / MC.Factorial[j] / MC.Factorial[p - j];
-                    var temp = m_pow_j.Multiply(coeff);
+                    var temp = coeff * m_pow_j;
                     N = N.Add(temp);
                     D = j % 2 == 0 ? D.Add(temp) : D.Subtract(temp);
                 }
             }
 
-            // calculate inv(D) * N with LU decomposition
-            var exp_m = D.LU().Solve(N);
+           // calculate inv(D) * N with LU decomposition
+           var exp_m =  D.LU().Solve(N);
 
             // denormalize if need
             if (k > 0)
-                exp_m = exp_m.Power((int)Math.Pow(2.0, k));
+                for (int i = 0; i < k; i++)
+                    exp_m = exp_m.Multiply(exp_m);
 
             return exp_m;
         }

@@ -4,7 +4,6 @@ using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -13,7 +12,6 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
-using System.Windows.Forms;
 #endregion
 
 namespace Crystallography
@@ -203,7 +201,7 @@ namespace Crystallography
                 var vecK0 = getVecK0(kvac, u0, beamRotation);
 
                 var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
-                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
+                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット //コスト高い
                 Complex[][] result;
 
                 //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
@@ -227,11 +225,13 @@ namespace Crystallography
                         return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
                     }).ToArray();
                 }
-                else if (solver == Solver.MtxExp_Eigen)//MtxExp_Eigenの場合
+                //MtxExp_Eigenの場合
+                else if (solver == Solver.MtxExp_Eigen)
                 {
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
                 }
-                else//MtxExp_MKLの場合 あるいは MtxExp_Managedの場合    
+                //MtxExp_MKLの場合 あるいは MtxExp_Managedの場合 
+                else
                 {
                     DMat matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
                     var vec = matExpStart.Multiply(psi0);
@@ -715,13 +715,6 @@ namespace Crystallography
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
                 uDictionary.Add(key, u);
             }
-            if(double.IsNaN(u.real.Real))
-            {
-
-
-            }
-
-
             return u;
         }
         private (Complex Real, Complex Imag) getU((int H, int K, int L) index, double s2) => getU(AccVoltage, index, s2);
@@ -743,7 +736,9 @@ namespace Crystallography
                 for (int j = 0; j < b.Length; j++)
                 {
                     var (Real, Imag) = getU((b[i].H - b[j].H, b[i].K - b[j].K, b[i].L - b[j].L), (b[i].Vec - b[j].Vec).Length2 / 4);
-                    potentialMatrix[i, j] = i == j ? ImaginaryOne * Imag : Real + ImaginaryOne * Imag;
+                    potentialMatrix[i, j] = i == j ? 
+                        ImaginaryOne * Imag : 
+                        Real + ImaginaryOne * Imag;
                 }
             return potentialMatrix;
         }

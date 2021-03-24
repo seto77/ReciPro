@@ -490,7 +490,7 @@
     </Compile>
     <Compile Include="Version.cs" />
     <Content Include="StdDb.cdb3">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

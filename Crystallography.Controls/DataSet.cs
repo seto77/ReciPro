@@ -280,14 +280,14 @@ namespace Crystallography.Controls
                 dr.Title = Crystal2.GetFullTitle(c.sect);
                 dr.Journal = Crystal2.GetFullJournal(c.jour);
                 dr.Elements = elementList.ToString();
-                dr.D1 = d[0];
-                dr.D2 = d[1];
-                dr.D3 = d[2];
-                dr.D4 = d[3];
-                dr.D5 = d[4];
-                dr.D6 = d[5];
-                dr.D7 = d[6];
-                dr.D8 = d[7];
+                dr.D1 = d[0] * 10;
+                dr.D2 = d[1] * 10;
+                dr.D3 = d[2] * 10;
+                dr.D4 = d[3] * 10;
+                dr.D5 = d[4] * 10;
+                dr.D6 = d[5] * 10;
+                dr.D7 = d[6] * 10;
+                dr.D8 = d[7] * 10;
 
                 return dr;
             }
