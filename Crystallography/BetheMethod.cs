@@ -189,6 +189,7 @@ namespace Crystallography
             var reportString = solver.ToString() + thread.ToString();
 
             var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
+            //var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(1);
 
             //ここからdiskValid[t][g]を計算.
             
