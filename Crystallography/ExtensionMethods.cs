@@ -236,7 +236,6 @@ namespace Crystallography
     }
     #endregion
 
-
     #region Stringの拡張
     public static class StringEx
     {

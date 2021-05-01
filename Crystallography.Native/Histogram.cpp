@@ -62,6 +62,9 @@ extern "C" {
 		//IPの法線ベクトル
 		double detector_normal[3] = { Denom2, Denom1, -CosTau };
 
+
+		double ptx[5], pty[5];
+		double vx[5], vy[5];
 		//ここから積分開始
 
 		for (int j = yMin; j < yMax; j++)
@@ -103,7 +106,7 @@ extern "C" {
 					double l2 = x * x + y * y + z * z, q = sqrt(x * x + y * y), l = sqrt(l2);
 
 					//四隅の頂点座標を計算
-					double vx[5], vy[5];
+					
 					for (int k = 0; k < 2; k++)
 					{
 						double a = x + slide[k][0], b = y + slide[k][1], c = z + slide[k][2];
@@ -140,7 +143,7 @@ extern "C" {
 							break;
 						}
 						auto c = tan(r2[k] - twoTheta) * fd;
-						double ptx[5], pty[5];
+						
 						int n = 0;
 						for (int m = 0; m < 4; m++)
 						{

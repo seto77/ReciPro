@@ -9,13 +9,14 @@
 // HRTEM.cpp : DLL アプリケーション用にエクスポートされる関数を定義します。
 //
 
+#define HRTEM_EXPORTS
+
 //#include <complex>
-#include "stdafx.h"
-#include "math.h"
 #include <stdio.h>
 #include <string.h>
 #include <vector>
-#define HRTEM_EXPORTS
+#include "math.h"
+
 #include "HRTEM.h"
 
 using namespace std;
@@ -24,7 +25,6 @@ using namespace std;
 const double two_pi = 2 * 3.141592653589793238462643383279;
 
 extern "C" {
-
 
 	HRTEM_API void _HRTEMSolverQuasi(
 		int gDim,
@@ -36,6 +36,7 @@ extern "C" {
 		double rVec[],
 		double results[])
 	{
+
 			for (auto r = 0; r < rDim; ++r) // 前置インクリメントの方が速いらしい
 			{
 				vector<double>sumReal(lDim);

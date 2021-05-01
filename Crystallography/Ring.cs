@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Numerics;
 using OpenTK.Graphics.ES20;
+using System.Globalization;
 
 namespace Crystallography
 {
@@ -136,6 +137,14 @@ namespace Crystallography
 	/// </summary>
 	public static class Ring
 	{
+		#region フィールド、メソッド、enum
+
+		public enum Rotation { Clockwise, Counterclockwise }
+		public enum Direction { Right, Left, Top, Bottom }
+
+		private static readonly object lockObj = new object();
+
+
 		public enum ImageTypeEnum
 		{
 			#region 画像タイプ
@@ -248,7 +257,7 @@ namespace Crystallography
 		public static List<bool> IsOutsideOfIntegralRegion = new List<bool>();//積分エリアの外(或いは選択領域の外)
 
 		/// <summary>
-		/// 指定された積分対象角度の範囲外の範囲外の場合はtrue
+		/// 指定された積分対象角度の範囲外の場合はtrue
 		/// </summary>
 		public static List<bool> IsOutsideOfIntegralProperty = new List<bool>();//エリアの外(或いは選択領域の外)
 
@@ -286,26 +295,22 @@ namespace Crystallography
 		/// </summary>
 		public static int BitsPerPixels = 4;
 
-		public static int ThreadTotal = System.Environment.ProcessorCount;
+		private static double TanKsi, SinTau, CosTau, SinPhi, CosPhi, Numer1, Numer2, Numer3, Denom1, Denom2;
+        #endregion
 
-		private static ParallelOptions p = new ParallelOptions();
-
-		static Ring()
-		{
-			p.MaxDegreeOfParallelism = Environment.ProcessorCount;
-		}
-
+		#region CalcFreq　Frequencyを計算
 		//Frequencyを計算
 		public static void CalcFreq()
 		{
 			if (Intensity == null || Intensity.Count == 0) return;
 			Frequency.Clear();
 			double unit = 1.2;
+			var thread = Environment.ProcessorCount;
 
-			Parallel.For(0, p.MaxDegreeOfParallelism, p, i =>
+			Parallel.For(0, thread, i =>
 			{
-				int start = Intensity.Count / ThreadTotal * i;
-				int end = Math.Min(Intensity.Count / ThreadTotal * (i + 1), Intensity.Count);
+				int start = Intensity.Count / thread * i;
+				int end = Math.Min(Intensity.Count / thread * (i + 1), Intensity.Count);
 				SortedList<uint, int> freq = new SortedList<uint, int>();
 				for (int j = start; j < end; j++)
 				{
@@ -326,8 +331,7 @@ namespace Crystallography
 				}
 			});
 		}
-
-		private static double TanKsi, SinTau, CosTau, SinPhi, CosPhi, Numer1, Numer2, Numer3, Denom1, Denom2;
+		#endregion
 
 		//傾き補正係数を計算
 		public static void SetTiltParameter()
@@ -344,6 +348,7 @@ namespace Crystallography
 			Denom2 = -SinPhi * SinTau;
 		}
 
+		#region Find Spot
 		//ピクセルステップの平均値と標準偏差をもとめてスポットを検出する
 		public static void FindSpots(IntegralProperty iP, double DeviationFactor)
 		{
@@ -352,31 +357,32 @@ namespace Crystallography
 			IP = iP;
 			int w = iP.SrcWidth;
 			int h = iP.SrcHeight;
+			var thread = Environment.ProcessorCount;
 
 			//各スレッドの上限と下限を決める
-			yThreadMin = new int[ThreadTotal];
-			yThreadMax = new int[ThreadTotal];
-			int yStep = IP.SrcHeight / ThreadTotal;
-			for (i = 0; i < ThreadTotal; i++)
+			yThreadMin = new int[thread];
+			yThreadMax = new int[thread];
+			int yStep = IP.SrcHeight / thread;
+			for (i = 0; i < thread; i++)
 			{
 				yThreadMin[i] = i * yStep;
 				yThreadMax[i] = (i + 1) * yStep;
 			}
-			yThreadMax[ThreadTotal - 1] = IP.SrcHeight;
+			yThreadMax[thread - 1] = IP.SrcHeight;
 
 			//まずどのピクセルがどのステップに属するかを決める
 			var r = new int[IP.SrcHeight * IP.SrcWidth];
 			var rMax = int.MinValue;
-			var tempRMax = new int[ThreadTotal];
+			var tempRMax = new int[thread];
 			SetTiltParameter();
 
-			FindSpotsThread0Delegate[] d0 = new FindSpotsThread0Delegate[ThreadTotal];
-			IAsyncResult[] ar0 = new IAsyncResult[ThreadTotal];
-			for (i = 0; i < ThreadTotal; i++)
+			FindSpotsThread0Delegate[] d0 = new FindSpotsThread0Delegate[thread];
+			IAsyncResult[] ar0 = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
 				d0[i] = new FindSpotsThread0Delegate(FindSpotsThread0);
-			for (i = 0; i < ThreadTotal; i++)
+			for (i = 0; i < thread; i++)
 				ar0[i] = d0[i].BeginInvoke(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i], null, null);//各スレッド起動転送
-			for (i = 0; i < ThreadTotal; i++)//スレッド終了待ち
+			for (i = 0; i < thread; i++)//スレッド終了待ち
 				d0[i].EndInvoke(ref r, ref tempRMax[i], ar0[i]);
 
 			//rMaxの最大値をきめる
@@ -388,23 +394,23 @@ namespace Crystallography
 			rMax++;
 
 			//Profile(各ステップごとの強度)とPixels(各ステップに寄与したピクセル数)を作成
-			double[][] tempSumOfIntensity = new double[ThreadTotal][];
-			double[][] tempSumOfIntensitySquare = new double[ThreadTotal][];
-			double[][] tempContributedPixels = new double[ThreadTotal][];
-			for (i = 0; i < ThreadTotal; i++)
+			double[][] tempSumOfIntensity = new double[thread][];
+			double[][] tempSumOfIntensitySquare = new double[thread][];
+			double[][] tempContributedPixels = new double[thread][];
+			for (i = 0; i < thread; i++)
 			{
 				tempSumOfIntensity[i] = new double[rMax];
 				tempSumOfIntensitySquare[i] = new double[rMax];
 				tempContributedPixels[i] = new double[rMax];
 			}
 			//ここからスレッド1起動
-			FindSpotsThread1Delegate[] d1 = new FindSpotsThread1Delegate[ThreadTotal];
-			IAsyncResult[] ar1 = new IAsyncResult[ThreadTotal];
-			for (i = 0; i < ThreadTotal; i++)
+			FindSpotsThread1Delegate[] d1 = new FindSpotsThread1Delegate[thread];
+			IAsyncResult[] ar1 = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
 				d1[i] = new FindSpotsThread1Delegate(FindSpotsThread1);
-			for (i = 0; i < ThreadTotal; i++)
+			for (i = 0; i < thread; i++)
 				ar1[i] = d1[i].BeginInvoke(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], null, null);//各スレッド起動転送
-			for (i = 0; i < ThreadTotal; i++)//スレッド終了待ち
+			for (i = 0; i < thread; i++)//スレッド終了待ち
 				d1[i].EndInvoke(ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], ar1[i]);
 
 			//Thread1の結果をまとめる
@@ -412,7 +418,7 @@ namespace Crystallography
 			double[] SumOfIntensity = new double[rMax];
 			double[] SumOfIntensitySquare = new double[rMax];
 			for (i = 0; i < rMax; i++)
-				for (int t = 0; t < ThreadTotal; t++)
+				for (int t = 0; t < thread; t++)
 				{
 					SumOfIntensity[i] += tempSumOfIntensity[t][i];
 					SumOfIntensitySquare[i] += tempSumOfIntensitySquare[t][i];
@@ -517,6 +523,9 @@ namespace Crystallography
 					n++;
 				}
 		}
+		#endregion
+
+		#region 画像の回転・反転
 
 		/// <summary>
 		/// 画像を、反転、回転させる. rotateは0: 無回転、1:90度回転, 2: 180度回転、 3: 270度回転
@@ -558,40 +567,15 @@ namespace Crystallography
 
 			return new List<double>(result);
 		}
+		#endregion
 
-		public static List<double> SubtractBackground(IEnumerable<double> src,
-			IEnumerable<double> bg, double coeff = 1)
-		{
-			if (src.Count() != bg.Count())
-				return new List<double>(src);
-			else
-			{
-				var bgArray = bg.ToArray();
-				return src.ToArray().Select((s, i) => s - bgArray[i] * coeff).ToList();
-			}
-		}
 
+	
+
+		#region 偏光補正
 		public static List<double> CorrectPolarization(int rotate)
 		{
 			SetTiltParameter();
-
-			/*
-			var test = new double[3000 * 3000];
-			int width = 3000, height = 3000;
-			double cX = width / 2.0, cY = height / 2.0;
-			var pixSize = 0.1;
-			var camera = 150;
-			for (var h = 0; h < height; h++)
-				for (var w = 0; w < width; w++)
-				{
-					double x = (w - cX) * pixSize, y = (h - cY) * pixSize;
-					double sinKai2 = y * y / (x * x + y * y), cosKai2 = x * x / (x * x + y * y);
-					double cos2th2 = camera * camera / (camera * camera + x * x + y * y);
-					//test[h * width + w] = 1000 * (sinKai2 + cosKai2 * cos2th2);
-					test[h * width + w] = 1000 * 0.5 * (1 +  cos2th2);
-				}
-			Tiff.Writer(@"d:\testUnpolarized.tif", test, 3, width);
-			*/
 
 			double fd = IP.FilmDistance, fd2 = fd * fd;
 			double sizeX = IP.PixSizeX, sizeY = IP.PixSizeY;
@@ -638,6 +622,9 @@ namespace Crystallography
 			}
 			return new List<double>(result);
 		}
+		#endregion
+
+		#region SetMask
 
 		/// <summary>
 		/// スポットや閾値超のピクセルをマスクする関数
@@ -648,33 +635,25 @@ namespace Crystallography
 		/// <param name="OmitTheresholdMax"></param>
 		public static void SetMask(bool OmitSpots, bool OmitTheresholdMin, bool OmitTheresholdMax)
 		{
-			if (Ring.IsValid.Count != IsOutsideOfIntegralRegion.Count)
+			if (IsValid.Count != IsOutsideOfIntegralRegion.Count)
 				return;
 			IsValid.Clear();
+
 			for (int i = 0; i < IsOutsideOfIntegralRegion.Count; i++)
-				if (IsOutsideOfIntegralRegion[i])
-					IsValid.Add(false);
-				else if (IsOutsideOfIntegralProperty[i])
-					IsValid.Add(false);
-				else
-					IsValid.Add(true);
+				IsValid.Add(!IsOutsideOfIntegralRegion[i] && !IsOutsideOfIntegralProperty[i]);
 
-			if (OmitSpots)
-				Parallel.For(0, IP.SrcHeight * IP.SrcWidth, i =>
-					{ if (IsSpots[i]) IsValid[i] = false; });
-			if (OmitTheresholdMin)
-				Parallel.For(0, IP.SrcHeight * IP.SrcWidth, i =>
-					{ if (IsThresholdUnder[i]) IsValid[i] = false; });
-			if (OmitTheresholdMax)
-				Parallel.For(0, IP.SrcHeight * IP.SrcWidth, i =>
-					{ if (IsThresholdOver[i]) IsValid[i] = false; });
+			Parallel.For(0, IP.SrcHeight * IP.SrcWidth, i =>
+				{
+					if ((OmitSpots && IsSpots[i])
+					|| (OmitTheresholdMin && IsThresholdUnder[i])
+					|| (OmitTheresholdMax && IsThresholdOver[i]))
+						IsValid[i] = false;
+				});
 		}
 
-		public static void SetInsideArea(IntegralProperty IP)
-		{
-			SetInsideArea(IP, true, true, true);
-		}
+		#endregion
 
+		#region SetInsideArea
 		/// <summary>
 		/// 積分領域以外をマスクする関数　マスクするのは、次の三点
 		/// ・指定した矩形あるいはセクター外の領域　
@@ -685,8 +664,12 @@ namespace Crystallography
 		/// <param name="calcRegion">指定した矩形あるいはセクター外の領域を計算するかどうか</param>
 		/// <param name="calcEdge">エッジ領域を計算するかどうか</param>
 		/// <param name="calcProperty">積分角度範囲に含まれない領域を計算するかどうか</param>
-		public static void SetInsideArea(IntegralProperty IP, bool calcRegion, bool calcEdge, bool calcProperty)
+		public static void SetInsideArea(IntegralProperty IP, bool calcRegion=true, bool calcEdge=true, bool calcProperty=true)
 		{
+
+			var thread = Environment.ProcessorCount;
+
+
 			if (calcRegion)
 			{
 				bool flag = IP.IsRectangle && IP.IsFull ? false : true;
@@ -951,23 +934,25 @@ namespace Crystallography
 			#region 積分角度範囲を除去するとき
 
 			{
-				if (IsOutsideOfIntegralProperty.Count == IP.SrcWidth * IP.SrcHeight)
-				{
-					for (int n = 0; n < IP.SrcWidth * IP.SrcHeight; n++)
-					{
-						if (!IsOutsideOfIntegralProperty[n])
-							IsOutsideOfIntegralProperty[n] = true;
-					}
-				}
-				else
-				{
-					IsOutsideOfIntegralProperty.Clear();
-					for (int n = 0; n < IP.SrcWidth * IP.SrcHeight; n++)
-						IsOutsideOfIntegralProperty.Add(true);
-				}
+                if (IsOutsideOfIntegralProperty.Count == IP.SrcWidth * IP.SrcHeight)
+                {
+                    for (int n = 0; n < IP.SrcWidth * IP.SrcHeight; n++)
+                    {
+                        if (!IsOutsideOfIntegralProperty[n])
+                            IsOutsideOfIntegralProperty[n] = true;
+                    }
+                }
+                else
+                {
+                    IsOutsideOfIntegralProperty.Clear();
+                    for (int n = 0; n < IP.SrcWidth * IP.SrcHeight; n++)
+                        IsOutsideOfIntegralProperty.Add(true);
+                }
 
-				//フラットパネルカメラの場合
-				if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
+
+
+                //フラットパネルカメラの場合
+                if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
 				{
 					SetTiltParameter();
 
@@ -1015,38 +1000,35 @@ namespace Crystallography
 					double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY,
 						startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
 
-					//ThreadTotal = p.MaxDegreeOfParallelism = 1;
-					int hUnit = IP.SrcHeight / ThreadTotal + 1;
+					int hUnit = IP.SrcHeight / thread+1;
 
-					Parallel.For(0, ThreadTotal, p, k =>
-					{
-						for (int j = hUnit * k; j < Math.Min(hUnit * (k + 1), IP.SrcHeight); j++)
-						{
-							double tempY = (j - centerY) * pixSizeY;
-							double tempY2TanKsi = tempY * TanKsi;
-							double numer1TempY = Numer1 * tempY;
-							double numer3TempY = Numer3 * tempY;
-							double denom1tempYFD = Denom1 * tempY + fd;
+                    Parallel.For(0, thread, k =>
+                    {
+                        for (int j = hUnit * k; j < Math.Min(hUnit * (k + 1), IP.SrcHeight); j++)
+                        {
+                            var tempY = (j - centerY) * pixSizeY;
+                            var tempY2TanKsi = tempY * TanKsi;
+                            var numer1TempY = Numer1 * tempY;
+                            var numer3TempY = Numer3 * tempY;
+                            var denom1tempYFD = Denom1 * tempY + fd;
 
-							for (int i = 0; i < IP.SrcWidth; i++)
-							{
-								double tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
-								//以下のx,y,zがピクセル中心の空間位置
-								double x = Numer2 * tempX + numer1TempY;
-								double y = Numer1 * tempX + numer3TempY;
-								double z = Denom2 * tempX + denom1tempYFD;
-								double z2 = z * z;
-								double l2 = x * x + y * y + z2;
+                            for (int i = 0; i < IP.SrcWidth; i++)
+                            {
+                                var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
+                                                                                    //以下のx,y,zがピクセル中心の空間位置
+                                var x = Numer2 * tempX + numer1TempY;
+                                var y = Numer1 * tempX + numer3TempY;
+                                var z = Denom2 * tempX + denom1tempYFD;
 
-								double cos2 = z2 / l2;
-								if (z < 0) cos2 = -cos2;
+								var cos2 = z * z / (x * x + y * y + z * z);
+                                if (z < 0) cos2 = -cos2;
 
-								if (cos2 < startCos2 && cos2 > endCos2)
-									IsOutsideOfIntegralProperty[i + j * IP.SrcWidth] = false;
-							}
-						}
-					});
-				}//フラットパネルモードここまで
+                                if (cos2 < startCos2 && cos2 > endCos2)
+                                    IsOutsideOfIntegralProperty[i + j * IP.SrcWidth] = false;
+                            }
+                        }
+                    });
+                }//フラットパネルモードここまで
 				 //Gandolfiモードの時
 				else
 				{
@@ -1071,9 +1053,9 @@ namespace Crystallography
 					double minCos = Math.Cos(IP.EndAngle);
 
 					//角度ステップの区切り位置を設定する
-					Parallel.For(0, p.MaxDegreeOfParallelism, p, i =>
+					Parallel.For(0, thread, i =>
 					{
-						int hUnit = IP.SrcHeight / p.MaxDegreeOfParallelism;
+						int hUnit = IP.SrcHeight / thread;
 						for (int y = hUnit * i; y < Math.Min(hUnit * (i + 1), IP.SrcHeight); y++)
 							for (int x = 0; x < IP.SrcWidth; x++)
 							{
@@ -1087,9 +1069,44 @@ namespace Crystallography
 
 			#endregion 積分角度範囲を除去するとき
 		}
+		/// <summary>
+		/// ピクセル座標(detX, detY)を実空間座標(X,Y,Z)に変換する。事前にピクセルサイズや、SetTiltParameterが設定されている必要がある。
+		/// </summary>
+		/// <param name="detX"></param>
+		/// <param name="detY"></param>
+		/// <returns></returns>
+		public static (double X, double Y, double Z) ConvertCoordinateFromDetectorToRealSpace(double detX, double detY)
+		{
+			var tempY = (detY - IP.CenterY) * IP.PixSizeY;//IP平面上の座標系におけるY位置
+			var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;//IP平面上の座標系におけるX位置
 
-		private delegate void SetInsideArea2Delegate(int xMin, int xMax, int yMin, int yMax);
+			//以下のx,y,zが空間位置
+			var realX = Numer2 * tempX + Numer1 * tempY;
+			var realY = Numer1 * tempX + Numer3 * tempY;
+			var realZ = Denom2 * tempX + Denom1 * tempY + IP.FilmDistance;
 
+			if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
+			{
+				var fd = IP.FilmDistance;
+				//IPの法線ベクトル
+				(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
+				//検出器中心(0,0,FD)からピクセルまでの距離
+				double distance2 = realX * realX + realY * realY + (realZ - fd) * (realZ - fd), distance = Math.Sqrt(distance2);
+				//検出器のダイレクトスポット方向に縮める割合
+				double coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
+				//検出器の法線方向に進む距離
+				double slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
+				//(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palalleをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
+				realX = realX * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
+				realY = realY * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
+				realZ = (realZ - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
+			}
+			return (realX, realY, realZ);
+		}
+
+		#endregion
+
+		#region CircumferentialBlur 円周方向ににじませた画像を作成
 		/// <summary>
 		/// 円周方向ににじませた画像を作成(完全に歪んでいない正方形ピクセルを仮定)
 		/// </summary>
@@ -1155,6 +1172,9 @@ namespace Crystallography
 				Intensity[i] = pixels[i];
 		}
 
+		#endregion
+
+		#region GetCorrectedImageArray 傾き補正やピクセル補正を除去して正確なイメージを作り出す
 		/// <summary>
 		/// 傾き補正やピクセル補正を除去して正確なイメージを作り出すメソッド
 		/// </summary>
@@ -1254,48 +1274,8 @@ namespace Crystallography
 
 			return pixels;
 		}
+        #endregion
 
-		/// <summary>
-		/// 極座標に変換 角度はπ以上 3π以下
-		/// </summary>
-		/// <param name="pt">直交座標</param>
-		/// <returns>PointD, X:角度, Y: 距離</returns>
-		public static PointD RectangularToPolarCordinate(PointD pt)
-		{
-			return new PointD(Math.Atan2(pt.Y, pt.X) + Math.PI * 2, Math.Sqrt(pt.X * pt.X + pt.Y * pt.Y));
-		}
-
-		public static PointD RotateFlip(PointD pt)
-		{
-			if (ChiRotation == Rotation.Clockwise)
-			{
-				if (ChiDirection == Direction.Right)
-					return new PointD(pt.X, -pt.Y);
-				else if (ChiDirection == Direction.Bottom)
-					return new PointD(pt.Y, pt.X);
-				else if (ChiDirection == Direction.Left)
-					return new PointD(-pt.X, pt.Y);
-				else
-					return new PointD(-pt.Y, -pt.X);
-			}
-			else
-			{
-				if (ChiDirection == Direction.Right)
-					return new PointD(pt.X, pt.Y);
-				else if (ChiDirection == Direction.Bottom)
-					return new PointD(pt.Y, -pt.X);
-				else if (ChiDirection == Direction.Left)
-					return new PointD(-pt.X, -pt.Y);
-				else
-					return new PointD(-pt.Y, pt.X);
-			}
-		}
-
-		public enum Rotation { Clockwise, Counterclockwise }
-
-		public enum Direction { Right, Left, Top, Bottom }
-
-		private static readonly object lockObj = new object();
 
 		/// <summary>
 		/// 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッド
@@ -1305,68 +1285,52 @@ namespace Crystallography
 		/// <param name="width"></param>
 		/// <param name="height"></param>
 		/// <returns></returns>
-		public static double[] GetUnrolledImageArray(IntegralProperty iP, double sectorStep, double startTheta, double endTheta, double stepTheta)
+		public static double[] GetUnrolledImageArray(IntegralProperty iP, int chiDivision, double startTheta, double endTheta, double stepTheta)
 		{
-			int height = (int)(2 * Math.PI / sectorStep) * 2;
-			int width = (int)((endTheta - startTheta) / stepTheta);
+			iP.StartAngle = startTheta;
+			iP.EndAngle = endTheta;
+			iP.StepAngle = stepTheta;
 			IP = iP;
+			//傾き補正用パラメータを計算
+			SetTiltParameter();
+			R2 = new double[(int)((endTheta - startTheta) / stepTheta) + 1];
+			for (int i = 0; i < R2.Length; i++)
+				R2[i] = (i + 0.5) * stepTheta + startTheta;
+			int height = chiDivision;
+			int width = R2.Length;
+			int thread = Environment.ProcessorCount;
+			int yStep = IP.SrcHeight / thread + 1;
 
-			int thread = 8;
-
-			int yStep = IP.SrcHeight / thread;
-
-			double[] pixels = new double[height * width];
-			for (int i = 0; i < pixels.Length; i++)
-				pixels[i] = 0;
+			var profiles = new double[height * width];
+			var pixels = new double[height * width];
 
 			Parallel.For(0, thread, i =>
 			{
-				double[] temp;
-				if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)//フラットパネルモードの時
-				   temp = GetUnrolledImageArrayThread(iP, width, height, i * yStep, Math.Min((i + 1) * yStep, iP.SrcHeight), sectorStep, startTheta, endTheta, stepTheta);
-				else
-					temp = GetUnrolledImageArrayGandlofi(iP, i * yStep, Math.Min((i + 1) * yStep, iP.SrcHeight), sectorStep, startTheta, endTheta, stepTheta);
+				(double[][] Profile, double[][] Pixels) = GetProfileThreadWithTiltCorrectionNew(0, iP.SrcWidth, i * yStep, Math.Min((i + 1) * yStep, iP.SrcHeight), chiDivision);
 				lock (lockObj)
-				{
-					for (int j = 0; j < temp.Length; j++)
-						pixels[j] += temp[j];
-				}
+					for (int h = 0; h < height; h++)
+						for (int w = 0; w < width; w++)
+							if (Pixels[h][w] > 0)
+							{
+								pixels[h * width + w] += Pixels[h][w];
+								profiles[h * width + w] += Profile[h][w];
+							}
 			});
-
-			for (int h = 0; h < height / 4 + 1; h++)
-				for (int w = 0; w < width; w++)
-					pixels[h * width + w] += pixels[(h + height / 2) * width + w];
-
-			double[] destPixels = new double[pixels.Length / 2];
-			Array.Copy(pixels, destPixels, pixels.Length / 2);
-
-			double baseTheta = Math.Atan(height / 2 * (IP.PixSizeX + IP.PixSizeY) / 2 / Math.PI / 2 / IP.FilmDistance);
-
-			//if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
-			{
-				for (int w = 0; w < width; w++)
-				{
-					//リングの長さを補正
-					double hRatio = Math.Tan(baseTheta) / Math.Tan(startTheta + w * stepTheta);
-					//横ピクセルが受け持つ角度範囲を実画像でのピクセルに換算し、補正
-					double wRatio = (IP.PixSizeX + IP.PixSizeY) / 2 / IP.FilmDistance / (Math.Tan(startTheta + (w + 1) * stepTheta) - Math.Tan(startTheta + w * stepTheta));
-					//BBに一致するように1/cos(2theta)をかける
-					double bbCorection = 1 / Math.Cos(startTheta + w * stepTheta);
-					double ratio = hRatio * wRatio * bbCorection;
-					if (!double.IsNaN(ratio))
-						for (int h = 0; h < height / 2; h++)
-							destPixels[h * width + w] *= ratio;
-				}
-			}
+			double[] destPixels = new double[height * width];
+			for (int i = 0; i < destPixels.Length; i++)
+				if (pixels[i] > 0)
+					destPixels[i] = profiles[i] / pixels[i];
 
 			return destPixels;
 		}
 
+		#region UnrolledImageArray ガンドルフィ
 		private static double[] GetUnrolledImageArrayGandlofi(IntegralProperty iP, int yMin, int yMax, double sectorStep, double startTheta, double endTheta, double stepTheta)
 		{
 			int unrolledImageHeight = (int)(2 * Math.PI / sectorStep) * 2;
 			int unrolledImageWidth = (int)((endTheta - startTheta) / stepTheta);
-			int width = iP.SrcWidth;
+			double[] pixels = new double[unrolledImageWidth * unrolledImageHeight];
+			/*int width = iP.SrcWidth;
 			double centerX = IP.CenterX, centerY = IP.CenterY;
 			double pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY;
 			double r = IP.GandolfiRadius;
@@ -1397,7 +1361,7 @@ namespace Crystallography
 				for (int x = 0; x < width + 1; x++)
 					realVertex[x + (y - yMin) * (width + 1)] = convPixelToReal(x - 0.5, y - 0.5);
 
-			double[] pixels = new double[unrolledImageWidth * unrolledImageHeight];
+			
 			for (int i = 0; i < pixels.Length; i++)
 				pixels[i] = 0;
 
@@ -1486,10 +1450,12 @@ namespace Crystallography
 						}
 					}
 				}
-			}
+			}*/
 			return pixels;
 		}
+		#endregion
 
+		#region お蔵入り GetUnrolledImageArrayThread
 		/// <summary>
 		/// 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッドのスレッド
 		/// </summary>
@@ -1501,7 +1467,7 @@ namespace Crystallography
 		private static double[] GetUnrolledImageArrayThread(IntegralProperty iP, int width, int height, int startH, int endH, double sectorStep, double startTheta, double endTheta, double stepTheta)
 		{
 			double[] pixels = new double[height * width];
-			for (int i = 0; i < pixels.Length; i++)
+		/*	for (int i = 0; i < pixels.Length; i++)
 				pixels[i] = 0;
 
 			PointD[] pixelVertex = new PointD[4];
@@ -1649,18 +1615,22 @@ namespace Crystallography
 					}
 				}
 			}
+		*/
 			return pixels;
 		}
 
-		public static Profile GetProfile(IntegralProperty iP)
+        #endregion
+
+        public static Profile GetProfile(IntegralProperty iP)
 		{
 			if (iP.ConcentricMode)
-				return GetConcenrticProfile(iP, true);
+				return GetConcenrticProfile(iP);
 			else
 				return GetRadialProfile(iP);
 		}
 
-		private static Profile GetRadialProfile(IntegralProperty iP)
+        #region GetRadialProfile
+        private static Profile GetRadialProfile(IntegralProperty iP)
 		{
 			IP = iP;
 			double minR, maxR;
@@ -1790,15 +1760,18 @@ namespace Crystallography
 
 			return profile;
 		}
+        #endregion
 
-		/// <summary>
-		/// 2theta-intensity histogram
-		/// </summary>
-		/// <param name="iP"></param>
-		/// <param name="DoesDlgShow"></param>
-		/// <returns></returns>
-		private static Profile GetConcenrticProfile(IntegralProperty iP, bool DoesDlgShow)
+        /// <summary>
+        /// 2theta-intensity histogram
+        /// </summary>
+        /// <param name="iP"></param>
+        /// <returns></returns>
+        private static Profile GetConcenrticProfile(IntegralProperty iP)
 		{
+			var thread = Environment.ProcessorCount;
+
+
 			IP = iP;
 
 			//積分領域全体のx上限,x下限, y上限、y下限を決める
@@ -1812,15 +1785,16 @@ namespace Crystallography
 					yMax = Math.Max(i / IP.SrcWidth, yMax);
 				}
 
-			ThreadTotal = Environment.ProcessorCount * 4;
-
-			p.MaxDegreeOfParallelism = ThreadTotal;
+			thread = Environment.ProcessorCount;
+#if (DEBUG)
+			thread = 1;
+#endif
 
 			//各スレッドの上限と下限を決める
-			int[] yThreadMin = new int[ThreadTotal];
-			int[] yThreadMax = new int[ThreadTotal];
-			int yStep = (yMax - yMin) / ThreadTotal;
-			for (int i = 0; i < ThreadTotal; i++)
+			int[] yThreadMin = new int[thread];
+			int[] yThreadMax = new int[thread];
+			int yStep = (yMax - yMin) / thread;
+			for (int i = 0; i < thread; i++)
 			{
 				yThreadMin[i] = yMin + i * yStep;
 				yThreadMax[i] = Math.Min(yMin + (i + 1) * yStep, yMax);
@@ -1834,14 +1808,7 @@ namespace Crystallography
 				{
 					R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
 					for (int i = 0; i < R2.Length; i++)
-					{
-						//double temp = Math.Tan((i + 0.5) * IP.StepAngle + IP.StartAngle) * IP.FilmDistance;
-						//R2[i] = temp * temp;
-
-						//2016/12/27 変更
-						double temp = (i + 0.5) * IP.StepAngle + IP.StartAngle;
-						R2[i] = temp;
-					}
+						R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 変更
 				}
 				else if (IP.Mode == HorizontalAxis.Length)
 				{
@@ -1862,108 +1829,108 @@ namespace Crystallography
 					}
 				}
 			}
-			//ガンドルフィーモードの時
-			else
+			else//ガンドルフィーモードの時
 			{
 				//角度ステップの区切り位置を設定する
 				R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
 				for (int i = 0; i < R2.Length; i++)
 					R2[i] = (i - 0.5) * IP.StepAngle + IP.StartAngle;
 			}
-
 			int length = R2.Length;
 
 			//Profile(各ステップごとの強度)とPixels(各ステップに寄与したピクセル数)を作成
-			double[][] tempProfileIntensity = new double[ThreadTotal][];
-			double[][] tempContibutedPixels = new double[ThreadTotal][];
-			for (int i = 0; i < ThreadTotal; i++)
+			var tempProfileIntensity = new double[thread][][];
+			var tempContibutedPixels = new double[thread][][];
+			for (int i = 0; i < thread; i++)
 			{
-				tempProfileIntensity[i] = new double[length];
-				tempContibutedPixels[i] = new double[length];
+				tempProfileIntensity[i] = new double[1][];
+				tempContibutedPixels[i] = new double[1][];
+				tempProfileIntensity[i][0] = new double[length];
+				tempContibutedPixels[i][0] = new double[length];
 			}
-
-			//計算する交点をきめる
-			IsCalcPosition = new bool[(IP.SrcHeight + 1) * (IP.SrcWidth + 1)];
-			int h = IP.SrcHeight;
-			int w = IP.SrcWidth;
-			int jw, jw1, j1w1;
-
-			for (int j = yMin; j < yMax; j++)
-			{
-				jw = j * w;
-				jw1 = j * (w + 1);
-				j1w1 = (j + 1) * (w + 1);
-				for (int i = xMin; i < xMax; i++)
-					if (IsValid[jw + i])
-						IsCalcPosition[jw1 + i] = IsCalcPosition[jw1 + i + 1] = IsCalcPosition[j1w1 + i] = IsCalcPosition[j1w1 + i + 1] = true;
-			}
-
+			
 			//傾き補正用パラメータを計算
 			SetTiltParameter();
 
 			double[] ProfileIntensity = new double[R2.Length];
 			double[] ContributedPixels = new double[R2.Length];
-			for (int i = 0; i < R2.Length; i++)
-				ContributedPixels[i] = ProfileIntensity[i] = 0;
+
+
+			if(iP.Mode!= HorizontalAxis.Angle)
+            {
+				//計算する交点をきめる
+				IsCalcPosition = new bool[(IP.SrcHeight + 1) * (IP.SrcWidth + 1)];
+				int h = IP.SrcHeight;
+				int w = IP.SrcWidth;
+				int jw, jw1, j1w1;
+
+				for (int j = yMin; j < yMax; j++)
+				{
+					jw = j * w;
+					jw1 = j * (w + 1);
+					j1w1 = (j + 1) * (w + 1);
+					for (int i = xMin; i < xMax; i++)
+						if (IsValid[jw + i])
+							IsCalcPosition[jw1 + i] = IsCalcPosition[jw1 + i + 1] = IsCalcPosition[j1w1 + i] = IsCalcPosition[j1w1 + i + 1] = true;
+				}
+			}
+
 
 			//FlatPanelモードの時
 			if (iP.Camera == IntegralProperty.CameraEnum.FlatPanel)
 			{
 				if (IP.Mode == HorizontalAxis.Angle)
 				{
-                    if (NativeWrapper.Enabled)
-                    {
-                        var intensityArray = Intensity.ToArray();
-                        var isValidArray = IsValid.Select(val => val ? (byte)1 : (byte)0).ToArray();
-                        var r2 = R2.ToArray();
-						Parallel.For(0, ThreadTotal, i =>
-						{
-							int yMin = yThreadMin[i], yMax = yThreadMax[i];
-							var intensity = intensityArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
-							var isValid = isValidArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
+					#region ネイティブコードは思ったより早くなかった。
+					//if (NativeWrapper.Enabled)
+					//{
+					//	var intensityArray = Intensity.ToArray();
+					//                   var isValidArray = IsValid.Select(val => val ? (byte)1 : (byte)0).ToArray();
+					//                   var r2 = R2.ToArray();
+					//	Parallel.For(0, ThreadTotal, i =>
+					//	{
+					//		int yMin = yThreadMin[i], yMax = yThreadMax[i];
+					//		var intensity = intensityArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
+					//		var isValid = isValidArray.AsSpan(yMin * IP.SrcWidth, (yMax - yMin) * IP.SrcWidth);
 
-							(tempProfileIntensity[i], tempContibutedPixels[i]) = NativeWrapper.Histogram(
-							   IP.SrcWidth, IP.SrcHeight,
-							   IP.CenterX, IP.CenterY,
-							   IP.PixSizeX, IP.PixSizeY,
-							   IP.FilmDistance,
-							   IP.ksi, IP.tau, IP.phi,
-							   IP.SpericalRadiusInverse,
-							   intensity.ToArray(), isValid.ToArray(),
-							   yThreadMin[i], yThreadMax[i],
-							   IP.StartAngle, IP.StepAngle,
-							   r2);
-						});
-                    }
-					else
+					//		(tempProfileIntensity[i], tempContibutedPixels[i]) = NativeWrapper.Histogram(
+					//		   IP.SrcWidth, IP.SrcHeight,
+					//		   IP.CenterX, IP.CenterY,
+					//		   IP.PixSizeX, IP.PixSizeY,
+					//		   IP.FilmDistance,
+					//		   IP.ksi, IP.tau, IP.phi,
+					//		   IP.SpericalRadiusInverse,
+					//		   intensity.ToArray(), isValid.ToArray(),
+					//		   yThreadMin[i], yThreadMax[i],
+					//		   IP.StartAngle, IP.StepAngle,
+					//		   r2);
+					//	});
+					//               }
+					//else
+					#endregion
 
-                        Parallel.For(0, ThreadTotal, i =>
+					Parallel.For(0, thread, i =>
 							(tempProfileIntensity[i], tempContibutedPixels[i]) = GetProfileThreadWithTiltCorrectionNew(xMin, xMax, yThreadMin[i], yThreadMax[i]));
 				}
 				else
-					Parallel.For(0, ThreadTotal, p, i =>
-					GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]));
+					Parallel.For(0, thread, i =>
+					GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i][0], ref tempContibutedPixels[i][0]));
 
-				Parallel.For(0, ThreadTotal, p, i =>
-				{
-					lock (lockObj)
+				for (int i = 0; i < thread; i++)
+					for (int j = 0; j < length; j++)
 					{
-						for (int j = 0; j < length; j++)
-						{
-							ProfileIntensity[j] += tempProfileIntensity[i][j];
-							ContributedPixels[j] += tempContibutedPixels[i][j];
-						}
+						ProfileIntensity[j] += tempProfileIntensity[i][0][j];
+						ContributedPixels[j] += tempContibutedPixels[i][0][j];
 					}
-				});
 			}
 			//Gandolfiモードの時
 			else
 			{
-				int[] xThreadMin = new int[ThreadTotal], xThreadMax = new int[ThreadTotal];
+				int[] xThreadMin = new int[thread], xThreadMax = new int[thread];
 				//まず、IsValidなピクセル数をカウント
-				int average = IsValid.Count(b => b) / ThreadTotal;
+				int average = IsValid.Count(b => b) / thread;
 				int y = 0;
-				for (int i = 0; i < ThreadTotal; i++)
+				for (int i = 0; i < thread; i++)
 				{
 					int count = 0;
 					for (; y < iP.SrcHeight; y++)
@@ -1983,7 +1950,7 @@ namespace Crystallography
 								count++;
 							}
 						}
-						if (i != ThreadTotal - 1 && count > average)
+						if (i != thread - 1 && count > average)
 						{
 							y++;
 							break;
@@ -1991,15 +1958,15 @@ namespace Crystallography
 					}
 				}
 
-				Parallel.For(0, ThreadTotal, p, i =>
+				Parallel.For(0, thread,i =>
 				{
-					GetProfileGandlfi(xThreadMin[i], xThreadMax[i] + 1, yThreadMin[i], yThreadMax[i] + 1, ref tempProfileIntensity[i], ref tempContibutedPixels[i]);
+					GetProfileGandlfi(xThreadMin[i], xThreadMax[i] + 1, yThreadMin[i], yThreadMax[i] + 1, ref tempProfileIntensity[i][0], ref tempContibutedPixels[i][0]);
 					lock (lockObj)
 					{
 						for (int j = 0; j < length; j++)
 						{
-							ProfileIntensity[j] += tempProfileIntensity[i][j];
-							ContributedPixels[j] += tempContibutedPixels[i][j];
+							ProfileIntensity[j] += tempProfileIntensity[i][0][j];
+							ContributedPixels[j] += tempContibutedPixels[i][0][j];
 						}
 					}
 				});
@@ -2016,7 +1983,6 @@ namespace Crystallography
 					{
 						//double cosTwoTheta = Math.Cos(i * IP.StepAngle + IP.StartAngle);
 						//double temp = ProfileIntensity[i] / ContributedPixels[i] / cosTwoTheta/ cosTwoTheta/ cosTwoTheta; //cos2Θの3乗で割ることによって、BB光学系と一致させる
-
 						//20161227 変更
 						double temp = ProfileIntensity[i] / ContributedPixels[i];
 						if (double.IsNaN(temp) || double.IsInfinity(temp))
@@ -2065,6 +2031,56 @@ namespace Crystallography
 			return profile;
 		}
 
+		public static Profile[] GetConcenrticProfilesBySector(IntegralProperty iP, int chiDivision)
+		{
+			IP = iP;
+			var thread = Environment.ProcessorCount;
+			int yStep = IP.SrcHeight / thread+1;
+
+			R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
+			for (int i = 0; i < R2.Length; i++)
+				R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 変更
+
+			int length = R2.Length;
+
+			//傾き補正用パラメータを計算
+			SetTiltParameter();
+
+			var profiles = new double[chiDivision, length];
+			var pixels = new double[chiDivision, length];
+
+			Parallel.For(0, thread, i =>
+			{
+				var (tempProfile, tempPixels) = GetProfileThreadWithTiltCorrectionNew(0, iP.SrcWidth, i * yStep, Math.Min((i + 1) * yStep, iP.SrcHeight), chiDivision);
+				lock (lockObj)
+					for (int h = 0; h < chiDivision; h++)
+						for (int w = 0; w < length; w++)
+							if (tempPixels[h][w] > 0)
+							{
+								pixels[h,w] += tempPixels[h][w];
+								profiles[h,w] += tempProfile[h][w];
+							}
+
+			});
+			var destProfiles = new Profile[chiDivision];
+			for(int j=0; j< chiDivision; j++)
+            {
+				destProfiles[j] = new Profile();
+				for (int i = 0; i < length; i++)
+				{
+					double temp = profiles[j, i] / pixels[j, i];
+					if (double.IsNaN(temp) || double.IsInfinity(temp))
+						temp = 0;
+					double x = (i * IP.StepAngle + IP.StartAngle) / Math.PI * 180.0;
+					destProfiles[j].Pt.Add(new PointD(x, temp));
+					destProfiles[j].Err.Add(new PointD(x, temp / Math.Sqrt(profiles[j, i])));
+				}
+			}
+
+			return destProfiles;
+		}
+
+		#region GetProfile　Gandlfi用
 		/// <summary>
 		/// ガンドルフィーカメラ用の計算
 		/// </summary>
@@ -2236,43 +2252,47 @@ namespace Crystallography
 					}
 				}
 		}
+		#endregion
 
+		#region GetProfile 旧バージョン  FindParameterで使う
 		/// <summary>
-		/// TiltCorrectionの時にのみ呼ばれる
+		/// TiltCorrectionの時にのみ呼ばれる 
 		/// </summary>
 		/// <param name="iP"></param>
 		/// <returns></returns>
 		public static Profile GetProfileForFindTiltCorrection(IntegralProperty iP)
 		{
+			var thread = Environment.ProcessorCount;
+
 			int i, j;
 			//Profile(各ステップごとの強度)とPixels(各ステップに寄与したピクセル数)を作成
 			int length = R2.Length;
 			double[] ProfileIntensity = new double[length];
 			double[] ContributedPixels = new double[length];
 
-			double[][] tempProfileIntensity = new double[ThreadTotal][];
-			double[][] tempContibutedPixels = new double[ThreadTotal][];
-			for (i = 0; i < ThreadTotal; i++)
+			double[][] tempProfileIntensity = new double[thread][];
+			double[][] tempContibutedPixels = new double[thread][];
+			for (i = 0; i < thread; i++)
 			{
 				tempProfileIntensity[i] = new double[length];
 				tempContibutedPixels[i] = new double[length];
 			}
 
 			//ここからスレッド起動
-			GetProfileThreadDelegateWithTiltCorrection[] d = new GetProfileThreadDelegateWithTiltCorrection[ThreadTotal];
-			IAsyncResult[] ar = new IAsyncResult[ThreadTotal];
-			for (i = 0; i < ThreadTotal; i++)
+			GetProfileThreadDelegateWithTiltCorrection[] d = new GetProfileThreadDelegateWithTiltCorrection[thread];
+			IAsyncResult[] ar = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
 			{
 				d[i] = new GetProfileThreadDelegateWithTiltCorrection(GetProfileThreadWithTiltCorrection);
 				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i], null, null);//各スレッド起動転送
 			}
-			for (i = 0; i < ThreadTotal; i++)//スレッド終了待ち
+			for (i = 0; i < thread; i++)//スレッド終了待ち
 				d[i].EndInvoke(ref tempProfileIntensity[i], ref tempContibutedPixels[i], ar[i]);
 
 			//各スレッドの結果をまとめる
 			for (i = 0; i < R2.Length; i++)
 				ContributedPixels[i] = ProfileIntensity[i] = 0;
-			for (i = 0; i < ThreadTotal; i++)
+			for (i = 0; i < thread; i++)
 				for (j = 0; j < length; j++)
 				{
 					ProfileIntensity[j] += tempProfileIntensity[i][j];
@@ -2600,54 +2620,29 @@ namespace Crystallography
 			//GC.Collect();
 		}
 
-		/// <summary>
-		/// ピクセル座標(detX, detY)を実空間座標(X,Y,Z)に変換する。事前にピクセルサイズや、SetTiltParameterがせってされている必要がある。
-		/// </summary>
-		/// <param name="detX"></param>
-		/// <param name="detY"></param>
-		/// <returns></returns>
-		public static (double X, double Y, double Z) ConvertCoordinateFromDetectorToRealSpace(double detX, double detY)
+        #endregion
+
+        #region GetProfile新バージョン
+        /// <summary>
+        ///  2theta-intensity histgram (新バージョン)
+        /// </summary>
+        /// <param name="xMin"></param>
+        /// <param name="xMax"></param>
+        /// <param name="yMin"></param>
+        /// <param name="yMax"></param>
+        /// <param name="profile">profile[sector][2theta] </param>
+        /// <param name="pixels">pixels[sector][2theta]</param>
+        public static (double[][] Profile, double[][] Pixels) GetProfileThreadWithTiltCorrectionNew(int xMin, int xMax, int yMin, int yMax, int chiDivision = 1)
 		{
-			var tempY = (detY - IP.CenterY) * IP.PixSizeY;//IP平面上の座標系におけるY位置
-			var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;//IP平面上の座標系におけるX位置
-
-			//以下のx,y,zが空間位置
-			var realX = Numer2 * tempX + Numer1 * tempY;
-			var realY = Numer1 * tempX + Numer3 * tempY;
-			var realZ = Denom2 * tempX + Denom1 * tempY + IP.FilmDistance;
-
-			if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
+			var profile = new double[chiDivision][];
+			var pixels = new double[chiDivision][];
+			var chi = new double[chiDivision];
+			for (int i = 0; i < chiDivision; i++)
 			{
-				var fd = IP.FilmDistance;
-				//IPの法線ベクトル
-				(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
-				//検出器中心(0,0,FD)からピクセルまでの距離
-				double distance2 = realX * realX + realY * realY + (realZ - fd) * (realZ - fd), distance = Math.Sqrt(distance2);
-				//検出器のダイレクトスポット方向に縮める割合
-				double coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
-				//検出器の法線方向に進む距離
-				double slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
-				//(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palalleをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
-				realX = realX * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
-				realY = realY * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
-				realZ = (realZ - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
+				profile[i] = new double[R2.Length];
+				pixels[i] = new double[R2.Length];
+				chi[i] = (2 * i + 1) * Math.PI / chiDivision;
 			}
-			return (realX, realY, realZ);
-		}
-
-		/// <summary>
-		///  2theta-intensity histgram (新バージョン)
-		/// </summary>
-		/// <param name="xMin"></param>
-		/// <param name="xMax"></param>
-		/// <param name="yMin"></param>
-		/// <param name="yMax"></param>
-		/// <param name="profile"></param>
-		/// <param name="pixels"></param>
-		public static (double [] Profile, double[] pixels) GetProfileThreadWithTiltCorrectionNew(int xMin, int xMax, int yMin, int yMax)
-		{
-			var profile = new double[R2.Length];
-			var pixels = new double[R2.Length];
 
 			int width = IP.SrcWidth, length = R2.Length;
 			double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY, startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
@@ -2662,12 +2657,14 @@ namespace Crystallography
 
 			(double X, double Y, double Z) slideY = (Numer2 * tX + Numer1 * tY, Numer1 * tX + Numer3 * tY, Denom2 * tX + Denom1 * tY);
 
-			(double X, double Y, double Z)[] slide = new[] { 
-				(slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z), 
+			(double X, double Y, double Z)[] slide = new[] {
+				(slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z),
 				(slideX.X - slideY.X, slideX.Y - slideY.Y, slideX.Z - slideY.Z) };
 
 			//IPの法線ベクトル
 			(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
+
+			(double X, double Y)[] pt0 = new (double X, double Y)[8], pt1 = new (double X, double Y)[8], pt2 = new (double X, double Y)[8], pt3 = new (double X, double Y)[8], pt4 = new (double X, double Y)[8];
 
 			//ここから積分開始
 			for (int j = yMin; j < yMax; j++)
@@ -2689,29 +2686,25 @@ namespace Crystallography
 						var y = Numer1 * tempX + numer3TempY;
 						var z = Denom2 * tempX + denom1tempYFD;
 
+						#region 球面補正が必要な場合
 						if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
 						{
 							//検出器中心(0,0,FD)からピクセルまでの距離
-							
 							var distance = Math.Sqrt(x * x + y * y + (z - fd) * (z - fd));
-
 							//検出器のダイレクトスポット方向に縮める割合
 							var coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
-
 							//検出器の法線方向に進む距離
 							var slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
-
-							//(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palalleをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
+							//(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palallelをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
 							x = x * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
 							y = y * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
 							z = (z - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
 						}
+                        #endregion
 
-
-						double l2 = x * x + y * y + z * z, q = Math.Sqrt(x * x + y * y), l = Math.Sqrt(l2);
+                        double l2 = x * x + y * y + z * z, q = Math.Sqrt(x * x + y * y), l = Math.Sqrt(l2);
 
 						//四隅の頂点座標を計算
-						var v = new (double X, double Y)[5]; 
 						for (int k = 0; k < 2; k++)
 						{
 							double a = x + slide[k].X, b = y + slide[k].Y, c = z + slide[k].Z;
@@ -2719,25 +2712,97 @@ namespace Crystallography
 							var bNew = (b * x - a * y) / q;
 							var p = a * x + b * y + c * z;
 							var vxTemp = (a * a + b * b + c * c - bNew * bNew) * l2 / p / p - 1;
-							v[k].X = vxTemp > 0 ? fd * Math.Sqrt(vxTemp) : 0;
-							v[k].Y = bNew * l * fd / p;
+							pt0[k].X = vxTemp > 0 ? fd * Math.Sqrt(vxTemp) : 0;
+							pt0[k].Y = bNew * l * fd / p;
 							if (c * l2 < z * p)
-								v[k].X = -v[k].X;
-							v[k + 2] = (-v[k].X, -v[k].Y);
+								pt0[k].X = -pt0[k].X;
+							pt0[k + 2] = (-pt0[k].X, -pt0[k].Y);
 						}
-						v[4] = v[0];
-
-						var area = Math.Abs(v[0].X * (v[1].Y - v[2].Y) + v[1].X * (v[2].Y - v[0].Y) + v[2].X * (v[0].Y - v[1].Y));//矩形の面積
+						var n0 = 4;
 
 						var twoTheta = z >= 0 ? Math.Asin(q / l) : Math.PI - Math.Asin(q / l);//2θ算出
-						var devTwoTheta = Math.Atan(Math.Max(Math.Abs(v[0].X), Math.Abs(v[1].X)) / fd);
+						var devTwoTheta = Math.Atan(Math.Max(Math.Abs(pt0[0].X), Math.Abs(pt0[1].X)) / fd);//ピクセル内での2θの変動幅
+						var startTwoThetaIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
+						var intensityPerArea = Intensity[i + jWidth] / getArea(4, pt0);
 
-						var startIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
-						var intensityPerArea = Intensity[i + jWidth] / area;
-						var area2 = 0.0;
-						//矩形をx=cの直線で切り取り、面積比を計算するループここから
-						for (int k = startIndex; k < length; k++)
+						var chiAngle = Math.Atan2(y, x); //ピクセル中心のChi角
+						if (chiAngle < 0) chiAngle += 2 * Math.PI;
+						var devChiAngle = Math.Atan(Math.Max(Math.Abs(pt0[0].Y), Math.Abs(pt0[1].Y)) / fd / q * l); //ピクセル内でのChiの変動幅
+						var startChiIndex = Math.Max(0, (int)((chiAngle - devChiAngle) / 2 / Math.PI * chiDivision - 0.5)); //ピクセル中心のChi角
+
+						//矩形を x = c の直線(2シータの分割線) と y = d の直線(セクターの分割線)で切り取り、面積比を計算するループ
+						for (int k1 = startTwoThetaIndex; k1 < length; k1++)
 						{
+							//x が c1以下の矩形(pt1)と、c1以上の矩形(pt2)を生成
+							var c = Math.Tan(R2[k1] - twoTheta) * fd;
+							int n1 = 0, n2 = 0;
+							for (int m = 0; m < n0; m++)//pt1は、現在の2Θ範囲のポリゴン、pt2は次の範囲のポリゴン
+							{
+								(double X, double Y) p1 = pt0[m], p2 = m == n0 - 1 ? pt0[0] : pt0[m + 1];
+								if (p1.X < c)
+								{
+									pt1[n1++] = p1;
+									if (c <= p2.X)
+										pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
+								}
+								else
+								{
+									pt2[n2++] = p1;
+									if (c > p2.X)
+										pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
+								}
+							}
+
+							if (chiDivision == 1)//セクター分割をしない場合
+							{
+								var area = getArea(n1, pt1);
+								pixels[0][k1] += area;
+								profile[0][k1] += area * intensityPerArea;
+							}
+							else//セクター分割をする場合
+							{
+								for (int k2 = startChiIndex; k2<chiDivision; k2++)
+								{
+									var d = q / l * Math.Tan(chi[k2] - chiAngle) * fd;
+									//矩形pt1を更に分割していく
+									int n3 = 0, n4 = 0;
+									for (int m = 0; m < n1; m++)//pt3は、現在の2Θ範囲のポリゴン、pt4は次の範囲のポリゴン
+									{
+										(double X, double Y) p1 = pt1[m], p2 = m == n1 - 1 ? pt1[0] : pt1[m + 1];
+										if (p1.Y < d)
+										{
+											pt3[n3++] = p1;
+											if (d <= p2.Y)
+												pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
+										}
+										else
+										{
+											pt4[n4++] = p1;
+											if (d > p2.Y)
+												pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
+										}
+									}
+									var area = getArea(n3, pt3);
+									pixels[k2][k1] += area;
+									profile[k2][k1] += area * intensityPerArea;
+									
+									if (n4 == 0)//次のポリゴンが無かったら終了
+										break;
+									Array.Copy(pt4, pt1, n4);
+									n1 = n4;
+
+									if (k2 == chiDivision-1)
+										k2 = -1;
+								}
+							}
+
+							if (n2 == 0)//次のポリゴンが無かったら終了
+								break;
+							Array.Copy(pt2, pt0, n2);
+							n0 = n2;
+
+							#region 20200430 上のコードで十分速度が出るので、お蔵入り 
+							/*
 							if (R2[k] > twoTheta + devTwoTheta)
 							{
 								pixels[k] += area - area2;
@@ -2745,26 +2810,34 @@ namespace Crystallography
 								break;
 							}
 							var c = Math.Tan(R2[k] - twoTheta) * fd;
-							var pt = new List<(double X, double Y)>();
+							//var pt = new List<(double X, double Y)>();
+							int n1 = 0;
 							for (int m = 0; m < 4; m++)
 							{
-								if (v[m].X < c)
-									pt.Add(v[m]);
-								if ((v[m].X < c && c <= v[m + 1].X) || (v[m].X >= c && c > v[m + 1].X))
-									pt.Add((c, (c * v[m + 1].Y - c * v[m].Y - v[m].X * v[m + 1].Y + v[m + 1].X * v[m].Y) / (v[m + 1].X - v[m].X)));
+								(double X, double Y) p1 = v[m], p2 = m == 3 ? currPolygon[0] : v[m + 1];
+								if (p1.X < c)
+								{
+									pt1[n1++]= p1;
+									if (c <= p2.X)
+										pt1[n1++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
+								}
+								else if (c > p2.X)
+									pt1[n1++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
 							}
 
-							var area1 = Math.Abs(pt.Count switch
+							var area1 = Math.Abs(n1 switch
 							{
-								3 => pt[0].X * (pt[1].Y - pt[2].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[0].Y - pt[1].Y),//0 - 1 - 2 が作る3角形
-								4 => pt[0].X * (pt[1].Y - pt[3].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[3].Y - pt[1].Y) + pt[3].X * (pt[0].Y - pt[2].Y),// 0 - 1 - 2 -  3 が作る4角形
-								5 => pt[0].X * (pt[1].Y - pt[4].Y) + pt[1].X * (pt[2].Y - pt[0].Y) + pt[2].X * (pt[3].Y - pt[1].Y) + pt[3].X * (pt[4].Y - pt[2].Y) + pt[4].X * (pt[0].Y - pt[3].Y),// 0 - 1 - 2 - 3 - 4 が作る3角形
+								3 => pt1[0].X * (pt1[1].Y - pt1[2].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[0].Y - pt1[1].Y),//0 - 1 - 2 が作る3角形
+								4 => pt1[0].X * (pt1[1].Y - pt1[3].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[0].Y - pt1[2].Y),// 0 - 1 - 2 -  3 が作る4角形
+								5 => pt1[0].X * (pt1[1].Y - pt1[4].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[4].Y - pt1[2].Y) + pt1[4].X * (pt1[0].Y - pt1[3].Y),// 0 - 1 - 2 - 3 - 4 が作る5角形
 								_ => 0
 							}) * 0.5;
-							
+
 							pixels[k] += area1 - area2;
 							profile[k] += (area1 - area2) * intensityPerArea;
 							area2 = area1;
+							*/
+							#endregion
 						}
 					}
 				}
@@ -2772,11 +2845,26 @@ namespace Crystallography
 
 			var mag = 1 / (pixSizeX * pixSizeY);//係数
 			for (int i = 0; i < pixels.Length; i++)
-				pixels[i] *= mag;
+				for (int j = 0; j < pixels[i].Length; j++)
+					pixels[i][j] *= mag;
+
+			//最後にChiRotationとChiDirectionを考慮して、行を入れ替え
+
 
 			return (profile, pixels);
 		}
 
+		private static double getArea(int n, (double X, double Y)[] pt)
+        {
+			if (n < 3) return 0;
+			var result = pt[0].X * (pt[1].Y - pt[n-1].Y) + pt[n-1].X * (pt[0].Y - pt[n - 1].Y);
+			for (int i = 1; i < n-1; i++)
+				result += pt[i].X * (pt[i + 1].Y - pt[i-1].Y);
+			return Math.Abs(result) * 0.5;
+		}
+		#endregion
+
+		#region FindCenter
 		public static PointD FindCenter(IntegralProperty iP, int radius, List<bool> mask)
 		{
 			if (iP.CenterY < radius + 2 || iP.CenterY > iP.SrcHeight - radius - 2 || iP.CenterX < radius + 2 || iP.CenterX > iP.SrcWidth - radius - 2)
@@ -2801,25 +2889,14 @@ namespace Crystallography
 
 			return new PointD(offset.X + xStart, offset.Y + yStart);
 		}
+		#endregion
 
-		private struct Correspondance
-		{
-			public int num1, num2;
-			public double dev;
-			public int[] index;
-
-			public Correspondance(int Num1, int Num2, double Dev)
-			{
-				num1 = Num1;
-				num2 = Num2;
-				dev = Dev;
-				index = new int[0];
-			}
-		}
-
+		#region SetFindTiltParameter
 		//FindTiltCorrection用の定数を先に決めておくメソッド
 		public static void SetFindTiltParameter(IntegralProperty iP, double[] peaks, double serchRange)
 		{
+			var thread = Environment.ProcessorCount;
+
 			IP = iP;
 			int i, j, k;
 			int h = IP.SrcHeight;
@@ -2862,15 +2939,15 @@ namespace Crystallography
 					}
 
 			//各スレッドの上限と下限を決める
-			yThreadMin = new int[ThreadTotal];
-			yThreadMax = new int[ThreadTotal];
-			int yStep = (YMax - YMin) / ThreadTotal;
-			for (i = 0; i < ThreadTotal; i++)
+			yThreadMin = new int[thread];
+			yThreadMax = new int[thread];
+			int yStep = (YMax - YMin) / thread;
+			for (i = 0; i < thread; i++)
 			{
 				yThreadMin[i] = YMin + i * yStep;
 				yThreadMax[i] = YMin + (i + 1) * yStep;
 			}
-			yThreadMax[ThreadTotal - 1] = YMax;
+			yThreadMax[thread - 1] = YMax;
 
 			//フィッティングに必要のない範囲はマスクする(スレッドを利用)
 			serchRange *= 2;//実際のサーチレンジよりちょっと多めに
@@ -2888,13 +2965,13 @@ namespace Crystallography
 			//傾き補正係数を計算
 			SetTiltParameter();
 
-			SetFindTiltParameterThreadDelegate[] d = new SetFindTiltParameterThreadDelegate[ThreadTotal];
-			IAsyncResult[] ar = new IAsyncResult[ThreadTotal];
-			for (i = 0; i < ThreadTotal; i++)
+			SetFindTiltParameterThreadDelegate[] d = new SetFindTiltParameterThreadDelegate[thread];
+			IAsyncResult[] ar = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
 				d[i] = new SetFindTiltParameterThreadDelegate(SetFindTiltParameterThread);
-			for (i = 0; i < ThreadTotal; i++)
+			for (i = 0; i < thread; i++)
 				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2, null, null);//各スレッド起動転送
-			for (i = 0; i < ThreadTotal; i++)//スレッド終了待ち
+			for (i = 0; i < thread; i++)//スレッド終了待ち
 				d[i].EndInvoke(ar[i]);
 
 			//配列Rを作成　各ステップごとの中心からの距離を格納する配列
@@ -2959,6 +3036,23 @@ namespace Crystallography
 			}
 		}
 
+        #endregion
+
+        #region バッググラウンド減算
+        public static List<double> SubtractBackground(IEnumerable<double> src,
+		IEnumerable<double> bg, double coeff = 1)
+		{
+			if (src.Count() != bg.Count())
+				return new List<double>(src);
+			else
+			{
+				var bgArray = bg.ToArray();
+				return src.ToArray().Select((s, i) => s - bgArray[i] * coeff).ToList();
+			}
+		}
+		#endregion
+
+		#region バックグランド関数。 未完成
 		public static double[] GetBackground(double lower, double upper)
 		{
 			return Intensity.ToArray();
@@ -3240,5 +3334,7 @@ namespace Crystallography
 
 			return tempInt;*/
 		}
+		#endregion
+
 	}
 }

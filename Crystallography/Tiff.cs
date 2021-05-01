@@ -651,6 +651,7 @@ namespace Crystallography
                                 {
                                     var temp = new byte[2];
                                     br.Read(temp, 0, 2);
+                                    temp = temp.Reverse().ToArray();
                                     return BitConverter.ToUInt16(temp, 0);
                                 };
                             
@@ -659,6 +660,7 @@ namespace Crystallography
                                 {
                                     var temp = new byte[2];
                                     br.Read(temp, 0, 2);
+                                    temp = temp.Reverse().ToArray();
                                     return BitConverter.ToInt16(temp, 0);
                                 };
                         }
@@ -669,6 +671,7 @@ namespace Crystallography
                                 {
                                     var temp = new byte[4];
                                     br.Read(temp, 0, 4);
+                                    temp = temp.Reverse().ToArray();
                                     return BitConverter.ToUInt32(temp, 0);
                                 };
 
@@ -677,6 +680,7 @@ namespace Crystallography
                                 {
                                     var temp = new byte[4];
                                     br.Read(temp, 0, 4);
+                                    temp = temp.Reverse().ToArray();
                                     return BitConverter.ToInt32(temp, 0);
                                 };
                         }
