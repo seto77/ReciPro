@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace Crystallography
 {
@@ -454,31 +455,52 @@ namespace Crystallography
 
         public void initFilter()
         {
-            if (Filter1.Count != Height * Width)
-            {
-                Filter1 = Enumerable.Repeat(false, Height * Width).ToList();
-                Filter2 = Enumerable.Repeat(false, Height * Width).ToList();
-                Filter3 = Enumerable.Repeat(false, Height * Width).ToList();
-                Filter4 = Enumerable.Repeat(false, Height * Width).ToList();
-                Filter5 = Enumerable.Repeat(false, Height * Width).ToList();
-                FilterTemporary = Enumerable.Repeat(false, Height * Width).ToList();
-                if (Height * Width < 3001 * 3001)
-                    FFT_Filter= Enumerable.Repeat(0f, Height * Width).ToList();
-            }
-            else
-            {
-                for (int i = 0; i < Height * Width; i++)
-                {
-                    if (Height * Width < 3001 * 3001)
-                        FFT_Filter[i] = 0;
-                    FilterTemporary[i] = false;
-                    Filter1[i] = false;
-                    Filter2[i] = false;
-                    Filter3[i] = false;
-                    Filter4[i] = false;
-                    Filter5[i] = false;
-                }
-            }
+            //if (Filter1.Count != Height * Width)
+            //{
+            //    Filter1 = Enumerable.Repeat(false, Height * Width).ToList();
+            //    Filter2 = Enumerable.Repeat(false, Height * Width).ToList();
+            //    Filter3 = Enumerable.Repeat(false, Height * Width).ToList();
+            //    Filter4 = Enumerable.Repeat(false, Height * Width).ToList();
+            //    Filter5 = Enumerable.Repeat(false, Height * Width).ToList();
+            //    FilterTemporary = Enumerable.Repeat(false, Height * Width).ToList();
+            //    if (Height * Width < 3001 * 3001)
+            //        FFT_Filter= Enumerable.Repeat(0f, Height * Width).ToList();
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < Height * Width; i++)
+            //    {
+            //        if (Height * Width < 3001 * 3001)
+            //            FFT_Filter[i] = 0;
+            //        FilterTemporary[i] = false;
+            //        Filter1[i] = false;
+            //        Filter2[i] = false;
+            //        Filter3[i] = false;
+            //        Filter4[i] = false;
+            //        Filter5[i] = false;
+            //    }
+            //}
+            Filter1.Clear();
+            Filter1.AddRange(new bool[Height * Width]);
+            
+            Filter2.Clear();
+            Filter2.AddRange(new bool[Height * Width]);
+            
+            Filter3.Clear();
+            Filter3.AddRange(new bool[Height * Width]);
+            
+            Filter4.Clear();
+            Filter4.AddRange(new bool[Height * Width]);
+            
+            Filter5.Clear();
+            Filter5.AddRange(new bool[Height * Width]);
+
+            FilterTemporary.Clear();
+            FilterTemporary.AddRange(new bool[Height * Width]);
+
+            if (Height * Width < 3001 * 3001)
+                 FFT_Filter= Enumerable.Repeat(0f, Height * Width).ToList();
+
         }
 
         #endregion 初期化関連
@@ -875,8 +897,6 @@ namespace Crystallography
             if (destBmp == null || destBmp.Width != width || destBmp.Height != height)
                 destBmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
 
-            
-
             //bmpをロック
             BitmapData bmpData;
             try
@@ -889,183 +909,208 @@ namespace Crystallography
             }
             double zoom = (width / srcRect.Width + height / srcRect.Height) / 2.0;
 
-            //描画する画素位置をソース画像位置に変換するローカル関数
-            (int X, int Y) getSrcPosition(int x, int y)
-            {
-                int _x, _y;
-                if (!HorizontalFlip)
-                    _x = (int)(srcRect.X + (double)x / width * srcRect.Width + 0.5);
-                else
-                    _x = (int)(srcRect.X + (double)(width - x) / width * srcRect.Width + 0.5);
-                if (!VerticalFlip)
-                    _y = (int)(srcRect.Y + (double)y / height * srcRect.Height + 0.5);
-                else
-                    _y = (int)(srcRect.Y + (double)(height - y) / height * srcRect.Height + 0.5);
+            # region 描画する画素位置をソース画像位置に変換するローカル関数
+            double srcX = srcRect.X + 0.5, srcY = srcRect.Y + 0.5, w = srcRect.Width / width, h= srcRect.Height / height;
+            Func<int, int, (int X, int Y)> getSrcPosition;
+            if (HorizontalFlip & VerticalFlip)
+                getSrcPosition = (x, y) => ((int)(srcX + (width - x) * w), (int)(srcY + (height - y) * h));
+            else if (!HorizontalFlip & VerticalFlip)
+                getSrcPosition = (x, y) => ((int)(srcX + x * w), (int)(srcY + (height - y) * h));
+            else if (HorizontalFlip & !VerticalFlip)
+                getSrcPosition = (x, y) => ((int)(srcX + (width - x) * w), (int)(srcY + y * h));
+            else
+                getSrcPosition = (x, y) => ((int)(srcX + x * w), (int)(srcY + y * h));
+            #endregion
 
-                return (_x, _y);
+            #region  入力値doubleを表示する値に変換するローカル関数
+            var lengthR = ScaleR.Length;
+            var coeffR = lengthR /(MaxValue - MinValue);
+            byte getValueR(double rawValue)
+            {
+                var rawIndex = (int)((rawValue - MinValue) * coeffR + 0.5);
+                return ScaleR[Math.Min(Math.Max(0, rawIndex), lengthR - 1)];
             }
 
-            //入力値doubleを表示する値に変換するローカル関数
-            byte getValue(double rawValue, byte[] scale)
+            var lengthG = ScaleG.Length;
+            var coeffG = lengthG / (MaxValue - MinValue);
+            byte getValueG(double rawValue)
             {
-                var rawIndex = (double)(rawValue - MinValue) / (MaxValue - MinValue) * scale.Length;
-                var minIndex = (int)((rawIndex< scale.Length - 1 ? rawIndex : scale.Length - 1) + 0.5);
-                int index = minIndex < 0 ? 0 : minIndex;
-                return scale[index];
+                var rawIndex = (int)((rawValue - MinValue) * coeffG + 0.5);
+                return ScaleG[Math.Min(Math.Max(0, rawIndex), lengthG - 1)];
             }
+
+            var lengthB = ScaleB.Length;
+            var coeffB = lengthB / (MaxValue - MinValue);
+            byte getValueB(double rawValue)
+            {
+                var rawIndex = (int)((rawValue - MinValue) * coeffB + 0.5);
+                return ScaleB[Math.Min(Math.Max(0, rawIndex), lengthB - 1)];
+            }
+            #endregion
 
             int range = (int)(1 / zoom / 2 + 0.5);
             int increase = (zoom >= 1) ? 0 : Math.Max(range / 3, 1);
-
             
-
-            byte* p = (byte*)(void*)bmpData.Scan0;
             int nResidual = bmpData.Stride - destBmp.Width * 3;
-
             double filter;
-            byte r = 0, g = 0, b = 0;
-            (int X, int Y) beforePt = (int.MinValue, int.MinValue);
-            for (int y = 0; y < height; y++)
+
+            int thread =  Environment.ProcessorCount;
+#if DEBUG
+            //thread = 1;
+#endif
+            int yStep = height / thread + 1;
+            Parallel.For(0, thread, t =>
             {
-                for (int x = 0; x < width; x++)
+                byte* p = (byte*)(void*)bmpData.Scan0;
+                p += t * yStep * bmpData.Stride;
+
+                byte r = 0, g = 0, b = 0;
+
+                (int X, int Y) beforePt = (int.MinValue, int.MinValue);
+                for (int y = t*yStep; y < Math.Min((t+1)*yStep, height); y++)
                 {
-                    var pt = getSrcPosition(x, y);
-                    if (pt.X == beforePt.X && pt.Y == beforePt.Y)
+                    for (int x = 0; x < width; x++)
                     {
-                        p[0] = p[-3];
-                        p[1] = p[-2];
-                        p[2] = p[-1];
-                    }
-                    else if (pt.X >= 0 && pt.X < Width && pt.Y >= 0 && pt.Y < Height)//描画域内のとき
-                    {
-                        var srcPosition = pt.X + pt.Y * Width;
-                        if (increase > 0)//補完モード
+                        var pt = getSrcPosition(x, y);
+                        if (pt.X == beforePt.X && pt.Y == beforePt.Y)
                         {
-                            double rSum = 0, gSum = 0, bSum = 0, count = 0;
+                            p[0] = p[-3];
+                            p[1] = p[-2];
+                            p[2] = p[-1];
+                        }
+                        else if (pt.X >= 0 && pt.X < Width && pt.Y >= 0 && pt.Y < Height)//描画域内のとき
+                        {
+                            var srcPosition = pt.X + pt.Y * Width;
+                            if (increase > 0)//補完モード
+                            {
+                                double rSum = 0, gSum = 0, bSum = 0, count = 0;
 
-                            for (int j = pt.Y - range < 0 ? 0 : pt.Y - range; j <= (pt.Y + range < Height - 1 ? pt.Y + range : Height - 1); j += increase)
-                                for (int i = pt.X - range < 0 ? 0 : pt.X - range; i <= (pt.X + range < Width - 1 ? pt.X + range : Width - 1); i += increase)
+                                for (int j = pt.Y - range < 0 ? 0 : pt.Y - range; j <= (pt.Y + range < Height - 1 ? pt.Y + range : Height - 1); j += increase)
+                                    for (int i = pt.X - range < 0 ? 0 : pt.X - range; i <= (pt.X + range < Width - 1 ? pt.X + range : Width - 1); i += increase)
+                                    {
+                                        var tempPosition = i + j * Width;
+
+                                        if (IsSrcGray)
+                                            bSum += SrcValuesGray[tempPosition];
+                                        else
+                                        {
+                                            bSum += SrcValuesB[tempPosition];
+                                            if (!GrayScale)
+                                            {
+                                                gSum += SrcValuesG[tempPosition];
+                                                rSum += SrcValuesR[tempPosition];
+                                            }
+                                        }
+                                        count++;
+                                    }
+                                if (count > 0)
                                 {
-                                    var tempPosition = i + j * Width;
-
-                                    if (IsSrcGray)
-                                        bSum += SrcValuesGray[tempPosition];
+                                    b = getValueB(bSum / count);
+                                    if (GrayScale)
+                                        g = r = b;
                                     else
                                     {
-                                        bSum += SrcValuesB[tempPosition];
-                                        if (!GrayScale)
-                                        {
-                                            gSum += SrcValuesG[tempPosition];
-                                            rSum += SrcValuesR[tempPosition];
-                                        }
+                                        if (IsSrcGray)
+                                            gSum = rSum = bSum;
+                                        g = getValueG(gSum / count);
+                                        r = getValueR(rSum / count);
                                     }
-                                    count++;
-                                }
-                            if (count > 0)
-                            {
-                                b = getValue(bSum / count, ScaleB);
-                                if (GrayScale)
-                                    g = r = b;
-                                else
-                                {
-                                    if (IsSrcGray)
-                                        gSum = rSum = bSum;
-                                    g = getValue(gSum / count, ScaleG);
-                                    r = getValue(rSum / count, ScaleR);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (IsSrcGray)
-                            {
-                                b = getValue(SrcValuesGray[srcPosition], ScaleB);
-                                if (GrayScale)
-                                    g = r = b;
-                                else
-                                {
-                                    g = getValue(SrcValuesGray[srcPosition], ScaleG);
-                                    r = getValue(SrcValuesGray[srcPosition], ScaleR);
                                 }
                             }
                             else
                             {
-                                b = getValue(SrcValuesB[srcPosition], ScaleB);
-                                if (GrayScale)
-                                    g = r = b;
+                                if (IsSrcGray)
+                                {
+                                    b = getValueB(SrcValuesGray[srcPosition]);
+                                    if (GrayScale)
+                                        g = r = b;
+                                    else
+                                    {
+                                        g = getValueG(SrcValuesGray[srcPosition]);
+                                        r = getValueR(SrcValuesGray[srcPosition]);
+                                    }
+                                }
                                 else
                                 {
-                                    g = getValue(SrcValuesG[srcPosition], ScaleG);
-                                    r = getValue(SrcValuesR[srcPosition], ScaleR);
+                                    b = getValueB(SrcValuesB[srcPosition]);
+                                    if (GrayScale)
+                                        g = r = b;
+                                    else
+                                    {
+                                        g = getValueG(SrcValuesG[srcPosition]);
+                                        r = getValueR(SrcValuesR[srcPosition]);
+                                    }
                                 }
                             }
-                        }
 
-                        if (IsNegative)
+                            if (IsNegative)
+                            {
+                                b = (byte)(byte.MaxValue - b); g = (byte)(byte.MaxValue - g); r = (byte)(byte.MaxValue - r);
+                            }
+
+                            p[0] = b;
+                            p[1] = g;
+                            p[2] = r;
+
+                            #region 各種フィルター
+                            if (FFT_Filter != null && FFT_Filter.Count > 0 && (filter = FFT_Filter[srcPosition]) != 0)//もしフィルターされていたら全体を1/2にして(0,127,127)をたす
+                            { //BG
+                                p[0] = (byte)(p[0] * (2 - filter) * 0.5 + 127 * filter);
+                                p[1] = (byte)(p[1] * (2 - filter) * 0.5 + 127 * filter);
+                                p[2] = (byte)(p[2] * (2 - filter) * 0.5);
+                            }
+
+                            if (FilterTemporary != null && FilterTemporary.Count > 0 && FilterTemporary[srcPosition])//もし一時フィルターされていたら全体を1/2にして(127,127,0)をたす
+                            {//GR
+                                p[0] = (byte)(p[0] * 0.8);
+                                p[1] = (byte)(p[1] * 0.8 + 51);
+                                p[2] = (byte)(p[2] * 0.8 + 51);
+                            }
+                            if (Filter1Visible && Filter1 != null && Filter1[srcPosition])//もし飽和点にいろをつけるなら
+                            {//R
+                                p[0] = (byte)(p[0] * 0.8);
+                                p[1] = (byte)(p[1] * 0.8);
+                                p[2] = (byte)(p[2] * 0.8 + 51);
+                            }
+                            if (Filter2Visible && Filter2 != null && Filter2[srcPosition])
+                            {//B
+                                p[0] = (byte)(p[0] * 0.8 + 51);
+                                p[1] = (byte)(p[1] * 0.8);
+                                p[2] = (byte)(p[2] * 0.8);
+                            }
+                            if (Filter3Visible && Filter3 != null && Filter3[srcPosition])//もしスポットだったら全体を1/2にして(0,127,127)をたす
+                            {//BG
+                                p[0] = (byte)(p[0] * 0.8 + 51);
+                                p[1] = (byte)(p[1] * 0.8 + 51);
+                                p[2] = (byte)(p[2] * 0.8);
+                            }
+                            if (Filter4Visible && Filter4 != null && Filter4[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
+                            {//G
+                                p[0] = (byte)(p[0] * 0.8);
+                                p[1] = (byte)(p[1] * 0.8 + 51);
+                                p[2] = (byte)(p[2] * 0.8);
+                            }
+                            if (Filter5Visible && Filter5 != null && Filter5[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
+                            {//BR
+                                p[0] = (byte)(p[0] * 0.8 + 51);
+                                p[1] = (byte)(p[2] * 0.8);
+                                p[2] = (byte)(p[1] * 0.8 + 51);
+                            }
+                            #endregion
+                        }
+                        else//描画域がはみ出したとき
                         {
-                            b = (byte)(byte.MaxValue - b); g = (byte)(byte.MaxValue - g); r = (byte)(byte.MaxValue - r);
+                            p[0] = 0; p[1] = 127; p[2] = 0;
                         }
-
-                        p[0] = b;
-                        p[1] = g;
-                        p[2] = r;
-
-                        if (FFT_Filter != null && FFT_Filter.Count > 0 && (filter = FFT_Filter[srcPosition]) != 0)//もしフィルターされていたら全体を1/2にして(0,127,127)をたす
-                        { //BG
-                            p[0] = (byte)(p[0] * (2 - filter) * 0.5 + 127 * filter);
-                            p[1] = (byte)(p[1] * (2 - filter) * 0.5 + 127 * filter);
-                            p[2] = (byte)(p[2] * (2 - filter) * 0.5);
-                        }
-
-                        if (FilterTemporary != null && FilterTemporary.Count > 0 && FilterTemporary[srcPosition])//もし一時フィルターされていたら全体を1/2にして(127,127,0)をたす
-                        {//GR
-                            p[0] = (byte)(p[0] * 0.8);
-                            p[1] = (byte)(p[1] * 0.8 + 51);
-                            p[2] = (byte)(p[2] * 0.8 + 51);
-                        }
-                        if (Filter1Visible && Filter1 != null && Filter1[srcPosition])//もし飽和点にいろをつけるなら
-                        {//R
-                            p[0] = (byte)(p[0] * 0.8);
-                            p[1] = (byte)(p[1] * 0.8);
-                            p[2] = (byte)(p[2] * 0.8 + 51);
-                        }
-                        if (Filter2Visible && Filter2 != null && Filter2[srcPosition])
-                        {//B
-                            p[0] = (byte)(p[0] * 0.8 + 51);
-                            p[1] = (byte)(p[1] * 0.8);
-                            p[2] = (byte)(p[2] * 0.8);
-                        }
-                        if (Filter3Visible && Filter3 != null && Filter3[srcPosition])//もしスポットだったら全体を1/2にして(0,127,127)をたす
-                        {//BG
-                            p[0] = (byte)(p[0] * 0.8 + 51);
-                            p[1] = (byte)(p[1] * 0.8 + 51);
-                            p[2] = (byte)(p[2] * 0.8);
-                        }
-                        if (Filter4Visible && Filter4 != null && Filter4[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
-                        {//G
-                            p[0] = (byte)(p[0] * 0.8);
-                            p[1] = (byte)(p[1] * 0.8 + 51);
-                            p[2] = (byte)(p[2] * 0.8);
-                        }
-                        if (Filter5Visible && Filter5 != null && Filter5[srcPosition])//もし範囲外だったら全体を2/3にして(0,85,0)をたす
-                        {//BR
-                            p[0] = (byte)(p[0] * 0.8 + 51);
-                            p[1] = (byte)(p[2] * 0.8);
-                            p[2] = (byte)(p[1] * 0.8 + 51);
-                        }
+                        p += 3;
+                        beforePt = pt;
                     }
-                    else//描画域がはみ出したとき
-                    {
-                        p[0] = 0; p[1] = 127; p[2] = 0;
-                    }
-                    p += 3;
-                    beforePt = pt;
+                    p += nResidual;
                 }
-                p += nResidual;
-            }
+            });
 
-            for (int i = 0; i < FilterTemporary.Count; i++)
-                FilterTemporary[i] = false;
+            FilterTemporary.Clear();
+            FilterTemporary.AddRange(new bool[Filter1.Count]);
 
             destBmp.UnlockBits(bmpData);
 

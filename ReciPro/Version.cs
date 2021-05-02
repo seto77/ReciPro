@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.798(2021/05/03)  Fixed bugs on the 'Diffraction simulator'." +
             "\r\n ver4.797(2021/03/24)  Fixed a bug on the 'Database' function." +
             "\r\n ver4.795(2021/03/09)  Fixed a bug on the CBED calculation code." +
             "\r\n ver4.794(2021/03/08)  Added new algorithm for CBED calculation (matrix exponential method) " +
