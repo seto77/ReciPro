@@ -967,7 +967,7 @@ namespace Crystallography
                 byte r = 0, g = 0, b = 0;
 
                 (int X, int Y) beforePt = (int.MinValue, int.MinValue);
-                for (int y = t*yStep; y < Math.Min((t+1)*yStep, height); y++)
+                for (int y = t * yStep; y < Math.Min((t + 1) * yStep, height); y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
@@ -978,15 +978,15 @@ namespace Crystallography
                             p[1] = p[-2];
                             p[2] = p[-1];
                         }
-                        else if (pt.X >= 0 && pt.X < Width && pt.Y >= 0 && pt.Y < Height)//描画域内のとき
+                        else if ((uint) pt.X < (uint) Width && (uint)pt.Y < (uint)Height)//描画域内のとき
                         {
                             var srcPosition = pt.X + pt.Y * Width;
                             if (increase > 0)//補完モード
                             {
                                 double rSum = 0, gSum = 0, bSum = 0, count = 0;
 
-                                for (int j = pt.Y - range < 0 ? 0 : pt.Y - range; j <= (pt.Y + range < Height - 1 ? pt.Y + range : Height - 1); j += increase)
-                                    for (int i = pt.X - range < 0 ? 0 : pt.X - range; i <= (pt.X + range < Width - 1 ? pt.X + range : Width - 1); i += increase)
+                                for (int j = Math.Max(0, pt.Y - range); j <= Math.Min(pt.Y + range, Height - 1); j += increase)
+                                    for (int i = Math.Max(0, pt.X - range); i <= Math.Min(pt.X + range, Width - 1); i += increase)
                                     {
                                         var tempPosition = i + j * Width;
 

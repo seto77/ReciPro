@@ -1881,7 +1881,6 @@ namespace Crystallography
 				}
 			}
 
-
 			//FlatPanelモードの時
 			if (iP.Camera == IntegralProperty.CameraEnum.FlatPanel)
 			{
@@ -1990,7 +1989,7 @@ namespace Crystallography
 						//double cosTwoTheta = Math.Cos(i * IP.StepAngle + IP.StartAngle);
 						//double temp = ProfileIntensity[i] / ContributedPixels[i] / cosTwoTheta/ cosTwoTheta/ cosTwoTheta; //cos2Θの3乗で割ることによって、BB光学系と一致させる
 						//20161227 変更
-						double temp = ProfileIntensity[i] / ContributedPixels[i];
+						var temp = ProfileIntensity[i] / ContributedPixels[i];
 						if (double.IsNaN(temp) || double.IsInfinity(temp))
 							temp = 0;
 						double x = (i * IP.StepAngle + IP.StartAngle) / Math.PI * 180.0;
@@ -2000,7 +1999,7 @@ namespace Crystallography
 				else if (IP.Mode == HorizontalAxis.Length)//Lengthモードのとき
 					for (int i = 0; i < length; i++)
 					{
-						double temp = ProfileIntensity[i] / ContributedPixels[i];
+						var temp = ProfileIntensity[i] / ContributedPixels[i];
 						if (double.IsNaN(temp) || double.IsInfinity(temp))
 							temp = 0;
 						double x = i * IP.StepLength + IP.StartLength;
@@ -2650,7 +2649,7 @@ namespace Crystallography
 				chi[i] = (2 * i + 1) * Math.PI / chiDivision;
 			}
 
-			int width = IP.SrcWidth, length = R2.Length;
+			int width = IP.SrcWidth;
 			double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY, startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
 
 			//x方向に0.5ピクセル進んだ時の並進ベクトル
@@ -2737,11 +2736,12 @@ namespace Crystallography
 						var startChiIndex = Math.Max(0, (int)((chiAngle - devChiAngle) / 2 / Math.PI * chiDivision - 0.5)); //ピクセル中心のChi角
 
 						//矩形を x = c の直線(2シータの分割線) と y = d の直線(セクターの分割線)で切り取り、面積比を計算するループ
-						for (int k1 = startTwoThetaIndex; k1 < length; k1++)
+						for (int k1 = startTwoThetaIndex; k1 < R2.Length; k1++)
 						{
 							//x が c1以下の矩形(pt1)と、c1以上の矩形(pt2)を生成
 							var c = Math.Tan(R2[k1] - twoTheta) * fd;
 							int n1 = 0, n2 = 0;
+							
 							for (int m = 0; m < n0; m++)//pt1は、現在の2Θ範囲のポリゴン、pt2は次の範囲のポリゴン
 							{
 								(double X, double Y) p1 = pt0[m], p2 = m == n0 - 1 ? pt0[0] : pt0[m + 1];
@@ -2767,7 +2767,7 @@ namespace Crystallography
 							}
 							else//セクター分割をする場合
 							{
-								for (int k2 = startChiIndex; k2<chiDivision; k2++)
+								for (int k2 = startChiIndex; k2< chi.Length; k2++)
 								{
 									var d = q / l * Math.Tan(chi[k2] - chiAngle) * fd;
 									//矩形pt1を更に分割していく
@@ -2794,6 +2794,7 @@ namespace Crystallography
 									
 									if (n4 == 0)//次のポリゴンが無かったら終了
 										break;
+
 									Array.Copy(pt4, pt1, n4);
 									n1 = n4;
 
@@ -2854,16 +2855,21 @@ namespace Crystallography
 				for (int j = 0; j < pixels[i].Length; j++)
 					pixels[i][j] *= mag;
 
-			//最後にChiRotationとChiDirectionを考慮して、行を入れ替え
-
+			//未実装 最後にChiRotationとChiDirectionを考慮して、行を入れ替え
 
 			return (profile, pixels);
 		}
 
+		/// <summary>
+		/// ポリゴンの面積を求める
+		/// </summary>
+		/// <param name="n"></param>
+		/// <param name="pt"></param>
+		/// <returns></returns>
 		private static double getArea(int n, (double X, double Y)[] pt)
         {
 			if (n < 3) return 0;
-			var result = pt[0].X * (pt[1].Y - pt[n-1].Y) + pt[n-1].X * (pt[0].Y - pt[n - 1].Y);
+			var result = pt[0].X * (pt[1].Y - pt[n - 1].Y) + pt[n - 1].X * (pt[0].Y - pt[n - 2].Y);
 			for (int i = 1; i < n-1; i++)
 				result += pt[i].X * (pt[i + 1].Y - pt[i-1].Y);
 			return Math.Abs(result) * 0.5;
