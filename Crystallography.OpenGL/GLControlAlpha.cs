@@ -14,6 +14,8 @@ using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
 using System.Management;
+using System.Runtime.ExceptionServices;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Crystallography.OpenGL
 {
@@ -406,18 +408,64 @@ namespace Crystallography.OpenGL
         #endregion プロパティ
 
         #region ロード関連
-        private readonly GLControl glControl = new GLControl();
+        private readonly GLControl glControl;// = new GLControl();
         private readonly Graphics glControlGraphics;
+
+        /// <summary>
+        /// //バージョンチェック。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
+        /// </summary>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+        private string[] CheckVersion()
+        {
+            try
+            {
+                
+                var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.', ' ' });
+                if (ver.Length != 3)
+                    return null;
+                else 
+                    return ver;
+               
+            }
+            catch
+            {
+                DisablingOpenGL = true;
+                throw new Exception();
+            }
+        }
+
+        /// <summary>
+        /// GLContorolのGraphicsを得る。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
+
+        private Graphics getGraphics(GLControl control)
+        {
+            try
+            {
+                return control.CreateGraphics();
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// コンストラクタ. ZsortかOITかは、コンストラクタで決める. 生成後に変更はできない。
         /// </summary>
+
         public GLControlAlpha(FragShaders shaders =  FragShaders.ZSORT)
         {
             InitializeComponent();
 
             if (DisablingOpenGL || DesignMode)
                 return;
+            
+           
 
             FragShader = shaders;
 
@@ -442,17 +490,30 @@ namespace Crystallography.OpenGL
             glControl.MouseUp += glControl_MouseUp;
             glControl.Resize += glControl_Resize;
 
-            glControlGraphics = glControl.CreateGraphics();
+
+            var g = getGraphics(glControl);
+            if (g == null)
+                return;
+            glControlGraphics = g;
+
 
             ResumeLayout();
             //glControlの再初期化ここまで
             #endregion
 
+
+
             glControl.MakeCurrent();
 
+
+            //ビデオカード検索
+            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
+            foreach (var envVar in searcher.Get())
+                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+
             //バージョンチェック
-            var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.' ,' '});
-            if (ver.Length != 3)
+            var ver = CheckVersion();
+            if (ver == null)
                 return;
             Version = 0;
             if (int.TryParse(ver[0], out var temp0))
@@ -465,6 +526,8 @@ namespace Crystallography.OpenGL
                 return;
             if (FragShader == FragShaders.OIT && Version < GetVersionForOIT())
                 return;
+
+
 
             //Shader転送
             var frag = FragShader == FragShaders.ZSORT ? Properties.Resources.fragZSORT :
@@ -521,10 +584,6 @@ namespace Crystallography.OpenGL
 
             glObjectsP = glObjects.AsParallel();
 
-            //ビデオカード検索
-            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
-            foreach (var envVar in searcher.Get())
-                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
 
             //Defaultなオブジェクトを作成
             var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));

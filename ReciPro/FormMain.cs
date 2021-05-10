@@ -171,12 +171,10 @@ namespace ReciPro
         {
           
             //var dim = 64;
-
             //sw.Restart();
             //var loop = 1;
             //var results = new List<MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix>();
             ////Parallel.For(0, loop, k =>{
-
             //    var mat = new MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix(dim);
             //    mat[0, 1] = -Math.PI / 4;
             //    mat[1, 0] = Math.PI / 4;
@@ -184,15 +182,10 @@ namespace ReciPro
             //    //for (int i = 0; i < dim; i++)
             //    //    for (int j = 0; j < dim; j++)
             //    //        mat[i, j] = new System.Numerics.Complex(r.NextDouble(), r.NextDouble());
-
             //    results.Add(NativeWrapper.MatrixExponential_Cuda(mat));
-
 
             ////});
             
-            
-
-
            
 
             //sw.Stop();
