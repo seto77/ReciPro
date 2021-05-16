@@ -26,21 +26,6 @@ namespace Crystallography
         private unsafe static extern Complex* _MatrixExponential(int dim, Complex* mat);
 
 
-       /* [DllImport("Crystallography.Cuda.dll")]
-        private static extern void MatrixExponential_Cuda(int dim,
-                                              double[] mat,
-                                              double[] results);
-        [DllImport("Crystallography.Cuda.dll")]
-        private static extern void _CBEDSolver_MtxExp_Cuda(int gDim,
-                                             double[] potential,
-                                             double[] phi0,
-                                             int tDim,
-                                             double tStart,
-                                             double tStep,
-                                             double coeff,
-                                             double[] result);
-       */
-
         [DllImport("Crystallography.Native.dll")]
         private unsafe static extern Complex* _CBEDSolver_Eigen(int gDim,
                                                Complex* potential,
@@ -98,28 +83,49 @@ namespace Crystallography
         #endregion
 
         #region Nativeライブラリが有効かどうか
+        [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
+        static bool enabled()
+        {
+            string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+            if (!System.IO.File.Exists(appPath))
+                return false;
+            else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
+                return false;
+            try
+            {
+                var result = Inverse(new[,] { { new Complex(1, 0), new Complex(0, 0) }, { new Complex(0, 0), new Complex(1, 0) } });
+                return result[0, 0].Real + result[1, 1].Real > 1;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Native ライブラリが有効かどうか
         /// </summary>
+        
         static unsafe public bool Enabled
         {
             get
             {
-                string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
-                if (!System.IO.File.Exists(appPath))
-                    return false;
-                else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
-                    return false;
-                DenseMatrix result;
-                try
-                {
-                    result = Inverse(new[,] { { new Complex(1, 0), new Complex(0, 0) }, { new Complex(0, 0), new Complex(1, 0) } });
-                    return result[0, 0].Real + result[1, 1].Real > 1;
-                }
-                catch
-                {
-                    return false;
-                }
+                return enabled();
+                //
+                //    string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+                //    if (!System.IO.File.Exists(appPath))
+                //        return false;
+                //    else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
+                //        return false;
+                //    try
+                //    {
+                //        var result = Inverse(new[,] { { new Complex(1, 0), new Complex(0, 0) }, { new Complex(0, 0), new Complex(1, 0) } });
+                //        return result[0, 0].Real + result[1, 1].Real > 1;
+                //    }
+                //    catch
+                //    {
+                //        return false;
+                //    }
             }
         }
         #endregion
