@@ -73,6 +73,9 @@ namespace ReciPro
         public double AngleResolution { get; set; }
 
         public Bitmap CBED_Image;
+
+
+
         private PseudoBitmap pseudoBmp;
 
         private Matrix3D[] Rotations;
@@ -327,9 +330,15 @@ namespace ReciPro
             trackBarOutputThickness.Maximum = ThicknessArray.Length - 1;
             trackBarOutputThickness.Value = 0;
         }
-       
-        private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e) => numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
 
+        private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
+            if (comboBoxSolver.Text.Contains("MKL"))
+                numericBoxThread.Value = Math.Max(1, Environment.ProcessorCount / 4);
+            else
+                numericBoxThread.Value = Environment.ProcessorCount;
+        }
         #endregion
         
     }

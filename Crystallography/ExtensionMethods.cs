@@ -176,7 +176,7 @@ namespace Crystallography
             if (m.RowCount != m.ColumnCount)
                 throw new ArgumentException("Matrix should be square");
 
-            int p = 7; // order of Padé 
+            int p = 9; // order of Padé 
 
             double k = 0;
             double mNorm = m.L1Norm();

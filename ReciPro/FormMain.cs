@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -169,7 +170,6 @@ namespace ReciPro
         /// <param name="e"></param>
         private void FormMain_Load(object sender, EventArgs e)
         {
-          
             //var dim = 64;
             //sw.Restart();
             //var loop = 1;
@@ -183,10 +183,9 @@ namespace ReciPro
             //    //    for (int j = 0; j < dim; j++)
             //    //        mat[i, j] = new System.Numerics.Complex(r.NextDouble(), r.NextDouble());
             //    results.Add(NativeWrapper.MatrixExponential_Cuda(mat));
-
             ////});
-            
-           
+
+
 
             //sw.Stop();
             //MessageBox.Show((sw.ElapsedMilliseconds/ loop).ToString());

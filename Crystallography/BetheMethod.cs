@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
+using MathNet.Numerics.Providers.Common.Mkl;
+using MathNet.Numerics;
 #endregion
 
 namespace Crystallography
@@ -142,8 +144,8 @@ namespace Crystallography
 
         private void cbed_DoWork(object sender, DoWorkEventArgs e)
         {
-            //波数を計算
-            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
+             //波数を計算
+             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
             //U0を計算
             var u0 = getU(AccVoltage, (0, 0, 0), 0).Real.Real;
             //k0ベクトルを計算
@@ -173,14 +175,14 @@ namespace Crystallography
                 if (NativeWrapper.Enabled)
                 {
                     solver = Solver.MtxExp_Eigen;
-                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
+                    thread = Math.Max(1, (int)(Environment.ProcessorCount));
                 }
                 else
                 {
                     solver = Solver.Eigen_MKL;
                     thread = MathNet.Numerics.Control.TryUseNativeMKL() ?
                         Math.Max(1, (int)(Environment.ProcessorCount * 0.25)) :
-                        thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
+                        thread = Math.Max(1, (int)(Environment.ProcessorCount));
                 }
                 
             }
@@ -208,7 +210,7 @@ namespace Crystallography
                 //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
 
                 //Eigen＿Eigenの場合
-                if (solver == Solver.Eigen_Eigen)
+                if (solver == Solver.Eigen_Eigen && EigenEnabled)
                 {
                     result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
                 }
@@ -227,11 +229,11 @@ namespace Crystallography
                     }).ToArray();
                 }
                 //MtxExp_Eigenの場合
-                else if (solver == Solver.MtxExp_Eigen)
+                else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
                 {
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
                 }
-                //MtxExp_MKLの場合 あるいは MtxExp_Managedの場合 
+                //MtxExp_MKLの場合 
                 else
                 {
                     DMat matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();

@@ -70,6 +70,7 @@
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <VCToolsVersion>
     </VCToolsVersion>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -252,7 +253,7 @@
       <OmitFramePointers>
       </OmitFramePointers>
       <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
-      <IntelJCCErratum>true</IntelJCCErratum>
+      <IntelJCCErratum>false</IntelJCCErratum>
       <SDLCheck>true</SDLCheck>
       <IgnoreStandardIncludePath />
       <LanguageStandard_C>stdc17</LanguageStandard_C>
