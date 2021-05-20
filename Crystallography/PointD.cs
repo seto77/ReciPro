@@ -118,6 +118,39 @@ namespace Crystallography
         {
             return new SizeF((float)Width, (float)Height);
         }
+
+        #region 演算子のオーバーロード
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1861411795;
+            hashCode = hashCode * -1521134295 + Width.GetHashCode();
+            hashCode = hashCode * -1521134295 + Height.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj) => obj is SizeD d && Equals(d);
+
+        public bool Equals(SizeD other) => Width == other.Width && Height == other.Height;
+
+        public static SizeD operator +(SizeD p1, SizeD p2) => new SizeD(p1.Width + p2.Width, p1.Height + p2.Height);
+    
+
+
+        public static SizeD operator -(SizeD p1, SizeD p2) => new SizeD(p1.Width - p2.Width, p1.Height - p2.Height);
+
+        public static SizeD operator -(SizeD p) => new SizeD(-p.Width, -p.Height);
+
+        public static SizeD operator *(double d, SizeD p) => new SizeD(d * p.Width, d * p.Height);
+
+        public static SizeD operator *(SizeD p, double d) => new SizeD(d * p.Width, d * p.Height);
+
+        public static SizeD operator /(SizeD p, double d) => new SizeD(p.Width / d, p.Height / d);
+
+        public static bool operator ==(SizeD left, SizeD right) => left.Equals(right);
+
+        public static bool operator !=(SizeD left, SizeD right) => !(left == right);
+        #endregion
     }
 
 
@@ -215,6 +248,9 @@ namespace Crystallography
         public static bool operator ==(PointD left, PointD right) => left.Equals(right);
 
         public static bool operator !=(PointD left, PointD right) => !(left == right);
+
+        public static PointD operator +(PointD p1, SizeD p2) => new PointD(p1.X + p2.Width, p1.Y + p2.Height);
+        public static PointD operator -(PointD p1, SizeD p2) => new PointD(p1.X - p2.Width, p1.Y - p2.Height);
 
         #endregion 演算子のオーバーロード
     }

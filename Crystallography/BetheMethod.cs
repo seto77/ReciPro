@@ -170,19 +170,20 @@ namespace Crystallography
             var solver = (Solver)((object[])e.Argument)[0];
             var thread = (int)((object[])e.Argument)[1];
 
+            if (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen))
+                solver = Solver.Auto;
+
             if(solver== Solver.Auto)
             {
-                if (NativeWrapper.Enabled)
+                if (EigenEnabled)
                 {
                     solver = Solver.MtxExp_Eigen;
-                    thread = Math.Max(1, (int)(Environment.ProcessorCount));
+                    thread = Environment.ProcessorCount;
                 }
                 else
                 {
                     solver = Solver.Eigen_MKL;
-                    thread = MathNet.Numerics.Control.TryUseNativeMKL() ?
-                        Math.Max(1, (int)(Environment.ProcessorCount * 0.25)) :
-                        thread = Math.Max(1, (int)(Environment.ProcessorCount));
+                    thread = Control.TryUseNativeMKL() ? Math.Max(1, Environment.ProcessorCount / 4) : Environment.ProcessorCount;
                 }
                 
             }
@@ -218,7 +219,6 @@ namespace Crystallography
                 else if (solver == Solver.Eigen_MKL)
                 {
                     var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-                    //var alpha = evd.EigenVectors.Inverse().Multiply(psi0);
                     var alpha = evd.EigenVectors.LU().Solve(psi0);
                     result = Thicknesses.Select(t =>
                     {
@@ -236,7 +236,7 @@ namespace Crystallography
                 //MtxExp_MKLの場合 
                 else
                 {
-                    DMat matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
+                    var matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
                     var vec = matExpStart.Multiply(psi0);
 
                     DMat matExpStep;
@@ -300,7 +300,7 @@ namespace Crystallography
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
 
-            var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
+            var useEigen = !Control.TryUseNativeMKL();
 
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
@@ -354,7 +354,7 @@ namespace Crystallography
             var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
 
             //深さZにおけるψを求める
-            var psi_atZ = p * EigenVectors.Multiply(gamma_alpha);
+            var psi_atZ = p.Multiply( EigenVectors.Multiply(gamma_alpha));
 
             for (int i = 0; i < Beams.Length && i < len; i++)
                 Beams[i].Psi = psi_atZ[i];

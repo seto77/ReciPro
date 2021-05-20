@@ -24,7 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>EigenFuncs</RootNamespace>
     <ProjectName>Crystallography.Native</ProjectName>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,7 +70,6 @@
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <VCToolsVersion>
     </VCToolsVersion>
-    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -216,15 +215,18 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
       <Parallelization>false</Parallelization>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
       <UseProcessorExtensions>AVX</UseProcessorExtensions>
       <Mtune>No</Mtune>
       <ConditionalBranch>
       </ConditionalBranch>
-      <OpenMPSupport>false</OpenMPSupport>
+      <OpenMPSupport>
+      </OpenMPSupport>
       <OpenMP>
       </OpenMP>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -253,10 +255,10 @@
       <OmitFramePointers>
       </OmitFramePointers>
       <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
-      <IntelJCCErratum>false</IntelJCCErratum>
+      <IntelJCCErratum>true</IntelJCCErratum>
       <SDLCheck>true</SDLCheck>
       <IgnoreStandardIncludePath />
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -264,7 +266,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>

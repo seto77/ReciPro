@@ -16,7 +16,6 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
-                pseudoBmp.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -32,11 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorCBED));
             this.buttonExecute = new System.Windows.Forms.Button();
             this.checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelDivisionNumber = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelDivisionNumber = new System.Windows.Forms.Label();
             this.comboBoxSolver = new System.Windows.Forms.ComboBox();
             this.numericBoxThread = new Crystallography.Controls.NumericBox();
             this.numericBoxThicknessStep = new Crystallography.Controls.NumericBox();
@@ -44,7 +40,6 @@
             this.numericBoxThicknessEnd = new Crystallography.Controls.NumericBox();
             this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
             this.buttonStop = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBarAdvancedAlphaMax = new Crystallography.Controls.TrackBarAdvanced();
             this.numericBoxDivision = new Crystallography.Controls.NumericBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -64,13 +59,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericBoxImageSize = new Crystallography.Controls.NumericBox();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1.SuspendLayout();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxOutput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutputThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGamma)).BeginInit();
@@ -97,24 +90,24 @@
             this.checkBoxDrawGuideCircles.UseVisualStyleBackColor = true;
             this.checkBoxDrawGuideCircles.CheckedChanged += new System.EventHandler(this.CheckBoxDrawGuideCircles_CheckedChanged);
             // 
-            // statusStrip1
+            // groupBox1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.SizingGrip = false;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.labelDivisionNumber);
+            this.groupBox1.Controls.Add(this.comboBoxSolver);
+            this.groupBox1.Controls.Add(this.numericBoxThread);
+            this.groupBox1.Controls.Add(this.numericBoxThicknessStep);
+            this.groupBox1.Controls.Add(this.numericBoxWholeThicknessStart);
+            this.groupBox1.Controls.Add(this.checkBoxDrawGuideCircles);
+            this.groupBox1.Controls.Add(this.numericBoxThicknessEnd);
+            this.groupBox1.Controls.Add(this.numericBoxMaxNumOfG);
+            this.groupBox1.Controls.Add(this.buttonStop);
+            this.groupBox1.Controls.Add(this.buttonExecute);
+            this.groupBox1.Controls.Add(this.trackBarAdvancedAlphaMax);
+            this.groupBox1.Controls.Add(this.numericBoxDivision);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // labelDivisionNumber
             // 
@@ -123,31 +116,10 @@
             this.labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelDivisionNumber.Name = "labelDivisionNumber";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.labelDivisionNumber);
-            this.groupBox1.Controls.Add(this.comboBoxSolver);
-            this.groupBox1.Controls.Add(this.numericBoxThread);
-            this.groupBox1.Controls.Add(this.numericBoxThicknessStep);
-            this.groupBox1.Controls.Add(this.numericBoxWholeThicknessStart);
-            this.groupBox1.Controls.Add(this.numericBoxThicknessEnd);
-            this.groupBox1.Controls.Add(this.numericBoxMaxNumOfG);
-            this.groupBox1.Controls.Add(this.buttonStop);
-            this.groupBox1.Controls.Add(this.buttonExecute);
-            this.groupBox1.Controls.Add(this.checkBoxDrawGuideCircles);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.trackBarAdvancedAlphaMax);
-            this.groupBox1.Controls.Add(this.numericBoxDivision);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
             // comboBoxSolver
             // 
-            this.comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxSolver, "comboBoxSolver");
+            this.comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSolver.FormattingEnabled = true;
             this.comboBoxSolver.Items.AddRange(new object[] {
             resources.GetString("comboBoxSolver.Items"),
@@ -171,6 +143,7 @@
             this.numericBoxThread.RadianValue = 0.069813170079773182D;
             this.numericBoxThread.ShowUpDown = true;
             this.numericBoxThread.SmartIncrement = true;
+            this.numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxThread.ThonsandsSeparator = true;
             this.numericBoxThread.Value = 4D;
             this.numericBoxThread.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
@@ -235,37 +208,30 @@
             this.numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
             this.numericBoxMaxNumOfG.ShowUpDown = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
             this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
             this.numericBoxMaxNumOfG.Value = 64D;
             this.numericBoxMaxNumOfG.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxNumOfG_ValueChanged);
             // 
             // buttonStop
             // 
+            resources.ApplyResources(this.buttonStop, "buttonStop");
             this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
             this.buttonStop.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.buttonStop, "buttonStop");
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.UseVisualStyleBackColor = false;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
             // trackBarAdvancedAlphaMax
             // 
             resources.ApplyResources(this.trackBarAdvancedAlphaMax, "trackBarAdvancedAlphaMax");
-            this.trackBarAdvancedAlphaMax.ControlHeight = 53;
+            this.trackBarAdvancedAlphaMax.ControlHeight = 25;
             this.trackBarAdvancedAlphaMax.DecimalPlaces = -1;
             this.trackBarAdvancedAlphaMax.LogScrollBar = false;
             this.trackBarAdvancedAlphaMax.Maximum = 100D;
             this.trackBarAdvancedAlphaMax.Minimum = 0D;
             this.trackBarAdvancedAlphaMax.Name = "trackBarAdvancedAlphaMax";
-            this.trackBarAdvancedAlphaMax.NumericBoxSize = 24;
-            this.trackBarAdvancedAlphaMax.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.trackBarAdvancedAlphaMax.NumericBoxSize = 155;
+            this.trackBarAdvancedAlphaMax.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBarAdvancedAlphaMax.Smart_Increment = true;
             this.trackBarAdvancedAlphaMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
             this.trackBarAdvancedAlphaMax.UpDown_Increment = 1D;
@@ -297,6 +263,7 @@
             // 
             // groupBoxOutput
             // 
+            resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
             this.groupBoxOutput.Controls.Add(this.label3);
             this.groupBoxOutput.Controls.Add(this.label11);
             this.groupBoxOutput.Controls.Add(this.comboBoxGradient);
@@ -312,10 +279,9 @@
             this.groupBoxOutput.Controls.Add(this.label8);
             this.groupBoxOutput.Controls.Add(this.label7);
             this.groupBoxOutput.Controls.Add(this.label5);
-            this.groupBoxOutput.Controls.Add(this.numericBoxImageSize);
-            resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.TabStop = false;
+            this.groupBoxOutput.Enter += new System.EventHandler(this.groupBoxOutput_Enter);
             // 
             // label3
             // 
@@ -329,8 +295,8 @@
             // 
             // comboBoxGradient
             // 
-            this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxGradient, "comboBoxGradient");
+            this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGradient.FormattingEnabled = true;
             this.comboBoxGradient.Items.AddRange(new object[] {
             resources.GetString("comboBoxGradient.Items"),
@@ -340,8 +306,8 @@
             // 
             // comboBoxScale
             // 
-            this.comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxScale, "comboBoxScale");
+            this.comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxScale.FormattingEnabled = true;
             this.comboBoxScale.Items.AddRange(new object[] {
             resources.GetString("comboBoxScale.Items"),
@@ -425,42 +391,33 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // numericBoxImageSize
-            // 
-            resources.ApplyResources(this.numericBoxImageSize, "numericBoxImageSize");
-            this.numericBoxImageSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxImageSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxImageSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxImageSize.Maximum = 3096D;
-            this.numericBoxImageSize.Minimum = 1D;
-            this.numericBoxImageSize.Name = "numericBoxImageSize";
-            this.numericBoxImageSize.RadianValue = 8.9360857702109673D;
-            this.numericBoxImageSize.ShowUpDown = true;
-            this.numericBoxImageSize.SmartIncrement = true;
-            this.numericBoxImageSize.ThonsandsSeparator = true;
-            this.numericBoxImageSize.Value = 512D;
-            this.numericBoxImageSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxImageSize_ValueChanged);
-            // 
             // statusStrip2
             // 
+            resources.ApplyResources(this.statusStrip2, "statusStrip2");
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
-            this.toolStripStatusLabel2});
-            this.statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            resources.ApplyResources(this.statusStrip2, "statusStrip2");
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel1});
+            this.statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.SizingGrip = false;
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            this.toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolStripStatusLabel2
             // 
             resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            // 
+            // toolStripStatusLabel1
+            // 
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // FormDiffractionSimulatorCBED
             // 
@@ -469,7 +426,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.groupBoxOutput);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.statusStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -477,11 +433,8 @@
             this.Name = "FormDiffractionSimulatorCBED";
             this.ShowIcon = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDiffractionSimulatorMultislice_FormClosing);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxOutput.ResumeLayout(false);
             this.groupBoxOutput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutputThickness)).EndInit();
@@ -501,14 +454,8 @@
         private System.Windows.Forms.CheckBox checkBoxDrawGuideCircles;
         private Crystallography.Controls.NumericBox numericBoxMaxNumOfG;
         private Crystallography.Controls.NumericBox numericBoxDivision;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelDivisionNumber;
         private Crystallography.Controls.NumericBox numericBoxThicknessEnd;
         private Crystallography.Controls.NumericBox numericBoxThicknessStep;
-        private Crystallography.Controls.NumericBox numericBoxImageSize;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxOutput;
         private System.Windows.Forms.TrackBar trackBarGamma;
@@ -529,10 +476,12 @@
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ComboBox comboBoxSolver;
-        private Crystallography.Controls.NumericBox numericBoxThread;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox comboBoxGradient;
+        private System.Windows.Forms.Label labelDivisionNumber;
+        private System.Windows.Forms.ComboBox comboBoxSolver;
+        private Crystallography.Controls.NumericBox numericBoxThread;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

@@ -508,6 +508,12 @@ namespace Crystallography
         #region プロパティ
 
         /// <summary>
+        /// アルファチャンネルが有効かどうか. FilterAlphaもセットしないと、機能しない.
+        /// </summary>
+        public bool AlphaEnabled { set; get; } = false;
+
+
+        /// <summary>
         /// 上下方向の反転をするかどうか
         /// </summary>
         public bool VerticalFlip { set; get; } = false;
@@ -587,6 +593,11 @@ namespace Crystallography
         public bool Filter4Visible = true;
         public bool Filter5Visible = true;
 
+        /// <summary>
+        /// 透明度フィルター. 0が透明、255が不透明. AlphaEnabledがTrueの時だけ使われる.
+        /// </summary>
+        public List<byte> FilterAlfha { get; set; } = new List<byte>();
+
         public byte[] ScaleR;
         public byte[] ScaleG;
         public byte[] ScaleB;
@@ -609,27 +620,6 @@ namespace Crystallography
         /// Blurモードの列挙体
         /// </summary>
         public enum BlurModeEnum { Gaussian, Lorentzian, None }
-
-        /*private BlurModeEnum blurMode = BlurModeEnum.None;
-        /// <summary>
-        /// BlurMode
-        /// </summary>
-        public BlurModeEnum BlurMode
-        {
-            get { return blurMode; }
-            set { blurMode = value; }
-        }
-
-        private double blurRadius = 0;
-        /// <summary>
-        /// Blurモードの時の半径
-        /// </summary>
-        public double BlurRadius
-        {
-            get { return blurRadius; }
-            set { blurRadius = value; }
-        }
-    */
 
         private enum ImageSouceEnum { GrayDouble, GrayUint, ColorDouble, ColorUint }
 
@@ -849,7 +839,15 @@ namespace Crystallography
         /// <param name="zoom"></param>
         /// <param name="destSize"></param>
         /// <returns></returns>
-        public Bitmap GetImage() => GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
+        public Bitmap GetImage()
+        {
+         
+            var bmp = GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
+            
+            
+            return bmp;
+
+        }
 
         /// <summary>
         /// 指定された範囲のイメージを取得する
@@ -894,9 +892,10 @@ namespace Crystallography
             int width = destSize.Width, height = destSize.Height;
 
             //まずbmpが前回作られていなかったら作成
-            if (destBmp == null || destBmp.Width != width || destBmp.Height != height)
-                destBmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-
+            if (destBmp == null || destBmp.Width != width || destBmp.Height != height || destBmp.PixelFormat == (AlphaEnabled ? PixelFormat.Format32bppPArgb : PixelFormat.Format24bppRgb))
+            {
+                destBmp = new Bitmap(width, height, AlphaEnabled ? PixelFormat.Format32bppPArgb : PixelFormat.Format24bppRgb);
+            }
             //bmpをロック
             BitmapData bmpData;
             try
@@ -950,11 +949,14 @@ namespace Crystallography
 
             int range = (int)(1 / zoom / 2 + 0.5);
             int increase = (zoom >= 1) ? 0 : Math.Max(range / 3, 1);
-            
-            int nResidual = bmpData.Stride - destBmp.Width * 3;
+
+            int step = AlphaEnabled ? 4 : 3;
+            int nResidual = bmpData.Stride - destBmp.Width * step;
             double filter;
 
             int thread =  Environment.ProcessorCount;
+
+            
 #if DEBUG
             //thread = 1;
 #endif
@@ -974,11 +976,10 @@ namespace Crystallography
                         var pt = getSrcPosition(x, y);
                         if (pt.X == beforePt.X && pt.Y == beforePt.Y)
                         {
-                            p[0] = p[-3];
-                            p[1] = p[-2];
-                            p[2] = p[-1];
+                            for (int i = 0; i < step; i++)
+                                p[i] = p[i - step];
                         }
-                        else if ((uint) pt.X < (uint) Width && (uint)pt.Y < (uint)Height)//描画域内のとき
+                        else if ((uint)pt.X < (uint)Width && (uint)pt.Y < (uint)Height)//描画域内のとき
                         {
                             var srcPosition = pt.X + pt.Y * Width;
                             if (increase > 0)//補完モード
@@ -1052,6 +1053,9 @@ namespace Crystallography
                             p[1] = g;
                             p[2] = r;
 
+                            if (AlphaEnabled)
+                                p[3] = (srcPosition < FilterAlfha.Count) ? FilterAlfha[srcPosition] : (byte)255;
+
                             #region 各種フィルター
                             if (FFT_Filter != null && FFT_Filter.Count > 0 && (filter = FFT_Filter[srcPosition]) != 0)//もしフィルターされていたら全体を1/2にして(0,127,127)をたす
                             { //BG
@@ -1097,12 +1101,17 @@ namespace Crystallography
                                 p[2] = (byte)(p[1] * 0.8 + 51);
                             }
                             #endregion
+
                         }
                         else//描画域がはみ出したとき
                         {
                             p[0] = 0; p[1] = 127; p[2] = 0;
+                            if (AlphaEnabled)
+                                p[3] = (byte)255;
                         }
-                        p += 3;
+
+                        p += step;
+
                         beforePt = pt;
                     }
                     p += nResidual;

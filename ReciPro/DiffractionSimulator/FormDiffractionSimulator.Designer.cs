@@ -132,7 +132,7 @@
             this.saveCBEDPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCBEDasPngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCBEDasTiffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveCBEDasMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asPixelByPixelImagePNGFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyImageToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAsImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,7 +141,6 @@
             this.copyDetectorAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyCBEDPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyCBEDasImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyCBEDasMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1230,7 +1229,7 @@
             this.saveCBEDPatternToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveCBEDasPngToolStripMenuItem,
             this.saveCBEDasTiffToolStripMenuItem,
-            this.saveCBEDasMetafileToolStripMenuItem});
+            this.asPixelByPixelImagePNGFormatToolStripMenuItem});
             this.saveCBEDPatternToolStripMenuItem.Name = "saveCBEDPatternToolStripMenuItem";
             resources.ApplyResources(this.saveCBEDPatternToolStripMenuItem, "saveCBEDPatternToolStripMenuItem");
             // 
@@ -1246,11 +1245,11 @@
             resources.ApplyResources(this.saveCBEDasTiffToolStripMenuItem, "saveCBEDasTiffToolStripMenuItem");
             this.saveCBEDasTiffToolStripMenuItem.Click += new System.EventHandler(this.saveCBEDasTiffToolStripMenuItem_Click);
             // 
-            // saveCBEDasMetafileToolStripMenuItem
+            // asPixelByPixelImagePNGFormatToolStripMenuItem
             // 
-            this.saveCBEDasMetafileToolStripMenuItem.Name = "saveCBEDasMetafileToolStripMenuItem";
-            resources.ApplyResources(this.saveCBEDasMetafileToolStripMenuItem, "saveCBEDasMetafileToolStripMenuItem");
-            this.saveCBEDasMetafileToolStripMenuItem.Click += new System.EventHandler(this.saveCBEDasMetafileToolStripMenuItem_Click);
+            this.asPixelByPixelImagePNGFormatToolStripMenuItem.Name = "asPixelByPixelImagePNGFormatToolStripMenuItem";
+            resources.ApplyResources(this.asPixelByPixelImagePNGFormatToolStripMenuItem, "asPixelByPixelImagePNGFormatToolStripMenuItem");
+            this.asPixelByPixelImagePNGFormatToolStripMenuItem.Click += new System.EventHandler(this.saveCBEDasCollectiveImageToolStripMenuItem_Click);
             // 
             // copyImageToClipboardToolStripMenuItem
             // 
@@ -1295,8 +1294,7 @@
             // copyCBEDPatternToolStripMenuItem
             // 
             this.copyCBEDPatternToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyCBEDasImageToolStripMenuItem,
-            this.copyCBEDasMetafileToolStripMenuItem});
+            this.copyCBEDasImageToolStripMenuItem});
             this.copyCBEDPatternToolStripMenuItem.Name = "copyCBEDPatternToolStripMenuItem";
             resources.ApplyResources(this.copyCBEDPatternToolStripMenuItem, "copyCBEDPatternToolStripMenuItem");
             // 
@@ -1305,12 +1303,6 @@
             this.copyCBEDasImageToolStripMenuItem.Name = "copyCBEDasImageToolStripMenuItem";
             resources.ApplyResources(this.copyCBEDasImageToolStripMenuItem, "copyCBEDasImageToolStripMenuItem");
             this.copyCBEDasImageToolStripMenuItem.Click += new System.EventHandler(this.copyCBEDasImageToolStripMenuItem_Click);
-            // 
-            // copyCBEDasMetafileToolStripMenuItem
-            // 
-            this.copyCBEDasMetafileToolStripMenuItem.Name = "copyCBEDasMetafileToolStripMenuItem";
-            resources.ApplyResources(this.copyCBEDasMetafileToolStripMenuItem, "copyCBEDasMetafileToolStripMenuItem");
-            this.copyCBEDasMetafileToolStripMenuItem.Click += new System.EventHandler(this.copyCBEDasMetafileToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -2165,11 +2157,7 @@
         private System.Windows.Forms.RadioButton radioButtonIntensityKinematical;
         public System.Windows.Forms.RadioButton radioButtonIntensityBethe;
         private System.Windows.Forms.ToolStripMenuItem saveCBEDPatternToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveCBEDasPngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveCBEDasMetafileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyCBEDasImageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyCBEDasMetafileToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxFixCenter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem saveCBEDasTiffToolStripMenuItem;
@@ -2263,5 +2251,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelDummy;
         private Crystallography.Controls.NumericBox numericBoxKikuchiLineThreshold;
+        private System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyCBEDasImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asPixelByPixelImagePNGFormatToolStripMenuItem;
     }
 }

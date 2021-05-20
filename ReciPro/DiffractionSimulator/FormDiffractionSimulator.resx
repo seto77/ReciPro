@@ -526,7 +526,7 @@
     <value>waveLengthControl</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
     <value>tabPageWave</value>
@@ -661,7 +661,7 @@
     <value>colorControlString</value>
   </data>
   <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -752,7 +752,7 @@
     <value>colorControlFoot</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -806,7 +806,7 @@
     <value>colorControlBackGround</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -896,7 +896,7 @@
     <value>numericBoxKikuchiLineThreshold</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -950,7 +950,7 @@
     <value>colorControlDefectLine</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -1004,7 +1004,7 @@
     <value>colorControlExcessLine</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -1154,7 +1154,7 @@
     <value>colorControlDebyeRing</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
     <value>tabPageDebye</value>
@@ -1626,7 +1626,7 @@
     <value>colorControlScaleAzimuth</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1680,7 +1680,7 @@
     <value>colorControlScale2Theta</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -1749,7 +1749,7 @@
     <value>numericBoxDev</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1794,7 +1794,7 @@
     <value>numericBoxAcc</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -2471,7 +2471,7 @@
     <value>numericBoxClientHeight</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -2516,7 +2516,7 @@
     <value>numericBoxClientWidth</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -2561,7 +2561,7 @@
     <value>numericBoxResolution</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
     <value>groupBox6</value>
@@ -3138,28 +3138,28 @@
     <value>Save detector area</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>271, 22</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image  (PNG format)</value>
+    <value>as indivisual image  (PNG format)</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>271, 22</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image (Tiff format)</value>
+    <value>as indivisual image (Tiff format)</value>
   </data>
-  <data name="saveCBEDasMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
   </data>
-  <data name="saveCBEDasMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile</value>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>as collective image (PNG format)</value>
   </data>
   <data name="saveCBEDPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
   <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save CBED pattern</value>
+    <value>Save CBED disks</value>
   </data>
   <data name="saveCBEDPatternToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3186,13 +3186,13 @@
     <value>現在の描画内容をクリップボードにコピーします</value>
   </data>
   <data name="copyDetectorAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
     <value>as Image</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>as Metafile</value>
@@ -3207,22 +3207,16 @@
     <value>False</value>
   </data>
   <data name="copyCBEDasImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image  (PNG format)</value>
-  </data>
-  <data name="copyCBEDasMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="copyCBEDasMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile</value>
+    <value>as collective image</value>
   </data>
   <data name="copyCBEDPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
   <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy CBED pattern</value>
+    <value>Copy CBED disks</value>
   </data>
   <data name="copyCBEDPatternToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3620,7 +3614,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Semiangle</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -3662,7 +3656,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxPED_Step</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Parent" xml:space="preserve">
     <value>flowLayoutPanelPED</value>
@@ -3779,7 +3773,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxNumOfBlochWave</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -3824,7 +3818,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxThickness</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelBethe</value>
@@ -4151,7 +4145,7 @@ lattice centring, glide, and screw</value>
     <value>numericBoxSpotRadius</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -4574,7 +4568,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlOrigin</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -4628,7 +4622,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlNoCondition</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -4682,7 +4676,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlScrewGlide</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -4736,7 +4730,7 @@ lattice centring, glide, and screw</value>
     <value>colorControlForbiddenLattice</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.2.26.904, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2021.5.18.733, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
     <value>flowLayoutPanelSpotColor</value>
@@ -5762,10 +5756,10 @@ lattice centring, glide, and screw</value>
   <data name="&gt;&gt;saveCBEDasTiffToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;saveCBEDasMetafileToolStripMenuItem.Name" xml:space="preserve">
-    <value>saveCBEDasMetafileToolStripMenuItem</value>
+  <data name="&gt;&gt;asPixelByPixelImagePNGFormatToolStripMenuItem.Name" xml:space="preserve">
+    <value>asPixelByPixelImagePNGFormatToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;saveCBEDasMetafileToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;asPixelByPixelImagePNGFormatToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyImageToClipboardToolStripMenuItem.Name" xml:space="preserve">
@@ -5814,12 +5808,6 @@ lattice centring, glide, and screw</value>
     <value>copyCBEDasImageToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;copyCBEDasImageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;copyCBEDasMetafileToolStripMenuItem.Name" xml:space="preserve">
-    <value>copyCBEDasMetafileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;copyCBEDasMetafileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">

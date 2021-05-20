@@ -579,6 +579,16 @@ namespace Crystallography
                 );
         }
 
+        /// <summary>
+        /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点pt1とpt2を結ぶ直線と交わる交点を返す
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Vector3D GetCrossPoint(double a, double b, double c, double d, Vector3D p1, Vector3D p2)
         {
             return GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));

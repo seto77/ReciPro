@@ -11,7 +11,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 #endregion
 
 namespace ReciPro
@@ -295,13 +295,15 @@ namespace ReciPro
             }
 
             //CBEDの重ね合わせ
-            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CBED_Image != null)
+            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
             {
-                var cbed = FormDiffractionSimulatorCBED;
-                start = new PointD(-cbed.ImagePixelSize * cbed.ImageCenterX, -cbed.ImagePixelSize * cbed.ImageCenterY);
-                end = new PointD(cbed.ImagePixelSize * (cbed.ImageWidth - cbed.ImageCenterX), cbed.ImagePixelSize * (cbed.ImageHeight - cbed.ImageCenterY));
-                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
-                g.DrawImage(cbed.CBED_Image, dest, new RectangleF(0, 0, cbed.ImageWidth, cbed.ImageHeight), GraphicsUnit.Pixel);
+                foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d=>d.Bitmap!=null))
+                {
+                    start = disk.Center + disk.Size/2;
+                    end = disk.Center - disk.Size / 2; ;
+                    var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
+                    g.DrawImage(disk.Bitmap, dest, new RectangleF(0,0,disk.PixelSize.Width, disk.PixelSize.Width), GraphicsUnit.Pixel);
+                }
             }
 
             g.SmoothingMode = SmoothingMode.HighQuality;
@@ -1672,7 +1674,7 @@ namespace ReciPro
             saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
 
             //ファイルメニューアイテムの変更
-            saveCBEDPatternToolStripMenuItem.Visible = copyCBEDPatternToolStripMenuItem.Visible = radioButtonBeamConvergence.Checked;
+            saveCBEDPatternToolStripMenuItem.Visible =  copyCBEDPatternToolStripMenuItem.Visible = radioButtonBeamConvergence.Checked;
 
             if(radioButtonBeamParallel.Checked)//平行ビームの場合
             {
@@ -1902,21 +1904,36 @@ namespace ReciPro
 
         private void copyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
 
-        private void saveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+        private void saveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e) => saveCBEDasTiffToolStripMenuItem_Click(sender,e);
 
         private void saveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog { Filter = "*.tif|*.tif" };
-            if (FormDiffractionSimulatorCBED.SrcImage != null && FormDiffractionSimulatorCBED.SrcImage.Length != 0 && dlg.ShowDialog() == DialogResult.OK)
-                Tiff.Writer(dlg.FileName, FormDiffractionSimulatorCBED.SrcImage, 3, FormDiffractionSimulatorCBED.CBED_Image.Width);
+            var png = ((ToolStripItem)sender).Text.Contains("PNG");
+
+            SaveFileDialog dlg = new() { Filter = png ? "*.png|*.png" : "*.tif|*.tif" };
+
+
+            if (FormDiffractionSimulatorCBED.Disks != null && FormDiffractionSimulatorCBED.Disks.Length != 0 && dlg.ShowDialog() == DialogResult.OK)
+            {
+                var name = dlg.FileName.Substring(0, dlg.FileName.Length - 4);
+                foreach (var disk in FormDiffractionSimulatorCBED.Disks)
+                {
+                    var index = $" ({disk.H} {disk.K} {disk.L})";
+                    if (png)
+                        disk.Bitmap.Save(name + index + ".png", ImageFormat.Png);
+                    else
+                        Tiff.Writer(name + index + ".tif", disk.PBitmap.SrcValuesGray, 3, disk.PixelSize.Width);
+                }
+            }
         }
 
         private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
 
         private void copyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
-        private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
-
+        //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
+        private void saveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+        
         private void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage)
         {
             if (isImage)
@@ -1928,7 +1945,7 @@ namespace ReciPro
                 {
                     if (save)
                     {
-                        SaveFileDialog dlg = new SaveFileDialog { Filter = "*.png|*.png" };
+                        SaveFileDialog dlg = new() { Filter = "*.png|*.png" };
                         if (dlg.ShowDialog() == DialogResult.OK)
                             bmp.Save(dlg.FileName, ImageFormat.Png);
                     }
@@ -1940,28 +1957,30 @@ namespace ReciPro
             }
             else
             {
-                Graphics grfx = CreateGraphics();
-                IntPtr ipHdc = grfx.GetHdc();
-                MemoryStream ms = new MemoryStream();
-                Metafile mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-                grfx.ReleaseHdc(ipHdc);
-                grfx.Dispose();
-                var g = Graphics.FromImage(mf);
-                Draw(g, true, drawOverlappedImage);
-                g.Dispose();
-
-                if (save)
+                using (Graphics grfx = CreateGraphics())
                 {
-                    SaveFileDialog dlg = new SaveFileDialog { Filter = "*.emf|*.emf" };
-                    if (dlg.ShowDialog() == DialogResult.OK)
+                    IntPtr ipHdc = grfx.GetHdc();
+                    MemoryStream ms = new();
+                    Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
+                    grfx.ReleaseHdc(ipHdc);
+                    grfx.Dispose();
+                    var g = Graphics.FromImage(mf);
+                    Draw(g, true, drawOverlappedImage);
+                    g.Dispose();
+
+                    if (save)
                     {
-                        FileStream fsm = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write);
-                        fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                        fsm.Close();
+                        SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
+                            fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
+                            fsm.Close();
+                        }
                     }
+                    else
+                        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
                 }
-                else
-                    ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
             }
         }
 
@@ -2006,7 +2025,7 @@ namespace ReciPro
                 Draw();
                 graphicsBox.Refresh();
             }
-            else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.CBED_Image != null)
+            else if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
             {
                 drawOverlappedImage = true;
 
@@ -2016,7 +2035,11 @@ namespace ReciPro
                 var originalFoot = new PointD(DisplayCenter.X, DisplayCenter.Y);
 
                 Resolution = FormDiffractionSimulatorCBED.ImagePixelSize;
-                graphicsBox.ClientSize = new Size(FormDiffractionSimulatorCBED.ImageWidth, FormDiffractionSimulatorCBED.ImageHeight);
+
+                var coeff =originalResolution/ Resolution;
+
+
+                graphicsBox.ClientSize = new Size((int)(originalSize.Width*coeff), (int)(originalSize.Height * coeff));
                 DisplayCenter = new PointD(0, 0);
 
                 SaveOrCopy(save, asImage, drawOverlappedImage);
@@ -2060,6 +2083,8 @@ namespace ReciPro
             Clipboard.SetDataObject(destBmp);
 
         }
+
+      
 
         private void Button2_Click(object sender, EventArgs e)
         {

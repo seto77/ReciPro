@@ -124,160 +124,98 @@
   <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
+  <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 61</value>
+  </data>
   <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 24</value>
   </data>
   <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
     <value>ディスクの輪郭を描画 </value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 127</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 20</value>
+  <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 21</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>ディスク直径のピクセル数 </value>
+  <data name="numericBoxThread.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
   </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+  <data name="numericBoxThread.HeaderText" xml:space="preserve">
+    <value>スレッド</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 20</value>
+  <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 28</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>ブロッホ波の数 </value>
+  <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
+  </data>
+  <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
   </data>
   <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
     <value>nm刻み</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 133</value>
+    <value>272, 152</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 25</value>
+    <value>98, 25</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.FooterText" xml:space="preserve">
+    <value>nm</value>
   </data>
   <data name="numericBoxWholeThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
-    <value>試料厚み　　</value>
+    <value>試料厚み</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 133</value>
+    <value>4, 153</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 25</value>
+    <value>133, 25</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterText" xml:space="preserve">
     <value>nmまで</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>から</value>
   </data>
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 133</value>
+    <value>136, 153</value>
   </data>
   <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 25</value>
+    <value>132, 25</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>ブロッホ波の数</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>中止</value>
-  </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGIAAABrCAYAAACMqlfGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAP
-        YQAAD2EBqD+naQAAETdJREFUeF7tnQu0FVUZx+mdZamVljVzLiCSolIurSxcSS3NyjJ8Zi0t09VDXSW1
-        tFxqidbykZVXHpdACXn4aOkSywfLR4loooiKJKaCIooiCIICglzg9PvvPcOdM/PNuffce+7h6p2z1u/M
-        zPff8/q+eew9e8+ePuVyeSv8dgSNDE/aE3rfSB+Wow+N9KE5+rBI75ujD5eetsfwGwGrLU3wuwqeszTB
-        7yaYYWmC31ylsTTB7zlotjTBT38jcrTYtyeaesVEEYgiEJFeBMJNtCVeADMMZoH0/yZsSR4F6RpauuaT
-        ruVYutYr3dLEImhN2ZIshfUpW5JXYFXKlmQNKI2lCS37hZQtibZd22hp94L0mgLxIOjoSnM9SP9XwpZk
-        OkjX0NI1n3Qtx9K1XumWJhTgN1O2JAqknGlpYjEoWJYmVoLSWJrQsuenbEm07dpGS7sapBeXJn7FPSLS
-        i0B0MBA7wGo4JWlP6KVIPyxHPzDSD8zRD4v0Uo5+inRLE/zOgsWWJvi1wDxLE/x0ebjF0gQ/XcevtjTB
-        bx5cZGmCn/btrBwt9u33Td0yFjQe01jQeExjQeMxjT2HAe8rl8O9yuXgCPg1jIergBtqOB248YrgrsjG
-        9T2YyPD35XLpBMY/x3Ane9k9C9O47ei/A477Fo78E058FDYDkqMVnoE5cDfgeBeUSXAD3A6zYD6shXg+
-        8TL8neX+lOEADMa6ty2msbH0G4iDyPIFD0Pk+HABXAE/g0Ngt3L5oHdn561Gv48T1CHM+wOWeTE8AJv8
-        8oPn/fKDg8rl896ZnbfxmMbuR04Kf4kjHoocwxGsy0pIHrvJLGPUhwEf9mdc8GcgG+zW/QLrvYThPtn0
-        jcM0dh/9KT+EY9jp9aCj/w4cc3y5PPiD0i+//PKT4FV4LoeVzc3Nmwy7Y+TIka8xzNUjrvPbojOhiYJn
-        OIHteA0w65IXfq1texuHaaw/ui6HVzLcCK9HR+Cn0ulw0nAow4gcFkE1fSVsSdmSPEmwjJJ10/vZnpPh
-        ScAUPMIBclQ2XfdhGuuHLgXuxqsALGf8bH9DttK2BSJtj0G7G7ZYmkBbANzUbZ0g3GQHIkZnSTAM7gdM
-        ygA07ZlNV39MYx14B07neu9yKxsYP98fdWbareDEbRyIJMHX2W4yDe4Gf5k/qKx09cE0do3wk6C8PZPK
-        63c8u4gTe1AghMoxwW9B9zSd0d+203Ud09h5mr7hNzhYwfiRdpp8cGIPC0RMqR/79G9gUpfa/d6TTdM1
-        TGPtDHqv30B3Xb0PMjfijoATe2ggxDHvYr/OA+X2KDgqB2il6xymsTZ08w3vYeNwkB4tdL6AhBN7cCBi
-        VAgMXoLV8GU7Te2Yxo5T2pWNeYwAvMH4YaNGjRoqR77NafYFUhVGtd/1uW+Yxo6hm3DwLLzCxuwvWxwI
-        jrrRDHV0p7kTtDP6ZXTme5qh9BtzUGFP5QRLu5H532CYq8N6CoQbGGbWHbGJZahQaGliHUQ1dIO2Z98p
-        kCpXpUJp2j+1YRrbp2kPH4BgIUHYLbbHgdCwMr2HnbxQOsMhlo4mZzGa1QRaly5NaC/BKksTaAokl51c
-        XSXzRFWpuzdeix+YDH7eZq8d01idAaxVD82Cp8rlgR9Lar0vEA6VmfSYhNHw2JTWYUxjPnq2HzwOL1q5
-        hl4aCHA5Kj2W38jVwtz39jCNNsF28B/QA7K9rTS9NxBivw/gF2Xd8U/TZ+00+ZhGG/f8noiHZgsN0bsD
-        IZp2xEdP4KMl/uphpbExjVnC77ICRpuGt7S07DRx4sQdLdAOZ0PLo0eP/t64ceNKaQhAi3TSHWXpaHdI
-        tzSB9gBssTSBJke1Wppg/cvJNb1maYJ5latabmkC/UUYb+27kG9WrRq8L75aB//M+jEf01hJqT8L5XQL
-        p40dO7YvG5LMUxdkGYGv9MAT93U8J2Ua29BNKHyQBS7SaZcIxEUcXcPSYJ8S6XcyfWEa7A9F+jU5+rPS
-        LU2gLYEtlibQVsNmSxNo61SOsDSBrkqldZYmomW/AJl9F+hRIOQ7V5/+ZkfvF6axjeA0YLTpi5qOA6GV
-        VqbzcG84XbqGls582pm38j2ilUA+YmkCPREI1TrqANaBnE2bxjR6+u/CgtjoYHJsKwJRSyBEeLg/kIOT
-        2mw2ptET/o0FrOFs+ERsKwJRayCEbtqqGqhesWQamfHzwKgadbXZi0B0JhCuLmM9B/allfZKTCMz3gbP
-        p9sSFYHoTCCEa1e1VhmerOYxjH0/w0yMBqemNQKxu1aGIy+lrHBsGuxTpROIqTn6zZE+wtLRHpZuaYL5
-        n0TfYmkCbRm0WppAU65qnaUJlv+m0lia0LJhsaUJtDKBMo58Xd5ddevvsprHMLqniUt9fW2lxoYO0coK
-        qnJ32m+eYBysgO0sPWVwdQybCIb5sgVH8sBoZVfq8pMmPuLh5hx9hnSOntGWjvaEdEsTaGrXtMXSBJra
-        NW22NMHRugZ9vaUJNB3xayxNaNmw1NIEmq4Wl1m+Ixe6O77lsqoWjlk9ZQiagWuZHmAl7Z7iHtHZe0RM
-        OA2WWFpiwj3KfZmEU5MJkhSB6GogXOM1RlXvXaklJoJDfaKS+X6cKALR1UC4Gr2V+Hl8WktMqAQdvFqt
-        FUYRiK4GQgRjvZ8riwbRiLssvQ5/TYppikDUIxClL+FnRtWks80ejagVRlBube1/JE46GEcOtUA7Xitj
-        OJXpTK4Be5FrGjnyesbz/HfwuHF/URMkzggV8jKBCM6ALbNnnxhqYQXdB8FQXYXqtx+wAnELzFUtUzTD
-        BboMpYlLj0R3Cgsckgb7qEgflaNfE+mnWTrcK92wO9Dmguoj8nTVoKltUp6+guGatD2GM0ZtnpTG1KNl
-        L0zbY9Dlu9mW78aMGTNYOukIRDgcf1Nea2shz5+7P6hBQHMiEGYXEPHKGF5o6TjYnZ4aWrrmi+Z/O98j
-        zJJ17FsfCFUW6T6hRtte508NxGQMjy0C0ahAqC2U6rXVVtjr/KncoED0G1wEomGBwBbOw+/Xx7oMul6x
-        c+e9swhEQwMxDb8/Fuv8BS3gutYpAtHQQFyK37k8eZ0/16IZyn0mTJiwc5R4FlyRBu22SJ+f1iLmRPqc
-        lD1mvnQtx9C0fLXS0PwZTeCE5ejKNZk62tp2dLVb2mhpAl2tONZbmtCyYbWlCTTVRyy3NJgsnWFU6xme
-        gt8Z9e2HFYg5GF0fRVEjKjmqoJtQUHwgSsf4QJQGxYF4CsZqInH6nJ9u5SYoRxwd6WMtnbzyBdJJZ87P
-        fK6ln5aTo98u3dIE+iz03JZ+6FVb+qGpBm+1pQk0nQ3LLE1o2fC4pQk0+WaWpXG53ifST/aBiB+yNu0b
-        B2IpZ8Qfk4GA4h5hoGXX7x4RP3PyrccxuJ5czk0mhiIQBlp2/QKhFvUKhH/4JwPD8FfJxFAEwkDLrl8g
-        4oK0Kot8IFZjdI9ui0A0MhDxY47SVzWNwXWX4yq8i0A0NBBfiQLhfIFBr2LpHbByn8mTJ+8SLWweyClp
-        7gPpzyRsSVx9AivT0NI1n+bXcjI686mcID2jRXTkrVLVGZg6qN2Scj6Wpvk1r9KYOkhXnYalCW27ttHS
-        XF0N6zjbByJuF+tbiysQ6n7NPfNQNkuJQTubx1tdr0Yjti2qBdUrwe4e4foqUSD+4YNRXJrQGplrOtMH
-        wtdJYHDPPF5NJoYiEAZadh0DwZmh5ktel0E9dzE+aPsiEA0NxJ0wM9ZlUCcfjIcHFoFoaCCejTNJgj/X
-        wQfjpZ8UgWhUINw72ZvgjFiPEqo+IpxaBKJRgSgd7A/+tnfWo4R6AzJckgjEPdCchoXcxFD6Um1QGtkj
-        /aUc/RXpLGdhjq48up7pZ7QI9Q6zxbA70Da2o8uRm9L2GHSVE5yzLbRstn2DpQl0Vx/BMOM7GAtRIII/
-        wNpkq8ooEP694IULD9mbxHqUnIeOKDnabbCB7NoYVbDk6pCnx3ltSxP10IWlCc3bVV1nleW7mKPx9X34
-        fHochEQg1Puwu0/8OCmmUfscFqSoFk0uDdAViHaaXLr7g7pf3Xp/EIkErhOsW5NimiIQ9QhE3J2Gr5mL
-        SSa4gATsRH4HuUUg6hEIHexqSlNpT0y417YYVQ/1lYliikB0NRADdvYHe/bVuIoJEukmktsLZBGIrgZC
-        naToYFcvcJVaxYQKdSRkR9UjTdLuKQLRpUComeVjcK+hpQOhnhvdq0WUK5J2T0tLy77RyrRD2uk0ej9B
-        uoYZnQCoB0nparWd0UGOkG5pC3CCWmsr+2jqoCxkNV3ZZmWhLU1oXqWxNCFdZRVLE9r2ay3fkTP9pj8b
-        7B6iMwYCcT4zUPzOnj4c6ftHK1NDrlUG60G6hpauShfpKrhZepwXtzQhJ1XT43KKpQk5Ulia0Lzt6VqH
-        pQnp09J+8+gBX/A/WzMDoZZnrmVH5jWu4tLU2UvT1te1fpTVPKaRGfS+NYWOvk1JexGIzgbCPfLO9G2S
-        xDRGT2TVfdyNSXsRiM4EQvcEnQ0qyCXtlZhGT+kXfgF6UuhtRSBqDYTrxUxf+Lonmc7CNHp0Grns1hPx
-        U8IiELUGwnUPpL5N9kqmszCNbeh5uTutztF0EYhaAuEakKmf3JHpdBamsRJ34yaqpSFxIOBxnDkjDfbF
-        ka4dsrJ39ci+VsteKmtZTW8v+9quzn6ql8zMvgv0KBCf/hAB0PeJuCzld5aVxDRW4vqPmA1LZs48YSAr
-        1McwTNgI1/EVaKN19KVRxY50FfgsPQ6UpYk4UJYm4nKGpYk4UJYmpCmNpQkte5m17zFcDY4jANcBZ2bf
-        L9g+zWIas7h+6TilKysz0rARvbxLaqGHpq7MUFHf0B6m0WZrNuySrOYpAuFaxKjSp6buqIVpzMfVWTCq
-        rG1W792B0LdOXccBD8Wf/KwF01gd963RzQQj8wnJ3huI3UL8sgS/PJ3+uElHMY3VUZkivIaVboBDk1rv
-        DIQ+gKhvaCsQnf8kmmlsH5eT0lcXlU/+YWzvfYFwHSYuAuaxP27SUUxjx1AwXI/wTOpjsG2BwNELGaon
-        mTR6q1NZQDnM0uPsrRxiEWc/LU3E5QBLE3H21Fq32EyBTfUNliakRYFwfVzpi2OUF7r+DW7TWAOqdbrI
-        ByMYN2nSxXtqQ6swRSVThmpsZemPQm4DMzQ5s5petYEZKNAq41jrRm6eyVCfaDN1wcF2BM7XSyZrYE5n
-        7wlpTGPtuLfolW17mPGtn0OrFXZU33pjNFfv0qWJM1WFri58mVHfKN36KdBbfY2mla52TGPncB2763rJ
-        kVL9kW8eOLEHB0KFWj1hcI97fmOn6TymsfPoA0eu1xUmgylM75pNkw9O7IGBcB2LnQp6+1YfcTIzGl3F
-        NHYR3TdOAn25UdfRM/2N3UxbAU7sYYHQR2FdVQCT4ZXl8h4fzaapD6axPgQfgfGA41TQCb9jp2sDJ/aQ
-        QPQbyPbGn74kEE0HZNPUF9NYX/QE0n0wiklVMgXH5XXyixO3cSDUQYl7cqqDZwXbfbq/NFlp64tp7B70
-        hn1wFzDpPjarnBZnTVsanOgCAfrOg0X8GNzS1I9SXM4wdWjNBkI5Idednj5egkl1CK6a2Py8QHdhGrsX
-        nebulWIddRy9ckDpBD0ow1EHwIgqTATl8y1NXEtZYLph3wqBONGfkeoVxr3Zqc5w2TQ1DNZTgvyWFt2J
-        aWwMelCmbxgFc70j9OxK7W7VL4hyJjpSrfk6i/v0s3I/N4AyEpiDZXAZWoe+FdedmMbG07QnDjkXdOnS
-        5yUx6+vpwf0wifFzCM5RjO/jWyBarw7oUqJmQO75z6H+8hKOZlzLfBlI5lCXF9jVBLIx1/+OYBq3Lbo0
-        6PKlpusqi7hC1KqEI5OQt3foDc20ppL+fOAyqMos9+2GintSz6Hc5/+BWY7a46VtAQAAAABJRU5ErkJg
-        gg==
-</value>
   </data>
   <data name="trackBarAdvancedAlphaMax.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -288,41 +226,47 @@
   <data name="trackBarAdvancedAlphaMax.HeaderText" xml:space="preserve">
     <value>最大半角</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 9</value>
+  <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>スレッド</value>
+  <data name="numericBoxDivision.HeaderText" xml:space="preserve">
+    <value>ディスク直径の分割数</value>
+  </data>
+  <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 25</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 8pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, 45</value>
+    <value>83, 29</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>41, 17</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>ソルバ</value>
   </data>
   <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 27</value>
+    <value>159, 28</value>
   </data>
   <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 20</value>
+    <value>210, 20</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 24</value>
+    <value>92, 25</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 27</value>
+    <value>127, 28</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 27</value>
+    <value>11, 28</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 20</value>
@@ -342,17 +286,5 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>明るさ </value>
-  </data>
-  <data name="numericBoxImageSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="numericBoxImageSize.HeaderText" xml:space="preserve">
-    <value>画像サイズ</value>
-  </data>
-  <data name="numericBoxImageSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
-  </data>
-  <data name="numericBoxImageSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 25</value>
   </data>
 </root>

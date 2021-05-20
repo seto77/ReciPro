@@ -618,9 +618,8 @@ namespace Crystallography.OpenGL
             GL.GetShader(vshader, ShaderParameter.CompileStatus, out int status_code);
             if (status_code != 1)
             {
-#if DEBUG
-                MessageBox.Show("Error in vertex shader ");
-#endif
+                if (Crystallography.AssemblyState.IsDebug)
+                    MessageBox.Show("Error in vertex shader ");
                 throw new ApplicationException(info);
             }
 
