@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.800(2021/05/20)  Fixed bugs on the native (c++) codes. Changed CBED interface." +
             "\r\n ver4.799(2021/05/10)  Fixed bugs on the native (c++) codes." +
             "\r\n ver4.798(2021/05/03)  Fixed bugs on the 'Diffraction simulator'." +
             "\r\n ver4.797(2021/03/24)  Fixed a bug on the 'Database' function." +
