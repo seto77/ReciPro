@@ -1042,7 +1042,10 @@ namespace ReciPro
         private void readCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
         {
             var cry = new List<Crystal>();
-            cry.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName));
+            var list = ConvertCrystalData.ConvertToCrystalList(fileName);
+            if (list == null)
+                return;
+            cry.AddRange(list);
             if (showSelectionDialog)
             {
                 var formCrystalSelection = new FormCrystalSelection

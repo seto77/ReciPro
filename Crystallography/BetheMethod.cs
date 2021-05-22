@@ -236,23 +236,20 @@ namespace Crystallography
                 //MtxExp_MKLの場合 
                 else
                 {
-                    var matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
-                    var vec = matExpStart.Multiply(psi0);
-
-                    DMat matExpStep;
-                    if (Thicknesses.Length == 1)
-                        matExpStep = null;
-                    else if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
-                        matExpStep = matExpStart;
-                    else
-                        matExpStep = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * DMat.OfArray(potentialMatrix)).Exponential();
-
                     result = new Complex[Thicknesses.Length][];
-                    for (int i = 0; i < Thicknesses.Length; i++)
+                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
+                    var vec = matExp.Multiply(psi0);
+                    result[0] = vec.ToArray();
+
+                    if (Thicknesses.Length > 1)
                     {
-                        if (i != 0)
-                            vec = (DVec)matExpStep.Multiply(vec);
-                        result[i] = vec.ToArray();
+                        if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
+                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * DMat.OfArray(potentialMatrix)).Exponential();
+                        for (int i = 1; i < Thicknesses.Length; i++)
+                        {
+                            vec = (DVec)matExp.Multiply(vec);
+                            result[i] = vec.ToArray();
+                        }
                     }
                 }
                 bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告

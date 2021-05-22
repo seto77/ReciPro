@@ -1,4 +1,5 @@
-﻿using Crystallography;
+﻿#region using
+using Crystallography;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+#endregion
 
 namespace ReciPro
 {
@@ -357,9 +359,5 @@ namespace ReciPro
         }
         #endregion
 
-        private void groupBoxOutput_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

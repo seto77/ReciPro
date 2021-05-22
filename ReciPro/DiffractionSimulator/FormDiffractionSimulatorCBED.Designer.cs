@@ -281,7 +281,6 @@
             this.groupBoxOutput.Controls.Add(this.label5);
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.TabStop = false;
-            this.groupBoxOutput.Enter += new System.EventHandler(this.groupBoxOutput_Enter);
             // 
             // label3
             // 
