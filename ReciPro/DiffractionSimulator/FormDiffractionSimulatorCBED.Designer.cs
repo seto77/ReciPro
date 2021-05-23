@@ -44,6 +44,8 @@
             this.numericBoxDivision = new Crystallography.Controls.NumericBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
+            this.radioButtonIndivisualDisk = new System.Windows.Forms.RadioButton();
+            this.radioButtonAllDisks = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBoxGradient = new System.Windows.Forms.ComboBox();
@@ -55,9 +57,10 @@
             this.textBoxThickness = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelGamma = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -264,6 +267,8 @@
             // groupBoxOutput
             // 
             resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
+            this.groupBoxOutput.Controls.Add(this.radioButtonIndivisualDisk);
+            this.groupBoxOutput.Controls.Add(this.radioButtonAllDisks);
             this.groupBoxOutput.Controls.Add(this.label3);
             this.groupBoxOutput.Controls.Add(this.label11);
             this.groupBoxOutput.Controls.Add(this.comboBoxGradient);
@@ -275,12 +280,29 @@
             this.groupBoxOutput.Controls.Add(this.textBoxThickness);
             this.groupBoxOutput.Controls.Add(this.label6);
             this.groupBoxOutput.Controls.Add(this.label4);
-            this.groupBoxOutput.Controls.Add(this.label10);
+            this.groupBoxOutput.Controls.Add(this.labelGamma);
             this.groupBoxOutput.Controls.Add(this.label8);
             this.groupBoxOutput.Controls.Add(this.label7);
+            this.groupBoxOutput.Controls.Add(this.label1);
             this.groupBoxOutput.Controls.Add(this.label5);
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.TabStop = false;
+            // 
+            // radioButtonIndivisualDisk
+            // 
+            resources.ApplyResources(this.radioButtonIndivisualDisk, "radioButtonIndivisualDisk");
+            this.radioButtonIndivisualDisk.Name = "radioButtonIndivisualDisk";
+            this.radioButtonIndivisualDisk.UseVisualStyleBackColor = true;
+            this.radioButtonIndivisualDisk.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
+            // 
+            // radioButtonAllDisks
+            // 
+            resources.ApplyResources(this.radioButtonAllDisks, "radioButtonAllDisks");
+            this.radioButtonAllDisks.Checked = true;
+            this.radioButtonAllDisks.Name = "radioButtonAllDisks";
+            this.radioButtonAllDisks.TabStop = true;
+            this.radioButtonAllDisks.UseVisualStyleBackColor = true;
+            this.radioButtonAllDisks.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
             // 
             // label3
             // 
@@ -325,11 +347,11 @@
             // trackBarGamma
             // 
             resources.ApplyResources(this.trackBarGamma, "trackBarGamma");
-            this.trackBarGamma.LargeChange = 10;
-            this.trackBarGamma.Maximum = 1024;
+            this.trackBarGamma.LargeChange = 200;
+            this.trackBarGamma.Maximum = 1000;
             this.trackBarGamma.Name = "trackBarGamma";
-            this.trackBarGamma.SmallChange = 10;
-            this.trackBarGamma.TickFrequency = 10;
+            this.trackBarGamma.SmallChange = 50;
+            this.trackBarGamma.TickFrequency = 50;
             this.trackBarGamma.ValueChanged += new System.EventHandler(this.trackBarGamma_ValueChanged);
             // 
             // trackBarIntensityBrightnessMax
@@ -340,7 +362,7 @@
             this.trackBarIntensityBrightnessMax.Minimum = 1;
             this.trackBarIntensityBrightnessMax.Name = "trackBarIntensityBrightnessMax";
             this.trackBarIntensityBrightnessMax.SmallChange = 100000;
-            this.trackBarIntensityBrightnessMax.TickFrequency = 10000;
+            this.trackBarIntensityBrightnessMax.TickFrequency = 20000;
             this.trackBarIntensityBrightnessMax.Value = 1000000;
             this.trackBarIntensityBrightnessMax.ValueChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
             // 
@@ -351,7 +373,7 @@
             this.trackBarIntensityBrightnessMin.Maximum = 999999;
             this.trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
             this.trackBarIntensityBrightnessMin.SmallChange = 100000;
-            this.trackBarIntensityBrightnessMin.TickFrequency = 10000;
+            this.trackBarIntensityBrightnessMin.TickFrequency = 20000;
             this.trackBarIntensityBrightnessMin.ValueChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
             // 
             // textBoxThickness
@@ -370,10 +392,10 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // label10
+            // labelGamma
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.labelGamma, "labelGamma");
+            this.labelGamma.Name = "labelGamma";
             // 
             // label8
             // 
@@ -384,6 +406,11 @@
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // label5
             // 
@@ -462,7 +489,7 @@
         private System.Windows.Forms.TrackBar trackBarIntensityBrightnessMin;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelGamma;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -482,5 +509,8 @@
         private System.Windows.Forms.ComboBox comboBoxSolver;
         private Crystallography.Controls.NumericBox numericBoxThread;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.RadioButton radioButtonIndivisualDisk;
+        private System.Windows.Forms.RadioButton radioButtonAllDisks;
+        private System.Windows.Forms.Label label1;
     }
 }

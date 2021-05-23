@@ -148,9 +148,6 @@
   <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
     <value>283, 28</value>
   </data>
-  <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
   <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 25</value>
   </data>
@@ -232,11 +229,8 @@
   <data name="numericBoxDivision.HeaderText" xml:space="preserve">
     <value>ディスク直径の分割数</value>
   </data>
-  <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
   <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 25</value>
+    <value>181, 27</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -250,11 +244,77 @@
   <data name="label13.Text" xml:space="preserve">
     <value>ソルバ</value>
   </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>入力パラメータ</value>
+  </data>
+  <data name="radioButtonIndivisualDisk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="radioButtonIndivisualDisk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 53</value>
+  </data>
+  <data name="radioButtonIndivisualDisk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 24</value>
+  </data>
+  <data name="radioButtonIndivisualDisk.Text" xml:space="preserve">
+    <value>個別ディスク</value>
+  </data>
+  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 53</value>
+  </data>
+  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 24</value>
+  </data>
+  <data name="radioButtonAllDisks.Text" xml:space="preserve">
+    <value>全ディスク</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 152</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>スケール</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 152</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 151</value>
+  </data>
   <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 28</value>
   </data>
   <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 20</value>
+  </data>
+  <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 127</value>
+  </data>
+  <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 80</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 25</value>
@@ -274,17 +334,61 @@
   <data name="label4.Text" xml:space="preserve">
     <value>試料の厚さ </value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>γ値 
-(enhance outer diks)</value>
+  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 20</value>
+  </data>
+  <data name="labelGamma.Text" xml:space="preserve">
+    <value>γ (外側ディスクの強調)</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 100</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 20</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 78</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 20</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>輝度調整</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 20</value>
+    <value>35, 20</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>明るさ </value>
+    <value>輝度</value>
+  </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
   </data>
 </root>

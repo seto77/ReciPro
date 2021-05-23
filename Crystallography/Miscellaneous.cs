@@ -9,6 +9,12 @@ namespace Crystallography
 {
     public static class Miscellaneous
     {
+
+        /// <summary>
+        /// 数字に stとかthみたいな文字を追加した文字列で返す
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static string Ordinal(this int number)
         {
             var ones = number % 10;
@@ -24,6 +30,11 @@ namespace Crystallography
             };
         }
 
+        /// <summary>
+        /// 有限の数字かどうかを判定する
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
         public static bool IsFiniteNumber(params double[] d)
         {
             foreach (var value in d)
@@ -50,8 +61,13 @@ namespace Crystallography
             }
         }
 
+        public static (int Division, int Modulus) DivMod(int n, int m) => (n / m, n % m);
+
 
         public static ParallelQuery<int> Sequence(int n) => Enumerable.Range(0, n).ToList().AsParallel();
+
+
+
 
     }
 

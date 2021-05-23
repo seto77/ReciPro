@@ -173,7 +173,11 @@ namespace ReciPro
                 FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this };
             }
             if (FormDiffractionSimulatorCBED == null)
-                FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED { FormDiffractionSimulator = this };
+                FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED
+                {
+                    FormDiffractionSimulator = this,
+                    Owner = this
+                };
 
             Draw();
         }

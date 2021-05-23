@@ -64,6 +64,10 @@ namespace ReciPro
         }
 
         public double ImagePixelSize { get; set; } = 0;
+
+        /// <summary>
+        /// 中心付近の1ピクセル当たりの角度(radian)
+        /// </summary>
         public double AngleResolution { get; set; }
 
 
@@ -73,6 +77,8 @@ namespace ReciPro
         private Matrix3D[] Rotations;
 
         private readonly Stopwatch sw = new Stopwatch();
+
+        private bool skipEvent { get; set; } = false;
 
         #endregion
 
@@ -206,10 +212,11 @@ namespace ReciPro
             ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
         }
 
-        private void generateImage(bool resetDisks=true)
+        private void generateImage(bool resetDisks = true)
         {
-            if (FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null)
+            if (skipEvent || FormDiffractionSimulator == null || Crystal == null || Crystal.Bethe.Disks == null)
                 return;
+
             setImagePixelSize();
 
             if (resetDisks || Disks == null)
@@ -217,27 +224,57 @@ namespace ReciPro
             if (Disks == null)
                 return;
 
-            var max= (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;
-            var min = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
+            //γ値の調整
+            var gamma = trackBarGamma.Value * AngleResolution;
+            Parallel.For(0, Disks.Length, i =>
+            {
+                var pb = Disks[i].PBitmap;
+                var cPos = Disks[i].Center + Disks[i].Size / 2;
+                pb.SrcValuesGray = pb.SrcValuesGrayOriginal.Select((v, n) =>
+                {
+                    (int Division, int Modulus) = Miscellaneous.DivMod(n, Disks[i].PixelSize.Width);
+                    var pos = cPos - new PointD(Modulus, Division) * ImagePixelSize;
+                    return v * Math.Exp(pos.Length * gamma);
+                }).ToArray();
+            });
+
+            var maxOverall = Disks.Max(d => d.PBitmap.SrcValuesGray.Max());
+            var maxRatio = Math.Pow((double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum, 4);
+            var minRatio = Math.Pow((double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum, 4);
             var gray = comboBoxScale.SelectedIndex == 0;
             var negative = comboBoxGradient.SelectedIndex == 1;
-
             Parallel.For(0, Disks.Length, i =>
-             {
-                 Disks[i].PBitmap.MaxValue = Disks[i].PBitmap.SrcValuesGrayOriginal.Max() * max;
-                 Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGrayOriginal.Max() * min;
-                 if (gray)
-                     Disks[i].PBitmap.SetScaleGray();
-                 else
-                     Disks[i].PBitmap.SetScaleColdWarm();
-                 Disks[i].PBitmap.IsNegative = negative;
-                 Disks[i].Bitmap = Disks[i].PBitmap.GetImage();
-             });
+            {
+                //輝度Max,Min調整
+                if (radioButtonAllDisks.Checked)
+                {
+                    Disks[i].PBitmap.MaxValue = maxOverall * maxRatio;
+                    Disks[i].PBitmap.MinValue = maxOverall * minRatio;
+                }
+                else
+                {
+                    Disks[i].PBitmap.MaxValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxRatio;
+                    Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxOverall * minRatio;
+                }
+                //GrayかColorか
+                if (gray)
+                    Disks[i].PBitmap.SetScaleGray();
+                else
+                    Disks[i].PBitmap.SetScaleColdWarm();
+                //Negativeかどうか
+                Disks[i].PBitmap.IsNegative = negative;
+                Disks[i].Bitmap = Disks[i].PBitmap.GetImage();
+            }
+            );
+
             FormDiffractionSimulator.Draw();
             Application.DoEvents();
         }
+
         private void setDisks()
         {
+            
+
             if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
             {
                 Disks = null;
@@ -251,70 +288,14 @@ namespace ReciPro
                 var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
                 var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
                 var pbmp = new PseudoBitmap(disks[i].Intensity, (int)width);
+                pbmp.ReserveSrcValuesGrayOriginal = true;
                 pbmp.AlphaEnabled = true;
                 pbmp.FilterAlfha = disks[i].Intensity.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList();
 
                 Disks[i] = (disks[i].H, disks[i].K, disks[i].L,
-                center.ToPointD(), new SizeD(width * ImagePixelSize, width * ImagePixelSize), new Size((int)width, (int)width), pbmp, null);
+                center.ToPointD(), new SizeD(width , width) * ImagePixelSize, new Size((int)width, (int)width), pbmp, null);
             });
         }
-
-
-        //private double[][] getSrcImage()
-        //{
-        //    if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
-        //        return null;
-
-        //    var disks = Crystal.Bethe.Disks[trackBarOutputThickness.Value];
-        //    var image = new double[disks.Length][];
-        //    disks[0].
-
-
-
-        //    var center = new PointD(ImageWidth / 2.0, ImageHeight / 2.0);
-        //    //中心付近の1ピクセル当たりの角度
-
-        //    foreach (var disk in disks.Where(disk => disk.Intensity.Max() > 1E-20))
-        //    {
-        //        var v = new { x = disk.G.X, y = -disk.G.Y, z = -disk.G.Z };//ここでベクトルのY,Zの符号を反転
-        //        var point = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
-        //        var pt = new PointD(point.X, point.Y);
-        //        //ptをピクセル座標に変換する
-        //        var diskCenter = new Point((int)(pt.X / ImagePixelSize + center.X + 0.5), (int)(pt.Y / ImagePixelSize + center.Y + 0.5));
-        //        if (diskCenter.X > -ImageWidth * 0.5 && diskCenter.Y > -ImageHeight * 0.5 && diskCenter.X < ImageWidth * 1.5 && diskCenter.Y < ImageHeight * 1.5)
-        //        {
-        //            var side = (int)Math.Sqrt(disk.Intensity.Length);
-        //            for (int y = diskCenter.Y + side / 2, n = 0; y >= diskCenter.Y - side / 2; y--)
-        //                for (int x = diskCenter.X + side / 2; x >= diskCenter.X - side / 2; x--)
-        //                {
-        //                    if (x > -1 && x < ImageWidth && y > -1 && y < ImageHeight && (diskCenter.X - x) * (diskCenter.X - x) + (diskCenter.Y - y) * (diskCenter.Y - y) < (side * side / 4))
-        //                        image[y * ImageWidth + x] += disk.Intensity[n];
-        //                    n++;
-        //                }
-        //        }
-        //    }
-        //    return image;
-        //}
-
-        //private double[] getDestImage(double[] srcImage)
-        //{
-        //    var gamma = trackBarGamma.Value * AngleResolution;
-        //    var destImage = new double[srcImage.Length];
-        //    Parallel.For(0, ImageHeight, y =>
-        //    {
-        //        for (int x = 0; x < ImageWidth; x++)
-        //        {
-        //            var index = y * ImageWidth + x;
-        //            if (srcImage[index] != 0)
-        //            {
-        //                var r2 = (x - ImageCenterX) * (x - ImageCenterX) + (y - ImageCenterY) * (y - ImageCenterY);
-        //                var r = Math.Sqrt(r2);
-        //                destImage[index] = srcImage[index] * Math.Exp(r * gamma);
-        //            }
-        //        }
-        //    });
-        //    return destImage;
-        //}
 
         private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
         {
@@ -330,6 +311,18 @@ namespace ReciPro
 
         private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => generateImage(false);
         private void trackBarGamma_ValueChanged(object sender, EventArgs e) => generateImage(false);
+
+        private void radioButtonAllDisks_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonIndivisualDisk.Checked)
+            {
+                skipEvent = true;
+                trackBarGamma.Value = 0;
+                skipEvent = false;
+            }
+            trackBarGamma.Enabled = labelGamma.Enabled = radioButtonAllDisks.Checked;
+            generateImage(false);
+        }
         #endregion
 
         #region 入力パラメータ関連のイベント
@@ -354,10 +347,8 @@ namespace ReciPro
         private void ComboBoxSolver_SelectedIndexChanged(object sender, EventArgs e)
         {
             numericBoxThread.Enabled = comboBoxSolver.SelectedIndex != 0;
-
             numericBoxThread.Value = comboBoxSolver.Text.Contains("MKL") ? Math.Max(1, Environment.ProcessorCount / 4) : numericBoxThread.Value = Environment.ProcessorCount;
         }
         #endregion
-
     }
 }

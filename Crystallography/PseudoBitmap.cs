@@ -165,25 +165,6 @@ namespace Crystallography
         public PseudoBitmap(double[] values, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
         {
             constructor(values, width, scaleR, scaleB, scaleG, realImage);
-            /*  if (values.Length == 0 || values.Length % width != 0) throw new ArgumentNullException("Invalid input");
-              Width = width;
-              Height = values.Length / width;
-
-              GrayScale = true;
-              RealImage = true;
-
-              SrcValuesGrayOriginal = SrcValuesGray = values;
-
-              IsSrcGray = true;
-
-              SrcValuesR.Clear();
-              SrcValuesG = SrcValuesB = SrcValuesR;
-
-              ScaleR = scaleR != null ? scaleR : BrightnessScaleLiner;
-              ScaleG = scaleG != null ? scaleG : BrightnessScaleLiner;
-              ScaleB = scaleB != null ? scaleB : BrightnessScaleLiner;
-              initFilter();
-             * */
         }
 
         private void constructor(double[] values, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
@@ -506,6 +487,25 @@ namespace Crystallography
         #endregion 初期化関連
 
         #region プロパティ
+
+        /// <summary>
+        /// グレイスケールモードの時、SrcValuesGrayOriginalをSrcValuesGrayとは異なる配列として確保する。newの直後に設定しないといけない。
+        /// </summary>
+        public bool ReserveSrcValuesGrayOriginal
+        {
+            set
+            {
+                if (value)
+                {
+                    SrcValuesGrayOriginal = new double[SrcValuesGray.Length];
+                    Array.Copy(SrcValuesGray, SrcValuesGrayOriginal, SrcValuesGray.Length);
+                }
+                else
+                {
+                    SrcValuesGrayOriginal = SrcValuesGray;
+                }
+            }
+        }
 
         /// <summary>
         /// アルファチャンネルが有効かどうか. FilterAlphaもセットしないと、機能しない.
