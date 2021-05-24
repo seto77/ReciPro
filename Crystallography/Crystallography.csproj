@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.5.24.1024</AssemblyVersion>
-    <FileVersion>2021.5.24.1024</FileVersion>
+    <AssemblyVersion>2021.5.24.1148</AssemblyVersion>
+    <FileVersion>2021.5.24.1148</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,12 +35,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\libiomp5md.dll" />
-    <Content Include="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\MathNet.Numerics.MKL.dll" />
+    <None Remove="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\libiomp5md.dll" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\libiomp5md.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\MathNet.Numerics.MKL.dll" />
   </ItemGroup>
 
   <ItemGroup>

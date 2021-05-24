@@ -12,11 +12,11 @@ namespace Crystallography
     {
         public unsafe static Bitmap FlipVertically(Bitmap src)
         {
-            BitmapData srcData = src.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
+            var srcData = src.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
             byte* srcP = (byte*)(void*)srcData.Scan0;
 
-            Bitmap dest = new Bitmap(src.Width, src.Height, src.PixelFormat);
-            BitmapData destData = dest.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
+            var dest = new Bitmap(src.Width, src.Height, src.PixelFormat);
+            var destData = dest.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
             byte* destP = (byte*)(void*)destData.Scan0;
 
             for (int h = 0; h < src.Height; h++)
@@ -40,8 +40,8 @@ namespace Crystallography
         {
             if (rgb.Length == width * height * 3)
             {
-                Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-                BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bmp.PixelFormat);
+                var bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+                var bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bmp.PixelFormat);
                 byte* p = (byte*)(void*)bmpData.Scan0;
                 int residual = bmpData.Stride - bmp.Width * 3;
                 for (int h = 0; h < height; h++)
@@ -60,8 +60,8 @@ namespace Crystallography
             }
             else if (rgb.Length == width * height)
             {
-                Bitmap bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-                BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bmp.PixelFormat);
+                var bmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+                var bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bmp.PixelFormat);
                 byte* p = (byte*)(void*)bmpData.Scan0;
                 int residual = bmpData.Stride - bmp.Width * 3;
                 for (int h = 0; h < height; h++)
@@ -82,8 +82,8 @@ namespace Crystallography
 
         public static Byte[] ToByte(Bitmap Bmp)
         {
-            BitmapData bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
-            byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];
+            var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
+            var rgbValues = new byte[bmpData.Stride * Bmp.Height];
             Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
             Bmp.UnlockBits(bmpData);
             return rgbValues;
@@ -91,7 +91,7 @@ namespace Crystallography
 
         public static Byte[] ToByteWithA(Bitmap Bmp, byte a)
         {
-            BitmapData bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
+            var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
             byte[] rgbaValues;
             if (bmpData.Stride == Bmp.Width * 3)
                 rgbaValues = new byte[bmpData.Stride / 3 * 4 * Bmp.Height];
@@ -123,7 +123,7 @@ namespace Crystallography
         {
             if (Bmp.PixelFormat != PixelFormat.Format24bppRgb)
                 return null;
-            BitmapData bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
+            var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
             byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];
             Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
             Bmp.UnlockBits(bmpData);
@@ -193,7 +193,7 @@ namespace Crystallography
 
         public static Byte[] ToByteGray(Bitmap Bmp)
         {
-            BitmapData bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
+            var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
             byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];
             Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
             Bmp.UnlockBits(bmpData);
@@ -247,7 +247,7 @@ namespace Crystallography
 
         public static void FromByte(Bitmap bmp, byte[] values)
         {
-            BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
+            var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
             if (bmpData.Stride * bmp.Height == values.Length) //長さが等しいときだけコピー
                 Marshal.Copy(values, 0, bmpData.Scan0, bmpData.Stride * bmp.Height);
             bmp.UnlockBits(bmpData);
