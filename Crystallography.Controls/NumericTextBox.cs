@@ -56,8 +56,7 @@ namespace Crystallography.Controls
                     {
                         if(renewValue)
                             this.numericalValue = d;//NumericalValueを外部から変更された時は値を変更しない
-                        if(ValueChanged!=null)
-                            ValueChanged(this, e);
+                        ValueChanged?.Invoke(this, e);
                     }
                 }
             }
@@ -163,8 +162,7 @@ namespace Crystallography.Controls
                     }
 
                     this.numericalValue = d;
-                    if (ValueChanged != null)
-                        ValueChanged(this, e);
+                    ValueChanged?.Invoke(this, e);
 
                     skipTextChangeEvent = false;
                     textBox.SelectionStart = textBox.Text.Length;

@@ -122,7 +122,7 @@ namespace Crystallography
                             iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
                         )
                     );
-                atom[atom.Count - 1].ResetVesta();
+                atom[^1].ResetVesta();
             }
 
             var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
@@ -362,9 +362,9 @@ namespace Crystallography
         }
 
         static readonly char[] toCharDic = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '/', '-', '|', 'E' };
-        static readonly Dictionary<byte, string> toStringDic = new Dictionary<byte, string>();
+        static readonly Dictionary<byte, string> toStringDic = new();
 
-        static readonly Dictionary<char, byte> toByteDic = new Dictionary<char, byte>() {
+        static readonly Dictionary<char, byte> toByteDic = new() {
             {'0', 0},{'1',1 },{'2', 2 },{'3', 3 },{'4', 4 }, {'5', 5 }, {'6', 6}, {'7', 7 },
             {'8', 8},{'9', 9},{'.', 10},{'/', 11},{'-', 12}, {'(', 13}, {')', 13}, {'E', 14},
         };
@@ -388,7 +388,7 @@ namespace Crystallography
                     if (s == "0.")
                         s = "0";
                     else
-                        s = s.Substring(1, s.Length - 1);
+                        s = s[1..];
                 }
                 else if (s.StartsWith("-0."))
                     s = s.Replace("-0.", "-.");
@@ -524,7 +524,7 @@ namespace Crystallography
 
                 //v‚ðŽæ‚è‚ ‚¦‚¸\•ª‚È¸“x‚Åo—Í‚·‚é
                 var valStr = val.ToString("E15");
-                var valLog = Convert.ToInt32(valStr.Substring(valStr.IndexOf("E") + 1));
+                var valLog = Convert.ToInt32(valStr[(valStr.IndexOf("E") + 1)..]);
 
                 var result = valLog >= errLog ? valStr.Substring(0, valLog - errLog + 2) : val.ToString("E0").Substring(0, 1);
                 

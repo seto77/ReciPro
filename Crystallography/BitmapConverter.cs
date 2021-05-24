@@ -434,7 +434,7 @@ namespace Crystallography
 
         public static Bitmap ToGrayScaleBitmap(Bitmap bmp)
         {
-            Bitmap bmpTemp = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format8bppIndexed);
+            var bmpTemp = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format8bppIndexed);
             ColorPalette pal = bmpTemp.Palette;
             for (int i = 0; i < pal.Entries.Length; i++)
             {

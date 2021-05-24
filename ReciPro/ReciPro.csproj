@@ -1,16 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.5.24.0838</AssemblyVersion>
-    <FileVersion>2021.5.24.0838</FileVersion>
+    <AssemblyVersion>2021.5.24.1024</AssemblyVersion>
+    <FileVersion>2021.5.24.1024</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <StartupObject>ReciPro.Program</StartupObject>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,6 +39,9 @@
     <None Remove="doc\ReciProの座標系.pptx" />
     <None Remove="doc\Thumbs.db" />
     <None Remove="image\App.ico" />
+    <None Remove="image\TmpA26E.tmp" />
+    <None Remove="image\TmpEAD9.tmp" />
+    <None Remove="image\アイコン.cvx" />
     <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
     <None Remove="initial.xml" />
     <None Remove="StdDb.cdb3" />

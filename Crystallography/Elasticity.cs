@@ -33,18 +33,18 @@ namespace Crystallography
 
         public Matrix3D GetStrain(Symmetry symmetry, Matrix3D stress)
         {
-            switch (symmetry.CrystalSystemNumber)
+            return symmetry.CrystalSystemNumber switch
             {
-                case 0: return GetStrainTriclinic(stress);
-                case 1: return GetStrainTriclinic(stress);//tricrinic
-                case 2: return GetStrainOrthorhombic(stress); //mono
-                case 3: return GetStrainOrthorhombic(stress); //ortho
-                case 4: return GetStrainTriclinic(stress); //tetra
-                case 5: return GetStrainTrigonal(stress); //trigonal
-                case 6: return GetStrainTriclinic(stress); //hexa
-                case 7: return GetStrainCubic(stress); //cubic
-            }
-            return new Matrix3D();
+                0 => GetStrainTriclinic(stress),
+                1 => GetStrainTriclinic(stress),//tricrinic
+                2 => GetStrainOrthorhombic(stress),//mono
+                3 => GetStrainOrthorhombic(stress),//ortho
+                4 => GetStrainTriclinic(stress),//tetra
+                5 => GetStrainTrigonal(stress),//trigonal
+                6 => GetStrainTriclinic(stress),//hexa
+                7 => GetStrainCubic(stress),//cubic
+                _ => new Matrix3D(),
+            };
         }
 
         public Matrix3D GetStrainTriclinic(Matrix3D stress)

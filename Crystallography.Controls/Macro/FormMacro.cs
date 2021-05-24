@@ -216,16 +216,16 @@ namespace Crystallography.Controls
                     IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
                 }
 
-                ThreadStart thread = () =>
+                void thread()
+                {
+                    try
                     {
-                        try
-                        {
-                            if (debug)
-                                IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
-                            Engine.CreateScriptSourceFromString(srcCode).Execute(Scope);
-                        }
-                        catch { }
-                    };
+                        if (debug)
+                            IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
+                        Engine.CreateScriptSourceFromString(srcCode).Execute(Scope);
+                    }
+                    catch { }
+                }
 
                 t = new Thread(new ThreadStart(thread));
                 t.Start();

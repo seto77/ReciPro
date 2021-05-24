@@ -34,21 +34,21 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V3f ToV3f(this V3d v) => new V3f((float)v.X, (float)v.Y, (float)v.Z);
+        public static V3f ToV3f(this V3d v) => new((float)v.X, (float)v.Y, (float)v.Z);
 
         /// <summary>
         /// 拡張メソッド.
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Vector3DBase ToVector3DBase(this V3d v) => new Vector3DBase(v.X, v.Y, v.Z);
+        public static Vector3DBase ToVector3DBase(this V3d v) => new(v.X, v.Y, v.Z);
 
         /// <summary>
         /// 拡張メソッド.
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V4d ToV4d(this V3d v) => new V4d(v.X, v.Y, v.Z, 1);
+        public static V4d ToV4d(this V3d v) => new(v.X, v.Y, v.Z, 1);
 
         
 
@@ -149,14 +149,14 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V4f ToV4f(this C4 c) => new V4f(c.R, c.G, c.B, c.A);
+        public static V4f ToV4f(this C4 c) => new(c.R, c.G, c.B, c.A);
 
         /// <summary>
         /// 拡張メソッド. Aチャンネルを削除してVector3に変換.
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static V3f ToV3f(this C4 c) => new V3f(c.R, c.G, c.B);
+        public static V3f ToV3f(this C4 c) => new(c.R, c.G, c.B);
 
 
 
@@ -170,7 +170,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V4d Mult(this M4d m, V4d v) => new V4d(
+        public static V4d Mult(this M4d m, V4d v) => new(
                 m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z + m.M14 * v.W,
                 m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z + m.M24 * v.W,
                 m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z + m.M34 * v.W,
@@ -182,7 +182,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static M4d Mult(this M4d m, double c) => new M4d(
+        public static M4d Mult(this M4d m, double c) => new(
                 c * m.M11, c * m.M12, c * m.M13, c * m.M14,
                 c * m.M21, c * m.M22, c * m.M23, c * m.M24,
                 c * m.M31, c * m.M32, c * m.M33, c * m.M34,
@@ -194,7 +194,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V4f Mult(this M4d m, V4f v) => new V4f(
+        public static V4f Mult(this M4d m, V4f v) => new(
                 (float)(m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z + m.M14 * v.W),
                 (float)(m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z + m.M24 * v.W),
                 (float)(m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z + m.M34 * v.W),
@@ -206,7 +206,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static M4f ToM4f(this M4d m) => new M4f(
+        public static M4f ToM4f(this M4d m) => new(
             (float)m.M11, (float)m.M12, (float)m.M13, (float)m.M14,
             (float)m.M21, (float)m.M22, (float)m.M23, (float)m.M24,
             (float)m.M31, (float)m.M32, (float)m.M33, (float)m.M34,
@@ -218,7 +218,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Matrix3D ToMatrix3D(this M4d m) => new Matrix3D(
+        public static Matrix3D ToMatrix3D(this M4d m) => new(
             m.M11, m.M21, m.M31,
             m.M12, m.M22, m.M32,
             m.M13, m.M23, m.M33

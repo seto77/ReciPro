@@ -152,7 +152,7 @@ namespace Crystallography.Controls
             //上限、下限を決める
             double width = (double)numericUpDownWidth.Value;
             LowerX = 0;
-            UpperX = atoms[atoms.Count - 1].Distance + width * 2;
+            UpperX = atoms[^1].Distance + width * 2;
             LowerY = 0;
 
             List<ControlPoint> controlPoint = new List<ControlPoint>();

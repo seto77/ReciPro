@@ -231,7 +231,7 @@ namespace Crystallography
                 for (int j = 0; j < ThreadTotal && i + j < dest1.Length; j++)
                 {
                     d[j].EndInvoke(ref dest1[i + j], ar[j]);//スレッド終了待ち
-                    if (ProgressEvent != null) ProgressEvent();
+                    ProgressEvent?.Invoke();
                 }
                 i += ThreadTotal - 1;
             }
@@ -252,7 +252,7 @@ namespace Crystallography
                 for (int j = 0; j < ThreadTotal && i + j < dest2.Length; j++)
                 {
                     d[j].EndInvoke(ref dest2[i + j], ar[j]);//スレッド終了待ち
-                    if (ProgressEvent != null) ProgressEvent();
+                    ProgressEvent?.Invoke();
                 }
                 i += ThreadTotal - 1;
             }
@@ -559,8 +559,8 @@ namespace Crystallography
 
         #endregion fft用サブルーチン
 
-        private static Complex[] argument = new Complex[0];
-        private static int[] denominatorTable = new int[0];
+        private static Complex[] argument = Array.Empty<Complex>();
+        private static int[] denominatorTable = Array.Empty<int>();
 
         private static void initializeArgument()
         {

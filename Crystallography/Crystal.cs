@@ -260,7 +260,7 @@ namespace Crystallography
         /// <summary>
         /// 原子の情報を取り扱うAtomsクラスの配列
         /// </summary>
-        public Atoms[] Atoms = new Atoms[0];
+        public Atoms[] Atoms = Array.Empty<Atoms>();
 
         /// <summary>
         /// 原子の情報を取り扱うAtomsクラスのParallelQuery
@@ -272,7 +272,7 @@ namespace Crystallography
         /// <summary>
         /// 結合の情報を取り扱うBondクラスの配列
         /// </summary>
-        public Bonds[] Bonds = new Bonds[0];
+        public Bonds[] Bonds = Array.Empty<Bonds>();
 
         /// <summary>
         /// 格子歪みテンソル
@@ -543,7 +543,7 @@ namespace Crystallography
                     break;
 
                 case "trigonal":
-                    switch (Symmetry.SpaceGroupHMStr.IndexOf("Rho") >= 0 && Symmetry.SpaceGroupHMStr.IndexOf("R") >= 0)
+                    switch (Symmetry.SpaceGroupHMStr.Contains("Rho") && Symmetry.SpaceGroupHMStr.Contains("R"))
                     {
                         case false:
                             B = A;
@@ -1141,7 +1141,7 @@ namespace Crystallography
             gDic.Remove(zeroKey);
 
             var gList = gDic/*.OrderBy(g => g.Value.len)*/.ToList();//並び替えは必要ない？
-            var gArray = new Vector3D[gDic.Count() * 2];
+            var gArray = new Vector3D[gDic.Count * 2];
             Parallel.For(0, gList.Count, i =>
             {
                 var (h, k, l) = decomposeKey(gList[i].Key);
@@ -1250,7 +1250,7 @@ namespace Crystallography
                 Atoms[] temp = new Atoms[Atoms.Length + 1];
                 Array.Copy(Atoms, temp, Atoms.Length);
                 temp[Atoms.Length] = atoms;
-                temp[Atoms.Length].ID = Atoms[Atoms.Length - 1].ID + 1;
+                temp[Atoms.Length].ID = Atoms[^1].ID + 1;
                 Atoms = temp;
                 if (RenewFormulaAndDensity)
                     GetFormulaAndDensity();
@@ -1340,8 +1340,8 @@ namespace Crystallography
 
             string tempName;
             double tempNum;
-            List<string> elName = new List<string>();
-            List<double> elNum = new List<double>();
+            List<string> elName = new();
+            List<double> elNum = new();
 
             for (int i = 0; i < Atoms.Length; i++)
             {
@@ -1434,7 +1434,7 @@ namespace Crystallography
                     else
                         ChemicalFormulaSum += $"{ElementName[i]}{Num[i]} ";
                 }
-                ChemicalFormulaSum = ChemicalFormulaSum.Substring(0, ChemicalFormulaSum.Length - 1);
+                ChemicalFormulaSum = ChemicalFormulaSum[0..^1];
 
                 if (is3times && denom != 3)
                     ChemicalFormulaSum += $"  *{denom}/3";

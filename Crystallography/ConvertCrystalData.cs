@@ -70,7 +70,7 @@ namespace Crystallography
                 try
                 {
                     using var fs = new FileStream(filename, FileMode.Open);
-                    System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
+                    var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
 
 
 					var worker = new BackgroundWorker();
@@ -187,7 +187,7 @@ namespace Crystallography
 				for (; line < str.Length; line++)
 					if (str[line].StartsWith("No ="))
 					{
-						Crystal tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
+						var tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
 							ChemicalFormula.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries)[1].Trim() + "-" + (n++).ToString(), Color.Blue);
 						tempCrystal.Note = wavelength + "  " + ChemicalFormula + "\r\n" + str[line];
 						line++;
@@ -324,7 +324,7 @@ namespace Crystallography
 
 			var AuthorName = str[n];//著者の名前
 			n++; if (str.Length <= n) return null;
-			while (str[n][str[n].Length - 1] < '.' || str[n][str[n].Length - 1] > '9')
+			while (str[n][^1] < '.' || str[n][^1] > '9')
 			{
 				AuthorName += ", " + str[n];
 				n++; if (str.Length <= n) return null;
@@ -424,7 +424,7 @@ namespace Crystallography
 						{
 							//二文字目がスペースの場合は、数字がずれている可能性が考えられる。(.123 .456 => ".12", "3 .456" )　
 							//この場合は、二文字目までを削除して対応する
-							item[k] = item[k].Substring(2, item[k].Length - 2);
+							item[k] = item[k][2..];
 						}
 					}
 				}
@@ -694,7 +694,7 @@ namespace Crystallography
 			if (symmetrySeriesNumber == -1)
 				return null;
 			//Rhombohedoralのときの処置
-			if (A == B && B == C && Alfa == Beta && Beta == Gamma && SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupHMStr.IndexOf("Hex") >= 0)
+			if (A == B && B == C && Alfa == Beta && Beta == Gamma && SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupHMStr.Contains("Hex", StringComparison.CurrentCulture))
 				symmetrySeriesNumber++;
 
 			//Asteriskの時(2nd setting)の処理
@@ -806,7 +806,7 @@ namespace Crystallography
 
 				if (str[n].Trim().StartsWith(";"))//;で始まる行を見つけたら
 				{
-					StringBuilder temp = new StringBuilder();
+					var temp = new StringBuilder();
 					//次に;が出てくるところまですすめてまとめて一行にする
 					while (true)
 					{
@@ -921,7 +921,7 @@ namespace Crystallography
 			string a="", b = "", c = "", alpha = "", beta = "", gamma = "";
 			string name = "", sectionTitle = "", journalNameFull = "", journalCodenASTM = "";
 			string volume = "", year = "", pageFirst = "", pageLast = "", issue = "", journal = "";
-			List<string> spaceGroupNameHM = new List<string>(), spaceGroupNameHall = new List<string>();
+			List<string> spaceGroupNameHM = new(), spaceGroupNameHall = new();
 			string chemical_formula_sum = "", chemical_formula_structural = "";
 			int symmetry_Int_Tables_number = -1;
 			var author = new List<string>();

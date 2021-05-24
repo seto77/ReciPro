@@ -37,7 +37,7 @@ namespace Crystallography
 
 		public static PointD[] MassAbsorptionCoefficient(int z)
 		{
-			List<PointD> pt = new List<PointD>();
+			List<PointD> pt = new();
 			for (int n = 0; n < AtomConstantsSub.MassAbsorptionCoefficient[z].Length; n++)
 				pt.AddRange(AtomConstantsSub.MassAbsorptionCoefficient[z][n].Select(e => new PointD(e)));
 			return pt.ToArray();
@@ -61,8 +61,8 @@ namespace Crystallography
 		/// <returns></returns>
 		public static double CharacteristicXrayEnergy(int z, XrayLineEdge line)
 		{
-			#region
-			switch (z)
+            #region
+            switch (z)
 			{
 				case 1:
 					return line switch
@@ -6645,7 +6645,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 			int position = int.MinValue;//この値と この値+1 の間のindexにxが存在する
 			if (coef[0].X > energy)
 				position = -1;
-			else if (coef[coef.Length - 1].X < energy)
+			else if (coef[^1].X < energy)
 				position = coef.Length - 1;
 			else
 				for (int i = 0; i < coef.Length && position == int.MinValue; i++)
@@ -6666,7 +6666,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 			for (int i = Math.Max(position - pointNum, 0); i < Math.Min(position + pointNum + 1, coef.Length); i++)
 				pt.Add(coef[i]);
 			while (pt.Count > pointNum)
-				pt.RemoveAt(Math.Abs(pt[0].X - energy) > Math.Abs(pt[pt.Count - 1].X - energy) ? 0 : pt.Count - 1);
+				pt.RemoveAt(Math.Abs(pt[0].X - energy) > Math.Abs(pt[^1].X - energy) ? 0 : pt.Count - 1);
 
 			if (pt.Count < pointNum)
 			{
@@ -6676,7 +6676,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 			}
 
 			//計算精度のため、xの範囲を1から+2に変換する 式は X = c1 x + c2;
-			double c1 = 1.0 / (pt[pt.Count - 1].X - pt[0].X);
+			double c1 = 1.0 / (pt[^1].X - pt[0].X);
 			double c2 = 1 - pt[0].X * c1;
 
 			var m = new DenseMatrix(pointNum, order + 1);
@@ -6714,7 +6714,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 			double ec = CharacteristicXrayEnergy(z, edge);
 			for (int k = 1; k < AtomConstantsSub.MassAbsorptionCoefficient[z].Length; k++)
 				if (AtomConstantsSub.MassAbsorptionCoefficient[z][k][0].X == ec)
-					return AtomConstantsSub.MassAbsorptionCoefficient[z][k][0].Y / AtomConstantsSub.MassAbsorptionCoefficient[z][k - 1][AtomConstantsSub.MassAbsorptionCoefficient[z][k - 1].Length - 1].Y;
+					return AtomConstantsSub.MassAbsorptionCoefficient[z][k][0].Y / AtomConstantsSub.MassAbsorptionCoefficient[z][k - 1][^1].Y;
 			return double.NaN;
 		}
 
@@ -6776,7 +6776,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 							{
 								sbEdgeEnergy.AppendLine("case XrayLineEdge." + temp[j] + ": return " + temp[j + 1] + ";");
 								//edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), -((temp[j][0] - 'J') * 10 + (temp[j].Length > 1 ? temp[j][1] - '0' : 0))));
-								if (edge.Count == 0 || (edge.Any() && edge[edge.Count - 1].X != Convert.ToDouble(temp[j + 1])))
+								if (edge.Count == 0 || (edge.Any() && edge[^1].X != Convert.ToDouble(temp[j + 1])))
 								{
 									edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.PositiveInfinity));
 									edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.NegativeInfinity));
@@ -6798,12 +6798,12 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 				var pf = new List<Profile> { new Profile() };
 				for (int j = 0; j < absorp.Count; j++)
 				{
-					if (double.IsPositiveInfinity(absorp[j].Y) && pf[pf.Count - 1].Pt.Any())
+					if (double.IsPositiveInfinity(absorp[j].Y) && pf[^1].Pt.Any())
 						pf.Add(new Profile());
-					pf[pf.Count - 1].Pt.Add(absorp[j]);
+					pf[^1].Pt.Add(absorp[j]);
 				}
 				for (int j = 0; j < pf.Count; j++)
-					if (pf[j].Pt.Count == 1 && double.IsInfinity(pf[pf.Count - 1].Pt[0].Y))
+					if (pf[j].Pt.Count == 1 && double.IsInfinity(pf[^1].Pt[0].Y))
 						pf.RemoveAt(j--);
 				for (int j = 0; j < pf.Count; j++)
 				{

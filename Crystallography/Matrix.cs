@@ -130,7 +130,7 @@ namespace Crystallography
         /// </summary>
         /// <returns></returns>
         public double[] ToArrayRowMajorOrder() => new[] { E11, E12, E13, E21, E22, E23, E31, E32, E33 };
-        
+
         /// <summary>
         /// E11, E21, E31, E12, E22, E32, E13, E23, E33
         /// </summary>
@@ -316,7 +316,7 @@ namespace Crystallography
                 return new Matrix3D();
             v = Vector3DBase.Normarize(v);
             double X = v.X, Y = v.Y, Z = v.Z;
-            
+
             var cos = Math.Cos(theta);
             var oneMinusCos = 1 - cos;
             var sin = Math.Sin(theta);
@@ -458,7 +458,7 @@ namespace Crystallography
         /// ƒ[ƒs—ñ‚©‚Ç‚¤‚©‚ğ”»’è
         /// </summary>
         /// <returns></returns>
-        public bool IsZero()            => IsZero(this);
+        public bool IsZero() => IsZero(this);
 
         /// <summary>
         /// ’PˆÊs—ñ‚©‚Ç‚¤‚©‚ğ”»’è
@@ -472,36 +472,36 @@ namespace Crystallography
         /// ’PˆÊs—ñ‚©‚Ç‚¤‚©‚ğ”»’è
         /// </summary>
         /// <returns></returns>
-        public bool IsIdentity()            => IsIdentity(this);
+        public bool IsIdentity() => IsIdentity(this);
 
         /// <summary>
         /// ‘ÎŠp¬•ª‚Ì˜a‚ğ‹‚ß‚é
         /// </summary>
         /// <returns></returns>
-        public double SumOfDiagonalCompenent()        => SumOfDiagonalCompenent(this);
+        public double SumOfDiagonalCompenent() => SumOfDiagonalCompenent(this);
 
         /// <summary>
         /// ‘ÎŠp¬•ª‚Ì˜a‚ğ‹‚ß‚é
         /// </summary>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static double SumOfDiagonalCompenent(Matrix3D m)        => m.E11 + m.E22 + m.E33;
+        public static double SumOfDiagonalCompenent(Matrix3D m) => m.E11 + m.E22 + m.E33;
 
 
         /// <summary>
         /// ƒ[ƒs—ñ (’è”)
         /// </summary>
-        public static readonly Matrix3D ZeroMatrix = new Matrix3D(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        public static readonly Matrix3D ZeroMatrix = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         /// <summary>
         /// ’PˆÊs—ñ (’è”)
         /// </summary>
-        public static readonly Matrix3D IdentityMatrix = new Matrix3D(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        public static readonly Matrix3D IdentityMatrix = new(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
 
-        public bool Equals (Matrix3D m)
+        public bool Equals(Matrix3D m)
         {
-            return 
+            return
                 m.E11 == E11 && m.E12 == E12 && m.E13 == E13 &&
                 m.E21 == E21 && m.E22 == E22 && m.E23 == E23 &&
                 m.E31 == E31 && m.E32 == E32 && m.E33 == E33;

@@ -580,13 +580,13 @@ namespace Crystallography
         public Complex[][] ComplexG;//元画像Gの複素数;
         public Complex[][] ComplexB;//元画像Bの複素数;
 
-        public List<float> FFT_Filter = new List<float>();
-        public List<bool> FilterTemporary = new List<bool>();
-        public List<bool> Filter1 = new List<bool>();
-        public List<bool> Filter2 = new List<bool>();
-        public List<bool> Filter3 = new List<bool>();
-        public List<bool> Filter4 = new List<bool>();
-        public List<bool> Filter5 = new List<bool>();
+        public List<float> FFT_Filter = new();
+        public List<bool> FilterTemporary = new();
+        public List<bool> Filter1 = new();
+        public List<bool> Filter2 = new();
+        public List<bool> Filter3 = new();
+        public List<bool> Filter4 = new();
+        public List<bool> Filter5 = new();
         public bool Filter1Visible = true;
         public bool Filter2Visible = true;
         public bool Filter3Visible = true;
@@ -602,9 +602,9 @@ namespace Crystallography
         public byte[] ScaleG;
         public byte[] ScaleB;
 
-        public List<uint> SrcValuesR = new List<uint>();
-        public List<uint> SrcValuesG = new List<uint>();
-        public List<uint> SrcValuesB = new List<uint>();
+        public List<uint> SrcValuesR = new();
+        public List<uint> SrcValuesG = new();
+        public List<uint> SrcValuesB = new();
 
         /// <summary>
         /// グレースケールの画像データ (BlurModeが有効の時は、フィルター後のデータ)

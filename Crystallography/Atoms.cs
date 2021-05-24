@@ -26,7 +26,7 @@ namespace Crystallography
         public int ID;
 
         [XmlIgnore]
-        public List<Vector3D> Atom = new List<Vector3D>();
+        public List<Vector3D> Atom = new();
 
         public double X, Y, Z;
         public double X_err, Y_err, Z_err;
@@ -171,7 +171,7 @@ namespace Crystallography
 
             SubNumberXray = subXray;
             SubNumberElectron = subElectron;
-            Isotope = isotope != null ? isotope : new double[0];
+            Isotope = isotope ?? Array.Empty<double>();
             AtomicNumber = atomicNumber;
             ElementName = AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atomicNumber);
         }

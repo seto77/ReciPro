@@ -501,8 +501,8 @@ namespace Crystallography
                         Element element = Deep.Copy<Element>(e);
                         element.StandardName = this.Name;
                         Elements.Add(element);
-                        Elements[Elements.Count - 1].WeightRatio = m.WeightRatio * e.MolarAbundance * e.MolarWeight / m.MolarWeight;
-                        Elements[Elements.Count - 1].MolarAbundance = m.MolarAbundance * e.MolarAbundance;
+                        Elements[^1].WeightRatio = m.WeightRatio * e.MolarAbundance * e.MolarWeight / m.MolarWeight;
+                        Elements[^1].MolarAbundance = m.MolarAbundance * e.MolarAbundance;
                     }
                 }
 
@@ -720,18 +720,18 @@ namespace Crystallography
             for (int k = 0; k < elements.Length; k++)
                 mu_rhoUnkA += elements[k].WeightRatio * AtomConstants.MassAbsorption(energyA, elements[k].Z);
 
-            double sigmaA = 4.5E5 / (Math.Pow(E0, 1.65) - Math.Pow(EcA, 1.65));
+            var sigmaA = 4.5E5 / (Math.Pow(E0, 1.65) - Math.Pow(EcA, 1.65));
 
             for (int i = 0; i < elements.Length; i++)
             {
                 if (i != index)
                 {
-                    int zB = elements[i].Z;
-                    double omega = AtomConstantsSub.FluorescentYieldK[zB];
+                    var zB = elements[i].Z;
+                    var omega = AtomConstantsSub.FluorescentYieldK[zB];
                     double JAwithoutP = 0.5 * gammaMinusOnePerGamma * omega * AtomConstants.AtomicWeight(zA) / AtomConstants.AtomicWeight(zB);
 
                     //"Kab": beta = 1.1;  "Kb": beta = 0.1; "Lab": beta = 1.4;  "Lb": beta = 0.4;　計算効率を上げるため、一度計算したbetaは再利用する.
-                    double[] beta = new double[0];
+                    var beta = Array.Empty<double>();
                     if (betaArray[zB] != null && betaArray[zB].ContainsKey(EcA))
                         beta = betaArray[zB][EcA];
                     else

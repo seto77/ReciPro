@@ -28,10 +28,9 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is RectangleD)
+            if (destinationType == typeof(string) && value is RectangleD d)
             {
-                RectangleD g = (RectangleD)value;
-                return string.Format("{0}, {1}, {2}, {3}", g.X, g.Y, g.Width, g.Height);
+                return string.Format("{0}, {1}, {2}, {3}", d.X, d.Y, d.Width, d.Height);
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
@@ -84,11 +83,8 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is SizeD)
-            {
-                SizeD g = (SizeD)value;
-                return string.Format("{0}, {1}", g.Width, g.Height);
-            }
+            if (destinationType == typeof(string) && value is SizeD d)
+                return string.Format("{0}, {1}", d.Width, d.Height);
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
@@ -112,12 +108,10 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is Vector3DBase)
-            {
-                Vector3DBase g = (Vector3DBase)value;
-                return string.Format("{0}, {1}, {2}", g.X, g.Y, g.Z);
-            }
-            return base.ConvertTo(context, culture, value, destinationType);
+            if (destinationType != typeof(string) || value is not Vector3DBase)
+                return base.ConvertTo(context, culture, value, destinationType);
+            Vector3DBase g = (Vector3DBase)value;
+            return string.Format("{0}, {1}, {2}", g.X, g.Y, g.Z);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)

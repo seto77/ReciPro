@@ -453,7 +453,7 @@ namespace Crystallography
             if (millimeters.Count < 1)
                 return "         ";
             else
-                return millimeters[millimeters.Count - 1].ToString("0000.0000");
+                return millimeters[^1].ToString("0000.0000");
         }
     }
 

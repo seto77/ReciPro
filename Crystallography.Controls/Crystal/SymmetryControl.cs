@@ -275,7 +275,7 @@ namespace Crystallography.Controls
                     break;
 
                 case "trigonal":
-                    switch (tempSym.SpaceGroupHMStr.IndexOf("Rho") >= 0 && tempSym.SpaceGroupHMStr.IndexOf("R") >= 0)
+                    switch (tempSym.SpaceGroupHMStr.Contains("Rho") && tempSym.SpaceGroupHMStr.Contains("R"))
                     {
                         case false:
                             numericBoxA.Enabled = numericBoxC.Enabled = true;
@@ -400,7 +400,7 @@ namespace Crystallography.Controls
                     e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
                 }
-                txt = txt.Substring(1);
+                txt = txt[1..];
             }
 
             b.Dispose();

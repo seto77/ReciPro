@@ -2346,7 +2346,7 @@ namespace Crystallography
 			double Area;
 
 			double x12, y12, x13, y13, x24, y24, x34, y34;
-			x12 = y12 = x13 = y13 = x24 = y24 = x34 = y34 = 0;
+			//x12 = y12 = x13 = y13 = x24 = y24 = x34 = y34 = 0;
 
 			double xx12, yy12, xy12, xx13, yy13, xy13, xx24, yy24, xy24, xx34, yy34, xy34;
 			double xx12sq, yy12sq, xy12sq, xx13sq, yy13sq, xy13sq, xx24sq, yy24sq, xy24sq, xx34sq, yy34sq, xy34sq;

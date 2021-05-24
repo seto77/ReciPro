@@ -31,7 +31,7 @@ namespace Crystallography
         private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;
         private static readonly Complex PiI = Math.PI * ImaginaryOne;
         private static readonly double PiSq = Math.PI * Math.PI;
-        private static readonly Vector3DBase zNorm = new Vector3DBase(0, 0, 1);
+        private static readonly Vector3DBase zNorm = new(0, 0, 1);
 
         #endregion
 
@@ -82,13 +82,13 @@ namespace Crystallography
         public Beam[] Beams;
 
         [NonSerialized]
-        private readonly BackgroundWorker bwCBED = new BackgroundWorker();
+        private readonly BackgroundWorker bwCBED = new();
 
         public event ProgressChangedEventHandler CbedProgressChanged;
 
         public event RunWorkerCompletedEventHandler CbedCompleted;
 
-        private readonly object lockObj = new object();
+        private readonly object lockObj = new();
 
         #endregion
 
@@ -437,7 +437,7 @@ namespace Crystallography
             {
                 if (EigenValuesPED[k] != null)
                 {
-                    var len = EigenValuesPED[k].Count();
+                    var len = EigenValuesPED[k].Count;
                     var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
                     psi0[0] = 1;
                     var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
@@ -612,7 +612,7 @@ namespace Crystallography
             {
                 Parallel.For(0, width * height, n =>
                 {
-                    PointD r = new PointD(n % width - cX, height - n / width - 1 - cY) * res, _vec = new PointD(double.NaN, double.NaN);
+                    PointD r = new PointD(n % width - cX, height - n / width - 1 - cY) * res, _vec = new(double.NaN, double.NaN);
                     var sums = new Complex[defLen];
                     var exp = new Complex(0, 0);
                     foreach (var (Psi, Vec, Lenz) in gList)
@@ -719,7 +719,7 @@ namespace Crystallography
         }
         private (Complex Real, Complex Imag) getU((int H, int K, int L) index, double s2) => getU(AccVoltage, index, s2);
 
-        private Dictionary<int, (Complex, Complex)> uDictionary = new Dictionary<int, (Complex, Complex)>();
+        private Dictionary<int, (Complex, Complex)> uDictionary = new();
         #endregion
 
         #region ポテンシャルのマトリックス
@@ -1049,7 +1049,7 @@ namespace Crystallography
 
             public Vector3D ConvertToVector3D()
             {
-                Vector3D g = new Vector3D(Vec.X, Vec.Y, Vec.Z);
+                var g = new Vector3D(Vec.X, Vec.Y, Vec.Z);
                 g.d = 1 / g.Length;
                 g.Text = $"{H} {K} {L}";
                 g.Index = (H, K, L);

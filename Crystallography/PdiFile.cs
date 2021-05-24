@@ -33,29 +33,25 @@ namespace Crystallography
             //OriginalTakeoffAngle　-> SrcTakeoffAngle
             try//まずXMLのタグを変更
             {
-                using (StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS")))
+                using var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+                List<string> strList = new List<string>();
+                string tempstr;
+                while ((tempstr = reader.ReadLine()) != null)
                 {
-                    List<string> strList = new List<string>();
-                    string tempstr;
-                    while ((tempstr = reader.ReadLine()) != null)
-                    {
-                        tempstr = tempstr.Replace("OriginalFormatType", "SrcAxisMode");
-                        tempstr = tempstr.Replace("OriginalWaveLength", "SrcWaveLength");
-                        tempstr = tempstr.Replace("OriginalTakeoffAngle", "SrcTakeoffAngle");
-                        tempstr = tempstr.Replace("pt", "Pt");
-                        strList.Add(tempstr);
-                    }
-
-                    reader.Close();
-
-                    using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.GetEncoding("Shift_JIS")))
-                    {
-                        for (int i = 0; i < strList.Count; i++)
-                            writer.WriteLine(strList[i]);
-                        writer.Flush();
-                        writer.Close();
-                    }
+                    tempstr = tempstr.Replace("OriginalFormatType", "SrcAxisMode");
+                    tempstr = tempstr.Replace("OriginalWaveLength", "SrcWaveLength");
+                    tempstr = tempstr.Replace("OriginalTakeoffAngle", "SrcTakeoffAngle");
+                    tempstr = tempstr.Replace("pt", "Pt");
+                    strList.Add(tempstr);
                 }
+
+                reader.Close();
+
+                using var writer = new StreamWriter(fileName, false, Encoding.GetEncoding("Shift_JIS"));
+                for (int i = 0; i < strList.Count; i++)
+                    writer.WriteLine(strList[i]);
+                writer.Flush();
+                writer.Close();
             }
             catch { };
 

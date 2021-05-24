@@ -184,7 +184,7 @@ namespace Crystallography
 
             if (sampleFormat != 3 && sampleFormat != 1)
             {
-                if (srcData[0].Count(d => d % 1 != 0) == 0)
+                if (!srcData[0].Any(d => d % 1 != 0))
                     sampleFormat = 1;
                 else if (srcData[0].Max() < float.MaxValue && srcData[0].Min() > float.MinValue)
                     sampleFormat = 3;
@@ -494,20 +494,20 @@ namespace Crystallography
                                 break;
 
                             case 282:
-                                if(iFD[i].Data[0] is int)
-                                    image.XResolution = (int)iFD[i].Data[0];
-                                else if(iFD[i].Data[0] is float)
-                                    image.XResolution = (float)iFD[i].Data[0];
-                                else if (iFD[i].Data[0] is double)
-                                    image.XResolution = (double)iFD[i].Data[0];
+                                if(iFD[i].Data[0] is int n)
+                                    image.XResolution = n;
+                                else if(iFD[i].Data[0] is float f)
+                                    image.XResolution = f;
+                                else if (iFD[i].Data[0] is double d)
+                                    image.XResolution = d;
                                 break;
                             case 283:
-                                if (iFD[i].Data[0] is int)
-                                    image.YResolution = (int)iFD[i].Data[0]; 
-                                else if (iFD[i].Data[0] is float)
-                                    image.YResolution = (float)iFD[i].Data[0];
-                                else if (iFD[i].Data[0] is double)
-                                    image.YResolution = (double)iFD[i].Data[0];
+                                if (iFD[i].Data[0] is int n2)
+                                    image.YResolution = n2; 
+                                else if (iFD[i].Data[0] is float f)
+                                    image.YResolution = f;
+                                else if (iFD[i].Data[0] is double d)
+                                    image.YResolution = d;
                                 break;
                             case 284:
                                 image.ResolutionUnit = (int)iFD[i].Data[0]; break;

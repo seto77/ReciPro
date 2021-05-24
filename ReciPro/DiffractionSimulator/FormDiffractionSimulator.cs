@@ -33,7 +33,7 @@ namespace ReciPro
 
         public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
 
-        private Font font => new Font("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
+        private Font font => new("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
 
         /// <summary>
         /// 画面解像度 mm/pix
@@ -73,7 +73,7 @@ namespace ReciPro
         public FormDiffractionSpotInfo FormDiffractionBeamTable;
 
         public bool DynamicCompressionMode { get; set; } = false;
-        public List<double[]> DynamicCompression_SpotInformation = new List<double[]>();
+        public List<double[]> DynamicCompression_SpotInformation = new();
 
         /*public double CameraLength1
         {
@@ -369,7 +369,7 @@ namespace ReciPro
         /// <param name="list"></param>
         /// <param name="origin"></param>
         /// <returns></returns>
-        private PointD getLabelPosition(IEnumerable<PointD> list, PointD origin, double deg)
+        private static PointD getLabelPosition(IEnumerable<PointD> list, PointD origin, double deg)
         {
             var residual = double.PositiveInfinity;
             var result = new PointD(float.NaN, float.NaN);
@@ -732,7 +732,7 @@ namespace ReciPro
                     {
                         // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
                         double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                        List<PointF> pts1 = new List<PointF>(), pts2 = new List<PointF>();
+                        List<PointF> pts1 = new(), pts2 = new();
                         for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                         {
                             float x = (float)(Math.Sinh(omega) / Psqrt), y = (float)(Math.Cosh(omega) / Qsqrt);
@@ -779,10 +779,10 @@ namespace ReciPro
 
                 var ptsArray = Geometriy.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
 
-                int red = (int)(ringR * intensity + bgR * (1 - intensity));
-                int green = (int)(ringG * intensity + bgG * (1 - intensity));
-                int blue = (int)(ringB * intensity + bgB * (1 - intensity));
-                Pen pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(this.trackBarDebyeRingWidth.Value * Resolution / 2f));
+                var red = (int)(ringR * intensity + bgR * (1 - intensity));
+                var green = (int)(ringG * intensity + bgG * (1 - intensity));
+                var blue = (int)(ringB * intensity + bgB * (1 - intensity));
+                var pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(trackBarDebyeRingWidth.Value * Resolution / 2f));
 
                 foreach (var pts in ptsArray)
                     g.DrawLines(pen, pts.ToArray());
@@ -1062,7 +1062,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private PointD convertScreenToDetector(int x, int y) => new PointD(
+        private PointD convertScreenToDetector(int x, int y) => new(
                 (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
                 (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
 
@@ -1100,7 +1100,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private PointD convertDetectorToScreen(double x, double y) => new PointD(
+        private PointD convertDetectorToScreen(double x, double y) => new(
                 (x + DisplayCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
                 (y + DisplayCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
 
@@ -1155,7 +1155,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
-        public Vector3DBase convertReciprocalToReal(Vector3DBase g)
+        public Vector3DBase ConvertReciprocalToReal(Vector3DBase g)
             => Geometriy.GetCrossPoint(SinPhi * SinTau, -CosPhi * SinTau, CosTau, CameraLength2, new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z));
 
         // return p * d / (a * p.X + b * p.Y + c * p.Z);
@@ -1278,8 +1278,8 @@ namespace ReciPro
                 Draw();
         }
 
-        private PointD lastMousePositionDetector = new PointD();
-        private Point lastMousePositionScreen = new Point();
+        private PointD lastMousePositionDetector = new();
+        private Point lastMousePositionScreen = new();
 
         private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -1919,7 +1919,7 @@ namespace ReciPro
 
             if (FormDiffractionSimulatorCBED.Disks != null && FormDiffractionSimulatorCBED.Disks.Length != 0 && dlg.ShowDialog() == DialogResult.OK)
             {
-                var name = dlg.FileName.Substring(0, dlg.FileName.Length - 4);
+                var name = dlg.FileName[0..^4];//拡張子を除去
                 foreach (var disk in FormDiffractionSimulatorCBED.Disks)
                 {
                     var index = $" ({disk.H} {disk.K} {disk.L})";
@@ -1961,37 +1961,34 @@ namespace ReciPro
             }
             else
             {
-                using (Graphics grfx = CreateGraphics())
-                {
-                    IntPtr ipHdc = grfx.GetHdc();
-                    MemoryStream ms = new();
-                    Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
-                    grfx.ReleaseHdc(ipHdc);
-                    grfx.Dispose();
-                    var g = Graphics.FromImage(mf);
-                    Draw(g, true, drawOverlappedImage);
-                    g.Dispose();
+                using Graphics grfx = CreateGraphics();
+                IntPtr ipHdc = grfx.GetHdc();
+                MemoryStream ms = new();
+                Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
+                grfx.ReleaseHdc(ipHdc);
+                grfx.Dispose();
+                var g = Graphics.FromImage(mf);
+                Draw(g, true, drawOverlappedImage);
+                g.Dispose();
 
-                    if (save)
+                if (save)
+                {
+                    SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
+                    if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
-                        if (dlg.ShowDialog() == DialogResult.OK)
-                        {
-                            FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
-                            fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                            fsm.Close();
-                        }
+                        FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
+                        fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
+                        fsm.Close();
                     }
-                    else
-                        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
                 }
+                else
+                    ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
             }
         }
 
         private void SaveOrCopyDetector(bool save, bool asImage, bool asTiff = false)
         {
-            var drawOverlappedImage = false;
-
+            bool drawOverlappedImage;
             if (FormDiffractionSimulatorGeometry.ShowDetectorArea && FormDiffractionSimulatorGeometry.OverlappedImage != null)
             {
                 drawOverlappedImage = MessageBox.Show("Include the overlapped image?", "Copy option", MessageBoxButtons.YesNo) == DialogResult.Yes;
@@ -2094,7 +2091,7 @@ namespace ReciPro
         {
             if (radioButtonBeamParallel.Checked && radioButtonIntensityBethe.Checked)
             {
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
                 for (int i = 0; i < 300; i++)
                 {
                     numericBoxThickness.Value = i;

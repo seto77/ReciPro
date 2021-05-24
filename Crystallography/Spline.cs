@@ -156,8 +156,8 @@ namespace Crystallography
 
             if (x <= p[0])
                 return c[0] * x * x * x + c[1] * x * x + c[2] * x + c[3];
-            else if (x >= p[p.Length - 1])
-                return c[c.Length - 4] * x * x * x + c[c.Length - 3] * x * x + c[c.Length - 2] * x + c[c.Length - 1];
+            else if (x >= p[^1])
+                return c[^4] * x * x * x + c[^3] * x * x + c[^2] * x + c[^1];
             else
                 for (int j = 0; j < p.Length - 1; j++)
                     if (x >= p[j] && x <= p[j + 1])

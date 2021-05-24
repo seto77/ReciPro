@@ -782,8 +782,8 @@ namespace Crystallography
                 foreach (var (Name, Parent, Depth) in hdf.Paths)
                 {
                     var tmp = Name.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
-                    if (tmp.Length != 0 && tmp[tmp.Length - 1].StartsWith("tag_") && !tag.Contains(tmp[tmp.Length - 1]))
-                        tag.Add(tmp[tmp.Length - 1]);
+                    if (tmp.Length != 0 && tmp[^1].StartsWith("tag_") && !tag.Contains(tmp[^1]))
+                        tag.Add(tmp[^1]);
                 }
 
                 //各tagの画像を読み込み
@@ -1392,12 +1392,12 @@ namespace Crystallography
                 Ring.SrcImgSize = new Size(numPixelX, numPixelY);
                 int length = Ring.SrcImgSize.Width * Ring.SrcImgSize.Height;
                 //イメージデータ読みこみ
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
 
-                double x = latitude / Math.Pow(2, bitsPerPixel);
+                var x = latitude / Math.Pow(2, bitsPerPixel);
                 //uint[] convertTable = new uint[65536];
 
-                double[] convertTable = new double[65536];
+               var convertTable = new double[65536];
 
                 //double maxValue = Math.Pow(10, Math.Pow(2, bitsPerPixel) * x);
 

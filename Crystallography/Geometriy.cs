@@ -162,19 +162,17 @@ namespace Crystallography
           ref double tau, ref double tauDev, ref double phi, ref double phiDev)
         {
             //”CˆÓ‚Ì“ñ“_‚ð‘I‚ñ‚Åoffset, tau, phi‚ðŒvŽZ‚·‚é
-            List<double> offsetXList = new List<double>();
-            List<double> offsetYList = new List<double>();
-            List<double> tauList = new List<double>();
-            List<double> phiList = new List<double>();
+            List<double> offsetXList = new(),offsetYList = new();
+            List<double> tauList = new(),phiList = new();
 
             for (int i = 0; i < EllipseCenter.Length; i++)
                 for (int j = i + 1; j < EllipseCenter.Length; j++)
                 {
-                    PointD[] ellipseCenterTemp = new PointD[] { EllipseCenter[i], EllipseCenter[j] };
-                    double[] radiusTemp = new double[] { Radius[i], Radius[j] };
-                    PointD offsetTemp = offset;
-                    double tauTemp = tau;
-                    double phiTemp = phi;
+                    var ellipseCenterTemp = new PointD[] { EllipseCenter[i], EllipseCenter[j] };
+                    var radiusTemp = new double[] { Radius[i], Radius[j] };
+                    var offsetTemp = offset;
+                    var tauTemp = tau;
+                    var phiTemp = phi;
 
                     GetTiltAndOffset(ellipseCenterTemp, radiusTemp, CameraLength, ref offsetTemp, ref tauTemp, ref phiTemp);
 
@@ -486,7 +484,7 @@ namespace Crystallography
             double area = 0;
             for (int i = 0; i < pt.Length - 1; i++)
                 area += (pt[i].X - pt[i + 1].X) * (pt[i].Y + pt[i + 1].Y);
-            area += (pt[pt.Length - 1].X - pt[0].X) * (pt[pt.Length - 1].Y + pt[0].Y);
+            area += (pt[^1].X - pt[0].X) * (pt[^1].Y + pt[0].Y);
             return Math.Abs(area * 0.5);
         }
 
@@ -1028,7 +1026,7 @@ namespace Crystallography
                     {
                         result.Add(new List<PointD>());
                         for (; j < pts.Count && flags[j]; j++)
-                            result[result.Count - 1].Add(pts[j]);
+                            result[^1].Add(pts[j]);
                     }
                 }
             }

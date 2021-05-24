@@ -609,8 +609,8 @@ namespace Crystallography.Controls
 
             if (MouseRangeMode)
             {
-                Pen pen = new Pen(Brushes.Pink);
-                if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                var pen = new Pen(Brushes.Pink);
+                if ((ModifierKeys & Keys.Control) == Keys.Control)
                     pen = new Pen(Brushes.Yellow);
                 pen.DashStyle = DashStyle.Dash;
                 e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
@@ -623,8 +623,8 @@ namespace Crystallography.Controls
             }
             if (ShowAreaRectangle)
             {
-                Pen pen = new Pen(Brushes.Yellow);
-                RectangleF rect = ConvertToClientRect(areaRentagle).ToRectangleF();
+                var pen = new Pen(Brushes.Yellow);
+                var rect = ConvertToClientRect(areaRentagle).ToRectangleF();
                 e.Graphics.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
             }
 
@@ -637,7 +637,7 @@ namespace Crystallography.Controls
                         FontFamily ff = new FontFamily("Arial");
                         if (s.Shape == SymbolShape.Cross || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            Pen pen1 = new Pen(new SolidBrush(s.CrossColor1)), pen2 = new Pen(new SolidBrush(s.CrossColor2));
+                            Pen pen1 = new(new SolidBrush(s.CrossColor1)), pen2 = new(new SolidBrush(s.CrossColor2));
                             pen1.Width = pen2.Width = s.Bold ? 2f : 1f;
                             var pt = ConvertToClientPt(s.CrossPosition).ToPointF();
                             if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
@@ -708,7 +708,7 @@ namespace Crystallography.Controls
         {
             var gp = new GraphicsPath();
             FontFamily ff = new FontFamily("Arial");
-            Pen pen1 = new Pen(brush1), pen2 = new Pen(brush2);
+            Pen pen1 = new(brush1), pen2 = new(brush2);
             if (spot != null && spot.Count > 0)
                 for (int i = 0; i < spot.Count; i++)
                 {

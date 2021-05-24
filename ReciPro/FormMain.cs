@@ -817,7 +817,7 @@ namespace ReciPro
                 Rotate(v, numericBoxStep.RadianValue);
         }
 
-        private Stopwatch stopwatchAnimation = new();
+        private readonly Stopwatch stopwatchAnimation = new();
         private long ellapseTime = 0;
 
         private void startAnimation(Vector3DBase v)

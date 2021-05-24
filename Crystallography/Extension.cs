@@ -81,8 +81,8 @@ namespace Crystallography
                 var result = (string)Registry.ClassesRoot.OpenSubKey(extension).GetValue("");
                 if (result == null)
                     return false;
-                else if (result is string)
-                    return appName == (string)result;
+                else if (result is string str)
+                    return appName == str;
                 else
                     return false;
             }
