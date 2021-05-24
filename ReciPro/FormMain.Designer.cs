@@ -477,7 +477,7 @@
             this.numericBoxAxisU.Name = "numericBoxAxisU";
             this.numericBoxAxisU.ShowUpDown = true;
             this.numericBoxAxisU.SkipEventDuringInput = false;
-            this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisU.ThonsandsSeparator = true;
             // 
             // label9
@@ -501,7 +501,7 @@
             this.numericBoxAxisV.Name = "numericBoxAxisV";
             this.numericBoxAxisV.ShowUpDown = true;
             this.numericBoxAxisV.SkipEventDuringInput = false;
-            this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisV.ThonsandsSeparator = true;
             // 
             // numericBoxAxisW
@@ -516,7 +516,7 @@
             this.numericBoxAxisW.Name = "numericBoxAxisW";
             this.numericBoxAxisW.ShowUpDown = true;
             this.numericBoxAxisW.SkipEventDuringInput = false;
-            this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisW.ThonsandsSeparator = true;
             // 
             // tableLayoutPanel7
@@ -541,7 +541,7 @@
             this.numericBoxPlaneL.Name = "numericBoxPlaneL";
             this.numericBoxPlaneL.ShowUpDown = true;
             this.numericBoxPlaneL.SkipEventDuringInput = false;
-            this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPlaneL.ThonsandsSeparator = true;
             // 
             // numericBoxPlaneH
@@ -555,7 +555,7 @@
             this.numericBoxPlaneH.Name = "numericBoxPlaneH";
             this.numericBoxPlaneH.ShowUpDown = true;
             this.numericBoxPlaneH.SkipEventDuringInput = false;
-            this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPlaneH.ThonsandsSeparator = true;
             // 
             // numericBoxPlaneK
@@ -569,7 +569,7 @@
             this.numericBoxPlaneK.Name = "numericBoxPlaneK";
             this.numericBoxPlaneK.ShowUpDown = true;
             this.numericBoxPlaneK.SkipEventDuringInput = false;
-            this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPlaneK.ThonsandsSeparator = true;
             // 
             // label11
@@ -732,6 +732,7 @@
             this.numericBoxStep.RadianValue = 0.17453292519943295D;
             this.numericBoxStep.ShowUpDown = true;
             this.numericBoxStep.SmartIncrement = true;
+            this.numericBoxStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStep.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
             this.numericBoxStep.Value = 10D;
@@ -918,6 +919,7 @@
             this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
             this.numericBoxMaxUVW.ShowUpDown = true;
             this.numericBoxMaxUVW.SkipEventDuringInput = false;
+            this.numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxUVW.ThonsandsSeparator = true;
             this.numericBoxMaxUVW.Value = 30D;
             this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);

@@ -74,15 +74,21 @@ namespace Crystallography.OpenGL.Properties {
         ///
         ///uniform uint MaxNodes;
         ///
-        ///// Material properties
-        ///uniform float Emission = 0.2;
-        ///uniform float Ambient = 0.2;
-        ///uniform float Diffuse = 0.7;
-        ///uniform float Specular = 0.5;
-        ///uniform vec3 SpecularColor = vec3(1.0);
-        ///uniform float SpecularPower = 128.0;
-        ///uniform vec4 BgColor = vec4(1, 1, 1, 1);
-        ///uniform bool IgnoreNormalS [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///struct NodeType {
+        ///	vec4 color;
+        ///	float depth;
+        ///	uint next;
+        ///};
+        ///
+        ///layout(binding = 0, r32ui) uniform uimage2D headPointers;
+        ///layout(binding = 0, offset = 0) uniform atomic_uint nextNodeCounter;
+        ///layout(binding = 0, std430) buffer linkedLists {
+        ///	NodeType nodes[];
+        ///};
+        ///
+        ///
+        ///
+        ///subroutine void RenderP [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string fragOIT {
             get {
@@ -91,18 +97,14 @@ namespace Crystallography.OpenGL.Properties {
         }
         
         /// <summary>
-        ///   #version 430 core
+        ///   #version 150
         ///
         /////#pragma optionNV(ifcvt none)
         /////#pragma optionNV(inline all)
         /////#pragma optionNV(strict on)
         /////#pragma optionNV(unroll all)
         ///
-        ///layout(early_fragment_tests) in;
-        ///
-        ///#define MAX_FRAGMENTS ##
-        ///
-        ///uniform uint MaxNodes;
+        /////layout(early_fragment_tests) in;
         ///
         ///// Material properties
         ///uniform float Emission = 0.2;
@@ -111,8 +113,11 @@ namespace Crystallography.OpenGL.Properties {
         ///uniform float Specular = 0.5;
         ///uniform vec3 SpecularColor = vec3(1.0);
         ///uniform float SpecularPower = 128.0;
-        ///uniform vec4 BgColor = vec4(1, 1, 1, 1);
-        ///uniform bool IgnoreNormalS [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///uniform vec3 BgColor = vec3(1, 1, 1);
+        ///uniform bool IgnoreNormalSides = false;
+        ///
+        /////Depth Cueing
+        ///uniform bool DepthCueing = [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string fragZSORT {
             get {
@@ -159,25 +164,21 @@ namespace Crystallography.OpenGL.Properties {
         }
         
         /// <summary>
-        ///   #version 330 core
-        ///
-        /////#pragma optionNV(ifcvt none)
-        /////#pragma optionNV(inline all)
-        /////#pragma optionNV(strict on)
-        /////#pragma optionNV(unroll all)
+        ///   #version 150
+        /////Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle, No.15531 - 15557).Pearson Education.Kindle version.
         ///
         ///// Per-vertex inputs
-        ///layout(location = 2) in vec4 Position;
-        ///layout(location = 3) in vec3 Normal;
-        ///layout(location = 4) in vec4 Color;
+        ///
+        ////*layout(location = 1) */in int ObjType;
+        ////*layout(location = 2) */in int Argb;
+        ////*layout(location = 3) */in vec3 Position;
+        ////*layout(location = 4) */in vec3 Normal;
+        ////*layout(location = 5) */in vec2 Uv;
         ///
         ///uniform mat4 WorldMatrix; //world matrix
         ///uniform mat4 ViewMatrix; // view matrix
         ///uniform mat4 ProjMatrix; // projection matrix
-        ///uniform vec3 LightPosition; // Position of light
-        ///uniform vec3 EyePosition;// Position of eye
-        ///
-        ///// A, B, C, an [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///uniform vec3  [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string vert {
             get {

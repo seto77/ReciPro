@@ -44,7 +44,7 @@ namespace Crystallography
 				//プロパティ文字列が変更にたいする対処
 				try
 				{
-					var reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
+					var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
 					var strList = new List<string>();
 					string tempstr;
 					while ((tempstr = reader.ReadLine()) != null)
@@ -58,7 +58,7 @@ namespace Crystallography
 
 					//filename = filename + "_";//検証のためファイルネーム変更
 
-					StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("Shift_JIS"));
+					StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("UTF-8"));
 					for (int i = 0; i < strList.Count; i++)
 						writer.WriteLine(strList[i]);
 					writer.Flush();

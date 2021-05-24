@@ -1,9 +1,9 @@
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
   * Runs on Windows with .Net Framework 4.8.
-  * Now, the manual is being developed.　It's incomplete, but published below.
-    * Japanese version: https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
-    * English version: https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
+  * Now, the author plan to make a manual of Japanese version first and then an English version.
+    * Japanese version (under construction): https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+    * English version (under construction): 
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
@@ -44,4 +44,4 @@
   * Possible to use COD and AMCSD database through CSManager (https://github.com/seto77/CSManager/releases/latest). 
 
 ## Screenshots
-<img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> <img src="img/RotationGeometry.png" height="320px">
+<img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px">

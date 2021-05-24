@@ -29,7 +29,7 @@ namespace Crystallography.OpenGL
         private uint headPtrTex = 0, clearBuf = 0;
 
         private Clip Clip = null;
-        private readonly List<GLObject> glObjects = new List<GLObject>();
+        private readonly List<GLObject> glObjects = new();
         private readonly ParallelQuery<GLObject> glObjectsP;
         private readonly GLObject quad = null;
 
@@ -128,7 +128,7 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
         /// </summary>
-        public string VersionForZsortStr => "1.5.0";
+        public static string VersionForZsortStr => "1.5.0";
 
 
         private int versionForOIT { get; } = 430;
@@ -140,7 +140,7 @@ namespace Crystallography.OpenGL
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
         /// </summary>
-        public string VersionForOITStr => "4.3.0";
+        public static string VersionForOITStr => "4.3.0";
 
         /// <summary>
         /// OpenGLのバージョンが最低要件を満たしているかどうか
@@ -267,8 +267,8 @@ namespace Crystallography.OpenGL
         [Category("Geometry")]
         public Vec3d LightPosition { get => lightPosition; set { lightPosition = value; lightPositionF = value.ToV3f(); Render(); } }
 
-        private Vec3d lightPosition = new Vec3d(10, 10, 10);
-        private Vec3f lightPositionF = new Vec3f(10, 10, 10);
+        private Vec3d lightPosition = new(10, 10, 10);
+        private Vec3f lightPositionF = new(10, 10, 10);
 
         /// <summary>
         /// 回転中心座標 (ワールド回転および光源に対して共通)
@@ -325,8 +325,8 @@ namespace Crystallography.OpenGL
         [Category("Geometry")]
         public Vec3d ViewFrom { get => viewFrom; set { viewFrom = value; viewFromF = value.ToV3f(); setViewMatrix(); } }
 
-        private Vec3d viewFrom = new Vec3d(0, 0, 20);
-        private Vec3f viewFromF = new Vec3f(0, 0, 20);
+        private Vec3d viewFrom = new(0, 0, 20);
+        private Vec3f viewFromF = new(0, 0, 20);
 
         /// <summary>
         /// カメラのターゲット
@@ -335,7 +335,7 @@ namespace Crystallography.OpenGL
         [Category("Geometry")]
         public Vec3d ViewTo { get => viewTo; set { viewTo = value; setViewMatrix(); } }
 
-        private Vec3d viewTo = new Vec3d(0, 0, 0);
+        private Vec3d viewTo = new(0, 0, 0);
 
         /// <summary>
         /// カメラの上方向
@@ -344,7 +344,7 @@ namespace Crystallography.OpenGL
         [Category("Geometry")]
         public Vec3d ViewUp { get => viewUp; set { viewUp = value; setViewMatrix(); } }
 
-        private Vec3d viewUp = new Vec3d(0, 1, 0);
+        private Vec3d viewUp = new(0, 1, 0);
 
         /// <summary>
         /// カメラ(ビュー)マトリックス
@@ -365,7 +365,7 @@ namespace Crystallography.OpenGL
         [Category("Geometry")]
         public Vec2d ProjCenter { get => projCenter; set { projCenter = value; setProjMatrix(); } }
 
-        private Vec2d projCenter = new Vec2d(0, 0);
+        private Vec2d projCenter = new(0, 0);
 
         /// <summary>
         /// 投影面の横の長さ(GL空間での単位)
@@ -420,13 +420,8 @@ namespace Crystallography.OpenGL
         {
             try
             {
-                
                 var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.', ' ' });
-                if (ver.Length != 3)
-                    return null;
-                else 
-                    return ver;
-               
+                return ver.Length != 3 ? null : ver;
             }
             catch
             {
@@ -442,7 +437,7 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         [HandleProcessCorruptedStateExceptions]
 
-        private Graphics getGraphics(GLControl control)
+        private static Graphics getGraphics(GLControl control)
         {
             try
             {
@@ -605,7 +600,7 @@ namespace Crystallography.OpenGL
         /// <param name="vertexShaderCode"></param>
         /// <param name="fragmentShaderCode"></param>
         /// <returns></returns>
-        private int CreateShader(string vertexShaderCode, string geometryShaderCode, string fragmentShaderCode)
+        private static int CreateShader(string vertexShaderCode, string geometryShaderCode, string fragmentShaderCode)
         {
             int vshader = GL.CreateShader(ShaderType.VertexShader);
             //int gshader = GL.CreateShader(ShaderType.GeometryShader);
@@ -835,7 +830,7 @@ namespace Crystallography.OpenGL
         #endregion
 
         #region マウス操作
-        private Point lastMousePosition = new Point();
+        private Point lastMousePosition = new();
 
         private void glControl_MouseMove(object sender, MouseEventArgs e)
         {

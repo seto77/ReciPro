@@ -103,12 +103,12 @@ namespace ReciPro
         private Crystallography.Controls.CommonDialog commonDialog;
         private GLControlAlpha glControlAxes;
 
-        public Languages Language { get => Thread.CurrentThread.CurrentUICulture.Name=="en" ? Languages.English : Languages.Japanese; }
+        public static Languages Language { get => Thread.CurrentThread.CurrentUICulture.Name=="en" ? Languages.English : Languages.Japanese; }
         public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
         public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
         public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
 
-        public string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
+        public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
         public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }
 
@@ -132,7 +132,7 @@ namespace ReciPro
         private readonly IProgress<(long, long, long, string)> ip;//IReport
         public bool YusaGonioMode { get; set; } = false;
 
-        private readonly Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new();
         public bool SkipDrawing { get; set; } = false;
 
         #endregion
@@ -817,7 +817,7 @@ namespace ReciPro
                 Rotate(v, numericBoxStep.RadianValue);
         }
 
-        private Stopwatch stopwatchAnimation = new Stopwatch();
+        private Stopwatch stopwatchAnimation = new();
         private long ellapseTime = 0;
 
         private void startAnimation(Vector3DBase v)
@@ -1103,14 +1103,14 @@ namespace ReciPro
 
         private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
             if (dlg.ShowDialog() == DialogResult.OK)
                 readCrystalList(dlg.FileName, true, true);
         }
 
         private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new System.Windows.Forms.OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
+            var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
             if (dlg.ShowDialog() == DialogResult.OK)
                 readCrystalList(dlg.FileName, true, false);
         }
@@ -1120,10 +1120,12 @@ namespace ReciPro
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fn = "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
-            var fnWeb = fn.Replace(".pdf", ".web.pdf");
-            Process.Start((File.Exists(fnWeb) && new FileInfo(fnWeb).Length > 100) ? fnWeb : fn);
-
+            var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
+            //var fnWeb = fn.Replace(".pdf", ".web.pdf");
+            //Process.Start((File.Exists(fnWeb) && new FileInfo(fnWeb).Length > 100) ? fnWeb : fn);
+            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var f = new FormPDF(appPath+fn);
+            f.ShowDialog();
         }
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1264,7 +1266,7 @@ namespace ReciPro
             }
         }
 
-        private Point lastPosAxes = new Point();
+        private Point lastPosAxes;
 
         private void panelAxes_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1426,8 +1428,8 @@ namespace ReciPro
             SetNearestUVW();
         }
 
-        private List<(int U, int V, int W)> uvwIndices = new List<(int U, int V, int W)>();
-        private List<double> uvwLength2 = new List<double>();
+        private List<(int U, int V, int W)> uvwIndices = new();
+        private List<double> uvwLength2 = new();
 
         private void SetNearestUVW()//ç≈Ç‡ãﬂÇ¢uvwÇåüçı
         {

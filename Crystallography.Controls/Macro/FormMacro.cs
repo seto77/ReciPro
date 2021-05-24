@@ -79,7 +79,7 @@ namespace Crystallography.Controls
         /// リッチエディットボックスのフォントが勝手に変わるのを抑制する
         /// </summary>
         /// <param name="RichTextBoxCtrl">フォントが勝手に変わるのを抑制するリッチテキストボックス</param>
-        private void NoRichTextChange(RichTextBox RichTextBoxCtrl)
+        private static void NoRichTextChange(RichTextBox RichTextBoxCtrl)
         {
             uint lParam;
             lParam = SendMessage(RichTextBoxCtrl.Handle, EM_GETLANGOPTIONS, 0, 0);
@@ -185,13 +185,13 @@ namespace Crystallography.Controls
 
         public void SelectMacro(string macroName)
         {
-            if (listBoxMacro.Items.Cast<macro>().Count(m => m.Name == macroName) != 0)
+            if (listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
                 listBoxMacro.SelectedIndex = listBoxMacro.Items.IndexOf(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName));
         }
 
         public void RunMacroName(string macroName, bool debug = false)
         {
-            if (listBoxMacro.Items.Cast<macro>().Count(m => m.Name == macroName) == 0)
+            if (!listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
             {
                 MessageBox.Show("The macro name is not found");
                 return;
@@ -285,7 +285,7 @@ namespace Crystallography.Controls
             };
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("Shift_JIS"));
+                var writer = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("Shift_JIS"));
                 for (int i = 0; i < exRichTextBox.TextLines.Length; i++)
                     writer.WriteLine(exRichTextBox.TextLines[i]);
                 writer.Close();
@@ -316,14 +316,14 @@ namespace Crystallography.Controls
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            macro m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+            var m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
             var items = listBoxMacro.Items;
             if (m.Name == "")
             {
                 MessageBox.Show("Please input macro name", "Alert");
                 return;
             }
-            else if (listBoxMacro.Items.Cast<macro>().Count(o => o.Name == m.Name) != 0)
+            else if (listBoxMacro.Items.Cast<macro>().Any(o => o.Name == m.Name))
             {
                 if (MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     items[items.IndexOf(items.Cast<macro>().First(item => item.Name == m.Name))] = m;
@@ -388,7 +388,7 @@ namespace Crystallography.Controls
 
         private void setMenuItemOfMain()
         {
-            List<string> list = new List<string>();
+            var list = new List<string>();
             for (int i = 0; i < listBoxMacro.Items.Count; i++)
                 list.Add(((macro)listBoxMacro.Items[i]).Name);
             obj.SetMacroToMenu(list.ToArray());
@@ -413,8 +413,8 @@ namespace Crystallography.Controls
                     strList.Add(m.Body);
                 }
 
-                MemoryStream ms = new MemoryStream();
-                DeflateStream ds = new DeflateStream(ms, CompressionMode.Compress, true);
+                var ms = new MemoryStream();
+                var ds = new DeflateStream(ms, CompressionMode.Compress, true);
 
                 IFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(ds, strList);

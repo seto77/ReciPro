@@ -1,870 +1,112 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AA023A7B-9B92-4CE3-966E-9B9C444DA84C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReciPro</RootNamespace>
-    <AssemblyName>ReciPro</AssemblyName>
-    <SignManifests>false</SignManifests>
-    <ManifestCertificateThumbprint>46F2D730B58F89557CD46FEBBF20A56305852CCB</ManifestCertificateThumbprint>
-    <ManifestKeyFile>SetoSoft.pfx</ManifestKeyFile>
-    <TargetZone>LocalIntranet</TargetZone>
-    <GenerateManifests>false</GenerateManifests>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyVersion>2021.5.24.0838</AssemblyVersion>
+    <FileVersion>2021.5.24.0838</FileVersion>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <PublishUrl>\\pmsl.planet.sci.kobe-u.ac.jp\share\members\seto\software\ReciPro\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Background</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>true</UpdateRequired>
-    <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/</InstallUrl>
-    <UpdateUrl>http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/ReciPro/</UpdateUrl>
-    <SupportUrl>http://pmsl.planet.sci.kobe-u.ac.jp/~seto/</SupportUrl>
-    <TargetCulture>ja-JP</TargetCulture>
-    <PublisherName>Crystallography Software</PublisherName>
-    <MinimumRequiredVersion>2.0.0.2</MinimumRequiredVersion>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>432</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <StartupObject>ReciPro.Program</StartupObject>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRules>
-    </CodeAnalysisRules>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
-    <DebugSymbols>true</DebugSymbols>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>preview</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="ImagingSolution.Control.GraphicsBox">
-      <HintPath>.\ImagingSolution.Control.GraphicsBox.dll</HintPath>
-    </Reference>
-    <Reference Include="MathNet.Numerics, Version=4.15.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.15.0\lib\net461\MathNet.Numerics.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK, Version=3.3.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenTK.3.3.1\lib\net20\OpenTK.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <None Remove="default.xml" />
+    <None Remove="doc\Bethe.pdf" />
+    <None Remove="doc\Bethe.pptx" />
+    <None Remove="doc\draft.pptx" />
+    <None Remove="doc\Hrtem.pdf" />
+    <None Remove="doc\Hrtem.pptx" />
+    <None Remove="doc\Manual.dotx" />
+    <None Remove="doc\Manual.thmx" />
+    <None Remove="doc\ReciProManual%28en%29.docx" />
+    <None Remove="doc\ReciProManual%28en%29.pdf" />
+    <None Remove="doc\ReciProManual%28ja%29.docx" />
+    <None Remove="doc\ReciProManual%28ja%29.pdf" />
+    <None Remove="doc\ReciProの座標系.pptx" />
+    <None Remove="doc\Thumbs.db" />
+    <None Remove="image\App.ico" />
+    <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
+    <None Remove="initial.xml" />
+    <None Remove="StdDb.cdb3" />
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="DataSetReciPro.cs">
-      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetReciPro.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="FormCrystalDatabase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCrystalDatabase.Designer.cs">
-      <DependentUpon>FormCrystalDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormDiffractionSpotInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDiffractionSpotInfo.Designer.cs">
-      <DependentUpon>FormDiffractionSpotInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormImageSimulator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormImageSimulator.Designer.cs">
-      <DependentUpon>FormImageSimulator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormRotation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRotation.Designer.cs">
-      <DependentUpon>FormRotation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SpotID\FormSpotDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SpotID\FormSpotDetails.Designer.cs">
-      <DependentUpon>FormSpotDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SpotID\FormSpotID.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SpotID\FormSpotID.Designer.cs">
-      <DependentUpon>FormSpotID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTEMID\InputBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormTEMID\InputBox.Designer.cs">
-      <DependentUpon>InputBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PolycrystallineDiffraction\DiffractionPatternControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PolycrystallineDiffraction\DiffractionPatternControl.Designer.cs">
-      <DependentUpon>DiffractionPatternControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PolycrystallineDiffraction\FormPolycrystallineDiffractionSimulator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PolycrystallineDiffraction\FormPolycrystallineDiffractionSimulator.Designer.cs">
-      <DependentUpon>FormPolycrystallineDiffractionSimulator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorDynamicCompression.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorDynamicCompression.Designer.cs">
-      <DependentUpon>FormDiffractionSimulatorDynamicCompression.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorCBED.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorCBED.Designer.cs">
-      <DependentUpon>FormDiffractionSimulatorCBED.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorGeometry.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulatorGeometry.Designer.cs">
-      <DependentUpon>FormDiffractionSimulatorGeometry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAboutMe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAboutMe.designer.cs">
-      <DependentUpon>FormAboutMe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DiffractionSimulator\FormDiffractionSimulator.Designer.cs">
-      <DependentUpon>FormDiffractionSimulator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTEMID\FormTEMID.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTEMID\FormTEMID.Designer.cs">
-      <DependentUpon>FormTEMID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTEMID\FormTEMIDResults.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTEMID\FormTEMIDResults.Designer.cs">
-      <DependentUpon>FormTEMIDResults.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="FormStereonet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStereonet.Designer.cs">
-      <DependentUpon>FormStereonet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StructureViewer\FormAtom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StructureViewer\FormAtom.designer.cs">
-      <DependentUpon>FormAtom.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StructureViewer\FormResolution.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StructureViewer\FormResolution.designer.cs">
-      <DependentUpon>FormResolution.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StructureViewer\FormStructureViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StructureViewer\FormStructureViewer.designer.cs">
-      <DependentUpon>FormStructureViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulatorCBED.ja.resx">
-      <DependentUpon>FormDiffractionSimulatorCBED.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormCrystalDatabase.resx">
-      <DependentUpon>FormCrystalDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormDiffractionSpotInfo.resx">
-      <DependentUpon>FormDiffractionSpotInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAboutMe.ja.resx">
-      <DependentUpon>FormAboutMe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormImageSimulator.ja.resx">
-      <DependentUpon>FormImageSimulator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormImageSimulator.resx">
-      <DependentUpon>FormImageSimulator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.ja.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormRotation.resx">
-      <DependentUpon>FormRotation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SpotID\FormSpotDetails.resx">
-      <DependentUpon>FormSpotDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SpotID\FormSpotID.ja.resx">
-      <DependentUpon>FormSpotID.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SpotID\FormSpotID.resx">
-      <DependentUpon>FormSpotID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormStereonet.ja.resx">
-      <DependentUpon>FormStereonet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTEMID\InputBox.resx">
-      <DependentUpon>InputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PolycrystallineDiffraction\DiffractionPatternControl.resx">
-      <DependentUpon>DiffractionPatternControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PolycrystallineDiffraction\FormPolycrystallineDiffractionSimulator.resx">
-      <DependentUpon>FormPolycrystallineDiffractionSimulator.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulator.ja.resx">
-      <DependentUpon>FormDiffractionSimulator.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulatorDynamicCompression.resx">
-      <DependentUpon>FormDiffractionSimulatorDynamicCompression.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulatorCBED.resx">
-      <DependentUpon>FormDiffractionSimulatorCBED.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulatorGeometry.resx">
-      <DependentUpon>FormDiffractionSimulatorGeometry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAboutMe.resx">
-      <DependentUpon>FormAboutMe.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DiffractionSimulator\FormDiffractionSimulator.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormDiffractionSimulator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormStereonet.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormStereonet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTEMID\FormTEMID.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormTEMID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTEMID\FormTEMIDResults.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormTEMIDResults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StructureViewer\FormAtom.resx">
-      <DependentUpon>FormAtom.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StructureViewer\FormResolution.resx">
-      <DependentUpon>FormResolution.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StructureViewer\FormStructureViewer.ja.resx">
-      <DependentUpon>FormStructureViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StructureViewer\FormStructureViewer.resx">
-      <DependentUpon>FormStructureViewer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <BaseApplicationManifest Include="Properties\app.manifest" />
-    <Content Include="app.config">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="DataSetReciPro.xsc">
-      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
-    </None>
-    <None Include="DataSetReciPro.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetReciPro.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSetReciPro.xss">
-      <DependentUpon>DataSetReciPro.xsd</DependentUpon>
-    </None>
     <Content Include="doc\Bethe.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="doc\Bethe.pptx" />
-    <None Include="doc\draft.pptx" />
     <Content Include="doc\Hrtem.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="doc\Hrtem.pptx" />
-    <None Include="doc\ReciProManual%28en%29.docx" />
-    <Content Include="doc\ReciProManual%28en%29.pdf">
+    <Content Include="doc\ReciProManual(en).pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="doc\ReciProManual%28ja%29.docx" />
-    <Content Include="doc\ReciProManual%28ja%29.pdf">
+    <Content Include="doc\ReciProManual(ja).pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="OpenTK.dll.config" />
-    <None Include="packages.config" />
-    <Content Include="dll\bin32\hdf5.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin32\hdf5_hl.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin32\szip.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin32\zlib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin64\hdf5.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin64\hdf5_hl.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin64\szip.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\bin64\zlib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\x64\libiomp5md.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dll\x64\MathNet.Numerics.MKL.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Version.cs" />
-    <Content Include="StdDb.cdb3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 および x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App.ico">
+    <Content Include="image\App.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="initial.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="image\bethe.png" />
-    <Content Include="image\EquationEc.png" />
-    <Content Include="image\EquationEs.png" />
-    <Content Include="image\EquationKai.png" />
-    <Content Include="image\geometry.png" />
-    <Content Include="image\geometry1.png" />
-    <Content Include="image\geometry2.png" />
-    <Content Include="image\HRTEM.png" />
-    <Content Include="image\mesh.png" />
-    <Content Include="image\rotation.png" />
-    <Content Include="image\scattering.png" />
-    <Content Include="image\SpotID.png" />
-    <Content Include="image\Structure.ico" />
-    <Content Include="image\electron.png" />
-    <Content Include="image\kaeru.png" />
-    <Content Include="image\stereo.png" />
-    <Content Include="image\structure.png" />
-    <Content Include="image\Kaeru.ico" />
-    <Content Include="image\Stereo.ico" />
-    <Content Include="image\electron.ico" />
-    <Content Include="image\polycrystal.png" />
-    <Content Include="image\TwoDimensionalPseudoVoigt.png" />
+    <Content Include="StdDb.cdb3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+
   <ItemGroup>
-    <PublishFile Include="App.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="HDF5DotNet">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="image\bethe.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\electron.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\electron.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\geometry.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\geometry1.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\geometry2.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\Kaeru.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\kaeru.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\mesh.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\polycrystal.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\scattering.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\Stereo.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\stereo.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\Structure.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="image\structure.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="ImagingSolution.Control.GraphicsBox">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="initial.xml">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="IronPython">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="ja\Crystallography.Controls.resources">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Satellite</FileType>
-    </PublishFile>
-    <PublishFile Include="ja\ReciPro.resources">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Satellite</FileType>
-    </PublishFile>
-    <PublishFile Include="Microsoft.Dynamic">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Microsoft.Scripting">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Microsoft.Scripting.Metadata">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="OpenTK.GLControl">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="SpotID\TwoDimensionalPseudoVoigt.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
+    <ProjectReference Include="..\Crystallography.Controls\Crystallography.Controls.csproj" />
+    <ProjectReference Include="..\Crystallography.OpenGL\Crystallography.OpenGL.csproj" />
+    <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Reference Include="ImagingSolution.Control.GraphicsBox">
+      <HintPath>ImagingSolution.Control.GraphicsBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Crystallography.Controls\Crystallography.Controls.csproj">
-      <Project>{6f1c3736-e86f-46b3-9ff5-1ca1a018ef02}</Project>
-      <Name>Crystallography.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Crystallography.OpenGL\Crystallography.OpenGL.csproj">
-      <Project>{b3cb8d22-b8e1-43b9-9364-cf86d748d05a}</Project>
-      <Name>Crystallography.OpenGL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Crystallography\Crystallography.csproj">
-      <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
-      <Name>Crystallography</Name>
-    </ProjectReference>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>move /Y "$(TargetDir)*.dll" "$(TargetDir)dll"</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <Import Project="..\packages\MathNet.Numerics.MKL.Win-x64.2.5.0\build\MathNet.Numerics.MKL.Win-x64.targets" Condition="Exists('..\packages\MathNet.Numerics.MKL.Win-x64.2.5.0\build\MathNet.Numerics.MKL.Win-x64.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MathNet.Numerics.MKL.Win-x64.2.5.0\build\MathNet.Numerics.MKL.Win-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MathNet.Numerics.MKL.Win-x64.2.5.0\build\MathNet.Numerics.MKL.Win-x64.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -28,9 +28,9 @@ namespace Crystallography.Controls
             set => dataGridView.Font = new Font(dataGridView.Font.FontFamily, value);
         }
 
-        readonly Stopwatch sw = new Stopwatch();
+        readonly Stopwatch sw = new();
 
-        readonly ReaderWriterLockSlim rwlock = new ReaderWriterLockSlim();
+        readonly ReaderWriterLockSlim rwlock = new();
 
         readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
 
@@ -64,21 +64,21 @@ namespace Crystallography.Controls
         #region データベース読み込み/書き込み関連
 
         #region バイト書き込み/読み込み
-        private int readInt(Stream s) => BitConverter.ToInt32(readBytes(s, 4), 0);
-        private int readByte(Stream s) => s.ReadByte();
-        private long readLong(Stream s) => BitConverter.ToInt64(readBytes(s, 8), 0);
+        private static int readInt(Stream s) => BitConverter.ToInt32(readBytes(s, 4), 0);
+        private static int readByte(Stream s) => s.ReadByte();
+        private static long readLong(Stream s) => BitConverter.ToInt64(readBytes(s, 8), 0);
 
-        private byte[] readBytes(Stream s, int length)
+        private static byte[] readBytes(Stream s, int length)
         {
             var bytes = new byte[length];
             s.Read(bytes, 0, bytes.Length);
             return bytes;
         }
 
-        private void writeInt(Stream s, int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
-        private void writeLong(Stream s, long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
-        private void writeByte(Stream s, byte v) => s.WriteByte(v);
-        private void writeBytes(Stream s, byte[] v) => s.Write(v, 0, v.Length);
+        private static void writeInt(Stream s, int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
+        private static void writeLong(Stream s, long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
+        private static void writeByte(Stream s, byte v) => s.WriteByte(v);
+        private static void writeBytes(Stream s, byte[] v) => s.Write(v, 0, v.Length);
 
         #endregion
 
@@ -191,7 +191,7 @@ namespace Crystallography.Controls
             var total = dataTable.Count;
 
             using var fs = new FileStream(fn, FileMode.Create, FileAccess.Write);
-            
+
             writeByte(fs, 100);//とりあえず先頭に100 (分割なし)を書き込む
             writeInt(fs, total);//データの個数を書き込む
 
@@ -275,8 +275,8 @@ namespace Crystallography.Controls
             try
             {
                 int dataNum = 0, fileNum = 0;
-                var fileSizes = new long[0];
-                var checkSums = new byte[0][];
+                var fileSizes = Array.Empty<long>();
+                var checkSums = Array.Empty<byte[]>();
 
                 if (File.Exists(filename))
                 {
@@ -318,7 +318,7 @@ namespace Crystallography.Controls
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        private byte[] getMD5(string path)
+        private static byte[] getMD5(string path)
         {
             if (!File.Exists(path))
                 return null;
@@ -355,7 +355,7 @@ namespace Crystallography.Controls
         /// <param name="showEllapsedTime"></param>
         /// <param name="showRemainTime"></param>
         /// <param name="digit"></param>
-        private (double Progress, string Message) report(long current, long total, long elapsedMilliseconds, string message,
+        private static (double Progress, string Message) report(long current, long total, long elapsedMilliseconds, string message,
             bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
         {
             var ratio = Math.Min(1, (double)current / total);
