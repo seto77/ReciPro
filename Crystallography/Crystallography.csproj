@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.5.25.0203</AssemblyVersion>
-    <FileVersion>2021.5.25.0203</FileVersion>
+    <AssemblyVersion>2021.5.25.0213</AssemblyVersion>
+    <FileVersion>2021.5.25.0213</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

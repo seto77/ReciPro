@@ -128,8 +128,8 @@ namespace ReciPro
 
         private Bitmap DrawPic(PhotoInformation photo, Size size, double mag)
         {
-            Bitmap bmp = new Bitmap(size.Width, size.Height);
-            Graphics g = Graphics.FromImage(bmp);
+            var bmp = new Bitmap(size.Width, size.Height);
+            var g = Graphics.FromImage(bmp);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             if (photo.Paintable)
                 g.Clear(Color.White);
@@ -170,7 +170,7 @@ namespace ReciPro
             //p3
             if (photo.IsTriangleMode)
             {
-                PointF p3 = new PointF(p2.X - p1.X, p2.Y - p1.Y);
+                var p3 = new PointF(p2.X - p1.X, p2.Y - p1.Y);
                 angle = Math.Atan2(p3.Y, p3.X);
                 length = (float)Math.Sqrt(p3.X * p3.X + p3.Y * p3.Y);
                 g.Transform = new System.Drawing.Drawing2D.Matrix((float)Math.Cos(angle), (float)Math.Sin(angle), -(float)Math.Sin(angle), (float)Math.Cos(angle),
@@ -194,7 +194,7 @@ namespace ReciPro
                 for (int i = -n; i <= n; i++)
                     for (int j = Math.Abs(i) - n; j <= -Math.Abs(i) + n; j += -Math.Abs(i) + n != 0 ? 2 * (-Math.Abs(i) + n) : 1)
                     {
-                        PointF p = new PointF(p1.X * i + p2.X * j, p1.Y * i + p2.Y * j);
+                        var p = new PointF(p1.X * i + p2.X * j, p1.Y * i + p2.Y * j);
                         if (g.IsVisible(p))
                         {
                             g.FillEllipse(new SolidBrush(Color.Black), p.X - ptSize / 2, p.Y - ptSize / 2, ptSize, ptSize);
@@ -209,8 +209,8 @@ namespace ReciPro
             }
 
             //ç≈å„Ç…éöÇèëÇ≠
-            Font strFont = new Font("tahoma", 7.5f, FontStyle.Regular);
-            SolidBrush brush = new SolidBrush(Color.SlateBlue);
+            var strFont = new Font("tahoma", 7.5f, FontStyle.Regular);
+            var brush = new SolidBrush(Color.SlateBlue);
             g.Transform = new System.Drawing.Drawing2D.Matrix(1, 0, 0, 1, 0, 0);
             if (!photo.Paintable)
             {
@@ -278,7 +278,7 @@ namespace ReciPro
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (formMain.Crystal == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0) return;
-            List<ZoneAxis> za = new List<ZoneAxis>();
+            var za = new List<ZoneAxis>();
 
             PhotoInformation photo;
 
@@ -332,7 +332,7 @@ namespace ReciPro
             textBox_TextChanged(new object(), new EventArgs());
             //photo3Ç™ëIëÇ≥ÇÍÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©Ç≈ï™äÚ
 
-            List<ZoneAxes> candidate = new List<ZoneAxes>();
+            var candidate = new List<ZoneAxes>();
             if (!checkBoxPhoto3.Checked)
             {//1,2ÇæÇØëIëÇ≥ÇÍÇƒÇ¢ÇÈèÍçá
                 for (int i = 0; i < formMain.Crystals.Length; i++)
