@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -31,18 +32,24 @@ namespace ReciPro
         private static extern short GetAsyncKeyState(int nVirtKey);
 
         #region WebClientの派生クラス
-        public class WebClient2 : WebClient
-        {
-            public int Timeout { get; set; }
-            public WebClient2(int timeout) { Timeout = timeout; }
-            protected override WebRequest GetWebRequest(Uri address)
-            {
-                var request = base.GetWebRequest(address);
-                if (request != null)
-                    request.Timeout = this.Timeout;
-                return request;
-            }
-        }
+        private static readonly HttpClient httpClient = new HttpClient();
+
+        //private async Task DownloadAsync(string url, string filename)
+        //{
+        //    using (var request = new HttpRequestMessage(HttpMethod.Get, new Uri(url)))
+        //    using (var response = await httpClient.SendAsync(request))
+        //    {
+        //        if (response.StatusCode == HttpStatusCode.OK)
+        //        {
+        //            using (var content = response.Content)
+        //            using (var stream = await content.ReadAsStreamAsync())
+        //            using (var fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
+        //            {
+        //                stream.CopyTo(fileStream);
+        //            }
+        //        }
+        //    }
+        //}
         #endregion
 
         #region クリップボード監視
@@ -197,10 +204,21 @@ namespace ReciPro
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
             //WEBから最新のマニュアルファイルを取得
-            new WebClient2(100).DownloadFileAsync(
-                new Uri("https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"),
-                "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
-                );
+
+
+
+
+            //new WebClient2(100).DownloadFileAsync(
+            //    new Uri("https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"),
+            //    "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
+            //    );
+
+            //await DownloadAsync(
+            //    "https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf",
+            //    "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
+
+            //    );
+
 
             commonDialog = new Crystallography.Controls.CommonDialog
             {
