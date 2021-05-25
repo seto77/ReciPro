@@ -12004,11 +12004,20 @@ new[]{535,2,6,2,1,1}
 		public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSytemAndGroupFromSeriesNumber(int seriesNumber)
 		{
 			for (int i = 0; i < BelongingNumberOfSymmetry.Length; i++)
-				for (int j = 0; j < BelongingNumberOfSymmetry[i].Length; j++)
-					for (int k = 0; k < BelongingNumberOfSymmetry[i][j].Length; k++)
-						if (seriesNumber == BelongingNumberOfSymmetry[i][j][k])
-							return (i, j, k);
-			return (0, 0, 0);
+            {
+                for (int j = 0; j < BelongingNumberOfSymmetry[i].Length; j++)
+                {
+                    for (int k = 0; k < BelongingNumberOfSymmetry[i][j].Length; k++)
+                    {
+                        if (seriesNumber == BelongingNumberOfSymmetry[i][j][k])
+                        {
+                            return (i, j, k);
+                        }
+                    }
+                }
+            }
+
+            return (0, 0, 0);
 		}
 
 		/// <summary>
@@ -12020,18 +12029,26 @@ new[]{535,2,6,2,1,1}
 		public static int GetSeriesNumber(int number, int sub)
 		{
 			for (int i = 0; i < NumArray.Length; i++)
-				if (NumArray[i][1] == number && NumArray[i][2] == sub)
-					return i;
-			return -1;
+            {
+                if (NumArray[i][1] == number && NumArray[i][2] == sub)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
 		}
 
 		//Unknown;530+2の空間群の名前(extra,SF,Hall,HM,HM_full,1軸p,1軸v,2軸p,2軸v,3軸p,3軸v,点群、ラウエ群、結晶系)をセット
 		public static Symmetry Get_Symmetry(int numSeries)
 		{
 			#region
-			if (numSeries < 0 || numSeries >= TotalSpaceGroupNumber) return null;
+			if (numSeries < 0 || numSeries >= TotalSpaceGroupNumber)
+            {
+                return null;
+            }
 
-			var str = StrArray[numSeries];
+            var str = StrArray[numSeries];
 			var num = NumArray[numSeries];
 			var sym = new Symmetry
 			{
@@ -12070,10 +12087,11 @@ new[]{535,2,6,2,1,1}
 		public static string[] ExtinctionRule(Symmetry sym)
 		{
 			#region
-			List<string> str = new List<string>();
+			var str = new List<string>();
 
 			if (sym.LatticeTypeStr != "P")
-				str.Add(sym.LatticeTypeStr switch
+            {
+                str.Add(sym.LatticeTypeStr switch
 				{
 					"A" => "hkl: k+l=2n: A",
 					"B" => "hkl: h+l=2n: B",
@@ -12083,8 +12101,9 @@ new[]{535,2,6,2,1,1}
 					"R" => "hkl: -h+k+l=3n: R",
 					_ => ""
 				});
+            }
 
-			switch (sym.CrystalSystemNumber)
+            switch (sym.CrystalSystemNumber)
 			{
 				case 0://	Unknown
 					break;
@@ -12093,156 +12112,557 @@ new[]{535,2,6,2,1,1}
 					break;
 
 				case 2://	monoclinic
-					if (sym.StrSE1p == "2s1") str.Add("h00: h=2n: 2sub1//[100]");
-					if (sym.StrSE2p == "2s1") str.Add("0k0: k=2n: 2sub1//[010]");
-					if (sym.StrSE3p == "2s1") str.Add("00l: l=2n: 2sub1//[001]");
+					if (sym.StrSE1p == "2s1")
+                    {
+                        str.Add("h00: h=2n: 2sub1//[100]");
+                    }
 
-					if (sym.StrSE1v == "b") str.Add("0kl: k=2n: b⊥[100]");
-					if (sym.StrSE1v == "c") str.Add("0kl: l=2n: c⊥[100]");
-					if (sym.StrSE1v == "n") str.Add("0kl: k+l=2n: n⊥[100]");
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        str.Add("0k0: k=2n: 2sub1//[010]");
+                    }
 
-					if (sym.StrSE2v == "a") str.Add("h0l: h=2n: a⊥[010]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[010]");
-					if (sym.StrSE2v == "n") str.Add("h0l: l+h=2n: n⊥[010]");
+                    if (sym.StrSE3p == "2s1")
+                    {
+                        str.Add("00l: l=2n: 2sub1//[001]");
+                    }
 
-					if (sym.StrSE3v == "a") str.Add("hk0: h=2n: a⊥[001]");
-					if (sym.StrSE3v == "b") str.Add("hk0: k=2n: b⊥[001]");
-					if (sym.StrSE3v == "n") str.Add("hk0: h+k=2n: n⊥[001]");
-					break;
+                    if (sym.StrSE1v == "b")
+                    {
+                        str.Add("0kl: k=2n: b⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "c")
+                    {
+                        str.Add("0kl: l=2n: c⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "n")
+                    {
+                        str.Add("0kl: k+l=2n: n⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "a")
+                    {
+                        str.Add("h0l: h=2n: a⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "n")
+                    {
+                        str.Add("h0l: l+h=2n: n⊥[010]");
+                    }
+
+                    if (sym.StrSE3v == "a")
+                    {
+                        str.Add("hk0: h=2n: a⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "b")
+                    {
+                        str.Add("hk0: k=2n: b⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hk0: h+k=2n: n⊥[001]");
+                    }
+
+                    break;
 
 				case 3://	orthorhombic
-					if (sym.StrSE1p == "2s1") str.Add("h00: h=2n: 2sub1//[100]");
-					if (sym.StrSE2p == "2s1") str.Add("0k0: k=2n: 2sub1//[010]");
-					if (sym.StrSE3p == "2s1") str.Add("00l: l=2n: 2sub1//[001]");
+					if (sym.StrSE1p == "2s1")
+                    {
+                        str.Add("h00: h=2n: 2sub1//[100]");
+                    }
 
-					if (sym.StrSE1v == "b") str.Add("0kl: k=2n: b⊥[100]");
-					if (sym.StrSE1v == "c") str.Add("0kl: l=2n: c⊥[100]");
-					if (sym.StrSE1v == "n") str.Add("0kl: k+l=2n: n⊥[100]");
-					if (sym.StrSE1v == "d") str.Add("0kl: k+l=4n: d⊥[100]");
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        str.Add("0k0: k=2n: 2sub1//[010]");
+                    }
 
-					if (sym.StrSE2v == "a") str.Add("h0l: h=2n: a⊥[010]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[010]");
-					if (sym.StrSE2v == "n") str.Add("h0l: l+h=2n: n⊥[010]");
-					if (sym.StrSE2v == "d") str.Add("h0l: l+h=4n: d⊥[010]");
+                    if (sym.StrSE3p == "2s1")
+                    {
+                        str.Add("00l: l=2n: 2sub1//[001]");
+                    }
 
-					if (sym.StrSE3v == "a") str.Add("hk0: h=2n: a⊥[001]");
-					if (sym.StrSE3v == "b") str.Add("hk0: k=2n: b⊥[001]");
-					if (sym.StrSE3v == "n") str.Add("hk0: h+k=2n: n⊥[001]");
-					if (sym.StrSE3v == "d") str.Add("hk0: h+k=4n: d⊥[001]");
-					break;
+                    if (sym.StrSE1v == "b")
+                    {
+                        str.Add("0kl: k=2n: b⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "c")
+                    {
+                        str.Add("0kl: l=2n: c⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "n")
+                    {
+                        str.Add("0kl: k+l=2n: n⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "d")
+                    {
+                        str.Add("0kl: k+l=4n: d⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "a")
+                    {
+                        str.Add("h0l: h=2n: a⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "n")
+                    {
+                        str.Add("h0l: l+h=2n: n⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "d")
+                    {
+                        str.Add("h0l: l+h=4n: d⊥[010]");
+                    }
+
+                    if (sym.StrSE3v == "a")
+                    {
+                        str.Add("hk0: h=2n: a⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "b")
+                    {
+                        str.Add("hk0: k=2n: b⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hk0: h+k=2n: n⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hk0: h+k=4n: d⊥[001]");
+                    }
+
+                    break;
 
 				case 4://	tetragonal
-					if (sym.StrSE1p == "4s1") str.Add("00l: l=4n: 4sub1//[001]");
-					if (sym.StrSE1p == "4s2") str.Add("00l: l=2n: 4sub2//[001]");
-					if (sym.StrSE1p == "4s3") str.Add("00l: l=4n: 4sub3//[001]");
+					if (sym.StrSE1p == "4s1")
+                    {
+                        str.Add("00l: l=4n: 4sub1//[001]");
+                    }
 
-					if (sym.StrSE2p == "2s1") str.Add("h00: h=2n: 2sub1//[100]");
-					if (sym.StrSE2p == "2s1") str.Add("0k0: k=2n: 2sub1//[010]");
+                    if (sym.StrSE1p == "4s2")
+                    {
+                        str.Add("00l: l=2n: 4sub2//[001]");
+                    }
 
-					if (sym.StrSE1v == "a") str.Add("hk0: h=2n: a⊥[001]");
-					if (sym.StrSE1v == "a") str.Add("hk0: k=2n: b⊥[001]");
-					if (sym.StrSE1v == "n") str.Add("hk0: h+k=2n: n⊥[001]");
+                    if (sym.StrSE1p == "4s3")
+                    {
+                        str.Add("00l: l=4n: 4sub3//[001]");
+                    }
 
-					if (sym.StrSE2v == "b") str.Add("h0l: h=2n: a⊥[010]");
-					if (sym.StrSE2v == "b") str.Add("0kl: k=2n: b⊥[100]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[010]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[100]");
-					if (sym.StrSE2v == "n") str.Add("h0l: h+l=2n: n⊥[010]");
-					if (sym.StrSE2v == "n") str.Add("0kl: k+l=2n: n⊥[100]");
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        str.Add("h00: h=2n: 2sub1//[100]");
+                    }
 
-					if (sym.StrSE3v == "c") str.Add("hhl: l=2n: c⊥[1-10]");
-					if (sym.StrSE3v == "c") str.Add("h-hl: l=2n: c⊥[110]");
-					if (sym.StrSE3v == "d") str.Add("hhl: 2h+l=4n: d⊥[1-10]");
-					if (sym.StrSE3v == "d") str.Add("h-hl: 2h+l=4n: d⊥[110]");
-					break;
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        str.Add("0k0: k=2n: 2sub1//[010]");
+                    }
+
+                    if (sym.StrSE1v == "a")
+                    {
+                        str.Add("hk0: h=2n: a⊥[001]");
+                    }
+
+                    if (sym.StrSE1v == "a")
+                    {
+                        str.Add("hk0: k=2n: b⊥[001]");
+                    }
+
+                    if (sym.StrSE1v == "n")
+                    {
+                        str.Add("hk0: h+k=2n: n⊥[001]");
+                    }
+
+                    if (sym.StrSE2v == "b")
+                    {
+                        str.Add("h0l: h=2n: a⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "b")
+                    {
+                        str.Add("0kl: k=2n: b⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "n")
+                    {
+                        str.Add("h0l: h+l=2n: n⊥[010]");
+                    }
+
+                    if (sym.StrSE2v == "n")
+                    {
+                        str.Add("0kl: k+l=2n: n⊥[100]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hhl: l=2n: c⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("h-hl: l=2n: c⊥[110]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hhl: 2h+l=4n: d⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("h-hl: 2h+l=4n: d⊥[110]");
+                    }
+
+                    break;
 
 				case 5://	trigonal
 					
 
-					if (sym.StrSE1p == "3s1") str.Add("00l: l=3n: 3sub1//[001]");
-					if (sym.StrSE1p == "3s2") str.Add("00l: l=3n: 3sub2//[001]");
+					if (sym.StrSE1p == "3s1")
+                    {
+                        str.Add("00l: l=3n: 3sub1//[001]");
+                    }
 
-					if (sym.StrSE2v == "c") str.Add("h-hl: l=2n: c⊥[-1-10]");
-					if (sym.StrSE2v == "c") str.Add("0kl: l=2n: c⊥[100]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[010]");
+                    if (sym.StrSE1p == "3s2")
+                    {
+                        str.Add("00l: l=3n: 3sub2//[001]");
+                    }
 
-					if (sym.StrSE3v == "c") str.Add("hhl: l=2n: c⊥[1-10]");
-					if (sym.StrSE3v == "c") str.Add("-2hhl: l=2n: c⊥[120]");
-					if (sym.StrSE3v == "c") str.Add("h-2hl: l=2n: c⊥[-2-10]");
-					break;
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h-hl: l=2n: c⊥[-1-10]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("0kl: l=2n: c⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hhl: l=2n: c⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("-2hhl: l=2n: c⊥[120]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("h-2hl: l=2n: c⊥[-2-10]");
+                    }
+
+                    break;
 
 				case 6://	hexagonal
-					if (sym.StrSE1p == "6s1") str.Add("00l: l=6n: 6sub1//[001]");
-					if (sym.StrSE1p == "6s2") str.Add("00l: l=3n: 6sub2//[001]");
-					if (sym.StrSE1p == "6s3") str.Add("00l: l=2n: 6sub3//[001]");
-					if (sym.StrSE1p == "6s4") str.Add("00l: l=3n: 6sub4//[001]");
-					if (sym.StrSE1p == "6s5") str.Add("00l: l=6n: 6sub5//[001]");
+					if (sym.StrSE1p == "6s1")
+                    {
+                        str.Add("00l: l=6n: 6sub1//[001]");
+                    }
 
-					if (sym.StrSE2v == "c") str.Add("h-hl: l=2n: c⊥[-1-10]");
-					if (sym.StrSE2v == "c") str.Add("0kl: l=2n: c⊥[100]");
-					if (sym.StrSE2v == "c") str.Add("h0l: l=2n: c⊥[010]");
+                    if (sym.StrSE1p == "6s2")
+                    {
+                        str.Add("00l: l=3n: 6sub2//[001]");
+                    }
 
-					if (sym.StrSE3v == "c") str.Add("hhl: l=2n: c⊥[1-10]");
-					if (sym.StrSE3v == "c") str.Add("-2hhl: l=2n: c⊥[120]");
-					if (sym.StrSE3v == "c") str.Add("h-2hl: l=2n: c⊥[-2-10]");
-					break;
+                    if (sym.StrSE1p == "6s3")
+                    {
+                        str.Add("00l: l=2n: 6sub3//[001]");
+                    }
+
+                    if (sym.StrSE1p == "6s4")
+                    {
+                        str.Add("00l: l=3n: 6sub4//[001]");
+                    }
+
+                    if (sym.StrSE1p == "6s5")
+                    {
+                        str.Add("00l: l=6n: 6sub5//[001]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h-hl: l=2n: c⊥[-1-10]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("0kl: l=2n: c⊥[100]");
+                    }
+
+                    if (sym.StrSE2v == "c")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hhl: l=2n: c⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("-2hhl: l=2n: c⊥[120]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("h-2hl: l=2n: c⊥[-2-10]");
+                    }
+
+                    break;
 
 				case 7://	cubic
-					if (sym.StrSE1p == "2s1") str.Add("h00: h=2n: 2sub1//[100]");
-					if (sym.StrSE1p == "2s1") str.Add("0k0: k=2n: 2sub1//[010]");
-					if (sym.StrSE1p == "2s1") str.Add("00l: l=2n: 2sub1//[001]");
+					if (sym.StrSE1p == "2s1")
+                    {
+                        str.Add("h00: h=2n: 2sub1//[100]");
+                    }
 
-					if (sym.StrSE1p == "4s1") str.Add("h00: h=4n: 4sub1//[100]");
-					if (sym.StrSE1p == "4s1") str.Add("0k0: k=4n: 4sub1//[010]");
-					if (sym.StrSE1p == "4s1") str.Add("00l: l=4n: 4sub1//[001]");
+                    if (sym.StrSE1p == "2s1")
+                    {
+                        str.Add("0k0: k=2n: 2sub1//[010]");
+                    }
 
-					if (sym.StrSE1p == "4s2") str.Add("h00: h=2n: 4sub2//[100]");
-					if (sym.StrSE1p == "4s2") str.Add("0k0: k=2n: 4sub2//[010]");
-					if (sym.StrSE1p == "4s2") str.Add("00l: l=2n: 4sub2//[001]");
+                    if (sym.StrSE1p == "2s1")
+                    {
+                        str.Add("00l: l=2n: 2sub1//[001]");
+                    }
 
-					if (sym.StrSE1p == "4s3") str.Add("h00: h=4n: 4sub3//[100]");
-					if (sym.StrSE1p == "4s3") str.Add("0k0: k=4n: 4sub3//[010]");
-					if (sym.StrSE1p == "4s3") str.Add("00l: l=4n: 4sub3//[001]");
+                    if (sym.StrSE1p == "4s1")
+                    {
+                        str.Add("h00: h=4n: 4sub1//[100]");
+                    }
 
-					if (sym.StrSE1v == "a") str.Add("hk0: h=2n: a⊥[001]");
-					if (sym.StrSE1v == "a") str.Add("0kl: k=2n: b⊥[100]");
-					if (sym.StrSE1v == "a") str.Add("h0l: l=2n: c⊥[010]");
-					if (sym.LaueGroupStr == "m3m")
+                    if (sym.StrSE1p == "4s1")
+                    {
+                        str.Add("0k0: k=4n: 4sub1//[010]");
+                    }
+
+                    if (sym.StrSE1p == "4s1")
+                    {
+                        str.Add("00l: l=4n: 4sub1//[001]");
+                    }
+
+                    if (sym.StrSE1p == "4s2")
+                    {
+                        str.Add("h00: h=2n: 4sub2//[100]");
+                    }
+
+                    if (sym.StrSE1p == "4s2")
+                    {
+                        str.Add("0k0: k=2n: 4sub2//[010]");
+                    }
+
+                    if (sym.StrSE1p == "4s2")
+                    {
+                        str.Add("00l: l=2n: 4sub2//[001]");
+                    }
+
+                    if (sym.StrSE1p == "4s3")
+                    {
+                        str.Add("h00: h=4n: 4sub3//[100]");
+                    }
+
+                    if (sym.StrSE1p == "4s3")
+                    {
+                        str.Add("0k0: k=4n: 4sub3//[010]");
+                    }
+
+                    if (sym.StrSE1p == "4s3")
+                    {
+                        str.Add("00l: l=4n: 4sub3//[001]");
+                    }
+
+                    if (sym.StrSE1v == "a")
+                    {
+                        str.Add("hk0: h=2n: a⊥[001]");
+                    }
+
+                    if (sym.StrSE1v == "a")
+                    {
+                        str.Add("0kl: k=2n: b⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "a")
+                    {
+                        str.Add("h0l: l=2n: c⊥[010]");
+                    }
+
+                    if (sym.LaueGroupStr == "m3m")
 					{
-						if (sym.StrSE1v == "a") str.Add("hk0: k=2n: b⊥[001]");
-						if (sym.StrSE1v == "a") str.Add("0kl: l=2n: c⊥[100]");
-						if (sym.StrSE1v == "a") str.Add("h0l: h=2n: a⊥[010]");
-					}
+						if (sym.StrSE1v == "a")
+                        {
+                            str.Add("hk0: k=2n: b⊥[001]");
+                        }
 
-					if (sym.StrSE1v == "n") str.Add("0kl: k+l=2n: n⊥[100]");
-					if (sym.StrSE1v == "n") str.Add("h0l: h+l=2n: n⊥[010]");
-					if (sym.StrSE1v == "n") str.Add("hk0: h+k=2n: n⊥[001]");
+                        if (sym.StrSE1v == "a")
+                        {
+                            str.Add("0kl: l=2n: c⊥[100]");
+                        }
 
-					if (sym.StrSE1v == "d") str.Add("0kl: k+l=4n: d⊥[100]");
-					if (sym.StrSE1v == "d") str.Add("h0l: h+l=4n: d⊥[010]");
-					if (sym.StrSE1v == "d") str.Add("hk0: h+k=4n: d⊥[001]");
+                        if (sym.StrSE1v == "a")
+                        {
+                            str.Add("h0l: h=2n: a⊥[010]");
+                        }
+                    }
 
-					if (sym.StrSE3v == "c") str.Add("h-hl: l=2n: c⊥[110]");
-					if (sym.StrSE3v == "c") str.Add("hhl: l=2n: c⊥[1-10]");
-					if (sym.StrSE3v == "c") str.Add("hk-k: h=2n: a⊥[011]");
-					if (sym.StrSE3v == "c") str.Add("hkk: h=2n: a⊥[01-1]");
-					if (sym.StrSE3v == "c") str.Add("hk-h: k=2n: b⊥[101]");
-					if (sym.StrSE3v == "c") str.Add("hkh: k=2n: b⊥[10-1]");
+					if (sym.StrSE1v == "n")
+                    {
+                        str.Add("0kl: k+l=2n: n⊥[100]");
+                    }
 
-					if (sym.StrSE3v == "n") str.Add("hk-k: h-2k=2n: n⊥[011]");
-					if (sym.StrSE3v == "n") str.Add("hkk: h+2k=2n: n⊥[01-1]");
-					if (sym.StrSE3v == "n") str.Add("hk-h: 2h-k=2n: n⊥[101]");
-					if (sym.StrSE3v == "n") str.Add("hkh: 2h+k=2n: n⊥[-101]");
-					if (sym.StrSE3v == "n") str.Add("h-hl: 2h-l=2n: n⊥[110]");
-					if (sym.StrSE3v == "n") str.Add("hhl: 2h+l=2n: n⊥[1-10]");
+                    if (sym.StrSE1v == "n")
+                    {
+                        str.Add("h0l: h+l=2n: n⊥[010]");
+                    }
 
-					if (sym.StrSE3v == "d") str.Add("hk-k: h-2k=4n: d⊥[011]");
-					if (sym.StrSE3v == "d") str.Add("hkk: h+2k=4n: d⊥[01-1]");
-					if (sym.StrSE3v == "d") str.Add("hk-h: 2h-k=4n: d⊥[101]");
-					if (sym.StrSE3v == "d") str.Add("hkh: 2h+k=4n: d⊥[-101]");
-					if (sym.StrSE3v == "d") str.Add("h-hl: 2h-l=4n: d⊥[110]");
-					if (sym.StrSE3v == "d") str.Add("hhl: 2h+l=4n: d⊥[1-10]");
-					break;
+                    if (sym.StrSE1v == "n")
+                    {
+                        str.Add("hk0: h+k=2n: n⊥[001]");
+                    }
+
+                    if (sym.StrSE1v == "d")
+                    {
+                        str.Add("0kl: k+l=4n: d⊥[100]");
+                    }
+
+                    if (sym.StrSE1v == "d")
+                    {
+                        str.Add("h0l: h+l=4n: d⊥[010]");
+                    }
+
+                    if (sym.StrSE1v == "d")
+                    {
+                        str.Add("hk0: h+k=4n: d⊥[001]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("h-hl: l=2n: c⊥[110]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hhl: l=2n: c⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hk-k: h=2n: a⊥[011]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hkk: h=2n: a⊥[01-1]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hk-h: k=2n: b⊥[101]");
+                    }
+
+                    if (sym.StrSE3v == "c")
+                    {
+                        str.Add("hkh: k=2n: b⊥[10-1]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hk-k: h-2k=2n: n⊥[011]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hkk: h+2k=2n: n⊥[01-1]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hk-h: 2h-k=2n: n⊥[101]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hkh: 2h+k=2n: n⊥[-101]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("h-hl: 2h-l=2n: n⊥[110]");
+                    }
+
+                    if (sym.StrSE3v == "n")
+                    {
+                        str.Add("hhl: 2h+l=2n: n⊥[1-10]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hk-k: h-2k=4n: d⊥[011]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hkk: h+2k=4n: d⊥[01-1]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hk-h: 2h-k=4n: d⊥[101]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hkh: 2h+k=4n: d⊥[-101]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("h-hl: 2h-l=4n: d⊥[110]");
+                    }
+
+                    if (sym.StrSE3v == "d")
+                    {
+                        str.Add("hhl: 2h+l=4n: d⊥[1-10]");
+                    }
+
+                    break;
 			}
 			return str.ToArray();
 			#endregion
@@ -12487,14 +12907,32 @@ new[]{535,2,6,2,1,1}
 			#region
 			var func = new List<Func<int, int, int, string>>();
 
-			if (sym.LatticeTypeStr == "A") func.Add((h, k, l) => (k + l) % 2 != 0 ? "A" : null);
-			else if (sym.LatticeTypeStr == "B") func.Add((h, k, l) => (l + h) % 2 != 0 ? "B" : null);
-			else if (sym.LatticeTypeStr == "C") func.Add((h, k, l) => (h + k) % 2 != 0 ? "C" : null);
-			else if (sym.LatticeTypeStr == "I") func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null);
-			else if (sym.LatticeTypeStr == "F") func.Add((h, k, l) => ((h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0) ? "F" : null);
-			else if (sym.LatticeTypeStr == "R") func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null);
+			if (sym.LatticeTypeStr == "A")
+            {
+                func.Add((h, k, l) => (k + l) % 2 != 0 ? "A" : null);
+            }
+            else if (sym.LatticeTypeStr == "B")
+            {
+                func.Add((h, k, l) => (l + h) % 2 != 0 ? "B" : null);
+            }
+            else if (sym.LatticeTypeStr == "C")
+            {
+                func.Add((h, k, l) => (h + k) % 2 != 0 ? "C" : null);
+            }
+            else if (sym.LatticeTypeStr == "I")
+            {
+                func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null);
+            }
+            else if (sym.LatticeTypeStr == "F")
+            {
+                func.Add((h, k, l) => ((h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0) ? "F" : null);
+            }
+            else if (sym.LatticeTypeStr == "R")
+            {
+                func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null);
+            }
 
-			switch (sym.CrystalSystemNumber)
+            switch (sym.CrystalSystemNumber)
 			{
 				case 0://	Unknown
 					break;
@@ -12503,50 +12941,146 @@ new[]{535,2,6,2,1,1}
 					break;
 
 				case 2://	monoclinic
-					if (sym.StrSE1p == "2s1") func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
-					if (sym.StrSE2p == "2s1") func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
-					if (sym.StrSE3p == "2s1") func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
+					if (sym.StrSE1p == "2s1")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
+                    }
 
-					if (sym.StrSE1v == "b") func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
-					else if (sym.StrSE1v == "c") func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
-					else if (sym.StrSE1v == "n") func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "n⊥[100]" : null);
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
+                    }
 
-					if (sym.StrSE2v == "a") func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
-					else if (sym.StrSE2v == "c") func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
-					else if (sym.StrSE2v == "n") func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "n⊥[010]" : null);
+                    if (sym.StrSE3p == "2s1")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
+                    }
 
-					if (sym.StrSE3v == "a") func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
-					else if (sym.StrSE3v == "b") func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
-					else if (sym.StrSE3v == "n") func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
-					break;
+                    if (sym.StrSE1v == "b")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
+                    }
+                    else if (sym.StrSE1v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
+                    }
+                    else if (sym.StrSE1v == "n")
+                    {
+                        func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "n⊥[100]" : null);
+                    }
+
+                    if (sym.StrSE2v == "a")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "n")
+                    {
+                        func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "n⊥[010]" : null);
+                    }
+
+                    if (sym.StrSE3v == "a")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
+                    }
+                    else if (sym.StrSE3v == "b")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
+                    }
+                    else if (sym.StrSE3v == "n")
+                    {
+                        func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
+                    }
+
+                    break;
 
 				case 3://	orthorhombic
-					if (sym.StrSE1p == "2s1") func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
-					if (sym.StrSE2p == "2s1") func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
-					if (sym.StrSE3p == "2s1") func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
+					if (sym.StrSE1p == "2s1")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
+                    }
 
-					if (sym.StrSE1v == "b") func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
-					else if (sym.StrSE1v == "c") func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
-					else if (sym.StrSE1v == "n") func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "n⊥[100]" : null);
-					else if (sym.StrSE1v == "d") func.Add((h, k, l) => (k + l) % 4 != 0 && h == 0 ? "d⊥[100]" : null);
+                    if (sym.StrSE2p == "2s1")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
+                    }
 
-					if (sym.StrSE2v == "a") func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
-					else if (sym.StrSE2v == "c") func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
-					else if (sym.StrSE2v == "n") func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "n⊥[010]" : null);
-					else if (sym.StrSE2v == "d") func.Add((h, k, l) => (h + l) % 4 != 0 && k == 0 ? "d⊥[010]" : null);
+                    if (sym.StrSE3p == "2s1")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
+                    }
 
-					if (sym.StrSE3v == "a") func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
-					else if (sym.StrSE3v == "b") func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
-					else if (sym.StrSE3v == "n") func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
-					else if (sym.StrSE3v == "d") func.Add((h, k, l) => (h + k) % 4 != 0 && l == 0 ? "d⊥[001]" : null);
-					break;
+                    if (sym.StrSE1v == "b")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
+                    }
+                    else if (sym.StrSE1v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
+                    }
+                    else if (sym.StrSE1v == "n")
+                    {
+                        func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "n⊥[100]" : null);
+                    }
+                    else if (sym.StrSE1v == "d")
+                    {
+                        func.Add((h, k, l) => (k + l) % 4 != 0 && h == 0 ? "d⊥[100]" : null);
+                    }
+
+                    if (sym.StrSE2v == "a")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "n")
+                    {
+                        func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "n⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "d")
+                    {
+                        func.Add((h, k, l) => (h + l) % 4 != 0 && k == 0 ? "d⊥[010]" : null);
+                    }
+
+                    if (sym.StrSE3v == "a")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
+                    }
+                    else if (sym.StrSE3v == "b")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
+                    }
+                    else if (sym.StrSE3v == "n")
+                    {
+                        func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
+                    }
+                    else if (sym.StrSE3v == "d")
+                    {
+                        func.Add((h, k, l) => (h + k) % 4 != 0 && l == 0 ? "d⊥[001]" : null);
+                    }
+
+                    break;
 
 				case 4://	tetragonal
-					if (sym.StrSE1p == "4s1") func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub1//[001]" : null);
-					else if (sym.StrSE1p == "4s2") func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "4sub2//[001]" : null);
-					else if (sym.StrSE1p == "4s3") func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub3//[001]" : null);
+					if (sym.StrSE1p == "4s1")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub1//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "4s2")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "4sub2//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "4s3")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub3//[001]" : null);
+                    }
 
-					if (sym.StrSE2p == "2s1")
+                    if (sym.StrSE2p == "2s1")
 					{
 						func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
 						func.Add((h, k, l) => h == 0 && k % 2 != 0 && l == 0 ? "2sub1//[010]" : null);
@@ -12557,11 +13091,20 @@ new[]{535,2,6,2,1,1}
 						func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
 						func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
 					}
-					else if (sym.StrSE1v == "n") func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
+					else if (sym.StrSE1v == "n")
+                    {
+                        func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
+                    }
 
-					if (sym.StrSE2v == "b") func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
-					else if (sym.StrSE2v == "b") func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
-					else if (sym.StrSE2v == "c")
+                    if (sym.StrSE2v == "b")
+                    {
+                        func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
+                    }
+                    else if (sym.StrSE2v == "b")
+                    {
+                        func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
+                    }
+                    else if (sym.StrSE2v == "c")
 					{
 						func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
 						func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
@@ -12585,9 +13128,16 @@ new[]{535,2,6,2,1,1}
 					break;
 
 				case 5://	trigonal
-					if (sym.StrSE1p == "3s1") func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub1//[001]" : null);
-					else if (sym.StrSE1p == "3s2") func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub2//[001]" : null);
-					if (sym.SpaceGroupHMsubStr != "R")//Hexセルの場合
+					if (sym.StrSE1p == "3s1")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub1//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "3s2")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub2//[001]" : null);
+                    }
+
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexセルの場合
 					{
 						if (sym.StrSE2v == "c")
 						{
@@ -12614,20 +13164,54 @@ new[]{535,2,6,2,1,1}
 					break;
 
 				case 6://	hexagonal
-					if (sym.StrSE1p == "6s1") func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub1//[001]" : null);
-					else if (sym.StrSE1p == "6s2") func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub2//[001]" : null);
-					else if (sym.StrSE1p == "6s3") func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "6sub3//[001]" : null);
-					else if (sym.StrSE1p == "6s4") func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub4//[001]" : null);
-					else if (sym.StrSE1p == "6s5") func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub5//[001]" : null);
+					if (sym.StrSE1p == "6s1")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub1//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "6s2")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub2//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "6s3")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "6sub3//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "6s4")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub4//[001]" : null);
+                    }
+                    else if (sym.StrSE1p == "6s5")
+                    {
+                        func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub5//[001]" : null);
+                    }
 
-					if (sym.StrSE2v == "c") func.Add((h, k, l) => l % 2 != 0 && h == -k ? "c⊥[-1-10]" : null);
-					else if (sym.StrSE2v == "c") func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
-					else if (sym.StrSE2v == "c") func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
+                    if (sym.StrSE2v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == -k ? "c⊥[-1-10]" : null);
+                    }
+                    else if (sym.StrSE2v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
+                    }
+                    else if (sym.StrSE2v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
+                    }
 
-					if (sym.StrSE3v == "c") func.Add((h, k, l) => l % 2 != 0 && h == k ? "c⊥[1-10]" : null);
-					else if (sym.StrSE3v == "c") func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "c⊥[120]" : null);
-					else if (sym.StrSE3v == "c") func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "c⊥[-2-10]" : null);
-					break;
+                    if (sym.StrSE3v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == k ? "c⊥[1-10]" : null);
+                    }
+                    else if (sym.StrSE3v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "c⊥[120]" : null);
+                    }
+                    else if (sym.StrSE3v == "c")
+                    {
+                        func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "c⊥[-2-10]" : null);
+                    }
+
+                    break;
 
 				case 7://	cubic
 					if (sym.StrSE1p == "2s1")
@@ -12839,8 +13423,11 @@ new[]{535,2,6,2,1,1}
 								m = h; h = k; k = i; i = m;
 							}
 							if (k < 0)
-								k = -k;
-							break;
+                            {
+                                k = -k;
+                            }
+
+                            break;
 						}
 						else
 						{//h,k,iがすべて0以外の整数のとき
@@ -12895,8 +13482,11 @@ new[]{535,2,6,2,1,1}
 								m = h; h = k; k = i; i = m;
 							}
 							if (k < 0)
-								k = -k;
-							break;
+                            {
+                                k = -k;
+                            }
+
+                            break;
 						}
 						else
 						{//h,k,iがすべて0以外の整数のとき
@@ -12930,8 +13520,11 @@ new[]{535,2,6,2,1,1}
 							m = h; h = k; k = i; i = m;
 						}
 						if (k < 0)
-							k = -k;
-						break;
+                        {
+                            k = -k;
+                        }
+
+                        break;
 					}
 					else
 					{//h,k,iがすべて0以外の整数のとき
@@ -12960,8 +13553,11 @@ new[]{535,2,6,2,1,1}
 							m = h; h = k; k = i; i = m;
 						}
 						if (k < 0)
-							k = -k;
-						break;
+                        {
+                            k = -k;
+                        }
+
+                        break;
 					}
 					else
 					{//h,k,iがすべて0以外の整数のとき
@@ -13116,8 +13712,11 @@ new[]{535,2,6,2,1,1}
 							u = -u; v = -v; w = -w;
 						}
 						if (u == 0 && v == 0)
-							break;
-						while (!(u >= 0 && v >= 0))
+                        {
+                            break;
+                        }
+
+                        while (!(u >= 0 && v >= 0))
 						{
 							m = u; n = v; u = -n; v = m - n;
 						}
@@ -13131,16 +13730,21 @@ new[]{535,2,6,2,1,1}
 					else
 					{//wが0のとき
 						if (u == 0 && v == 0)
-							break;
-						else if (u == 0 || v == 0 || u == v)
+                        {
+                            break;
+                        }
+                        else if (u == 0 || v == 0 || u == v)
 						{ //(200),(020),(-2-20)の様な場合
 							while (u != 0)
 							{
 								m = u; n = v; u = -n; v = m - n;
 							}
 							if (v <= 0)
-								v = -v;
-							break;
+                            {
+                                v = -v;
+                            }
+
+                            break;
 						}
 						else
 						{	//(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
@@ -13169,16 +13773,21 @@ new[]{535,2,6,2,1,1}
 						}
 
 						if (u == 0 && v == 0)//(00w)のときは
-							break;			//そのまま終了
-						else if (u == 0 || v == 0 || u == v)
+                        {
+                            break;          //そのまま終了
+                        }
+                        else if (u == 0 || v == 0 || u == v)
 						{ //(20w),(02w),(-2-2w),(22w),(-20w),(0-2w)の様な場合
 							while (u != 0)
 							{
 								m = u; n = v; u = -n; v = m - n;
 							}//ループ終了時には(02w)か(0-2w)になっている
 							if (v <= 0)
-								v = -v;
-							break;
+                            {
+                                v = -v;
+                            }
+
+                            break;
 						}
 						else
 						{
@@ -13193,8 +13802,10 @@ new[]{535,2,6,2,1,1}
 								m = u; n = v; u = -n; v = m - n;
 							}
 							if (o <= u + v)//ミラー対称を適用後uとvの和が小さかったら
-								break;
-							else
+                            {
+                                break;
+                            }
+                            else
 							{
 								v = u - v;
 								while (!(u >= 0 && v >= 0))
@@ -13208,16 +13819,21 @@ new[]{535,2,6,2,1,1}
 					else
 					{//wが0のとき
 						if (u == 0 && v == 0)
-							break;
-						else if (u == 0 || v == 0 || u == v)
+                        {
+                            break;
+                        }
+                        else if (u == 0 || v == 0 || u == v)
 						{ //(200),(020),(-2-20)の様な場合
 							while (u != 0)
 							{
 								m = u; n = v; u = -n; v = m - n;
 							}
 							if (v <= 0)
-								v = -v;
-							break;
+                            {
+                                v = -v;
+                            }
+
+                            break;
 						}
 						else
 						{	//(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
@@ -13261,16 +13877,21 @@ new[]{535,2,6,2,1,1}
 						u = -u; v = -v; w = -w;
 					}
 					if (u == 0 && v == 0)
-						break;
-					else if (u == 0 || v == 0 || u == v)
+                    {
+                        break;
+                    }
+                    else if (u == 0 || v == 0 || u == v)
 					{
 						while (u != 0)
 						{
 							m = u; n = v; u = -n; v = m - n;
 						}
 						if (v <= 0)
-							v = -v;
-						break;
+                        {
+                            v = -v;
+                        }
+
+                        break;
 					}
 					else
 					{
@@ -13295,16 +13916,21 @@ new[]{535,2,6,2,1,1}
 						u = -u; v = -v; w = -w;
 					}
 					if (u == 0 && v == 0)
-						break;
-					else if (u == 0 || v == 0 || u == v)
+                    {
+                        break;
+                    }
+                    else if (u == 0 || v == 0 || u == v)
 					{
 						while (u != 0)
 						{
 							m = u; n = v; u = -n; v = m - n;
 						}
 						if (v <= 0)
-							v = -v;
-						break;
+                        {
+                            v = -v;
+                        }
+
+                        break;
 					}
 					else
 					{
@@ -13633,23 +14259,28 @@ new[]{535,2,6,2,1,1}
 			}
 
 			if (result || CalcNotEvenRoot)
-				indices.AddRange(GenerateEquivalentPlanes(h, k, l, sym));
-			return result;
+            {
+                indices.AddRange(GenerateEquivalentPlanes(h, k, l, sym));
+            }
+
+            return result;
 			#endregion
 		}
 
-		public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym)
-			=> GenerateEquivalentPlanes(index.H, index.K, index.L, sym);
+        public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym)
+        {
+            return GenerateEquivalentPlanes(index.H, index.K, index.L, sym);
+        }
 
-		/// <summary>
-		/// 対称性symに従って(hkl)と等価な結晶軸を生成する
-		/// </summary>
-		/// <param name="h"></param>
-		/// <param name="k"></param>
-		/// <param name="l"></param>
-		/// <param name="sym"></param>
-		/// <returns></returns>
-		public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym)
+        /// <summary>
+        /// 対称性symに従って(hkl)と等価な結晶軸を生成する
+        /// </summary>
+        /// <param name="h"></param>
+        /// <param name="k"></param>
+        /// <param name="l"></param>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym)
 		{
 			#region
 			var indices = new HashSet<(int H, int K, int L)>();
@@ -13989,39 +14620,43 @@ new[]{535,2,6,2,1,1}
 			#endregion
 		}
 
-		/// <summary>
-		/// 二つの面(h1,k1,l1), (h2,k2,l2)が等価かどうかを判定する
-		/// </summary>
-		/// <param name="h1"></param>
-		/// <param name="k1"></param>
-		/// <param name="l1"></param>
-		/// <param name="h2"></param>
-		/// <param name="k2"></param>
-		/// <param name="l2"></param>
-		/// <param name="sym"></param>
-		/// <returns>等価だった場合はTrue</returns>
-		public static bool CheckEquivalentPlanes(int h1, int k1, int l1, int h2, int k2, int l2, Symmetry sym)
-			=> new List<(int H, int K, int L)>(GenerateEquivalentPlanes(h1, k1, l1, sym)).Contains((h2, k2, l2));
+        /// <summary>
+        /// 二つの面(h1,k1,l1), (h2,k2,l2)が等価かどうかを判定する
+        /// </summary>
+        /// <param name="h1"></param>
+        /// <param name="k1"></param>
+        /// <param name="l1"></param>
+        /// <param name="h2"></param>
+        /// <param name="k2"></param>
+        /// <param name="l2"></param>
+        /// <param name="sym"></param>
+        /// <returns>等価だった場合はTrue</returns>
+        public static bool CheckEquivalentPlanes(int h1, int k1, int l1, int h2, int k2, int l2, Symmetry sym)
+        {
+            return new List<(int H, int K, int L)>(GenerateEquivalentPlanes(h1, k1, l1, sym)).Contains((h2, k2, l2));
+        }
 
-		/// <summary>
-		/// 二つの面(index1), (index2)が等価かどうかを判定する
-		/// </summary>
-		/// <param name="index1"></param>
-		/// <param name="index2"></param>
-		/// <param name="sym"></param>
-		/// <returns></returns>
-		public static bool CheckEquivalentPlanes((int H, int K, int L) index1, (int H, int K, int L) index2, Symmetry sym)
-			=> CheckEquivalentAxes(index1.H, index1.K, index1.L, index2.H, index2.K, index2.L, sym);
+        /// <summary>
+        /// 二つの面(index1), (index2)が等価かどうかを判定する
+        /// </summary>
+        /// <param name="index1"></param>
+        /// <param name="index2"></param>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        public static bool CheckEquivalentPlanes((int H, int K, int L) index1, (int H, int K, int L) index2, Symmetry sym)
+        {
+            return CheckEquivalentAxes(index1.H, index1.K, index1.L, index2.H, index2.K, index2.L, sym);
+        }
 
-		/// <summary>
-		/// 対称性に従って[uvw]と等価な結晶軸を生成する
-		/// </summary>
-		/// <param name="u"></param>
-		/// <param name="v"></param>
-		/// <param name="w"></param>
-		/// <param name="sym"></param>
-		/// <returns></returns>
-		public static (int U, int V, int W)[] GenerateEquivalentAxes(int u, int v, int w, Symmetry sym)
+        /// <summary>
+        /// 対称性に従って[uvw]と等価な結晶軸を生成する
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <param name="w"></param>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        public static (int U, int V, int W)[] GenerateEquivalentAxes(int u, int v, int w, Symmetry sym)
 		{
 			#region
 			var indices = new HashSet<(int U, int V, int W)>();
@@ -14339,34 +14974,38 @@ new[]{535,2,6,2,1,1}
 			#endregion
 		}
 
-		/// <summary>
-		/// 二つの軸[index1]と[index2]が等価な軸であるかどうかを判定
-		/// </summary>
-		/// <param name="index1"></param>
-		/// <param name="index2"></param>
-		/// <param name="sym"></param>
-		/// <returns></returns>
-		public static bool CheckEquivalentAxes((int U, int V, int W) index1, (int U, int V, int W) index2, Symmetry sym)
-			=> CheckEquivalentAxes(index1.U, index1.V, index1.W, index2.U, index2.V, index2.W, sym);
+        /// <summary>
+        /// 二つの軸[index1]と[index2]が等価な軸であるかどうかを判定
+        /// </summary>
+        /// <param name="index1"></param>
+        /// <param name="index2"></param>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        public static bool CheckEquivalentAxes((int U, int V, int W) index1, (int U, int V, int W) index2, Symmetry sym)
+        {
+            return CheckEquivalentAxes(index1.U, index1.V, index1.W, index2.U, index2.V, index2.W, sym);
+        }
 
-		/// <summary>
-		/// 二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定
-		/// </summary>
-		/// <param name="u1"></param>
-		/// <param name="v1"></param>
-		/// <param name="w1"></param>
-		/// <param name="u2"></param>
-		/// <param name="v2"></param>
-		/// <param name="w2"></param>
-		/// <param name="sym"></param>
-		/// <returns></returns>
-		public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
-			=> new List<(int U, int V, int W)>(GenerateEquivalentAxes(u1, v1, w1, sym)).Contains((u2, v2, w2));
+        /// <summary>
+        /// 二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定
+        /// </summary>
+        /// <param name="u1"></param>
+        /// <param name="v1"></param>
+        /// <param name="w1"></param>
+        /// <param name="u2"></param>
+        /// <param name="v2"></param>
+        /// <param name="w2"></param>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
+        {
+            return new List<(int U, int V, int W)>(GenerateEquivalentAxes(u1, v1, w1, sym)).Contains((u2, v2, w2));
+        }
 
-		/// <summary>
-		/// 静的コンストラクタ
-		/// </summary>
-		static SymmetryStatic()
+        /// <summary>
+        /// 静的コンストラクタ
+        /// </summary>
+        static SymmetryStatic()
 		{
 			#region BelongingNumberOfSymmetry
 			BelongingNumberOfSymmetry = new int[][][]{
@@ -14473,9 +15112,11 @@ new[]{535,2,6,2,1,1}
 				var wyckoff = new List<WyckoffPosition>();
 				var lattice = StrArray[i][6];
 				if (lattice == "R")
-					lattice += StrArray[i][0];//extra表記にHがあればRHにする
+                {
+                    lattice += StrArray[i][0];//extra表記にHがあればRHにする
+                }
 
-				for (int j = 0; j < PositionsDictionary[i].Length; j++)
+                for (int j = 0; j < PositionsDictionary[i].Length; j++)
 				{
 					//PositionGeneratorとPositionStringをセット
 					var PosGen = new List<Func<double, double, double, (double X, double Y, double Z)>>();
@@ -14498,7 +15139,8 @@ new[]{535,2,6,2,1,1}
 					//Symmetry Operationをセット
 					var operations = new List<SO>();
 					if (j == 0)
-						foreach (var p in OperationDictionary[i])
+                    {
+                        foreach (var p in OperationDictionary[i])
 						{
 							var op = OperationList[p];
 							op.SeriesNumber = i;
@@ -14513,13 +15155,16 @@ new[]{535,2,6,2,1,1}
 								_ => new[] { op }
 							});
 						}
+                    }
 
-					//Wyckoff Letterをセット
-					char let = (char)(PositionsDictionary[i].Length - j + 96);
+                    //Wyckoff Letterをセット
+                    char let = (char)(PositionsDictionary[i].Length - j + 96);
 					if (let > 'z')
-						let = (char)(let - 58);
+                    {
+                        let = (char)(let - 58);
+                    }
 
-					wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], posStr.ToArray(), PosGen.ToArray(), j == 0 ? operations.ToArray() : null));
+                    wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], posStr.ToArray(), PosGen.ToArray(), j == 0 ? operations.ToArray() : null));
 				}
 				WyckoffPositions[i] = wyckoff.ToArray();
 			}

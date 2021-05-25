@@ -126,8 +126,8 @@ namespace Crystallography.Controls
 
 
         //候補の数値
-        private readonly double[] rationalNumbers
-            = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
+        //private readonly double[] rationalNumbers
+        //    = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
 
         #endregion
 
@@ -550,9 +550,9 @@ namespace Crystallography.Controls
             if (crystal.Crystallites == null) return;
 
             var dlg = new SaveFileDialog { Filter = "*.txt|*.txt" };
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                using StreamWriter sw = new StreamWriter(dlg.FileName);
+                using var sw = new StreamWriter(dlg.FileName);
                 sw.WriteLine("Sample Name:\t" + Crystal.Name);
                 sw.WriteLine($"Cell constants:\t{Crystal.A}\t{Crystal.B}\t{Crystal.C}\t{crystal.Alpha / Math.PI * 180}\t{crystal.Beta / Math.PI * 180}\t{crystal.Gamma / Math.PI * 180}");
                 sw.WriteLine("Space group:\t" + Crystal.Symmetry.SpaceGroupHMfullStr);

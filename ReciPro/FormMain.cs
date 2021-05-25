@@ -614,7 +614,7 @@ namespace ReciPro
 
             if (FormRotation.Linked)//FormRotation‚ÌƒŠƒ“ƒN‚ª—LŒø‚Èê‡‚ÍAFormRotation‘¤‚Å‰ñ“]ó‹µ‚ğ§Œä‚·‚é
             {
-                FormRotation.setRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
+                FormRotation.SetRotation(Matrix3D.Rot(axis, angle) * Crystal.RotationMatrix);
                 return;
             }
 

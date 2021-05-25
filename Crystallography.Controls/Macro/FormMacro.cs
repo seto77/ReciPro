@@ -25,8 +25,8 @@ namespace Crystallography.Controls
         {
             set
             {
-                List<string> autoCompleteItems = new List<string>();
-                List<string> toolTipItems = new List<string>();
+                var autoCompleteItems = new List<string>();
+                var toolTipItems = new List<string>();
                 for (int i = 0; i < value.Length; i++)
                 {
                     string[] temp = value[i].Split('#');
@@ -47,10 +47,10 @@ namespace Crystallography.Controls
             }
         }
 
-        private dynamic obj;
-        private ScriptEngine Engine;
-        private ScriptScope Scope;
-        private string ScopeName;
+        private readonly dynamic obj;
+        private readonly ScriptEngine Engine;
+        private readonly ScriptScope Scope;
+        private readonly string ScopeName;
 
         public FormMacro(ScriptEngine engine, object scopeObject)
         {
@@ -266,7 +266,7 @@ namespace Crystallography.Controls
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 exRichTextBox.Text = "";
-                StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("Shift_JIS"));
+                var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("Shift_JIS"));
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
                     exRichTextBox.AppendText(tempstr + "\n");
@@ -405,7 +405,7 @@ namespace Crystallography.Controls
         {
             get
             {
-                List<string> strList = new List<string>();
+                var strList = new List<string>();
                 for (int i = 0; i < listBoxMacro.Items.Count; i++)
                 {
                     var m = (macro)listBoxMacro.Items[i];
@@ -428,8 +428,8 @@ namespace Crystallography.Controls
             {
                 if (value == null || value.Length == 0) return;
 
-                MemoryStream ms = new MemoryStream(value);
-                DeflateStream ds = new DeflateStream(ms, CompressionMode.Decompress, true);
+                var ms = new MemoryStream(value);
+                var ds = new DeflateStream(ms, CompressionMode.Decompress, true);
                 IFormatter formatter = new BinaryFormatter();
                 var strList = (List<string>)formatter.Deserialize(ds);
                 ds.Close();

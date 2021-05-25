@@ -111,7 +111,7 @@ namespace ReciPro
                 {
                     if (Rows.Count == 0) return null;
 
-                    List<double> dList = new List<double>();
+                    var dList = new List<double>();
                     for (int i = 0; i < this.Count; i++)
                         dList.Add((double)this.Rows[i]["d"]);
                     return dList;
@@ -128,7 +128,7 @@ namespace ReciPro
                     if (Rows.Count == 0)
                         return null;
 
-                    List<Vector3DBase> vec = new List<Vector3DBase>();
+                    var vec = new List<Vector3DBase>();
                     for (int i = 0; i < this.Rows.Count; i++)
                         vec.Add(AreaDetector.convertClientToReciprocalSpace((double)Rows[i]["x0"], (double)Rows[i]["y0"]));
 
@@ -248,7 +248,7 @@ namespace ReciPro
             private void setRow(DataTableSpotRow dr, bool? direct, double range, double[] prms1, double[] prms2, double r)
                 => setRow(dr, direct, range, prms1[0], prms1[1], prms1[2], prms1[3], prms1[4], prms1[5], prms1[6], prms2[0], prms2[1], prms2[2], r);
 
-            private void setRow(DataTableSpotRow dr, bool? direct, double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)
+            private static void setRow(DataTableSpotRow dr, bool? direct, double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)
             {
                 var H1 = h1;
                 var H2 = h2;
@@ -282,7 +282,7 @@ namespace ReciPro
                 dr.R = R;
             }
 
-            public (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
+            public static (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)
                 ConvertPrmsToOriginalValues(double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)
                 => (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r);
 

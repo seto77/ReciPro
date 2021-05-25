@@ -146,11 +146,11 @@ namespace ReciPro
                 p1 = new PointF(50, 0);
                 p2 = new PointF(10, -70);
             }
-            PointF offset = new PointF(-(p1.X + p2.X) / 3f + bmp.Width / 2f, -(p1.Y + p2.Y) / 3f + bmp.Height / 2f);
+            var offset = new PointF(-(p1.X + p2.X) / 3f + bmp.Width / 2f, -(p1.Y + p2.Y) / 3f + bmp.Height / 2f);
 
             //•â•ü‚ğ‘‚­
-            Pen penArc = new Pen(Brushes.Gray, 1 / 10f);
-            Pen penLine = new Pen(Brushes.Gray, 1 / 10f);
+            var penArc = new Pen(Brushes.Gray, 1 / 10f);
+            var penLine = new Pen(Brushes.Gray, 1 / 10f);
 
             string str;
             //p1

@@ -86,7 +86,7 @@ namespace Crystallography
                 FreedomX = FreedomY = FreedomZ = true;
             else
             {
-                string[] tempStr = PositionStr[0].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var tempStr = PositionStr[0].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tempStr.Length == 3)
                 {
                     FreedomX = tempStr[0].Contains('x');
@@ -147,7 +147,7 @@ namespace Crystallography
         {
             static bool chk(double d1, double d2)
             {
-                double d = d1 - d2;
+                var d = d1 - d2;
                 while (d > 0.5)
                     d--;
                 while (d < -0.5)
@@ -201,8 +201,8 @@ namespace Crystallography
                     atoms.Atom.Select(a => (a.X, a.Y, a.Z)).ToArray() : new[] { (Pos.X, Pos.Y, Pos.Z) };
 
 
-                foreach (var p in pos)
-                    if (wykc[j].CheckPosition(p.X,p.Y,p.Z))
+                foreach (var (X, Y, Z) in pos)
+                    if (wykc[j].CheckPosition(X,Y,Z))
                     {
                         multi = wykc[j].Multiplicity;
                         wyckLet = wykc[j].WyckoffLetter;

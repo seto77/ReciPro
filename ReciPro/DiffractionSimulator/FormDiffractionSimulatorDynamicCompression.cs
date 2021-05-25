@@ -43,7 +43,7 @@ namespace ReciPro
 
                     var str2 = str1.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    Profile profile = new Profile();
+                    var profile = new Profile();
                     for (int i = 0; i < str2.Length; i++)
                     {
                         var str3 = str2[i].Split(new[] { '\t' });

@@ -273,7 +273,7 @@ namespace ReciPro
         /// オイラー角で表現する。その後、この回転行列で他のウィンドウに回転命令を出す。
         /// </summary>
         /// <param name="rot"></param>
-        public void setRotation(Matrix3D rot)
+        public void SetRotation(Matrix3D rot)
         {
             var settings = new List<(V3 Vec, double Angle, bool Variable)>();
             var dir = getExpDirections();
@@ -306,7 +306,7 @@ namespace ReciPro
             numericBoxTheta.RadianValue = FormMain.Theta;
             numericBoxPsi.RadianValue = FormMain.Psi;
 
-            var rotMatrix = Euler.SetEulerAngle(numericBoxPhi.RadianValue, numericBoxTheta.RadianValue, numericBoxPsi.RadianValue);
+            //var rotMatrix = Euler.SetEulerAngle(numericBoxPhi.RadianValue, numericBoxTheta.RadianValue, numericBoxPsi.RadianValue);
             skip = true;
             numericBox11.Value = RotReciPro.E11;
             numericBox12.Value = RotReciPro.E12;
@@ -360,7 +360,7 @@ namespace ReciPro
         /// 軸オブジェクトを生成
         /// </summary>
         /// <param name="gl"></param>
-        private void setAxes(GLControlAlpha gl)
+        private static void setAxes(GLControlAlpha gl)
         {
             gl.DeleteAllObjects();
             var obj = new List<GLObject>();

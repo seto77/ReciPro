@@ -319,7 +319,7 @@ namespace Crystallography
                 //計算対象のg-Vectorsを決める。
                 Beams = Find_gVectors(BaseRotation, vecK0);
 
-                if (Beams == null || Beams.Length == 0) return new Beam[0];
+                if (Beams == null || Beams.Length == 0) return Array.Empty<Beam>();
 
                 var potentialMatrix = getEigenProblemMatrix(Beams);
 
@@ -488,7 +488,7 @@ namespace Crystallography
         #endregion
 
         #region Image Simulation
-        public double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
+        public static double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
         {
             int width = size.Width, height = size.Height;
             //gList[gNUm]を全て計算
@@ -894,7 +894,7 @@ namespace Crystallography
         #endregion
 
         #region 絞りの内部にあるビームのみ選び取る (HRTEM シミュレータから呼ばれる)
-        public Beam[] ExtractInsideBeams(Beam[] beams, double acc, double radius, double shiftX, double shiftY)
+        public static Beam[] ExtractInsideBeams(Beam[] beams, double acc, double radius, double shiftX, double shiftY)
         {
             if (double.IsInfinity(radius))
                 return beams.ToArray();
@@ -1014,7 +1014,7 @@ namespace Crystallography
             /// レンズ関数 
             /// 球面収差関数 × 時間的インコヒーレンス包絡関数 × 空間的インコヒーレンス包絡関数 
             /// </summary>
-            public Complex Lenz = new Complex(1, 0);
+            public Complex Lenz = new(1, 0);
 
 
             /// <summary>

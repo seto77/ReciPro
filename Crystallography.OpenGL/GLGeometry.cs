@@ -89,9 +89,9 @@ namespace Crystallography.OpenGL
             return rot;
         }
 
-        public static readonly V3d Z = new V3d(0, 0, 1);
+        public static readonly V3d Z = new(0, 0, 1);
         public const double Th = 0.0000001;
         public static int SerialNumber = 0;
-        public static readonly object LockObj = new object();
+        public static readonly object LockObj = new();
     }
 }

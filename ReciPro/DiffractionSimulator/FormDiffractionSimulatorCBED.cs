@@ -20,8 +20,8 @@ namespace ReciPro
         public FormDiffractionSimulator FormDiffractionSimulator;
 
         private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
-        private double WaveLength => FormDiffractionSimulator.WaveLength;
-        private double Thickness => numericBoxWholeThicknessStart.Value;
+        //private double WaveLength => FormDiffractionSimulator.WaveLength;
+        //private double Thickness => numericBoxWholeThicknessStart.Value;
         private Crystal Crystal => FormDiffractionSimulator.formMain.Crystal;
 
         public int DivisionNumber
@@ -56,7 +56,7 @@ namespace ReciPro
         {
             get
             {
-                List<double> thicknessArray = new List<double>();
+                var thicknessArray = new List<double>();
                 for (double thickness = numericBoxWholeThicknessStart.Value; thickness <= numericBoxThicknessEnd.Value; thickness += numericBoxThicknessStep.Value)
                     thicknessArray.Add(thickness);
                 return thicknessArray.ToArray();
@@ -76,7 +76,7 @@ namespace ReciPro
 
         private Matrix3D[] Rotations;
 
-        private readonly Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new();
 
         private bool skipEvent { get; set; } = false;
 
@@ -206,7 +206,7 @@ namespace ReciPro
         #endregion
 
         #region 生画像や表示画像の構築
-        public void setImagePixelSize()
+        private void setImagePixelSize()
         {
             AngleResolution = Math.Acos((Matrix3D.SumOfDiagonalCompenent(Rotations[Rotations.Length / 2] * Rotations[Rotations.Length / 2 + 1].Inverse()) - 1) / 2);
             ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
@@ -287,10 +287,12 @@ namespace ReciPro
             {
                 var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
                 var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
-                var pbmp = new PseudoBitmap(disks[i].Intensity, (int)width);
-                pbmp.ReserveSrcValuesGrayOriginal = true;
-                pbmp.AlphaEnabled = true;
-                pbmp.FilterAlfha = disks[i].Intensity.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList();
+                var pbmp = new PseudoBitmap(disks[i].Intensity, (int)width)
+                {
+                    ReserveSrcValuesGrayOriginal = true,
+                    AlphaEnabled = true,
+                    FilterAlfha = disks[i].Intensity.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
+                };
 
                 Disks[i] = (disks[i].H, disks[i].K, disks[i].L,
                 center.ToPointD(), new SizeD(width , width) * ImagePixelSize, new Size((int)width, (int)width), pbmp, null);

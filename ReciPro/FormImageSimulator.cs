@@ -100,7 +100,7 @@ namespace ReciPro
         /// <summary>
         /// イメージサイズ 
         /// </summary>
-        public Size ImageSize => new Size(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger);
+        public Size ImageSize => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger);
 
         private double[] thicknessArray
         {
@@ -148,8 +148,8 @@ namespace ReciPro
         #region フィールド
         public FormMain FormMain;
         public FormDiffractionSpotInfo FormDiffractionSpotInfo;
-        readonly Stopwatch sw = new Stopwatch();
-        private static readonly double Pi2 = Math.PI * Math.PI;
+        readonly Stopwatch sw = new();
+        private static readonly double Pi2 = PI * PI;
 
         private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
 
@@ -258,7 +258,7 @@ namespace ReciPro
             toolStripProgressBar1.Value = 0;
 
             if (ImageMode == ImageModes.HRTEM)
-                simulateHRTEM();
+                SimulateHRTEM();
             else if (ImageMode == ImageModes.POTENTIAL)
                 simulatePotential();
 
@@ -273,7 +273,7 @@ namespace ReciPro
             if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
             Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
-            var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
+            var images = BetheMethod.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
             var temp = sw.ElapsedMilliseconds;
             toolStripStatusLabel1.Text = "Generation of Potential images: " + temp.ToString() + " msec,   ";
 
@@ -341,7 +341,7 @@ namespace ReciPro
             toolStripStatusLabel1.Text += "Drawing: " + (sw.ElapsedMilliseconds - temp).ToString() + " msec.";
         }
 
-        public void simulateHRTEM(bool realtimeMode = false)
+        public void SimulateHRTEM(bool realtimeMode = false)
         {
             sw.Restart();
 
@@ -349,7 +349,7 @@ namespace ReciPro
 
             Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
             //LTF(レンズ伝達関数)を計算 && apertureの外にあるbeamを除外
-            BeamsInside = FormMain.Crystal.Bethe.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+            BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
             if (BeamsInside.Length < 2)//絞りに入るスポットが2未満の時は、警告を出してリターン
             {
                 if (!realtimeMode)
@@ -365,7 +365,7 @@ namespace ReciPro
                 //ベーテ法で振幅を計算. t=0の時は、最初の判定の時に計算済み
                 Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
                 //絞りの内側のビームを取得
-                BeamsInside = FormMain.Crystal.Bethe.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+                BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
                 //HRTEM画像を取得
                 totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
                 //進捗状況を報告
@@ -389,7 +389,7 @@ namespace ReciPro
                 for (var d = 0; d < dLen; d++)
                 {
                     //ノーマライズ
-                    totalImage[t][d] = normalize(totalImage[t][d], checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+                    totalImage[t][d] = Normalize(totalImage[t][d], checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
                     //PseudoBitmapを生成
                     pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                         = new PseudoBitmap(totalImage[t][d], width)
@@ -419,7 +419,7 @@ namespace ReciPro
             toolStripStatusLabel1.Text += "Drawing: " + (sw.ElapsedMilliseconds - temp).ToString() + " msec.";
         }
 
-        public double[] normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)
+        public static double[] Normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)
         {
             double min = image.Min(), max = image.Max();
             if (normalizeHigh && normalizeLow)
@@ -435,7 +435,7 @@ namespace ReciPro
         }
 
         //作成したイメージをscalablePictureBoxに転送
-        public void setPseudoBitamap(PseudoBitmap[,] image)
+        private void setPseudoBitamap(PseudoBitmap[,] image)
         {
             var row = image.GetLength(0);
             var col = image.GetLength(1);
@@ -659,13 +659,13 @@ namespace ReciPro
         public void CalculateInsideSpotInfo()
         {
             var beams = FormMain.Crystal.Bethe.Find_gVectors(FormMain.Crystal.RotationMatrix, new Vector3DBase(0, 0, 1 / Rambda), BlochNum);
-            BeamsInside = FormMain.Crystal.Bethe.ExtractInsideBeams(beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
-            textBoxNumOfSpots.Text = BeamsInside.Count().ToString();
+            BeamsInside = BetheMethod.ExtractInsideBeams(beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+            textBoxNumOfSpots.Text = BeamsInside.Length.ToString();
 
             if (FormDiffractionSpotInfo.Visible)
             {
                 Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
-                BeamsInside = FormMain.Crystal.Bethe.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+                BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
                 FormDiffractionSpotInfo.SetTable(AccVol, BeamsInside);
             }
 
@@ -680,7 +680,7 @@ namespace ReciPro
             if (checkBoxRealTimeCalculation.Checked)
             {
                 if (ImageMode == ImageModes.HRTEM)
-                    simulateHRTEM(true);
+                    SimulateHRTEM(true);
                 else if (ImageMode == ImageModes.POTENTIAL)
                     simulatePotential(true);
             }
@@ -716,15 +716,15 @@ namespace ReciPro
             checkBoxGraphAll.ForeColor = colorAll;
             double rambda = Rambda, rambda2 = rambda * rambda;
 
-            List<PointD> kai = new List<PointD>(), es = new List<PointD>(), ec = new List<PointD>(), all = new List<PointD>();
+            List<PointD> kai = new(), es = new(), ec = new(), all = new();
             var delta = Cc * DeltaVol / AccVol;
             for (double u = 0; u < numericBoxMaxU1.Value; u += 0.01)
             {
                 var u2 = u * u;
-                kai.Add(new PointD(u, Math.Sin(Math.PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
-                es.Add(new PointD(u, Math.Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//時間的インコヒーレンス
-                ec.Add(new PointD(u, Math.Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2)));//空間的インコヒーレンス
-                all.Add(new PointD(u, kai[kai.Count - 1].Y * es[es.Count - 1].Y * ec[ec.Count - 1].Y));
+                kai.Add(new PointD(u, Sin(PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
+                es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//時間的インコヒーレンス
+                ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2)));//空間的インコヒーレンス
+                all.Add(new PointD(u, kai[^1].Y * es[^1].Y * ec[^1].Y));
             }
             graphControl.ClearProfile();
             var profiles = new List<Profile>();
@@ -827,7 +827,7 @@ namespace ReciPro
             //ユニットセル
             if (checkBoxShowUnitcell.Checked)
             {
-                Pen penA = new Pen(Color.Red, 1), penB = new Pen(Color.Green, 1), penC = new Pen(Color.Blue, 1);
+                Pen penA = new(Color.Red, 1), penB = new(Color.Green, 1), penC = new(Color.Blue, 1);
                 var zero = new PointD(0, 0);
                 var a = new PointD(imageInfo.A.X, -imageInfo.A.Y) / reso * zoom;
                 var b = new PointD(imageInfo.B.X, -imageInfo.B.Y) / reso * zoom;
@@ -866,8 +866,8 @@ namespace ReciPro
 
         }
 
-        enum formatEnum { Meta, PNG, TIFF }
-        enum actionEnum { Save, Copy }
+        private enum formatEnum { Meta, PNG, TIFF }
+        private enum actionEnum { Save, Copy }
         private void Save(formatEnum format, actionEnum action)
         {
 

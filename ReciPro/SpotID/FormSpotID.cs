@@ -725,7 +725,7 @@ namespace ReciPro
                 {
                     var d = dataList[i];
                     (double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R) =
-                    dataSet.DataTableSpot.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
+                    DataSetReciPro.DataTableSpotDataTable.ConvertPrmsToOriginalValues(f(d[2]), f(d[3]), f(d[4]), f(d[5]), f(d[6]), f(d[7]), f(d[8]), f(d[9]), f(d[10]), f(d[11]), f(d[12]), f(d[13]));
 
                     dataSet.DataTableSpot.Add(d[0] == "*", Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
                     if (d.Length == 17 && d[15] != "")

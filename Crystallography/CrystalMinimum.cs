@@ -458,7 +458,7 @@ namespace Crystallography
             var expValue = 1.0;
             if (i > 0)
             {
-                double.TryParse("1" + str.Substring(i), out expValue);
+                _ = double.TryParse("1" + str[i..], out expValue);
                 str = str.Substring(0, i);
             }
 
@@ -520,7 +520,7 @@ namespace Crystallography
                 //まず、誤差を 23E-6 みたいな形にする
                 var temp = err.ToString("E1");
                 var errStr = temp.Substring(0, temp.IndexOf("E")).Replace(".", "");
-                var errLog = Convert.ToInt32(temp.Substring(temp.IndexOf("E") + 1)) - 1;
+                var errLog = Convert.ToInt32(temp[(temp.IndexOf("E") + 1)..]) - 1;
 
                 //vを取りあえず十分な精度で出力する
                 var valStr = val.ToString("E15");
@@ -535,7 +535,7 @@ namespace Crystallography
                 result += "(" + errStr + ")";
 
                 if (valLog != 0)
-                    result += "E" + valLog.ToString();
+                    result += $"E{valLog}";
 
                 return result;
             }

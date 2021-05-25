@@ -16,9 +16,9 @@ namespace ReciPro
 
         private Font strFont;
         private float pointSize;
-        private Point MouseRangeStart, MouseRangeEnd = new Point(-1, -1);
+        private Point MouseRangeStart, MouseRangeEnd = new(-1, -1);
         private bool MouseRangingMode = false;
-        private PointD centerPt = new PointD(0, 0);
+        private PointD centerPt = new(0, 0);
         private double mag;
 
         public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
@@ -102,9 +102,9 @@ namespace ReciPro
             graphicsBox.Refresh();
         }
 
-        private List<double> sin = new List<double>();
-        private List<double> cos = new List<double>();
-        private List<double> tan = new List<double>();
+        private List<double> sin = new();
+        private List<double> cos = new();
+        private List<double> tan = new();
 
         //ステレオネットの輪郭を描く
         private void DrawOutline(Graphics g)
@@ -371,7 +371,7 @@ namespace ReciPro
 
         //フォームの大きさが変更されたとき
 
-        private Size lastgraphicsBoxSize = new Size(0, 0);
+        private Size lastgraphicsBoxSize = new(0, 0);
 
         private void formStereonet_Resize(object sender, EventArgs e)
         {
@@ -677,7 +677,7 @@ namespace ReciPro
 
         private void colorControl_ColorChanged(object sender, EventArgs e) => Draw();
 
-        private List<List<PointD>> positionRecorder = new List<List<PointD>>();
+        private List<List<PointD>> positionRecorder = new();
 
         private void buttonYusaModeStart_Click(object sender, EventArgs e)
         {
@@ -756,8 +756,7 @@ namespace ReciPro
         private void button1_Click(object sender, EventArgs e)
         {
             formMain.Crystal.VectorOfAxis = new List<Vector3D>();
-            int div = 15;
-            div = 30;
+            int div =  30;
             for (double i = -div; i < div; i++)
                 for (double j = -div; j < div; j++)
                 {
