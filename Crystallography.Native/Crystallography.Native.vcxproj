@@ -45,13 +45,15 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-    <EnableUnitySupport>true</EnableUnitySupport>
+    <PreferredToolArchitecture>
+    </PreferredToolArchitecture>
+    <EnableUnitySupport>false</EnableUnitySupport>
     <UseIntelMKL>No</UseIntelMKL>
     <UseILP64Interfaces>false</UseILP64Interfaces>
     <InterproceduralOptimization>true</InterproceduralOptimization>
+    <SpectreMitigation />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -94,9 +96,9 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net5.0-windows</OutDir>
-    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -127,28 +129,36 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>
       </SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>false</ConformanceMode>
+      <ConformanceMode>
+      </ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
-      <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <OpenMPSupport>false</OpenMPSupport>
-      <EnableModules>true</EnableModules>
+      <BufferSecurityCheck>
+      </BufferSecurityCheck>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>
+      </OpenMPSupport>
+      <EnableModules>
+      </EnableModules>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
       <SupportJustMyCode>false</SupportJustMyCode>
       <AdditionalIncludeDirectories>Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
@@ -160,11 +170,16 @@
       <OpenMP>None</OpenMP>
       <OffloadConstructs>None</OffloadConstructs>
       <Mtune>No</Mtune>
-      <ExceptionHandling>false</ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <CombineFilesOnlyFromTheSameFolder>true</CombineFilesOnlyFromTheSameFolder>
+      <EnableFiberSafeOptimizations />
+      <UndefineAllPreprocessorDefinitions />
+      <DiagnosticsFormat />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -251,8 +266,7 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <FloatingPointModel>
-      </FloatingPointModel>
+      <FloatingPointModel>Precise</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -261,6 +275,7 @@
       <OmitFramePointers>
       </OmitFramePointers>
       <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

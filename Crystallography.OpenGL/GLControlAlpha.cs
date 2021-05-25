@@ -693,7 +693,8 @@ namespace Crystallography.OpenGL
 
         public void AddObjects(GLObject obj)
         {
-            if (Program < 1) return;
+            if (Program < 1)
+                return;
             glControl.MakeCurrent();
             obj.Generate(Program);
             glObjects.Add(obj);

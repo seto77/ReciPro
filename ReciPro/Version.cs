@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.803(2021/05/25)  Fixed a distribution failure of language resource files." +
             "\r\n ver4.802(2021/05/24)  Target framework has been changed to .Net 5.0." +
             "\r\n ver4.800(2021/05/20)  Fixed bugs on the native (c++) codes. Changed CBED interface." +
             "\r\n ver4.799(2021/05/10)  Fixed bugs on the native (c++) codes." +

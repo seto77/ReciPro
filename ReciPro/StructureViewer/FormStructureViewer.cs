@@ -36,13 +36,13 @@ namespace ReciPro
         private Matrix3d axes;
         private List<(V4 prm, Color color)> bounds;
 
-        public List<GLObject> GLObjects = new List<GLObject>();
-        private ParallelQuery<GLObject> GLObjectsP;
+        public List<GLObject> GLObjects = new();
+        private readonly ParallelQuery<GLObject> GLObjectsP;
 
-        public readonly object lockObj = new object();
+        public readonly object lockObj = new();
 
-        private readonly List<V3> dirs = new List<V3> { new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1) };
-        private readonly List<V3> vrts = new List<V3> { new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5) };
+        private readonly List<V3> dirs = new() { new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1) };
+        private readonly List<V3> vrts = new() { new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5) };
 
         private bool skipSetCrystal = false;
 
@@ -53,11 +53,11 @@ namespace ReciPro
         private AtomControl atomControl;
         private BondInputControl bondControl;
 
-        private readonly List<GLControlAlpha> legendControls = new List<GLControlAlpha>();
-        private readonly List<Label> legendLabels = new List<Label>();
-        private readonly List<FlowLayoutPanel> legendFlowLayoutPanels = new List<FlowLayoutPanel>();
+        private  List<GLControlAlpha> legendControls = new();
+        private  List<Label> legendLabels = new();
+        private  List<FlowLayoutPanel> legendFlowLayoutPanels = new();
 
-        private readonly Stopwatch sw = new Stopwatch();
+        private readonly Stopwatch sw = new();
 
 
         private ParallelQuery<(int Index, V3 Pos, Material Mat, double Radius)> enabledAtomsP;
@@ -404,8 +404,7 @@ namespace ReciPro
                     var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
                     if (min > threshold)
                     {
-                        var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces);
-                        sphere.Rendered = min > -0.0000001;
+                        var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces) { Rendered = min > -0.0000001 };
                         sphere.Tag = new atomID(o.Index, sphere.Rendered);
                         lock (lockObj)
                             GLObjects.Add(sphere);
@@ -449,7 +448,7 @@ namespace ReciPro
         /// <summary>
         /// Bondの頂点を表すためのテンポラリーなクラス
         /// </summary>
-        class bondVertex
+        private class bondVertex
         {
             public int ObjIndex;
             public int AtomIndex;
@@ -637,7 +636,7 @@ namespace ReciPro
         {
             sw.Restart();
 
-            while (GLObjects.Count(obj => obj.Tag is cellID) != 0)
+            while (GLObjects.Any(obj => obj.Tag is cellID))
             {
                 glControlMain.DeleteObjects(GLObjects.First(obj => obj.Tag is cellID));
                 GLObjects.Remove(GLObjects.First(obj => obj.Tag is cellID));
@@ -685,7 +684,7 @@ namespace ReciPro
         {
             sw.Restart();
 
-            while (GLObjects.Count(obj => obj.Tag is latticeID) != 0)
+            while (GLObjects.Any(obj => obj.Tag is latticeID))
             {
                 glControlMain.DeleteObjects(GLObjects.First(obj => obj.Tag is latticeID));
                 GLObjects.Remove(GLObjects.First(obj => obj.Tag is latticeID));
@@ -781,7 +780,7 @@ namespace ReciPro
 
             textBoxInformation.Clear();
 
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
 
             Crystal = _crystal ?? formMain.Crystal;
@@ -835,15 +834,15 @@ namespace ReciPro
         /// </summary>
         public void Draw()
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
 
-            var world = formMain.Crystal.RotationMatrix.Transpose(); ;
+            var world = formMain.Crystal.RotationMatrix.Transpose();
             //WorldMatrixを代入したら自動でRender()も行われる
             glControlMain.WorldMatrixEx = world;
             glControlAxes.WorldMatrixEx = world;
 
-            toolStripLabelStatusRendering.Text = "Rendering time: " + sw.ElapsedMilliseconds + " ms.";
+            toolStripLabelStatusRendering.Text = $"Rendering time: {sw.ElapsedMilliseconds} ms.";
         }
 
 
@@ -851,9 +850,9 @@ namespace ReciPro
 
         #region マウスイベント
 
-        private Point lastPosMain = new Point();
-        private Point lastPosLight = new Point();
-        private Point lastPosAxes = new Point();
+        private Point lastPosMain;
+        private Point lastPosLight;
+        private Point lastPosAxes;
 
         //Point animatitonStartPt, animationEndPt;
 
@@ -901,9 +900,9 @@ namespace ReciPro
             lastPosLight = new Point(e.X, e.Y);
         }
 
-        private V4 getRotation(MouseEventArgs e, Size size, Point lastPos, bool ignoreZRotation)
+        private static V4 getRotation(MouseEventArgs e, Size size, Point lastPos, bool ignoreZRotation)
         {
-            float dx = e.X - lastPos.X, dy = lastPos.Y - e.Y;
+            double dx = e.X - lastPos.X, dy = lastPos.Y - e.Y;
             if (ignoreZRotation)
                 return new V4(-dy, dx, 0, Math.Sqrt(dx * dx + dy * dy) / 360 * Math.PI);
             else
@@ -1319,7 +1318,7 @@ namespace ReciPro
                 var atoms = atomControl.GetAll().Where(a => a.GLEnabled).ToList();
                 if (atoms.Count == 0)
                     return;
-                if (atoms.Count > 30 && !checkBoxGroupByElement.Checked)
+                if (atoms.Count > 40 && !checkBoxGroupByElement.Checked)
                 {
                     checkBoxGroupByElement.Checked = true;
                     return;
@@ -1331,75 +1330,70 @@ namespace ReciPro
                         while (atoms.Count(a => a.AtomicNumber == num) > 1)
                             atoms.Remove(atoms.First(a => a.AtomicNumber == num));
                 }
+                
+                //コントロールが足りなかったら追加
+                if (legendControls.Count < atoms.Count)
+                    for (int i = legendControls.Count; i < atoms.Count; i++)
+                    {
+                        //GLControlAlpha作成
+                        legendControls.Add(new GLControlAlpha
+                        {
+                            AllowMouseRotation = false,
+                            AllowMouseScaling = false,
+                            AllowMouseTranslating = false,
+                            DisablingOpenGL = false,
+                            Name = "legend" + i.ToString(),
+                            NodeCoefficient = 1,
+                            ProjWidth = 2.2D,
+                            LightPosition = glControlLight.LightPosition,
+                            WorldMatrix = glControlLight.WorldMatrix,
+                            ViewFrom = glControlLight.ViewFrom
+                        });
+                        legendControls[i].MouseDown += legendControl_MouseClick;
 
+                        //Label作成
+                        legendLabels.Add(new Label { Font = Font, AutoSize = true });
+
+                        //FlowLayoutPanel作成
+                        legendFlowLayoutPanels.Add(new FlowLayoutPanel
+                        {
+                            AutoSize = true,
+                            AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                            FlowDirection = FlowDirection.TopDown,
+                            Margin = new Padding(1, 1, 1, 8),
+                        });
+                        legendFlowLayoutPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
+                    }
+                //追加ここまで
 
                 glControlMain.SkipRendering = true;
                 flowLayoutPanelLegend.SuspendLayout();
-                for (int i = 0; i < Math.Max(atoms.Count, legendControls.Count); i++)
-                {
-                    if (i < atoms.Count)
-                    {
-                        if (legendControls.Count <= i)
-                        {
-                            //GLControlAlpha作成
-                            legendControls.Add(new GLControlAlpha
-                            {
-                                AllowMouseRotation = false,
-                                AllowMouseScaling = false,
-                                AllowMouseTranslating = false,
-                                DisablingOpenGL = false,
-                                Name = "legend" + i.ToString(),
-                                NodeCoefficient = 1,
-                                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                                ProjWidth = 2.2D,
-                                LightPosition = glControlLight.LightPosition,
-                                WorldMatrix = glControlLight.WorldMatrix,
-                                ViewFrom = glControlLight.ViewFrom
-                            });
-                            legendControls[i].MouseDown += legendControl_MouseClick;
 
-                            //Label作成
-                            legendLabels.Add(new Label { Font = Font, AutoSize = true });
-
-
-                            //FlowLayoutPanel作成
-                            legendFlowLayoutPanels.Add(new FlowLayoutPanel
-                            {
-                                AutoSize = true,
-                                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                                FlowDirection = FlowDirection.TopDown,
-                                Margin = new Padding(1, 1, 1, 8),
-                            });
-
-                            legendFlowLayoutPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
-                        }
-                        legendLabels[i].Text = checkBoxGroupByElement.Checked ?
-                            atoms[i].AtomicNumber.ToString() + ": " + AtomConstants.AtomicName(atoms[i].AtomicNumber) : atoms[i].Label;
-                        legendControls[i].Tag = legendLabels[i].Text;
-                        legendControls[i].DeleteAllObjects();
-                        legendControls[i].Size = size;
-
-
-                        flowLayoutPanelLegend.Controls.Add(legendFlowLayoutPanels[i]);
-                    }
-                    else
-                        flowLayoutPanelLegend.Controls.Remove(legendFlowLayoutPanels[i]);
-                }
-                flowLayoutPanelLegend.ResumeLayout();
+                //表示されているコントロールが多すぎたら削除
+                while (atoms.Count < flowLayoutPanelLegend.Controls.Count)
+                    flowLayoutPanelLegend.Controls.RemoveAt(atoms.Count);
 
                 var maxRadius = atoms.Max(a => a.Radius);
+                //凡例を設定
                 for (int i = 0; i < atoms.Count; i++)
                 {
+                    var a = atoms[i];
+                    legendLabels[i].Text = checkBoxGroupByElement.Checked ? $"{a.AtomicNumber}: {AtomConstants.AtomicName(a.AtomicNumber)}" : a.Label;
                     legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2 + 3, 0, 0, 0);
-                    legendControls[i].AddObjects(
-                        new Sphere(new V3(0, 0, 0), atoms[i].Radius / maxRadius, new Material(atoms[i].Argb, atoms[i].Texture), DrawingMode.Surfaces));
-                    legendControls[i].LightPosition = glControlLight.LightPosition;
 
+                    legendControls[i].Tag = legendLabels[i].Text;
+                    legendControls[i].DeleteAllObjects();
+                    legendControls[i].Size = size;
+                    legendControls[i].AddObjects(new Sphere(new V3(0, 0, 0), a.Radius / maxRadius, new Material(a.Argb, a.Texture), DrawingMode.Surfaces));
+                    legendControls[i].Render();
+                    flowLayoutPanelLegend.Controls.Add(legendFlowLayoutPanels[i]);
                 }
+
+                flowLayoutPanelLegend.ResumeLayout();
                 glControlMain.SkipRendering = false;
             }
 
-            textBoxInformation.AppendText("Generation of legend control: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            textBoxInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 
         private void legendControl_MouseClick(object sender, MouseEventArgs e)

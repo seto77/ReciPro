@@ -126,7 +126,7 @@ namespace ReciPro
             //IsTextChangedEventSkiped = false;
         }
 
-        private Bitmap DrawPic(PhotoInformation photo, Size size, double mag)
+        private static Bitmap DrawPic(PhotoInformation photo, Size size, double mag)
         {
             var bmp = new Bitmap(size.Width, size.Height);
             var g = Graphics.FromImage(bmp);

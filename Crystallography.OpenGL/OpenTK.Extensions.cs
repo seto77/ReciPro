@@ -61,14 +61,14 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static C4 ToC4(this V3f v, float A) => new C4(v.X, v.Y, v.Z, A);
+        public static C4 ToC4(this V3f v, float A) => new(v.X, v.Y, v.Z, A);
 
         /// <summary>
         /// 拡張メソッド.
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static V3d ToV3d(this V3f v) => new V3d(v.X, v.Y, v.Z);
+        public static V3d ToV3d(this V3f v) => new(v.X, v.Y, v.Z);
 
 
      
@@ -278,7 +278,7 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static M4d ToMatrix4D(this M3d m) => new M4d(
+        public static M4d ToMatrix4D(this M3d m) => new(
             m.M11, m.M21, m.M31, 0,
             m.M12, m.M22, m.M32, 0,
             m.M13, m.M23, m.M33, 0,
