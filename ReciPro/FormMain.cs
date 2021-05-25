@@ -1177,8 +1177,10 @@ namespace ReciPro
             japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
             Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
         }
-        private void githubPageToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://github.com/seto77/ReciPro");
-        private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e) => Process.Start("https://github.com/seto77/ReciPro/issues");
+        private void githubPageToolStripMenuItem_Click(object sender, EventArgs e) 
+            => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro"));
+        private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e) 
+            => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/issues"));
 
         #endregion FileMenu
 
