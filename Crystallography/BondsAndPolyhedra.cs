@@ -60,7 +60,7 @@ namespace Crystallography
 
         [XmlIgnore]
         [IgnoreMember]
-        public List<int[]> pairID = new List<int[]>();
+        public List<int[]> pairID = new();
 
         public Bonds()
         {
@@ -179,8 +179,6 @@ namespace Crystallography
             }
 
             return bonds.ToArray();
-
-
         }
         
         static Bonds()

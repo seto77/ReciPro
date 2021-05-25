@@ -386,6 +386,7 @@ namespace ReciPro
             this.numericBoxGaussianRadius.ShowUpDown = true;
             this.numericBoxGaussianRadius.SkipEventDuringInput = false;
             this.numericBoxGaussianRadius.SmartIncrement = true;
+            this.numericBoxGaussianRadius.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxGaussianRadius.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxGaussianRadius, resources.GetString("numericBoxGaussianRadius.ToolTip"));
             this.numericBoxGaussianRadius.Value = 1D;
@@ -530,6 +531,7 @@ namespace ReciPro
             this.numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
             this.numericBoxLabelFontSize.ShowUpDown = true;
             this.numericBoxLabelFontSize.SkipEventDuringInput = false;
+            this.numericBoxLabelFontSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxLabelFontSize.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip"));
             this.numericBoxLabelFontSize.Value = 9D;
@@ -583,6 +585,7 @@ namespace ReciPro
             this.numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
             this.numericBoxScaleLength.ShowUpDown = true;
             this.numericBoxScaleLength.SkipEventDuringInput = false;
+            this.numericBoxScaleLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxScaleLength.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxScaleLength, resources.GetString("numericBoxScaleLength.ToolTip"));
             this.numericBoxScaleLength.UpDown_Increment = 0.2D;
@@ -680,6 +683,7 @@ namespace ReciPro
             this.numericBoxThickness.RadianValue = 0.3490658503988659D;
             this.numericBoxThickness.ShowUpDown = true;
             this.numericBoxThickness.SmartIncrement = true;
+            this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThickness.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             this.numericBoxThickness.Value = 20D;
@@ -719,6 +723,7 @@ namespace ReciPro
             this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
             this.numericBoxAccVol.ShowUpDown = true;
             this.numericBoxAccVol.SmartIncrement = true;
+            this.numericBoxAccVol.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAccVol.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
             this.numericBoxAccVol.Value = 200D;
@@ -737,6 +742,7 @@ namespace ReciPro
             this.numericBoxDefocus.RadianValue = -1.2217304763960306D;
             this.numericBoxDefocus.ShowUpDown = true;
             this.numericBoxDefocus.SmartIncrement = true;
+            this.numericBoxDefocus.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocus.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
             this.numericBoxDefocus.Value = -70D;
@@ -828,6 +834,7 @@ namespace ReciPro
             this.numericBoxCs.RadianValue = 0.022689280275926284D;
             this.numericBoxCs.ShowUpDown = true;
             this.numericBoxCs.SmartIncrement = true;
+            this.numericBoxCs.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCs.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
             this.numericBoxCs.UpDown_Increment = 0.1D;
@@ -848,6 +855,7 @@ namespace ReciPro
             this.numericBoxCc.RestrictLimitValue = false;
             this.numericBoxCc.ShowUpDown = true;
             this.numericBoxCc.SmartIncrement = true;
+            this.numericBoxCc.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCc.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
             this.numericBoxCc.UpDown_Increment = 0.1D;
@@ -868,6 +876,7 @@ namespace ReciPro
             this.numericBoxDeltaV.RestrictLimitValue = false;
             this.numericBoxDeltaV.ShowUpDown = true;
             this.numericBoxDeltaV.SmartIncrement = true;
+            this.numericBoxDeltaV.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDeltaV.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
             this.numericBoxDeltaV.UpDown_Increment = 0.1D;
@@ -887,6 +896,7 @@ namespace ReciPro
             this.numericBoxBetaAgnle.RadianValue = 0.013089969389957471D;
             this.numericBoxBetaAgnle.ShowUpDown = true;
             this.numericBoxBetaAgnle.SmartIncrement = true;
+            this.numericBoxBetaAgnle.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxBetaAgnle.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxBetaAgnle, resources.GetString("numericBoxBetaAgnle.ToolTip"));
             this.numericBoxBetaAgnle.UpDown_Increment = 0.05D;
@@ -960,7 +970,7 @@ namespace ReciPro
             this.graphControl.Name = "graphControl";
             this.graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             this.graphControl.Smoothing = false;
-            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.graphControl, resources.GetString("graphControl.ToolTip"));
             this.graphControl.UnitX = "";
             this.graphControl.UnitY = "";
@@ -1008,7 +1018,7 @@ namespace ReciPro
             this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
             this.numericBoxMaxU1.ShowUpDown = true;
             this.numericBoxMaxU1.SmartIncrement = true;
-            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxU1.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxMaxU1, resources.GetString("numericBoxMaxU1.ToolTip"));
             this.numericBoxMaxU1.Value = 6D;
@@ -1089,6 +1099,7 @@ namespace ReciPro
             this.numericBoxObjAperX.Name = "numericBoxObjAperX";
             this.numericBoxObjAperX.ShowUpDown = true;
             this.numericBoxObjAperX.SmartIncrement = true;
+            this.numericBoxObjAperX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxObjAperX.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxObjAperX, resources.GetString("numericBoxObjAperX.ToolTip"));
             this.numericBoxObjAperX.UpDown_Increment = 0.5D;
@@ -1107,6 +1118,7 @@ namespace ReciPro
             this.numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
             this.numericBoxObjAperRadius.ShowUpDown = true;
             this.numericBoxObjAperRadius.SmartIncrement = true;
+            this.numericBoxObjAperRadius.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxObjAperRadius.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
             this.numericBoxObjAperRadius.UpDown_Increment = 0.5D;
@@ -1125,6 +1137,7 @@ namespace ReciPro
             this.numericBoxObjAperY.Name = "numericBoxObjAperY";
             this.numericBoxObjAperY.ShowUpDown = true;
             this.numericBoxObjAperY.SmartIncrement = true;
+            this.numericBoxObjAperY.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxObjAperY.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxObjAperY, resources.GetString("numericBoxObjAperY.ToolTip"));
             this.numericBoxObjAperY.UpDown_Increment = 0.5D;
@@ -1238,6 +1251,7 @@ namespace ReciPro
             this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
             this.numericBoxNumOfBlochWave.ShowUpDown = true;
             this.numericBoxNumOfBlochWave.SmartIncrement = true;
+            this.numericBoxNumOfBlochWave.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             this.numericBoxNumOfBlochWave.Value = 500D;
@@ -1280,6 +1294,7 @@ namespace ReciPro
             this.numericBoxWidth.RadianValue = 8.9360857702109673D;
             this.numericBoxWidth.ShowUpDown = true;
             this.numericBoxWidth.SmartIncrement = true;
+            this.numericBoxWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxWidth.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxWidth, resources.GetString("numericBoxWidth.ToolTip"));
             this.numericBoxWidth.Value = 512D;
@@ -1297,6 +1312,7 @@ namespace ReciPro
             this.numericBoxHeight.RadianValue = 8.9360857702109673D;
             this.numericBoxHeight.ShowUpDown = true;
             this.numericBoxHeight.SmartIncrement = true;
+            this.numericBoxHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxHeight.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip"));
             this.numericBoxHeight.Value = 512D;
@@ -1321,6 +1337,7 @@ namespace ReciPro
             this.numericBoxResolution.RadianValue = 0.069813170079773182D;
             this.numericBoxResolution.ShowUpDown = true;
             this.numericBoxResolution.SmartIncrement = true;
+            this.numericBoxResolution.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxResolution.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             this.numericBoxResolution.Value = 4D;
@@ -1448,6 +1465,7 @@ namespace ReciPro
             this.numericBoxDefocusNum.Name = "numericBoxDefocusNum";
             this.numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
             this.numericBoxDefocusNum.ShowUpDown = true;
+            this.numericBoxDefocusNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusNum.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip"));
             this.numericBoxDefocusNum.Value = 4D;
@@ -1465,6 +1483,7 @@ namespace ReciPro
             this.numericBoxDefocusStep.Name = "numericBoxDefocusStep";
             this.numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
             this.numericBoxDefocusStep.ShowUpDown = true;
+            this.numericBoxDefocusStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusStep.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip"));
             this.numericBoxDefocusStep.UpDown_Increment = 10D;
@@ -1483,6 +1502,7 @@ namespace ReciPro
             this.numericBoxDefocusStart.Name = "numericBoxDefocusStart";
             this.numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
             this.numericBoxDefocusStart.ShowUpDown = true;
+            this.numericBoxDefocusStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusStart.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip"));
             this.numericBoxDefocusStart.UpDown_Increment = 10D;
@@ -1543,6 +1563,7 @@ namespace ReciPro
             this.numericBoxThicknessNum.Name = "numericBoxThicknessNum";
             this.numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
             this.numericBoxThicknessNum.ShowUpDown = true;
+            this.numericBoxThicknessNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessNum.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip"));
             this.numericBoxThicknessNum.Value = 4D;
@@ -1560,6 +1581,7 @@ namespace ReciPro
             this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
             this.numericBoxThicknessStep.ShowUpDown = true;
+            this.numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessStep.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             this.numericBoxThicknessStep.UpDown_Increment = 10D;
@@ -1584,6 +1606,7 @@ namespace ReciPro
             this.numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             this.numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
             this.numericBoxThicknessStart.ShowUpDown = true;
+            this.numericBoxThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessStart.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             this.numericBoxThicknessStart.UpDown_Increment = 10D;

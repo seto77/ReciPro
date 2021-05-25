@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.5.24.1148</AssemblyVersion>
-    <FileVersion>2021.5.24.1148</FileVersion>
+    <AssemblyVersion>2021.5.25.0129</AssemblyVersion>
+    <FileVersion>2021.5.25.0129</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -39,9 +39,6 @@
     <None Remove="doc\ReciProの座標系.pptx" />
     <None Remove="doc\Thumbs.db" />
     <None Remove="image\App.ico" />
-    <None Remove="image\TmpA26E.tmp" />
-    <None Remove="image\TmpEAD9.tmp" />
-    <None Remove="image\アイコン.cvx" />
     <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
     <None Remove="initial.xml" />
     <None Remove="StdDb.cdb3" />

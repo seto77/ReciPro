@@ -95,7 +95,6 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.labelDivisionNumber);
             this.groupBox1.Controls.Add(this.comboBoxSolver);
             this.groupBox1.Controls.Add(this.numericBoxThread);
@@ -109,6 +108,7 @@
             this.groupBox1.Controls.Add(this.trackBarAdvancedAlphaMax);
             this.groupBox1.Controls.Add(this.numericBoxDivision);
             this.groupBox1.Controls.Add(this.label13);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -121,8 +121,8 @@
             // 
             // comboBoxSolver
             // 
-            resources.ApplyResources(this.comboBoxSolver, "comboBoxSolver");
             this.comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxSolver, "comboBoxSolver");
             this.comboBoxSolver.FormattingEnabled = true;
             this.comboBoxSolver.Items.AddRange(new object[] {
             resources.GetString("comboBoxSolver.Items"),
@@ -146,7 +146,7 @@
             this.numericBoxThread.RadianValue = 0.069813170079773182D;
             this.numericBoxThread.ShowUpDown = true;
             this.numericBoxThread.SmartIncrement = true;
-            this.numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThread.ThonsandsSeparator = true;
             this.numericBoxThread.Value = 4D;
             this.numericBoxThread.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
@@ -163,6 +163,7 @@
             this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
             this.numericBoxThicknessStep.ShowUpDown = true;
             this.numericBoxThicknessStep.SmartIncrement = true;
+            this.numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessStep.ThonsandsSeparator = true;
             this.numericBoxThicknessStep.Value = 20D;
             this.numericBoxThicknessStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
@@ -179,6 +180,7 @@
             this.numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
             this.numericBoxWholeThicknessStart.ShowUpDown = true;
             this.numericBoxWholeThicknessStart.SmartIncrement = true;
+            this.numericBoxWholeThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxWholeThicknessStart.ThonsandsSeparator = true;
             this.numericBoxWholeThicknessStart.Value = 20D;
             this.numericBoxWholeThicknessStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
@@ -195,6 +197,7 @@
             this.numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
             this.numericBoxThicknessEnd.ShowUpDown = true;
             this.numericBoxThicknessEnd.SmartIncrement = true;
+            this.numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessEnd.ThonsandsSeparator = true;
             this.numericBoxThicknessEnd.Value = 200D;
             this.numericBoxThicknessEnd.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
@@ -211,15 +214,16 @@
             this.numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
             this.numericBoxMaxNumOfG.ShowUpDown = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
+            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
             this.numericBoxMaxNumOfG.Value = 64D;
             this.numericBoxMaxNumOfG.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxNumOfG_ValueChanged);
             // 
             // buttonStop
             // 
-            resources.ApplyResources(this.buttonStop, "buttonStop");
             this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
             this.buttonStop.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.buttonStop, "buttonStop");
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.UseVisualStyleBackColor = false;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
@@ -254,7 +258,7 @@
             this.numericBoxDivision.ShowUpDown = true;
             this.numericBoxDivision.SkipEventDuringInput = false;
             this.numericBoxDivision.SmartIncrement = true;
-            this.numericBoxDivision.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.numericBoxDivision.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDivision.ThonsandsSeparator = true;
             this.numericBoxDivision.Value = 128D;
             this.numericBoxDivision.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDivision_ValueChanged);
@@ -266,7 +270,6 @@
             // 
             // groupBoxOutput
             // 
-            resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
             this.groupBoxOutput.Controls.Add(this.radioButtonIndivisualDisk);
             this.groupBoxOutput.Controls.Add(this.radioButtonAllDisks);
             this.groupBoxOutput.Controls.Add(this.label3);
@@ -285,6 +288,7 @@
             this.groupBoxOutput.Controls.Add(this.label7);
             this.groupBoxOutput.Controls.Add(this.label1);
             this.groupBoxOutput.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.TabStop = false;
             // 
@@ -316,8 +320,8 @@
             // 
             // comboBoxGradient
             // 
-            resources.ApplyResources(this.comboBoxGradient, "comboBoxGradient");
             this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxGradient, "comboBoxGradient");
             this.comboBoxGradient.FormattingEnabled = true;
             this.comboBoxGradient.Items.AddRange(new object[] {
             resources.GetString("comboBoxGradient.Items"),
@@ -327,8 +331,8 @@
             // 
             // comboBoxScale
             // 
-            resources.ApplyResources(this.comboBoxScale, "comboBoxScale");
             this.comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxScale, "comboBoxScale");
             this.comboBoxScale.FormattingEnabled = true;
             this.comboBoxScale.Items.AddRange(new object[] {
             resources.GetString("comboBoxScale.Items"),
@@ -419,20 +423,20 @@
             // 
             // statusStrip2
             // 
-            resources.ApplyResources(this.statusStrip2, "statusStrip2");
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel1});
             this.statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            resources.ApplyResources(this.statusStrip2, "statusStrip2");
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.SizingGrip = false;
             // 
             // toolStripProgressBar
             // 
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Name = "toolStripProgressBar";
             this.toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolStripStatusLabel2
@@ -442,8 +446,8 @@
             // 
             // toolStripStatusLabel1
             // 
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // FormDiffractionSimulatorCBED
             // 
