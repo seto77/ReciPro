@@ -50,9 +50,7 @@ namespace Crystallography
             {
                 if (File.Exists(path))
                 {
-                    var ps = new ProcessStartInfo(path);
-                    //ProcessStartInfo.Start(path);
-                    Process.Start(ps);
+                    Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
                     return true;
                 }
                 return false;
