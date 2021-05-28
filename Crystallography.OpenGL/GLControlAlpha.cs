@@ -15,7 +15,6 @@ using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
 using System.Management;
 using System.Runtime.ExceptionServices;
-using System.Diagnostics.Eventing.Reader;
 
 namespace Crystallography.OpenGL
 {
@@ -40,9 +39,6 @@ namespace Crystallography.OpenGL
         private readonly int projMatrixLocation = 0;
         private readonly int worldMatrixLocation = 0;
         private int passOIT1Index = 0;
-
-        public GLControlAlpha(int passOIT1Index) => this.passOIT1Index = passOIT1Index;
-
         private int passOIT2Index = 0;
 
         private readonly int depthCueingNearLocation = 0;
@@ -79,6 +75,54 @@ namespace Crystallography.OpenGL
 
         #endregion イベント
 
+        #region static な property, field. OpengGLのバージョン関連
+        /// <summary>
+        /// OpenGLを無効にするか。 Versionチェックが出来ないときなどに、Trueになる。
+        /// </summary>
+        public static bool DisablingOpenGL { get; set; }
+
+        /// <summary>
+        /// 動作しているOpenGLのバージョン (3桁整数, 430など)
+        /// </summary>
+        public static int Version { get; }
+
+        /// <summary>
+        /// 動作しているOpenGLのバージョン (文字列, 4.3.0など)
+        /// </summary>
+        public static string VersionStr => $"{Version / 100}.{Version / 10 % 10}.{Version % 10}";
+
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
+        /// </summary>
+        public static int VersionForZsort { get; } = 150;
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public static string VersionForZsortStr => $"{VersionForZsort / 100}.{VersionForZsort / 10 % 10}.{VersionForZsort % 10}";
+        /// <summary>
+        /// Z-sortの条件を満たしているか
+        /// </summary>
+        public static bool ZsortEnabled => VersionForZsort <= Version;
+
+
+        /// <summary>
+        /// OITのために最低必要なOpenGLのバージョン (3桁整数, 430など)
+        /// </summary>
+        public static int VersionForOit { get; } = 430;
+        /// <summary>
+        /// OITのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public static string VersionForOitStr => $"{VersionForOit / 100}.{VersionForOit / 10 % 10}.{VersionForOit % 10}";
+
+        /// <summary>
+        /// OITのバージョンを満たしているか.
+        /// </summary>
+        public static bool OitEnabled => VersionForOit <= Version;
+
+
+
+        #endregion
+
         #region プロパティ
 
         /// <summary>
@@ -101,68 +145,7 @@ namespace Crystallography.OpenGL
             }
         }
 
-
-        #region 
-
-        
-
-        
-
-        
-        
-
-
-        
-       
-
-        
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
-        /// </summary>
-        public int GetVersionForOIT() => versionForOIT;
-
-        /// <summary>
-        /// OpenGLのバージョンが最低要件を満たしているかどうか
-        /// </summary>
-        public bool VersionRequirement => (Version >= VersionForZsort) || (Version >= GetVersionForOIT());
-
-        #endregion
-
         public int Program { get; } = -1;
-
-
-        #region static な property, field. OpengGLのバージョン関連
-        public static bool DisablingOpenGL { get; set; }
-
-        /// <summary>
-        /// 動作しているOpenGLのバージョン (3桁整数, 430など)
-        /// </summary>
-        public static int Version { get; }
-
-        /// <summary>
-        /// 動作しているOpenGLのバージョン (文字列, 4.3.0など)
-        /// </summary>
-        public static string VersionStr => $"{Version / 100}.{(Version / 10) % 10}.{Version % 10}";
-
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
-        /// </summary>
-        public static int VersionForZsort { get; } = 150;
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
-        /// </summary>
-        public static string VersionForZsortStr => "1.5.0";
-
-        /// <summary>
-        /// OITのために最低必要なOpenGLのバージョン (3桁整数, 430など)
-        /// </summary>
-        private static int versionForOIT { get; } = 430;
-        /// <summary>
-        /// OITのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
-        /// </summary>
-        public static string VersionForOITStr => "4.3.0";
-
-        #endregion
 
         #region OIT関連
         // This is the maximum supported framebuffer width and height. We
@@ -199,8 +182,8 @@ namespace Crystallography.OpenGL
         #endregion
 
         /// <summary>
-        /// 透明度計算としてZsort(要150以上) あるいはOIT (Order Independent Transparency, 要430以上)を選択. 
-        /// 値が(同じ値でも)設定されたとき、SetShader()が実行され、GPUにfrag shaderが転送される.
+        /// 透明度計算としてZsort(要150以上) あるいはOIT (Order Independent Transparency, 要430以上)を用いるか.
+        /// コンストラクタのみで設定可能
         /// </summary>
         [Category("Rendering properties")]
         public FragShaders FragShader { get; } = FragShaders.ZSORT;
@@ -485,9 +468,7 @@ namespace Crystallography.OpenGL
         {
             InitializeComponent();
 
-            if (DisablingOpenGL || DesignMode)
-                return;
-            if ((shaders == FragShaders.ZSORT && Version < VersionForZsort) || shaders == FragShaders.OIT && Version < GetVersionForOIT())
+            if (DisablingOpenGL || DesignMode || !ZsortEnabled)
                 return;
 
             FragShader = shaders;
@@ -864,8 +845,6 @@ namespace Crystallography.OpenGL
 
             lastMousePosition = new Point(e.X, e.Y);
         }
-
-     
 
         private void GlControl_MouseWheel(object sender, MouseEventArgs e)
         {

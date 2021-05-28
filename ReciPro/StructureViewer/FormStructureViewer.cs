@@ -1494,7 +1494,7 @@ namespace ReciPro
             if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
                 return;//ïœçXÇ™ñ≥Ç©Ç¡ÇΩÇÁâΩÇ‡ÇµÇ»Ç¢ÅB
 
-            if (comboBoxTransparency.SelectedIndex == 1 && GLControlAlpha.Version < glControlMain.GetVersionForOIT())
+            if (comboBoxTransparency.SelectedIndex == 1 && !GLControlAlpha.OitEnabled)
             {
                 MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
                     " but the current version is " + GLControlAlpha.VersionStr + ". Sorry.", "Caution!");
