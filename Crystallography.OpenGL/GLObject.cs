@@ -5,9 +5,8 @@ using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL4;
 using System.Windows.Forms;
 using System.Drawing;
-
+using System.Management;
 #region 定義
-
 using V4f = OpenTK.Vector4;
 using V4d = OpenTK.Vector4d;
 using V3f = OpenTK.Vector3;
@@ -19,12 +18,7 @@ using M4d = OpenTK.Matrix4d;
 using M4f = OpenTK.Matrix4;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
-using System.Resources;
-using System.Management;
-
 #endregion 定義
-
-
 
 namespace Crystallography.OpenGL
 {
@@ -217,6 +211,11 @@ namespace Crystallography.OpenGL
             var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
             foreach (var envVar in searcher.Get())
                 GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+
+            var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
+            Cone.Default = (1, flag ? 24 : 16);
+            Pipe.Default = (1, flag ? 24 : 16);
+            Sphere.DefaultSlices = flag ? 4 : 3;
         }
 
 

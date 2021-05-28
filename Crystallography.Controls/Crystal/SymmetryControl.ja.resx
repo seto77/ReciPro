@@ -70,6 +70,19 @@
   <data name="checkBoxShowError.Text" xml:space="preserve">
     <value>誤差表示</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 0</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 82</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>格子定数</value>
+  </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>314, 54</value>
   </data>
@@ -94,18 +107,11 @@
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 54</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 0</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 82</value>
-  </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>格子定数</value>
+  <data name="groupBoxSymmetry.Text" xml:space="preserve">
+    <value>対称性</value>
   </data>
   <data name="comboBoxSpaceGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 74</value>
@@ -175,11 +181,5 @@
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>点群</value>
-  </data>
-  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxSymmetry.Text" xml:space="preserve">
-    <value>対称性</value>
   </data>
 </root>

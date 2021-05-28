@@ -124,7 +124,6 @@ namespace ReciPro
                 AllowMouseScaling = false,
                 AllowMouseTranslating = false,
                 BorderStyle = BorderStyle.Fixed3D,
-                DisablingOpenGL = false,
                 MaxHeight = 1,
                 MaxWidth = 1,
                 Name = "glControlAxes",
@@ -147,7 +146,6 @@ namespace ReciPro
                 AllowMouseScaling = false,
                 AllowMouseTranslating = false,
                 BorderStyle = BorderStyle.Fixed3D,
-                DisablingOpenGL = false,
                 MaxHeight = 1,
                 MaxWidth = 1,
                 Name = "glControlLight",
@@ -170,7 +168,6 @@ namespace ReciPro
                 AllowMouseScaling = true,
                 AllowMouseTranslating = true,
                 BorderStyle = BorderStyle.Fixed3D,
-                DisablingOpenGL = false,
                 MaxHeight = 1,
                 MaxWidth = 1,
                 Name = "glControlMainZsort",
@@ -191,7 +188,6 @@ namespace ReciPro
                 AllowMouseScaling = true,
                 AllowMouseTranslating = true,
                 BorderStyle = BorderStyle.Fixed3D,
-                DisablingOpenGL = false,
                 MaxHeight = 1440,
                 MaxWidth = 2560,
                 Name = "glControlMainOIT",
@@ -228,14 +224,14 @@ namespace ReciPro
             #endregion
 
             #region ビデオカードの設定
-            foreach (var info in glControlMain.GraphicsInfo)
+            foreach (var info in GLControlAlpha.GraphicsInfo)
             {
                 labelGraphicsCard.Text += info.Product + "  ";
                 labelGraphicsDriver.Text += info.Version + "  ";
             }
-            labelOpenGLversion.Text += glControlMain.VersionStr;
+            labelOpenGLversion.Text += GLControlAlpha.VersionStr;
 
-            if (glControlMain.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
+            if (GLControlAlpha.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
                 comboBoxRenderignQuality.SelectedIndex = 1;
             else
                 comboBoxRenderignQuality.SelectedIndex = 0;
@@ -1361,7 +1357,6 @@ namespace ReciPro
                             AllowMouseRotation = false,
                             AllowMouseScaling = false,
                             AllowMouseTranslating = false,
-                            DisablingOpenGL = false,
                             Name = $"legend{i}",
                             NodeCoefficient = 1,
                             ProjWidth = 2.2D,
@@ -1401,7 +1396,7 @@ namespace ReciPro
                     legendControls[i].AddObjects(new Sphere(new V3(0, 0, 0), a.Radius / maxRadius, new Material(a.Argb, a.Texture), DrawingMode.Surfaces));
                     legendControls[i].Render();
                     
-                    if(flowLayoutPanelLegend.Controls.Count<i)
+                    if(flowLayoutPanelLegend.Controls.Count<=i)
                         flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
                 }
 
@@ -1499,10 +1494,10 @@ namespace ReciPro
             if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
                 return;//変更が無かったら何もしない。
 
-            if (comboBoxTransparency.SelectedIndex == 1 && glControlMain.Version < glControlMain.GetVersionForOIT())
+            if (comboBoxTransparency.SelectedIndex == 1 && GLControlAlpha.Version < glControlMain.GetVersionForOIT())
             {
                 MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
-                    " but the current version is " + glControlMain.VersionStr + ". Sorry.", "Caution!");
+                    " but the current version is " + GLControlAlpha.VersionStr + ". Sorry.", "Caution!");
                 comboBoxTransparency.SelectedIndex = 0;
                 return;
             }

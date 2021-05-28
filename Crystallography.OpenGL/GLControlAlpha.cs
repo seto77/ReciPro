@@ -102,45 +102,24 @@ namespace Crystallography.OpenGL
         }
 
 
-        #region OpengGLのバージョン関連
+        #region 
 
-        /// <summary>
-        /// OpenGLのバージョン (3桁整数, 430など)
-        /// </summary>
-        public int Version { get; }
+        
 
-        /// <summary>
-        /// OpenGLのバージョン (文字列, 4.3.0など)
-        /// </summary>
-        public string VersionStr
-        {
-            get
-            {
-                int v1 = Version / 100, v2 = (Version - v1 * 100) / 10, v3 = Version - v1 * 100 - v2 * 10;
-                return (Version / 100).ToString() + "." + v2.ToString() + "." + v3.ToString();
-            }
-        }
+        
 
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
-        /// </summary>
-        public int VersionForZsort { get; } = 150;
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
-        /// </summary>
-        public static string VersionForZsortStr => "1.5.0";
+        
+        
 
 
-        private int versionForOIT { get; } = 430;
+        
+       
+
+        
         /// <summary>
         /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
         /// </summary>
         public int GetVersionForOIT() => versionForOIT;
-
-        /// <summary>
-        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
-        /// </summary>
-        public static string VersionForOITStr => "4.3.0";
 
         /// <summary>
         /// OpenGLのバージョンが最低要件を満たしているかどうか
@@ -151,8 +130,39 @@ namespace Crystallography.OpenGL
 
         public int Program { get; } = -1;
 
-        public bool DisablingOpenGL { get; set; } = false;
 
+        #region static な property, field. OpengGLのバージョン関連
+        public static bool DisablingOpenGL { get; set; }
+
+        /// <summary>
+        /// 動作しているOpenGLのバージョン (3桁整数, 430など)
+        /// </summary>
+        public static int Version { get; }
+
+        /// <summary>
+        /// 動作しているOpenGLのバージョン (文字列, 4.3.0など)
+        /// </summary>
+        public static string VersionStr => $"{Version / 100}.{(Version / 10) % 10}.{Version % 10}";
+
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
+        /// </summary>
+        public static int VersionForZsort { get; } = 150;
+        /// <summary>
+        /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public static string VersionForZsortStr => "1.5.0";
+
+        /// <summary>
+        /// OITのために最低必要なOpenGLのバージョン (3桁整数, 430など)
+        /// </summary>
+        private static int versionForOIT { get; } = 430;
+        /// <summary>
+        /// OITのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+        /// </summary>
+        public static string VersionForOITStr => "4.3.0";
+
+        #endregion
 
         #region OIT関連
         // This is the maximum supported framebuffer width and height. We
@@ -316,7 +326,7 @@ namespace Crystallography.OpenGL
             }
         }
 
-        public List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>();
+        public static List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>();
 
         /// <summary>
         /// カメラの位置
@@ -416,18 +426,14 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <returns></returns>
         [HandleProcessCorruptedStateExceptions]
-        private string[] CheckVersion()
+        private static string[] CheckVersion()
         {
             try
             {
                 var ver = GL.GetString(StringName.Version).Substring(0, 5).Split(new[] { '.', ' ' });
                 return ver.Length != 3 ? null : ver;
             }
-            catch
-            {
-                DisablingOpenGL = true;
-                throw new Exception();
-            }
+            catch { throw new Exception(); }
         }
 
         /// <summary>
@@ -439,28 +445,50 @@ namespace Crystallography.OpenGL
 
         private static Graphics getGraphics(GLControl control)
         {
-            try
+            try { return control.CreateGraphics(); }
+            catch { return null; }
+        }
+
+        /// <summary>
+        /// 静的コンストラクタ. バージョン情報などはここでチェック
+        /// </summary>
+        static GLControlAlpha()
+        {
+            //ビデオカード検索
+            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
+            foreach (var envVar in searcher.Get())
+                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+
+            var glcontrol = new GLControl();
+            glcontrol.MakeCurrent();
+
+            //バージョンチェック
+            var ver = CheckVersion();
+            if (ver == null)
             {
-                return control.CreateGraphics();
+                DisablingOpenGL = true;
+                return;
             }
-            catch
-            {
-                return null;
-            }
+            Version = 0;
+            if (int.TryParse(ver[0], out var temp0))
+                Version += temp0 * 100;
+            if (int.TryParse(ver[1], out var temp1))
+                Version += temp1 * 10;
+            if (int.TryParse(ver[2], out var temp2))
+                Version += temp2;
         }
 
         /// <summary>
         /// コンストラクタ. ZsortかOITかは、コンストラクタで決める. 生成後に変更はできない。
         /// </summary>
-
-        public GLControlAlpha(FragShaders shaders =  FragShaders.ZSORT)
+        public GLControlAlpha(FragShaders shaders = FragShaders.ZSORT)
         {
             InitializeComponent();
 
             if (DisablingOpenGL || DesignMode)
                 return;
-            
-           
+            if ((shaders == FragShaders.ZSORT && Version < VersionForZsort) || shaders == FragShaders.OIT && Version < GetVersionForOIT())
+                return;
 
             FragShader = shaders;
 
@@ -485,48 +513,20 @@ namespace Crystallography.OpenGL
             glControl.MouseUp += glControl_MouseUp;
             glControl.Resize += glControl_Resize;
 
-
             var g = getGraphics(glControl);
             if (g == null)
                 return;
             glControlGraphics = g;
 
-
             ResumeLayout();
             //glControlの再初期化ここまで
             #endregion
 
-
-
             glControl.MakeCurrent();
-
-
-            //ビデオカード検索
-            var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
-            foreach (var envVar in searcher.Get())
-                GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
-
-            //バージョンチェック
-            var ver = CheckVersion();
-            if (ver == null)
-                return;
-            Version = 0;
-            if (int.TryParse(ver[0], out var temp0))
-                Version += temp0 * 100;
-            if (int.TryParse(ver[1], out var temp1))
-                Version += temp1 * 10;
-            if (int.TryParse(ver[2], out var temp2))
-                Version += temp2;
-            if (Version < VersionForZsort)
-                return;
-            if (FragShader == FragShaders.OIT && Version < GetVersionForOIT())
-                return;
-
-
 
             //Shader転送
             var frag = FragShader == FragShaders.ZSORT ? Properties.Resources.fragZSORT :
-                Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", "MAX_FRAGMENTS " + MaxFragments.ToString());
+                Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", $"MAX_FRAGMENTS {MaxFragments}");
             Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
 
             GL.UseProgram(Program);
@@ -579,16 +579,8 @@ namespace Crystallography.OpenGL
 
             glObjectsP = glObjects.AsParallel();
 
-
-            //Defaultなオブジェクトを作成
-            var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
-            Cone.Default = (1, flag ? 24 : 16);
-            Pipe.Default = (1, flag ? 24 : 16);
-            Sphere.DefaultSlices = flag ? 4 : 3;
-
             setViewMatrix();
             setProjMatrix();
-
             setDepthCueing();
         }
 
@@ -613,7 +605,7 @@ namespace Crystallography.OpenGL
             GL.GetShader(vshader, ShaderParameter.CompileStatus, out int status_code);
             if (status_code != 1)
             {
-                if (Crystallography.AssemblyState.IsDebug)
+                if (AssemblyState.IsDebug)
                     MessageBox.Show("Error in vertex shader ");
                 throw new ApplicationException(info);
             }
@@ -635,7 +627,7 @@ namespace Crystallography.OpenGL
             GL.GetShader(fshader, ShaderParameter.CompileStatus, out status_code);
             if (status_code != 1)
             {
-                if (Crystallography.AssemblyState.IsDebug)
+                if (AssemblyState.IsDebug)
                     MessageBox.Show("Error in fragment shader ");
                 throw new ApplicationException(info);
             }
@@ -693,8 +685,7 @@ namespace Crystallography.OpenGL
 
         public void AddObjects(GLObject obj)
         {
-            if (Program < 1)
-                return;
+            if (Program < 1) return;
             glControl.MakeCurrent();
             obj.Generate(Program);
             glObjects.Add(obj);
@@ -704,10 +695,7 @@ namespace Crystallography.OpenGL
         {
             if (Program < 1) return;
             glControl.MakeCurrent();
-            //foreach (var obj in objs)
-            //    obj.Generate(Program);
             GLObject.Generate(Program, objs);
-            
             glObjects.AddRange(objs);
         }
 
