@@ -13,7 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -248,22 +247,17 @@ namespace ReciPro
                         AllowMouseRotation = false,
                         AllowMouseScaling = false,
                         AllowMouseTranslating = false,
-                        DisablingOpenGL = disableOpneGLToolStripMenuItem.Checked,
-                        Width = groupBoxCurrentDirection.ClientSize.Width - 10,
-                        Height = groupBoxCurrentDirection.ClientSize.Width - 10,
                         Name = "glControlAxes",
                         ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                        ProjWidth = 4D,
+                        ProjWidth = 2.6,
                         RotationMode = GLControlAlpha.RotationModes.Object,
+                        Dock = DockStyle.Fill,
+                        LightPosition = new Vec3(100, 100, 100)
                     };
                     glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
                     glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
-
                     groupBoxCurrentDirection.Controls.Add(glControlAxes);
-                    glControlAxes.Dock = DockStyle.Fill;
                     glControlAxes.BringToFront();
-                    glControlAxes.LightPosition = new Vec3(100, 100, 100);
-                    glControlAxes.ProjWidth = 2.4;
                 }
                 catch (Exception ex)
                 {
@@ -1139,8 +1133,6 @@ namespace ReciPro
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
-            //var fnWeb = fn.Replace(".pdf", ".web.pdf");
-            //Process.Start((File.Exists(fnWeb) && new FileInfo(fnWeb).Length > 100) ? fnWeb : fn);
             var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var f = new FormPDF(appPath+fn);
             f.ShowDialog();
@@ -1403,7 +1395,7 @@ namespace ReciPro
             }
             catch (Exception e)
             {
-                if (Crystallography.AssemblyState.IsDebug)
+                if (AssemblyState.IsDebug)
                     MessageBox.Show(e.Message);
             }
             SkipProgressEvent = false;

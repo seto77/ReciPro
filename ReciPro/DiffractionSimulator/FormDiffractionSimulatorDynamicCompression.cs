@@ -479,8 +479,8 @@ namespace ReciPro
 
             trackBarAdvancedFront.Minimum = graphControl.Profile.Pt[0].X;
             trackBarAdvancedBack.Minimum = graphControl.Profile.Pt[0].X;
-            trackBarAdvancedFront.Maximum = graphControl.Profile.Pt[graphControl.Profile.Pt.Count - 1].X;
-            trackBarAdvancedBack.Maximum = graphControl.Profile.Pt[graphControl.Profile.Pt.Count - 1].X;
+            trackBarAdvancedFront.Maximum = graphControl.Profile.Pt[^1].X;
+            trackBarAdvancedBack.Maximum = graphControl.Profile.Pt[^1].X;
 
             return false;
         }

@@ -191,7 +191,7 @@ namespace Crystallography
                 else
                     return;
             }
-            BinaryWriter bw = new BinaryWriter(new FileStream(filename, FileMode.Create, FileAccess.ReadWrite));
+            var bw = new BinaryWriter(new FileStream(filename, FileMode.Create, FileAccess.ReadWrite));
 
             bw.Write((byte)0x49); bw.Write((byte)0x49);//バイトオーダー
             bw.Write((byte)0x2A); bw.Write((byte)0x00);//バージョン
@@ -384,7 +384,7 @@ namespace Crystallography
                 public double PulsePower = double.NaN;
             }
 
-            public byte[] read(BinaryReader br, long position, int length, TiffByteOrder byteOrder)
+            public static byte[] Read(BinaryReader br, long position, int length, TiffByteOrder byteOrder)
             {
                 br.BaseStream.Position = position;
                 var buffer = new byte[length];
@@ -412,7 +412,7 @@ namespace Crystallography
                     return;
 
                 //次に2Byteよんでバージョン
-                Version = BitConverter.ToInt16(read(br, 2, 2, ByteOrder), 0);
+                Version = BitConverter.ToInt16(Read(br, 2, 2, ByteOrder), 0);
 
                 var ifdPointa = long.MaxValue;
 
@@ -421,10 +421,10 @@ namespace Crystallography
                     var image = new imageProperty();
                     //ifdPointaがlong.MaxValueの時(何も読み込んでいないとき) 4Byte読んでIFDのポインタ
                     if (ifdPointa == long.MaxValue)
-                        ifdPointa = BitConverter.ToUInt32(read(br, 4, 4, ByteOrder), 0);
+                        ifdPointa = BitConverter.ToUInt32(Read(br, 4, 4, ByteOrder), 0);
 
                     //ポインタ位置から2ByteよんでIFDの総数
-                    int totalIFD = BitConverter.ToInt16(read(br, ifdPointa, 2, ByteOrder), 0);
+                    int totalIFD = BitConverter.ToInt16(Read(br, ifdPointa, 2, ByteOrder), 0);
 
                     //IFDの読み込み開始
                     ifdPointa += 2;
@@ -439,7 +439,7 @@ namespace Crystallography
 
                     //次のifdPointaを読み込む
 
-                    ifdPointa = BitConverter.ToUInt32(read(br, ifdPointa, 4, ByteOrder), 0);
+                    ifdPointa = BitConverter.ToUInt32(Read(br, ifdPointa, 4, ByteOrder), 0);
 
                     int bitsPerSampleLength = 1;
 
@@ -744,7 +744,7 @@ namespace Crystallography
             /// <param name="byteOrder"></param>
             /// <param name="sign"></param>
             /// <returns></returns>
-            private double toInt(BinaryReader br, int byteCount, TiffByteOrder byteOrder, bool sign)
+            private static double toInt(BinaryReader br, int byteCount, TiffByteOrder byteOrder, bool sign)
             {
                 if (byteCount == 1)
                 {
@@ -775,7 +775,7 @@ namespace Crystallography
 
             }
 
-            private float toFloat(BinaryReader br, int byteCount, TiffByteOrder byteOrder)
+            private static float toFloat(BinaryReader br, int byteCount, TiffByteOrder byteOrder)
             {
                 float intensity = 0;
                 var temp = new byte[4];
@@ -792,7 +792,7 @@ namespace Crystallography
             {
                 br.BaseStream.Position = index;
 
-                IFD ifd = new IFD();
+                var ifd = new IFD();
 
                 byte[] temp;
 

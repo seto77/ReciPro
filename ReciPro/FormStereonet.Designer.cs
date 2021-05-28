@@ -173,10 +173,10 @@ namespace ReciPro
             this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1217,7 +1217,7 @@ namespace ReciPro
             this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             this.numericBoxRxSpeed.SkipEventDuringInput = false;
             this.numericBoxRxSpeed.SmartIncrement = true;
-            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRxSpeed.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip"));
             this.numericBoxRxSpeed.Value = 18D;
@@ -1232,7 +1232,7 @@ namespace ReciPro
             this.numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             this.numericBoxRySpeed.SkipEventDuringInput = false;
             this.numericBoxRySpeed.SmartIncrement = true;
-            this.numericBoxRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRySpeed.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip"));
             this.numericBoxRySpeed.Value = 1D;
@@ -1247,7 +1247,7 @@ namespace ReciPro
             this.numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             this.numericBoxRzSpeed.SkipEventDuringInput = false;
             this.numericBoxRzSpeed.SmartIncrement = true;
-            this.numericBoxRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRzSpeed.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip"));
             this.numericBoxRzSpeed.Value = 2D;
@@ -1262,7 +1262,7 @@ namespace ReciPro
             this.numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             this.numericBoxTotalTime.SkipEventDuringInput = false;
             this.numericBoxTotalTime.SmartIncrement = true;
-            this.numericBoxTotalTime.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxTotalTime.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTotalTime.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip"));
             this.numericBoxTotalTime.Value = 100D;
@@ -1277,7 +1277,7 @@ namespace ReciPro
             this.numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             this.numericBoxAngularSpeed.SkipEventDuringInput = false;
             this.numericBoxAngularSpeed.SmartIncrement = true;
-            this.numericBoxAngularSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxAngularSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAngularSpeed.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip"));
             this.numericBoxAngularSpeed.Value = 30D;
@@ -1292,7 +1292,7 @@ namespace ReciPro
             this.numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             this.numericBoxRyStep.SkipEventDuringInput = false;
             this.numericBoxRyStep.SmartIncrement = true;
-            this.numericBoxRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRyStep.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip"));
             this.numericBoxRyStep.Value = 0.2D;
@@ -1307,7 +1307,7 @@ namespace ReciPro
             this.numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             this.numericBoxRadialAngle.SkipEventDuringInput = false;
             this.numericBoxRadialAngle.SmartIncrement = true;
-            this.numericBoxRadialAngle.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRadialAngle.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRadialAngle.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip"));
             this.numericBoxRadialAngle.Value = 8D;
@@ -1322,7 +1322,7 @@ namespace ReciPro
             this.numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             this.numericBoxRyOscillation.SkipEventDuringInput = false;
             this.numericBoxRyOscillation.SmartIncrement = true;
-            this.numericBoxRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRyOscillation.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip"));
             this.numericBoxRyOscillation.Value = 8D;
@@ -1337,7 +1337,7 @@ namespace ReciPro
             this.numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             this.numericBoxRzOscillation.SkipEventDuringInput = false;
             this.numericBoxRzOscillation.SmartIncrement = true;
-            this.numericBoxRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRzOscillation.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip"));
             this.numericBoxRzOscillation.Value = 8D;
@@ -1519,7 +1519,7 @@ namespace ReciPro
             this.numericBox3.RadianValue = 0.034906585039886591D;
             this.numericBox3.ShowUpDown = true;
             this.numericBox3.SkipEventDuringInput = false;
-            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox3.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox3.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBox3, resources.GetString("numericBox3.ToolTip"));
             this.numericBox3.Value = 2D;
@@ -1535,7 +1535,7 @@ namespace ReciPro
             this.numericBox2.RadianValue = 0.034906585039886591D;
             this.numericBox2.ShowUpDown = true;
             this.numericBox2.SkipEventDuringInput = false;
-            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox2.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBox2, resources.GetString("numericBox2.ToolTip"));
             this.numericBox2.Value = 2D;
@@ -1551,7 +1551,7 @@ namespace ReciPro
             this.numericBox1.RadianValue = 0.034906585039886591D;
             this.numericBox1.ShowUpDown = true;
             this.numericBox1.SkipEventDuringInput = false;
-            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBox1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox1.ThonsandsSeparator = true;
             this.toolTip1.SetToolTip(this.numericBox1, resources.GetString("numericBox1.ToolTip"));
             this.numericBox1.Value = 2D;
@@ -1602,15 +1602,6 @@ namespace ReciPro
             this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
             this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
             // 
-            // pageSetupDialog1
-            // 
-            this.pageSetupDialog1.Document = this.printDocument1;
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
-            // 
             // scalablePictureBoxAdvanced1
             // 
             resources.ApplyResources(this.scalablePictureBoxAdvanced1, "scalablePictureBoxAdvanced1");
@@ -1631,7 +1622,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -9535);
+            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -19428);
             this.scalablePictureBoxAdvanced1.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced1.StatusLabel = " ";
             this.scalablePictureBoxAdvanced1.StatusProgress = 0D;
@@ -1661,7 +1652,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -9535);
+            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -19428);
             this.scalablePictureBoxAdvanced2.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced2.StatusLabel = " ";
             this.scalablePictureBoxAdvanced2.StatusProgress = 0D;
@@ -1670,6 +1661,15 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.TrackBarVisible = true;
             this.scalablePictureBoxAdvanced2.UpperIntensity = 255D;
             this.scalablePictureBoxAdvanced2.VisibleGradient = true;
+            // 
+            // pageSetupDialog1
+            // 
+            this.pageSetupDialog1.Document = this.printDocument1;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
             // 
             // FormStereonet
             // 

@@ -417,7 +417,7 @@ namespace Crystallography
 				d0[i].EndInvoke(ref r, ref tempRMax[i], ar0[i]);
 
 			//rMax‚ÌÅ‘å’l‚ğ‚«‚ß‚é
-			rMax = Statistics.Max(tempRMax);
+			rMax = tempRMax.Max();
 
 			if (rMax == 0)
 				return;

@@ -19,7 +19,7 @@ namespace ReciPro
                 DataRow dr = NewDataTableGrainRow();
                 dr["Grain"] = grain;
                 dr["No"] = this.Count;
-                dr["AssignedSpots"] = grain.Indices.Count();
+                dr["AssignedSpots"] = grain.Indices.Length;
                 dr["CrystalName"] = grain.CrystalName;
                 //dr["AssignedSpots"] = candidate.Sum(c => c.Indices.Count());
                 this.Rows.Add(dr);
@@ -33,7 +33,7 @@ namespace ReciPro
                 DataRow dr = NewDataTableCandidateRow();
                 dr["Candidate"] = candidate;
                 dr["No"] = num.ToString();
-                dr["AssignedSpots"] = candidate.Sum(g => g.Indices.Count()); ;
+                dr["AssignedSpots"] = candidate.Sum(g => g.Indices.Length); ;
                 this.Rows.Add(dr);
             }
         }
@@ -245,7 +245,7 @@ namespace ReciPro
                 return (Direct, No, Range, X0, Y0, H1, H2, Theta, Eta, A, B0, Bx, By, R);
             }
 
-            private void setRow(DataTableSpotRow dr, bool? direct, double range, double[] prms1, double[] prms2, double r)
+            private static void setRow(DataTableSpotRow dr, bool? direct, double range, double[] prms1, double[] prms2, double r)
                 => setRow(dr, direct, range, prms1[0], prms1[1], prms1[2], prms1[3], prms1[4], prms1[5], prms1[6], prms2[0], prms2[1], prms2[2], r);
 
             private static void setRow(DataTableSpotRow dr, bool? direct, double range, double x0, double y0, double h1, double h2, double theta, double eta, double a, double b0, double bx, double by, double r)

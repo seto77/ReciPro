@@ -300,7 +300,7 @@ namespace Crystallography.Controls
                         //md5をチェック
                         bool flag = true;
                         for (int i = 0; i < fileNum && flag; i++)
-                            flag = this.checkMD5($"{subDir}{nameWithoutExt}.{i:000}", checkSums[i]);
+                            flag = CrystalDatabaseControl.checkMD5($"{subDir}{nameWithoutExt}.{i:000}", checkSums[i]);
                         return (flag, dataNum, fileNum, fileSizes, checkSums);
                     }
                     else
@@ -333,7 +333,7 @@ namespace Crystallography.Controls
         /// <param name="path"></param>
         /// <param name="md5"></param>
         /// <returns></returns>
-        private bool checkMD5(string path, byte[] md5)
+        private static bool checkMD5(string path, byte[] md5)
         {
             var _md5 = getMD5(path);
             return _md5 != null && md5.Length == _md5.Length && md5.SequenceEqual(_md5);

@@ -34,7 +34,7 @@ namespace Crystallography
 		//CrystalListを読み込むとき
 		public static Crystal[] ConvertToCrystalList(string filename)
         {
-            var cry = new Crystal[0];
+            var cry = Array.Empty<Crystal>();
             if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
             {
 				if (new FileInfo(filename).Length > 10000000)//なぜかファイルが3GBとかになったことが有ったので、それに対する対処. 10MB以上だったらスキップすることにした.
@@ -418,7 +418,7 @@ namespace Crystallography
 					item = new string[l.Length - 1];
 					for (int k = 0; k < item.Length; k++)
 					{
-						item[k] = str[i].Substring(l[k], l[k + 1] - l[k]).Trim().TrimEnd();
+						item[k] = str[i][l[k]..l[k + 1]].Trim().TrimEnd();
 						item[k] = item[k].Replace(',', '.');//たまにカンマとピリオドが間違えられている
 						if (item[k].Length > 3 && item[k][1] == ' ')
 						{
@@ -843,7 +843,7 @@ namespace Crystallography
 						substring = substring.Replace(" ", "ここにはスペースがはいります。");
 						substring = substring.Replace("'", "");
 
-						tempStr[n] = tempStr[n].Substring(0, firstIndex) + substring + tempStr[n].Substring(next + 1);
+						tempStr[n] = tempStr[n].Substring(0, firstIndex) + substring + tempStr[n][(next + 1)..];
 					}
 				}
 
@@ -1582,7 +1582,7 @@ namespace Crystallography
 			#region 原子の等価位置
 			sb.AppendLine("loop_");
 			sb.AppendLine("_symmetry_equiv_pos_as_xyz");
-			bool[][] flag = new bool[0][];
+			bool[][] flag = Array.Empty<bool[]>();
 			if (sym.LatticeTypeStr == "P") flag = new[] { new[] { false, false, false } };
 			else if (sym.LatticeTypeStr == "A") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
 			else if (sym.LatticeTypeStr == "B") flag = new[] { new[] { false, false, false }, new[] { true, false, true } };

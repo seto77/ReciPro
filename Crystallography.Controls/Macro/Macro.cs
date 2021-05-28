@@ -68,7 +68,7 @@ namespace Crystallography.Controls
 
         //public double Execute(Func<double> func) => Execute<double>(func);
 
-        public Type Execute<Type>(Control _context, Delegate process) => Execute<Type>(_context, process, null);
+        public static Type Execute<Type>(Control _context, Delegate process) => Execute<Type>(_context, process, null);
 
         public Type Execute<Type>(Delegate process) => Execute<Type>(context, process, null);
 
@@ -76,7 +76,7 @@ namespace Crystallography.Controls
 
         public void Execute(Delegate process) => Execute(context, process, null);
 
-        public Type Execute<Type>(Control _context, Delegate process, params object[] args)
+        public static Type Execute<Type>(Control _context, Delegate process, params object[] args)
         {
             #region
             /*if (context == null)

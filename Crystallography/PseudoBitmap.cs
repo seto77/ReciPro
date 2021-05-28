@@ -422,7 +422,7 @@ namespace Crystallography
 
         #region 初期化関連
 
-        private Complex[][] initComplex(int width, int height)
+        private static Complex[][] initComplex(int width, int height)
         {
             Complex[][] complex = new Complex[height][];
             for (int i = 0; i < height; i++)
@@ -867,7 +867,7 @@ namespace Crystallography
         /// <param name="zoom"></param>
         /// <param name="destSize"></param>
         /// <returns></returns>
-        public RectangleD GetDrawingArea(PointD srcCenter, double zoom, Size destSize)
+        public static RectangleD GetDrawingArea(PointD srcCenter, double zoom, Size destSize)
             => new RectangleD(srcCenter.X - destSize.Width / zoom / 2.0, srcCenter.Y - destSize.Height / zoom / 2.0, destSize.Width / zoom, destSize.Height / zoom);
 
         private Bitmap destBmp;

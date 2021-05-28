@@ -12,28 +12,6 @@ namespace Crystallography
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
-        public static double Average(params double[] values)
-        {
-            if (values == null || values.Length == 0)
-                return double.NaN;
-            else
-                return values.Average();
-            /*try
-            {
-                double sum = 0;
-                foreach (double value in values)
-                    sum += value;
-
-                return sum / values.Length;
-            }
-            catch { return 0; }*/
-        }
-
-        /// <summary>
-        /// 単純平均を求めます
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns></returns>
         public static double Average(params int[] values)
         {
             try
@@ -124,8 +102,8 @@ namespace Crystallography
             try
             {
                 if (values1.Length != values2.Length || values2.Length < 2) return 0;
-                double AverageOfValue1 = Average(values1);
-                double AverageOfValue2 = Average(values2);
+                double AverageOfValue1 =values1.Average();
+                double AverageOfValue2 = values2.Average();
                 double Covariance = 0;
                 for (int i = 0; i < values1.Length; i++)
                     Covariance += (values1[i] - AverageOfValue1) * (values2[i] - AverageOfValue2);
@@ -154,8 +132,8 @@ namespace Crystallography
         {
             if (values1.Length != values2.Length) return 0;
 
-            double AverageOfValue1 = Average(values1);
-            double AverageOfValue2 = Average(values2);
+            var AverageOfValue1 =values1.Average();
+            var AverageOfValue2 =values2.Average();
 
             double Covariance = 0;
             double Variance1 = 0;
@@ -178,7 +156,7 @@ namespace Crystallography
         public static double Slope(double[] x, double[] y)
         {
             if (x.Length != y.Length || x.Length != 0) return 0;
-            return (x.Length * SigmaProduct(x, y) - Sigma(x) * Sigma(y)) / (x.Length * SigmaSquare(x) - Sigma(x) * Sigma(x));
+            return (x.Length * SigmaProduct(x, y) - x.Sum() * y.Sum()) / (x.Length * SigmaSquare(x) - x.Sum() * y.Sum());
         }
 
         /// <summary>
@@ -194,7 +172,7 @@ namespace Crystallography
             double c = Variance(values2);
             theta = Math.Atan2(2 * b, a - c + Math.Sqrt(4 * b * b + (a - c) * (a - c)));
 
-            A = Math.Sin(theta) * Average(values1) - Math.Cos(theta) * Average(values2);
+            A = Math.Sin(theta) * values1.Average() - Math.Cos(theta) * values2.Average();
             if (theta < 0)
             {
                 theta += Math.PI;
@@ -234,7 +212,7 @@ namespace Crystallography
                 values1[i] = pt[i].X;
                 values2[i] = pt[i].Y;
             }
-            return new PointD(Average(values1), Average(values2));
+            return new PointD(values1.Average(),values2.Average());
         }
 
         /// <summary>
@@ -250,18 +228,7 @@ namespace Crystallography
             return sum;
         }
 
-        /// <summary>
-        /// 変量valuesの総和を求めます
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public static int Sigma(params int[] values)
-        {
-            int sum = 0;
-            foreach (int X in values)
-                sum += X;
-            return sum;
-        }
+    
 
         /// <summary>
         /// 変量valuesの二乗和を求めます
@@ -303,48 +270,8 @@ namespace Crystallography
             return sum;
         }
 
-        /// <summary>
-        /// 変量valuesの最大値を求めます
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns></returns>
-        public static double Max(params double[] values)
-        {
-            double max = double.NegativeInfinity;
-            foreach (double X in values)
-                max = Math.Max(max, X);
-            return max;
-        }
 
-        /// <summary>
-        /// 変量valuesの最大値を求めます
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns></returns>
-        public static int Max(params int[] values)
-        {
-            List<uint> z = new List<uint>(10);
-
-            int max = int.MinValue;
-            foreach (int X in values)
-                max = Math.Max(max, X);
-            return max;
-        }
-
-        /// <summary>
-        /// 変量valuesの最大値を求めます
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns></returns>
-        public static ushort Max(params ushort[] values)
-        {
-            ushort max = ushort.MinValue;
-            foreach (ushort X in values)
-                max = Math.Max(max, X);
-            return max;
-        }
-
-        public static object lockObject = new object();
+        public static object lockObject = new();
 
         /// <summary>
         /// 平均mu, 標準偏差sigmaの正規分布乱数を得る。Box-Muller法による。
@@ -406,7 +333,7 @@ namespace Crystallography
             var max = values.Max();
             var min = values.Min();
 
-            SortedList<double, int>[] frequency = new SortedList<double, int>[partition];
+            var frequency = new SortedList<double, int>[partition];
             Parallel.For(0, partition, n =>
                 {
                     frequency[n] = new SortedList<double, int>();
@@ -422,7 +349,7 @@ namespace Crystallography
                             frequency[n].Add(v, 1);
                     }
                 });
-            SortedList<double, int> frequencyFinal = new SortedList<double, int>();
+            var frequencyFinal = new SortedList<double, int>();
             foreach (var freq in frequency)
                 foreach (var key in freq.Keys)
                 {

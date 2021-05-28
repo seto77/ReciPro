@@ -13,7 +13,7 @@ namespace Crystallography
             if (order <= 0) return Deep.Copy<Profile>(profile);
             if (profile.Pt.Count < 3) return Deep.Copy<Profile>(profile);
 
-            if (Math.Abs((profile.Pt[profile.Pt.Count - 1].X - profile.Pt[profile.Pt.Count - 2].X) / (profile.Pt[1].X - profile.Pt[0].X) - 1) < 0.000000001)
+            if (Math.Abs((profile.Pt[^1].X - profile.Pt[^2].X) / (profile.Pt[1].X - profile.Pt[0].X) - 1) < 0.000000001)
                 return new Profile(SavitzkyGolaySimple(profile.Pt.ToArray(), pointNum, order));
             else
                 return new Profile(SavitzkyGolayAccuracy(profile.Pt.ToArray(), pointNum, order));
@@ -73,15 +73,15 @@ namespace Crystallography
 
             for (int n = 0; n < pt.Length; n++)
             {
-                List<PointD> tempPt = new List<PointD>();
+                var tempPt = new List<PointD>();
                 //まず、この点から前後にPointNumだけ近い点を探す
                 for (int j = Math.Max(n - pointNum, 0); j < Math.Min(n + pointNum + 1, pt.Length); j++)
                     tempPt.Add(pt[j]);
                 while (tempPt.Count > pointNum)
-                    tempPt.RemoveAt(Math.Abs(tempPt[0].X - pt[n].X) > Math.Abs(tempPt[tempPt.Count - 1].X - pt[n].X) ? 0 : tempPt.Count - 1);
+                    tempPt.RemoveAt(Math.Abs(tempPt[0].X - pt[n].X) > Math.Abs(tempPt[^1].X - pt[n].X) ? 0 : tempPt.Count - 1);
 
                 //計算精度のため、xの範囲を1から+2に変換する 式は X = c1 x + c2;
-                double c1 = 1.0 / (tempPt[tempPt.Count - 1].X - tempPt[0].X);
+                double c1 = 1.0 / (tempPt[^1].X - tempPt[0].X);
                 double c2 = 1 - tempPt[0].X * c1;
 
                 var m = new DenseMatrix(pointNum, order + 1);

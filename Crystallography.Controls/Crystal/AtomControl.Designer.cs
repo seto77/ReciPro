@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -145,7 +146,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
             this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
-            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonChangeToSameElement = new System.Windows.Forms.Button();
             this.buttonAddAtom = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
@@ -163,7 +164,7 @@
             this.multiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wyckLetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siteSymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -220,7 +221,7 @@
             this.numericBoxBiso.Name = "numericBoxBiso";
             this.numericBoxBiso.SkipEventDuringInput = false;
             this.numericBoxBiso.SmartIncrement = true;
-            this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxBiso.ThonsandsSeparator = true;
             // 
             // numericBoxBisoerr
@@ -232,7 +233,7 @@
             this.numericBoxBisoerr.Name = "numericBoxBisoerr";
             this.numericBoxBisoerr.SkipEventDuringInput = false;
             this.numericBoxBisoerr.SmartIncrement = true;
-            this.numericBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxBisoerr.ThonsandsSeparator = true;
             // 
             // flowLayoutPanel1
@@ -410,7 +411,7 @@
             this.numericBox1.ShowFraction = true;
             this.numericBox1.SkipEventDuringInput = false;
             this.numericBox1.SmartIncrement = true;
-            this.numericBox1.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBox1.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox1.ThonsandsSeparator = true;
             // 
             // label9
@@ -428,7 +429,7 @@
             this.numericBox2.ShowFraction = true;
             this.numericBox2.SkipEventDuringInput = false;
             this.numericBox2.SmartIncrement = true;
-            this.numericBox2.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBox2.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox2.ThonsandsSeparator = true;
             // 
             // flowLayoutPanel9
@@ -455,7 +456,7 @@
             this.numericBox3.ShowFraction = true;
             this.numericBox3.SkipEventDuringInput = false;
             this.numericBox3.SmartIncrement = true;
-            this.numericBox3.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBox3.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox3.ThonsandsSeparator = true;
             // 
             // label17
@@ -473,7 +474,7 @@
             this.numericBox4.ShowFraction = true;
             this.numericBox4.SkipEventDuringInput = false;
             this.numericBox4.SmartIncrement = true;
-            this.numericBox4.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBox4.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox4.ThonsandsSeparator = true;
             // 
             // checkBoxDetailAtomicPositionError
@@ -540,7 +541,7 @@
             this.numericBoxOccerr.Name = "numericBoxOccerr";
             this.numericBoxOccerr.SkipEventDuringInput = false;
             this.numericBoxOccerr.SmartIncrement = true;
-            this.numericBoxOccerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxOccerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOccerr.ThonsandsSeparator = true;
             this.numericBoxOccerr.TrimEndZero = true;
             // 
@@ -555,7 +556,7 @@
             this.numericBoxOcc.ShowFraction = true;
             this.numericBoxOcc.SkipEventDuringInput = false;
             this.numericBoxOcc.SmartIncrement = true;
-            this.numericBoxOcc.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxOcc.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOcc.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip1"));
             this.numericBoxOcc.TrimEndZero = true;
@@ -571,7 +572,7 @@
             this.numericBoxZ.ShowFraction = true;
             this.numericBoxZ.SkipEventDuringInput = false;
             this.numericBoxZ.SmartIncrement = true;
-            this.numericBoxZ.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxZ.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxZ.ThonsandsSeparator = true;
             this.numericBoxZ.TrimEndZero = true;
             // 
@@ -585,7 +586,7 @@
             this.numericBoxYerr.Name = "numericBoxYerr";
             this.numericBoxYerr.SkipEventDuringInput = false;
             this.numericBoxYerr.SmartIncrement = true;
-            this.numericBoxYerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYerr.ThonsandsSeparator = true;
             this.numericBoxYerr.TrimEndZero = true;
             // 
@@ -599,7 +600,7 @@
             this.numericBoxXerr.Name = "numericBoxXerr";
             this.numericBoxXerr.SkipEventDuringInput = false;
             this.numericBoxXerr.SmartIncrement = true;
-            this.numericBoxXerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxXerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxXerr.ThonsandsSeparator = true;
             this.numericBoxXerr.TrimEndZero = true;
             // 
@@ -614,7 +615,7 @@
             this.numericBoxY.ShowFraction = true;
             this.numericBoxY.SkipEventDuringInput = false;
             this.numericBoxY.SmartIncrement = true;
-            this.numericBoxY.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxY.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxY.ThonsandsSeparator = true;
             this.numericBoxY.TrimEndZero = true;
             // 
@@ -629,7 +630,7 @@
             this.numericBoxX.ShowFraction = true;
             this.numericBoxX.SkipEventDuringInput = false;
             this.numericBoxX.SmartIncrement = true;
-            this.numericBoxX.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxX.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxX.ThonsandsSeparator = true;
             this.numericBoxX.TrimEndZero = true;
             // 
@@ -643,7 +644,7 @@
             this.numericBoxZerr.Name = "numericBoxZerr";
             this.numericBoxZerr.SkipEventDuringInput = false;
             this.numericBoxZerr.SmartIncrement = true;
-            this.numericBoxZerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxZerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxZerr.ThonsandsSeparator = true;
             this.numericBoxZerr.TrimEndZero = true;
             // 
@@ -806,7 +807,7 @@
             this.numericBoxOriginShiftZ.ShowFraction = true;
             this.numericBoxOriginShiftZ.SkipEventDuringInput = false;
             this.numericBoxOriginShiftZ.SmartIncrement = true;
-            this.numericBoxOriginShiftZ.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxOriginShiftZ.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOriginShiftZ.ThonsandsSeparator = true;
             // 
             // numericBoxOriginShiftY
@@ -822,7 +823,7 @@
             this.numericBoxOriginShiftY.ShowFraction = true;
             this.numericBoxOriginShiftY.SkipEventDuringInput = false;
             this.numericBoxOriginShiftY.SmartIncrement = true;
-            this.numericBoxOriginShiftY.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxOriginShiftY.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOriginShiftY.ThonsandsSeparator = true;
             // 
             // numericBoxOriginShiftX
@@ -838,7 +839,7 @@
             this.numericBoxOriginShiftX.ShowFraction = true;
             this.numericBoxOriginShiftX.SkipEventDuringInput = false;
             this.numericBoxOriginShiftX.SmartIncrement = true;
-            this.numericBoxOriginShiftX.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxOriginShiftX.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOriginShiftX.ThonsandsSeparator = true;
             // 
             // tabPageDebyeWaller
@@ -938,7 +939,7 @@
             this.numericBoxB22.Name = "numericBoxB22";
             this.numericBoxB22.SkipEventDuringInput = false;
             this.numericBoxB22.SmartIncrement = true;
-            this.numericBoxB22.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB22.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB22.ThonsandsSeparator = true;
             // 
             // numericBoxB22err
@@ -950,7 +951,7 @@
             this.numericBoxB22err.Name = "numericBoxB22err";
             this.numericBoxB22err.SkipEventDuringInput = false;
             this.numericBoxB22err.SmartIncrement = true;
-            this.numericBoxB22err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB22err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB22err.ThonsandsSeparator = true;
             // 
             // numericBoxB23
@@ -962,7 +963,7 @@
             this.numericBoxB23.Name = "numericBoxB23";
             this.numericBoxB23.SkipEventDuringInput = false;
             this.numericBoxB23.SmartIncrement = true;
-            this.numericBoxB23.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB23.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB23.ThonsandsSeparator = true;
             // 
             // numericBoxB23err
@@ -974,7 +975,7 @@
             this.numericBoxB23err.Name = "numericBoxB23err";
             this.numericBoxB23err.SkipEventDuringInput = false;
             this.numericBoxB23err.SmartIncrement = true;
-            this.numericBoxB23err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB23err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB23err.ThonsandsSeparator = true;
             // 
             // numericBoxB33
@@ -986,7 +987,7 @@
             this.numericBoxB33.Name = "numericBoxB33";
             this.numericBoxB33.SkipEventDuringInput = false;
             this.numericBoxB33.SmartIncrement = true;
-            this.numericBoxB33.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB33.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB33.ThonsandsSeparator = true;
             // 
             // numericBoxB33err
@@ -998,7 +999,7 @@
             this.numericBoxB33err.Name = "numericBoxB33err";
             this.numericBoxB33err.SkipEventDuringInput = false;
             this.numericBoxB33err.SmartIncrement = true;
-            this.numericBoxB33err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB33err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB33err.ThonsandsSeparator = true;
             // 
             // flowLayoutPanelAniso1
@@ -1021,7 +1022,7 @@
             this.numericBoxB11.Name = "numericBoxB11";
             this.numericBoxB11.SkipEventDuringInput = false;
             this.numericBoxB11.SmartIncrement = true;
-            this.numericBoxB11.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB11.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB11.ThonsandsSeparator = true;
             // 
             // numericBoxB11err
@@ -1033,7 +1034,7 @@
             this.numericBoxB11err.Name = "numericBoxB11err";
             this.numericBoxB11err.SkipEventDuringInput = false;
             this.numericBoxB11err.SmartIncrement = true;
-            this.numericBoxB11err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB11err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB11err.ThonsandsSeparator = true;
             // 
             // numericBoxB12
@@ -1045,7 +1046,7 @@
             this.numericBoxB12.Name = "numericBoxB12";
             this.numericBoxB12.SkipEventDuringInput = false;
             this.numericBoxB12.SmartIncrement = true;
-            this.numericBoxB12.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB12.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB12.ThonsandsSeparator = true;
             // 
             // numericBoxB12err
@@ -1057,7 +1058,7 @@
             this.numericBoxB12err.Name = "numericBoxB12err";
             this.numericBoxB12err.SkipEventDuringInput = false;
             this.numericBoxB12err.SmartIncrement = true;
-            this.numericBoxB12err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB12err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB12err.ThonsandsSeparator = true;
             // 
             // numericBoxB13
@@ -1069,7 +1070,7 @@
             this.numericBoxB13.Name = "numericBoxB13";
             this.numericBoxB13.SkipEventDuringInput = false;
             this.numericBoxB13.SmartIncrement = true;
-            this.numericBoxB13.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB13.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB13.ThonsandsSeparator = true;
             // 
             // numericBoxB13err
@@ -1081,7 +1082,7 @@
             this.numericBoxB13err.Name = "numericBoxB13err";
             this.numericBoxB13err.SkipEventDuringInput = false;
             this.numericBoxB13err.SmartIncrement = true;
-            this.numericBoxB13err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxB13err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB13err.ThonsandsSeparator = true;
             // 
             // tabPageScatteringFactor
@@ -1205,7 +1206,7 @@
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAlpha.ThonsandsSeparator = true;
             this.numericBoxAlpha.UpDown_Increment = 0.1D;
             // 
@@ -1223,7 +1224,7 @@
             this.numericBoxEmission.SkipEventDuringInput = false;
             this.numericBoxEmission.SmartIncrement = true;
             this.numericBoxEmission.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxEmission.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxEmission.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxEmission.ThonsandsSeparator = true;
             this.numericBoxEmission.UpDown_Increment = 0.1D;
             // 
@@ -1241,7 +1242,7 @@
             this.numericBoxShininess.SkipEventDuringInput = false;
             this.numericBoxShininess.SmartIncrement = true;
             this.numericBoxShininess.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxShininess.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxShininess.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxShininess.ThonsandsSeparator = true;
             this.numericBoxShininess.UpDown_Increment = 0.1D;
             // 
@@ -1259,7 +1260,7 @@
             this.numericBoxSpecular.SkipEventDuringInput = false;
             this.numericBoxSpecular.SmartIncrement = true;
             this.numericBoxSpecular.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxSpecular.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxSpecular.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSpecular.ThonsandsSeparator = true;
             this.numericBoxSpecular.UpDown_Increment = 0.1D;
             // 
@@ -1277,7 +1278,7 @@
             this.numericBoxDiffusion.SkipEventDuringInput = false;
             this.numericBoxDiffusion.SmartIncrement = true;
             this.numericBoxDiffusion.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxDiffusion.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDiffusion.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDiffusion.ThonsandsSeparator = true;
             this.numericBoxDiffusion.UpDown_Increment = 0.1D;
             // 
@@ -1295,7 +1296,7 @@
             this.numericBoxAmbient.SkipEventDuringInput = false;
             this.numericBoxAmbient.SmartIncrement = true;
             this.numericBoxAmbient.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxAmbient.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAmbient.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAmbient.ThonsandsSeparator = true;
             this.numericBoxAmbient.UpDown_Increment = 0.1D;
             // 
@@ -1347,7 +1348,7 @@
             this.numericBoxAtomRadius.SkipEventDuringInput = false;
             this.numericBoxAtomRadius.SmartIncrement = true;
             this.numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAtomRadius.ThonsandsSeparator = true;
             // 
             // colorControlAtomColor
@@ -1430,7 +1431,7 @@
             this.dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1469,7 +1470,7 @@
             // labelDataGridViewTextBoxColumn
             // 
             this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
@@ -1479,7 +1480,7 @@
             // elementDataGridViewTextBoxColumn
             // 
             this.elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             this.elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
@@ -1490,7 +1491,7 @@
             // xDataGridViewTextBoxColumn
             // 
             this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
@@ -1500,7 +1501,7 @@
             // yDataGridViewTextBoxColumn
             // 
             this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
@@ -1510,7 +1511,7 @@
             // zDataGridViewTextBoxColumn
             // 
             this.zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             this.zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
@@ -1520,7 +1521,7 @@
             // occDataGridViewTextBoxColumn
             // 
             this.occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             this.occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
@@ -1530,7 +1531,7 @@
             // multiDataGridViewTextBoxColumn
             // 
             this.multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             this.multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
@@ -1540,7 +1541,7 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             this.wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             this.wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
@@ -1550,7 +1551,7 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             this.siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             this.siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
@@ -1567,6 +1568,7 @@
             // dataSet
             // 
             this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1

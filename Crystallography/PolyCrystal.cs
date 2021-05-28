@@ -190,10 +190,10 @@ namespace Crystallography
                 double right = (detector.ImageWidth - detector.Center.X) * detector.Resolution;
                 double top = -detector.Center.Y * detector.Resolution;
                 double bottom = (detector.ImageHeight - detector.Center.Y) * detector.Resolution;
-                length = Statistics.Max(
+                length = new[]{
                     Math.Sqrt(left * left + top * top), Math.Sqrt(left * left + bottom * bottom),
                     Math.Sqrt(right * right + top * top), Math.Sqrt(right * right + bottom * bottom)
-                    );
+                    }.Max();
             }
             else
             { //マスクされていない中で最もZ値が大きいものを算出
@@ -556,7 +556,7 @@ namespace Crystallography
                     var mat = Rotations1[i] * Rotations2[j];
                     int baseIndex = i* RotationDiv +j;
                     for (int plane = 0; plane < 6; plane++)
-                        Rotations[plane * m + baseIndex] = convertRotationByPlane(mat, plane);
+                        Rotations[plane * m + baseIndex] = ConvertRotationByPlane(mat, plane);
                 }
             });
 
@@ -591,7 +591,7 @@ namespace Crystallography
         //private Matrix3D rotationY = Matrix3D.Rot(new Vector3DBase(0, 1, 0), Math.PI);
         //private Matrix3D rotationZ = Matrix3D.Rot(new Vector3DBase(0, 0, 1), Math.PI);
 
-        public Matrix3D convertRotationByPlane(Matrix3D m, int plane) => plane switch
+        public static Matrix3D ConvertRotationByPlane(Matrix3D m, int plane) => plane switch
         {
             1 => m.ExchangeYZX(),
             2 => m.ExchangeZXY(),
@@ -615,7 +615,7 @@ namespace Crystallography
             for (int i = 0, n = 0; i < SubDiv; i++)
                 for (int j = 0; j < SubDiv; j++)
                     for (int k = 0; k < SubDiv; k++)
-                        m[n++] = convertRotationByPlane(SubRot1[SubDiv * SubDiv * SquareDiv * y + SubDiv * x + SubDiv * SquareDiv * i + j] * SubRot2[SubDiv * rot + k], plane);
+                        m[n++] = ConvertRotationByPlane(SubRot1[SubDiv * SubDiv * SquareDiv * y + SubDiv * x + SubDiv * SquareDiv * i + j] * SubRot2[SubDiv * rot + k], plane);
             return m;
         }
 
@@ -963,7 +963,7 @@ namespace Crystallography
         public static double[] GetSimulatedPattern
             (Crystal crystal, Crystallite crystallites, bool resetIndex, AreaDetector detector, YusaGonio gonio = null)
         {
-            return new double[0];
+            return Array.Empty<double>();
         }
 
         /// <summary>

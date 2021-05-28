@@ -10,12 +10,12 @@ namespace Crystallography
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
-            return sourceType == typeof(string) ? true : base.CanConvertFrom(context, sourceType);// stringからなら変換可能
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);// stringからなら変換可能
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
-            return destinationType == typeof(string) ? true : base.CanConvertTo(context, destinationType);// stringへなら変換可能
+            return destinationType == typeof(string) || base.CanConvertTo(context, destinationType);// stringへなら変換可能
         }
     }
 
@@ -37,9 +37,9 @@ namespace Crystallography
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string @string)
             {
-                string[] ss = ((string)value).Split(new char[] { ',' }, 4);
+                string[] ss = @string.Split(new char[] { ',' }, 4);
                 return new RectangleD(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]), Convert.ToDouble(ss[2]), Convert.ToDouble(ss[3]));
             }
             return base.ConvertFrom(context, culture, value);

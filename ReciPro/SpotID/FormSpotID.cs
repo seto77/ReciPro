@@ -363,7 +363,7 @@ namespace ReciPro
         /// 検索対象のピクセルを設定する
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private (double[] x, double y, double w)[] getPixels(IEnumerable<(double[] x, double y)> src, double radius, double cX, double cY)
+        private static (double[] x, double y, double w)[] getPixels(IEnumerable<(double[] x, double y)> src, double radius, double cX, double cY)
         {
             var rMax = (radius + Math.Sqrt(0.5)) * (radius + Math.Sqrt(0.5));
             var rMin = (radius - Math.Sqrt(0.5)) * (radius - Math.Sqrt(0.5));
@@ -893,7 +893,7 @@ namespace ReciPro
                 //foreach (var g in c1)
                 //    indices = indices.Union(g.Indices).ToList();
                 //return indices.Count();
-                return c1.Sum(g => g.Indices.Count());
+                return c1.Sum(g => g.Indices.Length);
             }).ToList();
         }
 
@@ -919,7 +919,7 @@ namespace ReciPro
                 exceptedIndices = new int[0];
             var obsSpotsReciprocal2 = new List<Vector3DBase>();
             var gVectors2 = new List<List<Vector3D>>();
-            for (int i = 0; i < obsSpotsReciprocal.Count(); i++)
+            for (int i = 0; i < obsSpotsReciprocal.Length; i++)
                 if (!exceptedIndices.Contains(i))
                 {
                     obsSpotsReciprocal2.Add(obsSpotsReciprocal[i]);
@@ -927,7 +927,7 @@ namespace ReciPro
                 }
 
             var mList = new List<Matrix3D>();
-            for (int max = 1; max < obsSpotsReciprocal2.Count(); max++)
+            for (int max = 1; max < obsSpotsReciprocal2.Count; max++)
             {
                 for (int i = 0; i < max; i++)
                 {
@@ -1086,7 +1086,7 @@ namespace ReciPro
         {
             //maxNum個数のobsSpotに対する候補となるgVectorsを定義しておく
             int maxNum = 10;
-            List<List<Vector3D>> gVectors = new List<List<Vector3D>>();
+            var gVectors = new List<List<Vector3D>>();
             for (int i = 0; i < maxNum && i < obsSpotsReciprocal.Length; i++)
             {
                 gVectors.Add(new List<Vector3D>());
@@ -1095,7 +1095,7 @@ namespace ReciPro
                 gVectors[i].AddRange(FormMain.Crystal.VectorOfG.Where(g => g.d > d * (1 - toleranceLength) && g.d < d * (1 + toleranceLength)).ToArray());
             }
 
-            List<Matrix3D> mList = new List<Matrix3D>();
+            var mList = new List<Matrix3D>();
             for (int i = 0; i < gVectors.Count - 1; i++)
             {
                 foreach (Vector3D vec1 in gVectors[i].Where(g => FormMain.Crystal.Symmetry.IsPlaneRootIndex(g.Index)))
@@ -1127,8 +1127,8 @@ namespace ReciPro
 
         private double evaluate(AreaDetector detector, Matrix3D initialRot, Vector3DBase[] obsSpots, Vector3DBase[] calSpots, double toleranceLength, double toleranceAngle, ref Matrix3D optimizedRot)
         {
-            Dictionary<int, int> dic = new Dictionary<int, int>();
-            List<double> residual = new List<double>();
+            var dic = new Dictionary<int, int>();
+            var residual = new List<double>();
             var obsPoints = obsSpots.Select(s => (new PointD(s.X, s.Y) - DirectSpot)).ToArray();
             var calPoints = calSpots.Select(s => (new PointD(s.X, s.Y) - DirectSpot)).ToArray();
             double bestRot = double.NaN, bestScale = double.NaN, bestResidual = double.PositiveInfinity;
@@ -1203,7 +1203,7 @@ namespace ReciPro
             {
                 scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);//まず、全部削除
 
-                List<ScalablePictureBox.Symbol> calcSpots = new List<ScalablePictureBox.Symbol>();
+                var calcSpots = new List<ScalablePictureBox.Symbol>();
                 if (dataGridViewGrains.SelectedRows.Count > 1)
                 {
                     foreach (DataGridViewRow r in dataGridViewGrains.Rows)
@@ -1355,10 +1355,10 @@ namespace ReciPro
 
         private void buttonCopyMetafile_Click(object sender, EventArgs e)
         {
-            Graphics grfx = CreateGraphics();
-            IntPtr ipHdc = grfx.GetHdc();
-            MemoryStream ms = new MemoryStream();
-            Metafile mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
+            var grfx = CreateGraphics();
+            var ipHdc = grfx.GetHdc();
+            var ms = new MemoryStream();
+            var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
             grfx.ReleaseHdc(ipHdc);
             grfx.Dispose();
             DrawMetafile(mf);
@@ -1519,7 +1519,7 @@ namespace ReciPro
                 //現在のスポットのパラメータを取得
                 var prms = dataSet.DataTableSpot.GetPrms(i);
 
-                List<double> core = new List<double>(), mantle = new List<double>();
+                List<double> core = new(), mantle = new();
                 double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
                 for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
                     for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)

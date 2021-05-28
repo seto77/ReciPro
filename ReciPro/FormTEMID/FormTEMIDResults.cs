@@ -59,32 +59,32 @@ namespace ReciPro
             }
         }
 
-        public object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis) => new object[] {
+        public static object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis) => new object[] {
                 i,
-                "[" + zoneaxis.u.ToString() +" " + zoneaxis.v.ToString() + " " + zoneaxis.w.ToString() + "]",
+                $"[{zoneaxis.u} {zoneaxis.v} {zoneaxis.w}]",
 
-                zoneaxis.plane1.h.ToString() + " " + zoneaxis.plane1.k.ToString() + " " + zoneaxis.plane1.l.ToString(),
-                zoneaxis.plane1.d.ToString("f3") + "nm (" + ((zoneaxis.plane1.d-photo.d1)/photo.d1 * 100).ToString("f3")+"%)",
+                $"{zoneaxis.plane1.h} {zoneaxis.plane1.k} {zoneaxis.plane1.l}",
+                $"{zoneaxis.plane1.d:f3}nm ({(zoneaxis.plane1.d-photo.d1)/photo.d1 * 100:f3}%)",
 
-                zoneaxis.plane2.h.ToString() + " " + zoneaxis.plane2.k.ToString() + " " + zoneaxis.plane2.l.ToString(),
-                zoneaxis.plane2.d.ToString("f3") + "nm (" + ((zoneaxis.plane2.d-photo.d2)/photo.d2 * 100).ToString("f3")+"%)",
+                $"{zoneaxis.plane2.h} {zoneaxis.plane2.k} {zoneaxis.plane2.l}",
+                $"{zoneaxis.plane2.d:f3}nm ({(zoneaxis.plane2.d-photo.d2)/photo.d2 * 100:f3}%)",
 
-                zoneaxis.plane3.h.ToString() + " " + zoneaxis.plane3.k.ToString() + " " + zoneaxis.plane3.l.ToString(),
-                zoneaxis.plane3.d.ToString("f3") + "nm (" + ((zoneaxis.plane3.d-photo.d3)/photo.d3 * 100).ToString("f3")+"%)",
+                $"{zoneaxis.plane3.h} {zoneaxis.plane3.k} {zoneaxis.plane3.l}",
+                $"{zoneaxis.plane3.d:f3}nm ({(zoneaxis.plane3.d-photo.d3)/photo.d3 * 100:f3}%)",
 
-                (zoneaxis.Theta/Math.PI*180).ToString("f3") +"Åã (" +  ((zoneaxis.Theta-photo.Theta)/Math.PI*180).ToString("f3") +"Åã)",
+                $"{zoneaxis.Theta/Math.PI*180:f3}Åã ({(zoneaxis.Theta-photo.Theta)/Math.PI*180:f3}Åã)",
 
                 zoneaxis.Phase
             };
 
-        public object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes) => new object[] {
+        public static object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes) => new object[] {
                 i,
-                "[" + zoneaxes.Za1.u.ToString() +" " + zoneaxes.Za1.v.ToString() + " " + zoneaxes.Za1.w.ToString() + "]",
-                "[" + zoneaxes.Za2.u.ToString() +" " + zoneaxes.Za2.v.ToString() + " " + zoneaxes.Za2.w.ToString() + "]",
-                "[" + zoneaxes.Za3.u.ToString() +" " + zoneaxes.Za3.v.ToString() + " " + zoneaxes.Za3.w.ToString() + "]",
-                (zoneaxes.AngleBet12/Math.PI*180).ToString("f3") +"Åã (" +  ((zoneaxes.AngleBet12-obsAngle[0])/Math.PI*180).ToString("f3") +"Åã)",
-                (zoneaxes.AngleBet23/Math.PI*180).ToString("f3") +"Åã (" +  ((zoneaxes.AngleBet23-obsAngle[1])/Math.PI*180).ToString("f3") +"Åã)",
-                (zoneaxes.AngleBet31/Math.PI*180).ToString("f3") +"Åã (" +  ((zoneaxes.AngleBet31-obsAngle[2])/Math.PI*180).ToString("f3") +"Åã)",
+                $"[{zoneaxes.Za1.u} {zoneaxes.Za1.v} {zoneaxes.Za1.w}]",
+                $"[{zoneaxes.Za2.u} {zoneaxes.Za2.v} {zoneaxes.Za2.w}]",
+                $"[{zoneaxes.Za3.u} {zoneaxes.Za3.v} {zoneaxes.Za3.w}]",
+                $"{zoneaxes.AngleBet12/Math.PI*180:f3}Åã ({(zoneaxes.AngleBet12-obsAngle[0])/Math.PI*180:f3}Åã)",
+                $"{zoneaxes.AngleBet23/Math.PI*180:f3}Åã ({(zoneaxes.AngleBet23-obsAngle[1])/Math.PI*180:f3}Åã)",
+                $"{zoneaxes.AngleBet31/Math.PI*180:f3}Åã ({(zoneaxes.AngleBet31-obsAngle[2])/Math.PI*180:f3}Åã)",
 
                 zoneaxes.Za1.Phase
             };

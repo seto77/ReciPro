@@ -700,7 +700,7 @@ namespace Crystallography
 
             try
             {
-                Tiff.Loader t = new Tiff.Loader(str);
+                var t = new Tiff.Loader(str);
                 if (t.IsGray == false || t.NumberOfFrames != 1)
                     return false;
                 Ring.Comments = "";
@@ -778,7 +778,7 @@ namespace Crystallography
                 Ring.IP.PixSizeY = dataPixelSize[1] * 0.001;
 
                 //tag番号を調べる
-                List<string> tag = new List<string>();
+                var tag = new List<string>();
                 foreach (var (Name, Parent, Depth) in hdf.Paths)
                 {
                     var tmp = Name.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
@@ -1095,20 +1095,20 @@ namespace Crystallography
                 Ring.Comments += "\r\n" + new string(br.ReadChars(20));//Operator
                 br.BaseStream.Position = 288;
                 Ring.Comments += "\r\n" + new string(br.ReadChars(4));//Target
-                float wl = convertToSingle(br);//Wavelength (A)
+                var wl = convertToSingle(br);//Wavelength (A)
                 br.ReadBytes(48);
-                float camera_len = br.ReadSingle();//Camera length (mm)
+                var camera_len = br.ReadSingle();//Camera length (mm)
                 br.ReadBytes(420);
-                int num_x_pixs = convertToInt(br);//Number of pixel X
-                int num_y_pixs = convertToInt(br);//Number of pixel Y
-                float x_pix_size = convertToSingle(br);//Pixel size  X (mm)
-                float y_pix_size = convertToSingle(br);//Pixel size  Y (mm)
-                int rec_len = convertToInt(br);//Record length
-                int num_recs = convertToInt(br);//Number of record
+                var num_x_pixs = convertToInt(br);//Number of pixel X
+                var num_y_pixs = convertToInt(br);//Number of pixel Y
+                var x_pix_size = convertToSingle(br);//Pixel size  X (mm)
+                var y_pix_size = convertToSingle(br);//Pixel size  Y (mm)
+                var rec_len = convertToInt(br);//Record length
+                var num_recs = convertToInt(br);//Number of record
                 br.ReadBytes(8);
-                float hilo = convertToSingle(br); //Hi/Lo 最上位ビットが1のときは最上位ビットを0にしてhiloをかけるらしい。
+                var hilo = convertToSingle(br); //Hi/Lo 最上位ビットが1のときは最上位ビットを0にしてhiloをかけるらしい。
                 br.ReadBytes(18);
-                string ip_type = new string(br.ReadChars(10));//IP type
+                var ip_type = new string(br.ReadChars(10));//IP type
 
                 Ring.SrcImgSize = new Size(num_x_pixs, num_y_pixs);
 
@@ -1123,7 +1123,7 @@ namespace Crystallography
                 }
 
                 //イメージデータ読みこみ
-                int length = num_x_pixs * num_y_pixs;
+                var length = num_x_pixs * num_y_pixs;
 
                 SetBytePosition(str, ref br, num_x_pixs * 2);
 

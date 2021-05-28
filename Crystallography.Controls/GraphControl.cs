@@ -186,7 +186,7 @@ namespace Crystallography.Controls
         /// </summary>
         public bool AllowMouseOperation { get; set; } = true;
 
-        private List<PointD> lineList = new List<PointD>();
+        private readonly List<PointD> lineList = new List<PointD>();
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PointD[] LineList
@@ -202,7 +202,7 @@ namespace Crystallography.Controls
             get { return lineList.ToArray(); }
         }
 
-        private List<PeakFunction> peaks = new List<PeakFunction>();
+        private List<PeakFunction> peaks = new();
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PeakFunction[] Peaks
@@ -215,7 +215,7 @@ namespace Crystallography.Controls
 
         private int selectedLineIndex = -1;
 
-        private List<Profile> srcProfileList = new List<Profile>();
+        private List<Profile> srcProfileList = new();
 
         /// <summary>
         /// 0番目のプロファイルを設定する。複数プロファイルが設定されている場合はひとつだけにする。
@@ -266,25 +266,14 @@ namespace Crystallography.Controls
         /// <summary>
         /// 共通のプロファイル描画線を使うか (使わない場合は各ProfileのlineWidthを使う)
         /// </summary>
-        public bool UseLineWidth
-        {
-            set { useLineWidth = value; Draw(); }
-            get { return useLineWidth; }
-        }
+        public bool UseLineWidth { set { useLineWidth = value; Draw(); } get => useLineWidth; }
 
         private Color divisionLineColor = Color.Gray;
 
         /// <summary>
         /// 目盛線の色
         /// </summary>
-        public Color DivisionLineColor
-        {
-            set
-            {
-                divisionLineColor = value; Draw();
-            }
-            get { return divisionLineColor; }
-        }
+        public Color DivisionLineColor { set { divisionLineColor = value; Draw(); } get => divisionLineColor; }
 
         /// <summary>
         /// 目盛補助線の色
@@ -320,7 +309,7 @@ namespace Crystallography.Controls
                     Draw();
                 }
             }
-            get { return xLog; }
+            get => xLog;
         }
 
         private bool yLog = false;
@@ -341,7 +330,7 @@ namespace Crystallography.Controls
                     Draw();
                 }
             }
-            get { return yLog; }
+            get => yLog;
         }
 
         private bool xScaleLineVisible = true;
@@ -379,7 +368,7 @@ namespace Crystallography.Controls
                     Draw();
                 }
             }
-            get { return yScaleLineVisible; }
+            get => yScaleLineVisible;
         }
 
         private bool isIntegerX = false;
@@ -390,7 +379,7 @@ namespace Crystallography.Controls
         public bool IsIntegerX
         {
             set { isIntegerX = value; InitializeAxis(); resetDrawRange(); Draw(); }
-            get { return isIntegerX; }
+            get => isIntegerX;
         }
 
         /// <summary>
@@ -399,7 +388,7 @@ namespace Crystallography.Controls
         public bool IsIntegerY
         {
             set { isIntegerY = value; InitializeAxis(); resetDrawRange(); Draw(); }
-            get { return isIntegerY; }
+            get => isIntegerY;
         }
 
         private bool isIntegerY = false;
@@ -407,20 +396,12 @@ namespace Crystallography.Controls
         /// <summary>
         /// X軸の名称
         /// </summary>
-        public string LabelX
-        {
-            set { labelX.Text = value; }
-            get { return labelX.Text; }
-        }
+        public string LabelX { set => labelX.Text = value; get => labelX.Text; }
 
         /// <summary>
         /// Y軸の名称
         /// </summary>
-        public string LabelY
-        {
-            set { labelY.Text = value; }
-            get { return labelY.Text; }
-        }
+        public string LabelY { set => labelY.Text = value; get => labelY.Text; }
 
         /// <summary>
         /// 原点の位置(左下からのピクセル単位)
@@ -428,7 +409,7 @@ namespace Crystallography.Controls
         public Point OriginPosition
         {
             set { originPosition = value; Draw(); }
-            get { return originPosition; }
+            get => originPosition;
         }
 
         private Point originPosition = new Point(40, 20);
@@ -439,7 +420,7 @@ namespace Crystallography.Controls
         public double BottomMargin
         {
             set { bottomMargin = value; Draw(); }
-            get { return bottomMargin; }
+            get => bottomMargin;
         }
 
         private double bottomMargin = 0;
@@ -450,7 +431,7 @@ namespace Crystallography.Controls
         public float LeftMargin
         {
             set { leftMargin = value; Draw(); }
-            get { return leftMargin; }
+            get => leftMargin;
         }
 
         private float leftMargin = 0f;
@@ -576,7 +557,7 @@ namespace Crystallography.Controls
             destProfileList = new List<Profile>();
             for (int i = 0; i < srcProfileList.Count; i++)
             {
-                Profile temp = new Profile();
+                var temp = new Profile();
                 if (srcProfileList[i] != null && srcProfileList[i].Pt != null && srcProfileList[i].Pt.Any())
                     temp = convertAxis(srcProfileList[i]);
                 destProfileList.Add(temp);
@@ -590,11 +571,11 @@ namespace Crystallography.Controls
         private Profile convertAxis(Profile profile)
         {
             if (profile == null || profile.Pt == null || profile.Pt.Count == 0) return null;
-            Profile p = profile.CopyTo();
+            var p = profile.CopyTo();
             if (Smoothing)
                 p = p.SmoothingSavitzkyGolay(smoothingM, smoothingN);
 
-            Profile temp = new Profile();
+            var temp = new Profile();
             double x, y;
             for (int i = 0; i < p.Pt.Count; i++)
             {
@@ -858,10 +839,10 @@ namespace Crystallography.Controls
                     else
                         x = 0;
                 }
-                PointF ptStart = ConvToPicBoxCoord(x, lineList[i].Y);
+                var ptStart = ConvToPicBoxCoord(x, lineList[i].Y);
                 if (double.IsNaN(lineList[i].Y))
                     ptStart.Y = 0;
-                PointF ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
+                var ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
                 if (!double.IsNaN(ptStart.X) && !double.IsInfinity(ptStart.X))
                     G.DrawLine(new Pen(LineColor, selectedLineIndex == i ? 2f : 1f), ptStart, ptEnd);
             }
@@ -905,10 +886,10 @@ namespace Crystallography.Controls
         private void DrawProfileHistogram()
         {
             //総和が少ないプロファイルを前面に(最後に)書く
-            List<PointD> sort = new List<PointD>();
+            var sort = new List<PointD>();
             for (int j = 0; j < destProfileList.Count; j++)
             {
-                PointD[] pt = destProfileList[j].Pt.ToArray();
+                var pt = destProfileList[j].Pt.ToArray();
                 double sum = 0;
                 for (int i = 0; i < pt.Length; i++)
                     sum += pt[i].Y;
@@ -921,14 +902,14 @@ namespace Crystallography.Controls
             float zeroY = ConvToPicBoxCoord(0, 0).Y;
             for (int j = 0; j < sort.Count; j++)
             {
-                PointD[] pt = destProfileList[(int)sort[j].Y].Pt.ToArray();
+                var pt = destProfileList[(int)sort[j].Y].Pt.ToArray();
                 if (pt.Length > 0)
                 {
-                    Brush brush = new SolidBrush(srcProfileList[(int)sort[j].Y].Color);
-                    List<List<PointF>> pointList = new List<List<PointF>>();
-                    PointF beforePt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
-                    PointF presentPt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
-                    PointF nextPt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
+                    var brush = new SolidBrush(srcProfileList[(int)sort[j].Y].Color);
+                    //var pointList = new List<List<PointF>>();
+                    var beforePt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
+                    var presentPt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
+                    var nextPt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
                     for (int i = 0; i < pt.Length; i++)
                     {
                         if (i < pt.Length - 1)
@@ -964,8 +945,8 @@ namespace Crystallography.Controls
                     //{
                     var pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth) { LineJoin = LineJoin.Round };
                     var pts = destProfileList[j].GetPointsWithinRectangle(rect);
-                    for (int i = 0; i < pts.Count(); i++)
-                        if (pts[i].Count() > 1)
+                    for (int i = 0; i < pts.Length; i++)
+                        if (pts[i].Length > 1)
                             G.DrawLines(pen, pts[i].Select(p => ConvToPicBoxCoord(p)).ToArray());
                     //}
                     //else//補間モードの時
@@ -983,7 +964,7 @@ namespace Crystallography.Controls
         /// <param name="maxDiv"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        public SortedList<double, string> GetDivisions(double min, double max, int maxDiv, bool log)
+        public static SortedList<double, string> GetDivisions(double min, double max, int maxDiv, bool log)
         {
             if (double.IsInfinity(min) || double.IsInfinity(max)) return new SortedList<double, string>();
             var results = new SortedList<double, string>();
@@ -1048,8 +1029,8 @@ namespace Crystallography.Controls
 
         public void DrawDivision()
         {
-            Font strFont = new Font(new FontFamily("tahoma"), 8);
-            Pen pen = new Pen(DivisionLineColor, 1);
+            var strFont = new Font(new FontFamily("tahoma"), 8);
+            var pen = new Pen(DivisionLineColor, 1);
 
             //ここよりX目盛りの描画
             G.DrawLine(pen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, PictureBoxSize.Width, pictureBox.Height - OriginPosition.Y);

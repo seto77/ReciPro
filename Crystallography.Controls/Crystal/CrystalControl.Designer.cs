@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalControl));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageBasicInfo = new System.Windows.Forms.TabPage();
@@ -44,7 +45,7 @@
             this.atomControl = new Crystallography.Controls.AtomControl();
             this.panelAtom = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
             this.bondControl = new Crystallography.Controls.BondInputControl();
@@ -92,7 +93,7 @@
             this.numericBoxStrain23 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain13 = new Crystallography.Controls.NumericBox();
             this.tabPagePolycrystalline = new System.Windows.Forms.TabPage();
-            this.contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,7 +119,7 @@
             this.textBoxFormula = new System.Windows.Forms.TextBox();
             this.numericBoxZnumber = new Crystallography.Controls.NumericBox();
             this.label90 = new System.Windows.Forms.Label();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -132,7 +133,7 @@
             this.strainControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonScatteringFactor = new System.Windows.Forms.Button();
             this.buttonSymmetryInfo = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -226,7 +227,7 @@
             this.numericBoxVolume.SkipEventDuringInput = false;
             this.numericBoxVolume.SmartIncrement = true;
             this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
             // 
             // numericBoxCellMass
@@ -242,7 +243,7 @@
             this.numericBoxCellMass.SkipEventDuringInput = false;
             this.numericBoxCellMass.SmartIncrement = true;
             this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
@@ -258,7 +259,7 @@
             this.numericBoxMolarVolume.SkipEventDuringInput = false;
             this.numericBoxMolarVolume.SmartIncrement = true;
             this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
@@ -274,7 +275,7 @@
             this.numericBoxMolarMass.SkipEventDuringInput = false;
             this.numericBoxMolarMass.SmartIncrement = true;
             this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
@@ -287,7 +288,7 @@
             this.numericBoxDensity.SkipEventDuringInput = false;
             this.numericBoxDensity.SmartIncrement = true;
             this.numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDensity.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
@@ -562,7 +563,7 @@
             this.numericBoxHill.RestrictLimitValue = false;
             this.numericBoxHill.SkipEventDuringInput = false;
             this.numericBoxHill.SmartIncrement = true;
-            this.numericBoxHill.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxHill.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxHill.Value = 1D;
             // 
             // label116
@@ -655,7 +656,7 @@
             this.numericBoxStress33.RestrictLimitValue = false;
             this.numericBoxStress33.SkipEventDuringInput = false;
             this.numericBoxStress33.SmartIncrement = true;
-            this.numericBoxStress33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress22
             // 
@@ -667,7 +668,7 @@
             this.numericBoxStress22.RestrictLimitValue = false;
             this.numericBoxStress22.SkipEventDuringInput = false;
             this.numericBoxStress22.SmartIncrement = true;
-            this.numericBoxStress22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress11
             // 
@@ -679,7 +680,7 @@
             this.numericBoxStress11.RestrictLimitValue = false;
             this.numericBoxStress11.SkipEventDuringInput = false;
             this.numericBoxStress11.SmartIncrement = true;
-            this.numericBoxStress11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress23
             // 
@@ -691,7 +692,7 @@
             this.numericBoxStress23.RestrictLimitValue = false;
             this.numericBoxStress23.SkipEventDuringInput = false;
             this.numericBoxStress23.SmartIncrement = true;
-            this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress13
             // 
@@ -703,7 +704,7 @@
             this.numericBoxStress13.RestrictLimitValue = false;
             this.numericBoxStress13.SkipEventDuringInput = false;
             this.numericBoxStress13.SmartIncrement = true;
-            this.numericBoxStress13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress12
             // 
@@ -715,7 +716,7 @@
             this.numericBoxStress12.RestrictLimitValue = false;
             this.numericBoxStress12.SkipEventDuringInput = false;
             this.numericBoxStress12.SmartIncrement = true;
-            this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain33
             // 
@@ -727,7 +728,7 @@
             this.numericBoxStrain33.RestrictLimitValue = false;
             this.numericBoxStrain33.SkipEventDuringInput = false;
             this.numericBoxStrain33.SmartIncrement = true;
-            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain11
             // 
@@ -739,7 +740,7 @@
             this.numericBoxStrain11.RestrictLimitValue = false;
             this.numericBoxStrain11.SkipEventDuringInput = false;
             this.numericBoxStrain11.SmartIncrement = true;
-            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain22
             // 
@@ -751,7 +752,7 @@
             this.numericBoxStrain22.RestrictLimitValue = false;
             this.numericBoxStrain22.SkipEventDuringInput = false;
             this.numericBoxStrain22.SmartIncrement = true;
-            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain12
             // 
@@ -763,7 +764,7 @@
             this.numericBoxStrain12.RestrictLimitValue = false;
             this.numericBoxStrain12.SkipEventDuringInput = false;
             this.numericBoxStrain12.SmartIncrement = true;
-            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain23
             // 
@@ -775,7 +776,7 @@
             this.numericBoxStrain23.RestrictLimitValue = false;
             this.numericBoxStrain23.SkipEventDuringInput = false;
             this.numericBoxStrain23.SmartIncrement = true;
-            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain13
             // 
@@ -787,7 +788,7 @@
             this.numericBoxStrain13.RestrictLimitValue = false;
             this.numericBoxStrain13.SkipEventDuringInput = false;
             this.numericBoxStrain13.SmartIncrement = true;
-            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // tabPagePolycrystalline
             // 
@@ -1023,6 +1024,7 @@
             this.numericBoxZnumber.SkipEventDuringInput = false;
             this.numericBoxZnumber.SmartIncrement = true;
             this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxZnumber.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxZnumber.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
             // 

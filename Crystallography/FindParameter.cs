@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Crystallography
 {
@@ -424,11 +425,11 @@ namespace Crystallography
 
         public double GetAverageRadius()
         {
-            List<double> temp = new List<double>();
+            var temp = new List<double>();
             for (int i = 0; i < millimeters.Count; i++)
                 if (!double.IsNaN(millimeters[i]))
                     temp.Add(millimeters[i]);
-            return Statistics.Average(temp.ToArray());
+            return temp.Average();
         }
 
         public void Add(double MilliMeter, double Angle)

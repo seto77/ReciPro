@@ -58,6 +58,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="numericBoxGaussianRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxGaussianRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 27</value>
+  </data>
+  <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 27</value>
+  </data>
   <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -71,8 +80,26 @@
     <value>単位格子
 を表示</value>
   </data>
+  <data name="numericBoxLabelFontSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="numericBoxLabelFontSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxLabelFontSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 27</value>
+  </data>
+  <data name="colorControlLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 3</value>
+  </data>
   <data name="flowLayoutPanelLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 25</value>
+    <value>99, 23</value>
+  </data>
+  <data name="flowLayoutPanelLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 28</value>
   </data>
   <data name="checkBoxShowLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -86,8 +113,26 @@
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
     <value>ラベル表示</value>
   </data>
+  <data name="numericBoxScaleLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
+    <value>長さ</value>
+  </data>
+  <data name="numericBoxScaleLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxScaleLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 27</value>
+  </data>
+  <data name="colorControlScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 3</value>
+  </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 54</value>
+    <value>100, 52</value>
+  </data>
+  <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 28</value>
   </data>
   <data name="checkBoxShowScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -123,13 +168,16 @@
     <value>97, 19</value>
   </data>
   <data name="radioButtonProjectedPotential.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonProjectedPotential.Text" xml:space="preserve">
+    <value>ポテンシャル</value>
   </data>
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="radioButtonSTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 19</value>
+    <value>201, 19</value>
   </data>
   <data name="radioButtonSTEM.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 21</value>
@@ -153,6 +201,12 @@
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>試料厚み</value>
   </data>
+  <data name="numericBoxThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 27</value>
+  </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -165,14 +219,23 @@
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
     <value>加速電圧</value>
   </data>
+  <data name="numericBoxAccVol.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 27</value>
+  </data>
   <data name="numericBoxDefocus.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>デフォーカス Δf</value>
   </data>
+  <data name="numericBoxDefocus.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 25</value>
+    <value>187, 27</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 18</value>
@@ -213,6 +276,30 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>TEMの条件</value>
   </data>
+  <data name="numericBoxCs.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 27</value>
+  </data>
+  <data name="numericBoxCc.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 27</value>
+  </data>
+  <data name="numericBoxDeltaV.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDeltaV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 27</value>
+  </data>
+  <data name="numericBoxBetaAgnle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxBetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 27</value>
+  </data>
   <data name="groupBoxInherentProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -224,6 +311,24 @@
   </data>
   <data name="groupBoxLenzFunction.Text" xml:space="preserve">
     <value>レンズ関数</value>
+  </data>
+  <data name="numericBoxObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxObjAperX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 27</value>
+  </data>
+  <data name="numericBoxObjAperRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxObjAperRadius.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 27</value>
+  </data>
+  <data name="numericBoxObjAperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxObjAperY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 27</value>
   </data>
   <data name="checkBoxOpenAperture.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -237,6 +342,9 @@
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 18</value>
   </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 44</value>
+  </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 25</value>
   </data>
@@ -245,6 +353,21 @@
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 25</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 45</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 27</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>スポット情報</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 44</value>
   </data>
   <data name="groupBoxObjectAperture.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -264,8 +387,11 @@
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
     <value>ブロッホ波数</value>
   </data>
+  <data name="numericBoxNumOfBlochWave.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxNumOfBlochWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 25</value>
+    <value>136, 27</value>
   </data>
   <data name="numericBoxWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -276,14 +402,32 @@
   <data name="numericBoxWidth.HeaderText" xml:space="preserve">
     <value>幅　</value>
   </data>
+  <data name="numericBoxWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 27</value>
+  </data>
   <data name="numericBoxHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxHeight.HeaderText" xml:space="preserve">
     <value>高さ</value>
   </data>
+  <data name="numericBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="numericBoxHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 27</value>
+  </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 59</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -292,7 +436,13 @@
     <value>解像度</value>
   </data>
   <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 73</value>
+    <value>23, 77</value>
+  </data>
+  <data name="numericBoxResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 27</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 104</value>
@@ -308,6 +458,99 @@
   </data>
   <data name="groupBoxNormalizeIntensity.Text" xml:space="preserve">
     <value>強度の規格化</value>
+  </data>
+  <data name="radioButtonSingleMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonSingleMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 22</value>
+  </data>
+  <data name="radioButtonSingleMode.Text" xml:space="preserve">
+    <value>単一画像</value>
+  </data>
+  <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonSerialMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonSerialMode.Text" xml:space="preserve">
+    <value>シリーズ画像</value>
+  </data>
+  <data name="numericBoxDefocusNum.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDefocusNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 27</value>
+  </data>
+  <data name="numericBoxDefocusStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDefocusStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 27</value>
+  </data>
+  <data name="numericBoxDefocusStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDefocusStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 27</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 18</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>横軸の方向:</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 0</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Text" xml:space="preserve">
+    <value>デフォーカス</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 0</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 22</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
+    <value>試料厚み</value>
+  </data>
+  <data name="flowLayoutPanelHorizontalDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 132</value>
+  </data>
+  <data name="flowLayoutPanelHorizontalDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 22</value>
+  </data>
+  <data name="numericBoxThicknessNum.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxThicknessNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 27</value>
+  </data>
+  <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 27</value>
+  </data>
+  <data name="numericBoxThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 27</value>
   </data>
   <data name="checkBoxSerialThickness.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

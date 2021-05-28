@@ -112,7 +112,7 @@ namespace Crystallography
 
                         if (count == 0)//Œ©‚Â‚©‚Á‚½‚ç
                         {
-                            list.Add(NumericalValue(str.Substring(1, j - 1)));
+                            list.Add(NumericalValue(str[1..j]));
                             str = str.Remove(0, j + 1);
                             i = 0; //ŽŸ‚ð0‚É–ß‚·
                             break;

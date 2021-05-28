@@ -6615,12 +6615,12 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 #endregion
 		};
 
-		private static readonly object lockObjForMassAbsorption = new object();
+		private static readonly object lockObjForMassAbsorption = new();
 
 		/// <summary>
 		/// 質量吸収係数を覚えておく
 		/// </summary>
-		private static Dictionary<double, double>[] massAbsorption = new Dictionary<double, double>[100];
+		private static readonly Dictionary<double, double>[] massAbsorption = new Dictionary<double, double>[100];
 
 		/// <summary>
 		/// エネルギー(keV)と吸収体元素を与えて、質量吸収係数を返す
@@ -6661,7 +6661,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 						position = i;
 
 			int pointNum = 3, order = 2;
-			List<PointD> pt = new List<PointD>();
+			var pt = new List<PointD>();
 			//次に、この点から前後にPointNumだけ近い点を探す
 			for (int i = Math.Max(position - pointNum, 0); i < Math.Min(position + pointNum + 1, coef.Length); i++)
 				pt.Add(coef[i]);
@@ -6735,9 +6735,9 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 
 			foreach (string fileName in fileNames)
 			{
-				List<string> str = new List<string>();
+				var str = new List<string>();
 				string strTemp;
-				System.IO.StreamReader reader = new System.IO.StreamReader(fileName);
+				var reader = new System.IO.StreamReader(fileName);
 				while ((strTemp = reader.ReadLine()) != null)
 					str.Add(strTemp);
 				reader.Close();
@@ -6746,10 +6746,10 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 				int z = Convert.ToInt32(str[1].Split(new char[] { ',' })[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
 				//edgeの値を読み取る
 				while (!str[i].Contains("edge")) i++;
-				int edgeNo = Convert.ToInt32(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]);
+				var edgeNo = Convert.ToInt32(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]);
 				i += 2;
 
-				List<PointD> edge = new List<PointD>();
+				var edge = new List<PointD>();
 				sbEdgeEnergy.AppendLine("case " + z.ToString() + ": switch (line)");
 				sbEdgeEnergy.AppendLine("{");
 				if (z == 1)
@@ -6789,7 +6789,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 
 				while (!str[i].Contains("Photoelectric")) i++;
 				i += 2;
-				List<PointD> absorp = new List<PointD>(edge.ToArray());
+				var absorp = new List<PointD>(edge.ToArray());
 				sbAbsorption.AppendLine("new PointD[][]{");
 				for (; i < str.Count - 1; i++)
 					absorp.Add(new PointD(Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1])));

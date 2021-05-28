@@ -339,9 +339,9 @@ namespace ReciPro
             listBoxReferrence.Items.Add("#" + diffractionPatternControl.Count.ToString("d2") + ": " + Path.GetFileName(fileName));
 
             diffractionPatternControl[diffractionPatternControl.Count - 1].Dock = DockStyle.Fill;
-            tabPage[tabPage.Count - 1].Controls.Add(diffractionPatternControl[diffractionPatternControl.Count - 1]);
-            tabPage[tabPage.Count - 1].Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            tabPage[tabPage.Count - 1].Text = "#" + diffractionPatternControl.Count.ToString("d2") + ": " + Path.GetFileName(fileName);
+            tabPage[^1].Controls.Add(diffractionPatternControl[diffractionPatternControl.Count - 1]);
+            tabPage[^1].Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tabPage[^1].Text = "#" + diffractionPatternControl.Count.ToString("d2") + ": " + Path.GetFileName(fileName);
 
             tabControl1.TabPages.Add(tabPage[tabPage.Count - 1]);
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
@@ -468,8 +468,8 @@ namespace ReciPro
             int beforeSuccessTime = 0;
             int beforeSuccessStep = -1;
 
-            int[] densityIndex = new int[0];
-            double[] densityValue = new double[0];
+            int[] densityIndex = Array.Empty<int>();
+            double[] densityValue = Array.Empty<double>();
 
             for (; setting.TotalStep < 100000000 && !backgroundWorkerMain.CancellationPending; setting.TotalStep++)
             {
@@ -985,7 +985,7 @@ return residual;
             if (fileName.Count(str => str.EndsWith("ipa")) == 1)//ipaファイルが1つ含まれているとき
             {
                 addRefferencePattern(fileName.First(str => str.EndsWith("ipa")));
-                if (fileName.Count(str => str.EndsWith("mas") || str.EndsWith("bg")) > 0)//さらにmasファイルかbgファイルが含まれているとき
+                if (fileName.Any(str => str.EndsWith("mas") || str.EndsWith("bg")))//さらにmasファイルかbgファイルが含まれているとき
                     diffractionPatternControl[tabControl1.SelectedIndex - 1].DiffractionPatternControl_DragDrop(sender, e);
             }
             else if (fileName.Count(str => str.EndsWith("ipa")) > 1)
@@ -996,7 +996,7 @@ return residual;
             }
             else
             {
-                if (fileName.Count(str => str.EndsWith("mas") || str.EndsWith("bg")) > 0)//さらにmasファイルかbgファイルが含まれているとき
+                if (fileName.Any(str => str.EndsWith("mas") || str.EndsWith("bg")))//さらにmasファイルかbgファイルが含まれているとき
                     diffractionPatternControl[tabControl1.SelectedIndex - 1].DiffractionPatternControl_DragDrop(sender, e);
             }
         }

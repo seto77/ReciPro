@@ -1,3 +1,4 @@
+using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -65,35 +66,35 @@ namespace Crystallography
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public List<Vector3D> VectorOfAxis = new List<Vector3D>();
+        public List<Vector3D> VectorOfAxis = new();
 
         /// <summary>
         /// 面ベクトル配列
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public List<Vector3D> VectorOfPlane = new List<Vector3D>();
+        public List<Vector3D> VectorOfPlane = new();
 
         /// <summary>
         /// 逆格子点ベクトル (kinematical)
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public List<Vector3D> VectorOfG = new List<Vector3D>();
+        public List<Vector3D> VectorOfG = new();
 
          /// <summary>
         /// 菊池線ベクトル
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public List<Vector3D> VectorOfG_KikuchiLine = new List<Vector3D>();
+        public List<Vector3D> VectorOfG_KikuchiLine = new();
 
         /// <summary>
         /// 極ベクトル
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public List<Vector3D> VectorOfPole = new List<Vector3D>();
+        public List<Vector3D> VectorOfPole = new();
 
         /// <summary>
         /// ベーテ法による動力学回折を提供するフィールド
@@ -241,21 +242,21 @@ namespace Crystallography
         /// 対称性
         /// </summary>
         [XmlIgnore]
-        public Symmetry Symmetry = new Symmetry();
+        public Symmetry Symmetry = new();
 
         /// <summary>
         /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public Matrix3D MatrixInverse = new Matrix3D();
+        public Matrix3D MatrixInverse = new();
 
         /// <summary>
         /// 実格子行列 (1列目にa, 2列目にb, 3列目にｃ)
         /// </summary>
         [NonSerialized]
         [XmlIgnore]
-        public Matrix3D MatrixReal = new Matrix3D();
+        public Matrix3D MatrixReal = new();
 
         /// <summary>
         /// 原子の情報を取り扱うAtomsクラスの配列
@@ -277,12 +278,12 @@ namespace Crystallography
         /// <summary>
         /// 格子歪みテンソル
         /// </summary>
-        public Matrix3D Strain = new Matrix3D(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        public Matrix3D Strain = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         /// <summary>
         /// 応力テンソル
         /// </summary>
-        public Matrix3D Stress = new Matrix3D(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        public Matrix3D Stress = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         /// <summary>
         /// ヒル定数
@@ -376,7 +377,7 @@ namespace Crystallography
         {
             Symmetry = SymmetryStatic.Get_Symmetry(0);
             Plane = new List<Plane>();
-            Atoms = new Atoms[0];
+            Atoms = Array.Empty<Atoms>();
             ElasticStiffnessArray = new double[21];
             Bethe = new BetheMethod(this);
             A = B = C = Alpha = Beta = Gamma = 0;
@@ -705,7 +706,7 @@ namespace Crystallography
         /// <param name="k2"></param>
         /// <param name="l2"></param>
         /// <returns></returns>
-        public String GetZoneAxis(int h1, int k1, int l1, int h2, int k2, int l2)
+        public static string GetZoneAxis(int h1, int k1, int l1, int h2, int k2, int l2)
         {
             int u, v, w, z;
             u = l1 * k2 - k1 * l2; v = h1 * l2 - l1 * h2; w = k1 * h2 - h1 * k2;
@@ -728,7 +729,7 @@ namespace Crystallography
         /// <param name="c"></param>
         /// <returns></returns>
         public static Vector3D CalcHklVector(int h, int k, int l, Vector3D a, Vector3D b, Vector3D c) 
-            => new Vector3D(
+            => new(
                 -h * (b.Z * c.Y - b.Y * c.Z) - k * (c.Z * a.Y - c.Y * a.Z) - l * (a.Z * b.Y - a.Y * b.Z),
                 -h * (b.X * c.Z - b.Z * c.X) - k * (c.X * a.Z - c.Z * a.X) - l * (a.X * b.Z - a.Z * b.X),
                 -h * (b.Y * c.X - b.X * c.Y) - k * (c.Y * a.X - c.X * a.Y) - l * (a.Y * b.X - a.X * b.Y)
@@ -742,7 +743,7 @@ namespace Crystallography
         /// <param name="l"></param>
         /// <returns></returns>
         public Vector3D CalcHklVector(int h, int k, int l) 
-            => new Vector3D(
+            => new(
                 -h * (B_Axis.Z * C_Axis.Y - B_Axis.Y * C_Axis.Z) - k * (C_Axis.Z * A_Axis.Y - C_Axis.Y * A_Axis.Z) - l * (A_Axis.Z * B_Axis.Y - A_Axis.Y * B_Axis.Z),
                 -h * (B_Axis.X * C_Axis.Z - B_Axis.Z * C_Axis.X) - k * (C_Axis.X * A_Axis.Z - C_Axis.Z * A_Axis.X) - l * (A_Axis.X * B_Axis.Z - A_Axis.Z * B_Axis.X),
                 -h * (B_Axis.Y * C_Axis.X - B_Axis.X * C_Axis.Y) - k * (C_Axis.Y * A_Axis.X - C_Axis.X * A_Axis.Y) - l * (A_Axis.Y * B_Axis.X - A_Axis.X * B_Axis.Y)
@@ -878,11 +879,11 @@ namespace Crystallography
             #region
             if (dMin < (A + B + C) / 3 / 30)
                 dMin = (A + B + C) / 3 / 30;
-            int hMax = (int)(A / dMin);
-            int kMax = (int)(B / dMin);
-            int lMax = (int)(C / dMin);
+            var hMax = (int)(A / dMin);
+            var kMax = (int)(B / dMin);
+            var lMax = (int)(C / dMin);
 
-            List<Plane> listPlane = new List<Plane>();
+            var listPlane = new List<Plane>();
             int n = 0;
             double d;
             int multi = 1;
@@ -1067,7 +1068,8 @@ namespace Crystallography
         #endregion
 
         #region 逆格子ベクトルの計算
-
+        private static int composeKey(int h, int k, int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
+        private static (int h, int k, int l) decomposeKey(int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
         /// <summary>
         /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
         /// </summary>
@@ -1109,9 +1111,6 @@ namespace Crystallography
             #endregion
 
             var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
-
-            var composeKey = new Func<int, int, int, int>((h, k, l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1);
-            var decomposeKey = new Func<int, (int h, int k, int l)>(key => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255));
             
             var maxGnum = 250000;
             var zeroKey = (255 << 20) + (255 << 10) + 255;
@@ -1155,8 +1154,8 @@ namespace Crystallography
             {
                 Parallel.ForEach(gArray, _g =>
                 {
-                     _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, (_g.Index), _g.Length2 / 4.0) : 0;
-                     _g.RawIntensity = _g.F.Magnitude2();
+                     _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
+                    _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
                 });
 
                 var maxIntensity = gArray.Max(v => v.RawIntensity);
@@ -1285,7 +1284,7 @@ namespace Crystallography
             {
                 if (Atoms[i].ID == atoms.ID)
                 {
-                    Atoms[] temp = new Atoms[Atoms.Length - 1];
+                    var temp = new Atoms[Atoms.Length - 1];
                     Array.Copy(Atoms, 0, temp, 0, i);
                     Array.Copy(Atoms, i + 1, temp, i, temp.Length - i);
                     GetFormulaAndDensity();
@@ -1471,7 +1470,7 @@ namespace Crystallography
         /// <param name="l"></param>
         /// <param name="s2">単位はnm^-2</param>
         /// <returns></returns>
-        private Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2)
+        private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2)
         {
             #region
             (int h, int k, int l) = index;
@@ -1540,7 +1539,7 @@ namespace Crystallography
                     int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
 
                     Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), (h, k, l), 1 / Plane[i].d / Plane[i].d / 4.0);
-                    Plane[i].F2[j] = Plane[i].F[j].Magnitude2();
+                    Plane[i].F2[j] = Plane[i].F[j].MagnitudeSquared();
 
                     if (waveSource == WaveSource.Xray)
                     {
@@ -1595,13 +1594,13 @@ namespace Crystallography
                     double value33333;
                     if (Miscellaneous.IsDecimalPointComma)
                     {
-                        double.TryParse(",66667", out value66667);
-                        double.TryParse(",33333", out value33333);
+                        _ = double.TryParse(",66667", out value66667);
+                        _ = double.TryParse(",33333", out value33333);
                     }
                     else
                     {
-                        double.TryParse(".66667", out value66667);
-                        double.TryParse(".33333", out value33333);
+                        _ = double.TryParse(".66667", out value66667);
+                        _ = double.TryParse(".33333", out value33333);
                     }
 
                     if (Atoms[i].X == value66667) Atoms[i].X = 2.0 / 3.0;

@@ -130,7 +130,7 @@ namespace ReciPro
             {
                 if (i < Beams.Length && i < dataSet.DataTableBethe.Rows.Count)
                 {
-                    for (int j = 0; j < dataSet.DataTableBethe.Rows[i].ItemArray.Count() && !need; j++)
+                    for (int j = 0; j < dataSet.DataTableBethe.Rows[i].ItemArray.Length && !need; j++)
                     {
                         if (dataSet.DataTableBethe.Rows[i][j] == DBNull.Value)
                             need = true;

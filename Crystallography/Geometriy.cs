@@ -340,13 +340,13 @@ namespace Crystallography
             double CosTau1 = Math.Cos(bestTau1);
             double SinTau1 = Math.Sin(bestTau1);
 
-            Matrix3D M = new Matrix3D(CosPhi, SinPhi, 0, -SinPhi, CosPhi, 0, 0, 0, 1);
-            Matrix3D P = new Matrix3D(1, 0, 0, 0, CosTau, SinTau, 0, -SinTau, CosTau);
+            var M = new Matrix3D(CosPhi, SinPhi, 0, -SinPhi, CosPhi, 0, 0, 0, 1);
+            var P = new Matrix3D(1, 0, 0, 0, CosTau, SinTau, 0, -SinTau, CosTau);
 
-            Matrix3D M1 = new Matrix3D(CosPhi1, SinPhi1, 0, -SinPhi1, CosPhi1, 0, 0, 0, 1);
-            Matrix3D P1 = new Matrix3D(1, 0, 0, 0, CosTau1, SinTau1, 0, -SinTau1, CosTau1);
+            var M1 = new Matrix3D(CosPhi1, SinPhi1, 0, -SinPhi1, CosPhi1, 0, 0, 0, 1);
+            var P1 = new Matrix3D(1, 0, 0, 0, CosTau1, SinTau1, 0, -SinTau1, CosTau1);
 
-            Matrix3D Q = M1 * P1 * M1.Transpose() * M * P * M.Transpose();
+            var Q = M1 * P1 * M1.Transpose() * M * P * M.Transpose();
 
             tau = Math.Acos(Q.E33);
             if (Math.Sin(tau) == 0)
@@ -531,7 +531,7 @@ namespace Crystallography
 
             //‚·‚×‚Ä‚ª”ÍˆÍŠO‚È‚çnull‚ð•Ô‚·
             if (flag2)
-                return new (double X, double Y)[0];
+                return Array.Empty<(double X, double Y)>();
 
             for (int i = 0; i < ptAlpha.Count; i++)
             {
@@ -674,7 +674,7 @@ namespace Crystallography
             if (pt.Max(p => p.Y) <= area.UpperY && pt.Min(pt => pt.Y) >= area.Y)
                 return new[] { pt.ToArray() };
             else if(pt.Max(p => p.Y) <= area.Y || pt.Min(pt => pt.Y) >= area.UpperY)
-                return new[] { new PointD[] { } };
+                return new[] { Array.Empty<PointD>() };
             else
             {
 

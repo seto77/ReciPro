@@ -349,7 +349,7 @@ namespace Crystallography
             }
         }*/
 
-        private static object lockObject = new object();
+        private static object lockObject = new();
 
         public static double detectSkewAngle(Bitmap bmp)
         {

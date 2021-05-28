@@ -544,13 +544,13 @@ namespace Crystallography.Controls
             return text;
         }
 
-        private string separateThousands(string valueString)
+        private static string separateThousands(string valueString)
         {
             char decimalPoint = '.';
             if (valueString.Contains(","))
                 decimalPoint = ',';
 
-            string[] integer = valueString.Split(new[] { decimalPoint });
+            var integer = valueString.Split(new[] { decimalPoint });
             for (int i = integer[0].Length - 3; i > 0; i -= 3)
             {
                 if (integer[0][i - 1] != '-')

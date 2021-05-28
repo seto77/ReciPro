@@ -218,7 +218,7 @@ namespace ReciPro
                 buttonSaveBackGround.Enabled = value;
                 if (value)
                 {
-                    trackBarBgA.Value = Math.Min((int)(Math.Log(graphControlFrequency.Profile.Pt[graphControlFrequency.Profile.Pt.Count - 1].X, 7) * 100), trackBarBgA.Maximum);
+                    trackBarBgA.Value = Math.Min((int)(Math.Log(graphControlFrequency.Profile.Pt[^1].X, 7) * 100), trackBarBgA.Maximum);
                     trackBarBgA.Value = 1;
                     trackBarBgH.Maximum = ImageHeight / 3;
                     trackBarBgH.Minimum = 1;
@@ -324,8 +324,8 @@ namespace ReciPro
 
             Profile p = setFrequencyProfile(srcPixels);
 
-            numericUpDownMaxInt.Maximum = Math.Max((decimal)p.Pt[p.Pt.Count - 1].X, 2);
-            numericUpDownMinInt.Maximum = Math.Max((decimal)p.Pt[p.Pt.Count - 1].X - 1, 1);
+            numericUpDownMaxInt.Maximum = Math.Max((decimal)p.Pt[^1].X, 2);
+            numericUpDownMinInt.Maximum = Math.Max((decimal)p.Pt[^1].X - 1, 1);
             numericUpDownMaxInt.Minimum = 1;
             numericUpDownMinInt.Minimum = 0;
             scalablePictureBox.PseudoBitmap.MaxValue = (uint)((double)numericUpDownMaxInt.Maximum);
@@ -1688,9 +1688,9 @@ namespace ReciPro
                     DiffractionPixels = convoluteInstrumentsFunction(tempDiffractionPixels2, FilmBlur);
                     residuals.Add(RefineScaleFactor());
 
-                    if (residuals[residuals.Count - 1] < residualMinimul)
+                    if (residuals[^1] < residualMinimul)
                     {
-                        residualMinimul = residuals[residuals.Count - 1];
+                        residualMinimul = residuals[^1];
                         bestCenter = new PointD(Center.X - xDiv, Center.Y - yDiv);
                     }
                 }

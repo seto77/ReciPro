@@ -263,6 +263,7 @@ namespace Crystallography.Controls
         public AtomControl()
         {
             InitializeComponent();
+            SkipEvent = true;
             table = dataSet.DataTableAtom;
             comboBoxAtom.SelectedIndex = 0;
             comboBoxNeutron.SelectedIndex = 0;
@@ -273,6 +274,7 @@ namespace Crystallography.Controls
                 numericBoxEmission.ShowUpDown = numericBoxAlpha.ShowUpDown = numericBoxAtomRadius.ShowUpDown = true;
 
             dataGridView.Columns["enabledColumn"].Visible = false;
+            SkipEvent = false;
         }
 
         #endregion
@@ -325,6 +327,7 @@ namespace Crystallography.Controls
         //原子番号コンボ
         private void comboBoxAtom_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (SkipEvent) return;
             if (comboBoxAtom.SelectedIndex < 0) return;
             comboBoxScatteringFactorXray.Items.Clear();
             comboBoxScatteringFactorElectron.Items.Clear();
@@ -362,6 +365,8 @@ namespace Crystallography.Controls
         #region 中性子関連
         private void comboBoxNeutron_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
+
             buttonEditIsotopeAbundance.Enabled = comboBoxNeutron.SelectedIndex == 1;
 
             richTextBoxIsotope.Clear();

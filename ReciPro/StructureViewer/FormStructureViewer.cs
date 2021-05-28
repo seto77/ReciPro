@@ -26,7 +26,7 @@ namespace ReciPro
         public Crystal Crystal;
 
         public FormMain formMain;
-        private FormAtom formAtom;
+        //private FormAtom formAtom;
 
         /// <summary>
         /// 原子位置をシフトさせるベクトル. 単位格子の描画も、このベクトルに従ってシフトする
@@ -53,9 +53,9 @@ namespace ReciPro
         private AtomControl atomControl;
         private BondInputControl bondControl;
 
-        private  List<GLControlAlpha> legendControls = new();
-        private  List<Label> legendLabels = new();
-        private  List<FlowLayoutPanel> legendFlowLayoutPanels = new();
+        private readonly List<GLControlAlpha> legendControls = new();
+        private readonly List<Label> legendLabels = new();
+        private readonly List<FlowLayoutPanel> legendPanels = new();
 
         private readonly Stopwatch sw = new();
 
@@ -113,9 +113,10 @@ namespace ReciPro
         {
             if (DesignMode) return;
 
-            formAtom = new FormAtom            {                formStructureViewer = this, Owner = this            };
+            //formAtom = new FormAtom            {                formStructureViewer = this, Owner = this            };
 
             #region デザイナが壊れないようにここでGLコントロールを追加
+            
             // glControlAxes
             glControlAxes = new GLControlAlpha
             {
@@ -137,6 +138,7 @@ namespace ReciPro
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Left
             };
             glControlAxes.MouseMove += glControlAxes_MouseMove;
+            glControlAxes.SuspendLayout();
 
             // glControlLight
             glControlLight = new GLControlAlpha
@@ -158,8 +160,8 @@ namespace ReciPro
                 Size = new Size(numericBoxLightSize.ValueInteger, numericBoxLightSize.ValueInteger),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
             };
+            glControlLight.SuspendLayout();
             glControlLight.MouseMove += glControlLight_MouseMove;
-
 
             // glControlMainZsort
             glControlMainZsort = new GLControlAlpha
@@ -179,6 +181,7 @@ namespace ReciPro
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
             };
+            glControlMainZsort.SuspendLayout();
             glControlMainZsort.MouseDown += glControlMain_MouseDown;
             glControlMainZsort.MouseMove += glControlMain_MouseMove;
 
@@ -199,6 +202,7 @@ namespace ReciPro
                 TranslatingMode = GLControlAlpha.TranslatingModes.View,
                 Dock = DockStyle.Fill
             };
+            glControlMainOIT.SuspendLayout();
             glControlMainOIT.MouseDown += glControlMain_MouseDown;
             glControlMainOIT.MouseMove += glControlMain_MouseMove;
             glControlMainOIT.Visible = false;
@@ -206,6 +210,7 @@ namespace ReciPro
             glControlMain = glControlMainZsort;
 
             // splitContainer1.Panel1にglControlを追加
+            splitContainer1.SuspendLayout();
             splitContainer1.Panel1.Controls.Add(glControlAxes);
             splitContainer1.Panel1.Controls.Add(glControlLight);
             splitContainer1.Panel1.Controls.Add(glControlMainZsort);
@@ -241,13 +246,17 @@ namespace ReciPro
             #endregion
 
             #region 各種ユーザーコントロールの追加
+            
             boundControl = formMain.crystalControl.boundControl;
             latticePlaneControl = formMain.crystalControl.latticePlaneControl;
             atomControl = formMain.crystalControl.atomControl;
             bondControl = formMain.crystalControl.bondControl;
 
+            tabPageBond.SuspendLayout();
             tabPageBond.Controls.Add(bondControl);
+            tabPageBoundPlane.SuspendLayout();
             tabPageBoundPlane.Controls.Add(boundControl);
+            tabPageLatticePlane.SuspendLayout();
             tabPageLatticePlane.Controls.Add(latticePlaneControl);
             latticePlaneControl.BringToFront();
 
@@ -272,6 +281,17 @@ namespace ReciPro
 
             checkBoxDepthCueing_CheckedChanged(new object(), new EventArgs());
 
+            #endregion
+
+            #region ResumuLayout()
+            glControlMainOIT.ResumeLayout();
+            glControlMainZsort.ResumeLayout();
+            glControlLight.ResumeLayout();
+            glControlAxes.ResumeLayout();
+            splitContainer1.ResumeLayout();
+            tabPageBond.ResumeLayout();
+            tabPageBoundPlane.ResumeLayout();
+            tabPageLatticePlane.ResumeLayout();
             #endregion
         }
         #endregion コンストラクタ
@@ -1330,7 +1350,7 @@ namespace ReciPro
                         while (atoms.Count(a => a.AtomicNumber == num) > 1)
                             atoms.Remove(atoms.First(a => a.AtomicNumber == num));
                 }
-                
+
                 //コントロールが足りなかったら追加
                 if (legendControls.Count < atoms.Count)
                     for (int i = legendControls.Count; i < atoms.Count; i++)
@@ -1342,7 +1362,7 @@ namespace ReciPro
                             AllowMouseScaling = false,
                             AllowMouseTranslating = false,
                             DisablingOpenGL = false,
-                            Name = "legend" + i.ToString(),
+                            Name = $"legend{i}",
                             NodeCoefficient = 1,
                             ProjWidth = 2.2D,
                             LightPosition = glControlLight.LightPosition,
@@ -1355,14 +1375,8 @@ namespace ReciPro
                         legendLabels.Add(new Label { Font = Font, AutoSize = true });
 
                         //FlowLayoutPanel作成
-                        legendFlowLayoutPanels.Add(new FlowLayoutPanel
-                        {
-                            AutoSize = true,
-                            AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                            FlowDirection = FlowDirection.TopDown,
-                            Margin = new Padding(1, 1, 1, 8),
-                        });
-                        legendFlowLayoutPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
+                        legendPanels.Add(new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, FlowDirection = FlowDirection.TopDown, Margin = new Padding(1, 1, 1, 8), });
+                        legendPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
                     }
                 //追加ここまで
 
@@ -1386,7 +1400,9 @@ namespace ReciPro
                     legendControls[i].Size = size;
                     legendControls[i].AddObjects(new Sphere(new V3(0, 0, 0), a.Radius / maxRadius, new Material(a.Argb, a.Texture), DrawingMode.Surfaces));
                     legendControls[i].Render();
-                    flowLayoutPanelLegend.Controls.Add(legendFlowLayoutPanels[i]);
+                    
+                    if(flowLayoutPanelLegend.Controls.Count<i)
+                        flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
                 }
 
                 flowLayoutPanelLegend.ResumeLayout();

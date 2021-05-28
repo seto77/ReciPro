@@ -35,7 +35,7 @@ namespace Crystallography.Controls
                     comboBoxPointGroup.SelectedIndex = PointGroup;
 
                     comboBoxSpaceGroup.Items.Clear();
-                    comboBoxSpaceGroup.Items.AddRange(SpaceGroupArray(CrystalSystem, PointGroup));
+                    comboBoxSpaceGroup.Items.AddRange(spaceGroupArray(CrystalSystem, PointGroup));
                     comboBoxSpaceGroup.SelectedIndex = SpaceGroup;
 
                     SkipEvent = false;
@@ -181,7 +181,7 @@ namespace Crystallography.Controls
             comboBoxPointGroup.SelectedIndex = 0;
         }
 
-        private string[] PointGroupArray(int crystalSystemIndex)
+        private static string[] PointGroupArray(int crystalSystemIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex]
                 .Select(n => SymmetryStatic.Get_Symmetry(n[0]).PointGroupHMStr).Distinct().ToArray();
             
@@ -192,13 +192,13 @@ namespace Crystallography.Controls
             
             SkipEvent = true;
             comboBoxSpaceGroup.Items.Clear();
-            comboBoxSpaceGroup.Items.AddRange(SpaceGroupArray(CrystalSystemIndex, PointGroupIndex));
+            comboBoxSpaceGroup.Items.AddRange(spaceGroupArray(CrystalSystemIndex, PointGroupIndex));
             SkipEvent = false;
 
             comboBoxSpaceGroup.SelectedIndex = 0;
         }
 
-        private string[] SpaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
+        private static string[] spaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex][pointGroupIndex]
                 .Select(n => SymmetryStatic.Get_Symmetry(n).SpaceGroupHMStr).ToArray();
 
@@ -343,13 +343,13 @@ namespace Crystallography.Controls
             string txt = ((ComboBox)sender).Items[e.Index].ToString();
 
             //下付き文字用フォント
-            Font sub = new Font("Times New Roman", 8f, FontStyle.Regular);
+            var sub = new Font("Times New Roman", 8f, FontStyle.Regular);
             //斜体
-            Font italic = new Font("Times New Roman", 11f, FontStyle.Italic);
+            var italic = new Font("Times New Roman", 11f, FontStyle.Italic);
             //普通
-            Font regular = new Font("Times New Roman", 11f, FontStyle.Regular);
+            var regular = new Font("Times New Roman", 11f, FontStyle.Regular);
 
-            Font bold = new Font("Times New Roman", 10f, FontStyle.Bold);
+            var bold = new Font("Times New Roman", 10f, FontStyle.Bold);
 
             float xPos = e.Bounds.Left;
             Brush b = null;
@@ -368,7 +368,7 @@ namespace Crystallography.Controls
                 else if (txt.StartsWith("sub"))//subで始まる時は
                 {
                     xPos -= 1;
-                    txt = txt.Substring(3, txt.Length - 3);
+                    txt = txt[3..];
                     e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
                 }
@@ -382,7 +382,7 @@ namespace Crystallography.Controls
                     xPos += 2;
                     e.Graphics.DrawString(txt.Substring(0, 3), sub, b, xPos, e.Bounds.Y + 3);
                     xPos += e.Graphics.MeasureString(txt.Substring(0, 3), sub).Width - 2;
-                    txt = txt.Substring(2);
+                    txt = txt[2..];
                 }
                 else if (txt[0] == '/')
                 {

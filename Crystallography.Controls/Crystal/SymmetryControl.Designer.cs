@@ -143,7 +143,7 @@
             this.numericBoxBeta.RestrictLimitValue = false;
             this.numericBoxBeta.SkipEventDuringInput = false;
             this.numericBoxBeta.SmartIncrement = true;
-            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip1"));
             this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -157,7 +157,7 @@
             this.numericBoxAlpha.RestrictLimitValue = false;
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip1"));
             this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -177,7 +177,7 @@
             this.numericBoxGammaErr.RestrictLimitValue = false;
             this.numericBoxGammaErr.SkipEventDuringInput = false;
             this.numericBoxGammaErr.SmartIncrement = true;
-            this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip1"));
             this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -197,7 +197,7 @@
             this.numericBoxAlphaErr.RestrictLimitValue = false;
             this.numericBoxAlphaErr.SkipEventDuringInput = false;
             this.numericBoxAlphaErr.SmartIncrement = true;
-            this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip1"));
             this.numericBoxAlphaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -211,7 +211,7 @@
             this.numericBoxBetaErr.RestrictLimitValue = false;
             this.numericBoxBetaErr.SkipEventDuringInput = false;
             this.numericBoxBetaErr.SmartIncrement = true;
-            this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip1"));
             this.numericBoxBetaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -225,7 +225,7 @@
             this.numericBoxA.RestrictLimitValue = false;
             this.numericBoxA.SkipEventDuringInput = false;
             this.numericBoxA.SmartIncrement = true;
-            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxA, resources.GetString("numericBoxA.ToolTip1"));
             this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -251,7 +251,7 @@
             this.numericBoxGamma.RestrictLimitValue = false;
             this.numericBoxGamma.SkipEventDuringInput = false;
             this.numericBoxGamma.SmartIncrement = true;
-            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip1"));
             this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -271,7 +271,7 @@
             this.numericBoxBErr.RestrictLimitValue = false;
             this.numericBoxBErr.SkipEventDuringInput = false;
             this.numericBoxBErr.SmartIncrement = true;
-            this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip1"));
             this.numericBoxBErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -285,7 +285,7 @@
             this.numericBoxB.RestrictLimitValue = false;
             this.numericBoxB.SkipEventDuringInput = false;
             this.numericBoxB.SmartIncrement = true;
-            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxB, resources.GetString("numericBoxB.ToolTip1"));
             this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -323,7 +323,7 @@
             this.numericBoxC.RestrictLimitValue = false;
             this.numericBoxC.SkipEventDuringInput = false;
             this.numericBoxC.SmartIncrement = true;
-            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxC, resources.GetString("numericBoxC.ToolTip1"));
             this.numericBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -337,7 +337,7 @@
             this.numericBoxCErr.RestrictLimitValue = false;
             this.numericBoxCErr.SkipEventDuringInput = false;
             this.numericBoxCErr.SmartIncrement = true;
-            this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip1"));
             this.numericBoxCErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
@@ -351,7 +351,7 @@
             this.numericBoxAErr.RestrictLimitValue = false;
             this.numericBoxAErr.SkipEventDuringInput = false;
             this.numericBoxAErr.SmartIncrement = true;
-            this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip1"));
             this.numericBoxAErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 

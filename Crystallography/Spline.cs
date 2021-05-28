@@ -16,8 +16,8 @@ namespace Crystallography
             Pt = sort(pt);
 
             //í[ì_ÇÃèàóù
-            Pt.Insert(0, edgePoint(Pt[0], Pt[1], Pt[2]));
-            Pt.Add(edgePoint(Pt[Pt.Count - 1], Pt[Pt.Count - 2], Pt[Pt.Count - 3]));
+            Pt.Insert(0, EdgePoint(Pt[0], Pt[1], Pt[2]));
+            Pt.Add(EdgePoint(Pt[^1], Pt[^2], Pt[^3]));
 
             //A,BÇÃåvéZ
             A = new List<double>(); B = new List<double>();
@@ -85,9 +85,9 @@ namespace Crystallography
                         minDistanceLower = (destPt[0] - tempPt[i]).Length;
                         lower = i;
                     }
-                    if (minDistanceUpper > (destPt[destPt.Count - 1] - tempPt[i]).Length)
+                    if (minDistanceUpper > (destPt[^1] - tempPt[i]).Length)
                     {
-                        minDistanceUpper = (destPt[destPt.Count - 1] - tempPt[i]).Length;
+                        minDistanceUpper = (destPt[^1] - tempPt[i]).Length;
                         upper = i;
                     }
                 }
@@ -112,7 +112,7 @@ namespace Crystallography
         /// <param name="pt2"></param>
         /// <param name="pt3"></param>
         /// <returns></returns>
-        public PointD edgePoint(PointD pt1, PointD pt2, PointD pt3)
+        public static PointD EdgePoint(PointD pt1, PointD pt2, PointD pt3)
         {
             double X = pt1.X - pt2.X;
             double Y = pt1.Y - pt2.Y;

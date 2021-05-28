@@ -287,7 +287,7 @@ namespace Crystallography
         /// <returns></returns>
         public static Dictionary<int, double> GetFormula(string str)
         {
-            Dictionary<int, double> formula = new Dictionary<int, double>();
+            var formula = new Dictionary<int, double>();
             for (int i = 0; i < str.Length; i++)
             {
                 if (str[i] >= 'A' && str[i] <= 'Z')//一文字目が大文字のとき

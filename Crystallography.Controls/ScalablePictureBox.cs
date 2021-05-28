@@ -207,7 +207,7 @@ namespace Crystallography.Controls
             get { return _Zoom; }
         }
 
-        private PointD _Center = new PointD(double.NaN, double.NaN);
+        private PointD _Center = new(double.NaN, double.NaN);
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         /// <summary>
@@ -233,7 +233,7 @@ namespace Crystallography.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private Vector3DBase zoomAndCenter = new Vector3DBase(1, 0, 0);
+        private Vector3DBase zoomAndCenter = new(1, 0, 0);
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public (double Zoom, PointD Center) ZoomAndCenter
@@ -274,7 +274,7 @@ namespace Crystallography.Controls
         /// </summary>
         public bool ShowRimRentangle
         {
-            get { return showFocusRectangle; }
+            get => showFocusRectangle;
             set
             {
                 if (showFocusRectangle != value)
@@ -300,7 +300,7 @@ namespace Crystallography.Controls
                     this.Refresh();
                 }
             }
-            get { return showAreaRectangle; }
+            get => showAreaRectangle;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -309,10 +309,10 @@ namespace Crystallography.Controls
         public RectangleD AreaRectangle
         {
             set { areaRentagle = value; this.Refresh(); }
-            get { return areaRentagle; }
+            get => areaRentagle;
         }
 
-    
+
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Symbol> Symbols { set; get; } = new List<Symbol>();
@@ -320,13 +320,13 @@ namespace Crystallography.Controls
         /// <summary>
         /// 左上に表示するテキスト
         /// </summary>
-        public override string Text { get { return label.Text; } set { label.Text = value; } }
+        public override string Text { get => label.Text; set => label.Text = value; }
 
         /// <summary>
         /// 左上に表示するテキストの色
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color TextColor { get { return label.ForeColor; } set { label.ForeColor = value; } }
+        public Color TextColor { get => label.ForeColor; set => label.ForeColor = value; }
 
         private PseudoBitmap _pseudoBitmap = new PseudoBitmap();
 
@@ -364,8 +364,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// スクロールバーが表示されているかどうかを取得する。読み取り専用.
         /// </summary>
-        public bool ScrollBarVisible
-        { get { return hScrollBar.Visible || vScrollBarVisible; } }
+        public bool ScrollBarVisible => hScrollBar.Visible || vScrollBarVisible;
 
         /// <summary>
         /// 現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.
@@ -459,7 +458,7 @@ namespace Crystallography.Controls
             this.Refresh();
         }
 
-        public void DrawAreaRectangle()
+        public static void DrawAreaRectangle()
         {
             //if (justBeforeImage == null)
             //    justBeforeImage = PseudoBitmap.GetImage(Center, Zoom, pictureBox.ClientSize);

@@ -108,7 +108,7 @@ namespace Crystallography.Controls
             {
                 string[] s = comboBoxCompound.Text.Split(new char[] { ' ' });
                 accesoryFormula = s[0];
-                accesoryValence = Convert.ToDouble((s[1].Substring(s[1].Length - 1, 1) + s[1].Substring(0, s[1].Length - 1)));
+                accesoryValence = Convert.ToDouble(s[1].Substring(s[1].Length - 1, 1) + s[1][0..^1]);
             }
             //ElementProperty ep = new ElementProperty(
             //    z, numericBoxValence.Value, checkBoxCompound.Checked, textBoxCompoundForm.Text,
@@ -118,12 +118,12 @@ namespace Crystallography.Controls
             return null;
         }
 
-        public void SetMolecule(Molecule ep)
-        {
-            //comboBoxElement.SelectedIndex = ep.AtomicNumber - 1;
-            //numericBoxValence.Value = ep.Valence;
+        //public void SetMolecule(Molecule ep)
+        //{
+        //    //comboBoxElement.SelectedIndex = ep.AtomicNumber - 1;
+        //    //numericBoxValence.Value = ep.Valence;
 
-            //numericBoxCountTime.Value = ep.CountTime;
-        }
+        //    //numericBoxCountTime.Value = ep.CountTime;
+        //}
     }
 }

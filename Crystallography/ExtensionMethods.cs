@@ -218,22 +218,22 @@ namespace Crystallography
     #endregion
 
     #region Complexの拡張
-    public static class ComplexEx
-    {
-        /// <summary>
-        /// 拡張メソッド.  Real^2 + Imaginary^2を返す
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static double Magnitude2(this Complex c) => c.Real * c.Real + c.Imaginary * c.Imaginary;
+    //public static class ComplexEx
+    //{
+    //    /// <summary>
+    //    /// 拡張メソッド.  Real^2 + Imaginary^2を返す
+    //    /// </summary>
+    //    /// <param name="c"></param>
+    //    /// <returns></returns>
+    //    public static double Magnitude2(ref this Complex c) => c.Real * c.Real + c.Imaginary * c.Imaginary;
 
-        /// <summary>
-        /// 拡張メソッド. 自己共役を返す
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static Complex Conjugate(this Complex c) => Complex.Conjugate(c);
-    }
+    //    /// <summary>
+    //    /// 拡張メソッド. 自己共役を返す
+    //    /// </summary>
+    //    /// <param name="c"></param>
+    //    /// <returns></returns>
+    //    public static Complex Conjugate(ref this Complex c) => Complex.Conjugate(c);
+    //}
     #endregion
 
     #region Stringの拡張

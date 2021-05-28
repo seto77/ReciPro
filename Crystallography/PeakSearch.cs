@@ -428,15 +428,15 @@ namespace Crystallography
                 return double.PositiveInfinity;
 
             //まずここからプロファイルをとる領域や強度ななどの情報を集める
-            List<double> PtX = new List<double>();
-            List<double> PtY = new List<double>();
+            var PtX = new List<double>();
+            var PtY = new List<double>();
             double sum = 0;
             double temp = double.NegativeInfinity;
             double tempMin = double.PositiveInfinity;
 
             //指定された範囲内のプロファイルをPtX,PtYに格納
             for (int i = 0; i < pt.Length; i++)
-                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[p.Length - 1].X - p[p.Length - 1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[p.Length - 1].X + p[p.Length - 1].range))
+                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[^1].X - p[^1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[^1].X + p[^1].range))
                 {
                     PtX.Add(pt[i].X);
                     PtY.Add(pt[i].Y / 1000);
@@ -463,7 +463,7 @@ namespace Crystallography
 
             //最も小さい強度を探す
             for (int i = 0; i < pt.Length; i++)
-                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[p.Length - 1].X - p[p.Length - 1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[p.Length - 1].X + p[p.Length - 1].range))
+                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[^1].X - p[^1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[^1].X + p[^1].range))
                 {
                     if (tempMin > pt[i].Y / 1000)
                         tempMin = pt[i].Y / 1000;

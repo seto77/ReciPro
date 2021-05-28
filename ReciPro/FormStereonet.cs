@@ -319,12 +319,12 @@ namespace ReciPro
 
         //Srci’PˆÊ‚È‚µj‚ðClient(pixel)‚É•ÏŠ·
         private PointF convertSrcToClient(PointD pt) 
-            => new PointF((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
+            => new((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
 
         private PointF convertSrcToClient(double x, double y) => convertSrcToClient(new PointD(x, y));
 
         private PointD convertClientToSrc(Point pt) 
-            => new PointD(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
+            => new(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
 
         private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
 

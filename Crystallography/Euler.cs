@@ -438,7 +438,7 @@ namespace Crystallography
         /// <returns>ñﬂÇËílÇÕÅA</returns>
         public static double[] DecomposeMatrix2(Matrix3D targetRotation, params (Vector3d Vec, double Angle, bool Variable)[] settings)
         {
-            if (settings.Count(s => s.Variable) == 0)
+            if (!settings.Any(s => s.Variable))
                 return settings.Select(s => s.Angle).ToArray();
 
             var rotations = new List<object>();
@@ -462,9 +462,9 @@ namespace Crystallography
                 var n = 0;
                 foreach (var o in rotations)
                     if (o is Matrix3D fixedRot)
-                        mat = mat * fixedRot;
+                        mat *= fixedRot;
                     else if (o is Func<double, Matrix3D> functionalRot)
-                        mat = mat * functionalRot(angles[n++]);
+                        mat *= functionalRot(angles[n++]);
 
                 return -(mat * rotInv).SumOfDiagonalCompenent();
             });

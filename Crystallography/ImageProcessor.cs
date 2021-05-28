@@ -139,11 +139,11 @@ namespace Crystallography
         /// <returns></returns>
         unsafe static public double[] DustAndScratches(double[] pixels, int width, double radius, double threshold)
         {
-            double[] results = new double[pixels.Length];
+            var results = new double[pixels.Length];
             Array.Copy(pixels, results, pixels.Length);
             int height = pixels.Length / width;
 
-            List<int> index = new List<int>();
+            var index = new List<int>();
             for (int h = -(int)(radius + 1); h < (int)(radius + 1); h++)
                 for (int w = -(int)(radius + 1); w < (int)(radius + 1); w++)
                     if (h * h + w * w <= radius * radius && h * h + w * w != 0)
@@ -166,7 +166,7 @@ namespace Crystallography
                             list1[i] = *(src + index[i]);
                         Array.Sort(list1);
                         Array.Copy(list1, list1.Length / 8, list2, 0, list2.Length);
-                        if (list2[0] > *src || list2[list2.Length - 1] < *src)
+                        if (list2[0] > *src || list2[^1] < *src)
                         {
                             double sum = 0, sumSquare = 0;
                             for (int i = 0; i < list2.Length; i++)

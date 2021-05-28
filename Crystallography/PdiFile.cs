@@ -65,7 +65,7 @@ namespace Crystallography
                 if (dp.Length > 0)
                     return dp;
                 else
-                    return new DiffractionProfile[0];
+                    return Array.Empty<DiffractionProfile>();
             }
             catch//もしシリアライズできなかったら、name部分に間違った日本語が書かれている可能性あり。
             {
@@ -110,9 +110,9 @@ namespace Crystallography
                             strList.Add(tempstr);
                         reader.Close();
                         if (strList.Count <= 3)
-                            return new DiffractionProfile[0];
+                            return Array.Empty<DiffractionProfile>();
 
-                        DiffractionProfile diffProf = new DiffractionProfile();
+                        var diffProf = new DiffractionProfile();
 
                         //古いヘッダの書式
                         //Wave Length (0.1nm):0.4176811455              0
@@ -137,7 +137,7 @@ namespace Crystallography
                         else if ((strList[4].Split(':'))[1] == "Energy")
                             diffProf.SrcAxisMode = HorizontalAxis.EnergyXray;
                         else
-                            return new DiffractionProfile[0];
+                            return Array.Empty<DiffractionProfile>();
 
                         for (int i = 5; i < strList.Count; i++)
                         {
@@ -147,23 +147,23 @@ namespace Crystallography
                         diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
                         return new DiffractionProfile[] { diffProf };
                     }
-                    catch { return new DiffractionProfile[0]; }
+                    catch { return Array.Empty<DiffractionProfile>(); }
                 }
             }
         }
 
         public static DiffractionProfile[] ReadRasFile(string fileName)
         {
-            List<string> strArray = new List<string>();
-            StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+            var strArray = new List<string>();
+            var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
             string tempstr;
             while ((tempstr = reader.ReadLine()) != null)
                 strArray.Add(tempstr);
             reader.Close();
             if (strArray.Count <= 3)
-                return new DiffractionProfile[0];
+                return Array.Empty<DiffractionProfile>();
 
-            List<DiffractionProfile> dp = new List<DiffractionProfile>();
+            var dp = new List<DiffractionProfile>();
 
             for (int i = 0; i < strArray.Count; i++)
             {
@@ -191,7 +191,7 @@ namespace Crystallography
 
             if (dp.Count > 0)
                 return dp.ToArray();
-            else return new DiffractionProfile[0];
+            else return Array.Empty<DiffractionProfile>();
         }
 
         /// <summary>
@@ -210,16 +210,16 @@ namespace Crystallography
             }
 
             if (strArray.Count <= 3)
-                return new DiffractionProfile[0];
+                return Array.Empty<DiffractionProfile>();
 
             if (!strArray[1].StartsWith("X,Y,"))
-                return new DiffractionProfile[0];
+                return Array.Empty<DiffractionProfile>();
 
             try
             {
-                string[] title = strArray[0].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                string[] axis = strArray[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                string[] value = strArray[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var title = strArray[0].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var axis = strArray[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var value = strArray[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (title.Length * 2 != axis.Length || axis.Length != value.Length)
                     return new DiffractionProfile[0];
 

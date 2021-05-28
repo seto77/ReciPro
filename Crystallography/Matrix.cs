@@ -140,12 +140,12 @@ namespace Crystallography
         public Matrix3d ToMatrix()
             => new Matrix3d(E11, E12, E13, E21, E22, E23, E31, E32, E33);
 
-        public Vector3DBase Column1 => new Vector3DBase(E11, E21, E31);
-        public Vector3DBase Column2 => new Vector3DBase(E12, E22, E32);
-        public Vector3DBase Column3 => new Vector3DBase(E13, E23, E33);
-        public Vector3DBase Row1 => new Vector3DBase(E11, E12, E13);
-        public Vector3DBase Row2 => new Vector3DBase(E21, E22, E23);
-        public Vector3DBase Row3 => new Vector3DBase(E31, E32, E33);
+        public Vector3DBase Column1 => new(E11, E21, E31);
+        public Vector3DBase Column2 => new(E12, E22, E32);
+        public Vector3DBase Column3 => new(E13, E23, E33);
+        public Vector3DBase Row1 => new(E11, E12, E13);
+        public Vector3DBase Row2 => new(E21, E22, E23);
+        public Vector3DBase Row3 => new(E31, E32, E33);
 
         #region  演算子のオーバーロード
 
@@ -381,7 +381,7 @@ namespace Crystallography
             };
         }
 
-        private static readonly Random Rn = new Random(Environment.TickCount * 2);
+        private static readonly Random Rn = new(Environment.TickCount * 2);
 
         public static Matrix3D GenerateRamdomRotationMatrix() => GenerateRamdomRotationMatrix(Rn);
 
@@ -438,10 +438,10 @@ namespace Crystallography
             double cosTheta = theta * 2 - 1, sinTheta = Math.Sqrt(1 - cosTheta * cosTheta);
             double cosKsi = Math.Cos(ksi * 2 * Math.PI), sinKsi = Math.Sin(ksi * 2 * Math.PI);
 
-            Matrix3D m1 = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1);
+            var m1 = new Matrix3D(cosPhi, -sinPhi, 0, sinPhi, cosPhi, 0, 0, 0, 1);
             //Matrix3D m1 = new Matrix3D(cosPhi, 0, sinPhi, 0, 1, 0, -sinPhi, 0, cosPhi);
-            Matrix3D m2 = new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
-            Matrix3D m3 = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
+            var m2 = new Matrix3D(1, 0, 0, 0, cosTheta, sinTheta, 0, -sinTheta, cosTheta);
+            var m3 = new Matrix3D(cosKsi, -sinKsi, 0, sinKsi, cosKsi, 0, 0, 0, 1);
 
             return m1 * m2 * m3;
         }
@@ -846,23 +846,23 @@ namespace Crystallography
             return new Vector3D(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         }
 
-        public static Vector3D operator -(Vector3D v1, Vector3D v2) => new Vector3D(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+        public static Vector3D operator -(Vector3D v1, Vector3D v2) => new(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
 
-        public static Vector3D operator -(Vector3D v1) => new Vector3D(-v1.X, -v1.Y, -v1.Z);
+        public static Vector3D operator -(Vector3D v1) => new(-v1.X, -v1.Y, -v1.Z);
 
-        public static Vector3D operator *(double d, Vector3D v1) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3D operator *(double d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(Vector3D v1, double d) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3D operator *(Vector3D v1, double d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(int d, Vector3D v1) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3D operator *(int d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3D operator *(Vector3D v1, int d) => new Vector3D(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3D operator *(Vector3D v1, int d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
         public static double operator *(Vector3D v1, Vector3D v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
-        public static Vector3D operator /(Vector3D v1, double d) => new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
+        public static Vector3D operator /(Vector3D v1, double d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
-        public static Vector3D operator /(Vector3D v1, int d) => new Vector3D(v1.X / d, v1.Y / d, v1.Z / d);
+        public static Vector3D operator /(Vector3D v1, int d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
         public void NormarizeThis()
         {

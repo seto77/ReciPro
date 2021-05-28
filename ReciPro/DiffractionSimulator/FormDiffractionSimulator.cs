@@ -1,6 +1,7 @@
 ﻿#region using
 using Crystallography;
 using Crystallography.Controls;
+using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -1326,13 +1327,13 @@ namespace ReciPro
             else if (e.Button == MouseButtons.Middle)
             {
                 //コントロールキーが押されていなくて、かつ中心位置が固定でないとき
-                if ((Control.ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
+                if ((ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
                 {
                     DisplayCenter = new PointD(DisplayCenter.X + (e.X - lastMousePositionScreen.X) * Resolution, DisplayCenter.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
                     Draw(null, false);
                 }
                 //コントロールキーが押されていて、かつ検出器エリアが表示の時
-                else if ((Control.ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
+                else if ((ModifierKeys & Keys.Control) == Keys.Control && FormDiffractionSimulatorGeometry.ShowDetectorArea)
                 {
                     FormDiffractionSimulatorGeometry.FootX += (lastMousePositionScreen.X - e.X) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
                     FormDiffractionSimulatorGeometry.FootY += (lastMousePositionScreen.Y - e.Y) * Resolution / FormDiffractionSimulatorGeometry.DetectorPixelSize;
@@ -2096,7 +2097,7 @@ namespace ReciPro
                 {
                     numericBoxThickness.Value = i;
                     Draw();
-                    var intensity = formMain.Crystal.Bethe.Beams[0].Psi.Magnitude2();
+                    var intensity = formMain.Crystal.Bethe.Beams[0].Psi.MagnitudeSquared();
 
                     sb.AppendLine($"{i}\t{intensity}");
                 }

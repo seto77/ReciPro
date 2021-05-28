@@ -68,10 +68,11 @@ namespace Crystallography.Controls
                     bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, ref multi);
                     if (irreducible && !double.IsNaN(twoTheta))
                     {
+                        var magnitude2 = g.F.Real * g.F.Real + g.F.Imaginary * g.F.Imaginary;
                         if (waveLengthControl1.WaveSource == WaveSource.Xray)
-                            c.VectorOfG[i].RawIntensity = g.F.Magnitude2() * multi / c.CellVolumeSqure * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSqure * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
                         else
-                            c.VectorOfG[i].RawIntensity = g.F.Magnitude2() * multi / c.CellVolumeSqure / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSqure / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
 
                         max = Math.Max(max, c.VectorOfG[i].RawIntensity);
                     }
@@ -107,8 +108,6 @@ namespace Crystallography.Controls
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-
-
         }
 
         private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)

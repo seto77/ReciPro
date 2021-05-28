@@ -149,7 +149,6 @@
             this.toolTipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.resetRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ngenCompileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -250,6 +249,7 @@
             // 
             // splitContainer
             // 
+            this.splitContainer.Cursor = System.Windows.Forms.Cursors.HSplit;
             resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Name = "splitContainer";
@@ -1191,7 +1191,6 @@
             this.toolTipToolStripMenuItem,
             this.toolStripSeparator11,
             this.resetRegistryToolStripMenuItem,
-            this.ngenCompileToolStripMenuItem,
             this.disableOpneGLToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(this.optionToolStripMenuItem, "optionToolStripMenuItem");
@@ -1215,12 +1214,6 @@
             this.resetRegistryToolStripMenuItem.CheckOnClick = true;
             this.resetRegistryToolStripMenuItem.Name = "resetRegistryToolStripMenuItem";
             resources.ApplyResources(this.resetRegistryToolStripMenuItem, "resetRegistryToolStripMenuItem");
-            // 
-            // ngenCompileToolStripMenuItem
-            // 
-            this.ngenCompileToolStripMenuItem.Name = "ngenCompileToolStripMenuItem";
-            resources.ApplyResources(this.ngenCompileToolStripMenuItem, "ngenCompileToolStripMenuItem");
-            this.ngenCompileToolStripMenuItem.Click += new System.EventHandler(this.ngenCompileToolStripMenuItem_Click);
             // 
             // disableOpneGLToolStripMenuItem
             // 
@@ -1489,7 +1482,6 @@
         private Crystallography.Controls.NumericBox numericBoxPlaneK;
         public System.Windows.Forms.ToolStripButton toolStripButtonTEMID;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ngenCompileToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndexU;
         private Crystallography.Controls.NumericBox numericBoxMaxUVW;
         private System.Windows.Forms.Label labelCurrentIndexV;

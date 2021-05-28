@@ -272,7 +272,7 @@ namespace Crystallography
                     var intensity = new double[BeamRotations.Length];
                     for (int r = 0; r < BeamRotations.Length; r++)
                         if (disk[r] != null)
-                            intensity[r] = disk[r][t][g].Magnitude2();
+                            intensity[r] = disk[r][t][g].MagnitudeSquared();
 
                     Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], intensity);
                 }
@@ -458,10 +458,10 @@ namespace Crystallography
                     if (!compiled.ContainsKey(beam.Index))
                     {
                         compiled.Add(beam.Index, beam);
-                        compiled[beam.Index].intensity = beam.Psi.Magnitude2() / step;
+                        compiled[beam.Index].intensity = beam.Psi.MagnitudeSquared() / step;
                     }
                     else
-                        compiled[beam.Index].intensity += beam.Psi.Magnitude2() / step;
+                        compiled[beam.Index].intensity += beam.Psi.MagnitudeSquared() / step;
                 }
 
             //基準の方位でP,Q,Sなどを再セット
@@ -563,7 +563,7 @@ namespace Crystallography
                         PointD q1 = k + g.Vec.ToPointD(), q2 = k + h.Vec.ToPointD();
                         double q1Sq = q1.Length2, q2Sq = q2.Length2;
                         //gNum==hNumの時は、g.Psi.Magnitude2() が画素に伝わるだけなので、最後に強度を0~2^16に規格化する場合は、あってもなくても関係ない
-                        var psi = gNum == hNum ? g.Psi.Magnitude2() : 2 * g.Psi * Conjugate(h.Psi);
+                        var psi = gNum == hNum ? g.Psi.MagnitudeSquared() : 2 * g.Psi * Conjugate(h.Psi);
 
                         //indexが同じものがあるかどうかを検索し、無い場合のみvecを計算する
                         var index = (g.H - h.H, g.K - h.K, g.L - h.L);
@@ -626,7 +626,7 @@ namespace Crystallography
                         _vec = Vec;
                     }
                     for (var i = 0; i < defLen; i++)
-                        images[i][n] = quasiMode ? sums[i].Magnitude2() : Math.Abs(sums[i].Real);
+                        images[i][n] = quasiMode ? sums[i].MagnitudeSquared() : Math.Abs(sums[i].Real);
                 });
             }
             return images;
@@ -1036,7 +1036,7 @@ namespace Crystallography
                 Fimag = f.Imag;
                 Q = prms.Q;
                 P = prms.P;
-                Rating = Math.Sqrt(Vec.Length2) * Math.Abs(Q) * Math.Abs(Q);
+                Rating = Math.Sqrt(Vec.Length2) * Q * Q;
             }
 
 
@@ -1054,7 +1054,7 @@ namespace Crystallography
                 g.Text = $"{H} {K} {L}";
                 g.Index = (H, K, L);
                 g.F = Psi;
-                g.RawIntensity = Psi.Magnitude2();
+                g.RawIntensity = Psi.MagnitudeSquared();
                 g.Tag = S;
                 g.Flag = true;
                 g.Argb = Color.White.ToArgb();

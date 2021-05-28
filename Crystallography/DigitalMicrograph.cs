@@ -182,7 +182,7 @@ namespace Crystallography
                 }
             }
 
-            public object GetValue(BinaryReader br, TagDataTypes type)
+            public static object GetValue(BinaryReader br, TagDataTypes type)
             {
                 return type switch
                 {

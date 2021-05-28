@@ -360,7 +360,7 @@ namespace Crystallography
         /// 多重度を保ったまま、原子位置を乱数的的に変化させる。ワイコフ位置も多重度をもとにきまる
         /// </summary>
         /// <param name="r"></param>
-        public void RandomizeKeepintMultiplicity(Random r)
+        public static void RandomizeKeepintMultiplicity(Random r)
         {
         }
 
