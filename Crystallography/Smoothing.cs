@@ -37,7 +37,7 @@ namespace Crystallography
                 for (int i = 0; i < order + 1; i++)
                     m1[j, i] = Math.Pow(j - pointNum / 2, i);
 
-            if (!(m1.Transpose() * m1).TryInverse(out Matrix inv))
+            if (!m1.TransposeThisAndMultiply( m1).TryInverse(out Matrix inv))
                 return pt;
 
             var m2 = inv * m1.Transpose();
@@ -92,9 +92,9 @@ namespace Crystallography
                     for (int i = 0; i < order + 1; i++)
                         m[j, i] = Math.Pow(c1 * tempPt[j].X + c2, i);
                 }
-                if (!(m.Transpose() * m).TryInverse(out Matrix inv))
+                if (!(m.TransposeThisAndMultiply(m)).TryInverse(out Matrix inv))
                 {
-                    var a = inv * m.Transpose() * y;
+                    var a = inv * m.TransposeThisAndMultiply(y);
 
                     smoothPt[n].Y = 0;
                     for (int j = 0; j < order + 1; j++)

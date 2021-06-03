@@ -78,7 +78,7 @@ namespace ReciPro
             public bool IsInside;
             public int Index;
 
-            public atomID(int index, bool isInside)
+            public atomID(in int index, in bool isInside)
             {
                 IsInside = isInside;
                 Index = index;
@@ -89,7 +89,7 @@ namespace ReciPro
         {
             public int SerialNumber1, SerialNumber2;
 
-            public bondID(int serialNumber1, int serialNumber2)
+            public bondID(in int serialNumber1, in int serialNumber2)
             {
                 SerialNumber1 = serialNumber1;
                 SerialNumber2 = serialNumber2;
@@ -473,7 +473,7 @@ namespace ReciPro
             public Material BondMat;
             public Material PolyMat;
             public int Serial;
-            public bondVertex(int objIndex, int atomIndex, V3 origin, double radius, Material bondMat, Material polyMat, int serial)
+            public bondVertex(int objIndex, int atomIndex, in V3 origin, double radius, Material bondMat, Material polyMat, int serial)
             { ObjIndex = objIndex; AtomIndex = atomIndex; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
         }
 
@@ -506,7 +506,6 @@ namespace ReciPro
                 //中心頂点に対する、頂点のリストを一気に作成
                 var dic2 = new Dictionary<bondVertex, IEnumerable<bondVertex>>();//中心頂点に対する頂点リストのDictionary
                 var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
-
 
                 Parallel.ForEach(dic1[bond.Element1], c =>
                 {
@@ -638,8 +637,8 @@ namespace ReciPro
             sw.Restart();
             glControlMain.DeleteAllObjects();
             glControlMain.AddObjects(GLObjects);
-            toolStripLabelStatusInitialization.Text += " and sent to OpenGL (" + sw.ElapsedMilliseconds + " ms.)    ";
-            textBoxInformation.AppendText("Trasfer: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            toolStripLabelStatusInitialization.Text += $" and sent to OpenGL ({sw.ElapsedMilliseconds} ms.)  ";
+            textBoxInformation.AppendText($"Trasfer: {sw.ElapsedMilliseconds}ms.\r\n");
 
         }
         #endregion
@@ -804,7 +803,7 @@ namespace ReciPro
             if (_crystal != null)
             {
                 atomCoordinateTable1.Crystal = Crystal;
-                textBoxInformation.AppendText("Calculate coordinates table: " + sw.ElapsedMilliseconds + "ms.\r\n");
+                textBoxInformation.AppendText($"Calculate coordinates table: {sw.ElapsedMilliseconds} ms.\r\n");
             }
 
             GLObjects.Clear(); //GLObjectsを初期化
@@ -1358,20 +1357,21 @@ namespace ReciPro
                             AllowMouseScaling = false,
                             AllowMouseTranslating = false,
                             Name = $"legend{i}",
-                            NodeCoefficient = 1,
                             ProjWidth = 2.2D,
                             LightPosition = glControlLight.LightPosition,
                             WorldMatrix = glControlLight.WorldMatrix,
                             ViewFrom = glControlLight.ViewFrom
                         });
+                        legendControls[i].SkipRendering = true;
                         legendControls[i].MouseDown += legendControl_MouseClick;
 
                         //Label作成
                         legendLabels.Add(new Label { Font = Font, AutoSize = true });
-
                         //FlowLayoutPanel作成
+
                         legendPanels.Add(new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, FlowDirection = FlowDirection.TopDown, Margin = new Padding(1, 1, 1, 8), });
                         legendPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
+
                     }
                 //追加ここまで
 
@@ -1387,16 +1387,20 @@ namespace ReciPro
                 for (int i = 0; i < atoms.Count; i++)
                 {
                     var a = atoms[i];
-                    legendLabels[i].Text = checkBoxGroupByElement.Checked ? $"{a.AtomicNumber}: {AtomConstants.AtomicName(a.AtomicNumber)}" : a.Label;
-                    legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2 + 3, 0, 0, 0);
 
+                    legendLabels[i].Text = checkBoxGroupByElement.Checked ? $"{a.AtomicNumber}: {AtomConstants.AtomicName(a.AtomicNumber)}" : a.Label;
+                    legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2, 0, 0, 0);
+
+                    legendControls[i].SkipRendering = true;
                     legendControls[i].Tag = legendLabels[i].Text;
                     legendControls[i].DeleteAllObjects();
-                    legendControls[i].Size = size;
+                    if(legendControls[i].Size != size)
+                        legendControls[i].Size = size;
                     legendControls[i].AddObjects(new Sphere(new V3(0, 0, 0), a.Radius / maxRadius, new Material(a.Argb, a.Texture), DrawingMode.Surfaces));
+                    legendControls[i].SkipRendering = false;
                     legendControls[i].Render();
-                    
-                    if(flowLayoutPanelLegend.Controls.Count<=i)
+
+                    if (flowLayoutPanelLegend.Controls.Count <= i)
                         flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
                 }
 
@@ -1424,9 +1428,6 @@ namespace ReciPro
                 setCheckBoxShowLabelState();
             }
         }
-
-       
-
         #endregion
 
         #region 凡例、光源方向、結晶軸のサイズ変更

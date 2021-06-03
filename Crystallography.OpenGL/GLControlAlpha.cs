@@ -690,9 +690,12 @@ namespace Crystallography.OpenGL
 
         public void DeleteAllObjects()
         {
-            if (Program < 1) return;
+            if (Program < 1 || glObjects.Count == 0) return;
             glControl.MakeCurrent();
-            glObjects.ForEach(o => o.Dispose());
+
+            foreach (var o in glObjectsP.Distinct(o => o.VAO))
+                o.Dispose();
+
             glObjects.Clear();
         }
 

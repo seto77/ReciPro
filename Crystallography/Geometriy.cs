@@ -6,8 +6,13 @@ using System.Linq;
 
 namespace Crystallography
 {
-    public class Geometriy
+    public static class Geometriy
     {
+        static Geometriy()
+        {
+            MathNet.Numerics.Control.TryUseNativeMKL();
+        }
+
         /// <summary>
         /// 楕円をとおる5点以上の点pt[]が与えられたとき最小2乗法から中心位置を返す関数
         /// </summary>
@@ -840,6 +845,35 @@ namespace Crystallography
             double a = evd.EigenVectors[0, index], b = evd.EigenVectors[1, index], c = evd.EigenVectors[2, index], d = -(a * ave.X + b * ave.Y + c * ave.Z);
             return new double[] { a, b, c, d };
         }
+
+        /// <summary>
+        /// 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
+        public static double[] GetPlaneEquationFromPoints(IEnumerable<OpenTK.Vector3d> points)
+        {
+            //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
+            //pdfはCrystallograpy/資料フォルダ
+
+            var ave = new OpenTK.Vector3d();
+            foreach (var p in points)
+                ave += p;
+            ave /= points.Count();
+
+            var mtx = new DenseMatrix(points.Count(), 3);
+            int n = 0;
+            foreach (var p in points.Select(p => p - ave))
+                mtx.SetRow(n++, new[] {p.X, p.Y, p.Z });
+
+            //var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
+            var evd = mtx.TransposeThisAndMultiply(mtx).Evd(Symmetricity.Symmetric);
+            var index = evd.EigenValues.AbsoluteMinimumIndex();
+
+            double a = evd.EigenVectors[0, index], b = evd.EigenVectors[1, index], c = evd.EigenVectors[2, index], d = -(a * ave.X + b * ave.Y + c * ave.Z);
+            return new double[] { a, b, c, d };
+        }
+
 
         /// <summary>
         /// 与えられた平面(double[4],  a x + b y + c z + d >= 0 )の集合で、空間が閉じるかどうかを判定

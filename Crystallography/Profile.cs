@@ -190,7 +190,7 @@ namespace Crystallography
                 if (flag)
                 {
                     //次に、この点から前後にPointNumだけ近い点を探す
-                    List<PointD> pt = new List<PointD>();
+                    var pt = new List<PointD>();
 
                     if (eachside)//両側でなるべく均等な点数がほしいとき
                     {
@@ -232,7 +232,7 @@ namespace Crystallography
                             m[j, i] = Math.Pow(c1 * pt[j].X + c2, i);
                     }
 
-                    var a = (m.Transpose() * m).Inverse() * m.Transpose() * y;
+                    var a = (m.TransposeThisAndMultiply(m)).Inverse() * m.TransposeThisAndMultiply(y);
                     if (a == null || a.ColumnCount == 0)
                         value[n] = pt[position >= 0 ? position : 0].Y;
                     else

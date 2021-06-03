@@ -195,56 +195,56 @@ namespace Crystallography
             {
                 string number = shortJournal.Substring(shortJournal.IndexOf("##"), 4);
                 string journal = "";
-                switch (number)
+                journal = number switch
                 {
-                    case "##01": journal = "American Mineralogist"; break;
-                    case "##02": journal = "Canadian Mineralogist"; break;
-                    case "##03": journal = "Acta Crystallographica"; break;
-                    case "##04": journal = "Bulletin de la Societe Francaise de Mineralogie et de Cristallographie"; break;
-                    case "##05": journal = "Bulletin of the Chemical Society of Japan"; break;
-                    case "##06": journal = "Canadian Journal of Chemistry"; break;
-                    case "##07": journal = "Chemische Berichte"; break;
-                    case "##08": journal = "Clays and Clay Minerals"; break;
-                    case "##09": journal = "Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences"; break;
-                    case "##10": journal = "Contributions to Mineralogy and Petrology"; break;
-                    case "##11": journal = "Doklady Akademii Nauk SSSR"; break;
-                    case "##12": journal = "Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B: Geologichni Khimichni ta Biologichni Nauki"; break;
-                    case "##13": journal = "European Journal of Mineralogy"; break;
-                    case "##14": journal = "Gazzetta Chimica Italiana"; break;
-                    case "##15": journal = "Inorganic Chemistry"; break;
-                    case "##16": journal = "Inorganica Chimica Acta"; break;
-                    case "##17": journal = "Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy"; break;
-                    case "##18": journal = "Journal of Chemical Physics"; break;
-                    case "##19": journal = "Journal of Inorganic and Nuclear Chemistry"; break;
-                    case "##20": journal = "Journal of Physical Chemistry"; break;
-                    case "##21": journal = "Journal of Solid State Chemistry"; break;
-                    case "##22": journal = "Journal of the American Ceramic Society"; break;
-                    case "##23": journal = "Journal of the American Chemical Society"; break;
-                    case "##24": journal = "Journal of the Chemical Society"; break;
-                    case "##25": journal = "Journal of the Less-Common Metals"; break;
-                    case "##26": journal = "Kristallografiya"; break;
-                    case "##27": journal = "Materials Research Bulletin"; break;
-                    case "##28": journal = "Mineralogical Magazine"; break;
-                    case "##29": journal = "Nature"; break;
-                    case "##30": journal = "Naturwissenschaften"; break;
-                    case "##31": journal = "Neues Jahrbuch fuer Mineralogie. Monatshefte"; break;
-                    case "##32": journal = "Neues Jahrbuch fur Mineralogie, Monatshefte"; break;
-                    case "##33": journal = "Physics and Chemistry of Minerals"; break;
-                    case "##34": journal = "Zeitschrift fuer Anorganische und Allgemeine Chemie"; break;
-                    case "##35": journal = "Zeitschrift fuer Kristallographie"; break;
-                    case "##36": journal = "Zeitschrift fur Kristallographie"; break;
-                    case "##37": journal = "Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences"; break;
-                    case "##38": journal = "Dalton transactions"; break;
-                    case "##39": journal = "Journal of Organic Chemistry"; break;
-                    case "##40": journal = "Organic & Biomolecular Chemistry"; break;
-                    case "##41": journal = "Organometallics"; break;
-                    case "##43": journal = "Chemical communications(Cambridge, England)"; break;
-                    case "##44": journal = "Materials Chemistry Frontiers"; break;
-                    case "##45": journal = "Monatshefte fuer Chemie und verwandte Teile anderer Wissenschaften"; break;
-                    case "##46": journal = "New Journal of Chemistry"; break;
-                    case "##47": journal = "Organic letters"; break;
-
-                }
+                    "##01" => "American Mineralogist",
+                    "##02" => "Canadian Mineralogist",
+                    "##03" => "Acta Crystallographica",
+                    "##04" => "Bulletin de la Societe Francaise de Mineralogie et de Cristallographie",
+                    "##05" => "Bulletin of the Chemical Society of Japan",
+                    "##06" => "Canadian Journal of Chemistry",
+                    "##07" => "Chemische Berichte",
+                    "##08" => "Clays and Clay Minerals",
+                    "##09" => "Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences",
+                    "##10" => "Contributions to Mineralogy and Petrology",
+                    "##11" => "Doklady Akademii Nauk SSSR",
+                    "##12" => "Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B=> Geologichni Khimichni ta Biologichni Nauki",
+                    "##13" => "European Journal of Mineralogy",
+                    "##14" => "Gazzetta Chimica Italiana",
+                    "##15" => "Inorganic Chemistry",
+                    "##16" => "Inorganica Chimica Acta",
+                    "##17" => "Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy",
+                    "##18" => "Journal of Chemical Physics",
+                    "##19" => "Journal of Inorganic and Nuclear Chemistry",
+                    "##20" => "Journal of Physical Chemistry",
+                    "##21" => "Journal of Solid State Chemistry",
+                    "##22" => "Journal of the American Ceramic Society",
+                    "##23" => "Journal of the American Chemical Society",
+                    "##24" => "Journal of the Chemical Society",
+                    "##25" => "Journal of the Less-Common Metals",
+                    "##26" => "Kristallografiya",
+                    "##27" => "Materials Research Bulletin",
+                    "##28" => "Mineralogical Magazine",
+                    "##29" => "Nature",
+                    "##30" => "Naturwissenschaften",
+                    "##31" => "Neues Jahrbuch fuer Mineralogie. Monatshefte",
+                    "##32" => "Neues Jahrbuch fur Mineralogie, Monatshefte",
+                    "##33" => "Physics and Chemistry of Minerals",
+                    "##34" => "Zeitschrift fuer Anorganische und Allgemeine Chemie",
+                    "##35" => "Zeitschrift fuer Kristallographie",
+                    "##36" => "Zeitschrift fur Kristallographie",
+                    "##37" => "Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences",
+                    "##38" => "Dalton transactions",
+                    "##39" => "Journal of Organic Chemistry",
+                    "##40" => "Organic & Biomolecular Chemistry",
+                    "##41" => "Organometallics",
+                    "##43" => "Chemical communications(Cambridge, England)",
+                    "##44" => "Materials Chemistry Frontiers",
+                    "##45" => "Monatshefte fuer Chemie und verwandte Teile anderer Wissenschaften",
+                    "##46" => "New Journal of Chemistry",
+                    "##47" => "Organic letters",
+                    _ => "",
+                };
                 return shortJournal.Replace(number, journal);
             }
             return shortJournal;
@@ -310,10 +310,7 @@ namespace Crystallography
             journal = journal.Replace("New Journal of Chemistry", "##46");
             journal = journal.Replace("Organic letters", "##47");
             
-
-
             return journal;
-
         }
 
         public static string GetFullTitle(string shortTitle)

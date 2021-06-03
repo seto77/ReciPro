@@ -381,46 +381,46 @@ namespace Crystallography
         /// <param name="rot"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static double[] DecomposeMatrix(Matrix3D rot, Vector3DBase v1, Vector3DBase v2, Vector3DBase v3)
-        {
-            Matrix3D funcRot(double[] angle) => Matrix3D.Rot(v1, angle[0]) * Matrix3D.Rot(v2, angle[1]) * Matrix3D.Rot(v3, angle[2]);
+        //public static double[] DecomposeMatrix(Matrix3D rot, Vector3DBase v1, Vector3DBase v2, Vector3DBase v3)
+        //{
+        //    Matrix3D funcRot(double[] angle) => Matrix3D.Rot(v1, angle[0]) * Matrix3D.Rot(v2, angle[1]) * Matrix3D.Rot(v3, angle[2]);
 
 
-            var func = new Marquardt.Function(
-                new Func<double[], double[], double>((x, prm) =>
-                {
-                    var res = funcRot(prm);
-                    if (x[0] == 0.0) return res.E11;
-                    else if (x[0] == 1.0) return res.E12;
-                    else if (x[0] == 2.0) return res.E13;
-                    else if (x[0] == 3.0) return res.E21;
-                    else if (x[0] == 4.0) return res.E22;
-                    else if (x[0] == 5.0) return res.E23;
-                    else if (x[0] == 6.0) return res.E31;
-                    else if (x[0] == 7.0) return res.E32;
-                    else if (x[0] == 8.0) return res.E33;
-                    else return 0;
-                }),
-                new[] { 0.1, 0.2, 0.3 });
+        //    var func = new Marquardt.Function(
+        //        new Func<double[], double[], double>((x, prm) =>
+        //        {
+        //            var res = funcRot(prm);
+        //            if (x[0] == 0.0) return res.E11;
+        //            else if (x[0] == 1.0) return res.E12;
+        //            else if (x[0] == 2.0) return res.E13;
+        //            else if (x[0] == 3.0) return res.E21;
+        //            else if (x[0] == 4.0) return res.E22;
+        //            else if (x[0] == 5.0) return res.E23;
+        //            else if (x[0] == 6.0) return res.E31;
+        //            else if (x[0] == 7.0) return res.E32;
+        //            else if (x[0] == 8.0) return res.E33;
+        //            else return 0;
+        //        }),
+        //        new[] { 0.1, 0.2, 0.3 });
 
 
-            var obsValues = new[] {
-                (new[] { 0.0 }, rot.E11, 1.0),
-                (new[] { 1.0 }, rot.E12, 1.0),
-                (new[] { 2.0 }, rot.E13, 1.0),
-                (new[] { 3.0 }, rot.E21, 1.0),
-                (new[] { 4.0 }, rot.E22, 1.0),
-                (new[] { 5.0 }, rot.E23, 1.0),
-                (new[] { 6.0 }, rot.E31, 1.0),
-                (new[] { 7.0 }, rot.E32, 1.0),
-                (new[] { 8.0 }, rot.E33, 1.0)
+        //    var obsValues = new[] {
+        //        (new[] { 0.0 }, rot.E11, 1.0),
+        //        (new[] { 1.0 }, rot.E12, 1.0),
+        //        (new[] { 2.0 }, rot.E13, 1.0),
+        //        (new[] { 3.0 }, rot.E21, 1.0),
+        //        (new[] { 4.0 }, rot.E22, 1.0),
+        //        (new[] { 5.0 }, rot.E23, 1.0),
+        //        (new[] { 6.0 }, rot.E31, 1.0),
+        //        (new[] { 7.0 }, rot.E32, 1.0),
+        //        (new[] { 8.0 }, rot.E33, 1.0)
 
-            };
+        //    };
 
-            var (Prms, Error, R) = Marquardt.Solve(obsValues, new[] { func },Marquardt.Precision.High);
+        //    var (Prms, Error, R) = Marquardt.Solve(obsValues, new[] { func },Marquardt.Precision.High);
 
-            return Prms[0];
-        }
+        //    return Prms[0];
+        //}
 
         /* public static double[] DecomposeMatrix(Matrix3D rot, Vector3d v1, Vector3d v2, Vector3d v3)
          {

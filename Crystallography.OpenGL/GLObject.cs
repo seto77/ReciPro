@@ -106,11 +106,12 @@ namespace Crystallography.OpenGL
         #region static private な フィールド & プロパティ
 
         private static readonly Dictionary<int, Location> Location = new();
+        private static readonly Dictionary<int, (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]> VertexAttribPointerParameters = new();
 
         private static readonly int sizeOfInt = sizeof(int);
         private static readonly int sizeOfUInt = sizeof(uint);
         private static readonly List<(string Product, string Version)> GraphicsInfo;
-
+        
         #endregion
 
         #region internalな フィールド & プロパティ
@@ -220,7 +221,7 @@ namespace Crystallography.OpenGL
 
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ、デストラクタ
         /// </summary>
         /// <param name="material"></param>
         /// <param name="mode"></param>
@@ -238,7 +239,6 @@ namespace Crystallography.OpenGL
                 Sphere.DefaultDictionary.Remove(Program);
             if (Cylinder.DefaultDictionary.ContainsKey(Program))
                 Cylinder.DefaultDictionary.Remove(Program);
-
             GL.DeleteBuffers(1, ref VBO);
             GL.DeleteBuffers(1, ref EBO);
             GL.DeleteVertexArrays(1, ref VAO);
@@ -264,15 +264,18 @@ namespace Crystallography.OpenGL
                 location = Location[program];
             }
 
-            //GL.VertexAttribPointerのパラメータ配列を定義
-            (int loc, int size, VertexAttribPointerType type,  bool normarized, int stride, int offset)[] prms =
+            //GL.VertexAttribPointerのパラメータ配列を取得。初めての場合は辞書に登録
+            if (!VertexAttribPointerParameters.TryGetValue(program, out var prms))
             {
-                (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
-                (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
-                (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
-                (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
-                (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
-            };
+                VertexAttribPointerParameters.Add(program, new[]{
+                            (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
+                            (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
+                            (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
+                            (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
+                            (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
+                            });
+                prms = VertexAttribPointerParameters[program];
+            }
 
             foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
             {
@@ -308,7 +311,7 @@ namespace Crystallography.OpenGL
                     GL.BindVertexArray(o.VAO);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
 
-                    foreach(var (loc, size, type, normarized, stride, offset) in prms)
+                    foreach (var (loc, size, type, normarized, stride, offset) in prms)
                     {
                         GL.EnableVertexAttribArray(loc);
                         GL.VertexAttribPointer(loc, size, type, normarized, stride, offset);
@@ -324,10 +327,7 @@ namespace Crystallography.OpenGL
         /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
         /// </summary>
         /// <param name="program"></param>
-        public void Generate(int program)
-        {
-            Generate(program, new[] { this });
-        }
+        public void Generate(int program) => Generate(program, new[] { this });
 
 
         /// <summary>
@@ -397,7 +397,7 @@ namespace Crystallography.OpenGL
                     else if (t == PT.Points && Mode == DrawingMode.Points)
                         SetMaterialAndDrawElements(false, t, len, offset);
                 }
-                offset += len * sizeof(uint);
+                offset += len * sizeOfUInt;
             }
         }
 
@@ -435,7 +435,7 @@ namespace Crystallography.OpenGL
             if (renew || prms.argb != Material.Argb)
                 GL.Uniform1(Location[Program].FixedArgb, Material.Argb);
 
-            if (renew || IgnoreNormalSides != prms.ignoreNormal)
+            if (renew || prms.ignoreNormal != IgnoreNormalSides)
                 GL.Uniform1(Location[Program].IgnoreNormalSides, IgnoreNormalSides ? 1 : 0);
 
             //if (IgnoreNormalSides)
@@ -990,7 +990,7 @@ namespace Crystallography.OpenGL
         /// <param name="mat">素材</param>
         /// <param name="mode">描画モード</param>
         /// <param name="slices">分割数. 6*(2*slices+1)^2 の頂点が生成される. </param>
-        public Ellipsoid(V3d o, V3d v1, V3d v2, V3d v3, Material mat, DrawingMode mode, int slices = 0) : base(mat, mode)
+        public Ellipsoid(in V3d o, in V3d v1, in V3d v2, in V3d v3, Material mat, DrawingMode mode, int slices = 0) : base(mat, mode)
         {
             Origin = o;
             RadiusVector1 = v1;
@@ -1144,7 +1144,7 @@ namespace Crystallography.OpenGL
         public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode, sole, slices, stacks) { }
 
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+        public Pipe(in V3d o, in V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : this(o, vec, r1, r2, mat, null, mode, sole, slices, stacks) { }
 
         /// <summary>
@@ -1159,7 +1159,7 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">円周の分割数</param>
-        public Pipe(V3d o, V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+        public Pipe(in V3d o, in V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : base(mat1, mode)
         {
             ShowClippedSection = true;
@@ -1184,7 +1184,7 @@ namespace Crystallography.OpenGL
 
             if (slices == 0 && stacks == 0)
             {
-                if (r1 == r2)//Crylinderの場合
+                if (r1 == r2)//Cylinderの場合
                 {
                     if (Cylinder.DefaultIndices != null && UseFixedArgb)
                     {
@@ -1359,8 +1359,8 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cone(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-           : base(o, vec, 0, r, mat, mode, sole, slices, stacks)
+        public Cone(in V3d o, in V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : base(in o, in vec, 0, r, mat, mode, sole, slices, stacks)
         { }
 
         static Cone()
@@ -1404,11 +1404,11 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cylinder(V3d o, V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-           : base(o, vec, r, r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
+        public Cylinder(in V3d o, in V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+           : base(in o, in vec, r, r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
-        public Cylinder(V3d o, V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-         : base(o, vec, r, r, mat1, mat2, mode, sole, slices, stacks) { UseDefault = slices == 0; }
+        public Cylinder(in V3d o, in V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+         : base(in o, in vec, r, r, mat1, mat2, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
 
         /// <summary>
@@ -1625,7 +1625,7 @@ namespace Crystallography.OpenGL
 
         public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
             : this(text, fontSize, position.ToVector(), popout, whiteEdge, mat) { }
-        public TextObject(string text, float fontSize, V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
+        public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
             text = text.Trim();
             if (text != "")
@@ -1639,12 +1639,12 @@ namespace Crystallography.OpenGL
                 }
                 else//辞書に登録されていない場合
                 {
-                    var fnt = new Font("Segoe", fontSize);//フォントオブジェクトの作成
-                    var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100), TextFormatFlags.NoPadding); //文字列を描画するときの大体の大きさを計測する
+                    var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
+                    var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100),
+                        TextFormatFlags.Left ); //文字列を描画するときの大体の大きさを計測する
                     
-                    //.Net5.0では、なぜか一文字分の幅しか認識してくれないので、取りあえず以下で対処
-                    width = (ushort)((strSize.Width + 4)* text.Length);
-                    height = (ushort)(strSize.Height + 2);
+                    width = (ushort)strSize.Width;
+                    height = (ushort)strSize.Height;
 
                     var bmp = new Bitmap(width, height);
                     var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する

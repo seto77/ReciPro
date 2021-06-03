@@ -211,6 +211,28 @@ namespace Crystallography
             }
         }
 
+        /// <summary>
+        /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
+        /// </summary>
+        /// <param name="mat"></param>
+        /// <returns></returns>
+        static public DenseMatrix Inverse(int dim, Complex[] mat)
+        {
+            var _mat = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            var _inv = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            try
+            {
+                toDoubleArray(dim * dim, mat, out _mat);
+                _Inverse(dim, _mat, _inv);
+                return toDenseMatrix(dim, in _inv);
+            }
+            finally
+            {
+                ArrayPool<double>.Shared.Return(_mat);
+                ArrayPool<double>.Shared.Return(_inv);
+            }
+        }
+
         #endregion 逆行列
 
         #region 固有値
@@ -225,10 +247,28 @@ namespace Crystallography
             var _mat = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             var values = ArrayPool<double>.Shared.Rent(dim * 2);
             var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
-            //matをdouble[]に変換
             try
             {
-                toDoubleArray(dim, mat, out _mat);
+                toDoubleArray(dim, mat, out _mat);//matをdouble[]に変換
+                _EigenSolver(dim, _mat, values, vectors);
+                return (toDenseVector(dim, in values), toDenseMatrix(dim, in vectors));
+            }
+            finally
+            {
+                ArrayPool<double>.Shared.Return(_mat);
+                ArrayPool<double>.Shared.Return(values);
+                ArrayPool<double>.Shared.Return(vectors);
+            }
+        }
+
+        static public (DenseVector eigenvalues, DenseMatrix eigenvectors) EigenSolver(int dim, Complex[] mat)
+        {
+            var _mat = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            var values = ArrayPool<double>.Shared.Rent(dim * 2);
+            var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
+            try
+            {
+                toDoubleArray(dim * dim, mat, out _mat);//matをdouble[]に変換
                 _EigenSolver(dim, _mat, values, vectors);
                 return (toDenseVector(dim, in values), toDenseMatrix(dim, in vectors));
             }
@@ -250,8 +290,7 @@ namespace Crystallography
             var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                //matをdouble[]に変換
-                toDoubleArray(dim, mat.ToArray(), out _mat);
+                toDoubleArray(dim, mat.ToArray(), out _mat);//matをdouble[]に変換
                 _MatrixExponential(dim, _mat, vectors);
                 return toDenseMatrix(dim, in vectors);
             }
@@ -273,7 +312,7 @@ namespace Crystallography
         /// <param name="thickness"></param>
         /// <param name="coeff"></param>
         /// <returns></returns>
-        unsafe static public Complex[][] CBEDSolver_Eigen(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
+        unsafe static public Complex[][] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
         => CBEDSolver(potential, psi0, thickness, coeff, true);
 
         /// <summary>
@@ -284,10 +323,10 @@ namespace Crystallography
         /// <param name="thickness"></param>
         /// <param name="coeff"></param>
         /// <returns></returns>
-        unsafe static public Complex[][] CBEDSolver_MatExp(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff)
+        unsafe static public Complex[][] CBEDSolver_MatExp(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
             => CBEDSolver(potential, psi0, thickness, coeff, false);
 
-        unsafe static private Complex[][] CBEDSolver(Complex[,] potential, Complex[] psi0, double[] thickness, double coeff, bool eigen)
+        unsafe static private Complex[][] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, double coeff, bool eigen)
         {
             var dim = psi0.Length;
             var _potential = ArrayPool<double>.Shared.Rent(dim * dim * 2);
@@ -295,7 +334,7 @@ namespace Crystallography
             var tempResult = ArrayPool<double>.Shared.Rent(dim * thickness.Length * 2);
             try
             {
-                toDoubleArray(dim, potential, out _potential);
+                toDoubleArray(dim * dim, potential, out _potential);
                 toDoubleArray(dim, psi0, out _psi0);
 
                 if (eigen)

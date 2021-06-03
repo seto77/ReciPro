@@ -176,48 +176,11 @@ namespace ReciPro
         /// <param name="e"></param>
         private void FormMain_Load(object sender, EventArgs e)
         {
-            //var dim = 64;
-            //sw.Restart();
-            //var loop = 1;
-            //var results = new List<MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix>();
-            ////Parallel.For(0, loop, k =>{
-            //    var mat = new MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix(dim);
-            //    mat[0, 1] = -Math.PI / 4;
-            //    mat[1, 0] = Math.PI / 4;
-            //    //Random r = new Random();
-            //    //for (int i = 0; i < dim; i++)
-            //    //    for (int j = 0; j < dim; j++)
-            //    //        mat[i, j] = new System.Numerics.Complex(r.NextDouble(), r.NextDouble());
-            //    results.Add(NativeWrapper.MatrixExponential_Cuda(mat));
-            ////});
-
-
-
-            //sw.Stop();
-            //MessageBox.Show((sw.ElapsedMilliseconds/ loop).ToString());
-
             if (DesignMode) return;
             sw.Restart();
 
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
-
-            //WEBから最新のマニュアルファイルを取得
-
-
-
-
-            //new WebClient2(100).DownloadFileAsync(
-            //    new Uri("https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"),
-            //    "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
-            //    );
-
-            //await DownloadAsync(
-            //    "https://github.com/seto77/ReciPro/raw/master/ReciPro/doc/ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf",
-            //    "doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").web.pdf"
-
-            //    );
-
 
             commonDialog = new Crystallography.Controls.CommonDialog
             {
@@ -227,7 +190,6 @@ namespace ReciPro
                 VersionAndDate = Version.VersionAndDate,
                 History = Version.History,
                 Hint = Version.Hint,
-
             };
             commonDialog.Show();
             Application.DoEvents();

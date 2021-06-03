@@ -1028,7 +1028,7 @@ namespace Crystallography
                 }
             }
 
-            Plane[] temp_plane = listPlane.ToArray();
+            var temp_plane = listPlane.ToArray();
             for (n = 0; n < temp_plane.Length; n++)
             {
                 temp_plane[n].F2[0] = -1;

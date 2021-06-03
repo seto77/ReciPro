@@ -154,7 +154,7 @@ namespace Crystallography
             Beams = Find_gVectors(BaseRotation, vecK0);
 
             //入射面での波動関数を定義
-            var psi0 = DVec.OfArray(Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? One : 0).ToArray());
+            var psi0 = new DVec(Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? One : 0).ToArray());
             //ポテンシャルマトリックスを取得
             uDictionary = new Dictionary<int, (Complex, Complex)>();
             var factorMatrix = getPotentialMatrix(Beams);
@@ -189,13 +189,14 @@ namespace Crystallography
             }
             #endregion
 
-            var reportString = solver.ToString() + thread.ToString();
+            var reportString = $"{solver}{thread}";
+
+            var len = Beams.Length;
 
             var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
             //var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(1);
 
             //ここからdiskValid[t][g]を計算.
-            
             var diskValid = beamRotationsP.Select(beamRotation =>
             {
                 if (bwCBED.CancellationPending) return null;
@@ -206,6 +207,7 @@ namespace Crystallography
 
                 var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
                 var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット //コスト高い
+
                 Complex[][] result;
 
                 //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
@@ -218,12 +220,12 @@ namespace Crystallography
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else if (solver == Solver.Eigen_MKL)
                 {
-                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    var evd = new DMat(len, len, potentialMatrix).Evd(Symmetricity.Asymmetric);
                     var alpha = evd.EigenVectors.LU().Solve(psi0);
                     result = Thicknesses.Select(t =>
                     {
                         //ガンマの対称行列×アルファを作成
-                        var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                        var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
                         //深さtにおけるψを求める
                         return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
                     }).ToArray();
@@ -237,14 +239,14 @@ namespace Crystallography
                 else
                 {
                     result = new Complex[Thicknesses.Length][];
-                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
+                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(len,len,potentialMatrix)).Exponential();
                     var vec = matExp.Multiply(psi0);
                     result[0] = vec.ToArray();
 
                     if (Thicknesses.Length > 1)
                     {
                         if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
-                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * DMat.OfArray(potentialMatrix)).Exponential();
+                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(len,len, potentialMatrix)).Exponential();
                         for (int i = 1; i < Thicknesses.Length; i++)
                         {
                             vec = (DVec)matExp.Multiply(vec);
@@ -308,7 +310,7 @@ namespace Crystallography
             var u0 = getU(voltage, (0, 0, 0), 0).Real.Real;
             var vecK0 = getVecK0(k_vac, u0);
 
-
+            int dim;
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValues == null || EigenVectors == null || !rotation.Equals(BaseRotation))
             {
                 MaxNumOfBloch = maxNumOfBloch;
@@ -322,38 +324,38 @@ namespace Crystallography
                 if (Beams == null || Beams.Length == 0) return Array.Empty<Beam>();
 
                 var potentialMatrix = getEigenProblemMatrix(Beams);
-
+                dim = Beams.Length;
                 //A行列に関する固有値、固有ベクトルを取得 
                 if (useEigen) { 
-                    (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
+                    (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(dim, potentialMatrix);
                     EigenVectorsInverse = NativeWrapper.Inverse(EigenVectors);
                 }
                 else
                 {
-                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-                    EigenValues = evd.EigenValues.AsArray();
+                    var evd = new DMat(dim,dim, potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    EigenValues = evd.EigenValues.ToArray();
                     EigenVectors = (DMat)evd.EigenVectors;
                     EigenVectorsInverse = EigenVectors.Inverse();
                 }
             }
 
-            int len = Beams.Length;
+            dim = Beams.Length;
 
-            var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
+            var psi0 = new DVec(new Complex[dim]);//入射面での波動関数を定義
             psi0[0] = 1;
 
             var alpha = EigenVectorsInverse.Multiply(psi0);//アルファベクトルを求める
 
             //ガンマの対称行列×アルファを作成
-            var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
+            var gamma_alpha = new DVec(Enumerable.Range(0, dim).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
 
             //出射面での境界条件を考慮した位相にするため、以下の1行を追加 (20190827)
-            var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
+            var p = new DiagonalMatrix(dim, dim, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
 
             //深さZにおけるψを求める
             var psi_atZ = p.Multiply( EigenVectors.Multiply(gamma_alpha));
 
-            for (int i = 0; i < Beams.Length && i < len; i++)
+            for (int i = 0; i < Beams.Length && i < dim; i++)
                 Beams[i].Psi = psi_atZ[i];
 
             return Beams;
@@ -408,24 +410,25 @@ namespace Crystallography
                        var rotAngle = 2.0 * Math.PI * k / step;
                        var beamRotation = Matrix3D.Rot(new Vector3DBase(Math.Cos(rotAngle), Math.Sin(rotAngle), 0), SemianglePED);
                        //計算対象のg-Vectorsを決める。
-                       var potentialMatrix = new Complex[0, 0];
+                       var potentialMatrix = Array.Empty<Complex>();
                        var vecK0 = getVecK0(kvac, u0, beamRotation);
                        lock (lockObj)
                        {
                            BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
                            potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
                        }
-
+                       var dim = BeamsPED[k].Length;
                        //A行列に関する固有値、固有ベクトルを取得 
                        if (useEigen)
                        {//Eigenを使う場合
-                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(potentialMatrix);
+                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(dim,potentialMatrix);
+                           //EigenVectorsInversePED[k] = (DMat)EigenVectorsPED[k].Inverse(); 
                            EigenVectorsInversePED[k] = NativeWrapper.Inverse(EigenVectorsPED[k]);
                        }
                        else
                        {//MKLを使う場合
-                           var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-                           EigenValuesPED[k] = evd.EigenValues.AsArray();
+                           var evd = new DMat(dim, dim, potentialMatrix).Evd(Symmetricity.Asymmetric);
+                           EigenValuesPED[k] = (DVec)evd.EigenValues;
                            EigenVectorsPED[k] = (DMat)evd.EigenVectors;
                            EigenVectorsInversePED[k] = (DMat)EigenVectorsPED[k].Inverse();
                        }
@@ -438,7 +441,7 @@ namespace Crystallography
                 if (EigenValuesPED[k] != null)
                 {
                     var len = EigenValuesPED[k].Count;
-                    var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
+                    var psi0 = new DVec(new Complex[len]);//入射面での波動関数を定義
                     psi0[0] = 1;
                     var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
                     //ガンマの対称行列×アルファを作成
@@ -745,24 +748,44 @@ namespace Crystallography
         #endregion
 
         #region 固有値問題対象のマトリックス
+
+        //private Complex[,] getEigenProblemMatrix(Beam[] b, Complex[,] potentialMatrix = null)
+        //{
+        //    if (potentialMatrix == null || potentialMatrix.GetLength(0) != b.Length)
+        //        potentialMatrix = getPotentialMatrix(b);
+
+        //    //A行列を決定
+        //    var eigenProblemMatrix = new Complex[b.Length, b.Length];//A行列確保
+        //    for (int i = 0; i < b.Length; i++)
+        //    {
+        //        for (int j = 0; j < b.Length; j++)
+        //            eigenProblemMatrix[i, j] = potentialMatrix[i, j] / b[i].P;
+
+        //        eigenProblemMatrix[i, i] += b[i].Q / b[i].P;
+
+        //    }
+        //    return eigenProblemMatrix;
+        //}
+
         /// <summary>
-        /// 固有値問題マトリックスを求める. k0の単位はnm^-1
+        /// 固有値問題マトリックスを求める. k0の単位はnm^-1. パフォーマンス上の理由から、一次元配列にしている。
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        private Complex[,] getEigenProblemMatrix(Beam[] b, Complex[,] potentialMatrix = null)
+        private Complex[] getEigenProblemMatrix(Beam[] b, Complex[,] potentialMatrix = null)
         {
             if (potentialMatrix == null || potentialMatrix.GetLength(0) != b.Length)
                 potentialMatrix = getPotentialMatrix(b);
 
+            var len = b.Length;
             //A行列を決定
-            var eigenProblemMatrix = new Complex[b.Length, b.Length];//A行列確保
+            var eigenProblemMatrix = new Complex[b.Length * b.Length];//A行列確保
             for (int i = 0; i < b.Length; i++)
             {
                 for (int j = 0; j < b.Length; j++)
-                    eigenProblemMatrix[i, j] = potentialMatrix[i, j] / b[i].P;
+                    eigenProblemMatrix[i* len+ j] = potentialMatrix[i, j] / b[i].P;
 
-                eigenProblemMatrix[i, i] += b[i].Q / b[i].P;
+                eigenProblemMatrix[i* len+ i] += b[i].Q / b[i].P;
 
             }
             return eigenProblemMatrix;

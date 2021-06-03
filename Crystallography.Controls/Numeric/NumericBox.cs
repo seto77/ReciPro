@@ -392,7 +392,6 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             if (DesignMode) return;
-            
         }
 
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)

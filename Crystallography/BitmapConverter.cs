@@ -155,7 +155,7 @@ namespace Crystallography
         /// <returns></returns>
         public static byte[] ToByteBGRA(Bitmap bmp)
         {
-            if (bmp.PixelFormat == PixelFormat.Format32bppArgb)
+            if (bmp.PixelFormat == PixelFormat.Format32bppArgb || bmp.PixelFormat == PixelFormat.Format32bppPArgb)
             {
                 var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
                 var argbValues = new byte[bmpData.Stride * bmp.Height];

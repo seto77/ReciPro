@@ -31,8 +31,7 @@ namespace Crystallography
             Height = height;
         }
 
-        public RectangleD(int x, int y, int width, int height)
-            : this()
+        public RectangleD(int x, int y, int width, int height) : this()
         {
             X = x;
             Y = y;
@@ -40,8 +39,7 @@ namespace Crystallography
             Height = height;
         }
 
-        public RectangleD(PointD pt, SizeD size)
-            : this()
+        public RectangleD(PointD pt, SizeD size) : this()
         {
             X = pt.X;
             Y = pt.Y;
@@ -49,8 +47,7 @@ namespace Crystallography
             Height = size.Height;
         }
 
-        public RectangleD(Point pt, Size size)
-            : this()
+        public RectangleD(Point pt, Size size) : this()
         {
             X = pt.X;
             Y = pt.Y;
@@ -58,8 +55,7 @@ namespace Crystallography
             Height = size.Height;
         }
 
-        public RectangleD(PointD pt1, PointD pt2)
-            : this()
+        public RectangleD(PointD pt1, PointD pt2) : this()
         {
             X = Math.Min(pt1.X, pt2.X);
             Y = Math.Min(pt1.Y, pt2.Y);
@@ -128,25 +124,25 @@ namespace Crystallography
 
         public override bool Equals(object obj) => obj is SizeD d && Equals(d);
 
-        public bool Equals(SizeD other) => Width == other.Width && Height == other.Height;
+        public bool Equals(in SizeD other) => Width == other.Width && Height == other.Height;
 
-        public static SizeD operator +(SizeD p1, SizeD p2) => new SizeD(p1.Width + p2.Width, p1.Height + p2.Height);
+        public static SizeD operator +(in SizeD p1, in SizeD p2) => new(p1.Width + p2.Width, p1.Height + p2.Height);
     
 
 
-        public static SizeD operator -(SizeD p1, SizeD p2) => new SizeD(p1.Width - p2.Width, p1.Height - p2.Height);
+        public static SizeD operator -(in SizeD p1, in SizeD p2) => new(p1.Width - p2.Width, p1.Height - p2.Height);
 
-        public static SizeD operator -(SizeD p) => new SizeD(-p.Width, -p.Height);
+        public static SizeD operator -(in SizeD p) => new SizeD(-p.Width, -p.Height);
 
-        public static SizeD operator *(double d, SizeD p) => new SizeD(d * p.Width, d * p.Height);
+        public static SizeD operator *(in double d, in SizeD p) => new(d * p.Width, d * p.Height);
 
-        public static SizeD operator *(SizeD p, double d) => new SizeD(d * p.Width, d * p.Height);
+        public static SizeD operator *(in SizeD p, in double d) => new(d * p.Width, d * p.Height);
 
-        public static SizeD operator /(SizeD p, double d) => new SizeD(p.Width / d, p.Height / d);
+        public static SizeD operator /(in SizeD p, in double d) => new(p.Width / d, p.Height / d);
 
-        public static bool operator ==(SizeD left, SizeD right) => left.Equals(right);
+        public static bool operator ==(in SizeD left, in SizeD right) => left.Equals(right);
 
-        public static bool operator !=(SizeD left, SizeD right) => !(left == right);
+        public static bool operator !=(in SizeD left, in SizeD right) => !(left == right);
         #endregion
     }
 
@@ -170,14 +166,14 @@ namespace Crystallography
              Tag = null;
          }*/
 
-        public PointD(double x, double y)
+        public PointD(in double x, in double y)
         //: this()
         {
             X = x;
             Y = y;
             Tag = null;
         }
-        public PointD((double x, double y) e)
+        public PointD(in (double x, double y) e)
         //: this()
         {
             X = e.x;
@@ -185,7 +181,7 @@ namespace Crystallography
             Tag = null;
         }
 
-        public PointD(PointD pt)
+        public PointD(in PointD pt)
         //: this()
         {
             X = pt.X;
@@ -225,26 +221,26 @@ namespace Crystallography
 
         #region 演算子のオーバーロード
 
-        public static PointD operator +(PointD p1, PointD p2) => new PointD(p1.X + p2.X, p1.Y + p2.Y);
+        public static PointD operator +(in PointD p1, in PointD p2) => new(p1.X + p2.X, p1.Y + p2.Y);
 
-        public static PointD operator -(PointD p1, PointD p2) => new PointD(p1.X - p2.X, p1.Y - p2.Y);
+        public static PointD operator -(in PointD p1, in PointD p2) => new(p1.X - p2.X, p1.Y - p2.Y);
 
-        public static PointD operator -(PointD p) => new PointD(-p.X, -p.Y);
+        public static PointD operator -(in PointD p) => new PointD(-p.X, -p.Y);
 
-        public static PointD operator *(double d, PointD p) => new PointD(d * p.X, d * p.Y);
+        public static PointD operator *(in double d, in PointD p) => new(d * p.X, d * p.Y);
 
-        public static PointD operator *(PointD p, double d) => new PointD(d * p.X, d * p.Y);
+        public static PointD operator *(PointD p, double d) => new(d * p.X, d * p.Y);
 
-        public static double operator *(PointD p1, PointD p2) => p1.X * p2.X + p1.Y * p2.Y;
+        public static double operator *(in PointD p1, in PointD p2) => p1.X * p2.X + p1.Y * p2.Y;
 
-        public static PointD operator /(PointD p, double d) => new PointD(p.X / d, p.Y / d);
+        public static PointD operator /(in PointD p, in double d) => new(p.X / d, p.Y / d);
 
-        public static bool operator ==(PointD left, PointD right) => left.Equals(right);
+        public static bool operator ==(in PointD left, in PointD right) => left.Equals(right);
 
-        public static bool operator !=(PointD left, PointD right) => !(left == right);
+        public static bool operator !=(in PointD left, in PointD right) => !(left == right);
 
-        public static PointD operator +(PointD p1, SizeD p2) => new PointD(p1.X + p2.Width, p1.Y + p2.Height);
-        public static PointD operator -(PointD p1, SizeD p2) => new PointD(p1.X - p2.Width, p1.Y - p2.Height);
+        public static PointD operator +(in PointD p1, in SizeD p2) => new(p1.X + p2.Width, p1.Y + p2.Height);
+        public static PointD operator -(in PointD p1, in SizeD p2) => new(p1.X - p2.Width, p1.Y - p2.Height);
 
         #endregion 演算子のオーバーロード
     }

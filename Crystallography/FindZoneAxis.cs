@@ -176,8 +176,8 @@ namespace Crystallography
                     for (int j = i + 1; j < zoneAxes.Count; j++)
                         if (zoneAxes[i].Za1 == zoneAxes[j].Za1)
                         {
-                            Plane plane1 = zoneAxes[i].Za2.plane1;
-                            Plane plane2 = zoneAxes[i].Za2.plane2;
+                            var plane1 = zoneAxes[i].Za2.plane1;
+                            var plane2 = zoneAxes[i].Za2.plane2;
                             var indices1 = new List<(int H, int K, int L)>();
                             var indices2 = new List<(int H, int K, int L)>();
                             SymmetryStatic.IsRootIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, ref indices1, true);
@@ -196,17 +196,17 @@ namespace Crystallography
 
         public static ZoneAxes[] ZoneAxisFromThreeZoneAxis(Crystal cry, PhotoInformation photo1, PhotoInformation photo2, PhotoInformation photo3, bool excludeEquivalence)
         {
-            List<ZoneAxes> zoneAxes = new List<ZoneAxes>();
-            ZoneAxes[] z12 = ZoneAxisFromTwoZoneAxis(cry, photo1, photo2, true);
-            ZoneAxes[] z23 = ZoneAxisFromTwoZoneAxis(cry, photo2, photo3, false);
-            ZoneAxes[] z31 = ZoneAxisFromTwoZoneAxis(cry, photo3, photo1, false);
+            var zoneAxes = new List<ZoneAxes>();
+            var z12 = ZoneAxisFromTwoZoneAxis(cry, photo1, photo2, true);
+            var z23 = ZoneAxisFromTwoZoneAxis(cry, photo2, photo3, false);
+            var z31 = ZoneAxisFromTwoZoneAxis(cry, photo3, photo1, false);
             for (int i = 0; i < z12.Length; i++)
                 for (int j = 0; j < z23.Length; j++)
                     if (z12[i].Za2 == z23[j].Za1)
                         for (int k = 0; k < z31.Length; k++)
                             if (z23[j].Za2 == z31[k].Za1 && z31[k].Za2 == z12[i].Za1)
                             {
-                                ZoneAxes temp = new ZoneAxes();
+                                var temp = new ZoneAxes();
                                 temp.Za1 = z12[i].Za1;
                                 temp.Za2 = z23[j].Za1;
                                 temp.Za3 = z31[k].Za1;
@@ -220,8 +220,8 @@ namespace Crystallography
                 for (int j = i + 1; j < zoneAxes.Count; j++)
                     if (zoneAxes[i].Za1 == zoneAxes[j].Za1 && zoneAxes[i].Za2 == zoneAxes[j].Za2)
                     {
-                        Plane plane1 = zoneAxes[i].Za3.plane1;
-                        Plane plane2 = zoneAxes[i].Za3.plane2;
+                        var plane1 = zoneAxes[i].Za3.plane1;
+                        var plane2 = zoneAxes[i].Za3.plane2;
                         var indices1 = new List<(int H, int K, int L)>();
                         var indices2 = new List<(int H, int K, int L)>();
                         SymmetryStatic.IsRootIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, ref indices1, true);
@@ -239,8 +239,8 @@ namespace Crystallography
 
         public static double GetAngleBetweenHolders(double p1t1, double p1t2, double p2t1, double p2t2)
         {
-            Vector3D v1 = new Vector3D(Math.Sin(p1t1), Math.Cos(p1t1) * Math.Sin(p1t2), Math.Cos(p1t1) * Math.Cos(p1t2));
-            Vector3D v2 = new Vector3D(Math.Sin(p2t1), Math.Cos(p2t1) * Math.Sin(p2t2), Math.Cos(p2t1) * Math.Cos(p2t2));
+            var v1 = new Vector3D(Math.Sin(p1t1), Math.Cos(p1t1) * Math.Sin(p1t2), Math.Cos(p1t1) * Math.Cos(p1t2));
+            var v2 = new Vector3D(Math.Sin(p2t1), Math.Cos(p2t1) * Math.Sin(p2t2), Math.Cos(p2t1) * Math.Cos(p2t2));
             return Vector3D.AngleBetVectors(v1, v2);
         }
     }

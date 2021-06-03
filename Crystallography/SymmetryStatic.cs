@@ -6167,7 +6167,7 @@ new int[][]{ new[]{ 915}}
 			#endregion Coordinates
 		};
 
-		public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListA, PositionGeneratorListB, PositionGeneratorListC, PositionGeneratorListI;
+        public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListA, PositionGeneratorListB, PositionGeneratorListC, PositionGeneratorListI;
 		public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListR1, PositionGeneratorListR2;
 
 		public static readonly string[] PositionStringList = new[]
@@ -9231,7 +9231,7 @@ new[]{0,},
 			#endregion
 		};
 
-		public static readonly SO[] OperationList = new SO[]
+        public static readonly SO[] OperationList = new SO[]
 		{
 			#region
 new SO(1,+1,(0,0,0),(0,0,0)),
@@ -12908,29 +12908,17 @@ new[]{535,2,6,2,1,1}
 			var func = new List<Func<int, int, int, string>>();
 
 			if (sym.LatticeTypeStr == "A")
-            {
                 func.Add((h, k, l) => (k + l) % 2 != 0 ? "A" : null);
-            }
             else if (sym.LatticeTypeStr == "B")
-            {
                 func.Add((h, k, l) => (l + h) % 2 != 0 ? "B" : null);
-            }
             else if (sym.LatticeTypeStr == "C")
-            {
                 func.Add((h, k, l) => (h + k) % 2 != 0 ? "C" : null);
-            }
             else if (sym.LatticeTypeStr == "I")
-            {
                 func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null);
-            }
             else if (sym.LatticeTypeStr == "F")
-            {
                 func.Add((h, k, l) => ((h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0) ? "F" : null);
-            }
             else if (sym.LatticeTypeStr == "R")
-            {
                 func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null);
-            }
 
             switch (sym.CrystalSystemNumber)
 			{
@@ -14294,7 +14282,6 @@ new[]{535,2,6,2,1,1}
 			switch (sym.LaueGroupNumber)
 			{
 				case 0://unknown
-					//indices.Add(new PlaneIndex(+h, +k, +l));
 					indices.Add((+h, +k, +l));
 					break;
 

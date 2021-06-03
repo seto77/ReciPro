@@ -112,10 +112,10 @@ namespace Crystallography
 
             for (int i = 0; i < PositionGenerator.Length; i++)
             {
-                var p = PositionGenerator[i](x, y, z);
+                var (X, Y, Z) = PositionGenerator[i](x, y, z);
 
                 //0~1の範囲に収まるかどうかチェックし、適宜修正
-                var v = new Vector3D(p.X, p.Y, p.Z, false).InnerLattice();
+                var v = new Vector3D(X, Y, Z, false).InnerLattice();
                 //当たり判定
                 bool flag = true;
                 for (int j = 0; j < pos.Count && flag; j++)

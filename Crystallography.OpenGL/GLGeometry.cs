@@ -17,10 +17,11 @@ namespace Crystallography.OpenGL
         /// </summary>
         /// <param name="points"></param>
         /// <returns></returns>
-        public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable< V3d> points, V3d origin)
+        public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable< V3d> points,in V3d origin)
         {
             var center = Extensions.Average(points);
-            var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
+            //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
+            var prm = Geometriy.GetPlaneEquationFromPoints(points);
             var norm = new V3d(prm[0], prm[1], prm[2]);
             if (V3d.Dot(norm, center - origin) < 0)
                 norm = -norm;
@@ -78,15 +79,13 @@ namespace Crystallography.OpenGL
         /// <returns></returns>
         public static M3d CreateRotationToZ(V3d v)
         {
-            M3d rot;
             v.Normalize();
             if (Math.Abs(v.Z - 1) < Th)
-                rot = M3d.Identity;
+                return M3d.Identity;
             else if (Math.Abs(v.Z + 1) < Th)
-                rot = M3d.CreateRotationX(Math.PI);
+                return M3d.CreateRotationX(Math.PI);
             else
-                rot = M3d.CreateFromAxisAngle(V3d.Cross(Z, v), V3d.CalculateAngle(Z, v));
-            return rot;
+                return M3d.CreateFromAxisAngle(V3d.Cross(Z, v), V3d.CalculateAngle(Z, v));
         }
 
         public static readonly V3d Z = new(0, 0, 1);

@@ -137,8 +137,7 @@ namespace Crystallography
         /// <returns></returns>
         public double[] ToArrayColumnMajorOrder() => new[] { E11, E21, E31, E12, E22, E32, E13, E23, E33 };
 
-        public Matrix3d ToMatrix()
-            => new Matrix3d(E11, E12, E13, E21, E22, E23, E31, E32, E33);
+        public Matrix3d ToMatrix() => new(E11, E12, E13, E21, E22, E23, E31, E32, E33);
 
         public Vector3DBase Column1 => new(E11, E21, E31);
         public Vector3DBase Column2 => new(E12, E22, E32);
@@ -249,7 +248,7 @@ namespace Crystallography
         #endregion
         public static Matrix3D Inverse(Matrix3D m)
         {
-            double det = -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
+            var det = -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
             return det == 0
                 ? new Matrix3D()
                 : new Matrix3D
@@ -266,39 +265,35 @@ namespace Crystallography
                 };
         }
 
-
-
         public Matrix3D Inverse() => Inverse(this);
 
-        public static Matrix3D Transpose(Matrix3D m)
-            => new Matrix3D(m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33);
+        public static Matrix3D Transpose(Matrix3D m) => new(m.E11, m.E12, m.E13, m.E21, m.E22, m.E23, m.E31, m.E32, m.E33);
 
         public Matrix3D Transpose() => Transpose(this);
 
-        public static double Determinant(Matrix3D m)
-            => -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
+        public static double Determinant(Matrix3D m) => -m.E13 * m.E22 * m.E31 + m.E12 * m.E23 * m.E31 + m.E13 * m.E21 * m.E32 - m.E11 * m.E23 * m.E32 - m.E12 * m.E21 * m.E33 + m.E11 * m.E22 * m.E33;
 
         public double Determinant() => Determinant(this);
 
         public Matrix3D ExchangeX_Y_Z() => ExchangeX_Y_Z(this);
 
-        public static Matrix3D ExchangeX_Y_Z(Matrix3D m) => new Matrix3D(m.E11, -m.E21, -m.E31, m.E12, -m.E22, -m.E32, m.E13, -m.E23, -m.E33);
+        public static Matrix3D ExchangeX_Y_Z(Matrix3D m) => new(m.E11, -m.E21, -m.E31, m.E12, -m.E22, -m.E32, m.E13, -m.E23, -m.E33);
 
         public Matrix3D ExchangeYZX() => ExchangeYZX(this);
 
-        public static Matrix3D ExchangeYZX(Matrix3D m) => new Matrix3D(m.E21, m.E31, m.E11, m.E22, m.E32, m.E12, m.E23, m.E33, m.E13);
+        public static Matrix3D ExchangeYZX(Matrix3D m) => new(m.E21, m.E31, m.E11, m.E22, m.E32, m.E12, m.E23, m.E33, m.E13);
 
         public Matrix3D ExchangeY_Z_X() => ExchangeY_Z_X(this);
 
-        public static Matrix3D ExchangeY_Z_X(Matrix3D m) => new Matrix3D(-m.E21, -m.E31, m.E11, -m.E22, -m.E32, m.E12, -m.E23, -m.E33, m.E13);
+        public static Matrix3D ExchangeY_Z_X(Matrix3D m) => new(-m.E21, -m.E31, m.E11, -m.E22, -m.E32, m.E12, -m.E23, -m.E33, m.E13);
 
         public Matrix3D ExchangeZXY() => ExchangeZXY(this);
 
-        public static Matrix3D ExchangeZXY(Matrix3D m) => new Matrix3D(m.E31, m.E11, m.E21, m.E32, m.E12, m.E22, m.E33, m.E13, m.E23);
+        public static Matrix3D ExchangeZXY(Matrix3D m) => new(m.E31, m.E11, m.E21, m.E32, m.E12, m.E22, m.E33, m.E13, m.E23);
 
         public Matrix3D ExchangeZ_X_Y() => ExchangeZ_X_Y(this);
 
-        public static Matrix3D ExchangeZ_X_Y(Matrix3D m) => new Matrix3D(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
+        public static Matrix3D ExchangeZ_X_Y(Matrix3D m) => new(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
 
         /// <summary>
         /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
@@ -399,7 +394,7 @@ namespace Crystallography
             return GenerateRamdomRotationMatrix(rn1, rn2, rn3);
         }
 
-        private static object o = new object();
+        private static object o = new();
 
         public static Matrix3D GenerateRamdomRotationMatrix(double rn1, double rn2, double rn3)
         {
