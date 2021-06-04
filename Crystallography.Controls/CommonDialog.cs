@@ -100,7 +100,7 @@ namespace Crystallography.Controls
         public string[] Hint { set { hint = value; setToolTips(); } get => hint; }
         private string[] hint;
 
-        public bool AutomaricallyClose { set => checkBoxCloseWindow.Checked = value; get => checkBoxCloseWindow.Checked; }
+        public bool AutomaticallyClose { set => checkBoxCloseWindow.Checked = value; get => checkBoxCloseWindow.Checked; }
 
         private int currentHintIndex = 0;
 

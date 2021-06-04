@@ -84,9 +84,11 @@ namespace ReciPro
         public FormPolycrystallineDiffractionSimulator()
         {
             InitializeComponent();
+            skipEvent = true;
             comboBoxGradient.SelectedIndex = 0;
             comboBoxScale1.SelectedIndex = 1;
             comboBoxScale2.SelectedIndex = 0;
+            skipEvent = false;
             //crystalControl1.DefaultTabNumber = 4;
             setScale();
             diffractionPatternControlSimulation.ProgressChanged += dpc_ProgressChanged;
@@ -96,7 +98,7 @@ namespace ReciPro
             //formMainのlistBoxのselectedIndexの変更イベントを登録
             formMain.listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
 
-        private List<CrystalControl> CrystalContlols = new List<CrystalControl>();
+        private List<CrystalControl> CrystalContlols = new();
 
         //formMainのlistBoxのselectedIndexが変更されたとき
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -246,6 +248,7 @@ namespace ReciPro
 
         private void setScale()
         {
+            if (skipEvent) return;
             isNegative = comboBoxGradient.SelectedIndex == 1;
 
             //スケールをセット

@@ -36,7 +36,7 @@ namespace Crystallography
             SeriesNumber = seriesNumber;
         }
 
-        public SymmetryOperation(int order, int sense, (int U, int V, int W) direction, (double U, double V, double W) translation)
+        public SymmetryOperation(int order, int sense,in (int U, int V, int W) direction,in (double U, double V, double W) translation)
         {
             Order = (short)order;
             Sense = sense == 1;

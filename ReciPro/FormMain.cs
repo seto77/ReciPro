@@ -152,6 +152,8 @@ namespace ReciPro
         {
             if (DesignMode)
                 return;
+            
+            sw.Restart();
 
             var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
             try
@@ -177,7 +179,6 @@ namespace ReciPro
         private void FormMain_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-            sw.Restart();
 
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
             japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
@@ -191,8 +192,8 @@ namespace ReciPro
                 History = Version.History,
                 Hint = Version.Hint,
             };
+
             commonDialog.Show();
-            Application.DoEvents();
 
             try { ReadInitialRegistry(); }
             catch { MessageBox.Show("failed reading registries."); }
@@ -255,9 +256,6 @@ namespace ReciPro
 
             commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.45);
             FormImageSimulator = new FormImageSimulator { FormMain = this, Visible = false };
-            //FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-            //FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
-            //FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
             commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.5);
             FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
@@ -274,8 +272,6 @@ namespace ReciPro
             FormSpotID = new FormSpotID { FormMain = this, Visible = false };
 
             commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.8);
-            //  toolStripStatusLabelCalcTime.Text += "formTEMID " + (sw.ElapsedMilliseconds-t).ToString() + "  ";
-
             FormCalculator = new FormCalculator { Owner = this, Visible = false };
             FormCalculator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
             FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
@@ -319,16 +315,13 @@ namespace ReciPro
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())
                     Directory.Delete(dir);
 
-            commonDialog.Progress = ("Now Loading...Setting ReadMe.txt.", 0.96);
-            DrawAxes();
-
             commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
             ReadInitialRegistry();
 
             this.Text = "ReciPro  " + Version.VersionAndDate;
 
             commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
-            if (commonDialog.AutomaricallyClose)
+            if (commonDialog.AutomaticallyClose)
                 commonDialog.Visible = false;
 
             toolStripStatusLabel.Text = "Startup time: " + sw.ElapsedMilliseconds + " ms.";
@@ -340,18 +333,6 @@ namespace ReciPro
                 if (glControlAxes != null)
                     glControlAxes.Visible = false;
             }
-            /*else if (!glControlAxes.VersionRequirement)
-            {
-                MessageBox.Show(
-                     "Open GL ver " + glControlAxes.VersionStr + " is running on the current environment." + ".\r\n" +
-                     "Because ReciPro requires OpenGL ver " + glControlAxes.VersionForZsortStr +
-                     " or later for rendering 3D objects, the functions are currently disabled. Sorry."
-                     , "Caution!");
-                toolStripButtonStructureViewer.Enabled = false;
-                toolStripButtonRotation.Enabled = false;
-                glControlAxes.Visible = false;
-            }*/
-
         }
 
         /// <summary>
@@ -398,7 +379,7 @@ namespace ReciPro
             if (commonDialog != null)
             {
                 commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
-                commonDialog.AutomaricallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
+                commonDialog.AutomaticallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
             }
 
             if (FormStructureViewer != null && (int)regKey.GetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X) >= 0)
@@ -502,7 +483,7 @@ namespace ReciPro
             regKey.SetValue("formMainHeight", this.Height);
             regKey.SetValue("formMainLocationX", this.Location.X);
             regKey.SetValue("formMainLocationY", this.Location.Y);
-            regKey.SetValue("initialDialog.AutomaricallyClose", commonDialog.AutomaricallyClose);
+            regKey.SetValue("initialDialog.AutomaricallyClose", commonDialog.AutomaticallyClose);
 
             regKey.SetValue("formStructureViewerWidth", this.FormStructureViewer.Width);
             regKey.SetValue("formStructureViewerHeight", this.FormStructureViewer.Height);
@@ -754,6 +735,8 @@ namespace ReciPro
                     FormRotation.SetRotation();
                 if (FormImageSimulator.Visible)
                     FormImageSimulator.RotationChanged();
+
+                crystalControl_CrystalChanged_1(sender, e);
                 DrawAxes();
             }
         }
