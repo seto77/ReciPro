@@ -4066,133 +4066,132 @@ namespace Crystallography
             103 => 260,
             _ => 0,
         };
-        #endregion
+		#endregion
 
-
-        /// <summary>
-        /// イオン半径
-        /// </summary>
-        /// <param name="AtomicName"></param>
-        /// <returns></returns>
-        public static double AtomicRadius(string AtomicName)
-		{
-			#region
-			switch (AtomicName)
-			{
-				case "H": return 1.007947;
-				case "He": return 4.0026022;
-				case "Li": return 6.9412;
-				case "Be": return 9.0121823;
-				case "B": return 10.8115;
-				case "C": return 12.0111;
-				case "N": return 14.006747;
-				case "O": return 15.99943;
-				case "F": return 18.99840329;
-				case "Ne": return 20.17976;
-				case "Na": return 22.9897686;
-				case "Mg": return 24.30506;
-				case "Al": return 26.9815395;
-				case "Si": return 28.08553;
-				case "P": return 30.9737624;
-				case "S": return 32.0666;
-				case "Cl": return 35.45279;
-				case "Ar": return 39.9481;
-				case "K": return 39.09831;
-				case "Ca": return 40.0784;
-				case "Sc": return 44.9559109;
-				case "Ti": return 47.883;
-				case "V": return 50.94151;
-				case "Cr": return 51.99616;
-				case "Mn": return 54.938051;
-				case "Fe": return 55.8473;
-				case "Co": return 58.933201;
-				case "Ni": return 58.69342;
-				case "Cu": return 63.5463;
-				case "Zn": return 65.392;
-				case "Ga": return 69.7231;
-				case "Ge": return 72.612;
-				case "As": return 74.921592;
-				case "Se": return 78.963;
-				case "Br": return 79.9041;
-				case "Kr": return 83.801;
-				case "Rb": return 85.46783;
-				case "Sr": return 87.621;
-				case "Y": return 88.905852;
-				case "Zr": return 91.2242;
-				case "Nb": return 92.906382;
-				case "Mo": return 95.941;
-				case "Tc": return 99;
-				case "Ru": return 101.072;
-				case "Rh": return 102.905503;
-				case "Pd": return 106.421;
-				case "Ag": return 107.86822;
-				case "Cd": return 112.4118;
-				case "In": return 114.8183;
-				case "Sn": return 118.7107;
-				case "Sb": return 121.7573;
-				case "Te": return 127.603;
-				case "I": return 126.904473;
-				case "Xe": return 131.292;
-				case "Cs": return 132.905435;
-				case "Ba": return 137.3277;
-				case "La": return 138.90552;
-				case "Ce": return 140.1154;
-				case "Pr": return 140.907653;
-				case "Nd": return 144.243;
-				case "Pm": return 145;
-				case "Sm": return 150.363;
-				case "Eu": return 151.9659;
-				case "Gd": return 157.253;
-				case "Tb": return 158.925343;
-				case "Dy": return 162.503;
-				case "Ho": return 164.930323;
-				case "Er": return 167.263;
-				case "Tm": return 168.934213;
-				case "Yb": return 173.043;
-				case "Lu": return 174.9671;
-				case "Hf": return 178.492;
-				case "Ta": return 180.94791;
-				case "W": return 183.841;
-				case "Re": return 186.2071;
-				case "Os": return 190.233;
-				case "Ir": return 192.223;
-				case "Pt": return 195.083;
-				case "Au": return 196.966543;
-				case "Hg": return 200.592;
-				case "Tl": return 204.38332;
-				case "Pb": return 207.21;
-				case "Bi": return 208.980373;
-				case "Po": return 210;
-				case "At": return 210;
-				case "Rn": return 222;
-				case "Fr": return 223;
-				case "Ra": return 226;
-				case "Ac": return 227;
-				case "Th": return 232.03811;
-				case "Pa": return 231.035882;
-				case "U": return 238.02891;
-				case "Np": return 237;
-				case "Pu": return 239;
-				case "Am": return 243;
-				case "Cm": return 247;
-				case "Bk": return 247;
-				case "Cf": return 252;
-				case "Es": return 252;
-				case "Fm": return 257;
-				case "Md": return 256;
-				case "No": return 259;
-				case "Lr": return 260;
-				default: return 0;
-			}
-			#endregion
-		}
 
 		/// <summary>
-		/// 原子名を与えて、原子番号を返す. 文字列textから適宜原子名を抽出する.
+		/// イオン半径
 		/// </summary>
-		/// <param name="text"></param>
+		/// <param name="AtomicName"></param>
 		/// <returns></returns>
-		public static int AtomicNumber2(string text)
+		public static double AtomicRadius(string AtomicName) => AtomicName switch
+		{
+				#region
+				"H" => 1.007947,
+				"He" => 4.0026022,
+				"Li" => 6.9412,
+				"Be" => 9.0121823,
+				"B" => 10.8115,
+				"C" => 12.0111,
+				"N" => 14.006747,
+				"O" => 15.99943,
+				"F" => 18.99840329,
+				"Ne" => 20.17976,
+				"Na" => 22.9897686,
+				"Mg" => 24.30506,
+				"Al" => 26.9815395,
+				"Si" => 28.08553,
+				"P" => 30.9737624,
+				"S" => 32.0666,
+				"Cl" => 35.45279,
+				"Ar" => 39.9481,
+				"K" => 39.09831,
+				"Ca" => 40.0784,
+				"Sc" => 44.9559109,
+				"Ti" => 47.883,
+				"V" => 50.94151,
+				"Cr" => 51.99616,
+				"Mn" => 54.938051,
+				"Fe" => 55.8473,
+				"Co" => 58.933201,
+				"Ni" => 58.69342,
+				"Cu" => 63.5463,
+				"Zn" => 65.392,
+				"Ga" => 69.7231,
+				"Ge" => 72.612,
+				"As" => 74.921592,
+				"Se" => 78.963,
+				"Br" => 79.9041,
+				"Kr" => 83.801,
+				"Rb" => 85.46783,
+				"Sr" => 87.621,
+				"Y" => 88.905852,
+				"Zr" => 91.2242,
+				"Nb" => 92.906382,
+				"Mo" => 95.941,
+				"Tc" => 99,
+				"Ru" => 101.072,
+				"Rh" => 102.905503,
+				"Pd" => 106.421,
+				"Ag" => 107.86822,
+				"Cd" => 112.4118,
+				"In" => 114.8183,
+				"Sn" => 118.7107,
+				"Sb" => 121.7573,
+				"Te" => 127.603,
+				"I" => 126.904473,
+				"Xe" => 131.292,
+				"Cs" => 132.905435,
+				"Ba" => 137.3277,
+				"La" => 138.90552,
+				"Ce" => 140.1154,
+				"Pr" => 140.907653,
+				"Nd" => 144.243,
+				"Pm" => 145,
+				"Sm" => 150.363,
+				"Eu" => 151.9659,
+				"Gd" => 157.253,
+				"Tb" => 158.925343,
+				"Dy" => 162.503,
+				"Ho" => 164.930323,
+				"Er" => 167.263,
+				"Tm" => 168.934213,
+				"Yb" => 173.043,
+				"Lu" => 174.9671,
+				"Hf" => 178.492,
+				"Ta" => 180.94791,
+				"W" => 183.841,
+				"Re" => 186.2071,
+				"Os" => 190.233,
+				"Ir" => 192.223,
+				"Pt" => 195.083,
+				"Au" => 196.966543,
+				"Hg" => 200.592,
+				"Tl" => 204.38332,
+				"Pb" => 207.21,
+				"Bi" => 208.980373,
+				"Po" => 210,
+				"At" => 210,
+				"Rn" => 222,
+				"Fr" => 223,
+				"Ra" => 226,
+				"Ac" => 227,
+				"Th" => 232.03811,
+				"Pa" => 231.035882,
+				"U" => 238.02891,
+				"Np" => 237,
+				"Pu" => 239,
+				"Am" => 243,
+				"Cm" => 247,
+				"Bk" => 247,
+				"Cf" => 252,
+				"Es" => 252,
+				"Fm" => 257,
+				"Md" => 256,
+				"No" => 259,
+				"Lr" => 260,
+				_ => 0,
+				#endregion
+		};
+
+
+
+            /// <summary>
+            /// 原子名を与えて、原子番号を返す. 文字列textから適宜原子名を抽出する.
+            /// </summary>
+            /// <param name="text"></param>
+            /// <returns></returns>
+        public static int AtomicNumber2(string text)
 		{
 			int number = 0;
 			//2文字で検索
