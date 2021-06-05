@@ -1,5 +1,4 @@
 ﻿using C4 = OpenTK.Graphics.Color4;
-using V4f = OpenTK.Vector4;
 
 namespace Crystallography
 {

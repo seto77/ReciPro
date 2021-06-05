@@ -285,6 +285,28 @@ namespace Crystallography
     }
     #endregion
 
+    #region doubleの拡張
+    public static class DoubleEx
+    {
+        const double rad = 0.01745329251994329576923690768489;
+        const double deg = 57.295779513082320876798154814105;
+        
+        /// <summary>
+        /// 拡張メソッド. 数値をRadianに変換.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static double ToRadians(in this double d) => d* rad;
+
+        /// <summary>
+        /// 拡張メソッド. 数値をRadianに変換.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static double ToDegrees(in this double d) => d * deg;
+    }
+    #endregion
+
     #region Graphicsクラス
     /// <summary>
     /// Graphics クラスの描画関数にdoubleを受けられるにようにした拡張メソッド
@@ -322,8 +344,10 @@ namespace Crystallography
             public int GetHashCode(T obj) => m_selector(obj).GetHashCode();
         }
         
-        public static IEnumerable<T> Distinct<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector) => source.Distinct(new CommonSelector<T, TKey>(selector));
+        public static IEnumerable<T> Distinct<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector)
+            => source.Distinct(new CommonSelector<T, TKey>(selector));
     }
 
     #endregion
+
 }

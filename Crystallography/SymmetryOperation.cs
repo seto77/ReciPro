@@ -8,37 +8,31 @@ namespace Crystallography
     /// </summary>
     public readonly struct SymmetryOperation
     {
-        public int SeriesNumber { get; }
+        public ushort SeriesNumber {get;}
 
         /// <summary>
         /// 回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか
         /// </summary>
-        public short Order { get;  }
+        public short Order { get;}
 
         /// <summary>
         /// 回転の方向. trueは +1か falseは -1のいずれか
         /// </summary>
-        public bool Sense { get;  }
+        public bool Sense { get;}
 
         /// <summary>
         /// 回転の軸.
         /// </summary>
-        public (int U, int V, int W) Direction { get; }
+        public (int U, int V, int W) Direction {get;}
 
         /// <summary>
         /// 並進ベクトル
         /// </summary>
         public (double U, double V, double W) Translation { get; }
 
-        public SymmetryOperation(int seriesNumber, int order, int sense, (int U, int V, int W) direction, (double U, double V, double W) translation)
-            : this(order, sense, direction, translation)
-        {
-            SeriesNumber = seriesNumber;
-        }
-
         public SymmetryOperation(int order, int sense,in (int U, int V, int W) direction,in (double U, double V, double W) translation)
         {
-            SeriesNumber = -1;
+            SeriesNumber = 0;
             Order = (short)order;
             Sense = sense == 1;
             Direction = direction;
@@ -47,7 +41,7 @@ namespace Crystallography
 
         public SymmetryOperation(SymmetryOperation so, int seriesNumber, double shiftU, double shiftV, double shiftW)
         {
-            SeriesNumber = seriesNumber;
+            SeriesNumber = (ushort)seriesNumber;
             Order = so.Order;
             Sense = so.Sense;
             Direction = so.Direction;

@@ -108,18 +108,15 @@ namespace Crystallography
         #endregion 
 
         #region Nativeライブラリが有効かどうか
-
         static NativeWrapper()
-
         {
             Enabled = enabled();
         }
 
-
         [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
         static bool enabled()
         {
-            string appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+            var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
             if (!System.IO.File.Exists(appPath))
                 return false;
             else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
@@ -144,7 +141,6 @@ namespace Crystallography
         #endregion
 
         #region 変換関数
-        //unsafe private static (int Dim, double[] Mat) toDoubleArray(DenseMatrix mat) => toDoubleArray(mat.ToArray());
         unsafe readonly static int sizeOfComplex = sizeof(Complex);
 
         unsafe private static void toDoubleArray(int dim, Complex[,] mat, out double[] dest)

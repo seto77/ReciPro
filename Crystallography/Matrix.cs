@@ -208,7 +208,7 @@ namespace Crystallography
             E33 = m1.E33 - m2.E33
         };
 
-        public static Matrix3D operator -(Matrix3D m1) => new Matrix3D
+        public static Matrix3D operator -(Matrix3D m1) => new()
         {
             E11 = -m1.E11,
             E12 = -m1.E12,
@@ -564,24 +564,15 @@ namespace Crystallography
             X = v.X; Y = v.Y; Z = v.Z;
         }
 
-        public double[] ToDouble()
-        {
-            return new double[] { X, Y, Z };
-        }
+        public double[] ToDoublearray() => new double[] { X, Y, Z };
 
-        public float[] ToSingle()
-        {
-            return new float[] { (float)X, (float)Y, (float)Z };
-        }
+        public float[] ToSingleArray() => new float[] { (float)X, (float)Y, (float)Z };
 
         /// <summary>
         /// X,Y座標をPointDクラスに映す (Zは破棄)
         /// </summary>
         /// <returns></returns>
-        public PointD ToPointD()
-        {
-            return new PointD(X, Y);
-        }
+        public PointD ToPointD => new PointD(X, Y);
 
         #region 演算子のオーバーロード
 
@@ -660,7 +651,7 @@ namespace Crystallography
 
         public (double X, double Y, double Z) Tuple => (X, Y, Z);
 
-        public Vector3d ToOpenTK  => new(X, Y, Z);
+        public Vector3d ToOpenTK()  => new(X, Y, Z);
 
         internal static Vector3DBase Normarize(Vector3DBase v)
         {

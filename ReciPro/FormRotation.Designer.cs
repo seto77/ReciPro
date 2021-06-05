@@ -131,7 +131,7 @@
             this.numericBox11.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox11.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox11.ThonsandsSeparator = true;
-            this.numericBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox12
             // 
@@ -147,7 +147,7 @@
             this.numericBox12.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox12.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox12.ThonsandsSeparator = true;
-            this.numericBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox13
             // 
@@ -163,7 +163,7 @@
             this.numericBox13.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox13.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox13.ThonsandsSeparator = true;
-            this.numericBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox21
             // 
@@ -179,7 +179,7 @@
             this.numericBox21.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox21.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox21.ThonsandsSeparator = true;
-            this.numericBox21.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox21.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox22
             // 
@@ -195,7 +195,7 @@
             this.numericBox22.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox22.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox22.ThonsandsSeparator = true;
-            this.numericBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox33
             // 
@@ -211,7 +211,7 @@
             this.numericBox33.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox33.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox33.ThonsandsSeparator = true;
-            this.numericBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox23
             // 
@@ -227,7 +227,7 @@
             this.numericBox23.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox23.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox23.ThonsandsSeparator = true;
-            this.numericBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox31
             // 
@@ -243,7 +243,7 @@
             this.numericBox31.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox31.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox31.ThonsandsSeparator = true;
-            this.numericBox31.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox31.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // numericBox32
             // 
@@ -259,7 +259,7 @@
             this.numericBox32.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBox32.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBox32.ThonsandsSeparator = true;
-            this.numericBox32.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox6_ValueChanged);
+            this.numericBox32.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
             // label2
             // 

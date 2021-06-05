@@ -5,13 +5,13 @@ namespace Crystallography
 {
     public class DynamicTheory
     {
-        public enum Modes { SAED, CBED }
+        //public enum Modes { SAED, CBED }
 
-        public enum Methods { Bethe, Multislice }
+        //public enum Methods { Bethe, Multislice }
 
-        private static Complex I = System.Numerics.Complex.ImaginaryOne;
-        private static Complex One = System.Numerics.Complex.One;
-        private static Complex TwoPiI = 2 * Math.PI * I;
+        //private static Complex I = System.Numerics.Complex.ImaginaryOne;
+        //private static Complex One = System.Numerics.Complex.One;
+        //private static Complex TwoPiI = 2 * Math.PI * I;
 
         public class MultiSlice
         {

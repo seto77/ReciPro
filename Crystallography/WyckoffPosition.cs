@@ -6,95 +6,86 @@ using System.Xml.Serialization;
 namespace Crystallography
 {
     [Serializable()]
-    public class WyckoffPosition
+    public readonly struct WyckoffPosition
     {
         /// <summary>
         /// 空間群の番号
         /// </summary>
-        public int SymmetrySeriesNumber;
+        public ushort SymmetrySeriesNumber { get; }
 
         /// <summary>
         /// 格子のタイプ
         /// </summary>
-        public string LatticeType;
+        public string LatticeType { get; }
 
         /// <summary>
         /// 多重度 (整数)
         /// </summary>
-        public int Multiplicity;
+        public byte Multiplicity { get; }
 
         /// <summary>
         /// ワイコフ文字
         /// </summary>
-        public string WyckoffLetter;
+        public string WyckoffLetter { get; }
 
         /// <summary>
         /// ワイコフナンバー (一般位置が0, 特殊になるほど数字が大)
         /// </summary>
-        public int WyckoffNumber;
+        public byte WyckoffNumber { get; }
 
         /// <summary>
         /// サイトシンメトリ
         /// </summary>
-        public string SiteSymmetry;
+        public string SiteSymmetry { get; }
 
         /// <summary>
         /// 等価位置を生成するFuncの配列
         /// </summary>
         [XmlIgnore]
-        public Func<double, double, double, (double X, double Y, double Z)>[] PositionGenerator;
+        public Func<double, double, double, (double X, double Y, double Z)>[] PositionGenerator { get; }
 
         /// <summary>
         /// 等価位置の文字列(x,y,zなど)の配列
         /// </summary>
-        public string[] PositionStr;
+        public string[] PositionStr { get; }
 
         /// <summary>
         /// 等価位置の対称操作をSymmetryOperationクラスとして格納したもの
         /// </summary>
-        public SymmetryOperation[] PositionOperations;
+        public SymmetryOperation[] PositionOperations { get; }
 
         /// <summary>
         /// 自由度 (このワイコフ位置がx,y,zなどの変数を含む場合はtrue, 含まない場合はfalse)
         /// </summary>
-        public bool FreedomX, FreedomY, FreedomZ;
-
-        public WyckoffPosition()
-        {
-            PositionGenerator = null;
-        }
-
+        public (bool X, bool Y, bool Z ) Free { get; }
+  
         public WyckoffPosition(int symSeries, string latticeType, string wykLetter, int wykNum, string siteSym,
             string[] coordStr,
             Func<double, double, double, (double X, double Y, double Z)>[] generators,
             SymmetryOperation[] operations = null)
         {
-            SymmetrySeriesNumber = symSeries;
+            SymmetrySeriesNumber = (ushort)symSeries;
             LatticeType = latticeType;
 
             WyckoffLetter = wykLetter;
-            WyckoffNumber = wykNum;
+            WyckoffNumber = (byte)wykNum;
             SiteSymmetry = siteSym;
 
             PositionStr = coordStr;
             PositionGenerator = generators;
-            Multiplicity = generators.Length;
+            Multiplicity = (byte)generators.Length;
 
             PositionOperations = operations;
 
             if (PositionStr == null || PositionStr.Length == 0)
-                FreedomX = FreedomY = FreedomZ = true;
+                Free = (true, true, true);
             else
             {
                 var tempStr = PositionStr[0].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tempStr.Length == 3)
-                {
-                    FreedomX = tempStr[0].Contains('x');
-                    FreedomY = tempStr[1].Contains('y');
-                    FreedomZ = tempStr[2].Contains('z');
-                }
+                    Free = (tempStr[0].Contains('x'), tempStr[1].Contains('y'), tempStr[2].Contains('z'));
                 else
-                    FreedomX = FreedomY = FreedomZ = true;
+                    Free =  (true,true,true);
             }
         }
 

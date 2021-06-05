@@ -2214,8 +2214,8 @@ namespace Crystallography
 									new Matrix3D(sinGamma, cosGamma * SinPhi, cosGamma * CosPhi, 0, CosPhi, -SinPhi, -cosGamma, sinGamma * SinPhi, sinGamma * CosPhi).Inverse();
 
 								//var p = new PointD[] { (m2 * (v1 - v)).ToPointD(), (m2 * (v2 - v)).ToPointD(), (m2 * (v3 - v)).ToPointD(), (m2 * (v4 - v)).ToPointD() };
-								var p1 = (m2 * (v1 - v)).ToPointD();
-								var p2 = (m2 * (v2 - v)).ToPointD();
+								var p1 = (m2 * (v1 - v)).ToPointD;
+								var p2 = (m2 * (v2 - v)).ToPointD;
 								var p = new PointD[] { p1, p2, -p1, -p2 };
 
 								//var vh = new Vector3DBase(sinGamma, cosGamma * SinPhi, cosGamma * CosPhi);
@@ -2669,7 +2669,11 @@ namespace Crystallography
 			//IPの法線ベクトル
 			(double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
 
-			(double X, double Y)[] pt0 = new (double X, double Y)[8], pt1 = new (double X, double Y)[8], pt2 = new (double X, double Y)[8], pt3 = new (double X, double Y)[8], pt4 = new (double X, double Y)[8];
+			var pt0 = new (double X, double Y)[8];
+			var pt1 = new (double X, double Y)[8];
+			var pt2 = new (double X, double Y)[8];
+			var pt3 = new (double X, double Y)[8];
+			var pt4 = new (double X, double Y)[8];
 
 			//ここから積分開始
 			for (int j = yMin; j < yMax; j++)

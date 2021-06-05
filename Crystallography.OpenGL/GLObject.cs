@@ -1624,7 +1624,7 @@ namespace Crystallography.OpenGL
         public int TextureNum = -1;
 
         public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
-            : this(text, fontSize, position.ToVector(), popout, whiteEdge, mat) { }
+            : this(text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat) { }
         public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
         {
             text = text.Trim();

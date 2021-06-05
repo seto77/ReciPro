@@ -750,9 +750,9 @@ namespace Crystallography
             if (IsShiftX)
             {
                 for (int i = 0; i < pt.Length; i++)
-                    pt[i].X += ShiftX;
+                    pt[i] = new PointD(pt[i].X + ShiftX, pt[i].Y);
                 for (int i = 0; i < err.Length; i++)
-                    err[i].X += ShiftX;
+                    err[i] = new PointD(err[i].X + ShiftX, err[i].Y);
             }
 
             if (DoesTwoThetaOffset && destAxisMode == HorizontalAxis.Angle)
@@ -760,12 +760,12 @@ namespace Crystallography
                 for (int i = 0; i < pt.Length; i++)
                 {
                     var tan = Math.Tan(pt[i].X / 360.0 * Math.PI);
-                    pt[i].X += TwoThetaOffsetCoeff0 + TwoThetaOffsetCoeff1 * tan + TwoThetaOffsetCoeff2 * tan * tan;
+                    pt[i] = new PointD(pt[i].X + TwoThetaOffsetCoeff0 + TwoThetaOffsetCoeff1 * tan + TwoThetaOffsetCoeff2 * tan * tan, pt[i].Y);
                 }
                 for (int i = 0; i < err.Length; i++)
                 {
                     var tan = Math.Tan(err[i].X / 360.0 * Math.PI);
-                    err[i].X += TwoThetaOffsetCoeff0 + TwoThetaOffsetCoeff1 * tan + TwoThetaOffsetCoeff2 * tan * tan;
+                    err[i] = new PointD(err[i].X + TwoThetaOffsetCoeff0 + TwoThetaOffsetCoeff1 * tan + TwoThetaOffsetCoeff2 * tan * tan, err[i].Y);
                 }
             }
 

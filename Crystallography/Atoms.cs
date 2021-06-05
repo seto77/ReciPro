@@ -377,9 +377,9 @@ namespace Crystallography
         public void RandomizeKeepingWykoff(Random r)
         {
             var wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
-            if (wyk.FreedomX) X = r.NextDouble();
-            if (wyk.FreedomY) Y = r.NextDouble();
-            if (wyk.FreedomZ) Z = r.NextDouble();
+            if (wyk.Free.X) X = r.NextDouble();
+            if (wyk.Free.Y) Y = r.NextDouble();
+            if (wyk.Free.Z) Z = r.NextDouble();
 
             Atom = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber].GeneratePositions(X, Y, Z);
             X = Atom[0].X;
@@ -394,9 +394,9 @@ namespace Crystallography
         public void ShakeKeepingWykoff(double threshold, Random r)
         {
             var wyk = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber];
-            if (wyk.FreedomX) X += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
-            if (wyk.FreedomY) Y += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
-            if (wyk.FreedomZ) Z += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.Free.X) X += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.Free.Y) Y += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
+            if (wyk.Free.Z) Z += (r.NextDouble() - 1) * (r.NextDouble() - 1) * 4 * threshold;
 
             Atom = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber][WyckoffNumber].GeneratePositions(X, Y, Z);
             X = Atom[0].X;

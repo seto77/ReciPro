@@ -53,7 +53,7 @@ namespace Crystallography
                 double y = 0;
                 for (int j = 0; j < pointNum; j++)
                     y += a[j] * tempPt[j].Y;
-                smoothPt[n].Y = y;
+                smoothPt[n] = new PointD(smoothPt[n].X, y);
             }
             return smoothPt;
         }
@@ -96,9 +96,9 @@ namespace Crystallography
                 {
                     var a = inv * m.TransposeThisAndMultiply(y);
 
-                    smoothPt[n].Y = 0;
+                    smoothPt[n] = new PointD(smoothPt[n].X, 0);
                     for (int j = 0; j < order + 1; j++)
-                        smoothPt[n].Y += a[j, 0] * Math.Pow(c1 * pt[n].X + c2, j);
+                        smoothPt[n] += new PointD(0, a[j, 0] * Math.Pow(c1 * pt[n].X + c2, j));
                 }
             }
             return smoothPt;

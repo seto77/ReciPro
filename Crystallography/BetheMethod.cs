@@ -495,7 +495,7 @@ namespace Crystallography
         {
             int width = size.Width, height = size.Height;
             //gList[gNUm]を全て計算
-            var gList = beams.Select(b => (b.Freal, b.Fimag, b.Vec.ToPointD())).ToList();
+            var gList = beams.Select(b => (b.Freal, b.Fimag, b.Vec.ToPointD)).ToList();
             //imagesを初期化
             var images = Enumerable.Range(0, 4).ToList().Select(d => new double[width * height]).ToArray();
             //各ピクセルの計算
@@ -548,8 +548,8 @@ namespace Crystallography
             if (quasiMode)//Quasi-coherent modeの時
                 foreach (var g in beams)
                 {
-                    var qSq = (k + g.Vec.ToPointD()).Length2;
-                    gList.Add((g.Psi, k + g.Vec.ToPointD(), defocusses.Select(defocus =>
+                    var qSq = (k + g.Vec.ToPointD).Length2;
+                    gList.Add((g.Psi, k + g.Vec.ToPointD, defocusses.Select(defocus =>
                         Exp(-PiI * rambda * qSq * (cs * rambdaSq * qSq / 2.0 + defocus))//球面収差
                         * Math.Exp(-PiSq * betaSq * qSq * (defocus + rambdaSq * cs * qSq) * (defocus + rambdaSq * cs * qSq))//時間的インコヒーレンス
                         * Math.Exp(-PiSq * rambdaSq * deltaSq * qSq * qSq / 2)//空間的インコヒーレンス
@@ -563,7 +563,7 @@ namespace Crystallography
                     for (var hNum = gNum; hNum < beams.Length; hNum++)
                     {
                         Beam g = beams[gNum], h = beams[hNum];
-                        PointD q1 = k + g.Vec.ToPointD(), q2 = k + h.Vec.ToPointD();
+                        PointD q1 = k + g.Vec.ToPointD, q2 = k + h.Vec.ToPointD;
                         double q1Sq = q1.Length2, q2Sq = q2.Length2;
                         //gNum==hNumの時は、g.Psi.Magnitude2() が画素に伝わるだけなので、最後に強度を0~2^16に規格化する場合は、あってもなくても関係ない
                         var psi = gNum == hNum ? g.Psi.MagnitudeSquared() : 2 * g.Psi * Conjugate(h.Psi);
@@ -572,7 +572,7 @@ namespace Crystallography
                         var index = (g.H - h.H, g.K - h.K, g.L - h.L);
                         if (!vecDic.TryGetValue(index, out var vec))
                         {
-                            vec = (g.Vec - h.Vec).ToPointD();
+                            vec = (g.Vec - h.Vec).ToPointD;
                             vecDic.Add(index, vec);
                         }
 
@@ -926,7 +926,7 @@ namespace Crystallography
                 var rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(acc);
                 var center = new PointD(2 * Math.Sin(shiftX / 2) / rambda, 2 * Math.Sin(shiftY / 2) / rambda);
                 var r = 2 * Math.Sin(radius / 2) / rambda;
-                return beams.Where(b => (b.Vec.ToPointD() - center).Length2 < r * r).ToArray();
+                return beams.Where(b => (b.Vec.ToPointD- center).Length2 < r * r).ToArray();
             }
         }
         #endregion

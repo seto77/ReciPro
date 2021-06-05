@@ -127,8 +127,6 @@ namespace Crystallography
         public bool Equals(in SizeD other) => Width == other.Width && Height == other.Height;
 
         public static SizeD operator +(in SizeD p1, in SizeD p2) => new(p1.Width + p2.Width, p1.Height + p2.Height);
-    
-
 
         public static SizeD operator -(in SizeD p1, in SizeD p2) => new(p1.Width - p2.Width, p1.Height - p2.Height);
 
@@ -147,7 +145,7 @@ namespace Crystallography
     }
 
 
-    //PointDをクラスから構造体に変更。201909/05
+    //PointDをクラスから構造体に変更。20190905
     [StructLayout(LayoutKind.Sequential)]
     [Serializable()]
     [TypeConverter(typeof(PointDConverter))]

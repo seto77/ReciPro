@@ -295,7 +295,7 @@ namespace ReciPro
                 };
 
                 Disks[i] = (disks[i].H, disks[i].K, disks[i].L,
-                center.ToPointD(), new SizeD(width , width) * ImagePixelSize, new Size((int)width, (int)width), pbmp, null);
+                center.ToPointD, new SizeD(width , width) * ImagePixelSize, new Size((int)width, (int)width), pbmp, null);
             });
         }
 

@@ -243,21 +243,22 @@ namespace ReciPro
                 numericBox33.Value = e33;
                 skip = false;
 
-                numericBox6_ValueChanged(sender, e);
+                numericBox_ValueChanged(sender, e);
             }
         }
 
         #endregion
 
-        private void numericBox6_ValueChanged(object sender, EventArgs e)
+        private void numericBox_ValueChanged(object sender, EventArgs e)
         {
             if (skip) return;
             skip = true;
+            
             var rotMatrix = new Matrix3D(numericBox11.Value, numericBox21.Value, numericBox31.Value, numericBox12.Value, numericBox22.Value, numericBox32.Value, numericBox13.Value, numericBox23.Value, numericBox33.Value);
             var (Phi, Theta, Psi) = Euler.GetEulerAngle(rotMatrix);
-            numericBoxPhi.Value = Phi / Math.PI * 180;
-            numericBoxTheta.Value = Theta / Math.PI * 180;
-            numericBoxPsi.Value = Psi / Math.PI * 180;
+            numericBoxPhi.RadianValue = Phi;
+            numericBoxTheta.RadianValue = Theta;
+            numericBoxPsi.RadianValue = Psi;
 
             skip = false;
         }
@@ -470,7 +471,7 @@ namespace ReciPro
         //球体オブジェクトを生成
         private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
-            var (a, b, c) = (FormMain.Crystal.A_Axis.ToOpenTK.Normalized(), FormMain.Crystal.B_Axis.ToOpenTK.Normalized(), FormMain.Crystal.C_Axis.ToOpenTK.Normalized());
+            var (a, b, c) = (FormMain.Crystal.A_Axis.ToOpenTK().Normalized(), FormMain.Crystal.B_Axis.ToOpenTK().Normalized(), FormMain.Crystal.C_Axis.ToOpenTK().Normalized());
 
             var r = 0.05;
             var obj = new List<GLObject>();

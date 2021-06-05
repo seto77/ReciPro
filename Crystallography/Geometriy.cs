@@ -837,7 +837,7 @@ namespace Crystallography
             var mtx = new DenseMatrix(points.Count(), 3);
             int n = 0;
             foreach (var p in points.Select(p => p - ave))
-                mtx.SetRow(n++, p.ToDouble());
+                mtx.SetRow(n++, p.ToDoublearray());
 
             var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
             var index = evd.EigenValues.AbsoluteMinimumIndex();
@@ -914,7 +914,7 @@ namespace Crystallography
                             pts.Add(pt);
                     }
                 }
-            return pts.Select(p => p.ToDouble()).ToArray();
+            return pts.Select(p => p.ToDoublearray()).ToArray();
         }
 
         /// <summary>
