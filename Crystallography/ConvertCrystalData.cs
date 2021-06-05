@@ -58,7 +58,7 @@ namespace Crystallography
 
 					//filename = filename + "_";//検証のためファイルネーム変更
 
-					StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("UTF-8"));
+					var writer = new StreamWriter(filename, false, Encoding.GetEncoding("UTF-8"));
 					for (int i = 0; i < strList.Count; i++)
 						writer.WriteLine(strList[i]);
 					writer.Flush();
@@ -168,7 +168,7 @@ namespace Crystallography
 
 			int n = 0;
 			//ここから原始座標読み取り
-			List<Crystal> cry = new List<Crystal>();
+			var cry = new List<Crystal>();
 			while (line < str.Length)
 			{
 				for (; line < str.Length; line++)

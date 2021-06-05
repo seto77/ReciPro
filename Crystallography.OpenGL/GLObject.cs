@@ -1616,7 +1616,7 @@ namespace Crystallography.OpenGL
         /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
         /// </summary>
 
-        private static Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)> dic = new();
+        private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)> dic = new();
 
         public static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
         public static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };

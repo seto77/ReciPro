@@ -31,7 +31,7 @@ namespace ReciPro
         private static extern short GetAsyncKeyState(int nVirtKey);
 
         #region WebClient‚Ì”h¶ƒNƒ‰ƒX
-        private static readonly HttpClient httpClient = new HttpClient();
+        //private static readonly HttpClient httpClient = new();
 
         //private async Task DownloadAsync(string url, string filename)
         //{
