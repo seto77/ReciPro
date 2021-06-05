@@ -312,7 +312,7 @@ namespace Crystallography
 
         private static int sign = -1;
 
-        private static double sq = Math.Sqrt(1.0 / 2.0);
+        private static readonly double sq = Math.Sqrt(1.0 / 2.0);
 
         private static Complex[] fft2(Complex[] src)
         {

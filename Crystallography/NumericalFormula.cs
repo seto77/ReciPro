@@ -42,7 +42,7 @@ namespace Crystallography
                                 }
                             }
                     }
-                return NumericalValue(str[str.Length - 1]);
+                return NumericalValue(str[^1]);
             }
             catch
             {

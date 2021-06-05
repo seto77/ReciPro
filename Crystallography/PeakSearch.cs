@@ -469,7 +469,7 @@ namespace Crystallography
                         tempMin = pt[i].Y / 1000;
                 }
 
-            if (PtY.Count < 3 || /*temp <= 0 ||*/ (PtY[PtY.Count - 1] == 0 && PtY[PtY.Count - 2] == 0 && PtY[PtY.Count - 3] == 0))
+            if (PtY.Count < 3 || /*temp <= 0 ||*/ (PtY[^1] == 0 && PtY[^2] == 0 && PtY[^3] == 0))
             {
                 for (int i = 0; i < p.Length; i++)
                 {
@@ -533,7 +533,7 @@ namespace Crystallography
             double ResidualSquareCurrent;
             double ResidualSquareNew = 0;
             double residual;
-            double centerX = (x[0] + x[x.Length - 1]) / 2;
+            double centerX = (x[0] + x[^1]) / 2;
             double B1, B2, B1_New, B2_New;
             B1 = B2 = 0;
 
@@ -879,7 +879,7 @@ namespace Crystallography
                     p[0].X = double.NaN;
 
                 //’†SˆÊ’u‚ªŠO‚ê‚Ä‰ß‚¬‚Ä‚àŽ¸Ši
-                if (p[0].X < x[0] || x[x.Length - 1] < p[0].X)
+                if (p[0].X < x[0] || x[^1] < p[0].X)
                 {
                     p[0].X = double.NaN;
                 }

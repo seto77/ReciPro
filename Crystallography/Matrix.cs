@@ -148,7 +148,7 @@ namespace Crystallography
 
         #region  演算子のオーバーロード
 
-        public static Matrix3D operator *(Matrix3D m1, Matrix3D m2) => new Matrix3D
+        public static Matrix3D operator *(Matrix3D m1, Matrix3D m2) => new()
         {
             E11 = m1.E11 * m2.E11 + m1.E12 * m2.E21 + m1.E13 * m2.E31,
             E12 = m1.E11 * m2.E12 + m1.E12 * m2.E22 + m1.E13 * m2.E32,
@@ -163,7 +163,7 @@ namespace Crystallography
             E33 = m1.E31 * m2.E13 + m1.E32 * m2.E23 + m1.E33 * m2.E33
         };
 
-        public static Matrix3D operator *(double d, Matrix3D m2) => new Matrix3D
+        public static Matrix3D operator *(double d, Matrix3D m2) => new()
         {
             E11 = d * m2.E11,
             E12 = d * m2.E12,
@@ -178,7 +178,7 @@ namespace Crystallography
             E33 = d * m2.E33
         };
 
-        public static Matrix3D operator +(Matrix3D m1, Matrix3D m2) => new Matrix3D
+        public static Matrix3D operator +(Matrix3D m1, Matrix3D m2) => new()
         {
             E11 = m1.E11 + m2.E11,
             E12 = m1.E12 + m2.E12,
@@ -193,7 +193,7 @@ namespace Crystallography
             E33 = m1.E33 + m2.E33
         };
 
-        public static Matrix3D operator -(Matrix3D m1, Matrix3D m2) => new Matrix3D
+        public static Matrix3D operator -(Matrix3D m1, Matrix3D m2) => new()
         {
             E11 = m1.E11 - m2.E11,
             E12 = m1.E12 - m2.E12,
@@ -381,7 +381,8 @@ namespace Crystallography
         public static Matrix3D GenerateRamdomRotationMatrix() => GenerateRamdomRotationMatrix(Rn);
 
         public static Matrix3D GenerateRamdomRotationMatrix(int seed) => GenerateRamdomRotationMatrix(new Random(seed));
-
+       
+        private static readonly object o = new();
         public static Matrix3D GenerateRamdomRotationMatrix(Random rn)
         {
             double rn1, rn2, rn3;
@@ -394,7 +395,7 @@ namespace Crystallography
             return GenerateRamdomRotationMatrix(rn1, rn2, rn3);
         }
 
-        private static object o = new();
+        
 
         public static Matrix3D GenerateRamdomRotationMatrix(double rn1, double rn2, double rn3)
         {
@@ -511,7 +512,7 @@ namespace Crystallography
     [TypeConverter(typeof(Vector3DConverter))]
     public class Vector3DBase : ICloneable
     {
-        public static Vector3DBase Zero = new Vector3DBase(0,0,0);
+        public static readonly Vector3DBase Zero = new(0,0,0);
 
         public double X { get; set; }
         public double Y { get; set; }
@@ -659,7 +660,7 @@ namespace Crystallography
 
         public (double X, double Y, double Z) Tuple => (X, Y, Z);
 
-        public Vector3d TK  => new Vector3d(X, Y, Z);
+        public Vector3d ToOpenTK  => new(X, Y, Z);
 
         internal static Vector3DBase Normarize(Vector3DBase v)
         {
@@ -671,10 +672,6 @@ namespace Crystallography
         }
 
         public Vector3DBase Normarize() => Normarize(this);
-
-        public Vector3d ToVector()
-            => new Vector3d(X, Y, Z);
-
 
 
         /// <summary>

@@ -55,11 +55,8 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is PointD)
-            {
-                PointD g = (PointD)value;
+            if (destinationType == typeof(string) && value is PointD g)
                 return string.Format("{0}, {1}", g.X, g.Y);
-            }
             return base.ConvertTo(context, culture, value, destinationType);
         }
 

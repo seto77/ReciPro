@@ -299,7 +299,7 @@ namespace Crystallography
             //(double a, double b, double c) normal1 = (-line.b, line.a, -line.b * start.X + line.a * start.Y);
             //(double a, double b, double c) normal2 = (line.b, -line.a, line.b * end.X - line.a * end.Y);
 
-            var pixelsP = pixels is ParallelQuery<(double X, double Y, double Z)> ? (ParallelQuery<(double X, double Y, double Z)>)pixels : pixels.AsParallel();
+            var pixelsP = pixels is ParallelQuery<(double X, double Y, double Z)> query ? query : pixels.AsParallel();
             var targetPixels = pixelsP.Where(pix =>
             {
                 (double X, double Y, double Z) = pix;

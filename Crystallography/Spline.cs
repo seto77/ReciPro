@@ -248,7 +248,7 @@ namespace Crystallography
                 if (X <= pt[0].X)
                     y = c[0] * X3 + c[1] * X2 + c[2] * X + c[3];
                 else if (X >= pt[length - 1].X)
-                    y = c[c.Length - 4] * X3 + c[c.Length - 3] * X2 + c[c.Length - 2] * X + c[c.Length - 1];
+                    y = c[^4] * X3 + c[^3] * X2 + c[^2] * X + c[^1];
                 else
                     for (int j = 0; j < length - 1; j++)
                         if (x[i] >= pt[j].X && x[i] <= pt[j + 1].X)

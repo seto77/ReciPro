@@ -298,7 +298,7 @@ namespace Crystallography
             return sigma * (BoxMuller1 * BoxMuller2) + mu;
         }
 
-        private static Random Rn = new Random(System.Environment.TickCount);
+        private static readonly Random Rn = new Random(Environment.TickCount);
         private static double Alpha, Beta, BoxMuller1, BoxMuller2;
         private static bool Flag = false;
 

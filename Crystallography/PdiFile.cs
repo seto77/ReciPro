@@ -95,7 +95,7 @@ namespace Crystallography
                     fs.Close();
                     if (dp.Length > 0)
                         return dp;
-                    else return new DiffractionProfile[0];
+                    else return Array.Empty<DiffractionProfile>();
                 }
                 catch
                 {
@@ -122,9 +122,9 @@ namespace Crystallography
                         //Mode:Angle                                    4
                         //4,733.102005852614                            5
 
-                        if (strList[0].IndexOf("Wave Length") >= 0)
+                        if (strList[0].Contains("Wave Length", StringComparison.CurrentCulture))
                         {
-                            if (strList[0].IndexOf("(nm)") >= 0)
+                            if (strList[0].Contains("(nm)", StringComparison.CurrentCulture))
                                 diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':'))[1]);
                             else if (strList[0].IndexOf("(0.1nm)") >= 0)
                                 diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':'))[1]) / 10.0;
@@ -178,7 +178,7 @@ namespace Crystallography
                             string[] tempStr = strArray[i].Split(new[] { ' ' });
                             double x = Convert.ToDouble(tempStr[0]);
                             double y = Convert.ToDouble(tempStr[1]);
-                            dp[dp.Count - 1].OriginalProfile.Pt.Add(new PointD(x, y));
+                            dp[^1].OriginalProfile.Pt.Add(new PointD(x, y));
                         }
                         else
                             break;
@@ -221,7 +221,7 @@ namespace Crystallography
                 var axis = strArray[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 var value = strArray[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (title.Length * 2 != axis.Length || axis.Length != value.Length)
-                    return new DiffractionProfile[0];
+                    return Array.Empty<DiffractionProfile>();
 
                 var dp = new DiffractionProfile[title.Length];
                 for (int i = 0; i < dp.Length; i++)
@@ -251,7 +251,7 @@ namespace Crystallography
             }
             catch
             {
-                return new DiffractionProfile[0];
+                return Array.Empty<DiffractionProfile>();
             }
         }
 
@@ -265,8 +265,8 @@ namespace Crystallography
             /// <returns></returns>
         public static DiffractionProfile ConvertUnknownFileToProfileData(string fileName, char separater)
         {
-            List<string> strArray = new List<string>();
-            StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+            var strArray = new List<string>();
+            var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
             string tempstr;
             while ((tempstr = reader.ReadLine()) != null)
                 strArray.Add(tempstr);
@@ -274,21 +274,19 @@ namespace Crystallography
             if (strArray.Count <= 3)
                 return null;
 
-            List<string[]> stringList = new List<string[]>();
+            var stringList = new List<string[]>();
             //まず指定されたセパレータで全てを区切る
             for (int i = 0; i < strArray.Count; i++)
                 stringList.Add(strArray[i].Split(new char[] { separater }, StringSplitOptions.RemoveEmptyEntries));
             //その全てを数値に変換する
-            List<double[]> doubleList = new List<double[]>();
-            List<double> doubleTemp = new List<double>();
-            double result;
+            var doubleList = new List<double[]>();
             for (int i = 0; i < stringList.Count; i++)
             {
-                doubleTemp = new List<double>();
+                var doubleTemp = new List<double>();
                 for (int j = 0; j < stringList[i].Length; j++)
                 {
                     var str = Miscellaneous.IsDecimalPointComma ? stringList[i][j].Replace('.', ',') : stringList[i][j].Replace(',', '.');
-                    if (double.TryParse(str, out result))
+                    if (double.TryParse(str, out double result))
                         doubleTemp.Add(result);
                 }
                 doubleList.Add(doubleTemp.ToArray());

@@ -470,7 +470,7 @@ namespace ReciPro
         //球体オブジェクトを生成
         private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)
         {
-            var (a, b, c) = (FormMain.Crystal.A_Axis.TK.Normalized(), FormMain.Crystal.B_Axis.TK.Normalized(), FormMain.Crystal.C_Axis.TK.Normalized());
+            var (a, b, c) = (FormMain.Crystal.A_Axis.ToOpenTK.Normalized(), FormMain.Crystal.B_Axis.ToOpenTK.Normalized(), FormMain.Crystal.C_Axis.ToOpenTK.Normalized());
 
             var r = 0.05;
             var obj = new List<GLObject>();

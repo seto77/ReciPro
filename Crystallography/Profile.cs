@@ -88,8 +88,8 @@ namespace Crystallography
             //まず点の位置を探す
             if (Err[0].X > x)
                 return Err[0].Y;
-            else if (Err[Err.Count - 1].X < x)
-                return Err[Err.Count - 1].Y;
+            else if (Err[^1].X < x)
+                return Err[^1].Y;
             else
             {
                 for (int i = 0; i < Err.Count - 1; i++)
@@ -122,8 +122,8 @@ namespace Crystallography
 
                 if (x <= Pt[0].X)
                     return (Pt[0].Y - Pt[1].Y) / (Pt[0].X - Pt[1].X) * (x - Pt[1].X) + Pt[1].Y;
-                else if (Pt[Pt.Count - 1].X < x)
-                    return (Pt[Pt.Count - 2].Y - Pt[Pt.Count - 1].Y) / (Pt[Pt.Count - 2].X - Pt[Pt.Count - 1].X) * (x - Pt[Pt.Count - 1].X) + Pt[Pt.Count - 1].Y;
+                else if (Pt[^1].X < x)
+                    return (Pt[^2].Y - Pt[^1].Y) / (Pt[^2].X - Pt[^1].X) * (x - Pt[^1].X) + Pt[^1].Y;
                 else
                     for (; pos < Pt.Count - 1; pos++)
                     {
@@ -172,7 +172,7 @@ namespace Crystallography
                 int position = 0;//この値と この値+1の間のindexにxが存在する
                 if (Pt[0].X > x[n])
                     position = -1;
-                else if (Pt[Pt.Count - 1].X < x[n])
+                else if (Pt[^1].X < x[n])
                     position = Pt.Count - 1;
                 else
                     for (int i = 0; i < Pt.Count - 1; i++)
@@ -209,7 +209,7 @@ namespace Crystallography
                         for (int i = Math.Max(position - pointNum, 0); i < Math.Min(position + pointNum + 1, Pt.Count); i++)
                             pt.Add(Pt[i]);
                         while (pt.Count > pointNum)
-                            pt.RemoveAt(Math.Abs(pt[0].X - x[n]) > Math.Abs(pt[pt.Count - 1].X - x[n]) ? 0 : pt.Count - 1);
+                            pt.RemoveAt(Math.Abs(pt[0].X - x[n]) > Math.Abs(pt[^1].X - x[n]) ? 0 : pt.Count - 1);
                     }
 
                     if (pt.Count < pointNum)
@@ -220,7 +220,7 @@ namespace Crystallography
                     }
 
                     //計算精度のため、xの範囲を1から+2に変換する 式は X = c1 x + c2;
-                    double c1 = 1.0 / (pt[pt.Count - 1].X - pt[0].X);
+                    double c1 = 1.0 / (pt[^1].X - pt[0].X);
                     double c2 = 1 - pt[0].X * c1;
 
                     var m = new DenseMatrix(pointNum, order + 1);
@@ -596,7 +596,7 @@ namespace Crystallography
 
         public DiffractionProfile()
         {
-            BgPoints = new PointD[0];
+            BgPoints = Array.Empty<PointD>();
 
             OriginalProfile = new Profile();
             ConvertedProfile = new Profile();
