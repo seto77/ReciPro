@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
-using MathNet.Numerics.Providers.Common.Mkl;
 using MathNet.Numerics;
+using System.Xml.Serialization;
 #endregion
 
 namespace Crystallography
@@ -32,28 +32,23 @@ namespace Crystallography
         private static readonly Complex PiI = Math.PI * ImaginaryOne;
         private static readonly double PiSq = Math.PI * Math.PI;
         private static readonly Vector3DBase zNorm = new(0, 0, 1);
-
+        public static readonly bool EigenEnabled;
         #endregion
 
         #region フィールド、プロパティ
-
         private double AccVoltage { get; set; }
-        private Crystal Crystal { get; set; } = null;
+        private Crystal Crystal { get;} 
         private Matrix3D BaseRotation { get; set; } = null;
         public double AlphaMax { get; set; }
         public double Cs { get; set; }
         public double Defocus { get; set; }
         public Matrix3D[] BeamRotations { get; set; }
-
         public int RotationArrayValidLength { get; set; } = 0;
-
-        public readonly bool EigenEnabled = true;
 
         /// <summary>
         /// サンプル表面(から内部への)の法線単位ベクトル. ReciProの座標系は、画面右が+X、上が+Y,手前が+Zなので、初期値は(0,0,-1)
         /// </summary>
         public Vector3D Surface { get; set; } = new Vector3D(0, 0, -1);
-
         public int MaxNumOfBloch { get; set; }
         public double Thickness { get; set; }
         public double[] Thicknesses { get; set; }
@@ -76,6 +71,7 @@ namespace Crystallography
         /// <summary>
         /// Disks[Z_index][G_index]
         /// </summary>
+        [XmlIgnore]
         public CBED_Disk[][] Disks { get; set; }
 
         [NonSerialized]
@@ -93,6 +89,11 @@ namespace Crystallography
         #endregion
 
         #region コンストラクタ
+
+        static BetheMethod()
+        {
+            EigenEnabled = NativeWrapper.Enabled;
+        }
         public BetheMethod(Crystal crystal)
         {
             Crystal = crystal;
@@ -105,8 +106,6 @@ namespace Crystallography
             bwCBED.RunWorkerCompleted += Cbed_RunWorkerCompleted;
             bwCBED.ProgressChanged += Cbed_ProgressChanged;
             bwCBED.DoWork += cbed_DoWork;
-
-            EigenEnabled = NativeWrapper.Enabled;
         }
         #endregion
 
@@ -662,7 +661,9 @@ namespace Crystallography
                         m = (atoms.Dsf.B11 * a * a + atoms.Dsf.B22 * b * b + atoms.Dsf.B33 * c * c + 2 * atoms.Dsf.B12 * a * b + 2 * atoms.Dsf.B23 * b * c + 2 * atoms.Dsf.B31 * c * a) * 4.0 / 3.0;
                     }
 
-                    var t = double.IsNaN(m) ? 1 : Math.Exp(-m * s2);
+                    if (double.IsNaN(m))
+                        m = 0;
+                    var t = Math.Exp(-m * s2);
                     //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2, m);//答えは無次元
                     var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m);//答えは無次元
                     foreach (var atom in atoms.Atom)

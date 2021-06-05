@@ -103,13 +103,13 @@ namespace Crystallography
         [XmlIgnore]
         public BetheMethod Bethe;
 
-        //public int planeMax;
         [NonSerialized]
         [XmlIgnore]
         public double DiffractionPeakIntensity = -1;
 
         public double A, B, C, Alpha, Beta, Gamma;	//格子定数
         public double A_err, B_err, C_err, Alpha_err, Beta_err, Gamma_err;  //格子定数の誤差
+        public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue => (A, B, C, Alpha, Beta, Gamma);
 
         [NonSerialized]
         [XmlIgnore]
@@ -241,6 +241,7 @@ namespace Crystallography
         /// <summary>
         /// 対称性
         /// </summary>
+        [NonSerialized]
         [XmlIgnore]
         public Symmetry Symmetry;
 
@@ -367,7 +368,7 @@ namespace Crystallography
 
         public int id = 0;
 
-        public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue => (A, B, C, Alpha, Beta, Gamma);
+       
 
         #endregion プロパティ、フィールド
 

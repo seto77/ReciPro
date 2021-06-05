@@ -1274,66 +1274,67 @@ namespace Crystallography
         /// <summary>
         /// 単位は nm^2
         /// </summary>
-        public double Iso { get; }
+        public double Iso { get; set; }
         /// <summary>
         /// 単位は nm^2
         /// </summary>
-        public double Iso_err { get; }
+        public double Iso_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso11 { get; }
+        public double Aniso11 { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso22 { get; }
+        public double Aniso22 { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso33 { get; }
+        public double Aniso33 { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso12 { get; }
+        public double Aniso12 { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso23 { get; }
+        public double Aniso23 { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso31 { get; }
+        public double Aniso31 { get; set; }
 
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso11_err { get; }
+        public double Aniso11_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso22_err { get; }
+        public double Aniso22_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso33_err { get; }
+        public double Aniso33_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso12_err { get; }
+        public double Aniso12_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso23_err { get; }
+        public double Aniso23_err { get; set; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso31_err { get; }
+        public double Aniso31_err { get; set; }
 
         #endregion
 
-        public bool UseIso { get; }
-        public Type OriginalType { get; } = Type.B;
+        public bool UseIso { get; set; }
+        public Type OriginalType { get; set; } = Type.B;
 
+        [XmlIgnore]
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) Cell
         {
             get => cell;
