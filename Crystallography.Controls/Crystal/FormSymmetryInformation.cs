@@ -156,8 +156,8 @@ namespace Crystallography.Controls
             richTextBoxLG.Text = Crystal.Symmetry.LaueGroupStr;
             richTextBoxCS.Text = Crystal.Symmetry.CrystalSystemStr;
             richTextBoxExtinctionRule.Text = "";
-            for (int n = 0; n < (SymmetryStatic.ExtinctionRule(Crystal.Symmetry)).Length; n++)
-                richTextBoxExtinctionRule.Text += (SymmetryStatic.ExtinctionRule(Crystal.Symmetry))[n] + "\r\n";
+            for (int n = 0; n < Crystal.Symmetry.ExtinctionRuleStr.Length; n++)
+                richTextBoxExtinctionRule.Text += Crystal.Symmetry.ExtinctionRuleStr[n] + "\r\n";
             if (richTextBoxExtinctionRule.Text == "")
                 richTextBoxExtinctionRule.Text = "No Condition";
             ConvertRichTextBox3(ref richTextBoxExtinctionRule);
@@ -224,7 +224,7 @@ namespace Crystallography.Controls
             else if (Crystal.Symmetry.LatticeTypeStr == "H")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/3,2/3,2/3)+", "(2/3,1/3,1/3)+", "" });
 
-            Crystal.Symmetry = SymmetryStatic.Get_Symmetry(Crystal.SymmetrySeriesNumber);
+            Crystal.Symmetry = SymmetryStatic.Symmetries[Crystal.SymmetrySeriesNumber];
 
             for (int i = 0; i < SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber].Length; i++)
             {

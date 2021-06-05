@@ -130,7 +130,7 @@ namespace Crystallography.Controls
 
         private void SetElasticity()
         {
-            Symmetry tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            Symmetry tempSym = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
             //いったんすべてをEnabled=trueにする
             numericBox13.Enabled = numericBox23.Enabled =
             numericBox14.Enabled = numericBox24.Enabled = numericBox34.Enabled =
@@ -264,7 +264,7 @@ namespace Crystallography.Controls
         {
             if (skip) return;
             if (((NumericBox)sender).Enabled == false) return;
-            Symmetry tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            Symmetry tempSym = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
             switch (tempSym.CrystalSystemStr)
             {
                 case "tetragonal":

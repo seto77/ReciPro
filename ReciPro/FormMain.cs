@@ -280,9 +280,6 @@ namespace ReciPro
             commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.9);
             NextHandle = SetClipboardViewer(this.Handle);
 
-            commonDialog.Progress = ("Now Loading...Setting CrystalChanged event.", 0.91);
-            crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
-
             commonDialog.Progress = ("Now Loading...Initialize Crystal class.", 0.92);
             Crystal = new Crystal();
 
@@ -736,8 +733,7 @@ namespace ReciPro
                 if (FormImageSimulator.Visible)
                     FormImageSimulator.RotationChanged();
 
-                crystalControl_CrystalChanged_1(sender, e);
-                DrawAxes();
+                resetAxes();
             }
         }
         #endregion
@@ -1188,7 +1184,7 @@ namespace ReciPro
             glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
         }
 
-        private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
+        private void resetAxes()
         {
             if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
                 return;
@@ -1208,6 +1204,7 @@ namespace ReciPro
 
             glControlAxes.DeleteAllObjects();
             glControlAxes.AddObjects(obj);
+            DrawAxes();
         }
 
         private void panelAxes_MouseDown(object sender, MouseEventArgs e)

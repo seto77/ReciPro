@@ -89,20 +89,7 @@ namespace Crystallography
 						Thread.Sleep(1);
                     }
 
-
-                    #region //Bondクラスの単位を オングストロームからnmに変更したための対処
-                    foreach (var c in cry)
-                    {
-                        foreach (var b in c.Bonds)
-                            if (!b.NanometerUnit)
-                            {
-                                b.MaxLength *= 0.1f;
-                                b.MinLength *= 0.1f;
-                                b.Radius *= 0.1f;
-                                b.NanometerUnit = true;
-                            }
-                    }
-                    #endregion
+                 
                 }
                 catch { }
             }
@@ -694,7 +681,7 @@ namespace Crystallography
 			if (symmetrySeriesNumber == -1)
 				return null;
 			//Rhombohedoralのときの処置
-			if (A == B && B == C && Alfa == Beta && Beta == Gamma && SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupHMStr.Contains("Hex", StringComparison.CurrentCulture))
+			if (A == B && B == C && Alfa == Beta && Beta == Gamma && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.CurrentCulture))
 				symmetrySeriesNumber++;
 
 			//Asteriskの時(2nd setting)の処理
@@ -1214,7 +1201,7 @@ namespace Crystallography
 			{
 				for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
 				{
-					var hall = SymmetryStatic.Get_Symmetry(i).SpaceGroupHallStr;
+					var hall = SymmetryStatic.Symmetries[i].SpaceGroupHallStr;
 					if (hall != "")
 						if ((hall.IndexOf(SgNameHall.Trim(), 0) != -1) ||
 						(hall.IndexOf(SgNameHall.Replace(" ", ""), 0) != -1) ||
@@ -1502,17 +1489,17 @@ namespace Crystallography
 			}
 
 			//Rhombohedoralのときの処置
-			if (isRhomboShape && SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupHMStr.IndexOf("Hex") >= 0)
+			if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.IndexOf("Hex") >= 0)
 				symmetrySeriesNumber++;
 
 			//originChoiceが2のときの対処
-			if (IsOrigineChoice2 && SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupHMStr.IndexOf("(1)") > -1)
+			if (IsOrigineChoice2 && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.IndexOf("(1)") > -1)
 				symmetrySeriesNumber++;
 
 			if (SpaceGroupNumber >= 1 && SpaceGroupNumber <= 230)
-				if (symmetrySeriesNumber>=1 || SpaceGroupNumber != SymmetryStatic.Get_Symmetry(symmetrySeriesNumber).SpaceGroupNumber)
+				if (symmetrySeriesNumber>=1 || SpaceGroupNumber != SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupNumber)
 					for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
-						if (SymmetryStatic.Get_Symmetry(i).SpaceGroupNumber == SpaceGroupNumber)
+						if (SymmetryStatic.Symmetries[i].SpaceGroupNumber == SpaceGroupNumber)
 						{
 							symmetrySeriesNumber = i;
 							break;

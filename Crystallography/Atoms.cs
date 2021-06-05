@@ -1,8 +1,6 @@
-using MathNet.Numerics.Integration;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Numerics;
 using System.Xml.Serialization;
 
@@ -22,6 +20,8 @@ namespace Crystallography
                 atoms.Atom[i] = (Vector3D)Atom[i].Clone();
             return atoms;
         }
+
+        #region フィールド、プロパティ
 
         public int ID;
 
@@ -69,6 +69,10 @@ namespace Crystallography
         public float Emission = Material.DefaultTexture.Emission;//自己証明
         public float Shininess = Material.DefaultTexture.SpecularPow;//反射光の強度
         public float Specular = Material.DefaultTexture.Specular;//反射光
+
+
+
+
         [XmlIgnore]
         public (float Ambient, float Diffusion, float Specular, float Shininess, float Emission) Texture
         {
@@ -92,6 +96,8 @@ namespace Crystallography
         /// OpenGLの描画時に有効にするかどうか
         /// </summary>
         public bool GLEnabled = true;
+        #endregion
+
 
         #region コンストラクタ
 
@@ -1187,7 +1193,6 @@ namespace Crystallography
         //Biomolecular Crystallography: Principles, Practice, and Application to Structural Biology
         //641ページ
 
-
         #region B type. Getのみ
         /// <summary>
         /// unit: nm^2
@@ -1265,70 +1270,69 @@ namespace Crystallography
         public double U31_err => OriginalType == Type.U ? Aniso31_err : Aniso31_err / coeff31;
         #endregion
 
-
         #region オリジナルの値
         /// <summary>
         /// 単位は nm^2
         /// </summary>
-        public double Iso { get; set; }
+        public double Iso { get; }
         /// <summary>
         /// 単位は nm^2
         /// </summary>
-        public double Iso_err { get; set; }
+        public double Iso_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso11 { get; set; }
+        public double Aniso11 { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso22 { get; set; }
+        public double Aniso22 { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso33 { get; set; }
+        public double Aniso33 { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso12 { get; set; }
+        public double Aniso12 { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso23 { get; set; }
+        public double Aniso23 { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso31 { get; set; }
+        public double Aniso31 { get; }
 
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso11_err { get; set; }
+        public double Aniso11_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso22_err { get; set; }
+        public double Aniso22_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso33_err { get; set; }
+        public double Aniso33_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso12_err { get; set; }
+        public double Aniso12_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso23_err { get; set; }
+        public double Aniso23_err { get; }
         /// <summary>
         /// 単位は Uの場合 nm^2,  Bの場合　無次元
         /// </summary>
-        public double Aniso31_err { get; set; }
+        public double Aniso31_err { get; }
 
         #endregion
 
-        public bool UseIso { get; set; }
-        public Type OriginalType { get; set; } = Type.B;
+        public bool UseIso { get; }
+        public Type OriginalType { get; } = Type.B;
 
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) Cell
         {

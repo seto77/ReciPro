@@ -22,11 +22,11 @@ using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 
 namespace Crystallography.OpenGL
 {
-    #region Vertex 頂点クラス
+    #region Vertex 頂点構造体
     /// <summary>
     /// 頂点要素（シェーダの頂点要素と合わせる）
     /// </summary>
-    public struct Vertex
+    public readonly struct Vertex
     {
         /// <summary>
         /// 0: テクスチャ無しポリゴン、1: テクスチャ有りポリゴン、2: 文字列. 

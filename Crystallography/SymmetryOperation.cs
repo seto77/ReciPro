@@ -6,29 +6,29 @@ namespace Crystallography
     /// <summary>
     /// Seitz表記によるSymmetry operationを表現するクラス
     /// </summary>
-    public class SymmetryOperation
+    public readonly struct SymmetryOperation
     {
-        public int SeriesNumber { get; set; }
+        public int SeriesNumber { get; }
 
         /// <summary>
         /// 回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか
         /// </summary>
-        public short Order { get; set; }
+        public short Order { get;  }
 
         /// <summary>
         /// 回転の方向. trueは +1か falseは -1のいずれか
         /// </summary>
-        public bool Sense { get; set; }
+        public bool Sense { get;  }
 
         /// <summary>
         /// 回転の軸.
         /// </summary>
-        public (int U, int V, int W) Direction { get; set; }
+        public (int U, int V, int W) Direction { get; }
 
         /// <summary>
         /// 並進ベクトル
         /// </summary>
-        public (double U, double V, double W) Translation { get; set; }
+        public (double U, double V, double W) Translation { get; }
 
         public SymmetryOperation(int seriesNumber, int order, int sense, (int U, int V, int W) direction, (double U, double V, double W) translation)
             : this(order, sense, direction, translation)
@@ -38,15 +38,16 @@ namespace Crystallography
 
         public SymmetryOperation(int order, int sense,in (int U, int V, int W) direction,in (double U, double V, double W) translation)
         {
+            SeriesNumber = -1;
             Order = (short)order;
             Sense = sense == 1;
             Direction = direction;
             Translation = translation;
         }
 
-        public SymmetryOperation(SymmetryOperation so, double shiftU, double shiftV, double shiftW)
+        public SymmetryOperation(SymmetryOperation so, int seriesNumber, double shiftU, double shiftV, double shiftW)
         {
-            SeriesNumber = so.SeriesNumber;
+            SeriesNumber = seriesNumber;
             Order = so.Order;
             Sense = so.Sense;
             Direction = so.Direction;

@@ -12,7 +12,7 @@ namespace Crystallography
     public class Bonds
     {
         [Key(0)]
-        public string Element1;
+        public  string Element1;
         [Key(1)]
         public string Element2;
         [Key(2)]
@@ -20,13 +20,13 @@ namespace Crystallography
         [Key(3)]
         public float MaxLength;//nm’PˆÊ
         [Key(4)]
-        public float Radius;//nm’PˆÊ
+        public  float Radius;//nm’PˆÊ
         [Key(5)]
         public float BondTransParency;
         [Key(6)]
         public int ArgbBond;
         [Key(7)]
-        public float PolyhedronTransParency;
+        public  float PolyhedronTransParency;
         [Key(8)]
         public bool ShowPolyhedron;
         [Key(9)]
@@ -40,7 +40,7 @@ namespace Crystallography
         [Key(13)]
         public bool ShowEdges;
         [Key(14)]
-        public float EdgeLineWidth;
+        public  float EdgeLineWidth;
         [Key(15)]
         public int ArgbEdge;
         [Key(16)]

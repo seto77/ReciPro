@@ -464,15 +464,15 @@ namespace ReciPro
         /// <summary>
         /// Bondの頂点を表すためのテンポラリーなクラス
         /// </summary>
-        private class bondVertex
+        private readonly struct bondVertex
         {
-            public int ObjIndex;
-            public int AtomIndex;
-            public V3 O;
-            public double R;
-            public Material BondMat;
-            public Material PolyMat;
-            public int Serial;
+            public readonly int ObjIndex;
+            public readonly int AtomIndex;
+            public readonly V3 O;
+            public readonly double R;
+            public readonly Material BondMat;
+            public readonly Material PolyMat;
+            public readonly int Serial;
             public bondVertex(int objIndex, int atomIndex, in V3 origin, double radius, Material bondMat, Material polyMat, int serial)
             { ObjIndex = objIndex; AtomIndex = atomIndex; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
         }

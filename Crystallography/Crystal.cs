@@ -242,7 +242,7 @@ namespace Crystallography
         /// 対称性
         /// </summary>
         [XmlIgnore]
-        public Symmetry Symmetry = new();
+        public Symmetry Symmetry;
 
         /// <summary>
         /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
@@ -375,7 +375,7 @@ namespace Crystallography
 
         public Crystal()
         {
-            Symmetry = SymmetryStatic.Get_Symmetry(0);
+            Symmetry = SymmetryStatic.Symmetries[0];
             Plane = new List<Plane>();
             Atoms = Array.Empty<Atoms>();
             ElasticStiffnessArray = new double[21];
@@ -396,7 +396,7 @@ namespace Crystallography
             Name = name;
             Argb = col.ToArgb();
             SymmetrySeriesNumber = symmetrySeriesNumber;
-            Symmetry = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            Symmetry = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
 
             SetAxis();
         }
@@ -476,7 +476,7 @@ namespace Crystallography
             SetAxis();
 
             SymmetrySeriesNumber = cry.SymmetrySeriesNumber;
-            Symmetry = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            Symmetry = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
 
             Atoms = cry.Atoms;
 
@@ -884,7 +884,6 @@ namespace Crystallography
             var lMax = (int)(C / dMin);
 
             var listPlane = new List<Plane>();
-            int n = 0;
             double d;
             int multi = 1;
             if (excludeEquivalentPlane)//等価な面を排除するとき
@@ -1029,7 +1028,7 @@ namespace Crystallography
             }
 
             var temp_plane = listPlane.ToArray();
-            for (n = 0; n < temp_plane.Length; n++)
+            for (int n = 0; n < temp_plane.Length; n++)
             {
                 temp_plane[n].F2[0] = -1;
                 temp_plane[n].IsFittingChecked = false;
@@ -1041,7 +1040,7 @@ namespace Crystallography
             }
 
             if (Plane != null)
-                for (n = 0; n < Plane.Count && n < temp_plane.Length; n++)
+                for (int n = 0; n < Plane.Count && n < temp_plane.Length; n++)
                 {
                     temp_plane[n].SerchRange = Plane[n].SerchRange;
                     temp_plane[n].FWHM = Plane[n].FWHM;
@@ -1584,7 +1583,7 @@ namespace Crystallography
         /// </summary>
         internal void Reset()
         {
-            Symmetry = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            Symmetry = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
             SetAxis();
             for (int i = 0; i < Atoms.Length; i++)
             {

@@ -133,7 +133,7 @@ namespace Crystallography.Controls
                 c = textBoxSearch.Text.ToCharArray();
             for (int n = 0; n < SymmetryStatic.TotalSpaceGroupNumber; n++)
             {
-                var sym = SymmetryStatic.Get_Symmetry(n);
+                var sym = SymmetryStatic.Symmetries[n];
                 var startIndex = -1;
                 for (int i = 0; i < c.Length; i++)
                 {
@@ -156,7 +156,7 @@ namespace Crystallography.Controls
         private void comboBoxSearchResult_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sym = Enumerable.Range(0, SymmetryStatic.TotalSpaceGroupNumber)
-                .Select(n => SymmetryStatic.Get_Symmetry(n))
+                .Select(n => SymmetryStatic.Symmetries[n])
                 .First(sym => sym.SpaceGroupHMStr == comboBoxSearchResult.Text);
 
             comboBoxCrystalSystem.Text = sym.CrystalSystemStr;
@@ -183,7 +183,7 @@ namespace Crystallography.Controls
 
         private static string[] PointGroupArray(int crystalSystemIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex]
-                .Select(n => SymmetryStatic.Get_Symmetry(n[0]).PointGroupHMStr).Distinct().ToArray();
+                .Select(n => SymmetryStatic.Symmetries[n[0]].PointGroupHMStr).Distinct().ToArray();
             
 
         private void comboBoxPointGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,7 +200,7 @@ namespace Crystallography.Controls
 
         private static string[] spaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex][pointGroupIndex]
-                .Select(n => SymmetryStatic.Get_Symmetry(n).SpaceGroupHMStr).ToArray();
+                .Select(n => SymmetryStatic.Symmetries[n].SpaceGroupHMStr).ToArray();
 
 
         private void comboBoxSpaceGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,7 +217,7 @@ namespace Crystallography.Controls
             if (SkipEvent) return;
             SkipEvent = true;
 
-            var tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            var tempSym = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
             //いったんすべてをreadonly=falseにする
             //numericTextBoxA.Enabled = numericTextBoxB.Enabled = numericTextBoxC.Enabled = numericTextBoxAlpha.Enabled = numericTextBoxBeta.Enabled = numericTextBoxGamma.Enabled = true;
             //numericTextBoxAErr.Enabled = numericTextBoxBErr.Enabled = numericTextBoxCErr.Enabled = numericTextBoxAlphaErr.Enabled = numericTextBoxBetaErr.Enabled = numericTextBoxGammaErr.Enabled = true;
