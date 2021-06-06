@@ -133,6 +133,7 @@
             this.toolStripButtonPolycrystallineDiffraction = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonDatabase = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -963,7 +964,8 @@
             this.toolStripSeparator10,
             this.toolStripButtonPolycrystallineDiffraction,
             this.toolStripSeparator15,
-            this.toolStripButtonDatabase});
+            this.toolStripButtonDatabase,
+            this.toolStripSeparator19});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -1105,6 +1107,11 @@
             resources.ApplyResources(this.toolStripButtonDatabase, "toolStripButtonDatabase");
             this.toolStripButtonDatabase.Name = "toolStripButtonDatabase";
             this.toolStripButtonDatabase.CheckedChanged += new System.EventHandler(this.toolStripButtonDatabase_CheckedChanged);
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            resources.ApplyResources(this.toolStripSeparator19, "toolStripSeparator19");
             // 
             // menuStrip1
             // 
@@ -1538,6 +1545,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
     }
 }
 

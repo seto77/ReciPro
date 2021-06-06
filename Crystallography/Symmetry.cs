@@ -22,8 +22,7 @@ namespace Crystallography
         public string SpaceGroupHMfullStr { get;  }
         public string MainAxis { get;  }
         public string LatticeTypeStr { get;  }
-
-        public string StrSE1p { get;  }
+		public string StrSE1p { get;  }
         public string StrSE1v { get;  }
         public string StrSE2p { get;  }
         public string StrSE2v { get;  }
@@ -46,70 +45,68 @@ namespace Crystallography
         public string[] ExtinctionRuleStr { get;  }
 
         public List<Func<int, int, int, string>> CheckExtinctionFunc { get; }
-        #endregion
+		#endregion
 
-        #region コンストラクタ
-        public Symmetry(int seriesNumber)
-        {
+		#region コンストラクタ
+		public Symmetry(int seriesNumber)
+		{
+			if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
+			{
+				var str = SymmetryStatic.StrArray[seriesNumber];
+				var num = SymmetryStatic.NumArray[seriesNumber];
 
-            if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
-            {
-                var str = SymmetryStatic.StrArray[seriesNumber];
-                var num = SymmetryStatic.NumArray[seriesNumber];
+				SpaceGroupHMsubStr = str[0];
+				SpaceGroupSFStr = str[1];
+				SpaceGroupHallStr = str[2];
+				SpaceGroupHMStr = str[3];
+				SpaceGroupHMfullStr = str[4];
+				MainAxis = str[5];
+				LatticeTypeStr = str[6];
+				StrSE1p = str[7];
+				StrSE1v = str[8];
+				StrSE2p = str[9];
+				StrSE2v = str[10];
+				StrSE3p = str[11];
+				StrSE3v = str[12];
+				PointGroupHMStr = str[13];
+				PointGroupSFStr = str[14];
+				LaueGroupStr = str[15];
+				CrystalSystemStr = str[16];
 
-                SpaceGroupHMsubStr = str[0];
-                SpaceGroupSFStr = str[1];
-                SpaceGroupHallStr = str[2];
-                SpaceGroupHMStr = str[3];
-                SpaceGroupHMfullStr = str[4];
-                MainAxis = str[5];
-                LatticeTypeStr = str[6];
-                StrSE1p = str[7];
-                StrSE1v = str[8];
-                StrSE2p = str[9];
-                StrSE2v = str[10];
-                StrSE3p = str[11];
-                StrSE3v = str[12];
-                PointGroupHMStr = str[13];
-                PointGroupSFStr = str[14];
-                LaueGroupStr = str[15];
-                CrystalSystemStr = str[16];
+				SeriesNumber = num[0];
+				SpaceGroupNumber = (byte)num[1];
+				SpaceGroupSubNumber = (byte)num[2];
+				PointGroupNumber = (byte)num[3];
+				LaueGroupNumber = (byte)num[4];
+				CrystalSystemNumber = (byte)num[5];
 
-                SeriesNumber = (ushort)num[0];
-                SpaceGroupNumber = (byte)num[1];
-                SpaceGroupSubNumber = (byte)num[2];
-                PointGroupNumber = (byte)num[3];
-                LaueGroupNumber = (byte)num[4];
-                CrystalSystemNumber = (byte)num[5];
-               
-                ExtinctionRuleStr = null;
-                CheckExtinctionFunc = null;
+				ExtinctionRuleStr = null;
+				CheckExtinctionFunc = null;
 
-                ExtinctionRuleStr = ExtinctionRule(this);
-                CheckExtinctionFunc = SetExtinctionFunc(this);
-            }
-            else
-            {
-                 SpaceGroupHMsubStr = SpaceGroupSFStr =  SpaceGroupHallStr = SpaceGroupHMStr =   SpaceGroupHMfullStr = MainAxis = 
-                LatticeTypeStr =   StrSE1p =   StrSE1v =  StrSE2p =    StrSE2v = StrSE3p =   StrSE3v =  PointGroupHMStr = 
-                PointGroupSFStr =   LaueGroupStr =  CrystalSystemStr = "";
+				ExtinctionRuleStr = ExtinctionRule(this);
+				CheckExtinctionFunc = SetExtinctionFunc(this);
+			}
+			else
+			{
+				SpaceGroupHMsubStr = SpaceGroupSFStr = SpaceGroupHallStr = SpaceGroupHMStr = SpaceGroupHMfullStr = MainAxis =
+			    LatticeTypeStr = StrSE1p = StrSE1v = StrSE2p = StrSE2v = StrSE3p = StrSE3v = PointGroupHMStr =
+			    PointGroupSFStr = LaueGroupStr = CrystalSystemStr = "";
 
-                SeriesNumber = 0;
-                SpaceGroupNumber = SpaceGroupSubNumber = PointGroupNumber = LaueGroupNumber = CrystalSystemNumber = 0;
-               
-                ExtinctionRuleStr = null;
-                CheckExtinctionFunc = null;
-            }
+				SeriesNumber = 0;
+				SpaceGroupNumber = SpaceGroupSubNumber = PointGroupNumber = LaueGroupNumber = CrystalSystemNumber = 0;
 
-        }
+				ExtinctionRuleStr = null;
+				CheckExtinctionFunc = null;
+			}
+		}
         #endregion
 
         #region メソッド
-        public bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex((h, k, l), this);
+        public readonly bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex((h, k, l), this);
 
-        public bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
+        public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
 
-        public string[] CheckExtinctionRule((int h, int k, int l) index)
+        public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
             => CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null).ToArray();
 
         public string[] CheckExtinctionRule(int h, int k, int l)

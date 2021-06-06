@@ -96,7 +96,7 @@ namespace Crystallography
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
-        public List<Vector3D> GeneratePositions(double x, double y, double z)
+        public readonly List<Vector3D> GeneratePositions(double x, double y, double z)
         {
             var pos = new List<Vector3D>();
             var th = SymmetryStatic.Th;
@@ -134,7 +134,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public bool CheckPosition(double x, double y, double z)
+        public readonly bool CheckPosition(double x, double y, double z)
         {
             static bool chk(double d1, double d2)
             {

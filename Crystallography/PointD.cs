@@ -18,9 +18,9 @@ namespace Crystallography
         public double UpperX { get { return X + Width; } }
         public double UpperY { get { return Y + Height; } }
 
-        public bool IsInsde(PointD p)
+        public readonly bool IsInsde(PointD p)
         {
-            return p.X >= X && p.X <= UpperX && p.Y >= Y && p.Y <= UpperY;
+            return p.X >= X && p.X <= X + Width && p.Y >= Y && p.Y <= Y + Height;
         }
 
         public RectangleD(double x, double y, double width, double height) : this()
@@ -63,12 +63,12 @@ namespace Crystallography
             Height = Math.Abs(pt2.Y - pt1.Y);
         }
 
-        public RectangleF ToRectangleF()
+        public readonly RectangleF ToRectangleF()
         {
             return new RectangleF((float)X, (float)Y, (float)Width, (float)Height);
         }
 
-        public SizeD ToSizeD()
+        public readonly SizeD ToSizeD()
         {
             return new SizeD(Width, Height);
         }
@@ -82,35 +82,31 @@ namespace Crystallography
         public double Width { set; get; }
         public double Height { set; get; }
 
-        public SizeD(double width, double height)
-            : this()
+        public SizeD(double width, double height)            : this()
         {
             Width = width;
             Height = height;
         }
 
-        public SizeD(int width, int height)
-            : this()
+        public SizeD(int width, int height)            : this()
         {
             Width = width;
             Height = height;
         }
 
-        public SizeD(SizeD size)
-            : this()
+        public SizeD(SizeD size)            : this()
         {
             Width = size.Width;
             Height = size.Height;
         }
 
-        public SizeD(Size size)
-            : this()
+        public SizeD(Size size)         : this()
         {
             Width = size.Width;
             Height = size.Height;
         }
 
-        public SizeF ToSizeF()
+        public readonly SizeF ToSizeF()
         {
             return new SizeF((float)Width, (float)Height);
         }
@@ -154,9 +150,9 @@ namespace Crystallography
         public double X { get; set; }
         public double Y { get; set; }
         public object Tag { get; set; }
-        public bool IsNaN { get => double.IsNaN(X) || double.IsNaN(Y); }
-        public double Length2 => X * X + Y * Y;
-        public double Length => Math.Sqrt(X * X + Y * Y);
+        public readonly bool IsNaN { get => double.IsNaN(X) || double.IsNaN(Y); }
+        public readonly double Length2 => X * X + Y * Y;
+        public readonly double Length => Math.Sqrt(X * X + Y * Y);
 
         /* public PointD()
          {
@@ -187,7 +183,7 @@ namespace Crystallography
             Tag = null;
         }
 
-        public PointF ToPointF() => new PointF((float)X, (float)Y);
+        public readonly PointF ToPointF() => new((float)X, (float)Y);
 
         public int CompareTo(object obj)
         {
@@ -205,9 +201,9 @@ namespace Crystallography
         /// Get the string representation
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => String.Format("({0}, {1})", this.X, this.Y);
+        public override readonly string ToString() => string.Format("({0}, {1})", this.X, this.Y);
 
-        public override bool Equals(object obj) => obj is PointD d && Equals(d);
+        public override  bool Equals(object obj) => obj is PointD d && Equals(d);
 
         public bool Equals(PointD other) => X == other.X && Y == other.Y;
 

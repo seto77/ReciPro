@@ -19,9 +19,6 @@ namespace Crystallography
             if (destBmp != null)
                 destBmp.Dispose();
         }
-
-     
-
         static PseudoBitmap()
         {
             #region スケールの初期化
@@ -512,7 +509,6 @@ namespace Crystallography
         /// </summary>
         public bool AlphaEnabled { set; get; } = false;
 
-
         /// <summary>
         /// 上下方向の反転をするかどうか
         /// </summary>
@@ -544,9 +540,7 @@ namespace Crystallography
                     SetScaleRotation();
             }
         }
-
-
-
+        
         public static byte[] BrightnessScaleR = new byte[65536];//明るさスケール　16bit長に固定
         public static byte[] BrightnessScaleG = new byte[65536];//明るさスケール　16bit長に固定
         public static byte[] BrightnessScaleB = new byte[65536];//明るさスケール　16bit長に固定

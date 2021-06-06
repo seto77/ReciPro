@@ -17,7 +17,7 @@ namespace ReciPro
         #region プロパティ, フィールド
 
         // public PseudoBitmap DiffractionPattern;
-        private Crystallography.PseudoBitmap pseudoBitmap = new Crystallography.PseudoBitmap();
+        private PseudoBitmap pseudoBitmap = new();
 
         private List<Crystal> crystals = null;
 

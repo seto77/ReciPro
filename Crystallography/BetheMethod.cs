@@ -25,7 +25,6 @@ namespace Crystallography
     public class BetheMethod
     {
         #region static readonly field
-
         private static readonly Complex One = Complex.One;
         private static readonly double TwoPi = 2 * Math.PI;
         private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;

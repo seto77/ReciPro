@@ -15,7 +15,7 @@ namespace Crystallography.Controls
 
         bool skipEvent { get; set; } = false;
 
-        new public event MyEventHandler LimitChanged;
+        public event MyEventHandler LimitChanged;
         public NumericBoxWithMenu()
         {
             InitializeComponent();
@@ -29,7 +29,6 @@ namespace Crystallography.Controls
 
             toolStripComboBoxMouseDirection.SelectedIndex = 0;
         }
-
 
         private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e) 
             => SmartIncrement = smartIncrementToolStripMenuItem.Checked;
@@ -63,12 +62,10 @@ namespace Crystallography.Controls
             e.Handled = !((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == '\b');
         }
 
-
         private void allowMouseContlolToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             toolStripMenuItem3.Enabled = toolStripMenuItem4.Enabled = allowMouseContlolToolStripMenuItem.Checked;
         }
-
 
         private void contextMenuStripBody_Closing(object sender, ToolStripDropDownClosingEventArgs e)
         {
@@ -89,8 +86,6 @@ namespace Crystallography.Controls
             if (speed > 0)
                 mouseSpeed = speed;
         }
-
-
 
         #region マウスコントロールモード
 
