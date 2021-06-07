@@ -484,7 +484,7 @@ namespace ReciPro
             sw.Restart();
 
             var dic1 = new Dictionary<string, bondVertex[]>();
-            bondControl.GetAll().Where(b => b.Enabled).ToList().ForEach(bond =>
+            bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron||b.ShowBond)).ToList().ForEach(bond =>
             {
                 double min2 = bond.MinLength * bond.MinLength, max2 = bond.MaxLength * bond.MaxLength, radius = bond.Radius;
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
@@ -596,11 +596,13 @@ namespace ReciPro
                 .Distinct().ToList();
 
             //範囲外であり、なおかつ、上のシリアル番号に含まれない原子を取得
-            var removeList = GLObjectsP
-                .Where(obj => obj.Tag is atomID id && !id.IsInside && !vertexSerials.Contains(obj.SerialNumber))
-                .ToList();
-
-            removeList.ForEach(obj => GLObjects.Remove(obj));
+            //高速化のため、マルチスレッドを避ける
+            for (int i= 0; i < GLObjects.Count; i++)
+                if (GLObjects[i].Tag is atomID id && !id.IsInside && !vertexSerials.Contains(GLObjects[i].SerialNumber))
+                { 
+                    GLObjects.RemoveAt(i);
+                    i--;
+                }
 
             textBoxInformation.AppendText("Remove tentative atoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }

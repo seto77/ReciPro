@@ -71,7 +71,7 @@ void main(void)
 
 	//Copy color
 	int argb;
-	if (UseFixedArgb)
+	if (UseFixedArgb || vObjType != 0)
 		argb = FixedArgb;
 	else
 		argb = vArgb;

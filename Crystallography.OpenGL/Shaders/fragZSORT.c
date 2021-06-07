@@ -1,8 +1,4 @@
 #version 130
-//#pragma optionNV(ifcvt none)
-//#pragma optionNV(inline all)
-//#pragma optionNV(strict on)
-//#pragma optionNV(unroll all)
 
 //layout(early_fragment_tests) in;
 

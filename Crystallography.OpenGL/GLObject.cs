@@ -29,7 +29,7 @@ namespace Crystallography.OpenGL
     public readonly struct Vertex
     {
         /// <summary>
-        /// 0: テクスチャ無しポリゴン、1: テクスチャ有りポリゴン、2: 文字列. 
+        /// 0: テクスチャ無しポリゴン. 1: テクスチャ有りポリゴン. 2: 文字列.
         /// 文字列の場合はNormalが中心座標, Positionは中心からのシフト量(X,Yはピクセル単位、Zはワールド単位で、回転の影響を受けない)を表す. 
         /// </summary>
         public readonly int Mode;
@@ -42,6 +42,12 @@ namespace Crystallography.OpenGL
 
         public readonly V2f Uv;
 
+        /// <summary>
+        /// テクスチャ無しのポリゴン
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="normal"></param>
+        /// <param name="argb"></param>
         public Vertex(V3f position, V3f normal, int argb)
         {
             Position = position;
@@ -52,13 +58,20 @@ namespace Crystallography.OpenGL
         }
         public Vertex(V4f position, V3f normal, int argb) : this(new V3f(position), normal, argb) { }
 
-        public Vertex(V3f position, V3f normal, V2f uv, int argb, int mode)
+
+        /// <summary>
+        /// 文字列のコンストラクタ
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="normal"></param>
+        /// <param name="uv"></param>
+        public Vertex(V3f position, V3f normal, V2f uv)
         {
             Position = position;
             Normal = normal;
-            Argb = argb;
+            Argb = 0;
             Uv = uv;
-            Mode = mode;
+            Mode = 2;
         }
 
         public static readonly int Stride = Marshal.SizeOf(default(Vertex));
@@ -111,12 +124,14 @@ namespace Crystallography.OpenGL
         private static readonly int sizeOfInt = sizeof(int);
         private static readonly int sizeOfUInt = sizeof(uint);
         private static readonly List<(string Product, string Version)> GraphicsInfo;
-        
+
         #endregion
 
         #region internalな フィールド & プロパティ
 
-        internal int VBO, VAO, EBO;
+        internal int VBO;
+        internal int VAO;
+        internal int EBO;
 
         internal int Program = -1;
 
@@ -264,20 +279,18 @@ namespace Crystallography.OpenGL
                 location = Location[program];
             }
 
-            //GL.VertexAttribPointerのパラメータ配列を取得。初めての場合は辞書に登録
-            if (!VertexAttribPointerParameters.TryGetValue(program, out var prms))
+            var prms = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
             {
-                VertexAttribPointerParameters.Add(program, new[]{
-                            (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
-                            (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
-                            (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
-                            (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
-                            (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
-                            });
-                prms = VertexAttribPointerParameters[program];
-            }
+                (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
+                (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
+                (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
+                (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
+                (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
 
-            foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
+            };
+
+            int n = 0;
+            foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0).ToArray())
             {
                 o.Program = program;
 
@@ -294,8 +307,9 @@ namespace Crystallography.OpenGL
                     o.EBO = def.EBO;
                     o.VAO = def.VAO;
                 }
-                else
+                else if (o.Rendered)
                 {
+                    n++;
                     // VBO作成
                     GL.GenBuffers(1, out o.VBO);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
@@ -407,7 +421,9 @@ namespace Crystallography.OpenGL
         /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
-            GL.UniformMatrix4(Location[Program].ObjectMatrix, false, ref ObjectMatrix);
+            //物体の中心位置を送信 default形状のみ必要
+            if (prms.objmatrix != ObjectMatrix)
+                GL.UniformMatrix4(Location[Program].ObjectMatrix, false, ref ObjectMatrix);
 
             var renew = prms.Program != Program;
 
@@ -448,10 +464,10 @@ namespace Crystallography.OpenGL
             //else
             GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
 
-            prms = (Program, emi, amb, dif, spe, Material.SpecularPower, Material.Argb, IgnoreNormalSides, UseFixedArgb);
+            prms = (Program, emi, amb, dif, spe, Material.SpecularPower, Material.Argb, IgnoreNormalSides, UseFixedArgb, ObjectMatrix);
         }
-        static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb)
-             prms = (-1, 0, 0, 0, 0, 0, 0, false, false);
+        static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb, M4f objmatrix)
+             prms = (-1, 0, 0, 0, 0, 0, 0, false, false, M4f.Identity);
 
 
         /// <summary>
@@ -1612,10 +1628,6 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class TextObject : GLObject
     {
-        /// <summary>
-        /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-        /// </summary>
-
         private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)> dic = new();
 
         public static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
@@ -1706,10 +1718,10 @@ namespace Crystallography.OpenGL
                 var argb = mat.Argb;
                 Vertices = new[] 
                 {
-                    new Vertex(new V3f(-widthF, +heightF, popoutF), pos ,p00, argb, 2),
-                    new Vertex(new V3f(+widthF, +heightF, popoutF), pos ,p10, argb, 2),
-                    new Vertex(new V3f(+widthF, -heightF, popoutF), pos ,p11, argb, 2),
-                    new Vertex(new V3f(-widthF, -heightF, popoutF), pos ,p01, argb, 2) 
+                    new Vertex(new V3f(-widthF, +heightF, popoutF), pos ,p00),
+                    new Vertex(new V3f(+widthF, +heightF, popoutF), pos ,p10),
+                    new Vertex(new V3f(+widthF, -heightF, popoutF), pos ,p11),
+                    new Vertex(new V3f(-widthF, -heightF, popoutF), pos ,p01) 
                 };
 
                 CircumscribedSphereCenter = new V4d(position, 1);
