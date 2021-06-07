@@ -1441,7 +1441,7 @@ namespace Crystallography
                 double TotalWeightPerUnitCell = 0;
                 for (int i = 0; i < ElementName.Length; i++)
                 {
-                    TotalWeightPerUnitCell += AtomConstants.AtomicWeight(ElementName[i]) * ElementNum[i];
+                    TotalWeightPerUnitCell += AtomStatic.AtomicWeight(ElementName[i]) * ElementNum[i];
                 }
                 Density = TotalWeightPerUnitCell / Math.Sqrt(CellVolumeSqure) / 6.0221367 / 100;
                 WeightPerFormula = TotalWeightPerUnitCell / ChemicalFormulaZ;

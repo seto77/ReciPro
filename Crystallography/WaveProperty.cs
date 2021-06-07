@@ -61,8 +61,8 @@ namespace Crystallography
         public WaveProperty(int xrayElementNumber, XrayLine xrayLine)
         {
             Source = WaveSource.Xray;
-            WaveLength = AtomConstants.CharacteristicXrayWavelength(xrayElementNumber, xrayLine);
-            Energy = AtomConstants.CharacteristicXrayWavelength(xrayElementNumber, xrayLine);
+            WaveLength = AtomStatic.CharacteristicXrayWavelength(xrayElementNumber, xrayLine);
+            Energy = AtomStatic.CharacteristicXrayWavelength(xrayElementNumber, xrayLine);
         }
 
         public WaveProperty(WaveSource source, double value, bool isEnergy = true)

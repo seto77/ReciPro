@@ -193,7 +193,7 @@ namespace Crystallography
 								temp = label.Substring(0, q);
 								for (int k = 0; k <= 96; k++)
 								{
-									if (AtomConstants.AtomicName(k) == temp)
+									if (AtomStatic.AtomicName(k) == temp)
 									{
 										atomicNumber = k;
 										break;
@@ -454,7 +454,7 @@ namespace Crystallography
 					var temp = label.Substring(0, q);
 					for (int k = 0; k <= 96 && atomicNumber == 0; k++)
 					{
-						if (AtomConstants.AtomicName(k) == temp)
+						if (AtomStatic.AtomicName(k) == temp)
 						{
 							atomicNumber = k;
 							q = -1;
@@ -1117,7 +1117,7 @@ namespace Crystallography
 					var temp = atomName.Substring(0, q);
 					for (int k = 0; k <= 96 && atomicNumber == 0; k++)
 					{
-						if (AtomConstants.AtomicName(k).ToLower() == temp.ToLower())
+						if (AtomStatic.AtomicName(k).ToLower() == temp.ToLower())
 							atomicNumber = k;
 					}
 
@@ -1631,7 +1631,7 @@ namespace Crystallography
 			foreach (var a in crystal.Atoms)
 			{
 				var u = double.IsNaN(a.Dsf.Uiso) ? 0 : a.Dsf.Uiso;
-				sb.AppendLine($"{a.Label} {AtomConstants.AtomicName(a.AtomicNumber)} {a.X:f5} {a.Y:f5} {a.Z:f5} {a.Occ:f5} {u:f5}");
+				sb.AppendLine($"{a.Label} {AtomStatic.AtomicName(a.AtomicNumber)} {a.X:f5} {a.Y:f5} {a.Z:f5} {a.Occ:f5} {u:f5}");
 			}
 
 			sb.AppendLine("loop_");

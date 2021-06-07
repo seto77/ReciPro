@@ -25,22 +25,22 @@ namespace Crystallography.Controls
             set
             {
                 isotopicComposition = value;
-                if (isotopicComposition == null || isotopicComposition.Length != AtomConstants.IsotopeAbundance[atomNumber].Count)
+                if (isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[atomNumber].Count)
                 {
                     dataGridView.Rows.Clear();
-                    foreach (int z in AtomConstants.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add(new object[] { z.ToString(), AtomConstants.IsotopeAbundance[atomNumber][z], AtomConstants.IsotopeAbundance[atomNumber][z] });
+                    foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
+                        dataGridView.Rows.Add(new object[] { z.ToString(), AtomStatic.IsotopeAbundance[atomNumber][z], AtomStatic.IsotopeAbundance[atomNumber][z] });
                 }
                 else
                 {
                     int n = 0;
-                    foreach (int z in AtomConstants.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add(new object[] { z, AtomConstants.IsotopeAbundance[atomNumber][z], isotopicComposition[n++] });
+                    foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
+                        dataGridView.Rows.Add(new object[] { z, AtomStatic.IsotopeAbundance[atomNumber][z], isotopicComposition[n++] });
                 }
             }
             get
             {
-                isotopicComposition = new double[AtomConstants.IsotopeAbundance[atomNumber].Count];
+                isotopicComposition = new double[AtomStatic.IsotopeAbundance[atomNumber].Count];
                 for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
                     try

@@ -11,6 +11,7 @@ namespace Crystallography
     [MessagePackObject]
     public class Bonds
     {
+        #region フィールド
         [Key(0)]
         public  string Element1;
         [Key(1)]
@@ -62,6 +63,9 @@ namespace Crystallography
         [IgnoreMember]
         public List<int[]> pairID = new();
 
+        #endregion
+
+        #region コンストラクタ
         public Bonds()
         {
         }
@@ -143,14 +147,16 @@ namespace Crystallography
         {
 
         }
+        #endregion
 
+        #region static メソッド、コンストラクタ
 
         /// <summary>
         /// Vesta標準のボンドを生成. 入力形式は、原子番号の配列
         /// </summary>
         /// <param name="atomicNumbers"></param>
         /// <returns></returns>
-        public static Bonds[] GetVestaBonds(IEnumerable<int> atomicNumbers) => GetVestaBonds(atomicNumbers.Select(n => $"{n}: {AtomConstants.AtomicName(n)}"));
+        public static Bonds[] GetVestaBonds(IEnumerable<int> atomicNumbers) => GetVestaBonds(atomicNumbers.Select(n => $"{n}: {AtomStatic.AtomicName(n)}"));
 
         /// <summary>
         /// Vesta標準のボンドを生成. 入力形式は、 "26: Fe" のような原子番号と元素記号のセットにした文字列の配列
@@ -172,10 +178,10 @@ namespace Crystallography
                 }
            
             //CationとAnionが両方含まれている場合は、同種原子の結合を除去
-            if (Anions.Any(anion => list.Contains(anion)) && Cations.Any(cation => list.Contains(cation)))
+            if (VestaAnions.Any(anion => list.Contains(anion)) && VestaCations.Any(cation => list.Contains(cation)))
             {
-                Anions.ForEach(anion => bonds.Remove(bonds.Find(b => b.Element1 == anion && b.Element2 == anion)));
-                Cations.ForEach(cation => bonds.Remove(bonds.Find(b => b.Element1 == cation && b.Element2 == cation)));
+                VestaAnions.ForEach(anion => bonds.Remove(bonds.Find(b => b.Element1 == anion && b.Element2 == anion)));
+                VestaCations.ForEach(cation => bonds.Remove(bonds.Find(b => b.Element1 == cation && b.Element2 == cation)));
             }
 
             return bonds.ToArray();
@@ -184,7 +190,7 @@ namespace Crystallography
         static Bonds()
         {
             var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };
-            Anions = anionNum.Select(n => $"{n}: {AtomConstants.AtomicName(n)}").ToList();
+            VestaAnions = anionNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}").ToList();
 
             var cationNum = new List<int>();
             cationNum.AddRange(Enumerable.Range(3, 5));
@@ -192,13 +198,13 @@ namespace Crystallography
             cationNum.AddRange(Enumerable.Range(19, 15));
             cationNum.AddRange(Enumerable.Range(37, 15));
             cationNum.AddRange(Enumerable.Range(55, 20));
-            Cations = cationNum.Select(n => $"{n}: {AtomConstants.AtomicName(n)}").ToList();
+            VestaCations = cationNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}").ToList();
         }
 
-        public static List<string> Cations;
-        public static List<string> Anions;
+        public static List<string> VestaCations { get; }
+        public static List<string> VestaAnions { get; }
 
-        public static (string e1, string e2, double min, double max)[] bondCandidates = new[]
+        private static (string e1, string e2, double min, double max)[] bondCandidates = new[]
         {
 			#region VestaのStyles.iniからコピーした内容。原子の結合の情報。
 		
@@ -1119,7 +1125,7 @@ namespace Crystallography
 
 	#endregion
 		};
-
+        #endregion
 
     }
 }

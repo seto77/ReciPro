@@ -82,25 +82,25 @@ namespace Crystallography
         public double Width { set; get; }
         public double Height { set; get; }
 
-        public SizeD(double width, double height)            : this()
+        public SizeD(double width, double height) : this()
         {
             Width = width;
             Height = height;
         }
 
-        public SizeD(int width, int height)            : this()
+        public SizeD(int width, int height) : this()
         {
             Width = width;
             Height = height;
         }
 
-        public SizeD(SizeD size)            : this()
+        public SizeD(SizeD size) : this()
         {
             Width = size.Width;
             Height = size.Height;
         }
 
-        public SizeD(Size size)         : this()
+        public SizeD(Size size) : this()
         {
             Width = size.Width;
             Height = size.Height;
@@ -154,21 +154,13 @@ namespace Crystallography
         public readonly double Length2 => X * X + Y * Y;
         public readonly double Length => Math.Sqrt(X * X + Y * Y);
 
-        /* public PointD()
-         {
-             X = Y = 0;
-             Tag = null;
-         }*/
-
         public PointD(in double x, in double y)
-        //: this()
         {
             X = x;
             Y = y;
             Tag = null;
         }
         public PointD(in (double x, double y) e)
-        //: this()
         {
             X = e.x;
             Y = e.y;
@@ -176,7 +168,6 @@ namespace Crystallography
         }
 
         public PointD(in PointD pt)
-        //: this()
         {
             X = pt.X;
             Y = pt.Y;
@@ -193,10 +184,6 @@ namespace Crystallography
             else return Y.CompareTo(((PointD)obj).Y);
         }
 
-
-
-      
-
         /// <summary>
         /// Get the string representation
         /// </summary>
@@ -207,10 +194,7 @@ namespace Crystallography
 
         public bool Equals(PointD other) => X == other.X && Y == other.Y;
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y);
-        }
+        public override int GetHashCode() => HashCode.Combine(X, Y);
 
 
         #region 演算子のオーバーロード
@@ -223,7 +207,7 @@ namespace Crystallography
 
         public static PointD operator *(in double d, in PointD p) => new(d * p.X, d * p.Y);
 
-        public static PointD operator *(PointD p, double d) => new(d * p.X, d * p.Y);
+        public static PointD operator *(in PointD p, in double d) => new(d * p.X, d * p.Y);
 
         public static double operator *(in PointD p1, in PointD p2) => p1.X * p2.X + p1.Y * p2.Y;
 

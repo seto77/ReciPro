@@ -65,8 +65,8 @@ namespace Crystallography.Controls
             else if (z == 84) numericBoxValence.Value = 4;
             else if (z == 87) numericBoxValence.Value = 1;
             else if (z == 91) numericBoxValence.Value = 5;
-            else if (AtomConstants.XrayScattering[z][AtomConstants.XrayScattering[z].Length - 1].Valence > 0)
-                numericBoxValence.Value = AtomConstants.XrayScattering[z][AtomConstants.XrayScattering[z].Length - 1].Valence;
+            else if (AtomStatic.XrayScattering[z][AtomStatic.XrayScattering[z].Length - 1].Valence > 0)
+                numericBoxValence.Value = AtomStatic.XrayScattering[z][AtomStatic.XrayScattering[z].Length - 1].Valence;
             else
                 numericBoxValence.Value = 0;
             numericBoxValence_ValueChanged(sender, e);

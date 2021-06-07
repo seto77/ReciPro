@@ -5,9 +5,13 @@ using System.Xml.Serialization;
 
 namespace Crystallography
 {
+    /// <summary>
+    /// ワイコフポジション構造体. SymmetryStaticで初期化される.
+    /// </summary>
     [Serializable()]
     public readonly struct WyckoffPosition
     {
+        #region フィールド、プロパティ
         /// <summary>
         /// 空間群の番号
         /// </summary>
@@ -58,7 +62,10 @@ namespace Crystallography
         /// 自由度 (このワイコフ位置がx,y,zなどの変数を含む場合はtrue, 含まない場合はfalse)
         /// </summary>
         public (bool X, bool Y, bool Z ) Free { get; }
-  
+
+        #endregion
+
+        #region コンストラクタ
         public WyckoffPosition(int symSeries, string latticeType, string wykLetter, int wykNum, string siteSym,
             string[] coordStr,
             Func<double, double, double, (double X, double Y, double Z)>[] generators,
@@ -88,7 +95,9 @@ namespace Crystallography
                     Free =  (true,true,true);
             }
         }
+        #endregion
 
+        #region メソッド
         /// <summary>
         /// 与えられたx,y,zで、このワイコフ位置を再生
         /// </summary>
@@ -96,7 +105,7 @@ namespace Crystallography
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
-        public readonly List<Vector3D> GeneratePositions(double x, double y, double z)
+        public readonly List<Vector3D> GeneratePositions(in double x, in double y, in double z)
         {
             var pos = new List<Vector3D>();
             var th = SymmetryStatic.Th;
@@ -134,7 +143,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public readonly bool CheckPosition(double x, double y, double z)
+        public readonly bool CheckPosition(double x,double y, double z)
         {
             static bool chk(double d1, double d2)
             {
@@ -153,15 +162,16 @@ namespace Crystallography
             }
             return false;
         }
+        #endregion
 
-
+        #region static メソッド
         /// <summary>
         /// 引数の空間群による対称操作で映る原子位置(pos)の等価な原子位置をクラスAtomsでかえす
         /// </summary>
         /// <param name="Pos"></param>
         /// <param name="SymmetrySeriesNumber"></param>
         /// <returns></returns>
-        public static Atoms GetEquivalentAtomsPosition((double X, double Y, double Z) Pos, int SymmetrySeriesNumber)
+        public static Atoms GetEquivalentAtomsPosition(in (double X, double Y, double Z) Pos, in int SymmetrySeriesNumber)
         {
             if (double.IsNaN(Pos.X) || double.IsNaN(Pos.Y) || double.IsNaN(Pos.Z))
                 return new Atoms();
@@ -214,7 +224,9 @@ namespace Crystallography
             }
             return atoms;
         }
-        public static Atoms GetEquivalentAtomsPosition(Vector3D Pos, int SymmetrySeriesNumber)
+        public static Atoms GetEquivalentAtomsPosition(in Vector3D Pos, in int SymmetrySeriesNumber)
             => GetEquivalentAtomsPosition((Pos.X, Pos.Y, Pos.Z), SymmetrySeriesNumber);
+
+        #endregion
     }
 }

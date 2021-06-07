@@ -1,14 +1,11 @@
 ﻿namespace Crystallography
 {
-    public static class AtomConstantsSub
+    public static class AtomStaticSub
     {
-
-
         /// <summary>
-        /// MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 3万行もあって、超巨大。どうにかする?
+        /// MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 4万行もあって、超巨大。どうにかする?
         /// </summary>
         /// 
-        
         public static readonly (double X, double Y)[][][] MassAbsorptionCoefficient = new (double X, double Y)[][][]
         #region
 
@@ -44146,13 +44143,11 @@ new (double X, double Y)[]{
 
         #endregion
 
-        
-
         public static PointD[][][] LinearAbsorptionCoefficient;
 
         public static readonly double[] FluorescentYieldK = new double[]
         {
-#region
+        #region
             double.NaN,
 double.NaN,
 double.NaN,
@@ -44251,7 +44246,7 @@ double.NaN,
 
         public static readonly double[] FluorescentYieldL = new double[]
         {
-#region
+        #region
 double.NaN,
 double.NaN,
 double.NaN,
@@ -44351,7 +44346,7 @@ double.NaN,
 
         public static readonly double[] FluorescentYieldM = new double[]
         {
-#region
+        #region
 double.NaN,
 double.NaN,
 double.NaN,
@@ -44449,102 +44444,6 @@ double.NaN,
 #endregion
         };
 
-        public static readonly double[] NominalDensity = new double[]{
-            #region
-            0   ,
-    0.00008987  ,
-    1.6640E-04 ,
-    0.533   ,
-    1.845   ,
-    2.34    ,
-    2.2600 ,
-    0.001165    ,
-    0.001331    ,
-    1.1080 ,
-    0.0008391   ,
-    0.969   ,
-    1.7350 ,
-    2.6941 ,
-    2.3200 ,
-    1.82    ,
-    2.07    ,
-    1.56    ,
-    0.00166 ,
-    0.86    ,
-    1.55    ,
-    2.98    ,
-    4.5300 ,
-    6.1 ,
-    7.18    ,
-    7.43    ,
-    7.86    ,
-    8.9 ,
-    8.876   ,
-    8.94    ,
-    7.112   ,
-    5.877   ,
-    5.307   ,
-    5.72    ,
-    4.78    ,
-    3.1100 ,
-    0.003484    ,
-    1.529   ,
-    2.5400 ,
-    4.456   ,
-    6.494   ,
-    8.5500 ,
-    10.2    ,
-    11.48   ,
-    12.39   ,
-    12.39   ,
-    12  ,
-    10.48   ,
-    8.63    ,
-    7.3 ,
-    7.3 ,
-    6.679   ,
-    6.23    ,
-    4.92    ,
-    0.005458    ,
-    1.87    ,
-    3.5 ,
-    6.127   ,
-    6.637   ,
-    6.761   ,
-    6.994   ,
-    7.2 ,
-    7.51    ,
-    5.228   ,
-    7.877   ,
-    8.214   ,
-    8.525   ,
-    8.769   ,
-    9.039   ,
-    9.294   ,
-    6.953   ,
-    9.811   ,
-    13.29   ,
-    16.624  ,
-    19.3    ,
-    20.98   ,
-    22.53   ,
-    22.39   ,
-    21.41   ,
-    18.85   ,
-    13.522  ,
-    11.83   ,
-    11.33   ,
-    9.73    ,
-    9.3 ,
-    1   ,
-    0.000923    ,
-    1   ,
-    5   ,
-    10.05   ,
-    11.7    ,
-    15.34   ,
-    18.92
-            #endregion
-        };
+     
     }
 }

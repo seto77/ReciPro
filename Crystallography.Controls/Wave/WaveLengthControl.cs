@@ -270,7 +270,7 @@ namespace Crystallography.Controls
                 XrayLine[] temp = (XrayLine[])Enum.GetValues(typeof(XrayLine));
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    if (!double.IsNaN(AtomConstants.CharacteristicXrayWavelength(comboBoxXRayElement.SelectedIndex, temp[i])))
+                    if (!double.IsNaN(AtomStatic.CharacteristicXrayWavelength(comboBoxXRayElement.SelectedIndex, temp[i])))
                         comboBoxXrayLine.Items.Add(temp[i]);
                 }
                 if (comboBoxXrayLine.Items.Count == 0)
@@ -294,7 +294,7 @@ namespace Crystallography.Controls
         {
             if (this.Enabled && comboBoxXrayLine.SelectedItem != null)
             {
-                var d = AtomConstants.CharacteristicXrayWavelength(comboBoxXRayElement.SelectedIndex, (XrayLine)comboBoxXrayLine.SelectedItem);
+                var d = AtomStatic.CharacteristicXrayWavelength(comboBoxXRayElement.SelectedIndex, (XrayLine)comboBoxXrayLine.SelectedItem);
                 if (!double.IsNaN(d))
                 {
                     skipEvent = true;

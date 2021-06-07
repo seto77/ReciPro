@@ -4,7 +4,7 @@ namespace Crystallography
 {
     [Serializable()]
     /// <summary>
-    /// Seitz表記によるSymmetry operationを表現するクラス
+    /// Seitz表記によるSymmetry operationを表現するクラス SymmatryStaticで初期化される
     /// </summary>
     public readonly struct SymmetryOperation
     {

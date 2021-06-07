@@ -96,11 +96,11 @@ namespace Crystallography
         public Element(int atomicNumber, double valence, double molarAbundance = 1, XrayLine line = XrayLine.Ka, double count = 0, double countTime = 1)
         {
             Z = atomicNumber;
-            AtomicName = AtomConstants.AtomicName(Z);
+            AtomicName = AtomStatic.AtomicName(Z);
             MolarAbundance = molarAbundance;
             Valence = valence;
             // Isotopes = AtomConstants.IsotopeAbundance[Z];
-            MolarWeight = AtomConstants.AtomicWeight(Z);
+            MolarWeight = AtomStatic.AtomicWeight(Z);
         }
 
         public override string ToString()
@@ -166,7 +166,7 @@ namespace Crystallography
                 Valence = valence;
                 WeightRatio = weightRatio;
                 MolarAbundance = molarAbundance;
-                Formula = AtomConstants.AtomicName(z);
+                Formula = AtomStatic.AtomicName(z);
             }
         }
 
@@ -294,9 +294,9 @@ namespace Crystallography
                 {
                     int z = 0;
                     if (i + 1 < str.Length && str[i + 1] >= 'a' && str[i + 1] <= 'z')//二文字目が小文字のとき
-                        z = AtomConstants.AtomicNumber(str.Substring(i++, 2));
+                        z = AtomStatic.AtomicNumber(str.Substring(i++, 2));
                     else//二文字目が小文字ではないとき
-                        z = AtomConstants.AtomicNumber(str.Substring(i, 1));
+                        z = AtomStatic.AtomicNumber(str.Substring(i, 1));
 
                     string numStr = "";
                     while (i + 1 < str.Length && str[i + 1] >= '0' && str[i + 1] <= '9')//次に続く文字が数字の時
@@ -652,25 +652,25 @@ namespace Crystallography
                 edgeA = XrayLineEdge.L3;
                 lineA = XrayLine.La1;
             }
-            double EcA = AtomConstants.CharacteristicXrayEnergy(zA, edgeA);
-            double E = AtomConstants.CharacteristicXrayEnergy(zA, elements[index].Line);
+            double EcA = AtomStatic.CharacteristicXrayEnergy(zA, edgeA);
+            double E = AtomStatic.CharacteristicXrayEnergy(zA, elements[index].Line);
 
             double c = lineA == XrayLine.Ka ? 4.34E-6 : 3.13E-6;
 
-            double mu_rhoAAe = AtomConstants.MassAbsorption(EcA, zA);
+            double mu_rhoAAe = AtomStatic.MassAbsorption(EcA, zA);
             double mu_rhoUnkAe = 0;
             double mu_rhoUnkA = 0;
             double zAve = 0;
             for (int i = 0; i < elements.Length; i++)
             {
-                mu_rhoUnkAe += elements[i].WeightRatio * AtomConstants.MassAbsorption(EcA, elements[i].Z);
-                mu_rhoUnkA += elements[i].WeightRatio * AtomConstants.MassAbsorption(E, elements[i].Z);
+                mu_rhoUnkAe += elements[i].WeightRatio * AtomStatic.MassAbsorption(EcA, elements[i].Z);
+                mu_rhoUnkA += elements[i].WeightRatio * AtomStatic.MassAbsorption(E, elements[i].Z);
                 zAve += elements[i].WeightRatio * elements[i].Z;
             }
-            double gamma = AtomConstants.AbsorptionJumpRatio(zA, edgeA);
+            double gamma = AtomStatic.AbsorptionJumpRatio(zA, edgeA);
             double gammaMinusOnePerGamma = (gamma - 1) / gamma;
             if (lineA == XrayLine.La1)
-                gammaMinusOnePerGamma = (gamma - 1) / gamma / AtomConstants.AbsorptionJumpRatio(zA, XrayLineEdge.L2) / AtomConstants.AbsorptionJumpRatio(zA, XrayLineEdge.L1);
+                gammaMinusOnePerGamma = (gamma - 1) / gamma / AtomStatic.AbsorptionJumpRatio(zA, XrayLineEdge.L2) / AtomStatic.AbsorptionJumpRatio(zA, XrayLineEdge.L1);
 
             double chi = mu_rhoUnkA / Math.Sin(TakeoffAngle);
             double g = chi / mu_rhoUnkAe;
@@ -701,24 +701,24 @@ namespace Crystallography
             int zA = elements[index].Z;
             XrayLineEdge edgeA = XrayLineEdge.K;
             XrayLine lineA = XrayLine.Ka;
-            double energyA = AtomConstants.CharacteristicXrayEnergy(zA, elements[index].Line);
+            double energyA = AtomStatic.CharacteristicXrayEnergy(zA, elements[index].Line);
             if (elements[index].Line == XrayLine.La1 || elements[index].Line == XrayLine.La2 || elements[index].Line == XrayLine.Lb1 || elements[index].Line == XrayLine.Lb2)
             {
                 edgeA = XrayLineEdge.L3;
                 lineA = XrayLine.La1;
             }
-            double EcA = AtomConstants.CharacteristicXrayEnergy(zA, edgeA);
+            double EcA = AtomStatic.CharacteristicXrayEnergy(zA, edgeA);
 
             double fchGamma = 0;
             double U0A = E0 / EcA;
-            double gamma = AtomConstants.AbsorptionJumpRatio(zA, edgeA);
+            double gamma = AtomStatic.AbsorptionJumpRatio(zA, edgeA);
             double gammaMinusOnePerGamma = (gamma - 1) / gamma;
             if (lineA == XrayLine.La1)
-                gammaMinusOnePerGamma = (gamma - 1) / gamma / AtomConstants.AbsorptionJumpRatio(zA, XrayLineEdge.L2) / AtomConstants.AbsorptionJumpRatio(zA, XrayLineEdge.L1);
+                gammaMinusOnePerGamma = (gamma - 1) / gamma / AtomStatic.AbsorptionJumpRatio(zA, XrayLineEdge.L2) / AtomStatic.AbsorptionJumpRatio(zA, XrayLineEdge.L1);
 
             double mu_rhoUnkA = 0;
             for (int k = 0; k < elements.Length; k++)
-                mu_rhoUnkA += elements[k].WeightRatio * AtomConstants.MassAbsorption(energyA, elements[k].Z);
+                mu_rhoUnkA += elements[k].WeightRatio * AtomStatic.MassAbsorption(energyA, elements[k].Z);
 
             var sigmaA = 4.5E5 / (Math.Pow(E0, 1.65) - Math.Pow(EcA, 1.65));
 
@@ -727,8 +727,8 @@ namespace Crystallography
                 if (i != index)
                 {
                     var zB = elements[i].Z;
-                    var omega = AtomConstantsSub.FluorescentYieldK[zB];
-                    double JAwithoutP = 0.5 * gammaMinusOnePerGamma * omega * AtomConstants.AtomicWeight(zA) / AtomConstants.AtomicWeight(zB);
+                    var omega = AtomStaticSub.FluorescentYieldK[zB];
+                    double JAwithoutP = 0.5 * gammaMinusOnePerGamma * omega * AtomStatic.AtomicWeight(zA) / AtomStatic.AtomicWeight(zB);
 
                     //"Kab": beta = 1.1;  "Kb": beta = 0.1; "Lab": beta = 1.4;  "Lb": beta = 0.4;　計算効率を上げるため、一度計算したbetaは再利用する.
                     var beta = Array.Empty<double>();
@@ -736,10 +736,10 @@ namespace Crystallography
                         beta = betaArray[zB][EcA];
                     else
                     {
-                        if (EcA < AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.La1)) beta = new[] { 1.1, 1.4 };
-                        else if (EcA < AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.Lb1)) beta = new[] { 1.1, 0.4 };
-                        else if (EcA < AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.Ka1)) beta = new[] { 1.1 };
-                        else if (EcA < AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.Kb1)) beta = new[] { 0.1 };
+                        if (EcA < AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.La1)) beta = new[] { 1.1, 1.4 };
+                        else if (EcA < AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.Lb1)) beta = new[] { 1.1, 0.4 };
+                        else if (EcA < AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.Ka1)) beta = new[] { 1.1 };
+                        else if (EcA < AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.Kb1)) beta = new[] { 0.1 };
                         if (betaArray[zB] == null)
                             betaArray[zB] = new Dictionary<double, double[]>();
                         lock (lockObJforBetaArray)
@@ -749,7 +749,7 @@ namespace Crystallography
                     for (int j = 0; j < beta.Length; j++)//j==0ならK系列, j==1ならL系列
                     {
                         XrayLineEdge edgeB = j == 0 ? XrayLineEdge.K : XrayLineEdge.L3;
-                        double EcB = AtomConstants.CharacteristicXrayEnergy(zB, edgeB);
+                        double EcB = AtomStatic.CharacteristicXrayEnergy(zB, edgeB);
                         double U0B = E0 / EcB;
                         if (E0 > EcB)
                         {
@@ -763,12 +763,12 @@ namespace Crystallography
 
                             double D = Math.Pow((U0B - 1) / (U0A - 1), 1.67);
 
-                            double energyB = j == 0 ? AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.Ka) : AtomConstants.CharacteristicXrayEnergy(zB, XrayLine.La1);
+                            double energyB = j == 0 ? AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.Ka) : AtomStatic.CharacteristicXrayEnergy(zB, XrayLine.La1);
 
-                            double mu_rhoAB = AtomConstants.MassAbsorption(energyB, zA);
+                            double mu_rhoAB = AtomStatic.MassAbsorption(energyB, zA);
                             double mu_rhoUnkB = 0;
                             for (int k = 0; k < elements.Length; k++)
-                                mu_rhoUnkB += elements[k].WeightRatio * AtomConstants.MassAbsorption(energyB, elements[k].Z);
+                                mu_rhoUnkB += elements[k].WeightRatio * AtomStatic.MassAbsorption(energyB, elements[k].Z);
 
                             double x = mu_rhoUnkA / mu_rhoUnkB / Math.Sin(takeoff);
                             double gx = Math.Log(1 + x) / x;
@@ -800,7 +800,7 @@ namespace Crystallography
             else edge = XrayLineEdge.L3;
             double s = 0;
             for (int i = 0; i < elements.Length; i++)
-                s += elements[i].WeightRatio * AtomConstants.StoppingFactor(AtomConstants.CharacteristicXrayEnergy(z, edge), incidentEnergy, elements[i].Z);
+                s += elements[i].WeightRatio * AtomStatic.StoppingFactor(AtomStatic.CharacteristicXrayEnergy(z, edge), incidentEnergy, elements[i].Z);
             return s;
         }
 
@@ -820,7 +820,7 @@ namespace Crystallography
             else edge = XrayLineEdge.L3;
             double r = 0;
             for (int i = 0; i < elements.Length; i++)
-                r += elements[i].WeightRatio * AtomConstants.BackScatteredFactor(AtomConstants.CharacteristicXrayEnergy(z, edge), incidentEnergy, elements[i].Z);
+                r += elements[i].WeightRatio * AtomStatic.BackScatteredFactor(AtomStatic.CharacteristicXrayEnergy(z, edge), incidentEnergy, elements[i].Z);
             return r;
         }
 
@@ -845,12 +845,12 @@ namespace Crystallography
             double h = 0;
             for (int i = 0; i < elements.Length; i++)
             {
-                mu_rho += elements[i].WeightRatio * AtomConstants.MassAbsorption(AtomConstants.CharacteristicXrayEnergy(z, line), elements[i].Z);
-                h += elements[i].WeightRatio * 1.2 * AtomConstants.AtomicWeight(elements[i].Z) / elements[i].Z / elements[i].Z;
+                mu_rho += elements[i].WeightRatio * AtomStatic.MassAbsorption(AtomStatic.CharacteristicXrayEnergy(z, line), elements[i].Z);
+                h += elements[i].WeightRatio * 1.2 * AtomStatic.AtomicWeight(elements[i].Z) / elements[i].Z / elements[i].Z;
             }
 
             double chi = mu_rho / Math.Sin(theta);
-            double ec = AtomConstants.CharacteristicXrayEnergy(z, edge);
+            double ec = AtomStatic.CharacteristicXrayEnergy(z, edge);
             double sigma = 4.5E5 / (Math.Pow(incidentEnergy, 1.65) - Math.Pow(ec, 1.65));
             return (1 + h) / (1 + chi / sigma) / (1 + h * (1 + chi / sigma)); ;
         }

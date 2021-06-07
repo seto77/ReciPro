@@ -893,8 +893,8 @@ namespace Crystallography
 
             if (DoesRemoveKalpha2 && WaveSource == WaveSource.Xray && XrayElementNumber != 0 && XrayLine == XrayLine.Ka1)
             {
-                double alpha1 = AtomConstants.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
-                double alpha2 = AtomConstants.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
+                double alpha1 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
+                double alpha2 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
                 double startY = Kalpha2RemovedProfile.Pt[0].Y * 2 / 3;
 
                 List<double> theta = new List<double>();
@@ -1103,8 +1103,8 @@ namespace Crystallography
 
         public void RemoveKalpha2()
         {
-            double alpha1 = AtomConstants.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
-            double alpha2 = AtomConstants.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
+            double alpha1 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
+            double alpha2 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
             double startY = OriginalProfile.Pt[0].Y * 2 / 3;
             for (int i = 0; i < OriginalProfile.Pt.Count; i++)
             {

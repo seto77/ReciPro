@@ -1387,7 +1387,7 @@ namespace ReciPro
                 {
                     var a = atoms[i];
 
-                    legendLabels[i].Text = checkBoxGroupByElement.Checked ? $"{a.AtomicNumber}: {AtomConstants.AtomicName(a.AtomicNumber)}" : a.Label;
+                    legendLabels[i].Text = checkBoxGroupByElement.Checked ? $"{a.AtomicNumber}: {AtomStatic.AtomicName(a.AtomicNumber)}" : a.Label;
                     legendLabels[i].Margin = new Padding((size.Width - legendLabels[i].Size.Width) / 2, 0, 0, 0);
 
                     legendControls[i].SkipRendering = true;

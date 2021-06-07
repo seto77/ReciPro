@@ -163,7 +163,7 @@ namespace Crystallography
             E33 = m1.E31 * m2.E13 + m1.E32 * m2.E23 + m1.E33 * m2.E33
         };
 
-        public static Matrix3D operator *(double d, Matrix3D m2) => new()
+        public static Matrix3D operator *(in double d, Matrix3D m2) => new()
         {
             E11 = d * m2.E11,
             E12 = d * m2.E12,
@@ -681,8 +681,8 @@ namespace Crystallography
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        public static Vector3DBase VectorProduct((double X, double Y, double Z) v1, (double X, double Y, double Z) v2)
-            => new Vector3DBase(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+        public static Vector3DBase VectorProduct(in (double X, double Y, double Z) v1, in (double X, double Y, double Z) v2)
+            => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
         /// <summary>
         /// 2つのベクトル間の角度を返す
@@ -693,10 +693,13 @@ namespace Crystallography
 
         public static double AngleBetVectors(Vector3DBase v1, Vector3DBase v2)
         {
-            double aCos = Normarize(v1) * Normarize(v2);
-            if (aCos > 1) return 0;
-            if (aCos < -1) return Math.PI / 2;
-            return Math.Acos(aCos);
+            var aCos = Normarize(v1) * Normarize(v2);
+            if (aCos > 1) 
+                return 0;
+            else if (aCos < -1) 
+                return Math.PI / 2;
+            else 
+                return Math.Acos(aCos);
         }
 
         /// <summary>

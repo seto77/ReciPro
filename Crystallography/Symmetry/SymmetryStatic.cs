@@ -12206,14 +12206,15 @@ new ushort[]{535,2,6,2,1,1}
 			for (int i = 0; i < Symmetries.Length; i++)
 				Symmetries[i] = new Symmetry(i);
 		}
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// seriesNumberを与えられたとき、その空間群が属する、結晶系・点群・空間群のコンボボックス上の順番をかえす
-		/// </summary>
-		/// <param name="seriesNumber"></param>
-		/// <returns></returns>
-		public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSytemAndGroupFromSeriesNumber(int seriesNumber)
+		# region static メソッド
+        /// <summary>
+        /// seriesNumberを与えられたとき、その空間群が属する、結晶系・点群・空間群のコンボボックス上の順番をかえす
+        /// </summary>
+        /// <param name="seriesNumber"></param>
+        /// <returns></returns>
+        public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSytemAndGroupFromSeriesNumber(int seriesNumber)
 		{
 			for (int i = 0; i < BelongingNumberOfSymmetry.Length; i++)
 			{
@@ -13937,6 +13938,7 @@ new ushort[]{535,2,6,2,1,1}
 		/// <returns></returns>
 		public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
 			=> new List<(int U, int V, int W)>(GenerateEquivalentAxes(u1, v1, w1, sym)).Contains((u2, v2, w2));
-
+		#endregion
+	
 	}
 }

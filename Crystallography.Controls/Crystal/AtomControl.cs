@@ -188,7 +188,7 @@ namespace Crystallography.Controls
             set
             {
                 isotopicComposition = value;
-                if (isotopicComposition == null || isotopicComposition.Length != AtomConstants.IsotopeAbundance[AtomNo].Count)
+                if (isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[AtomNo].Count)
                     comboBoxNeutron.SelectedIndex = 0;
                 else
                     comboBoxNeutron.SelectedIndex = 1;
@@ -332,11 +332,11 @@ namespace Crystallography.Controls
             comboBoxScatteringFactorXray.Items.Clear();
             comboBoxScatteringFactorElectron.Items.Clear();
 
-            for (int i = 0; i < AtomConstants.XrayScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorXray.Items.Add(AtomConstants.XrayScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.XrayScattering[AtomNo].Length; i++)
+                comboBoxScatteringFactorXray.Items.Add(AtomStatic.XrayScattering[AtomNo][i].Method);
 
-            for (int i = 0; i < AtomConstants.ElectronScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorElectron.Items.Add(AtomConstants.ElectronScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.ElectronScattering[AtomNo].Length; i++)
+                comboBoxScatteringFactorElectron.Items.Add(AtomStatic.ElectronScattering[AtomNo][i].Method);
 
             comboBoxScatteringFactorXray.SelectedIndex = 0;
             comboBoxScatteringFactorElectron.SelectedIndex = 0;
@@ -371,7 +371,7 @@ namespace Crystallography.Controls
 
             richTextBoxIsotope.Clear();
             int n = 0;
-            foreach (int z in AtomConstants.IsotopeAbundance[AtomNo].Keys)
+            foreach (int z in AtomStatic.IsotopeAbundance[AtomNo].Keys)
             {
                 richTextBoxIsotope.SelectionColor = Color.DarkBlue;
                 if (richTextBoxIsotope.Text != "")
@@ -383,11 +383,11 @@ namespace Crystallography.Controls
 
                 richTextBoxIsotope.SelectionCharOffset = 0;
                 richTextBoxIsotope.SelectionFont = new Font("Tahoma", 9f, FontStyle.Regular);
-                richTextBoxIsotope.SelectedText = AtomConstants.AtomicName(AtomNo) + ": ";
+                richTextBoxIsotope.SelectedText = AtomStatic.AtomicName(AtomNo) + ": ";
 
                 richTextBoxIsotope.SelectionColor = Color.Black;
-                if (comboBoxNeutron.SelectedIndex == 0 || isotopicComposition == null || isotopicComposition.Length != AtomConstants.IsotopeAbundance[AtomNo].Count)
-                    richTextBoxIsotope.SelectedText = AtomConstants.IsotopeAbundance[AtomNo][z].ToString();
+                if (comboBoxNeutron.SelectedIndex == 0 || isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[AtomNo].Count)
+                    richTextBoxIsotope.SelectedText = AtomStatic.IsotopeAbundance[AtomNo][z].ToString();
                 else
                     richTextBoxIsotope.SelectedText = isotopicComposition[n++].ToString();
 
