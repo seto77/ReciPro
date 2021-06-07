@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundControl));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxDistanceD = new Crystallography.Controls.NumericBox();
@@ -118,6 +119,7 @@
             this.numericBoxDistanceD.RadianValue = 0.017453292519943295D;
             this.numericBoxDistanceD.ShowUpDown = true;
             this.numericBoxDistanceD.SkipEventDuringInput = false;
+            this.numericBoxDistanceD.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistanceD.ThonsandsSeparator = true;
             this.numericBoxDistanceD.UpDown_Increment = 0.1D;
             this.numericBoxDistanceD.Value = 1D;
@@ -134,6 +136,7 @@
             this.numericBoxDistance.Minimum = -100D;
             this.numericBoxDistance.Name = "numericBoxDistance";
             this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.ThonsandsSeparator = true;
             this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
             // 
@@ -164,6 +167,7 @@
             this.numericBoxL.Name = "numericBoxL";
             this.numericBoxL.ShowUpDown = true;
             this.numericBoxL.SkipEventDuringInput = false;
+            this.numericBoxL.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxL.ThonsandsSeparator = true;
             this.numericBoxL.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
@@ -179,6 +183,7 @@
             this.numericBoxK.Name = "numericBoxK";
             this.numericBoxK.ShowUpDown = true;
             this.numericBoxK.SkipEventDuringInput = false;
+            this.numericBoxK.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxK.ThonsandsSeparator = true;
             this.numericBoxK.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
@@ -203,6 +208,7 @@
             this.numericBoxH.Name = "numericBoxH";
             this.numericBoxH.ShowUpDown = true;
             this.numericBoxH.SkipEventDuringInput = false;
+            this.numericBoxH.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxH.ThonsandsSeparator = true;
             this.numericBoxH.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
             // 
@@ -271,6 +277,14 @@
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledDataGridViewCheckBoxColumn,
@@ -301,6 +315,7 @@
             // dataSet
             // 
             this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1

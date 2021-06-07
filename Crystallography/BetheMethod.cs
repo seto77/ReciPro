@@ -1039,7 +1039,6 @@ namespace Crystallography
             /// </summary>
             public Complex Lenz = new(1, 0);
 
-
             /// <summary>
             /// 評価値
             /// </summary>
@@ -1061,7 +1060,6 @@ namespace Crystallography
                 P = prms.P;
                 Rating = Math.Sqrt(Vec.Length2) * Q * Q;
             }
-
 
             public Beam(double q, double p)
             {
@@ -1093,19 +1091,19 @@ namespace Crystallography
             /// <summary>
             /// 指数
             /// </summary>
-            public int H, K, L;
+            public readonly int H, K, L;
 
             /// <summary>
             /// 厚み
             /// </summary>
-            public double Thickness;
+            public readonly double Thickness;
 
-            public Vector3DBase G;
+            public readonly Vector3DBase G;
 
             /// <summary>
             /// 強度を格納した配列
             /// </summary>
-            public double[] Intensity;
+            public readonly double[] Intensity;
 
             public CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, double[] intensity)
             {

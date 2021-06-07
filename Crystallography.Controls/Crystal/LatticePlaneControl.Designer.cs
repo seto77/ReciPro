@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LatticePlaneControl));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonAddBond = new System.Windows.Forms.Button();
@@ -86,22 +87,25 @@
             this.panel1.Controls.Add(this.buttonChangeBond);
             this.panel1.Controls.Add(this.buttonDeleteBond);
             this.panel1.Name = "panel1";
+            this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // buttonAddBond
             // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
+            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonAddBond.ForeColor = System.Drawing.Color.White;
             this.buttonAddBond.Name = "buttonAddBond";
+            this.toolTip.SetToolTip(this.buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
             this.buttonAddBond.UseVisualStyleBackColor = false;
             this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChangeBond
             // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
+            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
             this.buttonChangeBond.Name = "buttonChangeBond";
+            this.toolTip.SetToolTip(this.buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
             this.buttonChangeBond.UseVisualStyleBackColor = false;
             this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
             // 
@@ -111,16 +115,26 @@
             this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
             this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteBond.Name = "buttonDeleteBond";
+            this.toolTip.SetToolTip(this.buttonDeleteBond, resources.GetString("buttonDeleteBond.ToolTip"));
             this.buttonDeleteBond.UseVisualStyleBackColor = false;
             this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // dataGridView
             // 
+            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledDataGridViewCheckBoxColumn,
@@ -130,12 +144,12 @@
             this.Translation,
             this.colorDataGridViewTextBoxColumn});
             this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridView, resources.GetString("dataGridView.ToolTip"));
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
             // 
@@ -195,10 +209,12 @@
             // dataSet
             // 
             this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.numericBoxDistance);
             this.panel2.Controls.Add(this.numericBoxL);
             this.panel2.Controls.Add(this.numericBoxK);
@@ -210,8 +226,8 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label6);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            this.toolTip.SetToolTip(this.panel2, resources.GetString("panel2.ToolTip"));
             // 
             // numericBoxDistance
             // 
@@ -224,7 +240,9 @@
             this.numericBoxDistance.Name = "numericBoxDistance";
             this.numericBoxDistance.ShowUpDown = true;
             this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip"));
             this.numericBoxDistance.UpDown_Increment = 0.1D;
             // 
             // numericBoxL
@@ -239,7 +257,9 @@
             this.numericBoxL.Name = "numericBoxL";
             this.numericBoxL.ShowUpDown = true;
             this.numericBoxL.SkipEventDuringInput = false;
+            this.numericBoxL.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxL.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxL, resources.GetString("numericBoxL.ToolTip"));
             // 
             // numericBoxK
             // 
@@ -253,7 +273,9 @@
             this.numericBoxK.Name = "numericBoxK";
             this.numericBoxK.ShowUpDown = true;
             this.numericBoxK.SkipEventDuringInput = false;
+            this.numericBoxK.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxK.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxK, resources.GetString("numericBoxK.ToolTip"));
             // 
             // numericBoxH
             // 
@@ -267,22 +289,26 @@
             this.numericBoxH.Name = "numericBoxH";
             this.numericBoxH.ShowUpDown = true;
             this.numericBoxH.SkipEventDuringInput = false;
+            this.numericBoxH.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxH.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxH, resources.GetString("numericBoxH.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // colorControl
             // 
-            this.colorControl.Argb = -16192;
             resources.ApplyResources(this.colorControl, "colorControl");
+            this.colorControl.Argb = -16192;
             this.colorControl.Blue = 192;
             this.colorControl.BlueF = 0.7529412F;
             this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
@@ -293,26 +319,31 @@
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 255;
             this.colorControl.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControl, resources.GetString("colorControl.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.toolTip.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            this.toolTip.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -382,6 +413,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel2);
             this.Name = "LatticePlaneControl";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

@@ -20,61 +20,6 @@ namespace Crystallography.OpenGL
 {
     unsafe public partial class GLControlAlpha : UserControl
     {
-        #region フィールド
-        private Mat4f m4id = Mat4f.Identity;
-        private readonly int CounterBuffer = 0;
-        private readonly int LinkedListBuffer = 1;
-        private readonly uint[] buffers = new uint[2] { 0, 0 };
-        private uint headPtrTex = 0, clearBuf = 0;
-
-        private Clip Clip = null;
-        private readonly List<GLObject> glObjects = new();
-        private readonly ParallelQuery<GLObject> glObjectsP;
-        private readonly GLObject quad = null;
-
-        private readonly int eyePositionLocation = 0;
-        private readonly int viewportSizeLocation = 0;
-        private readonly int lightPositionLocation = 0;
-        private readonly int viewMatrixLocation = 0;
-        private readonly int projMatrixLocation = 0;
-        private readonly int worldMatrixLocation = 0;
-        private int passOIT1Index = 0;
-        private int passOIT2Index = 0;
-
-        private readonly int depthCueingNearLocation = 0;
-        private readonly int depthCueingFarLocation = 0;
-        private readonly int depthCueingEnabledLocation = 0;
-        #endregion フィールド
-
-        #region Enum
-
-        public enum ProjectionModes { Perspective, Orhographic }
-
-        public enum RotationModes { Object, View, Light }
-
-        public enum TranslatingModes { Object, View }
-
-        public enum FragShaders { OIT, ZSORT}
-
-        #endregion Enum
-
-        #region イベント
-        public new MouseEventHandler MouseMove;
-        public new MouseEventHandler MouseDown;
-        public new MouseEventHandler MouseUp;
-
-        public new PaintEventHandler Paint;
-
-
-        /// <summary>
-        /// WorldMatrixが変化したときに発生するイベント. 
-        /// </summary>
-        [Browsable(true)]
-        [Description("WorldMatrixが変化したときに発生するイベント. マウスで回転させた場合や、WorldMatrixに直接setしたときに発生。")]
-        public event EventHandler WorldMatrixChanged;
-
-        #endregion イベント
-
         #region static な property, field. OpengGLのバージョン関連
         /// <summary>
         /// OpenGLを無効にするか。 Versionチェックが出来ないときなどに、Trueになる。
@@ -104,7 +49,6 @@ namespace Crystallography.OpenGL
         /// </summary>
         public static bool ZsortEnabled => VersionForZsort <= Version;
 
-
         /// <summary>
         /// OITのために最低必要なOpenGLのバージョン (3桁整数, 430など)
         /// </summary>
@@ -118,11 +62,61 @@ namespace Crystallography.OpenGL
         /// OITのバージョンを満たしているか.
         /// </summary>
         public static bool OitEnabled => VersionForOit <= Version;
-
-
-
         #endregion
 
+        #region フィールド
+        private Mat4f m4id = Mat4f.Identity;
+        private readonly int CounterBuffer = 0;
+        private readonly int LinkedListBuffer = 1;
+        private readonly uint[] buffers = new uint[2] { 0, 0 };
+        private uint headPtrTex = 0, clearBuf = 0;
+
+        private Clip Clip = null;
+        private readonly List<GLObject> glObjects = new();
+        private readonly ParallelQuery<GLObject> glObjectsP;
+        private readonly GLObject quad = null;
+
+        private readonly int eyePositionLocation = 0;
+        private readonly int viewportSizeLocation = 0;
+        private readonly int lightPositionLocation = 0;
+        private readonly int viewMatrixLocation = 0;
+        private readonly int projMatrixLocation = 0;
+        private readonly int worldMatrixLocation = 0;
+        private int passOIT1Index = 0;
+        private int passOIT2Index = 0;
+
+        private readonly int depthCueingNearLocation = 0;
+        private readonly int depthCueingFarLocation = 0;
+        private readonly int depthCueingEnabledLocation = 0;
+
+        private readonly GLControl glControl;// = new GLControl();
+        private readonly Graphics glControlGraphics;
+        #endregion フィールド
+
+        #region Enum
+        public enum ProjectionModes { Perspective, Orhographic }
+        public enum RotationModes { Object, View, Light }
+        public enum TranslatingModes { Object, View }
+        public enum FragShaders { OIT, ZSORT}
+        #endregion Enum
+
+        #region イベント
+        public new MouseEventHandler MouseMove;
+        public new MouseEventHandler MouseDown;
+        public new MouseEventHandler MouseUp;
+
+        public new PaintEventHandler Paint;
+
+
+        /// <summary>
+        /// WorldMatrixが変化したときに発生するイベント. 
+        /// </summary>
+        [Browsable(true)]
+        [Description("WorldMatrixが変化したときに発生するイベント. マウスで回転させた場合や、WorldMatrixに直接setしたときに発生。")]
+        public event EventHandler WorldMatrixChanged;
+
+        #endregion イベント
+ 
         #region プロパティ
 
         /// <summary>
@@ -172,7 +166,6 @@ namespace Crystallography.OpenGL
         [Category("Rendering properties")]
         public int NodeCoefficient { get; set; } = 10;
 
-
         /// <summary>
         /// OIT時に、どれだけの数の重なり合いを考慮するかをパラメータ.
         /// </summary>
@@ -187,7 +180,6 @@ namespace Crystallography.OpenGL
         /// </summary>
         [Category("Rendering properties")]
         public FragShaders FragShader { get; } = FragShaders.ZSORT;
-
 
         #region Depth Cueing
         /// <summary>
@@ -308,7 +300,6 @@ namespace Crystallography.OpenGL
                 }
             }
         }
-
         public static List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>();
 
         /// <summary>
@@ -383,7 +374,6 @@ namespace Crystallography.OpenGL
 
         private Mat4d projMatrix = Mat4d.Identity;
         private Mat4f projMatrixF = Mat4f.Identity;
-
         private void setProjMatrix()
         {
 
@@ -401,9 +391,6 @@ namespace Crystallography.OpenGL
         #endregion プロパティ
 
         #region ロード関連
-        private readonly GLControl glControl;// = new GLControl();
-        private readonly Graphics glControlGraphics;
-
         /// <summary>
         /// //バージョンチェック。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
         /// </summary>
@@ -661,7 +648,6 @@ namespace Crystallography.OpenGL
         #endregion
 
         #region GlObjectの追加/削除
-
         public void MakeCurrent() => glControl.MakeCurrent();
 
         public void AddObjects(GLObject obj)

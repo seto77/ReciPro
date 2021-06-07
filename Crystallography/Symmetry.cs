@@ -109,7 +109,7 @@ namespace Crystallography
         public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
             => CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null).ToArray();
 
-        public string[] CheckExtinctionRule(int h, int k, int l)
+        public readonly string[] CheckExtinctionRule(int h, int k, int l)
             => CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null).ToArray();
         #endregion
 

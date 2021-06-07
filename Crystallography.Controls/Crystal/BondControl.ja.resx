@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -127,15 +67,6 @@
   <data name="checkBoxShowPolyhedron.Text" xml:space="preserve">
     <value>多面体を表示</value>
   </data>
-  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -144,9 +75,6 @@
   </data>
   <data name="label58.Text" xml:space="preserve">
     <value>(頂点)</value>
-  </data>
-  <data name="label58.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -157,9 +85,6 @@
   <data name="label57.Text" xml:space="preserve">
     <value>(中心)</value>
   </data>
-  <data name="label57.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -169,20 +94,11 @@
   <data name="label39.Text" xml:space="preserve">
     <value>結合原子</value>
   </data>
-  <data name="label39.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label40.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxPolyhedronAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderText" xml:space="preserve">
     <value>透明度</value>
-  </data>
-  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -196,23 +112,14 @@
   <data name="checkBoxShowEdges.Text" xml:space="preserve">
     <value>辺を表示</value>
   </data>
-  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
     <value>線幅</value>
   </data>
-  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 45</value>
-  </data>
-  <data name="groupBoxEdge.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -223,9 +130,6 @@
   <data name="checkBoxShowInnerBonds.Text" xml:space="preserve">
     <value>結合を表示</value>
   </data>
-  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -234,9 +138,6 @@
   </data>
   <data name="checkBoxShowVertexAtoms.Text" xml:space="preserve">
     <value>頂点を表示</value>
-  </data>
-  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -247,20 +148,11 @@
   <data name="checkBoxShowCenterAtom.Text" xml:space="preserve">
     <value>中心を表示</value>
   </data>
-  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxPolyhedron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxBondAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderText" xml:space="preserve">
     <value>透明度</value>
-  </data>
-  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxBondRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -271,12 +163,6 @@
   <data name="numericBoxBondRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
-  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxBondMinLength.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -286,12 +172,6 @@
   <data name="numericBoxBondMinLength.HeaderText" xml:space="preserve">
     <value>結合長の範囲</value>
   </data>
-  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxBonds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -300,9 +180,6 @@
   </data>
   <data name="checkBoxShowBonds.Text" xml:space="preserve">
     <value>結合を表示</value>
-  </data>
-  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -340,28 +217,11 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>多面体の表示</value>
   </data>
-  <data name="dataGridView.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlEdges.ToolTip1" xml:space="preserve">
-    <value />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="showPolyhedronDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>90</value>
   </data>
   <data name="colorControlPlyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 6</value>
-  </data>
-  <data name="colorControlPlyhedron.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlBond.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

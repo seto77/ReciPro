@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -117,16 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 27</value>
+  </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -136,14 +70,17 @@
   <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 38</value>
   </data>
-  <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericBoxL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericBoxL.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 27</value>
   </data>
-  <data name="numericBoxK.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxK.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 27</value>
   </data>
   <data name="checkBoxEquivalency.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -154,26 +91,11 @@
   <data name="checkBoxEquivalency.Text" xml:space="preserve">
     <value>等価な面を考慮</value>
   </data>
-  <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxH.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericBoxH.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 27</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -184,11 +106,17 @@
   <data name="label6.Text" xml:space="preserve">
     <value>原点からの距離</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxDistanceD.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxDistanceD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 27</value>
+  </data>
+  <data name="numericBoxDistance.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 27</value>
   </data>
   <data name="equivalencyDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>等価な面</value>
@@ -202,17 +130,11 @@
   <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>色</value>
   </data>
-  <data name="dataGridView.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonAddBond.Text" xml:space="preserve">
     <value>追加</value>
-  </data>
-  <data name="buttonAddBond.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -220,22 +142,10 @@
   <data name="buttonChangeBond.Text" xml:space="preserve">
     <value>置換</value>
   </data>
-  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>
-  </data>
-  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>
