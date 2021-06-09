@@ -1170,8 +1170,8 @@ namespace Crystallography.OpenGL
         public Pipe(Vector3DBase o, Vector3DBase vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r1, r2, mat, mode, sole, slices, stacks) { }
 
-        public Pipe(in V3d o, in V3d vec, double r1, double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
-            : this(o, vec, r1, r2, mat, null, mode, sole, slices, stacks) { }
+        public Pipe(in V3d o, in V3d vec, in double r1, in double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+            : this(in o, in vec, in r1, in r2, mat, null, mode, sole, slices, stacks) { }
 
         /// <summary>
         /// パイプ
@@ -1185,7 +1185,7 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">円周の分割数</param>
-        public Pipe(in V3d o, in V3d vec, double r1, double r2, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+        public Pipe(in V3d o, in V3d vec, in double r1, in double r2, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
             : base(mat1, mode)
         {
             ShowClippedSection = true;
@@ -1205,8 +1205,8 @@ namespace Crystallography.OpenGL
 
             var height = vec.Length;
             CircumscribedSphereCenter = new V4d(o + vec / 2.0, 1);
-            var maxR = Math.Max(r1, r2);
-            CircumscribedSphereRadius = Math.Sqrt(height * height / 4 + maxR * maxR);
+            //var maxR = Math.Max(r1, r2);
+            CircumscribedSphereRadius = Math.Max(height / 2, Math.Max(r1,r2)); //Math.Sqrt(height * height / 4 + maxR * maxR);
 
             if (slices == 0 && stacks == 0)
             {
@@ -1243,7 +1243,6 @@ namespace Crystallography.OpenGL
                     slices = Default.Slices;
                     stacks = Default.Stacks;
                 }
-
             }
 
             List<V3d> v = new(), n = new();
@@ -1430,7 +1429,7 @@ namespace Crystallography.OpenGL
         /// <param name="sole">trueの場合は底面を描画する</param>
         /// <param name="slices">高さの分割数</param>
         /// <param name="stacks">経線の分割数</param>
-        public Cylinder(in V3d o, in V3d vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
+        public Cylinder(in V3d o, in V3d vec,in double r, Material mat,in DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
            : base(in o, in vec, r, r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
         public Cylinder(in V3d o, in V3d vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
