@@ -482,14 +482,10 @@ namespace ReciPro
         /// </summary>
         private readonly struct bondVertex
         {
-            public readonly int ObjIndex;
-            public readonly int AtomIndex;
-            public readonly int CellKey;
+            public readonly int ObjIndex, AtomIndex, CellKey, Serial;
             public readonly V3 O;
             public readonly double R;
-            public readonly Material BondMat;
-            public readonly Material PolyMat;
-            public readonly int Serial;
+            public readonly Material BondMat, PolyMat;
             public bondVertex(int objIndex, int atomIndex, int cellKey, in V3 origin, double radius, Material bondMat, Material polyMat,  int serial)
             { ObjIndex = objIndex; AtomIndex = atomIndex; CellKey = cellKey; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
         }
