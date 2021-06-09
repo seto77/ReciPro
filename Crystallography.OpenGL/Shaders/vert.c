@@ -40,18 +40,21 @@ out vec2 fUv;//texture coordinates
 void main(void)
 {
 	// Calculate view-space coordinate
-	vec3 position = vec3 (ObjectMatrix * vec4(vPosition, 1));
-
+	vec3 position;
 	vec4 P;
 	if (vObjType == 0)//Without texture
 	{
+		position = vec3(ObjectMatrix * vec4(vPosition, 1));
 		P = WorldMatrix * vec4(position, 1);
 		// Calculate the clip-space position of each vertex
 		gl_Position = ProjMatrix * ViewMatrix * P;
 	}
 	else//case of string
 	{
-		P = WorldMatrix * vec4(vNormal, 1) + vec4(0, 0, position.z, 0);
+		position = vPosition;
+		//In the case of string, ObjectMatrix always means translation operation
+		P = WorldMatrix * ObjectMatrix * vec4(0, 0, 0, 1) + vec4(0, 0, vPosition.z, 0); 
+		
 		// Calculate the clip-space position of each vertex
 		vec4 P2 = ProjMatrix * ViewMatrix * P;
 		gl_Position = P2 + vec4(position.x / ViewportSize.x * 2, position.y / ViewportSize.y * 2, 0, 0) * abs(P2.w);

@@ -140,7 +140,6 @@ namespace Crystallography
         #endregion
     }
 
-
     //PointDをクラスから構造体に変更。20190905
     [StructLayout(LayoutKind.Sequential)]
     [Serializable()]

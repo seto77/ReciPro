@@ -30,7 +30,7 @@ namespace Crystallography.OpenGL
     {
         /// <summary>
         /// 0: テクスチャ無しポリゴン. 1: テクスチャ有りポリゴン. 2: 文字列.
-        /// 文字列の場合はNormalが中心座標, Positionは中心からのシフト量(X,Yはピクセル単位、Zはワールド単位で、回転の影響を受けない)を表す. 
+        /// 
         /// </summary>
         public readonly int Mode;
 
@@ -61,6 +61,7 @@ namespace Crystallography.OpenGL
 
         /// <summary>
         /// 文字列のコンストラクタ
+        /// 文字列の場合はNormalが中心座標, Positionは中心からのシフト量(X,Yはピクセル単位、Zはワールド単位で、回転の影響を受けない)を表す. 
         /// </summary>
         /// <param name="position"></param>
         /// <param name="normal"></param>
@@ -119,19 +120,17 @@ namespace Crystallography.OpenGL
         #region static private な フィールド & プロパティ
 
         private static readonly Dictionary<int, Location> Location = new();
-        private static readonly Dictionary<int, (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]> VertexAttribPointerParameters = new();
 
         private static readonly int sizeOfInt = sizeof(int);
         private static readonly int sizeOfUInt = sizeof(uint);
         private static readonly List<(string Product, string Version)> GraphicsInfo;
-
+        private static int serialNumber = 0;
+        public static readonly object LockObj = new();
         #endregion
 
         #region internalな フィールド & プロパティ
 
-        internal int VBO;
-        internal int VAO;
-        internal int EBO;
+        internal (int VBO, int VAO, int EBO) Obj;
 
         internal int Program = -1;
 
@@ -244,8 +243,8 @@ namespace Crystallography.OpenGL
         {
             Material = material;
             Mode = mode;
-            lock (GLGeometry.LockObj)
-                SerialNumber = GLGeometry.SerialNumber++;
+            lock (LockObj)
+                SerialNumber = serialNumber++;
         }
 
         public void Dispose()
@@ -254,9 +253,11 @@ namespace Crystallography.OpenGL
                 Sphere.DefaultDictionary.Remove(Program);
             if (Cylinder.DefaultDictionary.ContainsKey(Program))
                 Cylinder.DefaultDictionary.Remove(Program);
-            GL.DeleteBuffers(1, ref VBO);
-            GL.DeleteBuffers(1, ref EBO);
-            GL.DeleteVertexArrays(1, ref VAO);
+            if (this is TextObject t && TextObject.DefaultDictionaly.ContainsKey((Program, t.TextureNum)))
+                TextObject.DefaultDictionaly.Remove((Program, t.TextureNum));
+            GL.DeleteBuffers(1, ref Obj.VBO);
+            GL.DeleteBuffers(1, ref Obj.EBO);
+            GL.DeleteVertexArrays(1, ref Obj.VAO);
         }
 
         #endregion
@@ -268,17 +269,16 @@ namespace Crystallography.OpenGL
         /// <param name="objects"></param>
         public static void Generate(int program, IEnumerable<GLObject> objects)
         {
-            if (program < 0)
-                return;
+            if (program < 0) return;
 
             //Locationを取得
             if (!Location.TryGetValue(program, out var location))
             {
-                Location.Add(program, new Location());
-                SetLocation(program);
+                Location.Add(program, GetLocation(program));
                 location = Location[program];
             }
 
+            //VertexAttribPointerのパラメータを取得
             var prms = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
             {
                 (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
@@ -286,52 +286,60 @@ namespace Crystallography.OpenGL
                 (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
                 (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
                 (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
-
             };
 
-            int n = 0;
             foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0).ToArray())
             {
                 o.Program = program;
-
-                //Default形状であれば、VAO, VBO, EBOをセットしておしまい。
-                Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
-                if (o is Sphere s && s.UseDefault)
-                    dic = Sphere.DefaultDictionary;
-                else if (o is Cylinder c && c.UseDefault)
-                    dic = Cylinder.DefaultDictionary;
-
-                if (dic != null && dic.TryGetValue(program, out var def))
+                
+                if (o is TextObject t)
                 {
-                    o.VBO = def.VBO;
-                    o.EBO = def.EBO;
-                    o.VAO = def.VAO;
-                }
-                else if (o.Rendered)
-                {
-                    n++;
-                    // VBO作成
-                    GL.GenBuffers(1, out o.VBO);
-                    GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
-                    GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(o.Vertices.Length * Vertex.Stride), o.Vertices, BufferUsageHint.DynamicDraw);
-
-                    // EBO作成
-                    GL.GenBuffers(1, out o.EBO);
-                    GL.BindBuffer(BufferTarget.ElementArrayBuffer, o.EBO);
-                    GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeOfUInt * o.Indices.Length), o.Indices, BufferUsageHint.DynamicDraw);
-
-                    // VAO作成
-                    GL.GenVertexArrays(1, out o.VAO);
-                    GL.BindVertexArray(o.VAO);
-                    GL.BindBuffer(BufferTarget.ArrayBuffer, o.VBO);
-
-                    foreach (var (loc, size, type, normarized, stride, offset) in prms)
+                    if (TextObject.DefaultDictionaly.TryGetValue((program, t.TextureNum), out var def))
+                        o.Obj = def;//Defaultテキストであれば、VAO, VBO, EBOをセットしておしまい。
+                    else
                     {
-                        GL.EnableVertexAttribArray(loc);
-                        GL.VertexAttribPointer(loc, size, type, normarized, stride, offset);
+                        GenerateSub(o);
+                        TextObject.DefaultDictionaly.Add((program, t.TextureNum), (o.Obj));
                     }
+                }
+                else
+                {
+                    Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
+                    if (o is Sphere s && s.UseDefault)
+                        dic = Sphere.DefaultDictionary;
+                    else if (o is Cylinder c && c.UseDefault)
+                        dic = Cylinder.DefaultDictionary;
 
-                    dic?.Add(program, (o.VBO, o.VAO, o.EBO));
+                    if (dic != null && dic.TryGetValue(program, out var def))
+                        o.Obj = def;//Default形状であれば、VAO, VBO, EBOをセットしておしまい。
+                    else
+                    {
+                        GenerateSub(o);
+                        dic?.Add(program, o.Obj);
+                    }
+                }
+            }
+
+            //ローカル関数
+            void GenerateSub(GLObject o)
+            {
+                // VBO作成
+                GL.GenBuffers(1, out o.Obj.VBO);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, o.Obj.VBO);
+                GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(o.Vertices.Length * Vertex.Stride), o.Vertices, BufferUsageHint.DynamicDraw);
+                // EBO作成
+                GL.GenBuffers(1, out o.Obj.EBO);
+                GL.BindBuffer(BufferTarget.ElementArrayBuffer, o.Obj.EBO);
+                GL.BufferData(BufferTarget.ElementArrayBuffer, new IntPtr(sizeOfUInt * o.Indices.Length), o.Indices, BufferUsageHint.DynamicDraw);
+                // VAO作成
+                GL.GenVertexArrays(1, out o.Obj.VAO);
+                GL.BindVertexArray(o.Obj.VAO);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, o.Obj.VBO);
+                //VertexAttribPointerをセット
+                foreach (var (loc, size, type, normarized, stride, offset) in prms)
+                {
+                    GL.EnableVertexAttribArray(loc);
+                    GL.VertexAttribPointer(loc, size, type, normarized, stride, offset);
                 }
             }
         }
@@ -348,37 +356,40 @@ namespace Crystallography.OpenGL
         /// パラメータのロケーションをセット
         /// </summary>
         /// <param name="Program"></param>
-        public static void SetLocation(int Program)
+        public static Location GetLocation(int Program)
         {
-            Location[Program].Mode = GL.GetAttribLocation(Program, "vObjType");
-            Location[Program].Argb = GL.GetAttribLocation(Program, "vArgb");
-            Location[Program].Position = GL.GetAttribLocation(Program, "vPosition");
-            Location[Program].Normal = GL.GetAttribLocation(Program, "vNormal");
-            Location[Program].Uv = GL.GetAttribLocation(Program, "vUv");
-            if (Location[Program].Mode == -1 || Location[Program].Uv == -1 || Location[Program].Position == -1
-                || Location[Program].Normal == -1 || Location[Program].Argb == -1)
-                throw new Exception("cannot find location!");
-
-            Location[Program].ObjectMatrix = GL.GetUniformLocation(Program, "ObjectMatrix");
-
-            Location[Program].Texture = GL.GetUniformLocation(Program, "Texture");
-
-            Location[Program].Emission = GL.GetUniformLocation(Program, "Emission");
-            Location[Program].Ambient = GL.GetUniformLocation(Program, "Ambient");
-            Location[Program].Diffuse = GL.GetUniformLocation(Program, "Diffuse");
-            Location[Program].Specular = GL.GetUniformLocation(Program, "Specular");
-            Location[Program].SpecularPower = GL.GetUniformLocation(Program, "SpecularPower");
-            Location[Program].UseFixedArgb = GL.GetUniformLocation(Program, "UseFixedArgb");
-            Location[Program].IgnoreNormalSides = GL.GetUniformLocation(Program, "IgnoreNormalSides");
-            Location[Program].FixedArgb = GL.GetUniformLocation(Program, "FixedArgb");
+            var loc = new Location
+            {
+                Mode = GL.GetAttribLocation(Program, "vObjType"),
+                Argb = GL.GetAttribLocation(Program, "vArgb"),
+                Position = GL.GetAttribLocation(Program, "vPosition"),
+                Normal = GL.GetAttribLocation(Program, "vNormal"),
+                Uv = GL.GetAttribLocation(Program, "vUv"),
+                ObjectMatrix = GL.GetUniformLocation(Program, "ObjectMatrix"),
+                Texture = GL.GetUniformLocation(Program, "Texture"),
+                Emission = GL.GetUniformLocation(Program, "Emission"),
+                Ambient = GL.GetUniformLocation(Program, "Ambient"),
+                Diffuse = GL.GetUniformLocation(Program, "Diffuse"),
+                Specular = GL.GetUniformLocation(Program, "Specular"),
+                SpecularPower = GL.GetUniformLocation(Program, "SpecularPower"),
+                UseFixedArgb = GL.GetUniformLocation(Program, "UseFixedArgb"),
+                IgnoreNormalSides = GL.GetUniformLocation(Program, "IgnoreNormalSides"),
+                FixedArgb = GL.GetUniformLocation(Program, "FixedArgb")
+            };
 
             if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
             {
-                Location[Program].PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-                Location[Program].PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-                Location[Program].PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-                Location[Program].RenderPass = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+                loc.PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+                loc.PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+                loc.PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+                loc.RenderPass = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
             }
+            if (loc.Mode == -1 || loc.Uv == -1 || loc.Position == -1
+                || loc.Normal == -1 || loc.Argb == -1)
+
+                throw new Exception("cannot find location!");
+
+            return loc;
         }
 
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
@@ -395,8 +406,8 @@ namespace Crystallography.OpenGL
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToBorder);
             }
 
-            GL.BindVertexArray(VAO);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
+            GL.BindVertexArray(Obj.VAO);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, Obj.EBO);
 
             int offset = 0;
             foreach(var (t, len) in Primitives)
@@ -421,11 +432,10 @@ namespace Crystallography.OpenGL
         /// <param name="drawSurfaces">Surfaceモードか否か</param>
         private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
         {
-            //物体の中心位置を送信 default形状のみ必要
-            if (prms.objmatrix != ObjectMatrix)
-                GL.UniformMatrix4(Location[Program].ObjectMatrix, false, ref ObjectMatrix);
-
             var renew = prms.Program != Program;
+
+            if (renew || prms.objmatrix != ObjectMatrix)
+                GL.UniformMatrix4(Location[Program].ObjectMatrix, false, ref ObjectMatrix);
 
             (float emi, float amb, float dif, float spe) = drawSurfaces ?
                 (Material.Emission, Material.Ambient, Material.Diffuse, Material.Specular) : (0f, 1f, 0f, 0f);
@@ -1628,13 +1638,16 @@ namespace Crystallography.OpenGL
     /// </summary>
     public class TextObject : GLObject
     {
-        private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, ushort Width, ushort Height)> dic = new();
+        private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge),(int TextureNum, Vertex[] Vertices)> dic = new();
 
-        public static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
-        public static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };
-        public static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
+        public static readonly Dictionary<(int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = new();
+
+        private static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
+        private static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };
+        private static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
+        
         public int TextureNum = -1;
-
+        
         public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
             : this(text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat) { }
         public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
@@ -1642,21 +1655,25 @@ namespace Crystallography.OpenGL
             text = text.Trim();
             if (text != "")
             {
-                ushort width, height;
-                if (dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))
-                {//辞書に登録されている場合
+                Indices = indices;
+                Primitives = primitives;
+                CircumscribedSphereCenter = new V4d(position, 1);
+                ObjectMatrix = new M4f(new V4f(1, 0, 0, 0), new V4f(0, 1, 0, 0), new V4f(0, 0, 1, 0), new V4f(position.ToV3f(), 1));
+                ShowClippedSection = false;//クリップ断面は表示しない
+
+                if (dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
+                {
                     TextureNum = obj.TextureNum;
-                    width = obj.Width;
-                    height = obj.Height;
+                    Vertices = obj.Vertices;
                 }
                 else//辞書に登録されていない場合
                 {
                     var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
                     var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100),
-                        TextFormatFlags.Left ); //文字列を描画するときの大体の大きさを計測する
-                    
-                    width = (ushort)strSize.Width;
-                    height = (ushort)strSize.Height;
+                        TextFormatFlags.Left); //文字列を描画するときの大体の大きさを計測する
+
+                    var width = (ushort)strSize.Width;
+                    var height = (ushort)strSize.Height;
 
                     var bmp = new Bitmap(width, height);
                     var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
@@ -1706,27 +1723,17 @@ namespace Crystallography.OpenGL
                     // テクスチャのアンバインド
                     GL.BindTexture(TextureTarget.Texture2D, 0);
 
+                    Vertices = new[]
+                    {
+                        new Vertex(new V3f(-width / 2f, +height / 2f, (float)popout), new V3f() ,p00),
+                        new Vertex(new V3f(+width / 2f, +height / 2f, (float)popout), new V3f() ,p10),
+                        new Vertex(new V3f(+width / 2f, -height / 2f, (float)popout), new V3f() ,p11),
+                        new Vertex(new V3f(-width / 2f, -height / 2f, (float)popout), new V3f() ,p01)
+                    };
+
                     //辞書に登録
-                    dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, width, height));
+                    dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
                 }
-
-                ShowClippedSection = false;//クリップ断面は表示しない
-                var pos = position.ToV3f();
-                var widthF = width / 2f;
-                var heightF = height / 2f;
-                var popoutF = (float)popout;
-                var argb = mat.Argb;
-                Vertices = new[] 
-                {
-                    new Vertex(new V3f(-widthF, +heightF, popoutF), pos ,p00),
-                    new Vertex(new V3f(+widthF, +heightF, popoutF), pos ,p10),
-                    new Vertex(new V3f(+widthF, -heightF, popoutF), pos ,p11),
-                    new Vertex(new V3f(-widthF, -heightF, popoutF), pos ,p01) 
-                };
-
-                CircumscribedSphereCenter = new V4d(position, 1);
-                Indices = indices;
-                Primitives = primitives;
             }
         }
     }

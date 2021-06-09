@@ -679,7 +679,7 @@ namespace Crystallography.OpenGL
             if (Program < 1 || glObjects.Count == 0) return;
             glControl.MakeCurrent();
 
-            foreach (var o in glObjectsP.Distinct(o => o.VAO).ToList())
+            foreach (var o in glObjectsP.Distinct(o => o.Obj.VAO).ToList())
                 o.Dispose();
 
             glObjects.Clear();

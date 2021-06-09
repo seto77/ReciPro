@@ -2,6 +2,7 @@
 using Crystallography;
 using Crystallography.Controls;
 using Crystallography.OpenGL;
+using Microsoft.Scripting.Utils;
 using OpenTK;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
@@ -58,7 +61,6 @@ namespace ReciPro
 
         private readonly Stopwatch sw = new();
 
-
         private ParallelQuery<(int Index, V3 Pos, Material Mat, double Radius)> enabledAtomsP;
         private Atoms[] enabledAtoms;
 
@@ -67,21 +69,33 @@ namespace ReciPro
         private GLControlAlpha glControlMainZsort;
         private GLControlAlpha glControlMainOIT;
         private GLControlAlpha glControlAxes;
-
-
         #endregion
 
         #region ローカルクラス
         private class atomID
         {
+            /// <summary>
+            /// Boundsの内部かどうか
+            /// </summary>
             public bool IsInside;
+            /// <summary>
+            /// 結晶構造ファイルの何番目の原子か (等価なものは同じ番号になる)
+            /// </summary>
             public int Index;
-
-            public atomID(in int index, in bool isInside)
+            /// <summary>
+            /// 所属しているセルの場所
+            /// </summary>
+            public int CellKey;
+            public atomID(in int index, in bool isInside, in int cellKey)
             {
                 IsInside = isInside;
                 Index = index;
+                CellKey = cellKey;
             }
+            public static int ComposeKey(int a, int b, int c) => a *512*512 + b  *512 + c;
+            public static int ComposeKey(V3 v) => ComposeKey((short) v.X, (short)v.Y, (short)v.Z );
+            //public static (short a, short b, short c) DecomposeKey(long key)
+            //    => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
         }
 
         private class bondID
@@ -360,7 +374,6 @@ namespace ReciPro
                 var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
                 if (vertices.Length >= 3)
                 {
-
                     var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges)
                     {
                         Rendered = checkBoxShowBoundPlanes.Checked,
@@ -414,13 +427,17 @@ namespace ReciPro
             //原子を追加
             enabledAtomsP.ForAll(o =>
             {
-                foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift))
+                for(int i=0; i< cells.Count; i++)
+
+                //foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift))
                 {
+                    var pos = axes.Mult(cells[i] + o.Pos) - shift;
+
                     var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
                     if (min > threshold)
                     {
                         var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces) { Rendered = min > -0.0000001 };
-                        sphere.Tag = new atomID(o.Index, sphere.Rendered);
+                        sphere.Tag = new atomID(o.Index, sphere.Rendered, atomID.ComposeKey(cells[i]));
                         lock (lockObj)
                             GLObjects.Add(sphere);
                     }
@@ -467,13 +484,14 @@ namespace ReciPro
         {
             public readonly int ObjIndex;
             public readonly int AtomIndex;
+            public readonly int CellKey;
             public readonly V3 O;
             public readonly double R;
             public readonly Material BondMat;
             public readonly Material PolyMat;
             public readonly int Serial;
-            public bondVertex(int objIndex, int atomIndex, in V3 origin, double radius, Material bondMat, Material polyMat, int serial)
-            { ObjIndex = objIndex; AtomIndex = atomIndex; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
+            public bondVertex(int objIndex, int atomIndex, int cellKey, in V3 origin, double radius, Material bondMat, Material polyMat,  int serial)
+            { ObjIndex = objIndex; AtomIndex = atomIndex; CellKey = cellKey; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
         }
 
         /// <summary>
@@ -482,59 +500,75 @@ namespace ReciPro
         private void setBondsAndPolyhera()
         {
             sw.Restart();
+            var neighborKeys = new List<int>();
+            for (int a = -1; a < 2; a++)
+                for (int b = -1; b < 2; b++)
+                    for (int c = -1; c < 2; c++)
+                        neighborKeys.Add(atomID.ComposeKey(a, b, c));
 
-            var dic1 = new Dictionary<string, bondVertex[]>();
-            bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron||b.ShowBond)).ToList().ForEach(bond =>
+            var dic1 = new Dictionary<string, List<bondVertex>>();
+            bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
             {
-                double min2 = bond.MinLength * bond.MinLength, max2 = bond.MaxLength * bond.MaxLength, radius = bond.Radius;
+                double min = bond.MinLength, min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
-
-                //まず、dic1にbondVertex[]を追加. こうしておけば同じbondVertex[]を再利用できる.
                 foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
                 {
-                    dic1.Add(element, GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
-                       .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
-                       {
-                           var s = e.Obj as Sphere;
-                           var BondMat = new Material(s.Material.Color, bond.BondTransParency);
-                           var PolyMat = new Material(s.Material.Color, bond.PolyhedronTransParency);
-                           return new bondVertex(e.ObjIndex, (s.Tag as atomID).Index, s.Origin, s.Radius, BondMat, PolyMat, s.SerialNumber);
-                       }).ToArray());
+                    var list = GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
+                     .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
+                     {
+                         var s = e.Obj as Sphere;
+                         var bondMat = new Material(s.Material.Color, bond.BondTransParency);
+                         var polyMat = new Material(s.Material.Color, bond.PolyhedronTransParency);
+                         return new bondVertex(e.ObjIndex, (s.Tag as atomID).Index, (s.Tag as atomID).CellKey, s.Origin, s.Radius, bondMat, polyMat, s.SerialNumber);
+                     }).ToList();
+
+                    list.Sort((o1, o2) => o1.CellKey.CompareTo(o2.CellKey));//CellKeyでソートしておく
+                    dic1.Add(element, list);
                 }
 
                 //中心頂点に対する、頂点のリストを一気に作成
                 var dic2 = new Dictionary<bondVertex, IEnumerable<bondVertex>>();//中心頂点に対する頂点リストのDictionary
                 var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
-
-                Parallel.ForEach(dic1[bond.Element1], c =>
+                Parallel.ForEach(dic1[bond.Element1].Select(o => o.CellKey).Distinct(), key =>
                 {
-                   var vertices = dic1[bond.Element2].Where(v =>
-                   {
-                       var d = (v.O - c.O).LengthSquared;
-                       return d < max2 && d > min2 && c.Serial != v.Serial;
-                   });
+                    var vertexRanges = neighborKeys.Select(tempKey =>
+                    {
+                        var Start = dic1[bond.Element2].FindIndex(d => d.CellKey == key + tempKey);
+                        var Length = dic1[bond.Element2].FindLastIndex(d => d.CellKey == key + tempKey) - Start + 1;
+                        return (Start, Length);
+                    }).Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.Length)).ToList();
 
-                   if (vertices.Any())
-                   {
-                       int m = vertices.Count(), i = c.AtomIndex;
-                       lock (lockObj)
-                       {
-                           if (!coord.TryGetValue(i, out int n))//まだcoordに何も追加されていない場合
-                           {
-                               coord.Add(i, m);
-                               dic2.Add(c, vertices);
-                           }
-                           else if (n <= m)
-                           {
-                               if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
-                               {
-                                   coord[c.AtomIndex] = m;
-                                   dic2.Where(o => o.Key.AtomIndex == i && o.Value.Count() < m).ToList().ForEach(o => dic2.Remove(o.Key));
-                               }
-                               dic2.Add(c, vertices);
-                           }
-                       }
-                   }
+                    foreach (var c in dic1[bond.Element1].Where(d => d.CellKey == key))
+                    {
+                        var vertices = vertexRanges.Where(j =>
+                        {
+                            var v = dic1[bond.Element2][j];
+                            var d = (v.O - c.O).LengthSquared;
+                            return d < max2 && d > min2 && c.Serial != v.Serial;
+                        }).Select(j => dic1[bond.Element2][j]).ToList();
+
+                        if (vertices.Any())
+                        {
+                            int m = vertices.Count, index = c.AtomIndex;
+                            lock (lockObj)
+                            {
+                                if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合
+                                {
+                                    coord.Add(index, m);
+                                    dic2.Add(c, vertices);
+                                }
+                                else if (n <= m)
+                                {
+                                    if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
+                                    {
+                                        coord[c.AtomIndex] = m;
+                                        dic2.Where(o => o.Key.AtomIndex == index && o.Value.Count() < m).ToList().ForEach(o => dic2.Remove(o.Key));
+                                    }
+                                    dic2.Add(c, vertices);
+                                }
+                            }
+                        }
+                    }
                 });
 
                 //頂点のRenderedをTrueに変更
@@ -566,10 +600,8 @@ namespace ReciPro
                             glObjs.Add(new Polygon(vertices.Select(v => v.O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron });
                         else if (vertices.Count() > 3)
                             glObjs.AddRange(new Polyhedron(vertices.Select(v => v.O), c.PolyMat, polyhedronMode)
-                            { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());
-                        //order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                            { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
                     }
-
                     lock (lockObj)
                         GLObjects.AddRange(glObjs);
 
@@ -596,13 +628,20 @@ namespace ReciPro
                 .Distinct().ToList();
 
             //範囲外であり、なおかつ、上のシリアル番号に含まれない原子を取得
-            //高速化のため、マルチスレッドを避ける
-            for (int i= 0; i < GLObjects.Count; i++)
-                if (GLObjects[i].Tag is atomID id && !id.IsInside && !vertexSerials.Contains(GLObjects[i].SerialNumber))
-                { 
-                    GLObjects.RemoveAt(i);
-                    i--;
+            int n = 0;
+            GLObjectsP.ForAll(o =>
+            {
+                if (o.Tag is atomID id && !id.IsInside && !vertexSerials.Contains(o.SerialNumber))
+                {
+                    o.Z = double.NegativeInfinity;
+                    Interlocked.Increment(ref n);
                 }
+            });
+            
+            //GLObjects = GLObjectsP.OrderBy(o => o.Z).ToList();
+            //GLObjectsP = GLObjects.AsParallel();
+            GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
+            GLObjects.RemoveRange(0, n);
 
             textBoxInformation.AppendText("Remove tentative atoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
         }

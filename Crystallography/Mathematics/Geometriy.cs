@@ -57,7 +57,7 @@ namespace Crystallography
         public static double[] GetParameterOfCurveOfSecondaryDegree(PointD[] point)
         {
             //まず a*x^2 + b*x*y + c*y^2 + d*x + e*y = 1000000 という a,b,c,d,eの5つのパラメータを最小２乗法から求める
-            List<PointD> pt = new List<PointD>();
+            var pt = new List<PointD>();
             for (int i = 0; i < point.Length; i++)
                 if (!double.IsNaN(point[i].X))
                     pt.Add(point[i]);
