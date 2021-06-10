@@ -11,7 +11,7 @@ namespace Crystallography
         /// <summary>
         /// 標準の材質のタプル.  Ambient = 0.2f, Diffuse = 0.5f, Specular = 0.6f, SpecularPow = 4.0f, Emission = 0.4f
         /// </summary>
-        public static  (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) DefaultTexture => (0.2f, 0.5f, 0.6f, 4.0f, 0.4f);
+        public static (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) DefaultTexture => (0.2f, 0.5f, 0.6f, 4.0f, 0.4f);
         /// <summary>
         /// /// 標準の材質のfloat配列.  [0] = Ambient = 0.2f, [1] = Diffuse = 0.5f, [2] = Specular = 0.6f, [3] = SpecularPow = 4.0f, [4] = Emission = 0.4f
         /// </summary>
@@ -70,10 +70,9 @@ namespace Crystallography
 
         #region コンストラクタ
         //基本コンストラクタ
-        public Material(C4 color, float ambient, float diffuse, float specular, float specularPow, float emission, float transparency = -1f)
+        public Material(in C4 color, float ambient, float diffuse, float specular, float specularPow, float emission, float transparency = -1f)
         {
-            Color = transparency != -1f ?
-                new C4(color.R, color.G, color.B, transparency) : color;
+            Color = transparency != -1f ? new C4(color.R, color.G, color.B, transparency) : color;
             Ambient = ambient;
             Diffuse = diffuse;
             Specular = specular;
@@ -81,14 +80,14 @@ namespace Crystallography
             Emission = emission;
 
         }
-        public Material(C4 color, (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f)
+        public Material(in C4 color, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f)
             : this(color, tex.Ambient, tex.Diffuse, tex.Specular, tex.SpecularPow, tex.Emission, transparency) { }
 
-        public Material(C4 color) : this(color, DefaultTexture) { }
-        public Material(C4 color, float transparency) : this(color, DefaultTexture, transparency) { }
-        public Material(C4 color, double transparency) : this(color, DefaultTexture, (float)transparency) { }
+        public Material(in C4 color) : this(color, DefaultTexture) { }
+        public Material(in C4 color, float transparency) : this(color, DefaultTexture, transparency) { }
+        public Material(in C4 color, double transparency) : this(color, DefaultTexture, (float)transparency) { }
 
-        public Material(int argb, (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f) :
+        public Material(int argb, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f) :
             this(new C4((byte)(argb >>16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >>24 & 0xff)), tex, transparency)
         { }
 

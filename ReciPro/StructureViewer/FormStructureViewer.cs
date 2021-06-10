@@ -46,6 +46,7 @@ namespace ReciPro
         private readonly ParallelQuery<GLObject> GLObjectsP;
 
         public readonly object lockObj = new();
+        public readonly object lockObj2 = new();
 
        
         private bool skipSetCrystal = false;
@@ -102,7 +103,7 @@ namespace ReciPro
 
         private class bondID
         {
-            public int SerialNumber1, SerialNumber2;
+            public readonly int SerialNumber1, SerialNumber2;
 
             public bondID(in int serialNumber1, in int serialNumber2)
             {
@@ -493,8 +494,8 @@ namespace ReciPro
             public readonly V3 O;
             public readonly double R;
             public readonly Material BondMat, PolyMat;
-            public bondVertex(int objIndex, int atomIndex, int cellKey, in V3 origin, double radius, Material bondMat, Material polyMat,  int serial)
-            { ObjIndex = objIndex; AtomIndex = atomIndex; Key = cellKey; O = origin; R = radius; BondMat = bondMat; PolyMat = polyMat; Serial = serial; }
+            public bondVertex(int objIndex, int atomIndex, int cellKey, in V3 origin, int serial, double r, Material bondMat, Material polyMat)
+            { ObjIndex = objIndex; AtomIndex = atomIndex; Key = cellKey; O = origin; Serial = serial; R = r; BondMat = bondMat; PolyMat = polyMat; }
         }
 
         /// <summary>
@@ -503,30 +504,27 @@ namespace ReciPro
         private void setBondsAndPolyhera()
         {
             sw.Restart();
-
+            static bool within(double d, double max, double min) => d < max && d > min;
             var dic1 = new Dictionary<string, bondVertex[]>();
             bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
             {
-                double min = bond.MinLength, min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
+                double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
+               
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
                 foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
                 {
-                    var list = GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
-                     .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
-                     {
-                         var s = e.Obj as Sphere;
-                         var bondMat = new Material(s.Material.Color, bond.BondTransParency);
-                         var polyMat = new Material(s.Material.Color, bond.PolyhedronTransParency);
-                         return new bondVertex(e.ObjIndex, (s.Tag as atomID).Index, (s.Tag as atomID).CellKey, s.Origin, s.Radius, bondMat, polyMat, s.SerialNumber);
-                     }).ToArray();
-
-                    Array.Sort(list, (o1, o2) => o1.Key.CompareTo(o2.Key));//CellKeyでソートしておく
-                    dic1.Add(element, list);
+                    dic1.Add(element, GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
+                      .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
+                      {
+                          var s = e.Obj as Sphere;
+                          var bondMat = new Material(s.Material.Color, bond.BondTransParency);
+                          var polyMat = new Material(s.Material.Color, bond.PolyhedronTransParency);
+                          return new bondVertex(e.ObjIndex, (s.Tag as atomID).Index, (s.Tag as atomID).CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                      }).OrderBy(o => o.Key).ToArray());
                 }
 
-                
                 //中心頂点に対する、頂点のリストを一気に作成
-                var dic2 = new Dictionary<bondVertex, int[]>();//中心頂点に対する頂点リストのDictionary
+                var dic2 = new Dictionary<int, int[]>();//中心頂点に対する頂点リストのDictionary
                 var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
                 var cArray = dic1[bond.Element1];
                 var vArray = dic1[bond.Element2];
@@ -537,33 +535,29 @@ namespace ReciPro
                         .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
                         .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
 
-                    foreach (var c in cArray[cArray.FindIndex(d => d.Key == ckey)..(Array.FindLastIndex(cArray, d => d.Key == ckey) + 1)])
+                    int start = cArray.FindIndex(d => d.Key == ckey), end = Array.FindLastIndex(cArray, d => d.Key == ckey) + 1;
+                    for (int i = start; i < end; i++)
                     {
                         //ボンド長さの条件を満たす頂点インデックスを検索
-                        var vIndices = targetIndices.Where(j =>
-                        {
-                            var d = (vArray[j].O - c.O).LengthSquared;
-                            return d < max2 && d > min2 && c.Serial != vArray[j].Serial;
-                        }).ToArray();
-
+                        var vIndices = targetIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
                         if (vIndices.Any())
                         {
-                            int m = vIndices.Length, index = c.AtomIndex;
+                            int m = vIndices.Length, index = cArray[i].AtomIndex;
                             lock (lockObj)
                             {
                                 if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合
                                 {
                                     coord.Add(index, m);
-                                    dic2.Add(c, vIndices);
+                                    dic2.Add(i, vIndices);
                                 }
                                 else if (n <= m)
                                 {
                                     if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
                                     {
-                                        coord[c.AtomIndex] = m;
-                                        dic2.Where(o => o.Key.AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
+                                        coord[cArray[i].AtomIndex] = m;
+                                        dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
                                     }
-                                    dic2.Add(c, vIndices);
+                                    dic2.Add(i, vIndices);
                                 }
                             }
                         }
@@ -572,28 +566,27 @@ namespace ReciPro
 
                 //頂点のRenderedをTrueに変更
                 var dic2P = dic2.AsParallel();
-                dic2P.SelectMany(d => d.Value.Select(v2 =>vArray[v2].ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
-                dic2P.Select(d => d.Key.ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
+                dic2P.SelectMany(d => d.Value.Select(v2 => vArray[v2].ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
+                dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
                 //bondsとpolyhedraを追加
                 dic2P.ForAll(d =>
                 {
-                    var c = d.Key;
+                    var c = cArray[d.Key];
                     var vIndices = d.Value;
                     var glObjs = new List<GLObject>();
 
-                    foreach (var i in vIndices) //Bond
+                    glObjs.AddRange(vIndices.SelectMany(i =>
                     {
                         var v = vArray[i];
                         var vec = v.O - c.O;//中心間を結ぶベクトル
                         var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
+                        return new[] {
+                                new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = new bondID(c.Serial, v.Serial), Rendered = bond.ShowBond },
+                                new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = new bondID(c.Serial,v.Serial), Rendered = bond.ShowBond },
+                        };
+                    }));
 
-                        glObjs.AddRange(new[]
-                        {
-                            new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces){ Tag = new bondID(c.Serial, v.Serial), Rendered = bond.ShowBond},
-                            new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces){ Tag = new bondID(c.Serial, v.Serial), Rendered = bond.ShowBond}
-                        });
-                    }
                     if (bond.ShowPolyhedron)
                     {
                         if (vIndices.Length == 3)
@@ -602,7 +595,7 @@ namespace ReciPro
                             glObjs.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
                     }
-                    lock (lockObj)
+                    lock (lockObj2)
                         GLObjects.AddRange(glObjs);
                 });
             });

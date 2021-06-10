@@ -1124,7 +1124,6 @@ namespace Crystallography
                 outerList.ForEach(o => outer.Remove(o));
 
                 foreach (var (h1, k1, l1) in outerList.Select(o => decomposeKey(o)))
-                { 
                     foreach ((int h2, int k2, int l2) in directions)
                     {
                         int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = composeKey(h, k, l);// h * 1024 * 1024 + k * 1024 + l;
@@ -1135,7 +1134,7 @@ namespace Crystallography
                             gDic.Add(key, (x, y, z, len));
                             outer.Add(key, len);
                         }
-                  }  }
+                    }
             }
             gDic.Remove(zeroKey);
 
