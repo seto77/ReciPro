@@ -25,7 +25,7 @@ namespace ReciPro
     {
         #region フィールド、プロパティ、
 
-        private static readonly List<int> neighborKeys = new List<int>();
+        private static readonly List<int> neighborKeys = new();
         private static readonly List<V3> dirs = new() { new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1) };
         private static readonly List<V3> vrts = new() { new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5) };
 
@@ -506,20 +506,34 @@ namespace ReciPro
             sw.Restart();
             static bool within(double d, double max, double min) => d < max && d > min;
             var dic1 = new Dictionary<string, bondVertex[]>();
+            var dicMaterial = new Dictionary<int, Material>();
             bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
             {
                 double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
-               
                 var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
+                float bondTrans = bond.BondTransParency, polyTrans = bond.PolyhedronTransParency;
+
+                //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
                 foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
                 {
                     dic1.Add(element, GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
                       .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
                       {
                           var s = e.Obj as Sphere;
-                          var bondMat = new Material(s.Material.Color, bond.BondTransParency);
-                          var polyMat = new Material(s.Material.Color, bond.PolyhedronTransParency);
-                          return new bondVertex(e.ObjIndex, (s.Tag as atomID).Index, (s.Tag as atomID).CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                          var id = s.Tag as atomID;
+                          if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
+                          {
+                              bondMat = new Material(s.Material.Color, bondTrans);
+                              lock (lockObj2)
+                                  dicMaterial.TryAdd(id.Index, bondMat);
+                          }
+                          if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
+                          {
+                              polyMat = new Material(s.Material.Color, polyTrans);
+                              lock (lockObj2)
+                                  dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                          }
+                          return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
                       }).OrderBy(o => o.Key).ToArray());
                 }
 
@@ -570,7 +584,8 @@ namespace ReciPro
                 dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
                 //bondsとpolyhedraを追加
-                dic2P.ForAll(d =>
+                //dic2P.ForAll(d =>
+                foreach (var d in dic2)
                 {
                     var c = cArray[d.Key];
                     var vIndices = d.Value;
@@ -597,8 +612,9 @@ namespace ReciPro
                     }
                     lock (lockObj2)
                         GLObjects.AddRange(glObjs);
-                });
+                }//);
             });
+
             textBoxInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 

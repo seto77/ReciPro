@@ -126,7 +126,7 @@ namespace Crystallography
 		{
 			TotalSpaceGroupNumber = BelongingNumberOfSymmetry.Sum(b1 => b1.Sum(b2 => b2.Length));
 
-			//static readonly な定数をTaskで設定。あまり効果ないが。。。
+			//static readonly な定数をTaskで設定。あまり効果ないか。。。
 			Task<Func<double, double, double, (double X, double Y, double Z)>[]> task0 = Task.Run(() => new Func<double, double, double, (double X, double Y, double Z)>[]
 			{
 			#region Coordinates
@@ -2103,9 +2103,9 @@ namespace Crystallography
 			#endregion Coordinates
 			});
 
-			Task<SO[]> task1 = Task.Run(() => new SO[]
+			Task<SO[]> taskPositionGeneratorList = Task.Run(() => new SO[]
 			{
-			#region
+				#region PositionGeneratorList
 new SO(1,+1,(0,0,0),(0,0,0)),
 new SO(-1,+1,(0,0,0),(0,0,0)),
 new SO(2,+1,(0,1,0),(0,0,0)),
@@ -2593,7 +2593,7 @@ new SO(-4,+1,(0,1,0),(0,d12,d14)),
 
 			Task<string[][]> task8 = Task.Run(() => new string[][]
 			{
-			#region StrArray
+				#region StrArray
 		new[]{"","Unknown","Unknown","Unknown","Unknown","","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown","Unknown"},
 new[]{"","C1^1","P1","P1","P1","","P","1","","1","","1","","1","C1","-1",t},
 new[]{"","Ci^1","-P1","P-1","P-1","","P","-1","","1","","1","","-1","Ci","-1",t},
@@ -3139,7 +3139,7 @@ new[]{"","C1^1","extra","F1","F1","","F","1","","1","","1","","1","Ci","1",t},
 
 			Task<ushort[][][]> task2 = Task.Run(() => new ushort[][][]
 			{
-			 #region positions
+				#region positions
 //0 unk
 new ushort[][]{ new ushort[]{ 915}},
 //1 P 1
@@ -7312,7 +7312,7 @@ new ushort[][]{ new ushort[]{ 915}}
 
 			Task<string[]> task3 = Task.Run(() => new string[]
 			{
-			 #region CoodStr
+				#region CoodStr
 	"0,0,0",
 "0,0,1/2",
 "0,0,1/3",
@@ -9287,7 +9287,7 @@ new ushort[][]{ new ushort[]{ 915}}
 
 			Task<ushort[][]> task4 = Task.Run(() => new ushort[][]
 			{
-			#region OperationDictionary
+				#region OperationDictionary
  //0	Unknown
 new ushort[]{0,},
 //1	P1
@@ -10373,7 +10373,7 @@ new ushort[]{0,},
 
 			Task<byte[][]> task6 = Task.Run(() => new byte[][]
 			{
-			#region siteSymmetry
+				#region siteSymmetry
 //0  unk
 new byte[]{0},
 //1  P 1
@@ -11459,7 +11459,7 @@ new byte[]{0}
 
 			Task<ushort[][]> task9 = Task.Run(() => new ushort[][]
 			{
-			#region numArrayの定義
+				#region numArrayの定義
 	new ushort[]{0,0,0,0,0,0},
 new ushort[]{1,1,1,1,1,1},
 new ushort[]{2,2,1,2,1,1},
@@ -12005,7 +12005,7 @@ new ushort[]{535,2,6,2,1,1}
 
 			Task<string[]> task7 = Task.Run(() => new string[]
 			{
-			#region siteSymmetryList
+				#region siteSymmetryList
 "1",
 "-1",
 "2",
@@ -12087,7 +12087,7 @@ new ushort[]{535,2,6,2,1,1}
 #endregion
 			});
 
-			Task.WaitAll(task0, task2, task3, task1, task6, task7, task8, task9, task4);
+			Task.WaitAll(task0, task2, task3, taskPositionGeneratorList, task6, task7, task8, task9, task4);
 			SiteSymmetryList = task7.Result;
 			SiteSymmetryDictionary = task6.Result;
 			OperationDictionary = task4.Result;
@@ -12097,7 +12097,7 @@ new ushort[]{535,2,6,2,1,1}
 			PositionStringList = task3.Result;
 
 			StrArray = task8.Result;
-			OperationList = task1.Result;
+			OperationList = taskPositionGeneratorList.Result;
 			PositionGeneratorList = task0.Result;
 
 			#region PositionGeneratorListの仲間たちを初期化

@@ -200,7 +200,13 @@ namespace Crystallography.Controls
 
         private static string[] spaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex][pointGroupIndex]
-                .Select(n => SymmetryStatic.Symmetries[n].SpaceGroupHMStr).ToArray();
+                .Select(n =>
+                {
+                    var s = SymmetryStatic.Symmetries[n];
+                    return s.SpaceGroupNumber + ":" + s.SpaceGroupHMStr;
+                    
+                    
+                    }).ToArray();
 
 
         private void comboBoxSpaceGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,7 +341,6 @@ namespace Crystallography.Controls
         #endregion
 
         #region 群の記号を斜体、上付き、下付などに整形する
-
         private void comboBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;

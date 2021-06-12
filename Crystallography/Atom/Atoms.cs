@@ -433,7 +433,7 @@ namespace Crystallography
         /// <param name="S2">S2: (sin(theta)/ramda)^2, unit is nm^-2</param>
         /// <returns></returns>
         public double GetAtomicScatteringFactorForElectron(double s2)
-            => AtomStatic.ElectronScattering[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
+            => AtomStatic.ElectronScatteringPeng[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
 
         /// <summary>
         /// X線の原子散乱因子を計算 s2の単位はnm^-2
@@ -441,7 +441,7 @@ namespace Crystallography
         /// <param name="s2"> unit is nm^-2</param>
         /// <returns></returns>
         public double GetAtomicScatteringFactorForXray(double s2)
-            => AtomStatic.XrayScattering[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
+            => AtomStatic.XrayScatteringWK[AtomicNumber][SubNumberXray].Factor(s2) * Occ;
 
         public Complex GetAtomicScatteringFactorForNeutron()
         {

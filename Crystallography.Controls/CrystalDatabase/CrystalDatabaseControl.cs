@@ -117,14 +117,14 @@ namespace Crystallography.Controls
                     int flag = readByte(fs), total = readInt(fs);
                     if (flag == 100)//単一ファイルの時
                     {
-                        var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(filename)).Slice(5);
+                        var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(filename))[5..];
                         while (b.Length != 0)
                         {
                             deserialize<Crystal2[]>(b, out var byteRead).AsParallel().Select(c2 => dataTable.CreateRow(c2))
                                         .ToList().ForEach(r => dataTable.Rows.Add(r));
 
                             ReadDatabaseWorker.ReportProgress(0, report(dataTable.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
-                            b = b.Slice(byteRead);
+                            b = b[byteRead..];
                         }
                     }
                     else if (flag == 200)//分割ファイルの時
@@ -143,7 +143,7 @@ namespace Crystallography.Controls
                                 try { foreach (var r in rows) dataTable.Rows.Add(r); }
                                 finally { rwlock.ExitWriteLock(); }
                                 ReadDatabaseWorker.ReportProgress(0, report(dataTable.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
-                                b = b.Slice(byteRead);
+                                b = b[byteRead..];
                             }
                         });
                     }

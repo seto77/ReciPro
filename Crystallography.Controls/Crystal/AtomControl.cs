@@ -332,11 +332,11 @@ namespace Crystallography.Controls
             comboBoxScatteringFactorXray.Items.Clear();
             comboBoxScatteringFactorElectron.Items.Clear();
 
-            for (int i = 0; i < AtomStatic.XrayScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorXray.Items.Add(AtomStatic.XrayScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.XrayScatteringWK[AtomNo].Length; i++)
+                comboBoxScatteringFactorXray.Items.Add(AtomStatic.XrayScatteringWK[AtomNo][i].Method);
 
-            for (int i = 0; i < AtomStatic.ElectronScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorElectron.Items.Add(AtomStatic.ElectronScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.ElectronScatteringPeng[AtomNo].Length; i++)
+                comboBoxScatteringFactorElectron.Items.Add(AtomStatic.ElectronScatteringPeng[AtomNo][i].Method);
 
             comboBoxScatteringFactorXray.SelectedIndex = 0;
             comboBoxScatteringFactorElectron.SelectedIndex = 0;

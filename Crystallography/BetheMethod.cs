@@ -649,7 +649,7 @@ namespace Crystallography
             foreach (var atoms in Crystal.Atoms)
             {
                 //var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2);
-                var real = AtomStatic.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2);
+                var real = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2);
                 // 等方散乱因子の時 あるいは非等方でg=0の時
                 if (atoms.Dsf.UseIso || (index == (0, 0, 0)))
                 {
@@ -664,7 +664,7 @@ namespace Crystallography
                         m = 0;
                     var t = Math.Exp(-m * s2);
                     //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2, m);//答えは無次元
-                    var imag = AtomStatic.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m);//答えは無次元
+                    var imag = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m);//答えは無次元
                     foreach (var atom in atoms.Atom)
                     {
                         var d = t * Exp(TwoPiI * (atom * index)) * atoms.Occ;
@@ -682,7 +682,7 @@ namespace Crystallography
                         //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2, m / s2);//答えは無次元
 
                         if (double.IsNaN(m)) m = 0;
-                        var imag = AtomStatic.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m / s2);//答えは無次元
+                        var imag = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2, m / s2);//答えは無次元
                         var d = Math.Exp(-m) * Exp(TwoPiI * (atom * index)) * atoms.Occ;
                         fReal += real * d;
                         fImag += imag * d;
