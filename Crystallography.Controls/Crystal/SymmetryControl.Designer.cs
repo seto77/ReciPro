@@ -357,7 +357,7 @@
             resources.ApplyResources(this.comboBoxSpaceGroup, "comboBoxSpaceGroup");
             this.comboBoxSpaceGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxSpaceGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpaceGroup.DropDownWidth = 200;
+            this.comboBoxSpaceGroup.DropDownWidth = 250;
             this.comboBoxSpaceGroup.Name = "comboBoxSpaceGroup";
             this.toolTip.SetToolTip(this.comboBoxSpaceGroup, resources.GetString("comboBoxSpaceGroup.ToolTip"));
             this.comboBoxSpaceGroup.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);

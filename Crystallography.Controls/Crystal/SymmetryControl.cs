@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
+using IronPython.Runtime.Operations;
 
 namespace Crystallography.Controls
 {
@@ -365,7 +366,18 @@ namespace Crystallography.Controls
                 b = new SolidBrush(Color.White);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            //最初に数値を書く
+
+            //「:」が含まれている場合は、空間群番号を表すので、先に「:」までを処理する。
+            if(txt.Contains(":"))
+            {
+                var i = txt.find(":")+1;
+                    
+                e.Graphics.DrawString(txt[0..i].ToString(), regular, b, xPos, e.Bounds.Y);
+                xPos += e.Graphics.MeasureString(txt[0..i].ToString(), regular).Width - 2;
+                txt = txt[i..];
+            }
+
+
             while (txt.Length > 0)
             {
                 if (txt.StartsWith(" "))
