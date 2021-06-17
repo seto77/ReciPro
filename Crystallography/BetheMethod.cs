@@ -188,11 +188,8 @@ namespace Crystallography
             #endregion
 
             var reportString = $"{solver}{thread}";
-
             var len = Beams.Length;
-
             var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
-            //var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(1);
 
             //ここからdiskValid[t][g]を計算.
             var diskValid = beamRotationsP.Select(beamRotation =>
@@ -339,8 +336,7 @@ namespace Crystallography
 
             dim = Beams.Length;
 
-            var psi0 = new DVec(new Complex[dim]);//入射面での波動関数を定義
-            psi0[0] = 1;
+            var psi0 = new DVec(new Complex[dim]) { [0] = 1 };//入射面での波動関数を定義
 
             var alpha = EigenVectorsInverse.Multiply(psi0);//アルファベクトルを求める
 
@@ -387,7 +383,7 @@ namespace Crystallography
             var useEigen = EigenEnabled && maxNumOfBloch < 400;
             if (!MathNet.Numerics.Control.TryUseNativeMKL())
                 useEigen = true;
-
+            
             var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
                 || EigenVectorsPED == null || EigenVectorsPED.Length != step || semiangle != SemianglePED || !baseRotation.Equals(BaseRotation))
@@ -420,7 +416,6 @@ namespace Crystallography
                        if (useEigen)
                        {//Eigenを使う場合
                            (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(dim,potentialMatrix);
-                           //EigenVectorsInversePED[k] = (DMat)EigenVectorsPED[k].Inverse(); 
                            EigenVectorsInversePED[k] = NativeWrapper.Inverse(EigenVectorsPED[k]);
                        }
                        else
@@ -439,8 +434,7 @@ namespace Crystallography
                 if (EigenValuesPED[k] != null)
                 {
                     var len = EigenValuesPED[k].Count;
-                    var psi0 = new DVec(new Complex[len]);//入射面での波動関数を定義
-                    psi0[0] = 1;
+                    var psi0 = new DVec(new Complex[len]) { [0] = 1 };//入射面での波動関数を定義
                     var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
                     //ガンマの対称行列×アルファを作成
                     var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n]).ToArray());
@@ -549,8 +543,8 @@ namespace Crystallography
                     var qSq = (k + g.Vec.ToPointD).Length2;
                     gList.Add((g.Psi, k + g.Vec.ToPointD, defocusses.Select(defocus =>
                         Exp(-PiI * rambda * qSq * (cs * rambdaSq * qSq / 2.0 + defocus))//球面収差
-                        * Math.Exp(-PiSq * betaSq * qSq * (defocus + rambdaSq * cs * qSq) * (defocus + rambdaSq * cs * qSq))//時間的インコヒーレンス
-                        * Math.Exp(-PiSq * rambdaSq * deltaSq * qSq * qSq / 2)//空間的インコヒーレンス
+                        * Math.Exp(-PiSq * betaSq * qSq * (defocus + rambdaSq * cs * qSq) * (defocus + rambdaSq * cs * qSq))//Ec 時間的インコヒーレンス
+                        * Math.Exp(-PiSq * rambdaSq * deltaSq * qSq * qSq / 2)//Es 空間的インコヒーレンス
                          ).ToArray()));
                 }
 
@@ -577,8 +571,8 @@ namespace Crystallography
                         var lenz = defocusses.Select(defocus =>
                             Exp(-PiI * rambda * q1Sq * (cs * rambdaSq * q1Sq / 2.0 + defocus)) *  //Kai1
                             Exp(PiI * rambda * q2Sq * (cs * rambdaSq * q2Sq / 2.0 + defocus)) *  //kai2
-                            Math.Exp(-PiSq * betaSq * (defocus * (q1 - q2) + rambdaSq * cs * (q1Sq * q1 - q2Sq * q2)).Length2) *  //eb
-                            Math.Exp(-PiSq * rambdaSq * deltaSq * (q1Sq - q2Sq) * (q1Sq - q2Sq) / 2.0) //ed
+                            Math.Exp(-PiSq * betaSq * (defocus * (q1 - q2) + rambdaSq * cs * (q1Sq * q1 - q2Sq * q2)).Length2) *  //Es 空間的インコヒーレンス
+                            Math.Exp(-PiSq * rambdaSq * deltaSq * (q1Sq - q2Sq) * (q1Sq - q2Sq) / 2.0) //Ec 時間的インコヒーレンス
                             ).ToArray();
 
                         gList.Add((psi, vec, lenz));

@@ -190,7 +190,7 @@ namespace Crystallography.Controls
         public void ClearData()
         {
             data.Clear();
-            destData = new Ellipse[0];
+            destData = Array.Empty<Ellipse>();
         }
 
         public void AddData(PointD center, double width, double height, Color fillColor, Color lineColor, double lineWidth, bool ReDraw)
@@ -205,7 +205,7 @@ namespace Crystallography.Controls
 
         public void Initialize()
         {
-            destData = new Ellipse[0];
+            destData = Array.Empty<Ellipse>();
             if (data != null && data.Count > 2)
             {
                 convertAxis();
@@ -581,8 +581,7 @@ namespace Crystallography.Controls
         {
             if (MouseRangingMode)
             {
-                Pen pen = new Pen(Brushes.Gray);
-                pen.DashStyle = DashStyle.Dash;
+                var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
                 e.Graphics.DrawRectangle(pen, Math.Min(MouseRangeStart.X, MouseRangeEnd.X), Math.Min(MouseRangeStart.Y, MouseRangeEnd.Y),
                     Math.Abs(MouseRangeStart.X - MouseRangeEnd.X), Math.Abs(MouseRangeStart.Y - MouseRangeEnd.Y));
             }

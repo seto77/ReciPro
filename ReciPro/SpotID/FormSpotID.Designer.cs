@@ -163,13 +163,11 @@ namespace ReciPro
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
@@ -177,8 +175,8 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced
             // 
-            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
+            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
@@ -195,7 +193,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(524, 593);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(592, 590);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
@@ -209,9 +207,9 @@ namespace ReciPro
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.buttonPixelToPixel);
             this.panel1.Controls.Add(this.buttonCopyMetafile);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // buttonPixelToPixel
@@ -250,11 +248,11 @@ namespace ReciPro
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.numericBoxNumberOfSpots);
             this.groupBox4.Controls.Add(this.buttonResetRangeForAllSpots);
             this.groupBox4.Controls.Add(this.numericBoxFittingRange);
             this.groupBox4.Controls.Add(this.numericBoxNearestNeighbor);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -272,6 +270,7 @@ namespace ReciPro
             this.numericBoxNumberOfSpots.ShowUpDown = true;
             this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
             this.numericBoxNumberOfSpots.SmartIncrement = true;
+            this.numericBoxNumberOfSpots.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
             this.numericBoxNumberOfSpots.Value = 30D;
             // 
@@ -296,6 +295,7 @@ namespace ReciPro
             this.numericBoxFittingRange.ShowUpDown = true;
             this.numericBoxFittingRange.SkipEventDuringInput = false;
             this.numericBoxFittingRange.SmartIncrement = true;
+            this.numericBoxFittingRange.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFittingRange.ThonsandsSeparator = true;
             this.numericBoxFittingRange.Value = 20D;
             this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
@@ -314,6 +314,7 @@ namespace ReciPro
             this.numericBoxNearestNeighbor.ShowUpDown = true;
             this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
             this.numericBoxNearestNeighbor.SmartIncrement = true;
+            this.numericBoxNearestNeighbor.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
             this.numericBoxNearestNeighbor.Value = 10D;
             // 
@@ -330,7 +331,7 @@ namespace ReciPro
             this.numericBoxDonut.ShowUpDown = true;
             this.numericBoxDonut.SkipEventDuringInput = false;
             this.numericBoxDonut.SmartIncrement = true;
-            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDonut.ThonsandsSeparator = true;
             this.numericBoxDonut.Value = 5D;
             // 
@@ -343,13 +344,13 @@ namespace ReciPro
             // 
             // dataGridViewSpots
             // 
-            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AllowUserToDeleteRows = false;
             this.dataGridViewSpots.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -377,7 +378,7 @@ namespace ReciPro
             this.dataGridViewSpots.DataSource = this.bindingSourceObsSpots;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle14.Format = "N2";
             dataGridViewCellStyle14.NullValue = null;
@@ -557,6 +558,7 @@ namespace ReciPro
             // dataSet
             // 
             this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // checkBoxShowObsSpotSymbol
@@ -640,6 +642,7 @@ namespace ReciPro
             // groupBox3
             // 
             resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.buttonIdentifySpots);
             this.groupBox3.Controls.Add(this.numericBoxSemiangle);
             this.groupBox3.Controls.Add(this.numericBoxMaxNumOfG);
             this.groupBox3.Controls.Add(this.numericBoxAcceptableError);
@@ -652,7 +655,6 @@ namespace ReciPro
             this.groupBox3.Controls.Add(this.dataGridViewCandidates);
             this.groupBox3.Controls.Add(this.checkBoxIgnoreMultipleDiffraction);
             this.groupBox3.Controls.Add(this.buttonRefineThicknessAndDirection);
-            this.groupBox3.Controls.Add(this.buttonIdentifySpots);
             this.groupBox3.Controls.Add(this.buttonStop);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -670,7 +672,7 @@ namespace ReciPro
             this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
             this.numericBoxSemiangle.ShowUpDown = true;
             this.numericBoxSemiangle.SmartIncrement = true;
-            this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSemiangle.ThonsandsSeparator = true;
             this.numericBoxSemiangle.Value = 2D;
             // 
@@ -686,7 +688,7 @@ namespace ReciPro
             this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
             this.numericBoxMaxNumOfG.ShowUpDown = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
             this.numericBoxMaxNumOfG.Value = 400D;
             // 
@@ -703,6 +705,7 @@ namespace ReciPro
             this.numericBoxAcceptableError.ShowUpDown = true;
             this.numericBoxAcceptableError.SkipEventDuringInput = false;
             this.numericBoxAcceptableError.SmartIncrement = true;
+            this.numericBoxAcceptableError.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAcceptableError.ThonsandsSeparator = true;
             this.numericBoxAcceptableError.Value = 2D;
             // 
@@ -718,6 +721,7 @@ namespace ReciPro
             this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
             this.numericBoxMaxGrainNum.ShowUpDown = true;
             this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
+            this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
             this.numericBoxMaxGrainNum.Value = 2D;
             // 
@@ -754,10 +758,10 @@ namespace ReciPro
             // 
             // dataGridViewGrains
             // 
-            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AllowUserToAddRows = false;
             this.dataGridViewGrains.AllowUserToDeleteRows = false;
             this.dataGridViewGrains.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AutoGenerateColumns = false;
             this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -800,10 +804,10 @@ namespace ReciPro
             // 
             // dataGridViewCandidates
             // 
-            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AllowUserToAddRows = false;
             this.dataGridViewCandidates.AllowUserToDeleteRows = false;
             this.dataGridViewCandidates.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AutoGenerateColumns = false;
             this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -892,6 +896,7 @@ namespace ReciPro
             this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
             this.numericBoxCameraLength.SkipEventDuringInput = false;
             this.numericBoxCameraLength.SmartIncrement = true;
+            this.numericBoxCameraLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCameraLength.ThonsandsSeparator = true;
             this.numericBoxCameraLength.Value = 1000D;
             // 
@@ -907,6 +912,7 @@ namespace ReciPro
             this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
+            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.ThonsandsSeparator = true;
             this.numericBoxPixelSize.Value = 0.05D;
             // 
@@ -916,7 +922,7 @@ namespace ReciPro
             this.waveLengthControl1.Energy = 199.99999999999997D;
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.waveLengthControl1.WaveLength = 0.00250793474552456D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
@@ -931,27 +937,26 @@ namespace ReciPro
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.shortcutHintsToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // readToolStripMenuItem
             // 
-            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
             this.readToolStripMenuItem.Name = "readToolStripMenuItem";
+            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
             // 
             // shortcutHintsToolStripMenuItem
             // 
-            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.doubleClickAddSpotToolStripMenuItem,
             this.toolStripMenuItem7,
@@ -961,6 +966,7 @@ namespace ReciPro
             this.toolStripMenuItem4,
             this.toolStripMenuItem3});
             this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
+            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
@@ -999,40 +1005,40 @@ namespace ReciPro
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabelImageFilter,
             this.toolStripStatusLabelFindSpot,
             this.toolStripStatusLabelIdentifySpot,
             this.toolStripStatusLabelRefine});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Maximum = 10000;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelImageFilter
             // 
-            resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
             this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
+            resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
             // 
             // toolStripStatusLabelFindSpot
             // 
-            resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
             this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
+            resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
             // 
             // toolStripStatusLabelIdentifySpot
             // 
-            resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
             this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
+            resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
             // 
             // toolStripStatusLabelRefine
             // 
-            resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
             this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
+            resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
             // 
             // backgroundWorkerSpotID
             // 
@@ -1044,8 +1050,8 @@ namespace ReciPro
             // 
             // FormSpotID
             // 
-            resources.ApplyResources(this, "$this");
             this.AllowDrop = true;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
@@ -1078,6 +1084,7 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
