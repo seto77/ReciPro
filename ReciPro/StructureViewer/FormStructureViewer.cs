@@ -97,8 +97,6 @@ namespace ReciPro
             }
             public static int ComposeKey(int a, int b, int c) => a *512*512 + b  *512 + c;
             public static int ComposeKey(V3 v) => ComposeKey((short) v.X, (short)v.Y, (short)v.Z );
-            //public static (short a, short b, short c) DecomposeKey(long key)
-            //    => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
         }
 
         private class bondID
@@ -360,7 +358,7 @@ namespace ReciPro
                 };
             }
 
-            textBoxInformation.AppendText("Initialization of bounds: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            textBoxInformation.AppendText($"Initialization of bounds: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 
         #endregion
@@ -393,7 +391,7 @@ namespace ReciPro
             }
             glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
 
-            textBoxInformation.AppendText("Generation of bound planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            textBoxInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 
         #endregion
@@ -435,23 +433,25 @@ namespace ReciPro
             //原子を追加
             enabledAtomsP.ForAll(o =>
             {
-                for(int i=0; i< cells.Count; i++)
-
-                //foreach (var pos in cells.Select(t => axes.Mult(t + o.Pos) - shift))
+                var spheres = new Sphere[cells.Count];
+                int n = 0;
+                for (int i = 0; i < cells.Count; i++)
                 {
                     var pos = axes.Mult(cells[i] + o.Pos) - shift;
-
                     var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
                     if (min > threshold)
                     {
-                        var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces) { Rendered = min > -0.0000001 };
-                        sphere.Tag = new atomID(o.Index, sphere.Rendered, atomID.ComposeKey(cells[i]));
-                        lock (lockObj)
-                            GLObjects.Add(sphere);
+                        spheres[n++] = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces)
+                        {
+                            Rendered = min > -0.0000001,
+                            Tag = new atomID(o.Index, min > -0.0000001, atomID.ComposeKey(cells[i]))
+                        };
                     }
                 }
+                lock (lockObj)
+                    GLObjects.AddRange(spheres[0..n]);
             });
-            textBoxInformation.AppendText("Generation of aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            textBoxInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 
 
@@ -478,7 +478,7 @@ namespace ReciPro
             }
             enabledAtomsP = list.AsParallel();
 
-            textBoxInformation.AppendText("Selection of enabled aoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
+            textBoxInformation.AppendText($"Selection of enabled aoms: {sw.ElapsedMilliseconds}ms.\r\n");
         }
 
         #endregion
@@ -584,35 +584,36 @@ namespace ReciPro
                 dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
                 //bondsとpolyhedraを追加
-                //dic2P.ForAll(d =>
-                foreach (var d in dic2)
+                dic2P.ForAll(d =>
                 {
                     var c = cArray[d.Key];
                     var vIndices = d.Value;
-                    var glObjs = new List<GLObject>();
 
-                    glObjs.AddRange(vIndices.SelectMany(i =>
+                    var objects = new GLObject[vIndices.Length * 2];
+                    int n = 0;
+                    foreach (var i in vIndices)
                     {
                         var v = vArray[i];
                         var vec = v.O - c.O;//中心間を結ぶベクトル
                         var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
-                        return new[] {
-                                new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = new bondID(c.Serial, v.Serial), Rendered = bond.ShowBond },
-                                new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = new bondID(c.Serial,v.Serial), Rendered = bond.ShowBond },
-                        };
-                    }));
-
-                    if (bond.ShowPolyhedron)
-                    {
-                        if (vIndices.Length == 3)
-                            glObjs.Add(new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron });
-                        else if (vIndices.Length > 3)
-                            glObjs.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
-                            { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                        var tag = new bondID(c.Serial, v.Serial);
+                        objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
+                        objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
                     }
                     lock (lockObj2)
-                        GLObjects.AddRange(glObjs);
-                }//);
+                        GLObjects.AddRange(objects);
+
+                    if (bond.ShowPolyhedron && vIndices.Length > 2)
+                    {
+                        lock (lockObj2)
+                            if (vIndices.Length == 3)
+                                GLObjects.Add(new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron });
+                            else// vIndices.Length > 3)
+                                GLObjects.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
+                                { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                    }
+
+                });
             });
 
             textBoxInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -646,8 +647,6 @@ namespace ReciPro
                 }
             });
             
-            //GLObjects = GLObjectsP.OrderBy(o => o.Z).ToList();
-            //GLObjectsP = GLObjects.AsParallel();
             GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
             GLObjects.RemoveRange(0, n);
 

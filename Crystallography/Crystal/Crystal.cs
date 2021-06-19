@@ -1068,9 +1068,7 @@ namespace Crystallography
         #endregion
 
         #region 逆格子ベクトルの計算
-        private static int composeKey(int h, int k, int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
-        private static (int h, int k, int l) decomposeKey(int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
-        /// <summary>
+       /// <summary>
         /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
         /// </summary>
         /// <param name="dMin"></param>
@@ -1079,6 +1077,10 @@ namespace Crystallography
         public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
         {
             if (A_Star == null) SetAxis();
+
+            static int composeKey(in int h, in int k, int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
+            static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
+
             double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
             double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
             double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
@@ -1138,7 +1140,7 @@ namespace Crystallography
             }
             gDic.Remove(zeroKey);
 
-            var gList = gDic/*.OrderBy(g => g.Value.len)*/.ToList();//並び替えは必要ない？
+            var gList = gDic.ToList();
             var gArray = new Vector3D[gDic.Count * 2];
             Parallel.For(0, gList.Count, i =>
             {

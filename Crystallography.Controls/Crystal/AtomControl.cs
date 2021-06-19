@@ -435,7 +435,6 @@ namespace Crystallography.Controls
                 ItemsChanged?.Invoke(this, new EventArgs());
                 bindingSource_PositionChanged(new object(), new EventArgs());
             }
-            
         }
 
         /// <summary>
@@ -459,23 +458,7 @@ namespace Crystallography.Controls
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
-        /// <summary>
-        /// 引数原子をi番目に設定し、そのMaterial Propertyをさらに引数と同じ元素に対して適用
-        /// </summary>
-        /// <param name="atoms"></param>
-        public void ReplaceAndCopyMaterial(Atoms atoms, int i)
-        {
-            table.Replace(atoms, i);
-            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
-            foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
-            { 
-                a.Texture = atoms.Texture;
-                a.Radius = atoms.Radius;
-                a.Argb = atoms.Argb;
-                a.ShowLabel = atoms.ShowLabel;
-            }
-            ItemsChanged?.Invoke(this, new EventArgs());
-        }
+      
 
         /// <summary>
         /// データベースの原子を削除する
@@ -633,10 +616,65 @@ namespace Crystallography.Controls
             var pos = bindingSource.Position;
             if (pos >= 0)
             {
-                ReplaceAndCopyMaterial(GetFromInterface(), pos);
+                var atoms = GetFromInterface();
+                Replace(atoms, pos);
+
+                if (tabControl.SelectedTab == tabPageAppearance)
+                    CopyAppearance(atoms, pos);
+                else if (tabControl.SelectedTab == tabPageDebyeWaller)
+                    CopyDebyeWaller(atoms, pos, true);
+                
                 bindingSource.Position = pos;
             }
         }
+
+        //編集内容を全ての原子に適用する
+        private void buttonApplyToAllElements_Click(object sender, EventArgs e)
+        {
+            var pos = bindingSource.Position;
+            if (pos >= 0)
+            {
+                var atoms = GetFromInterface();
+                Replace(atoms, pos);
+
+                if (tabControl.SelectedTab == tabPageDebyeWaller)
+                    CopyDebyeWaller(atoms, pos, false);
+
+                bindingSource.Position = pos;
+            }
+        }
+
+        /// <summary>
+        /// 引数原子をi番目に設定し、そのAppearance (Material Property)をさらに引数と同じ元素に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void CopyAppearance(Atoms atoms, int i)
+        {
+            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
+            foreach (var a in others)
+            {
+                a.Texture = atoms.Texture;
+                a.Radius = atoms.Radius;
+                a.Argb = atoms.Argb;
+                a.ShowLabel = atoms.ShowLabel;
+            }
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+        /// <summary>
+        /// 引数原子をi番目に設定し、さらにそのDebyeWaller因子を　同じ元素　あるいは　全元素 に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void CopyDebyeWaller(Atoms atoms, int i, bool onlySameElements)
+        {
+            var others = onlySameElements ?
+                dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber):
+                dataSet.DataTableAtom.GetAll();
+            
+            foreach (var a in others)
+                a.Dsf = atoms.Dsf;
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+
 
         //原子削除ボタン
         private void buttonDelete_Click(object sender, System.EventArgs e)
@@ -760,7 +798,8 @@ namespace Crystallography.Controls
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
+            buttonApplyToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance || tabControl.SelectedTab == tabPageDebyeWaller;
+            buttonApplyToAllElements.Visible = tabControl.SelectedTab == tabPageDebyeWaller;
         }
 
         private void dataGridViewAtom_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -780,5 +819,7 @@ namespace Crystallography.Controls
             if ((x == 0) && dataGridView.IsCurrentCellDirty)
                 dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
+
+     
     }
 }

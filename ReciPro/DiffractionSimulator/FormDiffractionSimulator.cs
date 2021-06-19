@@ -996,12 +996,13 @@ namespace ReciPro
             var sw = new Stopwatch();
             sw.Start();
 
-            var d1 = 1 / convertScreenToReciprocal(0, 0, false).Length;
-            var d2 = 1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length;
-            var d3 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length;
-            var d4 = 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length;
-            var minD = new[] { d1, d2, d3, d4 }.Min();
-            //double maxD = new[] { d1, d2, d3, d4 }.Max();
+            var minD = new[] {
+                1 / convertScreenToReciprocal(0, 0, false).Length,
+                1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length,
+                1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length,
+                1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length
+            }.Min();
+           
             var w = waveLengthControl.WaveSource;
             if (toolStripButtonDiffractionSpots.Checked)
             {
@@ -1054,8 +1055,6 @@ namespace ReciPro
         #endregion
 
         #region 座標変換
-
-
 
         /// <summary>
         /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
@@ -1291,7 +1290,6 @@ namespace ReciPro
 
             var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
             labelMousePositionReal.Text = $"Real Coord. (origin: sample):　{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
-
 
             var invPos = convertRealToReciprocal(realPos, false);
             labelMousePositionReciprocal.Text = $"Reciprocal Coord. :{invPos.X:f3} /nm, {invPos.Y:f3} /nm, {invPos.Z:f3} /nm";

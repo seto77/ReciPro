@@ -1522,7 +1522,7 @@ namespace Crystallography.OpenGL
             //すべての頂点を座標変換し、vListに追加
             var vList = new List<Vertex>();
             //var transMat = M3d.CreateFromAxisAngle(V3d.Cross(vZ, Normal), V3d.CalculateAngle(Normal, vZ)).ToMatrix4D();
-            var transMat = GLGeometry.CreateRotationToZ(norm).ToMatrix4D();
+            var transMat = GLGeometry.CreateRotationToZ(norm).ToMatrix4d();
             transMat.Column3 = new V4d(origin, 1);
             for (int i = 0; i < circleVertex.Count; i++)
             {

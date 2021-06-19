@@ -147,58 +147,34 @@ namespace Crystallography
 
 				case 2://	monoclinic
 					if (sym.StrSE1p == "2s1")
-					{
 						func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
-					}
 
 					if (sym.StrSE2p == "2s1")
-					{
 						func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
-					}
 
 					if (sym.StrSE3p == "2s1")
-					{
 						func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
-					}
 
 					if (sym.StrSE1v == "b")
-					{
 						func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bÛ[100]" : null);
-					}
 					else if (sym.StrSE1v == "c")
-					{
 						func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
-					}
 					else if (sym.StrSE1v == "n")
-					{
 						func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nÛ[100]" : null);
-					}
 
 					if (sym.StrSE2v == "a")
-					{
 						func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aÛ[010]" : null);
-					}
 					else if (sym.StrSE2v == "c")
-					{
 						func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
-					}
 					else if (sym.StrSE2v == "n")
-					{
 						func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nÛ[010]" : null);
-					}
 
 					if (sym.StrSE3v == "a")
-					{
 						func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aÛ[001]" : null);
-					}
 					else if (sym.StrSE3v == "b")
-					{
 						func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bÛ[001]" : null);
-					}
 					else if (sym.StrSE3v == "n")
-					{
 						func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nÛ[001]" : null);
-					}
 
 					break;
 

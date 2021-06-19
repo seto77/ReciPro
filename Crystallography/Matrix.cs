@@ -777,14 +777,14 @@ namespace Crystallography
             X = 0; Y = 0; Z = 0; d = 0;
         }
 
-        public Vector3D(double x, double y, double z)
+        public Vector3D(in double x, in double y, in double z)
         {
             X = x; Y = y; Z = z;
             //d2 = X * X + Y * Y + Z * Z;
             d = Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
-        public Vector3D(double x, double y, double z, bool IsCalcD)
+        public Vector3D(in double x, in double y, in double z, in bool IsCalcD)
         {
             X = x; Y = y; Z = z;
             if (IsCalcD)
