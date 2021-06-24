@@ -1674,9 +1674,11 @@ namespace ReciPro
         {
             formMain.Crystal.Bethe.MaxNumOfBloch = 0;
 
-            saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
-
+            //PED設定パネルの表示変更
+            flowLayoutPanelPED.Visible = radioButtonBeamPrecession.Checked;
+            
             //ファイルメニューアイテムの変更
+            saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
             saveCBEDPatternToolStripMenuItem.Visible =  copyCBEDPatternToolStripMenuItem.Visible = radioButtonBeamConvergence.Checked;
 
             if(radioButtonBeamParallel.Checked)//平行ビームの場合

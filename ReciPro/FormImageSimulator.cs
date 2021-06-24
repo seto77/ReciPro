@@ -378,7 +378,7 @@ namespace ReciPro
             toolStripStatusLabel1.Text = "Generation of HRTEM images: " + temp.ToString() + " msec,   ";
 
             SkipEvent = true;
-            trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = checkBoxNormalizeHigh.Checked ? 65535 : totalImage.Max(d1 => d1.Max(d2 => d2.Max()));
+            trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = 65535;// checkBoxNormalizeHigh.Checked ? 65535 : totalImage.Max(d1 => d1.Max(d2 => d2.Max()));
             trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
             SkipEvent = false;
 
@@ -389,7 +389,7 @@ namespace ReciPro
                 for (var d = 0; d < dLen; d++)
                 {
                     //ノーマライズ
-                    totalImage[t][d] = Normalize(totalImage[t][d], checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+                    totalImage[t][d] = Normalize(totalImage[t][d], true, true);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
                     //PseudoBitmapを生成
                     pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                         = new PseudoBitmap(totalImage[t][d], width)
@@ -786,7 +786,7 @@ namespace ReciPro
         private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxObjectAperture.Enabled = groupBoxLenzFunction.Enabled = groupBoxPartialCoherencyModel.Enabled =
-                 groupBoxNormalizeIntensity.Enabled = ImageMode == ImageModes.HRTEM;
+                 /*groupBoxNormalizeIntensity.Enabled = */ImageMode == ImageModes.HRTEM;
 
             groupBoxInherentProperty.Enabled = groupBoxSampleProperty.Enabled =
                 numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
@@ -1031,6 +1031,11 @@ namespace ReciPro
         {
             flowLayoutPanelMagAndPhase.Visible = panelPhaseScale.Visible = radioButtonPotentialModeMagAndPhase.Checked;
             flowLayoutPanelRealAndImaiginary.Visible = radioButtonPotentialModeRealAndImag.Checked;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)

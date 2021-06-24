@@ -164,14 +164,15 @@ namespace ReciPro
             this.buttonAddIndex = new System.Windows.Forms.Button();
             this.listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             this.checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioButtonRange = new System.Windows.Forms.RadioButton();
+            this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numericBox3 = new Crystallography.Controls.NumericBox();
             this.numericBox2 = new Crystallography.Controls.NumericBox();
             this.numericBox1 = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonRange = new System.Windows.Forms.RadioButton();
-            this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
             this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
@@ -203,8 +204,8 @@ namespace ReciPro
             this.menuStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panelSpecifiedIndices.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).BeginInit();
             this.SuspendLayout();
@@ -1368,7 +1369,6 @@ namespace ReciPro
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.panelSpecifiedIndices);
-            this.groupBox5.Controls.Add(this.panel2);
             this.groupBox5.Controls.Add(this.flowLayoutPanel3);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
@@ -1409,6 +1409,29 @@ namespace ReciPro
             this.checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
             this.checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
             this.checkBoxIncludingEquivalentPlanes.CheckedChanged += new System.EventHandler(this.checkBoxIncludingEquivalentPlanes_CheckedChanged);
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
+            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
+            this.flowLayoutPanel3.Controls.Add(this.panel2);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // radioButtonRange
+            // 
+            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
+            this.radioButtonRange.Checked = true;
+            this.radioButtonRange.Name = "radioButtonRange";
+            this.radioButtonRange.TabStop = true;
+            this.radioButtonRange.UseVisualStyleBackColor = true;
+            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
+            // 
+            // radioButtonSpecifiedIndices
+            // 
+            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
+            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
+            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -1464,34 +1487,18 @@ namespace ReciPro
             this.numericBox1.Value = 2D;
             this.numericBox1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericUpDown_ValueChanged);
             // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonRange);
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonSpecifiedIndices);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
-            // radioButtonRange
-            // 
-            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
-            this.radioButtonRange.Checked = true;
-            this.radioButtonRange.Name = "radioButtonRange";
-            this.radioButtonRange.TabStop = true;
-            this.radioButtonRange.UseVisualStyleBackColor = true;
-            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
-            // 
-            // radioButtonSpecifiedIndices
-            // 
-            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
-            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
-            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox5);
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // graphicsBox
             // 
@@ -1524,7 +1531,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -41555);
+            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -334925);
             this.scalablePictureBoxAdvanced1.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced1.StatusLabel = " ";
             this.scalablePictureBoxAdvanced1.StatusProgress = 0D;
@@ -1553,7 +1560,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -41555);
+            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -334925);
             this.scalablePictureBoxAdvanced2.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced2.StatusLabel = " ";
             this.scalablePictureBoxAdvanced2.StatusProgress = 0D;
@@ -1625,9 +1632,9 @@ namespace ReciPro
             this.groupBox5.PerformLayout();
             this.panelSpecifiedIndices.ResumeLayout(false);
             this.panelSpecifiedIndices.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
             this.ResumeLayout(false);
@@ -1780,5 +1787,6 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBox2;
         private Crystallography.Controls.NumericBox numericBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Panel panel1;
     }
 }
