@@ -131,7 +131,10 @@ namespace Crystallography
                 if (flag)
                 {
                     if (PositionOperations != null)
-                        v.Operation = PositionOperations[i];//PositionOperatorsを格納
+                    {
+                        v.Operation = new SymmetryOperation(PositionOperations[i], SymmetrySeriesNumber);//PositionOperatorsを格納
+                        
+                    }
                     pos.Add(v);
                 }
             }

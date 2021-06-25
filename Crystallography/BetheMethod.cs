@@ -14,6 +14,7 @@ using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
 using MathNet.Numerics;
 using System.Xml.Serialization;
+using OpenTK.Graphics.ES20;
 #endregion
 
 namespace Crystallography
@@ -710,7 +711,8 @@ namespace Crystallography
                 var beta = Math.Sqrt(1 - 1 / gamma / gamma);
                 var coeff2 = 2 * UniversalConstants.h / UniversalConstants.m0 / beta / UniversalConstants.c * 1E9;
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
-                uDictionary.Add(key, u);
+                if(kV>0)
+                    uDictionary.Add(key, u);
             }
             return u;
         }
@@ -729,13 +731,11 @@ namespace Crystallography
         {
             var potentialMatrix = new Complex[b.Length, b.Length];//A行列確保
             //A行列を決定
-            for (int i = 0; i < b.Length; i++)
-                for (int j = 0; j < b.Length; j++)
+            for (int j = 0; j < b.Length; j++) 
+                for (int i = 0; i < b.Length; i++)
                 {
                     var (Real, Imag) = getU((b[i].H - b[j].H, b[i].K - b[j].K, b[i].L - b[j].L), (b[i].Vec - b[j].Vec).Length2 / 4);
-                    potentialMatrix[i, j] = i == j ? 
-                        ImaginaryOne * Imag : 
-                        Real + ImaginaryOne * Imag;
+                    potentialMatrix[i, j] = i == j ? ImaginaryOne * Imag : Real + ImaginaryOne * Imag;
                 }
             return potentialMatrix;
         }
@@ -798,8 +798,8 @@ namespace Crystallography
             //if (double.IsNaN(vecK0.X))
             //    return null;
 
-            if (maxNumOfBloch > 0)
-                MaxNumOfBloch = maxNumOfBloch;
+            if (maxNumOfBloch == -1)
+                maxNumOfBloch = MaxNumOfBloch;
 
             var threshold = 0.8;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
 
@@ -840,7 +840,7 @@ namespace Crystallography
 
             const int coeff = 1024;
             var zero = (new Complex(0, 0), new Complex(0, 0));
-            while (beams.Count < MaxNumOfBloch * 4 && whole.Count < 1000000)
+            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 1000000)
             {
                 var min = outer.Min(c => c.Value);
                 var keyList = outer.Where(c => c.Value - min < shift).Select(c => c.Key).ToList();
@@ -871,8 +871,8 @@ namespace Crystallography
                 return (c > 0) ? 1 : (c < 0) ? -1 : 0;
             });
 
-            if (beams.Count > MaxNumOfBloch + 1)
-                beams.RemoveRange(MaxNumOfBloch + 1, beams.Count - MaxNumOfBloch - 1);
+            if (beams.Count > maxNumOfBloch + 1)
+                beams.RemoveRange(maxNumOfBloch + 1, beams.Count - maxNumOfBloch - 1);
 
             for (int i = 0; i < beams.Count; i++)
             {
@@ -895,7 +895,7 @@ namespace Crystallography
 
             int n = beams.Count - 1;
             for (int i = beams.Count - 1; i >= 1; i--)
-                if (Math.Abs(beams[i].Rating - beams[i - 1].Rating) > 1E-10)
+                if (Math.Abs(beams[i].Rating - beams[i - 1].Rating) > 1E-6)
                 {
                     n = i;
                     break;

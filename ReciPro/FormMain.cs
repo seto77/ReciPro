@@ -561,8 +561,9 @@ namespace ReciPro
         /// <param name="angle"></param>
         public void Rotate(Vector3DBase axis, double angle)
         {
-            axis = axis.Normarize();
             if (angle == 0) return;
+
+            axis = axis.Normarize();
 
             if (FormRotation.Linked)//FormRotationÇÃÉäÉìÉNÇ™óLå¯Ç»èÍçáÇÕÅAFormRotationë§Ç≈âÒì]èÛãµÇêßå‰Ç∑ÇÈ
             {
@@ -776,8 +777,7 @@ namespace ReciPro
         private void startAnimation(Vector3DBase v)
         {
             timer.Stop();
-            stopwatchAnimation.Reset();
-            stopwatchAnimation.Start();
+            stopwatchAnimation.Restart();
             ellapseTime = 0;
             rotationAxisAnimation = v;
             timer.Start();
@@ -790,12 +790,13 @@ namespace ReciPro
         {
             double differenceTime = stopwatchAnimation.ElapsedMilliseconds - ellapseTime;
             ellapseTime = stopwatchAnimation.ElapsedMilliseconds;
-            double angle = (differenceTime) / 1000.0 * numericBoxStep.RadianValue;
-            if (timerCounter++ % 10 == 0)
+            if (timerCounter++ % 5 == 0)
             {
-                toolStripStatusLabel.Text = "Frame rate: " + (1000.0 / differenceTime).ToString("f1") + "frm/sec.";
+                toolStripStatusLabel.Text = $"Frame rate: {1000.0 / differenceTime:f1} frm/sec.";
                 timerCounter = 1;
             }
+            
+            double angle = differenceTime / 1000.0 * numericBoxStep.RadianValue;
             Rotate(rotationAxisAnimation, angle);
         }
         private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)

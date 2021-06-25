@@ -1329,7 +1329,7 @@
             // 
             // timer
             // 
-            this.timer.Interval = 50;
+            this.timer.Interval = 2;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // FormMain

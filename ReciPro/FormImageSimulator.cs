@@ -348,6 +348,7 @@ namespace ReciPro
             if (thicknessArray == null || defocusArray == null) return;
 
             Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
+
             //LTF(レンズ伝達関数)を計算 && apertureの外にあるbeamを除外
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
             if (BeamsInside.Length < 2)//絞りに入るスポットが2未満の時は、警告を出してリターン
@@ -366,16 +367,18 @@ namespace ReciPro
                 Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
                 //絞りの内側のビームを取得
                 BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+                toolStripStatusLabel1.Text = "Solving eigen problem: " + sw.ElapsedMilliseconds.ToString() + " msec.   ";
+                
                 //HRTEM画像を取得
                 totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
                 //進捗状況を報告
                 toolStripProgressBar1.Value = (int)(100.0 * (t + 1) / tLen);
-                toolStripStatusLabel1.Text = toolStripProgressBar1.Value.ToString() + " % completed.";
+                toolStripStatusLabel1.Text += $"{toolStripProgressBar1.Value} % completed.  ";
                 if (!realtimeMode)
                     Application.DoEvents();
             }
             var temp = sw.ElapsedMilliseconds;
-            toolStripStatusLabel1.Text = "Generation of HRTEM images: " + temp.ToString() + " msec,   ";
+            toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw.ElapsedMilliseconds} msec,   ";
 
             SkipEvent = true;
             trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = 65535;// checkBoxNormalizeHigh.Checked ? 65535 : totalImage.Max(d1 => d1.Max(d2 => d2.Max()));
