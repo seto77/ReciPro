@@ -9,7 +9,10 @@ Crystallography.Native/unsupported/
 *.exe
 
 # User-specific files
+*.gitignore
+*.gitattibutes
 *.suo
+*.rtf
 *.user
 *.userosscache
 *.sln.docstates
