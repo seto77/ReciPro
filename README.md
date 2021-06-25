@@ -12,13 +12,15 @@ https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-
   * English version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
 
 ## Main features
-* Provides crystallographic calculations.
+* Makes crystallographic calculations.
   * 530 (Hall symbol) space groups are available. 
     * General conditions (or extinction rules), Wyckoff positions, multiplicities of all space groups.  
     * Geometrical calculation of periodicity and/or angle between planes and/or axes.
     * Generation of equivalent atomic positions.
 
-* Provides crystallographic calculations.
+* Provides crystal database.
+  * Over 20,000 crystal structures are available　after installation.
+    * The database is provided by American Mineralogist Crystal Database (AMCSD, Downs & Hall-Wallace, 2003, American Mineralogist 88, 171-194)
 
 * Includes atomic properties.
   * Characteristic X-ray wavelength/energy.
