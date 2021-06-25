@@ -21,7 +21,6 @@
 
 using namespace std;
 
-
 const double two_pi = 2 * 3.141592653589793238462643383279;
 
 extern "C" {
