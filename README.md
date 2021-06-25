@@ -1,7 +1,6 @@
 # ReciPro
+* *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and indexes those, plots stereographic projection, and so on.
 https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4
-* *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
-  
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
@@ -17,6 +16,8 @@ https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-
     * General conditions (or extinction rules), Wyckoff positions, multiplicities of all space groups.  
     * Geometrical calculation of periodicity and/or angle between planes and/or axes.
     * Generation of equivalent atomic positions.
+
+* Provides crystallographic calculations.
 
 * Includes atomic properties.
   * Characteristic X-ray wavelength/energy.
