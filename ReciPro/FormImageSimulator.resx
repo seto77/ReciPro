@@ -86,7 +86,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 440</value>
+    <value>612, 440</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -203,7 +203,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 20</value>
+    <value>612, 20</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -230,7 +230,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowUnitcell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 107</value>
+    <value>386, 107</value>
   </data>
   <data name="checkBoxShowUnitcell.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 38</value>
@@ -399,7 +399,7 @@ unit cell</value>
     <value>1</value>
   </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 125</value>
+    <value>178, 125</value>
   </data>
   <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 27</value>
@@ -531,7 +531,7 @@ unit cell</value>
     <value>1</value>
   </data>
   <data name="flowLayoutPanelLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 125</value>
+    <value>8, 125</value>
   </data>
   <data name="flowLayoutPanelLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 27</value>
@@ -1137,7 +1137,7 @@ unit cell</value>
     <value>0, 460</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 155</value>
+    <value>612, 155</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1176,16 +1176,19 @@ unit cell</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSimulateHRTEM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11pt</value>
+    <value>Segoe UI Symbol, 10pt</value>
   </data>
   <data name="buttonSimulateHRTEM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonSimulateHRTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 584</value>
+    <value>363, 582</value>
+  </data>
+  <data name="buttonSimulateHRTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="buttonSimulateHRTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 30</value>
+    <value>116, 33</value>
   </data>
   <data name="buttonSimulateHRTEM.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -5360,7 +5363,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 211</value>
+    <value>312, 211</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -5387,7 +5390,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 211</value>
+    <value>312, 211</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5480,10 +5483,10 @@ unit cell</value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1128, 615</value>
+    <value>1100, 615</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>640</value>
+    <value>612</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -5618,7 +5621,7 @@ unit cell</value>
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1128, 24</value>
+    <value>1100, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -5666,7 +5669,7 @@ unit cell</value>
     <value>0, 639</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1128, 22</value>
+    <value>1100, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -5693,7 +5696,7 @@ unit cell</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1128, 661</value>
+    <value>1100, 661</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

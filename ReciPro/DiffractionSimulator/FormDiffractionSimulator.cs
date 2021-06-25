@@ -2086,7 +2086,10 @@ namespace ReciPro
 
         }
 
-      
+        private void flowLayoutPanelAppearance_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void Button2_Click(object sender, EventArgs e)
         {

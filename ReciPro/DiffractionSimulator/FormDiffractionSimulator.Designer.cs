@@ -500,7 +500,7 @@
             // waveLengthControl
             // 
             resources.ApplyResources(this.waveLengthControl, "waveLengthControl");
-            this.waveLengthControl.Energy = 199.99999999999997D;
+            this.waveLengthControl.Energy = 200D;
             this.waveLengthControl.Name = "waveLengthControl";
             this.waveLengthControl.ShowWaveSource = true;
             this.waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1596,6 +1596,7 @@
             this.flowLayoutPanelAppearance.Controls.Add(this.flowLayoutPanelGaussianOption);
             this.flowLayoutPanelAppearance.Controls.Add(this.flowLayoutPanelSpotColor);
             this.flowLayoutPanelAppearance.Name = "flowLayoutPanelAppearance";
+            this.flowLayoutPanelAppearance.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelAppearance_Paint);
             // 
             // label19
             // 
