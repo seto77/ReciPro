@@ -51,4 +51,4 @@ https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-
   * Possible to use COD and AMCSD database through CSManager (https://github.com/seto77/CSManager/releases/latest). 
 
 ## Screenshots
-<img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> <img src="img/recipro_demo.mp4" height="320px">
+<img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> 
