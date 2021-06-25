@@ -19,7 +19,7 @@ https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-
     * Generation of equivalent atomic positions.
 
 * Provides crystal database.
-  * Over 20,000 crystal structures are available　after installation.
+  * Over 20,000 crystal structures are available after installation.
     * The database is provided by American Mineralogist Crystal Database (AMCSD, Downs & Hall-Wallace, 2003, American Mineralogist 88, 171-194)
 
 * Includes atomic properties.
@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-
 * Simulates diffraction patterns.
   * X-ray, electron, and neutron sources are available for incident beams.
   * Kinematic simulations for the all sources.
-  * Dynamic simulations for electron diffraction based on the Bethe method.
+  * Dynamical simulations for electron diffraction based on the Bloch wave method.
     * Parallel electron diffraction (SAED)
     * Precession electron diffraction (PED)
     * Convergent beam electron diffraction (CBED)
