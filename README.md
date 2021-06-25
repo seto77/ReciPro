@@ -1,14 +1,15 @@
 # ReciPro
 https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4
 * *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
-  * Runs on Windows OS with .Net 5.0. which can be installed from the following link:
-    * https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-5.0.7-windows-x64-installer
-  * Now, the author plan to make a manual of Japanese version first and then an English version.
-    * Japanese version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
-    * English version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
+  
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
+  * ReciPro runs on Windows OS with .Net 5.0. which can be installed from the following link:
+    * https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-5.0.7-windows-x64-installer
+## Manual
+  * Japanese version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+  * English version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
 
 ## Main features
 * Provides crystallographic calculations.
