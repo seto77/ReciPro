@@ -1,3 +1,7 @@
+
+
+https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4
+
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, simulates diffraction patterns and indexes those.
   * Runs on Windows OS with .Net 5.0. which can be installed from the following link:
