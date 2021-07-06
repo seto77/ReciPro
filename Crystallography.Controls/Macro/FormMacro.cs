@@ -29,7 +29,7 @@ namespace Crystallography.Controls
                 var toolTipItems = new List<string>();
                 for (int i = 0; i < value.Length; i++)
                 {
-                    string[] temp = value[i].Split('#');
+                    string[] temp = value[i].Split('#', true);
 
                     for (int j = 0; j < temp.Length; j++)
                         temp[j] = temp[j].Trim().TrimEnd();

@@ -497,7 +497,7 @@ namespace Crystallography
 
             if (val.Contains("/"))
             {
-                var temp = val.Split("/");
+                var temp = val.Split("/", true);
                 if (temp.Length == 2 && double.TryParse(temp[0], out var temp0) && double.TryParse(temp[1], out var temp1))
                     return (temp0 / temp1, double.NaN);
                 else

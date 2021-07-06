@@ -272,7 +272,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static double ToDouble(this string s) => !s.Contains("/") ? Convert.ToDouble(s) : s.Split("/")[0].ToDouble() / s.Split("/")[1].ToDouble();
+        public static double ToDouble(this string s) => !s.Contains("/") ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
 
         /// <summary>
         /// 拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生

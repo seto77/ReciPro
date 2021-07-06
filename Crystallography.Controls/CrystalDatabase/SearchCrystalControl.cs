@@ -26,11 +26,11 @@ namespace Crystallography.Controls
 
                 //名前
                 if (checkBoxSearchName.Checked && textBoxSearchName.Text != "")
-                    filter.Add(string.Join(" AND ", textBoxSearchName.Text.Split().Select(s => $"Name LIKE '*{s}*'")));
+                    filter.Add(string.Join(" AND ", textBoxSearchName.Text.Split(" ", true).Select(s => $"Name LIKE '*{s}*'")));
 
                 //Reference
                 if (checkBoxSearchRefference.Checked && textBoxSearchRefference.Text != "")
-                    filter.Add(string.Join(" AND ", textBoxSearchRefference.Text.Split().Select(s => $"(Authors LIKE '*{s}*' OR Title LIKE '*{s}*' OR Journal LIKE '*{s}*')")));
+                    filter.Add(string.Join(" AND ", textBoxSearchRefference.Text.Split(" ", true).Select(s => $"(Authors LIKE '*{s}*' OR Title LIKE '*{s}*' OR Journal LIKE '*{s}*')")));
 
                 if (checkBoxSearchCrystalSystem.Checked && comboBoxSearchCrystalSystem.SelectedIndex >= 0)
                     filter.Add($" CrystalSystem = '{comboBoxSearchCrystalSystem.Text}'");

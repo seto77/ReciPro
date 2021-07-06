@@ -1388,7 +1388,7 @@ namespace ReciPro
         /// <param name="e"></param>
         private void presetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var name = (sender as ToolStripMenuItem).Text.Split(" ");
+            var name = (sender as ToolStripMenuItem).Text.Split(" ",true);
             if (name[0].Contains("Electron"))
             {
                 waveLengthControl.WaveSource = WaveSource.Electron;

@@ -774,7 +774,7 @@ namespace Crystallography.Controls
             var button = sender as Button;
             var shift = button.Name.Contains("Custom") ?
                 new Vector3DBase(numericBoxOriginShiftX.Value, numericBoxOriginShiftY.Value, numericBoxOriginShiftZ.Value) :
-                new Vector3DBase((button.Tag as string).Split().Select(s => s.ToDouble()).ToArray()) * (radioButtonOriginShiftPlus.Checked ? 1 : -1);
+                new Vector3DBase((button.Tag as string).Split(" ", true).Select(s => s.ToDouble()).ToArray()) * (radioButtonOriginShiftPlus.Checked ? 1 : -1);
 
             SkipEvent = true;
             var atomArray = GetAll();

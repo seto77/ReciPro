@@ -166,7 +166,7 @@ namespace Crystallography
         public static Bonds[] GetVestaBonds(IEnumerable<string> elementNames)
         {
             var list = elementNames.ToList().Distinct().ToArray();
-            var list2 = list.Select(l => l.Split(" ")[1]).ToList();
+            var list2 = list.Select(l => l.Split(" ", true)[1]).ToList();
 
             var bonds = new List<Bonds>();
 
