@@ -10,11 +10,12 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.808(2021/07/08)  Fixed a minor bug on native (c++) codes." +
             "\r\n ver4.807(2021/07/06)  Fixed minor bugs. Improved a rendering speed of 'Structure Viewer'." +
             "\r\n ver4.806(2021/05/25)  Fixed a distribution failure of language resource files." +
             "\r\n ver4.802(2021/05/24)  Target framework has been changed to .Net 5.0." +
-            "\r\n ver4.800(2021/05/20)  Fixed bugs on the native (c++) codes. Changed CBED interface." +
-            "\r\n ver4.799(2021/05/10)  Fixed bugs on the native (c++) codes." +
+            "\r\n ver4.800(2021/05/20)  Fixed bugs on native (c++) codes. Changed CBED interface." +
+            "\r\n ver4.799(2021/05/10)  Fixed bugs on native (c++) codes." +
             "\r\n ver4.798(2021/05/03)  Fixed bugs on the 'Diffraction simulator'." +
             "\r\n ver4.797(2021/03/24)  Fixed a bug on the 'Database' function." +
             "\r\n ver4.795(2021/03/09)  Fixed a bug on the CBED calculation code." +
