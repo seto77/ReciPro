@@ -407,14 +407,16 @@ namespace Crystallography
 			var tempRMax = new int[thread];
 			SetTiltParameter();
 
-			FindSpotsThread0Delegate[] d0 = new FindSpotsThread0Delegate[thread];
-			IAsyncResult[] ar0 = new IAsyncResult[thread];
-			for (i = 0; i < thread; i++)
-				d0[i] = new FindSpotsThread0Delegate(FindSpotsThread0);
-			for (i = 0; i < thread; i++)
-				ar0[i] = d0[i].BeginInvoke(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i], null, null);//各スレッド起動転送
-			for (i = 0; i < thread; i++)//スレッド終了待ち
-				d0[i].EndInvoke(ref r, ref tempRMax[i], ar0[i]);
+			//FindSpotsThread0Delegate[] d0 = new FindSpotsThread0Delegate[thread];
+			//IAsyncResult[] ar0 = new IAsyncResult[thread];
+			//for (i = 0; i < thread; i++)
+			//	d0[i] = new FindSpotsThread0Delegate(FindSpotsThread0);
+			//for (i = 0; i < thread; i++)
+			//	ar0[i] = d0[i].BeginInvoke(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i], null, null);//各スレッド起動転送
+			//for (i = 0; i < thread; i++)//スレッド終了待ち
+			//	d0[i].EndInvoke(ref r, ref tempRMax[i], ar0[i]);
+			Parallel.For(0, thread, i => FindSpotsThread0(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i]));
+
 
 			//rMaxの最大値をきめる
 			rMax = tempRMax.Max();
@@ -435,14 +437,16 @@ namespace Crystallography
 				tempContributedPixels[i] = new double[rMax];
 			}
 			//ここからスレッド1起動
-			FindSpotsThread1Delegate[] d1 = new FindSpotsThread1Delegate[thread];
-			IAsyncResult[] ar1 = new IAsyncResult[thread];
-			for (i = 0; i < thread; i++)
-				d1[i] = new FindSpotsThread1Delegate(FindSpotsThread1);
-			for (i = 0; i < thread; i++)
-				ar1[i] = d1[i].BeginInvoke(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], null, null);//各スレッド起動転送
-			for (i = 0; i < thread; i++)//スレッド終了待ち
-				d1[i].EndInvoke(ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], ar1[i]);
+			//FindSpotsThread1Delegate[] d1 = new FindSpotsThread1Delegate[thread];
+			//IAsyncResult[] ar1 = new IAsyncResult[thread];
+			//for (i = 0; i < thread; i++)
+			//	d1[i] = new FindSpotsThread1Delegate(FindSpotsThread1);
+			//for (i = 0; i < thread; i++)
+			//	ar1[i] = d1[i].BeginInvoke(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], null, null);//各スレッド起動転送
+			//for (i = 0; i < thread; i++)//スレッド終了待ち
+			//	d1[i].EndInvoke(ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], ar1[i]);
+
+			Parallel.For(0, thread, i => FindSpotsThread1(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i]));
 
 			//Thread1の結果をまとめる
 			double[] ContributedPixels = new double[rMax];
@@ -498,7 +502,7 @@ namespace Crystallography
 			}
 		}
 
-		private delegate void FindSpotsThread0Delegate(int yMin, int yMax, ref int[] r, ref int rMax);
+		//private delegate void FindSpotsThread0Delegate(int yMin, int yMax, ref int[] r, ref int rMax);
 
 		public static void FindSpotsThread0(int yMin, int yMax, ref int[] r, ref int rMax)
 		{
