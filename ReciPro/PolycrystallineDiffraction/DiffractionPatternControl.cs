@@ -379,7 +379,9 @@ namespace ReciPro
             }
         }
 
-        private delegate SortedList<uint, int> calcFreqDelegate(int start, int end);
+        //private delegate SortedList<uint, int> calcFreqDelegate(int start, int end);
+
+        private object lockObj = new object();
 
         /// <summary>
         /// Frequencyを計算
@@ -393,38 +395,44 @@ namespace ReciPro
             if (pixels == null || pixels.Length == 0) return null;
             frequency.Clear();
             int thread = 16;
-            var calcFreqThread = new calcFreqDelegate[thread];
-            for (int i = 0; i < thread; i++)
-                calcFreqThread[i] = new calcFreqDelegate((start, end) =>
-                {
-                    var freq = new SortedList<uint, int>();
-                    for (int j = start; j < end; j++)
-                    {
-                        if (!Filter[j])
-                        {
-                            uint value;
-                            value = (uint)(Math.Pow(1.003, Math.Round(Math.Log(pixels[j], 1.003))));
+            //var calcFreqThread = new calcFreqDelegate[thread];
 
-                            if (freq.ContainsKey(value))
-                                freq[value] += 1;
-                            else
-                                freq.Add(value, 1);
-                        }
-                    }
-                    return freq;
-                });
-            var ar = new IAsyncResult[thread];
-            for (int i = 0; i < thread; i++)
-                ar[i] = calcFreqThread[i].BeginInvoke(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length), null, null);
-            for (int i = 0; i < thread; i++)
+            //for (int i = 0; i < thread; i++)
+            //    calcFreqThread[i] = new calcFreqDelegate((start, end) =>
+            SortedList<uint, int> calcFreqDelegate(int start, int end)
             {
-                var temp = calcFreqThread[i].EndInvoke(ar[i]);
-                foreach (uint j in temp.Keys)
-                    if (frequency.ContainsKey(j))
-                        frequency[j] += temp[j];
-                    else
-                        frequency.Add(j, temp[j]);
-            }
+                var freq = new SortedList<uint, int>();
+                for (int j = start; j < end; j++)
+                {
+                    if (!Filter[j])
+                    {
+                        uint value;
+                        value = (uint)(Math.Pow(1.003, Math.Round(Math.Log(pixels[j], 1.003))));
+
+                        if (freq.ContainsKey(value))
+                            freq[value] += 1;
+                        else
+                            freq.Add(value, 1);
+                    }
+                }
+                return freq;
+            };
+            //var ar = new IAsyncResult[thread];
+            //for (int i = 0; i < thread; i++)
+            //    ar[i] = calcFreqThread[i].BeginInvoke(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length), null, null);
+            Parallel.For(0, thread, i =>
+            {
+                //var temp = calcFreqThread[i].EndInvoke(ar[i]);
+                var temp = calcFreqDelegate(pixels.Length / thread * i, Math.Min(pixels.Length / thread * (i + 1), pixels.Length));
+                lock (lockObj)
+                {
+                    foreach (uint j in temp.Keys)
+                        if (frequency.ContainsKey(j))
+                            frequency[j] += temp[j];
+                        else
+                            frequency.Add(j, temp[j]);
+                }
+            });
             Profile p = new Profile();
             for (int i = 0; i < frequency.Count; i++)
                 p.Pt.Add(new PointD(frequency.Keys[i], frequency[frequency.Keys[i]]));
