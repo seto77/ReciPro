@@ -2288,19 +2288,15 @@ namespace Crystallography
 			}
 
 			//ここからスレッド起動
-			//GetProfileThreadDelegateWithTiltCorrection[] d = new GetProfileThreadDelegateWithTiltCorrection[thread];
-			//IAsyncResult[] ar = new IAsyncResult[thread];
-			//for (i = 0; i < thread; i++)
-			//{
-			//	d[i] = new GetProfileThreadDelegateWithTiltCorrection(GetProfileThreadWithTiltCorrection);
-			//	ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i], null, null);//各スレッド起動転送
-			//}
-			//for (i = 0; i < thread; i++)//スレッド終了待ち
-			//	d[i].EndInvoke(ref tempProfileIntensity[i], ref tempContibutedPixels[i], ar[i]);
-
-			Parallel.For(0, thread, i => 
-				GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i])
-			);
+			GetProfileThreadDelegateWithTiltCorrection[] d = new GetProfileThreadDelegateWithTiltCorrection[thread];
+			IAsyncResult[] ar = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
+			{
+				d[i] = new GetProfileThreadDelegateWithTiltCorrection(GetProfileThreadWithTiltCorrection);
+				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i], null, null);//各スレッド起動転送
+			}
+			for (i = 0; i < thread; i++)//スレッド終了待ち
+				d[i].EndInvoke(ref tempProfileIntensity[i], ref tempContibutedPixels[i], ar[i]);
 
 			//各スレッドの結果をまとめる
 			for (i = 0; i < R2.Length; i++)
@@ -2325,7 +2321,7 @@ namespace Crystallography
 			return p;
 		}
 
-		//private delegate void GetProfileThreadDelegateWithTiltCorrection(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels);
+		private delegate void GetProfileThreadDelegateWithTiltCorrection(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels);
 
 		/// <summary>
 		/// 2theta-intensity histgram (旧バージョン)
@@ -2989,18 +2985,14 @@ namespace Crystallography
 			//傾き補正係数を計算
 			SetTiltParameter();
 
-			//SetFindTiltParameterThreadDelegate[] d = new SetFindTiltParameterThreadDelegate[thread];
-			//IAsyncResult[] ar = new IAsyncResult[thread];
-			//for (i = 0; i < thread; i++)
-			//	d[i] = new SetFindTiltParameterThreadDelegate(SetFindTiltParameterThread);
-			//for (i = 0; i < thread; i++)
-			//	ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2, null, null);//各スレッド起動転送
-			//for (i = 0; i < thread; i++)//スレッド終了待ち
-			//	d[i].EndInvoke(ar[i]);
-
-			Parallel.For(0, thread, i =>
-				SetFindTiltParameterThread(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2)
-			);
+			SetFindTiltParameterThreadDelegate[] d = new SetFindTiltParameterThreadDelegate[thread];
+			IAsyncResult[] ar = new IAsyncResult[thread];
+			for (i = 0; i < thread; i++)
+				d[i] = new SetFindTiltParameterThreadDelegate(SetFindTiltParameterThread);
+			for (i = 0; i < thread; i++)
+				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2, null, null);//各スレッド起動転送
+			for (i = 0; i < thread; i++)//スレッド終了待ち
+				d[i].EndInvoke(ar[i]);
 
 			//配列Rを作成　各ステップごとの中心からの距離を格納する配列
 			R2 = new double[(int)((IP.EndLength - IP.StartLength) / IP.StepLength) + 1];
@@ -3012,7 +3004,7 @@ namespace Crystallography
 			}
 		}
 
-		//private delegate void SetFindTiltParameterThreadDelegate(int xMin, int xMax, int YMin, int YMax, double[] peaksPlusRange2, double[] peaksMinusRange2);
+		private delegate void SetFindTiltParameterThreadDelegate(int xMin, int xMax, int YMin, int YMax, double[] peaksPlusRange2, double[] peaksMinusRange2);
 
 		public static void SetFindTiltParameterThread(int xMin, int xMax, int YMin, int YMax, double[] peaksPlusRange2, double[] peaksMinusRange2)
 		{
