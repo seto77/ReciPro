@@ -1,64 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -450,7 +390,7 @@
     <value>comboBoxXRayElement</value>
   </data>
   <data name="&gt;&gt;comboBoxXRayElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxXRayElement.Parent" xml:space="preserve">
     <value>flowLayoutPanelElement</value>
@@ -464,6 +404,7 @@
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -489,7 +430,7 @@
     <value>radioButtonXray</value>
   </data>
   <data name="&gt;&gt;radioButtonXray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonXray.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveSource</value>
@@ -528,7 +469,7 @@
     <value>radioButtonElectron</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveSource</value>
@@ -591,7 +532,7 @@
     <value>comboBoxXrayLine</value>
   </data>
   <data name="&gt;&gt;comboBoxXrayLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxXrayLine.Parent" xml:space="preserve">
     <value>flowLayoutPanelElement</value>
@@ -611,6 +552,12 @@
   <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxEnergy.FooterText" xml:space="preserve">
+    <value>keV</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>Energy</value>
+  </data>
   <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -618,7 +565,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -627,7 +574,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 25</value>
+    <value>143, 27</value>
   </data>
   <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -635,11 +582,14 @@
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Inuput wave energy</value>
   </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>test</value>
+  </data>
   <data name="&gt;&gt;numericBoxEnergy.Name" xml:space="preserve">
     <value>numericBoxEnergy</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergy.Type" xml:space="preserve">
-    <value>Crystallography.Controls.numericBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergy.Parent" xml:space="preserve">
     <value>flowLayoutPanelEnergy</value>
@@ -654,7 +604,7 @@
     <value>5, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 25</value>
+    <value>143, 27</value>
   </data>
   <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -663,7 +613,7 @@
     <value>flowLayoutPanelEnergy</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelEnergy.Parent" xml:space="preserve">
     <value>flowLayoutPanelMain</value>
@@ -705,7 +655,7 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>flowLayoutPanelElement</value>
@@ -732,7 +682,7 @@
     <value>flowLayoutPanelElement</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelElement.Parent" xml:space="preserve">
     <value>flowLayoutPanelMain</value>
@@ -751,6 +701,12 @@
   </data>
   <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxWaveLength.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxWaveLength.HeaderText" xml:space="preserve">
+    <value>Wave length</value>
   </data>
   <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -780,7 +736,7 @@
     <value>numericBoxWaveLength</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.numericBox, Crystallography.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveLength</value>
@@ -789,7 +745,7 @@
     <value>0</value>
   </data>
   <data name="flowLayoutPanelWaveLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 54</value>
+    <value>0, 56</value>
   </data>
   <data name="flowLayoutPanelWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -804,7 +760,7 @@
     <value>flowLayoutPanelWaveLength</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelMain</value>
@@ -843,7 +799,7 @@
     <value>radioButtonNeutron</value>
   </data>
   <data name="&gt;&gt;radioButtonNeutron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonNeutron.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveSource</value>
@@ -885,7 +841,7 @@
     <value>flowLayoutPanelWaveSource</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveSource.Parent" xml:space="preserve">
     <value>$this</value>
@@ -921,7 +877,7 @@
     <value>flowLayoutPanelMain</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -954,12 +910,12 @@
     <value>toolTip</value>
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WaveLengthControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

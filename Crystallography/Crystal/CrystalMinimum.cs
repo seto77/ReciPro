@@ -469,8 +469,8 @@ namespace Crystallography
                     return (double.NaN, double.NaN);
                 
                 valStr = temp[0];
-                
-                if (temp[1].Length != 0 && double.TryParse(temp[1], out err))
+
+                if (temp.Length == 2 && temp[1].Length != 0 && double.TryParse(temp[1], out err))
                 {
                     var i = valStr.IndexOf(".");
                     if (i >= 0 && valStr.Length - i - 1 > 0)

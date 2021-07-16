@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.809(2021/07/16)  Fixed minor bugs. Renewed AMCSD database." +
             "\r\n ver4.808(2021/07/08)  Fixed a minor bug about a compile option for native (c++) codes." +
             "\r\n ver4.807(2021/07/06)  Fixed minor bugs. Improved a rendering speed of 'Structure Viewer'." +
             "\r\n ver4.806(2021/05/25)  Fixed a distribution failure of language resource files." +

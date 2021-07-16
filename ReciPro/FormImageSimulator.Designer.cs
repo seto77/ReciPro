@@ -33,6 +33,25 @@ namespace ReciPro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageSimulator));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSavePNG = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveTIFF = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveMetafile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveIndividually = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyMetafile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOverprintSymbols = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.readTEMParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTEMParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsOfHRTEMSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.calculationLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxCaclulationLibrary = new System.Windows.Forms.ToolStripComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -185,30 +204,12 @@ namespace ReciPro
             this.checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             this.checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSavePNG = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveTIFF = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveMetafile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveIndividually = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemCopyImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemCopyMetafile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOverprintSymbols = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.readTEMParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveTEMParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.detailsOfHRTEMSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.calculationLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBoxCaclulationLibrary = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -253,13 +254,148 @@ namespace ReciPro
             this.panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhaseScale)).BeginInit();
             this.flowLayoutPanelRealAndImaiginary.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSave,
+            this.copyImageToolStripMenuItem,
+            this.toolStripMenuItemOverprintSymbols,
+            this.toolStripSeparator1,
+            this.readTEMParameterToolStripMenuItem,
+            this.saveTEMParametersToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // toolStripMenuItemSave
+            // 
+            this.toolStripMenuItemSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSavePNG,
+            this.toolStripMenuItemSaveTIFF,
+            this.toolStripMenuItemSaveMetafile,
+            this.toolStripMenuItemSaveIndividually});
+            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
+            resources.ApplyResources(this.toolStripMenuItemSave, "toolStripMenuItemSave");
+            // 
+            // toolStripMenuItemSavePNG
+            // 
+            this.toolStripMenuItemSavePNG.Name = "toolStripMenuItemSavePNG";
+            resources.ApplyResources(this.toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
+            this.toolStripMenuItemSavePNG.Click += new System.EventHandler(this.ToolStripMenuItemSavePNG_Click);
+            // 
+            // toolStripMenuItemSaveTIFF
+            // 
+            this.toolStripMenuItemSaveTIFF.Name = "toolStripMenuItemSaveTIFF";
+            resources.ApplyResources(this.toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
+            this.toolStripMenuItemSaveTIFF.Click += new System.EventHandler(this.ToolStripMenuItemSaveTIFF_Click);
+            // 
+            // toolStripMenuItemSaveMetafile
+            // 
+            this.toolStripMenuItemSaveMetafile.Name = "toolStripMenuItemSaveMetafile";
+            resources.ApplyResources(this.toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
+            this.toolStripMenuItemSaveMetafile.Click += new System.EventHandler(this.ToolStripMenuItemSaveMetafile_Click);
+            // 
+            // toolStripMenuItemSaveIndividually
+            // 
+            this.toolStripMenuItemSaveIndividually.Checked = true;
+            this.toolStripMenuItemSaveIndividually.CheckOnClick = true;
+            this.toolStripMenuItemSaveIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemSaveIndividually.Name = "toolStripMenuItemSaveIndividually";
+            resources.ApplyResources(this.toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
+            // 
+            // copyImageToolStripMenuItem
+            // 
+            this.copyImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopyImage,
+            this.toolStripMenuItemCopyMetafile});
+            this.copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
+            resources.ApplyResources(this.copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
+            // 
+            // toolStripMenuItemCopyImage
+            // 
+            this.toolStripMenuItemCopyImage.Name = "toolStripMenuItemCopyImage";
+            resources.ApplyResources(this.toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
+            this.toolStripMenuItemCopyImage.Click += new System.EventHandler(this.ToolStripMenuItemCopyImage_Click);
+            // 
+            // toolStripMenuItemCopyMetafile
+            // 
+            this.toolStripMenuItemCopyMetafile.Name = "toolStripMenuItemCopyMetafile";
+            resources.ApplyResources(this.toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
+            this.toolStripMenuItemCopyMetafile.Click += new System.EventHandler(this.ToolStripMenuItemCopyMetafile_Click);
+            // 
+            // toolStripMenuItemOverprintSymbols
+            // 
+            this.toolStripMenuItemOverprintSymbols.Checked = true;
+            this.toolStripMenuItemOverprintSymbols.CheckOnClick = true;
+            this.toolStripMenuItemOverprintSymbols.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemOverprintSymbols.Name = "toolStripMenuItemOverprintSymbols";
+            resources.ApplyResources(this.toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // readTEMParameterToolStripMenuItem
+            // 
+            resources.ApplyResources(this.readTEMParameterToolStripMenuItem, "readTEMParameterToolStripMenuItem");
+            this.readTEMParameterToolStripMenuItem.Name = "readTEMParameterToolStripMenuItem";
+            // 
+            // saveTEMParametersToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveTEMParametersToolStripMenuItem, "saveTEMParametersToolStripMenuItem");
+            this.saveTEMParametersToolStripMenuItem.Name = "saveTEMParametersToolStripMenuItem";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailsOfHRTEMSimulationToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.calculationLibraryToolStripMenuItem,
+            this.toolStripComboBoxCaclulationLibrary});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // detailsOfHRTEMSimulationToolStripMenuItem
+            // 
+            this.detailsOfHRTEMSimulationToolStripMenuItem.Name = "detailsOfHRTEMSimulationToolStripMenuItem";
+            resources.ApplyResources(this.detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
+            this.detailsOfHRTEMSimulationToolStripMenuItem.Click += new System.EventHandler(this.DetailsOfHRTEMSimulationToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // calculationLibraryToolStripMenuItem
+            // 
+            this.calculationLibraryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.calculationLibraryToolStripMenuItem.Name = "calculationLibraryToolStripMenuItem";
+            resources.ApplyResources(this.calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
+            // 
+            // toolStripComboBoxCaclulationLibrary
+            // 
+            this.toolStripComboBoxCaclulationLibrary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxCaclulationLibrary.Items.AddRange(new object[] {
+            resources.GetString("toolStripComboBoxCaclulationLibrary.Items"),
+            resources.GetString("toolStripComboBoxCaclulationLibrary.Items1")});
+            this.toolStripComboBoxCaclulationLibrary.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
+            this.toolStripComboBoxCaclulationLibrary.Name = "toolStripComboBoxCaclulationLibrary";
+            resources.ApplyResources(this.toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
+            // 
             // splitContainer1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
@@ -269,6 +405,7 @@ namespace ReciPro
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.Controls.Add(this.panel2);
+            this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
             // splitContainer1.Panel2
             // 
@@ -278,6 +415,7 @@ namespace ReciPro
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxSampleProperty);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
             // tableLayoutPanel
             // 
@@ -332,6 +470,7 @@ namespace ReciPro
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label33);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -369,6 +508,7 @@ namespace ReciPro
             this.numericBoxScaleLength.Minimum = 0.2D;
             this.numericBoxScaleLength.Name = "numericBoxScaleLength";
             this.numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
+            this.numericBoxScaleLength.RoundErrorAccuracy = -1;
             this.numericBoxScaleLength.ShowUpDown = true;
             this.numericBoxScaleLength.SkipEventDuringInput = false;
             this.numericBoxScaleLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -414,6 +554,7 @@ namespace ReciPro
             this.numericBoxLabelFontSize.Minimum = 1D;
             this.numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
             this.numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
+            this.numericBoxLabelFontSize.RoundErrorAccuracy = -1;
             this.numericBoxLabelFontSize.ShowUpDown = true;
             this.numericBoxLabelFontSize.SkipEventDuringInput = false;
             this.numericBoxLabelFontSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -474,6 +615,7 @@ namespace ReciPro
             this.numericBoxGaussianRadius.Minimum = 0D;
             this.numericBoxGaussianRadius.Name = "numericBoxGaussianRadius";
             this.numericBoxGaussianRadius.RadianValue = 0.017453292519943295D;
+            this.numericBoxGaussianRadius.RoundErrorAccuracy = -1;
             this.numericBoxGaussianRadius.ShowUpDown = true;
             this.numericBoxGaussianRadius.SkipEventDuringInput = false;
             this.numericBoxGaussianRadius.SmartIncrement = true;
@@ -599,6 +741,7 @@ namespace ReciPro
             this.groupBox6.Controls.Add(this.radioButtonProjectedPotential);
             this.groupBox6.Controls.Add(this.radioButtonSTEM);
             this.groupBox6.Controls.Add(this.radioButtonHRTEM);
+            this.groupBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -632,6 +775,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.groupBoxSampleProperty, "groupBoxSampleProperty");
             this.groupBoxSampleProperty.Controls.Add(this.numericBoxThickness);
+            this.groupBoxSampleProperty.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             this.groupBoxSampleProperty.TabStop = false;
             // 
@@ -646,6 +790,7 @@ namespace ReciPro
             this.numericBoxThickness.Minimum = 0.001D;
             this.numericBoxThickness.Name = "numericBoxThickness";
             this.numericBoxThickness.RadianValue = 0.3490658503988659D;
+            this.numericBoxThickness.RoundErrorAccuracy = -1;
             this.numericBoxThickness.ShowUpDown = true;
             this.numericBoxThickness.SmartIncrement = true;
             this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -660,6 +805,7 @@ namespace ReciPro
             this.groupBox2.Controls.Add(this.groupBoxInherentProperty);
             this.groupBox2.Controls.Add(this.panelDummy1);
             this.groupBox2.Controls.Add(this.tabControl1);
+            this.groupBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -669,6 +815,7 @@ namespace ReciPro
             this.groupBox4.Controls.Add(this.numericBoxDefocus);
             this.groupBox4.Controls.Add(this.flowLayoutPanel4);
             this.groupBox4.Controls.Add(this.flowLayoutPanel3);
+            this.groupBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -683,6 +830,7 @@ namespace ReciPro
             this.numericBoxAccVol.Minimum = 1D;
             this.numericBoxAccVol.Name = "numericBoxAccVol";
             this.numericBoxAccVol.RadianValue = 3.4906585039886591D;
+            this.numericBoxAccVol.RoundErrorAccuracy = -1;
             this.numericBoxAccVol.ShowUpDown = true;
             this.numericBoxAccVol.SmartIncrement = true;
             this.numericBoxAccVol.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -702,6 +850,7 @@ namespace ReciPro
             this.numericBoxDefocus.Minimum = -1000D;
             this.numericBoxDefocus.Name = "numericBoxDefocus";
             this.numericBoxDefocus.RadianValue = -1.2217304763960306D;
+            this.numericBoxDefocus.RoundErrorAccuracy = -1;
             this.numericBoxDefocus.ShowUpDown = true;
             this.numericBoxDefocus.SmartIncrement = true;
             this.numericBoxDefocus.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -773,6 +922,7 @@ namespace ReciPro
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxCc);
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxDeltaV);
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxBetaAgnle);
+            this.groupBoxInherentProperty.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBoxInherentProperty, "groupBoxInherentProperty");
             this.groupBoxInherentProperty.Name = "groupBoxInherentProperty";
             this.groupBoxInherentProperty.TabStop = false;
@@ -788,6 +938,7 @@ namespace ReciPro
             this.numericBoxCs.Minimum = -20D;
             this.numericBoxCs.Name = "numericBoxCs";
             this.numericBoxCs.RadianValue = 0.022689280275926284D;
+            this.numericBoxCs.RoundErrorAccuracy = -1;
             this.numericBoxCs.ShowUpDown = true;
             this.numericBoxCs.SmartIncrement = true;
             this.numericBoxCs.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -809,6 +960,7 @@ namespace ReciPro
             this.numericBoxCc.Name = "numericBoxCc";
             this.numericBoxCc.RadianValue = 0.027925268031909273D;
             this.numericBoxCc.RestrictLimitValue = false;
+            this.numericBoxCc.RoundErrorAccuracy = -1;
             this.numericBoxCc.ShowUpDown = true;
             this.numericBoxCc.SmartIncrement = true;
             this.numericBoxCc.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -830,6 +982,7 @@ namespace ReciPro
             this.numericBoxDeltaV.Name = "numericBoxDeltaV";
             this.numericBoxDeltaV.RadianValue = 0.012217304763960307D;
             this.numericBoxDeltaV.RestrictLimitValue = false;
+            this.numericBoxDeltaV.RoundErrorAccuracy = -1;
             this.numericBoxDeltaV.ShowUpDown = true;
             this.numericBoxDeltaV.SmartIncrement = true;
             this.numericBoxDeltaV.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -850,6 +1003,7 @@ namespace ReciPro
             this.numericBoxBetaAgnle.Minimum = 0D;
             this.numericBoxBetaAgnle.Name = "numericBoxBetaAgnle";
             this.numericBoxBetaAgnle.RadianValue = 0.013089969389957471D;
+            this.numericBoxBetaAgnle.RoundErrorAccuracy = -1;
             this.numericBoxBetaAgnle.ShowUpDown = true;
             this.numericBoxBetaAgnle.SmartIncrement = true;
             this.numericBoxBetaAgnle.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -869,6 +1023,7 @@ namespace ReciPro
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -965,6 +1120,7 @@ namespace ReciPro
             this.numericBoxMaxU1.Minimum = 0D;
             this.numericBoxMaxU1.Name = "numericBoxMaxU1";
             this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
+            this.numericBoxMaxU1.RoundErrorAccuracy = -1;
             this.numericBoxMaxU1.ShowUpDown = true;
             this.numericBoxMaxU1.SmartIncrement = true;
             this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1042,6 +1198,7 @@ namespace ReciPro
             this.numericBoxObjAperX.Maximum = 100D;
             this.numericBoxObjAperX.Minimum = -100D;
             this.numericBoxObjAperX.Name = "numericBoxObjAperX";
+            this.numericBoxObjAperX.RoundErrorAccuracy = -1;
             this.numericBoxObjAperX.ShowUpDown = true;
             this.numericBoxObjAperX.SmartIncrement = true;
             this.numericBoxObjAperX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1060,6 +1217,7 @@ namespace ReciPro
             this.numericBoxObjAperRadius.Minimum = 0.5D;
             this.numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
             this.numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
+            this.numericBoxObjAperRadius.RoundErrorAccuracy = -1;
             this.numericBoxObjAperRadius.ShowUpDown = true;
             this.numericBoxObjAperRadius.SmartIncrement = true;
             this.numericBoxObjAperRadius.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1079,6 +1237,7 @@ namespace ReciPro
             this.numericBoxObjAperY.Maximum = 100D;
             this.numericBoxObjAperY.Minimum = -100D;
             this.numericBoxObjAperY.Name = "numericBoxObjAperY";
+            this.numericBoxObjAperY.RoundErrorAccuracy = -1;
             this.numericBoxObjAperY.ShowUpDown = true;
             this.numericBoxObjAperY.SmartIncrement = true;
             this.numericBoxObjAperY.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1159,6 +1318,7 @@ namespace ReciPro
             this.groupBox1.Controls.Add(this.panelDummy2);
             this.groupBox1.Controls.Add(this.groupBox8);
             this.groupBox1.Controls.Add(this.tabControl2);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -1179,6 +1339,7 @@ namespace ReciPro
             this.numericBoxNumOfBlochWave.Minimum = 8D;
             this.numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
             this.numericBoxNumOfBlochWave.RadianValue = 8.7266462599716466D;
+            this.numericBoxNumOfBlochWave.RoundErrorAccuracy = -1;
             this.numericBoxNumOfBlochWave.ShowUpDown = true;
             this.numericBoxNumOfBlochWave.SmartIncrement = true;
             this.numericBoxNumOfBlochWave.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1219,6 +1380,7 @@ namespace ReciPro
             this.numericBoxWidth.Minimum = 8D;
             this.numericBoxWidth.Name = "numericBoxWidth";
             this.numericBoxWidth.RadianValue = 8.9360857702109673D;
+            this.numericBoxWidth.RoundErrorAccuracy = -1;
             this.numericBoxWidth.ShowUpDown = true;
             this.numericBoxWidth.SmartIncrement = true;
             this.numericBoxWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1237,6 +1399,7 @@ namespace ReciPro
             this.numericBoxHeight.Minimum = 8D;
             this.numericBoxHeight.Name = "numericBoxHeight";
             this.numericBoxHeight.RadianValue = 8.9360857702109673D;
+            this.numericBoxHeight.RoundErrorAccuracy = -1;
             this.numericBoxHeight.ShowUpDown = true;
             this.numericBoxHeight.SmartIncrement = true;
             this.numericBoxHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1261,6 +1424,7 @@ namespace ReciPro
             this.numericBoxResolution.Minimum = 0.01D;
             this.numericBoxResolution.Name = "numericBoxResolution";
             this.numericBoxResolution.RadianValue = 0.069813170079773182D;
+            this.numericBoxResolution.RoundErrorAccuracy = -1;
             this.numericBoxResolution.ShowUpDown = true;
             this.numericBoxResolution.SmartIncrement = true;
             this.numericBoxResolution.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1341,6 +1505,7 @@ namespace ReciPro
             this.numericBoxThicknessNum.Minimum = 0.1D;
             this.numericBoxThicknessNum.Name = "numericBoxThicknessNum";
             this.numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
+            this.numericBoxThicknessNum.RoundErrorAccuracy = -1;
             this.numericBoxThicknessNum.ShowUpDown = true;
             this.numericBoxThicknessNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessNum.ThonsandsSeparator = true;
@@ -1358,6 +1523,7 @@ namespace ReciPro
             this.numericBoxThicknessStep.Minimum = 1D;
             this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
+            this.numericBoxThicknessStep.RoundErrorAccuracy = -1;
             this.numericBoxThicknessStep.ShowUpDown = true;
             this.numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessStep.ThonsandsSeparator = true;
@@ -1381,6 +1547,7 @@ namespace ReciPro
             this.numericBoxThicknessStart.Minimum = 0.1D;
             this.numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             this.numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
+            this.numericBoxThicknessStart.RoundErrorAccuracy = -1;
             this.numericBoxThicknessStart.ShowUpDown = true;
             this.numericBoxThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThicknessStart.ThonsandsSeparator = true;
@@ -1413,6 +1580,7 @@ namespace ReciPro
             this.numericBoxDefocusNum.Minimum = 1D;
             this.numericBoxDefocusNum.Name = "numericBoxDefocusNum";
             this.numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
+            this.numericBoxDefocusNum.RoundErrorAccuracy = -1;
             this.numericBoxDefocusNum.ShowUpDown = true;
             this.numericBoxDefocusNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusNum.ThonsandsSeparator = true;
@@ -1430,6 +1598,7 @@ namespace ReciPro
             this.numericBoxDefocusStep.Minimum = -100D;
             this.numericBoxDefocusStep.Name = "numericBoxDefocusStep";
             this.numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
+            this.numericBoxDefocusStep.RoundErrorAccuracy = -1;
             this.numericBoxDefocusStep.ShowUpDown = true;
             this.numericBoxDefocusStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusStep.ThonsandsSeparator = true;
@@ -1448,6 +1617,7 @@ namespace ReciPro
             this.numericBoxDefocusStart.Minimum = -1000D;
             this.numericBoxDefocusStart.Name = "numericBoxDefocusStart";
             this.numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
+            this.numericBoxDefocusStart.RoundErrorAccuracy = -1;
             this.numericBoxDefocusStart.ShowUpDown = true;
             this.numericBoxDefocusStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocusStart.ThonsandsSeparator = true;
@@ -1744,142 +1914,6 @@ namespace ReciPro
             this.checkBoxPotentialUg.Name = "checkBoxPotentialUg";
             this.checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSave,
-            this.copyImageToolStripMenuItem,
-            this.toolStripMenuItemOverprintSymbols,
-            this.toolStripSeparator1,
-            this.readTEMParameterToolStripMenuItem,
-            this.saveTEMParametersToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            // 
-            // toolStripMenuItemSave
-            // 
-            this.toolStripMenuItemSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSavePNG,
-            this.toolStripMenuItemSaveTIFF,
-            this.toolStripMenuItemSaveMetafile,
-            this.toolStripMenuItemSaveIndividually});
-            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            resources.ApplyResources(this.toolStripMenuItemSave, "toolStripMenuItemSave");
-            // 
-            // toolStripMenuItemSavePNG
-            // 
-            this.toolStripMenuItemSavePNG.Name = "toolStripMenuItemSavePNG";
-            resources.ApplyResources(this.toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
-            this.toolStripMenuItemSavePNG.Click += new System.EventHandler(this.ToolStripMenuItemSavePNG_Click);
-            // 
-            // toolStripMenuItemSaveTIFF
-            // 
-            this.toolStripMenuItemSaveTIFF.Name = "toolStripMenuItemSaveTIFF";
-            resources.ApplyResources(this.toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
-            this.toolStripMenuItemSaveTIFF.Click += new System.EventHandler(this.ToolStripMenuItemSaveTIFF_Click);
-            // 
-            // toolStripMenuItemSaveMetafile
-            // 
-            this.toolStripMenuItemSaveMetafile.Name = "toolStripMenuItemSaveMetafile";
-            resources.ApplyResources(this.toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
-            this.toolStripMenuItemSaveMetafile.Click += new System.EventHandler(this.ToolStripMenuItemSaveMetafile_Click);
-            // 
-            // toolStripMenuItemSaveIndividually
-            // 
-            this.toolStripMenuItemSaveIndividually.Checked = true;
-            this.toolStripMenuItemSaveIndividually.CheckOnClick = true;
-            this.toolStripMenuItemSaveIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemSaveIndividually.Name = "toolStripMenuItemSaveIndividually";
-            resources.ApplyResources(this.toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
-            // 
-            // copyImageToolStripMenuItem
-            // 
-            this.copyImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCopyImage,
-            this.toolStripMenuItemCopyMetafile});
-            this.copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
-            resources.ApplyResources(this.copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
-            // 
-            // toolStripMenuItemCopyImage
-            // 
-            this.toolStripMenuItemCopyImage.Name = "toolStripMenuItemCopyImage";
-            resources.ApplyResources(this.toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
-            this.toolStripMenuItemCopyImage.Click += new System.EventHandler(this.ToolStripMenuItemCopyImage_Click);
-            // 
-            // toolStripMenuItemCopyMetafile
-            // 
-            this.toolStripMenuItemCopyMetafile.Name = "toolStripMenuItemCopyMetafile";
-            resources.ApplyResources(this.toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
-            this.toolStripMenuItemCopyMetafile.Click += new System.EventHandler(this.ToolStripMenuItemCopyMetafile_Click);
-            // 
-            // toolStripMenuItemOverprintSymbols
-            // 
-            this.toolStripMenuItemOverprintSymbols.Checked = true;
-            this.toolStripMenuItemOverprintSymbols.CheckOnClick = true;
-            this.toolStripMenuItemOverprintSymbols.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemOverprintSymbols.Name = "toolStripMenuItemOverprintSymbols";
-            resources.ApplyResources(this.toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // readTEMParameterToolStripMenuItem
-            // 
-            resources.ApplyResources(this.readTEMParameterToolStripMenuItem, "readTEMParameterToolStripMenuItem");
-            this.readTEMParameterToolStripMenuItem.Name = "readTEMParameterToolStripMenuItem";
-            // 
-            // saveTEMParametersToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveTEMParametersToolStripMenuItem, "saveTEMParametersToolStripMenuItem");
-            this.saveTEMParametersToolStripMenuItem.Name = "saveTEMParametersToolStripMenuItem";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.detailsOfHRTEMSimulationToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.calculationLibraryToolStripMenuItem,
-            this.toolStripComboBoxCaclulationLibrary});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // detailsOfHRTEMSimulationToolStripMenuItem
-            // 
-            this.detailsOfHRTEMSimulationToolStripMenuItem.Name = "detailsOfHRTEMSimulationToolStripMenuItem";
-            resources.ApplyResources(this.detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
-            this.detailsOfHRTEMSimulationToolStripMenuItem.Click += new System.EventHandler(this.DetailsOfHRTEMSimulationToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // calculationLibraryToolStripMenuItem
-            // 
-            this.calculationLibraryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.calculationLibraryToolStripMenuItem.Name = "calculationLibraryToolStripMenuItem";
-            resources.ApplyResources(this.calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
-            // 
-            // toolStripComboBoxCaclulationLibrary
-            // 
-            this.toolStripComboBoxCaclulationLibrary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBoxCaclulationLibrary.Items.AddRange(new object[] {
-            resources.GetString("toolStripComboBoxCaclulationLibrary.Items"),
-            resources.GetString("toolStripComboBoxCaclulationLibrary.Items1")});
-            this.toolStripComboBoxCaclulationLibrary.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
-            this.toolStripComboBoxCaclulationLibrary.Name = "toolStripComboBoxCaclulationLibrary";
-            resources.ApplyResources(this.toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1915,8 +1949,8 @@ namespace ReciPro
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "FormImageSimulator";
@@ -1924,6 +1958,8 @@ namespace ReciPro
             this.Load += new System.EventHandler(this.FormImageSimulator_Load);
             this.VisibleChanged += new System.EventHandler(this.FormImageSimulator_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormImageSimulator_KeyDown);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -1996,8 +2032,6 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhaseScale)).EndInit();
             this.flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             this.flowLayoutPanelRealAndImaiginary.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

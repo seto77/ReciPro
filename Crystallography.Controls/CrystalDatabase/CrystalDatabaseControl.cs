@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Drawing;
 using MessagePack;
 using MessagePack.Resolvers;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -95,22 +96,6 @@ namespace Crystallography.Controls
             try
             {
                 sw.Restart();
-                //if (filename.ToLower().EndsWith("cdb2"))
-                //{
-                //    var progressStep = 500;
-                //    using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-                //    var formatter = new BinaryFormatter();
-                //    var total = (int)formatter.Deserialize(fs);
-                //    for (int i = 0; i < total; i++)
-                //    {
-                //        var c = (Crystal2)formatter.Deserialize(fs);
-                //        dataTable.Add(c);
-
-                //        if (i > progressStep * 2 && i % progressStep == 0)
-                //            report(i, total, sw.ElapsedMilliseconds, "Loading database...");
-                //    }
-                //}
-                //else 
                 if (filename.ToLower().EndsWith("cdb3"))
                 {
                     using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -415,6 +400,27 @@ namespace Crystallography.Controls
         private void bindingSource_CurrentChanged(object sender, EventArgs e)
         {
             CrystalChanged?.Invoke(sender, e);
+        }
+
+        public void RecalculateDensityAndFormula()
+        {
+            var sw = new Stopwatch();
+            sw.Restart();
+            for(int i= 0; i<dataSet.DataTableCrystalDatabase.Count; i++)
+            {
+                var c = dataSet.DataTableCrystalDatabase.Get(i).ToCrystal();
+                //c.GetFormulaAndDensity();
+                dataSet.DataTableCrystalDatabase.Rows[i]["Formula"] = c.ChemicalFormulaSum;
+                dataSet.DataTableCrystalDatabase.Rows[i]["Density"] = c.Density;
+
+                if (i % 200 == 0)
+                {
+                    (double progress, string message)= report(i, dataSet.DataTableCrystalDatabase.Count, sw.ElapsedMilliseconds, "Now recalculating Density and Formula. ");
+
+                    ProgressChanged?.Invoke(this, progress, message);
+                    Application.DoEvents();
+                }
+            }
         }
         #endregion
 

@@ -57,18 +57,156 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>as Image (PNG format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>as Image (TIFF format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>as Metafile (EMF format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   Save individually for serial image mode </value>
+  </data>
+  <data name="toolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>Save image</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>as Image</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>as Metafile (Ctrl+C)</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy image</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>     Overprint symbols</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="readTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="readTEMParameterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="readTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>Read TEM parameters</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save TEM parameters</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 22</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Basic concept of HRTEM simulation</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 6</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 22</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Calculation library</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Items" xml:space="preserve">
+    <value>Native code</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Items1" xml:space="preserve">
+    <value>Managed code</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1100, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
   <data name="tableLayoutPanel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
@@ -3004,7 +3142,7 @@ unit cell</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>463, 156</value>
+    <value>463, 180</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5509,144 +5647,6 @@ unit cell</value>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
-  </metadata>
-  <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveTIFF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>as Image (TIFF format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveIndividually.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
-    <value>   Save individually for serial image mode </value>
-  </data>
-  <data name="toolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Save image</value>
-  </data>
-  <data name="toolStripMenuItemCopyImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>as Image</value>
-  </data>
-  <data name="toolStripMenuItemCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>as Metafile (Ctrl+C)</value>
-  </data>
-  <data name="copyImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy image</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
-    <value>     Overprint symbols</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 6</value>
-  </data>
-  <data name="readTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="readTEMParameterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="readTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read TEM parameters</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save TEM parameters</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Basic concept of HRTEM simulation</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Calculation library</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Items" xml:space="preserve">
-    <value>Native code</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Items1" xml:space="preserve">
-    <value>Managed code</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 17</value>
   </metadata>
@@ -5693,7 +5693,7 @@ unit cell</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -5715,12 +5715,6 @@ unit cell</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM image simulation</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
@@ -5829,6 +5823,12 @@ unit cell</value>
   </data>
   <data name="&gt;&gt;toolStripComboBoxCaclulationLibrary.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripProgressBar1.Name" xml:space="preserve">
     <value>toolStripProgressBar1</value>

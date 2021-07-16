@@ -211,18 +211,13 @@
             // 
             resources.ApplyResources(this.numericBoxEnergy, "numericBoxEnergy");
             this.numericBoxEnergy.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEnergy.DecimalPlaces = -1;
-                        this.numericBoxEnergy.FooterText = "keV";
-                        this.numericBoxEnergy.HeaderText = "Energy";
-                       this.numericBoxEnergy.Name = "numericBoxEnergy";
-            this.numericBoxEnergy.RadianValue = 0D;
-                        
-            this.numericBoxEnergy.ShowPositiveSign = false;
-                        this.numericBoxEnergy.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxEnergy.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxEnergy.ToolTip = "test";
+            this.numericBoxEnergy.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEnergy.Name = "numericBoxEnergy";
+            this.numericBoxEnergy.RoundErrorAccuracy = 12;
+            this.numericBoxEnergy.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
-                                    this.numericBoxEnergy.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEnergy_ValueChanged);
+            this.numericBoxEnergy.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEnergy_ValueChanged);
             // 
             // flowLayoutPanelElement
             // 
@@ -247,17 +242,13 @@
             // 
             resources.ApplyResources(this.numericBoxWaveLength, "numericBoxWaveLength");
             this.numericBoxWaveLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWaveLength.DecimalPlaces = -1;
-                        this.numericBoxWaveLength.FooterText = "Å";
-                        this.numericBoxWaveLength.HeaderText = "Wave length";
-                       this.numericBoxWaveLength.Name = "numericBoxWaveLength";
-            this.numericBoxWaveLength.RadianValue = 0D;
-                        
-            this.numericBoxWaveLength.ShowPositiveSign = false;
-                        this.numericBoxWaveLength.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxWaveLength.ToolTip = "";
+            this.numericBoxWaveLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWaveLength.Name = "numericBoxWaveLength";
+            this.numericBoxWaveLength.RoundErrorAccuracy = 12;
+            this.numericBoxWaveLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
-                                    this.numericBoxWaveLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxWaveLength_ValueChanged);
+            this.numericBoxWaveLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxWaveLength_ValueChanged);
             // 
             // radioButtonNeutron
             // 

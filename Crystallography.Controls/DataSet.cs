@@ -206,9 +206,6 @@ namespace Crystallography.Controls
 
         partial class DataTableCrystalDatabaseDataTable
         {
-
-            readonly ReaderWriterLockSlim rwlock = new();
-
             static readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
             static byte[] serialize<T>(T c) => MessagePackSerializer.Serialize(c, msgOptions);
             static T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
@@ -220,6 +217,14 @@ namespace Crystallography.Controls
             /// <param name="o"></param>
             /// <returns></returns>
             public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? deserialize<Crystal2>(r[SerializedCrystal2Column]) : null;
+
+
+            /// <summary>
+            /// 引数はbindingSourceMain.Currentオブジェクト. 
+            /// </summary>
+            /// <param name="o"></param>
+            /// <returns></returns>
+            public Crystal2 Get(int i) =>deserialize<Crystal2>(Rows[i][0]);
 
             public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
             public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
