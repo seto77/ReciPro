@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -896,7 +897,7 @@ namespace Crystallography
                             {
                                 var temp = new Plane();
                                 // if (!excludeForbiddenPlane | (temp.strCondition = SymmetryStatic.CheckExtinctionRule(h, k, l, Symmetry)).Length == 0)
-                                if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
+                                if (!excludeForbiddenPlane || (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
                                     temp.Multi[0] = multi;
                                     temp.h = h; temp.k = k; temp.l = l; temp.d = d;
@@ -914,7 +915,7 @@ namespace Crystallography
                             if ((d = GetLengthPlane(h, k, l)) > dMin)
                             {
                                 var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi) };
-                                if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
+                                if (!excludeForbiddenPlane || (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
                                     temp.Multi[0] = multi;
                                     temp.h = h; temp.k = k; temp.l = l; temp.d = d;
@@ -924,14 +925,8 @@ namespace Crystallography
                             }
             }
 
-            try
-            {
-                listPlane.Sort();
-            }
-            catch
-            {
-                return;
-            }
+            try { listPlane.Sort(); }
+            catch { return; }
 
             if (excludeSameDistance)//全くおなじ結晶面面間隔をもつもの(511と333とか)を排除する
             {
@@ -1197,42 +1192,20 @@ namespace Crystallography
         #region 回折強度の強いものを検索
 
         /// <summary>
-        /// 現在の結晶構造で強度が上位最大10位までのものを検索し、返す
+        /// 現在の結晶構造で強度が上位最大8位までのものを検索し、返す
         /// </summary>
         /// <returns></returns>
-        public double[] GetDspacingList(double waveLentgh, double d_limit)
+        public float[] GetDspacingList(double waveLentgh, double d_limit, int count =1000)
         {
             SetPlanes(double.MaxValue, d_limit, true, true, true, false, 0, 0, 0);
+
+            Plane = Plane.Take(Math.Min(count, Plane.Count)).ToList();
             SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLentgh, null);
 
             //強度の順にソート
-            var s = new SortPlaneByIntensity[this.Plane.Count];
-            for (int i = 0; i < Plane.Count; i++)
-                s[i] = new SortPlaneByIntensity(Plane[i].d, Plane[i].Intensity);
-
-            Array.Sort(s);
-            double[] d = new double[Math.Min(8, s.Length)];
-            for (int i = 0; i < d.Length; i++)
-                d[i] = s[i].d;
-            return d;
+            Plane.Sort((p1, p2) => -p1.Intensity.CompareTo(p2.Intensity));
+            return Plane.Take(Math.Min(8, Plane.Count)).Select(p => (float)p.d).ToArray();
         }
-
-        private class SortPlaneByIntensity : System.IComparable
-        {
-            public double d, intensity;
-
-            public SortPlaneByIntensity(double d, double intensity)
-            {
-                this.d = d;
-                this.intensity = intensity;
-            }
-
-            public int CompareTo(object obj)
-            {
-                return -intensity.CompareTo(((SortPlaneByIntensity)obj).intensity);
-            }
-        }
-
         #endregion
 
         #region 原子の追加/削除
@@ -1338,37 +1311,30 @@ namespace Crystallography
             #region
             if (Atoms == null || Atoms.Length == 0) return;
 
-            string tempName;
-            double tempNum;
-            List<string> elName = new();
-            List<double> elNum = new();
+            var dic = new Dictionary<string, double>();
 
             for (int i = 0; i < Atoms.Length; i++)
             {
-                tempName = Atoms[i].ElementName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1];
-                tempNum = Atoms[i].Multiplicity * Atoms[i].Occ;
-                if (elName.IndexOf(tempName) >= 0)
-                    elNum[elName.IndexOf(tempName)] = (double)elNum[elName.IndexOf(tempName)] + tempNum;
+                var key = Atoms[i].ElementName.Split(' ', true)[1];
+                var num = Atoms[i].Multiplicity * Atoms[i].Occ;
+                if (dic.ContainsKey(key))
+                    dic[key] += num;
                 else
-                {
-                    elName.Add(tempName);
-                    elNum.Add(tempNum);
-                }
+                    dic.Add(key, num);
             }
 
-            ElementName = elName.ToArray();
-            ElementNum = elNum.ToArray();
+            ElementName = dic.Keys.ToArray();
+            ElementNum = dic.Values.ToArray();
 
-            double[] Num = elNum.ToArray();
-            //整数で割れるところまでわる
-            double numSum = 0;
-            for (int i = 0; i < Num.Length; i++)
-                numSum += Num[i];
-            if (numSum == 0)
+            if (ElementNum.Sum() == 0)
                 return;
 
+            
+            //整数で割れるところまでわる
             if (ElementName != null)
             {
+                var Num = ElementNum.ToArray();
+
                 //まずNumの最小値をさがす
                 int n = int.MaxValue;
                 foreach (double var in Num)
@@ -1432,7 +1398,7 @@ namespace Crystallography
                     if (Num[i] == 1)
                         ChemicalFormulaSum += ElementName[i] + " ";
                     else
-                        ChemicalFormulaSum += $"{ElementName[i]}{Num[i]} ";
+                        ChemicalFormulaSum += $"{ElementName[i]}{Num[i].Round(12)} ";
                 }
                 ChemicalFormulaSum = ChemicalFormulaSum[0..^1];
 
@@ -1478,17 +1444,33 @@ namespace Crystallography
             //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
             if (atomsArray.Length == 0)
                 return new Complex(0, 0);
-            Complex F = 0;
+            Complex F = 0, f = 0;
+            int atomicNum = -1, subNum = -1;
+
             foreach (var atoms in atomsArray)
             {
-                var f = wave switch
+                if (wave == WaveSource.Electron)
                 {
-                    WaveSource.Electron => new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0),
-                    WaveSource.Xray => new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0),
-                    WaveSource.Neutron => atoms.GetAtomicScatteringFactorForNeutron(),
-                    _ => 0,
-                };
-                    
+                    if (atoms.AtomicNumber != atomicNum || atoms.SubNumberElectron != subNum)
+                    {
+                        f = new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0);
+                        atomicNum = atoms.AtomicNumber;
+                        subNum = atoms.SubNumberElectron;
+                    }
+                }
+                else if (wave == WaveSource.Xray)
+                {
+                    if (atoms.AtomicNumber != atomicNum || atoms.SubNumberXray != subNum)
+                    {
+                        f = new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0);
+                        atomicNum = atoms.AtomicNumber;
+                        subNum = atoms.SubNumberXray;
+                    }
+                }
+                else
+                    f = atoms.GetAtomicScatteringFactorForNeutron();
+
+
                 if (atoms.Dsf.UseIso)
                 {
                     var T = Math.Exp(-atoms.Dsf.Biso * s2);
@@ -1502,11 +1484,11 @@ namespace Crystallography
                     foreach (var atom in atoms.Atom)
                     {
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
-                        var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L 
+                        var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L
                             + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
                         if (double.IsNaN(T))
                             T = 1;
-                        F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z)) ;
+                        F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
                     }
                 }
             }
@@ -1523,57 +1505,65 @@ namespace Crystallography
             #region
             if (Atoms == null || Atoms.Length == 0 || Plane == null) return;
 
-            var temp = double.NegativeInfinity;
-
             for (int i = 0; i < Plane.Count; i++)
             {
-                Plane[i].XCalc = 2 * Math.Asin(ramda / 2 / Plane[i].d);
-                var twoTheta = Plane[i].XCalc;
-                var s = Plane[i].strHKL.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
+                var sinTheta = ramda / 2 / Plane[i].d;
+                var twoTheta = Plane[i].XCalc = 2 * Math.Asin(sinTheta);
+                var cosTwoTheta = 1 - 2 * sinTheta * sinTheta;
+                var sinTwoTheta = Math.Sin(twoTheta);
+                
+                var s = Plane[i].strHKL.Split('+', true);
                 Plane[i].F2 = new double[s.Length];
                 Plane[i].F = new Complex[s.Length];
                 Plane[i].eachIntensity = new double[s.Length];
+                var d2 = Plane[i].d * Plane[i].d;
 
-                for (int j = 0; j < Plane[i].F2.Length; j++)
+                for (int j = 0; j < s.Length; j++)
                 {
-                    var hkl = s[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
+                    if (s.Length == 1)
+                        Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (Plane[i].h, Plane[i].k, Plane[i].l), 1 / d2 / 4.0); 
+                    else
+                    {
+                        var hkl = s[j].Split(' ', true);
+                        int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
+                        Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (h, k, l), 1 / d2 / 4.0);
+                    }
 
-                    Plane[i].F[j] = GetStructureFactor(waveSource, (Atoms[])Atoms.Clone(), (h, k, l), 1 / Plane[i].d / Plane[i].d / 4.0);
+
                     Plane[i].F2[j] = Plane[i].F[j].MagnitudeSquared();
 
                     if (waveSource == WaveSource.Xray)
                     {
                         if (waveColor == WaveColor.Monochrome)
-                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;
                         else if (waveColor == WaveColor.FlatWhite)
-                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * Plane[i].d * Plane[i].d;
+                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * d2;
                     }
                     else if (waveSource == WaveSource.Electron)
                     {
-                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / sinTwoTheta / sinTheta;
                     }
                     else if (waveSource == WaveSource.Neutron)
                     {
                         if (waveColor == WaveColor.Monochrome)
-                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / sinTwoTheta / sinTheta;
                         else
-                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * Plane[i].d * Plane[i].d * Plane[i].d * Plane[i].d;
+                            Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * d2 * d2;
                     }
                 }
 
                 Plane[i].RawIntensity = 0;
                 for (int j = 0; j < s.Length; j++)
                     Plane[i].RawIntensity += Plane[i].eachIntensity[j];
-                temp = Math.Max(Plane[i].RawIntensity, temp);
             }
 
+            var max = Plane.Max(p => p.RawIntensity);
             for (int i = 0; i < Plane.Count; i++)
             {
-                Plane[i].XCalc = 2 * Math.Asin(ramda / 2 / Plane[i].d) / Math.PI * 180;
-                Plane[i].Intensity = Plane[i].RawIntensity / temp;
+                //Plane[i].XCalc = 2 * Math.Asin(ramda / 2 / Plane[i].d) / Math.PI * 180;
+                Plane[i].Intensity = Plane[i].RawIntensity /max;
                 for (int j = 0; j < Plane[i].eachIntensity.Length; j++)
-                    Plane[i].eachIntensity[j] /= temp;
+                    Plane[i].eachIntensity[j] /= max;
             }
             #endregion
         }

@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.7.11.0618</AssemblyVersion>
-    <FileVersion>2021.7.11.0618</FileVersion>
+    <AssemblyVersion>2021.7.16.0306</AssemblyVersion>
+    <FileVersion>2021.7.16.0306</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,10 +22,10 @@
 
   <ItemGroup>
     <PackageReference Include="HDF.PInvoke.1.10" Version="1.10.612" />
-    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0-alpha02" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
-    <PackageReference Include="MessagePack" Version="2.2.85" />
-    <PackageReference Include="MessagePack.Annotations" Version="2.2.85" />
+    <PackageReference Include="MessagePack" Version="2.3.58-alpha" />
+    <PackageReference Include="MessagePack.Annotations" Version="2.3.58-alpha" />
     <PackageReference Include="OpenTK" Version="3.3.1" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.10" />
   </ItemGroup>

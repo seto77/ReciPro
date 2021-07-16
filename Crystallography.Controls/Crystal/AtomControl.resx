@@ -5773,7 +5773,7 @@
     <value>51</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 247</value>
+    <value>576, 220</value>
   </data>
   <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5788,7 +5788,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>238, 17</value>
@@ -5818,7 +5818,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Atom</value>

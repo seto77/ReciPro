@@ -137,10 +137,11 @@
             this.numericBoxBeta.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBeta.Name = "numericBoxBeta";
             this.numericBoxBeta.RestrictLimitValue = false;
+            this.numericBoxBeta.RoundErrorAccuracy = 12;
             this.numericBoxBeta.SkipEventDuringInput = false;
             this.numericBoxBeta.SmartIncrement = true;
             this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip"));
             this.numericBoxBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxAlpha
@@ -151,10 +152,11 @@
             this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlpha.Name = "numericBoxAlpha";
             this.numericBoxAlpha.RestrictLimitValue = false;
+            this.numericBoxAlpha.RoundErrorAccuracy = 12;
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip"));
             this.numericBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label47
@@ -170,6 +172,7 @@
             this.numericBoxGammaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGammaErr.Name = "numericBoxGammaErr";
             this.numericBoxGammaErr.RestrictLimitValue = false;
+            this.numericBoxGammaErr.RoundErrorAccuracy = 12;
             this.numericBoxGammaErr.SkipEventDuringInput = false;
             this.numericBoxGammaErr.SmartIncrement = true;
             this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -188,6 +191,7 @@
             this.numericBoxAlphaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlphaErr.Name = "numericBoxAlphaErr";
             this.numericBoxAlphaErr.RestrictLimitValue = false;
+            this.numericBoxAlphaErr.RoundErrorAccuracy = 12;
             this.numericBoxAlphaErr.SkipEventDuringInput = false;
             this.numericBoxAlphaErr.SmartIncrement = true;
             this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -201,6 +205,7 @@
             this.numericBoxBetaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBetaErr.Name = "numericBoxBetaErr";
             this.numericBoxBetaErr.RestrictLimitValue = false;
+            this.numericBoxBetaErr.RoundErrorAccuracy = 12;
             this.numericBoxBetaErr.SkipEventDuringInput = false;
             this.numericBoxBetaErr.SmartIncrement = true;
             this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -214,6 +219,7 @@
             this.numericBoxA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxA.Name = "numericBoxA";
             this.numericBoxA.RestrictLimitValue = false;
+            this.numericBoxA.RoundErrorAccuracy = 10;
             this.numericBoxA.SkipEventDuringInput = false;
             this.numericBoxA.SmartIncrement = true;
             this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -237,6 +243,7 @@
             this.numericBoxGamma.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGamma.Name = "numericBoxGamma";
             this.numericBoxGamma.RestrictLimitValue = false;
+            this.numericBoxGamma.RoundErrorAccuracy = 12;
             this.numericBoxGamma.SkipEventDuringInput = false;
             this.numericBoxGamma.SmartIncrement = true;
             this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -255,6 +262,7 @@
             this.numericBoxBErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBErr.Name = "numericBoxBErr";
             this.numericBoxBErr.RestrictLimitValue = false;
+            this.numericBoxBErr.RoundErrorAccuracy = 12;
             this.numericBoxBErr.SkipEventDuringInput = false;
             this.numericBoxBErr.SmartIncrement = true;
             this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -268,6 +276,7 @@
             this.numericBoxB.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB.Name = "numericBoxB";
             this.numericBoxB.RestrictLimitValue = false;
+            this.numericBoxB.RoundErrorAccuracy = 12;
             this.numericBoxB.SkipEventDuringInput = false;
             this.numericBoxB.SmartIncrement = true;
             this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -301,6 +310,7 @@
             this.numericBoxC.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxC.Name = "numericBoxC";
             this.numericBoxC.RestrictLimitValue = false;
+            this.numericBoxC.RoundErrorAccuracy = 12;
             this.numericBoxC.SkipEventDuringInput = false;
             this.numericBoxC.SmartIncrement = true;
             this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -314,6 +324,7 @@
             this.numericBoxCErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCErr.Name = "numericBoxCErr";
             this.numericBoxCErr.RestrictLimitValue = false;
+            this.numericBoxCErr.RoundErrorAccuracy = 12;
             this.numericBoxCErr.SkipEventDuringInput = false;
             this.numericBoxCErr.SmartIncrement = true;
             this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -327,6 +338,7 @@
             this.numericBoxAErr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAErr.Name = "numericBoxAErr";
             this.numericBoxAErr.RestrictLimitValue = false;
+            this.numericBoxAErr.RoundErrorAccuracy = 12;
             this.numericBoxAErr.SkipEventDuringInput = false;
             this.numericBoxAErr.SmartIncrement = true;
             this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

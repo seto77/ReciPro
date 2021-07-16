@@ -42,7 +42,7 @@ namespace Crystallography
         public string fileName;
 
         /// <summary>
-        /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726(5)」のような形式で表現
+        /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現
         /// </summary>
         [IgnoreMember]
         public string[] CellTexts
@@ -55,6 +55,7 @@ namespace Crystallography
             }
         }
 
+       
         /// <summary>
         /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位.
         /// </summary>
@@ -194,8 +195,7 @@ namespace Crystallography
             if (shortJournal != null && shortJournal.Contains("##"))
             {
                 string number = shortJournal.Substring(shortJournal.IndexOf("##"), 4);
-                string journal = "";
-                journal = number switch
+                string journal = number switch
                 {
                     "##01" => "American Mineralogist",
                     "##02" => "Canadian Mineralogist",
@@ -449,62 +449,75 @@ namespace Crystallography
         /// <returns></returns>
         public static (double Value, double Error) Decompose(string str, bool IsHex = false)
         {
-            str = str.ToUpper().Replace(" ", "");
-
-            var i = str.IndexOf("E");
             var expValue = 1.0;
-            if (i > 0)
+            if (str.Contains("E"))
             {
-                _ = double.TryParse("1" + str[i..], out expValue);
-                str = str.Substring(0, i);
+                var i = str.IndexOf("E");
+                if (i > 0)
+                {
+                    _ = double.TryParse("1" + str[i..], out expValue);
+                    str = str.Substring(0, i);
+                }
             }
 
-            i = str.IndexOf("|");
-            var val = i <= 0 ? str : str.Substring(0, i);
-            var err = i <= 0 ? "" : str.Substring(i + 1, str.LastIndexOf("|") - i - 1);
-
-            if (val.Length == 0)
-                return (double.NaN, double.NaN);
-
-            if (err != "" && double.TryParse(err, out var errVal))
+            string valStr;
+            double err;
+            if (str.Contains('|'))
             {
-                i = val.IndexOf(".");
-                if (i >= 0 && val.Length - i - 1 > 0)
-                    errVal *= Math.Pow(10, -val.Length + i + 1);
+                var temp = str.Split('|', true);
+                if (temp[0].Length == 0)
+                    return (double.NaN, double.NaN);
+                
+                valStr = temp[0];
+                
+                if (temp[1].Length != 0 && double.TryParse(temp[1], out err))
+                {
+                    var i = valStr.IndexOf(".");
+                    if (i >= 0 && valStr.Length - i - 1 > 0)
+                        err *= Math.Pow(10, -valStr.Length + i + 1);
+                }
+                else
+                    err = double.NaN;
             }
             else
-                errVal = double.NaN;
+            {
+                valStr = str;
+                err = double.NaN;
+            }
+
+            if (valStr == "0")
+                return (0, err * expValue);
 
             if (IsHex)
             {
                 if (str.Contains(".0833"))
-                    return (1.0 / 12.0, errVal);
+                    return (1.0 / 12.0, err);
                 else if (str.Contains(".167") || str.Contains(".1667") || str.Contains(".16667") || str.Contains(".166667"))
-                    return (1.0 / 6.0, errVal);
+                    return (1.0 / 6.0, err);
                 else if (str.Contains(".333"))
-                    return (1.0 / 3.0, errVal);
+                    return (1.0 / 3.0, err);
                 else if (str.Contains(".667") || str.Contains(".6667") || str.Contains(".66667") || str.Contains(".666667"))
-                    return (2.0 / 3.0, errVal);
+                    return (2.0 / 3.0, err);
                 else if (str.Contains(".4167") || str.Contains(".41667") || str.Contains(".416667"))
-                    return (5.0 / 12.0, errVal);
+                    return (5.0 / 12.0, err);
                 else if (str.Contains(".5833"))
-                    return (7.0 / 12.0, errVal);
+                    return (7.0 / 12.0, err);
                 else if (str.Contains(".8333"))
-                    return (5.0 / 6.0, errVal);
+                    return (5.0 / 6.0, err);
                 else if (str.Contains(".9167") || str.Contains(".91667") || str.Contains(".916667"))
-                    return (11.0 / 12.0, errVal);
+                    return (11.0 / 12.0, err);
             }
 
-            if (val.Contains("/"))
+            if (valStr.Contains("/"))
             {
-                var temp = val.Split("/", true);
+                var temp = valStr.Split("/", true);
                 if (temp.Length == 2 && double.TryParse(temp[0], out var temp0) && double.TryParse(temp[1], out var temp1))
                     return (temp0 / temp1, double.NaN);
                 else
                     return (double.NaN, double.NaN);
             }
 
-            return val=="0" ? (0, errVal * expValue) : double.TryParse(val, out var valVal) ? (valVal * expValue, errVal * expValue) : (double.NaN, double.NaN);
+            return double.TryParse(valStr, out var val) ? (val * expValue, err * expValue) : (double.NaN, double.NaN);
         }
         public static string Compose(double val, double err = double.NaN)
         {

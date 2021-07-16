@@ -1612,8 +1612,8 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl);

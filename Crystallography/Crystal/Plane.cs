@@ -50,12 +50,22 @@ namespace Crystallography
 
         public int CompareTo(object obj)
         {
-            if (d != ((Plane)obj).d)
-                return -d.CompareTo(((Plane)obj).d);
-            else if (h > ((Plane)obj).h || (h == ((Plane)obj).h && k > ((Plane)obj).k) || (h == ((Plane)obj).h && k == ((Plane)obj).k && l > ((Plane)obj).l))
-                return -1;
+            var _p = obj as Plane;
+            if (d != _p.d)
+                return -d.CompareTo(_p.d);
             else
-                return 0;
+            {
+                var _h = _p.h;
+                var _k = _p.k;
+                var _l = _p.l;
+
+                if (h > _h || (h == _h && k > _k) || (h == _h && k == _k && l > _l))
+                    return -1;
+                else if (h == _h && k == _k && l == _l)
+                    return 0;
+                else
+                    return 1;
+            }
         }
 
         public override string ToString()

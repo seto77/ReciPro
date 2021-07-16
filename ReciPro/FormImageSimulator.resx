@@ -764,11 +764,14 @@ unit cell</value>
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="trackBarAdvancedMax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="trackBarAdvancedMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMax.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -789,7 +792,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 27</value>
+    <value>605, 27</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -836,11 +839,14 @@ unit cell</value>
   <data name="&gt;&gt;comboBoxScaleColorScale.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="trackBarAdvancedMin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="trackBarAdvancedMin.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMin.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -861,7 +867,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 27</value>
+    <value>602, 27</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4193,13 +4199,13 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 21</value>
+    <value>101, 21</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
-    <value>Linea image</value>
+    <value>Linear image</value>
   </data>
   <data name="&gt;&gt;radioButtonModeQuasiCoherent.Name" xml:space="preserve">
     <value>radioButtonModeQuasiCoherent</value>
@@ -4223,7 +4229,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 0</value>
+    <value>101, 0</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4253,7 +4259,7 @@ unit cell</value>
     <value>5, 18</value>
   </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 21</value>
+    <value>301, 21</value>
   </data>
   <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

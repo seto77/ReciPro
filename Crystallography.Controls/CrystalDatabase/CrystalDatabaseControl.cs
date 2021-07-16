@@ -134,11 +134,13 @@ namespace Crystallography.Controls
                                 $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").AsParallel();
 
                         fileNames.ForAll(fn =>
+                        //fileNames.ToList().ForEach(fn =>
                         {
                             var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(fn));
                             while (b.Length != 0)
                             {
-                                var rows = Array.ConvertAll(deserialize<Crystal2[]>(b, out var byteRead), dataTable.CreateRow);
+                                var c2 = deserialize<Crystal2[]>(b, out var byteRead);
+                                var rows = c2.Select(c => dataTable.CreateRow(c)).ToArray();//Array.ConvertAll(c2, dataTable.CreateRow);
                                 rwlock.EnterWriteLock();
                                 try { foreach (var r in rows) dataTable.Rows.Add(r); }
                                 finally { rwlock.ExitWriteLock(); }
@@ -373,8 +375,26 @@ namespace Crystallography.Controls
         #region 結晶の追加、削除、変更
         public void AddCrystal(Crystal2 crystal2)
         {
-
             dataTable.Add(crystal2);
+        }
+
+        public void AddCrystals(IEnumerable< Crystal2> crystal2)
+        {
+            var originalDataMember = dataGridView.DataMember;
+            dataGridView.DataMember = "";
+
+            var originalAutoSizeColumnsMode = dataGridView.AutoSizeColumnsMode;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            var originalAutoSizeRowsMode = dataGridView.AutoSizeRowsMode;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+            foreach (var c in crystal2)
+                dataTable.Add(c);
+
+            dataGridView.DataMember = originalDataMember;
+            dataGridView.AutoSizeColumnsMode = originalAutoSizeColumnsMode;
+            dataGridView.AutoSizeRowsMode = originalAutoSizeRowsMode;
         }
 
         public void ChangeCrystal(Crystal2 crystal2)
