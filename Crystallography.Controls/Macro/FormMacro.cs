@@ -266,7 +266,7 @@ namespace Crystallography.Controls
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 exRichTextBox.Text = "";
-                var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("Shift_JIS"));
+                var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
                     exRichTextBox.AppendText(tempstr + "\n");
@@ -285,7 +285,7 @@ namespace Crystallography.Controls
             };
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                var writer = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("Shift_JIS"));
+                var writer = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("UTF-8"));
                 for (int i = 0; i < exRichTextBox.TextLines.Length; i++)
                     writer.WriteLine(exRichTextBox.TextLines[i]);
                 writer.Close();

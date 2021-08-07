@@ -59,7 +59,7 @@
             this.checkBoxHideProhibitedPlanes = new System.Windows.Forms.CheckBox();
             this.checkBoxHideEquivalentPlane = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCopyClipboard = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
@@ -75,7 +75,7 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -101,19 +101,20 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.RowTemplate.Height = 21;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(824, 285);
             this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "H";
             this.dataGridViewTextBoxColumn1.HeaderText = "h";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 30;
             // 
             // K
@@ -121,6 +122,7 @@
             this.K.DataPropertyName = "K";
             this.K.HeaderText = "k";
             this.K.Name = "K";
+            this.K.ReadOnly = true;
             this.K.Width = 30;
             // 
             // dataGridViewTextBoxColumn3
@@ -128,6 +130,7 @@
             this.dataGridViewTextBoxColumn3.DataPropertyName = "L";
             this.dataGridViewTextBoxColumn3.HeaderText = "l";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 30;
             // 
             // dataGridViewTextBoxColumn4
@@ -135,6 +138,7 @@
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Multi";
             this.dataGridViewTextBoxColumn4.HeaderText = "Multi.";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 45;
             // 
             // dataGridViewTextBoxColumn5
@@ -145,6 +149,7 @@
             this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn5.HeaderText = "d (Å)";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 70;
             // 
             // dataGridViewTextBoxColumn6
@@ -154,6 +159,7 @@
             this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn6.HeaderText = "q (2π/d)";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
@@ -163,6 +169,7 @@
             this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn7.HeaderText = "2θ (°)";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 70;
             // 
             // dataGridViewTextBoxColumn9
@@ -172,6 +179,7 @@
             this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn9.HeaderText = "F_real";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 70;
             // 
             // dataGridViewTextBoxColumn10
@@ -181,6 +189,7 @@
             this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn10.HeaderText = "F_inv";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 70;
             // 
             // F
@@ -190,6 +199,7 @@
             this.F.DefaultCellStyle = dataGridViewCellStyle7;
             this.F.HeaderText = "|F|";
             this.F.Name = "F";
+            this.F.ReadOnly = true;
             this.F.Width = 70;
             // 
             // dataGridViewTextBoxColumn11
@@ -199,6 +209,7 @@
             this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn11.HeaderText = "F^2";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 70;
             // 
             // RelInt
@@ -208,6 +219,7 @@
             this.RelInt.DefaultCellStyle = dataGridViewCellStyle9;
             this.RelInt.HeaderText = "Rel. Int. (%)";
             this.RelInt.Name = "RelInt";
+            this.RelInt.ReadOnly = true;
             this.RelInt.Width = 90;
             // 
             // Condition
@@ -215,6 +227,7 @@
             this.Condition.DataPropertyName = "Condition";
             this.Condition.HeaderText = "Condition";
             this.Condition.Name = "Condition";
+            this.Condition.ReadOnly = true;
             this.Condition.Width = 80;
             // 
             // bindingSourceScatteringFactor
@@ -225,18 +238,19 @@
             // dataSet
             // 
             this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // numericUpDownThresholdD
             // 
             this.numericUpDownThresholdD.DecimalPlaces = 4;
-            this.numericUpDownThresholdD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericUpDownThresholdD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownThresholdD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDownThresholdD.Location = new System.Drawing.Point(560, 33);
+            this.numericUpDownThresholdD.Location = new System.Drawing.Point(574, 36);
             this.numericUpDownThresholdD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericUpDownThresholdD.Maximum = new decimal(new int[] {
             1000,
@@ -260,8 +274,8 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.label2.Location = new System.Drawing.Point(503, 11);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(517, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(171, 20);
             this.label2.TabIndex = 6;
@@ -272,7 +286,7 @@
             this.checkBoxHideProhibitedPlanes.AutoSize = true;
             this.checkBoxHideProhibitedPlanes.Checked = true;
             this.checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideProhibitedPlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxHideProhibitedPlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxHideProhibitedPlanes.Location = new System.Drawing.Point(305, 78);
             this.checkBoxHideProhibitedPlanes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
@@ -286,7 +300,7 @@
             this.checkBoxHideEquivalentPlane.AutoSize = true;
             this.checkBoxHideEquivalentPlane.Checked = true;
             this.checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideEquivalentPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxHideEquivalentPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxHideEquivalentPlane.Location = new System.Drawing.Point(305, 53);
             this.checkBoxHideEquivalentPlane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
@@ -297,29 +311,29 @@
             // 
             // label13
             // 
-            this.label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.label13.Location = new System.Drawing.Point(624, 39);
+            this.label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(638, 42);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(28, 20);
             this.label13.TabIndex = 6;
             this.label13.Text = "Å";
             // 
-            // button1
+            // buttonCopyClipboard
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.button1.Location = new System.Drawing.Point(492, 75);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 28);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Copy to Clipboard";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCopyClipboard.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCopyClipboard.Location = new System.Drawing.Point(506, 78);
+            this.buttonCopyClipboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCopyClipboard.Name = "buttonCopyClipboard";
+            this.buttonCopyClipboard.Size = new System.Drawing.Size(141, 28);
+            this.buttonCopyClipboard.TabIndex = 8;
+            this.buttonCopyClipboard.Text = "Copy to Clipboard";
+            this.buttonCopyClipboard.UseVisualStyleBackColor = true;
+            this.buttonCopyClipboard.Click += new System.EventHandler(this.buttonCopyClipBoard_Click);
             // 
             // label18
             // 
-            this.label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.label18.Location = new System.Drawing.Point(503, 33);
+            this.label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(517, 36);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 20);
             this.label18.TabIndex = 6;
@@ -328,30 +342,30 @@
             // checkBoxBragBrentano
             // 
             this.checkBoxBragBrentano.AutoSize = true;
-            this.checkBoxBragBrentano.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.checkBoxBragBrentano.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxBragBrentano.Location = new System.Drawing.Point(307, 1);
             this.checkBoxBragBrentano.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxBragBrentano.Name = "checkBoxBragBrentano";
             this.checkBoxBragBrentano.Size = new System.Drawing.Size(199, 38);
             this.checkBoxBragBrentano.TabIndex = 8;
-            this.checkBoxBragBrentano.Text = "Powder diffraction intensities \r\n(Bragg Brentano)";
+            this.checkBoxBragBrentano.Text = "Powder diffraction intensities \r\n(Bragg Brentano optics)";
             this.checkBoxBragBrentano.CheckedChanged += new System.EventHandler(this.checkBoxBragBrentano_CheckedChanged);
             // 
             // waveLengthControl1
             // 
             this.waveLengthControl1.AutoSize = true;
             this.waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.waveLengthControl1.Energy = 8.04114721308336D;
-            this.waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waveLengthControl1.Energy = 8.041147213082D;
+            this.waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.waveLengthControl1.Location = new System.Drawing.Point(10, 2);
             this.waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
             this.waveLengthControl1.MinimumSize = new System.Drawing.Size(200, 0);
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.Size = new System.Drawing.Size(200, 107);
+            this.waveLengthControl1.Size = new System.Drawing.Size(201, 104);
             this.waveLengthControl1.TabIndex = 9;
-            this.waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waveLengthControl1.WaveLength = 0.15418710666666666D;
+            this.waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.waveLengthControl1.WaveLength = 0.1541871066667D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 29;
             this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka;
@@ -363,7 +377,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(831, 398);
             this.Controls.Add(this.waveLengthControl1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCopyClipboard);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label18);
@@ -372,7 +386,7 @@
             this.Controls.Add(this.checkBoxHideProhibitedPlanes);
             this.Controls.Add(this.checkBoxBragBrentano);
             this.Controls.Add(this.checkBoxHideEquivalentPlane);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormScatteringFactor";
             this.ShowIcon = false;
@@ -398,7 +412,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownThresholdD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCopyClipboard;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox checkBoxBragBrentano;
         private System.Windows.Forms.BindingSource bindingSourceScatteringFactor;

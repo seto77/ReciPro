@@ -33,7 +33,7 @@ namespace Crystallography
             //OriginalTakeoffAngle　-> SrcTakeoffAngle
             try//まずXMLのタグを変更
             {
-                using var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+                using var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
                 List<string> strList = new List<string>();
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
@@ -47,7 +47,7 @@ namespace Crystallography
 
                 reader.Close();
 
-                using var writer = new StreamWriter(fileName, false, Encoding.GetEncoding("Shift_JIS"));
+                using var writer = new StreamWriter(fileName, false, Encoding.GetEncoding("UTF-8"));
                 for (int i = 0; i < strList.Count; i++)
                     writer.WriteLine(strList[i]);
                 writer.Flush();
@@ -103,8 +103,8 @@ namespace Crystallography
                     {
                         if (fs != null)
                             fs.Close();
-                        StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
-                        List<string> strList = new List<string>();
+                        var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
+                        var strList = new List<string>();
                         string tempstr;
                         while ((tempstr = reader.ReadLine()) != null)
                             strList.Add(tempstr);
@@ -155,7 +155,7 @@ namespace Crystallography
         public static DiffractionProfile[] ReadRasFile(string fileName)
         {
             var strArray = new List<string>();
-            var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+            var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
             string tempstr;
             while ((tempstr = reader.ReadLine()) != null)
                 strArray.Add(tempstr);
@@ -202,7 +202,7 @@ namespace Crystallography
         public static DiffractionProfile[] ReadCSVFile(string fileName)
         {
             var strArray = new List<string>();
-            using (var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS")))
+            using (var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8")))
             {
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)

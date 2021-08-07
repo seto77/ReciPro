@@ -167,6 +167,8 @@ namespace Crystallography
         /// <returns></returns>
         public static void LineFitting(double[] values1, double[] values2, ref double theta, ref double A)
         {
+            if (values1 == null || values1.Length == 0 || values2 == null || values2.Length == 0 || values1.Length != values2.Length)
+                return;
             double a = Variance(values1);
             double b = Covariance(values1, values2);
             double c = Variance(values2);

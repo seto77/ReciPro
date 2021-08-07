@@ -840,7 +840,7 @@ namespace Crystallography
 
             const int coeff = 1024;
             var zero = (new Complex(0, 0), new Complex(0, 0));
-            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 1000000)
+            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 1000000)// && outer.Count>0)
             {
                 var min = outer.Min(c => c.Value);
                 var keyList = outer.Where(c => c.Value - min < shift).Select(c => c.Key).ToList();

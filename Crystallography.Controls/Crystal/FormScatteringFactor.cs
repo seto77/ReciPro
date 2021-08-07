@@ -10,50 +10,99 @@ namespace Crystallography.Controls
         public Crystal Crystal { get => CrystalControl.Crystal; }
         public CrystalControl CrystalControl;
 
+        #region 起動, 終了
         public FormScatteringFactor()
         {
             InitializeComponent();
         }
-
-        //CrystalContorolでCystalが変更されたとき
-        private void crystalControl_CrystalChanged(object sender, EventArgs e)
-        {
-            numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
-            SetSortedPlanes();
-        }
-
         private void FormCrystallographicInformation_Load(object sender, EventArgs e)
         {
             //CrystalContorolでCystalが変更されたときのイベントを登録
             CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
         }
 
+        private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
+        #endregion 
+
+        //CrystalContorolでCystalが変更されたとき
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
+        {
+           
+                numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
+            if (this.Visible)
+                SetSortedPlanes();
+        }
+        //VisibleChange
+        private void FormScatteringFactor_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+                SetSortedPlanes();
+        }
 
         private void numericUpDownThresholdD_ValueChanged(object sender, EventArgs e)
         {
             SetSortedPlanes();
         }
 
+        private void buttonCopyClipBoard_Click(object sender, EventArgs e)
+        {
+            var str = new StringBuilder();
+
+            for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                if (dataGridView2.Columns[i].Visible)
+                    str.Append(dataGridView2.Columns[i].HeaderText + "\t");
+            str.Append("\r\n");
+
+            for (int j = 0; j < dataGridView2.Rows.Count; j++)
+            {
+                for (int i = 0; i < dataGridView2.ColumnCount; i++)
+                    if (dataGridView2.Columns[i].Visible)
+                        str.Append($"{dataGridView2[i, j].Value}\t");
+                str.Append("\r\n");
+            }
+            Clipboard.SetDataObject(str.ToString());
+        }
+
+        private void checkBoxBragBrentano_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBragBrentano.Checked)
+            {
+                checkBoxHideEquivalentPlane.Checked = true;
+                checkBoxHideProhibitedPlanes.Checked = true;
+                checkBoxHideEquivalentPlane.Enabled = false;
+                checkBoxHideProhibitedPlanes.Enabled = false;
+            }
+            else
+            {
+                checkBoxHideEquivalentPlane.Enabled = true;
+                checkBoxHideProhibitedPlanes.Enabled = true;
+            }
+
+            SetSortedPlanes();
+        }
+
+        private void waveLengthControl1_WavelengthChanged(object sender, EventArgs e)
+        {
+            SetSortedPlanes();
+        }
+
+
         private void SetSortedPlanes()
         {
-            dataSet.DataTableScatteringFactor.Clear();
-            for (int i = 0; i < this.dataGridView2.Columns.Count; i++)
-                this.dataGridView2.Columns[i].Visible = true;
-
-            if (!checkBoxHideEquivalentPlane.Checked)
-                this.dataGridView2.Columns[3].Visible = false; //Multiを消す
-            if (checkBoxHideProhibitedPlanes.Checked)
-                this.dataGridView2.Columns[12].Visible = false;
-
             var c = (Crystal)Crystal.Clone();
-
-            
 
             c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
 
+            c.VectorOfG.Sort((g1, g2) => g2.d.CompareTo(g1.d));
+
             if (c.VectorOfG.Count == 0) return;
 
-            double max = c.VectorOfG.Max(g => g.RawIntensity);
+            var max = c.VectorOfG.Max(g => g.RawIntensity);
             for (int i = 0; i < c.VectorOfG.Count; i++)
                 c.VectorOfG[i].RelativeIntensity = c.VectorOfG[i].RawIntensity / max;
 
@@ -82,11 +131,23 @@ namespace Crystallography.Controls
                     c.VectorOfG[i].RelativeIntensity = c.VectorOfG[i].RawIntensity / max;
             }
 
+            //一旦bindingSourceを解除
             var dataMember = bindingSourceScatteringFactor.DataMember;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             bindingSourceScatteringFactor.DataMember = "";
+
+
+            dataSet.DataTableScatteringFactor.Clear();
+            for (int i = 0; i < this.dataGridView2.Columns.Count; i++)
+                this.dataGridView2.Columns[i].Visible = true;
+
+            if (!checkBoxHideEquivalentPlane.Checked)
+                this.dataGridView2.Columns[3].Visible = false; //Multiを消す
+            if (checkBoxHideProhibitedPlanes.Checked)
+                this.dataGridView2.Columns[12].Visible = false;
+
             foreach (Vector3D g in c.VectorOfG)
             {
                 int multi = 0;
@@ -104,67 +165,17 @@ namespace Crystallography.Controls
                     }
                 }
             }
+            dataGridView2.VirtualMode = true;
+
             bindingSourceScatteringFactor.DataMember = dataMember;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            //dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
         }
 
-        private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Visible = false;
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var str = new StringBuilder();
-           
-            for (int i = 0; i < dataGridView2.Columns.Count; i++)
-                if (dataGridView2.Columns[i].Visible)
-                    str.Append(dataGridView2.Columns[i].HeaderText + "\t");
-            str.Append("\r\n");
 
-            for (int j = 0; j < dataGridView2.Rows.Count; j++)
-            {
-                for (int i = 0; i < dataGridView2.ColumnCount; i++)
-                    if (dataGridView2.Columns[i].Visible)
-                        str.Append($"{dataGridView2[i, j].Value}\t");
-                str.Append("\r\n");
-            }
-            Clipboard.SetDataObject(str.ToString());
-        }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void checkBoxBragBrentano_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxBragBrentano.Checked)
-            {
-                checkBoxHideEquivalentPlane.Checked = true;
-                checkBoxHideProhibitedPlanes.Checked = true;
-                checkBoxHideEquivalentPlane.Enabled = false;
-                checkBoxHideProhibitedPlanes.Enabled = false;
-            }
-            else
-            {
-                checkBoxHideEquivalentPlane.Enabled = true;
-                checkBoxHideProhibitedPlanes.Enabled = true;
-            }
-
-            SetSortedPlanes();
-        }
-
-        private void waveLengthControl1_WavelengthChanged(object sender, EventArgs e)
-        {
-            SetSortedPlanes();
-        }
-
-        private void FormScatteringFactor_VisibleChanged(object sender, EventArgs e)
-        {
-            SetSortedPlanes();
-        }
+  
     }
 }

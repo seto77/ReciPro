@@ -574,7 +574,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 27</value>
+    <value>196, 27</value>
   </data>
   <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -583,7 +583,7 @@
     <value>Inuput wave energy</value>
   </data>
   <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>test</value>
+    <value>Inuput wave energy</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergy.Name" xml:space="preserve">
     <value>numericBoxEnergy</value>
@@ -604,7 +604,7 @@
     <value>5, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 27</value>
+    <value>196, 27</value>
   </data>
   <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -706,7 +706,7 @@
     <value>Å</value>
   </data>
   <data name="numericBoxWaveLength.HeaderText" xml:space="preserve">
-    <value>Wave length</value>
+    <value>Wavelength</value>
   </data>
   <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -715,7 +715,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxWaveLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxWaveLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -724,12 +724,15 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>201, 27</value>
   </data>
   <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Input wave length</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
     <value>Input wave length</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.Name" xml:space="preserve">
@@ -751,7 +754,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanelWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>201, 27</value>
   </data>
   <data name="flowLayoutPanelWaveLength.TabIndex" type="System.Int32, mscorlib">
     <value>108</value>

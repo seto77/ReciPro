@@ -215,7 +215,7 @@
             this.numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEnergy.Name = "numericBoxEnergy";
             this.numericBoxEnergy.RoundErrorAccuracy = 12;
-            this.numericBoxEnergy.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxEnergy.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
             this.numericBoxEnergy.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEnergy_ValueChanged);
             // 

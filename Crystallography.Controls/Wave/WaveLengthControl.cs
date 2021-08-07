@@ -251,6 +251,8 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void comboBoxXRayElement_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!radioButtonXray.Checked) return;
+
             if (comboBoxXRayElement.SelectedIndex == 0)//Customが選択されたとき
             {
                 comboBoxXrayLine.Visible = false;
@@ -317,6 +319,7 @@ namespace Crystallography.Controls
             {
                 flowLayoutPanelElement.Visible = true;
                 numericBoxEnergy.FooterText = "keV";
+                comboBoxXRayElement_SelectedIndexChanged(sender, e);
             }
             else
             {

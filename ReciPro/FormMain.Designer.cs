@@ -496,6 +496,7 @@
             this.numericBoxMaxUVW.Minimum = 1D;
             this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
             this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
+            this.numericBoxMaxUVW.RoundErrorAccuracy = -1;
             this.numericBoxMaxUVW.ShowUpDown = true;
             this.numericBoxMaxUVW.SkipEventDuringInput = false;
             this.numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -735,6 +736,7 @@
             this.numericBoxStep.Minimum = 0.001D;
             this.numericBoxStep.Name = "numericBoxStep";
             this.numericBoxStep.RadianValue = 0.17453292519943295D;
+            this.numericBoxStep.RoundErrorAccuracy = -1;
             this.numericBoxStep.ShowUpDown = true;
             this.numericBoxStep.SmartIncrement = true;
             this.numericBoxStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -807,6 +809,7 @@
             this.numericBoxAxisU.Maximum = 50D;
             this.numericBoxAxisU.Minimum = -50D;
             this.numericBoxAxisU.Name = "numericBoxAxisU";
+            this.numericBoxAxisU.RoundErrorAccuracy = -1;
             this.numericBoxAxisU.ShowUpDown = true;
             this.numericBoxAxisU.SkipEventDuringInput = false;
             this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -831,6 +834,7 @@
             this.numericBoxAxisV.Maximum = 50D;
             this.numericBoxAxisV.Minimum = -50D;
             this.numericBoxAxisV.Name = "numericBoxAxisV";
+            this.numericBoxAxisV.RoundErrorAccuracy = -1;
             this.numericBoxAxisV.ShowUpDown = true;
             this.numericBoxAxisV.SkipEventDuringInput = false;
             this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -846,6 +850,7 @@
             this.numericBoxAxisW.Maximum = 50D;
             this.numericBoxAxisW.Minimum = -50D;
             this.numericBoxAxisW.Name = "numericBoxAxisW";
+            this.numericBoxAxisW.RoundErrorAccuracy = -1;
             this.numericBoxAxisW.ShowUpDown = true;
             this.numericBoxAxisW.SkipEventDuringInput = false;
             this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -871,6 +876,7 @@
             this.numericBoxPlaneL.Maximum = 50D;
             this.numericBoxPlaneL.Minimum = -50D;
             this.numericBoxPlaneL.Name = "numericBoxPlaneL";
+            this.numericBoxPlaneL.RoundErrorAccuracy = -1;
             this.numericBoxPlaneL.ShowUpDown = true;
             this.numericBoxPlaneL.SkipEventDuringInput = false;
             this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -885,6 +891,7 @@
             this.numericBoxPlaneH.Maximum = 50D;
             this.numericBoxPlaneH.Minimum = -50D;
             this.numericBoxPlaneH.Name = "numericBoxPlaneH";
+            this.numericBoxPlaneH.RoundErrorAccuracy = -1;
             this.numericBoxPlaneH.ShowUpDown = true;
             this.numericBoxPlaneH.SkipEventDuringInput = false;
             this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -899,6 +906,7 @@
             this.numericBoxPlaneK.Maximum = 50D;
             this.numericBoxPlaneK.Minimum = -50D;
             this.numericBoxPlaneK.Name = "numericBoxPlaneK";
+            this.numericBoxPlaneK.RoundErrorAccuracy = -1;
             this.numericBoxPlaneK.ShowUpDown = true;
             this.numericBoxPlaneK.SkipEventDuringInput = false;
             this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

@@ -407,14 +407,6 @@ namespace Crystallography
 			var tempRMax = new int[thread];
 			SetTiltParameter();
 
-			//FindSpotsThread0Delegate[] d0 = new FindSpotsThread0Delegate[thread];
-			//IAsyncResult[] ar0 = new IAsyncResult[thread];
-			//for (i = 0; i < thread; i++)
-			//	d0[i] = new FindSpotsThread0Delegate(FindSpotsThread0);
-			//for (i = 0; i < thread; i++)
-			//	ar0[i] = d0[i].BeginInvoke(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i], null, null);//各スレッド起動転送
-			//for (i = 0; i < thread; i++)//スレッド終了待ち
-			//	d0[i].EndInvoke(ref r, ref tempRMax[i], ar0[i]);
 			Parallel.For(0, thread, i => FindSpotsThread0(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i]));
 
 
@@ -437,15 +429,6 @@ namespace Crystallography
 				tempContributedPixels[i] = new double[rMax];
 			}
 			//ここからスレッド1起動
-			//FindSpotsThread1Delegate[] d1 = new FindSpotsThread1Delegate[thread];
-			//IAsyncResult[] ar1 = new IAsyncResult[thread];
-			//for (i = 0; i < thread; i++)
-			//	d1[i] = new FindSpotsThread1Delegate(FindSpotsThread1);
-			//for (i = 0; i < thread; i++)
-			//	ar1[i] = d1[i].BeginInvoke(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], null, null);//各スレッド起動転送
-			//for (i = 0; i < thread; i++)//スレッド終了待ち
-			//	d1[i].EndInvoke(ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i], ar1[i]);
-
 			Parallel.For(0, thread, i => FindSpotsThread1(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i]));
 
 			//Thread1の結果をまとめる
@@ -2288,15 +2271,7 @@ namespace Crystallography
 			}
 
 			//ここからスレッド起動
-			GetProfileThreadDelegateWithTiltCorrection[] d = new GetProfileThreadDelegateWithTiltCorrection[thread];
-			IAsyncResult[] ar = new IAsyncResult[thread];
-			for (i = 0; i < thread; i++)
-			{
-				d[i] = new GetProfileThreadDelegateWithTiltCorrection(GetProfileThreadWithTiltCorrection);
-				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i], null, null);//各スレッド起動転送
-			}
-			for (i = 0; i < thread; i++)//スレッド終了待ち
-				d[i].EndInvoke(ref tempProfileIntensity[i], ref tempContibutedPixels[i], ar[i]);
+			Parallel.For(0, thread, i => GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]));
 
 			//各スレッドの結果をまとめる
 			for (i = 0; i < R2.Length; i++)
@@ -2915,6 +2890,9 @@ namespace Crystallography
 		//FindTiltCorrection用の定数を先に決めておくメソッド
 		public static void SetFindTiltParameter(IntegralProperty iP, double[] peaks, double serchRange)
 		{
+			if (double.IsNaN(IP.EndLength))
+				return;
+
 			var thread = Environment.ProcessorCount;
 
 			IP = iP;
@@ -2984,15 +2962,11 @@ namespace Crystallography
 
 			//傾き補正係数を計算
 			SetTiltParameter();
+			
+			Parallel.For(0, thread, i => SetFindTiltParameterThread(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2));
 
-			SetFindTiltParameterThreadDelegate[] d = new SetFindTiltParameterThreadDelegate[thread];
-			IAsyncResult[] ar = new IAsyncResult[thread];
-			for (i = 0; i < thread; i++)
-				d[i] = new SetFindTiltParameterThreadDelegate(SetFindTiltParameterThread);
-			for (i = 0; i < thread; i++)
-				ar[i] = d[i].BeginInvoke(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2, null, null);//各スレッド起動転送
-			for (i = 0; i < thread; i++)//スレッド終了待ち
-				d[i].EndInvoke(ar[i]);
+			if (double.IsNaN(IP.EndLength))
+				return;
 
 			//配列Rを作成　各ステップごとの中心からの距離を格納する配列
 			R2 = new double[(int)((IP.EndLength - IP.StartLength) / IP.StepLength) + 1];
@@ -3003,8 +2977,6 @@ namespace Crystallography
 				R2[i] = temp * temp;
 			}
 		}
-
-		private delegate void SetFindTiltParameterThreadDelegate(int xMin, int xMax, int YMin, int YMax, double[] peaksPlusRange2, double[] peaksMinusRange2);
 
 		public static void SetFindTiltParameterThread(int xMin, int xMax, int YMin, int YMax, double[] peaksPlusRange2, double[] peaksMinusRange2)
 		{
