@@ -1,7 +1,7 @@
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and high-resolution TEM image, indexes diffraction spots, plots stereographic projection, and so on.
 
-https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4
+[Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
