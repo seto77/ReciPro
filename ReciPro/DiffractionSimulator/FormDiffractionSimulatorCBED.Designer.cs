@@ -144,6 +144,7 @@
             this.numericBoxThread.Minimum = 1D;
             this.numericBoxThread.Name = "numericBoxThread";
             this.numericBoxThread.RadianValue = 0.069813170079773182D;
+            this.numericBoxThread.RoundErrorAccuracy = -1;
             this.numericBoxThread.ShowUpDown = true;
             this.numericBoxThread.SmartIncrement = true;
             this.numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -161,6 +162,7 @@
             this.numericBoxThicknessStep.Minimum = 1D;
             this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
+            this.numericBoxThicknessStep.RoundErrorAccuracy = -1;
             this.numericBoxThicknessStep.ShowUpDown = true;
             this.numericBoxThicknessStep.SmartIncrement = true;
             this.numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -178,6 +180,7 @@
             this.numericBoxWholeThicknessStart.Minimum = 1D;
             this.numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
             this.numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
+            this.numericBoxWholeThicknessStart.RoundErrorAccuracy = -1;
             this.numericBoxWholeThicknessStart.ShowUpDown = true;
             this.numericBoxWholeThicknessStart.SmartIncrement = true;
             this.numericBoxWholeThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -195,6 +198,7 @@
             this.numericBoxThicknessEnd.Minimum = 1D;
             this.numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
             this.numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
+            this.numericBoxThicknessEnd.RoundErrorAccuracy = -1;
             this.numericBoxThicknessEnd.ShowUpDown = true;
             this.numericBoxThicknessEnd.SmartIncrement = true;
             this.numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -212,6 +216,7 @@
             this.numericBoxMaxNumOfG.Minimum = 1D;
             this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             this.numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
+            this.numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
             this.numericBoxMaxNumOfG.ShowUpDown = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
             this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -255,6 +260,7 @@
             this.numericBoxDivision.Minimum = 1D;
             this.numericBoxDivision.Name = "numericBoxDivision";
             this.numericBoxDivision.RadianValue = 2.2340214425527418D;
+            this.numericBoxDivision.RoundErrorAccuracy = -1;
             this.numericBoxDivision.ShowUpDown = true;
             this.numericBoxDivision.SkipEventDuringInput = false;
             this.numericBoxDivision.SmartIncrement = true;
@@ -352,7 +358,7 @@
             // 
             resources.ApplyResources(this.trackBarGamma, "trackBarGamma");
             this.trackBarGamma.LargeChange = 200;
-            this.trackBarGamma.Maximum = 1000;
+            this.trackBarGamma.Maximum = 2000;
             this.trackBarGamma.Name = "trackBarGamma";
             this.trackBarGamma.SmallChange = 50;
             this.trackBarGamma.TickFrequency = 50;

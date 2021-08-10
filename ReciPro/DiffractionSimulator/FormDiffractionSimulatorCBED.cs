@@ -224,9 +224,12 @@ namespace ReciPro
             if (Disks == null)
                 return;
 
+     
+
             //γ値の調整
-            var gamma = trackBarGamma.Value * AngleResolution;
+            var gamma = trackBarGamma.Value * AngleResolution ;
             Parallel.For(0, Disks.Length, i =>
+            //for(int i=0; i< Disks.Length; i++)
             {
                 var pb = Disks[i].PBitmap;
                 var cPos = Disks[i].Center + Disks[i].Size / 2;
@@ -238,11 +241,12 @@ namespace ReciPro
                 }).ToArray();
             });
 
-            var maxOverall = Disks.Max(d => d.PBitmap.SrcValuesGray.Max());
+            var maxOverall = Disks.Max(d => d.PBitmap.SrcValuesGrayOriginal.Max());
             var maxRatio = Math.Pow((double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum, 4);
             var minRatio = Math.Pow((double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum, 4);
             var gray = comboBoxScale.SelectedIndex == 0;
             var negative = comboBoxGradient.SelectedIndex == 1;
+
             Parallel.For(0, Disks.Length, i =>
             {
                 //輝度Max,Min調整
