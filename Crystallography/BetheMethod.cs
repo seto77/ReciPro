@@ -484,18 +484,21 @@ namespace Crystallography
         #endregion
 
         #region Image Simulation
-        public static double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
+        public double[][] GetPotentialImage(IEnumerable<Beam> beams, Size size, double res, bool phase = true)
         {
             int width = size.Width, height = size.Height;
             //gList[gNUm]を全て計算
             var gList = beams.Select(b => (b.Freal, b.Fimag, b.Vec.ToPointD)).ToList();
             //imagesを初期化
+            
             var images = Enumerable.Range(0, 4).ToList().Select(d => new double[width * height]).ToArray();
-            //各ピクセルの計算
-            double cX = width / 2.0, cY = height / 2.0;
+            
+            var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
+            double cX = width / 2.0 , cY = height / 2.0 ;
             Parallel.For(0, width * height, n =>
             {
-                var r = new PointD(n % width - cX, height - n / width - 1 - cY) * res;
+                //単位格子軸の0.5倍だけシフトさせておく
+                var r = new PointD(-(n % width - cX) * res + shift.X, -(height - 1 - n / width - cY) * res + shift.Y);
                 var sums = new Complex[2];
                 foreach (var (uCry, uTher, vec) in gList)
                 {
@@ -591,6 +594,7 @@ namespace Crystallography
 
             //各ピクセルの計算
             double cX = width / 2.0, cY = height / 2.0;
+            var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
             if (native && NativeWrapper.Enabled)//ネイティブC++で実行 3倍速い
             {
                 var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
@@ -598,7 +602,7 @@ namespace Crystallography
                 Parallel.For(0, divTotal, div =>
                 {
                     int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX), res * (height - n / width - 1 - cY) }).ToArray();
+                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { -res * (n % width - cX) + shift.X, -res * (height - n / width - 1 - cY) + shift.Y }).ToArray();
                     var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
                     for (var i = 0; i < defLen; i++)
                         Array.Copy(results, i * count, images[i], start, count);
@@ -608,7 +612,7 @@ namespace Crystallography
             {
                 Parallel.For(0, width * height, n =>
                 {
-                    PointD r = new PointD(n % width - cX, height - n / width - 1 - cY) * res, _vec = new(double.NaN, double.NaN);
+                    PointD r = new PointD(-(n % width - cX) * res + shift.X, -(height - n / width - 1 - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);
                     var sums = new Complex[defLen];
                     var exp = new Complex(0, 0);
                     foreach (var (Psi, Vec, Lenz) in gList)

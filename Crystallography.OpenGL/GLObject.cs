@@ -56,6 +56,22 @@ namespace Crystallography.OpenGL
             Uv = new V2f(0, 0);
             Mode = 0;
         }
+
+        /// <summary>
+        /// テクスチャ無しのポリゴン
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="normal"></param>
+        /// <param name="argb"></param>
+        public Vertex(V3f position, int argb)
+        {
+            Position = position;
+            Normal = new V3f(0, 0, 0);
+            Argb = argb;
+            Uv = new V2f(0, 0);
+            Mode = 0;
+        }
+
         public Vertex(V4f position, V3f normal, int argb) : this(new V3f(position), normal, argb) { }
 
 
@@ -126,6 +142,9 @@ namespace Crystallography.OpenGL
         private static readonly List<(string Product, string Version)> GraphicsInfo;
         private static int serialNumber = 0;
         public static readonly object LockObj = new();
+
+        public static float LineWidthStatic = 1f;
+
         #endregion
 
         #region internalな フィールド & プロパティ
@@ -191,6 +210,11 @@ namespace Crystallography.OpenGL
         /// 素材
         /// </summary>
         public Material Material;
+
+        /// <summary>
+        /// 線の太さ (edgeを描画する場合)
+        /// </summary>
+        public float LineWidth = 1f;
 
         /// <summary>
         /// 描画するかどうか
@@ -262,8 +286,9 @@ namespace Crystallography.OpenGL
 
         #endregion
 
+        #region 静的メソッド
         /// <summary>
-        /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
+        /// 静的メソッド. program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
         /// </summary>
         /// <param name="program"></param>
         /// <param name="objects"></param>
@@ -345,15 +370,7 @@ namespace Crystallography.OpenGL
         }
 
         /// <summary>
-        /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
-        /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
-        /// </summary>
-        /// <param name="program"></param>
-        public void Generate(int program) => Generate(program, new[] { this });
-
-
-        /// <summary>
-        /// パラメータのロケーションをセット
+        /// 静的メソッド. パラメータのロケーションをセット
         /// </summary>
         /// <param name="Program"></param>
         public static Location GetLocation(int Program)
@@ -392,6 +409,16 @@ namespace Crystallography.OpenGL
             return loc;
         }
 
+        #endregion
+
+
+        /// <summary>
+        /// program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
+        /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
+        /// </summary>
+        /// <param name="program"></param>
+        public void Generate(int program) => Generate(program, new[] { this });
+
         /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
         /// </summary>
         private void Render()
@@ -404,6 +431,12 @@ namespace Crystallography.OpenGL
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToBorder);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToBorder);
+            }
+
+            if((Mode== DrawingMode.SurfacesAndEdges || Mode== DrawingMode.Edges)&& LineWidth != LineWidthStatic)
+            {
+                GL.LineWidth(LineWidth);
+                LineWidthStatic = LineWidth;
             }
 
             GL.BindVertexArray(Obj.VAO);
@@ -635,6 +668,27 @@ namespace Crystallography.OpenGL
     }
     #endregion
 
+    #region 線分
+
+    public class Lines:GLObject
+    {
+        public Lines(V3d[] vertices, float lineWidth, Material mat ) : base(mat, DrawingMode.Edges) 
+        {
+            ShowClippedSection = false;//クリップ断面は表示しない
+            IgnoreNormalSides = true;//裏表を無視する
+            LineWidth = lineWidth;
+            var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            CircumscribedSphereCenter = new V4d(center, 1);
+            CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
+            Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
+            Indices = Enumerable.Range(0,vertices.Length).Select(i=>(uint)i).ToArray();
+            Primitives = new[] { (PT.Lines, vertices.Length) };
+        }
+    }
+
+
+    #endregion
+
     #region 三角形、四角形、円板、多角形
     /// <summary>
     /// 多角形 (凸多角形) 点集合が完全に平面に乗らない場合でも、最小二乗法で法線を求める
@@ -830,6 +884,9 @@ namespace Crystallography.OpenGL
 
         public Quads(V3d a, V3d b, V3d c, V3d d, Material mat, DrawingMode mode)
             : base(new V3d[] { a, b, c, d }, mat, mode) { }
+
+        public Quads(V3d[] vertices, Material mat, DrawingMode mode)
+            : base(vertices, mat, mode) { }
     }
 
     /// <summary>

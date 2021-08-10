@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.811(2021/08/10)  Fixed minor bugs on HRTEM simulation (see https://github.com/seto77/ReciPro/issues/7)." +
             "\r\n ver4.810(2021/08/07)  Fixed minor bugs." +
             "\r\n ver4.809(2021/07/16)  Fixed minor bugs. Renewed AMCSD database, and improved loading speed of the database." +
             "\r\n ver4.808(2021/07/08)  Fixed a minor bug about a compile option for native (c++) codes." +

@@ -273,7 +273,7 @@ namespace ReciPro
             if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
             Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
-            var images = BetheMethod.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
+            var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
             var temp = sw.ElapsedMilliseconds;
             toolStripStatusLabel1.Text = "Generation of Potential images: " + temp.ToString() + " msec,   ";
 

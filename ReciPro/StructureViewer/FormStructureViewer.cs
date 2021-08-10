@@ -10,7 +10,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -95,7 +94,7 @@ namespace ReciPro
                 Index = index;
                 CellKey = cellKey;
             }
-            public static int ComposeKey(int a, int b, int c) => a *512*512 + b  *512 + c;
+            public static int ComposeKey(int a, int b, int c) => a * 512 * 512 + b * 512 + c;
             public static int ComposeKey(V3 v) => ComposeKey((short) v.X, (short)v.Y, (short)v.Z );
         }
 
@@ -327,7 +326,7 @@ namespace ReciPro
             //else
             //{
             shift = (axes.Column0 + axes.Column1 + axes.Column2) / 2;
-            numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
+            //numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
             // }
         }
         #endregion
@@ -704,34 +703,52 @@ namespace ReciPro
                 GLObjects.Remove(GLObjects.First(obj => obj.Tag is cellID));
             }
 
-            var cellVertices = new[] { new V3(0), axes.Column0, axes.Column1, axes.Column2, axes.Column0 + axes.Column1, axes.Column1 + axes.Column2, axes.Column2 + axes.Column0, axes.Column0 + axes.Column1 + axes.Column2 };
-            var translation = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
-            cellVertices = cellVertices.Select(v => v - translation).ToArray();
+            var t = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
+            V3 zero = new V3(0), c0 = axes.Column0 , c1 = axes.Column1, c2 = axes.Column2 ;
 
-            var cellPlaneMat = new Material(colorControlCellPlane.Argb, numericBoxCellPlaneAlpha.Value);
-            var cellPlane = new Polyhedron(cellVertices, cellPlaneMat, DrawingMode.Surfaces) { Tag = new cellID() };
-
-            var cellEdgeMat = new Material(colorControlCellEdge.Argb, 1f);
-            var cellEdge = new Polyhedron(cellVertices, cellEdgeMat, DrawingMode.Edges) { Tag = new cellID() };
-
-            //cellPlane.UseFixedColor = true;
-            cellPlane.Rendered = false;
-            cellEdge.Rendered = false;
-            if (checkBoxUnitCell.Checked)
+            //エッジの描画
+            if (checkBoxUnitCell.Checked && checkBoxCellShowEdge.Checked)
             {
-                cellPlane.Rendered = checkBoxCellShowPlane.Checked;
-                cellEdge.Rendered = checkBoxCellShowEdge.Checked;
+                var axesArray = new V3[][][] {
+                    new V3[][] { new[] { zero, c0 }, new[] { c1, c1 + c0 } , new[] { c2, c2 + c0 } , new[] { c1 + c2, c1 + c2 + c0 } },
+                    new V3[][] { new[] { zero, c1 }, new[] { c2, c2 + c1 } , new[] { c0, c0 + c1 } , new[] { c2 + c0, c2 + c0 + c1 } },
+                    new V3[][] { new[] { zero, c2 }, new[] { c0, c0 + c2 } , new[] { c1, c1 + c2 } , new[] { c0 + c1, c0 + c1 + c2 } }
+                };
+
+                var colors = radioButtonCellEdgeColorAll.Checked ?
+                    new int[] { colorControlCellEdge.Argb, colorControlCellEdge.Argb, colorControlCellEdge.Argb } :
+                    new int[] { colorControlCellEdgeA.Argb, colorControlCellEdgeB.Argb, colorControlCellEdgeC.Argb };
+
+                for (int i = 0; i < 3; i++)
+                    foreach (var edge in axesArray[i])
+                    {
+                        var line = new Lines(edge.Select(e => e - t).ToArray(), trackBarCellEdgeWidth.Value, new Material(colors[i])) { Tag = new cellID() };
+                        GLObjects.Add(line);
+                        glControlMain.AddObjects(line);
+                    }
             }
 
-            //ZSortの時は、order=3で64分割
-            var planes = cellPlane.ToPolygons(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
-            GLObjects.AddRange(planes);
-            glControlMain.AddObjects(planes);
+            if (checkBoxUnitCell.Checked && checkBoxCellShowPlane.Checked)
+            {
+                //面の描画
+                var planesArray = new V3[][][] {
+                    new V3[][] { new[] { zero, c1, c1 + c2, c2 }, new[] { c0, c0 + c1, c0 + c1 + c2, c2 + c0 } },
+                    new V3[][] { new[] { zero, c2, c2 + c0, c0 }, new[] { c1, c1 + c2, c1 + c2 + c0, c0 + c1 } },
+                    new V3[][] { new[] { zero, c0, c0 + c1, c1 }, new[] { c2, c2 + c0, c2 + c0 + c1, c1 + c2 } }
+                };
+                var colors = radioButtonCellPlaneColorAll.Checked ?
+                       new int[] { colorControlCellPlane.Argb, colorControlCellPlane.Argb, colorControlCellPlane.Argb } :
+                       new int[] { colorControlCellPlaneA.Argb, colorControlCellPlaneB.Argb, colorControlCellPlaneC.Argb };
 
-            var edges = cellEdge.ToPolygons();
-            GLObjects.AddRange(edges);
-            glControlMain.AddObjects(edges);
-
+                for (int i = 0; i < 3; i++)
+                    foreach (var edge in planesArray[i])
+                    {
+                        var plane = new Polygon(edge.Select(e => e - t).ToArray(), new Material(colors[i], numericBoxCellPlaneAlpha.Value), DrawingMode.Surfaces)
+                        { Tag = new cellID() }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                        GLObjects.AddRange(plane);
+                        glControlMain.AddObjects(plane);
+                    }
+            }
             textBoxInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
         }
@@ -1152,7 +1169,7 @@ namespace ReciPro
         #endregion マウスイベント
 
         #region Unit cell タブ関連
-        private void checkBoxShowUnitCell_CheckedChanged(object sender, EventArgs e)
+        private void unitCell_PropertyChanged(object sender, EventArgs e)
         {
             groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
             setUnitCellPlanes();

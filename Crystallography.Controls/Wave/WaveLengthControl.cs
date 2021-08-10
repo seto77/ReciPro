@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Crystallography;
 
 namespace Crystallography.Controls
 {
@@ -41,7 +40,7 @@ namespace Crystallography.Controls
                 numericBoxEnergy.TextFont = value;
                 numericBoxWaveLength.TextFont = value;
             }
-            get { return numericBoxWaveLength.TextFont; }
+            get => numericBoxWaveLength.TextFont;
         }
 
         public bool showWaveSource = true;
@@ -75,10 +74,7 @@ namespace Crystallography.Controls
                 {
                 }
             }
-            get
-            {
-                return numericBoxWaveLength.Text;
-            }
+            get => numericBoxWaveLength.Text;
         }
 
         /// <summary>
@@ -178,14 +174,11 @@ namespace Crystallography.Controls
                 if (value > 0)
                     numericBoxEnergy.Value = value;
             }
-            get
-            {
-                return numericBoxEnergy.Value;
-            }
+            get => numericBoxEnergy.Value;
         }
 
 
-      
+
         /// <summary>
         /// 電子線加速電圧(kV)をテキスト形式で取得/設定
         /// </summary>

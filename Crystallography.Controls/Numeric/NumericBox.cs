@@ -385,7 +385,19 @@ namespace Crystallography.Controls
         public bool ShowTrigonomeric { set; get; } = false;
 
         [DefaultValue("0")]
-        public new string Text { set => textBox.Text = value; get => numericalValue.ToString(); }
+        public new string Text {
+            set
+            {
+                textBox.Text = value;
+                if (RoundErrorAccuracy > 0)
+                {
+                    var val = Value;
+                    Value = val;
+                }
+
+            }
+            get => numericalValue.ToString(); 
+        }
 
         [Category("Appearance properties")]
         [DefaultValue(true)]

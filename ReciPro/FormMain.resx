@@ -66,13 +66,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 19</value>
+    <value>100, 19</value>
   </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 20</value>
+    <value>103, 20</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Calculation Time: </value>
@@ -1663,7 +1663,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>⭠</value>
   </data>
   <data name="buttonLeft.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal to the direction of the arrow.
+(CTRL+SHIFT+ Left)</value>
   </data>
   <data name="&gt;&gt;buttonLeft.Name" xml:space="preserve">
     <value>buttonLeft</value>
@@ -1747,7 +1748,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>⭣</value>
   </data>
   <data name="buttonBottom.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal to the direction of the arrow.
+(CTRL+SHIFT+ Down)</value>
   </data>
   <data name="&gt;&gt;buttonBottom.Name" xml:space="preserve">
     <value>buttonBottom</value>
@@ -1831,7 +1833,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>⭡</value>
   </data>
   <data name="buttonTop.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal to the direction of the arrow.
+(CTRL+SHIFT+ Up)</value>
   </data>
   <data name="&gt;&gt;buttonTop.Name" xml:space="preserve">
     <value>buttonTop</value>
@@ -1918,7 +1921,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>⭢</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal to the direction of the arrow.
+(CTRL+SHIFT+ Right)</value>
   </data>
   <data name="&gt;&gt;buttonRight.Name" xml:space="preserve">
     <value>buttonRight</value>
