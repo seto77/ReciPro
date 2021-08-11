@@ -273,6 +273,10 @@ namespace ReciPro
             }
         }
 
+        /// <summary>
+        /// ‘å‰~•`‰æ
+        /// </summary>
+        /// <param name="g"></param>
         private void DrawCircles(Graphics g)
         {
             //‘å‰~•`‰æ

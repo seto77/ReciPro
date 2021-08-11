@@ -320,7 +320,7 @@ namespace ReciPro
 
         private void radioButtonAllDisks_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonIndivisualDisk.Checked)
+            if (radioButtonIndividualDisk.Checked)
             {
                 skipEvent = true;
                 trackBarGamma.Value = 0;

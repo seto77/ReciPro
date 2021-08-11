@@ -760,7 +760,7 @@ namespace Crystallography
         /// <returns></returns>
         public static bool CheckIrreducible(int a, int b, int c)
         {
-            for (int n = 2; n <= new[] { a, b, c }.Max(); n++)
+            for (int n = 2; n <= new[] { Math.Abs(a), Math.Abs(b), Math.Abs(c) }.Max(); n++)
                 if (a % n == 0 && b % n == 0 && c % n == 0)
                     return false;
             return true;
@@ -854,7 +854,8 @@ namespace Crystallography
             for (int h = -hMax; h <= hMax; h++)
                 for (int k = -kMax; k <= kMax; k++)
                     for (int l = -lMax; l <= lMax; l++)
-                        if (Crystal.CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
+                 
+                        if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
                         {
                             vec = CalcHklVector(h, k, l);
                             vec = vec * GetLengthPlane(h, k, l) / vec.d;

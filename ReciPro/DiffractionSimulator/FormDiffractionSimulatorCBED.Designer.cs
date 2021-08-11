@@ -44,7 +44,7 @@
             this.numericBoxDivision = new Crystallography.Controls.NumericBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
-            this.radioButtonIndivisualDisk = new System.Windows.Forms.RadioButton();
+            this.radioButtonIndividualDisk = new System.Windows.Forms.RadioButton();
             this.radioButtonAllDisks = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -276,7 +276,7 @@
             // 
             // groupBoxOutput
             // 
-            this.groupBoxOutput.Controls.Add(this.radioButtonIndivisualDisk);
+            this.groupBoxOutput.Controls.Add(this.radioButtonIndividualDisk);
             this.groupBoxOutput.Controls.Add(this.radioButtonAllDisks);
             this.groupBoxOutput.Controls.Add(this.label3);
             this.groupBoxOutput.Controls.Add(this.label11);
@@ -298,12 +298,12 @@
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.TabStop = false;
             // 
-            // radioButtonIndivisualDisk
+            // radioButtonIndividualDisk
             // 
-            resources.ApplyResources(this.radioButtonIndivisualDisk, "radioButtonIndivisualDisk");
-            this.radioButtonIndivisualDisk.Name = "radioButtonIndivisualDisk";
-            this.radioButtonIndivisualDisk.UseVisualStyleBackColor = true;
-            this.radioButtonIndivisualDisk.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
+            resources.ApplyResources(this.radioButtonIndividualDisk, "radioButtonIndividualDisk");
+            this.radioButtonIndividualDisk.Name = "radioButtonIndividualDisk";
+            this.radioButtonIndividualDisk.UseVisualStyleBackColor = true;
+            this.radioButtonIndividualDisk.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
             // 
             // radioButtonAllDisks
             // 
@@ -519,7 +519,7 @@
         private System.Windows.Forms.ComboBox comboBoxSolver;
         private Crystallography.Controls.NumericBox numericBoxThread;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.RadioButton radioButtonIndivisualDisk;
+        private System.Windows.Forms.RadioButton radioButtonIndividualDisk;
         private System.Windows.Forms.RadioButton radioButtonAllDisks;
         private System.Windows.Forms.Label label1;
     }
