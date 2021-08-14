@@ -23,6 +23,7 @@ namespace ReciPro
 
         public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
 
+        #region ãNìÆÅAèIóπ
         public FormStereonet()
         {
             InitializeComponent();
@@ -38,7 +39,8 @@ namespace ReciPro
             Draw();
             lastgraphicsBoxSize = graphicsBox.ClientSize;
         }
-
+        #endregion
+        
         private void FormStereonet_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)

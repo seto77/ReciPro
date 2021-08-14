@@ -13,6 +13,7 @@ using System.Drawing;
 using MessagePack;
 using MessagePack.Resolvers;
 using System.Threading.Tasks;
+using System.Buffers;
 
 #endregion
 
@@ -31,15 +32,21 @@ namespace Crystallography.Controls
 
         readonly Stopwatch sw = new();
 
-        readonly ReaderWriterLockSlim rwlock = new();
+        static readonly ReaderWriterLockSlim rwlock = new();
 
         readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
 
         byte[] serialize<T>(T c) => MessagePackSerializer.Serialize(c, msgOptions);
 
-        T deserialize<T>(ReadOnlyMemory<byte> buffer, out int byteRead) => MessagePackSerializer.Deserialize<T>(buffer, msgOptions, out byteRead);
-        T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
+        //T deserialize<T>(ReadOnlyMemory<byte> buffer, out int byteRead) =>
+        //    MessagePackSerializer.Deserialize<T>(buffer, msgOptions, out byteRead);
 
+        Crystal2[] deserialize(ReadOnlyMemory<byte> buffer, out int byteRead) =>
+            MessagePackSerializer.Deserialize<Crystal2[]>(buffer, msgOptions, out byteRead);
+
+        Crystal2[] deserialize(Stream buffer) =>
+            MessagePackSerializer.Deserialize<Crystal2[]>(buffer, msgOptions);
+        T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
         public Crystal Crystal => Crystal2.GetCrystal(Crystal2);
       
         public Crystal2 Crystal2 => dataSet.DataTableCrystalDatabase.Get(bindingSource.Current);
@@ -90,6 +97,8 @@ namespace Crystallography.Controls
             this.Enabled = false;
             ReadDatabaseWorker.RunWorkerAsync(filename);
         }
+
+        readonly object lockObj = new object();
         private void ReadDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             var filename = (string)e.Argument;
@@ -102,35 +111,28 @@ namespace Crystallography.Controls
                     int flag = readByte(fs), total = readInt(fs);
                     if (flag == 100)//単一ファイルの時
                     {
-                        var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(filename))[5..];
-                        while (b.Length != 0)
+                        while (fs.Length != fs.Position)
                         {
-                            deserialize<Crystal2[]>(b, out var byteRead).AsParallel().Select(c2 => dataTable.CreateRow(c2))
-                                        .ToList().ForEach(r => dataTable.Rows.Add(r));
-
+                            deserialize(fs).AsParallel().Select(c2 => dataTable.CreateRow(c2)).ToList().ForEach(r => dataTable.Rows.Add(r));
                             ReadDatabaseWorker.ReportProgress(0, report(dataTable.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
-                            b = b[byteRead..];
                         }
                     }
                     else if (flag == 200)//分割ファイルの時
                     {
                         var fileNum = readInt(fs);
                         var fileNames = Enumerable.Range(0, fileNum).Select(i =>
-                                $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").AsParallel();
+                                $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}")
+                            .AsParallel();
 
                         fileNames.ForAll(fn =>
-                        //fileNames.ToList().ForEach(fn =>
                         {
-                            var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(fn));
-                            while (b.Length != 0)
+                            using var stream = new FileStream(fn, FileMode.Open);
+                            while (stream.Length != stream.Position)
                             {
-                                var c2 = deserialize<Crystal2[]>(b, out var byteRead);
-                                var rows = c2.Select(c => dataTable.CreateRow(c)).ToArray();//Array.ConvertAll(c2, dataTable.CreateRow);
-                                rwlock.EnterWriteLock();
-                                try { foreach (var r in rows) dataTable.Rows.Add(r); }
-                                finally { rwlock.ExitWriteLock(); }
+                                var rows = deserialize(stream).Select(c2 => dataTable.CreateRow(c2)).ToArray();
+                                lock (lockObj)
+                                    foreach (var r in rows) dataTable.Rows.Add(r);
                                 ReadDatabaseWorker.ReportProgress(0, report(dataTable.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
-                                b = b[byteRead..];
                             }
                         });
                     }
@@ -140,7 +142,7 @@ namespace Crystallography.Controls
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString()+"\r\nFailed to load database. Sorry.");
+                MessageBox.Show($"{ex}\r\nFailed to load database. Sorry.");
             }
             bindingSource.Position = 0;
         }

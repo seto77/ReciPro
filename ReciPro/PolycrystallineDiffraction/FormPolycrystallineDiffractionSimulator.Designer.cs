@@ -45,15 +45,16 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.checkBoxCrystalNumPerStepThreshold = new System.Windows.Forms.CheckBox();
+            this.numericBoxCrystalNumPerStep = new Crystallography.Controls.NumericBox();
+            this.numericBoxInheritabiliry = new Crystallography.Controls.NumericBox();
             this.checkBoxInheritabiliryThreshold = new System.Windows.Forms.CheckBox();
+            this.numericBoxInheritabiliryThreshold = new Crystallography.Controls.NumericBox();
             this.checkBoxDirectionalDensityThreshold = new System.Windows.Forms.CheckBox();
+            this.numericBoxDirectionalDensity = new Crystallography.Controls.NumericBox();
             this.numericBoxCrystalNumPerStepThreshold = new Crystallography.Controls.NumericBox();
             this.numericBoxDirectionalDensityThreshold = new Crystallography.Controls.NumericBox();
-            this.numericBoxDirectionalDensity = new Crystallography.Controls.NumericBox();
-            this.numericBoxInheritabiliryThreshold = new Crystallography.Controls.NumericBox();
-            this.numericBoxInheritabiliry = new Crystallography.Controls.NumericBox();
-            this.numericBoxCrystalNumPerStep = new Crystallography.Controls.NumericBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.checkBoxRefineConvergence = new System.Windows.Forms.CheckBox();
             this.checkBoxRefineStress = new System.Windows.Forms.CheckBox();
@@ -107,12 +108,11 @@
             this.buttonRemoveReferrencePattern = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.diffractionPatternControlSimulation = new ReciPro.DiffractionPatternControl();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
-            this.diffractionPatternControlSimulation = new ReciPro.DiffractionPatternControl();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -123,6 +123,7 @@
             this.groupBox6.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -133,7 +134,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorkerMain
@@ -173,7 +173,7 @@
             this.groupBox1.Controls.Add(this.buttonSimulateDebyeRing);
             this.groupBox1.Controls.Add(this.tabControlCrystals);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
@@ -187,11 +187,11 @@
             // 
             this.button1.AutoSize = true;
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(468, 15);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 26);
+            this.button1.Size = new System.Drawing.Size(38, 26);
             this.button1.TabIndex = 1003;
             this.button1.Text = "test";
             this.button1.UseVisualStyleBackColor = true;
@@ -201,11 +201,11 @@
             // 
             this.buttonSimulateDebyeRing.AutoSize = true;
             this.buttonSimulateDebyeRing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSimulateDebyeRing.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSimulateDebyeRing.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSimulateDebyeRing.Location = new System.Drawing.Point(155, 15);
             this.buttonSimulateDebyeRing.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSimulateDebyeRing.Name = "buttonSimulateDebyeRing";
-            this.buttonSimulateDebyeRing.Size = new System.Drawing.Size(178, 26);
+            this.buttonSimulateDebyeRing.Size = new System.Drawing.Size(177, 26);
             this.buttonSimulateDebyeRing.TabIndex = 1003;
             this.buttonSimulateDebyeRing.Text = "Simulate Debye ring pattern";
             this.buttonSimulateDebyeRing.UseVisualStyleBackColor = true;
@@ -218,7 +218,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlCrystals.Controls.Add(this.tabPage2);
             this.tabControlCrystals.Controls.Add(this.tabPage3);
-            this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabControlCrystals.Location = new System.Drawing.Point(5, 50);
             this.tabControlCrystals.Multiline = true;
             this.tabControlCrystals.Name = "tabControlCrystals";
@@ -239,27 +239,36 @@
             // 
             // crystalControl1
             // 
+            this.crystalControl1.A = 0D;
             this.crystalControl1.AllowDrop = true;
+            this.crystalControl1.Alpha = 0D;
             this.crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crystalControl1.Crystal = null;
+            this.crystalControl1.B = 0D;
+            this.crystalControl1.Beta = 0D;
+            this.crystalControl1.C = 0D;
             this.crystalControl1.DefaultTabNumber = 0;
             this.crystalControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalControl1.Enabled = false;
+            this.crystalControl1.Gamma = 0D;
             this.crystalControl1.Location = new System.Drawing.Point(3, 3);
             this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             this.crystalControl1.Name = "crystalControl1";
             this.crystalControl1.ScatteringFactorVisible = false;
             this.crystalControl1.Size = new System.Drawing.Size(508, 517);
+            this.crystalControl1.SkipEvent = false;
             this.crystalControl1.SymmetryInformationVisible = false;
+            this.crystalControl1.SymmetrySeriesNumber = 0;
             this.crystalControl1.TabIndex = 1002;
             this.crystalControl1.VisibleAtomTab = true;
             this.crystalControl1.VisibleBasicInfoTab = true;
             this.crystalControl1.VisibleBondsPolyhedraTab = false;
+            this.crystalControl1.VisibleBoundTab = false;
             this.crystalControl1.VisibleElasticityTab = true;
             this.crystalControl1.VisibleEOSTab = false;
+            this.crystalControl1.VisibleLatticePlaneTab = false;
             this.crystalControl1.VisiblePolycrystallineTab = true;
             this.crystalControl1.VisibleReferenceTab = false;
-            this.crystalControl1.VisibleStressStrainTab=true;
+            this.crystalControl1.VisibleStressStrainTab = true;
             this.crystalControl1.VisibleChanged += new System.EventHandler(this.crystalControl1_VisibleChanged);
             // 
             // tabPage3
@@ -267,7 +276,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(514, 523);
+            this.tabPage3.Size = new System.Drawing.Size(192, 70);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -279,7 +288,7 @@
             this.groupBox6.Controls.Add(this.buttonSearch);
             this.groupBox6.Controls.Add(this.tabControl3);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox6.Location = new System.Drawing.Point(0, 609);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox6.Name = "groupBox6";
@@ -293,11 +302,11 @@
             // 
             this.buttonLoadSetting.AutoSize = true;
             this.buttonLoadSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
             this.buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonLoadSetting.Name = "buttonLoadSetting";
-            this.buttonLoadSetting.Size = new System.Drawing.Size(87, 26);
+            this.buttonLoadSetting.Size = new System.Drawing.Size(86, 26);
             this.buttonLoadSetting.TabIndex = 68;
             this.buttonLoadSetting.Text = "Load setting";
             this.buttonLoadSetting.UseVisualStyleBackColor = true;
@@ -307,11 +316,11 @@
             // 
             this.buttonSaveCurrentSetting.AutoSize = true;
             this.buttonSaveCurrentSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSaveCurrentSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveCurrentSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonSaveCurrentSetting.Location = new System.Drawing.Point(388, 21);
             this.buttonSaveCurrentSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSaveCurrentSetting.Name = "buttonSaveCurrentSetting";
-            this.buttonSaveCurrentSetting.Size = new System.Drawing.Size(133, 26);
+            this.buttonSaveCurrentSetting.Size = new System.Drawing.Size(132, 26);
             this.buttonSaveCurrentSetting.TabIndex = 68;
             this.buttonSaveCurrentSetting.Text = "Save current setting";
             this.buttonSaveCurrentSetting.UseVisualStyleBackColor = true;
@@ -321,11 +330,11 @@
             // 
             this.buttonSearch.AutoSize = true;
             this.buttonSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.buttonSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSearch.Location = new System.Drawing.Point(14, 21);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(147, 26);
+            this.buttonSearch.Size = new System.Drawing.Size(146, 26);
             this.buttonSearch.TabIndex = 68;
             this.buttonSearch.Text = "Search Orientations";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -360,244 +369,242 @@
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Refinement option";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBoxCrystalNumPerStepThreshold);
+            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStep);
+            this.groupBox4.Controls.Add(this.numericBoxInheritabiliry);
+            this.groupBox4.Controls.Add(this.checkBoxInheritabiliryThreshold);
+            this.groupBox4.Controls.Add(this.numericBoxInheritabiliryThreshold);
+            this.groupBox4.Controls.Add(this.checkBoxDirectionalDensityThreshold);
+            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensity);
+            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStepThreshold);
+            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensityThreshold);
+            this.groupBox4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox4.Location = new System.Drawing.Point(138, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(371, 121);
+            this.groupBox4.TabIndex = 409;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Fitting parameters for preferred orientatin";
+            // 
             // checkBoxCrystalNumPerStepThreshold
             // 
             this.checkBoxCrystalNumPerStepThreshold.AutoSize = true;
-            this.checkBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.checkBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(201, 28);
             this.checkBoxCrystalNumPerStepThreshold.Name = "checkBoxCrystalNumPerStepThreshold";
-            this.checkBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(84, 20);
+            this.checkBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxCrystalNumPerStepThreshold.TabIndex = 408;
             this.checkBoxCrystalNumPerStepThreshold.Text = "Threshold";
             this.checkBoxCrystalNumPerStepThreshold.UseVisualStyleBackColor = true;
             this.checkBoxCrystalNumPerStepThreshold.CheckedChanged += new System.EventHandler(this.checkBoxCrystalNumPerStepThreshold_CheckedChanged);
             // 
+            // numericBoxCrystalNumPerStep
+            // 
+            this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
+            this.numericBoxCrystalNumPerStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.FooterText = "%";
+            this.numericBoxCrystalNumPerStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
+            this.numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
+            this.numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCrystalNumPerStep.Maximum = 10D;
+            this.numericBoxCrystalNumPerStep.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxCrystalNumPerStep.Minimum = 1E-06D;
+            this.numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
+            this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
+            this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
+            this.numericBoxCrystalNumPerStep.RoundErrorAccuracy = -1;
+            this.numericBoxCrystalNumPerStep.ShowUpDown = true;
+            this.numericBoxCrystalNumPerStep.Size = new System.Drawing.Size(168, 25);
+            this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
+            this.numericBoxCrystalNumPerStep.SmartIncrement = true;
+            this.numericBoxCrystalNumPerStep.TabIndex = 407;
+            this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.ThonsandsSeparator = true;
+            this.numericBoxCrystalNumPerStep.Value = 0.5D;
+            // 
+            // numericBoxInheritabiliry
+            // 
+            this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliry.DecimalPlaces = 2;
+            this.numericBoxInheritabiliry.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.FooterText = "%";
+            this.numericBoxInheritabiliry.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.HeaderText = "Inheritability";
+            this.numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
+            this.numericBoxInheritabiliry.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxInheritabiliry.Maximum = 100D;
+            this.numericBoxInheritabiliry.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxInheritabiliry.Minimum = 0D;
+            this.numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
+            this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
+            this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
+            this.numericBoxInheritabiliry.RoundErrorAccuracy = -1;
+            this.numericBoxInheritabiliry.ShowUpDown = true;
+            this.numericBoxInheritabiliry.Size = new System.Drawing.Size(168, 25);
+            this.numericBoxInheritabiliry.SkipEventDuringInput = false;
+            this.numericBoxInheritabiliry.SmartIncrement = true;
+            this.numericBoxInheritabiliry.TabIndex = 407;
+            this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.ThonsandsSeparator = true;
+            this.numericBoxInheritabiliry.Value = 10D;
+            // 
             // checkBoxInheritabiliryThreshold
             // 
             this.checkBoxInheritabiliryThreshold.AutoSize = true;
-            this.checkBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.checkBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxInheritabiliryThreshold.Location = new System.Drawing.Point(201, 58);
             this.checkBoxInheritabiliryThreshold.Name = "checkBoxInheritabiliryThreshold";
-            this.checkBoxInheritabiliryThreshold.Size = new System.Drawing.Size(84, 20);
+            this.checkBoxInheritabiliryThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxInheritabiliryThreshold.TabIndex = 408;
             this.checkBoxInheritabiliryThreshold.Text = "Threshold";
             this.checkBoxInheritabiliryThreshold.UseVisualStyleBackColor = true;
             this.checkBoxInheritabiliryThreshold.CheckedChanged += new System.EventHandler(this.checkBoxInheritabiliryThreshold_CheckedChanged);
+            // 
+            // numericBoxInheritabiliryThreshold
+            // 
+            this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
+            this.numericBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.FooterText = "%";
+            this.numericBoxInheritabiliryThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
+            this.numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxInheritabiliryThreshold.Maximum = 100D;
+            this.numericBoxInheritabiliryThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxInheritabiliryThreshold.Minimum = 0D;
+            this.numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
+            this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
+            this.numericBoxInheritabiliryThreshold.RoundErrorAccuracy = -1;
+            this.numericBoxInheritabiliryThreshold.ShowUpDown = true;
+            this.numericBoxInheritabiliryThreshold.Size = new System.Drawing.Size(79, 25);
+            this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
+            this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
+            this.numericBoxInheritabiliryThreshold.TabIndex = 407;
+            this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.ThonsandsSeparator = true;
+            this.numericBoxInheritabiliryThreshold.Value = 96D;
+            this.numericBoxInheritabiliryThreshold.Visible = false;
             // 
             // checkBoxDirectionalDensityThreshold
             // 
             this.checkBoxDirectionalDensityThreshold.AutoSize = true;
             this.checkBoxDirectionalDensityThreshold.Checked = true;
             this.checkBoxDirectionalDensityThreshold.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.checkBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(201, 88);
             this.checkBoxDirectionalDensityThreshold.Name = "checkBoxDirectionalDensityThreshold";
-            this.checkBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(84, 20);
+            this.checkBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxDirectionalDensityThreshold.TabIndex = 408;
             this.checkBoxDirectionalDensityThreshold.Text = "Threshold";
             this.checkBoxDirectionalDensityThreshold.UseVisualStyleBackColor = true;
             this.checkBoxDirectionalDensityThreshold.CheckedChanged += new System.EventHandler(this.checkBoxDirectionalDensityThreshold_CheckedChanged);
             // 
-            // numericBoxCrystalNumPerStepThreshold
-            // 
-                       this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStepThreshold.FooterText = "%";
-            this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStepThreshold.HeaderText = "";
-            this.numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
-            this.numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCrystalNumPerStepThreshold.Maximum = 10D;
-            this.numericBoxCrystalNumPerStepThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
-            this.numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
-            this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
-                        this.numericBoxCrystalNumPerStepThreshold.RestrictLimitValue = true;
-            this.numericBoxCrystalNumPerStepThreshold.ShowFraction = false;
-            this.numericBoxCrystalNumPerStepThreshold.ShowPositiveSign = false;
-            this.numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
-            this.numericBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(79, 23);
-            this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
-            this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
-            this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
-                        this.numericBoxCrystalNumPerStepThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStepThreshold.ThonsandsSeparator = true;
-            this.numericBoxCrystalNumPerStepThreshold.ToolTip = "";
-            this.numericBoxCrystalNumPerStepThreshold.UpDown_Increment = 1D;
-            this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
-            this.numericBoxCrystalNumPerStepThreshold.Visible = false;
-                        // 
-            // numericBoxDirectionalDensityThreshold
-            // 
-                       this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxDirectionalDensityThreshold.FooterText = "°";
-            this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxDirectionalDensityThreshold.HeaderText = "";
-            this.numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
-            this.numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDirectionalDensityThreshold.Maximum = 720D;
-            this.numericBoxDirectionalDensityThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
-            this.numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
-            this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
-                        this.numericBoxDirectionalDensityThreshold.RestrictLimitValue = true;
-            this.numericBoxDirectionalDensityThreshold.ShowFraction = false;
-            this.numericBoxDirectionalDensityThreshold.ShowPositiveSign = false;
-            this.numericBoxDirectionalDensityThreshold.ShowUpDown = true;
-            this.numericBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(75, 23);
-            this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
-            this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
-            this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
-                        this.numericBoxDirectionalDensityThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
-            this.numericBoxDirectionalDensityThreshold.ToolTip = "";
-            this.numericBoxDirectionalDensityThreshold.UpDown_Increment = 1D;
-            this.numericBoxDirectionalDensityThreshold.Value = 1D;
-                        // 
             // numericBoxDirectionalDensity
             // 
-                       this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensity.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxDirectionalDensity.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensity.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.FooterText = "°";
-            this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxDirectionalDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.HeaderText = "Directional density";
             this.numericBoxDirectionalDensity.Location = new System.Drawing.Point(2, 88);
             this.numericBoxDirectionalDensity.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxDirectionalDensity.Maximum = 720D;
-            this.numericBoxDirectionalDensity.MaximumSize = new System.Drawing.Size(1000, 23);
+            this.numericBoxDirectionalDensity.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDirectionalDensity.Minimum = 0.1D;
             this.numericBoxDirectionalDensity.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
+            this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
             this.numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
-                        this.numericBoxDirectionalDensity.RestrictLimitValue = true;
-            this.numericBoxDirectionalDensity.ShowFraction = false;
-            this.numericBoxDirectionalDensity.ShowPositiveSign = false;
+            this.numericBoxDirectionalDensity.RoundErrorAccuracy = -1;
             this.numericBoxDirectionalDensity.ShowUpDown = true;
-            this.numericBoxDirectionalDensity.Size = new System.Drawing.Size(179, 23);
+            this.numericBoxDirectionalDensity.Size = new System.Drawing.Size(179, 25);
             this.numericBoxDirectionalDensity.SkipEventDuringInput = false;
             this.numericBoxDirectionalDensity.SmartIncrement = true;
             this.numericBoxDirectionalDensity.TabIndex = 407;
-                        this.numericBoxDirectionalDensity.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.ThonsandsSeparator = true;
-            this.numericBoxDirectionalDensity.ToolTip = "";
-            this.numericBoxDirectionalDensity.UpDown_Increment = 1D;
             this.numericBoxDirectionalDensity.Value = 20D;
-                        // 
-            // numericBoxInheritabiliryThreshold
             // 
-                       this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
-            this.numericBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliryThreshold.FooterText = "%";
-            this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliryThreshold.HeaderText = "";
-            this.numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
-            this.numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxInheritabiliryThreshold.Maximum = 100D;
-            this.numericBoxInheritabiliryThreshold.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericBoxInheritabiliryThreshold.Minimum = 0D;
-            this.numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
-            this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
-                        this.numericBoxInheritabiliryThreshold.RestrictLimitValue = true;
-            this.numericBoxInheritabiliryThreshold.ShowFraction = false;
-            this.numericBoxInheritabiliryThreshold.ShowPositiveSign = false;
-            this.numericBoxInheritabiliryThreshold.ShowUpDown = true;
-            this.numericBoxInheritabiliryThreshold.Size = new System.Drawing.Size(79, 23);
-            this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
-            this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
-            this.numericBoxInheritabiliryThreshold.TabIndex = 407;
-                        this.numericBoxInheritabiliryThreshold.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliryThreshold.ThonsandsSeparator = true;
-            this.numericBoxInheritabiliryThreshold.ToolTip = "";
-            this.numericBoxInheritabiliryThreshold.UpDown_Increment = 1D;
-            this.numericBoxInheritabiliryThreshold.Value = 96D;
-            this.numericBoxInheritabiliryThreshold.Visible = false;
-                        // 
-            // numericBoxInheritabiliry
+            // numericBoxCrystalNumPerStepThreshold
             // 
-                       this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliry.DecimalPlaces = 2;
-            this.numericBoxInheritabiliry.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliry.FooterText = "%";
-            this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliry.HeaderText = "Inheritability";
-            this.numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
-            this.numericBoxInheritabiliry.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxInheritabiliry.Maximum = 100D;
-            this.numericBoxInheritabiliry.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericBoxInheritabiliry.Minimum = 0D;
-            this.numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
-            this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
-                        this.numericBoxInheritabiliry.RestrictLimitValue = true;
-            this.numericBoxInheritabiliry.ShowFraction = false;
-            this.numericBoxInheritabiliry.ShowPositiveSign = false;
-            this.numericBoxInheritabiliry.ShowUpDown = true;
-            this.numericBoxInheritabiliry.Size = new System.Drawing.Size(168, 23);
-            this.numericBoxInheritabiliry.SkipEventDuringInput = false;
-            this.numericBoxInheritabiliry.SmartIncrement = true;
-            this.numericBoxInheritabiliry.TabIndex = 407;
-                        this.numericBoxInheritabiliry.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxInheritabiliry.ThonsandsSeparator = true;
-            this.numericBoxInheritabiliry.ToolTip = "";
-            this.numericBoxInheritabiliry.UpDown_Increment = 1D;
-            this.numericBoxInheritabiliry.Value = 10D;
-                        // 
-            // numericBoxCrystalNumPerStep
+            this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
+            this.numericBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.FooterText = "%";
+            this.numericBoxCrystalNumPerStepThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
+            this.numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxCrystalNumPerStepThreshold.Maximum = 10D;
+            this.numericBoxCrystalNumPerStepThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
+            this.numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
+            this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
+            this.numericBoxCrystalNumPerStepThreshold.RoundErrorAccuracy = -1;
+            this.numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
+            this.numericBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(79, 25);
+            this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
+            this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
+            this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
+            this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.ThonsandsSeparator = true;
+            this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
+            this.numericBoxCrystalNumPerStepThreshold.Visible = false;
             // 
-                       this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStep.FooterText = "%";
-            this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
-            this.numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
-            this.numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCrystalNumPerStep.Maximum = 10D;
-            this.numericBoxCrystalNumPerStep.MaximumSize = new System.Drawing.Size(1000, 23);
-            this.numericBoxCrystalNumPerStep.Minimum = 1E-06D;
-            this.numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
-                       this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
-            this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
-                        this.numericBoxCrystalNumPerStep.RestrictLimitValue = true;
-            this.numericBoxCrystalNumPerStep.ShowFraction = false;
-            this.numericBoxCrystalNumPerStep.ShowPositiveSign = false;
-            this.numericBoxCrystalNumPerStep.ShowUpDown = true;
-            this.numericBoxCrystalNumPerStep.Size = new System.Drawing.Size(168, 23);
-            this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
-            this.numericBoxCrystalNumPerStep.SmartIncrement = true;
-            this.numericBoxCrystalNumPerStep.TabIndex = 407;
-                        this.numericBoxCrystalNumPerStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericBoxCrystalNumPerStep.ThonsandsSeparator = true;
-            this.numericBoxCrystalNumPerStep.ToolTip = "";
-            this.numericBoxCrystalNumPerStep.UpDown_Increment = 1D;
-            this.numericBoxCrystalNumPerStep.Value = 0.5D;
-                        // 
+            // numericBoxDirectionalDensityThreshold
+            // 
+            this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
+            this.numericBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.FooterText = "°";
+            this.numericBoxDirectionalDensityThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
+            this.numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDirectionalDensityThreshold.Maximum = 720D;
+            this.numericBoxDirectionalDensityThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
+            this.numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
+            this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
+            this.numericBoxDirectionalDensityThreshold.RoundErrorAccuracy = -1;
+            this.numericBoxDirectionalDensityThreshold.ShowUpDown = true;
+            this.numericBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(75, 25);
+            this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
+            this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
+            this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
+            this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
+            this.numericBoxDirectionalDensityThreshold.Value = 1D;
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.checkBoxRefineConvergence);
@@ -617,11 +624,11 @@
             // checkBoxRefineConvergence
             // 
             this.checkBoxRefineConvergence.AutoSize = true;
-            this.checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
             this.checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineConvergence.Name = "checkBoxRefineConvergence";
-            this.checkBoxRefineConvergence.Size = new System.Drawing.Size(103, 36);
+            this.checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
             this.checkBoxRefineConvergence.TabIndex = 409;
             this.checkBoxRefineConvergence.Text = "Beam\r\n convergence";
             this.checkBoxRefineConvergence.UseVisualStyleBackColor = true;
@@ -629,11 +636,11 @@
             // checkBoxRefineStress
             // 
             this.checkBoxRefineStress.AutoSize = true;
-            this.checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
             this.checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineStress.Name = "checkBoxRefineStress";
-            this.checkBoxRefineStress.Size = new System.Drawing.Size(63, 20);
+            this.checkBoxRefineStress.Size = new System.Drawing.Size(62, 20);
             this.checkBoxRefineStress.TabIndex = 412;
             this.checkBoxRefineStress.Text = "Stress";
             this.checkBoxRefineStress.UseVisualStyleBackColor = true;
@@ -643,11 +650,11 @@
             this.checkBoxRefineCenterOffset.AutoSize = true;
             this.checkBoxRefineCenterOffset.Checked = true;
             this.checkBoxRefineCenterOffset.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRefineCenterOffset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRefineCenterOffset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxRefineCenterOffset.Location = new System.Drawing.Point(8, 133);
             this.checkBoxRefineCenterOffset.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineCenterOffset.Name = "checkBoxRefineCenterOffset";
-            this.checkBoxRefineCenterOffset.Size = new System.Drawing.Size(101, 20);
+            this.checkBoxRefineCenterOffset.Size = new System.Drawing.Size(100, 20);
             this.checkBoxRefineCenterOffset.TabIndex = 411;
             this.checkBoxRefineCenterOffset.Text = "Center offset";
             this.checkBoxRefineCenterOffset.UseVisualStyleBackColor = true;
@@ -658,11 +665,11 @@
             this.checkBoxRefinePreferredOrientation.Checked = true;
             this.checkBoxRefinePreferredOrientation.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxRefinePreferredOrientation.Enabled = false;
-            this.checkBoxRefinePreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRefinePreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxRefinePreferredOrientation.Location = new System.Drawing.Point(8, 22);
             this.checkBoxRefinePreferredOrientation.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefinePreferredOrientation.Name = "checkBoxRefinePreferredOrientation";
-            this.checkBoxRefinePreferredOrientation.Size = new System.Drawing.Size(92, 36);
+            this.checkBoxRefinePreferredOrientation.Size = new System.Drawing.Size(91, 36);
             this.checkBoxRefinePreferredOrientation.TabIndex = 408;
             this.checkBoxRefinePreferredOrientation.Text = "Preferred \r\n orientation";
             this.checkBoxRefinePreferredOrientation.UseVisualStyleBackColor = true;
@@ -672,11 +679,11 @@
             this.checkBoxRefineFilmBlur.AutoSize = true;
             this.checkBoxRefineFilmBlur.Checked = true;
             this.checkBoxRefineFilmBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRefineFilmBlur.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRefineFilmBlur.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxRefineFilmBlur.Location = new System.Drawing.Point(8, 105);
             this.checkBoxRefineFilmBlur.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineFilmBlur.Name = "checkBoxRefineFilmBlur";
-            this.checkBoxRefineFilmBlur.Size = new System.Drawing.Size(77, 20);
+            this.checkBoxRefineFilmBlur.Size = new System.Drawing.Size(76, 20);
             this.checkBoxRefineFilmBlur.TabIndex = 410;
             this.checkBoxRefineFilmBlur.Text = "Film blur";
             this.checkBoxRefineFilmBlur.UseVisualStyleBackColor = true;
@@ -687,11 +694,11 @@
             this.checkBox6.Checked = true;
             this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox6.Enabled = false;
-            this.checkBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBox6.Location = new System.Drawing.Point(145, 180);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(175, 20);
+            this.checkBox6.Size = new System.Drawing.Size(174, 20);
             this.checkBox6.TabIndex = 406;
             this.checkBox6.Text = "Automatically save setting";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -702,11 +709,11 @@
             this.checkBoxAutomaticallyChangeParameter.Checked = true;
             this.checkBoxAutomaticallyChangeParameter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAutomaticallyChangeParameter.Enabled = false;
-            this.checkBoxAutomaticallyChangeParameter.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAutomaticallyChangeParameter.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxAutomaticallyChangeParameter.Location = new System.Drawing.Point(146, 146);
             this.checkBoxAutomaticallyChangeParameter.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAutomaticallyChangeParameter.Name = "checkBoxAutomaticallyChangeParameter";
-            this.checkBoxAutomaticallyChangeParameter.Size = new System.Drawing.Size(212, 20);
+            this.checkBoxAutomaticallyChangeParameter.Size = new System.Drawing.Size(211, 20);
             this.checkBoxAutomaticallyChangeParameter.TabIndex = 405;
             this.checkBoxAutomaticallyChangeParameter.Text = "Automatically change parameter";
             this.checkBoxAutomaticallyChangeParameter.UseVisualStyleBackColor = true;
@@ -714,7 +721,7 @@
             // numericUpDownChangeParameterThreshold
             // 
             this.numericUpDownChangeParameterThreshold.DecimalPlaces = 2;
-            this.numericUpDownChangeParameterThreshold.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.numericUpDownChangeParameterThreshold.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericUpDownChangeParameterThreshold.Increment = new decimal(new int[] {
             5,
             0,
@@ -741,11 +748,11 @@
             // 
             this.tabPage6.Controls.Add(this.textBox1);
             this.tabPage6.Controls.Add(this.graphControlResidual);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage6.Size = new System.Drawing.Size(514, 213);
+            this.tabPage6.Size = new System.Drawing.Size(514, 210);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Refinment results";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -758,7 +765,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(174, 193);
+            this.textBox1.Size = new System.Drawing.Size(174, 190);
             this.textBox1.TabIndex = 164;
             // 
             // graphControlResidual
@@ -771,10 +778,9 @@
             this.graphControlResidual.BottomMargin = 0D;
             this.graphControlResidual.DivisionLineColor = System.Drawing.Color.Gray;
             this.graphControlResidual.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            this.graphControlResidual.DrawingRange = ((Crystallography.RectangleD)(resources.GetObject("graphControlResidual.DrawingRange")));
             this.graphControlResidual.FixRangeHorizontal = false;
             this.graphControlResidual.FixRangeVertical = false;
-            this.graphControlResidual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.graphControlResidual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.GraphName = "";
             this.graphControlResidual.HorizontalGradiationTextVisivle = true;
             this.graphControlResidual.Interpolation = false;
@@ -784,7 +790,6 @@
             this.graphControlResidual.LabelY = "Y:";
             this.graphControlResidual.LeftMargin = 0F;
             this.graphControlResidual.LineColor = System.Drawing.Color.Red;
-            this.graphControlResidual.LineList = new Crystallography.PointD[0];
             this.graphControlResidual.LineWidth = 1F;
             this.graphControlResidual.Location = new System.Drawing.Point(184, 4);
             this.graphControlResidual.LowerX = 0D;
@@ -798,12 +803,10 @@
             this.graphControlResidual.MousePositionVisible = true;
             this.graphControlResidual.Name = "graphControlResidual";
             this.graphControlResidual.OriginPosition = new System.Drawing.Point(40, 20);
-            this.graphControlResidual.Peaks = new Crystallography.PeakFunction[0];
-            this.graphControlResidual.Profile = null;
-            this.graphControlResidual.Size = new System.Drawing.Size(322, 192);
+            this.graphControlResidual.Size = new System.Drawing.Size(322, 189);
             this.graphControlResidual.Smoothing = false;
             this.graphControlResidual.TabIndex = 163;
-            this.graphControlResidual.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.graphControlResidual.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.UnitX = "";
             this.graphControlResidual.UnitY = "";
             this.graphControlResidual.UpperText = "";
@@ -820,18 +823,18 @@
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.buttonSearchUnrelatedOrientations);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage8.Size = new System.Drawing.Size(514, 213);
+            this.tabPage8.Size = new System.Drawing.Size(514, 210);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Debug";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // buttonSearchUnrelatedOrientations
             // 
-            this.buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
             this.buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSearchUnrelatedOrientations.Name = "buttonSearchUnrelatedOrientations";
@@ -884,39 +887,33 @@
             this.checkBoxYusaGonioScan.Location = new System.Drawing.Point(8, 25);
             this.checkBoxYusaGonioScan.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxYusaGonioScan.Name = "checkBoxYusaGonioScan";
-            this.checkBoxYusaGonioScan.Size = new System.Drawing.Size(143, 20);
+            this.checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
             this.checkBoxYusaGonioScan.TabIndex = 101;
             this.checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
             this.checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
             // 
             // numericBoxRxSpeed
             // 
-                       this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxRxSpeed.DecimalPlaces = -1;
-            this.numericBoxRxSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxRxSpeed.HeaderText = "";
+            this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxRxSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
             this.numericBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxRxSpeed.Maximum = double.PositiveInfinity;
-            this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxRxSpeed.Name = "numericBoxRxSpeed";
+            this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxRxSpeed.Name = "numericBoxRxSpeed";
             this.numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
-                        this.numericBoxRxSpeed.RestrictLimitValue = true;
-            
-            this.numericBoxRxSpeed.ShowPositiveSign = false;
-                        this.numericBoxRxSpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxRxSpeed.RoundErrorAccuracy = -1;
+            this.numericBoxRxSpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxRxSpeed.SkipEventDuringInput = false;
             this.numericBoxRxSpeed.SmartIncrement = true;
             this.numericBoxRxSpeed.TabIndex = 103;
-                        this.numericBoxRxSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRxSpeed.ThonsandsSeparator = true;
-            this.numericBoxRxSpeed.ToolTip = "";
-            this.numericBoxRxSpeed.UpDown_Increment = 1D;
             this.numericBoxRxSpeed.Value = 18D;
-                        // 
+            // 
             // checkBoxYusaGonio_ValidRx
             // 
             this.checkBoxYusaGonio_ValidRx.AutoSize = true;
@@ -924,7 +921,7 @@
             this.checkBoxYusaGonio_ValidRx.Location = new System.Drawing.Point(28, 70);
             this.checkBoxYusaGonio_ValidRx.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxYusaGonio_ValidRx.Name = "checkBoxYusaGonio_ValidRx";
-            this.checkBoxYusaGonio_ValidRx.Size = new System.Drawing.Size(64, 20);
+            this.checkBoxYusaGonio_ValidRx.Size = new System.Drawing.Size(63, 20);
             this.checkBoxYusaGonio_ValidRx.TabIndex = 102;
             this.checkBoxYusaGonio_ValidRx.Text = "Rx (φ)";
             this.checkBoxYusaGonio_ValidRx.UseVisualStyleBackColor = true;
@@ -936,38 +933,32 @@
             this.label52.Location = new System.Drawing.Point(20, 99);
             this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(80, 16);
+            this.label52.Size = new System.Drawing.Size(79, 16);
             this.label52.TabIndex = 14;
             this.label52.Text = "motor speed";
             // 
             // numericBoxYusaGonioRySpeed
             // 
-                       this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRySpeed.DecimalPlaces = -1;
-            this.numericBoxYusaGonioRySpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxYusaGonioRySpeed.HeaderText = "";
+            this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRySpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
             this.numericBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRySpeed.Maximum = double.PositiveInfinity;
-            this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
+            this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
             this.numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
-                        this.numericBoxYusaGonioRySpeed.RestrictLimitValue = true;
-            
-            this.numericBoxYusaGonioRySpeed.ShowPositiveSign = false;
-                        this.numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRySpeed.RoundErrorAccuracy = -1;
+            this.numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRySpeed.TabIndex = 109;
-                        this.numericBoxYusaGonioRySpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRySpeed.ThonsandsSeparator = true;
-            this.numericBoxYusaGonioRySpeed.ToolTip = "";
-            this.numericBoxYusaGonioRySpeed.UpDown_Increment = 1D;
             this.numericBoxYusaGonioRySpeed.Value = 1D;
-                        // 
+            // 
             // label51
             // 
             this.label51.AutoSize = true;
@@ -975,42 +966,36 @@
             this.label51.Location = new System.Drawing.Point(44, 226);
             this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(64, 16);
+            this.label51.Size = new System.Drawing.Size(63, 16);
             this.label51.TabIndex = 16;
             this.label51.Text = "oscillation";
             // 
             // numericBoxYusaGonioRzSpeed
             // 
-                       this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzSpeed.DecimalPlaces = -1;
-            this.numericBoxYusaGonioRzSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxYusaGonioRzSpeed.HeaderText = "";
+            this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzSpeed.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
             this.numericBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzSpeed.Maximum = double.PositiveInfinity;
-            this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
+            this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
             this.numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
-                        this.numericBoxYusaGonioRzSpeed.RestrictLimitValue = true;
-            
-            this.numericBoxYusaGonioRzSpeed.ShowPositiveSign = false;
-                        this.numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRzSpeed.RoundErrorAccuracy = -1;
+            this.numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRzSpeed.TabIndex = 106;
-                        this.numericBoxYusaGonioRzSpeed.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzSpeed.ThonsandsSeparator = true;
-            this.numericBoxYusaGonioRzSpeed.ToolTip = "";
-            this.numericBoxYusaGonioRzSpeed.UpDown_Increment = 1D;
             this.numericBoxYusaGonioRzSpeed.Value = 2D;
-                        // 
+            // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.label53.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label53.Location = new System.Drawing.Point(214, 341);
             this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1026,7 +1011,7 @@
             this.label50.Location = new System.Drawing.Point(44, 311);
             this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(64, 16);
+            this.label50.Size = new System.Drawing.Size(63, 16);
             this.label50.TabIndex = 18;
             this.label50.Text = "oscillation";
             // 
@@ -1050,7 +1035,7 @@
             this.label54.Location = new System.Drawing.Point(42, 281);
             this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(80, 16);
+            this.label54.Size = new System.Drawing.Size(79, 16);
             this.label54.TabIndex = 19;
             this.label54.Text = "motor speed";
             // 
@@ -1061,42 +1046,36 @@
             this.label49.Location = new System.Drawing.Point(60, 342);
             this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(32, 16);
+            this.label49.Size = new System.Drawing.Size(31, 16);
             this.label49.TabIndex = 25;
             this.label49.Text = "step";
             // 
             // numericBoxYusaGonioRyStep
             // 
-                       this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyStep.DecimalPlaces = -1;
-            this.numericBoxYusaGonioRyStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxYusaGonioRyStep.HeaderText = "";
+            this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
             this.numericBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyStep.Maximum = double.PositiveInfinity;
-            this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
+            this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
             this.numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
-                        this.numericBoxYusaGonioRyStep.RestrictLimitValue = true;
-            
-            this.numericBoxYusaGonioRyStep.ShowPositiveSign = false;
-                        this.numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRyStep.RoundErrorAccuracy = -1;
+            this.numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyStep.SmartIncrement = true;
             this.numericBoxYusaGonioRyStep.TabIndex = 111;
-                        this.numericBoxYusaGonioRyStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyStep.ThonsandsSeparator = true;
-            this.numericBoxYusaGonioRyStep.ToolTip = "";
-            this.numericBoxYusaGonioRyStep.UpDown_Increment = 1D;
             this.numericBoxYusaGonioRyStep.Value = 0.2D;
-                        // 
+            // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.label55.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label55.Location = new System.Drawing.Point(214, 310);
             this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1112,38 +1091,32 @@
             this.label48.Location = new System.Drawing.Point(128, 231);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(16, 16);
+            this.label48.Size = new System.Drawing.Size(15, 16);
             this.label48.TabIndex = 27;
             this.label48.Text = "±";
             // 
             // numericBoxYusaGonioRyOscillation
             // 
-                       this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyOscillation.DecimalPlaces = -1;
-            this.numericBoxYusaGonioRyOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxYusaGonioRyOscillation.HeaderText = "";
+            this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
             this.numericBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyOscillation.Maximum = double.PositiveInfinity;
-            this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
+            this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
             this.numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
-                        this.numericBoxYusaGonioRyOscillation.RestrictLimitValue = true;
-            
-            this.numericBoxYusaGonioRyOscillation.ShowPositiveSign = false;
-                        this.numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRyOscillation.RoundErrorAccuracy = -1;
+            this.numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRyOscillation.TabIndex = 110;
-                        this.numericBoxYusaGonioRyOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyOscillation.ThonsandsSeparator = true;
-            this.numericBoxYusaGonioRyOscillation.ToolTip = "";
-            this.numericBoxYusaGonioRyOscillation.UpDown_Increment = 1D;
             this.numericBoxYusaGonioRyOscillation.Value = 4D;
-                        // 
+            // 
             // label56
             // 
             this.label56.AutoSize = true;
@@ -1151,7 +1124,7 @@
             this.label56.Location = new System.Drawing.Point(42, 196);
             this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(80, 16);
+            this.label56.Size = new System.Drawing.Size(79, 16);
             this.label56.TabIndex = 24;
             this.label56.Text = "motor speed";
             // 
@@ -1162,7 +1135,7 @@
             this.label60.Location = new System.Drawing.Point(192, 99);
             this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(69, 16);
+            this.label60.Size = new System.Drawing.Size(68, 16);
             this.label60.TabIndex = 1000;
             this.label60.Text = "deg. / sec.";
             // 
@@ -1173,42 +1146,36 @@
             this.label47.Location = new System.Drawing.Point(128, 311);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(16, 16);
+            this.label47.Size = new System.Drawing.Size(15, 16);
             this.label47.TabIndex = 26;
             this.label47.Text = "±";
             // 
             // numericBoxYusaGonioRzOscillation
             // 
-                       this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzOscillation.DecimalPlaces = -1;
-            this.numericBoxYusaGonioRzOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-                                                this.numericBoxYusaGonioRzOscillation.HeaderText = "";
+            this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzOscillation.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYusaGonioRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
             this.numericBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzOscillation.Maximum = double.PositiveInfinity;
-            this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 22);
-                        this.numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-                       this.numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
+            this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
+            this.numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+            this.numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
             this.numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
-                        this.numericBoxYusaGonioRzOscillation.RestrictLimitValue = true;
-            
-            this.numericBoxYusaGonioRzOscillation.ShowPositiveSign = false;
-                        this.numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 22);
+            this.numericBoxYusaGonioRzOscillation.RoundErrorAccuracy = -1;
+            this.numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRzOscillation.TabIndex = 107;
-                        this.numericBoxYusaGonioRzOscillation.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzOscillation.ThonsandsSeparator = true;
-            this.numericBoxYusaGonioRzOscillation.ToolTip = "";
-            this.numericBoxYusaGonioRzOscillation.UpDown_Increment = 1D;
             this.numericBoxYusaGonioRzOscillation.Value = 4D;
-                        // 
+            // 
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.label57.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label57.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label57.Location = new System.Drawing.Point(214, 230);
             this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1220,7 +1187,7 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.label59.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label59.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label59.Location = new System.Drawing.Point(214, 201);
             this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1236,7 +1203,7 @@
             this.checkBox2.Location = new System.Drawing.Point(44, 171);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(62, 20);
+            this.checkBox2.Size = new System.Drawing.Size(61, 20);
             this.checkBox2.TabIndex = 105;
             this.checkBox2.Text = "Rz (θ)";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -1248,7 +1215,7 @@
             this.checkBox3.Location = new System.Drawing.Point(44, 255);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(64, 20);
+            this.checkBox3.Size = new System.Drawing.Size(63, 20);
             this.checkBox3.TabIndex = 108;
             this.checkBox3.Text = "Ry (ω)";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -1256,7 +1223,7 @@
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.label58.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label58.Location = new System.Drawing.Point(214, 281);
             this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1273,7 +1240,7 @@
             this.groupBox3.Controls.Add(this.buttonRemoveReferrencePattern);
             this.groupBox3.Controls.Add(this.tabControl1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.groupBox3.Name = "groupBox3";
@@ -1291,7 +1258,7 @@
             this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.comboBoxScale1);
             this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(305, 28);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -1304,7 +1271,7 @@
             // comboBoxScale2
             // 
             this.comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxScale2.FormattingEnabled = true;
             this.comboBoxScale2.Items.AddRange(new object[] {
             "Gray scale",
@@ -1319,7 +1286,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label26.Location = new System.Drawing.Point(432, 26);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
@@ -1330,7 +1297,7 @@
             // comboBoxGradient
             // 
             this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGradient.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.comboBoxGradient.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxGradient.FormattingEnabled = true;
             this.comboBoxGradient.Items.AddRange(new object[] {
             "Positive",
@@ -1345,7 +1312,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.label30.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label30.Location = new System.Drawing.Point(8, 26);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
@@ -1356,7 +1323,7 @@
             // comboBoxScale1
             // 
             this.comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxScale1.FormattingEnabled = true;
             this.comboBoxScale1.Items.AddRange(new object[] {
             "Log Scale",
@@ -1371,7 +1338,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.label28.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label28.Location = new System.Drawing.Point(224, 26);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
@@ -1381,7 +1348,7 @@
             // 
             // listBoxReferrence
             // 
-            this.listBoxReferrence.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.listBoxReferrence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxReferrence.FormattingEnabled = true;
             this.listBoxReferrence.ItemHeight = 16;
             this.listBoxReferrence.Location = new System.Drawing.Point(10, 29);
@@ -1393,7 +1360,7 @@
             // 
             // buttonAddRefferencePattern
             // 
-            this.buttonAddRefferencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.buttonAddRefferencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonAddRefferencePattern.Location = new System.Drawing.Point(204, 28);
             this.buttonAddRefferencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonAddRefferencePattern.Name = "buttonAddRefferencePattern";
@@ -1405,7 +1372,7 @@
             // 
             // buttonRemoveReferrencePattern
             // 
-            this.buttonRemoveReferrencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.buttonRemoveReferrencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonRemoveReferrencePattern.Location = new System.Drawing.Point(204, 61);
             this.buttonRemoveReferrencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonRemoveReferrencePattern.Name = "buttonRemoveReferrencePattern";
@@ -1421,7 +1388,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.tabControl1.Location = new System.Drawing.Point(9, 103);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.tabControl1.Name = "tabControl1";
@@ -1442,6 +1409,35 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Simulated Pattern";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // diffractionPatternControlSimulation
+            // 
+            this.diffractionPatternControlSimulation.BackColor = System.Drawing.SystemColors.Control;
+            this.diffractionPatternControlSimulation.Cameralength = 450D;
+            this.diffractionPatternControlSimulation.Center = ((Crystallography.PointD)(resources.GetObject("diffractionPatternControlSimulation.Center")));
+            this.diffractionPatternControlSimulation.Convergence = 0.0008726646259971648D;
+            this.diffractionPatternControlSimulation.ConvergenceDegree = 0.05D;
+            this.diffractionPatternControlSimulation.Crystals = null;
+            this.diffractionPatternControlSimulation.DetectorProperty = ((Crystallography.AreaDetector)(resources.GetObject("diffractionPatternControlSimulation.DetectorProperty")));
+            this.diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.diffractionPatternControlSimulation.FilmBlur = 200D;
+            this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diffractionPatternControlSimulation.ImageHeight = 900;
+            this.diffractionPatternControlSimulation.ImageWidth = 900;
+            this.diffractionPatternControlSimulation.IsReferrenceImage = false;
+            this.diffractionPatternControlSimulation.Location = new System.Drawing.Point(4, 2);
+            this.diffractionPatternControlSimulation.Margin = new System.Windows.Forms.Padding(4);
+            this.diffractionPatternControlSimulation.Monochromaticity = 1E-05D;
+            this.diffractionPatternControlSimulation.Name = "diffractionPatternControlSimulation";
+            this.diffractionPatternControlSimulation.Phi = 0D;
+            this.diffractionPatternControlSimulation.Resolution = 0.3D;
+            this.diffractionPatternControlSimulation.SimulationCheck = false;
+            this.diffractionPatternControlSimulation.Size = new System.Drawing.Size(971, 772);
+            this.diffractionPatternControlSimulation.TabIndex = 0;
+            this.diffractionPatternControlSimulation.Tau = 0D;
+            this.diffractionPatternControlSimulation.Wavelength = 0.041328040768899996D;
+            this.diffractionPatternControlSimulation.WaveProperty = ((Crystallography.WaveProperty)(resources.GetObject("diffractionPatternControlSimulation.WaveProperty")));
+            this.diffractionPatternControlSimulation.WaveSource = Crystallography.WaveSource.Xray;
             // 
             // statusStrip1
             // 
@@ -1473,53 +1469,6 @@
             this.toolStripStatusLabelProgress.Size = new System.Drawing.Size(13, 17);
             this.toolStripStatusLabelProgress.Text = "  ";
             // 
-            // diffractionPatternControlSimulation
-            // 
-            this.diffractionPatternControlSimulation.BackColor = System.Drawing.SystemColors.Control;
-            this.diffractionPatternControlSimulation.Cameralength = 450D;
-            this.diffractionPatternControlSimulation.Center = ((Crystallography.PointD)(resources.GetObject("diffractionPatternControlSimulation.Center")));
-            this.diffractionPatternControlSimulation.Convergence = 0.0008726646259971648D;
-            this.diffractionPatternControlSimulation.ConvergenceDegree = 0.05D;
-            this.diffractionPatternControlSimulation.Crystals = null;
-            this.diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diffractionPatternControlSimulation.FilmBlur = 200D;
-            this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.diffractionPatternControlSimulation.ImageHeight = 900;
-            this.diffractionPatternControlSimulation.ImageWidth = 900;
-            this.diffractionPatternControlSimulation.IsReferrenceImage = false;
-            this.diffractionPatternControlSimulation.Location = new System.Drawing.Point(4, 2);
-            this.diffractionPatternControlSimulation.Margin = new System.Windows.Forms.Padding(4);
-            this.diffractionPatternControlSimulation.Monochromaticity = 1E-05D;
-            this.diffractionPatternControlSimulation.Name = "diffractionPatternControlSimulation";
-            this.diffractionPatternControlSimulation.Phi = 0D;
-            this.diffractionPatternControlSimulation.Resolution = 0.3D;
-            this.diffractionPatternControlSimulation.SimulationCheck = false;
-            this.diffractionPatternControlSimulation.Size = new System.Drawing.Size(971, 772);
-            this.diffractionPatternControlSimulation.TabIndex = 0;
-            this.diffractionPatternControlSimulation.Tau = 0D;
-            this.diffractionPatternControlSimulation.Wavelength = 0.0413280407688684D;
-            this.diffractionPatternControlSimulation.WaveProperty = ((Crystallography.WaveProperty)(resources.GetObject("diffractionPatternControlSimulation.WaveProperty")));
-            this.diffractionPatternControlSimulation.WaveSource = Crystallography.WaveSource.Xray;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.checkBoxCrystalNumPerStepThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStep);
-            this.groupBox4.Controls.Add(this.numericBoxInheritabiliry);
-            this.groupBox4.Controls.Add(this.checkBoxInheritabiliryThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxInheritabiliryThreshold);
-            this.groupBox4.Controls.Add(this.checkBoxDirectionalDensityThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensity);
-            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStepThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensityThreshold);
-            this.groupBox4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(138, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(371, 121);
-            this.groupBox4.TabIndex = 409;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fitting parameters for preferred orientatin";
-            // 
             // FormPolycrystallineDiffractionSimulator
             // 
             this.AllowDrop = true;
@@ -1527,10 +1476,10 @@
             this.ClientSize = new System.Drawing.Size(1538, 933);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
-            this.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FormPolycrystallineDiffractionSimulator";
-            this.Text = "Polycrystalline Diffraction Simulator";
+            this.Text = "Powder Diffraction Simulator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPolycrystallineDiffractionSimulator_FormClosing);
             this.Load += new System.EventHandler(this.FormPolycrystallineDiffractionSimulator_Load);
             this.VisibleChanged += new System.EventHandler(this.FormPolycrystallineDiffractionSimulator_VisibleChanged);
@@ -1549,6 +1498,8 @@
             this.tabControl3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).EndInit();
@@ -1564,8 +1515,6 @@
             this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -120,26 +60,47 @@
   <metadata name="backgroundWorkerMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="Crystallography" name="Crystallography, Version=1.0.5980.34475, Culture=neutral, PublicKeyToken=null" />
-  <data name="graphControlResidual.DrawingRange" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 1, 1</value>
-  </data>
-  <data name="graphControlResidual.testRectangle" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 0, 0</value>
-  </data>
+  <assembly alias="Crystallography" name="Crystallography, Culture=neutral, PublicKeyToken=null" />
   <data name="diffractionPatternControlSimulation.Center" type="Crystallography.PointD, Crystallography">
     <value>450, 450</value>
   </data>
+  <data name="diffractionPatternControlSimulation.DetectorProperty" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAADVDcnlzdGFsbG9ncmFwaHksIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+        bGljS2V5VG9rZW49bnVsbAUBAAAAHENyeXN0YWxsb2dyYXBoeS5BcmVhRGV0ZWN0b3IJAAAAHTxDYW1l
+        cmFMZW5ndGg+a19fQmFja2luZ0ZpZWxkHTxXYXZlUHJvcGVydHk+a19fQmFja2luZ0ZpZWxkGzxJbWFn
+        ZVdpZHRoPmtfX0JhY2tpbmdGaWVsZBw8SW1hZ2VIZWlnaHQ+a19fQmFja2luZ0ZpZWxkGzxSZXNvbHV0
+        aW9uPmtfX0JhY2tpbmdGaWVsZBc8Q2VudGVyPmtfX0JhY2tpbmdGaWVsZBs8TWFza2VkQXJlYT5rX19C
+        YWNraW5nRmllbGQbPFJlY2lwcm9jYWw+a19fQmFja2luZ0ZpZWxkHDxNYXhSZWNpcHJvWj5rX19CYWNr
+        aW5nRmllbGQABAAAAAQHAwAGHENyeXN0YWxsb2dyYXBoeS5XYXZlUHJvcGVydHkCAAAACAgGFkNyeXN0
+        YWxsb2dyYXBoeS5Qb2ludEQCAAAAAe4DU3lzdGVtLlZhbHVlVHVwbGVgMltbU3lzdGVtLlZhbHVlVHVw
+        bGVgM1tbU3lzdGVtLkRvdWJsZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
+        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJsZSwgbXNjb3Js
+        aWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1
+        NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJsZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVy
+        ZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJz
+        aW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4
+        OV0sW1N5c3RlbS5Eb3VibGUsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+        bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dW10GAgAAAAAAAAAAIHxACQMAAACEAwAA
+        hAMAADMzMzMzM9M/Bfz///8WQ3J5c3RhbGxvZ3JhcGh5LlBvaW50RAMAAAASPFg+a19fQmFja2luZ0Zp
+        ZWxkEjxZPmtfX0JhY2tpbmdGaWVsZBQ8VGFnPmtfX0JhY2tpbmdGaWVsZAAAAgYGAgAAAAAAAAAAIHxA
+        AAAAAAAgfEAKCgoAAAAAAAAAAAUDAAAAHENyeXN0YWxsb2dyYXBoeS5XYXZlUHJvcGVydHkHAAAABlNv
+        dXJjZQpXYXZlTGVuZ3RoEVhyYXlFbGVtZW50TnVtYmVyCFhyYXlMaW5lBkVuZXJneRBNb25vY2hyb21h
+        dGljaXR5C0NvbnZlcmdlbmNlBAAABAAAABpDcnlzdGFsbG9ncmFwaHkuV2F2ZVNvdXJjZQIAAAAGCBhD
+        cnlzdGFsbG9ncmFwaHkuWHJheUxpbmUCAAAABgYGAgAAAAX7////GkNyeXN0YWxsb2dyYXBoeS5XYXZl
+        U291cmNlAQAAAAd2YWx1ZV9fAAgCAAAAAAAAAFY2Be/yKKU/AAAAAAX6////GENyeXN0YWxsb2dyYXBo
+        eS5YcmF5TGluZQEAAAAHdmFsdWVfXwAIAgAAAAAAAABp5////0vdQPFo44i1+OQ+9WG3A3GYTD8L
+</value>
+  </data>
   <data name="diffractionPatternControlSimulation.WaveProperty" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MS4wLjU5ODAuMzQ0
-        NzUsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAUBAAAAHENyeXN0YWxsb2dyYXBo
-        eS5XYXZlUHJvcGVydHkHAAAABlNvdXJjZQpXYXZlTGVuZ3RoEVhyYXlFbGVtZW50TnVtYmVyCFhyYXlM
-        aW5lBkVuZXJneRBNb25vY2hyb21hdGljaXR5C0NvbnZlcmdlbmNlBAAABAAAABpDcnlzdGFsbG9ncmFw
-        aHkuV2F2ZVNvdXJjZQIAAAAGCBhDcnlzdGFsbG9ncmFwaHkuWHJheUxpbmUCAAAABgYGAgAAAAX9////
-        GkNyeXN0YWxsb2dyYXBoeS5XYXZlU291cmNlAQAAAAd2YWx1ZV9fAAgCAAAAAAAAAI0kBe/yKKU/AAAA
-        AAX8////GENyeXN0YWxsb2dyYXBoeS5YcmF5TGluZQEAAAAHdmFsdWVfXwAIAgAAAAAAAAAIAAAAAEzd
-        QPFo44i1+OQ+9WG3A3GYTD8L
+        AAEAAAD/////AQAAAAAAAAAMAgAAADVDcnlzdGFsbG9ncmFwaHksIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+        bGljS2V5VG9rZW49bnVsbAUBAAAAHENyeXN0YWxsb2dyYXBoeS5XYXZlUHJvcGVydHkHAAAABlNvdXJj
+        ZQpXYXZlTGVuZ3RoEVhyYXlFbGVtZW50TnVtYmVyCFhyYXlMaW5lBkVuZXJneRBNb25vY2hyb21hdGlj
+        aXR5C0NvbnZlcmdlbmNlBAAABAAAABpDcnlzdGFsbG9ncmFwaHkuV2F2ZVNvdXJjZQIAAAAGCBhDcnlz
+        dGFsbG9ncmFwaHkuWHJheUxpbmUCAAAABgYGAgAAAAX9////GkNyeXN0YWxsb2dyYXBoeS5XYXZlU291
+        cmNlAQAAAAd2YWx1ZV9fAAgCAAAAAAAAAFY2Be/yKKU/AAAAAAX8////GENyeXN0YWxsb2dyYXBoeS5Y
+        cmF5TGluZQEAAAAHdmFsdWVfXwAIAgAAAAAAAABp5////0vdQPFo44i1+OQ+9WG3A3GYTD8L
 </value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
