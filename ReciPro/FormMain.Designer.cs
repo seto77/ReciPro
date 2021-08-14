@@ -46,33 +46,25 @@
             this.buttonUpper = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.crystalControl = new Crystallography.Controls.CrystalControl();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelCurrentIndexU = new System.Windows.Forms.Label();
-            this.labelCurrentIndexV = new System.Windows.Forms.Label();
-            this.labelCurrentIndexW = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDownEulerPsi = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDownEulerTheta = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownEulerPhi = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonSetAxis = new System.Windows.Forms.Button();
+            this.checkBoxFixAxis = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonSetPlane = new System.Windows.Forms.Button();
+            this.checkBoxFixePlane = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,28 +79,27 @@
             this.buttonTopRight = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.numericBoxStep = new Crystallography.Controls.NumericBox();
             this.checkBoxAnimation = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonSetAxis = new System.Windows.Forms.Button();
-            this.checkBoxFixAxis = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxAxisU = new Crystallography.Controls.NumericBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericBoxAxisV = new Crystallography.Controls.NumericBox();
-            this.numericBoxAxisW = new Crystallography.Controls.NumericBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxPlaneL = new Crystallography.Controls.NumericBox();
-            this.numericBoxPlaneH = new Crystallography.Controls.NumericBox();
-            this.numericBoxPlaneK = new Crystallography.Controls.NumericBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonSetPlane = new System.Windows.Forms.Button();
-            this.checkBoxFixePlane = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDownEulerPsi = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownEulerTheta = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownEulerPhi = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelCurrentIndexU = new System.Windows.Forms.Label();
+            this.labelCurrentIndexV = new System.Windows.Forms.Label();
+            this.labelCurrentIndexW = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
@@ -179,26 +170,24 @@
             this.splitContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBoxCurrentDirection.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).BeginInit();
+            this.groupBoxCurrentDirection.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -341,43 +330,11 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.crystalControl);
             this.groupBox6.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
-            // 
-            // crystalControl
-            // 
-            this.crystalControl.A = 0D;
-            this.crystalControl.AllowDrop = true;
-            this.crystalControl.Alpha = 0D;
-            resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.B = 0D;
-            this.crystalControl.Beta = 0D;
-            this.crystalControl.C = 0D;
-            this.crystalControl.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.crystalControl.DefaultTabNumber = 0;
-            this.crystalControl.Gamma = 0D;
-            this.crystalControl.Name = "crystalControl";
-            this.crystalControl.ScatteringFactorVisible = false;
-            this.crystalControl.SkipEvent = false;
-            this.crystalControl.SymmetryInformationVisible = false;
-            this.crystalControl.SymmetrySeriesNumber = 0;
-            this.crystalControl.VisibleAtomTab = true;
-            this.crystalControl.VisibleBasicInfoTab = true;
-            this.crystalControl.VisibleBondsPolyhedraTab = false;
-            this.crystalControl.VisibleBoundTab = false;
-            this.crystalControl.VisibleElasticityTab = true;
-            this.crystalControl.VisibleEOSTab = true;
-            this.crystalControl.VisibleLatticePlaneTab = false;
-            this.crystalControl.VisiblePolycrystallineTab = false;
-            this.crystalControl.VisibleReferenceTab = true;
-            this.crystalControl.VisibleStressStrainTab = false;
-            this.crystalControl.CrystalChanged += new System.EventHandler(this.crystalControl_CrystalChanged);
-            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.scatteringFactor_VisibleChanged);
-            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.symmetryInformation_VisibleChanged);
             // 
             // flowLayoutPanel3
             // 
@@ -424,191 +381,100 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // groupBoxCurrentDirection
+            // groupBox5
             // 
-            resources.ApplyResources(this.groupBoxCurrentDirection, "groupBoxCurrentDirection");
-            this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
-            this.groupBoxCurrentDirection.Controls.Add(this.tableLayoutPanel6);
-            this.groupBoxCurrentDirection.Controls.Add(this.numericBoxMaxUVW);
-            this.groupBoxCurrentDirection.Controls.Add(this.label7);
-            this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
-            this.groupBoxCurrentDirection.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Controls.Add(this.tableLayoutPanel4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
             // 
-            // buttonReset
+            // tableLayoutPanel4
             // 
-            resources.ApplyResources(this.buttonReset, "buttonReset");
-            this.buttonReset.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonReset.ForeColor = System.Drawing.Color.White;
-            this.buttonReset.Name = "buttonReset";
-            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
-            this.buttonReset.UseVisualStyleBackColor = false;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel7, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 0, 2);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
-            // tableLayoutPanel6
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel6, "tableLayoutPanel6");
-            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexU, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexV, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexW, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label14, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label15, 4, 0);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.toolTip.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Controls.Add(this.buttonSetAxis);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxFixAxis);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // labelCurrentIndexU
+            // buttonSetAxis
             // 
-            resources.ApplyResources(this.labelCurrentIndexU, "labelCurrentIndexU");
-            this.labelCurrentIndexU.Name = "labelCurrentIndexU";
-            this.toolTip.SetToolTip(this.labelCurrentIndexU, resources.GetString("labelCurrentIndexU.ToolTip"));
+            resources.ApplyResources(this.buttonSetAxis, "buttonSetAxis");
+            this.buttonSetAxis.Name = "buttonSetAxis";
+            this.toolTip.SetToolTip(this.buttonSetAxis, resources.GetString("buttonSetAxis.ToolTip"));
+            this.buttonSetAxis.UseVisualStyleBackColor = true;
+            this.buttonSetAxis.Click += new System.EventHandler(this.buttonSetVector_Click);
             // 
-            // labelCurrentIndexV
+            // checkBoxFixAxis
             // 
-            resources.ApplyResources(this.labelCurrentIndexV, "labelCurrentIndexV");
-            this.labelCurrentIndexV.Name = "labelCurrentIndexV";
-            this.toolTip.SetToolTip(this.labelCurrentIndexV, resources.GetString("labelCurrentIndexV.ToolTip"));
+            resources.ApplyResources(this.checkBoxFixAxis, "checkBoxFixAxis");
+            this.checkBoxFixAxis.Name = "checkBoxFixAxis";
+            this.checkBoxFixAxis.UseVisualStyleBackColor = true;
+            this.checkBoxFixAxis.CheckedChanged += new System.EventHandler(this.checkBoxFixAxis_CheckedChanged);
             // 
-            // labelCurrentIndexW
+            // tableLayoutPanel5
             // 
-            resources.ApplyResources(this.labelCurrentIndexW, "labelCurrentIndexW");
-            this.labelCurrentIndexW.Name = "labelCurrentIndexW";
-            this.toolTip.SetToolTip(this.labelCurrentIndexW, resources.GetString("labelCurrentIndexW.ToolTip"));
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.label9, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label10, 4, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             // 
-            // label14
+            // label9
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            this.toolTip.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
-            // label15
+            // label10
             // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
-            // numericBoxMaxUVW
+            // tableLayoutPanel7
             // 
-            resources.ApplyResources(this.numericBoxMaxUVW, "numericBoxMaxUVW");
-            this.numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.Maximum = 100D;
-            this.numericBoxMaxUVW.Minimum = 1D;
-            this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
-            this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
-            this.numericBoxMaxUVW.RoundErrorAccuracy = -1;
-            this.numericBoxMaxUVW.ShowUpDown = true;
-            this.numericBoxMaxUVW.SkipEventDuringInput = false;
-            this.numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxUVW.ThonsandsSeparator = true;
-            this.numericBoxMaxUVW.Value = 30D;
-            this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
+            resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
+            this.tableLayoutPanel7.Controls.Add(this.label11, 4, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.toolTip.SetToolTip(this.tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
             // 
-            // label7
+            // label11
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
-            // groupBox3
+            // label12
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
-            // tableLayoutPanel3
+            // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerPsi, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerTheta, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerPhi, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Controls.Add(this.buttonSetPlane);
+            this.flowLayoutPanel2.Controls.Add(this.checkBoxFixePlane);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
-            // label6
+            // buttonSetPlane
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.buttonSetPlane, "buttonSetPlane");
+            this.buttonSetPlane.Name = "buttonSetPlane";
+            this.toolTip.SetToolTip(this.buttonSetPlane, resources.GetString("buttonSetPlane.ToolTip"));
+            this.buttonSetPlane.UseVisualStyleBackColor = true;
+            this.buttonSetPlane.Click += new System.EventHandler(this.buttonSetVector_Click);
             // 
-            // numericUpDownEulerPsi
+            // checkBoxFixePlane
             // 
-            this.numericUpDownEulerPsi.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownEulerPsi, "numericUpDownEulerPsi");
-            this.numericUpDownEulerPsi.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.numericUpDownEulerPsi.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownEulerPsi.Name = "numericUpDownEulerPsi";
-            this.toolTip.SetToolTip(this.numericUpDownEulerPsi, resources.GetString("numericUpDownEulerPsi.ToolTip"));
-            this.numericUpDownEulerPsi.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // numericUpDownEulerTheta
-            // 
-            this.numericUpDownEulerTheta.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownEulerTheta, "numericUpDownEulerTheta");
-            this.numericUpDownEulerTheta.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numericUpDownEulerTheta.Name = "numericUpDownEulerTheta";
-            this.toolTip.SetToolTip(this.numericUpDownEulerTheta, resources.GetString("numericUpDownEulerTheta.ToolTip"));
-            this.numericUpDownEulerTheta.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
-            // 
-            // numericUpDownEulerPhi
-            // 
-            this.numericUpDownEulerPhi.DecimalPlaces = 3;
-            resources.ApplyResources(this.numericUpDownEulerPhi, "numericUpDownEulerPhi");
-            this.numericUpDownEulerPhi.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.numericUpDownEulerPhi.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDownEulerPhi.Name = "numericUpDownEulerPhi";
-            this.toolTip.SetToolTip(this.numericUpDownEulerPhi, resources.GetString("numericUpDownEulerPhi.ToolTip"));
-            this.numericUpDownEulerPhi.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.checkBoxFixePlane, "checkBoxFixePlane");
+            this.checkBoxFixePlane.Name = "checkBoxFixePlane";
+            this.checkBoxFixePlane.UseVisualStyleBackColor = true;
+            this.checkBoxFixePlane.CheckedChanged += new System.EventHandler(this.checkBoxFixPlane_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -722,27 +588,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.numericBoxStep);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            // 
-            // numericBoxStep
-            // 
-            resources.ApplyResources(this.numericBoxStep, "numericBoxStep");
-            this.numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStep.Maximum = 360D;
-            this.numericBoxStep.Minimum = 0.001D;
-            this.numericBoxStep.Name = "numericBoxStep";
-            this.numericBoxStep.RadianValue = 0.17453292519943295D;
-            this.numericBoxStep.RoundErrorAccuracy = -1;
-            this.numericBoxStep.ShowUpDown = true;
-            this.numericBoxStep.SmartIncrement = true;
-            this.numericBoxStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxStep.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
-            this.numericBoxStep.Value = 10D;
             // 
             // checkBoxAnimation
             // 
@@ -752,197 +599,172 @@
             this.checkBoxAnimation.UseVisualStyleBackColor = true;
             this.checkBoxAnimation.CheckedChanged += new System.EventHandler(this.checkBoxAnimation_CheckedChanged);
             // 
-            // groupBox5
+            // groupBox3
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Controls.Add(this.tableLayoutPanel4);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanel3
             // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel7, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 0, 2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerPsi, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerTheta, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.numericUpDownEulerPhi, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
-            // flowLayoutPanel1
+            // label6
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.buttonSetAxis);
-            this.flowLayoutPanel1.Controls.Add(this.checkBoxFixAxis);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
-            // buttonSetAxis
+            // numericUpDownEulerPsi
             // 
-            resources.ApplyResources(this.buttonSetAxis, "buttonSetAxis");
-            this.buttonSetAxis.Name = "buttonSetAxis";
-            this.toolTip.SetToolTip(this.buttonSetAxis, resources.GetString("buttonSetAxis.ToolTip"));
-            this.buttonSetAxis.UseVisualStyleBackColor = true;
-            this.buttonSetAxis.Click += new System.EventHandler(this.buttonSetVector_Click);
+            this.numericUpDownEulerPsi.DecimalPlaces = 3;
+            resources.ApplyResources(this.numericUpDownEulerPsi, "numericUpDownEulerPsi");
+            this.numericUpDownEulerPsi.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numericUpDownEulerPsi.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownEulerPsi.Name = "numericUpDownEulerPsi";
+            this.toolTip.SetToolTip(this.numericUpDownEulerPsi, resources.GetString("numericUpDownEulerPsi.ToolTip"));
+            this.numericUpDownEulerPsi.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
             // 
-            // checkBoxFixAxis
+            // label2
             // 
-            resources.ApplyResources(this.checkBoxFixAxis, "checkBoxFixAxis");
-            this.checkBoxFixAxis.Name = "checkBoxFixAxis";
-            this.checkBoxFixAxis.UseVisualStyleBackColor = true;
-            this.checkBoxFixAxis.CheckedChanged += new System.EventHandler(this.checkBoxFixAxis_CheckedChanged);
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
-            // tableLayoutPanel5
+            // label3
             // 
-            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-            this.tableLayoutPanel5.Controls.Add(this.numericBoxAxisU, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label10, 4, 0);
-            this.tableLayoutPanel5.Controls.Add(this.numericBoxAxisV, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.numericBoxAxisW, 3, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
-            // numericBoxAxisU
+            // numericUpDownEulerTheta
             // 
-            resources.ApplyResources(this.numericBoxAxisU, "numericBoxAxisU");
-            this.numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisU.Maximum = 50D;
-            this.numericBoxAxisU.Minimum = -50D;
-            this.numericBoxAxisU.Name = "numericBoxAxisU";
-            this.numericBoxAxisU.RoundErrorAccuracy = -1;
-            this.numericBoxAxisU.ShowUpDown = true;
-            this.numericBoxAxisU.SkipEventDuringInput = false;
-            this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAxisU.ThonsandsSeparator = true;
+            this.numericUpDownEulerTheta.DecimalPlaces = 3;
+            resources.ApplyResources(this.numericUpDownEulerTheta, "numericUpDownEulerTheta");
+            this.numericUpDownEulerTheta.Maximum = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.numericUpDownEulerTheta.Name = "numericUpDownEulerTheta";
+            this.toolTip.SetToolTip(this.numericUpDownEulerTheta, resources.GetString("numericUpDownEulerTheta.ToolTip"));
+            this.numericUpDownEulerTheta.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
             // 
-            // label9
+            // numericUpDownEulerPhi
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            this.numericUpDownEulerPhi.DecimalPlaces = 3;
+            resources.ApplyResources(this.numericUpDownEulerPhi, "numericUpDownEulerPhi");
+            this.numericUpDownEulerPhi.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numericUpDownEulerPhi.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownEulerPhi.Name = "numericUpDownEulerPhi";
+            this.toolTip.SetToolTip(this.numericUpDownEulerPhi, resources.GetString("numericUpDownEulerPhi.ToolTip"));
+            this.numericUpDownEulerPhi.ValueChanged += new System.EventHandler(this.numericUpDownPhi_ValueChanged);
             // 
-            // label10
+            // label5
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
-            // numericBoxAxisV
+            // label4
             // 
-            resources.ApplyResources(this.numericBoxAxisV, "numericBoxAxisV");
-            this.numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisV.Maximum = 50D;
-            this.numericBoxAxisV.Minimum = -50D;
-            this.numericBoxAxisV.Name = "numericBoxAxisV";
-            this.numericBoxAxisV.RoundErrorAccuracy = -1;
-            this.numericBoxAxisV.ShowUpDown = true;
-            this.numericBoxAxisV.SkipEventDuringInput = false;
-            this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAxisV.ThonsandsSeparator = true;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
-            // numericBoxAxisW
+            // label1
             // 
-            resources.ApplyResources(this.numericBoxAxisW, "numericBoxAxisW");
-            this.numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.DecimalPlaces = 0;
-            this.numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAxisW.Maximum = 50D;
-            this.numericBoxAxisW.Minimum = -50D;
-            this.numericBoxAxisW.Name = "numericBoxAxisW";
-            this.numericBoxAxisW.RoundErrorAccuracy = -1;
-            this.numericBoxAxisW.ShowUpDown = true;
-            this.numericBoxAxisW.SkipEventDuringInput = false;
-            this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAxisW.ThonsandsSeparator = true;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
-            // tableLayoutPanel7
+            // groupBoxCurrentDirection
             // 
-            resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
-            this.tableLayoutPanel7.Controls.Add(this.numericBoxPlaneL, 3, 0);
-            this.tableLayoutPanel7.Controls.Add(this.numericBoxPlaneH, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.numericBoxPlaneK, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label11, 4, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label12, 0, 0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.toolTip.SetToolTip(this.tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
+            resources.ApplyResources(this.groupBoxCurrentDirection, "groupBoxCurrentDirection");
+            this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
+            this.groupBoxCurrentDirection.Controls.Add(this.tableLayoutPanel6);
+            this.groupBoxCurrentDirection.Controls.Add(this.label7);
+            this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
+            this.groupBoxCurrentDirection.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
             // 
-            // numericBoxPlaneL
+            // buttonReset
             // 
-            resources.ApplyResources(this.numericBoxPlaneL, "numericBoxPlaneL");
-            this.numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneL.Maximum = 50D;
-            this.numericBoxPlaneL.Minimum = -50D;
-            this.numericBoxPlaneL.Name = "numericBoxPlaneL";
-            this.numericBoxPlaneL.RoundErrorAccuracy = -1;
-            this.numericBoxPlaneL.ShowUpDown = true;
-            this.numericBoxPlaneL.SkipEventDuringInput = false;
-            this.numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPlaneL.ThonsandsSeparator = true;
+            resources.ApplyResources(this.buttonReset, "buttonReset");
+            this.buttonReset.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonReset.ForeColor = System.Drawing.Color.White;
+            this.buttonReset.Name = "buttonReset";
+            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // numericBoxPlaneH
+            // tableLayoutPanel6
             // 
-            resources.ApplyResources(this.numericBoxPlaneH, "numericBoxPlaneH");
-            this.numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneH.Maximum = 50D;
-            this.numericBoxPlaneH.Minimum = -50D;
-            this.numericBoxPlaneH.Name = "numericBoxPlaneH";
-            this.numericBoxPlaneH.RoundErrorAccuracy = -1;
-            this.numericBoxPlaneH.ShowUpDown = true;
-            this.numericBoxPlaneH.SkipEventDuringInput = false;
-            this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPlaneH.ThonsandsSeparator = true;
+            resources.ApplyResources(this.tableLayoutPanel6, "tableLayoutPanel6");
+            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexU, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexV, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.labelCurrentIndexW, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label14, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label15, 4, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.toolTip.SetToolTip(this.tableLayoutPanel6, resources.GetString("tableLayoutPanel6.ToolTip"));
             // 
-            // numericBoxPlaneK
+            // labelCurrentIndexU
             // 
-            resources.ApplyResources(this.numericBoxPlaneK, "numericBoxPlaneK");
-            this.numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPlaneK.Maximum = 50D;
-            this.numericBoxPlaneK.Minimum = -50D;
-            this.numericBoxPlaneK.Name = "numericBoxPlaneK";
-            this.numericBoxPlaneK.RoundErrorAccuracy = -1;
-            this.numericBoxPlaneK.ShowUpDown = true;
-            this.numericBoxPlaneK.SkipEventDuringInput = false;
-            this.numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPlaneK.ThonsandsSeparator = true;
+            resources.ApplyResources(this.labelCurrentIndexU, "labelCurrentIndexU");
+            this.labelCurrentIndexU.Name = "labelCurrentIndexU";
+            this.toolTip.SetToolTip(this.labelCurrentIndexU, resources.GetString("labelCurrentIndexU.ToolTip"));
             // 
-            // label11
+            // labelCurrentIndexV
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(this.labelCurrentIndexV, "labelCurrentIndexV");
+            this.labelCurrentIndexV.Name = "labelCurrentIndexV";
+            this.toolTip.SetToolTip(this.labelCurrentIndexV, resources.GetString("labelCurrentIndexV.ToolTip"));
             // 
-            // label12
+            // labelCurrentIndexW
             // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
+            resources.ApplyResources(this.labelCurrentIndexW, "labelCurrentIndexW");
+            this.labelCurrentIndexW.Name = "labelCurrentIndexW";
+            this.toolTip.SetToolTip(this.labelCurrentIndexW, resources.GetString("labelCurrentIndexW.ToolTip"));
             // 
-            // flowLayoutPanel2
+            // label14
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.buttonSetPlane);
-            this.flowLayoutPanel2.Controls.Add(this.checkBoxFixePlane);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            this.toolTip.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
             // 
-            // buttonSetPlane
+            // label15
             // 
-            resources.ApplyResources(this.buttonSetPlane, "buttonSetPlane");
-            this.buttonSetPlane.Name = "buttonSetPlane";
-            this.toolTip.SetToolTip(this.buttonSetPlane, resources.GetString("buttonSetPlane.ToolTip"));
-            this.buttonSetPlane.UseVisualStyleBackColor = true;
-            this.buttonSetPlane.Click += new System.EventHandler(this.buttonSetVector_Click);
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
             // 
-            // checkBoxFixePlane
+            // label7
             // 
-            resources.ApplyResources(this.checkBoxFixePlane, "checkBoxFixePlane");
-            this.checkBoxFixePlane.Name = "checkBoxFixePlane";
-            this.checkBoxFixePlane.UseVisualStyleBackColor = true;
-            this.checkBoxFixePlane.CheckedChanged += new System.EventHandler(this.checkBoxFixPlane_CheckedChanged);
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Name = "label7";
             // 
             // toolStrip1
             // 
@@ -1376,26 +1198,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBoxCurrentDirection.ResumeLayout(false);
-            this.groupBoxCurrentDirection.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1408,6 +1213,21 @@
             this.tableLayoutPanel7.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).EndInit();
+            this.groupBoxCurrentDirection.ResumeLayout(false);
+            this.groupBoxCurrentDirection.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

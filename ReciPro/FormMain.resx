@@ -440,36 +440,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;splitContainer.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="crystalControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="crystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="crystalControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>695, 338</value>
-  </data>
-  <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Name" xml:space="preserve">
-    <value>crystalControl</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="groupBox6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -797,48 +767,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxAxisU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAxisU.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxAxisU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 3</value>
-  </data>
-  <data name="numericBoxAxisU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisU.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxAxisU.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxAxisU.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxAxisU.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
-    <value>numericBoxAxisU</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -876,7 +804,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>tableLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -915,91 +843,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>tableLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxAxisV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAxisV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxAxisV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 3</value>
-  </data>
-  <data name="numericBoxAxisV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxAxisV.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxAxisV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxAxisV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
-    <value>numericBoxAxisV</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxAxisW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAxisW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxAxisW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 3</value>
-  </data>
-  <data name="numericBoxAxisW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxAxisW.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxAxisW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxAxisW.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
-    <value>numericBoxAxisW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1038,139 +882,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="numericBoxPlaneL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPlaneL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 3</value>
-  </data>
-  <data name="numericBoxPlaneL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxPlaneL.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxPlaneL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
-    <value>numericBoxPlaneL</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxPlaneH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPlaneH.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 3</value>
-  </data>
-  <data name="numericBoxPlaneH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxPlaneH.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxPlaneH.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
-    <value>numericBoxPlaneH</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxPlaneK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPlaneK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 3</value>
-  </data>
-  <data name="numericBoxPlaneK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxPlaneK.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxPlaneK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
-    <value>numericBoxPlaneK</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1209,7 +927,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1248,7 +966,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>tableLayoutPanel7</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1293,7 +1011,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1986,60 +1704,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonLeft" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomLeft" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottom" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomRight" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonTop" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonRight" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,50,Percent,25" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="numericBoxStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStep.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="numericBoxStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStep.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="numericBoxStep.HeaderText" xml:space="preserve">
-    <value>Step</value>
-  </data>
-  <data name="numericBoxStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 4</value>
-  </data>
-  <data name="numericBoxStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 27</value>
-  </data>
-  <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Angle step of above buttons</value>
-  </data>
-  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Angle step of above buttons</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Name" xml:space="preserve">
-    <value>numericBoxStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -2557,7 +2221,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 140</value>
+    <value>3, 167</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 27</value>
@@ -2785,7 +2449,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Bottom</value>
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 167</value>
+    <value>3, 194</value>
   </data>
   <data name="tableLayoutPanel6.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2813,51 +2477,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelCurrentIndexU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelCurrentIndexV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelCurrentIndexW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label15" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="numericBoxMaxUVW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxMaxUVW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="numericBoxMaxUVW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxUVW.HeaderText" xml:space="preserve">
-    <value>u + v + w &lt;</value>
-  </data>
-  <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 184</value>
-  </data>
-  <data name="numericBoxMaxUVW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxMaxUVW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxMaxUVW.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxMaxUVW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 27</value>
-  </data>
-  <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
-    <value>numericBoxMaxUVW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2894,7 +2513,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>groupBoxCurrentDirection</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="groupBoxCurrentDirection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

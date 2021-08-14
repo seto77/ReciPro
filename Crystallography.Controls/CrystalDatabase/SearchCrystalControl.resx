@@ -859,18 +859,18 @@
   <data name="numericBoxCellGamma.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellGamma.Name" xml:space="preserve">
-    <value>numericBoxCellGamma</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellGamma.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellGamma.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellGamma.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellAngleErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -910,18 +910,18 @@
   <data name="numericBoxCellAngleErr.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellAngleErr.Name" xml:space="preserve">
-    <value>numericBoxCellAngleErr</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAngleErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAngleErr.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAngleErr.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellLengthErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -961,18 +961,18 @@
   <data name="numericBoxCellLengthErr.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellLengthErr.Name" xml:space="preserve">
-    <value>numericBoxCellLengthErr</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellLengthErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellLengthErr.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellLengthErr.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1006,18 +1006,18 @@
   <data name="numericBoxCellC.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellC.Name" xml:space="preserve">
-    <value>numericBoxCellC</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellC.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellC.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellC.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellBeta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1051,18 +1051,18 @@
   <data name="numericBoxCellBeta.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellBeta.Name" xml:space="preserve">
-    <value>numericBoxCellBeta</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellBeta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellBeta.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellBeta.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1096,18 +1096,18 @@
   <data name="numericBoxCellAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellAlpha.Name" xml:space="preserve">
-    <value>numericBoxCellAlpha</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAlpha.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAlpha.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellAlpha.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1141,18 +1141,18 @@
   <data name="numericBoxCellB.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellB.Name" xml:space="preserve">
-    <value>numericBoxCellB</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellB.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellB.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellB.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxCellA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1186,18 +1186,18 @@
   <data name="numericBoxCellA.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellA.Name" xml:space="preserve">
-    <value>numericBoxCellA</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellA.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellA.Parent" xml:space="preserve">
-    <value>groupBoxCellParameter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCellA.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxD3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1219,18 +1219,18 @@
   <data name="checkBoxD3.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="&gt;&gt;checkBoxD3.Name" xml:space="preserve">
-    <value>checkBoxD3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD3.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD3Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1264,18 +1264,18 @@
   <data name="numericBoxD3Err.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD3Err.Name" xml:space="preserve">
-    <value>numericBoxD3Err</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3Err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3Err.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3Err.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD2Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1309,18 +1309,18 @@
   <data name="numericBoxD2Err.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD2Err.Name" xml:space="preserve">
-    <value>numericBoxD2Err</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2Err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2Err.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2Err.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD1Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1354,18 +1354,18 @@
   <data name="numericBoxD1Err.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD1Err.Name" xml:space="preserve">
-    <value>numericBoxD1Err</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1Err.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1Err.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1Err.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxD2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1387,18 +1387,18 @@
   <data name="checkBoxD2.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="&gt;&gt;checkBoxD2.Name" xml:space="preserve">
-    <value>checkBoxD2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD2.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxD1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1420,18 +1420,18 @@
   <data name="checkBoxD1.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="&gt;&gt;checkBoxD1.Name" xml:space="preserve">
-    <value>checkBoxD1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD1.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;checkBoxD1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1462,18 +1462,18 @@
   <data name="numericBoxD3.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD3.Name" xml:space="preserve">
-    <value>numericBoxD3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD3.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1504,18 +1504,18 @@
   <data name="numericBoxD2.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD2.Name" xml:space="preserve">
-    <value>numericBoxD2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxD1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1546,18 +1546,18 @@
   <data name="numericBoxD1.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxD1.Name" xml:space="preserve">
-    <value>numericBoxD1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1.Parent" xml:space="preserve">
-    <value>groupBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;numericBoxD1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxDensity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1588,18 +1588,18 @@
   <data name="numericBoxDensity.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxDensity.Name" xml:space="preserve">
-    <value>numericBoxDensity</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensity.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensity.Parent" xml:space="preserve">
-    <value>groupBoxDensity</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxDensityErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1633,18 +1633,18 @@
   <data name="numericBoxDensityErr.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <data name="&gt;&gt;numericBoxDensityErr.Name" xml:space="preserve">
-    <value>numericBoxDensityErr</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensityErr.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensityErr.Parent" xml:space="preserve">
-    <value>groupBoxDensity</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDensityErr.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
