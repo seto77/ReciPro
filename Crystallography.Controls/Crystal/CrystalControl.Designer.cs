@@ -224,6 +224,7 @@
             this.numericBoxVolume.Name = "numericBoxVolume";
             this.numericBoxVolume.ReadOnly = true;
             this.numericBoxVolume.RestrictLimitValue = false;
+            this.numericBoxVolume.RoundErrorAccuracy = -1;
             this.numericBoxVolume.SkipEventDuringInput = false;
             this.numericBoxVolume.SmartIncrement = true;
             this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -240,6 +241,7 @@
             this.numericBoxCellMass.Name = "numericBoxCellMass";
             this.numericBoxCellMass.ReadOnly = true;
             this.numericBoxCellMass.RestrictLimitValue = false;
+            this.numericBoxCellMass.RoundErrorAccuracy = -1;
             this.numericBoxCellMass.SkipEventDuringInput = false;
             this.numericBoxCellMass.SmartIncrement = true;
             this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -256,6 +258,7 @@
             this.numericBoxMolarVolume.Name = "numericBoxMolarVolume";
             this.numericBoxMolarVolume.ReadOnly = true;
             this.numericBoxMolarVolume.RestrictLimitValue = false;
+            this.numericBoxMolarVolume.RoundErrorAccuracy = -1;
             this.numericBoxMolarVolume.SkipEventDuringInput = false;
             this.numericBoxMolarVolume.SmartIncrement = true;
             this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -272,6 +275,7 @@
             this.numericBoxMolarMass.Name = "numericBoxMolarMass";
             this.numericBoxMolarMass.ReadOnly = true;
             this.numericBoxMolarMass.RestrictLimitValue = false;
+            this.numericBoxMolarMass.RoundErrorAccuracy = -1;
             this.numericBoxMolarMass.SkipEventDuringInput = false;
             this.numericBoxMolarMass.SmartIncrement = true;
             this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -285,6 +289,7 @@
             this.numericBoxDensity.DecimalPlaces = 4;
             this.numericBoxDensity.Name = "numericBoxDensity";
             this.numericBoxDensity.ReadOnly = true;
+            this.numericBoxDensity.RoundErrorAccuracy = -1;
             this.numericBoxDensity.SkipEventDuringInput = false;
             this.numericBoxDensity.SmartIncrement = true;
             this.numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -561,6 +566,7 @@
             this.numericBoxHill.Name = "numericBoxHill";
             this.numericBoxHill.RadianValue = 0.017453292519943295D;
             this.numericBoxHill.RestrictLimitValue = false;
+            this.numericBoxHill.RoundErrorAccuracy = -1;
             this.numericBoxHill.SkipEventDuringInput = false;
             this.numericBoxHill.SmartIncrement = true;
             this.numericBoxHill.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -654,6 +660,7 @@
             this.numericBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress33.Name = "numericBoxStress33";
             this.numericBoxStress33.RestrictLimitValue = false;
+            this.numericBoxStress33.RoundErrorAccuracy = -1;
             this.numericBoxStress33.SkipEventDuringInput = false;
             this.numericBoxStress33.SmartIncrement = true;
             this.numericBoxStress33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -666,6 +673,7 @@
             this.numericBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress22.Name = "numericBoxStress22";
             this.numericBoxStress22.RestrictLimitValue = false;
+            this.numericBoxStress22.RoundErrorAccuracy = -1;
             this.numericBoxStress22.SkipEventDuringInput = false;
             this.numericBoxStress22.SmartIncrement = true;
             this.numericBoxStress22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -678,6 +686,7 @@
             this.numericBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress11.Name = "numericBoxStress11";
             this.numericBoxStress11.RestrictLimitValue = false;
+            this.numericBoxStress11.RoundErrorAccuracy = -1;
             this.numericBoxStress11.SkipEventDuringInput = false;
             this.numericBoxStress11.SmartIncrement = true;
             this.numericBoxStress11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -690,6 +699,7 @@
             this.numericBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress23.Name = "numericBoxStress23";
             this.numericBoxStress23.RestrictLimitValue = false;
+            this.numericBoxStress23.RoundErrorAccuracy = -1;
             this.numericBoxStress23.SkipEventDuringInput = false;
             this.numericBoxStress23.SmartIncrement = true;
             this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -702,6 +712,7 @@
             this.numericBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress13.Name = "numericBoxStress13";
             this.numericBoxStress13.RestrictLimitValue = false;
+            this.numericBoxStress13.RoundErrorAccuracy = -1;
             this.numericBoxStress13.SkipEventDuringInput = false;
             this.numericBoxStress13.SmartIncrement = true;
             this.numericBoxStress13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -714,6 +725,7 @@
             this.numericBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress12.Name = "numericBoxStress12";
             this.numericBoxStress12.RestrictLimitValue = false;
+            this.numericBoxStress12.RoundErrorAccuracy = -1;
             this.numericBoxStress12.SkipEventDuringInput = false;
             this.numericBoxStress12.SmartIncrement = true;
             this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -726,6 +738,7 @@
             this.numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain33.Name = "numericBoxStrain33";
             this.numericBoxStrain33.RestrictLimitValue = false;
+            this.numericBoxStrain33.RoundErrorAccuracy = -1;
             this.numericBoxStrain33.SkipEventDuringInput = false;
             this.numericBoxStrain33.SmartIncrement = true;
             this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -738,6 +751,7 @@
             this.numericBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain11.Name = "numericBoxStrain11";
             this.numericBoxStrain11.RestrictLimitValue = false;
+            this.numericBoxStrain11.RoundErrorAccuracy = -1;
             this.numericBoxStrain11.SkipEventDuringInput = false;
             this.numericBoxStrain11.SmartIncrement = true;
             this.numericBoxStrain11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -750,6 +764,7 @@
             this.numericBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain22.Name = "numericBoxStrain22";
             this.numericBoxStrain22.RestrictLimitValue = false;
+            this.numericBoxStrain22.RoundErrorAccuracy = -1;
             this.numericBoxStrain22.SkipEventDuringInput = false;
             this.numericBoxStrain22.SmartIncrement = true;
             this.numericBoxStrain22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -762,6 +777,7 @@
             this.numericBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain12.Name = "numericBoxStrain12";
             this.numericBoxStrain12.RestrictLimitValue = false;
+            this.numericBoxStrain12.RoundErrorAccuracy = -1;
             this.numericBoxStrain12.SkipEventDuringInput = false;
             this.numericBoxStrain12.SmartIncrement = true;
             this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -774,6 +790,7 @@
             this.numericBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain23.Name = "numericBoxStrain23";
             this.numericBoxStrain23.RestrictLimitValue = false;
+            this.numericBoxStrain23.RoundErrorAccuracy = -1;
             this.numericBoxStrain23.SkipEventDuringInput = false;
             this.numericBoxStrain23.SmartIncrement = true;
             this.numericBoxStrain23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -786,6 +803,7 @@
             this.numericBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain13.Name = "numericBoxStrain13";
             this.numericBoxStrain13.RestrictLimitValue = false;
+            this.numericBoxStrain13.RoundErrorAccuracy = -1;
             this.numericBoxStrain13.SkipEventDuringInput = false;
             this.numericBoxStrain13.SmartIncrement = true;
             this.numericBoxStrain13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1021,6 +1039,7 @@
             this.numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
             this.numericBoxZnumber.Name = "numericBoxZnumber";
             this.numericBoxZnumber.ReadOnly = true;
+            this.numericBoxZnumber.RoundErrorAccuracy = -1;
             this.numericBoxZnumber.SkipEventDuringInput = false;
             this.numericBoxZnumber.SmartIncrement = true;
             this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;

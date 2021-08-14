@@ -426,5 +426,21 @@ namespace Crystallography.Controls
         }
         #endregion
 
+        bool registResizeEvent = false;
+        private void CrystalDatabaseControl_Resize(object sender, EventArgs e)
+        {
+            if (!this.DesignMode && !registResizeEvent)
+            {
+                var parent = this.Parent;
+                while (!(parent is Form) && parent != null)
+                    parent = parent.Parent;
+                if (parent == null)
+                    return;
+                var form = parent as Form;
+                form.ResizeBegin += (s, ea) => SuspendLayout();
+                form.ResizeEnd += (s, ea) => ResumeLayout();
+                registResizeEvent = true;
+            }
+        }
     }
 }
