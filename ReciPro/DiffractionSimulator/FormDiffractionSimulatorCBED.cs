@@ -101,7 +101,7 @@ namespace ReciPro
         private void FormDiffractionSimulatorMultislice_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (sender == this)
+            if (this.Visible && sender == this)
                 FormDiffractionSimulator.radioButtonIntensityBethe.Checked = true;
         }
         #endregion
