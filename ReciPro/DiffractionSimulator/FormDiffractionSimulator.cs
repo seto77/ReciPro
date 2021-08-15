@@ -845,7 +845,7 @@ namespace ReciPro
                             foreach (var (pt, index) in crossList)
                             {
                                 double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
-                                var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString() : (n - 180).ToString();
+                                var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");
                                 var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
                                 g.DrawString(str + "°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
                             }
@@ -899,7 +899,7 @@ namespace ReciPro
 
                 var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
                 if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
-                    g.DrawString(twoTheta.ToString() + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
+                    g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
         }
         #endregion

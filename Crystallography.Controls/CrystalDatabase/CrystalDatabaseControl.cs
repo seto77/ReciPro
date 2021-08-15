@@ -98,7 +98,7 @@ namespace Crystallography.Controls
             ReadDatabaseWorker.RunWorkerAsync(filename);
         }
 
-        readonly object lockObj = new object();
+        readonly object lockObj = new();
         private void ReadDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             var filename = (string)e.Argument;
