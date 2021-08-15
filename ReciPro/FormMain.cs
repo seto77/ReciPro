@@ -193,6 +193,8 @@ namespace ReciPro
                 Hint = Version.Hint,
             };
 
+            powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
+
             commonDialog.Show();
 
             try { ReadInitialRegistry(); }
@@ -379,6 +381,8 @@ namespace ReciPro
                 commonDialog.AutomaticallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
             }
 
+            powderDiffractionFunctionToolStripMenuItem.Checked = (string)regKey.GetValue("powderDiffractionFunction.Checked") == "True";
+
             #region StructureViewer
             if (FormStructureViewer != null && (int)regKey.GetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X) >= 0)
             {
@@ -468,7 +472,7 @@ namespace ReciPro
             regKey.Close();
         }
 
-        //.iniファイルを書き込み
+        //レジストリの書き込み
         private void SaveInitialRegistry()
         {
             if (resetRegistryToolStripMenuItem.Checked)
@@ -489,6 +493,10 @@ namespace ReciPro
             regKey.SetValue("formMainLocationY", this.Location.Y);
             regKey.SetValue("initialDialog.AutomaricallyClose", commonDialog.AutomaticallyClose);
 
+            regKey.SetValue("powderDiffractionFunction.Checked", powderDiffractionFunctionToolStripMenuItem.Checked);
+
+
+            #region Structure Viewer
             regKey.SetValue("formStructureViewerWidth", this.FormStructureViewer.Width);
             regKey.SetValue("formStructureViewerHeight", this.FormStructureViewer.Height);
             regKey.SetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X);
@@ -505,7 +513,9 @@ namespace ReciPro
             regKey.SetValue("formTEMIDHeight", this.FormTEMID.Height);
             regKey.SetValue("formTEMIDLocationX", this.FormTEMID.Location.X);
             regKey.SetValue("formTEMIDLocationY", this.FormTEMID.Location.Y);
+            #endregion
 
+            #region Diffraction Simulator
             regKey.SetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", this.FormDiffractionSimulator.colorControlBackGround.Color.ToArgb());
             regKey.SetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", this.FormDiffractionSimulator.colorControlDefectLine.Color.ToArgb());
             regKey.SetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", this.FormDiffractionSimulator.colorControlExcessLine.Color.ToArgb());
@@ -515,6 +525,7 @@ namespace ReciPro
             regKey.SetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", this.FormDiffractionSimulator.colorControlOrigin.Color.ToArgb());
             regKey.SetValue("formElectronDiffraction.pictureBoxString.BackColor", this.FormDiffractionSimulator.colorControlString.Color.ToArgb());
 
+            
             if (FormDiffractionSimulator.FormDiffractionSimulatorGeometry != null)
             {
                 regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX.ToString());
@@ -534,6 +545,7 @@ namespace ReciPro
             regKey.SetValue("formElectronDiffraction.waveLengthControl.Energy", FormDiffractionSimulator.waveLengthControl.Energy);
             regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
             regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceLine", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine);
+            #endregion
 
             regKey.SetValue("formStereonet.colorControl10DegLine.Argb", this.FormStereonet.colorControl10DegLine.Argb);
             regKey.SetValue("formStereonet.colorControl1DegLine.Argb", this.FormStereonet.colorControl1DegLine.Argb);
@@ -646,7 +658,11 @@ namespace ReciPro
         #endregion
 
         #region 他のFunctionとの連携
-
+        private void powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            toolStripButtonPolycrystallineDiffraction.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+            toolStripSeparator19.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+        }
         private void FormTEMID_VisibleChanged(object sender, EventArgs e)
         {
             listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
@@ -1452,5 +1468,6 @@ namespace ReciPro
 
         #endregion
 
+      
     }
 }

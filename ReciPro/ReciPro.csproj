@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.8.15.1647</AssemblyVersion>
-    <FileVersion>2021.8.15.1647</FileVersion>
+    <AssemblyVersion>2021.8.15.1723</AssemblyVersion>
+    <FileVersion>2021.8.15.1723</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -38,7 +38,6 @@
     <None Remove="doc\ReciProManual%28ja%29.pdf" />
     <None Remove="doc\ReciProの座標系.pptx" />
     <None Remove="doc\Thumbs.db" />
-    <None Remove="image\App.ico" />
     <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
     <None Remove="initial.xml" />
     <None Remove="StdDb.cdb3" />
@@ -59,9 +58,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="doc\ReciProManual(ja).pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="image\App.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="initial.xml">
