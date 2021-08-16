@@ -342,7 +342,6 @@ namespace ReciPro
                     CameraLength2 = ipa.CameraLength;
                 }
                 if (filename.EndsWith("dm3") || filename.EndsWith("dm4"))
-
                 {
                     if (ImageIO.ReadImage(filename))
                     {

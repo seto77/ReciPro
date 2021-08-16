@@ -227,7 +227,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxNumberOfSpots.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxNumberOfSpots.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -236,7 +236,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxNumberOfSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 25</value>
+    <value>99, 27</value>
   </data>
   <data name="numericBoxNumberOfSpots.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -305,7 +305,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxFittingRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxFittingRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -314,7 +314,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxFittingRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 25</value>
+    <value>210, 27</value>
   </data>
   <data name="numericBoxFittingRange.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -350,7 +350,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxNearestNeighbor.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxNearestNeighbor.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -359,7 +359,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxNearestNeighbor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 25</value>
+    <value>199, 27</value>
   </data>
   <data name="numericBoxNearestNeighbor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1165,7 +1165,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAcceptableError.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxAcceptableError.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -1174,7 +1174,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAcceptableError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>168, 27</value>
   </data>
   <data name="numericBoxAcceptableError.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1210,7 +1210,7 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxMaxGrainNum.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxMaxGrainNum.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -1219,7 +1219,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxMaxGrainNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>168, 27</value>
   </data>
   <data name="numericBoxMaxGrainNum.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1561,7 +1561,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxCameraLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxCameraLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -1570,7 +1570,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCameraLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 25</value>
+    <value>205, 27</value>
   </data>
   <data name="numericBoxCameraLength.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1606,7 +1606,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPixelSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxPixelSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -1615,7 +1615,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxPixelSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>168, 27</value>
   </data>
   <data name="numericBoxPixelSize.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1651,7 +1651,7 @@
     <value>190, 0</value>
   </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 79</value>
+    <value>201, 79</value>
   </data>
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1939,7 +1939,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Spot ID</value>
+    <value>Spot ID v2</value>
   </data>
   <data name="&gt;&gt;Column2.Name" xml:space="preserve">
     <value>Column2</value>

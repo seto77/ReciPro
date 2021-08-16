@@ -3092,7 +3092,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>113, 36</value>
   </data>
   <data name="toolStripButtonDatabase.Text" xml:space="preserve">
-    <value>Database</value>
+    <value> Database</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
     <value>Crystal database</value>
@@ -3184,7 +3184,7 @@ Information</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
-    <value>Scattering
+    <value> Scattering
 Factor</value>
   </data>
   <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
@@ -3307,8 +3307,8 @@ Geometry</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
-    <value>Structure
-Viewer</value>
+    <value> Structure
+ Viewer</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>Structure Viewer</value>
@@ -3356,7 +3356,7 @@ Viewer</value>
     <value>113, 36</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
-    <value>Stereonet</value>
+    <value> Stereonet</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
     <value>Stereonet</value>
@@ -3393,8 +3393,8 @@ Viewer</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonElectronDiffraction.Text" xml:space="preserve">
-    <value>Diffraction
-Simulator</value>
+    <value> Diffraction
+ Simulator</value>
   </data>
   <data name="toolStripButtonElectronDiffraction.ToolTipText" xml:space="preserve">
     <value>Diffraction Simulator</value>
@@ -3472,8 +3472,8 @@ Simulator</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonImageSimulation.Text" xml:space="preserve">
-    <value>HRTEM
-Simulator</value>
+    <value>  HRTEM
+  Simulator</value>
   </data>
   <data name="toolStripButtonImageSimulation.ToolTipText" xml:space="preserve">
     <value>HRTEM Simulator</value>
@@ -3646,8 +3646,8 @@ Simulator</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.Text" xml:space="preserve">
-    <value>Powder
-Diffraction</value>
+    <value> Powder
+ Diffraction</value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.ToolTipText" xml:space="preserve">
     <value>Powder Diffraction

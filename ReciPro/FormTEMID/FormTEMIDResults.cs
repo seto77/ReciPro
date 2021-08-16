@@ -53,9 +53,9 @@ namespace ReciPro
 
             if (zoneaxes[0].IsTwoPhoho)
             {
-                dataGridView2.Columns[2].Visible = false;
-                dataGridView2.Columns[4].Visible = false;
+                dataGridView2.Columns[3].Visible = false;
                 dataGridView2.Columns[5].Visible = false;
+                dataGridView2.Columns[6].Visible = false;
             }
         }
 

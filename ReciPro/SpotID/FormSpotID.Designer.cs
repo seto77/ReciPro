@@ -90,6 +90,7 @@ namespace ReciPro
             this.buttonClearSpots = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonIdentifySpots = new System.Windows.Forms.Button();
             this.numericBoxSemiangle = new Crystallography.Controls.NumericBox();
             this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
             this.numericBoxAcceptableError = new Crystallography.Controls.NumericBox();
@@ -109,7 +110,6 @@ namespace ReciPro
             this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
             this.buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
-            this.buttonIdentifySpots = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
@@ -267,6 +267,7 @@ namespace ReciPro
             this.numericBoxNumberOfSpots.Minimum = 1D;
             this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
             this.numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
+            this.numericBoxNumberOfSpots.RoundErrorAccuracy = -1;
             this.numericBoxNumberOfSpots.ShowUpDown = true;
             this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
             this.numericBoxNumberOfSpots.SmartIncrement = true;
@@ -292,6 +293,7 @@ namespace ReciPro
             this.numericBoxFittingRange.Minimum = 0D;
             this.numericBoxFittingRange.Name = "numericBoxFittingRange";
             this.numericBoxFittingRange.RadianValue = 0.3490658503988659D;
+            this.numericBoxFittingRange.RoundErrorAccuracy = -1;
             this.numericBoxFittingRange.ShowUpDown = true;
             this.numericBoxFittingRange.SkipEventDuringInput = false;
             this.numericBoxFittingRange.SmartIncrement = true;
@@ -311,6 +313,7 @@ namespace ReciPro
             this.numericBoxNearestNeighbor.Minimum = 1D;
             this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
             this.numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
+            this.numericBoxNearestNeighbor.RoundErrorAccuracy = -1;
             this.numericBoxNearestNeighbor.ShowUpDown = true;
             this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
             this.numericBoxNearestNeighbor.SmartIncrement = true;
@@ -328,6 +331,7 @@ namespace ReciPro
             this.numericBoxDonut.Minimum = 1D;
             this.numericBoxDonut.Name = "numericBoxDonut";
             this.numericBoxDonut.RadianValue = 0.087266462599716474D;
+            this.numericBoxDonut.RoundErrorAccuracy = -1;
             this.numericBoxDonut.ShowUpDown = true;
             this.numericBoxDonut.SkipEventDuringInput = false;
             this.numericBoxDonut.SmartIncrement = true;
@@ -659,6 +663,15 @@ namespace ReciPro
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
+            // buttonIdentifySpots
+            // 
+            resources.ApplyResources(this.buttonIdentifySpots, "buttonIdentifySpots");
+            this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
+            this.buttonIdentifySpots.Name = "buttonIdentifySpots";
+            this.buttonIdentifySpots.UseVisualStyleBackColor = false;
+            this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
+            // 
             // numericBoxSemiangle
             // 
             resources.ApplyResources(this.numericBoxSemiangle, "numericBoxSemiangle");
@@ -670,6 +683,7 @@ namespace ReciPro
             this.numericBoxSemiangle.Minimum = 1D;
             this.numericBoxSemiangle.Name = "numericBoxSemiangle";
             this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
+            this.numericBoxSemiangle.RoundErrorAccuracy = -1;
             this.numericBoxSemiangle.ShowUpDown = true;
             this.numericBoxSemiangle.SmartIncrement = true;
             this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -686,6 +700,7 @@ namespace ReciPro
             this.numericBoxMaxNumOfG.Minimum = 1D;
             this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
+            this.numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
             this.numericBoxMaxNumOfG.ShowUpDown = true;
             this.numericBoxMaxNumOfG.SmartIncrement = true;
             this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -702,6 +717,7 @@ namespace ReciPro
             this.numericBoxAcceptableError.Minimum = 0.1D;
             this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
             this.numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
+            this.numericBoxAcceptableError.RoundErrorAccuracy = -1;
             this.numericBoxAcceptableError.ShowUpDown = true;
             this.numericBoxAcceptableError.SkipEventDuringInput = false;
             this.numericBoxAcceptableError.SmartIncrement = true;
@@ -719,6 +735,7 @@ namespace ReciPro
             this.numericBoxMaxGrainNum.Minimum = 0.1D;
             this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
             this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
+            this.numericBoxMaxGrainNum.RoundErrorAccuracy = -1;
             this.numericBoxMaxGrainNum.ShowUpDown = true;
             this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
             this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -857,15 +874,6 @@ namespace ReciPro
             this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
             this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
             // 
-            // buttonIdentifySpots
-            // 
-            resources.ApplyResources(this.buttonIdentifySpots, "buttonIdentifySpots");
-            this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
-            this.buttonIdentifySpots.Name = "buttonIdentifySpots";
-            this.buttonIdentifySpots.UseVisualStyleBackColor = false;
-            this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
-            // 
             // buttonStop
             // 
             resources.ApplyResources(this.buttonStop, "buttonStop");
@@ -894,6 +902,7 @@ namespace ReciPro
             this.numericBoxCameraLength.Minimum = 0D;
             this.numericBoxCameraLength.Name = "numericBoxCameraLength";
             this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
+            this.numericBoxCameraLength.RoundErrorAccuracy = -1;
             this.numericBoxCameraLength.SkipEventDuringInput = false;
             this.numericBoxCameraLength.SmartIncrement = true;
             this.numericBoxCameraLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -910,6 +919,7 @@ namespace ReciPro
             this.numericBoxPixelSize.Minimum = 0D;
             this.numericBoxPixelSize.Name = "numericBoxPixelSize";
             this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
+            this.numericBoxPixelSize.RoundErrorAccuracy = -1;
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -919,11 +929,11 @@ namespace ReciPro
             // waveLengthControl1
             // 
             resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
-            this.waveLengthControl1.Energy = 199.99999999999997D;
+            this.waveLengthControl1.Energy = 200D;
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.waveLengthControl1.WaveLength = 0.00250793474552456D;
+            this.waveLengthControl1.WaveLength = 0.0025079347455D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
             this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
