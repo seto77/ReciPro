@@ -1504,7 +1504,7 @@ namespace Crystallography
         public void SetPeakIntensity(WaveSource waveSource, WaveColor waveColor, double ramda, Profile whiteProfile)
         {
             #region
-            if (Atoms == null || Atoms.Length == 0 || Plane == null) return;
+            if (Atoms == null || Atoms.Length == 0 || Plane == null|| Plane.Count ==0) return;
 
             for (int i = 0; i < Plane.Count; i++)
             {
@@ -1557,7 +1557,7 @@ namespace Crystallography
                 for (int j = 0; j < s.Length; j++)
                     Plane[i].RawIntensity += Plane[i].eachIntensity[j];
             }
-
+           
             var max = Plane.Max(p => p.RawIntensity);
             for (int i = 0; i < Plane.Count; i++)
             {

@@ -789,7 +789,7 @@ namespace ReciPro
                     g.DrawLines(pen, pts.ToArray());
 
                 var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 5)), originSrc, -90);
-                if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
+                if (checkBoxDebyeRingLabel.Checked && !double.IsNaN(labelPosition.X))
                     g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
             }
         }

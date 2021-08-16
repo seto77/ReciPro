@@ -83,6 +83,26 @@ namespace ReciPro.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        public static System.Drawing.Bitmap kaeru {
+            get {
+                object obj = ResourceManager.GetObject("kaeru", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap kaeru1 {
+            get {
+                object obj = ResourceManager.GetObject("kaeru1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         public static System.Drawing.Bitmap TwoDimensionalPseudoVoigt {
             get {
                 object obj = ResourceManager.GetObject("TwoDimensionalPseudoVoigt", resourceCulture);
