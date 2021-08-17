@@ -3031,9 +3031,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>Functions</value>
   </data>
-  <data name="toolStripLabel1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="toolStripLabel1.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>TextBeforeImage</value>
   </data>
@@ -3089,10 +3086,11 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonDatabase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 36</value>
+    <value>113, 38</value>
   </data>
   <data name="toolStripButtonDatabase.Text" xml:space="preserve">
-    <value> Database</value>
+    <value> Crystal
+ Database</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
     <value>Crystal database</value>
@@ -3253,8 +3251,8 @@ Factor</value>
     <value>113, 38</value>
   </data>
   <data name="toolStripButtonRotation.Text" xml:space="preserve">
-    <value>Rotation
-Geometry</value>
+    <value> Rotation
+ Geometry</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3660,7 +3658,7 @@ Geometry</value>
     <value>0, 3</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 541</value>
+    <value>115, 543</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
