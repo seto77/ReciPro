@@ -313,7 +313,6 @@ namespace ReciPro
         #region 結晶軸行列を設定
         private void initAxesMatrix()
         {
-
             axes.Row0 = new V3(Crystal.A_Axis.X, Crystal.B_Axis.X, Crystal.C_Axis.X);
             axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
             axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
@@ -452,8 +451,6 @@ namespace ReciPro
             });
             textBoxInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
         }
-
-
 
         public void SetAtomsP()
         {
@@ -607,7 +604,7 @@ namespace ReciPro
                         lock (lockObj2)
                             if (vIndices.Length == 3)
                                 GLObjects.Add(new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron });
-                            else// vIndices.Length > 3)
+                            else
                                 GLObjects.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
                                 { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
                     }
@@ -704,7 +701,7 @@ namespace ReciPro
             }
 
             var t = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
-            V3 zero = new V3(0), c0 = axes.Column0 , c1 = axes.Column1, c2 = axes.Column2 ;
+            V3 zero = new(0), c0 = axes.Column0 , c1 = axes.Column1, c2 = axes.Column2 ;
 
             //エッジの描画
             if (checkBoxUnitCell.Checked && checkBoxCellShowEdge.Checked)
@@ -1533,14 +1530,12 @@ namespace ReciPro
                 Cone.Default = (1, 16);
                 Cylinder.Default = (1, 16);
                 Sphere.DefaultSlices = 3;
-
             }
             else if (comboBoxRenderignQuality.SelectedIndex == 1)
             {
                 Cone.Default = (1, 24);
                 Cylinder.Default = (1, 24);
                 Sphere.DefaultSlices = 4;
-
             }
             else
             {
@@ -1555,7 +1550,6 @@ namespace ReciPro
 
         private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
                 return;//変更が無かったら何もしない。
 
@@ -1700,10 +1694,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripButtonResetRotation_Click(object sender, EventArgs e)
-        {
-            formMain.SetRotation(new Matrix3D());
-        }
+        private void toolStripButtonResetRotation_Click(object sender, EventArgs e) => formMain.SetRotation(new Matrix3D());
 
         private void FormStructureViewer_ResizeBegin(object sender, EventArgs e) => SuspendLayout();
 
