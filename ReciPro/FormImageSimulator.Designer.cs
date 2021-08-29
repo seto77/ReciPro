@@ -33,25 +33,6 @@ namespace ReciPro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageSimulator));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSavePNG = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveTIFF = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveMetafile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSaveIndividually = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemCopyImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemCopyMetafile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOverprintSymbols = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.readTEMParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveTEMParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.detailsOfHRTEMSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.calculationLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBoxCaclulationLibrary = new System.Windows.Forms.ToolStripComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -108,6 +89,7 @@ namespace ReciPro
             this.numericBoxCc = new Crystallography.Controls.NumericBox();
             this.numericBoxDeltaV = new Crystallography.Controls.NumericBox();
             this.numericBoxBetaAgnle = new Crystallography.Controls.NumericBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.panelDummy1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -120,6 +102,7 @@ namespace ReciPro
             this.checkBoxGraphEc = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphPCTF = new System.Windows.Forms.CheckBox();
             this.checkBoxGraphEs = new System.Windows.Forms.CheckBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.buttonPanel = new System.Windows.Forms.Button();
             this.groupBoxObjectAperture = new System.Windows.Forms.GroupBox();
             this.numericBoxObjAperX = new Crystallography.Controls.NumericBox();
@@ -203,13 +186,31 @@ namespace ReciPro
             this.radioButtonPotentialShowImag = new System.Windows.Forms.RadioButton();
             this.checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             this.checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSavePNG = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveTIFF = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveMetafile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveIndividually = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCopyMetafile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOverprintSymbols = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.readTEMParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTEMParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsOfHRTEMSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.calculationLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxCaclulationLibrary = new System.Windows.Forms.ToolStripComboBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -254,148 +255,14 @@ namespace ReciPro
             this.panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhaseScale)).BeginInit();
             this.flowLayoutPanelRealAndImaiginary.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSave,
-            this.copyImageToolStripMenuItem,
-            this.toolStripMenuItemOverprintSymbols,
-            this.toolStripSeparator1,
-            this.readTEMParameterToolStripMenuItem,
-            this.saveTEMParametersToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
-            // 
-            // toolStripMenuItemSave
-            // 
-            this.toolStripMenuItemSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSavePNG,
-            this.toolStripMenuItemSaveTIFF,
-            this.toolStripMenuItemSaveMetafile,
-            this.toolStripMenuItemSaveIndividually});
-            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            resources.ApplyResources(this.toolStripMenuItemSave, "toolStripMenuItemSave");
-            // 
-            // toolStripMenuItemSavePNG
-            // 
-            this.toolStripMenuItemSavePNG.Name = "toolStripMenuItemSavePNG";
-            resources.ApplyResources(this.toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
-            this.toolStripMenuItemSavePNG.Click += new System.EventHandler(this.ToolStripMenuItemSavePNG_Click);
-            // 
-            // toolStripMenuItemSaveTIFF
-            // 
-            this.toolStripMenuItemSaveTIFF.Name = "toolStripMenuItemSaveTIFF";
-            resources.ApplyResources(this.toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
-            this.toolStripMenuItemSaveTIFF.Click += new System.EventHandler(this.ToolStripMenuItemSaveTIFF_Click);
-            // 
-            // toolStripMenuItemSaveMetafile
-            // 
-            this.toolStripMenuItemSaveMetafile.Name = "toolStripMenuItemSaveMetafile";
-            resources.ApplyResources(this.toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
-            this.toolStripMenuItemSaveMetafile.Click += new System.EventHandler(this.ToolStripMenuItemSaveMetafile_Click);
-            // 
-            // toolStripMenuItemSaveIndividually
-            // 
-            this.toolStripMenuItemSaveIndividually.Checked = true;
-            this.toolStripMenuItemSaveIndividually.CheckOnClick = true;
-            this.toolStripMenuItemSaveIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemSaveIndividually.Name = "toolStripMenuItemSaveIndividually";
-            resources.ApplyResources(this.toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
-            // 
-            // copyImageToolStripMenuItem
-            // 
-            this.copyImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCopyImage,
-            this.toolStripMenuItemCopyMetafile});
-            this.copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
-            resources.ApplyResources(this.copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
-            // 
-            // toolStripMenuItemCopyImage
-            // 
-            this.toolStripMenuItemCopyImage.Name = "toolStripMenuItemCopyImage";
-            resources.ApplyResources(this.toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
-            this.toolStripMenuItemCopyImage.Click += new System.EventHandler(this.ToolStripMenuItemCopyImage_Click);
-            // 
-            // toolStripMenuItemCopyMetafile
-            // 
-            this.toolStripMenuItemCopyMetafile.Name = "toolStripMenuItemCopyMetafile";
-            resources.ApplyResources(this.toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
-            this.toolStripMenuItemCopyMetafile.Click += new System.EventHandler(this.ToolStripMenuItemCopyMetafile_Click);
-            // 
-            // toolStripMenuItemOverprintSymbols
-            // 
-            this.toolStripMenuItemOverprintSymbols.Checked = true;
-            this.toolStripMenuItemOverprintSymbols.CheckOnClick = true;
-            this.toolStripMenuItemOverprintSymbols.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemOverprintSymbols.Name = "toolStripMenuItemOverprintSymbols";
-            resources.ApplyResources(this.toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // readTEMParameterToolStripMenuItem
-            // 
-            resources.ApplyResources(this.readTEMParameterToolStripMenuItem, "readTEMParameterToolStripMenuItem");
-            this.readTEMParameterToolStripMenuItem.Name = "readTEMParameterToolStripMenuItem";
-            // 
-            // saveTEMParametersToolStripMenuItem
-            // 
-            resources.ApplyResources(this.saveTEMParametersToolStripMenuItem, "saveTEMParametersToolStripMenuItem");
-            this.saveTEMParametersToolStripMenuItem.Name = "saveTEMParametersToolStripMenuItem";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.detailsOfHRTEMSimulationToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.calculationLibraryToolStripMenuItem,
-            this.toolStripComboBoxCaclulationLibrary});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // detailsOfHRTEMSimulationToolStripMenuItem
-            // 
-            this.detailsOfHRTEMSimulationToolStripMenuItem.Name = "detailsOfHRTEMSimulationToolStripMenuItem";
-            resources.ApplyResources(this.detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
-            this.detailsOfHRTEMSimulationToolStripMenuItem.Click += new System.EventHandler(this.DetailsOfHRTEMSimulationToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // calculationLibraryToolStripMenuItem
-            // 
-            this.calculationLibraryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.calculationLibraryToolStripMenuItem.Name = "calculationLibraryToolStripMenuItem";
-            resources.ApplyResources(this.calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
-            // 
-            // toolStripComboBoxCaclulationLibrary
-            // 
-            this.toolStripComboBoxCaclulationLibrary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBoxCaclulationLibrary.Items.AddRange(new object[] {
-            resources.GetString("toolStripComboBoxCaclulationLibrary.Items"),
-            resources.GetString("toolStripComboBoxCaclulationLibrary.Items1")});
-            this.toolStripComboBoxCaclulationLibrary.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
-            this.toolStripComboBoxCaclulationLibrary.Name = "toolStripComboBoxCaclulationLibrary";
-            resources.ApplyResources(this.toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
-            // 
             // splitContainer1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
@@ -865,25 +732,26 @@ namespace ReciPro
             this.flowLayoutPanel4.Controls.Add(this.label1);
             this.flowLayoutPanel4.Controls.Add(this.textBoxRambda);
             this.flowLayoutPanel4.Controls.Add(this.label5);
+            this.flowLayoutPanel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Name = "label1";
             // 
             // textBoxRambda
             // 
-            this.textBoxRambda.ForeColor = System.Drawing.Color.DimGray;
+            this.textBoxRambda.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(this.textBoxRambda, "textBoxRambda");
+            this.textBoxRambda.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textBoxRambda.Name = "textBoxRambda";
-            this.textBoxRambda.ReadOnly = true;
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
-            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label5.Name = "label5";
             // 
             // flowLayoutPanel3
@@ -892,27 +760,28 @@ namespace ReciPro
             this.flowLayoutPanel3.Controls.Add(this.label3);
             this.flowLayoutPanel3.Controls.Add(this.textBoxScherzer);
             this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label3.Name = "label3";
             this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // textBoxScherzer
             // 
-            this.textBoxScherzer.ForeColor = System.Drawing.Color.DimGray;
+            this.textBoxScherzer.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(this.textBoxScherzer, "textBoxScherzer");
+            this.textBoxScherzer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textBoxScherzer.Name = "textBoxScherzer";
-            this.textBoxScherzer.ReadOnly = true;
             this.toolTip.SetToolTip(this.textBoxScherzer, resources.GetString("textBoxScherzer.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Name = "label4";
             this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
@@ -922,6 +791,7 @@ namespace ReciPro
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxCc);
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxDeltaV);
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxBetaAgnle);
+            this.groupBoxInherentProperty.Controls.Add(this.label34);
             this.groupBoxInherentProperty.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBoxInherentProperty, "groupBoxInherentProperty");
             this.groupBoxInherentProperty.Name = "groupBoxInherentProperty";
@@ -1013,6 +883,12 @@ namespace ReciPro
             this.numericBoxBetaAgnle.Value = 0.75D;
             this.numericBoxBetaAgnle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
             // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Name = "label34";
+            // 
             // panelDummy1
             // 
             resources.ApplyResources(this.panelDummy1, "panelDummy1");
@@ -1099,6 +975,7 @@ namespace ReciPro
             this.panelGraphOption.Controls.Add(this.checkBoxGraphEc);
             this.panelGraphOption.Controls.Add(this.checkBoxGraphPCTF);
             this.panelGraphOption.Controls.Add(this.checkBoxGraphEs);
+            this.panelGraphOption.Controls.Add(this.label32);
             resources.ApplyResources(this.panelGraphOption, "panelGraphOption");
             this.panelGraphOption.Name = "panelGraphOption";
             // 
@@ -1123,7 +1000,7 @@ namespace ReciPro
             this.numericBoxMaxU1.RoundErrorAccuracy = -1;
             this.numericBoxMaxU1.ShowUpDown = true;
             this.numericBoxMaxU1.SmartIncrement = true;
-            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxU1.ThonsandsSeparator = true;
             this.numericBoxMaxU1.Value = 6D;
             this.numericBoxMaxU1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
@@ -1166,6 +1043,12 @@ namespace ReciPro
             this.toolTip.SetToolTip(this.checkBoxGraphEs, resources.GetString("checkBoxGraphEs.ToolTip"));
             this.checkBoxGraphEs.UseVisualStyleBackColor = true;
             this.checkBoxGraphEs.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Name = "label32";
             // 
             // buttonPanel
             // 
@@ -1261,6 +1144,7 @@ namespace ReciPro
             // 
             // textBoxNumOfSpots
             // 
+            this.textBoxNumOfSpots.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxNumOfSpots.ForeColor = System.Drawing.Color.DimGray;
             resources.ApplyResources(this.textBoxNumOfSpots, "textBoxNumOfSpots");
             this.textBoxNumOfSpots.Name = "textBoxNumOfSpots";
@@ -1281,6 +1165,7 @@ namespace ReciPro
             // 
             // textBoxApertureRadius
             // 
+            this.textBoxApertureRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxApertureRadius.ForeColor = System.Drawing.Color.DimGray;
             resources.ApplyResources(this.textBoxApertureRadius, "textBoxApertureRadius");
             this.textBoxApertureRadius.Name = "textBoxApertureRadius";
@@ -1914,6 +1799,142 @@ namespace ReciPro
             this.checkBoxPotentialUg.Name = "checkBoxPotentialUg";
             this.checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSave,
+            this.copyImageToolStripMenuItem,
+            this.toolStripMenuItemOverprintSymbols,
+            this.toolStripSeparator1,
+            this.readTEMParameterToolStripMenuItem,
+            this.saveTEMParametersToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // toolStripMenuItemSave
+            // 
+            this.toolStripMenuItemSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSavePNG,
+            this.toolStripMenuItemSaveTIFF,
+            this.toolStripMenuItemSaveMetafile,
+            this.toolStripMenuItemSaveIndividually});
+            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
+            resources.ApplyResources(this.toolStripMenuItemSave, "toolStripMenuItemSave");
+            // 
+            // toolStripMenuItemSavePNG
+            // 
+            this.toolStripMenuItemSavePNG.Name = "toolStripMenuItemSavePNG";
+            resources.ApplyResources(this.toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
+            this.toolStripMenuItemSavePNG.Click += new System.EventHandler(this.ToolStripMenuItemSavePNG_Click);
+            // 
+            // toolStripMenuItemSaveTIFF
+            // 
+            this.toolStripMenuItemSaveTIFF.Name = "toolStripMenuItemSaveTIFF";
+            resources.ApplyResources(this.toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
+            this.toolStripMenuItemSaveTIFF.Click += new System.EventHandler(this.ToolStripMenuItemSaveTIFF_Click);
+            // 
+            // toolStripMenuItemSaveMetafile
+            // 
+            this.toolStripMenuItemSaveMetafile.Name = "toolStripMenuItemSaveMetafile";
+            resources.ApplyResources(this.toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
+            this.toolStripMenuItemSaveMetafile.Click += new System.EventHandler(this.ToolStripMenuItemSaveMetafile_Click);
+            // 
+            // toolStripMenuItemSaveIndividually
+            // 
+            this.toolStripMenuItemSaveIndividually.Checked = true;
+            this.toolStripMenuItemSaveIndividually.CheckOnClick = true;
+            this.toolStripMenuItemSaveIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemSaveIndividually.Name = "toolStripMenuItemSaveIndividually";
+            resources.ApplyResources(this.toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
+            // 
+            // copyImageToolStripMenuItem
+            // 
+            this.copyImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopyImage,
+            this.toolStripMenuItemCopyMetafile});
+            this.copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
+            resources.ApplyResources(this.copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
+            // 
+            // toolStripMenuItemCopyImage
+            // 
+            this.toolStripMenuItemCopyImage.Name = "toolStripMenuItemCopyImage";
+            resources.ApplyResources(this.toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
+            this.toolStripMenuItemCopyImage.Click += new System.EventHandler(this.ToolStripMenuItemCopyImage_Click);
+            // 
+            // toolStripMenuItemCopyMetafile
+            // 
+            this.toolStripMenuItemCopyMetafile.Name = "toolStripMenuItemCopyMetafile";
+            resources.ApplyResources(this.toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
+            this.toolStripMenuItemCopyMetafile.Click += new System.EventHandler(this.ToolStripMenuItemCopyMetafile_Click);
+            // 
+            // toolStripMenuItemOverprintSymbols
+            // 
+            this.toolStripMenuItemOverprintSymbols.Checked = true;
+            this.toolStripMenuItemOverprintSymbols.CheckOnClick = true;
+            this.toolStripMenuItemOverprintSymbols.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemOverprintSymbols.Name = "toolStripMenuItemOverprintSymbols";
+            resources.ApplyResources(this.toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // readTEMParameterToolStripMenuItem
+            // 
+            resources.ApplyResources(this.readTEMParameterToolStripMenuItem, "readTEMParameterToolStripMenuItem");
+            this.readTEMParameterToolStripMenuItem.Name = "readTEMParameterToolStripMenuItem";
+            // 
+            // saveTEMParametersToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveTEMParametersToolStripMenuItem, "saveTEMParametersToolStripMenuItem");
+            this.saveTEMParametersToolStripMenuItem.Name = "saveTEMParametersToolStripMenuItem";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailsOfHRTEMSimulationToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.calculationLibraryToolStripMenuItem,
+            this.toolStripComboBoxCaclulationLibrary});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // detailsOfHRTEMSimulationToolStripMenuItem
+            // 
+            this.detailsOfHRTEMSimulationToolStripMenuItem.Name = "detailsOfHRTEMSimulationToolStripMenuItem";
+            resources.ApplyResources(this.detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
+            this.detailsOfHRTEMSimulationToolStripMenuItem.Click += new System.EventHandler(this.DetailsOfHRTEMSimulationToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // calculationLibraryToolStripMenuItem
+            // 
+            this.calculationLibraryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.calculationLibraryToolStripMenuItem.Name = "calculationLibraryToolStripMenuItem";
+            resources.ApplyResources(this.calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
+            // 
+            // toolStripComboBoxCaclulationLibrary
+            // 
+            this.toolStripComboBoxCaclulationLibrary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxCaclulationLibrary.Items.AddRange(new object[] {
+            resources.GetString("toolStripComboBoxCaclulationLibrary.Items"),
+            resources.GetString("toolStripComboBoxCaclulationLibrary.Items1")});
+            this.toolStripComboBoxCaclulationLibrary.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
+            this.toolStripComboBoxCaclulationLibrary.Name = "toolStripComboBoxCaclulationLibrary";
+            resources.ApplyResources(this.toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1958,8 +1979,6 @@ namespace ReciPro
             this.Load += new System.EventHandler(this.FormImageSimulator_Load);
             this.VisibleChanged += new System.EventHandler(this.FormImageSimulator_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormImageSimulator_KeyDown);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -1987,6 +2006,7 @@ namespace ReciPro
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.groupBoxInherentProperty.ResumeLayout(false);
+            this.groupBoxInherentProperty.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.groupBoxLenzFunction.ResumeLayout(false);
@@ -2032,6 +2052,8 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhaseScale)).EndInit();
             this.flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             this.flowLayoutPanelRealAndImaiginary.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2216,5 +2238,7 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxRealTimeCalculation;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label34;
     }
 }

@@ -15,6 +15,7 @@ using static System.Numerics.Complex;
 using MathNet.Numerics;
 using System.Xml.Serialization;
 using OpenTK.Graphics.ES20;
+using System.Windows.Forms;
 #endregion
 
 namespace Crystallography
@@ -137,14 +138,14 @@ namespace Crystallography
             BaseRotation = new Matrix3D(rotation);
             BeamRotations = beamRotations;
             Thicknesses = thickness;
-            MathNet.Numerics.Control.TryUseNativeMKL();
+            var mkl = MathNet.Numerics.Control.TryUseNativeMKL();
             bwCBED.RunWorkerAsync(new object[] { solver, thread });
         }
 
         private void cbed_DoWork(object sender, DoWorkEventArgs e)
         {
-             //波数を計算
-             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
+            //波数を計算
+            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
             //U0を計算
             var u0 = getU(AccVoltage, (0, 0, 0), 0).Real.Real;
             //k0ベクトルを計算
@@ -158,7 +159,9 @@ namespace Crystallography
             uDictionary = new Dictionary<int, (Complex, Complex)>();
             var factorMatrix = getPotentialMatrix(Beams);
             //有効なRotationだけを選択
-            var beamRotationsValid = BeamRotations.Where(rot => rot != null).ToList();
+            int width = (int)Math.Sqrt(BeamRotations.Length), radius = width / 2;
+            bool inside(int i) => (i % width - radius) * (i % width - radius) + (i / width - radius) * (i / width - radius) <= radius * radius;
+            var beamRotationsValid = BeamRotations.Where((rot, i) => inside(i)).ToList();
 
             RotationArrayValidLength = beamRotationsValid.Count;
 
@@ -172,7 +175,7 @@ namespace Crystallography
             if (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen))
                 solver = Solver.Auto;
 
-            if(solver== Solver.Auto)
+            if (solver == Solver.Auto)
             {
                 if (EigenEnabled)
                 {
@@ -182,18 +185,18 @@ namespace Crystallography
                 else
                 {
                     solver = Solver.Eigen_MKL;
-                    thread = Control.TryUseNativeMKL() ? Math.Max(1, Environment.ProcessorCount / 4) : Environment.ProcessorCount;
+                    thread = MathNet.Numerics.Control.TryUseNativeMKL() ? Math.Max(1, Environment.ProcessorCount / 4) : Environment.ProcessorCount;
                 }
-                
+
             }
+            var reportString = $"{solver}{thread}";
             #endregion
 
-            var reportString = $"{solver}{thread}";
             var len = Beams.Length;
             var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
 
             //ここからdiskValid[t][g]を計算.
-            var diskValid = beamRotationsP.Select(beamRotation =>
+            var diskAmplitudeValid = beamRotationsP.Select(beamRotation =>
             {
                 if (bwCBED.CancellationPending) return null;
                 var rotZ = beamRotation * zNorm;
@@ -235,14 +238,14 @@ namespace Crystallography
                 else
                 {
                     result = new Complex[Thicknesses.Length][];
-                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(len,len,potentialMatrix)).Exponential();
+                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(len, len, potentialMatrix)).Exponential();
                     var vec = matExp.Multiply(psi0);
                     result[0] = vec.ToArray();
 
                     if (Thicknesses.Length > 1)
                     {
                         if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
-                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(len,len, potentialMatrix)).Exponential();
+                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(len, len, potentialMatrix)).Exponential();
                         for (int i = 1; i < Thicknesses.Length; i++)
                         {
                             vec = (DVec)matExp.Multiply(vec);
@@ -254,12 +257,13 @@ namespace Crystallography
                 return result;
             }).ToArray();
 
-
-            //無効なRotationも考慮してdisk[RotationIndex][Z_index][G_index]を構築
-            var disk = new List<Complex[][]>();
+            //無効なRotationも再び組み込んでdisk[RotationIndex][Z_index][G_index]を構築
+            var diskAmplitude = new List<Complex[][]>();
             for (int i = 0, j = 0; i < BeamRotations.Length; i++)
-                disk.Add(BeamRotations[i] != null ? diskValid[j++] : null);
+                diskAmplitude.Add(inside(i) ? diskAmplitudeValid[j++] : null);//有効(円内)のピクセルを追加し、無効なものにはnull
 
+            count = 0;
+            bwCBED.ReportProgress(0, "Compiling disks");
             //diskをコンパイルする
             Disks = new CBED_Disk[Thicknesses.Length][];
             Parallel.For(0, Thicknesses.Length, t =>
@@ -267,17 +271,86 @@ namespace Crystallography
                 Disks[t] = new CBED_Disk[Beams.Length];
                 for (int g = 0; g < Beams.Length; g++)
                 {
-                    var intensity = new double[BeamRotations.Length];
+                    var amplitudes = new Complex[BeamRotations.Length];
                     for (int r = 0; r < BeamRotations.Length; r++)
-                        if (disk[r] != null)
-                            intensity[r] = disk[r][t][g].MagnitudeSquared();
+                        if (diskAmplitude[r] != null)
+                            amplitudes[r] = diskAmplitude[r][t][g];
 
-                    Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], intensity);
+                    Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], amplitudes);
                 }
+            });
+
+            //ここから、diskの重なり合いを計算
+
+            //まず、各ディスクを構成するピクセルの座標を計算
+            var diskTemp = new (RectangleD Rect, List<PointD> Pos)[Beams.Length];
+            Parallel.For(0, Beams.Length, g =>
+            {
+                var pos = new List<PointD>();
+                for (int r = 0; r < BeamRotations.Length; r++)
+                {
+                    var vec = BeamRotations[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                    pos.Add(new PointD(vec.X / vec.Z, vec.Y / vec.Z)); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                }
+                diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
+            });
+
+            //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
+            Parallel.For(0, Beams.Length, g1 =>
+            {
+                var intensities = new double[Thicknesses.Length][];
+                for (int t = 0; t < Thicknesses.Length; t++)
+                    intensities[t] = Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared()).ToArray();
+
+                for (int r1 = 0; r1 < BeamRotations.Length; r1++)
+                {
+                    if (Disks[0][g1].RawAmplitudes[r1] != 0)
+                    {
+                        var pos = diskTemp[g1].Pos[r1];
+                        for (int g2 = 0; g2 < Beams.Length; g2++)
+                            if (g2 != g1 && diskTemp[g2].Rect.IsInsde(pos))
+                            {
+                                var r2 = getIndex(pos, diskTemp[g2].Pos, width);
+                                if (Disks[0][g2].RawAmplitudes[r2] != 0)
+                                    for (int t = 0; t < Thicknesses.Length; t++)
+                                        intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
+                            }
+                    }
+                }
+
+                for (int t = 0; t < Thicknesses.Length; t++)
+                    Disks[t][g1].Amplitudes = intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray();
+
+                bwCBED.ReportProgress(Interlocked.Increment(ref count), "Compiling disks");//進捗状況を報告
             });
 
             if (bwCBED.CancellationPending)
                 e.Cancel = true;
+        }
+
+        //与えられたposに最も近いインデックスを返す
+        static int getIndex(PointD pos, List<PointD> posList, int width)
+        {
+            var w2 = width * width;
+            int i = w2 / 2, j = i - 1;//中心から、縦横に検索
+            double min = (pos - posList[i]).Length2, temp=min;
+
+            while (i != j)
+            {
+                j = i;
+                if (i + 1 < w2 && (temp = (pos - posList[i + 1]).Length2) < min)
+                    i++;
+                else if (i - 1 >= 0 && (temp = (pos - posList[i - 1]).Length2) < min)
+                    i--;
+                min = Math.Min(min, temp);
+
+                if (i + width < w2 && (temp = (pos - posList[i + width]).Length2) < min)
+                    i += width;
+                else if (i - width >= 0 && (temp = (pos - posList[i - width]).Length2) < min)
+                    i -= width;
+                min = Math.Min(min, temp);
+            }
+            return i;
         }
 
         #endregion
@@ -295,7 +368,7 @@ namespace Crystallography
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
 
-            var useEigen = !Control.TryUseNativeMKL();
+            var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
 
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
@@ -1099,18 +1172,21 @@ namespace Crystallography
             public readonly Vector3DBase G;
 
             /// <summary>
-            /// 強度を格納した配列
+            /// 振幅を格納した配列
             /// </summary>
-            public readonly double[] Intensity;
+            public Complex[] Amplitudes;
 
-            public CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, double[] intensity)
+            public readonly Complex[] RawAmplitudes;
+
+            public CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, Complex[] amplitudes)
             {
                 H = hkl[0];
                 K = hkl[1];
                 L = hkl[2];
                 G = vec;
                 Thickness = thickness;
-                Intensity = intensity;
+                //Amplitudes = amplitudes;
+                RawAmplitudes = amplitudes;
             }
         } 
         #endregion

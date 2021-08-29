@@ -125,5 +125,10 @@ namespace ReciPro
             if (this.Visible)
                 SetData();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

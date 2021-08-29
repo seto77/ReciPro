@@ -57,156 +57,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
-    <value>as Image (PNG format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveTIFF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
-    <value>as Image (TIFF format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
-    <value>as Metafile (EMF format)</value>
-  </data>
-  <data name="toolStripMenuItemSaveIndividually.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
-    <value>   Save individually for serial image mode </value>
-  </data>
-  <data name="toolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Save image</value>
-  </data>
-  <data name="toolStripMenuItemCopyImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
-    <value>as Image</value>
-  </data>
-  <data name="toolStripMenuItemCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
-  </data>
-  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
-    <value>as Metafile (Ctrl+C)</value>
-  </data>
-  <data name="copyImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy image</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
-    <value>     Overprint symbols</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 6</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="readTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="readTEMParameterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="readTEMParameterToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read TEM parameters</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save TEM parameters</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
-  </data>
-  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Basic concept of HRTEM simulation</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 6</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 22</value>
-  </data>
-  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Calculation library</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Items" xml:space="preserve">
-    <value>Native code</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Items1" xml:space="preserve">
-    <value>Managed code</value>
-  </data>
-  <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 23</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
   <data name="tableLayoutPanel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
@@ -224,7 +86,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 440</value>
+    <value>608, 520</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -341,7 +203,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 20</value>
+    <value>608, 20</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -368,13 +230,13 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowUnitcell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 107</value>
+    <value>405, 114</value>
   </data>
   <data name="checkBoxShowUnitcell.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 38</value>
   </data>
   <data name="checkBoxShowUnitcell.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>6</value>
   </data>
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
     <value>Show 
@@ -705,7 +567,7 @@ unit cell</value>
     <value>91, 21</value>
   </data>
   <data name="checkBoxShowScale.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>5</value>
   </data>
   <data name="checkBoxShowScale.Text" xml:space="preserve">
     <value>Show scale</value>
@@ -724,6 +586,9 @@ unit cell</value>
   </data>
   <data name="&gt;&gt;checkBoxShowScale.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="flowLayoutPanelGaussianBlur2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -744,13 +609,14 @@ unit cell</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 21</value>
+    <value>105, 38</value>
   </data>
   <data name="checkBoxGaussianBlur.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>3</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
-    <value>Gaussian Blur (FWHM)</value>
+    <value>Gaussian Blur
+ (FWHM)</value>
   </data>
   <data name="&gt;&gt;checkBoxGaussianBlur.Name" xml:space="preserve">
     <value>checkBoxGaussianBlur</value>
@@ -774,7 +640,7 @@ unit cell</value>
     <value>pix.</value>
   </data>
   <data name="numericBoxGaussianRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 0</value>
+    <value>109, 0</value>
   </data>
   <data name="numericBoxGaussianRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -816,7 +682,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 27</value>
+    <value>181, 42</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -849,7 +715,7 @@ unit cell</value>
     <value>90, 21</value>
   </data>
   <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>4</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
     <value>Show label</value>
@@ -930,10 +796,10 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>605, 27</value>
+    <value>601, 27</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedMax.Name" xml:space="preserve">
     <value>trackBarAdvancedMax</value>
@@ -963,7 +829,7 @@ unit cell</value>
     <value>82, 23</value>
   </data>
   <data name="comboBoxScaleColorScale.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;comboBoxScaleColorScale.Name" xml:space="preserve">
     <value>comboBoxScaleColorScale</value>
@@ -1005,7 +871,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 27</value>
+    <value>598, 27</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1278,10 +1144,10 @@ unit cell</value>
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 460</value>
+    <value>0, 540</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>612, 155</value>
+    <value>608, 155</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1326,7 +1192,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="buttonSimulateHRTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 582</value>
+    <value>359, 662</value>
   </data>
   <data name="buttonSimulateHRTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1368,7 +1234,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxRealTimeCalculation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 591</value>
+    <value>212, 671</value>
   </data>
   <data name="checkBoxRealTimeCalculation.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 21</value>
@@ -1413,7 +1279,7 @@ unit cell</value>
     <value>76, 21</value>
   </data>
   <data name="radioButtonProjectedPotential.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="radioButtonProjectedPotential.Text" xml:space="preserve">
     <value>Potential</value>
@@ -1455,7 +1321,7 @@ unit cell</value>
     <value>133, 30</value>
   </data>
   <data name="radioButtonSTEM.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="radioButtonSTEM.Text" xml:space="preserve">
     <value>STEM
@@ -1522,7 +1388,7 @@ unit cell</value>
     <value>302, 49</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>1</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Image mode</value>
@@ -1594,10 +1460,10 @@ unit cell</value>
     <value>309, 0</value>
   </data>
   <data name="groupBoxSampleProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 49</value>
+    <value>165, 49</value>
   </data>
   <data name="groupBoxSampleProperty.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
+    <value>2</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
     <value>Sample property</value>
@@ -1630,7 +1496,7 @@ unit cell</value>
     <value>Acc. Vol.</value>
   </data>
   <data name="numericBoxAccVol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
+    <value>3, 20</value>
   </data>
   <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -1681,7 +1547,7 @@ unit cell</value>
     <value>Defocus Δf</value>
   </data>
   <data name="numericBoxDefocus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 71</value>
+    <value>9, 71</value>
   </data>
   <data name="numericBoxDefocus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -1699,7 +1565,7 @@ unit cell</value>
     <value>158, 27</value>
   </data>
   <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>51</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
     <value>Defocus value in nanometer</value>
@@ -1757,6 +1623,9 @@ unit cell</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="textBoxRambda.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="textBoxRambda.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 0</value>
@@ -1819,7 +1688,7 @@ unit cell</value>
     <value>2</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 19</value>
+    <value>129, 20</value>
   </data>
   <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1883,6 +1752,9 @@ unit cell</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="textBoxScherzer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="textBoxScherzer.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 0</value>
@@ -1954,7 +1826,7 @@ unit cell</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 46</value>
+    <value>9, 47</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1981,13 +1853,13 @@ unit cell</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 10</value>
+    <value>244, 10</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 102</value>
+    <value>227, 102</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>4</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>TEM conditions</value>
@@ -2035,7 +1907,7 @@ unit cell</value>
     <value>104, 27</value>
   </data>
   <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>49</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
     <value>Cs: Spherical aberration in mm</value>
@@ -2083,7 +1955,7 @@ unit cell</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 27</value>
+    <value>104, 27</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -2115,11 +1987,8 @@ unit cell</value>
   <data name="numericBoxDeltaV.FooterText" xml:space="preserve">
     <value>eV</value>
   </data>
-  <data name="numericBoxDeltaV.HeaderText" xml:space="preserve">
-    <value>ΔE</value>
-  </data>
   <data name="numericBoxDeltaV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 52</value>
+    <value>151, 52</value>
   </data>
   <data name="numericBoxDeltaV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -2134,10 +2003,10 @@ unit cell</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDeltaV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 27</value>
+    <value>74, 27</value>
   </data>
   <data name="numericBoxDeltaV.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>52</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔE: 1/e width of electron
@@ -2192,7 +2061,7 @@ unit cell</value>
     <value>107, 27</value>
   </data>
   <data name="numericBoxBetaAgnle.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>51</value>
   </data>
   <data name="numericBoxBetaAgnle.ToolTip" xml:space="preserve">
     <value>β: Illumination semiangle (mrad)
@@ -2214,6 +2083,43 @@ unit cell</value>
   <data name="&gt;&gt;numericBoxBetaAgnle.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 52</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 26</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>ΔE
+(FWHM)</value>
+  </data>
+  <data name="label34.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBoxInherentProperty</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="groupBoxInherentProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -2221,10 +2127,10 @@ unit cell</value>
     <value>7, 23</value>
   </data>
   <data name="groupBoxInherentProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 89</value>
+    <value>230, 89</value>
   </data>
   <data name="groupBoxInherentProperty.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBoxInherentProperty.Text" xml:space="preserve">
     <value>Inherent Property</value>
@@ -2284,7 +2190,7 @@ unit cell</value>
     <value>2, 2, 0, 2</value>
   </data>
   <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 54</value>
+    <value>348, 134</value>
   </data>
   <data name="graphControl.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -2308,19 +2214,19 @@ unit cell</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCopyGraph.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 8pt</value>
   </data>
   <data name="buttonCopyGraph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonCopyGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 43</value>
+    <value>42, 115</value>
   </data>
   <data name="buttonCopyGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonCopyGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>43, 23</value>
   </data>
   <data name="buttonCopyGraph.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -2347,37 +2253,34 @@ unit cell</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxMaxU1.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 8pt</value>
   </data>
   <data name="numericBoxMaxU1.FooterText" xml:space="preserve">
-    <value>nm^-1</value>
+    <value>nm⁻¹</value>
   </data>
   <data name="numericBoxMaxU1.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxMaxU1.HeaderText" xml:space="preserve">
-    <value>Max</value>
+    <value>Segoe UI Symbol, 8pt</value>
   </data>
   <data name="numericBoxMaxU1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 44</value>
+    <value>8, 92</value>
   </data>
   <data name="numericBoxMaxU1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="numericBoxMaxU1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericBoxMaxU1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 22</value>
   </data>
   <data name="numericBoxMaxU1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxMaxU1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 25</value>
+    <value>79, 24</value>
   </data>
   <data name="numericBoxMaxU1.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxU1.Name" xml:space="preserve">
     <value>numericBoxMaxU1</value>
@@ -2401,19 +2304,19 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGraphAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 25</value>
+    <value>0, 59</value>
   </data>
   <data name="checkBoxGraphAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 1</value>
   </data>
   <data name="checkBoxGraphAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
+    <value>75, 17</value>
   </data>
   <data name="checkBoxGraphAll.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>8</value>
   </data>
   <data name="checkBoxGraphAll.Text" xml:space="preserve">
-    <value>sin[χ(u)] × Ec(u) × Es(u)</value>
+    <value>A × B × C</value>
   </data>
   <data name="&gt;&gt;checkBoxGraphAll.Name" xml:space="preserve">
     <value>checkBoxGraphAll</value>
@@ -2437,19 +2340,19 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGraphEc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 6</value>
+    <value>0, 40</value>
   </data>
   <data name="checkBoxGraphEc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 1</value>
   </data>
   <data name="checkBoxGraphEc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
+    <value>71, 17</value>
   </data>
   <data name="checkBoxGraphEc.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>7</value>
   </data>
   <data name="checkBoxGraphEc.Text" xml:space="preserve">
-    <value>Ec(u)</value>
+    <value>Ec(u) = C</value>
   </data>
   <data name="checkBoxGraphEc.ToolTip" xml:space="preserve">
     <value>Temporal coherence</value>
@@ -2476,19 +2379,19 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGraphPCTF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 6</value>
+    <value>0, 2</value>
   </data>
   <data name="checkBoxGraphPCTF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 1</value>
   </data>
   <data name="checkBoxGraphPCTF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>87, 17</value>
   </data>
   <data name="checkBoxGraphPCTF.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>5</value>
   </data>
   <data name="checkBoxGraphPCTF.Text" xml:space="preserve">
-    <value>sin[χ(u)]</value>
+    <value>sin[χ(u)] = A</value>
   </data>
   <data name="checkBoxGraphPCTF.ToolTip" xml:space="preserve">
     <value>PCTF</value>
@@ -2515,19 +2418,19 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGraphEs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 6</value>
+    <value>0, 21</value>
   </data>
   <data name="checkBoxGraphEs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 1</value>
   </data>
   <data name="checkBoxGraphEs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
+    <value>71, 17</value>
   </data>
   <data name="checkBoxGraphEs.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>6</value>
   </data>
   <data name="checkBoxGraphEs.Text" xml:space="preserve">
-    <value>Es(u)</value>
+    <value>Es(u) = B</value>
   </data>
   <data name="checkBoxGraphEs.ToolTip" xml:space="preserve">
     <value>Spatial coherence</value>
@@ -2544,17 +2447,50 @@ unit cell</value>
   <data name="&gt;&gt;checkBoxGraphEs.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 77</value>
+  </data>
+  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="label32.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="panelGraphOption.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
   <data name="panelGraphOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 20</value>
+    <value>350, 20</value>
   </data>
   <data name="panelGraphOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panelGraphOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 54</value>
+    <value>87, 134</value>
   </data>
   <data name="panelGraphOption.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -2581,13 +2517,13 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="buttonPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 20</value>
+    <value>437, 20</value>
   </data>
   <data name="buttonPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 54</value>
+    <value>20, 134</value>
   </data>
   <data name="buttonPanel.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -2631,7 +2567,7 @@ unit cell</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxLenzFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>463, 76</value>
+    <value>459, 156</value>
   </data>
   <data name="groupBoxLenzFunction.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -2661,7 +2597,7 @@ unit cell</value>
     <value>Shift  X</value>
   </data>
   <data name="numericBoxObjAperX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 18</value>
+    <value>245, 18</value>
   </data>
   <data name="numericBoxObjAperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -2679,7 +2615,7 @@ unit cell</value>
     <value>93, 27</value>
   </data>
   <data name="numericBoxObjAperX.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperX.Name" xml:space="preserve">
     <value>numericBoxObjAperX</value>
@@ -2724,7 +2660,7 @@ unit cell</value>
     <value>124, 27</value>
   </data>
   <data name="numericBoxObjAperRadius.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>1</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -2757,7 +2693,7 @@ unit cell</value>
     <value>Y</value>
   </data>
   <data name="numericBoxObjAperY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 18</value>
+    <value>340, 18</value>
   </data>
   <data name="numericBoxObjAperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -2775,7 +2711,7 @@ unit cell</value>
     <value>98, 27</value>
   </data>
   <data name="numericBoxObjAperY.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperY.Name" xml:space="preserve">
     <value>numericBoxObjAperY</value>
@@ -2805,7 +2741,7 @@ unit cell</value>
     <value>113, 21</value>
   </data>
   <data name="checkBoxOpenAperture.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
+    <value>2</value>
   </data>
   <data name="checkBoxOpenAperture.Text" xml:space="preserve">
     <value>Open aperture</value>
@@ -2889,7 +2825,7 @@ unit cell</value>
     <value>1</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 44</value>
+    <value>122, 46</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2958,13 +2894,13 @@ unit cell</value>
     <value>0, 2, 0, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>36, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>nm^-1</value>
+    <value>nm⁻¹</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -2985,7 +2921,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 25</value>
+    <value>85, 25</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -3015,7 +2951,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDetailsOfSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 45</value>
+    <value>240, 45</value>
   </data>
   <data name="buttonDetailsOfSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 23</value>
@@ -3048,7 +2984,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 44</value>
+    <value>315, 45</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 26</value>
@@ -3079,7 +3015,7 @@ unit cell</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxObjectAperture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 76</value>
+    <value>0, 156</value>
   </data>
   <data name="groupBoxObjectAperture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3088,10 +3024,10 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxObjectAperture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>463, 80</value>
+    <value>459, 80</value>
   </data>
   <data name="groupBoxObjectAperture.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+    <value>5</value>
   </data>
   <data name="groupBoxObjectAperture.Text" xml:space="preserve">
     <value>Object Aperture</value>
@@ -3115,7 +3051,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>463, 156</value>
+    <value>459, 236</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3142,7 +3078,7 @@ unit cell</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>463, 156</value>
+    <value>459, 236</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3175,7 +3111,7 @@ unit cell</value>
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 174</value>
+    <value>467, 254</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3199,7 +3135,7 @@ unit cell</value>
     <value>0, 50</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>478, 290</value>
+    <value>474, 370</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -3280,7 +3216,7 @@ unit cell</value>
     <value>135, 50</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
+    <value>6</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>Bloch wave</value>
@@ -3352,7 +3288,7 @@ unit cell</value>
     <value>121, 27</value>
   </data>
   <data name="numericBoxWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>1</value>
   </data>
   <data name="numericBoxWidth.ToolTip" xml:space="preserve">
     <value>Width of the simulated Image in pixel</value>
@@ -3403,7 +3339,7 @@ unit cell</value>
     <value>124, 27</value>
   </data>
   <data name="numericBoxHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>2</value>
   </data>
   <data name="numericBoxHeight.ToolTip" xml:space="preserve">
     <value>Height of the simulated Image in pixel</value>
@@ -3484,7 +3420,7 @@ unit cell</value>
     <value>102, 27</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>3</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value>Resolution of the simulated Image in picometer/pixel</value>
@@ -3517,7 +3453,7 @@ unit cell</value>
     <value>127, 103</value>
   </data>
   <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -4295,10 +4231,10 @@ unit cell</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 163</value>
+    <value>308, 163</value>
   </data>
   <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>9</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Single/serial mode</value>
@@ -4427,10 +4363,10 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxPartialCoherencyModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 48</value>
+    <value>308, 48</value>
   </data>
   <data name="groupBoxPartialCoherencyModel.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>8</value>
   </data>
   <data name="groupBoxPartialCoherencyModel.Text" xml:space="preserve">
     <value>Partial coherency model</value>
@@ -4454,7 +4390,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 211</value>
+    <value>308, 211</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5507,10 +5443,10 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 211</value>
+    <value>308, 211</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
+    <value>10</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Potential option</value>
@@ -5534,7 +5470,7 @@ unit cell</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 211</value>
+    <value>308, 211</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5570,7 +5506,7 @@ unit cell</value>
     <value>0, 0</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 229</value>
+    <value>316, 229</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5591,10 +5527,10 @@ unit cell</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 339</value>
+    <value>0, 419</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>478, 243</value>
+    <value>474, 243</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -5627,7 +5563,7 @@ unit cell</value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 615</value>
+    <value>1100, 699</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>612</value>
@@ -5646,6 +5582,144 @@ unit cell</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
+  <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>as Image (PNG format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>as Image (TIFF format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>as Metafile (EMF format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   Save individually for serial image mode </value>
+  </data>
+  <data name="toolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>Save image</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>as Image</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>as Metafile (Ctrl+C)</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy image</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>     Overprint symbols</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
+  </data>
+  <data name="readTEMParameterToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="readTEMParameterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="readTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>Read TEM parameters</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save TEM parameters</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 22</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Basic concept of HRTEM simulation</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 6</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 22</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Calculation library</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Items" xml:space="preserve">
+    <value>Native code</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Items1" xml:space="preserve">
+    <value>Managed code</value>
+  </data>
+  <data name="toolStripComboBoxCaclulationLibrary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1100, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 17</value>
@@ -5672,7 +5746,7 @@ unit cell</value>
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 639</value>
+    <value>0, 723</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1100, 22</value>
@@ -5702,7 +5776,7 @@ unit cell</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 661</value>
+    <value>1100, 745</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

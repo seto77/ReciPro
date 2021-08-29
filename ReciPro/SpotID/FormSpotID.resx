@@ -79,7 +79,7 @@
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 755</value>
+    <value>588, 751</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="scalablePictureBoxAdvanced.TabIndex" type="System.Int32, mscorlib">
@@ -179,7 +179,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 26</value>
+    <value>588, 26</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -410,7 +410,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>730, 452</value>
+    <value>726, 448</value>
   </data>
   <data name="numericBoxDonut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -639,7 +639,7 @@
     <value>20</value>
   </data>
   <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 306</value>
+    <value>763, 302</value>
   </data>
   <data name="dataGridViewSpots.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -729,7 +729,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>677, 61</value>
+    <value>673, 61</value>
   </data>
   <data name="buttonSaveToFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -768,7 +768,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>722, 61</value>
+    <value>718, 61</value>
   </data>
   <data name="buttonCopyToClipboad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -841,7 +841,7 @@
     <value>Segoe UI Symbol, 8pt</value>
   </data>
   <data name="buttonDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>604, 452</value>
+    <value>600, 448</value>
   </data>
   <data name="buttonDonut.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 23</value>
@@ -877,7 +877,7 @@
     <value>Segoe UI Symbol, 8pt</value>
   </data>
   <data name="buttonGlobalFit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>627, 429</value>
+    <value>623, 425</value>
   </data>
   <data name="buttonGlobalFit.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -910,7 +910,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>634, 400</value>
+    <value>630, 396</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 27</value>
@@ -946,7 +946,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 61</value>
+    <value>569, 61</value>
   </data>
   <data name="buttonClearSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 27</value>
@@ -973,7 +973,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 401</value>
+    <value>1, 397</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 77</value>
@@ -1000,7 +1000,7 @@
     <value>7, 104</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 484</value>
+    <value>772, 480</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1375,7 +1375,7 @@
     <value>449, 13</value>
   </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 111</value>
+    <value>317, 111</value>
   </data>
   <data name="dataGridViewGrains.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1516,10 +1516,10 @@
     <value>13</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 594</value>
+    <value>7, 590</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 185</value>
+    <value>772, 185</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1672,7 +1672,7 @@
     <value>196, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 102</value>
+    <value>583, 102</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

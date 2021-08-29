@@ -1,5 +1,6 @@
 ﻿#region using
 using Crystallography;
+using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -76,7 +77,8 @@ namespace ReciPro
 
         private Matrix3D[] Rotations;
 
-        private readonly Stopwatch sw = new();
+        private readonly Stopwatch sw1 = new();
+        private readonly Stopwatch sw2 = new();
 
         private bool skipEvent { get; set; } = false;
 
@@ -112,8 +114,9 @@ namespace ReciPro
             if (Crystal.Bethe.IsBusy) return;
 
             buttonStop.Visible = true;
-            sw.Reset();
-            sw.Start();
+            sw1.Reset();
+            sw2.Reset();
+            sw1.Start();
             FormDiffractionSimulator.SkipDrawing = true;
             Crystal.Bethe.CbedCompleted += Bethe_CbedCompleted;
             Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
@@ -124,11 +127,11 @@ namespace ReciPro
             var max = (int)(1 / side) + 1;
 
             for (int h = -max; h <= max; h++)
-                for (int w = max; w >= -max; w--)
-                    if (h * h + w * w <= max * max)
-                        rotations.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
-                    else
-                        rotations.Add(null);
+                for (int w = -max; w <= max; w++)
+                    //if (h * h + w * w <= max * max)
+                        rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
+                    //else
+                    //    rotations.Add(null);
             Rotations = rotations.ToArray();
 
 
@@ -159,18 +162,35 @@ namespace ReciPro
         {
             if (skipProgressChangedEvent) return;
             skipProgressChangedEvent = true;
+            
             var current = e.ProgressPercentage;
-            var solver = (string)e.UserState;
-            var sec = sw.ElapsedMilliseconds / 1000.0;
-            var progress = (int)(100.0 * current / DivisionNumber);
-            if (progress <= 100)
-                toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
-            toolStripStatusLabel2.Text = solver;
-            toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-            toolStripStatusLabel1.Text += sec / current > 0.9 ? (sec / current).ToString("f2") + " s.,  " : (sec / current * 1000).ToString("f2") + " ms., ";
-            toolStripStatusLabel1.Text += (100.0 * current / DivisionNumber).ToString("f1") + " % completed,  wait for "
-                + (sec * (DivisionNumber - current) / current).ToString("f2") + " s.";
-
+            var message = (string)e.UserState;
+            if (message.StartsWith("Compiling disks"))
+            {
+                if (sw1.IsRunning)
+                {
+                    sw1.Stop();
+                    sw2.Restart();
+                }
+                var sec = sw2.ElapsedMilliseconds / 1000.0;
+                var totalsec = sec+ sw1.ElapsedMilliseconds/1000.0;
+                toolStripProgressBar.Value = (int)(100.0 * current / Crystal.Bethe.Beams.Length);
+                toolStripStatusLabel2.Text = "Compiling disks:";
+                toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
+                toolStripStatusLabel1.Text += $"{100.0 * current / Crystal.Bethe.Beams.Length:f1} % completed,  wait for more {sec * (Crystal.Bethe.Beams.Length - current) / current:f2} s.";
+            }
+            else
+            {
+                
+                var sec = sw1.ElapsedMilliseconds / 1000.0;
+                var progress = (int)(100.0 * current / DivisionNumber);
+                if (progress <= 100)
+                    toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
+                toolStripStatusLabel2.Text = message;
+                toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
+                toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
+                toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
+            }
             Application.DoEvents();
             skipProgressChangedEvent = false;
         }
@@ -181,13 +201,18 @@ namespace ReciPro
             FormDiffractionSimulator.SkipDrawing = false;
             Crystal.Bethe.CbedCompleted -= Bethe_CbedCompleted;
             Crystal.Bethe.CbedProgressChanged -= Bethe_CbedProgressChanged;
-            var sec = sw.ElapsedMilliseconds / 1000.0;
+            sw2.Stop();
+            var sec1 = sw1.ElapsedMilliseconds / 1000.0;
+            var sec2 = sw2.ElapsedMilliseconds / 1000.0;
 
             if (!e.Cancelled)
             {
-                toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-                toolStripStatusLabel1.Text += sec / DivisionNumber > 0.9 ? (sec / DivisionNumber).ToString("f2") + " s.,  " : (sec / DivisionNumber * 1000).ToString("f2") + " ms., ";
-                toolStripStatusLabel1.Text += "100 % completed.";
+                toolStripStatusLabel2.Text = "100% completed!  ";
+                toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s.   ";
+                toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s. (";
+                toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
+                toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
+
                 groupBoxOutput.Enabled = true;
                 generateImage();
 
@@ -195,7 +220,7 @@ namespace ReciPro
             }
             else
             {
-                toolStripStatusLabel1.Text = "Time ellapsed: " + sec.ToString("f2") + " sec.,  Manually interupted.";
+                toolStripStatusLabel1.Text = "Time ellapsed: " + (sec1+sec2).ToString("f2") + " sec.,  Manually interupted.";
                 groupBoxOutput.Enabled = false;
             }
 
@@ -286,16 +311,16 @@ namespace ReciPro
             }
             var disks = Crystal.Bethe.Disks[trackBarOutputThickness.Value];
             Disks = new (int H, int K, int L, PointD Center, SizeD Size, Size PixelSize, PseudoBitmap PBitmap, Bitmap Bitmap)[disks.Length];
-            var width = Math.Sqrt(disks[0].Intensity.Length);
+            var width = Math.Sqrt(disks[0].Amplitudes.Length);
             Parallel.For(0, disks.Length, i =>
             {
                 var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
                 var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
-                var pbmp = new PseudoBitmap(disks[i].Intensity, (int)width)
+                var pbmp = new PseudoBitmap(disks[i].Amplitudes.Select(amp=>amp.MagnitudeSquared()).ToArray(), (int)width)
                 {
                     ReserveSrcValuesGrayOriginal = true,
                     AlphaEnabled = true,
-                    FilterAlfha = disks[i].Intensity.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
+                    FilterAlfha = disks[i].Amplitudes.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
                 };
 
                 Disks[i] = (disks[i].H, disks[i].K, disks[i].L,

@@ -2166,13 +2166,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelDinv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 17</value>
+    <value>96, 17</value>
   </data>
   <data name="labelDinv.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="labelDinv.Text" xml:space="preserve">
-    <value>1/d: 00.00 /nm</value>
+    <value>d⁻¹: 00.00 nm⁻¹</value>
   </data>
   <data name="labelDinv.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>

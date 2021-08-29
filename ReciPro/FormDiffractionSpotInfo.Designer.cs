@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxWaveLength = new System.Windows.Forms.TextBox();
@@ -139,9 +139,9 @@
             this.label2.Location = new System.Drawing.Point(0, 5);
             this.label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 17);
+            this.label2.Size = new System.Drawing.Size(158, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "m/m0 (= 1+e0×E/m0/c^2): ";
+            this.label2.Text = "m/m0 (= 1+e0×E/m0/c²): ";
             // 
             // textBoxWaveLength
             // 
@@ -168,7 +168,7 @@
             // textBoxGamma
             // 
             this.textBoxGamma.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxGamma.Location = new System.Drawing.Point(166, 0);
+            this.textBoxGamma.Location = new System.Drawing.Point(158, 0);
             this.textBoxGamma.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxGamma.Name = "textBoxGamma";
             this.textBoxGamma.ReadOnly = true;
@@ -190,7 +190,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(255, 5);
+            this.label4.Location = new System.Drawing.Point(247, 5);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 17);
@@ -200,7 +200,7 @@
             // textBoxBeta
             // 
             this.textBoxBeta.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBeta.Location = new System.Drawing.Point(288, 0);
+            this.textBoxBeta.Location = new System.Drawing.Point(280, 0);
             this.textBoxBeta.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxBeta.Name = "textBoxBeta";
             this.textBoxBeta.ReadOnly = true;
@@ -267,9 +267,9 @@
             this.label8.Location = new System.Drawing.Point(185, 5);
             this.label8.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 17);
+            this.label8.Size = new System.Drawing.Size(31, 17);
             this.label8.TabIndex = 2;
-            this.label8.Text = "nm^3";
+            this.label8.Text = "nm³";
             // 
             // label9
             // 
@@ -287,7 +287,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(230, 5);
+            this.label12.Location = new System.Drawing.Point(222, 5);
             this.label12.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 17);
@@ -298,7 +298,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(387, 5);
+            this.label13.Location = new System.Drawing.Point(379, 5);
             this.label13.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(26, 17);
@@ -308,7 +308,7 @@
             // textBoxThickness
             // 
             this.textBoxThickness.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxThickness.Location = new System.Drawing.Point(304, 0);
+            this.textBoxThickness.Location = new System.Drawing.Point(296, 0);
             this.textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxThickness.Name = "textBoxThickness";
             this.textBoxThickness.ReadOnly = true;
@@ -342,7 +342,7 @@
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(468, 49);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(371, 24);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(363, 24);
             this.flowLayoutPanel2.TabIndex = 7;
             // 
             // flowLayoutPanel3
@@ -358,7 +358,7 @@
             this.flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(468, 74);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(413, 24);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(405, 24);
             this.flowLayoutPanel3.TabIndex = 8;
             // 
             // radioButtonUnitEV
@@ -381,9 +381,9 @@
             this.radioButtonUnitNM.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButtonUnitNM.Location = new System.Drawing.Point(199, 3);
             this.radioButtonUnitNM.Name = "radioButtonUnitNM";
-            this.radioButtonUnitNM.Size = new System.Drawing.Size(94, 21);
+            this.radioButtonUnitNM.Size = new System.Drawing.Size(86, 21);
             this.radioButtonUnitNM.TabIndex = 9;
-            this.radioButtonUnitNM.Text = "Ug [nm^-2]";
+            this.radioButtonUnitNM.Text = "Ug [nm⁻²]";
             this.radioButtonUnitNM.UseVisualStyleBackColor = true;
             // 
             // label15
@@ -407,7 +407,7 @@
             this.flowLayoutPanel4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(468, 151);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(296, 27);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(288, 27);
             this.flowLayoutPanel4.TabIndex = 10;
             // 
             // label14
@@ -417,9 +417,9 @@
             this.label14.Location = new System.Drawing.Point(481, 180);
             this.label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(382, 17);
+            this.label14.Size = new System.Drawing.Size(357, 17);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Ug [nm^-2] = 2 × m0[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10^-18";
+            this.label14.Text = "Ug [nm⁻²] = 2 × m₀[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10¹⁸";
             // 
             // dataGridView
             // 
@@ -455,16 +455,16 @@
             this.σΦ2DataGridViewTextBoxColumn});
             this.dataGridView.DataMember = "DataTableBethe";
             this.dataGridView.DataSource = this.dataSetBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Format = "g4";
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Format = "g4";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.Location = new System.Drawing.Point(1, 298);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView.MultiSelect = false;
@@ -911,6 +911,7 @@
             this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
             this.numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
+            this.numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
             this.numericBoxEffectiveDigit.ShowUpDown = true;
             this.numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             this.numericBoxEffectiveDigit.SkipEventDuringInput = false;

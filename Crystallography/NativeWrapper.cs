@@ -149,7 +149,7 @@ namespace Crystallography
             //fixed (double* pDest = dest)
             //    Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
 
-            //　[,]の配列については、格納順の問題から、Memcpyは使えない
+            //　[,]の配列については、格納順の問題から、全体に対するMemcpyは使えない
             int n = 0;
             for (int j = 0; j < dim; j++)
                 for (int i = 0; i < dim; i++)
@@ -173,9 +173,6 @@ namespace Crystallography
             fixed (Complex* pDest = dest)
                 Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
            
-           //for (int i = 0; i < dim*dim; i++)
-           //    dest[i] = new Complex(src[i * 2], src[i * 2 + 1]);
-            
             return new DenseMatrix(dim, dim, dest);
         }
 
@@ -185,9 +182,6 @@ namespace Crystallography
             fixed (double* pSrc = src)
             fixed (Complex* pDest = dest)
                 Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
-
-            //for (int i = 0; i < dim; i++)
-            //    dest[i] = new Complex(src[i * 2], src[i * 2 + 1]);
 
             return new DenseVector(dest);
         }

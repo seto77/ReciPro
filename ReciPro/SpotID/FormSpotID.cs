@@ -1,5 +1,6 @@
 ﻿using Crystallography;
 using Crystallography.Controls;
+using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1420,8 +1421,6 @@ namespace ReciPro
             FormMain.Crystal.Bethe.RunCBED(numericBoxMaxNumOfG.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, BetheMethod.Solver.Auto);
         }
 
-
-
         private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //イベント削除
@@ -1455,12 +1454,12 @@ namespace ReciPro
             {
                 for (int r = 0; r < FormMain.Crystal.Bethe.BeamRotations.Length; r++)
                 {
-                    var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Intensity[r]);
-                    var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Intensity[r], 2));
+                    var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared());
+                    var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2));
                     if (denom != 0)
                     {
                         var a = numer / denom;
-                        var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].Intensity[r], 2));
+                        var residual = corrTable.Sum(c => Math.Pow(c.intensity - a * disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2));
                         if (bestResidual > residual)
                         {
                             bestResidual = residual;

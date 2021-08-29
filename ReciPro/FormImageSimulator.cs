@@ -34,9 +34,9 @@ namespace ReciPro
         public double Rambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
 
         /// <summary>
-        /// 電子の加速電圧の揺らぎ (kV)
+        /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaV.ValueはFWHMだが、2 * Sqrt(2 * Log(2)) で割って、σに変換する
         /// </summary>
-        public double DeltaVol => numericBoxDeltaV.Value / 1000;
+        public double DeltaVol => numericBoxDeltaV.Value / 1000 / 2 / Sqrt(2 * Log(2));
 
         /// <summary>
         /// 対物絞りのサイズ (rad)
@@ -726,7 +726,7 @@ namespace ReciPro
                 var u2 = u * u;
                 kai.Add(new PointD(u, Sin(PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
                 es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//時間的インコヒーレンス
-                ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2)));//空間的インコヒーレンス
+                ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2/*16/Math.Log(2)*/)));//空間的インコヒーレンス
                 all.Add(new PointD(u, kai[^1].Y * es[^1].Y * ec[^1].Y));
             }
             graphControl.ClearProfile();

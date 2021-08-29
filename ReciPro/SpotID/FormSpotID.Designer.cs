@@ -157,6 +157,9 @@ namespace ReciPro
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
@@ -193,7 +196,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(592, 590);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(588, 586);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
