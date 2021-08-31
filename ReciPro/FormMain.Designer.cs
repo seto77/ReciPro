@@ -461,6 +461,7 @@
             // 
             resources.ApplyResources(this.checkBoxFixAxis, "checkBoxFixAxis");
             this.checkBoxFixAxis.Name = "checkBoxFixAxis";
+            this.toolTip.SetToolTip(this.checkBoxFixAxis, resources.GetString("checkBoxFixAxis.ToolTip"));
             this.checkBoxFixAxis.UseVisualStyleBackColor = true;
             this.checkBoxFixAxis.CheckedChanged += new System.EventHandler(this.checkBoxFixAxis_CheckedChanged);
             // 
@@ -615,6 +616,7 @@
             // 
             resources.ApplyResources(this.checkBoxFixePlane, "checkBoxFixePlane");
             this.checkBoxFixePlane.Name = "checkBoxFixePlane";
+            this.toolTip.SetToolTip(this.checkBoxFixePlane, resources.GetString("checkBoxFixePlane.ToolTip"));
             this.checkBoxFixePlane.UseVisualStyleBackColor = true;
             this.checkBoxFixePlane.CheckedChanged += new System.EventHandler(this.checkBoxFixPlane_CheckedChanged);
             // 

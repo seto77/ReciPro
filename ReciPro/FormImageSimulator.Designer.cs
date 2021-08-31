@@ -662,6 +662,7 @@ namespace ReciPro
             this.numericBoxThickness.SmartIncrement = true;
             this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThickness.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             this.numericBoxThickness.Value = 20D;
             this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThickness_ValueChanged);
             // 
@@ -1576,12 +1577,14 @@ namespace ReciPro
             this.radioButtonModeQuasiCoherent.Checked = true;
             this.radioButtonModeQuasiCoherent.Name = "radioButtonModeQuasiCoherent";
             this.radioButtonModeQuasiCoherent.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonModeQuasiCoherent, resources.GetString("radioButtonModeQuasiCoherent.ToolTip"));
             this.radioButtonModeQuasiCoherent.UseVisualStyleBackColor = true;
             // 
             // radioButtonModeTransmissionCrossCoefficient
             // 
             resources.ApplyResources(this.radioButtonModeTransmissionCrossCoefficient, "radioButtonModeTransmissionCrossCoefficient");
             this.radioButtonModeTransmissionCrossCoefficient.Name = "radioButtonModeTransmissionCrossCoefficient";
+            this.toolTip.SetToolTip(this.radioButtonModeTransmissionCrossCoefficient, resources.GetString("radioButtonModeTransmissionCrossCoefficient.ToolTip"));
             this.radioButtonModeTransmissionCrossCoefficient.UseVisualStyleBackColor = true;
             // 
             // tabPage2

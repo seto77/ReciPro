@@ -95,6 +95,9 @@
   <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
     <value>Spots</value>
   </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>By checking, diffraction spots are simulated.</value>
+  </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
@@ -121,6 +124,9 @@
   </data>
   <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
     <value>Kikuchi Lines</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>By checking, Kikuchi lines are simulated.</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -149,6 +155,9 @@
   <data name="toolStripButtonDebyeRing.Text" xml:space="preserve">
     <value>Debye rings</value>
   </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>By checking, Debye rings are simulated.</value>
+  </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
@@ -175,6 +184,9 @@
   </data>
   <data name="toolStripButtonScale.Text" xml:space="preserve">
     <value>Scale</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>By checking, scale lines are simulated.</value>
   </data>
   <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 0</value>
@@ -238,7 +250,7 @@
     <value>Index</value>
   </data>
   <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
-    <value>回折斑点の面指数を表示します</value>
+    <value>By checking, index labels are displayed</value>
   </data>
   <data name="toolStripButtonDspacing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -265,7 +277,7 @@
     <value>d</value>
   </data>
   <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
-    <value>回折斑点の面間隔を表示します</value>
+    <value>By checking, d-spacings are displayed</value>
   </data>
   <data name="toolStripButtonDistance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -292,7 +304,7 @@
     <value>Distance</value>
   </data>
   <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
-    <value>逆格子原点と回折斑点の実距離(mm)を表示します</value>
+    <value>By checking, distances (mm) from spots to the direct spot are displayed</value>
   </data>
   <data name="toolStripButtonExcitationError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -319,7 +331,7 @@
     <value>Excit. Err.</value>
   </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
-    <value>励起誤差(nm-1)を表示します</value>
+    <value>By checking, excitation errors (s_g) are displayed</value>
   </data>
   <data name="toolStripButtonFg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -346,7 +358,7 @@
     <value>|Fg|</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>結晶構造因子を表示します</value>
+    <value>By checking, magnitudes of structure factors are displayed</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>307, 0</value>
@@ -521,7 +533,7 @@
     <value>139, 17</value>
   </metadata>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set a size of strings</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
     <value>trackBarStrSize</value>
@@ -546,6 +558,9 @@
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>String size</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>Set a string size</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -599,7 +614,10 @@
     <value>1</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set a color of strings</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>Set a color of strings</value>
   </data>
   <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
     <value>colorControlString</value>
@@ -626,17 +644,17 @@
     <value>30, 51</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 34</value>
+    <value>146, 34</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Foot of perpendicular
+    <value>Foot of a perpendicular
  from the sample</value>
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
-    <value>逆格子原点の色を表示/設定します</value>
+    <value>Set a color of the foot of a perpendicular from the sample</value>
   </data>
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
@@ -744,7 +762,10 @@
     <value>0</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set a background color</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Set a background color</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
     <value>colorControlBackGround</value>
@@ -836,6 +857,16 @@
   <data name="numericBoxKikuchiLineThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
+  <data name="numericBoxKikuchiLineThreshold.ToolTip" xml:space="preserve">
+    <value>Set a threshold of d-spacings of Kikuchi lines.
+Kikuchi lines under this value are simulated. 
+</value>
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.ToolTip1" xml:space="preserve">
+    <value>Set a threshold of d-spacings of Kikuchi lines.
+Kikuchi lines under this value are simulated. 
+</value>
+  </data>
   <data name="&gt;&gt;numericBoxKikuchiLineThreshold.Name" xml:space="preserve">
     <value>numericBoxKikuchiLineThreshold</value>
   </data>
@@ -876,7 +907,7 @@
     <value />
   </data>
   <data name="colorControlDefectLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 32</value>
+    <value>8, 38</value>
   </data>
   <data name="colorControlDefectLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -918,7 +949,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
-    <value>Kikuchi line color (Ecxess)</value>
+    <value>Kikuchi line color (Excess)</value>
   </data>
   <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -972,7 +1003,7 @@
     <value>3</value>
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
-    <value>菊池線の表示幅</value>
+    <value>Set a line width of Kikuchi lines</value>
   </data>
   <data name="&gt;&gt;trackBarLineWidth.Name" xml:space="preserve">
     <value>trackBarLineWidth</value>
@@ -1038,7 +1069,7 @@
     <value>Kikuchi lines</value>
   </data>
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
-    <value>菊池線に関する詳細設定</value>
+    <value>Kikuchi lines</value>
   </data>
   <data name="&gt;&gt;tabPageKikuchi.Name" xml:space="preserve">
     <value>tabPageKikuchi</value>
@@ -1092,7 +1123,10 @@
     <value>0</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set a color of Debye rings</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>Set a color of Debye rings</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
     <value>colorControlDebyeRing</value>
@@ -1130,6 +1164,9 @@
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
     <value>Show index label</value>
   </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>By checking, index labels for Debye rings are displayed</value>
+  </data>
   <data name="&gt;&gt;checkBoxDebyeRingLabel.Name" xml:space="preserve">
     <value>checkBoxDebyeRingLabel</value>
   </data>
@@ -1166,6 +1203,9 @@
   <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
     <value>Ignore diffraction intensity
 </value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>By checking, all Debye rings are displayed as a same intensity</value>
   </data>
   <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Name" xml:space="preserve">
     <value>checkBoxDebyeRingIgnoreIntensity</value>
@@ -1227,6 +1267,9 @@
   <data name="trackBarDebyeRingWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>Set a line width of Debye rings</value>
+  </data>
   <data name="&gt;&gt;trackBarDebyeRingWidth.Name" xml:space="preserve">
     <value>trackBarDebyeRingWidth</value>
   </data>
@@ -1284,6 +1327,9 @@
   <data name="checkBoxScaleLabel.Text" xml:space="preserve">
     <value>Show scale labels</value>
   </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>By checking, scale labels are displayed</value>
+  </data>
   <data name="&gt;&gt;checkBoxScaleLabel.Name" xml:space="preserve">
     <value>checkBoxScaleLabel</value>
   </data>
@@ -1340,6 +1386,9 @@
   </data>
   <data name="trackBarScaleLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>Set a line width of scale lines</value>
   </data>
   <data name="&gt;&gt;trackBarScaleLineWidth.Name" xml:space="preserve">
     <value>trackBarScaleLineWidth</value>
@@ -1419,6 +1468,9 @@
   <data name="radioButtonScaleDivisionFine.Text" xml:space="preserve">
     <value>Fine</value>
   </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>Set the division of scale lines</value>
+  </data>
   <data name="&gt;&gt;radioButtonScaleDivisionFine.Name" xml:space="preserve">
     <value>radioButtonScaleDivisionFine</value>
   </data>
@@ -1455,6 +1507,9 @@
   <data name="radioButtonScaleDivisionMedium.Text" xml:space="preserve">
     <value>Medium</value>
   </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>Set the division of scale lines</value>
+  </data>
   <data name="&gt;&gt;radioButtonScaleDivisionMedium.Name" xml:space="preserve">
     <value>radioButtonScaleDivisionMedium</value>
   </data>
@@ -1490,6 +1545,9 @@
   </data>
   <data name="radioButtonScaleDivisionCoarse.Text" xml:space="preserve">
     <value>Coarse</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>Set the division of scale lines</value>
   </data>
   <data name="&gt;&gt;radioButtonScaleDivisionCoarse.Name" xml:space="preserve">
     <value>radioButtonScaleDivisionCoarse</value>
@@ -1564,7 +1622,10 @@
     <value>2</value>
   </data>
   <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set a color of azimuth scale lines</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>Set a color of azimuth scale lines</value>
   </data>
   <data name="&gt;&gt;colorControlScaleAzimuth.Name" xml:space="preserve">
     <value>colorControlScaleAzimuth</value>
@@ -1618,7 +1679,10 @@
     <value>1</value>
   </data>
   <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set a color of 2θ scale lines</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>Set a color of 2θ scale lines</value>
   </data>
   <data name="&gt;&gt;colorControlScale2Theta.Name" xml:space="preserve">
     <value>colorControlScale2Theta</value>
@@ -1942,12 +2006,12 @@
     <value>66</value>
   </data>
   <data name="graphicsBox.ToolTip" xml:space="preserve">
-    <value>左ドラッグ(画面内側): 画面平行軸に関して回転
-左ドラッグ(画面外側): 画面垂直軸に関して回転
-右クリック: 縮小
-右ドラッグ: 選択範囲を拡大
-中ドラッグ: 平行移動
-左ダブルクリック: 最も近い逆格子点情報を表示</value>
+    <value>Left drag (near the center of the screen): Rotate by the axis parallel to monitor
+Left drag (at the edge of the screen):  Rotate by the axis normal to monitor
+Right click: Zoom out
+Right-drag: Zoom in the selected area
+Middle drag: Drag the simulated image
+Double left click: Display the information of the g-vector</value>
   </data>
   <data name="graphicsBox.WaitOnLoad" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2216,6 +2280,9 @@
   <data name="checkBoxMousePositionDetailes.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>By checking, the detailed information panel on the cursor position opens</value>
+  </data>
   <data name="&gt;&gt;checkBoxMousePositionDetailes.Name" xml:space="preserve">
     <value>checkBoxMousePositionDetailes</value>
   </data>
@@ -2411,6 +2478,12 @@
   <data name="numericBoxClientHeight.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
   <data name="&gt;&gt;numericBoxClientHeight.Name" xml:space="preserve">
     <value>numericBoxClientHeight</value>
   </data>
@@ -2456,6 +2529,12 @@
   <data name="numericBoxClientWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
   <data name="&gt;&gt;numericBoxClientWidth.Name" xml:space="preserve">
     <value>numericBoxClientWidth</value>
   </data>
@@ -2500,6 +2579,12 @@
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Set a resolution of the simulated pattern</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>Set a resolution of the simulated pattern</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Name" xml:space="preserve">
     <value>numericBoxResolution</value>
@@ -2571,7 +2656,7 @@
     <value>True</value>
   </data>
   <data name="numericUpDownCamaraLength2.ToolTip" xml:space="preserve">
-    <value>Set camera length</value>
+    <value>Set camera length2, i.e, the distance from the sample to the detector (monitor)</value>
   </data>
   <data name="&gt;&gt;numericUpDownCamaraLength2.Name" xml:space="preserve">
     <value>numericUpDownCamaraLength2</value>
@@ -2612,6 +2697,9 @@
   <data name="buttonDetailedGeometry.Text" xml:space="preserve">
     <value>Detailed
  geometry</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>Open the window to set the detailed optics</value>
   </data>
   <data name="&gt;&gt;buttonDetailedGeometry.Name" xml:space="preserve">
     <value>buttonDetailedGeometry</value>
@@ -2763,6 +2851,9 @@
   <data name="buttonResetCenter.Text" xml:space="preserve">
     <value>Set monitor center to ...</value>
   </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>Set the monitor center to the following point</value>
+  </data>
   <data name="&gt;&gt;buttonResetCenter.Name" xml:space="preserve">
     <value>buttonResetCenter</value>
   </data>
@@ -2798,6 +2889,9 @@
   </data>
   <data name="radioButtonCenterToDetector.Text" xml:space="preserve">
     <value>detector</value>
+  </data>
+  <data name="radioButtonCenterToDetector.ToolTip" xml:space="preserve">
+    <value>Detector center (if appropriately configured in "Detailed geometry")</value>
   </data>
   <data name="&gt;&gt;radioButtonCenterToDetector.Name" xml:space="preserve">
     <value>radioButtonCenterToDetector</value>
@@ -2835,6 +2929,9 @@
   <data name="radioButtonCenterToFoot.Text" xml:space="preserve">
     <value>perpendicular foot</value>
   </data>
+  <data name="radioButtonCenterToFoot.ToolTip" xml:space="preserve">
+    <value>Foot of a perpendicular from the sample</value>
+  </data>
   <data name="&gt;&gt;radioButtonCenterToFoot.Name" xml:space="preserve">
     <value>radioButtonCenterToFoot</value>
   </data>
@@ -2867,6 +2964,9 @@
   </data>
   <data name="checkBoxFixCenter.Text" xml:space="preserve">
     <value>Fix always</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>Fix the monitor center to the following point</value>
   </data>
   <data name="&gt;&gt;checkBoxFixCenter.Name" xml:space="preserve">
     <value>checkBoxFixCenter</value>
@@ -2903,6 +3003,9 @@
   </data>
   <data name="radioButtonCenterToDirect.Text" xml:space="preserve">
     <value>direct spot</value>
+  </data>
+  <data name="radioButtonCenterToDirect.ToolTip" xml:space="preserve">
+    <value>Direct spot (intersection of the incident beam with the detector)</value>
   </data>
   <data name="&gt;&gt;radioButtonCenterToDirect.Name" xml:space="preserve">
     <value>radioButtonCenterToDirect</value>
@@ -3354,6 +3457,10 @@
   <data name="radioButtonIntensityBethe.Text" xml:space="preserve">
     <value>Dynamical theory</value>
   </data>
+  <data name="radioButtonIntensityBethe.ToolTip" xml:space="preserve">
+    <value>In this mode, the intensity is calculated by the Bloch wave method.
+Only valid for an electron source.</value>
+  </data>
   <data name="&gt;&gt;radioButtonIntensityBethe.Name" xml:space="preserve">
     <value>radioButtonIntensityBethe</value>
   </data>
@@ -3390,6 +3497,9 @@
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
     <value>Assigned color of each crystals</value>
   </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>By checking, a drawing color of diffraction spots is set to the color of crystal</value>
+  </data>
   <data name="&gt;&gt;checkBoxUseCrystalColor.Name" xml:space="preserve">
     <value>checkBoxUseCrystalColor</value>
   </data>
@@ -3421,13 +3531,16 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxExtinctionAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 17</value>
+    <value>198, 17</value>
   </data>
   <data name="checkBoxExtinctionAll.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
-    <value>Exclude all prohited reflections </value>
+    <value>Exclude all prohibited reflections </value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>By checking, all prohibited refrections by the space group are not displayed</value>
   </data>
   <data name="&gt;&gt;checkBoxExtinctionAll.Name" xml:space="preserve">
     <value>checkBoxExtinctionAll</value>
@@ -3465,6 +3578,9 @@
   <data name="checkBoxExtinctionLattice.Text" xml:space="preserve">
     <value>Exclude reflections prohibited
  by lattice centring</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>By checking, prohibited refrections by the lattice centering are not displayed</value>
   </data>
   <data name="&gt;&gt;checkBoxExtinctionLattice.Name" xml:space="preserve">
     <value>checkBoxExtinctionLattice</value>
@@ -3556,6 +3672,12 @@
   <data name="numericBoxPED_Semiangle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
+    <value>Set a semi-angle for the PED simulation</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>Set a semi-angle for the PED simulation</value>
+  </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.Name" xml:space="preserve">
     <value>numericBoxPED_Semiangle</value>
   </data>
@@ -3597,6 +3719,14 @@
   </data>
   <data name="numericBoxPED_Step.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value>Set a number of divisions for the PED simulation.
+Inciden beams along a cone are simulated for this number.</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>Set a number of divisions for the PED simulation.
+Inciden beams along a cone are simulated for this number.</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Name" xml:space="preserve">
     <value>numericBoxPED_Step</value>
@@ -3718,6 +3848,12 @@
   <data name="numericBoxNumOfBlochWave.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>Set a number of the Bloch waves to be calculated</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>Set a number of the Bloch waves to be calculated</value>
+  </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Name" xml:space="preserve">
     <value>numericBoxNumOfBlochWave</value>
   </data>
@@ -3762,6 +3898,12 @@
   </data>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Set a thickness of the sample</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Set a thickness of the sample</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
@@ -3883,6 +4025,9 @@
   <data name="radioButtonCircleArea.Text" xml:space="preserve">
     <value>Solid sphere</value>
   </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>Spots are displayed as circles.</value>
+  </data>
   <data name="&gt;&gt;radioButtonCircleArea.Name" xml:space="preserve">
     <value>radioButtonCircleArea</value>
   </data>
@@ -3918,6 +4063,9 @@
   </data>
   <data name="radioButtonPointSpread.Text" xml:space="preserve">
     <value>Gaussian</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>Spots are displayed as 2-dimensional Gauusians</value>
   </data>
   <data name="&gt;&gt;radioButtonPointSpread.Name" xml:space="preserve">
     <value>radioButtonPointSpread</value>
@@ -4016,7 +4164,7 @@
     <value>0</value>
   </data>
   <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set opacity of the diffraction spots</value>
   </data>
   <data name="&gt;&gt;trackBarSpotOpacity.Name" xml:space="preserve">
     <value>trackBarSpotOpacity</value>
@@ -4041,6 +4189,9 @@
   </data>
   <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
+  </data>
+  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
+    <value>Set an opacity of the diffraction spots</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
     <value>flowLayoutPanel7</value>
@@ -4092,6 +4243,12 @@
   </data>
   <data name="numericBoxSpotRadius.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value>Set a radius of the diffraction spots in the reciprocal space</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>Set a radius of the diffraction spots in the reciprocal space</value>
   </data>
   <data name="&gt;&gt;numericBoxSpotRadius.Name" xml:space="preserve">
     <value>numericBoxSpotRadius</value>
@@ -4202,7 +4359,7 @@
     <value>0</value>
   </data>
   <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set a brightness of the diffraction spots</value>
   </data>
   <data name="&gt;&gt;trackBarIntensityForPointSpread.Name" xml:space="preserve">
     <value>trackBarIntensityForPointSpread</value>
@@ -4297,6 +4454,9 @@
   <data name="comboBoxScaleColorScale.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>Set a color scale</value>
+  </data>
   <data name="&gt;&gt;comboBoxScaleColorScale.Name" xml:space="preserve">
     <value>comboBoxScaleColorScale</value>
   </data>
@@ -4356,6 +4516,9 @@
   </data>
   <data name="checkBoxLogScale.Text" xml:space="preserve">
     <value>Log scale</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>By checking, the intensities of the diffraction spos are logarithmically displayed</value>
   </data>
   <data name="&gt;&gt;checkBoxLogScale.Name" xml:space="preserve">
     <value>checkBoxLogScale</value>
@@ -4516,6 +4679,9 @@
   <data name="colorControlOrigin.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>Set a color of the direct spot</value>
+  </data>
   <data name="&gt;&gt;colorControlOrigin.Name" xml:space="preserve">
     <value>colorControlOrigin</value>
   </data>
@@ -4569,6 +4735,9 @@
   </data>
   <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>Set a color of general spots</value>
   </data>
   <data name="&gt;&gt;colorControlNoCondition.Name" xml:space="preserve">
     <value>colorControlNoCondition</value>
@@ -4624,6 +4793,9 @@
   <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>Set a color of extinct spots (screw of glide)</value>
+  </data>
   <data name="&gt;&gt;colorControlScrewGlide.Name" xml:space="preserve">
     <value>colorControlScrewGlide</value>
   </data>
@@ -4677,6 +4849,9 @@
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>Set a color of extinct spots (lattice centering)</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Name" xml:space="preserve">
     <value>colorControlForbiddenLattice</value>
@@ -4813,6 +4988,10 @@
   <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
     <value>Only excitation error</value>
   </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>In this mode, only the excitation error is considered for the intensity calculation.
+(The effect of the structure factor is ignored) </value>
+  </data>
   <data name="&gt;&gt;radioButtonIntensityExcitation.Name" xml:space="preserve">
     <value>radioButtonIntensityExcitation</value>
   </data>
@@ -4841,7 +5020,7 @@
     <value>15, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelExtinctionOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 47</value>
+    <value>198, 47</value>
   </data>
   <data name="flowLayoutPanelExtinctionOption.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -4882,6 +5061,9 @@
   <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
     <value>Kinematical &amp;&amp; excitation error</value>
   </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>In this mode, the intensity is by the structure factor and the excitation error.</value>
+  </data>
   <data name="&gt;&gt;radioButtonIntensityKinematical.Name" xml:space="preserve">
     <value>radioButtonIntensityKinematical</value>
   </data>
@@ -4920,6 +5102,9 @@
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
     <value>Details of spot information</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>Open the window with details of spot information</value>
   </data>
   <data name="&gt;&gt;buttonDetailsOfSpots.Name" xml:space="preserve">
     <value>buttonDetailsOfSpots</value>
@@ -5032,6 +5217,9 @@
   <data name="radioButtonBeamParallel.Text" xml:space="preserve">
     <value>Parallel</value>
   </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>Parallel beam mode (i.e., SAED mode)</value>
+  </data>
   <data name="&gt;&gt;radioButtonBeamParallel.Name" xml:space="preserve">
     <value>radioButtonBeamParallel</value>
   </data>
@@ -5068,6 +5256,9 @@
   <data name="radioButtonBeamPrecession.Text" xml:space="preserve">
     <value>Precession</value>
   </data>
+  <data name="radioButtonBeamPrecession.ToolTip" xml:space="preserve">
+    <value>Precession beam mode (i.e. PED mode)</value>
+  </data>
   <data name="&gt;&gt;radioButtonBeamPrecession.Name" xml:space="preserve">
     <value>radioButtonBeamPrecession</value>
   </data>
@@ -5103,6 +5294,9 @@
   </data>
   <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
     <value>Convergence</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>Convergent beam mode (i.e. CBED mode)</value>
   </data>
   <data name="&gt;&gt;radioButtonBeamConvergence.Name" xml:space="preserve">
     <value>radioButtonBeamConvergence</value>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRotationMatrix));
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,6 +79,7 @@
             this.buttonViewAlongBeam = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -126,6 +128,7 @@
             this.numericBox11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox11.Name = "numericBox11";
             this.numericBox11.ReadOnly = true;
+            this.numericBox11.RoundErrorAccuracy = -1;
             this.numericBox11.SkipEventDuringInput = false;
             this.numericBox11.SmartIncrement = true;
             this.numericBox11.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -142,6 +145,7 @@
             this.numericBox12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox12.Name = "numericBox12";
             this.numericBox12.ReadOnly = true;
+            this.numericBox12.RoundErrorAccuracy = -1;
             this.numericBox12.SkipEventDuringInput = false;
             this.numericBox12.SmartIncrement = true;
             this.numericBox12.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -158,6 +162,7 @@
             this.numericBox13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox13.Name = "numericBox13";
             this.numericBox13.ReadOnly = true;
+            this.numericBox13.RoundErrorAccuracy = -1;
             this.numericBox13.SkipEventDuringInput = false;
             this.numericBox13.SmartIncrement = true;
             this.numericBox13.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -174,6 +179,7 @@
             this.numericBox21.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox21.Name = "numericBox21";
             this.numericBox21.ReadOnly = true;
+            this.numericBox21.RoundErrorAccuracy = -1;
             this.numericBox21.SkipEventDuringInput = false;
             this.numericBox21.SmartIncrement = true;
             this.numericBox21.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -190,6 +196,7 @@
             this.numericBox22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox22.Name = "numericBox22";
             this.numericBox22.ReadOnly = true;
+            this.numericBox22.RoundErrorAccuracy = -1;
             this.numericBox22.SkipEventDuringInput = false;
             this.numericBox22.SmartIncrement = true;
             this.numericBox22.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -206,6 +213,7 @@
             this.numericBox33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox33.Name = "numericBox33";
             this.numericBox33.ReadOnly = true;
+            this.numericBox33.RoundErrorAccuracy = -1;
             this.numericBox33.SkipEventDuringInput = false;
             this.numericBox33.SmartIncrement = true;
             this.numericBox33.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -222,6 +230,7 @@
             this.numericBox23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox23.Name = "numericBox23";
             this.numericBox23.ReadOnly = true;
+            this.numericBox23.RoundErrorAccuracy = -1;
             this.numericBox23.SkipEventDuringInput = false;
             this.numericBox23.SmartIncrement = true;
             this.numericBox23.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -238,6 +247,7 @@
             this.numericBox31.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox31.Name = "numericBox31";
             this.numericBox31.ReadOnly = true;
+            this.numericBox31.RoundErrorAccuracy = -1;
             this.numericBox31.SkipEventDuringInput = false;
             this.numericBox31.SmartIncrement = true;
             this.numericBox31.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -254,6 +264,7 @@
             this.numericBox32.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox32.Name = "numericBox32";
             this.numericBox32.ReadOnly = true;
+            this.numericBox32.RoundErrorAccuracy = -1;
             this.numericBox32.SkipEventDuringInput = false;
             this.numericBox32.SmartIncrement = true;
             this.numericBox32.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -270,6 +281,7 @@
             // 
             resources.ApplyResources(this.buttonCopy, "buttonCopy");
             this.buttonCopy.Name = "buttonCopy";
+            this.toolTip.SetToolTip(this.buttonCopy, resources.GetString("buttonCopy.ToolTip"));
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
@@ -277,6 +289,7 @@
             // 
             resources.ApplyResources(this.buttonPaste, "buttonPaste");
             this.buttonPaste.Name = "buttonPaste";
+            this.toolTip.SetToolTip(this.buttonPaste, resources.GetString("buttonPaste.ToolTip"));
             this.buttonPaste.UseVisualStyleBackColor = true;
             this.buttonPaste.Click += new System.EventHandler(this.buttonPaste_Click);
             // 
@@ -284,12 +297,12 @@
             // 
             resources.ApplyResources(this.buttonViewIsometric, "buttonViewIsometric");
             this.buttonViewIsometric.Name = "buttonViewIsometric";
+            this.toolTip.SetToolTip(this.buttonViewIsometric, resources.GetString("buttonViewIsometric.ToolTip"));
             this.buttonViewIsometric.UseVisualStyleBackColor = true;
             this.buttonViewIsometric.Click += new System.EventHandler(this.ButtonViewIsometric_Click);
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.numericBoxPhi);
             this.groupBox1.Controls.Add(this.numericBoxTheta);
             this.groupBox1.Controls.Add(this.numericBoxPsi);
@@ -300,6 +313,7 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -312,11 +326,13 @@
             this.numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPhi.Name = "numericBoxPhi";
             this.numericBoxPhi.ReadOnly = true;
+            this.numericBoxPhi.RoundErrorAccuracy = -1;
             this.numericBoxPhi.SkipEventDuringInput = false;
             this.numericBoxPhi.SmartIncrement = true;
             this.numericBoxPhi.TextBoxBackColor = System.Drawing.Color.Yellow;
             this.numericBoxPhi.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip"));
             // 
             // numericBoxTheta
             // 
@@ -327,11 +343,13 @@
             this.numericBoxTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTheta.Name = "numericBoxTheta";
             this.numericBoxTheta.ReadOnly = true;
+            this.numericBoxTheta.RoundErrorAccuracy = -1;
             this.numericBoxTheta.SkipEventDuringInput = false;
             this.numericBoxTheta.SmartIncrement = true;
             this.numericBoxTheta.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTheta.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTheta.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxTheta, resources.GetString("numericBoxTheta.ToolTip"));
             // 
             // numericBoxPsi
             // 
@@ -342,11 +360,13 @@
             this.numericBoxPsi.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPsi.Name = "numericBoxPsi";
             this.numericBoxPsi.ReadOnly = true;
+            this.numericBoxPsi.RoundErrorAccuracy = -1;
             this.numericBoxPsi.SkipEventDuringInput = false;
             this.numericBoxPsi.SmartIncrement = true;
             this.numericBoxPsi.TextBoxBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPsi.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPsi.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPsi, resources.GetString("numericBoxPsi.ToolTip"));
             // 
             // radioButton1stX
             // 
@@ -355,6 +375,7 @@
             this.radioButton1stX.ForeColor = System.Drawing.Color.Red;
             this.radioButton1stX.Name = "radioButton1stX";
             this.radioButton1stX.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButton1stX, resources.GetString("radioButton1stX.ToolTip"));
             this.radioButton1stX.UseVisualStyleBackColor = true;
             this.radioButton1stX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -371,6 +392,7 @@
             resources.ApplyResources(this.radioButton1stY, "radioButton1stY");
             this.radioButton1stY.ForeColor = System.Drawing.Color.Green;
             this.radioButton1stY.Name = "radioButton1stY";
+            this.toolTip.SetToolTip(this.radioButton1stY, resources.GetString("radioButton1stY.ToolTip"));
             this.radioButton1stY.UseVisualStyleBackColor = true;
             this.radioButton1stY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -379,6 +401,7 @@
             resources.ApplyResources(this.radioButton1stZ, "radioButton1stZ");
             this.radioButton1stZ.ForeColor = System.Drawing.Color.Blue;
             this.radioButton1stZ.Name = "radioButton1stZ";
+            this.toolTip.SetToolTip(this.radioButton1stZ, resources.GetString("radioButton1stZ.ToolTip"));
             this.radioButton1stZ.UseVisualStyleBackColor = true;
             this.radioButton1stZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -395,6 +418,7 @@
             resources.ApplyResources(this.radioButton2ndX, "radioButton2ndX");
             this.radioButton2ndX.ForeColor = System.Drawing.Color.Red;
             this.radioButton2ndX.Name = "radioButton2ndX";
+            this.toolTip.SetToolTip(this.radioButton2ndX, resources.GetString("radioButton2ndX.ToolTip"));
             this.radioButton2ndX.UseVisualStyleBackColor = true;
             this.radioButton2ndX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -403,6 +427,7 @@
             resources.ApplyResources(this.radioButton2ndY, "radioButton2ndY");
             this.radioButton2ndY.ForeColor = System.Drawing.Color.Green;
             this.radioButton2ndY.Name = "radioButton2ndY";
+            this.toolTip.SetToolTip(this.radioButton2ndY, resources.GetString("radioButton2ndY.ToolTip"));
             this.radioButton2ndY.UseVisualStyleBackColor = true;
             this.radioButton2ndY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -413,6 +438,7 @@
             this.radioButton2ndZ.ForeColor = System.Drawing.Color.Blue;
             this.radioButton2ndZ.Name = "radioButton2ndZ";
             this.radioButton2ndZ.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButton2ndZ, resources.GetString("radioButton2ndZ.ToolTip"));
             this.radioButton2ndZ.UseVisualStyleBackColor = true;
             this.radioButton2ndZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -429,6 +455,7 @@
             resources.ApplyResources(this.radioButton3rdX, "radioButton3rdX");
             this.radioButton3rdX.ForeColor = System.Drawing.Color.Red;
             this.radioButton3rdX.Name = "radioButton3rdX";
+            this.toolTip.SetToolTip(this.radioButton3rdX, resources.GetString("radioButton3rdX.ToolTip"));
             this.radioButton3rdX.UseVisualStyleBackColor = true;
             this.radioButton3rdX.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -439,6 +466,7 @@
             this.radioButton3rdY.ForeColor = System.Drawing.Color.Green;
             this.radioButton3rdY.Name = "radioButton3rdY";
             this.radioButton3rdY.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButton3rdY, resources.GetString("radioButton3rdY.ToolTip"));
             this.radioButton3rdY.UseVisualStyleBackColor = true;
             this.radioButton3rdY.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -447,6 +475,7 @@
             resources.ApplyResources(this.radioButton3rdZ, "radioButton3rdZ");
             this.radioButton3rdZ.ForeColor = System.Drawing.Color.Blue;
             this.radioButton3rdZ.Name = "radioButton3rdZ";
+            this.toolTip.SetToolTip(this.radioButton3rdZ, resources.GetString("radioButton3rdZ.ToolTip"));
             this.radioButton3rdZ.UseVisualStyleBackColor = true;
             this.radioButton3rdZ.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
@@ -454,12 +483,12 @@
             // 
             resources.ApplyResources(this.checkBoxLink, "checkBoxLink");
             this.checkBoxLink.Name = "checkBoxLink";
+            this.toolTip.SetToolTip(this.checkBoxLink, resources.GetString("checkBoxLink.ToolTip"));
             this.checkBoxLink.UseVisualStyleBackColor = true;
             this.checkBoxLink.CheckedChanged += new System.EventHandler(this.CheckBoxLink_CheckedChanged);
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.buttonResetExpEuler);
             this.groupBox2.Controls.Add(this.flowLayoutPanel1);
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
@@ -473,6 +502,7 @@
             this.groupBox2.Controls.Add(this.numericBoxExp2);
             this.groupBox2.Controls.Add(this.numericBoxExp1);
             this.groupBox2.Controls.Add(this.label5);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -480,6 +510,7 @@
             // 
             resources.ApplyResources(this.buttonResetExpEuler, "buttonResetExpEuler");
             this.buttonResetExpEuler.Name = "buttonResetExpEuler";
+            this.toolTip.SetToolTip(this.buttonResetExpEuler, resources.GetString("buttonResetExpEuler.ToolTip"));
             this.buttonResetExpEuler.UseVisualStyleBackColor = true;
             this.buttonResetExpEuler.Click += new System.EventHandler(this.buttonResetExpEuler_Click);
             // 
@@ -489,6 +520,7 @@
             this.checkBoxEnable3rd.Checked = true;
             this.checkBoxEnable3rd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEnable3rd.Name = "checkBoxEnable3rd";
+            this.toolTip.SetToolTip(this.checkBoxEnable3rd, resources.GetString("checkBoxEnable3rd.ToolTip"));
             this.checkBoxEnable3rd.UseVisualStyleBackColor = true;
             this.checkBoxEnable3rd.CheckedChanged += new System.EventHandler(this.checkBox1st_CheckedChanged);
             // 
@@ -496,18 +528,21 @@
             // 
             resources.ApplyResources(this.checkBoxFix3rd, "checkBoxFix3rd");
             this.checkBoxFix3rd.Name = "checkBoxFix3rd";
+            this.toolTip.SetToolTip(this.checkBoxFix3rd, resources.GetString("checkBoxFix3rd.ToolTip"));
             this.checkBoxFix3rd.UseVisualStyleBackColor = true;
             // 
             // checkBoxFix2nd
             // 
             resources.ApplyResources(this.checkBoxFix2nd, "checkBoxFix2nd");
             this.checkBoxFix2nd.Name = "checkBoxFix2nd";
+            this.toolTip.SetToolTip(this.checkBoxFix2nd, resources.GetString("checkBoxFix2nd.ToolTip"));
             this.checkBoxFix2nd.UseVisualStyleBackColor = true;
             // 
             // checkBoxFix1st
             // 
             resources.ApplyResources(this.checkBoxFix1st, "checkBoxFix1st");
             this.checkBoxFix1st.Name = "checkBoxFix1st";
+            this.toolTip.SetToolTip(this.checkBoxFix1st, resources.GetString("checkBoxFix1st.ToolTip"));
             this.checkBoxFix1st.UseVisualStyleBackColor = true;
             // 
             // checkBoxEnable2nd
@@ -516,6 +551,7 @@
             this.checkBoxEnable2nd.Checked = true;
             this.checkBoxEnable2nd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxEnable2nd.Name = "checkBoxEnable2nd";
+            this.toolTip.SetToolTip(this.checkBoxEnable2nd, resources.GetString("checkBoxEnable2nd.ToolTip"));
             this.checkBoxEnable2nd.UseVisualStyleBackColor = true;
             this.checkBoxEnable2nd.CheckedChanged += new System.EventHandler(this.checkBox1st_CheckedChanged);
             // 
@@ -527,10 +563,12 @@
             this.numericBoxExp3.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp3.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp3.Name = "numericBoxExp3";
+            this.numericBoxExp3.RoundErrorAccuracy = -1;
             this.numericBoxExp3.ShowUpDown = true;
             this.numericBoxExp3.SkipEventDuringInput = false;
             this.numericBoxExp3.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxExp3.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxExp3, resources.GetString("numericBoxExp3.ToolTip"));
             this.numericBoxExp3.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxExp_ValueChanged);
             // 
             // numericBoxExp2
@@ -541,10 +579,12 @@
             this.numericBoxExp2.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp2.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp2.Name = "numericBoxExp2";
+            this.numericBoxExp2.RoundErrorAccuracy = -1;
             this.numericBoxExp2.ShowUpDown = true;
             this.numericBoxExp2.SkipEventDuringInput = false;
             this.numericBoxExp2.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxExp2.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxExp2, resources.GetString("numericBoxExp2.ToolTip"));
             this.numericBoxExp2.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxExp_ValueChanged);
             // 
             // numericBoxExp1
@@ -555,10 +595,12 @@
             this.numericBoxExp1.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp1.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxExp1.Name = "numericBoxExp1";
+            this.numericBoxExp1.RoundErrorAccuracy = -1;
             this.numericBoxExp1.ShowUpDown = true;
             this.numericBoxExp1.SkipEventDuringInput = false;
             this.numericBoxExp1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxExp1.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxExp1, resources.GetString("numericBoxExp1.ToolTip"));
             this.numericBoxExp1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxExp_ValueChanged);
             // 
             // label5
@@ -568,14 +610,15 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // buttonViewAlongBeam
             // 
             resources.ApplyResources(this.buttonViewAlongBeam, "buttonViewAlongBeam");
             this.buttonViewAlongBeam.Name = "buttonViewAlongBeam";
+            this.toolTip.SetToolTip(this.buttonViewAlongBeam, resources.GetString("buttonViewAlongBeam.ToolTip"));
             this.buttonViewAlongBeam.UseVisualStyleBackColor = true;
             this.buttonViewAlongBeam.Click += new System.EventHandler(this.ButtonViewAlongBeam_Click);
             // 
@@ -679,5 +722,6 @@
         private System.Windows.Forms.CheckBox checkBoxFix2nd;
         private System.Windows.Forms.CheckBox checkBoxFix1st;
         private System.Windows.Forms.Button buttonResetExpEuler;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

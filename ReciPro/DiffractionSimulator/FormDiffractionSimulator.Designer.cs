@@ -525,6 +525,7 @@
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // trackBarStrSize
             // 
@@ -564,6 +565,7 @@
             this.colorControlString.Name = "colorControlString";
             this.colorControlString.Red = 255;
             this.colorControlString.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlString, resources.GetString("colorControlString.ToolTip"));
             this.colorControlString.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // label14
@@ -602,6 +604,7 @@
             this.colorControlBackGround.Name = "colorControlBackGround";
             this.colorControlBackGround.Red = 32;
             this.colorControlBackGround.RedF = 0.1254902F;
+            this.toolTip.SetToolTip(this.colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
             this.colorControlBackGround.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // tabPageKikuchi
@@ -627,6 +630,7 @@
             this.numericBoxKikuchiLineThreshold.ShowUpDown = true;
             this.numericBoxKikuchiLineThreshold.SmartIncrement = true;
             this.numericBoxKikuchiLineThreshold.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxKikuchiLineThreshold, resources.GetString("numericBoxKikuchiLineThreshold.ToolTip"));
             this.numericBoxKikuchiLineThreshold.Value = 0.4D;
             this.numericBoxKikuchiLineThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxKikuchiLineThreshold_ValueChanged);
             // 
@@ -704,12 +708,14 @@
             this.colorControlDebyeRing.Name = "colorControlDebyeRing";
             this.colorControlDebyeRing.Red = 255;
             this.colorControlDebyeRing.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip"));
             this.colorControlDebyeRing.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // checkBoxDebyeRingLabel
             // 
             resources.ApplyResources(this.checkBoxDebyeRingLabel, "checkBoxDebyeRingLabel");
             this.checkBoxDebyeRingLabel.Name = "checkBoxDebyeRingLabel";
+            this.toolTip.SetToolTip(this.checkBoxDebyeRingLabel, resources.GetString("checkBoxDebyeRingLabel.ToolTip"));
             this.checkBoxDebyeRingLabel.UseVisualStyleBackColor = true;
             this.checkBoxDebyeRingLabel.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -717,6 +723,7 @@
             // 
             resources.ApplyResources(this.checkBoxDebyeRingIgnoreIntensity, "checkBoxDebyeRingIgnoreIntensity");
             this.checkBoxDebyeRingIgnoreIntensity.Name = "checkBoxDebyeRingIgnoreIntensity";
+            this.toolTip.SetToolTip(this.checkBoxDebyeRingIgnoreIntensity, resources.GetString("checkBoxDebyeRingIgnoreIntensity.ToolTip"));
             this.checkBoxDebyeRingIgnoreIntensity.UseVisualStyleBackColor = true;
             this.checkBoxDebyeRingIgnoreIntensity.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -734,6 +741,7 @@
             this.trackBarDebyeRingWidth.Name = "trackBarDebyeRingWidth";
             this.trackBarDebyeRingWidth.TickFrequency = 500;
             this.trackBarDebyeRingWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.trackBarDebyeRingWidth, resources.GetString("trackBarDebyeRingWidth.ToolTip"));
             this.trackBarDebyeRingWidth.Value = 5;
             this.trackBarDebyeRingWidth.ValueChanged += new System.EventHandler(this.Draw);
             // 
@@ -756,6 +764,7 @@
             this.checkBoxScaleLabel.Checked = true;
             this.checkBoxScaleLabel.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxScaleLabel.Name = "checkBoxScaleLabel";
+            this.toolTip.SetToolTip(this.checkBoxScaleLabel, resources.GetString("checkBoxScaleLabel.ToolTip"));
             this.checkBoxScaleLabel.UseVisualStyleBackColor = true;
             this.checkBoxScaleLabel.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -770,6 +779,7 @@
             this.trackBarScaleLineWidth.Minimum = 1;
             this.trackBarScaleLineWidth.Name = "trackBarScaleLineWidth";
             this.trackBarScaleLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.toolTip.SetToolTip(this.trackBarScaleLineWidth, resources.GetString("trackBarScaleLineWidth.ToolTip"));
             this.trackBarScaleLineWidth.Value = 3;
             this.trackBarScaleLineWidth.Scroll += new System.EventHandler(this.Draw);
             // 
@@ -791,6 +801,7 @@
             // 
             resources.ApplyResources(this.radioButtonScaleDivisionFine, "radioButtonScaleDivisionFine");
             this.radioButtonScaleDivisionFine.Name = "radioButtonScaleDivisionFine";
+            this.toolTip.SetToolTip(this.radioButtonScaleDivisionFine, resources.GetString("radioButtonScaleDivisionFine.ToolTip"));
             this.radioButtonScaleDivisionFine.UseVisualStyleBackColor = true;
             this.radioButtonScaleDivisionFine.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -800,6 +811,7 @@
             this.radioButtonScaleDivisionMedium.Checked = true;
             this.radioButtonScaleDivisionMedium.Name = "radioButtonScaleDivisionMedium";
             this.radioButtonScaleDivisionMedium.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonScaleDivisionMedium, resources.GetString("radioButtonScaleDivisionMedium.ToolTip"));
             this.radioButtonScaleDivisionMedium.UseVisualStyleBackColor = true;
             this.radioButtonScaleDivisionMedium.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -807,6 +819,7 @@
             // 
             resources.ApplyResources(this.radioButtonScaleDivisionCoarse, "radioButtonScaleDivisionCoarse");
             this.radioButtonScaleDivisionCoarse.Name = "radioButtonScaleDivisionCoarse";
+            this.toolTip.SetToolTip(this.radioButtonScaleDivisionCoarse, resources.GetString("radioButtonScaleDivisionCoarse.ToolTip"));
             this.radioButtonScaleDivisionCoarse.UseVisualStyleBackColor = true;
             // 
             // colorControlScaleAzimuth
@@ -823,6 +836,7 @@
             this.colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
             this.colorControlScaleAzimuth.Red = 119;
             this.colorControlScaleAzimuth.RedF = 0.4666667F;
+            this.toolTip.SetToolTip(this.colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip"));
             this.colorControlScaleAzimuth.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlScale2Theta
@@ -839,6 +853,7 @@
             this.colorControlScale2Theta.Name = "colorControlScale2Theta";
             this.colorControlScale2Theta.Red = 68;
             this.colorControlScale2Theta.RedF = 0.2666667F;
+            this.toolTip.SetToolTip(this.colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip"));
             this.colorControlScale2Theta.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // tabPageMisc
@@ -971,6 +986,7 @@
             // 
             resources.ApplyResources(this.checkBoxMousePositionDetailes, "checkBoxMousePositionDetailes");
             this.checkBoxMousePositionDetailes.Name = "checkBoxMousePositionDetailes";
+            this.toolTip.SetToolTip(this.checkBoxMousePositionDetailes, resources.GetString("checkBoxMousePositionDetailes.ToolTip"));
             this.checkBoxMousePositionDetailes.UseVisualStyleBackColor = true;
             this.checkBoxMousePositionDetailes.CheckedChanged += new System.EventHandler(this.checkBoxMousePositionDetailes_CheckedChanged);
             // 
@@ -1023,6 +1039,7 @@
             this.numericBoxClientHeight.SmartIncrement = true;
             this.numericBoxClientHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxClientHeight.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
             this.numericBoxClientHeight.Value = 1000D;
             this.numericBoxClientHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxClientSize_ValueChanged);
             // 
@@ -1042,6 +1059,7 @@
             this.numericBoxClientWidth.SmartIncrement = true;
             this.numericBoxClientWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxClientWidth.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
             this.numericBoxClientWidth.Value = 1000D;
             this.numericBoxClientWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxClientSize_ValueChanged);
             // 
@@ -1061,6 +1079,7 @@
             this.numericBoxResolution.SmartIncrement = true;
             this.numericBoxResolution.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxResolution.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             this.numericBoxResolution.Value = 0.08D;
             this.numericBoxResolution.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericUpDownResolution_ValueChanged);
             // 
@@ -1106,6 +1125,7 @@
             // 
             resources.ApplyResources(this.buttonDetailedGeometry, "buttonDetailedGeometry");
             this.buttonDetailedGeometry.Name = "buttonDetailedGeometry";
+            this.toolTip.SetToolTip(this.buttonDetailedGeometry, resources.GetString("buttonDetailedGeometry.ToolTip"));
             this.buttonDetailedGeometry.UseVisualStyleBackColor = true;
             this.buttonDetailedGeometry.Click += new System.EventHandler(this.buttonDetailedGeometry_Click);
             // 
@@ -1136,6 +1156,7 @@
             // 
             resources.ApplyResources(this.buttonResetCenter, "buttonResetCenter");
             this.buttonResetCenter.Name = "buttonResetCenter";
+            this.toolTip.SetToolTip(this.buttonResetCenter, resources.GetString("buttonResetCenter.ToolTip"));
             this.buttonResetCenter.UseVisualStyleBackColor = true;
             this.buttonResetCenter.Click += new System.EventHandler(this.buttonResetCenter_Click_1);
             // 
@@ -1144,6 +1165,7 @@
             resources.ApplyResources(this.radioButtonCenterToDetector, "radioButtonCenterToDetector");
             this.radioButtonCenterToDetector.Name = "radioButtonCenterToDetector";
             this.radioButtonCenterToDetector.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonCenterToDetector, resources.GetString("radioButtonCenterToDetector.ToolTip"));
             this.radioButtonCenterToDetector.UseVisualStyleBackColor = true;
             this.radioButtonCenterToDetector.CheckedChanged += new System.EventHandler(this.radioButtonCenterTo_CheckedChanged);
             // 
@@ -1153,6 +1175,7 @@
             this.radioButtonCenterToFoot.Checked = true;
             this.radioButtonCenterToFoot.Name = "radioButtonCenterToFoot";
             this.radioButtonCenterToFoot.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonCenterToFoot, resources.GetString("radioButtonCenterToFoot.ToolTip"));
             this.radioButtonCenterToFoot.UseVisualStyleBackColor = true;
             this.radioButtonCenterToFoot.CheckedChanged += new System.EventHandler(this.radioButtonCenterTo_CheckedChanged);
             // 
@@ -1160,6 +1183,7 @@
             // 
             resources.ApplyResources(this.checkBoxFixCenter, "checkBoxFixCenter");
             this.checkBoxFixCenter.Name = "checkBoxFixCenter";
+            this.toolTip.SetToolTip(this.checkBoxFixCenter, resources.GetString("checkBoxFixCenter.ToolTip"));
             this.checkBoxFixCenter.UseVisualStyleBackColor = true;
             this.checkBoxFixCenter.CheckedChanged += new System.EventHandler(this.checkBoxFixCenter_CheckedChanged);
             // 
@@ -1167,6 +1191,7 @@
             // 
             resources.ApplyResources(this.radioButtonCenterToDirect, "radioButtonCenterToDirect");
             this.radioButtonCenterToDirect.Name = "radioButtonCenterToDirect";
+            this.toolTip.SetToolTip(this.radioButtonCenterToDirect, resources.GetString("radioButtonCenterToDirect.ToolTip"));
             this.radioButtonCenterToDirect.UseVisualStyleBackColor = true;
             this.radioButtonCenterToDirect.CheckedChanged += new System.EventHandler(this.radioButtonCenterTo_CheckedChanged);
             // 
@@ -1452,6 +1477,7 @@
             // 
             resources.ApplyResources(this.radioButtonIntensityBethe, "radioButtonIntensityBethe");
             this.radioButtonIntensityBethe.Name = "radioButtonIntensityBethe";
+            this.toolTip.SetToolTip(this.radioButtonIntensityBethe, resources.GetString("radioButtonIntensityBethe.ToolTip"));
             this.radioButtonIntensityBethe.UseVisualStyleBackColor = true;
             this.radioButtonIntensityBethe.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 
@@ -1459,12 +1485,14 @@
             // 
             resources.ApplyResources(this.checkBoxUseCrystalColor, "checkBoxUseCrystalColor");
             this.checkBoxUseCrystalColor.Name = "checkBoxUseCrystalColor";
+            this.toolTip.SetToolTip(this.checkBoxUseCrystalColor, resources.GetString("checkBoxUseCrystalColor.ToolTip"));
             this.checkBoxUseCrystalColor.CheckedChanged += new System.EventHandler(this.checkBoxUseCrystalColor_CheckedChanged);
             // 
             // checkBoxExtinctionAll
             // 
             resources.ApplyResources(this.checkBoxExtinctionAll, "checkBoxExtinctionAll");
             this.checkBoxExtinctionAll.Name = "checkBoxExtinctionAll";
+            this.toolTip.SetToolTip(this.checkBoxExtinctionAll, resources.GetString("checkBoxExtinctionAll.ToolTip"));
             this.checkBoxExtinctionAll.CheckedChanged += new System.EventHandler(this.checkBoxExtinctionAll_CheckedChanged);
             // 
             // checkBoxExtinctionLattice
@@ -1473,6 +1501,7 @@
             this.checkBoxExtinctionLattice.Checked = true;
             this.checkBoxExtinctionLattice.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxExtinctionLattice.Name = "checkBoxExtinctionLattice";
+            this.toolTip.SetToolTip(this.checkBoxExtinctionLattice, resources.GetString("checkBoxExtinctionLattice.ToolTip"));
             this.checkBoxExtinctionLattice.CheckedChanged += new System.EventHandler(this.checkBoxExtinctionAll_CheckedChanged);
             // 
             // groupBoxSpotProperty
@@ -1521,6 +1550,7 @@
             this.numericBoxPED_Semiangle.SmartIncrement = true;
             this.numericBoxPED_Semiangle.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPED_Semiangle.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             this.numericBoxPED_Semiangle.Value = 50D;
             this.numericBoxPED_Semiangle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1540,6 +1570,7 @@
             this.numericBoxPED_Step.SmartIncrement = true;
             this.numericBoxPED_Step.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPED_Step.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             this.numericBoxPED_Step.Value = 36D;
             this.numericBoxPED_Step.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1572,6 +1603,7 @@
             this.numericBoxNumOfBlochWave.SmartIncrement = true;
             this.numericBoxNumOfBlochWave.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             this.numericBoxNumOfBlochWave.Value = 240D;
             this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1591,6 +1623,7 @@
             this.numericBoxThickness.SkipEventDuringInput = false;
             this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThickness.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             this.numericBoxThickness.UpDown_Increment = 10D;
             this.numericBoxThickness.Value = 50D;
             this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
@@ -1627,6 +1660,7 @@
             this.radioButtonCircleArea.Checked = true;
             this.radioButtonCircleArea.Name = "radioButtonCircleArea";
             this.radioButtonCircleArea.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonCircleArea, resources.GetString("radioButtonCircleArea.ToolTip"));
             this.radioButtonCircleArea.UseVisualStyleBackColor = true;
             this.radioButtonCircleArea.CheckedChanged += new System.EventHandler(this.radioButtonPointSpread_CheckedChanged);
             // 
@@ -1634,6 +1668,7 @@
             // 
             resources.ApplyResources(this.radioButtonPointSpread, "radioButtonPointSpread");
             this.radioButtonPointSpread.Name = "radioButtonPointSpread";
+            this.toolTip.SetToolTip(this.radioButtonPointSpread, resources.GetString("radioButtonPointSpread.ToolTip"));
             this.radioButtonPointSpread.UseVisualStyleBackColor = true;
             this.radioButtonPointSpread.CheckedChanged += new System.EventHandler(this.radioButtonPointSpread_CheckedChanged);
             // 
@@ -1643,6 +1678,7 @@
             this.flowLayoutPanel7.Controls.Add(this.label8);
             this.flowLayoutPanel7.Controls.Add(this.trackBarSpotOpacity);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.toolTip.SetToolTip(this.flowLayoutPanel7, resources.GetString("flowLayoutPanel7.ToolTip"));
             // 
             // label8
             // 
@@ -1686,6 +1722,7 @@
             this.numericBoxSpotRadius.SmartIncrement = true;
             this.numericBoxSpotRadius.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSpotRadius.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip"));
             this.numericBoxSpotRadius.UpDown_Increment = 0.01D;
             this.numericBoxSpotRadius.Value = 0.2D;
             this.numericBoxSpotRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
@@ -1748,12 +1785,14 @@
             resources.GetString("comboBoxScaleColorScale.Items"),
             resources.GetString("comboBoxScaleColorScale.Items1")});
             this.comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
+            this.toolTip.SetToolTip(this.comboBoxScaleColorScale, resources.GetString("comboBoxScaleColorScale.ToolTip"));
             this.comboBoxScaleColorScale.SelectedIndexChanged += new System.EventHandler(this.comboBoxScaleColorScale_SelectedIndexChanged);
             // 
             // checkBoxLogScale
             // 
             resources.ApplyResources(this.checkBoxLogScale, "checkBoxLogScale");
             this.checkBoxLogScale.Name = "checkBoxLogScale";
+            this.toolTip.SetToolTip(this.checkBoxLogScale, resources.GetString("checkBoxLogScale.ToolTip"));
             this.checkBoxLogScale.UseVisualStyleBackColor = true;
             this.checkBoxLogScale.CheckedChanged += new System.EventHandler(this.Draw);
             // 
@@ -1794,6 +1833,7 @@
             this.colorControlOrigin.Name = "colorControlOrigin";
             this.colorControlOrigin.Red = 255;
             this.colorControlOrigin.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip1"));
             this.colorControlOrigin.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlNoCondition
@@ -1810,6 +1850,7 @@
             this.colorControlNoCondition.Name = "colorControlNoCondition";
             this.colorControlNoCondition.Red = 255;
             this.colorControlNoCondition.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip1"));
             this.colorControlNoCondition.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlScrewGlide
@@ -1826,6 +1867,7 @@
             this.colorControlScrewGlide.Name = "colorControlScrewGlide";
             this.colorControlScrewGlide.Red = 255;
             this.colorControlScrewGlide.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip1"));
             this.colorControlScrewGlide.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // colorControlForbiddenLattice
@@ -1842,6 +1884,7 @@
             this.colorControlForbiddenLattice.Name = "colorControlForbiddenLattice";
             this.colorControlForbiddenLattice.Red = 192;
             this.colorControlForbiddenLattice.RedF = 0.7529412F;
+            this.toolTip.SetToolTip(this.colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip1"));
             this.colorControlForbiddenLattice.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // flowLayoutPanel3
@@ -1867,6 +1910,7 @@
             this.radioButtonIntensityExcitation.Checked = true;
             this.radioButtonIntensityExcitation.Name = "radioButtonIntensityExcitation";
             this.radioButtonIntensityExcitation.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonIntensityExcitation, resources.GetString("radioButtonIntensityExcitation.ToolTip"));
             this.radioButtonIntensityExcitation.UseVisualStyleBackColor = true;
             this.radioButtonIntensityExcitation.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 
@@ -1881,6 +1925,7 @@
             // 
             resources.ApplyResources(this.radioButtonIntensityKinematical, "radioButtonIntensityKinematical");
             this.radioButtonIntensityKinematical.Name = "radioButtonIntensityKinematical";
+            this.toolTip.SetToolTip(this.radioButtonIntensityKinematical, resources.GetString("radioButtonIntensityKinematical.ToolTip"));
             this.radioButtonIntensityKinematical.UseVisualStyleBackColor = true;
             this.radioButtonIntensityKinematical.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 
@@ -1888,6 +1933,7 @@
             // 
             resources.ApplyResources(this.buttonDetailsOfSpots, "buttonDetailsOfSpots");
             this.buttonDetailsOfSpots.Name = "buttonDetailsOfSpots";
+            this.toolTip.SetToolTip(this.buttonDetailsOfSpots, resources.GetString("buttonDetailsOfSpots.ToolTip"));
             this.buttonDetailsOfSpots.UseVisualStyleBackColor = true;
             this.buttonDetailsOfSpots.Click += new System.EventHandler(this.ButtonDetailsOfSpots_Click);
             // 
@@ -1918,6 +1964,7 @@
             this.radioButtonBeamParallel.Checked = true;
             this.radioButtonBeamParallel.Name = "radioButtonBeamParallel";
             this.radioButtonBeamParallel.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonBeamParallel, resources.GetString("radioButtonBeamParallel.ToolTip"));
             this.radioButtonBeamParallel.UseVisualStyleBackColor = true;
             this.radioButtonBeamParallel.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 
@@ -1925,6 +1972,7 @@
             // 
             resources.ApplyResources(this.radioButtonBeamPrecession, "radioButtonBeamPrecession");
             this.radioButtonBeamPrecession.Name = "radioButtonBeamPrecession";
+            this.toolTip.SetToolTip(this.radioButtonBeamPrecession, resources.GetString("radioButtonBeamPrecession.ToolTip"));
             this.radioButtonBeamPrecession.UseVisualStyleBackColor = true;
             this.radioButtonBeamPrecession.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 
@@ -1932,6 +1980,7 @@
             // 
             resources.ApplyResources(this.radioButtonBeamConvergence, "radioButtonBeamConvergence");
             this.radioButtonBeamConvergence.Name = "radioButtonBeamConvergence";
+            this.toolTip.SetToolTip(this.radioButtonBeamConvergence, resources.GetString("radioButtonBeamConvergence.ToolTip"));
             this.radioButtonBeamConvergence.UseVisualStyleBackColor = true;
             this.radioButtonBeamConvergence.CheckedChanged += new System.EventHandler(this.radioButtonIntensityCalculationMethod_CheckedChanged);
             // 

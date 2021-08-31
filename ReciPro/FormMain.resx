@@ -534,7 +534,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>↑ Add ↑</value>
   </data>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value>Click to add the selected crystal to the list.</value>
+    <value>Add the selected crystal to the above list.</value>
   </data>
   <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
     <value>buttonAdd</value>
@@ -573,7 +573,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>↑ Replace ↑</value>
   </data>
   <data name="buttonChange.ToolTip" xml:space="preserve">
-    <value>Click to replace the selected crystal in the list with new crystal.</value>
+    <value>Replace the below new crystal with the above selected crystal.</value>
   </data>
   <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
     <value>buttonChange</value>
@@ -752,6 +752,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
     <value>Fix</value>
   </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>By checking, the specified axis is fixed in space.</value>
+  </data>
   <data name="&gt;&gt;checkBoxFixAxis.Name" xml:space="preserve">
     <value>checkBoxFixAxis</value>
   </data>
@@ -826,6 +829,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisU.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
     <value>numericBoxAxisU</value>
@@ -947,6 +953,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
   <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
     <value>numericBoxAxisV</value>
   </data>
@@ -988,6 +997,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisW.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
     <value>numericBoxAxisW</value>
@@ -1117,6 +1129,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
     <value>numericBoxPlaneH</value>
@@ -1369,6 +1384,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>Fix</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>By checking, the specified plane is fixed in space.</value>
   </data>
   <data name="&gt;&gt;checkBoxFixePlane.Name" xml:space="preserve">
     <value>checkBoxFixePlane</value>
@@ -2023,7 +2041,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Angle step of above buttons</value>
+    <value>Set angle step for above buttons, or rotatian speed</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value>Angle step of above buttons</value>
@@ -2095,7 +2113,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Animation</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
-    <value>If check this and click above buttons, crysatal rotates with a constant velocity</value>
+    <value>If check this and click above buttons, crysatal rotates with a constant speed</value>
   </data>
   <data name="&gt;&gt;checkBoxAnimation.Name" xml:space="preserve">
     <value>checkBoxAnimation</value>
@@ -2212,7 +2230,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2</value>
   </data>
   <data name="numericUpDownEulerPsi.ToolTip" xml:space="preserve">
-    <value>Euler angle ψ</value>
+    <value>Set Euler angle ψ</value>
   </data>
   <data name="&gt;&gt;numericUpDownEulerPsi.Name" xml:space="preserve">
     <value>numericUpDownEulerPsi</value>
@@ -2314,7 +2332,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="numericUpDownEulerTheta.ToolTip" xml:space="preserve">
-    <value>Euler angle θ</value>
+    <value>Set Euler angle θ</value>
   </data>
   <data name="&gt;&gt;numericUpDownEulerTheta.Name" xml:space="preserve">
     <value>numericUpDownEulerTheta</value>
@@ -2347,7 +2365,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0</value>
   </data>
   <data name="numericUpDownEulerPhi.ToolTip" xml:space="preserve">
-    <value>Euler angle Φ</value>
+    <value>Set Euler angle Φ</value>
   </data>
   <data name="&gt;&gt;numericUpDownEulerPhi.Name" xml:space="preserve">
     <value>numericUpDownEulerPhi</value>
@@ -3096,7 +3114,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
  Database</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
-    <value>Crystal database</value>
+    <value>Open "Crystal database" function</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3142,7 +3160,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
 Information</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
-    <value>Symmetry Information</value>
+    <value>Open "Symmetry Information" functon</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3189,7 +3207,7 @@ Information</value>
 Factor</value>
   </data>
   <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
-    <value>Scattering Factor</value>
+    <value>Open "Scattering Factor" function</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3257,6 +3275,10 @@ Factor</value>
     <value> Rotation
  Geometry</value>
   </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value> Open "Rotation
+ Geometry" function</value>
+  </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
@@ -3312,7 +3334,7 @@ Factor</value>
  Viewer</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>Structure Viewer</value>
+    <value>Open "Structure Viewer" function</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3360,7 +3382,7 @@ Factor</value>
     <value> Stereonet</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>Stereonet</value>
+    <value>Open "Stereonet" function</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3398,7 +3420,7 @@ Factor</value>
  Simulator</value>
   </data>
   <data name="toolStripButtonElectronDiffraction.ToolTipText" xml:space="preserve">
-    <value>Diffraction Simulator</value>
+    <value>Open "Diffraction Simulator" function</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3477,7 +3499,7 @@ Factor</value>
   Simulator</value>
   </data>
   <data name="toolStripButtonImageSimulation.ToolTipText" xml:space="preserve">
-    <value>HRTEM Simulator</value>
+    <value>Open "HRTEM Simulator" function</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3522,7 +3544,7 @@ Factor</value>
 (former TEMID)</value>
   </data>
   <data name="toolStripButtonTEMID.ToolTipText" xml:space="preserve">
-    <value>TEM ID</value>
+    <value>Open "Spot ID v1" function</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3590,7 +3612,7 @@ Factor</value>
     <value>Spot ID v2</value>
   </data>
   <data name="toolStripButtonSpotID.ToolTipText" xml:space="preserve">
-    <value>Spot ID</value>
+    <value>Open "Spot ID v2" function</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3651,8 +3673,8 @@ Factor</value>
  Diffraction</value>
   </data>
   <data name="toolStripButtonPolycrystallineDiffraction.ToolTipText" xml:space="preserve">
-    <value>Powder Diffraction
-</value>
+    <value>Open "Powder Diffraction
+" function</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>

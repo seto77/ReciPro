@@ -87,6 +87,12 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>ReciProの座標系 (ZXZ)</value>
   </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>実験室座標系</value>
+  </data>
   <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -126,11 +132,5 @@
   </data>
   <data name="checkBoxFix1st.Text" xml:space="preserve">
     <value>固定</value>
-  </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>実験室座標系</value>
   </data>
 </root>

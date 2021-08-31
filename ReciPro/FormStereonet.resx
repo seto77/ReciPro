@@ -75,11 +75,11 @@
   <data name="trackBarStrSize.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>指数文字の大きさ</value>
+    <value>Set a string size</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
     <value>trackBarStrSize</value>
@@ -109,7 +109,7 @@
     <value>65</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
-    <value>面/軸をあらわす点の大きさ</value>
+    <value>Set a point size</value>
   </data>
   <data name="&gt;&gt;trackBarPointSize.Name" xml:space="preserve">
     <value>trackBarPointSize</value>
@@ -520,7 +520,7 @@ scheme</value>
     <value>Point Size</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>面/軸をあらわす点の大きさ</value>
+    <value>Set a point size</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -553,7 +553,7 @@ scheme</value>
     <value>String Size</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>指数文字の大きさ</value>
+    <value>Set a string size</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -584,6 +584,9 @@ scheme</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>Show 1° line</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>Display a line in 1 degree increments</value>
   </data>
   <data name="&gt;&gt;checkBox1DegLine.Name" xml:space="preserve">
     <value>checkBox1DegLine</value>
@@ -616,7 +619,7 @@ scheme</value>
     <value>Pole</value>
   </data>
   <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
-    <value>緯経線を極方向から投影します</value>
+    <value>Project the latitude and longitude lines from the polar direction.</value>
   </data>
   <data name="&gt;&gt;radioButtonOutlinePole.Name" xml:space="preserve">
     <value>radioButtonOutlinePole</value>
@@ -649,7 +652,7 @@ scheme</value>
     <value>Equator</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
-    <value>緯経線を赤道方向から投影します</value>
+    <value>Project the latitude and longitude line from the equatorial direction.</value>
   </data>
   <data name="&gt;&gt;radioButtonOutlineEquator.Name" xml:space="preserve">
     <value>radioButtonOutlineEquator</value>
@@ -848,6 +851,9 @@ scheme</value>
   </data>
   <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Set a color of small circles</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1057,7 +1063,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="labelUniqueAxis.ToolTip" xml:space="preserve">
-    <value>結晶軸[100], [010], [001]の色</value>
+    <value>Set a color of a-, b-, and c-axes</value>
   </data>
   <data name="&gt;&gt;labelUniqueAxis.Name" xml:space="preserve">
     <value>labelUniqueAxis</value>
@@ -1150,7 +1156,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="labelGeneralAxis.ToolTip" xml:space="preserve">
-    <value>結晶軸の表示色</value>
+    <value>Set a color of axes</value>
   </data>
   <data name="&gt;&gt;labelGeneralAxis.Name" xml:space="preserve">
     <value>labelGeneralAxis</value>
@@ -1189,7 +1195,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="labelUniquePlane.ToolTip" xml:space="preserve">
-    <value>結晶面(100), (010), (001)の色</value>
+    <value>Set a color of a*-, b*-, and c*-planes</value>
   </data>
   <data name="&gt;&gt;labelUniquePlane.Name" xml:space="preserve">
     <value>labelUniquePlane</value>
@@ -1228,7 +1234,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="labelGeneralPlane.ToolTip" xml:space="preserve">
-    <value>結晶面の色</value>
+    <value>Set a color of planes</value>
   </data>
   <data name="&gt;&gt;labelGeneralPlane.Name" xml:space="preserve">
     <value>labelGeneralPlane</value>
@@ -1375,7 +1381,7 @@ scheme</value>
     <value>Background</value>
   </data>
   <data name="labelBackGround.ToolTip" xml:space="preserve">
-    <value>背景色</value>
+    <value>Set a background color</value>
   </data>
   <data name="&gt;&gt;labelBackGround.Name" xml:space="preserve">
     <value>labelBackGround</value>
@@ -1471,7 +1477,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="label90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線の色</value>
+    <value>Set a color of 90 deg lines</value>
   </data>
   <data name="&gt;&gt;label90DegLine.Name" xml:space="preserve">
     <value>label90DegLine</value>
@@ -1510,7 +1516,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="label10DegLine.ToolTip" xml:space="preserve">
-    <value>10度線の色</value>
+    <value>Set a color of 10 deg lines</value>
   </data>
   <data name="&gt;&gt;label10DegLine.Name" xml:space="preserve">
     <value>label10DegLine</value>
@@ -1606,8 +1612,7 @@ scheme</value>
     <value>MiddleLeft</value>
   </data>
   <data name="label1DegLine.ToolTip" xml:space="preserve">
-    <value>1度線の色
-「Show 1°line」がチェックされているとき有効</value>
+    <value>Set a color of 1 deg lines</value>
   </data>
   <data name="&gt;&gt;label1DegLine.Name" xml:space="preserve">
     <value>label1DegLine</value>
@@ -1702,7 +1707,7 @@ scheme</value>
     <value>String</value>
   </data>
   <data name="labelString.ToolTip" xml:space="preserve">
-    <value>指数文字の色</value>
+    <value>Set a color of string labels</value>
   </data>
   <data name="&gt;&gt;labelString.Name" xml:space="preserve">
     <value>labelString</value>
@@ -1739,6 +1744,9 @@ scheme</value>
   </data>
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Set a color of great circles</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -4295,6 +4303,9 @@ scheme</value>
   <data name="radioButtonRange.Text" xml:space="preserve">
     <value>Range</value>
   </data>
+  <data name="radioButtonRange.ToolTip" xml:space="preserve">
+    <value>Set indeices to be displayed within the below range</value>
+  </data>
   <data name="&gt;&gt;radioButtonRange.Name" xml:space="preserve">
     <value>radioButtonRange</value>
   </data>
@@ -4330,6 +4341,9 @@ scheme</value>
   </data>
   <data name="radioButtonSpecifiedIndices.Text" xml:space="preserve">
     <value>Specified indices</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>Specify indeices to be displayed individually</value>
   </data>
   <data name="&gt;&gt;radioButtonSpecifiedIndices.Name" xml:space="preserve">
     <value>radioButtonSpecifiedIndices</value>
@@ -4649,6 +4663,14 @@ scheme</value>
   <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
   </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>Left drag (near the center of the screen): Rotate by the axis parallel to monitor
+Left drag (at the edge of the screen):  Rotate by the axis normal to monitor
+Right click: Zoom out
+Right-drag: Zoom in the selected area
+Middle drag: Drag the simulated image
+</value>
+  </data>
   <data name="graphicsBox.WaitOnLoad" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4674,7 +4696,7 @@ scheme</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -334694</value>
+    <value>410, -669974</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4695,7 +4717,7 @@ scheme</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -334694</value>
+    <value>410, -669974</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4870,10 +4892,10 @@ scheme</value>
   <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
-    <value>toolTip1</value>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printDocument1.Name" xml:space="preserve">

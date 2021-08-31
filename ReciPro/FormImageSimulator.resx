@@ -1441,6 +1441,10 @@ unit cell</value>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Set a sample thickness
+This value is neglected when "Serial image" mode is selected, </value>
+  </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
   </data>
@@ -1517,7 +1521,7 @@ unit cell</value>
     <value>50</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
-    <value>Acc voltage of TEM</value>
+    <value>Acc voltage of TEM (kV)</value>
   </data>
   <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
     <value>Acc voltage of TEM</value>
@@ -2043,7 +2047,7 @@ unit cell</value>
     <value>β</value>
   </data>
   <data name="numericBoxBetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="numericBoxBetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -2093,7 +2097,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 52</value>
+    <value>105, 51</value>
   </data>
   <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 26</value>
@@ -4281,6 +4285,12 @@ unit cell</value>
   <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
     <value>Linear image</value>
   </data>
+  <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
+    <value>Linear image model. Low comutation costs.
+This model is preferable to be applied for a thin sample 
+in which the weak phase object approximation holds
+</value>
+  </data>
   <data name="&gt;&gt;radioButtonModeQuasiCoherent.Name" xml:space="preserve">
     <value>radioButtonModeQuasiCoherent</value>
   </data>
@@ -4316,6 +4326,12 @@ unit cell</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
     <value>Transmission cross coefficient</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
+    <value>Transmission cross coefficient (TCC) model. High computaion costs.
+This model should be used for a strong scattering object which usually
+ excites many strong diffracted beams.
+</value>
   </data>
   <data name="&gt;&gt;radioButtonModeTransmissionCrossCoefficient.Name" xml:space="preserve">
     <value>radioButtonModeTransmissionCrossCoefficient</value>
