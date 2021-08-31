@@ -167,8 +167,6 @@
             this.iLikeVESTAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -1639,8 +1637,6 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem1,
             this.cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem,
             this.toolStripMenuItem2});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -1653,18 +1649,6 @@
             this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name = "cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlte" +
     "rnatelyToolStripMenuItem";
-            // 
-            // toolStripMenuItem3
-            // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            // 
-            // toolStripMenuItem1
-            // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             // 
             // cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem
             // 
@@ -1867,8 +1851,6 @@
         private System.Windows.Forms.ToolStripMenuItem cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
         private System.Windows.Forms.TabPage tabPageAtom;
         private System.Windows.Forms.TabPage tabPageBond;

@@ -421,6 +421,9 @@
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
     <value>Set a drawing range</value>
   </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>Set a drawing range</value>
+  </data>
   <data name="&gt;&gt;numericBoxCRange.Name" xml:space="preserve">
     <value>numericBoxCRange</value>
   </data>
@@ -464,6 +467,9 @@
     <value>4</value>
   </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
+    <value>Set a drawing range</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
     <value>Set a drawing range</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Name" xml:space="preserve">
@@ -511,6 +517,9 @@
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value>Set a drawing range</value>
   </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>Set a drawing range</value>
+  </data>
   <data name="&gt;&gt;numericBoxARange.Name" xml:space="preserve">
     <value>numericBoxARange</value>
   </data>
@@ -554,6 +563,9 @@
     <value>2</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value>Set a center position</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
     <value>Set a center position</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Name" xml:space="preserve">
@@ -601,6 +613,9 @@
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>Set a center position</value>
   </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>Set a center position</value>
+  </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
   </data>
@@ -644,6 +659,9 @@
     <value>0</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
+    <value>Set a center position</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
     <value>Set a center position</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
@@ -4281,24 +4299,6 @@ indivisual setting)</value>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
     <value>CTRL+SHIFT+c:  Copy main image to clipboard</value>
   </data>
-  <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 22</value>
-  </data>
-  <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Mouse drag:  Rotate objects</value>
-  </data>
-  <data name="toolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 22</value>
-  </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Mouse Right Up/Down:  Change  zoom</value>
-  </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4847,18 +4847,6 @@ indivisual setting)</value>
     <value>cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
-    <value>toolStripMenuItem3</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name" xml:space="preserve">

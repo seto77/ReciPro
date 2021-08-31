@@ -239,6 +239,9 @@ namespace ReciPro
             glControlLight.ProjWidth = 2.2;
             glControlAxes.ProjWidth = 2.4;
             glControlMain.ProjWidth = 3f;
+
+            toolTip.SetToolTip(glControlMainZsort, "Left drag: Rotate objects\r\nRight drag (up/down): Zoom in/out\r\nMiddle drag: Drag the image");
+
             #endregion
 
             #region ビデオカードの設定

@@ -1919,7 +1919,7 @@ Kikuchi lines under this value are simulated.
     <value>Mouse sensitivity</value>
   </data>
   <data name="groupBox5.ToolTip" xml:space="preserve">
-    <value>マウスを動かした時の回転量を設定します</value>
+    <value>Set a sensitivity for the mouce movement</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
