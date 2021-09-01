@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
             this.radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
@@ -908,6 +908,7 @@
             // 
             resources.ApplyResources(this.radioButtonDebyeWallerTypeU, "radioButtonDebyeWallerTypeU");
             this.radioButtonDebyeWallerTypeU.Name = "radioButtonDebyeWallerTypeU";
+            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeU, resources.GetString("radioButtonDebyeWallerTypeU.ToolTip"));
             this.radioButtonDebyeWallerTypeU.CheckedChanged += new System.EventHandler(this.radioButtonDebyeWallerTypeU_CheckedChanged);
             // 
             // radioButtonDebyeWallerTypeB
@@ -916,6 +917,7 @@
             this.radioButtonDebyeWallerTypeB.Checked = true;
             this.radioButtonDebyeWallerTypeB.Name = "radioButtonDebyeWallerTypeB";
             this.radioButtonDebyeWallerTypeB.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeB, resources.GetString("radioButtonDebyeWallerTypeB.ToolTip"));
             // 
             // flowLayoutPanel4
             // 
@@ -1169,6 +1171,7 @@
             this.comboBoxScatteringFactorElectron.DropDownWidth = 120;
             resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
             this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
+            this.toolTip.SetToolTip(this.comboBoxScatteringFactorElectron, resources.GetString("comboBoxScatteringFactorElectron.ToolTip"));
             this.comboBoxScatteringFactorElectron.UseWaitCursor = true;
             this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
@@ -1192,6 +1195,7 @@
             this.comboBoxScatteringFactorXray.DropDownWidth = 120;
             resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
             this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
+            this.toolTip.SetToolTip(this.comboBoxScatteringFactorXray, resources.GetString("comboBoxScatteringFactorXray.ToolTip"));
             this.comboBoxScatteringFactorXray.UseWaitCursor = true;
             this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
@@ -1394,6 +1398,7 @@
             this.numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAtomRadius.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
             // 
             // colorControlAtomColor
             // 
@@ -1456,6 +1461,7 @@
             this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonAtomUp.Name = "buttonAtomUp";
+            this.toolTip.SetToolTip(this.buttonAtomUp, resources.GetString("buttonAtomUp.ToolTip"));
             this.buttonAtomUp.UseVisualStyleBackColor = true;
             this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
             // 
@@ -1465,6 +1471,7 @@
             this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonAtomDown.Name = "buttonAtomDown";
+            this.toolTip.SetToolTip(this.buttonAtomDown, resources.GetString("buttonAtomDown.ToolTip"));
             this.buttonAtomDown.UseVisualStyleBackColor = true;
             this.buttonAtomDown.Click += new System.EventHandler(this.buttonDown_Click);
             // 
@@ -1474,6 +1481,7 @@
             this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
             this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteAtom.Name = "buttonDeleteAtom";
+            this.toolTip.SetToolTip(this.buttonDeleteAtom, resources.GetString("buttonDeleteAtom.ToolTip"));
             this.buttonDeleteAtom.UseVisualStyleBackColor = false;
             this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
@@ -1483,14 +1491,14 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.enabledColumn,
@@ -1524,8 +1532,8 @@
             // labelDataGridViewTextBoxColumn
             // 
             this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
             this.labelDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1534,8 +1542,8 @@
             // elementDataGridViewTextBoxColumn
             // 
             this.elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             this.elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
             this.elementDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1545,8 +1553,8 @@
             // xDataGridViewTextBoxColumn
             // 
             this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
             this.xDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1555,8 +1563,8 @@
             // yDataGridViewTextBoxColumn
             // 
             this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
             this.yDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1565,8 +1573,8 @@
             // zDataGridViewTextBoxColumn
             // 
             this.zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             this.zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
             this.zDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1575,8 +1583,8 @@
             // occDataGridViewTextBoxColumn
             // 
             this.occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             this.occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
             this.occDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1585,8 +1593,8 @@
             // multiDataGridViewTextBoxColumn
             // 
             this.multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             this.multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
             this.multiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1595,8 +1603,8 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             this.wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             this.wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
             this.wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1605,8 +1613,8 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             this.siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             this.siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
             this.siteSymDataGridViewTextBoxColumn.ReadOnly = true;

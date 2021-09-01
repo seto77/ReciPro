@@ -112,14 +112,14 @@
   <data name="checkBoxShowEdges.Text" xml:space="preserve">
     <value>辺を表示</value>
   </data>
+  <data name="groupBoxEdge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 45</value>
+  </data>
   <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
     <value>線幅</value>
-  </data>
-  <data name="groupBoxEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 45</value>
   </data>
   <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

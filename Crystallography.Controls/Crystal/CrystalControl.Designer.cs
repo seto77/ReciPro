@@ -63,6 +63,7 @@
             this.tabPageElasticity = new System.Windows.Forms.TabPage();
             this.elasticityControl1 = new Crystallography.Controls.ElasticityControl();
             this.tabPageStrainStress = new System.Windows.Forms.TabPage();
+            this.numericBoxStrain33 = new Crystallography.Controls.NumericBox();
             this.numericBoxHill = new Crystallography.Controls.NumericBox();
             this.label116 = new System.Windows.Forms.Label();
             this.label117 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             this.numericBoxStress23 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress13 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress12 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain33 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain11 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain22 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain12 = new Crystallography.Controls.NumericBox();
@@ -557,6 +557,19 @@
             resources.ApplyResources(this.tabPageStrainStress, "tabPageStrainStress");
             this.tabPageStrainStress.Name = "tabPageStrainStress";
             // 
+            // numericBoxStrain33
+            // 
+            resources.ApplyResources(this.numericBoxStrain33, "numericBoxStrain33");
+            this.numericBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxStrain33.Name = "numericBoxStrain33";
+            this.numericBoxStrain33.RestrictLimitValue = false;
+            this.numericBoxStrain33.RoundErrorAccuracy = -1;
+            this.numericBoxStrain33.SkipEventDuringInput = false;
+            this.numericBoxStrain33.SmartIncrement = true;
+            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
             // numericBoxHill
             // 
             resources.ApplyResources(this.numericBoxHill, "numericBoxHill");
@@ -729,19 +742,6 @@
             this.numericBoxStress12.SkipEventDuringInput = false;
             this.numericBoxStress12.SmartIncrement = true;
             this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
-            // numericBoxStrain33
-            // 
-            resources.ApplyResources(this.numericBoxStrain33, "numericBoxStrain33");
-            this.numericBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.Name = "numericBoxStrain33";
-            this.numericBoxStrain33.RestrictLimitValue = false;
-            this.numericBoxStrain33.RoundErrorAccuracy = -1;
-            this.numericBoxStrain33.SkipEventDuringInput = false;
-            this.numericBoxStrain33.SmartIncrement = true;
-            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStrain11
             // 

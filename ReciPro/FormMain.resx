@@ -282,7 +282,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Down</value>
   </data>
   <data name="buttonLower.ToolTip" xml:space="preserve">
-    <value>Move the seleceted crystal downward</value>
+    <value>Move the selected crystal downward</value>
   </data>
   <data name="&gt;&gt;buttonLower.Name" xml:space="preserve">
     <value>buttonLower</value>
@@ -2044,7 +2044,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Set angle step for above buttons, or rotatian speed</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Angle step of above buttons</value>
+    <value>Set angle step for above buttons, or rotatian speed</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Name" xml:space="preserve">
     <value>numericBoxStep</value>
