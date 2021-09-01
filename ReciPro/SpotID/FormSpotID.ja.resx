@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -119,17 +59,32 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 755</value>
+    <value>520, 751</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="scalablePictureBoxAdvanced.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonPixelToPixel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="buttonPixelToPixel.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonCopyMetafile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="buttonCopyMetafile.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 26</value>
+    <value>520, 26</value>
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -137,87 +92,35 @@
   <data name="buttonResetRangeForAllSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="buttonResetRangeForAllSpots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>620, 6</value>
+  </data>
   <data name="buttonResetRangeForAllSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 28</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Text" xml:space="preserve">
     <value>全スポットに適用</value>
   </data>
-  <data name="numericBoxFittingRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxNumberOfSpots.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
-    <value>フィッティング半径</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 11</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 76</value>
-  </data>
-  <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>702, 452</value>
-  </data>
-  <data name="checkBoxDetailsSpot.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNumberOfSpots.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="checkBoxDetailsSpot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="numericBoxNumberOfSpots.HeaderText" xml:space="preserve">
+    <value>スポット数</value>
   </data>
-  <data name="checkBoxDetailsSpot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>460, 15</value>
+  <data name="numericBoxNumberOfSpots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 6</value>
   </data>
-  <data name="checkBoxDetailsSpot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 40</value>
+  <data name="numericBoxNumberOfSpots.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
-  <data name="checkBoxDetailsSpot.Text" xml:space="preserve">
-    <value>選択スポットの
-詳細情報</value>
-  </data>
-  <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>739, 305</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>628, 35</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>シンボルを表示</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>628, 12</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>ラベルを表示</value>
-  </data>
-  <data name="buttonSaveToFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>648, 60</value>
-  </data>
-  <data name="buttonCopyToClipboad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>693, 60</value>
+  <data name="numericBoxNumberOfSpots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 25</value>
   </data>
   <data name="buttonFindSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -231,32 +134,38 @@
   <data name="buttonFindSpots.Text" xml:space="preserve">
     <value>スポット検出</value>
   </data>
-  <data name="buttonDonut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>576, 452</value>
-  </data>
-  <data name="buttonGlobalFit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonGlobalFit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>599, 429</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNearestNeighbor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="buttonCopmprehensiveFitting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="numericBoxNearestNeighbor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>588, 400</value>
+  <data name="numericBoxNearestNeighbor.HeaderText" xml:space="preserve">
+    <value>スポット間最低距離</value>
   </data>
-  <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 27</value>
+  <data name="numericBoxNearestNeighbor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 6</value>
   </data>
-  <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
-    <value>全スポットを再フィット</value>
+  <data name="numericBoxNearestNeighbor.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 25</value>
+  </data>
+  <data name="numericBoxFittingRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
+    <value>フィッティング半径</value>
+  </data>
+  <data name="numericBoxFittingRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 6</value>
+  </data>
+  <data name="numericBoxFittingRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxFittingRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 25</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -265,7 +174,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>543, 61</value>
+    <value>371, 336</value>
   </data>
   <data name="buttonClearSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 28</value>
@@ -273,8 +182,172 @@
   <data name="buttonClearSpots.Text" xml:space="preserve">
     <value>全スポット消去</value>
   </data>
+  <data name="buttonGlobalFit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonGlobalFit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 337</value>
+  </data>
+  <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 360</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonDonut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDonut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>580, 359</value>
+  </data>
+  <data name="buttonDonut.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="x0.Width" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="y0.Width" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="η.Width" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="B0.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="Bx.Width" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="By.Width" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="Column1.Width" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="dataGridViewSpots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 40</value>
+  </data>
+  <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>715, 288</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonCopyToClipboad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 337</value>
+  </data>
+  <data name="buttonSaveToFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>478, 337</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 357</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
+    <value>関数形状の詳細</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxDetailsOfSpot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 337</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
+    <value>スポット詳細</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 337</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
+    <value>シンボルを表示</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 356</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
+    <value>ラベルを表示</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 334</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 46</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
+    <value>全スポットを
+再フィッティング</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>742, 383</value>
+  </data>
+  <data name="panel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 404</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>742, 77</value>
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 104</value>
@@ -285,6 +358,30 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>スポット情報</value>
   </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonIdentifySpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonIdentifySpots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 28</value>
+  </data>
+  <data name="buttonIdentifySpots.Text" xml:space="preserve">
+    <value>スポット同定</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxAcceptableError.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -292,7 +389,13 @@
     <value>許容範囲</value>
   </data>
   <data name="numericBoxAcceptableError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
+    <value>130, 27</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -309,11 +412,20 @@
   <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
     <value>シンボルを表示</value>
   </data>
+  <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonMultiGrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonSingleGrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxShowCalcSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -330,29 +442,35 @@
   <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
     <value>ラベルを表示</value>
   </data>
+  <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 111</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonRefineThicknessAndDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonIdentifySpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonIdentifySpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 28</value>
-  </data>
-  <data name="buttonIdentifySpots.Text" xml:space="preserve">
-    <value>スポット同定</value>
+  <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 594</value>
@@ -360,11 +478,17 @@
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>748, 185</value>
   </data>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
     <value>カメラ長</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="numericBoxPixelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -372,29 +496,55 @@
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
     <value>ピクセルサイズ</value>
   </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>559, 102</value>
   </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 781</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>524</value>
+  </data>
+  <data name="splitContainer1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 24</value>
   </data>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 22</value>
   </data>
+  <data name="statusStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1285, 827</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
