@@ -62,6 +62,8 @@ namespace Crystallography.OpenGL
         /// OITのバージョンを満たしているか.
         /// </summary>
         public static bool OitEnabled => VersionForOit <= Version;
+
+        
         #endregion
 
         #region フィールド
@@ -116,8 +118,10 @@ namespace Crystallography.OpenGL
         public event EventHandler WorldMatrixChanged;
 
         #endregion イベント
- 
+
         #region プロパティ
+
+        public string ToolTip { set { toolTip.SetToolTip(glControl, value); } }
 
         /// <summary>
         /// VisualStudioデザイナーの編集の時はTrue

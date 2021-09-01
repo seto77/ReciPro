@@ -50,13 +50,14 @@ namespace Crystallography.OpenGL
             this.toolStripTextBoxBackgroundColorG = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBoxBackgroundColorBlue = new System.Windows.Forms.ToolStripTextBox();
             this.showHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemProjectionMode,
@@ -221,7 +222,7 @@ namespace Crystallography.OpenGL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "GLControlAlpha";
             this.Size = new System.Drawing.Size(99, 94);
@@ -250,5 +251,6 @@ namespace Crystallography.OpenGL
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxBackgroundColorBlue;
         private System.Windows.Forms.ToolStripMenuItem inputRGAndB0255ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showHintsToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

@@ -144,6 +144,8 @@ namespace Crystallography.Controls
                 toolTip.SetToolTip(textBox, value);
                 toolTip.SetToolTip(labelFooter, value);
                 toolTip.SetToolTip(labelHeader, value);
+                toolTip.SetToolTip(this, value);
+
             }
         }
 

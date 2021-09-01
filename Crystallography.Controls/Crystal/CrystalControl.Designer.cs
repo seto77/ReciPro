@@ -525,6 +525,7 @@
             // tabPageStrainStress
             // 
             this.tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain33);
             this.tabPageStrainStress.Controls.Add(this.numericBoxHill);
             this.tabPageStrainStress.Controls.Add(this.label116);
             this.tabPageStrainStress.Controls.Add(this.label117);
@@ -548,7 +549,6 @@
             this.tabPageStrainStress.Controls.Add(this.numericBoxStress23);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStress13);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStress12);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain33);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStrain11);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStrain22);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStrain12);
@@ -1137,6 +1137,7 @@
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
             this.textBoxName.Name = "textBoxName";
+            this.toolTip.SetToolTip(this.textBoxName, resources.GetString("textBoxName.ToolTip"));
             // 
             // label22
             // 

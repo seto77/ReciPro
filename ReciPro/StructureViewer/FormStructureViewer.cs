@@ -240,7 +240,17 @@ namespace ReciPro
             glControlAxes.ProjWidth = 2.4;
             glControlMain.ProjWidth = 3f;
 
-            toolTip.SetToolTip(glControlMainZsort, "Left drag: Rotate objects\r\nRight drag (up/down): Zoom in/out\r\nMiddle drag: Drag the image");
+            glControlMainZsort.ToolTip = "Main viewer\r\n" +
+                "  Left drag: Rotate objects\r\n" +
+                "  Right drag up/down: Zoom in/out\r\n" +
+                "  Wheel up/down: Zoom in/out\r\n" +
+                "  Middle drag: Drag the image";
+            
+            glControlLight.ToolTip = "Light direction\r\n" +
+                "  Left drag: Change the light direction";
+            
+            glControlAxes.ToolTip = "Crystal axes\r\n" +
+                "  Left drag: Rotate objects";
 
             #endregion
 
@@ -1463,6 +1473,8 @@ namespace ReciPro
                     legendControls[i].AddObjects(new Sphere(new V3(0, 0, 0), a.Radius / maxRadius, new Material(a.Argb, a.Texture), DrawingMode.Surfaces));
                     legendControls[i].SkipRendering = false;
                     legendControls[i].Render();
+
+                    legendControls[i].ToolTip = $"Legend for {legendLabels[i].Text}\r\n  Click to show/hide the label";
 
                     if (flowLayoutPanelLegend.Controls.Count <= i)
                         flowLayoutPanelLegend.Controls.Add(legendPanels[i]);
