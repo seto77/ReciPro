@@ -109,9 +109,10 @@
             this.graphControlNWtoSE.LeftMargin = 0F;
             this.graphControlNWtoSE.LineColor = System.Drawing.Color.Red;
             this.graphControlNWtoSE.LineWidth = 1F;
-            this.graphControlNWtoSE.Location = new System.Drawing.Point(3, 20);
+            this.graphControlNWtoSE.Location = new System.Drawing.Point(1, 18);
             this.graphControlNWtoSE.LowerX = 0D;
             this.graphControlNWtoSE.LowerY = 0D;
+            this.graphControlNWtoSE.Margin = new System.Windows.Forms.Padding(1);
             this.graphControlNWtoSE.MaximalX = 1D;
             this.graphControlNWtoSE.MaximalY = 1D;
             this.graphControlNWtoSE.MinimalX = 0D;
@@ -157,9 +158,10 @@
             this.graphControlWtoE.LeftMargin = 0F;
             this.graphControlWtoE.LineColor = System.Drawing.Color.Red;
             this.graphControlWtoE.LineWidth = 1F;
-            this.graphControlWtoE.Location = new System.Drawing.Point(3, 20);
+            this.graphControlWtoE.Location = new System.Drawing.Point(1, 18);
             this.graphControlWtoE.LowerX = 0D;
             this.graphControlWtoE.LowerY = 0D;
+            this.graphControlWtoE.Margin = new System.Windows.Forms.Padding(1);
             this.graphControlWtoE.MaximalX = 1D;
             this.graphControlWtoE.MaximalY = 1D;
             this.graphControlWtoE.MinimalX = 0D;
@@ -205,9 +207,10 @@
             this.graphControlSWtoNE.LeftMargin = 0F;
             this.graphControlSWtoNE.LineColor = System.Drawing.Color.Red;
             this.graphControlSWtoNE.LineWidth = 1F;
-            this.graphControlSWtoNE.Location = new System.Drawing.Point(3, 20);
+            this.graphControlSWtoNE.Location = new System.Drawing.Point(1, 18);
             this.graphControlSWtoNE.LowerX = 0D;
             this.graphControlSWtoNE.LowerY = 0D;
+            this.graphControlSWtoNE.Margin = new System.Windows.Forms.Padding(1);
             this.graphControlSWtoNE.MaximalX = 1D;
             this.graphControlSWtoNE.MaximalY = 1D;
             this.graphControlSWtoNE.MinimalX = 0D;
@@ -253,9 +256,10 @@
             this.graphControlNtoS.LeftMargin = 0F;
             this.graphControlNtoS.LineColor = System.Drawing.Color.Red;
             this.graphControlNtoS.LineWidth = 1F;
-            this.graphControlNtoS.Location = new System.Drawing.Point(3, 20);
+            this.graphControlNtoS.Location = new System.Drawing.Point(1, 18);
             this.graphControlNtoS.LowerX = 0D;
             this.graphControlNtoS.LowerY = 0D;
+            this.graphControlNtoS.Margin = new System.Windows.Forms.Padding(1);
             this.graphControlNtoS.MaximalX = 1D;
             this.graphControlNtoS.MaximalY = 1D;
             this.graphControlNtoS.MinimalX = 0D;
@@ -345,9 +349,10 @@
             this.flowLayoutPanel2.Controls.Add(this.graphControlNtoS);
             this.flowLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1, 1);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(256, 231);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(252, 227);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
             // flowLayoutPanel3
@@ -357,9 +362,10 @@
             this.flowLayoutPanel3.Controls.Add(this.graphControlWtoE);
             this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(265, 3);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(255, 1);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(256, 231);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(252, 227);
             this.flowLayoutPanel3.TabIndex = 6;
             // 
             // flowLayoutPanel5
@@ -369,9 +375,10 @@
             this.flowLayoutPanel5.Controls.Add(this.graphControlSWtoNE);
             this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 240);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(1, 230);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(256, 231);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(252, 227);
             this.flowLayoutPanel5.TabIndex = 6;
             // 
             // flowLayoutPanel4
@@ -381,9 +388,10 @@
             this.flowLayoutPanel4.Controls.Add(this.graphControlNWtoSE);
             this.flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(265, 240);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(255, 230);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(256, 231);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(252, 227);
             this.flowLayoutPanel4.TabIndex = 6;
             // 
             // splitContainer1

@@ -117,7 +117,7 @@ namespace ReciPro
         private void FormSpotDetails_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            FormSpotID.checkBoxDetailsSpot.Checked = false;
+            FormSpotID.checkBoxDetailsOfSpot.Checked = false;
         }
 
         private void FormSpotDetails_VisibleChanged(object sender, EventArgs e)

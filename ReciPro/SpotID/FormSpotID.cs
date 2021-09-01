@@ -58,6 +58,7 @@ namespace ReciPro
         private void FormSpotID_Load(object sender, EventArgs e)
         {
             FormSpotDetails = new FormSpotDetails { FormSpotID = this };
+            checkBoxDetailsOfFunction.Checked = false;
         }
 
         private void FormSpotID_FormClosing(object sender, FormClosingEventArgs e)
@@ -1388,7 +1389,6 @@ namespace ReciPro
 
         #endregion
 
-        private void checkBoxDetailsSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsSpot.Checked;
 
         #region Refine thickness and direction機能
         private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
@@ -1536,6 +1536,16 @@ namespace ReciPro
             bindingSourceObsSpots.DataMember = "DataTableSpot";
             toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
             Enabled = true;
+        }
+
+        private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e)
+        {
+            FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
+        }
+
+        private void checkBoxDetailsOfFunction_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = checkBoxDetailsOfFunction.Checked;
         }
     }
 }
