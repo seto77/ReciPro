@@ -211,6 +211,333 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="buttonDeleteSpot.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonDeleteSpot.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonDeleteSpot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 332</value>
+  </data>
+  <data name="buttonDeleteSpot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 27</value>
+  </data>
+  <data name="buttonDeleteSpot.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonDeleteSpot.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1074, 17</value>
+  </metadata>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>Clear all spots</value>
+  </data>
+  <data name="&gt;&gt;buttonDeleteSpot.Name" xml:space="preserve">
+    <value>buttonDeleteSpot</value>
+  </data>
+  <data name="&gt;&gt;buttonDeleteSpot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDeleteSpot.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonDeleteSpot.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonClearSpots.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonClearSpots.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonClearSpots.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 333</value>
+  </data>
+  <data name="buttonClearSpots.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 25</value>
+  </data>
+  <data name="buttonClearSpots.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonClearSpots.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>Clear all spots</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSpots.Name" xml:space="preserve">
+    <value>buttonClearSpots</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSpots.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSpots.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSpots.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonCopyToClipboad.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonCopyToClipboad.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonCopyToClipboad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonCopyToClipboad.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>560, 333</value>
+  </data>
+  <data name="buttonCopyToClipboad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonCopyToClipboad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 25</value>
+  </data>
+  <data name="buttonCopyToClipboad.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonCopyToClipboad.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="buttonCopyToClipboad.ToolTip" xml:space="preserve">
+    <value>Copy the above information to clipboard</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyToClipboad.Name" xml:space="preserve">
+    <value>buttonCopyToClipboad</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyToClipboad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyToClipboad.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyToClipboad.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonSaveToFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonSaveToFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSaveToFile.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>516, 333</value>
+  </data>
+  <data name="buttonSaveToFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSaveToFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 25</value>
+  </data>
+  <data name="buttonSaveToFile.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="buttonSaveToFile.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>Save the above information</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveToFile.Name" xml:space="preserve">
+    <value>buttonSaveToFile</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveToFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveToFile.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveToFile.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 353</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 21</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
+    <value>Details of the fitting function</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfFunction.Name" xml:space="preserve">
+    <value>checkBoxDetailsOfFunction</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfFunction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfFunction.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfFunction.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 333</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
+    <value>Details of the spot</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfSpot.Name" xml:space="preserve">
+    <value>checkBoxDetailsOfSpot</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfSpot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfSpot.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDetailsOfSpot.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 353</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 21</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
+    <value>Show symbols</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Name" xml:space="preserve">
+    <value>checkBoxShowObsSpotSymbol</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 333</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 21</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
+    <value>Show numbers</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Name" xml:space="preserve">
+    <value>checkBoxShowObsSpotLabel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowObsSpotLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 332</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 27</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
+    <value>Re-fit all</value>
+  </data>
+  <data name="&gt;&gt;buttonCopmprehensiveFitting.Name" xml:space="preserve">
+    <value>buttonCopmprehensiveFitting</value>
+  </data>
+  <data name="&gt;&gt;buttonCopmprehensiveFitting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCopmprehensiveFitting.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonCopmprehensiveFitting.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="buttonResetRangeForAllSpots.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -242,7 +569,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;buttonResetRangeForAllSpots.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>9</value>
   </data>
   <data name="numericBoxNumberOfSpots.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -274,9 +601,6 @@
   <data name="numericBoxNumberOfSpots.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1074, 17</value>
-  </metadata>
   <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
     <value>Specify the number of spots to detect</value>
   </data>
@@ -293,7 +617,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;numericBoxNumberOfSpots.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>10</value>
   </data>
   <data name="buttonFindSpots.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -331,7 +655,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;buttonFindSpots.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>11</value>
   </data>
   <data name="numericBoxNearestNeighbor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -382,7 +706,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;numericBoxNearestNeighbor.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>12</value>
   </data>
   <data name="numericBoxFittingRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -433,46 +757,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;numericBoxFittingRange.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonClearSpots.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="buttonClearSpots.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonClearSpots.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 333</value>
-  </data>
-  <data name="buttonClearSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 25</value>
-  </data>
-  <data name="buttonClearSpots.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
-    <value>Clear all spots</value>
-  </data>
-  <data name="&gt;&gt;buttonClearSpots.Name" xml:space="preserve">
-    <value>buttonClearSpots</value>
-  </data>
-  <data name="&gt;&gt;buttonClearSpots.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClearSpots.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonClearSpots.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>13</value>
   </data>
   <data name="buttonGlobalFit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -508,7 +793,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;buttonGlobalFit.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>14</value>
   </data>
   <data name="numericBoxDonut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -520,13 +805,13 @@ and the fitting range in the right box .</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>722, 357</value>
+    <value>729, 357</value>
   </data>
   <data name="numericBoxDonut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDonut.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 20</value>
   </data>
   <data name="numericBoxDonut.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -535,7 +820,7 @@ and the fitting range in the right box .</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDonut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>37, 20</value>
   </data>
   <data name="numericBoxDonut.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -550,7 +835,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;numericBoxDonut.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>15</value>
   </data>
   <data name="buttonDonut.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -565,7 +850,7 @@ and the fitting range in the right box .</value>
     <value>Segoe UI Symbol, 7pt</value>
   </data>
   <data name="buttonDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 356</value>
+    <value>615, 356</value>
   </data>
   <data name="buttonDonut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -589,7 +874,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;buttonDonut.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>16</value>
   </data>
   <data name="dataGridViewSpots.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -772,259 +1057,7 @@ and the fitting range in the right box .</value>
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;dataGridViewSpots.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="buttonCopyToClipboad.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="buttonCopyToClipboad.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopyToClipboad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopyToClipboad.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 333</value>
-  </data>
-  <data name="buttonCopyToClipboad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonCopyToClipboad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="buttonCopyToClipboad.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="buttonCopyToClipboad.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="buttonCopyToClipboad.ToolTip" xml:space="preserve">
-    <value>Copy the above information to clipboard</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Name" xml:space="preserve">
-    <value>buttonCopyToClipboad</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="buttonSaveToFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="buttonSaveToFile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonSaveToFile.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>470, 333</value>
-  </data>
-  <data name="buttonSaveToFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonSaveToFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="buttonSaveToFile.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="buttonSaveToFile.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
-    <value>Save the above information</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveToFile.Name" xml:space="preserve">
-    <value>buttonSaveToFile</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveToFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveToFile.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveToFile.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 353</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 21</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
-    <value>Details of the fitting function</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfFunction.Name" xml:space="preserve">
-    <value>checkBoxDetailsOfFunction</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfFunction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfFunction.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfFunction.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 333</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
-    <value>Details of the spot</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfSpot.Name" xml:space="preserve">
-    <value>checkBoxDetailsOfSpot</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfSpot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfSpot.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDetailsOfSpot.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 353</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 21</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
-    <value>Show symbols</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Name" xml:space="preserve">
-    <value>checkBoxShowObsSpotSymbol</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotSymbol.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 333</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 21</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
-    <value>Show numbers</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Name" xml:space="preserve">
-    <value>checkBoxShowObsSpotLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotLabel.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowObsSpotLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 332</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 27</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
-    <value>Re-fit all</value>
-  </data>
-  <data name="&gt;&gt;buttonCopmprehensiveFitting.Name" xml:space="preserve">
-    <value>buttonCopmprehensiveFitting</value>
-  </data>
-  <data name="&gt;&gt;buttonCopmprehensiveFitting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopmprehensiveFitting.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonCopmprehensiveFitting.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1839,7 +1872,7 @@ and the fitting range in the right box .</value>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>110, 17</value>
   </metadata>
   <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -1923,31 +1956,31 @@ and the fitting range in the right box .</value>
   <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
     <value>Shortcut Hints</value>
   </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1382, 24</value>
   </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
+  <data name="menuStrip.Text" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>764, 17</value>
   </metadata>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
@@ -1977,28 +2010,28 @@ and the fitting range in the right box .</value>
   <data name="toolStripStatusLabelRefine.Text" xml:space="preserve">
     <value>     </value>
   </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 805</value>
   </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1382, 22</value>
   </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
+  <data name="statusStrip.Text" xml:space="preserve">
     <value>statusStrip1</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="backgroundWorkerSpotID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

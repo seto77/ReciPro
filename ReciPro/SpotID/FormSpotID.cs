@@ -410,6 +410,25 @@ namespace ReciPro
             scalablePictureBoxAdvanced.Refresh();
         }
 
+        private void buttonDeleteSpot_Click(object sender, EventArgs e)
+        {
+            if (bindingSourceObsSpots.Position > -1)
+            {
+                int no = (int)(((DataRowView)bindingSourceObsSpots.Current).Row[1]);
+                if (no > -1)
+                {
+                    skipEvent = true;
+                    bindingSourceObsSpots.DataMember = "";
+                    dataSet.DataTableSpot.Remove(no);
+                    bindingSourceObsSpots.DataMember = "DataTableSpot";
+                    skipEvent = false;
+                    bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemDeleted, 0));
+                }
+            }
+        }
+
+
+
         private void buttonRefit_Click(object sender, EventArgs e)
         {
             Enabled = false;
@@ -1546,6 +1565,11 @@ namespace ReciPro
         private void checkBoxDetailsOfFunction_CheckedChanged(object sender, EventArgs e)
         {
             pictureBox1.Visible = checkBoxDetailsOfFunction.Checked;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

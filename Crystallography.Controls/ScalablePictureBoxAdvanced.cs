@@ -118,7 +118,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// GaussianFilterの
         /// </summary>
-        public double ImageFilter_GaussianBlurRadius { set => numericBoxGaussianRadius.Value = value; get => numericBoxGaussianRadius.Value; }
+        public double ImageFilter_GaussianBlurRadius { set => numericBoxGaussianFWHM.Value = value; get => numericBoxGaussianFWHM.Value; }
 
         [Category("Image Filter")]
         /// <summary>
@@ -537,7 +537,7 @@ namespace Crystallography.Controls
         {
             if (skipEvent) return;
 
-            numericBoxGaussianRadius.Visible = checkBoxGaussianBlur.Checked;
+            numericBoxGaussianFWHM.Visible = checkBoxGaussianBlur.Checked;
             //PseudoBitmap.BlurRadius = numericBoxGaussianRadius.Value;
 
             numericBoxDustScratchesRadius.Visible = numericBoxDustScratchesThreshold.Visible = checkBoxDustScratches.Checked;
@@ -562,7 +562,7 @@ namespace Crystallography.Controls
             sw.Restart();
             if (checkBoxGaussianBlur.Checked)
             {
-                PseudoBitmap.SetBlurImage(numericBoxGaussianRadius.Value, PseudoBitmap.BlurModeEnum.Gaussian, originalFlag);
+                PseudoBitmap.SetBlurImage(numericBoxGaussianFWHM.Value/2, PseudoBitmap.BlurModeEnum.Gaussian, originalFlag);
                 originalFlag = false;
                 StatusLabel += "Gaussian Blur: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f3") + "msec.  ";
             }

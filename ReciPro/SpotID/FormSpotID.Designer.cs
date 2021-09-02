@@ -53,12 +53,20 @@ namespace ReciPro
             this.buttonCopyMetafile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonDeleteSpot = new System.Windows.Forms.Button();
+            this.buttonClearSpots = new System.Windows.Forms.Button();
+            this.buttonCopyToClipboad = new System.Windows.Forms.Button();
+            this.buttonSaveToFile = new System.Windows.Forms.Button();
+            this.checkBoxDetailsOfFunction = new System.Windows.Forms.CheckBox();
+            this.checkBoxDetailsOfSpot = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
+            this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
             this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
             this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
             this.buttonFindSpots = new System.Windows.Forms.Button();
             this.numericBoxNearestNeighbor = new Crystallography.Controls.NumericBox();
             this.numericBoxFittingRange = new Crystallography.Controls.NumericBox();
-            this.buttonClearSpots = new System.Windows.Forms.Button();
             this.buttonGlobalFit = new System.Windows.Forms.Button();
             this.numericBoxDonut = new Crystallography.Controls.NumericBox();
             this.buttonDonut = new System.Windows.Forms.Button();
@@ -82,13 +90,6 @@ namespace ReciPro
             this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new ReciPro.DataSetReciPro();
-            this.buttonCopyToClipboad = new System.Windows.Forms.Button();
-            this.buttonSaveToFile = new System.Windows.Forms.Button();
-            this.checkBoxDetailsOfFunction = new System.Windows.Forms.CheckBox();
-            this.checkBoxDetailsOfSpot = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
-            this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buttonIdentifySpots = new System.Windows.Forms.Button();
@@ -117,7 +118,7 @@ namespace ReciPro
             this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
             this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
             this.checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +129,7 @@ namespace ReciPro
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
@@ -153,15 +154,15 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
@@ -201,7 +202,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(588, 586);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(588, 609);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
@@ -245,16 +246,8 @@ namespace ReciPro
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttonResetRangeForAllSpots);
-            this.panel2.Controls.Add(this.numericBoxNumberOfSpots);
-            this.panel2.Controls.Add(this.buttonFindSpots);
-            this.panel2.Controls.Add(this.numericBoxNearestNeighbor);
-            this.panel2.Controls.Add(this.numericBoxFittingRange);
+            this.panel2.Controls.Add(this.buttonDeleteSpot);
             this.panel2.Controls.Add(this.buttonClearSpots);
-            this.panel2.Controls.Add(this.buttonGlobalFit);
-            this.panel2.Controls.Add(this.numericBoxDonut);
-            this.panel2.Controls.Add(this.buttonDonut);
-            this.panel2.Controls.Add(this.dataGridViewSpots);
             this.panel2.Controls.Add(this.buttonCopyToClipboad);
             this.panel2.Controls.Add(this.buttonSaveToFile);
             this.panel2.Controls.Add(this.checkBoxDetailsOfFunction);
@@ -262,8 +255,95 @@ namespace ReciPro
             this.panel2.Controls.Add(this.checkBoxShowObsSpotSymbol);
             this.panel2.Controls.Add(this.checkBoxShowObsSpotLabel);
             this.panel2.Controls.Add(this.buttonCopmprehensiveFitting);
+            this.panel2.Controls.Add(this.buttonResetRangeForAllSpots);
+            this.panel2.Controls.Add(this.numericBoxNumberOfSpots);
+            this.panel2.Controls.Add(this.buttonFindSpots);
+            this.panel2.Controls.Add(this.numericBoxNearestNeighbor);
+            this.panel2.Controls.Add(this.numericBoxFittingRange);
+            this.panel2.Controls.Add(this.buttonGlobalFit);
+            this.panel2.Controls.Add(this.numericBoxDonut);
+            this.panel2.Controls.Add(this.buttonDonut);
+            this.panel2.Controls.Add(this.dataGridViewSpots);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // buttonDeleteSpot
+            // 
+            resources.ApplyResources(this.buttonDeleteSpot, "buttonDeleteSpot");
+            this.buttonDeleteSpot.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonDeleteSpot.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteSpot.Name = "buttonDeleteSpot";
+            this.toolTip.SetToolTip(this.buttonDeleteSpot, resources.GetString("buttonDeleteSpot.ToolTip"));
+            this.buttonDeleteSpot.UseVisualStyleBackColor = false;
+            this.buttonDeleteSpot.Click += new System.EventHandler(this.buttonDeleteSpot_Click);
+            // 
+            // buttonClearSpots
+            // 
+            resources.ApplyResources(this.buttonClearSpots, "buttonClearSpots");
+            this.buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonClearSpots.ForeColor = System.Drawing.Color.White;
+            this.buttonClearSpots.Name = "buttonClearSpots";
+            this.toolTip.SetToolTip(this.buttonClearSpots, resources.GetString("buttonClearSpots.ToolTip"));
+            this.buttonClearSpots.UseVisualStyleBackColor = false;
+            this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);
+            // 
+            // buttonCopyToClipboad
+            // 
+            resources.ApplyResources(this.buttonCopyToClipboad, "buttonCopyToClipboad");
+            this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
+            this.toolTip.SetToolTip(this.buttonCopyToClipboad, resources.GetString("buttonCopyToClipboad.ToolTip"));
+            this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
+            this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
+            // 
+            // buttonSaveToFile
+            // 
+            resources.ApplyResources(this.buttonSaveToFile, "buttonSaveToFile");
+            this.buttonSaveToFile.Name = "buttonSaveToFile";
+            this.toolTip.SetToolTip(this.buttonSaveToFile, resources.GetString("buttonSaveToFile.ToolTip"));
+            this.buttonSaveToFile.UseVisualStyleBackColor = true;
+            this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
+            // 
+            // checkBoxDetailsOfFunction
+            // 
+            resources.ApplyResources(this.checkBoxDetailsOfFunction, "checkBoxDetailsOfFunction");
+            this.checkBoxDetailsOfFunction.Checked = true;
+            this.checkBoxDetailsOfFunction.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDetailsOfFunction.Name = "checkBoxDetailsOfFunction";
+            this.checkBoxDetailsOfFunction.UseVisualStyleBackColor = true;
+            this.checkBoxDetailsOfFunction.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfFunction_CheckedChanged);
+            // 
+            // checkBoxDetailsOfSpot
+            // 
+            resources.ApplyResources(this.checkBoxDetailsOfSpot, "checkBoxDetailsOfSpot");
+            this.checkBoxDetailsOfSpot.Name = "checkBoxDetailsOfSpot";
+            this.checkBoxDetailsOfSpot.UseVisualStyleBackColor = true;
+            this.checkBoxDetailsOfSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfSpot_CheckedChanged);
+            // 
+            // checkBoxShowObsSpotSymbol
+            // 
+            resources.ApplyResources(this.checkBoxShowObsSpotSymbol, "checkBoxShowObsSpotSymbol");
+            this.checkBoxShowObsSpotSymbol.Checked = true;
+            this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
+            this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
+            this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            // 
+            // checkBoxShowObsSpotLabel
+            // 
+            resources.ApplyResources(this.checkBoxShowObsSpotLabel, "checkBoxShowObsSpotLabel");
+            this.checkBoxShowObsSpotLabel.Checked = true;
+            this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
+            this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
+            this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            // 
+            // buttonCopmprehensiveFitting
+            // 
+            resources.ApplyResources(this.buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
+            this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
+            this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
+            this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
             // 
             // buttonResetRangeForAllSpots
             // 
@@ -342,16 +422,6 @@ namespace ReciPro
             this.toolTip.SetToolTip(this.numericBoxFittingRange, resources.GetString("numericBoxFittingRange.ToolTip"));
             this.numericBoxFittingRange.Value = 20D;
             this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
-            // 
-            // buttonClearSpots
-            // 
-            resources.ApplyResources(this.buttonClearSpots, "buttonClearSpots");
-            this.buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonClearSpots.ForeColor = System.Drawing.Color.White;
-            this.buttonClearSpots.Name = "buttonClearSpots";
-            this.toolTip.SetToolTip(this.buttonClearSpots, resources.GetString("buttonClearSpots.ToolTip"));
-            this.buttonClearSpots.UseVisualStyleBackColor = false;
-            this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);
             // 
             // buttonGlobalFit
             // 
@@ -603,63 +673,6 @@ namespace ReciPro
             this.dataSet.DataSetName = "DataSet";
             this.dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // buttonCopyToClipboad
-            // 
-            resources.ApplyResources(this.buttonCopyToClipboad, "buttonCopyToClipboad");
-            this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
-            this.toolTip.SetToolTip(this.buttonCopyToClipboad, resources.GetString("buttonCopyToClipboad.ToolTip"));
-            this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
-            this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
-            // 
-            // buttonSaveToFile
-            // 
-            resources.ApplyResources(this.buttonSaveToFile, "buttonSaveToFile");
-            this.buttonSaveToFile.Name = "buttonSaveToFile";
-            this.toolTip.SetToolTip(this.buttonSaveToFile, resources.GetString("buttonSaveToFile.ToolTip"));
-            this.buttonSaveToFile.UseVisualStyleBackColor = true;
-            this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
-            // 
-            // checkBoxDetailsOfFunction
-            // 
-            resources.ApplyResources(this.checkBoxDetailsOfFunction, "checkBoxDetailsOfFunction");
-            this.checkBoxDetailsOfFunction.Checked = true;
-            this.checkBoxDetailsOfFunction.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDetailsOfFunction.Name = "checkBoxDetailsOfFunction";
-            this.checkBoxDetailsOfFunction.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsOfFunction.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfFunction_CheckedChanged);
-            // 
-            // checkBoxDetailsOfSpot
-            // 
-            resources.ApplyResources(this.checkBoxDetailsOfSpot, "checkBoxDetailsOfSpot");
-            this.checkBoxDetailsOfSpot.Name = "checkBoxDetailsOfSpot";
-            this.checkBoxDetailsOfSpot.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsOfSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfSpot_CheckedChanged);
-            // 
-            // checkBoxShowObsSpotSymbol
-            // 
-            resources.ApplyResources(this.checkBoxShowObsSpotSymbol, "checkBoxShowObsSpotSymbol");
-            this.checkBoxShowObsSpotSymbol.Checked = true;
-            this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
-            this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // checkBoxShowObsSpotLabel
-            // 
-            resources.ApplyResources(this.checkBoxShowObsSpotLabel, "checkBoxShowObsSpotLabel");
-            this.checkBoxShowObsSpotLabel.Checked = true;
-            this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
-            this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
-            // 
-            // buttonCopmprehensiveFitting
-            // 
-            resources.ApplyResources(this.buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
-            this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
-            this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
-            this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
             // 
             // pictureBox1
             // 
@@ -970,13 +983,13 @@ namespace ReciPro
             this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
             this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.shortcutHintsToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            resources.ApplyResources(this.menuStrip, "menuStrip");
+            this.menuStrip.Name = "menuStrip";
             // 
             // fileToolStripMenuItem
             // 
@@ -1038,16 +1051,16 @@ namespace ReciPro
             resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabelImageFilter,
             this.toolStripStatusLabelFindSpot,
             this.toolStripStatusLabelIdentifySpot,
             this.toolStripStatusLabelRefine});
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.Name = "statusStrip1";
+            resources.ApplyResources(this.statusStrip, "statusStrip");
+            this.statusStrip.Name = "statusStrip";
             // 
             // toolStripProgressBar
             // 
@@ -1089,9 +1102,9 @@ namespace ReciPro
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormSpotID";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSpotID_FormClosing);
             this.Load += new System.EventHandler(this.FormSpotID_Load);
@@ -1119,10 +1132,10 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1131,7 +1144,7 @@ namespace ReciPro
        
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
         private Crystallography.Controls.WaveLengthControl waveLengthControl1;
@@ -1142,7 +1155,7 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewCandidates;
         private System.Windows.Forms.BindingSource bindingSourceCandidates;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFindSpot;
         private Crystallography.Controls.NumericBox numericBoxAcceptableError;
@@ -1221,5 +1234,6 @@ namespace ReciPro
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBoxDetailsOfFunction;
         public System.Windows.Forms.CheckBox checkBoxDetailsOfSpot;
+        private System.Windows.Forms.Button buttonDeleteSpot;
     }
 }
