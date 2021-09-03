@@ -32,20 +32,20 @@ namespace ReciPro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotID));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -160,32 +160,37 @@ namespace ReciPro
             // 
             // splitContainer1
             // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.toolTip.SetToolTip(this.splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2.Controls.Add(this.checkBoxShowDebyeRing);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.toolTip.SetToolTip(this.splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
+            this.toolTip.SetToolTip(this.splitContainer1, resources.GetString("splitContainer1.ToolTip"));
             // 
             // scalablePictureBoxAdvanced
             // 
+            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
             this.scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
@@ -202,11 +207,12 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(588, 609);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(500, 583);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
             this.scalablePictureBoxAdvanced.StatusVisible = false;
+            this.toolTip.SetToolTip(this.scalablePictureBoxAdvanced, resources.GetString("scalablePictureBoxAdvanced.ToolTip"));
             this.scalablePictureBoxAdvanced.TrackBarVisible = true;
             this.scalablePictureBoxAdvanced.UpperIntensity = 255D;
             this.scalablePictureBoxAdvanced.VisibleGradient = true;
@@ -216,16 +222,18 @@ namespace ReciPro
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.buttonPixelToPixel);
             this.panel1.Controls.Add(this.buttonCopyMetafile);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // buttonPixelToPixel
             // 
             resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
             this.buttonPixelToPixel.Name = "buttonPixelToPixel";
+            this.toolTip.SetToolTip(this.buttonPixelToPixel, resources.GetString("buttonPixelToPixel.ToolTip"));
             this.buttonPixelToPixel.UseVisualStyleBackColor = true;
             this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
             // 
@@ -233,6 +241,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
             this.buttonCopyMetafile.Name = "buttonCopyMetafile";
+            this.toolTip.SetToolTip(this.buttonCopyMetafile, resources.GetString("buttonCopyMetafile.ToolTip"));
             this.buttonCopyMetafile.UseVisualStyleBackColor = true;
             this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
             // 
@@ -243,9 +252,11 @@ namespace ReciPro
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // panel2
             // 
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.buttonDeleteSpot);
             this.panel2.Controls.Add(this.buttonClearSpots);
             this.panel2.Controls.Add(this.buttonCopyToClipboad);
@@ -264,8 +275,8 @@ namespace ReciPro
             this.panel2.Controls.Add(this.numericBoxDonut);
             this.panel2.Controls.Add(this.buttonDonut);
             this.panel2.Controls.Add(this.dataGridViewSpots);
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            this.toolTip.SetToolTip(this.panel2, resources.GetString("panel2.ToolTip"));
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // buttonDeleteSpot
@@ -310,6 +321,7 @@ namespace ReciPro
             this.checkBoxDetailsOfFunction.Checked = true;
             this.checkBoxDetailsOfFunction.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDetailsOfFunction.Name = "checkBoxDetailsOfFunction";
+            this.toolTip.SetToolTip(this.checkBoxDetailsOfFunction, resources.GetString("checkBoxDetailsOfFunction.ToolTip"));
             this.checkBoxDetailsOfFunction.UseVisualStyleBackColor = true;
             this.checkBoxDetailsOfFunction.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfFunction_CheckedChanged);
             // 
@@ -317,6 +329,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.checkBoxDetailsOfSpot, "checkBoxDetailsOfSpot");
             this.checkBoxDetailsOfSpot.Name = "checkBoxDetailsOfSpot";
+            this.toolTip.SetToolTip(this.checkBoxDetailsOfSpot, resources.GetString("checkBoxDetailsOfSpot.ToolTip"));
             this.checkBoxDetailsOfSpot.UseVisualStyleBackColor = true;
             this.checkBoxDetailsOfSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfSpot_CheckedChanged);
             // 
@@ -326,6 +339,7 @@ namespace ReciPro
             this.checkBoxShowObsSpotSymbol.Checked = true;
             this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
+            this.toolTip.SetToolTip(this.checkBoxShowObsSpotSymbol, resources.GetString("checkBoxShowObsSpotSymbol.ToolTip"));
             this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
             this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
@@ -335,6 +349,7 @@ namespace ReciPro
             this.checkBoxShowObsSpotLabel.Checked = true;
             this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
+            this.toolTip.SetToolTip(this.checkBoxShowObsSpotLabel, resources.GetString("checkBoxShowObsSpotLabel.ToolTip"));
             this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
@@ -342,6 +357,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
             this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
+            this.toolTip.SetToolTip(this.buttonCopmprehensiveFitting, resources.GetString("buttonCopmprehensiveFitting.ToolTip"));
             this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
             this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
             // 
@@ -349,6 +365,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.buttonResetRangeForAllSpots, "buttonResetRangeForAllSpots");
             this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
+            this.toolTip.SetToolTip(this.buttonResetRangeForAllSpots, resources.GetString("buttonResetRangeForAllSpots.ToolTip"));
             this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
             this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
             // 
@@ -427,6 +444,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.buttonGlobalFit, "buttonGlobalFit");
             this.buttonGlobalFit.Name = "buttonGlobalFit";
+            this.toolTip.SetToolTip(this.buttonGlobalFit, resources.GetString("buttonGlobalFit.ToolTip"));
             this.buttonGlobalFit.UseVisualStyleBackColor = true;
             this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
             // 
@@ -446,29 +464,31 @@ namespace ReciPro
             this.numericBoxDonut.SmartIncrement = true;
             this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDonut.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             this.numericBoxDonut.Value = 5D;
             // 
             // buttonDonut
             // 
             resources.ApplyResources(this.buttonDonut, "buttonDonut");
             this.buttonDonut.Name = "buttonDonut";
+            this.toolTip.SetToolTip(this.buttonDonut, resources.GetString("buttonDonut.ToolTip"));
             this.buttonDonut.UseVisualStyleBackColor = true;
             this.buttonDonut.Click += new System.EventHandler(this.buttonDonut_Click);
             // 
             // dataGridViewSpots
             // 
+            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AllowUserToDeleteRows = false;
             this.dataGridViewSpots.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AutoGenerateColumns = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSpots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSpots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
@@ -489,21 +509,22 @@ namespace ReciPro
             this.hkl,
             this.Column1});
             this.dataGridViewSpots.DataSource = this.bindingSourceObsSpots;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle28.Format = "N2";
-            dataGridViewCellStyle28.NullValue = null;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewSpots.MultiSelect = false;
             this.dataGridViewSpots.Name = "dataGridViewSpots";
             this.dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSpots.RowTemplate.Height = 21;
             this.dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridViewSpots, resources.GetString("dataGridViewSpots.ToolTip"));
             this.dataGridViewSpots.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSpots_CellContentClick);
             this.dataGridViewSpots.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewSpots_RowHeaderMouseDoubleClick);
             // 
@@ -517,10 +538,10 @@ namespace ReciPro
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.noDataGridViewTextBoxColumn, "noDataGridViewTextBoxColumn");
             this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
             this.noDataGridViewTextBoxColumn.ReadOnly = true;
@@ -528,10 +549,10 @@ namespace ReciPro
             // Range
             // 
             this.Range.DataPropertyName = "Range";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Format = "N1";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Range.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N1";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Range.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.Range, "Range");
             this.Range.Name = "Range";
             // 
@@ -539,9 +560,9 @@ namespace ReciPro
             // 
             this.x0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.x0.DataPropertyName = "x0";
-            dataGridViewCellStyle18.Format = "N1";
-            dataGridViewCellStyle18.NullValue = null;
-            this.x0.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Format = "N1";
+            dataGridViewCellStyle4.NullValue = null;
+            this.x0.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.x0, "x0");
             this.x0.Name = "x0";
             // 
@@ -549,36 +570,36 @@ namespace ReciPro
             // 
             this.y0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.y0.DataPropertyName = "y0";
-            dataGridViewCellStyle19.Format = "N1";
-            dataGridViewCellStyle19.NullValue = null;
-            this.y0.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Format = "N1";
+            dataGridViewCellStyle5.NullValue = null;
+            this.y0.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.y0, "y0");
             this.y0.Name = "y0";
             // 
             // H1
             // 
             this.H1.DataPropertyName = "H1";
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.NullValue = null;
-            this.H1.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.H1.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.H1, "H1");
             this.H1.Name = "H1";
             // 
             // H2
             // 
             this.H2.DataPropertyName = "H2";
-            dataGridViewCellStyle21.Format = "N2";
-            dataGridViewCellStyle21.NullValue = null;
-            this.H2.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.H2.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.H2, "H2");
             this.H2.Name = "H2";
             // 
             // θ
             // 
             this.θ.DataPropertyName = "θ";
-            dataGridViewCellStyle22.Format = "N1";
-            dataGridViewCellStyle22.NullValue = null;
-            this.θ.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.NullValue = null;
+            this.θ.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.θ, "θ");
             this.θ.Name = "θ";
             // 
@@ -592,9 +613,9 @@ namespace ReciPro
             // A
             // 
             this.A.DataPropertyName = "A";
-            dataGridViewCellStyle23.Format = "0.0000E0";
-            dataGridViewCellStyle23.NullValue = null;
-            this.A.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle9.Format = "0.0000E0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.A.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.A, "A");
             this.A.Name = "A";
             // 
@@ -609,9 +630,9 @@ namespace ReciPro
             // 
             this.Bx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Bx.DataPropertyName = "Bx";
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.NullValue = null;
-            this.Bx.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Bx.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.Bx, "Bx");
             this.Bx.Name = "Bx";
             // 
@@ -619,9 +640,9 @@ namespace ReciPro
             // 
             this.By.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.By.DataPropertyName = "By";
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = null;
-            this.By.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.By.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.By, "By");
             this.By.Name = "By";
             // 
@@ -635,10 +656,10 @@ namespace ReciPro
             // d
             // 
             this.d.DataPropertyName = "d";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N4";
-            dataGridViewCellStyle26.NullValue = null;
-            this.d.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N4";
+            dataGridViewCellStyle12.NullValue = null;
+            this.d.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.d, "d");
             this.d.Name = "d";
             this.d.ReadOnly = true;
@@ -646,8 +667,8 @@ namespace ReciPro
             // hkl
             // 
             this.hkl.DataPropertyName = "HKL";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.hkl.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.hkl.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.hkl, "hkl");
             this.hkl.Name = "hkl";
             this.hkl.ReadOnly = true;
@@ -680,6 +701,7 @@ namespace ReciPro
             this.pictureBox1.Image = global::ReciPro.Properties.Resources.TwoDimensionalPseudoVoigt;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
+            this.toolTip.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
             // 
             // groupBox3
             // 
@@ -700,6 +722,7 @@ namespace ReciPro
             this.groupBox3.Controls.Add(this.buttonStop);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // buttonIdentifySpots
             // 
@@ -727,6 +750,7 @@ namespace ReciPro
             this.numericBoxSemiangle.SmartIncrement = true;
             this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSemiangle.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxSemiangle, resources.GetString("numericBoxSemiangle.ToolTip"));
             this.numericBoxSemiangle.Value = 2D;
             // 
             // numericBoxMaxNumOfG
@@ -744,6 +768,7 @@ namespace ReciPro
             this.numericBoxMaxNumOfG.SmartIncrement = true;
             this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
             this.numericBoxMaxNumOfG.Value = 400D;
             // 
             // numericBoxAcceptableError
@@ -762,6 +787,7 @@ namespace ReciPro
             this.numericBoxAcceptableError.SmartIncrement = true;
             this.numericBoxAcceptableError.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAcceptableError.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAcceptableError, resources.GetString("numericBoxAcceptableError.ToolTip"));
             this.numericBoxAcceptableError.Value = 2D;
             // 
             // numericBoxMaxGrainNum
@@ -779,6 +805,7 @@ namespace ReciPro
             this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
             this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxMaxGrainNum, resources.GetString("numericBoxMaxGrainNum.ToolTip"));
             this.numericBoxMaxGrainNum.Value = 2D;
             // 
             // checkBoxShowCalcSpotSymbol
@@ -787,6 +814,7 @@ namespace ReciPro
             this.checkBoxShowCalcSpotSymbol.Checked = true;
             this.checkBoxShowCalcSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
+            this.toolTip.SetToolTip(this.checkBoxShowCalcSpotSymbol, resources.GetString("checkBoxShowCalcSpotSymbol.ToolTip"));
             this.checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
             this.checkBoxShowCalcSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
@@ -794,6 +822,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.radioButtonMultiGrain, "radioButtonMultiGrain");
             this.radioButtonMultiGrain.Name = "radioButtonMultiGrain";
+            this.toolTip.SetToolTip(this.radioButtonMultiGrain, resources.GetString("radioButtonMultiGrain.ToolTip"));
             this.radioButtonMultiGrain.UseVisualStyleBackColor = true;
             // 
             // radioButtonSingleGrain
@@ -802,6 +831,7 @@ namespace ReciPro
             this.radioButtonSingleGrain.Checked = true;
             this.radioButtonSingleGrain.Name = "radioButtonSingleGrain";
             this.radioButtonSingleGrain.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonSingleGrain, resources.GetString("radioButtonSingleGrain.ToolTip"));
             this.radioButtonSingleGrain.UseVisualStyleBackColor = true;
             this.radioButtonSingleGrain.CheckedChanged += new System.EventHandler(this.radioButtonSingleGrain_CheckedChanged);
             // 
@@ -809,15 +839,16 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.checkBoxShowCalcSpotLabel, "checkBoxShowCalcSpotLabel");
             this.checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
+            this.toolTip.SetToolTip(this.checkBoxShowCalcSpotLabel, resources.GetString("checkBoxShowCalcSpotLabel.ToolTip"));
             this.checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
             this.checkBoxShowCalcSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
             // dataGridViewGrains
             // 
+            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AllowUserToAddRows = false;
             this.dataGridViewGrains.AllowUserToDeleteRows = false;
             this.dataGridViewGrains.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
             this.dataGridViewGrains.AutoGenerateColumns = false;
             this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -830,6 +861,7 @@ namespace ReciPro
             this.dataGridViewGrains.RowHeadersVisible = false;
             this.dataGridViewGrains.RowTemplate.Height = 21;
             this.dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridViewGrains, resources.GetString("dataGridViewGrains.ToolTip"));
             // 
             // noDataGridViewTextBoxColumn2
             // 
@@ -860,10 +892,10 @@ namespace ReciPro
             // 
             // dataGridViewCandidates
             // 
+            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AllowUserToAddRows = false;
             this.dataGridViewCandidates.AllowUserToDeleteRows = false;
             this.dataGridViewCandidates.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
             this.dataGridViewCandidates.AutoGenerateColumns = false;
             this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -876,6 +908,7 @@ namespace ReciPro
             this.dataGridViewCandidates.RowHeadersVisible = false;
             this.dataGridViewCandidates.RowTemplate.Height = 21;
             this.dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridViewCandidates, resources.GetString("dataGridViewCandidates.ToolTip"));
             // 
             // noDataGridViewTextBoxColumn1
             // 
@@ -901,6 +934,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.checkBoxIgnoreMultipleDiffraction, "checkBoxIgnoreMultipleDiffraction");
             this.checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
+            this.toolTip.SetToolTip(this.checkBoxIgnoreMultipleDiffraction, resources.GetString("checkBoxIgnoreMultipleDiffraction.ToolTip"));
             this.checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
             this.checkBoxIgnoreMultipleDiffraction.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
@@ -910,6 +944,7 @@ namespace ReciPro
             this.buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
             this.buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
+            this.toolTip.SetToolTip(this.buttonRefineThicknessAndDirection, resources.GetString("buttonRefineThicknessAndDirection.ToolTip"));
             this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
             this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
             // 
@@ -919,6 +954,7 @@ namespace ReciPro
             this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
             this.buttonStop.ForeColor = System.Drawing.Color.White;
             this.buttonStop.Name = "buttonStop";
+            this.toolTip.SetToolTip(this.buttonStop, resources.GetString("buttonStop.ToolTip"));
             this.buttonStop.UseVisualStyleBackColor = false;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
@@ -930,6 +966,7 @@ namespace ReciPro
             this.groupBox2.Controls.Add(this.waveLengthControl1);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // numericBoxCameraLength
             // 
@@ -946,6 +983,7 @@ namespace ReciPro
             this.numericBoxCameraLength.SmartIncrement = true;
             this.numericBoxCameraLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCameraLength.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip"));
             this.numericBoxCameraLength.Value = 1000D;
             // 
             // numericBoxPixelSize
@@ -963,16 +1001,18 @@ namespace ReciPro
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
             this.numericBoxPixelSize.Value = 0.05D;
             // 
             // waveLengthControl1
             // 
+            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
             this.waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
             this.waveLengthControl1.Energy = 200D;
-            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
             this.waveLengthControl1.WaveLength = 0.0025079347455D;
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Electron;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
@@ -982,31 +1022,34 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
             this.checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
+            this.toolTip.SetToolTip(this.checkBoxShowDebyeRing, resources.GetString("checkBoxShowDebyeRing.ToolTip"));
             this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
             this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
             // 
             // menuStrip
             // 
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.shortcutHintsToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
+            this.toolTip.SetToolTip(this.menuStrip, resources.GetString("menuStrip.ToolTip"));
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.readToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // readToolStripMenuItem
             // 
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
             resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
+            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
             // 
             // shortcutHintsToolStripMenuItem
             // 
+            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.doubleClickAddSpotToolStripMenuItem,
             this.toolStripMenuItem7,
@@ -1016,7 +1059,6 @@ namespace ReciPro
             this.toolStripMenuItem4,
             this.toolStripMenuItem3});
             this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
-            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
@@ -1055,40 +1097,41 @@ namespace ReciPro
             // 
             // statusStrip
             // 
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar,
             this.toolStripStatusLabelImageFilter,
             this.toolStripStatusLabelFindSpot,
             this.toolStripStatusLabelIdentifySpot,
             this.toolStripStatusLabelRefine});
-            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
+            this.toolTip.SetToolTip(this.statusStrip, resources.GetString("statusStrip.ToolTip"));
             // 
             // toolStripProgressBar
             // 
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             this.toolStripProgressBar.Maximum = 10000;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelImageFilter
             // 
-            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
+            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             // 
             // toolStripStatusLabelFindSpot
             // 
-            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
+            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             // 
             // toolStripStatusLabelIdentifySpot
             // 
-            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
+            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             // 
             // toolStripStatusLabelRefine
             // 
-            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
+            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             // 
             // backgroundWorkerSpotID
             // 
@@ -1100,14 +1143,15 @@ namespace ReciPro
             // 
             // FormSpotID
             // 
-            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormSpotID";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSpotID_FormClosing);
             this.Load += new System.EventHandler(this.FormSpotID_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragDrop);
