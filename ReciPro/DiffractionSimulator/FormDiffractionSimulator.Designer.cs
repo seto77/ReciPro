@@ -103,7 +103,7 @@
             this.labelDinv = new System.Windows.Forms.Label();
             this.checkBoxMousePositionDetailes = new System.Windows.Forms.CheckBox();
             this.labelMousePositionReciprocal = new System.Windows.Forms.Label();
-            this.labelTwoTheta = new System.Windows.Forms.Label();
+            this.labelTwoThetaDeg = new System.Windows.Forms.Label();
             this.labelD = new System.Windows.Forms.Label();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -222,6 +222,7 @@
             this.timerBlinkKikuchiLine = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkDebyeRing = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkScale = new System.Windows.Forms.Timer(this.components);
+            this.labelTwoThetaRad = new System.Windows.Forms.Label();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -500,12 +501,13 @@
             // waveLengthControl
             // 
             resources.ApplyResources(this.waveLengthControl, "waveLengthControl");
-            this.waveLengthControl.Energy = 200D;
+            this.waveLengthControl.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.waveLengthControl.Energy = 494.36741737D;
             this.waveLengthControl.Name = "waveLengthControl";
             this.waveLengthControl.ShowWaveSource = true;
-            this.waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.waveLengthControl.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.waveLengthControl.WaveLength = 0.0025079347455D;
-            this.waveLengthControl.WaveSource = Crystallography.WaveSource.Electron;
+            this.waveLengthControl.WaveSource = Crystallography.WaveSource.Xray;
             this.waveLengthControl.XrayWaveSourceElementNumber = 0;
             this.waveLengthControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
             this.waveLengthControl.WavelengthChanged += new System.EventHandler(this.waveLengthControl_WavelengthChanged);
@@ -958,7 +960,8 @@
             this.panelMousePosition.Controls.Add(this.labelDinv);
             this.panelMousePosition.Controls.Add(this.checkBoxMousePositionDetailes);
             this.panelMousePosition.Controls.Add(this.labelMousePositionReciprocal);
-            this.panelMousePosition.Controls.Add(this.labelTwoTheta);
+            this.panelMousePosition.Controls.Add(this.labelTwoThetaRad);
+            this.panelMousePosition.Controls.Add(this.labelTwoThetaDeg);
             this.panelMousePosition.Controls.Add(this.labelD);
             this.panelMousePosition.Name = "panelMousePosition";
             // 
@@ -995,10 +998,10 @@
             resources.ApplyResources(this.labelMousePositionReciprocal, "labelMousePositionReciprocal");
             this.labelMousePositionReciprocal.Name = "labelMousePositionReciprocal";
             // 
-            // labelTwoTheta
+            // labelTwoThetaDeg
             // 
-            resources.ApplyResources(this.labelTwoTheta, "labelTwoTheta");
-            this.labelTwoTheta.Name = "labelTwoTheta";
+            resources.ApplyResources(this.labelTwoThetaDeg, "labelTwoThetaDeg");
+            this.labelTwoThetaDeg.Name = "labelTwoThetaDeg";
             // 
             // labelD
             // 
@@ -2042,6 +2045,11 @@
             this.timerBlinkScale.Tag = "";
             this.timerBlinkScale.Tick += new System.EventHandler(this.timerBlinkScale_Tick);
             // 
+            // label2ThetaRad
+            // 
+            resources.ApplyResources(this.labelTwoThetaRad, "label2ThetaRad");
+            this.labelTwoThetaRad.Name = "label2ThetaRad";
+            // 
             // FormDiffractionSimulator
             // 
             this.AllowDrop = true;
@@ -2078,7 +2086,6 @@
             this.panelMain.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tabPageWave.ResumeLayout(false);
-            this.tabPageWave.PerformLayout();
             this.tabPageGeneral.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).EndInit();
@@ -2212,7 +2219,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar trackBarDebyeRingWidth;
         private System.Windows.Forms.RadioButton radioButtonIntensityExcitation;
-        private System.Windows.Forms.Label labelTwoTheta;
+        private System.Windows.Forms.Label labelTwoThetaDeg;
         private System.Windows.Forms.Timer timerBlinkSpot;
         private System.Windows.Forms.Timer timerBlinkKikuchiLine;
         private System.Windows.Forms.Timer timerBlinkDebyeRing;
@@ -2337,5 +2344,6 @@
         private System.Windows.Forms.ToolStripMenuItem copyCBEDasImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asPixelByPixelImagePNGFormatToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelTwoThetaRad;
     }
 }

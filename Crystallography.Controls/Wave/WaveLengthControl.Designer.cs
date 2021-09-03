@@ -34,29 +34,25 @@
             this.radioButtonXray = new System.Windows.Forms.RadioButton();
             this.radioButtonElectron = new System.Windows.Forms.RadioButton();
             this.comboBoxXrayLine = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanelEnergy = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxEnergy = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanelElement = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelWaveLength = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxWaveLength = new Crystallography.Controls.NumericBox();
             this.radioButtonNeutron = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanelWaveSource = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMain = new System.Windows.Forms.FlowLayoutPanel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.flowLayoutPanelEnergy.SuspendLayout();
             this.flowLayoutPanelElement.SuspendLayout();
-            this.flowLayoutPanelWaveLength.SuspendLayout();
             this.flowLayoutPanelWaveSource.SuspendLayout();
             this.flowLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxXRayElement
             // 
+            resources.ApplyResources(this.comboBoxXRayElement, "comboBoxXRayElement");
             this.comboBoxXRayElement.DropDownHeight = 100;
             this.comboBoxXRayElement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxXRayElement.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxXRayElement, "comboBoxXRayElement");
             this.comboBoxXRayElement.FormattingEnabled = true;
             this.comboBoxXRayElement.Items.AddRange(new object[] {
             resources.GetString("comboBoxXRayElement.Items"),
@@ -182,9 +178,9 @@
             // 
             // comboBoxXrayLine
             // 
+            resources.ApplyResources(this.comboBoxXrayLine, "comboBoxXrayLine");
             this.comboBoxXrayLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxXrayLine.DropDownWidth = 70;
-            resources.ApplyResources(this.comboBoxXrayLine, "comboBoxXrayLine");
             this.comboBoxXrayLine.FormattingEnabled = true;
             this.comboBoxXrayLine.Items.AddRange(new object[] {
             resources.GetString("comboBoxXrayLine.Items"),
@@ -200,12 +196,6 @@
             this.comboBoxXrayLine.Name = "comboBoxXrayLine";
             this.toolTip.SetToolTip(this.comboBoxXrayLine, resources.GetString("comboBoxXrayLine.ToolTip"));
             this.comboBoxXrayLine.SelectedIndexChanged += new System.EventHandler(this.comboBoxXrayLine_SelectedIndexChanged);
-            // 
-            // flowLayoutPanelEnergy
-            // 
-            resources.ApplyResources(this.flowLayoutPanelEnergy, "flowLayoutPanelEnergy");
-            this.flowLayoutPanelEnergy.Controls.Add(this.numericBoxEnergy);
-            this.flowLayoutPanelEnergy.Name = "flowLayoutPanelEnergy";
             // 
             // numericBoxEnergy
             // 
@@ -226,17 +216,13 @@
             this.flowLayoutPanelElement.Controls.Add(this.comboBoxXRayElement);
             this.flowLayoutPanelElement.Controls.Add(this.comboBoxXrayLine);
             this.flowLayoutPanelElement.Name = "flowLayoutPanelElement";
+            this.toolTip.SetToolTip(this.flowLayoutPanelElement, resources.GetString("flowLayoutPanelElement.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // flowLayoutPanelWaveLength
-            // 
-            resources.ApplyResources(this.flowLayoutPanelWaveLength, "flowLayoutPanelWaveLength");
-            this.flowLayoutPanelWaveLength.Controls.Add(this.numericBoxWaveLength);
-            this.flowLayoutPanelWaveLength.Name = "flowLayoutPanelWaveLength";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // numericBoxWaveLength
             // 
@@ -271,9 +257,10 @@
             // 
             resources.ApplyResources(this.flowLayoutPanelMain, "flowLayoutPanelMain");
             this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanelElement);
-            this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanelEnergy);
-            this.flowLayoutPanelMain.Controls.Add(this.flowLayoutPanelWaveLength);
+            this.flowLayoutPanelMain.Controls.Add(this.numericBoxEnergy);
+            this.flowLayoutPanelMain.Controls.Add(this.numericBoxWaveLength);
             this.flowLayoutPanelMain.Name = "flowLayoutPanelMain";
+            this.toolTip.SetToolTip(this.flowLayoutPanelMain, resources.GetString("flowLayoutPanelMain.ToolTip"));
             // 
             // WaveLengthControl
             // 
@@ -282,10 +269,9 @@
             this.Controls.Add(this.flowLayoutPanelMain);
             this.Controls.Add(this.flowLayoutPanelWaveSource);
             this.Name = "WaveLengthControl";
-            this.flowLayoutPanelEnergy.ResumeLayout(false);
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.flowLayoutPanelElement.ResumeLayout(false);
             this.flowLayoutPanelElement.PerformLayout();
-            this.flowLayoutPanelWaveLength.ResumeLayout(false);
             this.flowLayoutPanelWaveSource.ResumeLayout(false);
             this.flowLayoutPanelWaveSource.PerformLayout();
             this.flowLayoutPanelMain.ResumeLayout(false);
@@ -303,9 +289,6 @@
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.ComboBox comboBoxXrayLine;
         private NumericBox numericBoxEnergy;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergy;
-        //private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWaveLength;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelElement;
        // private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelXray;
         private System.Windows.Forms.Label label1;

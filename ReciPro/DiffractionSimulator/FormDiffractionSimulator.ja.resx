@@ -281,7 +281,7 @@
     <value>5, 3</value>
   </data>
   <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 79</value>
+    <value>331, 77</value>
   </data>
   <data name="tabPageWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -291,7 +291,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageWave.Text" xml:space="preserve">
     <value>入射波</value>
@@ -303,7 +303,7 @@
     <value>105, 16</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 9</value>
+    <value>261, 0</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 56</value>
@@ -324,7 +324,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 51</value>
+    <value>30, 43</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 36</value>
@@ -332,6 +332,9 @@
   <data name="label14.Text" xml:space="preserve">
     <value>試料から検出器へ
 降ろした垂線の足</value>
+  </data>
+  <data name="colorControlFoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 49</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -346,7 +349,7 @@
     <value>52, 20</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 101</value>
+    <value>252, 81</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>色</value>
@@ -355,12 +358,15 @@
     <value>4, 27</value>
   </data>
   <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageGeneral.Text" xml:space="preserve">
     <value>一般</value>
   </data>
   <data name="numericBoxKikuchiLineThreshold.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxKikuchiLineThreshold.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="colorControlDefectLine.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -388,13 +394,13 @@
     <value>122, 20</value>
   </data>
   <data name="trackBarLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 76</value>
+    <value>267, 43</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 74</value>
+    <value>197, 41</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>
@@ -406,7 +412,7 @@
     <value>4, 27</value>
   </data>
   <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageKikuchi.Text" xml:space="preserve">
     <value>菊池線</value>
@@ -426,6 +432,9 @@
   <data name="checkBoxDebyeRingLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
+  <data name="checkBoxDebyeRingLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 28</value>
+  </data>
   <data name="checkBoxDebyeRingLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 24</value>
   </data>
@@ -434,6 +443,9 @@
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 7</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -458,13 +470,13 @@
     <value>デバイリングの幅</value>
   </data>
   <data name="trackBarDebyeRingWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 55</value>
+    <value>115, 34</value>
   </data>
   <data name="tabPageDebye.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
   <data name="tabPageDebye.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageDebye.Text" xml:space="preserve">
     <value>デバイリング</value>
@@ -560,16 +572,22 @@
     <value>4, 27</value>
   </data>
   <data name="tabPageScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageScale.Text" xml:space="preserve">
     <value>目盛り線</value>
   </data>
-  <data name="numericBoxDev.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxDev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 27</value>
   </data>
-  <data name="numericBoxAcc.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxAcc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 28</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 56</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 3</value>
   </data>
   <data name="trackBarRotationSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 26</value>
@@ -593,7 +611,7 @@
     <value>4, 27</value>
   </data>
   <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 113</value>
+    <value>415, 83</value>
   </data>
   <data name="tabPageMisc.Text" xml:space="preserve">
     <value>その他</value>
@@ -612,9 +630,6 @@
   </data>
   <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
     <value>1, 1</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 144</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -673,6 +688,9 @@
   <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -686,6 +704,9 @@
     <value>139, 27</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -704,6 +725,9 @@
     <value>178, 27</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
@@ -1022,6 +1046,9 @@
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxPED_Step.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1035,6 +1062,9 @@
     <value>100, 27</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
@@ -1073,6 +1103,9 @@
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1086,6 +1119,9 @@
     <value>150, 27</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="flowLayoutPanelBethe.Location" type="System.Drawing.Point, System.Drawing">
@@ -1161,6 +1197,9 @@
     <value>半径</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">

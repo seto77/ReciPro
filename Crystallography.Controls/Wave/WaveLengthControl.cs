@@ -33,6 +33,32 @@ namespace Crystallography.Controls
             }
         }
 
+        public FlowDirection Direction
+        {
+            set
+            {
+                direction = value;
+                if(direction == FlowDirection.LeftToRight)
+                {
+                    flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
+                    flowLayoutPanelWaveSource.Dock = DockStyle.Left;
+                }
+                else
+                {
+                    flowLayoutPanelWaveSource.FlowDirection = FlowDirection.LeftToRight;
+                    flowLayoutPanelWaveSource.Dock = DockStyle.Top;
+                }
+            }
+            get
+            {
+                if (direction == FlowDirection.LeftToRight)
+                    return FlowDirection.LeftToRight;
+                else
+                    return FlowDirection.TopDown;
+            }
+        }
+        public FlowDirection direction = FlowDirection.TopDown;
+
         public Font TextFont
         {
             set
@@ -250,14 +276,14 @@ namespace Crystallography.Controls
             {
                 comboBoxXrayLine.Visible = false;
                 comboBoxXRayElement.Width = 100;
-                flowLayoutPanelEnergy.Enabled = true;
+                numericBoxEnergy.Enabled = true;
                 numericBoxWaveLength.Enabled = true;
             }
             else
             {
                 comboBoxXRayElement.Width = 70;
                 comboBoxXrayLine.Visible = true;
-                flowLayoutPanelEnergy.Enabled = false;
+                numericBoxEnergy.Enabled = false;
 
                 numericBoxWaveLength.Enabled = false;
 
@@ -317,8 +343,8 @@ namespace Crystallography.Controls
             else
             {
                 flowLayoutPanelElement.Visible = false;
-                flowLayoutPanelEnergy.Visible = true;
-                flowLayoutPanelEnergy.Enabled = true;
+                numericBoxEnergy.Visible = true;
+                numericBoxEnergy.Enabled = true;
                 numericBoxWaveLength.Enabled = true;
 
                 if (radioButtonElectron.Checked)

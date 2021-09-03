@@ -32,20 +32,20 @@ namespace ReciPro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotID));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -461,14 +461,14 @@ namespace ReciPro
             this.dataGridViewSpots.AllowUserToResizeRows = false;
             resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
             this.dataGridViewSpots.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewSpots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSpots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
@@ -489,16 +489,16 @@ namespace ReciPro
             this.hkl,
             this.Column1});
             this.dataGridViewSpots.DataSource = this.bindingSourceObsSpots;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = null;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.Format = "N2";
+            dataGridViewCellStyle28.NullValue = null;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridViewSpots.MultiSelect = false;
             this.dataGridViewSpots.Name = "dataGridViewSpots";
             this.dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -517,10 +517,10 @@ namespace ReciPro
             // noDataGridViewTextBoxColumn
             // 
             this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.noDataGridViewTextBoxColumn, "noDataGridViewTextBoxColumn");
             this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
             this.noDataGridViewTextBoxColumn.ReadOnly = true;
@@ -528,10 +528,10 @@ namespace ReciPro
             // Range
             // 
             this.Range.DataPropertyName = "Range";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N1";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Range.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Format = "N1";
+            dataGridViewCellStyle17.NullValue = null;
+            this.Range.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.Range, "Range");
             this.Range.Name = "Range";
             // 
@@ -539,9 +539,9 @@ namespace ReciPro
             // 
             this.x0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.x0.DataPropertyName = "x0";
-            dataGridViewCellStyle4.Format = "N1";
-            dataGridViewCellStyle4.NullValue = null;
-            this.x0.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Format = "N1";
+            dataGridViewCellStyle18.NullValue = null;
+            this.x0.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.x0, "x0");
             this.x0.Name = "x0";
             // 
@@ -549,36 +549,36 @@ namespace ReciPro
             // 
             this.y0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.y0.DataPropertyName = "y0";
-            dataGridViewCellStyle5.Format = "N1";
-            dataGridViewCellStyle5.NullValue = null;
-            this.y0.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Format = "N1";
+            dataGridViewCellStyle19.NullValue = null;
+            this.y0.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.y0, "y0");
             this.y0.Name = "y0";
             // 
             // H1
             // 
             this.H1.DataPropertyName = "H1";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.H1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.H1.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.H1, "H1");
             this.H1.Name = "H1";
             // 
             // H2
             // 
             this.H2.DataPropertyName = "H2";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.H2.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.H2.DefaultCellStyle = dataGridViewCellStyle21;
             resources.ApplyResources(this.H2, "H2");
             this.H2.Name = "H2";
             // 
             // θ
             // 
             this.θ.DataPropertyName = "θ";
-            dataGridViewCellStyle8.Format = "N1";
-            dataGridViewCellStyle8.NullValue = null;
-            this.θ.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle22.Format = "N1";
+            dataGridViewCellStyle22.NullValue = null;
+            this.θ.DefaultCellStyle = dataGridViewCellStyle22;
             resources.ApplyResources(this.θ, "θ");
             this.θ.Name = "θ";
             // 
@@ -592,9 +592,9 @@ namespace ReciPro
             // A
             // 
             this.A.DataPropertyName = "A";
-            dataGridViewCellStyle9.Format = "0.0000E0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.A.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle23.Format = "0.0000E0";
+            dataGridViewCellStyle23.NullValue = null;
+            this.A.DefaultCellStyle = dataGridViewCellStyle23;
             resources.ApplyResources(this.A, "A");
             this.A.Name = "A";
             // 
@@ -609,9 +609,9 @@ namespace ReciPro
             // 
             this.Bx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Bx.DataPropertyName = "Bx";
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Bx.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle24.Format = "N2";
+            dataGridViewCellStyle24.NullValue = null;
+            this.Bx.DefaultCellStyle = dataGridViewCellStyle24;
             resources.ApplyResources(this.Bx, "Bx");
             this.Bx.Name = "Bx";
             // 
@@ -619,9 +619,9 @@ namespace ReciPro
             // 
             this.By.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.By.DataPropertyName = "By";
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.By.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle25.Format = "N2";
+            dataGridViewCellStyle25.NullValue = null;
+            this.By.DefaultCellStyle = dataGridViewCellStyle25;
             resources.ApplyResources(this.By, "By");
             this.By.Name = "By";
             // 
@@ -635,10 +635,10 @@ namespace ReciPro
             // d
             // 
             this.d.DataPropertyName = "d";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N4";
-            dataGridViewCellStyle12.NullValue = null;
-            this.d.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N4";
+            dataGridViewCellStyle26.NullValue = null;
+            this.d.DefaultCellStyle = dataGridViewCellStyle26;
             resources.ApplyResources(this.d, "d");
             this.d.Name = "d";
             this.d.ReadOnly = true;
@@ -646,8 +646,8 @@ namespace ReciPro
             // hkl
             // 
             this.hkl.DataPropertyName = "HKL";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.hkl.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.hkl.DefaultCellStyle = dataGridViewCellStyle27;
             resources.ApplyResources(this.hkl, "hkl");
             this.hkl.Name = "hkl";
             this.hkl.ReadOnly = true;
@@ -707,6 +707,7 @@ namespace ReciPro
             this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
             this.buttonIdentifySpots.Name = "buttonIdentifySpots";
+            this.toolTip.SetToolTip(this.buttonIdentifySpots, resources.GetString("buttonIdentifySpots.ToolTip"));
             this.buttonIdentifySpots.UseVisualStyleBackColor = false;
             this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
             // 
@@ -966,8 +967,9 @@ namespace ReciPro
             // 
             // waveLengthControl1
             // 
-            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
+            this.waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
             this.waveLengthControl1.Energy = 200D;
+            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
             this.waveLengthControl1.Name = "waveLengthControl1";
             this.waveLengthControl1.ShowWaveSource = true;
             this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1131,7 +1133,6 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

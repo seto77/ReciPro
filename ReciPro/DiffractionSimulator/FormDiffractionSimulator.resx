@@ -453,27 +453,27 @@
   <data name="panelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="waveLengthControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="waveLengthControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 3</value>
+    <value>0, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="waveLengthControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="waveLengthControl.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 500</value>
+  </data>
   <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>190, 0</value>
   </data>
   <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 79</value>
+    <value>284, 80</value>
   </data>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -494,7 +494,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageWave.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -548,7 +548,7 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 6</value>
+    <value>253, 0</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 56</value>
@@ -641,7 +641,7 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 51</value>
+    <value>32, 45</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 34</value>
@@ -696,7 +696,7 @@
     <value />
   </data>
   <data name="colorControlFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 59</value>
+    <value>7, 45</value>
   </data>
   <data name="colorControlFoot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -780,10 +780,10 @@
     <value>3</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 6</value>
+    <value>3, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 102</value>
+    <value>245, 84</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -810,7 +810,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1060,7 +1060,7 @@ Kikuchi lines under this value are simulated.
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageKikuchi.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1289,7 +1289,7 @@ Kikuchi lines under this value are simulated.
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDebye.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageDebye.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1700,7 +1700,7 @@ Kikuchi lines under this value are simulated.
     <value>4, 26</value>
   </data>
   <data name="tabPageScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageScale.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1730,7 +1730,7 @@ Kikuchi lines under this value are simulated.
     <value>%</value>
   </data>
   <data name="numericBoxDev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 34</value>
+    <value>290, 29</value>
   </data>
   <data name="numericBoxDev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1775,7 +1775,7 @@ Kikuchi lines under this value are simulated.
     <value>kev</value>
   </data>
   <data name="numericBoxAcc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 35</value>
+    <value>193, 30</value>
   </data>
   <data name="numericBoxAcc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1814,7 +1814,7 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 63</value>
+    <value>193, 58</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1844,7 +1844,7 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 10</value>
+    <value>193, 5</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1907,7 +1907,7 @@ Kikuchi lines under this value are simulated.
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 8</value>
+    <value>5, 0</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 55</value>
@@ -1937,7 +1937,7 @@ Kikuchi lines under this value are simulated.
     <value>4, 26</value>
   </data>
   <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 144</value>
+    <value>415, 84</value>
   </data>
   <data name="tabPageMisc.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1970,7 +1970,7 @@ Kikuchi lines under this value are simulated.
     <value>4, 3</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 174</value>
+    <value>423, 114</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2000,7 +2000,7 @@ Kikuchi lines under this value are simulated.
     <value>0, 40, 0, 0</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>740, 451</value>
+    <value>740, 448</value>
   </data>
   <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -2068,7 +2068,7 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 79</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>740, 475</value>
+    <value>740, 472</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2140,19 +2140,19 @@ Double left click: Display the information of the g-vector</value>
     <value>NoControl</value>
   </data>
   <data name="labelMousePositionDetector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 19</value>
+    <value>91, 17</value>
   </data>
   <data name="labelMousePositionDetector.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelMousePositionDetector.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 17</value>
+    <value>289, 17</value>
   </data>
   <data name="labelMousePositionDetector.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="labelMousePositionDetector.Text" xml:space="preserve">
-    <value>Detector Coord. (origin: foot): 00.00 mm, 00.00 mm</value>
+    <value>Detector Coord. (origin: foot): (00.00, 00.00) mm</value>
   </data>
   <data name="labelMousePositionDetector.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -2182,19 +2182,19 @@ Double left click: Display the information of the g-vector</value>
     <value>NoControl</value>
   </data>
   <data name="labelMousePositionReal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 36</value>
+    <value>97, 36</value>
   </data>
   <data name="labelMousePositionReal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelMousePositionReal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 17</value>
+    <value>320, 17</value>
   </data>
   <data name="labelMousePositionReal.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="labelMousePositionReal.Text" xml:space="preserve">
-    <value>Real Coord. (origin: sample): 00.00 mm, 00.00 mm, 00.00 mm</value>
+    <value>Real Coord. (origin: sample): (00.00, 00.00, 00.00) mm</value>
   </data>
   <data name="labelMousePositionReal.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -2305,19 +2305,19 @@ Double left click: Display the information of the g-vector</value>
     <value>NoControl</value>
   </data>
   <data name="labelMousePositionReciprocal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 52</value>
+    <value>155, 55</value>
   </data>
   <data name="labelMousePositionReciprocal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelMousePositionReciprocal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 17</value>
+    <value>267, 17</value>
   </data>
   <data name="labelMousePositionReciprocal.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="labelMousePositionReciprocal.Text" xml:space="preserve">
-    <value>Reciprocal Coord.: 00.00 /nm, 00.00 /nm, 00.00 /nm</value>
+    <value>Reciprocal Coord.: (00.00, 00.00, 00.00) nm⁻¹</value>
   </data>
   <data name="labelMousePositionReciprocal.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -2337,41 +2337,77 @@ Double left click: Display the information of the g-vector</value>
   <data name="&gt;&gt;labelMousePositionReciprocal.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="labelTwoTheta.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label2ThetaRad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="label2ThetaRad.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="labelTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label2ThetaRad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 0</value>
+  <data name="label2ThetaRad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 0</value>
   </data>
-  <data name="labelTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="label2ThetaRad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="labelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label2ThetaRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
   </data>
-  <data name="labelTwoTheta.TabIndex" type="System.Int32, mscorlib">
+  <data name="label2ThetaRad.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="labelTwoTheta.Text" xml:space="preserve">
+  <data name="label2ThetaRad.Text" xml:space="preserve">
     <value>2θ: 00.00°</value>
   </data>
-  <data name="&gt;&gt;labelTwoTheta.Name" xml:space="preserve">
-    <value>labelTwoTheta</value>
+  <data name="&gt;&gt;label2ThetaRad.Name" xml:space="preserve">
+    <value>label2ThetaRad</value>
   </data>
-  <data name="&gt;&gt;labelTwoTheta.Type" xml:space="preserve">
+  <data name="&gt;&gt;label2ThetaRad.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelTwoTheta.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label2ThetaRad.Parent" xml:space="preserve">
     <value>panelMousePosition</value>
   </data>
-  <data name="&gt;&gt;labelTwoTheta.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label2ThetaRad.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="labelTwoThetaDeg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTwoThetaDeg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelTwoThetaDeg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelTwoThetaDeg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 0</value>
+  </data>
+  <data name="labelTwoThetaDeg.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="labelTwoThetaDeg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="labelTwoThetaDeg.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="labelTwoThetaDeg.Text" xml:space="preserve">
+    <value>2θ: 00.00°</value>
+  </data>
+  <data name="&gt;&gt;labelTwoThetaDeg.Name" xml:space="preserve">
+    <value>labelTwoThetaDeg</value>
+  </data>
+  <data name="&gt;&gt;labelTwoThetaDeg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTwoThetaDeg.Parent" xml:space="preserve">
+    <value>panelMousePosition</value>
+  </data>
+  <data name="&gt;&gt;labelTwoThetaDeg.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="labelD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2410,19 +2446,19 @@ Double left click: Display the information of the g-vector</value>
     <value>panelMousePosition</value>
   </data>
   <data name="&gt;&gt;labelD.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="panelMousePosition.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="panelMousePosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 554</value>
+    <value>0, 551</value>
   </data>
   <data name="panelMousePosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panelMousePosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>740, 69</value>
+    <value>740, 72</value>
   </data>
   <data name="panelMousePosition.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>

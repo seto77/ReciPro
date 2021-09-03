@@ -1286,20 +1286,21 @@ namespace ReciPro
             //マウスポインタの情報を表示
 
             var detectorPos = convertScreenToDetector(e.X, e.Y);
-            labelMousePositionDetector.Text = $"Detector Coord. (origin: foot):　{detectorPos.X:f3} mm, {detectorPos.Y:f3} mm";
+            labelMousePositionDetector.Text = $"Detector Coord. in mm (origin: foot): ({detectorPos.X:f3}, {detectorPos.Y:f3})";
 
             var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-            labelMousePositionReal.Text = $"Real Coord. (origin: sample):　{realPos.X:f3} mm, {realPos.Y:f3} mm, {realPos.Z:f3} mm";
+            labelMousePositionReal.Text = $"Real Coord. in mm (origin: sample):　{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
 
             var invPos = convertRealToReciprocal(realPos, false);
-            labelMousePositionReciprocal.Text = $"Reciprocal Coord. :{invPos.X:f3} /nm, {invPos.Y:f3} /nm, {invPos.Z:f3} /nm";
+            labelMousePositionReciprocal.Text = $"Reciprocal Coord. in nm⁻¹: ({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
-            labelDinv.Text = $"1/d: {invPos.Length:f4} /nm";
+            labelDinv.Text = $"d⁻¹: {invPos.Length:f4} nm⁻¹";
             var d = 1.0 / invPos.Length;
             labelD.Text = $"d: {d:f4} nm";
             var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
             var twoThetaDeg = twoThetaRad / Math.PI * 180;
-            labelTwoTheta.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")},  {twoThetaDeg:g4}°";
+            labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
+            labelTwoThetaRad.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")}";
 
             if (panelMain.Controls.GetChildIndex(graphicsBox)!=0 && e.X > tabControl.Width || e.Y > tabControl.Height - 20)
             {

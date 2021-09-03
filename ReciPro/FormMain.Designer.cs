@@ -252,7 +252,7 @@
             // 
             // splitContainer
             // 
-            this.splitContainer.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainer.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Name = "splitContainer";
@@ -261,6 +261,7 @@
             // 
             this.splitContainer.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer.Panel1.Controls.Add(this.panel2);
+            this.splitContainer.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
             // 
             // splitContainer.Panel2
@@ -275,6 +276,7 @@
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.listBox);
             this.groupBox1.Controls.Add(this.flowLayoutPanel4);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;

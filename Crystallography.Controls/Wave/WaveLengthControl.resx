@@ -57,868 +57,817 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="comboBoxXRayElement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="comboBoxXRayElement.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="comboBoxXRayElement.Items" xml:space="preserve">
-    <value>0:  Custom</value>
-  </data>
-  <data name="comboBoxXRayElement.Items1" xml:space="preserve">
-    <value>1:  H</value>
-  </data>
-  <data name="comboBoxXRayElement.Items2" xml:space="preserve">
-    <value>2:  He</value>
-  </data>
-  <data name="comboBoxXRayElement.Items3" xml:space="preserve">
-    <value>3:  Li</value>
-  </data>
-  <data name="comboBoxXRayElement.Items4" xml:space="preserve">
-    <value>4:  Be</value>
-  </data>
-  <data name="comboBoxXRayElement.Items5" xml:space="preserve">
-    <value>5:  B</value>
-  </data>
-  <data name="comboBoxXRayElement.Items6" xml:space="preserve">
-    <value>6:  C</value>
-  </data>
-  <data name="comboBoxXRayElement.Items7" xml:space="preserve">
-    <value>7:  N</value>
-  </data>
-  <data name="comboBoxXRayElement.Items8" xml:space="preserve">
-    <value>8:  O</value>
-  </data>
-  <data name="comboBoxXRayElement.Items9" xml:space="preserve">
-    <value>9:  F</value>
-  </data>
-  <data name="comboBoxXRayElement.Items10" xml:space="preserve">
-    <value>10:  Ne</value>
-  </data>
-  <data name="comboBoxXRayElement.Items11" xml:space="preserve">
-    <value>11:  Na</value>
-  </data>
-  <data name="comboBoxXRayElement.Items12" xml:space="preserve">
-    <value>12:  Mg</value>
-  </data>
-  <data name="comboBoxXRayElement.Items13" xml:space="preserve">
-    <value>13:  Al</value>
-  </data>
-  <data name="comboBoxXRayElement.Items14" xml:space="preserve">
-    <value>14:  Si</value>
-  </data>
-  <data name="comboBoxXRayElement.Items15" xml:space="preserve">
-    <value>15:  P</value>
-  </data>
-  <data name="comboBoxXRayElement.Items16" xml:space="preserve">
-    <value>16:  S</value>
-  </data>
-  <data name="comboBoxXRayElement.Items17" xml:space="preserve">
-    <value>17:  Cl</value>
-  </data>
-  <data name="comboBoxXRayElement.Items18" xml:space="preserve">
-    <value>18:  Ar</value>
-  </data>
-  <data name="comboBoxXRayElement.Items19" xml:space="preserve">
-    <value>19:  K</value>
-  </data>
-  <data name="comboBoxXRayElement.Items20" xml:space="preserve">
-    <value>20:  Ca</value>
-  </data>
-  <data name="comboBoxXRayElement.Items21" xml:space="preserve">
-    <value>21:  Sc</value>
-  </data>
-  <data name="comboBoxXRayElement.Items22" xml:space="preserve">
-    <value>22:  Ti</value>
-  </data>
-  <data name="comboBoxXRayElement.Items23" xml:space="preserve">
-    <value>23:  V</value>
-  </data>
-  <data name="comboBoxXRayElement.Items24" xml:space="preserve">
-    <value>24:  Cr</value>
-  </data>
-  <data name="comboBoxXRayElement.Items25" xml:space="preserve">
-    <value>25:  Mn</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="comboBoxXRayElement.Items26" xml:space="preserve">
     <value>26:  Fe</value>
   </data>
-  <data name="comboBoxXRayElement.Items27" xml:space="preserve">
-    <value>27:  Co</value>
-  </data>
-  <data name="comboBoxXRayElement.Items28" xml:space="preserve">
-    <value>28:  Ni</value>
-  </data>
   <data name="comboBoxXRayElement.Items29" xml:space="preserve">
     <value>29:  Cu</value>
-  </data>
-  <data name="comboBoxXRayElement.Items30" xml:space="preserve">
-    <value>30:  Zn</value>
-  </data>
-  <data name="comboBoxXRayElement.Items31" xml:space="preserve">
-    <value>31:  Ga</value>
-  </data>
-  <data name="comboBoxXRayElement.Items32" xml:space="preserve">
-    <value>32:  Ge</value>
-  </data>
-  <data name="comboBoxXRayElement.Items33" xml:space="preserve">
-    <value>33:  As</value>
-  </data>
-  <data name="comboBoxXRayElement.Items34" xml:space="preserve">
-    <value>34:  Se</value>
-  </data>
-  <data name="comboBoxXRayElement.Items35" xml:space="preserve">
-    <value>35:  Br</value>
-  </data>
-  <data name="comboBoxXRayElement.Items36" xml:space="preserve">
-    <value>36:  Kr</value>
-  </data>
-  <data name="comboBoxXRayElement.Items37" xml:space="preserve">
-    <value>37:  Rb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items38" xml:space="preserve">
-    <value>38:  Sr</value>
-  </data>
-  <data name="comboBoxXRayElement.Items39" xml:space="preserve">
-    <value>39:  Y</value>
-  </data>
-  <data name="comboBoxXRayElement.Items40" xml:space="preserve">
-    <value>40:  Zr</value>
-  </data>
-  <data name="comboBoxXRayElement.Items41" xml:space="preserve">
-    <value>41:  Nb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items42" xml:space="preserve">
-    <value>42:  Mo</value>
-  </data>
-  <data name="comboBoxXRayElement.Items43" xml:space="preserve">
-    <value>43:  Tc</value>
-  </data>
-  <data name="comboBoxXRayElement.Items44" xml:space="preserve">
-    <value>44:  Ru</value>
-  </data>
-  <data name="comboBoxXRayElement.Items45" xml:space="preserve">
-    <value>45:  Rh</value>
-  </data>
-  <data name="comboBoxXRayElement.Items46" xml:space="preserve">
-    <value>46:  Pd</value>
-  </data>
-  <data name="comboBoxXRayElement.Items47" xml:space="preserve">
-    <value>47:  Ag</value>
-  </data>
-  <data name="comboBoxXRayElement.Items48" xml:space="preserve">
-    <value>48:  Cd</value>
-  </data>
-  <data name="comboBoxXRayElement.Items49" xml:space="preserve">
-    <value>49:  In</value>
-  </data>
-  <data name="comboBoxXRayElement.Items50" xml:space="preserve">
-    <value>50:  Sn</value>
-  </data>
-  <data name="comboBoxXRayElement.Items51" xml:space="preserve">
-    <value>51:  Sb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items52" xml:space="preserve">
-    <value>52:  Te</value>
-  </data>
-  <data name="comboBoxXRayElement.Items53" xml:space="preserve">
-    <value>53:  I</value>
-  </data>
-  <data name="comboBoxXRayElement.Items54" xml:space="preserve">
-    <value>54:  Xe</value>
-  </data>
-  <data name="comboBoxXRayElement.Items55" xml:space="preserve">
-    <value>55:  Cs</value>
-  </data>
-  <data name="comboBoxXRayElement.Items56" xml:space="preserve">
-    <value>56:  Ba</value>
-  </data>
-  <data name="comboBoxXRayElement.Items57" xml:space="preserve">
-    <value>57:  La</value>
-  </data>
-  <data name="comboBoxXRayElement.Items58" xml:space="preserve">
-    <value>58:  Ce</value>
-  </data>
-  <data name="comboBoxXRayElement.Items59" xml:space="preserve">
-    <value>59:  Pr</value>
   </data>
   <data name="comboBoxXRayElement.Items60" xml:space="preserve">
     <value>60:  Nd</value>
   </data>
-  <data name="comboBoxXRayElement.Items61" xml:space="preserve">
-    <value>61:  Pm</value>
-  </data>
-  <data name="comboBoxXRayElement.Items62" xml:space="preserve">
-    <value>62:  Sm</value>
-  </data>
-  <data name="comboBoxXRayElement.Items63" xml:space="preserve">
-    <value>63:  Eu</value>
-  </data>
-  <data name="comboBoxXRayElement.Items64" xml:space="preserve">
-    <value>64:  Gd</value>
-  </data>
-  <data name="comboBoxXRayElement.Items65" xml:space="preserve">
-    <value>65:  Tb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items66" xml:space="preserve">
-    <value>66:  Dy</value>
-  </data>
-  <data name="comboBoxXRayElement.Items67" xml:space="preserve">
-    <value>67:  Ho</value>
-  </data>
-  <data name="comboBoxXRayElement.Items68" xml:space="preserve">
-    <value>68:  Er</value>
-  </data>
-  <data name="comboBoxXRayElement.Items69" xml:space="preserve">
-    <value>69:  Tm</value>
-  </data>
-  <data name="comboBoxXRayElement.Items70" xml:space="preserve">
-    <value>70:  Yb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items71" xml:space="preserve">
-    <value>71:  Lu</value>
-  </data>
-  <data name="comboBoxXRayElement.Items72" xml:space="preserve">
-    <value>72:  Hf</value>
-  </data>
-  <data name="comboBoxXRayElement.Items73" xml:space="preserve">
-    <value>73:  Ta</value>
-  </data>
-  <data name="comboBoxXRayElement.Items74" xml:space="preserve">
-    <value>74:  W</value>
-  </data>
-  <data name="comboBoxXRayElement.Items75" xml:space="preserve">
-    <value>75:  Re</value>
-  </data>
-  <data name="comboBoxXRayElement.Items76" xml:space="preserve">
-    <value>76:  Os</value>
-  </data>
-  <data name="comboBoxXRayElement.Items77" xml:space="preserve">
-    <value>77:  Ir</value>
-  </data>
-  <data name="comboBoxXRayElement.Items78" xml:space="preserve">
-    <value>78:  Pt</value>
-  </data>
-  <data name="comboBoxXRayElement.Items79" xml:space="preserve">
-    <value>79:  Au</value>
-  </data>
-  <data name="comboBoxXRayElement.Items80" xml:space="preserve">
-    <value>80:  Hg</value>
-  </data>
-  <data name="comboBoxXRayElement.Items81" xml:space="preserve">
-    <value>81:  Tl</value>
-  </data>
-  <data name="comboBoxXRayElement.Items82" xml:space="preserve">
-    <value>82:  Pb</value>
-  </data>
-  <data name="comboBoxXRayElement.Items83" xml:space="preserve">
-    <value>83:  Bi</value>
-  </data>
-  <data name="comboBoxXRayElement.Items84" xml:space="preserve">
-    <value>84:  Po</value>
-  </data>
-  <data name="comboBoxXRayElement.Items85" xml:space="preserve">
-    <value>85:  At</value>
-  </data>
-  <data name="comboBoxXRayElement.Items86" xml:space="preserve">
-    <value>86:  Rn</value>
-  </data>
-  <data name="comboBoxXRayElement.Items87" xml:space="preserve">
-    <value>87:  Fr</value>
-  </data>
-  <data name="comboBoxXRayElement.Items88" xml:space="preserve">
-    <value>88:  Ra</value>
-  </data>
-  <data name="comboBoxXRayElement.Items89" xml:space="preserve">
-    <value>89:  Ac</value>
-  </data>
-  <data name="comboBoxXRayElement.Items90" xml:space="preserve">
-    <value>90:  Th</value>
-  </data>
-  <data name="comboBoxXRayElement.Items91" xml:space="preserve">
-    <value>91:  Pa</value>
-  </data>
-  <data name="comboBoxXRayElement.Items92" xml:space="preserve">
-    <value>92:  U</value>
-  </data>
-  <data name="comboBoxXRayElement.Items93" xml:space="preserve">
-    <value>93:  Np</value>
-  </data>
-  <data name="comboBoxXRayElement.Items94" xml:space="preserve">
-    <value>94:  Pu</value>
-  </data>
-  <data name="comboBoxXRayElement.Items95" xml:space="preserve">
-    <value>95:  Am</value>
-  </data>
   <data name="comboBoxXRayElement.Items96" xml:space="preserve">
     <value>96:  Cm</value>
   </data>
-  <data name="comboBoxXRayElement.Items97" xml:space="preserve">
-    <value>97:  Bk</value>
-  </data>
-  <data name="comboBoxXRayElement.Items98" xml:space="preserve">
-    <value>98:  Cf</value>
-  </data>
-  <data name="comboBoxXRayElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="comboBoxXRayElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxXRayElement.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="comboBoxXRayElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
-  </data>
-  <data name="comboBoxXRayElement.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
-    <value>Select an element (1:H to 98:Cf) emitting characteristic X-ray.
- If "0:custom" is selected,  you can input energy or wave length without restraint.
-</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXRayElement.Name" xml:space="preserve">
-    <value>comboBoxXRayElement</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXRayElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXRayElement.Parent" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXRayElement.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonXray.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonXray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 0</value>
-  </data>
-  <data name="radioButtonXray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
-  </data>
-  <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
-  </data>
-  <data name="radioButtonXray.Text" xml:space="preserve">
-    <value>X-ray</value>
-  </data>
-  <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
-  </data>
-  <data name="&gt;&gt;radioButtonXray.Name" xml:space="preserve">
-    <value>radioButtonXray</value>
-  </data>
-  <data name="&gt;&gt;radioButtonXray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;radioButtonXray.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveSource</value>
   </data>
-  <data name="&gt;&gt;radioButtonXray.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="comboBoxXRayElement.Items21" xml:space="preserve">
+    <value>21:  Sc</value>
   </data>
-  <data name="radioButtonElectron.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="comboBoxXRayElement.Items68" xml:space="preserve">
+    <value>68:  Er</value>
   </data>
-  <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="comboBoxXRayElement.Items38" xml:space="preserve">
+    <value>38:  Sr</value>
   </data>
-  <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBoxXRayElement.Items34" xml:space="preserve">
+    <value>34:  Se</value>
   </data>
+  <data name="comboBoxXRayElement.Items75" xml:space="preserve">
+    <value>75:  Re</value>
+  </data>
+  <data name="comboBoxXRayElement.Items48" xml:space="preserve">
+    <value>48:  Cd</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="comboBoxXRayElement.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="comboBoxXRayElement.Items56" xml:space="preserve">
+    <value>56:  Ba</value>
+  </data>
+  <data name="comboBoxXRayElement.Items83" xml:space="preserve">
+    <value>83:  Bi</value>
+  </data>
+  <data name="comboBoxXRayElement.Items98" xml:space="preserve">
+    <value>98:  Cf</value>
+  </data>
+  <data name="comboBoxXRayElement.Items25" xml:space="preserve">
+    <value>25:  Mn</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 0</value>
+  </data>
+  <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 27</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxWaveLength.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="comboBoxXRayElement.Items72" xml:space="preserve">
+    <value>72:  Hf</value>
+  </data>
+  <data name="comboBoxXRayElement.Items97" xml:space="preserve">
+    <value>97:  Bk</value>
+  </data>
+  <data name="comboBoxXRayElement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 2</value>
+  </data>
+  <data name="flowLayoutPanelElement.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXrayLine.Parent" xml:space="preserve">
+    <value>flowLayoutPanelElement</value>
+  </data>
+  <data name="comboBoxXRayElement.Items8" xml:space="preserve">
+    <value>8:  O</value>
+  </data>
+  <data name="comboBoxXrayLine.Items4" xml:space="preserve">
+    <value>KβI2</value>
   </data>
   <data name="radioButtonElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 0, 0</value>
   </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Input wave length</value>
+  </data>
+  <data name="comboBoxXRayElement.Items70" xml:space="preserve">
+    <value>70:  Yb</value>
+  </data>
+  <data name="flowLayoutPanelMain.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEnergy.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxXRayElement.Items23" xml:space="preserve">
+    <value>23:  V</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWaveLength.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxXRayElement.Items82" xml:space="preserve">
+    <value>82:  Pb</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items80" xml:space="preserve">
+    <value>80:  Hg</value>
+  </data>
+  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 83</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 24</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXrayLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxXRayElement.Items36" xml:space="preserve">
+    <value>36:  Kr</value>
+  </data>
+  <data name="numericBoxWaveLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="comboBoxXRayElement.Items20" xml:space="preserve">
+    <value>20:  Ca</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxXRayElement.Items62" xml:space="preserve">
+    <value>62:  Sm</value>
+  </data>
+  <data name="comboBoxXRayElement.Items81" xml:space="preserve">
+    <value>81:  Tl</value>
+  </data>
+  <data name="comboBoxXRayElement.Items66" xml:space="preserve">
+    <value>66:  Dy</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelElement.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="comboBoxXrayLine.Items9" xml:space="preserve">
+    <value>Lβ2</value>
+  </data>
+  <data name="flowLayoutPanelElement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 0</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 3</value>
+  </data>
+  <data name="numericBoxEnergy.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 1, 0</value>
+  </data>
+  <data name="comboBoxXrayLine.Items" xml:space="preserve">
+    <value>Kα1</value>
+  </data>
+  <data name="comboBoxXRayElement.Items59" xml:space="preserve">
+    <value>59:  Pr</value>
+  </data>
+  <data name="numericBoxWaveLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 1, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items54" xml:space="preserve">
+    <value>54:  Xe</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXrayLine.Name" xml:space="preserve">
+    <value>comboBoxXrayLine</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items77" xml:space="preserve">
+    <value>77:  Ir</value>
+  </data>
+  <data name="comboBoxXRayElement.Items16" xml:space="preserve">
+    <value>16:  S</value>
+  </data>
+  <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 54</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXRayElement.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxXRayElement.Items2" xml:space="preserve">
+    <value>2:  He</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWaveSource.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxXRayElement.Items33" xml:space="preserve">
+    <value>33:  As</value>
+  </data>
+  <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxXRayElement.Items53" xml:space="preserve">
+    <value>53:  I</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>Select a line for the chacteristic X-ray</value>
+  </data>
+  <data name="comboBoxXRayElement.Items44" xml:space="preserve">
+    <value>44:  Ru</value>
+  </data>
+  <data name="comboBoxXRayElement.Items92" xml:space="preserve">
+    <value>92:  U</value>
+  </data>
+  <data name="comboBoxXRayElement.Items50" xml:space="preserve">
+    <value>50:  Sn</value>
+  </data>
+  <data name="comboBoxXRayElement.Items73" xml:space="preserve">
+    <value>73:  Ta</value>
+  </data>
+  <data name="comboBoxXRayElement.Items85" xml:space="preserve">
+    <value>85:  At</value>
+  </data>
+  <data name="comboBoxXRayElement.Items61" xml:space="preserve">
+    <value>61:  Pm</value>
+  </data>
+  <data name="comboBoxXRayElement.Items76" xml:space="preserve">
+    <value>76:  Os</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>flowLayoutPanelElement</value>
+  </data>
+  <data name="comboBoxXRayElement.Items52" xml:space="preserve">
+    <value>52:  Te</value>
+  </data>
+  <data name="comboBoxXrayLine.Items6" xml:space="preserve">
+    <value>Lα1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXRayElement.Parent" xml:space="preserve">
+    <value>flowLayoutPanelElement</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelElement.Name" xml:space="preserve">
+    <value>flowLayoutPanelElement</value>
+  </data>
+  <data name="comboBoxXRayElement.Items93" xml:space="preserve">
+    <value>93:  Np</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items7" xml:space="preserve">
+    <value>7:  N</value>
+  </data>
+  <data name="comboBoxXRayElement.Items31" xml:space="preserve">
+    <value>31:  Ga</value>
+  </data>
+  <data name="comboBoxXRayElement.Items1" xml:space="preserve">
+    <value>1:  H</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 500</value>
+  </data>
+  <data name="comboBoxXRayElement.Items47" xml:space="preserve">
+    <value>47:  Ag</value>
+  </data>
+  <data name="comboBoxXRayElement.Items4" xml:space="preserve">
+    <value>4:  Be</value>
+  </data>
+  <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="numericBoxEnergy.FooterText" xml:space="preserve">
+    <value>keV</value>
+  </data>
+  <data name="comboBoxXrayLine.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="comboBoxXRayElement.Items35" xml:space="preserve">
+    <value>35:  Br</value>
+  </data>
+  <data name="comboBoxXRayElement.Items71" xml:space="preserve">
+    <value>71:  Lu</value>
+  </data>
+  <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 27</value>
+  </data>
+  <data name="comboBoxXRayElement.Items39" xml:space="preserve">
+    <value>39:  Y</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEnergy.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxXRayElement.Items69" xml:space="preserve">
+    <value>69:  Tm</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXRayElement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxXRayElement.Items74" xml:space="preserve">
+    <value>74:  W</value>
+  </data>
+  <data name="comboBoxXRayElement.Items87" xml:space="preserve">
+    <value>87:  Fr</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Name" xml:space="preserve">
+    <value>radioButtonNeutron</value>
+  </data>
+  <data name="flowLayoutPanelElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelElement.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items9" xml:space="preserve">
+    <value>9:  F</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="comboBoxXrayLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelElement.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonElectron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 107</value>
+  </data>
+  <data name="comboBoxXRayElement.Items51" xml:space="preserve">
+    <value>51:  Sb</value>
+  </data>
+  <data name="comboBoxXrayLine.Items1" xml:space="preserve">
+    <value>Kα2</value>
+  </data>
   <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 21</value>
+  </data>
+  <data name="comboBoxXRayElement.Items46" xml:space="preserve">
+    <value>46:  Pd</value>
+  </data>
+  <data name="comboBoxXRayElement.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>Input wave length</value>
+  </data>
+  <data name="numericBoxEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="comboBoxXRayElement.Items22" xml:space="preserve">
+    <value>22:  Ti</value>
+  </data>
+  <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
   </data>
   <data name="radioButtonElectron.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
+  <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelElement.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="comboBoxXRayElement.Items41" xml:space="preserve">
+    <value>41:  Nb</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>Energy</value>
+  </data>
+  <data name="comboBoxXRayElement.Items32" xml:space="preserve">
+    <value>32:  Ge</value>
+  </data>
+  <data name="numericBoxEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="comboBoxXrayLine.Items3" xml:space="preserve">
+    <value>Kβ3</value>
+  </data>
+  <data name="comboBoxXRayElement.Items45" xml:space="preserve">
+    <value>45:  Rh</value>
+  </data>
+  <data name="flowLayoutPanelMain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxXRayElement.Items30" xml:space="preserve">
+    <value>30:  Zn</value>
+  </data>
   <data name="radioButtonElectron.Text" xml:space="preserve">
     <value>Electron</value>
   </data>
+  <data name="comboBoxXRayElement.Items78" xml:space="preserve">
+    <value>78:  Pt</value>
+  </data>
+  <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="comboBoxXRayElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWaveSource.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="comboBoxXRayElement.Items12" xml:space="preserve">
+    <value>12:  Mg</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXrayLine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelElement.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 27</value>
+  </data>
+  <data name="comboBoxXrayLine.Items8" xml:space="preserve">
+    <value>Lβ1</value>
+  </data>
+  <data name="comboBoxXRayElement.Items65" xml:space="preserve">
+    <value>65:  Tb</value>
+  </data>
+  <data name="comboBoxXRayElement.Items86" xml:space="preserve">
+    <value>86:  Rn</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>Select wave source</value>
+  </data>
+  <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="radioButtonNeutron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEnergy.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="radioButtonNeutron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxXrayLine.Items2" xml:space="preserve">
+    <value>Kβ1</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
+    <value>Select wave source</value>
+  </data>
+  <data name="numericBoxEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="comboBoxXRayElement.Items11" xml:space="preserve">
+    <value>11:  Na</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 5</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="flowLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radioButtonXray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items58" xml:space="preserve">
+    <value>58:  Ce</value>
+  </data>
+  <data name="comboBoxXRayElement.Items40" xml:space="preserve">
+    <value>40:  Zr</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWaveSource.Name" xml:space="preserve">
+    <value>flowLayoutPanelWaveSource</value>
+  </data>
+  <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWaveSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxXrayLine.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="comboBoxXRayElement.Items43" xml:space="preserve">
+    <value>43:  Tc</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.Name" xml:space="preserve">
+    <value>radioButtonXray</value>
+  </data>
+  <data name="radioButtonNeutron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxXRayElement.Name" xml:space="preserve">
+    <value>comboBoxXRayElement</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWaveLength.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="comboBoxXRayElement.Items49" xml:space="preserve">
+    <value>49:  In</value>
+  </data>
+  <data name="radioButtonXray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 0, 0</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelMain.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 27</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Inuput wave energy</value>
+  </data>
+  <data name="comboBoxXRayElement.Items10" xml:space="preserve">
+    <value>10:  Ne</value>
+  </data>
+  <data name="comboBoxXRayElement.Items27" xml:space="preserve">
+    <value>27:  Co</value>
+  </data>
+  <data name="comboBoxXRayElement.Items14" xml:space="preserve">
+    <value>14:  Si</value>
+  </data>
+  <data name="comboBoxXRayElement.Items64" xml:space="preserve">
+    <value>64:  Gd</value>
+  </data>
+  <data name="comboBoxXRayElement.Items95" xml:space="preserve">
+    <value>95:  Am</value>
+  </data>
+  <data name="comboBoxXRayElement.Items57" xml:space="preserve">
+    <value>57:  La</value>
+  </data>
+  <data name="radioButtonXray.Text" xml:space="preserve">
+    <value>X-ray</value>
+  </data>
+  <data name="flowLayoutPanelElement.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxXRayElement.Items42" xml:space="preserve">
+    <value>42:  Mo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWaveLength.Name" xml:space="preserve">
+    <value>numericBoxWaveLength</value>
+  </data>
+  <data name="comboBoxXRayElement.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>Select wave source</value>
+  </data>
+  <data name="comboBoxXRayElement.Items5" xml:space="preserve">
+    <value>5:  B</value>
+  </data>
+  <data name="comboBoxXrayLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxXRayElement.Items94" xml:space="preserve">
+    <value>94:  Pu</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
     <value>Select wave source</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
     <value>radioButtonElectron</value>
   </data>
-  <data name="&gt;&gt;radioButtonElectron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonElectron.Parent" xml:space="preserve">
-    <value>flowLayoutPanelWaveSource</value>
-  </data>
-  <data name="&gt;&gt;radioButtonElectron.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="comboBoxXrayLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="comboBoxXrayLine.Items" xml:space="preserve">
-    <value>Kα1</value>
-  </data>
-  <data name="comboBoxXrayLine.Items1" xml:space="preserve">
-    <value>Kα2</value>
-  </data>
-  <data name="comboBoxXrayLine.Items2" xml:space="preserve">
-    <value>Kβ1</value>
-  </data>
-  <data name="comboBoxXrayLine.Items3" xml:space="preserve">
-    <value>Kβ3</value>
-  </data>
-  <data name="comboBoxXrayLine.Items4" xml:space="preserve">
-    <value>KβI2</value>
-  </data>
-  <data name="comboBoxXrayLine.Items5" xml:space="preserve">
-    <value>KβII2</value>
-  </data>
-  <data name="comboBoxXrayLine.Items6" xml:space="preserve">
-    <value>Lα1</value>
-  </data>
-  <data name="comboBoxXrayLine.Items7" xml:space="preserve">
-    <value>Lα2</value>
-  </data>
-  <data name="comboBoxXrayLine.Items8" xml:space="preserve">
-    <value>Lβ1</value>
-  </data>
-  <data name="comboBoxXrayLine.Items9" xml:space="preserve">
-    <value>Lβ2</value>
-  </data>
   <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 0</value>
-  </data>
-  <data name="comboBoxXrayLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxXrayLine.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="comboBoxXrayLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 25</value>
-  </data>
-  <data name="comboBoxXrayLine.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
-    <value>Select a line for the chacteristic X-ray</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXrayLine.Name" xml:space="preserve">
-    <value>comboBoxXrayLine</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXrayLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXrayLine.Parent" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;comboBoxXrayLine.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEnergy.FooterText" xml:space="preserve">
-    <value>keV</value>
-  </data>
-  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
-    <value>Energy</value>
-  </data>
-  <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="numericBoxEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxEnergy.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxEnergy.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxEnergy.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 27</value>
-  </data>
-  <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>Inuput wave energy</value>
-  </data>
-  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>Inuput wave energy</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEnergy.Name" xml:space="preserve">
-    <value>numericBoxEnergy</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEnergy.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEnergy.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 27</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 27</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.Name" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanelElement.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelElement.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Element</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 25</value>
-  </data>
-  <data name="flowLayoutPanelElement.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="flowLayoutPanelElement.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Name" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxWaveLength.FooterText" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="numericBoxWaveLength.HeaderText" xml:space="preserve">
-    <value>Wavelength</value>
-  </data>
-  <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="numericBoxWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxWaveLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxWaveLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxWaveLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 27</value>
-  </data>
-  <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>Input wave length</value>
-  </data>
-  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>Input wave length</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWaveLength.Name" xml:space="preserve">
-    <value>numericBoxWaveLength</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWaveLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWaveLength.Parent" xml:space="preserve">
-    <value>flowLayoutPanelWaveLength</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWaveLength.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 56</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 27</value>
-  </data>
-  <data name="flowLayoutPanelWaveLength.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveLength.Name" xml:space="preserve">
-    <value>flowLayoutPanelWaveLength</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveLength.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveLength.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonNeutron.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonNeutron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 0</value>
-  </data>
-  <data name="radioButtonNeutron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="radioButtonNeutron.Text" xml:space="preserve">
-    <value>Neutron</value>
-  </data>
-  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Name" xml:space="preserve">
-    <value>radioButtonNeutron</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Parent" xml:space="preserve">
-    <value>flowLayoutPanelWaveSource</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 3</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 24</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveSource.Name" xml:space="preserve">
-    <value>flowLayoutPanelWaveSource</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveSource.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWaveSource.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanelMain.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="flowLayoutPanelMain.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 77</value>
-  </data>
-  <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="flowLayoutPanelMain.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>126, 2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="comboBoxXRayElement.Items24" xml:space="preserve">
+    <value>24:  Cr</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
+  <data name="numericBoxEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
   </data>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="comboBoxXRayElement.Items13" xml:space="preserve">
+    <value>13:  Al</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+  <data name="comboBoxXRayElement.Items90" xml:space="preserve">
+    <value>90:  Th</value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="comboBoxXRayElement.Items3" xml:space="preserve">
+    <value>3:  Li</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>190, 0</value>
+  <data name="&gt;&gt;radioButtonElectron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 101</value>
+  <data name="comboBoxXRayElement.Items18" xml:space="preserve">
+    <value>18:  Ar</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="comboBoxXRayElement.Items67" xml:space="preserve">
+    <value>67:  Ho</value>
   </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxWaveLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="comboBoxXrayLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 25</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>Inuput wave energy</value>
+  </data>
+  <data name="comboBoxXRayElement.Items55" xml:space="preserve">
+    <value>55:  Cs</value>
+  </data>
+  <data name="comboBoxXRayElement.Items" xml:space="preserve">
+    <value>0:  Custom</value>
+  </data>
+  <data name="comboBoxXRayElement.Items28" xml:space="preserve">
+    <value>28:  Ni</value>
+  </data>
+  <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanelWaveSource</value>
+  </data>
+  <data name="comboBoxXRayElement.Items91" xml:space="preserve">
+    <value>91:  Pa</value>
+  </data>
+  <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 0</value>
+  </data>
+  <data name="comboBoxXRayElement.Items19" xml:space="preserve">
+    <value>19:  K</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanelWaveSource</value>
+  </data>
+  <data name="comboBoxXRayElement.Items79" xml:space="preserve">
+    <value>79:  Au</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelElement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WaveLengthControl</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBoxXRayElement.Items6" xml:space="preserve">
+    <value>6:  C</value>
   </data>
+  <data name="comboBoxXRayElement.Items84" xml:space="preserve">
+    <value>84:  Po</value>
+  </data>
+  <data name="comboBoxXRayElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 25</value>
+  </data>
+  <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="comboBoxXRayElement.Items37" xml:space="preserve">
+    <value>37:  Rb</value>
+  </data>
+  <data name="comboBoxXrayLine.Items7" xml:space="preserve">
+    <value>Lα2</value>
+  </data>
+  <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>Select an element (1:H to 98:Cf) emitting characteristic X-ray.
+ If "0:custom" is selected,  you can input energy or wave length without restraint.
+</value>
+  </data>
+  <data name="comboBoxXRayElement.Items15" xml:space="preserve">
+    <value>15:  P</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Element</value>
+  </data>
+  <data name="comboBoxXRayElement.Items88" xml:space="preserve">
+    <value>88:  Ra</value>
+  </data>
+  <data name="flowLayoutPanelWaveSource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericBoxWaveLength.HeaderText" xml:space="preserve">
+    <value>Wavelength</value>
+  </data>
+  <data name="comboBoxXRayElement.Items17" xml:space="preserve">
+    <value>17:  Cl</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelElement.Parent" xml:space="preserve">
+    <value>flowLayoutPanelMain</value>
+  </data>
+  <data name="radioButtonNeutron.Text" xml:space="preserve">
+    <value>Neutron</value>
+  </data>
+  <data name="comboBoxXRayElement.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWaveLength.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="comboBoxXRayElement.Items63" xml:space="preserve">
+    <value>63:  Eu</value>
+  </data>
+  <data name="comboBoxXRayElement.Items89" xml:space="preserve">
+    <value>89:  Ac</value>
+  </data>
+  <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonXray.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxXrayLine.Items5" xml:space="preserve">
+    <value>KβII2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEnergy.Name" xml:space="preserve">
+    <value>numericBoxEnergy</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>
