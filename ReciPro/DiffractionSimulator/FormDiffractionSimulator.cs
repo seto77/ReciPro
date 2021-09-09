@@ -1838,7 +1838,7 @@ namespace ReciPro
         {
             if (e.Clicks == 2 && e.Button == MouseButtons.Right && ((ToolStripButton)sender).Checked)
             {
-                Timer timer;
+                System.Windows.Forms.Timer timer;
                 if ((ToolStripButton)sender == toolStripButtonDiffractionSpots)
                     timer = timerBlinkSpot;
                 else if ((ToolStripButton)sender == toolStripButtonKikuchiLines)
@@ -1862,7 +1862,7 @@ namespace ReciPro
 
         private void timerBlinkSpot_Tick(object sender, EventArgs e)
         {
-            var timer = (Timer)sender;
+            var timer = (System.Windows.Forms.Timer)sender;
             timer.Tag = !(bool)timer.Tag;
             toolStripButtonDiffractionSpots.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
             Draw();
@@ -1870,7 +1870,7 @@ namespace ReciPro
 
         private void timerBlinkKikuchiLine_Tick(object sender, EventArgs e)
         {
-            var timer = (Timer)sender;
+            var timer = (System.Windows.Forms.Timer)sender;
             timer.Tag = !(bool)timer.Tag;
             toolStripButtonKikuchiLines.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
             Draw();
@@ -1878,7 +1878,7 @@ namespace ReciPro
 
         private void timerBlinkDebyering_Tick(object sender, EventArgs e)
         {
-            var timer = (Timer)sender;
+            var timer = (System.Windows.Forms.Timer)sender;
             timer.Tag = !(bool)timer.Tag;
             toolStripButtonDebyeRing.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
             Draw();
@@ -1886,7 +1886,7 @@ namespace ReciPro
 
         private void timerBlinkScale_Tick(object sender, EventArgs e)
         {
-            var timer = (Timer)sender;
+            var timer = (System.Windows.Forms.Timer)sender;
             timer.Tag = !(bool)timer.Tag;
             toolStripButtonScale.ForeColor = (bool)timer.Tag ? SystemColors.MenuHighlight : SystemColors.Info;
             Draw();

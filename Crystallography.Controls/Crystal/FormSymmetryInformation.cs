@@ -158,7 +158,7 @@ namespace Crystallography.Controls
             richTextBoxExtinctionRule.Text = "";
             for (int n = 0; n < Crystal.Symmetry.ExtinctionRuleStr.Length; n++)
                 richTextBoxExtinctionRule.Text += Crystal.Symmetry.ExtinctionRuleStr[n] + "\r\n";
-            if (richTextBoxExtinctionRule.Text == "")
+            if (richTextBoxExtinctionRule.Text.Length == 0)
                 richTextBoxExtinctionRule.Text = "No Condition";
             ConvertRichTextBox3(ref richTextBoxExtinctionRule);
 

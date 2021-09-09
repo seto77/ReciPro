@@ -333,7 +333,7 @@ namespace Crystallography
         {
             var w2 = width * width;
             int i = w2 / 2, j = i - 1;//中心から、縦横に検索
-            double min = (pos - posList[i]).Length2, temp=min;
+            double min = (pos - posList[i]).Length2, temp = min;
 
             while (i != j)
             {

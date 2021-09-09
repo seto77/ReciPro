@@ -923,7 +923,7 @@ namespace ReciPro
 
                     g.Dispose();
 
-                    if (filename == "")//finenameが""の時はコピー
+                    if (filename.Length == 0)//finenameが""の時はコピー
                         ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
                     else
                         using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))

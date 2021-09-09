@@ -318,7 +318,7 @@ namespace Crystallography.Controls
         {
             var m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
             var items = listBoxMacro.Items;
-            if (m.Name == "")
+            if (m.Name.Length == 0)
             {
                 MessageBox.Show("Please input macro name", "Alert");
                 return;

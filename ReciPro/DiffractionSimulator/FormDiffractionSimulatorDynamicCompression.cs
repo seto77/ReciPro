@@ -141,7 +141,7 @@ namespace ReciPro
 
             int count = checkBoxOmegaStep.Checked ? numericBoxOmegaTimes.ValueInteger : 1;
             var initialRot = new Matrix3D(FormDiffractionSimulator.formMain.Crystal.RotationMatrix);
-            var path = (folderBrowserDialog.SelectedPath == "" ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
+            var path = (folderBrowserDialog.SelectedPath.Length == 0 ? "" : folderBrowserDialog.SelectedPath + "\\") + textBoxFileName.Text;
             sw.Restart();
 
             for (int i = 0; i < count; i++)

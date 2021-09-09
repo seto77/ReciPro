@@ -74,7 +74,7 @@ namespace Crystallography
 
         public bool Move(string path)
         {
-            if (path == "")
+            if (path.Length == 0)
                 return false;
 
             if (path == "/")

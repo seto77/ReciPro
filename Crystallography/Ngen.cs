@@ -29,7 +29,7 @@ namespace Crystallography
                         }
                 }
                 //32bit環境でのFrameworkフォルダを探す
-                if (dir == "")
+                if (dir.Length == 0)
                 {
                     for (char drive = 'a'; drive < 'z'; drive++)
                         if (Directory.Exists(drive + ":\\Windows\\Microsoft.NET\\Framework"))
@@ -39,7 +39,7 @@ namespace Crystallography
                         }
                 }
                 //見つからなかったら何もせずに戻る
-                if (dir == "") return;
+                if (dir.Length == 0) return;
 
                 //最新バージョンを検索する
                 string[] dirs = Directory.GetDirectories(dir);
@@ -53,7 +53,7 @@ namespace Crystallography
                         filename = dirs[i] + "\\ngen.exe";
                         break;
                     }
-                if (filename == "") return;
+                if (filename.Length == 0) return;
 
                 //ProcessStartInfo psi = new ProcessStartInfo();
 

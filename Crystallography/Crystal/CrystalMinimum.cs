@@ -195,7 +195,7 @@ namespace Crystallography
         {
             if (shortJournal != null && shortJournal.Contains("##"))
             {
-                string number = shortJournal.Substring(shortJournal.IndexOf("##"), 4);
+                string number = shortJournal.Substring(shortJournal.IndexOf("##", StringComparison.Ordinal), 4);
                 string journal = number switch
                 {
                     "##01" => "American Mineralogist",
@@ -248,7 +248,8 @@ namespace Crystallography
                 };
                 return shortJournal.Replace(number, journal);
             }
-            return shortJournal;
+            else
+                return shortJournal;
         }
 
         public static string GetShortJournal(string fullJournal)
@@ -375,14 +376,14 @@ namespace Crystallography
                 return new[] { (byte)(240 + 0) };
             else
             {
-                if (s.StartsWith("0."))
+                if (s.StartsWith("0.", StringComparison.Ordinal))
                 {
                     if (s == "0.")
                         s = "0";
                     else
                         s = s[1..];
                 }
-                else if (s.StartsWith("-0."))
+                else if (s.StartsWith("-0.", StringComparison.Ordinal))
                     s = s.Replace("-0.", "-.");
                 try
                 {
@@ -445,31 +446,23 @@ namespace Crystallography
         public static (double Value, double Error) Decompose(string str, bool IsHex = false)
         {
             var expValue = 1.0;
-            if (str.Contains("E"))
+            int i;
+            if ((i = str.IndexOf("E", StringComparison.Ordinal)) > 0)
             {
-                var i = str.IndexOf("E");
-                if (i > 0)
-                {
-                    _ = double.TryParse("1" + str[i..], out expValue);
-                    str = str.Substring(0, i);
-                }
+                _ = double.TryParse("1" + str[i..], out expValue);
+                str = str.Substring(0, i);
             }
-
             string valStr;
             double err;
-            if (str.Contains('|'))
+            if ((i = str.IndexOf("|", StringComparison.Ordinal)) > 0)
             {
-                var temp = str.Split('|', true);
-                if (temp[0].Length == 0)
-                    return (double.NaN, double.NaN);
-                
-                valStr = temp[0];
+                valStr = str.AsSpan()[0..i].ToString();
 
-                if (temp.Length == 2 && temp[1].Length != 0 && double.TryParse(temp[1], out err))
+                if (double.TryParse(str.AsSpan()[(i + 1)..^1], out err))
                 {
-                    var i = valStr.IndexOf(".");
-                    if (i >= 0 && valStr.Length - i - 1 > 0)
-                        err *= Math.Pow(10, -valStr.Length + i + 1);
+                    var j = valStr.IndexOf(".",StringComparison.Ordinal);
+                    if (j >= 0 && valStr.Length - j - 1 > 0)
+                        err *= Math.Pow(10, -valStr.Length + j + 1);
                 }
                 else
                     err = double.NaN;
@@ -503,10 +496,9 @@ namespace Crystallography
                     return (11.0 / 12.0, err);
             }
 
-            if (valStr.Contains("/"))
+            if ((i= valStr.IndexOf("/",StringComparison.Ordinal)) >= 0)
             {
-                var temp = valStr.Split("/", true);
-                if (temp.Length == 2 && double.TryParse(temp[0], out var temp0) && double.TryParse(temp[1], out var temp1))
+                if (double.TryParse(valStr.AsSpan()[0..i], out var temp0) && double.TryParse(valStr.AsSpan()[(i+1)..^0], out var temp1))
                     return (temp0 / temp1, double.NaN);
                 else
                     return (double.NaN, double.NaN);
@@ -524,12 +516,12 @@ namespace Crystallography
             {
                 //まず、誤差を 23E-6 みたいな形にする
                 var temp = err.ToString("E1");
-                var errStr = temp.Substring(0, temp.IndexOf("E")).Replace(".", "");
-                var errLog = Convert.ToInt32(temp[(temp.IndexOf("E") + 1)..]) - 1;
+                var errStr = temp.Substring(0, temp.IndexOf("E", StringComparison.Ordinal)).Replace(".", "");
+                var errLog = Convert.ToInt32(temp[(temp.IndexOf("E", StringComparison.Ordinal) + 1)..]) - 1;
 
                 //vを取りあえず十分な精度で出力する
                 var valStr = val.ToString("E15");
-                var valLog = Convert.ToInt32(valStr[(valStr.IndexOf("E") + 1)..]);
+                var valLog = Convert.ToInt32(valStr[(valStr.IndexOf("E", StringComparison.Ordinal) + 1)..]);
 
                 var result = valLog >= errLog ? valStr.Substring(0, valLog - errLog + 2) : val.ToString("E0").Substring(0, 1);
                 

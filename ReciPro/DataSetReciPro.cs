@@ -305,7 +305,7 @@ namespace ReciPro
             /// <param name="index"></param>
             public void SetDirectNo(int index)
             {
-                if (index >= 0 && index < Rows.Count)
+                if ((uint)index < (uint)Rows.Count)
                 {
                     for (int i = 0; i < Rows.Count; i++)
                         Rows[i]["Direct"] = i == index;

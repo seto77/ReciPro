@@ -278,7 +278,7 @@ namespace ReciPro
             FormDiffractionSimulator.Draw();
         }
 
-        private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericBoxPixelHeight.Enabled = numericBoxPixelWidth.Enabled = textBoxFileName.Text == "";
+        private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericBoxPixelHeight.Enabled = numericBoxPixelWidth.Enabled = textBoxFileName.Text.Length == 0;
 
         private void trackBarPictureOpacity1_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 

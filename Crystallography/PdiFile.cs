@@ -242,7 +242,7 @@ namespace Crystallography
 
                 for (int i = 0; i < dp.Length; i++)
                 {
-                    if (title[i] == "")
+                    if (title[i].Length == 0)
                         dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Length > 1 ? $" -{i}" : "")}";
                     else
                         dp[i].Name = title[i];

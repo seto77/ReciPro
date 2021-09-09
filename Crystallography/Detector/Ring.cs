@@ -1803,21 +1803,18 @@ namespace Crystallography
 					for (int i = 0; i < R2.Length; i++)
 						R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 変更
 				}
+				else if (IP.Mode == HorizontalAxis.d)//d-spacing modeのとき
+				{
+					R2 = new double[(int)((IP.EndDspacing - IP.StartDspacing) / IP.StepDspacing) + 1];
+					for (int i = R2.Length - 1; i >= 0; i--)
+						R2[R2.Length - 1 - i] = 2 * Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (i + 0.5) * IP.StepDspacing));
+				}
 				else if (IP.Mode == HorizontalAxis.Length)
 				{
 					R2 = new double[(int)((IP.EndLength - IP.StartLength) / IP.StepLength) + 1];
 					for (int i = 0; i < R2.Length; i++)
 					{
 						double temp = IP.StartLength + (i + 0.5) * IP.StepLength;
-						R2[i] = temp * temp;
-					}
-				}
-				else //d-spacing modeのとき
-				{
-					R2 = new double[(int)((IP.EndDspacing - IP.StartDspacing) / IP.StepDspacing) + 1];
-					for (int i = 0; i < R2.Length; i++)
-					{
-						double temp = Math.Tan(Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (R2.Length - 1 - i - 0.5) * IP.StepDspacing)) * 2) * IP.FilmDistance;
 						R2[i] = temp * temp;
 					}
 				}
@@ -1871,7 +1868,7 @@ namespace Crystallography
 			//FlatPanelモードの時
 			if (iP.Camera == IntegralProperty.CameraEnum.FlatPanel)
 			{
-				if (IP.Mode == HorizontalAxis.Angle)
+				if (IP.Mode == HorizontalAxis.Angle || IP.Mode== HorizontalAxis.d)
 				{
 					#region ネイティブコードは思ったより早くなかった。
 					//if (NativeWrapper.Enabled)
@@ -1904,9 +1901,11 @@ namespace Crystallography
 					Parallel.For(0, thread, i =>
 							(tempProfileIntensity[i], tempContibutedPixels[i]) = GetProfileThreadWithTiltCorrectionNew(xMin, xMax, yThreadMin[i], yThreadMax[i]));
 				}
-				else
-					Parallel.For(0, thread, i =>
+				
+				else if (IP.Mode == HorizontalAxis.Length)
+							Parallel.For(0, thread, i =>
 					GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i][0], ref tempContibutedPixels[i][0]));
+
 
 				for (int i = 0; i < thread; i++)
 					for (int j = 0; j < length; j++)
@@ -1983,6 +1982,16 @@ namespace Crystallography
 						profile.Pt.Add(new PointD(x, temp));
 						profile.Err.Add(new PointD(x, temp / Math.Sqrt(ProfileIntensity[i])));
 					}
+				else if(IP.Mode == HorizontalAxis.d)//d値のモードのとき
+					for (int i = 0; i < length; i++)
+					{
+						double tempD = i * IP.StepDspacing + IP.StartDspacing;
+						double temp = ProfileIntensity[length - 1 - i] / ContributedPixels[length - 1 - i];
+						if (double.IsNaN(temp) || double.IsInfinity(temp))
+							temp = 0;
+						profile.Pt.Add(new PointD(tempD * 10, temp));
+						profile.Err.Add(new PointD(tempD * 10, temp / Math.Sqrt(ProfileIntensity[i])));
+					}
 				else if (IP.Mode == HorizontalAxis.Length)//Lengthモードのとき
 					for (int i = 0; i < length; i++)
 					{
@@ -1993,17 +2002,7 @@ namespace Crystallography
 						profile.Pt.Add(new PointD(x, temp));
 						profile.Err.Add(new PointD(x, temp / Math.Sqrt(ProfileIntensity[i])));
 					}
-				else //d値のモードのとき
-					for (int i = 0; i < length; i++)
-					{
-						double tempD = ((length - 1 - i) * IP.StepDspacing + IP.StartDspacing);
-						double tempTwoTheta = Math.Asin(iP.WaveLength / 2 / tempD);
-						double temp = ProfileIntensity[i] / ContributedPixels[i] / Math.Cos(tempTwoTheta);
-						if (double.IsNaN(temp) || double.IsInfinity(temp))
-							temp = 0;
-						profile.Pt.Add(new PointD(tempD * 10, temp));
-						profile.Pt.Add(new PointD(tempD * 10, temp / Math.Sqrt(ProfileIntensity[i])));
-					}
+				
 			}
 			//ガンドルフィーモードの時
 			else
@@ -2709,8 +2708,18 @@ namespace Crystallography
 						var n0 = 4;
 
 						var twoTheta = z >= 0 ? Math.Asin(q / l) : Math.PI - Math.Asin(q / l);//2θ算出
-						var devTwoTheta = Math.Atan(Math.Max(Math.Abs(pt0[0].X), Math.Abs(pt0[1].X)) / fd);//ピクセル内での2θの変動幅
-						var startTwoThetaIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
+						int startIndex;
+						if (IP.Mode == HorizontalAxis.Angle)
+						{
+							var devTwoTheta = Math.Atan(Math.Max(Math.Abs(pt0[0].X), Math.Abs(pt0[1].X)) / fd);//ピクセル内での2θの変動幅
+							startIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
+						}
+						else
+						{
+							for (startIndex = 0; startIndex < R2.Length - 1; startIndex++)
+								if (R2[startIndex + 1] > twoTheta)
+									break;
+						}
 						var intensityPerArea = Intensity[i + jWidth] / getArea(4, pt0);
 
 						var chiAngle = Math.Atan2(y, x); //ピクセル中心のChi角
@@ -2719,10 +2728,11 @@ namespace Crystallography
 						var startChiIndex = Math.Max(0, (int)((chiAngle - devChiAngle) / 2 / Math.PI * chiDivision - 0.5)); //ピクセル中心のChi角
 
 						//矩形を x = c の直線(2シータの分割線) と y = d の直線(セクターの分割線)で切り取り、面積比を計算するループ
-						for (int k1 = startTwoThetaIndex; k1 < R2.Length; k1++)
+						for (int k1 = startIndex; k1 < R2.Length; k1++)
 						{
 							//x が c1以下の矩形(pt1)と、c1以上の矩形(pt2)を生成
 							var c = Math.Tan(R2[k1] - twoTheta) * fd;
+
 							int n1 = 0, n2 = 0;
 							
 							for (int m = 0; m < n0; m++)//pt1は、現在の2Θ範囲のポリゴン、pt2は次の範囲のポリゴン

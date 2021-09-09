@@ -302,7 +302,7 @@ namespace Crystallography
 		private static Crystal2 ConvertFromAmc(string[] str)
 		{
 			var n = 0;
-			if (str[n] == "")
+			if (str[n].Length == 0)
 				n++;
 
 			var Name = str[n];//結晶の名前
@@ -431,7 +431,7 @@ namespace Crystallography
 				if (IsOcc)
 				{
 					occ = item[j++];
-					if (occ == "") occ = "1";
+					if (occ.Length == 0) occ = "1";
 				}
 
 				var iso = "";
@@ -467,7 +467,7 @@ namespace Crystallography
 						atomicNumber = -2;
 				}
 
-				var IsIso = aniso == null || aniso.All(e => e == "");
+				var IsIso = aniso == null || aniso.All(e => e.Length == 0);
 
 				if (atomicNumber > 0)
 				{
@@ -987,7 +987,7 @@ namespace Crystallography
 					else if (label == "_symmetry_equiv_pos_as_xyz") operations.Add(data);
 				}
 
-			if (name == "" || name == "?" || name == "? ?" || name.Trim() == "")
+			if (name.Length == 0 || name == "?" || name == "? ?" || name.Trim().Length == 0)
 				name = chemical_formula_sum;
 
 			#region 空間群を調べる部分
@@ -1151,7 +1151,7 @@ namespace Crystallography
 				}
 				//ラベル名から元素を探す
 				int atomicNumber = 0;
-				var atomName = atomSymbol == "" ? atomLabel : atomSymbol;
+				var atomName = atomSymbol.Length == 0 ? atomLabel : atomSymbol;
 
 				for (int q = atomName.Length; q > 0 && atomicNumber == 0; q--)
 				{
@@ -1170,15 +1170,15 @@ namespace Crystallography
 				}
 
 				//Bタイプが全て ”” だったら、Uタイプと判定
-				var isU = bIso == "" && b11 == "" && b12 == "" && b13 == "" && b22 == "" && b23 == "" && b33 == "";
+				var isU = bIso.Length == 0 && b11.Length == 0 && b12.Length == 0 && b13.Length == 0 && b22.Length == 0 && b23.Length == 0 && b33.Length == 0;
 				//非等方性が全て ”” だったら、等方性と判断
 				var isIso = isU ?
-					u11 == "" && u12 == "" && u13 == "" && u22 == "" && u23 == "" && u33 == "" :
-					b11 == "" && b12 == "" && b13 == "" && b22 == "" && b23 == "" && b33 == "";
+					u11.Length == 0 && u12.Length == 0 && u13.Length == 0 && u22.Length == 0 && u23.Length == 0 && u33.Length == 0 :
+					b11.Length == 0 && b12.Length == 0 && b13.Length == 0 && b22.Length == 0 && b23.Length == 0 && b33.Length == 0;
 
 				var iso = isU ? uIso : bIso;
 
-				if (iso == "")
+				if (iso.Length == 0)
 					iso = "0";
 
 				var aniso = isU ? //11, 22, 33, 12, 23, 31の順番

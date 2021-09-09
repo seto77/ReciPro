@@ -762,7 +762,7 @@ namespace Crystallography
                 {
                     (int detectorType, _) = hdf.GetValue0<int>($"{groupID2name}/detector_2d_{i}/detector_info/detector_type");
 
-                    if (detectorType == 1)//イメージ検出器の場合
+                    if (detectorType == 1 || detectorType ==0)//イメージ検出器の場合
                     {
                         //detector_2d_1　と _2の位置関係を調べる
 
@@ -811,23 +811,30 @@ namespace Crystallography
                 int imageWidth = 1024, imageHeight = 1024;
                 for (int i = 0; i < tag.Count; i++)
                 {
-
                     (float[][] dataImageLeft, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{leftDetector}/{tag[i]}/detector_data");
-                    
 
                     (float[][] dataImageRight, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{rightDetector}/{tag[i]}/detector_data");
-                  
 
+                    Ring.SequentialImageIntensities.Add(new List<double>());
 
-                        Ring.SequentialImageIntensities.Add(new List<double>());
-                    for (int h = 0; h < imageHeight; h++)
+                    if (dataImageLeft != null && dataImageRight != null)
                     {
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageRight[h][w]);
+                        for (int h = 0; h < imageHeight; h++)
+                        {
+                            for (int w = 0; w < imageWidth / 2; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
+                            for (int w = 0; w < imageWidth / 2; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageRight[h][w]);
+                        }
                     }
+                    else if (dataImageLeft != null)
+                    {
+                        imageWidth = 512;
+                        for (int h = 0; h < imageHeight; h++)
+                            for (int w = 0; w < imageWidth; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
 
+                    }
                     //強度をノーマライズする場合
                     if (normarize == null)
                         normarize = MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
@@ -1542,7 +1549,7 @@ namespace Crystallography
                     if (!double.IsNaN(t.Images[j].PulsePower))
                         Ring.SequentialImagePulsePower.Add(t.Images[j].PulsePower);
 
-                    if (t.Images[j].Name == "")
+                    if (t.Images[j].Name.Length == 0)
                         Ring.SequentialImageNames.Add(j.ToString("000"));
                     else
                         Ring.SequentialImageNames.Add(t.Images[j].Name);

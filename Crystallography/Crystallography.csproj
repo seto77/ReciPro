@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.9.3.0550</AssemblyVersion>
-    <FileVersion>2021.9.3.0550</FileVersion>
+    <AssemblyVersion>2021.9.9.1050</AssemblyVersion>
+    <FileVersion>2021.9.9.1050</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,7 +26,7 @@
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
     <PackageReference Include="MessagePack" Version="2.3.75" />
     <PackageReference Include="MessagePack.Annotations" Version="2.3.75" />
-    <PackageReference Include="OpenTK" Version="3.3.1" />
+    <PackageReference Include="OpenTK" Version="3.3.2" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.12" />
   </ItemGroup>
 

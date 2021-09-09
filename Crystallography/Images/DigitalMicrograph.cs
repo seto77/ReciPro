@@ -76,7 +76,7 @@ namespace Crystallography
                 for (int i = 0; i < NumberOfTags; i++)
                 {
                     TagInfo tagInfo = new TagInfo(br, Version);//Tagの読み込みはTagInfoクラスに任せる
-                    if (tagInfo.TagName == "")
+                    if (tagInfo.TagName.Length == 0)
                         tagInfo.TagName = i.ToString();
                     Tag.Add(tagInfo.TagName, tagInfo);
                 }
@@ -125,7 +125,7 @@ namespace Crystallography
                     for (int i = 0; i < NumberOfTagsInTagDirectory; i++)
                     {
                         TagInfo tagInfo = new TagInfo(br, version);//TagInfoを再起呼び出し
-                        if (tagInfo.TagName == "")
+                        if (tagInfo.TagName.Length == 0)
                             tagInfo.TagName = i.ToString();
                         Tag.Add(tagInfo.TagName, tagInfo);
                     }
