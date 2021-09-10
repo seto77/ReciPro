@@ -21,9 +21,9 @@ namespace Crystallography
                         for (int j = i + 1; j < str.Length; j++)
                             for (int l = 0; l < str[j].Length; l++)
                             {
-                                if (str[j].IndexOf(leftString, l) >= 0)//•¶Žš—ñ‚ªŒ©‚Â‚©‚Á‚½‚Æ‚«
+                                if (str[j].IndexOf(leftString, l, StringComparison.Ordinal) >= 0)//•¶Žš—ñ‚ªŒ©‚Â‚©‚Á‚½‚Æ‚«
                                 {
-                                    int k = str[j].IndexOf(leftString);
+                                    int k = str[j].IndexOf(leftString, StringComparison.Ordinal);
                                     bool flag = true;
 
                                     if (k + leftString.Length < str[j].Length)//Œã•û‚É—]—T‚Ì‚ ‚é‚Æ‚«
@@ -58,14 +58,14 @@ namespace Crystallography
             for (int i = 0; i < str.Length - 1; i++)
                 if (str.Substring(i, 1).ToLower() == "e" && (str[i + 1] == '-' || str[i + 1] == '+' || (str[i + 1] >= '0' && str[i + 1] <= '9')))
                 {
-                    str.Remove(i, 1);
+                    str= str.Remove(i, 1);
                     if (i == 0)
-                        str.Insert(i, "10^");
+                        str = str.Insert(i, "10^");
                     else
-                        str.Insert(i, "*10^");
+                        str = str.Insert(i, "*10^");
                 }
 
-            List<object> list = new List<object>();
+            var list = new List<object>();
 
             for (int i = 0; i < str.Length; i++)
             {
@@ -146,28 +146,20 @@ namespace Crystallography
                         list[i] = Math.PI;
                     else if (i + 1 < list.Count && list[i + 1].GetType() == typeof(double))
                     {
-                        if ((string)list[i] == "ln")
-                            list[i] = Math.Log((double)list[i + 1]);
-                        else if ((string)list[i] == "sin")
-                            list[i] = Math.Sin((double)list[i + 1] / 180 * Math.PI);
-                        else if ((string)list[i] == "cos")
-                            list[i] = Math.Cos((double)list[i + 1] / 180 * Math.PI);
-                        else if ((string)list[i] == "tan")
-                            list[i] = Math.Tan((double)list[i + 1] / 180 * Math.PI);
-                        else if ((string)list[i] == "exp")
-                            list[i] = Math.Exp((double)list[i + 1]);
-                        else if ((string)list[i] == "log")
-                            list[i] = Math.Log10((double)list[i + 1]);
-                        else if ((string)list[i] == "abs")
-                            list[i] = Math.Abs((double)list[i + 1]);
-                        else if ((string)list[i] == "asin")
-                            list[i] = Math.Asin((double)list[i + 1]) / Math.PI * 180;
-                        else if ((string)list[i] == "acos")
-                            list[i] = Math.Acos((double)list[i + 1]) / Math.PI * 180;
-                        else if ((string)list[i] == "atan")
-                            list[i] = Math.Atan((double)list[i + 1]) / Math.PI * 180;
-                        else if ((string)list[i] == "sqrt")
-                            list[i] = Math.Sqrt((double)list[i + 1]);
+                        switch (list[i])
+                        {
+                            case "ln": list[i] = Math.Log((double)list[i + 1]); break;
+                            case "sin": list[i] = Math.Sin((double)list[i + 1] / 180 * Math.PI); break;
+                            case "cos": list[i] = Math.Cos((double)list[i + 1] / 180 * Math.PI); break;
+                            case "tan": list[i] = Math.Tan((double)list[i + 1] / 180 * Math.PI); break;
+                            case "exp": list[i] = Math.Exp((double)list[i + 1]); break;
+                            case "log": list[i] = Math.Log10((double)list[i + 1]); break;
+                            case "abs": list[i] = Math.Abs((double)list[i + 1]); break;
+                            case "asin": list[i] = Math.Asin((double)list[i + 1]) / Math.PI * 180; break;
+                            case "acos": list[i] = Math.Acos((double)list[i + 1]) / Math.PI * 180; break;
+                            case "atan": list[i] = Math.Atan((double)list[i + 1]) / Math.PI * 180; break;
+                            case "sqrt": list[i] = Math.Sqrt((double)list[i + 1]); break;
+                        }
 
                         list.RemoveAt(i + 1);
                     }

@@ -122,11 +122,11 @@ namespace Crystallography
                         //Mode:Angle                                    4
                         //4,733.102005852614                            5
 
-                        if (strList[0].Contains("Wave Length", StringComparison.CurrentCulture))
+                        if (strList[0].Contains("Wave Length", StringComparison.Ordinal))
                         {
-                            if (strList[0].Contains("(nm)", StringComparison.CurrentCulture))
+                            if (strList[0].Contains("(nm)", StringComparison.Ordinal))
                                 diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
-                            else if (strList[0].IndexOf("(0.1nm)") >= 0)
+                            else if (strList[0].Contains("(0.1nm)", StringComparison.Ordinal))
                                 diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
                         }
 

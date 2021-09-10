@@ -1242,7 +1242,7 @@ namespace ReciPro
         }
         */
 
-        private double[] blur = new double[0];
+        private double[] blur = Array.Empty<double>();
 
         /// <summary>
         /// 画像を指定したfilmBlur量でにじませる

@@ -1421,7 +1421,6 @@ namespace Crystallography
         #endregion
 
         #region ç\ë¢àˆéqÇÃåvéZ
-
        
         [NonSerialized]
         [XmlIgnore]
@@ -1529,7 +1528,6 @@ namespace Crystallography
                         int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
                         Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (h, k, l), 1 / d2 / 4.0);
                     }
-
 
                     Plane[i].F2[j] = Plane[i].F[j].MagnitudeSquared();
 

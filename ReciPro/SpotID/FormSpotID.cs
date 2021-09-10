@@ -937,7 +937,7 @@ namespace ReciPro
             }
 
             if (exceptedIndices == null)
-                exceptedIndices = new int[0];
+                exceptedIndices = Array.Empty<int>();
             var obsSpotsReciprocal2 = new List<Vector3DBase>();
             var gVectors2 = new List<List<Vector3D>>();
             for (int i = 0; i < obsSpotsReciprocal.Length; i++)

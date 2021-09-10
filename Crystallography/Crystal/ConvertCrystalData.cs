@@ -1526,7 +1526,7 @@ namespace Crystallography
 			}
 
 			//Rhombohedoral‚Ì‚Æ‚«‚Ìˆ’u
-			if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.IndexOf("Hex") >= 0)
+			if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.Ordinal))
 				symmetrySeriesNumber++;
 
 			//originChoice‚ª2‚Ì‚Æ‚«‚Ì‘Îˆ

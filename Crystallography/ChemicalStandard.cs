@@ -263,8 +263,8 @@ namespace Crystallography
                         for (int i = (int)Math.Max(a, b); i >= 1; i--)
                             if (a / i % 1 == 0 && b / i % 1 == 0)
                             {
-                                a = a / i;
-                                b = b / i;
+                                a /= i;
+                                b /= i;
                             }
                         break;
                     }
