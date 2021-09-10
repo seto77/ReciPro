@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography;
+using System.Reflection;
 
 namespace Crystallography.Controls
 {
@@ -55,6 +56,8 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             table = dataSet.DataTableBond;
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
+
         }
 
         #region Bondsクラスを画面下部　から生成 /　にセット. 表示の単位は Å だが、中身は nm 単位.

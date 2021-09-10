@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -275,6 +276,9 @@ namespace Crystallography.Controls
 
             dataGridView.Columns["enabledColumn"].Visible = false;
             SkipEvent = false;
+
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
+
         }
 
         #endregion

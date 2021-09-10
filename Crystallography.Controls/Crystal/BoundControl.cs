@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Crystallography.Controls
 {
@@ -45,7 +46,9 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             table = dataSet.DataTableBound;
-        } 
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
+
+        }
         #endregion
 
         #region　Boundを画面下部から生成 / Boundを画面下部にセット

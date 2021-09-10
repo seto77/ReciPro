@@ -2,6 +2,7 @@ using Crystallography;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace ReciPro
@@ -18,6 +19,8 @@ namespace ReciPro
         {
             InitializeComponent();
             this.formTEMID = formTEMID;
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView1, true, null);
+
         }
 
         public void SetDataSet(PhotoInformation photo, List<ZoneAxis> zoneaxis)

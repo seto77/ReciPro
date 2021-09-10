@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms; 
@@ -146,6 +147,9 @@ namespace Crystallography.Controls
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
             formScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
             formSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
+
+            typeof(UserControl).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(this, true, null);
+
         }
 
 

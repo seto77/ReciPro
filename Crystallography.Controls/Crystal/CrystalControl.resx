@@ -2239,19 +2239,19 @@
     <value>Save</value>
   </data>
   <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Text" xml:space="preserve">
     <value>as CTF file (comatible to CHANNEL 5 file)</value>
   </data>
   <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Text" xml:space="preserve">
     <value>as TXT file (all Euler angle and density)</value>
   </data>
   <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Text" xml:space="preserve">
     <value>as TXT file (all Euler angle and density) sorted</value>

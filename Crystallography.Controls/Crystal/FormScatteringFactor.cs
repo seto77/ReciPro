@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,6 +20,8 @@ namespace Crystallography.Controls
         {
             //CrystalContorolでCystalが変更されたときのイベントを登録
             CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView2, true, null);
+
         }
 
         private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)

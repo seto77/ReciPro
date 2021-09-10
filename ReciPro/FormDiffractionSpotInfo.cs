@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -26,6 +27,8 @@ namespace ReciPro
             var dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             // 対象のDataGridViewにtrueをセットする
             dgvPropertyInfo.SetValue(dataGridView, true, null);
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
+
         }
 
         public void SetTable(double acc = 0, BetheMethod.Beam[] beams = null)

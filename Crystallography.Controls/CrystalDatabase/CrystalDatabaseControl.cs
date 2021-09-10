@@ -14,6 +14,7 @@ using MessagePack;
 using MessagePack.Resolvers;
 using System.Threading.Tasks;
 using System.Buffers;
+using System.Reflection;
 
 #endregion
 
@@ -66,6 +67,8 @@ namespace Crystallography.Controls
         {
             InitializeComponent();
             dataTable = dataSet.DataTableCrystalDatabase;
+
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
         }
         #endregion
 
