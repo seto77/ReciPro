@@ -870,6 +870,7 @@
             this.tabPageDebyeWaller.Controls.Add(this.checkBoxDetailsDebyeWallerError);
             this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso2);
             this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso1);
+            this.tabPageDebyeWaller.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabPageDebyeWaller, "tabPageDebyeWaller");
             this.tabPageDebyeWaller.Name = "tabPageDebyeWaller";
             this.toolTip.SetToolTip(this.tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
@@ -1129,9 +1130,9 @@
             this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorXray);
             this.tabPageScatteringFactor.Controls.Add(this.label6);
             this.tabPageScatteringFactor.Controls.Add(this.label4);
+            this.tabPageScatteringFactor.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.tabPageScatteringFactor, "tabPageScatteringFactor");
             this.tabPageScatteringFactor.Name = "tabPageScatteringFactor";
-            this.tabPageScatteringFactor.UseWaitCursor = true;
             // 
             // richTextBoxIsotope
             // 
@@ -1140,13 +1141,11 @@
             this.richTextBoxIsotope.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxIsotope.Name = "richTextBoxIsotope";
             this.richTextBoxIsotope.ReadOnly = true;
-            this.richTextBoxIsotope.UseWaitCursor = true;
             // 
             // label34
             // 
             resources.ApplyResources(this.label34, "label34");
             this.label34.Name = "label34";
-            this.label34.UseWaitCursor = true;
             // 
             // buttonEditIsotopeAbundance
             // 
@@ -1154,7 +1153,6 @@
             resources.ApplyResources(this.buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
             this.buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
             this.buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
-            this.buttonEditIsotopeAbundance.UseWaitCursor = true;
             this.buttonEditIsotopeAbundance.Click += new System.EventHandler(this.buttonEditIsotopeAbundance_Click);
             // 
             // label5
@@ -1162,7 +1160,6 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.label5.Name = "label5";
-            this.label5.UseWaitCursor = true;
             // 
             // comboBoxScatteringFactorElectron
             // 
@@ -1172,7 +1169,6 @@
             resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
             this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
             this.toolTip.SetToolTip(this.comboBoxScatteringFactorElectron, resources.GetString("comboBoxScatteringFactorElectron.ToolTip"));
-            this.comboBoxScatteringFactorElectron.UseWaitCursor = true;
             this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
             // comboBoxNeutron
@@ -1185,7 +1181,6 @@
             resources.GetString("comboBoxNeutron.Items"),
             resources.GetString("comboBoxNeutron.Items1")});
             this.comboBoxNeutron.Name = "comboBoxNeutron";
-            this.comboBoxNeutron.UseWaitCursor = true;
             this.comboBoxNeutron.SelectedIndexChanged += new System.EventHandler(this.comboBoxNeutron_SelectedIndexChanged);
             // 
             // comboBoxScatteringFactorXray
@@ -1196,7 +1191,6 @@
             resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
             this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
             this.toolTip.SetToolTip(this.comboBoxScatteringFactorXray, resources.GetString("comboBoxScatteringFactorXray.ToolTip"));
-            this.comboBoxScatteringFactorXray.UseWaitCursor = true;
             this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
             // label6
@@ -1204,14 +1198,12 @@
             resources.ApplyResources(this.label6, "label6");
             this.label6.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.label6.Name = "label6";
-            this.label6.UseWaitCursor = true;
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.label4.Name = "label4";
-            this.label4.UseWaitCursor = true;
             // 
             // tabPageAppearance
             // 

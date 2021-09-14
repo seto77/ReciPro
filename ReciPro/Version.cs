@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.816(2021/09/14)  Fixed minor bugs." +
             "\r\n ver4.815(2021/09/02)  Improved: User interfaces and tooltips." +
             "\r\n ver4.814(2021/08/29)  Fixed minor bugs: Drawing overlapping area of CBED disks (see https://github.com/seto77/ReciPro/issues/8)." +
             "\r\n ver4.813(2021/08/28)  Fixed minor bugs on HRTEM simulation (see https://github.com/seto77/ReciPro/issues/9)." +
