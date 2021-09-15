@@ -124,15 +124,15 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonStereonet = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonElectronDiffraction = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDiffractionSingle = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonImageSimulation = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonImageSimulator = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonTEMID = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSpotIDv1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonSpotID = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSpotIDv2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonPolycrystallineDiffraction = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDiffractionPoly = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -380,8 +380,8 @@
             this.crystalControl.VisibleReferenceTab = true;
             this.crystalControl.VisibleStressStrainTab = false;
             this.crystalControl.CrystalChanged += new System.EventHandler(this.crystalControl_CrystalChanged);
-            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.scatteringFactor_VisibleChanged);
-            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.symmetryInformation_VisibleChanged);
+            this.crystalControl.ScatteringFactor_VisibleChanged += new System.EventHandler(this.crystalControl_ScatteringFactor_VisibleChanged);
+            this.crystalControl.SymmetryInformation_VisibleChanged += new System.EventHandler(this.CrystalControl_SymmetryInformation_VisibleChanged);
             // 
             // flowLayoutPanel3
             // 
@@ -491,6 +491,7 @@
             this.numericBoxAxisU.SkipEventDuringInput = false;
             this.numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisU.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAxisU, resources.GetString("numericBoxAxisU.ToolTip"));
             // 
             // label9
             // 
@@ -516,6 +517,7 @@
             this.numericBoxAxisV.SkipEventDuringInput = false;
             this.numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisV.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAxisV, resources.GetString("numericBoxAxisV.ToolTip"));
             // 
             // numericBoxAxisW
             // 
@@ -532,6 +534,7 @@
             this.numericBoxAxisW.SkipEventDuringInput = false;
             this.numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAxisW.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAxisW, resources.GetString("numericBoxAxisW.ToolTip"));
             // 
             // tableLayoutPanel7
             // 
@@ -573,6 +576,7 @@
             this.numericBoxPlaneH.SkipEventDuringInput = false;
             this.numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPlaneH.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip"));
             // 
             // numericBoxPlaneK
             // 
@@ -970,15 +974,15 @@
             this.toolStripSeparator1,
             this.toolStripButtonStereonet,
             this.toolStripSeparator7,
-            this.toolStripButtonElectronDiffraction,
+            this.toolStripButtonDiffractionSingle,
             this.toolStripSeparator4,
-            this.toolStripButtonImageSimulation,
+            this.toolStripButtonImageSimulator,
             this.toolStripSeparator13,
-            this.toolStripButtonTEMID,
+            this.toolStripButtonSpotIDv1,
             this.toolStripSeparator2,
-            this.toolStripButtonSpotID,
+            this.toolStripButtonSpotIDv2,
             this.toolStripSeparator10,
-            this.toolStripButtonPolycrystallineDiffraction,
+            this.toolStripButtonDiffractionPoly,
             this.toolStripSeparator19});
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -995,10 +999,9 @@
             // 
             // toolStripButtonDatabase
             // 
-            this.toolStripButtonDatabase.CheckOnClick = true;
             resources.ApplyResources(this.toolStripButtonDatabase, "toolStripButtonDatabase");
             this.toolStripButtonDatabase.Name = "toolStripButtonDatabase";
-            this.toolStripButtonDatabase.CheckedChanged += new System.EventHandler(this.toolStripButtonDatabase_CheckedChanged);
+            this.toolStripButtonDatabase.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator14
             // 
@@ -1008,10 +1011,9 @@
             // 
             // toolStripButtonSymmetryInformation
             // 
-            this.toolStripButtonSymmetryInformation.CheckOnClick = true;
             resources.ApplyResources(this.toolStripButtonSymmetryInformation, "toolStripButtonSymmetryInformation");
             this.toolStripButtonSymmetryInformation.Name = "toolStripButtonSymmetryInformation";
-            this.toolStripButtonSymmetryInformation.CheckedChanged += new System.EventHandler(this.toolStripButtonSymmetryInformation_CheckedChanged);
+            this.toolStripButtonSymmetryInformation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator9
             // 
@@ -1020,10 +1022,9 @@
             // 
             // toolStripButtonScatteringFactor
             // 
-            this.toolStripButtonScatteringFactor.CheckOnClick = true;
             resources.ApplyResources(this.toolStripButtonScatteringFactor, "toolStripButtonScatteringFactor");
             this.toolStripButtonScatteringFactor.Name = "toolStripButtonScatteringFactor";
-            this.toolStripButtonScatteringFactor.CheckedChanged += new System.EventHandler(this.toolStripButtonScatteringFactor_CheckedChanged);
+            this.toolStripButtonScatteringFactor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator12
             // 
@@ -1032,10 +1033,9 @@
             // 
             // toolStripButtonRotation
             // 
-            this.toolStripButtonRotation.CheckOnClick = true;
             resources.ApplyResources(this.toolStripButtonRotation, "toolStripButtonRotation");
             this.toolStripButtonRotation.Name = "toolStripButtonRotation";
-            this.toolStripButtonRotation.CheckedChanged += new System.EventHandler(this.ToolStripButtonRotation_CheckedChanged);
+            this.toolStripButtonRotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator8
             // 
@@ -1044,11 +1044,11 @@
             // 
             // toolStripButtonStructureViewer
             // 
-            this.toolStripButtonStructureViewer.CheckOnClick = true;
+            this.toolStripButtonStructureViewer.DoubleClickEnabled = true;
             resources.ApplyResources(this.toolStripButtonStructureViewer, "toolStripButtonStructureViewer");
             this.toolStripButtonStructureViewer.Name = "toolStripButtonStructureViewer";
             this.toolStripButtonStructureViewer.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.toolStripButtonStructureViewer.CheckedChanged += new System.EventHandler(this.toolStripButtonStructureViewer_CheckedChanged);
+            this.toolStripButtonStructureViewer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator1
             // 
@@ -1057,70 +1057,66 @@
             // 
             // toolStripButtonStereonet
             // 
-            this.toolStripButtonStereonet.CheckOnClick = true;
             resources.ApplyResources(this.toolStripButtonStereonet, "toolStripButtonStereonet");
             this.toolStripButtonStereonet.Name = "toolStripButtonStereonet";
-            this.toolStripButtonStereonet.CheckedChanged += new System.EventHandler(this.toolStripButtonStereonet_CheckedChanged);
+            this.toolStripButtonStereonet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
-            // toolStripButtonElectronDiffraction
+            // toolStripButtonDiffractionSingle
             // 
-            this.toolStripButtonElectronDiffraction.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonElectronDiffraction, "toolStripButtonElectronDiffraction");
-            this.toolStripButtonElectronDiffraction.Name = "toolStripButtonElectronDiffraction";
-            this.toolStripButtonElectronDiffraction.CheckedChanged += new System.EventHandler(this.toolStripButtonElectronDiffraction_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonDiffractionSingle, "toolStripButtonDiffractionSingle");
+            this.toolStripButtonDiffractionSingle.Name = "toolStripButtonDiffractionSingle";
+            this.toolStripButtonDiffractionSingle.CheckedChanged += new System.EventHandler(this.toolStripButtonElectronDiffraction_CheckedChanged);
+            this.toolStripButtonDiffractionSingle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
-            // toolStripButtonImageSimulation
+            // toolStripButtonImageSimulator
             // 
-            this.toolStripButtonImageSimulation.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonImageSimulation, "toolStripButtonImageSimulation");
-            this.toolStripButtonImageSimulation.Name = "toolStripButtonImageSimulation";
-            this.toolStripButtonImageSimulation.CheckedChanged += new System.EventHandler(this.toolStripButtonImageSimulation_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonImageSimulator, "toolStripButtonImageSimulator");
+            this.toolStripButtonImageSimulator.Name = "toolStripButtonImageSimulator";
+            this.toolStripButtonImageSimulator.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
             resources.ApplyResources(this.toolStripSeparator13, "toolStripSeparator13");
             // 
-            // toolStripButtonTEMID
+            // toolStripButtonSpotIDv1
             // 
-            this.toolStripButtonTEMID.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonTEMID, "toolStripButtonTEMID");
-            this.toolStripButtonTEMID.Name = "toolStripButtonTEMID";
-            this.toolStripButtonTEMID.CheckedChanged += new System.EventHandler(this.toolStripButtonTemID_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonSpotIDv1, "toolStripButtonSpotIDv1");
+            this.toolStripButtonSpotIDv1.Name = "toolStripButtonSpotIDv1";
+            this.toolStripButtonSpotIDv1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // toolStripButtonSpotID
+            // toolStripButtonSpotIDv2
             // 
-            this.toolStripButtonSpotID.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonSpotID, "toolStripButtonSpotID");
-            this.toolStripButtonSpotID.Name = "toolStripButtonSpotID";
-            this.toolStripButtonSpotID.CheckedChanged += new System.EventHandler(this.toolStripButtonSpotID_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonSpotIDv2, "toolStripButtonSpotIDv2");
+            this.toolStripButtonSpotIDv2.Name = "toolStripButtonSpotIDv2";
+            this.toolStripButtonSpotIDv2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
             // 
-            // toolStripButtonPolycrystallineDiffraction
+            // toolStripButtonDiffractionPoly
             // 
-            this.toolStripButtonPolycrystallineDiffraction.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonPolycrystallineDiffraction, "toolStripButtonPolycrystallineDiffraction");
-            this.toolStripButtonPolycrystallineDiffraction.Name = "toolStripButtonPolycrystallineDiffraction";
-            this.toolStripButtonPolycrystallineDiffraction.CheckedChanged += new System.EventHandler(this.toolStripButtonPolycrystallineDiffraction_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonDiffractionPoly, "toolStripButtonDiffractionPoly");
+            this.toolStripButtonDiffractionPoly.Name = "toolStripButtonDiffractionPoly";
+            this.toolStripButtonDiffractionPoly.CheckedChanged += new System.EventHandler(this.toolStripButtonPolycrystallineDiffraction_CheckedChanged);
+            this.toolStripButtonDiffractionPoly.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
             // 
             // toolStripSeparator19
             // 
@@ -1369,7 +1365,6 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -1448,8 +1443,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         public System.Windows.Forms.ToolStripButton toolStripButtonStructureViewer;
         public System.Windows.Forms.ToolStripButton toolStripButtonStereonet;
-        public System.Windows.Forms.ToolStripButton toolStripButtonElectronDiffraction;
-        public System.Windows.Forms.ToolStripButton toolStripButtonSpotID;
+        public System.Windows.Forms.ToolStripButton toolStripButtonDiffractionSingle;
+        public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button buttonSetAxis;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1491,7 +1486,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        public System.Windows.Forms.ToolStripButton toolStripButtonPolycrystallineDiffraction;
+        public System.Windows.Forms.ToolStripButton toolStripButtonDiffractionPoly;
         public System.Windows.Forms.ToolStripButton toolStripButtonScatteringFactor;
         public System.Windows.Forms.ToolStripButton toolStripButtonSymmetryInformation;
         private System.Windows.Forms.ToolStripMenuItem resetRegistryToolStripMenuItem;
@@ -1520,7 +1515,7 @@
         private Crystallography.Controls.NumericBox numericBoxPlaneL;
         private Crystallography.Controls.NumericBox numericBoxPlaneH;
         private Crystallography.Controls.NumericBox numericBoxPlaneK;
-        public System.Windows.Forms.ToolStripButton toolStripButtonTEMID;
+        public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndexU;
         private Crystallography.Controls.NumericBox numericBoxMaxUVW;
@@ -1540,7 +1535,7 @@
         private System.Windows.Forms.ToolStripMenuItem disableOpneGLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReadInitialCrystalList;
         public System.Windows.Forms.ToolStripButton toolStripButtonRotation;
-        public System.Windows.Forms.ToolStripButton toolStripButtonImageSimulation;
+        public System.Windows.Forms.ToolStripButton toolStripButtonImageSimulator;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private Crystallography.Controls.NumericBox numericBoxAxisU;
         private System.Windows.Forms.Label label9;

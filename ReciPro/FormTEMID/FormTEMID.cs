@@ -24,7 +24,8 @@ namespace ReciPro
         private void FormTEMID_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            formMain.toolStripButtonTEMID.Checked = false;
+            formMain.toolStripButtonSpotIDv1.Checked = false;
+            this.Visible = false;
         }
 
         private void checkBoxPhoto2_CheckedChanged(object sender, EventArgs e)

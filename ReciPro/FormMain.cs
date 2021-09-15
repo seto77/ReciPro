@@ -168,6 +168,12 @@ namespace ReciPro
             catch { }
             InitializeComponent();
             ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
+
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            // ダブルバッファリング
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
 
@@ -657,10 +663,10 @@ namespace ReciPro
 
         #endregion
 
-        #region 他のFunctionとの連携
+        #region 他のFunctionを起動、連携
         private void powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            toolStripButtonPolycrystallineDiffraction.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+            toolStripButtonDiffractionPoly.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
             toolStripSeparator19.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
         }
         private void FormTEMID_VisibleChanged(object sender, EventArgs e)
@@ -681,51 +687,85 @@ namespace ReciPro
                 SelectionMode.MultiExtended : SelectionMode.One;
         }
 
-        private void toolStripButtonSpotID_CheckedChanged(object sender, EventArgs e)
-            => FormSpotID.Visible = toolStripButtonSpotID.Checked;
-        private void toolStripButtonSymmetryInformation_CheckedChanged(object sender, EventArgs e)
-            => crystalControl.SymmetryInformationVisible = toolStripButtonSymmetryInformation.Checked;
-        private void toolStripButtonScatteringFactor_CheckedChanged(object sender, EventArgs e)
-            => crystalControl.ScatteringFactorVisible = toolStripButtonScatteringFactor.Checked;
-        private void toolStripButtonStructureViewer_CheckedChanged(object sender, EventArgs e)
-            => FormStructureViewer.Visible = toolStripButtonStructureViewer.Checked;
-        private void toolStripButtonStereonet_CheckedChanged(object sender, EventArgs e)
-            => FormStereonet.Visible = toolStripButtonStereonet.Checked;
-        private void ToolStripButtonRotation_CheckedChanged(object sender, EventArgs e)
-            => FormRotation.Visible = toolStripButtonRotation.Checked;
+        private void crystalControl_ScatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.FormScatteringFactor.Visible;
+
+        private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
+
+
+        /// <summary>
+        /// ToolStripボタンを押されたら、各機能を起動/終了する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
+        {
+            var button = sender as ToolStripButton;
+            Form form;
+            if (button.Name.Contains("Structure"))
+                form = FormStructureViewer;
+            else if (button.Name.Contains("Database"))
+                form = FormCrystalDatabase;
+            else if (button.Name.Contains("Symmetry"))
+                form = crystalControl.FormSymmetryInformation;
+            else if (button.Name.Contains("Scattering"))
+                form = crystalControl.FormScatteringFactor;
+            else if (button.Name.Contains("Rotation"))
+                form = FormRotation;
+            else if (button.Name.Contains("Stereonet"))
+                form = FormStereonet;
+            else if (button.Name.Contains("DiffractionSingle"))
+                form = FormDiffractionSimulator;
+            else if (button.Name.Contains("ImageSimulator"))
+                form = FormImageSimulator;
+            else if (button.Name.Contains("SpotIDv1"))
+                form = FormTEMID;
+            else if (button.Name.Contains("SpotIDv2"))
+                form = FormSpotID;
+            else
+                form = FormPolycrystallineDiffractionSimulator;
+
+            if (e.Clicks == 1)
+            {
+                if (!form.Visible)
+                {
+                    form.Visible = true;
+                    form.WindowState = FormWindowState.Normal;
+                }
+                else if (form.WindowState == FormWindowState.Minimized)
+                    form.WindowState = FormWindowState.Normal;
+                else
+                    form.Visible = false;
+            }
+            else if (e.Clicks == 2)
+            {
+                form.Visible = true;
+                form.WindowState = FormWindowState.Normal;
+                form.BringToFront();
+            }
+            button.Checked = form.Visible;
+        }
 
         async private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
         {
-            FormDiffractionSimulator.Visible = toolStripButtonElectronDiffraction.Checked;
-
             //Electron diffractionを表示した直後、なぜかグラフィックボックスがグレーになってしまうので、その対処.
             await Task.Delay(200);
             if (FormDiffractionSimulator.Visible)
                 FormDiffractionSimulator.Draw();
         }
-        private void toolStripButtonImageSimulation_CheckedChanged(object sender, EventArgs e)
-            => FormImageSimulator.Visible = toolStripButtonImageSimulation.Checked;
+
         private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
         {
-            FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonPolycrystallineDiffraction.Checked;
+            FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonDiffractionPoly.Checked;
             listBox_SelectedIndexChanged(listBox, e);
         }
-
-        private void toolStripButtonTemID_CheckedChanged(object sender, EventArgs e)
-            => FormTEMID.Visible = toolStripButtonTEMID.Checked;
-        private void scatteringFactor_VisibleChanged(object sender, EventArgs e)
-            => toolStripButtonScatteringFactor.Checked = crystalControl.ScatteringFactorVisible;
-        private void symmetryInformation_VisibleChanged(object sender, EventArgs e)
-            => toolStripButtonSymmetryInformation.Checked = crystalControl.SymmetryInformationVisible;
-
-        private void toolStripButtonDatabase_CheckedChanged(object sender, EventArgs e)
-            => FormCrystalDatabase.Visible = toolStripButtonDatabase.Checked;
 
         private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormCalculator.Visible = false;
             e.Cancel = true;
         }
+
+
         #endregion
 
         #region CrystalControlからのCrystalChangedイベント
@@ -1145,13 +1185,13 @@ namespace ReciPro
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.Shift && e.KeyCode == Keys.D)
-                toolStripButtonElectronDiffraction.Checked = !toolStripButtonElectronDiffraction.Checked;
+                toolStripButtonDiffractionSingle.Checked = !toolStripButtonDiffractionSingle.Checked;
             else if (e.Control && e.Shift && e.KeyCode == Keys.V)
                 toolStripButtonStructureViewer.Checked = !toolStripButtonStructureViewer.Checked;
             else if (e.Control && e.Shift && e.KeyCode == Keys.S)
                 toolStripButtonStereonet.Checked = !toolStripButtonStereonet.Checked;
             else if (e.Control && e.Shift && e.KeyCode == Keys.T)
-                toolStripButtonSpotID.Checked = !toolStripButtonSpotID.Checked;
+                toolStripButtonSpotIDv2.Checked = !toolStripButtonSpotIDv2.Checked;
             else if (e.Control)//Ctrlを素早く2回おすと計算機をだす。
                 if (sw.IsRunning)
                 {
@@ -1466,8 +1506,13 @@ namespace ReciPro
 
 
 
+
+
+
+
+
         #endregion
 
-      
+       
     }
 }

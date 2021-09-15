@@ -11,8 +11,7 @@
 
 {
     new (double X, double Y)[][]{
-    new (double X, double Y)[]{
-    }
+    System.Array.Empty<(double X, double Y)>()
     },
 
 new (double X, double Y)[][]{

@@ -186,7 +186,8 @@ namespace ReciPro
         private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            formMain.toolStripButtonElectronDiffraction.Checked = false;
+            formMain.toolStripButtonDiffractionSingle.Checked = false;
+            this.Visible = false;
         }
 
         #endregion
@@ -345,7 +346,7 @@ namespace ReciPro
             }
 
             //対物絞りの範囲を示す円
-            if (formMain.toolStripButtonImageSimulation.Checked && formMain.FormImageSimulator.ImageMode == FormImageSimulator.ImageModes.HRTEM
+            if (formMain.toolStripButtonImageSimulator.Checked && formMain.FormImageSimulator.ImageMode == FormImageSimulator.ImageModes.HRTEM
                 && !double.IsInfinity(formMain.FormImageSimulator.ObjAperRadius))
             {
                 var aperR = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperRadius);

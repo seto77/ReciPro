@@ -150,7 +150,7 @@ namespace Crystallography
             pinnedArray.Free();
             H5D.close(dsetID);
 
-            var dims = new int[0];
+            var dims = Array.Empty<int>();
             if (spacePoints > 1)
             {
                 var spaceDim = H5S.get_simple_extent_ndims(spaceID);

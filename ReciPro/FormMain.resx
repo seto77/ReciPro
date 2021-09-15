@@ -833,6 +833,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
+  <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
   <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
     <value>numericBoxAxisU</value>
   </data>
@@ -956,6 +959,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
+  <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
   <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
     <value>numericBoxAxisV</value>
   </data>
@@ -999,6 +1005,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2</value>
   </data>
   <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
+  <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
   <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
@@ -1131,6 +1140,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0</value>
   </data>
   <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
@@ -3387,10 +3399,10 @@ Factor</value>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonDiffractionSingle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGMSURBVFhH7ZaxisJAEIYFK9/BIoKVaOy8JiD4BoIgWBpB
@@ -3403,32 +3415,32 @@ Factor</value>
         MOATSjAcXWmWDQIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonDiffractionSingle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonDiffractionSingle.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonDiffractionSingle.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonDiffractionSingle.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 38</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.Text" xml:space="preserve">
+  <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
     <value> Diffraction
  Simulator</value>
   </data>
-  <data name="toolStripButtonElectronDiffraction.ToolTipText" xml:space="preserve">
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
     <value>Open "Diffraction Simulator" function</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
-  <data name="toolStripButtonImageSimulation.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="toolStripButtonImageSimulation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonImageSimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAsbSURBVEhLJZd5XM3ZG8fPvbc0pIWhKEsxGTEMYzeUwjDI
@@ -3482,32 +3494,32 @@ Factor</value>
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="toolStripButtonImageSimulation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonImageSimulator.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="toolStripButtonImageSimulation.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonImageSimulator.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonImageSimulation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonImageSimulator.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButtonImageSimulation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonImageSimulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 38</value>
   </data>
-  <data name="toolStripButtonImageSimulation.Text" xml:space="preserve">
+  <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>  HRTEM
   Simulator</value>
   </data>
-  <data name="toolStripButtonImageSimulation.ToolTipText" xml:space="preserve">
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>Open "HRTEM Simulator" function</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
-  <data name="toolStripButtonTEMID.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8pt</value>
   </data>
-  <data name="toolStripButtonTEMID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonSpotIDv1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAYAAADK6cvnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMcSURBVEhLtZe7axRRFMbnDxAsbXyASMAHptAoUQMq4iOI
@@ -3527,32 +3539,32 @@ Factor</value>
         QmCC
 </value>
   </data>
-  <data name="toolStripButtonTEMID.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonSpotIDv1.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="toolStripButtonTEMID.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonSpotIDv1.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonTEMID.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonSpotIDv1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
   </data>
-  <data name="toolStripButtonTEMID.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonSpotIDv1.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 37</value>
   </data>
-  <data name="toolStripButtonTEMID.Text" xml:space="preserve">
+  <data name="toolStripButtonSpotIDv1.Text" xml:space="preserve">
     <value>Spot ID v1
 (former TEMID)</value>
   </data>
-  <data name="toolStripButtonTEMID.ToolTipText" xml:space="preserve">
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
     <value>Open "Spot ID v1" function</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
-  <data name="toolStripButtonSpotID.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="toolStripButtonSpotID.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonSpotIDv2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAjfSURBVFhHzZh5UFXXHcfPew+UqDEajU6N0YYaYowmMTFG
@@ -3596,31 +3608,31 @@ Factor</value>
         qalH9UdQ1oW558aNG0+QUOo/tUr2xzWJSV0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="toolStripButtonSpotID.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonSpotIDv2.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="toolStripButtonSpotID.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonSpotIDv2.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonSpotID.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonSpotIDv2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
   </data>
-  <data name="toolStripButtonSpotID.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonSpotIDv2.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 39</value>
   </data>
-  <data name="toolStripButtonSpotID.Text" xml:space="preserve">
+  <data name="toolStripButtonSpotIDv2.Text" xml:space="preserve">
     <value>Spot ID v2</value>
   </data>
-  <data name="toolStripButtonSpotID.ToolTipText" xml:space="preserve">
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Open "Spot ID v2" function</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonDiffractionPoly.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbpSURBVFhHlZd3dI53FMffhMiObKFkG4ktah6jdjlaK3aL
@@ -3656,25 +3668,24 @@ Factor</value>
         YupWvwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonDiffractionPoly.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonDiffractionPoly.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonDiffractionPoly.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonDiffractionPoly.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 38</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.Text" xml:space="preserve">
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
     <value> Powder
  Diffraction</value>
   </data>
-  <data name="toolStripButtonPolycrystallineDiffraction.ToolTipText" xml:space="preserve">
-    <value>Open "Powder Diffraction
-" function</value>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>Open Powder Diffraction function</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 6</value>
@@ -3686,7 +3697,7 @@ Factor</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 543</value>
+    <value>114, 579</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4395,10 +4406,10 @@ Factor</value>
   <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonElectronDiffraction.Name" xml:space="preserve">
-    <value>toolStripButtonElectronDiffraction</value>
+  <data name="&gt;&gt;toolStripButtonDiffractionSingle.Name" xml:space="preserve">
+    <value>toolStripButtonDiffractionSingle</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonElectronDiffraction.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonDiffractionSingle.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
@@ -4407,10 +4418,10 @@ Factor</value>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonImageSimulation.Name" xml:space="preserve">
-    <value>toolStripButtonImageSimulation</value>
+  <data name="&gt;&gt;toolStripButtonImageSimulator.Name" xml:space="preserve">
+    <value>toolStripButtonImageSimulator</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonImageSimulation.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonImageSimulator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator13.Name" xml:space="preserve">
@@ -4419,10 +4430,10 @@ Factor</value>
   <data name="&gt;&gt;toolStripSeparator13.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonTEMID.Name" xml:space="preserve">
-    <value>toolStripButtonTEMID</value>
+  <data name="&gt;&gt;toolStripButtonSpotIDv1.Name" xml:space="preserve">
+    <value>toolStripButtonSpotIDv1</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonTEMID.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonSpotIDv1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
@@ -4431,10 +4442,10 @@ Factor</value>
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonSpotID.Name" xml:space="preserve">
-    <value>toolStripButtonSpotID</value>
+  <data name="&gt;&gt;toolStripButtonSpotIDv2.Name" xml:space="preserve">
+    <value>toolStripButtonSpotIDv2</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonSpotID.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonSpotIDv2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
@@ -4443,10 +4454,10 @@ Factor</value>
   <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonPolycrystallineDiffraction.Name" xml:space="preserve">
-    <value>toolStripButtonPolycrystallineDiffraction</value>
+  <data name="&gt;&gt;toolStripButtonDiffractionPoly.Name" xml:space="preserve">
+    <value>toolStripButtonDiffractionPoly</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonPolycrystallineDiffraction.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonDiffractionPoly.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator19.Name" xml:space="preserve">

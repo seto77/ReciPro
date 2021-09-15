@@ -68,7 +68,9 @@ namespace ReciPro
         private void FormSpotID_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            FormMain.toolStripButtonSpotID.Checked = false;
+            FormMain.toolStripButtonSpotIDv2.Checked = false;
+            this.Visible = false;
+            FormSpotDetails.Visible = false;
         }
 
         #endregion ロード, クローズ関連

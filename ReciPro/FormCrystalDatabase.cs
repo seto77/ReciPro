@@ -32,6 +32,7 @@ namespace ReciPro
         {
             e.Cancel = true;
             FormMain.toolStripButtonDatabase.Checked = false;
+            this.Visible = false;
         }
 
         private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)

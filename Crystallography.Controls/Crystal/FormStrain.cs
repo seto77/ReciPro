@@ -145,7 +145,7 @@ namespace Crystallography.Controls
             skipCrystalChangedEvent = true;
 
             CrystalControl.SymmetrySeriesNumber = 1;
-            CrystalControl.Crystal.Atoms = new Atoms[0];
+            CrystalControl.Crystal.Atoms = Array.Empty<Atoms>();
             for (int i = 0; i < originalCrystal.Atoms.Length; i++)
                 for (int j = 0; j < originalCrystal.Atoms[i].Atom.Count; j++)
                 {

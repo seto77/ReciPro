@@ -644,8 +644,6 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tableLayoutPanel2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FormRotationMatrix";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRotationMatrix_FormClosing);
             this.Load += new System.EventHandler(this.FormRotationMatrix_Load);

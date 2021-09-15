@@ -154,13 +154,13 @@ namespace Crystallography
             {
                 if (File.Exists(str.Remove(str.Length - 3, 3) + "inf"))
                 {//Fujiのとき
-                    System.IO.StreamReader reader = new StreamReader(str.Remove(str.Length - 3, 3) + "inf");
-                    List<string> strList = new List<string>();
+                    var reader = new StreamReader(str.Remove(str.Length - 3, 3) + "inf");
+                    var strList = new List<string>();
                     string tempstr;
                     while ((tempstr = reader.ReadLine()) != null)
                         strList.Add(tempstr);
 
-                    if (strList != null && strList.Any() && strList[0].IndexOf("BAS_IMAGE_FILE") >= 0)//BAS2000
+                    if (strList != null && strList.Any() && strList[0].Contains("BAS_IMAGE_FILE", StringComparison.Ordinal))//BAS2000
                         result = ImageIO.BAS2000or2500(str, strList.ToArray());
                     else
                         return false;
@@ -538,7 +538,7 @@ namespace Crystallography
         {
             try
             {
-                var img = new uint[0];
+                var img = Array.Empty<uint>();
                 var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 int n = 0;
                 int ver = 0;
@@ -872,7 +872,7 @@ namespace Crystallography
         {
             try
             {
-                uint[] img = new uint[0];
+                var img = Array.Empty<uint>();
                 BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
 
                 int ID = br.ReadUInt16();
@@ -1106,7 +1106,7 @@ namespace Crystallography
         {
             try
             {
-                BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
 
                 //ヘッダ部分読み込み
                 Ring.Comments = "";

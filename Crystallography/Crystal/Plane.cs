@@ -27,7 +27,7 @@ namespace Crystallography
         public double[] eachIntensity = new double[1];//CombineÇ≥ÇÍÇƒÇ¢ÇÈÇ∆Ç´ÇÕóvëfêîÇ™2à»è„Ç…Ç»ÇÈ
         public double observedIntensity;
         public PointD simpleParameter;
-        public PeakFunction peakFunction = new PeakFunction();
+        public PeakFunction peakFunction = new();
         public double[] F2 = new double[1];//CombineÇ≥ÇÍÇƒÇ¢ÇÈÇ∆Ç´ÇÕóvëfêîÇ™2à»è„Ç…Ç»ÇÈ
         public Complex[] F = new Complex[1];
         public bool IsFittingSelected;
@@ -41,7 +41,7 @@ namespace Crystallography
         public double XCalc;
         public double Weight;
         public string strHKL, strD;
-        public string[] strCondition = new string[0];
+        public string[] strCondition = Array.Empty<string>();
         public string str;
         public int num;
 
@@ -66,6 +66,8 @@ namespace Crystallography
                 else
                     return 1;
             }
+  
+            
         }
 
         public override string ToString()
@@ -75,27 +77,27 @@ namespace Crystallography
             if (double.IsNaN(XCalc) || XCalc == 0)
                 s += " " + "##.####";
             else
-                s += " " + XCalc.ToString("00.0000");
+                s += $" {XCalc:00.0000}";
 
             if (double.IsNaN(XObs) || XObs == 0)
                 s += " " + "##.####";
             else
-                s += " " + XObs.ToString("00.0000");
+                s += $" {XObs:00.0000}";
 
             if (double.IsNaN(XObs) || XObs == 0 || double.IsNaN(peakFunction.Hk) || peakFunction.Hk == 0 || double.IsInfinity(peakFunction.Hk))
                 s += " " + "#.####";
             else
-                s += " " + peakFunction.Hk.ToString("0.0000");
+                s += $" {peakFunction.Hk:0.0000}";
 
             if (double.IsNaN(XObs) || XObs == 0 || double.IsNaN(Weight) || Weight == 0 || double.IsInfinity(Weight))
                 s += " " + "###.#";
             else
-                s += " " + Weight.ToString("000.0");
+                s += $" {Weight:000.0}";
 
             if (double.IsNaN(XObs) || XObs == 0 || double.IsNaN(observedIntensity) || observedIntensity == 0)
                 s += " " + "#######";
             else
-                s += " " + observedIntensity.ToString("000000");
+                s += $" {observedIntensity:000000}";
 
             return s;
         }

@@ -39,8 +39,16 @@ namespace ReciPro
             Draw();
             lastgraphicsBoxSize = graphicsBox.ClientSize;
         }
+
+        private void FormStereonet_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            formMain.toolStripButtonStereonet.Checked = false;
+            this.Visible = false;
+        }
+
         #endregion
-        
+
         private void FormStereonet_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
@@ -397,11 +405,7 @@ namespace ReciPro
                 lastgraphicsBoxSize = graphicsBox.ClientSize;
         }
 
-        private void FormStereonet_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            formMain.toolStripButtonStereonet.Checked = false;
-        }
+      
 
         #region ピクチャーボックスのイベント関連
 

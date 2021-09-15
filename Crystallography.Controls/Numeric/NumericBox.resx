@@ -146,7 +146,7 @@
     <value>Right</value>
   </data>
   <data name="numericUpDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 0</value>

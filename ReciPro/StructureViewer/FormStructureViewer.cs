@@ -1687,6 +1687,7 @@ namespace ReciPro
         {
             e.Cancel = true;
             formMain.toolStripButtonStructureViewer.Checked = false;
+            this.Visible = false;
         }
 
         private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)

@@ -171,8 +171,9 @@ namespace ReciPro
         private void FormImageSimulator_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            FormMain.toolStripButtonImageSimulation.Checked = false;
+            FormMain.toolStripButtonImageSimulator.Checked = false;
             FormDiffractionSpotInfo.Visible = false;
+            this.Visible = false;
         }
 
         private void FormImageSimulator_Load(object sender, EventArgs e)

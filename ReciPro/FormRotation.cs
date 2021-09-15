@@ -512,6 +512,7 @@ namespace ReciPro
         {
             e.Cancel = true;
             FormMain.toolStripButtonRotation.Checked = false;
+            this.Visible = false;
         }
 
         private void ButtonViewIsometric_Click(object sender, EventArgs e)

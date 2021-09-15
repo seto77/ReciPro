@@ -144,7 +144,8 @@ namespace ReciPro
         private void FormPolycrystallineDiffractionSimulator_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            formMain.toolStripButtonPolycrystallineDiffraction.Checked = false;
+            formMain.toolStripButtonDiffractionPoly.Checked = false;
+            this.Visible = false;
         }
 
         public object lockThis = new object();
