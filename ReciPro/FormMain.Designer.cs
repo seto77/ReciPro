@@ -1082,7 +1082,7 @@
             // 
             resources.ApplyResources(this.toolStripButtonImageSimulator, "toolStripButtonImageSimulator");
             this.toolStripButtonImageSimulator.Name = "toolStripButtonImageSimulator";
-            this.toolStripButtonImageSimulator.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown);
+            this.toolStripButtonImageSimulator.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toolStripButtons_MouseDown); 
             // 
             // toolStripSeparator13
             // 
