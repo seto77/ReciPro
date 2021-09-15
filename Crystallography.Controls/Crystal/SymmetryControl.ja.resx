@@ -62,7 +62,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 106</value>
+    <value>220, 106</value>
   </data>
   <data name="checkBoxShowError.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -70,12 +70,189 @@
   <data name="checkBoxShowError.Text" xml:space="preserve">
     <value>誤差表示</value>
   </data>
+  <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 54</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxBeta.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 54</value>
+  </data>
+  <data name="numericBoxGammaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAlphaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxBetaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxA.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value>Cell constant "a" in angstrom</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 54</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 54</value>
+  </data>
+  <data name="numericBoxGamma.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value>Cell constant "γ" in degree</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxBErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
+    <value>Cell constant "b" in angstrom</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 54</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 54</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 54</value>
+  </data>
+  <data name="numericBoxC.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
+    <value>Cell constant "c" in angstrom</value>
+  </data>
+  <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 54</value>
+  </data>
+  <data name="numericBoxCErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 82</value>
+    <value>294, 82</value>
+  </data>
+  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -83,35 +260,8 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>格子定数</value>
   </data>
-  <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
-    <value>314, 54</value>
-  </data>
-  <data name="numericBoxGammaErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 54</value>
-  </data>
-  <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 54</value>
-  </data>
-  <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 54</value>
-  </data>
-  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 54</value>
-  </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 54</value>
-  </data>
-  <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 54</value>
-  </data>
-  <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 54</value>
-  </data>
-  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxSymmetry.Text" xml:space="preserve">
-    <value>対称性</value>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxSpaceGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 74</value>
@@ -181,5 +331,23 @@
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>点群</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxSymmetry.Text" xml:space="preserve">
+    <value>対称性</value>
+  </data>
+  <data name="groupBoxSymmetry.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

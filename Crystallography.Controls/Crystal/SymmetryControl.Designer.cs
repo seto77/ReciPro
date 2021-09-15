@@ -76,11 +76,12 @@
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.checkBoxShowError);
             this.groupBox4.Controls.Add(this.tableLayoutPanel1);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // checkBoxShowError
             // 
@@ -118,16 +119,19 @@
             this.tableLayoutPanel1.Controls.Add(this.numericBoxAErr, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label44, 3, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.toolTip.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             // 
             // label48
             // 
             resources.ApplyResources(this.label48, "label48");
             this.label48.Name = "label48";
+            this.toolTip.SetToolTip(this.label48, resources.GetString("label48.ToolTip"));
             // 
             // label46
             // 
             resources.ApplyResources(this.label46, "label46");
             this.label46.Name = "label46";
+            this.toolTip.SetToolTip(this.label46, resources.GetString("label46.ToolTip"));
             // 
             // numericBoxBeta
             // 
@@ -163,6 +167,7 @@
             // 
             resources.ApplyResources(this.label47, "label47");
             this.label47.Name = "label47";
+            this.toolTip.SetToolTip(this.label47, resources.GetString("label47.ToolTip"));
             // 
             // numericBoxGammaErr
             // 
@@ -176,12 +181,14 @@
             this.numericBoxGammaErr.SkipEventDuringInput = false;
             this.numericBoxGammaErr.SmartIncrement = true;
             this.numericBoxGammaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip"));
             this.numericBoxGammaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label23
             // 
             resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
+            this.toolTip.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
             // 
             // numericBoxAlphaErr
             // 
@@ -195,6 +202,7 @@
             this.numericBoxAlphaErr.SkipEventDuringInput = false;
             this.numericBoxAlphaErr.SmartIncrement = true;
             this.numericBoxAlphaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip"));
             this.numericBoxAlphaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxBetaErr
@@ -209,6 +217,7 @@
             this.numericBoxBetaErr.SkipEventDuringInput = false;
             this.numericBoxBetaErr.SmartIncrement = true;
             this.numericBoxBetaErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip"));
             this.numericBoxBetaErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxA
@@ -223,17 +232,20 @@
             this.numericBoxA.SkipEventDuringInput = false;
             this.numericBoxA.SmartIncrement = true;
             this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxA, resources.GetString("numericBoxA.ToolTip"));
             this.numericBoxA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label26
             // 
             resources.ApplyResources(this.label26, "label26");
             this.label26.Name = "label26";
+            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip"));
             // 
             // label45
             // 
             resources.ApplyResources(this.label45, "label45");
             this.label45.Name = "label45";
+            this.toolTip.SetToolTip(this.label45, resources.GetString("label45.ToolTip"));
             // 
             // numericBoxGamma
             // 
@@ -247,12 +259,14 @@
             this.numericBoxGamma.SkipEventDuringInput = false;
             this.numericBoxGamma.SmartIncrement = true;
             this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip"));
             this.numericBoxGamma.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
+            this.toolTip.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
             // 
             // numericBoxBErr
             // 
@@ -266,6 +280,7 @@
             this.numericBoxBErr.SkipEventDuringInput = false;
             this.numericBoxBErr.SmartIncrement = true;
             this.numericBoxBErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip"));
             this.numericBoxBErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxB
@@ -280,27 +295,32 @@
             this.numericBoxB.SkipEventDuringInput = false;
             this.numericBoxB.SmartIncrement = true;
             this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxB, resources.GetString("numericBoxB.ToolTip"));
             this.numericBoxB.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label24
             // 
             resources.ApplyResources(this.label24, "label24");
             this.label24.Name = "label24";
+            this.toolTip.SetToolTip(this.label24, resources.GetString("label24.ToolTip"));
             // 
             // label25
             // 
             resources.ApplyResources(this.label25, "label25");
             this.label25.Name = "label25";
+            this.toolTip.SetToolTip(this.label25, resources.GetString("label25.ToolTip"));
             // 
             // label28
             // 
             resources.ApplyResources(this.label28, "label28");
             this.label28.Name = "label28";
+            this.toolTip.SetToolTip(this.label28, resources.GetString("label28.ToolTip"));
             // 
             // label27
             // 
             resources.ApplyResources(this.label27, "label27");
             this.label27.Name = "label27";
+            this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
             // 
             // numericBoxC
             // 
@@ -314,6 +334,7 @@
             this.numericBoxC.SkipEventDuringInput = false;
             this.numericBoxC.SmartIncrement = true;
             this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxC, resources.GetString("numericBoxC.ToolTip"));
             this.numericBoxC.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxCErr
@@ -328,6 +349,7 @@
             this.numericBoxCErr.SkipEventDuringInput = false;
             this.numericBoxCErr.SmartIncrement = true;
             this.numericBoxCErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip"));
             this.numericBoxCErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // numericBoxAErr
@@ -342,15 +364,18 @@
             this.numericBoxAErr.SkipEventDuringInput = false;
             this.numericBoxAErr.SmartIncrement = true;
             this.numericBoxAErr.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolTip.SetToolTip(this.numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip"));
             this.numericBoxAErr.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxCellConstants_ValueChanged);
             // 
             // label44
             // 
             resources.ApplyResources(this.label44, "label44");
             this.label44.Name = "label44";
+            this.toolTip.SetToolTip(this.label44, resources.GetString("label44.ToolTip"));
             // 
             // groupBoxSymmetry
             // 
+            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
             this.groupBoxSymmetry.Controls.Add(this.comboBoxSpaceGroup);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxPointGroup);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxCrystalSystem);
@@ -360,9 +385,9 @@
             this.groupBoxSymmetry.Controls.Add(this.textBoxSearch);
             this.groupBoxSymmetry.Controls.Add(this.label21);
             this.groupBoxSymmetry.Controls.Add(this.comboBoxSearchResult);
-            resources.ApplyResources(this.groupBoxSymmetry, "groupBoxSymmetry");
             this.groupBoxSymmetry.Name = "groupBoxSymmetry";
             this.groupBoxSymmetry.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxSymmetry, resources.GetString("groupBoxSymmetry.ToolTip"));
             // 
             // comboBoxSpaceGroup
             // 
@@ -440,6 +465,7 @@
             this.comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearchResult.DropDownWidth = 200;
             this.comboBoxSearchResult.Name = "comboBoxSearchResult";
+            this.toolTip.SetToolTip(this.comboBoxSearchResult, resources.GetString("comboBoxSearchResult.ToolTip"));
             this.comboBoxSearchResult.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxSpaceGroup_DrawItem);
             this.comboBoxSearchResult.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchResult_SelectedIndexChanged);
             // 
@@ -447,6 +473,7 @@
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            this.toolTip.SetToolTip(this.panel1, resources.GetString("panel1.ToolTip"));
             // 
             // SymmetryControl
             // 
@@ -456,6 +483,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBoxSymmetry);
             this.Name = "SymmetryControl";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
