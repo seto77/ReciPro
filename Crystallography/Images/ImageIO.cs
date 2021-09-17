@@ -173,6 +173,8 @@ namespace Crystallography
                     result = ImageIO.ITEX(str);
                 else if (ImageIO.IsADSCImage(str))
                     result = ImageIO.ADSC(str);
+                else if (ImageIO.IsTiffImage(str))
+                    result = ImageIO.Tiff(str);
                 else
                     return false;
             }
