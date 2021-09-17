@@ -1140,6 +1140,7 @@ namespace ReciPro
             var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
             var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var f = new FormPDF(appPath+fn);
+            f.Text = "ReciPro manual";
             f.ShowDialog();
         }
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
