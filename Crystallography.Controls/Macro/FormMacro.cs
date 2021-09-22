@@ -21,6 +21,10 @@ namespace Crystallography.Controls
         private const uint EM_SETLANGOPTIONS = (WM_USER + 120);//Font抑制の為の
         private const uint EM_GETLANGOPTIONS = (WM_USER + 121); //Font抑制の為の
 
+
+       
+
+
         public string[] HelpItems
         {
             set
@@ -68,12 +72,14 @@ namespace Crystallography.Controls
             splitContainer2.SplitterDistance = splitContainer2.Width;
         }
 
+        private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
         [System.Runtime.InteropServices.DllImport("USER32.dll")]
-        private static extern uint SendMessage(
-            System.IntPtr hWnd,
-            uint msg,
-            uint wParam,
-            uint lParam);
+        private static extern uint SendMessage(System.IntPtr hWnd, uint msg, uint wParam, uint lParam);
 
         /// <summary>
         /// リッチエディットボックスのフォントが勝手に変わるのを抑制する
@@ -254,26 +260,42 @@ namespace Crystallography.Controls
             splitContainer2.SplitterDistance = splitContainer2.Width;
         }
 
-        private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
+
+        #region マクロファイルを読み込み・書き込み
+        private void FormMacro_DragDrop(object sender, DragEventArgs e)
         {
-            e.Cancel = true;
-            this.Visible = false;
+            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            if (fileName.Length == 1 && fileName[0].EndsWith(".mcr"))
+                readMacroFile(fileName[0]);
+        }
+
+        private void FormMacro_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
+            else
+
+                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
         }
 
         private void readToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var dlg = new OpenFileDialog { Filter = "*.mcr|*.mcr" };
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                exRichTextBox.Text = "";
-                var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
-                string tempstr;
-                while ((tempstr = reader.ReadLine()) != null)
-                    exRichTextBox.AppendText(tempstr + "\n");
-                textBoxMacroName.Text = Path.GetFileNameWithoutExtension(dlg.FileName);
-                reader.Close();
-                buttonAdd_Click(sender, e);
-            }
+            if (dlg.ShowDialog() == DialogResult.OK)
+                readMacroFile(dlg.FileName);
+        }
+
+        private void readMacroFile (string filename)
+        {
+            exRichTextBox.Text = "";
+            var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
+            string tempstr;
+            while ((tempstr = reader.ReadLine()) != null)
+                exRichTextBox.AppendText(tempstr + "\n");
+            textBoxMacroName.Text = Path.GetFileNameWithoutExtension(filename);
+            reader.Close();
+            buttonAddMacro_Click(new object(), new EventArgs());
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -291,6 +313,7 @@ namespace Crystallography.Controls
                 writer.Close();
             }
         }
+        #endregion
 
         private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -314,7 +337,8 @@ namespace Crystallography.Controls
             obj.ReadFromMenuItem();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        #region リストボックス操作
+        private void buttonAddMacro_Click(object sender, EventArgs e)
         {
             var m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
             var items = listBoxMacro.Items;
@@ -336,12 +360,25 @@ namespace Crystallography.Controls
             }
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
+        private void buttonChangeMacro_Click(object sender, EventArgs e)
         {
             if (listBoxMacro.SelectedIndex >= 0)
             {
                 listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
                 setMenuItemOfMain();
+            }
+        }
+
+        private void buttonDeleteMacro_Click(object sender, EventArgs e)
+        {
+            int n = listBoxMacro.SelectedIndex;
+            if (n >= 0)
+            {
+                listBoxMacro.Items.RemoveAt(n);
+                if (n < listBoxMacro.Items.Count)
+                    listBoxMacro.SelectedIndex = n;
+                else if (n - 1 < listBoxMacro.Items.Count)
+                    listBoxMacro.SelectedIndex = n - 1;
             }
         }
 
@@ -385,6 +422,25 @@ namespace Crystallography.Controls
             listBoxMacro.SelectedIndex = n + 1;
             setMenuItemOfMain();
         }
+
+        #endregion
+
+        #region KeyDownイベント
+        private void FormMacro_KeyDown(object sender, KeyEventArgs e)
+        {
+            //CTRL+S 上書き
+            if (e.Modifiers == Keys.Control & e.KeyCode == Keys.S)
+            {
+                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((macro)listBoxMacro.SelectedItem).Name)
+                {
+                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+                }
+            }
+            //F10 次のステップに進む
+            if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
+                buttonNextStep_Click(sender, new EventArgs());
+        }
+        #endregion
 
         private void setMenuItemOfMain()
         {
@@ -460,38 +516,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void buttonDeleteProfile_Click(object sender, EventArgs e)
-        {
-            int n = listBoxMacro.SelectedIndex;
-            if (n >= 0)
-            {
-                listBoxMacro.Items.RemoveAt(n);
-                if (n < listBoxMacro.Items.Count)
-                    listBoxMacro.SelectedIndex = n;
-                else if (n - 1 < listBoxMacro.Items.Count)
-                    listBoxMacro.SelectedIndex = n - 1;
-            }
-        }
-
-        private void FormMacro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
-
-        private void FormMacro_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control & e.KeyCode == Keys.S)
-            {
-                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((macro)listBoxMacro.SelectedItem).Name)
-                {
-                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
-                }
-            }
-            if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
-                buttonNextStep_Click(sender, new EventArgs());
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
+       
+    
     }
 }
