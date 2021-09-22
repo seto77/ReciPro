@@ -830,6 +830,34 @@
   <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxKikuchiLine_Kinematical.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 43</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 38</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>Calculate the intensities
+ kimematically</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Name" xml:space="preserve">
+    <value>checkBoxKikuchiLine_Kinematical</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Parent" xml:space="preserve">
+    <value>tabPageKikuchi</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxKikuchiLineThreshold.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -877,7 +905,7 @@ Kikuchi lines under this value are simulated.
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiLineThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="colorControlDefectLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -907,7 +935,7 @@ Kikuchi lines under this value are simulated.
     <value />
   </data>
   <data name="colorControlDefectLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 38</value>
+    <value>8, 28</value>
   </data>
   <data name="colorControlDefectLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -931,7 +959,7 @@ Kikuchi lines under this value are simulated.
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;colorControlDefectLine.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -961,7 +989,7 @@ Kikuchi lines under this value are simulated.
     <value />
   </data>
   <data name="colorControlExcessLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 9</value>
+    <value>8, 3</value>
   </data>
   <data name="colorControlExcessLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -985,7 +1013,7 @@ Kikuchi lines under this value are simulated.
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;colorControlExcessLine.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="trackBarLineWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -994,10 +1022,10 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="trackBarLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 42</value>
+    <value>75, 55</value>
   </data>
   <data name="trackBarLineWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
+    <value>108, 16</value>
   </data>
   <data name="trackBarLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1015,7 +1043,7 @@ Kikuchi lines under this value are simulated.
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;trackBarLineWidth.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1027,7 +1055,7 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 41</value>
+    <value>5, 54</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 17</value>
@@ -1051,7 +1079,7 @@ Kikuchi lines under this value are simulated.
     <value>tabPageKikuchi</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tabPageKikuchi.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -1150,7 +1178,7 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 27</value>
+    <value>190, 31</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
@@ -2337,40 +2365,40 @@ Double left click: Display the information of the g-vector</value>
   <data name="&gt;&gt;labelMousePositionReciprocal.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label2ThetaRad.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelTwoThetaRad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label2ThetaRad.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelTwoThetaRad.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="label2ThetaRad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelTwoThetaRad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2ThetaRad.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelTwoThetaRad.Location" type="System.Drawing.Point, System.Drawing">
     <value>465, 0</value>
   </data>
-  <data name="label2ThetaRad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelTwoThetaRad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="label2ThetaRad.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelTwoThetaRad.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
   </data>
-  <data name="label2ThetaRad.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelTwoThetaRad.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="label2ThetaRad.Text" xml:space="preserve">
+  <data name="labelTwoThetaRad.Text" xml:space="preserve">
     <value>2θ: 00.00°</value>
   </data>
-  <data name="&gt;&gt;label2ThetaRad.Name" xml:space="preserve">
-    <value>label2ThetaRad</value>
+  <data name="&gt;&gt;labelTwoThetaRad.Name" xml:space="preserve">
+    <value>labelTwoThetaRad</value>
   </data>
-  <data name="&gt;&gt;label2ThetaRad.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelTwoThetaRad.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2ThetaRad.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelTwoThetaRad.Parent" xml:space="preserve">
     <value>panelMousePosition</value>
   </data>
-  <data name="&gt;&gt;label2ThetaRad.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelTwoThetaRad.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="labelTwoThetaDeg.AutoSize" type="System.Boolean, mscorlib">

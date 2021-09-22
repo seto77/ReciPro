@@ -65,6 +65,7 @@
             this.colorControlFoot = new Crystallography.Controls.ColorControl();
             this.colorControlBackGround = new Crystallography.Controls.ColorControl();
             this.tabPageKikuchi = new System.Windows.Forms.TabPage();
+            this.checkBoxKikuchiLine_Kinematical = new System.Windows.Forms.CheckBox();
             this.numericBoxKikuchiLineThreshold = new Crystallography.Controls.NumericBox();
             this.colorControlDefectLine = new Crystallography.Controls.ColorControl();
             this.colorControlExcessLine = new Crystallography.Controls.ColorControl();
@@ -103,6 +104,7 @@
             this.labelDinv = new System.Windows.Forms.Label();
             this.checkBoxMousePositionDetailes = new System.Windows.Forms.CheckBox();
             this.labelMousePositionReciprocal = new System.Windows.Forms.Label();
+            this.labelTwoThetaRad = new System.Windows.Forms.Label();
             this.labelTwoThetaDeg = new System.Windows.Forms.Label();
             this.labelD = new System.Windows.Forms.Label();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
@@ -222,7 +224,6 @@
             this.timerBlinkKikuchiLine = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkDebyeRing = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkScale = new System.Windows.Forms.Timer(this.components);
-            this.labelTwoThetaRad = new System.Windows.Forms.Label();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -612,6 +613,7 @@
             // tabPageKikuchi
             // 
             this.tabPageKikuchi.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageKikuchi.Controls.Add(this.checkBoxKikuchiLine_Kinematical);
             this.tabPageKikuchi.Controls.Add(this.numericBoxKikuchiLineThreshold);
             this.tabPageKikuchi.Controls.Add(this.colorControlDefectLine);
             this.tabPageKikuchi.Controls.Add(this.colorControlExcessLine);
@@ -620,6 +622,15 @@
             resources.ApplyResources(this.tabPageKikuchi, "tabPageKikuchi");
             this.tabPageKikuchi.Name = "tabPageKikuchi";
             // 
+            // checkBoxKikuchiLine_Kinematical
+            // 
+            resources.ApplyResources(this.checkBoxKikuchiLine_Kinematical, "checkBoxKikuchiLine_Kinematical");
+            this.checkBoxKikuchiLine_Kinematical.Checked = true;
+            this.checkBoxKikuchiLine_Kinematical.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxKikuchiLine_Kinematical.Name = "checkBoxKikuchiLine_Kinematical";
+            this.checkBoxKikuchiLine_Kinematical.UseVisualStyleBackColor = true;
+            this.checkBoxKikuchiLine_Kinematical.CheckedChanged += new System.EventHandler(this.checkBoxKikuchiLine_Kinematical_CheckedChanged);
+            // 
             // numericBoxKikuchiLineThreshold
             // 
             this.numericBoxKikuchiLineThreshold.BackColor = System.Drawing.Color.Transparent;
@@ -627,13 +638,13 @@
             this.numericBoxKikuchiLineThreshold.Maximum = 10D;
             this.numericBoxKikuchiLineThreshold.Minimum = 0D;
             this.numericBoxKikuchiLineThreshold.Name = "numericBoxKikuchiLineThreshold";
-            this.numericBoxKikuchiLineThreshold.RadianValue = 0.0069813170079773184D;
+            this.numericBoxKikuchiLineThreshold.RadianValue = 0.0034906585039886592D;
             this.numericBoxKikuchiLineThreshold.RoundErrorAccuracy = -1;
             this.numericBoxKikuchiLineThreshold.ShowUpDown = true;
             this.numericBoxKikuchiLineThreshold.SmartIncrement = true;
             this.numericBoxKikuchiLineThreshold.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolTip.SetToolTip(this.numericBoxKikuchiLineThreshold, resources.GetString("numericBoxKikuchiLineThreshold.ToolTip"));
-            this.numericBoxKikuchiLineThreshold.Value = 0.4D;
+            this.numericBoxKikuchiLineThreshold.Value = 0.2D;
             this.numericBoxKikuchiLineThreshold.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxKikuchiLineThreshold_ValueChanged);
             // 
             // colorControlDefectLine
@@ -676,7 +687,7 @@
             this.trackBarLineWidth.Name = "trackBarLineWidth";
             this.trackBarLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
             this.toolTip.SetToolTip(this.trackBarLineWidth, resources.GetString("trackBarLineWidth.ToolTip"));
-            this.trackBarLineWidth.Value = 2000;
+            this.trackBarLineWidth.Value = 4000;
             this.trackBarLineWidth.ValueChanged += new System.EventHandler(this.numericUpDownResolution_ValueChanged);
             // 
             // label11
@@ -997,6 +1008,11 @@
             // 
             resources.ApplyResources(this.labelMousePositionReciprocal, "labelMousePositionReciprocal");
             this.labelMousePositionReciprocal.Name = "labelMousePositionReciprocal";
+            // 
+            // labelTwoThetaRad
+            // 
+            resources.ApplyResources(this.labelTwoThetaRad, "labelTwoThetaRad");
+            this.labelTwoThetaRad.Name = "labelTwoThetaRad";
             // 
             // labelTwoThetaDeg
             // 
@@ -2045,11 +2061,6 @@
             this.timerBlinkScale.Tag = "";
             this.timerBlinkScale.Tick += new System.EventHandler(this.timerBlinkScale_Tick);
             // 
-            // label2ThetaRad
-            // 
-            resources.ApplyResources(this.labelTwoThetaRad, "label2ThetaRad");
-            this.labelTwoThetaRad.Name = "label2ThetaRad";
-            // 
             // FormDiffractionSimulator
             // 
             this.AllowDrop = true;
@@ -2345,5 +2356,6 @@
         private System.Windows.Forms.ToolStripMenuItem asPixelByPixelImagePNGFormatToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelTwoThetaRad;
+        private System.Windows.Forms.CheckBox checkBoxKikuchiLine_Kinematical;
     }
 }

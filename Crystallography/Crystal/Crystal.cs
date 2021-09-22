@@ -1166,7 +1166,7 @@ namespace Crystallography
         #region ‹e’rü‹tŠiŽqƒxƒNƒgƒ‹‚ÌŒvŽZ
 
         //d_limitˆÈã‚Ì”ÍˆÍ‚Å‹e’rü‹tŠiŽqƒxƒNƒgƒ‹‚ðŒvŽZ
-        public void SetVectorOfG_KikuchiLine(double d_limit, double waveLength)
+        public void SetVectorOfG_KikuchiLine(double d_limit, WaveSource wavesource)
         {
             if (A_Star == null) SetAxis();
             int hMax = (int)(A / d_limit);
@@ -1182,10 +1182,28 @@ namespace Crystallography
                         {
                             //temp.Theta = waveLength / 2 * temp.Length;
                             //temp.TanTheta = Math.Tan(temp.Theta);
+                            temp.d = 1 / temp.Length;
                             temp.Text = $"{h} {k} {l}";
+                            temp.Index = (h, k, l);
+                            temp.Extinction = Symmetry.CheckExtinctionRule(h, k, l);
+
                             VectorOfG_KikuchiLine.Add(temp);
                         }
                     }
+            if (VectorOfG_KikuchiLine.Count == 0)
+                return;
+
+
+            Parallel.ForEach(VectorOfG_KikuchiLine, _g =>
+            {
+                _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
+                _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
+                });
+           
+            var maxIntensity = VectorOfG_KikuchiLine.Max(v => v.RawIntensity);
+            Parallel.ForEach(VectorOfG_KikuchiLine, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
+
+            VectorOfG_KikuchiLine.Sort((g1, g2) => g1.RelativeIntensity.CompareTo(g2.RelativeIntensity));
         }
 
         #endregion
