@@ -10,6 +10,7 @@
 
         static public string History =
             "History" +
+            "\r\n ver4.818(2021/09/##)  Improved an interface of Kikuchi line simulation." +
             "\r\n ver4.817(2021/09/17)  Fixed minor bugs." +
             "\r\n ver4.815(2021/09/02)  Improved: User interfaces and tooltips." +
             "\r\n ver4.814(2021/08/29)  Fixed minor bugs: Drawing overlapping area of CBED disks (see https://github.com/seto77/ReciPro/issues/8)." +

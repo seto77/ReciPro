@@ -303,12 +303,12 @@ namespace ReciPro
             //CBEDの重ね合わせ
             if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
             {
-                foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d=>d.Bitmap!=null))
+                foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null))
                 {
-                    start = disk.Center + disk.Size/2;
-                    end = disk.Center - disk.Size / 2; ;
+                    start = disk.Center - disk.Size / 2;
+                    end = disk.Center + disk.Size / 2; ;
                     var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
-                    g.DrawImage(disk.Bitmap, dest, new RectangleF(0,0,disk.PixelSize.Width, disk.PixelSize.Width), GraphicsUnit.Pixel);
+                    g.DrawImage(disk.Bitmap, dest, new RectangleF(0, 0, disk.PixelSize.Width, disk.PixelSize.Width), GraphicsUnit.Pixel);
                 }
             }
 
@@ -760,20 +760,20 @@ namespace ReciPro
             //菊池線とラベルを描画するローカル関数
             void _draw(int sign, List<PointF> pts1, List<PointF> pts2, string label)
             {
-                if (sign == 0)
+               // if (sign == 0)
                 {
                     graphics.DrawLines(penDefect, pts1.Select(p => new PointF(p.X, p.Y + (float)Resolution)).ToArray());
                     graphics.DrawLines(penDefect, pts2.Select(p => new PointF(p.X, p.Y - (float)Resolution)).ToArray());
                     graphics.DrawLines(penExcess, pts1.Select(p => new PointF(p.X, p.Y - (float)Resolution)).ToArray());
                     graphics.DrawLines(penExcess, pts2.Select(p => new PointF(p.X, p.Y + (float)Resolution)).ToArray());
                 }
-                else
-                {
-                    graphics.DrawLines(sign > 0 ? penExcess : penDefect, pts1.ToArray());
-                    graphics.DrawLines(sign > 0 ? penDefect : penExcess, pts2.ToArray());
-                }
-                if (toolStripButtonIndexLabels.Checked)
-                    graphics.DrawString(label, font, new SolidBrush(colorControlString.Color), sign > 0 ? pts1[pts1.Count / 2]: pts2[pts2.Count / 2]);
+                //else
+                //{
+                //    graphics.DrawLines(sign > 0 ? penExcess : penDefect, pts1.ToArray());
+                //    graphics.DrawLines(sign > 0 ? penDefect : penExcess, pts2.ToArray());
+                //}
+                //if (toolStripButtonIndexLabels.Checked)
+                //    graphics.DrawString(label, font, new SolidBrush(colorControlString.Color), sign > 0 ? pts1[pts1.Count / 2]: pts2[pts2.Count / 2]);
             }
 
         }
@@ -1963,13 +1963,18 @@ namespace ReciPro
             if (FormDiffractionSimulatorCBED.Disks != null && FormDiffractionSimulatorCBED.Disks.Length != 0 && dlg.ShowDialog() == DialogResult.OK)
             {
                 var name = dlg.FileName[0..^4];//拡張子を除去
-                foreach (var disk in FormDiffractionSimulatorCBED.Disks)
+                for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
                 {
-                    var index = $" ({disk.H} {disk.K} {disk.L})";
-                    if (png)
-                        disk.Bitmap.Save(name + index + ".png", ImageFormat.Png);
-                    else
-                        Tiff.Writer(name + index + ".tif", disk.PBitmap.SrcValuesGray, 3, disk.PixelSize.Width);
+                    FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
+                    var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+                    foreach (var disk in FormDiffractionSimulatorCBED.Disks)
+                    {
+                        var info = $" ({thickness}nm_{disk.H}_{disk.K}_{disk.L})";
+                        if (png)
+                            disk.Bitmap.Save(name + info + ".png", ImageFormat.Png);
+                        else
+                            Tiff.Writer(name + info + ".tif", disk.PBitmap.SrcValuesGray, 3, disk.PixelSize.Width);
+                    }
                 }
             }
         }

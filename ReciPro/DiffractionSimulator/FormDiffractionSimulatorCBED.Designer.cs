@@ -249,7 +249,7 @@
             this.trackBarAdvancedAlphaMax.ControlHeight = 25;
             this.trackBarAdvancedAlphaMax.DecimalPlaces = -1;
             this.trackBarAdvancedAlphaMax.LogScrollBar = false;
-            this.trackBarAdvancedAlphaMax.Maximum = 100D;
+            this.trackBarAdvancedAlphaMax.Maximum = 2000D;
             this.trackBarAdvancedAlphaMax.Minimum = 0D;
             this.trackBarAdvancedAlphaMax.Name = "trackBarAdvancedAlphaMax";
             this.trackBarAdvancedAlphaMax.NumericBoxSize = 155;
@@ -267,7 +267,7 @@
             this.numericBoxDivision.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivision.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivision.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDivision.Maximum = 500D;
+            this.numericBoxDivision.Maximum = 1024D;
             this.numericBoxDivision.Minimum = 1D;
             this.numericBoxDivision.Name = "numericBoxDivision";
             this.numericBoxDivision.RadianValue = 2.2340214425527418D;
@@ -370,6 +370,7 @@
             this.trackBarOutputThickness.Name = "trackBarOutputThickness";
             this.toolTip.SetToolTip(this.trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
             this.trackBarOutputThickness.Scroll += new System.EventHandler(this.TrackBarOutputThickness_Scroll);
+            this.trackBarOutputThickness.ValueChanged += new System.EventHandler(this.TrackBarOutputThickness_Scroll);
             // 
             // trackBarGamma
             // 

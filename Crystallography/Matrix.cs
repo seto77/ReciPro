@@ -223,11 +223,11 @@ namespace Crystallography
             E33 = -m1.E33
         };
 
-        public static Vector3D operator *(Matrix3D m, Vector3D v) => m == null || v == null
+        public static Vector3D operator *(Matrix3D m, in Vector3D v) => m == null || v == null
                 ? null
                 : new Vector3D(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
-        public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
+        public static Vector3DBase operator *(Matrix3D m, in Vector3DBase v)
             => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         /// <summary>
@@ -236,10 +236,10 @@ namespace Crystallography
         /// <param name="m"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static Vector3DBase operator *(Matrix3D m, (int X, int Y, int Z) v)
+        public static Vector3DBase operator *(Matrix3D m, in (int X, int Y, int Z) v)
             => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
-        public static Vector3DBase operator *(Matrix3D m, (double X, double Y, double Z) v)
+        public static Vector3DBase operator *(Matrix3D m, in (double X, double Y, double Z) v)
             => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
         public static Vector3d operator *(Matrix3D m, Vector3d v)
@@ -691,7 +691,7 @@ namespace Crystallography
         /// <param name="v2"></param>
         /// <returns></returns>
 
-        public static double AngleBetVectors(Vector3DBase v1, Vector3DBase v2)
+        public static double AngleBetVectors(in Vector3DBase v1, in Vector3DBase v2)
         {
             var aCos = Normarize(v1) * Normarize(v2);
             if (aCos > 1) 

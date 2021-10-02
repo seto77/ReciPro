@@ -16,6 +16,7 @@ using MathNet.Numerics;
 using System.Xml.Serialization;
 using OpenTK.Graphics.ES20;
 using System.Windows.Forms;
+using System.Buffers;
 #endregion
 
 namespace Crystallography
@@ -121,7 +122,6 @@ namespace Crystallography
                 bwCBED.CancelAsync();
         }
 
-
         /// <summary>
         ///
         /// </summary>
@@ -155,12 +155,13 @@ namespace Crystallography
 
             //入射面での波動関数を定義
             var psi0 = new DVec(Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? One : 0).ToArray());
-            //ポテンシャルマトリックスを取得
+            //ポテンシャルマトリックスを初期化
             uDictionary = new Dictionary<int, (Complex, Complex)>();
             var factorMatrix = getPotentialMatrix(Beams);
             //有効なRotationだけを選択
-            int width = (int)Math.Sqrt(BeamRotations.Length), radius = width / 2;
-            bool inside(int i) => (i % width - radius) * (i % width - radius) + (i / width - radius) * (i / width - radius) <= radius * radius;
+            int width = (int)Math.Sqrt(BeamRotations.Length);
+            double radius = width / 2.0;
+            bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
             var beamRotationsValid = BeamRotations.Where((rot, i) => inside(i)).ToList();
 
             RotationArrayValidLength = beamRotationsValid.Count;
@@ -213,9 +214,7 @@ namespace Crystallography
 
                 //Eigen＿Eigenの場合
                 if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                {
                     result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                }
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else if (solver == Solver.Eigen_MKL)
                 {
@@ -231,9 +230,7 @@ namespace Crystallography
                 }
                 //MtxExp_Eigenの場合
                 else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
-                {
                     result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                }
                 //MtxExp_MKLの場合 
                 else
                 {
@@ -283,14 +280,14 @@ namespace Crystallography
             //ここから、diskの重なり合いを計算
 
             //まず、各ディスクを構成するピクセルの座標を計算
-            var diskTemp = new (RectangleD Rect, List<PointD> Pos)[Beams.Length];
+            var diskTemp = new (RectangleD Rect, PointD[] Pos)[Beams.Length];
             Parallel.For(0, Beams.Length, g =>
             {
-                var pos = new List<PointD>();
-                for (int r = 0; r < BeamRotations.Length; r++)
+                var pos = new PointD[BeamRotations.Length];
+                for (int r = 0; r < pos.Length; r++)
                 {
                     var vec = BeamRotations[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                    pos.Add(new PointD(vec.X / vec.Z, vec.Y / vec.Z)); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                    pos[r]=new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                 }
                 diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
             });
@@ -311,7 +308,7 @@ namespace Crystallography
                             if (g2 != g1 && diskTemp[g2].Rect.IsInsde(pos))
                             {
                                 var r2 = getIndex(pos, diskTemp[g2].Pos, width);
-                                if (Disks[0][g2].RawAmplitudes[r2] != 0)
+                                if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
                                     for (int t = 0; t < Thicknesses.Length; t++)
                                         intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
                             }
@@ -321,15 +318,177 @@ namespace Crystallography
                 for (int t = 0; t < Thicknesses.Length; t++)
                     Disks[t][g1].Amplitudes = intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray();
 
-                bwCBED.ReportProgress(Interlocked.Increment(ref count), "Compiling disks");//進捗状況を報告
+                bwCBED.ReportProgress(Interlocked.Increment(ref count)*1000/ Beams.Length, "Compiling disks");//進捗状況を報告
             });
 
             if (bwCBED.CancellationPending)
                 e.Cancel = true;
         }
 
+        private void cbed_DoWork2(object sender, DoWorkEventArgs e)
+        {
+            //波数を計算
+            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
+            //U0を計算
+            var u0 = getU(AccVoltage, (0, 0, 0), 0).Real.Real;
+            int width = (int)Math.Sqrt(BeamRotations.Length);
+            double radius = width / 2.0;
+            bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
+            //var beamRotationsValid = BeamRotations.Where((rot, i) => inside(i)).ToList();
+
+            //RotationArrayValidLength = beamRotationsValid.Count;
+
+            //進捗状況報告用の各種定数を初期化
+            int count = 0;
+
+            #region solver, thread の設定
+            var solver = (Solver)((object[])e.Argument)[0];
+            var thread = (int)((object[])e.Argument)[1];
+
+            if (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen))
+                solver = Solver.Auto;
+
+            if (solver == Solver.Auto)
+            {
+                if (EigenEnabled)
+                {
+                    solver = Solver.MtxExp_Eigen;
+                    thread = Environment.ProcessorCount;
+                }
+                else
+                {
+                    solver = Solver.Eigen_MKL;
+                    thread = MathNet.Numerics.Control.TryUseNativeMKL() ? Math.Max(1, Environment.ProcessorCount / 4) : Environment.ProcessorCount;
+                }
+
+            }
+            var reportString = $"{solver}{thread}";
+            #endregion
+
+            var beamRotationsP = BeamRotations.AsParallel().WithDegreeOfParallelism(thread);
+
+            //diskAmplitude[r][t][g]
+            var diskAmplitude = beamRotationsP.Select((beamRotation, i) =>
+            {
+                if (!inside(i)) return (null, null);
+
+                if (bwCBED.CancellationPending) return (null, null);
+                var rotZ = beamRotation * zNorm;
+                var coeff = 1.0 / rotZ.Z; // = 1/cosTau
+
+                var vecK0 = getVecK0(kvac, u0, beamRotation);
+
+                var beams = Find_gVectors(BaseRotation, vecK0);
+                var potentialMatrix = getEigenProblemMatrix(beams);
+                var len = beams.Length;
+                //入射面での波動関数を定義
+                var psi0 = new DVec(Enumerable.Range(0, len).ToList().Select(g => g == 0 ? One : 0).ToArray());
+
+                Complex[][] result;
+
+                //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
+                #region 各ソルバーによる計算
+                //Eigen＿Eigenの場合
+                if (solver == Solver.Eigen_Eigen && EigenEnabled)
+                    result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                //Eigen_MKL あるいは Eigen_Managedの場合    
+                else if (solver == Solver.Eigen_MKL)
+                {
+                    var evd = new DMat(len, len, potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    var alpha = evd.EigenVectors.LU().Solve(psi0);
+                    result = Thicknesses.Select(t =>
+                    {
+                        //ガンマの対称行列×アルファを作成
+                        var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                        //深さtにおけるψを求める
+                        return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
+                    }).ToArray();
+                }
+                //MtxExp_Eigenの場合
+                else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
+                    result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                //MtxExp_MKLの場合 
+                else
+                {
+                    result = new Complex[Thicknesses.Length][];
+                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(len, len, potentialMatrix)).Exponential();
+                    var vec = matExp.Multiply(psi0);
+                    result[0] = vec.ToArray();
+
+                    if (Thicknesses.Length > 1)
+                    {
+                        if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
+                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(len, len, potentialMatrix)).Exponential();
+                        for (int t = 1; t < Thicknesses.Length; t++)
+                        {
+                            vec = (DVec)matExp.Multiply(vec);
+                            result[t] = vec.ToArray();
+                        }
+                    }
+                }
+                #endregion
+
+                bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
+                return (result, beams);
+            }).ToArray();
+
+            count = 0;
+            bwCBED.ReportProgress(0, "Compiling disks");
+
+            var directDiskIntensities = new double[Thicknesses.Length][];
+            for (int t = 0; t < Thicknesses.Length; t++)
+            {
+                directDiskIntensities[t] = new double[BeamRotations.Length];
+                for (int r = 0; r < directDiskIntensities[t].Length; r++)
+                    if(diskAmplitude[r].result != null)
+                        directDiskIntensities[t][r] = diskAmplitude[r].result[t][0].MagnitudeSquared();
+            }
+
+            var directDiskPositions = new PointD[BeamRotations.Length];
+            for (int r = 0; r < BeamRotations.Length; r++)
+            {
+                var vec = BeamRotations[r] * new Vector3DBase(0, 0, kvac);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                directDiskPositions[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+            }
+            double xMax = directDiskPositions.Max(p => p.X), xMin = directDiskPositions.Min(p => p.X);
+            double yMax = directDiskPositions.Max(p => p.Y), yMin = directDiskPositions.Min(p => p.Y);
+
+            Parallel.For(0, BeamRotations.Length, r1 =>
+            //for (int r1 = 0; r1 < BeamRotations.Length; r1++)
+            {
+                if (diskAmplitude[r1].result != null)
+                {
+                    for (int g = 1; g < diskAmplitude[r1].beams.Length; g++)
+                    {
+                        var vec = BeamRotations[r1] * (new Vector3DBase(0, 0, kvac) - diskAmplitude[r1].beams[g].Vec);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                        var pos = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                        if (pos.X < xMax && pos.X > xMin && pos.Y < yMax && pos.Y > yMin)
+                        {
+                            var r2 = getIndex(pos, directDiskPositions, width);
+                            if (r2 >= 0 && directDiskIntensities[0][r2] != 0)
+                                lock (lockObj)
+                                    for (int t = 0; t < Thicknesses.Length; t++)
+                                        directDiskIntensities[t][r2] += diskAmplitude[r1].result[t][g].MagnitudeSquared();
+                        }
+                    }
+                }
+                bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / BeamRotations.Length, "Compiling disks");
+            });
+            
+            Disks = new CBED_Disk[Thicknesses.Length][];
+            for (int t = 0; t < Thicknesses.Length; t++)
+            {
+                Disks[t] = new[] { new CBED_Disk(new[] { 0, 0, 0 }, new Vector3DBase(0,0,0), Thicknesses[t],
+                    directDiskIntensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray()) };
+                Disks[t][0].Amplitudes = Disks[t][0].RawAmplitudes;
+            }
+
+            if (bwCBED.CancellationPending)
+                e.Cancel = true;
+        }
+
         //与えられたposに最も近いインデックスを返す
-        static int getIndex(PointD pos, List<PointD> posList, int width)
+        static int getIndex(PointD pos, PointD[] posList, int width)
         {
             var w2 = width * width;
             int i = w2 / 2, j = i - 1;//中心から、縦横に検索
@@ -350,7 +509,10 @@ namespace Crystallography
                     i -= width;
                 min = Math.Min(min, temp);
             }
-            return i;
+            if (i / width == 0 || i / width == width - 1 || i % width == 0 || i % width == width - 1)
+                return -1;
+            else
+                return i;
         }
 
         #endregion
@@ -480,7 +642,7 @@ namespace Crystallography
                        //計算対象のg-Vectorsを決める。
                        var potentialMatrix = Array.Empty<Complex>();
                        var vecK0 = getVecK0(kvac, u0, beamRotation);
-                       lock (lockObj)
+                       //lock (lockObj)
                        {
                            BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
                            potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
@@ -788,8 +950,12 @@ namespace Crystallography
                 var beta = Math.Sqrt(1 - 1 / gamma / gamma);
                 var coeff2 = 2 * UniversalConstants.h / UniversalConstants.m0 / beta / UniversalConstants.c * 1E9;
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
-                if(kV>0)
-                    uDictionary.Add(key, u);
+                if (kV > 0)
+                    lock (lockObj)
+                    {
+                        if (!uDictionary.ContainsKey(key))
+                            uDictionary.Add(key, u);
+                    }
             }
             return u;
         }
@@ -864,6 +1030,15 @@ namespace Crystallography
         #endregion
 
         #region 候補となるg vectorsの検索
+        static readonly (int h, int k, int l)[] directionF = new[] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
+        static readonly (int h, int k, int l)[] directionA = new[] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) };
+        static readonly (int h, int k, int l)[] directionB = new[] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) };
+        static readonly (int h, int k, int l)[] directionC = new[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) };
+        static readonly (int h, int k, int l)[] directionI = new[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) };
+        static readonly (int h, int k, int l)[] directionRH = new[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
+        static readonly (int h, int k, int l)[] directionHex = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
+        static readonly (int h, int k, int l)[] directionP = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
+        
         /// <summary>
         /// 候補となるgVectorを検索する.
         /// </summary>
@@ -878,35 +1053,26 @@ namespace Crystallography
             if (maxNumOfBloch == -1)
                 maxNumOfBloch = MaxNumOfBloch;
 
-            var threshold = 0.8;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
+            var threshold = 0.6;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
 
             var mat = baseRotation * Crystal.MatrixInverse.Transpose();
 
-            var direction = new List<(int h, int k, int l)>();
+            var direction = Array.Empty<(int h, int k, int l)>();
 
             #region directionを初期化
-            if (Crystal.Symmetry.LatticeTypeStr == "F")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) });
-            else if (Crystal.Symmetry.LatticeTypeStr == "A")
-                direction.AddRange(new (int h, int k, int l)[] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) });
-            else if (Crystal.Symmetry.LatticeTypeStr == "B")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) });
-            else if (Crystal.Symmetry.LatticeTypeStr == "C")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) });
-            else if (Crystal.Symmetry.LatticeTypeStr == "I")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) });
-            else if (Crystal.Symmetry.LatticeTypeStr == "R" && Crystal.Symmetry.SpaceGroupHMsubStr == "H")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) });
-            else if (Crystal.Symmetry.CrystalSystemStr == "trigonal" || Crystal.Symmetry.CrystalSystemStr == "hexagonal")
-                direction.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) });
-            else
-                direction.AddRange(new (int h, int k, int l)[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) });
-
+            if (Crystal.Symmetry.LatticeTypeStr == "F") direction = directionF;
+            else if (Crystal.Symmetry.LatticeTypeStr == "A") direction = directionA;
+            else if (Crystal.Symmetry.LatticeTypeStr == "B") direction = directionB;
+            else if (Crystal.Symmetry.LatticeTypeStr == "C") direction = directionC;
+            else if (Crystal.Symmetry.LatticeTypeStr == "I") direction = directionI;
+            else if (Crystal.Symmetry.LatticeTypeStr == "R" && Crystal.Symmetry.SpaceGroupHMsubStr == "H") direction = directionRH;
+            else if (Crystal.Symmetry.CrystalSystemStr == "trigonal" || Crystal.Symmetry.CrystalSystemStr == "hexagonal") direction = directionHex;
+            else direction = directionP;
             #endregion directionを初期化
 
             var (q0, p0) = getQP(new Vector3DBase(0, 0, 0), vecK0);
             var beams = new List<Beam> { { new Beam((0, 0, 0), new Vector3DBase(0, 0, 0), getU(AccVoltage, (0, 0, 0), 0), (q0, p0)) } };
-            var outer = new Dictionary<(int h, int k, int l), double> { { (0, 0, 0), 0 } };
+            var outer = new List<(int h, int k, int l, double gLen)> { (0, 0, 0, 0) };
             var whole = new HashSet<int> { 0 };
 
             var shift = direction.Select(dir => (mat * dir).Length).Max() * 2;
@@ -916,29 +1082,34 @@ namespace Crystallography
             double minR2 = (k0 - threshold - shift) * (k0 - threshold - shift) - k0 * k0, maxR2 = (k0 + threshold + shift) * (k0 + threshold + shift) - k0 * k0;
 
             const int coeff = 1024;
-            var zero = (new Complex(0, 0), new Complex(0, 0));
-            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 1000000)// && outer.Count>0)
+            while (beams.Count < maxNumOfBloch * 2 && whole.Count < 100000)
             {
-                var min = outer.Min(c => c.Value);
-                var keyList = outer.Where(c => c.Value - min < shift).Select(c => c.Key).ToList();
-                foreach ((int h1, int k1, int l1) in keyList)
-                    foreach ((int h2, int k2, int l2) in direction)
+                var count = outer.Count;
+                int i = 0;
+                for (; i < count; i++)
+                    if (outer[i].gLen - outer[0].gLen < shift)
                     {
-                        int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * coeff * coeff + k * coeff + l;
-                        if (!whole.Contains(key))
+                        foreach ((int h2, int k2, int l2) in direction)
                         {
-                            var g = mat * (h, k, l);
-                            var (q, p) = getQP(g, vecK0);
-                            if (q > minR2 && q < maxR2)
+                            int h = outer[i].h + h2, k = outer[i].k + k2, l = outer[i].l + l2, key = h * coeff * coeff + k * coeff + l;
+                            if (!whole.Contains(key))
                             {
-                                if (q > minR && q < maxR)
-                                    beams.Add(new Beam((h, k, l), g, zero, (q, p)));
-                                whole.Add(key);
-                                outer.Add((h, k, l), g.Length);
+                                var g = mat * (h, k, l);
+                                var q = getQ(g, vecK0);
+                                if (q > minR2 && q < maxR2)
+                                {
+                                    if (q > minR && q < maxR)
+                                        beams.Add(new Beam((h, k, l), g, (0, 0), (q, getP(g, vecK0))));
+                                    whole.Add(key);
+                                    outer.Add((h, k, l, g.Length));
+                                }
                             }
                         }
                     }
-                keyList.ForEach(key => outer.Remove(key));
+                    else
+                        break;
+                outer.RemoveRange(0, i);
+                outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
             }
 
             //indexが小さく、かつQg(励起誤差)の小さいg-vectorを抽出する
@@ -1023,11 +1194,13 @@ namespace Crystallography
             return newBeams.ToArray();
         }
 
-        private (double Q, double P) getQP(Vector3DBase g, Vector3DBase vecK0)
-            => (vecK0.Length2 - (vecK0 + g).Length2, 2 * Surface * (vecK0 + g));
+        private static double getQ(in Vector3DBase g, in Vector3DBase vecK0) => vecK0.Length2 - (vecK0 + g).Length2;
 
-        private (double Q, double P) getQP(Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)
-            => getQP(g, getVecK0(kvac, u0, beamRotation));
+        private double getP(in Vector3DBase g, in Vector3DBase vecK0) => 2 * Surface * (vecK0 + g);
+
+        private (double Q, double P) getQP(in Vector3DBase g, in Vector3DBase vecK0) => (getQ(g,vecK0), getP(g,vecK0));
+
+        private (double Q, double P) getQP(Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)  => getQP(g, getVecK0(kvac, u0, beamRotation));
 
         #endregion
 

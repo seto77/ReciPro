@@ -30,14 +30,15 @@ namespace ReciPro
             get
             {
                 int count = 0;
-                var side = 2.0 / Division;
-                var max = (int)(1 / side) + 1;
-                for (int h = -max; h <= max; h++)
-                    for (int w = max; w >= -max; w--)
-                        if (h * h + w * w <= max * max)
+                double radius = Division / 2.0;
+                for (int h = 0; h < Division; h++)
+                    for (int w = 0; w < Division; w++)
+                    {
+                        double pX = w - radius + 0.5, pY = h - radius + 0.5;
+                        if (pX * pX + pY * pY <= radius * radius)
                             count++;
+                    }
                 return count;
-
             }
         }
 
@@ -121,17 +122,24 @@ namespace ReciPro
             Crystal.Bethe.CbedCompleted += Bethe_CbedCompleted;
             Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
 
-            //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
+            //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
             var rotations = new List<Matrix3D>();
-            var side = 2.0 / Division;
-            var max = (int)(1 / side) + 1;
+            //var side = 2.0 / Division;
+            //var max = (int)(1 / side) + 1;
+            //var max = Division % 2 == 0 ? Division / 2 : (Division + 1) / 2;
+            //for (int h = -max; h <= max; h++)
+            //    for (int w = -max; w <= max; w++)
+            //            rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
 
-            for (int h = -max; h <= max; h++)
-                for (int w = -max; w <= max; w++)
-                    //if (h * h + w * w <= max * max)
-                        rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
-                    //else
-                    //    rotations.Add(null);
+            //2021/10/02 以下に変更
+            var radius = Division / 2.0;
+            for (int h = 0; h < Division; h++)
+                for (int w = 0; w < Division; w++)
+                {
+                    double x = w - radius + 0.5, y = -(h - radius + 0.5);//結晶の座標系は、Y軸が画面上向きなのでYを反転
+                    rotations.Add(Matrix3D.Rot(new Vector3DBase(y, -x, 0), Math.Atan(Math.Sqrt(x * x + y * y) / radius * Math.Tan(AlphaMax))));
+                }
+
             Rotations = rotations.ToArray();
 
 
@@ -174,10 +182,10 @@ namespace ReciPro
                 }
                 var sec = sw2.ElapsedMilliseconds / 1000.0;
                 var totalsec = sec+ sw1.ElapsedMilliseconds/1000.0;
-                toolStripProgressBar.Value = (int)(100.0 * current / Crystal.Bethe.Beams.Length);
+                toolStripProgressBar.Value = current / 10;
                 toolStripStatusLabel2.Text = "Compiling disks:";
                 toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
-                toolStripStatusLabel1.Text += $"{100.0 * current / Crystal.Bethe.Beams.Length:f1} % completed,  wait for more {sec * (Crystal.Bethe.Beams.Length - current) / current:f2} s.";
+                toolStripStatusLabel1.Text += $"{current/10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
             }
             else
             {
@@ -233,6 +241,7 @@ namespace ReciPro
         #region 生画像や表示画像の構築
         private void setImagePixelSize()
         {
+            //以下の二つのパラメータはγ値の調整のところで使う。（あまり意味のないパラメータなので、廃止したい）
             AngleResolution = Math.Acos((Matrix3D.SumOfDiagonalCompenent(Rotations[Rotations.Length / 2] * Rotations[Rotations.Length / 2 + 1].Inverse()) - 1) / 2);
             ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
         }
@@ -249,21 +258,21 @@ namespace ReciPro
             if (Disks == null)
                 return;
 
-     
-
             //γ値の調整
             var gamma = trackBarGamma.Value * AngleResolution ;
             Parallel.For(0, Disks.Length, i =>
-            //for(int i=0; i< Disks.Length; i++)
             {
-                var pb = Disks[i].PBitmap;
-                var cPos = Disks[i].Center + Disks[i].Size / 2;
-                pb.SrcValuesGray = pb.SrcValuesGrayOriginal.Select((v, n) =>
+                if (Disks[i].PBitmap != null)
                 {
-                    (int Division, int Modulus) = Miscellaneous.DivMod(n, Disks[i].PixelSize.Width);
-                    var pos = cPos - new PointD(Modulus, Division) * ImagePixelSize;
-                    return v * Math.Exp(pos.Length * gamma);
-                }).ToArray();
+                    var pb = Disks[i].PBitmap;
+                    var cPos = Disks[i].Center + Disks[i].Size / 2;
+                    pb.SrcValuesGray = pb.SrcValuesGrayOriginal.Select((v, n) =>
+                    {
+                        (int Division, int Modulus) = Miscellaneous.DivMod(n, Disks[i].PixelSize.Width);
+                        var pos = cPos - new PointD(Modulus, Division) * ImagePixelSize;
+                        return v * Math.Exp(pos.Length * gamma);
+                    }).ToArray();
+                }
             });
 
             var maxOverall = Disks.Max(d => d.PBitmap.SrcValuesGrayOriginal.Max());
@@ -302,8 +311,6 @@ namespace ReciPro
 
         private void setDisks()
         {
-            
-
             if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
             {
                 Disks = null;
@@ -311,21 +318,27 @@ namespace ReciPro
             }
             var disks = Crystal.Bethe.Disks[trackBarOutputThickness.Value];
             Disks = new (int H, int K, int L, PointD Center, SizeD Size, Size PixelSize, PseudoBitmap PBitmap, Bitmap Bitmap)[disks.Length];
-            var width = Math.Sqrt(disks[0].Amplitudes.Length);
+            var pixWidth = (int)Math.Sqrt(disks[0].Amplitudes.Length);
             Parallel.For(0, disks.Length, i =>
+            //for (int i = 0; i < disks.Length; i++)
             {
-                var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
-                var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
-                var pbmp = new PseudoBitmap(disks[i].Amplitudes.Select(amp=>amp.MagnitudeSquared()).ToArray(), (int)width)
+                if (disks[i].Amplitudes != null)
                 {
-                    ReserveSrcValuesGrayOriginal = true,
-                    AlphaEnabled = true,
-                    FilterAlfha = disks[i].Amplitudes.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
-                };
+                    var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
+                    var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
+                    var pbmp = new PseudoBitmap(disks[i].Amplitudes.Select(amp => amp.MagnitudeSquared()).ToArray(), pixWidth)
+                    {
+                        ReserveSrcValuesGrayOriginal = true,
+                        AlphaEnabled = true,
+                        FilterAlfha = disks[i].Amplitudes.Select(intensity => intensity == 0 ? (byte)0 : (byte)255).ToList()
+                    };
 
-                Disks[i] = (disks[i].H, disks[i].K, disks[i].L,
-                center.ToPointD, new SizeD(width , width) * ImagePixelSize, new Size((int)width, (int)width), pbmp, null);
-            });
+                    var realWidth = Math.Tan(AlphaMax) * FormDiffractionSimulator.CameraLength2 * 2;
+
+                    Disks[i] = (disks[i].H, disks[i].K, disks[i].L, center.ToPointD, new SizeD(realWidth, realWidth), new Size(pixWidth, pixWidth), pbmp, null);
+                }
+            }
+            );
         }
 
         private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
@@ -367,7 +380,8 @@ namespace ReciPro
 
         private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
-        private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) => labelDivisionNumber.Text = "disk is divided into " + DivisionNumber.ToString() + " grids.";
+        private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) => 
+            labelDivisionNumber.Text = "disk is divided into " + DivisionNumber.ToString() + " grids.";
 
         private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
         {

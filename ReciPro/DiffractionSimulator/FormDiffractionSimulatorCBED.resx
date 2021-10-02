@@ -245,6 +245,9 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
     <value>Set a CPU-thread number for the CBED simulation</value>
   </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Set a CPU-thread number for the CBED simulation</value>
+  </data>
   <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
     <value>numericBoxThread</value>
   </data>
@@ -293,6 +296,9 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
     <value>numericBoxThicknessStep</value>
   </data>
@@ -336,6 +342,9 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>6</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
   <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
@@ -383,6 +392,9 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
   <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
     <value>numericBoxThicknessEnd</value>
   </data>
@@ -426,6 +438,9 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>0</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Set a number of Bloch waves to be calculated</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
     <value>Set a number of Bloch waves to be calculated</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
@@ -553,6 +568,10 @@ This value directly corresponds to the disk size.</value>
     <value>2</value>
   </data>
   <data name="numericBoxDivision.ToolTip" xml:space="preserve">
+    <value>Set a number of divisions along the diameter.
+The number of two-dimensional divisions is displayed on the right</value>
+  </data>
+  <data name="numericBoxDivision.ToolTip1" xml:space="preserve">
     <value>Set a number of divisions along the diameter.
 The number of two-dimensional divisions is displayed on the right</value>
   </data>
