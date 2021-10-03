@@ -142,7 +142,7 @@ namespace Crystallography
             bwCBED.RunWorkerAsync(new object[] { solver, thread });
         }
 
-        private void cbed_DoWork(object sender, DoWorkEventArgs e)
+        private void cbed_DoWork2(object sender, DoWorkEventArgs e)
         {
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
@@ -325,7 +325,7 @@ namespace Crystallography
                 e.Cancel = true;
         }
 
-        private void cbed_DoWork2(object sender, DoWorkEventArgs e)
+        private void cbed_DoWork(object sender, DoWorkEventArgs e)
         {
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
@@ -454,17 +454,16 @@ namespace Crystallography
             double yMax = directDiskPositions.Max(p => p.Y), yMin = directDiskPositions.Min(p => p.Y);
 
             Parallel.For(0, BeamRotations.Length, r1 =>
-            //for (int r1 = 0; r1 < BeamRotations.Length; r1++)
             {
                 if (diskAmplitude[r1].result != null)
                 {
                     for (int g = 1; g < diskAmplitude[r1].beams.Length; g++)
                     {
                         var vec = BeamRotations[r1] * (new Vector3DBase(0, 0, kvac) - diskAmplitude[r1].beams[g].Vec);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                        var pos = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
-                        if (pos.X < xMax && pos.X > xMin && pos.Y < yMax && pos.Y > yMin)
+                        double posX = vec.X / vec.Z, posY = vec.Y / vec.Z; //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                        if (posX < xMax && posX > xMin && posY < yMax && posY > yMin)
                         {
-                            var r2 = getIndex(pos, directDiskPositions, width);
+                            var r2 = getIndex(new PointD (posX, posY), directDiskPositions, width);
                             if (r2 >= 0 && directDiskIntensities[0][r2] != 0)
                                 lock (lockObj)
                                     for (int t = 0; t < Thicknesses.Length; t++)
@@ -1053,7 +1052,7 @@ namespace Crystallography
             if (maxNumOfBloch == -1)
                 maxNumOfBloch = MaxNumOfBloch;
 
-            var threshold = 0.6;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
+            var threshold = 0.8;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
 
             var mat = baseRotation * Crystal.MatrixInverse.Transpose();
 
@@ -1082,13 +1081,12 @@ namespace Crystallography
             double minR2 = (k0 - threshold - shift) * (k0 - threshold - shift) - k0 * k0, maxR2 = (k0 + threshold + shift) * (k0 + threshold + shift) - k0 * k0;
 
             const int coeff = 1024;
-            while (beams.Count < maxNumOfBloch * 2 && whole.Count < 100000)
+            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 100000 && outer.Count > 0)
             {
                 var count = outer.Count;
                 int i = 0;
                 for (; i < count; i++)
                     if (outer[i].gLen - outer[0].gLen < shift)
-                    {
                         foreach ((int h2, int k2, int l2) in direction)
                         {
                             int h = outer[i].h + h2, k = outer[i].k + k2, l = outer[i].l + l2, key = h * coeff * coeff + k * coeff + l;
@@ -1105,7 +1103,6 @@ namespace Crystallography
                                 }
                             }
                         }
-                    }
                     else
                         break;
                 outer.RemoveRange(0, i);
