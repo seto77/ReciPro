@@ -589,19 +589,19 @@ namespace Crystallography
         public static Vector3DBase operator -(Vector3DBase v1, Vector3DBase v2) => new Vector3DBase(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         public static Vector3DBase operator -(Vector3DBase v1) => new Vector3DBase(-v1.X, -v1.Y, -v1.Z);
 
-        public static Vector3DBase operator *(double d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3DBase operator *(in double d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3DBase operator *(Vector3DBase v1, double d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3DBase operator *(Vector3DBase v1, in double d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3DBase operator *(int d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3DBase operator *(in int d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
 
-        public static Vector3DBase operator *(Vector3DBase v1, int d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+        public static Vector3DBase operator *(Vector3DBase v1, in int d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
 
         public static double operator *(Vector3DBase v1, Vector3DBase v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
-        public static double operator *(Vector3DBase v1, (int X, int Y, int Z) v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+        public static double operator *(Vector3DBase v1, in (int X, int Y, int Z) v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
-        public static double operator *(Vector3DBase v1, (double X, double Y, double Z) v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+        public static double operator *(Vector3DBase v1, in (double X, double Y, double Z) v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
         public static Vector3D operator *(Matrix<double> m, Vector3DBase v)
         {
@@ -615,9 +615,9 @@ namespace Crystallography
                 return null;
         }
 
-        public static Vector3DBase operator /(Vector3DBase v1, double d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
+        public static Vector3DBase operator /(Vector3DBase v1, in double d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
 
-        public static Vector3DBase operator /(Vector3DBase v1, int d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
+        public static Vector3DBase operator /(Vector3DBase v1, in int d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
 
         #endregion 演算子のオーバーロード
 

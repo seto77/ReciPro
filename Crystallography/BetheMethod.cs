@@ -38,6 +38,8 @@ namespace Crystallography
         #endregion
 
         #region フィールド、プロパティ
+
+        private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
         private double AccVoltage { get; set; }
         private Crystal Crystal { get;} 
         private Matrix3D BaseRotation { get; set; } = null;
@@ -86,7 +88,8 @@ namespace Crystallography
 
         public event RunWorkerCompletedEventHandler CbedCompleted;
 
-        private readonly object lockObj = new();
+        private readonly object lockObj1 = new();
+        private readonly object lockObj2 = new();
 
         #endregion
 
@@ -337,7 +340,7 @@ namespace Crystallography
             //var beamRotationsValid = BeamRotations.Where((rot, i) => inside(i)).ToList();
 
             //RotationArrayValidLength = beamRotationsValid.Count;
-
+            gDic.Clear();
             //進捗状況報告用の各種定数を初期化
             int count = 0;
 
@@ -378,7 +381,7 @@ namespace Crystallography
 
                 var vecK0 = getVecK0(kvac, u0, beamRotation);
 
-                var beams = Find_gVectors(BaseRotation, vecK0);
+                var beams = Find_gVectors(BaseRotation, vecK0,MaxNumOfBloch,true);
                 var potentialMatrix = getEigenProblemMatrix(beams);
                 var len = beams.Length;
                 //入射面での波動関数を定義
@@ -465,7 +468,7 @@ namespace Crystallography
                         {
                             var r2 = getIndex(new PointD (posX, posY), directDiskPositions, width);
                             if (r2 >= 0 && directDiskIntensities[0][r2] != 0)
-                                lock (lockObj)
+                                lock (lockObj1)
                                     for (int t = 0; t < Thicknesses.Length; t++)
                                         directDiskIntensities[t][r2] += diskAmplitude[r1].result[t][g].MagnitudeSquared();
                         }
@@ -641,16 +644,13 @@ namespace Crystallography
                        //計算対象のg-Vectorsを決める。
                        var potentialMatrix = Array.Empty<Complex>();
                        var vecK0 = getVecK0(kvac, u0, beamRotation);
-                       //lock (lockObj)
-                       {
-                           BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
-                           potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
-                       }
+                       BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
+                       potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
                        var dim = BeamsPED[k].Length;
                        //A行列に関する固有値、固有ベクトルを取得 
                        if (useEigen)
                        {//Eigenを使う場合
-                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(dim,potentialMatrix);
+                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(dim, potentialMatrix);
                            EigenVectorsInversePED[k] = NativeWrapper.Inverse(EigenVectorsPED[k]);
                        }
                        else
@@ -950,11 +950,8 @@ namespace Crystallography
                 var coeff2 = 2 * UniversalConstants.h / UniversalConstants.m0 / beta / UniversalConstants.c * 1E9;
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
                 if (kV > 0)
-                    lock (lockObj)
-                    {
-                        if (!uDictionary.ContainsKey(key))
-                            uDictionary.Add(key, u);
-                    }
+                    lock (lockObj1)
+                        uDictionary.TryAdd(key, u);
             }
             return u;
         }
@@ -1037,22 +1034,27 @@ namespace Crystallography
         static readonly (int h, int k, int l)[] directionRH = new[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
         static readonly (int h, int k, int l)[] directionHex = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
         static readonly (int h, int k, int l)[] directionP = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
-        
+
+        readonly Dictionary<int, Vector3DBase> gDic = new ();
+        private static FastSpinLock _spinLock;
         /// <summary>
         /// 候補となるgVectorを検索する.
         /// </summary>
         /// <param name="baseRotation"></param>
         /// <param name="k0"></param>
         /// <returns></returns>
-        public Beam[] Find_gVectors(Matrix3D baseRotation, Vector3DBase vecK0, int maxNumOfBloch = -1)
+        public Beam[] Find_gVectors(Matrix3D baseRotation, Vector3DBase vecK0, int maxNumOfBloch = -1, bool use_gDictionary = false)
         {
             //if (double.IsNaN(vecK0.X))
             //    return null;
 
+            if (!use_gDictionary)
+                gDic.Clear();
+
             if (maxNumOfBloch == -1)
                 maxNumOfBloch = MaxNumOfBloch;
 
-            var threshold = 0.8;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
+            //var threshold = 0.8;//逆空間でエワルド球からこの値(nm^-1)より離れていたら、無条件に棄却
 
             var mat = baseRotation * Crystal.MatrixInverse.Transpose();
 
@@ -1074,39 +1076,43 @@ namespace Crystallography
             var outer = new List<(int h, int k, int l, double gLen)> { (0, 0, 0, 0) };
             var whole = new HashSet<int> { 0 };
 
-            var shift = direction.Select(dir => (mat * dir).Length).Max() * 2;
+            var shift = direction.Select(dir => (mat * dir).Length).Max() * 1.01;
 
-            var k0 = vecK0.Length;
-            double minR = (k0 - threshold) * (k0 - threshold) - k0 * k0, maxR = (k0 + threshold) * (k0 + threshold) - k0 * k0;
-            double minR2 = (k0 - threshold - shift) * (k0 - threshold - shift) - k0 * k0, maxR2 = (k0 + threshold + shift) * (k0 + threshold + shift) - k0 * k0;
+            double k0_2 = vecK0.Length2, k0 = vecK0.Length;
+            double minR = (k0 - shift) * (k0 - shift), maxR = (k0 + shift) * (k0 + shift);
+            double minR2 = (k0 - shift/4) * (k0 - shift/4), maxR2 = (k0 + shift/4) * (k0 + shift/4);
 
-            const int coeff = 1024;
-            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 100000 && outer.Count > 0)
+            while (beams.Count < maxNumOfBloch * 4 && whole.Count < 1000000 && outer.Count > 0)
             {
-                var count = outer.Count;
-                int i = 0;
-                for (; i < count; i++)
-                    if (outer[i].gLen - outer[0].gLen < shift)
+                var min = outer.Min(o => o.gLen) + shift;
+                for (int i = outer.Count - 1; i >= 0; i--)
+                    if (outer[i].gLen < min)
+                    {
+                        int h1 = outer[i].h, k1 = outer[i].k, l1 = outer[i].l;
+                        outer.RemoveAt(i);
                         foreach ((int h2, int k2, int l2) in direction)
                         {
-                            int h = outer[i].h + h2, k = outer[i].k + k2, l = outer[i].l + l2, key = h * coeff * coeff + k * coeff + l;
+                            int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = h * 1048576 + k * 1024 + l;
                             if (!whole.Contains(key))
                             {
-                                var g = mat * (h, k, l);
-                                var q = getQ(g, vecK0);
-                                if (q > minR2 && q < maxR2)
+                                if (!gDic.TryGetValue(key, out var g))
                                 {
-                                    if (q > minR && q < maxR)
-                                        beams.Add(new Beam((h, k, l), g, (0, 0), (q, getP(g, vecK0))));
-                                    whole.Add(key);
+                                    g = mat * (h, k, l);
+                                    lock (lockObj2)
+                                        gDic.TryAdd(key, g);
+                                }
+                                var v = g + vecK0;
+                                var len2 = v.Length2;
+                                if (len2 > minR && len2 < maxR)
+                                {
+                                    if (len2 > minR2 && len2 < maxR2)
+                                        beams.Add(new Beam((h, k, l), g, (0, 0), (k0_2 - len2, 2 * Surface * v)));
                                     outer.Add((h, k, l, g.Length));
                                 }
+                                whole.Add(key);
                             }
                         }
-                    else
-                        break;
-                outer.RemoveRange(0, i);
-                outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
+                    }
             }
 
             //indexが小さく、かつQg(励起誤差)の小さいg-vectorを抽出する
@@ -1197,7 +1203,7 @@ namespace Crystallography
 
         private (double Q, double P) getQP(in Vector3DBase g, in Vector3DBase vecK0) => (getQ(g,vecK0), getP(g,vecK0));
 
-        private (double Q, double P) getQP(Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)  => getQP(g, getVecK0(kvac, u0, beamRotation));
+        private (double Q, double P) getQP(in Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null)  => getQP(g, getVecK0(kvac, u0, beamRotation));
 
         #endregion
 
@@ -1291,7 +1297,7 @@ namespace Crystallography
             /// <param name="hkl">指数</param>
             /// <param name="vec">逆格子ベクトル</param>
             /// <param name="s">励起誤差</param>
-            public Beam((int H, int K, int L) index, Vector3DBase vec, (Complex Real, Complex Imag) f, (double Q, double P) prms)
+            public Beam(in (int H, int K, int L) index, Vector3DBase vec, in (Complex Real, Complex Imag) f, in (double Q, double P) prms)
             {
                 Index = index;
                 Vec = vec;
