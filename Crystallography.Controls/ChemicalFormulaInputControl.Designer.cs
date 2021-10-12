@@ -32,6 +32,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxElement = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.numericBoxValence = new Crystallography.Controls.NumericBox();
             this.checkBoxCompound = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelOxide = new System.Windows.Forms.FlowLayoutPanel();
             this.comboBoxCompound = new System.Windows.Forms.ComboBox();
@@ -39,14 +40,13 @@
             this.flowLayoutPanelComposition = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelWeight = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.numericBoxWeight = new Crystallography.Controls.NumericBox();
             this.label9 = new System.Windows.Forms.Label();
             this.flowLayoutPanelMolarRatio = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
+            this.numericBoxMolarRatio = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxValence = new Crystallography.Controls.NumericBox();
-            this.numericBoxWeight = new Crystallography.Controls.NumericBox();
-            this.numericBoxMolarRatio = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelOxide.SuspendLayout();
             this.flowLayoutPanelComposition.SuspendLayout();
@@ -68,7 +68,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(356, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(319, 34);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // label4
@@ -200,12 +200,31 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Valence";
             // 
+            // numericBoxValence
+            // 
+            this.numericBoxValence.AutoSize = true;
+            this.numericBoxValence.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxValence.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxValence.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxValence.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxValence.Location = new System.Drawing.Point(222, 4);
+            this.numericBoxValence.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
+            this.numericBoxValence.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxValence.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxValence.Name = "numericBoxValence";
+            this.numericBoxValence.RoundErrorAccuracy = -1;
+            this.numericBoxValence.ShowPositiveSign = true;
+            this.numericBoxValence.Size = new System.Drawing.Size(1, 25);
+            this.numericBoxValence.TabIndex = 8;
+            this.numericBoxValence.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
+            // 
             // checkBoxCompound
             // 
             this.checkBoxCompound.AutoSize = true;
             this.checkBoxCompound.Checked = true;
             this.checkBoxCompound.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCompound.Location = new System.Drawing.Point(267, 6);
+            this.checkBoxCompound.Location = new System.Drawing.Point(230, 6);
             this.checkBoxCompound.Margin = new System.Windows.Forms.Padding(6, 6, 0, 4);
             this.checkBoxCompound.Name = "checkBoxCompound";
             this.checkBoxCompound.Size = new System.Drawing.Size(89, 22);
@@ -265,7 +284,7 @@
             this.flowLayoutPanelComposition.Location = new System.Drawing.Point(0, 68);
             this.flowLayoutPanelComposition.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelComposition.Name = "flowLayoutPanelComposition";
-            this.flowLayoutPanelComposition.Size = new System.Drawing.Size(266, 31);
+            this.flowLayoutPanelComposition.Size = new System.Drawing.Size(266, 33);
             this.flowLayoutPanelComposition.TabIndex = 7;
             // 
             // flowLayoutPanelWeight
@@ -278,7 +297,7 @@
             this.flowLayoutPanelWeight.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelWeight.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelWeight.Name = "flowLayoutPanelWeight";
-            this.flowLayoutPanelWeight.Size = new System.Drawing.Size(145, 29);
+            this.flowLayoutPanelWeight.Size = new System.Drawing.Size(145, 31);
             this.flowLayoutPanelWeight.TabIndex = 5;
             // 
             // label6
@@ -290,6 +309,22 @@
             this.label6.Size = new System.Drawing.Size(48, 18);
             this.label6.TabIndex = 1;
             this.label6.Text = "Weight";
+            // 
+            // numericBoxWeight
+            // 
+            this.numericBoxWeight.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWeight.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxWeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxWeight.Location = new System.Drawing.Point(51, 4);
+            this.numericBoxWeight.Margin = new System.Windows.Forms.Padding(0, 4, 1, 0);
+            this.numericBoxWeight.MaximumSize = new System.Drawing.Size(1000, 27);
+            this.numericBoxWeight.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxWeight.Name = "numericBoxWeight";
+            this.numericBoxWeight.RoundErrorAccuracy = -1;
+            this.numericBoxWeight.Size = new System.Drawing.Size(73, 27);
+            this.numericBoxWeight.TabIndex = 8;
+            this.numericBoxWeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // label9
             // 
@@ -310,7 +345,7 @@
             this.flowLayoutPanelMolarRatio.Location = new System.Drawing.Point(145, 0);
             this.flowLayoutPanelMolarRatio.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelMolarRatio.Name = "flowLayoutPanelMolarRatio";
-            this.flowLayoutPanelMolarRatio.Size = new System.Drawing.Size(121, 31);
+            this.flowLayoutPanelMolarRatio.Size = new System.Drawing.Size(121, 33);
             this.flowLayoutPanelMolarRatio.TabIndex = 5;
             this.flowLayoutPanelMolarRatio.Visible = false;
             // 
@@ -324,6 +359,22 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Molar ratio";
             // 
+            // numericBoxMolarRatio
+            // 
+            this.numericBoxMolarRatio.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarRatio.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMolarRatio.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarRatio.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMolarRatio.Location = new System.Drawing.Point(77, 4);
+            this.numericBoxMolarRatio.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
+            this.numericBoxMolarRatio.MaximumSize = new System.Drawing.Size(1000, 27);
+            this.numericBoxMolarRatio.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxMolarRatio.Name = "numericBoxMolarRatio";
+            this.numericBoxMolarRatio.RoundErrorAccuracy = -1;
+            this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 27);
+            this.numericBoxMolarRatio.TabIndex = 8;
+            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoSize = true;
@@ -334,7 +385,7 @@
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(356, 99);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(319, 101);
             this.flowLayoutPanel3.TabIndex = 8;
             // 
             // flowLayoutPanel4
@@ -348,61 +399,17 @@
             this.flowLayoutPanel4.Size = new System.Drawing.Size(203, 34);
             this.flowLayoutPanel4.TabIndex = 6;
             // 
-            // numericBoxValence
-            // 
-            this.numericBoxValence.AutoSize = true;
-                       this.numericBoxValence.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxValence.DecimalPlaces = -1;
-            this.numericBoxValence.Location = new System.Drawing.Point(222, 4);
-            this.numericBoxValence.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
-                       this.numericBoxValence.Name = "numericBoxValence";
-            this.numericBoxValence.RadianValue = 0D;
-                        
-            this.numericBoxValence.ShowPositiveSign = true;
-            this.numericBoxValence.Size = new System.Drawing.Size(38, 25);
-            this.numericBoxValence.TabIndex = 8;
-            this.numericBoxValence.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-                                    this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
-            // 
-            // numericBoxWeight
-            // 
-                       this.numericBoxWeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWeight.DecimalPlaces = -1;
-            this.numericBoxWeight.Location = new System.Drawing.Point(51, 4);
-            this.numericBoxWeight.Margin = new System.Windows.Forms.Padding(0, 4, 1, 0);
-                       this.numericBoxWeight.Name = "numericBoxWeight";
-            this.numericBoxWeight.RadianValue = 0D;
-                        
-            this.numericBoxWeight.ShowPositiveSign = false;
-            this.numericBoxWeight.Size = new System.Drawing.Size(73, 25);
-            this.numericBoxWeight.TabIndex = 8;
-            this.numericBoxWeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-                                    // 
-            // numericBoxMolarRatio
-            // 
-                       this.numericBoxMolarRatio.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarRatio.DecimalPlaces = -1;
-            this.numericBoxMolarRatio.Location = new System.Drawing.Point(77, 4);
-            this.numericBoxMolarRatio.Margin = new System.Windows.Forms.Padding(0, 4, 1, 2);
-                       this.numericBoxMolarRatio.Name = "numericBoxMolarRatio";
-            this.numericBoxMolarRatio.RadianValue = 0D;
-                        
-            this.numericBoxMolarRatio.ShowPositiveSign = false;
-            this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 25);
-            this.numericBoxMolarRatio.TabIndex = 8;
-            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-                                    // 
             // ChemicalFormulaInputControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChemicalFormulaInputControl";
-            this.Size = new System.Drawing.Size(362, 105);
+            this.Size = new System.Drawing.Size(325, 107);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanelOxide.ResumeLayout(false);

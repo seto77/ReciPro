@@ -238,6 +238,7 @@
             this.numericBoxDistance.Maximum = 0.5D;
             this.numericBoxDistance.Minimum = -0.5D;
             this.numericBoxDistance.Name = "numericBoxDistance";
+            this.numericBoxDistance.RoundErrorAccuracy = -1;
             this.numericBoxDistance.ShowUpDown = true;
             this.numericBoxDistance.SkipEventDuringInput = false;
             this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -255,6 +256,7 @@
             this.numericBoxL.Maximum = 10D;
             this.numericBoxL.Minimum = -10D;
             this.numericBoxL.Name = "numericBoxL";
+            this.numericBoxL.RoundErrorAccuracy = -1;
             this.numericBoxL.ShowUpDown = true;
             this.numericBoxL.SkipEventDuringInput = false;
             this.numericBoxL.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -271,6 +273,7 @@
             this.numericBoxK.Maximum = 10D;
             this.numericBoxK.Minimum = -10D;
             this.numericBoxK.Name = "numericBoxK";
+            this.numericBoxK.RoundErrorAccuracy = -1;
             this.numericBoxK.ShowUpDown = true;
             this.numericBoxK.SkipEventDuringInput = false;
             this.numericBoxK.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -287,6 +290,7 @@
             this.numericBoxH.Maximum = 10D;
             this.numericBoxH.Minimum = -10D;
             this.numericBoxH.Name = "numericBoxH";
+            this.numericBoxH.RoundErrorAccuracy = -1;
             this.numericBoxH.ShowUpDown = true;
             this.numericBoxH.SkipEventDuringInput = false;
             this.numericBoxH.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -408,7 +412,7 @@
             // LatticePlaneControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel2);

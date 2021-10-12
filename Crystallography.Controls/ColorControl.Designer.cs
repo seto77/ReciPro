@@ -50,12 +50,12 @@
             this.pictureBox.BackColorChanged += new System.EventHandler(this.pictureBox_BackColorChanged);
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
-            // label
+            // labelHeader
             // 
             this.labelHeader.AutoSize = true;
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Margin = new System.Windows.Forms.Padding(0);
-            this.labelHeader.Name = "label";
+            this.labelHeader.Name = "labelHeader";
             this.labelHeader.Size = new System.Drawing.Size(0, 17);
             this.labelHeader.TabIndex = 2;
             // 
@@ -83,11 +83,12 @@
             // 
             // ColorControl
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.flowLayoutPanel);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ColorControl";
             this.Size = new System.Drawing.Size(20, 20);

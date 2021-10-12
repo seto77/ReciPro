@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.buttonCheckAll = new System.Windows.Forms.Button();
             this.buttonUnchekAll = new System.Windows.Forms.Button();
@@ -42,9 +43,9 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.ColumnWidth = 120;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.IntegralHeight = false;
@@ -91,7 +92,7 @@
             this.buttonLoadOrSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoadOrSave.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonLoadOrSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonLoadOrSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadOrSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLoadOrSave.ForeColor = System.Drawing.Color.White;
             this.buttonLoadOrSave.Location = new System.Drawing.Point(270, 221);
             this.buttonLoadOrSave.Name = "buttonLoadOrSave";
@@ -105,7 +106,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(360, 221);
             this.button1.Name = "button1";
@@ -118,7 +119,7 @@
             // 
             this.buttonExpand.BackColor = System.Drawing.Color.Orange;
             this.buttonExpand.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonExpand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExpand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonExpand.ForeColor = System.Drawing.Color.Moccasin;
             this.buttonExpand.Location = new System.Drawing.Point(460, 0);
             this.buttonExpand.Name = "buttonExpand";
@@ -130,27 +131,42 @@
             // 
             // crystalControl1
             // 
+            this.crystalControl1.A = 0D;
             this.crystalControl1.AllowDrop = true;
-            this.crystalControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.crystalControl1.Alpha = 0D;
+            this.crystalControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crystalControl1.Crystal = null;
+            this.crystalControl1.B = 0D;
+            this.crystalControl1.Beta = 0D;
+            this.crystalControl1.C = 0D;
+            this.crystalControl1.DefaultTabNumber = 0;
+            this.crystalControl1.Gamma = 0D;
             this.crystalControl1.Location = new System.Drawing.Point(482, 0);
             this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             this.crystalControl1.Name = "crystalControl1";
+            this.crystalControl1.ScatteringFactorVisible = false;
             this.crystalControl1.Size = new System.Drawing.Size(486, 256);
+            this.crystalControl1.SkipEvent = false;
+            this.crystalControl1.SymmetryInformationVisible = false;
+            this.crystalControl1.SymmetrySeriesNumber = 0;
             this.crystalControl1.TabIndex = 1;
             this.crystalControl1.VisibleAtomTab = true;
             this.crystalControl1.VisibleBasicInfoTab = true;
             this.crystalControl1.VisibleBondsPolyhedraTab = true;
+            this.crystalControl1.VisibleBoundTab = false;
+            this.crystalControl1.VisibleElasticityTab = true;
             this.crystalControl1.VisibleEOSTab = true;
+            this.crystalControl1.VisibleLatticePlaneTab = false;
+            this.crystalControl1.VisiblePolycrystallineTab = false;
             this.crystalControl1.VisibleReferenceTab = true;
+            this.crystalControl1.VisibleStressStrainTab = false;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.buttonExpand);
             this.panel1.Controls.Add(this.buttonCheckAll);
             this.panel1.Controls.Add(this.button1);
@@ -167,11 +183,12 @@
             // FormCrystalSelection
             // 
             this.AcceptButton = this.buttonLoadOrSave;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(970, 254);
             this.Controls.Add(this.crystalControl1);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormCrystalSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

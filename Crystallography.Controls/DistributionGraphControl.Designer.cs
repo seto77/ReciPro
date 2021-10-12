@@ -44,17 +44,17 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(3, 21);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(283, 263);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
-            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
             // 
             // flowLayoutPanel2
@@ -65,7 +65,7 @@
             this.flowLayoutPanel2.Controls.Add(this.labelYLabel);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(98, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(49, 12);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(53, 15);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
             // labelY
@@ -73,16 +73,16 @@
             this.labelY.AutoSize = true;
             this.labelY.Location = new System.Drawing.Point(3, 0);
             this.labelY.Name = "labelY";
-            this.labelY.Size = new System.Drawing.Size(14, 12);
+            this.labelY.Size = new System.Drawing.Size(16, 15);
             this.labelY.TabIndex = 1;
             this.labelY.Text = "Y:";
             // 
             // labelYLabel
             // 
             this.labelYLabel.AutoSize = true;
-            this.labelYLabel.Location = new System.Drawing.Point(23, 0);
+            this.labelYLabel.Location = new System.Drawing.Point(25, 0);
             this.labelYLabel.Name = "labelYLabel";
-            this.labelYLabel.Size = new System.Drawing.Size(23, 12);
+            this.labelYLabel.Size = new System.Drawing.Size(25, 15);
             this.labelYLabel.TabIndex = 1;
             this.labelYLabel.Text = "000";
             // 
@@ -94,7 +94,7 @@
             this.flowLayoutPanel1.Controls.Add(this.labelXValue);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(49, 12);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(54, 15);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // labelX
@@ -102,22 +102,23 @@
             this.labelX.AutoSize = true;
             this.labelX.Location = new System.Drawing.Point(3, 0);
             this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(14, 12);
+            this.labelX.Size = new System.Drawing.Size(17, 15);
             this.labelX.TabIndex = 1;
             this.labelX.Text = "X:";
             // 
             // labelXValue
             // 
             this.labelXValue.AutoSize = true;
-            this.labelXValue.Location = new System.Drawing.Point(23, 0);
+            this.labelXValue.Location = new System.Drawing.Point(26, 0);
             this.labelXValue.Name = "labelXValue";
-            this.labelXValue.Size = new System.Drawing.Size(23, 12);
+            this.labelXValue.Size = new System.Drawing.Size(25, 15);
             this.labelXValue.TabIndex = 1;
             this.labelXValue.Text = "000";
             // 
             // DistributionGraphControl
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.pictureBox);

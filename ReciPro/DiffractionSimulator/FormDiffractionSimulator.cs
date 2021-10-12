@@ -390,6 +390,17 @@ namespace ReciPro
 
         #region DrawDiffractionSpots
 
+        static void fillCircle(Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
+        {
+            if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+                graphics.FillEllipse(new SolidBrush(Color.FromArgb(alpha, c)), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        }
+        static void drawCircle(Graphics graphics, in Color c, in PointD pt, in double radius)
+        {
+            if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+                graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        }
+
         /// <summary>
         /// 回折スポットおよび指数ラベルの描画
         /// </summary>
@@ -407,22 +418,10 @@ namespace ReciPro
 
             bool logScale = checkBoxLogScale.Checked;
 
-            static void fillCircle(Graphics graphics, Color c, PointD pt, double radius, int alpha)
-            {
-                if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-                    graphics.FillEllipse(new SolidBrush(Color.FromArgb(alpha, c)), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-            }
-
-            static void drawCircle(Graphics graphics, Color c, PointD pt, double radius)
-            {
-                if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-                    graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-            }
-
             var radiusCBED = Math.Tan(FormDiffractionSimulatorCBED.AlphaMax) * CameraLength2;
 
             #region ガウス関数で描画するローカル関数
-            int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
+            //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
             double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
             {
                 //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
@@ -1103,7 +1102,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private PointD convertScreenToDetector(int x, int y) => new(
+        private PointD convertScreenToDetector(in int x, in int y) => new(
                 (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
                 (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
 
@@ -1112,7 +1111,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        private PointD convertScreenToDetector(Point p) => convertScreenToDetector(p.X, p.Y);
+        private PointD convertScreenToDetector(in Point p) => convertScreenToDetector(p.X, p.Y);
 
         /// <summary>
         /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
@@ -1120,10 +1119,10 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private Vector3DBase convertScreenToReal(int x, int y)
+        private Vector3DBase convertScreenToReal(in int x, in int y)
         {
             var p = convertScreenToDetector(x, y);//まずフィルム上の位置を取得
-            return convertDetectorToReal(p.X, p.Y);//実空間の座標に変換
+            return convertDetectorToReal(p);//実空間の座標に変換
         }
 
         /// <summary>
@@ -1141,7 +1140,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private PointD convertDetectorToScreen(double x, double y) => new(
+        private PointD convertDetectorToScreen(in double x,in double y) => new(
                 (x + DisplayCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
                 (y + DisplayCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
 
@@ -1151,7 +1150,7 @@ namespace ReciPro
         /// </summary>
         /// <param name="pt"></param>
         /// <returns></returns>
-        private PointD convertDetectorToScreen(PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
+        private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
 
         /// <summary>
         /// 座標変換 検出器(Detector)上の点(Foot中心, mm単位) を 実空間座標(mm単位, ３次元座標)に変換
@@ -1159,7 +1158,7 @@ namespace ReciPro
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private Vector3DBase convertDetectorToReal(double x, double y) =>
+        private Vector3DBase convertDetectorToReal(in double x, in double y) =>
         #region 座標変換の計算式
             // (CosPhi, SinPhi, 0) の周りに Tau回転する行列は、
             //   Cos2Phi * (1 - CosTau) + CosTau | CosPhi * SinPhi * (1 - CosTau)  |  SinPhi * SinTau
@@ -1169,6 +1168,7 @@ namespace ReciPro
         #endregion
             DetectorRotation * new Vector3DBase(x, y, CameraLength2);
 
+        private Vector3DBase convertDetectorToReal(in PointD pt) => convertDetectorToReal(pt.X, pt.Y);
 
         /// <summary>
         /// 実空間座標(mm単位, ３次元座標)を逆空間座標に変換
@@ -1210,7 +1210,7 @@ namespace ReciPro
         {
             var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
             var coeff = CameraLength2 / v.Z;
-            return new PointD(v.X, v.Y) * coeff;
+            return new PointD(v.X * coeff, v.Y * coeff) ;
         }
 
 

@@ -941,7 +941,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -974,6 +974,54 @@
     <value>dataGridViewImageColumn2</value>
   </data>
   <data name="&gt;&gt;dataGridViewImageColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>enabledDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>hDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;hDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;kDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>kDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;kDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>lDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;lDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;equivalencyDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>equivalencyDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;equivalencyDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MultipleOfD.Name" xml:space="preserve">
+    <value>MultipleOfD</value>
+  </data>
+  <data name="&gt;&gt;MultipleOfD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;distanceDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>distanceDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;distanceDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
@@ -1041,54 +1089,6 @@
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>enabledDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;hDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>hDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;hDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;kDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>kDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;kDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>lDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;lDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;equivalencyDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>equivalencyDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;equivalencyDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MultipleOfD.Name" xml:space="preserve">
-    <value>MultipleOfD</value>
-  </data>
-  <data name="&gt;&gt;MultipleOfD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;distanceDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>distanceDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;distanceDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>colorDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>BoundControl</value>

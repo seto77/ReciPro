@@ -2,8 +2,10 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace Crystallography
@@ -307,18 +309,62 @@ namespace Crystallography
             Err.Sort();
         }
 
-        public override string ToString()
+        public override string ToString() => text == null ? "" : text.ToString();
+
+        public PointD[][] GetPointsWithinRectangle(RectangleD rect) => Geometriy.GetPointsWithinRectangle(this.Pt, rect);
+
+        public static string[] ToGSAS(string name, Profile profile, HorizontalAxis axis)
         {
-            if (text == null)
-                return "";
+            var sb = new List<string>();
+            double div = axis == HorizontalAxis.NeutronTOF ? 1 : 100;
+
+            //一行目
+            sb.Add(name);
+
+            //二行目
+            var ptCount = profile.Pt.Count;
+            var startAngle = profile.Pt[0].X * div;
+            var stepAngle = (profile.Pt[1].X - profile.Pt[0].X) * div;
+            sb.Add($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE");
+
+            //errが有効なデータかどうかを判定
+            bool validErr = true;
+            if (profile.Err != null && profile.Err.Count == profile.Pt.Count)
+            {
+                for (int i = 0; i < ptCount; i++)
+                    if (profile.Err[i].IsNaN)
+                        validErr = false;
+            }
             else
-                return text.ToString();
+                validErr = false;
+
+            for (int i = 0; i < ptCount; i++)
+            {
+                var value = new string[3];
+                value[0] = (profile.Pt[i].X * div).ToString("g12");
+                value[1] = profile.Pt[i].Y.ToString("g12");
+                if (validErr)
+                    value[2] = profile.Err[i].Y.ToString("g12");
+                else
+                    value[2] = Math.Sqrt(profile.Pt[i].Y).ToString("g12");
+
+                var y = profile.Pt[i].Y.ToString("g7");
+
+                for (int j = 0; j < value.Length; j++)
+                {
+                    if (value[j].Length > 11)
+                        value[j] = value[j].Substring(0, 11);
+                    if (value[j].EndsWith("."))
+                        value[j] = " " + y.Substring(0, 10);
+                    while (value[j].Length < 11)
+                        value[j] = " " + value[j];
+                }
+                sb.Add($" {value[0]} {value[1]} {value[2]}");
+            }
+
+            return sb.ToArray();
         }
 
-        public PointD[][] GetPointsWithinRectangle(RectangleD rect)
-        {
-            return Geometriy.GetPointsWithinRectangle(this.Pt, rect);
-        }
     }
 
     [Serializable]

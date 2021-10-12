@@ -36,9 +36,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericBoxFootY = new Crystallography.Controls.NumericBox();
             this.numericBoxFootX = new Crystallography.Controls.NumericBox();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
             this.numericBoxPhi = new Crystallography.Controls.NumericBox();
             this.numericBoxTau = new Crystallography.Controls.NumericBox();
+            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,7 @@
             this.numericBoxPixelWidth.SkipEventDuringInput = false;
             this.numericBoxPixelWidth.SmartIncrement = true;
             this.numericBoxPixelWidth.TabIndex = 0;
+            this.numericBoxPixelWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelWidth.ThonsandsSeparator = true;
             this.numericBoxPixelWidth.Value = 1024D;
             this.numericBoxPixelWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -109,6 +110,7 @@
             this.numericBoxPixelHeight.SkipEventDuringInput = false;
             this.numericBoxPixelHeight.SmartIncrement = true;
             this.numericBoxPixelHeight.TabIndex = 0;
+            this.numericBoxPixelHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelHeight.ThonsandsSeparator = true;
             this.numericBoxPixelHeight.Value = 1024D;
             this.numericBoxPixelHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -133,6 +135,7 @@
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TabIndex = 0;
+            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.ThonsandsSeparator = true;
             this.numericBoxPixelSize.Value = 0.05D;
             this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -172,6 +175,7 @@
             this.numericBoxFootY.SkipEventDuringInput = false;
             this.numericBoxFootY.SmartIncrement = true;
             this.numericBoxFootY.TabIndex = 0;
+            this.numericBoxFootY.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootY.ThonsandsSeparator = true;
             this.numericBoxFootY.Value = 512D;
             this.numericBoxFootY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -196,33 +200,10 @@
             this.numericBoxFootX.SkipEventDuringInput = false;
             this.numericBoxFootX.SmartIncrement = true;
             this.numericBoxFootX.TabIndex = 0;
+            this.numericBoxFootX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootX.ThonsandsSeparator = true;
             this.numericBoxFootX.Value = 512D;
             this.numericBoxFootX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
-            // 
-            // numericBoxDistance
-            // 
-            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.FooterText = "mm";
-            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.HeaderText = "Cameralength 2";
-            this.numericBoxDistance.Location = new System.Drawing.Point(3, 21);
-            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDistance.RadianValue = 5.2359877559829888D;
-            this.numericBoxDistance.RoundErrorAccuracy = 10;
-            this.numericBoxDistance.Size = new System.Drawing.Size(187, 25);
-            this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.SmartIncrement = true;
-            this.numericBoxDistance.TabIndex = 0;
-            this.numericBoxDistance.ThonsandsSeparator = true;
-            this.numericBoxDistance.Value = 300D;
-            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxPhi
             // 
@@ -245,6 +226,7 @@
             this.numericBoxPhi.SkipEventDuringInput = false;
             this.numericBoxPhi.SmartIncrement = true;
             this.numericBoxPhi.TabIndex = 0;
+            this.numericBoxPhi.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.ThonsandsSeparator = true;
             this.numericBoxPhi.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
@@ -270,14 +252,40 @@
             this.numericBoxTau.SkipEventDuringInput = false;
             this.numericBoxTau.SmartIncrement = true;
             this.numericBoxTau.TabIndex = 0;
+            this.numericBoxTau.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTau.ThonsandsSeparator = true;
             this.numericBoxTau.Value = 20D;
             this.numericBoxTau.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
+            // numericBoxDistance
+            // 
+            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.FooterText = "mm";
+            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDistance.HeaderText = "Cameralength 2";
+            this.numericBoxDistance.Location = new System.Drawing.Point(3, 21);
+            this.numericBoxDistance.Margin = new System.Windows.Forms.Padding(0);
+            this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
+            this.numericBoxDistance.Name = "numericBoxDistance";
+            this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.numericBoxDistance.RadianValue = 5.2359877559829888D;
+            this.numericBoxDistance.RoundErrorAccuracy = 10;
+            this.numericBoxDistance.Size = new System.Drawing.Size(187, 25);
+            this.numericBoxDistance.SkipEventDuringInput = false;
+            this.numericBoxDistance.SmartIncrement = true;
+            this.numericBoxDistance.TabIndex = 0;
+            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.Value = 300D;
+            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
+            // 
             // SaclaControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.groupBox2);

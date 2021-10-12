@@ -35,17 +35,19 @@
             // 
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(23, 25);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(800, 450);
+            this.webBrowser.Size = new System.Drawing.Size(933, 562);
             this.webBrowser.TabIndex = 0;
             // 
             // FormPDF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(933, 562);
             this.Controls.Add(this.webBrowser);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormPDF";
             this.Text = "FormPDF";
             this.ResumeLayout(false);

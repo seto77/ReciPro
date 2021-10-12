@@ -355,7 +355,7 @@
             // PoleFigureControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "PoleFigureControl";

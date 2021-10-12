@@ -45,11 +45,11 @@
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStripY = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemLogScaleX = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemLogScaleY = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemScaleLineX = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemScaleLineY = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -171,14 +171,44 @@
             this.toolStripMenuItemScaleLineX,
             this.toolStripMenuItemScaleLineY});
             this.contextMenuStripY.Name = "contextMenuStripY";
-            this.contextMenuStripY.Size = new System.Drawing.Size(153, 120);
+            this.contextMenuStripY.Size = new System.Drawing.Size(127, 98);
             // 
             // toolStripMenuItemLogScaleX
             // 
             this.toolStripMenuItemLogScaleX.Name = "toolStripMenuItemLogScaleX";
-            this.toolStripMenuItemLogScaleX.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemLogScaleX.Size = new System.Drawing.Size(126, 22);
             this.toolStripMenuItemLogScaleX.Text = "Log Scale";
             this.toolStripMenuItemLogScaleX.Click += new System.EventHandler(this.toolStripMenuItemLogScaleX_Click);
+            // 
+            // toolStripMenuItemLogScaleY
+            // 
+            this.toolStripMenuItemLogScaleY.Name = "toolStripMenuItemLogScaleY";
+            this.toolStripMenuItemLogScaleY.Size = new System.Drawing.Size(126, 22);
+            this.toolStripMenuItemLogScaleY.Text = "Log Scale";
+            this.toolStripMenuItemLogScaleY.Click += new System.EventHandler(this.toolStripMenuItemLogScaleY_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
+            // 
+            // toolStripMenuItemScaleLineX
+            // 
+            this.toolStripMenuItemScaleLineX.Checked = true;
+            this.toolStripMenuItemScaleLineX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemScaleLineX.Name = "toolStripMenuItemScaleLineX";
+            this.toolStripMenuItemScaleLineX.Size = new System.Drawing.Size(126, 22);
+            this.toolStripMenuItemScaleLineX.Text = "Scale Line";
+            this.toolStripMenuItemScaleLineX.Click += new System.EventHandler(this.toolStripMenuItemScaleLineX_Click);
+            // 
+            // toolStripMenuItemScaleLineY
+            // 
+            this.toolStripMenuItemScaleLineY.Checked = true;
+            this.toolStripMenuItemScaleLineY.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemScaleLineY.Name = "toolStripMenuItemScaleLineY";
+            this.toolStripMenuItemScaleLineY.Size = new System.Drawing.Size(126, 22);
+            this.toolStripMenuItemScaleLineY.Text = "Scale Line";
+            this.toolStripMenuItemScaleLineY.Click += new System.EventHandler(this.toolStripMenuItemScaleLineY_Click);
             // 
             // panel1
             // 
@@ -190,42 +220,13 @@
             this.panel1.Size = new System.Drawing.Size(400, 179);
             this.panel1.TabIndex = 11;
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripMenuItemLogScaleY
-            // 
-            this.toolStripMenuItemLogScaleY.Name = "toolStripMenuItemLogScaleY";
-            this.toolStripMenuItemLogScaleY.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemLogScaleY.Text = "Log Scale";
-            this.toolStripMenuItemLogScaleY.Click += new System.EventHandler(this.toolStripMenuItemLogScaleY_Click);
-            // 
-            // toolStripMenuItemScaleLineX
-            // 
-            this.toolStripMenuItemScaleLineX.Checked = true;
-            this.toolStripMenuItemScaleLineX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemScaleLineX.Name = "toolStripMenuItemScaleLineX";
-            this.toolStripMenuItemScaleLineX.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemScaleLineX.Text = "Scale Line";
-            this.toolStripMenuItemScaleLineX.Click += new System.EventHandler(this.toolStripMenuItemScaleLineX_Click);
-            // 
-            // toolStripMenuItemScaleLineY
-            // 
-            this.toolStripMenuItemScaleLineY.Checked = true;
-            this.toolStripMenuItemScaleLineY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemScaleLineY.Name = "toolStripMenuItemScaleLineY";
-            this.toolStripMenuItemScaleLineY.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItemScaleLineY.Text = "Scale Line";
-            this.toolStripMenuItemScaleLineY.Click += new System.EventHandler(this.toolStripMenuItemScaleLineY_Click);
-            // 
             // GraphControl
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "GraphControl";
             this.Size = new System.Drawing.Size(400, 200);
             this.Resize += new System.EventHandler(this.GraphControl_Resize);

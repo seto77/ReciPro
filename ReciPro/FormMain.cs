@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -152,20 +153,22 @@ namespace ReciPro
         {
             if (DesignMode)
                 return;
-            
+
             sw.Restart();
 
-            var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-            try
+            using (var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro"))
             {
-                if ((ModifierKeys & Keys.Control) == Keys.Control)
-                    regKey.SetValue("DisableOpenGL", true);
+                try
+                {
+                    if ((ModifierKeys & Keys.Control) == Keys.Control)
+                        regKey.SetValue("DisableOpenGL", true);
 
-                var culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.ToLower().StartsWith("ja") ? "ja" : "en");
+                    var culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.ToLower().StartsWith("ja") ? "ja" : "en");
 
+                }
+                catch { }
             }
-            catch { }
             InitializeComponent();
             ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
 
@@ -176,7 +179,6 @@ namespace ReciPro
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
-
         /// <summary>
         /// フォームロード時
         /// </summary>
@@ -184,6 +186,11 @@ namespace ReciPro
         /// <param name="e"></param>
         private void FormMain_Load(object sender, EventArgs e)
         {
+            //MessageBox.Show(AutoScaleMode == AutoScaleMode.Dpi ? "DPI" : "False");
+
+            //MessageBox.Show(AutoScaleFactor.Width.ToString() + CurrentAutoScaleDimensions.Width.ToString());
+            
+
             if (DesignMode) return;
 
             englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";

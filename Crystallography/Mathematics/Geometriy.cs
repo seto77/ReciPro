@@ -447,9 +447,9 @@ namespace Crystallography
             //B = - b /ã(a) /ã(4ac-b^2)
             //C = 2ã(a) /ã(4ac-b^2)
 
-            List<double> tempPixX = new List<double>();
-            List<double> tempPixY = new List<double>();
-            List<double> tempKsi = new List<double>();
+            var tempPixX = new List<double>();
+            var tempPixY = new List<double>();
+            var tempKsi = new List<double>();
             double A, B, C;
             for (int i = 0; i < ellipse.Length; i++)
             {
@@ -592,7 +592,7 @@ namespace Crystallography
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static Vector3D GetCrossPoint(double a, double b, double c, double d, Vector3D p1, Vector3D p2)
+        public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2)
         {
             return GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
         }
@@ -607,7 +607,7 @@ namespace Crystallography
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static Vector3D GetCrossPoint(double a, double b, double c, double d, Vector3DBase p1, Vector3DBase p2)
+        public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2)
         {
             //Ÿ‚Ì3‚Â‚Ì•û’ö®‚ğ–‚½‚·x, y, z ‚ğ‹‚ß‚ê‚Î‚æ‚¢ (2020/02/04C³)
             // a x + b y + c z = d
@@ -644,7 +644,7 @@ namespace Crystallography
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static Vector3DBase GetCrossPoint(double a, double b, double c, double d, Vector3DBase p)
+        public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p)
         {
             //Ÿ‚Ì3‚Â‚Ì•û’ö®‚ğ–‚½‚·x, y, z ‚ğ‹‚ß‚ê‚Î‚æ‚¢ (2020/02/04C³)
             // a x + b y + c z = d
@@ -966,7 +966,7 @@ namespace Crystallography
         /// <param name="lowerRight">‹éŒ`•½–Ê‚Ì‰E‰ºÀ•W</param>
         /// <param name="bothCone"></param>
         /// <returns></returns>
-        public static List<List<PointD>> ConicSection(double alpha, double phi, double tau, double l, PointD upperLeft, PointD lowerRight, bool bothCone = false)
+        public static List<List<PointD>> ConicSection(in double alpha, in double phi, in double tau, in double l, in PointD upperLeft, in PointD lowerRight, bool bothCone = false)
         {
             double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
             double cosTau = Math.Cos(tau), sinTau = Math.Sin(tau), sinTau2 = sinTau * sinTau;
@@ -975,7 +975,7 @@ namespace Crystallography
             double P = -(sinTau2 - cosAlpha2) / (l * l * (1 - cosAlpha2)), Psqrt = Math.Sqrt(Math.Abs(P));
             double Q = -P * (sinTau2 - cosAlpha2) / cosAlpha2, Qsqrt = Math.Sqrt(Q);
 
-            PointD rot(PointD pt) => new PointD(cosPhi * pt.X - sinPhi * pt.Y, sinPhi * pt.X + cosPhi * pt.Y);
+            PointD rot(in PointD pt) => new PointD(cosPhi * pt.X - sinPhi * pt.Y, sinPhi * pt.X + cosPhi * pt.Y);
 
             var maxWidth = Math.Max(upperLeft.Length, lowerRight.Length);
 
@@ -1026,7 +1026,7 @@ namespace Crystallography
             var result = new List<List<PointD>>();
 
             double xMin = upperLeft.X, yMin = upperLeft.Y, xMax = lowerRight.X, yMax = lowerRight.Y;
-            bool inside(PointD pt) => (xMin <= pt.X && pt.X <= xMax && yMin <= pt.Y && pt.Y <= yMax);
+            bool inside(in PointD pt) => xMin <= pt.X && pt.X <= xMax && yMin <= pt.Y && pt.Y <= yMax;
 
             var n = tempResult.Count;
             for (int i = 0; i < n; i++)
