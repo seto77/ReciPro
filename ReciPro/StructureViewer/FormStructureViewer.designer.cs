@@ -533,7 +533,7 @@
             this.numericBoxBoundPlanesOpacity.Maximum = 1D;
             this.numericBoxBoundPlanesOpacity.Minimum = 0D;
             this.numericBoxBoundPlanesOpacity.Name = "numericBoxBoundPlanesOpacity";
-            this.numericBoxBoundPlanesOpacity.RadianValue = 0.012217304763960307D;
+            this.numericBoxBoundPlanesOpacity.RadianValue = 0.012217304763960306D;
             this.numericBoxBoundPlanesOpacity.RoundErrorAccuracy = -1;
             this.numericBoxBoundPlanesOpacity.ShowUpDown = true;
             this.numericBoxBoundPlanesOpacity.SkipEventDuringInput = false;

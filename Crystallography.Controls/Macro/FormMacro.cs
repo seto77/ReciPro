@@ -10,20 +10,29 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
     public partial class FormMacro : Form
     {
+        #region フィールド、プロパティ
         private const uint IMF_DUALFONT = 0x80;// //Font抑制の為の
         private const uint WM_USER = 0x400;////Font抑制の為の
         private const uint EM_SETLANGOPTIONS = (WM_USER + 120);//Font抑制の為の
         private const uint EM_GETLANGOPTIONS = (WM_USER + 121); //Font抑制の為の
+        //private Thread t;
+        private Task task;
+        private CancellationTokenSource _cancelSource;
+        public bool stepByStepMode;
 
+        private readonly dynamic obj;
+        private readonly ScriptEngine Engine;
+        private readonly ScriptScope Scope;
+        private readonly string ScopeName;
 
-       
-
+        #endregion
 
         public string[] HelpItems
         {
@@ -50,11 +59,6 @@ namespace Crystallography.Controls
                 exRichTextBox.ToolTipItems = toolTipItems.ToArray();
             }
         }
-
-        private readonly dynamic obj;
-        private readonly ScriptEngine Engine;
-        private readonly ScriptScope Scope;
-        private readonly string ScopeName;
 
         public FormMacro(ScriptEngine engine, object scopeObject)
         {
@@ -95,10 +99,14 @@ namespace Crystallography.Controls
 
         private IronPython.Runtime.Exceptions.TracebackDelegate OnTraceback(IronPython.Runtime.Exceptions.TraceBackFrame frame, string result, object payload)
         {
-            setDebugInfo(frame, result);
-            while (nextStepFlag == false)
+            if (stepByStepMode)
+                setDebugInfo(frame, result);
+
+            while (stepByStepMode && nextStepFlag == false)
             {
-                Application.DoEvents();
+                _cancelSource.Token.ThrowIfCancellationRequested();
+                try { Application.DoEvents(); }
+                catch { }
                 Thread.Sleep(50);
             }
             nextStepFlag = false;
@@ -114,6 +122,9 @@ namespace Crystallography.Controls
                 this.Invoke(new setDebugInfoCallBack(setDebugInfo), frame, result);
                 return;
             }
+            if (!stepByStepMode)
+                return;
+
             this.Focus();
             int i = (int)frame.f_lineno;
             dataGridViewDebug.Rows.Clear();
@@ -130,12 +141,12 @@ namespace Crystallography.Controls
                 {
                     try
                     {
-                        KeyValuePair<object, object> kv = (KeyValuePair<object, object>)o;
-                        string key = (string)kv.Key;
+                        var kv = (KeyValuePair<object, object>)o;
+                        var key = (string)kv.Key;
                         if (!(key.StartsWith("__") && key.EndsWith("__")) && key != ScopeName)
                         {
-                            string value = kv.Value.ToString();
-                            if (kv.Value is System.Int32[])
+                            var value = kv.Value.ToString();
+                            if (kv.Value is int[])
                             {
                                 var v = (int[])kv.Value;
                                 if (v.Length != 0)
@@ -162,29 +173,29 @@ namespace Crystallography.Controls
 
         private void buttonCancelStep_Click(object sender, EventArgs e)
         {
-            if (t != null && t.IsAlive)
-                t.Abort();
+            if (task != null && task.Status == TaskStatus.Running)
+                _cancelSource.Cancel(true);
         }
 
         private void buttonRunMacro_Click(object sender, EventArgs e)
         {
+            stepByStepMode = false;
+
             buttonCancelStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-            RunMacro(exRichTextBox.Text, false);
+            RunMacro(exRichTextBox.Text);
             buttonCancelStep.Visible = false;
             buttonStepByStep.Visible = buttonRunMacro.Visible = true;
         }
 
         private void buttonStepByStep_Click(object sender, EventArgs e)
         {
+            stepByStepMode = true;
+
             buttonCancelStep.Visible = buttonNextStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-            try
-            {
-                RunMacro(exRichTextBox.Text, true);
-            }
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
+            try { RunMacro(exRichTextBox.Text); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
             buttonCancelStep.Visible = buttonNextStep.Visible = false;
             buttonStepByStep.Visible = buttonRunMacro.Visible = true;
         }
@@ -195,68 +206,50 @@ namespace Crystallography.Controls
                 listBoxMacro.SelectedIndex = listBoxMacro.Items.IndexOf(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName));
         }
 
-        public void RunMacroName(string macroName, bool debug = false)
+        public void RunMacroName(string macroName, bool _stepByStepMode = false)
         {
+            stepByStepMode = _stepByStepMode;
             if (!listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
             {
                 MessageBox.Show("The macro name is not found");
                 return;
             }
-            RunMacro(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName).Body, debug);
+            RunMacro(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName).Body);
         }
 
-        public void RunMacro(bool debug = false)
+        public void RunMacro() => RunMacro(exRichTextBox.Text);
+        public void RunMacro(bool _stepByStepMode) 
         {
-            RunMacro(exRichTextBox.Text, debug);
+            stepByStepMode = _stepByStepMode;
+            RunMacro(exRichTextBox.Text);
         }
-
-        private Thread t;
-
-        public void RunMacro(string srcCode, bool debug = false)
+        public void RunMacro(string srcCode)
         {
             try
             {
-                if (debug)
-                {
+                var a = Engine.CreateScriptSourceFromString(srcCode).Compile();
+
+                dataGridViewDebug.Rows.Clear();
+
+                if (stepByStepMode)
                     splitContainer2.SplitterDistance = splitContainer2.Width - 220;
-                    IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
-                }
+                IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
 
                 void thread()
                 {
-                    try
-                    {
-                        if (debug)
-                            IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
-                        Engine.CreateScriptSourceFromString(srcCode).Execute(Scope);
-                    }
+                    try { Engine.CreateScriptSourceFromString(srcCode).Execute(Scope); }
                     catch { }
                 }
 
-                t = new Thread(new ThreadStart(thread));
-                t.Start();
-                while (t.IsAlive)
-                {
-                    Application.DoEvents();
-                    Thread.Sleep(50);
-                }
+                _cancelSource = new CancellationTokenSource();
+                task = new Task(thread, _cancelSource.Token);
+
+                task.RunSynchronously();
             }
-            catch (Microsoft.Scripting.ArgumentTypeException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Microsoft.Scripting.SyntaxErrorException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (MissingMemberException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
+            catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }
+            catch (Microsoft.Scripting.SyntaxErrorException ex) { MessageBox.Show("Syntax error in line " +ex.Line.ToString()); }
+            catch (MissingMemberException ex) { MessageBox.Show(ex.Message); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
             splitContainer2.SplitterDistance = splitContainer2.Width;
         }
 
@@ -510,10 +503,7 @@ namespace Crystallography.Controls
                 Body = body;
             }
 
-            public override string ToString()
-            {
-                return Name;
-            }
+            public override string ToString() => Name;
         }
 
        

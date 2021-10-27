@@ -2679,13 +2679,13 @@
     <value>Opacity </value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 8</value>
+    <value>0, 2</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2694,7 +2694,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 27</value>
+    <value>115, 25</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2715,13 +2715,16 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 194</value>
+    <value>3, 202</value>
+  </data>
+  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 8, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 35</value>
+    <value>653, 27</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

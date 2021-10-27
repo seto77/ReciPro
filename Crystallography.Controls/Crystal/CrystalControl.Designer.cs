@@ -63,6 +63,7 @@
             this.tabPageElasticity = new System.Windows.Forms.TabPage();
             this.elasticityControl1 = new Crystallography.Controls.ElasticityControl();
             this.tabPageStrainStress = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.numericBoxStrain33 = new Crystallography.Controls.NumericBox();
             this.numericBoxHill = new Crystallography.Controls.NumericBox();
             this.label116 = new System.Windows.Forms.Label();
@@ -525,6 +526,7 @@
             // tabPageStrainStress
             // 
             this.tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageStrainStress.Controls.Add(this.button1);
             this.tabPageStrainStress.Controls.Add(this.numericBoxStrain33);
             this.tabPageStrainStress.Controls.Add(this.numericBoxHill);
             this.tabPageStrainStress.Controls.Add(this.label116);
@@ -556,6 +558,13 @@
             this.tabPageStrainStress.Controls.Add(this.numericBoxStrain13);
             resources.ApplyResources(this.tabPageStrainStress, "tabPageStrainStress");
             this.tabPageStrainStress.Name = "tabPageStrainStress";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // numericBoxStrain33
             // 
@@ -1352,5 +1361,6 @@
         private System.Windows.Forms.Button buttonSymmetryInfo;
         private System.Windows.Forms.Button buttonScatteringFactor;
         private EOSControl eosControl;
+        private System.Windows.Forms.Button button1;
     }
 }

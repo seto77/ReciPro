@@ -40,7 +40,6 @@ namespace Crystallography
 
         #region フィールド、プロパティ
 
-        private ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
         private double AccVoltage { get; set; }
         private Crystal Crystal { get;} 
         private Matrix3D BaseRotation { get; set; } = null;
@@ -146,7 +145,12 @@ namespace Crystallography
             bwCBED.RunWorkerAsync(new object[] { solver, thread });
         }
 
-        private void cbed_DoWork2(object sender, DoWorkEventArgs e)
+        /// <summary>
+        /// CBED計算
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbed_DoWork(object sender, DoWorkEventArgs e)
         {
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
@@ -334,7 +338,12 @@ namespace Crystallography
                 e.Cancel = true;
         }
 
-        private void cbed_DoWork(object sender, DoWorkEventArgs e)
+        /// <summary>
+        /// EBSD計算用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbed_DoWork2(object sender, DoWorkEventArgs e)
         {
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);

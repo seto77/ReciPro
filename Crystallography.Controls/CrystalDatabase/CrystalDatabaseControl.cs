@@ -33,8 +33,6 @@ namespace Crystallography.Controls
 
         readonly Stopwatch sw = new();
 
-        static readonly ReaderWriterLockSlim rwlock = new();
-
         readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
 
         byte[] serialize<T>(T c) => MessagePackSerializer.Serialize(c, msgOptions);

@@ -4,7 +4,7 @@ namespace Crystallography
 {
     public class CCP4
     {
-        private static uint[] setbits =
+        private static readonly uint[] setbits =
                          {0x00000000, 0x00000001, 0x00000003, 0x00000007,
                           0x0000000F, 0x0000001F, 0x0000003F, 0x0000007F,
                           0x000000FF, 0x000001FF, 0x000003FF, 0x000007FF,

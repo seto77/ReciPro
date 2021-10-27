@@ -82,7 +82,7 @@ namespace Crystallography
                 }
                 startSinTheta = bestSinTheta - stepSinTheta * 2.5;
                 endSinTheta = bestSinTheta + stepSinTheta * 2.5;
-                stepSinTheta = stepSinTheta * 0.32;
+                stepSinTheta *= 0.32;
             }
             return Math.Sqrt(bestSinTheta);
         }

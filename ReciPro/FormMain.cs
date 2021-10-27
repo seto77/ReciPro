@@ -9,13 +9,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -177,6 +176,7 @@ namespace ReciPro
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+
         }
 
         /// <summary>
@@ -1146,8 +1146,7 @@ namespace ReciPro
         {
             var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf"; 
             var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath+fn);
-            f.Text = "ReciPro manual";
+            var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
             f.ShowDialog();
         }
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)

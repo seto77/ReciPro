@@ -8,9 +8,6 @@ using System.Xml.Serialization;
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Xml.Schema;
-using System.Numerics;
-using System.Collections.Concurrent;
 
 namespace Crystallography
 {
@@ -673,8 +670,24 @@ namespace Crystallography
         public void SetDiffractedPixels(AreaDetector detector)
         {
             stopwatch.Restart();
+            BaseCrystal.ElasticStiffness[0, 0] = BaseCrystal.ElasticStiffness[1, 1] = 1350;
+            BaseCrystal.ElasticStiffness[2, 2] = 1310;
+            BaseCrystal.ElasticStiffness[3, 3] = BaseCrystal.ElasticStiffness[4, 4] = 400;
+            BaseCrystal.ElasticStiffness[5, 5] = 230;
+            BaseCrystal.ElasticStiffness[0, 1] = BaseCrystal.ElasticStiffness[1, 0] = 890;
+            BaseCrystal.ElasticStiffness[0, 2] = BaseCrystal.ElasticStiffness[2, 0] = 900;
+            BaseCrystal.ElasticStiffness[1, 2] = BaseCrystal.ElasticStiffness[2, 1] = 900;
 
             var elasticity = new Elasticity(DenseMatrix.OfArray(BaseCrystal.ElasticStiffness), Elasticity.Mode.Stiffness);
+            
+            BaseCrystal.Stress.E11 = -10;
+            BaseCrystal.Stress.E22 = 5;
+            BaseCrystal.Stress.E33 = 5;
+            BaseCrystal.Strain.E11 = 0;
+            BaseCrystal.Strain.E22 = 0;
+            BaseCrystal.Strain.E33 = 0;
+            BaseCrystal.HillCoefficient = 1;
+
             bool strainFree = BaseCrystal.Stress.IsZero() && BaseCrystal.Strain.IsZero();
             bool rotationFree = WholeRotation.IsIdentity();
             double ewaldR = 1 / detector.WaveLength, ewaldR2 = ewaldR * ewaldR;
@@ -804,6 +817,7 @@ namespace Crystallography
                 ProgressChanged?.Invoke(this, new ProgressChangedEventArgs((int)(100.0 * ratio), new object[] { ratio, $"Elapsed: {sec:f2}sec.  Remaining: {sec * (1 - ratio) / ratio:f2}sec." }));
 
                 Parallel.For(TotalCrystalline / div * i, Math.Min(TotalCrystalline, TotalCrystalline / div * (i + 1)), num =>
+                //for(int num= TotalCrystalline / div * i; num< Math.Min(TotalCrystalline, TotalCrystalline / div * (i + 1)); i++)
                 {
                     if (ValidIndex[num] == null)
                         ValidIndex[num] = searchValidIndex(num);

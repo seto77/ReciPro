@@ -1148,7 +1148,6 @@ return residual;
 
             if (tabControlCrystals.TabPages.Count == 0 || dpc.Crystals == null || dpc.Crystals.Count == 0) return;
 
-            //Random rn = new Random();
             for (int i = 0; i < dpc.Crystals.Count; i++)
                 if (dpc.Crystals[i].Crystallites == null || ModifierKeys == Keys.Control)
                 {

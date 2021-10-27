@@ -201,6 +201,13 @@ namespace Crystallography.Controls
             crystal.GrainSize = (double)numericUpDownCrystallineSize.Value;
             if (poleFigureControl.Crystal != null)
                 crystal.Crystallites = poleFigureControl.Crystal.Crystallites;
+
+            crystal.Strain = new Matrix3D(
+                numericBoxStrain11.Value, numericBoxStrain12.Value, numericBoxStrain13.Value,
+                numericBoxStrain12.Value, numericBoxStrain22.Value, numericBoxStrain23.Value,
+                numericBoxStrain13.Value, numericBoxStrain23.Value, numericBoxStrain33.Value);
+            crystal.HillCoefficient = numericBoxHill.Value;
+
             #endregion
 
             SkipEvent = false;
@@ -654,5 +661,9 @@ namespace Crystallography.Controls
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GenerateFromInterface();
+        }
     }
 }

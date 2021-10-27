@@ -57,11 +57,364 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;tabPageBasicInfo.Name" xml:space="preserve">
+    <value>tabPageBasicInfo</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageAtom.Name" xml:space="preserve">
+    <value>tabPageAtom</value>
+  </data>
+  <data name="&gt;&gt;tabPageAtom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageAtom.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageAtom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageBondsPolyhedra.Name" xml:space="preserve">
+    <value>tabPageBondsPolyhedra</value>
+  </data>
+  <data name="&gt;&gt;tabPageBondsPolyhedra.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBondsPolyhedra.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageBondsPolyhedra.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Name" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPageEOS.Name" xml:space="preserve">
+    <value>tabPageEOS</value>
+  </data>
+  <data name="&gt;&gt;tabPageEOS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageEOS.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageEOS.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tabPageElasticity.Name" xml:space="preserve">
+    <value>tabPageElasticity</value>
+  </data>
+  <data name="&gt;&gt;tabPageElasticity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageElasticity.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageElasticity.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Name" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Name" xml:space="preserve">
+    <value>tabPagePolycrystalline</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tabPageBounds.Name" xml:space="preserve">
+    <value>tabPageBounds</value>
+  </data>
+  <data name="&gt;&gt;tabPageBounds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBounds.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageBounds.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.Name" xml:space="preserve">
+    <value>tabPageLatticePlane</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageLatticePlane.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 52</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.ShowToolTips" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>467, 328</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+    <value>tabPageBasicInfo</value>
+  </data>
+  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageBasicInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageBasicInfo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 298</value>
+  </data>
+  <data name="tabPageBasicInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageBasicInfo.Text" xml:space="preserve">
+    <value>Basic Info.</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
+    <value>Cell constants, symmetry, and other basic informaton</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
+    <value>Cell constants, symmetry, and other basic informaton</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.Name" xml:space="preserve">
+    <value>tabPageBasicInfo</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageBasicInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;symmetryControl.Name" xml:space="preserve">
+    <value>symmetryControl</value>
+  </data>
+  <data name="&gt;&gt;symmetryControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.SymmetryControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symmetryControl.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;symmetryControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 292</value>
+  </data>
+  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+    <value>tabPageBasicInfo</value>
+  </data>
+  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxVolume.Name" xml:space="preserve">
+    <value>numericBoxVolume</value>
+  </data>
+  <data name="&gt;&gt;numericBoxVolume.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxVolume.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxVolume.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellMass.Name" xml:space="preserve">
+    <value>numericBoxCellMass</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellMass.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellMass.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellMass.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarVolume.Name" xml:space="preserve">
+    <value>numericBoxMolarVolume</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarVolume.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarVolume.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarVolume.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarMass.Name" xml:space="preserve">
+    <value>numericBoxMolarMass</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarMass.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarMass.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMolarMass.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDensity.Name" xml:space="preserve">
+    <value>numericBoxDensity</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDensity.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDensity.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDensity.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Name" xml:space="preserve">
+    <value>colorControl</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 133</value>
+  </data>
+  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="flowLayoutPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 159</value>
+  </data>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxVolume.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericBoxVolume.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -80,7 +433,6 @@
   <data name="numericBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 4</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxVolume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
@@ -96,7 +448,6 @@
   <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 25</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxVolume.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
@@ -407,36 +758,6 @@
   <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 133</value>
-  </data>
-  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="flowLayoutPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>453, 159</value>
-  </data>
-  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>94</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="symmetryControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -464,90 +785,6 @@
   <data name="&gt;&gt;symmetryControl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="panel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>453, 292</value>
-  </data>
-  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
-  </data>
-  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
-    <value>tabPageBasicInfo</value>
-  </data>
-  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageBasicInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageBasicInfo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 298</value>
-  </data>
-  <data name="tabPageBasicInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabPageBasicInfo.Text" xml:space="preserve">
-    <value>Basic Info.</value>
-  </data>
-  <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
-    <value>Cell constants, symmetry, and other basic informaton</value>
-  </data>
-  <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
-    <value>Cell constants, symmetry, and other basic informaton</value>
-  </data>
-  <data name="&gt;&gt;tabPageBasicInfo.Name" xml:space="preserve">
-    <value>tabPageBasicInfo</value>
-  </data>
-  <data name="&gt;&gt;tabPageBasicInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageBasicInfo.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageBasicInfo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="atomControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="atomControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="atomControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="atomControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="atomControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>446, 108</value>
-  </data>
-  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 298</value>
-  </data>
-  <data name="atomControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;atomControl.Name" xml:space="preserve">
     <value>atomControl</value>
   </data>
@@ -559,75 +796,6 @@
   </data>
   <data name="&gt;&gt;atomControl.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="panelAtom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panelAtom.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <metadata name="contextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>249, 22</value>
-  </metadata>
-  <data name="contextMenuStrip2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reset Debye-Waller factor</value>
-  </data>
-  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 26</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
-    <value>contextMenuStrip2</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>panelAtom</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panelAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelAtom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panelAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panelAtom.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
   </data>
   <data name="&gt;&gt;panelAtom.Name" xml:space="preserve">
     <value>panelAtom</value>
@@ -677,29 +845,134 @@
   <data name="&gt;&gt;tabPageAtom.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bondControl.AutoSize" type="System.Boolean, mscorlib">
+  <data name="atomControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="bondControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="bondControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="atomControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="bondControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="atomControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="bondControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="atomControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="atomControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>446, 108</value>
+  </data>
+  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 298</value>
   </data>
-  <data name="bondControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="atomControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;atomControl.Name" xml:space="preserve">
+    <value>atomControl</value>
+  </data>
+  <data name="&gt;&gt;atomControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.AtomControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;atomControl.Parent" xml:space="preserve">
+    <value>tabPageAtom</value>
+  </data>
+  <data name="&gt;&gt;atomControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelAtom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panelAtom.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>panelAtom</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelAtom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelAtom.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="&gt;&gt;panelAtom.Name" xml:space="preserve">
+    <value>panelAtom</value>
+  </data>
+  <data name="&gt;&gt;panelAtom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelAtom.Parent" xml:space="preserve">
+    <value>tabPageAtom</value>
+  </data>
+  <data name="&gt;&gt;panelAtom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <metadata name="contextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>249, 22</value>
+  </metadata>
+  <data name="contextMenuStrip2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
+    <value>contextMenuStrip2</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>panelAtom</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Reset Debye-Waller factor</value>
   </data>
   <data name="&gt;&gt;bondControl.Name" xml:space="preserve">
     <value>bondControl</value>
@@ -737,26 +1010,116 @@
   <data name="&gt;&gt;tabPageBondsPolyhedra.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="textBoxTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="textBoxTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="textBoxTitle.Multiline" type="System.Boolean, mscorlib">
+  <data name="bondControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxTitle.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="bondControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 156</value>
+  <data name="bondControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="textBoxTitle.TabIndex" type="System.Int32, mscorlib">
+  <data name="bondControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="bondControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 298</value>
+  </data>
+  <data name="bondControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;bondControl.Name" xml:space="preserve">
+    <value>bondControl</value>
+  </data>
+  <data name="&gt;&gt;bondControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bondControl.Parent" xml:space="preserve">
+    <value>tabPageBondsPolyhedra</value>
+  </data>
+  <data name="&gt;&gt;bondControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
+    <value>groupBox8</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Parent" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Parent" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageReference.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageReference.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 298</value>
+  </data>
+  <data name="tabPageReference.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageReference.Text" xml:space="preserve">
+    <value>Ref.</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Name" xml:space="preserve">
+    <value>tabPageReference</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageReference.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxTitle.Name" xml:space="preserve">
     <value>textBoxTitle</value>
@@ -797,25 +1160,37 @@
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxAuthor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBoxTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBoxAuthor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="textBoxAuthor.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="textBoxAuthor.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxTitle.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxAuthor.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="textBoxTitle.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 156</value>
+  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 156</value>
   </data>
-  <data name="textBoxAuthor.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxTitle.Name" xml:space="preserve">
+    <value>textBoxTitle</value>
+  </data>
+  <data name="&gt;&gt;textBoxTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTitle.Parent" xml:space="preserve">
+    <value>groupBox8</value>
+  </data>
+  <data name="&gt;&gt;textBoxTitle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxAuthor.Name" xml:space="preserve">
@@ -857,25 +1232,37 @@
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBoxJournal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBoxAuthor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBoxJournal.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="textBoxAuthor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="textBoxJournal.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxAuthor.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="textBoxJournal.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxAuthor.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxJournal.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="textBoxAuthor.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 31</value>
+  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 156</value>
   </data>
-  <data name="textBoxJournal.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxAuthor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxAuthor.Name" xml:space="preserve">
+    <value>textBoxAuthor</value>
+  </data>
+  <data name="&gt;&gt;textBoxAuthor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAuthor.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;textBoxAuthor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxJournal.Name" xml:space="preserve">
@@ -917,22 +1304,37 @@
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="textBoxMemo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBoxJournal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="textBoxMemo.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="textBoxJournal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="textBoxMemo.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxJournal.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="textBoxMemo.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxJournal.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 33</value>
+  <data name="textBoxJournal.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
-  <data name="textBoxMemo.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 31</value>
+  </data>
+  <data name="textBoxJournal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxJournal.Name" xml:space="preserve">
+    <value>textBoxJournal</value>
+  </data>
+  <data name="&gt;&gt;textBoxJournal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxJournal.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;textBoxJournal.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxMemo.Name" xml:space="preserve">
@@ -974,49 +1376,34 @@
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tabPageReference.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageReference.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 298</value>
-  </data>
-  <data name="tabPageReference.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageReference.Text" xml:space="preserve">
-    <value>Ref.</value>
-  </data>
-  <data name="&gt;&gt;tabPageReference.Name" xml:space="preserve">
-    <value>tabPageReference</value>
-  </data>
-  <data name="&gt;&gt;tabPageReference.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageReference.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageReference.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="eosControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBoxMemo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="eosControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="textBoxMemo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="eosControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="textBoxMemo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
   </data>
-  <data name="eosControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
+  <data name="textBoxMemo.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>453, 292</value>
+  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 33</value>
   </data>
-  <data name="eosControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxMemo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxMemo.Name" xml:space="preserve">
+    <value>textBoxMemo</value>
+  </data>
+  <data name="&gt;&gt;textBoxMemo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxMemo.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;textBoxMemo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;eosControl.Name" xml:space="preserve">
@@ -1058,19 +1445,34 @@
   <data name="&gt;&gt;tabPageEOS.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="elasticityControl1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="eosControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="elasticityControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 6</value>
+  <data name="eosControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="elasticityControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="eosControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="elasticityControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>574, 177</value>
+  <data name="eosControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
   </data>
-  <data name="elasticityControl1.TabIndex" type="System.Int32, mscorlib">
+  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 292</value>
+  </data>
+  <data name="eosControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;eosControl.Name" xml:space="preserve">
+    <value>eosControl</value>
+  </data>
+  <data name="&gt;&gt;eosControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.EOSControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;eosControl.Parent" xml:space="preserve">
+    <value>tabPageEOS</value>
+  </data>
+  <data name="&gt;&gt;eosControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;elasticityControl1.Name" xml:space="preserve">
@@ -1112,6 +1514,444 @@
   <data name="&gt;&gt;tabPageElasticity.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="elasticityControl1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="elasticityControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 6</value>
+  </data>
+  <data name="elasticityControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="elasticityControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>574, 177</value>
+  </data>
+  <data name="elasticityControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;elasticityControl1.Name" xml:space="preserve">
+    <value>elasticityControl1</value>
+  </data>
+  <data name="&gt;&gt;elasticityControl1.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ElasticityControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;elasticityControl1.Parent" xml:space="preserve">
+    <value>tabPageElasticity</value>
+  </data>
+  <data name="&gt;&gt;elasticityControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
+    <value>numericBoxStrain33</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHill.Name" xml:space="preserve">
+    <value>numericBoxHill</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHill.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHill.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHill.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label116.Name" xml:space="preserve">
+    <value>label116</value>
+  </data>
+  <data name="&gt;&gt;label116.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label116.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label117.Name" xml:space="preserve">
+    <value>label117</value>
+  </data>
+  <data name="&gt;&gt;label117.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label117.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label109.Name" xml:space="preserve">
+    <value>label109</value>
+  </data>
+  <data name="&gt;&gt;label109.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label109.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label109.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label110.Name" xml:space="preserve">
+    <value>label110</value>
+  </data>
+  <data name="&gt;&gt;label110.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label110.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label111.Name" xml:space="preserve">
+    <value>label111</value>
+  </data>
+  <data name="&gt;&gt;label111.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label111.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label111.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label112.Name" xml:space="preserve">
+    <value>label112</value>
+  </data>
+  <data name="&gt;&gt;label112.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label112.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label113.Name" xml:space="preserve">
+    <value>label113</value>
+  </data>
+  <data name="&gt;&gt;label113.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label113.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label113.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label114.Name" xml:space="preserve">
+    <value>label114</value>
+  </data>
+  <data name="&gt;&gt;label114.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label114.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label115.Name" xml:space="preserve">
+    <value>label115</value>
+  </data>
+  <data name="&gt;&gt;label115.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label115.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label102.Name" xml:space="preserve">
+    <value>label102</value>
+  </data>
+  <data name="&gt;&gt;label102.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label102.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label102.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label103.Name" xml:space="preserve">
+    <value>label103</value>
+  </data>
+  <data name="&gt;&gt;label103.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label103.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label103.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label104.Name" xml:space="preserve">
+    <value>label104</value>
+  </data>
+  <data name="&gt;&gt;label104.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label104.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label104.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label105.Name" xml:space="preserve">
+    <value>label105</value>
+  </data>
+  <data name="&gt;&gt;label105.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label105.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label105.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label106.Name" xml:space="preserve">
+    <value>label106</value>
+  </data>
+  <data name="&gt;&gt;label106.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label106.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label106.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label107.Name" xml:space="preserve">
+    <value>label107</value>
+  </data>
+  <data name="&gt;&gt;label107.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label107.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label107.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;label108.Name" xml:space="preserve">
+    <value>label108</value>
+  </data>
+  <data name="&gt;&gt;label108.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label108.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Name" xml:space="preserve">
+    <value>numericBoxStress33</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Name" xml:space="preserve">
+    <value>numericBoxStress22</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Name" xml:space="preserve">
+    <value>numericBoxStress11</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Name" xml:space="preserve">
+    <value>numericBoxStress23</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Name" xml:space="preserve">
+    <value>numericBoxStress13</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Name" xml:space="preserve">
+    <value>numericBoxStress12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Name" xml:space="preserve">
+    <value>numericBoxStrain11</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Name" xml:space="preserve">
+    <value>numericBoxStrain22</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Name" xml:space="preserve">
+    <value>numericBoxStrain12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Name" xml:space="preserve">
+    <value>numericBoxStrain23</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Name" xml:space="preserve">
+    <value>numericBoxStrain13</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="tabPageStrainStress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageStrainStress.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 298</value>
+  </data>
+  <data name="tabPageStrainStress.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabPageStrainStress.Text" xml:space="preserve">
+    <value>Strain / Stress</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Name" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageStrainStress.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>282, 196</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>263</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>set</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxStrain33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1149,7 +1989,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericBoxHill.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1188,7 +2028,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label116.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1224,7 +2064,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label117.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1260,7 +2100,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label109.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1297,7 +2137,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label109.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1333,7 +2173,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label111.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1369,7 +2209,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label111.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label112.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1405,7 +2245,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label113.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1441,7 +2281,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label113.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label114.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1477,7 +2317,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label115.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1513,7 +2353,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="label102.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1549,7 +2389,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label102.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label103.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1585,7 +2425,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label103.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label104.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1621,7 +2461,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label104.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label105.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1657,7 +2497,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label105.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label106.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1693,7 +2533,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label106.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label107.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1729,7 +2569,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label107.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="label108.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1765,7 +2605,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="numericBoxStress33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1804,7 +2644,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress33.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="numericBoxStress22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1843,7 +2683,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="numericBoxStress11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1882,7 +2722,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress11.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="numericBoxStress23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1921,7 +2761,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress23.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="numericBoxStress13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1960,7 +2800,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress13.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="numericBoxStress12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1999,7 +2839,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress12.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="numericBoxStrain11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2038,7 +2878,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain11.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="numericBoxStrain22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2077,7 +2917,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain22.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="numericBoxStrain12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2116,7 +2956,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain12.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="numericBoxStrain23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2155,7 +2995,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain23.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="numericBoxStrain13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2194,74 +3034,11 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain13.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="tabPageStrainStress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageStrainStress.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 298</value>
-  </data>
-  <data name="tabPageStrainStress.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="tabPageStrainStress.Text" xml:space="preserve">
-    <value>Strain / Stress</value>
-  </data>
-  <data name="&gt;&gt;tabPageStrainStress.Name" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;tabPageStrainStress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageStrainStress.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageStrainStress.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>29</value>
   </data>
   <metadata name="contextMenuStripPoleFigure.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>414, 22</value>
   </metadata>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 22</value>
-  </data>
-  <data name="readToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read</value>
-  </data>
-  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 22</value>
-  </data>
-  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 22</value>
-  </data>
-  <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as CTF file (comatible to CHANNEL 5 file)</value>
-  </data>
-  <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 22</value>
-  </data>
-  <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Text" xml:space="preserve">
-    <value>as TXT file (all Euler angle and density)</value>
-  </data>
-  <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 22</value>
-  </data>
-  <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Text" xml:space="preserve">
-    <value>as TXT file (all Euler angle and density) sorted</value>
-  </data>
-  <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 22</value>
-  </data>
-  <data name="exportToolStripMenuItem.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
   <data name="contextMenuStripPoleFigure.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 70</value>
   </data>
@@ -2304,33 +3081,6 @@
   <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonGenerateRandomOrientations.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 27</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.TabIndex" type="System.Int32, mscorlib">
-    <value>146</value>
-  </data>
-  <data name="buttonGenerateRandomOrientations.Text" xml:space="preserve">
-    <value>Random Rotations</value>
-  </data>
   <data name="&gt;&gt;buttonGenerateRandomOrientations.Name" xml:space="preserve">
     <value>buttonGenerateRandomOrientations</value>
   </data>
@@ -2369,6 +3119,219 @@
   </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleResolution.Name" xml:space="preserve">
+    <value>numericUpDownAngleResolution</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleResolution.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleResolution.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleResolution.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleSubDivision.Name" xml:space="preserve">
+    <value>numericUpDownAngleSubDivision</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleSubDivision.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleSubDivision.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleSubDivision.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label101.Name" xml:space="preserve">
+    <value>label101</value>
+  </data>
+  <data name="&gt;&gt;label101.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label101.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label101.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCrystallineSize.Name" xml:space="preserve">
+    <value>numericUpDownCrystallineSize</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCrystallineSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCrystallineSize.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCrystallineSize.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label99.Name" xml:space="preserve">
+    <value>label99</value>
+  </data>
+  <data name="&gt;&gt;label99.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label99.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label99.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 27</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>tabPagePolycrystalline</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPagePolycrystalline.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 298</value>
+  </data>
+  <data name="tabPagePolycrystalline.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPagePolycrystalline.Text" xml:space="preserve">
+    <value>Polycrystalline Property</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Name" xml:space="preserve">
+    <value>tabPagePolycrystalline</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPagePolycrystalline.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
+  </data>
+  <data name="readToolStripMenuItem.Text" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
+  </data>
+  <data name="exportToolStripMenuItem.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 22</value>
+  </data>
+  <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Text" xml:space="preserve">
+    <value>as CTF file (comatible to CHANNEL 5 file)</value>
+  </data>
+  <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 22</value>
+  </data>
+  <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Text" xml:space="preserve">
+    <value>as TXT file (all Euler angle and density)</value>
+  </data>
+  <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 22</value>
+  </data>
+  <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Text" xml:space="preserve">
+    <value>as TXT file (all Euler angle and density) sorted</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 27</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.Text" xml:space="preserve">
+    <value>Random Rotations</value>
+  </data>
+  <data name="&gt;&gt;buttonGenerateRandomOrientations.Name" xml:space="preserve">
+    <value>buttonGenerateRandomOrientations</value>
+  </data>
+  <data name="&gt;&gt;buttonGenerateRandomOrientations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonGenerateRandomOrientations.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;buttonGenerateRandomOrientations.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2601,78 +3564,6 @@
   <data name="&gt;&gt;label99.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 27</value>
-  </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>148</value>
-  </data>
-  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>tabPagePolycrystalline</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPagePolycrystalline.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 298</value>
-  </data>
-  <data name="tabPagePolycrystalline.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="tabPagePolycrystalline.Text" xml:space="preserve">
-    <value>Polycrystalline Property</value>
-  </data>
-  <data name="&gt;&gt;tabPagePolycrystalline.Name" xml:space="preserve">
-    <value>tabPagePolycrystalline</value>
-  </data>
-  <data name="&gt;&gt;tabPagePolycrystalline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPagePolycrystalline.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPagePolycrystalline.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="boundControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="boundControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="boundControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="boundControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>453, 292</value>
-  </data>
-  <data name="boundControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;boundControl.Name" xml:space="preserve">
     <value>boundControl</value>
   </data>
@@ -2712,22 +3603,34 @@
   <data name="&gt;&gt;tabPageBounds.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="latticePlaneControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="boundControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="latticePlaneControl.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="boundControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="latticePlaneControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="boundControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="latticePlaneControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="boundControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>453, 292</value>
   </data>
-  <data name="latticePlaneControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="boundControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;boundControl.Name" xml:space="preserve">
+    <value>boundControl</value>
+  </data>
+  <data name="&gt;&gt;boundControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.BoundControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;boundControl.Parent" xml:space="preserve">
+    <value>tabPageBounds</value>
+  </data>
+  <data name="&gt;&gt;boundControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.Name" xml:space="preserve">
@@ -2769,38 +3672,95 @@
   <data name="&gt;&gt;tabPageLatticePlane.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="latticePlaneControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="latticePlaneControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 52</value>
+  <data name="latticePlaneControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+  <data name="latticePlaneControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
-  <data name="tabControl.ShowToolTips" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>453, 292</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>467, 328</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="latticePlaneControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="&gt;&gt;latticePlaneControl.Name" xml:space="preserve">
+    <value>latticePlaneControl</value>
   </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;latticePlaneControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LatticePlaneControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;latticePlaneControl.Parent" xml:space="preserve">
+    <value>tabPageLatticePlane</value>
+  </data>
+  <data name="&gt;&gt;latticePlaneControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Name" xml:space="preserve">
+    <value>textBoxFormula</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxFormula.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
+    <value>numericBoxZnumber</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label90.Name" xml:space="preserve">
+    <value>label90</value>
+  </data>
+  <data name="&gt;&gt;label90.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label90.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>467, 25</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="textBoxFormula.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2937,33 +3897,18 @@
   <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>467, 25</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <metadata name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>96, 22</value>
   </metadata>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 198</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
+    <value>contextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
   </data>
@@ -3020,15 +3965,6 @@
   </data>
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>Strain Control</value>
-  </data>
-  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 198</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
-    <value>contextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

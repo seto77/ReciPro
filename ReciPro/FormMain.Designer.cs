@@ -298,7 +298,7 @@
             this.flowLayoutPanel4.Controls.Add(this.buttonDelete);
             this.flowLayoutPanel4.Controls.Add(this.buttonLower);
             this.flowLayoutPanel4.Controls.Add(this.buttonUpper);
-            this.flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // buttonAllClear
@@ -693,7 +693,7 @@
             resources.ApplyResources(this.buttonBottomLeft, "buttonBottomLeft");
             this.buttonBottomLeft.Name = "buttonBottomLeft";
             this.toolTip.SetToolTip(this.buttonBottomLeft, resources.GetString("buttonBottomLeft.ToolTip"));
-            this.buttonBottomLeft.UseVisualStyleBackColor = true;
+            this.buttonBottomLeft.UseVisualStyleBackColor = false;
             this.buttonBottomLeft.Click += new System.EventHandler(this.buttonDirection_Click);
             // 
             // buttonBottom
@@ -717,7 +717,7 @@
             resources.ApplyResources(this.buttonTop, "buttonTop");
             this.buttonTop.Name = "buttonTop";
             this.toolTip.SetToolTip(this.buttonTop, resources.GetString("buttonTop.ToolTip"));
-            this.buttonTop.UseVisualStyleBackColor = true;
+            this.buttonTop.UseVisualStyleBackColor = false;
             this.buttonTop.Click += new System.EventHandler(this.buttonDirection_Click);
             // 
             // buttonTopRight
@@ -725,7 +725,7 @@
             resources.ApplyResources(this.buttonTopRight, "buttonTopRight");
             this.buttonTopRight.Name = "buttonTopRight";
             this.toolTip.SetToolTip(this.buttonTopRight, resources.GetString("buttonTopRight.ToolTip"));
-            this.buttonTopRight.UseVisualStyleBackColor = true;
+            this.buttonTopRight.UseVisualStyleBackColor = false;
             this.buttonTopRight.Click += new System.EventHandler(this.buttonDirection_Click);
             // 
             // buttonRight
@@ -733,7 +733,7 @@
             resources.ApplyResources(this.buttonRight, "buttonRight");
             this.buttonRight.Name = "buttonRight";
             this.toolTip.SetToolTip(this.buttonRight, resources.GetString("buttonRight.ToolTip"));
-            this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.UseVisualStyleBackColor = false;
             this.buttonRight.Click += new System.EventHandler(this.buttonDirection_Click);
             // 
             // panel4
