@@ -383,6 +383,7 @@ namespace ReciPro
                     pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width, PseudoBitmap.BrightnessScaleR, PseudoBitmap.BrightnessScaleG, PseudoBitmap.BrightnessScaleB, false);
                     DetectorWidth = pseudBitmap.Width;
                     DetectorHeight = pseudBitmap.Height;
+                    trackBarMaxInt_ValueChanged(new object() ,new EventArgs());
                 }
                 else
                     return false;

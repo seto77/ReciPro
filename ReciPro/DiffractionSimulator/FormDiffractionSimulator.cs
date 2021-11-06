@@ -181,6 +181,8 @@ namespace ReciPro
                 };
 
             Draw();
+
+            WaveLengthControl_WaveSourceChanged(sender, e);
         }
 
         private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
