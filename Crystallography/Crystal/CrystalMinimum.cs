@@ -292,7 +292,6 @@ namespace Crystallography
             journal = Regex.Replace(journal, "Physics and Chemistry of Minerals", "##33", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Zeitschrift fuer Anorganische und Allgemeine Chemie", "##34", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Zeitschrift fuer Kristallographie", "##35", RegexOptions.IgnoreCase);
-            journal = Regex.Replace(journal, "Zeitschrift f\\ur Kristallographie", "##35", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Zeitschrift fur Kristallographie", "##36", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences", "##37", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Dalton transactions", "##38", RegexOptions.IgnoreCase);

@@ -346,7 +346,7 @@ namespace ReciPro
                     if (ImageIO.ReadImage(filename))
                     {
                         //DigitalMicroGraphデータであればスケールの情報などを取得
-                        if (Ring.DigitalMicrographProperty.PixelUnit == Crystallography.PixelUnitEnum.NanoMeterInv)
+                        if (Ring.DigitalMicrographProperty.PixelUnit == PixelUnitEnum.NanoMeterInv)
                         {
                             pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width, PseudoBitmap.BrightnessScaleR, PseudoBitmap.BrightnessScaleG, PseudoBitmap.BrightnessScaleB, false);
 
