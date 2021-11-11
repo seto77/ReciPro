@@ -1,12 +1,11 @@
-﻿namespace Crystallography
+﻿namespace Crystallography;
+
+public static class AssemblyState
 {
-	public static class AssemblyState
-	{
-		public const bool IsDebug =
+    public const bool IsDebug =
 #if DEBUG
 	true;
 #else
-	false;
+    false;
 #endif
-	}
 }

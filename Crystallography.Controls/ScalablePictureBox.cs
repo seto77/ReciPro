@@ -179,7 +179,7 @@ namespace Crystallography.Controls
         }
 
         private double minZoom = 0.1f;
-        private double maxZoom = 128f;
+        private readonly double maxZoom = 128f;
 
         private double _Zoom = 1;
 

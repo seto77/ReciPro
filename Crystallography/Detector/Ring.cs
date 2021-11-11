@@ -1671,8 +1671,8 @@ namespace Crystallography
 								pixelVertex[n++] = new PointD((tempY2numer1 + tempX * Numer2) * numer4, (tempX * Numer1 + tempY2numer3) * numer4);
 							}
 						}
-						PointD temp = pixelVertex[2]; pixelVertex[2] = pixelVertex[3]; pixelVertex[3] = temp;//時計回りになるように3つめと4つめを入れ替える
-						double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
+                        (pixelVertex[3], pixelVertex[2]) = (pixelVertex[2], pixelVertex[3]);
+                        double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
 
 						//求めた4隅の点から、ステップの指数の上限、下限を設定
 						List<double> angles = new List<double>();

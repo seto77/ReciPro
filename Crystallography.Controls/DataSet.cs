@@ -35,9 +35,7 @@ namespace Crystallography.Controls
             if (srcIndex < rows.Count && destIndex < rows.Count)
                 for (int j = 0; j < rows[srcIndex].ItemArray.Length; j++)
                 {
-                    var obj = rows[srcIndex][j];
-                    rows[srcIndex][j] = rows[destIndex][j];
-                    rows[destIndex][j] = obj;
+                    (rows[destIndex][j], rows[srcIndex][j]) = (rows[srcIndex][j], rows[destIndex][j]);
                 }
         }
 

@@ -183,9 +183,7 @@ namespace Crystallography
             {
                 for (int i = 0; i < argbValues.Length; i += 4)
                 {
-                    var val = argbValues[i];
-                    argbValues[i] = argbValues[i + 2];
-                    argbValues[i + 2] = val;
+                    (argbValues[i + 2], argbValues[i]) = (argbValues[i], argbValues[i + 2]);
                 }
             }
             return argbValues;            

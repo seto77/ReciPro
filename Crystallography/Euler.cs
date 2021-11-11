@@ -29,7 +29,7 @@ namespace Crystallography
             double tilt2 = za.tilt2;
             Vector3D v = Vector3D.Normarize(za.u * cry.A_Axis + za.v * cry.B_Axis + za.w * cry.C_Axis);
 
-            Vector3D V = new Vector3D(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(tilt2), Math.Cos(tilt1) * Math.Cos(tilt2));
+            Vector3D V = new(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(tilt2), Math.Cos(tilt1) * Math.Cos(tilt2));
 
             double Phi, phi1, phi2, PhiStart, PhiEnd, phi1Start, phi1End, phi2Start, phi2End, step, PhiBest, phi1Best, phi2Best;
             double dev, devTemp;

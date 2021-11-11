@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ReciPro
+namespace ReciPro;
+
+internal static class Program
 {
-    internal static class Program
+    /// <summary>
+    /// アプリケーションのメイン エントリ ポイントです。
+    /// </summary>
+    [STAThread]
+    private static void Main()
     {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
-        [STAThread]
-        private static void Main()
-        {
-            Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new FormMain());
-        }
+        Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(true);
+        Application.Run(new FormMain());
     }
 }

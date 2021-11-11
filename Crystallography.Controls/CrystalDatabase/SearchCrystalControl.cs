@@ -100,7 +100,7 @@ namespace Crystallography.Controls
             formPeriodicTable = new FormPeriodicTable();
 
             var parent = this.Parent;
-            while (!(parent is Form) && parent != null)
+            while (parent is not Form && parent != null)
                 parent = parent.Parent;
             if (parent == null)
                 return;

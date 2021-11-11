@@ -190,7 +190,7 @@ namespace Crystallography
 							int atomicNumber = 0;
 							for (int q = label.Length; q > 0; q--)
 							{
-								temp = label.Substring(0, q);
+								temp = label[..q];
 								for (int k = 0; k <= 96; k++)
 								{
 									if (AtomStatic.AtomicName(k) == temp)
