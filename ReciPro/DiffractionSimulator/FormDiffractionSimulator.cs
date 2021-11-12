@@ -1,8 +1,5 @@
 ﻿#region using
-using Crystallography;
-using Crystallography.Controls;
 using MathNet.Numerics;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -363,8 +360,13 @@ public partial class FormDiffractionSimulator : Form
 
         toolStripStatusLabelTimeForDrawing.Text = $"Time for drawing objects: {sw.ElapsedMilliseconds} ms.  ";
 
-        if (FormDiffractionBeamTable.Visible && radioButtonIntensityBethe.Checked)
-            FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+        if (FormDiffractionBeamTable.Visible)
+        {
+            if (radioButtonIntensityBethe.Checked)
+                FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
+            else
+                FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
+        }
     }
 
     /// <summary>
@@ -504,7 +506,7 @@ public partial class FormDiffractionSimulator : Form
         var sw = new Stopwatch();
         foreach (var crystal in formMain.Crystals)
         {
-            Vector3D[] gVector;
+            List<Vector3D> gVector;
 
             if (bethe)//ベーテ法による動力学回折の場合
             {
@@ -518,7 +520,7 @@ public partial class FormDiffractionSimulator : Form
 
                     var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                         numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
-                    gVector = gPED.Select(g => g.ConvertToVector3D()).ToArray();
+                    gVector = gPED.Select(g => g.ConvertToVector3D()).ToList();
 
                     if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {sw.ElapsedMilliseconds} ms.  ";
@@ -528,13 +530,13 @@ public partial class FormDiffractionSimulator : Form
                     var eigenValues = crystal.Bethe.EigenValues;
 
                     var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value);
-                    gVector = gBethe.Select(g => g.ConvertToVector3D()).ToArray();
+                    gVector = gBethe.Select(g => g.ConvertToVector3D()).ToList();
 
                     if (eigenValues != crystal.Bethe.EigenValues)
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
                 }
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
-                gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToArray();
+                gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
 
                 if (formMain.Crystals.Length == 1)
                     foreach (var g in gVector)
@@ -547,10 +549,12 @@ public partial class FormDiffractionSimulator : Form
                         g.Argb = crystal.Argb;
             }
             else
-                gVector = crystal.VectorOfG.ToArray();
+                gVector = crystal.VectorOfG.ToList();
+
+            gVector.ForEach(g => g.Flag2 = false);
 
             //描画するスポットを決める
-            foreach (var g in gVector.Where(g => g.Flag))
+            foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
 
@@ -587,6 +591,7 @@ public partial class FormDiffractionSimulator : Form
                             {
                                 if (bethe || Math.Abs(dev) < 3 * ExcitationError)
                                 {
+                                    g.Flag2 = true;
                                     //もしg.RelativeIntensity=1で、かつcoeff=1の時、sigmaの半分のところで強度が255になるように関数の形を調整
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma, intensity;
                                     if (!logScale)
@@ -616,6 +621,7 @@ public partial class FormDiffractionSimulator : Form
 
                                 if (bethe || Math.Abs(dev) < sphereRadius)
                                 {
+                                    g.Flag2 = true;
                                     var sectionRadius = bethe ?
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
@@ -1060,21 +1066,21 @@ public partial class FormDiffractionSimulator : Form
                 var noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
                 foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
                 {
-                    gtemp.Flag = true;
+                    gtemp.Flag1 = true;
                     gtemp.Argb = noConditionColor;
                 }
 
                 var latticeColor = colorControlForbiddenLattice.Color.ToArgb();
                 foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
                 {
-                    gtemp.Flag = !checkBoxExtinctionLattice.Checked;
+                    gtemp.Flag1 = !checkBoxExtinctionLattice.Checked;
                     gtemp.Argb = latticeColor;
                 }
 
                 var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
                 foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
                 {
-                    gtemp.Flag = !checkBoxExtinctionAll.Checked;
+                    gtemp.Flag1 = !checkBoxExtinctionAll.Checked;
                     gtemp.Argb = screwGlideColor;
                 }
             }
@@ -1493,9 +1499,7 @@ public partial class FormDiffractionSimulator : Form
         float width = (ps.PaperSize.Width - ps.Margins.Left - ps.Margins.Right) / 100f;
 
         if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
-        {//縦横を逆転
-            float temp = width; width = height; height = temp;
-        }
+            (height, width) = (width, height);//縦横を逆転
         double originalReso = numericBoxResolution.Value;
         switch (MessageBox.Show("Real scale printing ?", "Print Option", MessageBoxButtons.YesNoCancel))
         {
@@ -1772,7 +1776,7 @@ public partial class FormDiffractionSimulator : Form
 
             flowLayoutPanelExtinctionOption.Enabled = true;
 
-            buttonDetailsOfSpots.Enabled = false;
+            //buttonDetailsOfSpots.Enabled = false;
             flowLayoutPanelBethe.Enabled = false;
         }
         else if (radioButtonIntensityKinematical.Checked) // 運動学的
@@ -1783,7 +1787,7 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelExtinctionOption.Enabled = false;
 
 
-            buttonDetailsOfSpots.Enabled = false;
+            //buttonDetailsOfSpots.Enabled = false;
             flowLayoutPanelBethe.Enabled = false;
 
 
@@ -1796,7 +1800,7 @@ public partial class FormDiffractionSimulator : Form
 
             flowLayoutPanelExtinctionOption.Enabled = false;
 
-            buttonDetailsOfSpots.Enabled = true;
+            //buttonDetailsOfSpots.Enabled = true;
             flowLayoutPanelBethe.Enabled = true;
         }
 
@@ -1827,6 +1831,10 @@ public partial class FormDiffractionSimulator : Form
         FormDiffractionBeamTable.BringToFront();
         if (radioButtonIntensityBethe.Checked)
             FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
+        else
+        {
+            FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal);
+        }
     }
 
 

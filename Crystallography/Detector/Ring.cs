@@ -147,7 +147,7 @@ namespace Crystallography
 		public enum Rotation { Clockwise, Counterclockwise }
 		public enum Direction { Right, Left, Top, Bottom }
 
-		private static readonly object lockObj = new object();
+		private static readonly object lockObj = new();
 
 
 		public enum ImageTypeEnum

@@ -1,14 +1,13 @@
-﻿namespace Crystallography
-{
-    public static class AtomStaticSub
-    {
-        /// <summary>
-        /// MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 4万行もあって、超巨大。どうにかする?
-        /// </summary>
-        /// 
-        public static readonly (double X, double Y)[][][] MassAbsorptionCoefficient = new (double X, double Y)[][][]
-        #region
+﻿namespace Crystallography;
 
+public static class AtomStaticSub
+{
+    /// <summary>
+    /// MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 4万行もあって、超巨大。どうにかする?
+    /// </summary>
+    /// 
+    public static readonly (double X, double Y)[][][] MassAbsorptionCoefficient = new (double X, double Y)[][][]
+    #region
 {
     new (double X, double Y)[][]{
     System.Array.Empty<(double X, double Y)>()
@@ -44140,12 +44139,12 @@ new (double X, double Y)[]{
 }
 };
 
-        #endregion
+    #endregion
 
-        public static PointD[][][] LinearAbsorptionCoefficient;
+    public static PointD[][][] LinearAbsorptionCoefficient;
 
-        public static readonly double[] FluorescentYieldK = new double[]
-        {
+    public static readonly double[] FluorescentYieldK = new double[]
+    {
         #region
             double.NaN,
 double.NaN,
@@ -44240,11 +44239,11 @@ double.NaN,
 0.975,
 0.975,
 0.976
-#endregion
-        };
+        #endregion
+    };
 
-        public static readonly double[] FluorescentYieldL = new double[]
-        {
+    public static readonly double[] FluorescentYieldL = new double[]
+    {
         #region
 double.NaN,
 double.NaN,
@@ -44340,11 +44339,11 @@ double.NaN,
 0.469,
 0.478
 
-#endregion
-        };
+        #endregion
+    };
 
-        public static readonly double[] FluorescentYieldM = new double[]
-        {
+    public static readonly double[] FluorescentYieldM = new double[]
+    {
         #region
 double.NaN,
 double.NaN,
@@ -44440,9 +44439,8 @@ double.NaN,
 0.00161,
 0.00158,
 0.00155
-#endregion
-        };
+        #endregion
+    };
 
-     
-    }
+
 }

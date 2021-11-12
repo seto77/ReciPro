@@ -136,7 +136,7 @@ namespace Crystallography.Controls
 
         private Bitmap bmp;
         private Graphics g;
-        private Point OriginPos = new Point(30, 30);
+        private Point OriginPos = new(30, 30);
         private double UpperX, LowerX, UpperY, LowerY;
         private Profile profile = new();
         private double BottomMargin = 0;

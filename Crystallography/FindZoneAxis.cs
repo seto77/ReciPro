@@ -100,7 +100,7 @@ namespace Crystallography
                                     for (int z = 2; z <= Math.Abs(tempZoneAxis.u) || z <= Math.Abs(tempZoneAxis.v) || z <= Math.Abs(tempZoneAxis.w); z++)//Å‘åŒö–ñ”‚ÅŠ„‚é
                                         if ((tempZoneAxis.u % z == 0) && (tempZoneAxis.v % z == 0) && (tempZoneAxis.w % z == 0))
                                         {
-                                            tempZoneAxis.u = tempZoneAxis.u / z; tempZoneAxis.v = tempZoneAxis.v / z; tempZoneAxis.w = tempZoneAxis.w / z; z = 1;
+                                            tempZoneAxis.u /= z; tempZoneAxis.v /= z; tempZoneAxis.w /= z; z = 1;
                                         }
                                     za.Add(tempZoneAxis);
                                 }

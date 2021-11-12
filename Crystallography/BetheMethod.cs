@@ -950,7 +950,7 @@ public class BetheMethod
     /// <param name="l"></param>
     /// <param name="s2"></param>
     /// <returns></returns>
-    private (Complex Real, Complex Imag) getU(in double kV, in (int H, int K, int L) index, in double s2)
+    public (Complex Real, Complex Imag) getU(in double kV, in (int H, int K, int L) index, in double s2)
     {
         var key = compose(index);
         if (!uDictionary.TryGetValue(key, out (Complex real, Complex imag) u))
@@ -1189,12 +1189,12 @@ public class BetheMethod
     #region P, Q のリセットやゲット
 
     /// <summary>
-    /// 引数のBeamsとrotationをもとに、PとQだけセットして返す。ほかのパラメータは放置. CBEDの時にみ呼ばれる。
+    /// 引数のBeamsとrotationをもとに、PとQだけセットして返す。ほかのパラメータは放置.
     /// </summary>
     /// <param name="baseRotation"></param>
     /// <param name="k0"></param>
     /// <returns></returns>
-    private Beam[] reset_gVectors(Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0)
+    public Beam[] reset_gVectors(Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0)
     {
         var mat = baseRotation * Crystal.MatrixInverse.Transpose();
         var newBeams = new List<Beam>();
@@ -1213,8 +1213,8 @@ public class BetheMethod
 
     private (double Q, double P) getQP(in Vector3DBase g, in Vector3DBase vecK0) => (getQ(g, vecK0), getP(g, vecK0));
 
-    private (double Q, double P) getQP(in Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null) => getQP(g, getVecK0(kvac, u0, beamRotation));
-
+    public (double Q, double P) getQP(in Vector3DBase g, double kvac, double u0, Matrix3D beamRotation = null) => getQP(g, getVecK0(kvac, u0, beamRotation));
+    
     #endregion
 
     #region K0ベクトルを求める
@@ -1225,7 +1225,7 @@ public class BetheMethod
     /// <param name="kvac"></param>
     /// <param name="u0"></param>
     /// <returns></returns>
-    private Vector3DBase getVecK0(double kvac, double u0, Matrix3D beamRotation = null)
+    public Vector3DBase getVecK0(double kvac, double u0, Matrix3D beamRotation = null)
     {
         // |k0|^2 - |kvac|^2 = u0
         // vecK0 = vecKvac + x * vecSurface
@@ -1333,7 +1333,7 @@ public class BetheMethod
             g.F = Psi;
             g.RawIntensity = Psi.MagnitudeSquared();
             g.Tag = S;
-            g.Flag = true;
+            g.Flag1 = true;
             g.Argb = Color.White.ToArgb();
             return g;
         }

@@ -1,6 +1,4 @@
-﻿using Crystallography;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -24,12 +22,32 @@ public partial class FormDiffractionSpotInfo : Form
         // DataGirdViewのTypeを取得
         var dgvtype = typeof(DataGridView);
         // プロパティ設定の取得
-        var dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+        var dgvPropertyInfo = dgvtype.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
         // 対象のDataGridViewにtrueをセットする
         dgvPropertyInfo.SetValue(dataGridView, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
 
     }
+
+    public void SetTable(double acc, Crystal crystal)
+    {
+        //波数を計算
+        var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(acc);
+        //U0を計算
+        var u0 = crystal.Bethe.getU(acc, (0, 0, 0), 0).Real.Real;
+
+        crystal.Bethe.Beams = crystal.VectorOfG.Where(g => g.Flag2).Select(g =>
+        {
+            return new BetheMethod.Beam(
+                g.Index,
+                crystal.RotationMatrix * g,
+                crystal.Bethe.getU(acc, g.Index, g.d * g.d / 4),
+                crystal.Bethe.getQP(g, kvac, u0, crystal.RotationMatrix));
+        }).ToArray();
+        
+        SetTable(acc, crystal.Bethe.Beams);
+    }
+
 
     public void SetTable(double acc = 0, BetheMethod.Beam[] beams = null)
     {
@@ -83,8 +101,6 @@ public partial class FormDiffractionSpotInfo : Form
             dataGridView.Columns[12].HeaderText = "U'g im";
         }
 
-        //var z_index = FormDiffractionSimulator.FormDiffractionSimulatorCBED.trackBarOutputThickness.Value;
-
         var rows = new List<DataSetReciPro.DataTableBetheRow>();
         for (int i = 0; i < Beams.Length; i++)
         {
@@ -114,14 +130,6 @@ public partial class FormDiffractionSpotInfo : Form
             r.Φ_im = Math.Abs(beam.Psi.Imaginary) > 1e-12 ? beam.Psi.Imaginary : 0;
             r.__Φ__2 = Math.Abs(beam.Psi.Magnitude * beam.Psi.Magnitude) > 1e-12 ? beam.Psi.Magnitude * beam.Psi.Magnitude : 0;
 
-            /*try
-            {
-                if (bethe.Disks != null && z_index < bethe.Disks.Length && bethe.Disks[z_index] != null && i < bethe.Disks[z_index].Length)
-                    r._Σ_Φ__2 = bethe.Disks[z_index][i].Intensity.Sum();
-            }
-            catch
-            {
-            }*/
             rows.Add(r);
         }
         toolStripStatusLabel1.Text += "Time for creation of rows: " + sw.ElapsedMilliseconds + "ms.  ";
@@ -164,7 +172,6 @@ public partial class FormDiffractionSpotInfo : Form
             dataGridView.DataMember = "DataTableBethe";
             toolStripStatusLabel1.Text += "Time for displaying table: " + sw.ElapsedMilliseconds + "ms.  ";
         }
-
     }
 
     private void FormDiffractionSimulatorTable_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,4 +1,7 @@
-﻿using System;
+﻿global using System;
+global using Crystallography;
+global using Crystallography.Controls;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ReciPro;
@@ -11,8 +14,8 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
         Application.EnableVisualStyles();
+        Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
         Application.SetCompatibleTextRenderingDefault(true);
         Application.Run(new FormMain());
     }

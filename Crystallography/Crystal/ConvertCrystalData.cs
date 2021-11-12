@@ -517,8 +517,8 @@ namespace Crystallography
 			string SgName = s[6];
 
 			SgName = SgName.Replace("_", "sub");
-			bool isAsterisk = SgName.Contains("*");
-			SgName = SgName.Replace("*", "");
+			bool isAsterisk = SgName.Contains('*');
+            SgName = SgName.Replace("*", "");
 
 			#region ãÛä‘åQÇÃèÍçáï™ÇØ
 
@@ -770,8 +770,8 @@ namespace Crystallography
 				var strTemp = reader.ReadToEnd();
 				if(strTemp.Contains("\r\n"))
 					strTemp = strTemp.Replace("\r\n", "\n");
-				if (strTemp.Contains("\r")) 
-					strTemp = strTemp.Replace("\r", "\n");
+                if (strTemp.Contains('\r'))
+                    strTemp = strTemp.Replace("\r", "\n");
 
 				stringList = strTemp.Split('\n', true).ToList();
             }
@@ -867,7 +867,7 @@ namespace Crystallography
 						substring = substring.Replace(" ", "ÂK");
 						substring = substring.Replace("'", "");
 
-						tempStr[n] = tempStr[n].Substring(0, firstIndex) + substring + tempStr[n][(next + 1)..];
+						tempStr[n] = tempStr[n][..firstIndex] + substring + tempStr[n][(next + 1)..];
 					}
 				}
 

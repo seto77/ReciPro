@@ -9,8 +9,6 @@ using System.Linq;
 using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
-//using System.Windows.Media.Media3D;
-
 
 namespace ReciPro;
 

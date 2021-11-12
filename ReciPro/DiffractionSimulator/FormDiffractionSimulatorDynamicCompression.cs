@@ -307,7 +307,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
             //候補となるgの絞り込み
             FormDiffractionSimulator.SetVector(true);
             List<Vector3D> gVector = new List<Vector3D>();
-            foreach (var g in FormDiffractionSimulator.formMain.Crystal.VectorOfG.Where(g => g.Flag && g.RelativeIntensity > 1E-6))
+            foreach (var g in FormDiffractionSimulator.formMain.Crystal.VectorOfG.Where(g => g.Flag1 && g.RelativeIntensity > 1E-6))
             {
                 var vec = initialRot * corrRot * g;
                 vec.Y = -vec.Y; vec.Z = -vec.Z;//ここでベクトルのY,Zの符号を反転

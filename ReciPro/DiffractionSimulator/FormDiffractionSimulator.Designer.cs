@@ -1626,7 +1626,7 @@
             this.numericBoxPED_Semiangle.SmartIncrement = true;
             this.numericBoxPED_Semiangle.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPED_Semiangle.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             this.numericBoxPED_Semiangle.Value = 50D;
             this.numericBoxPED_Semiangle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1646,7 +1646,7 @@
             this.numericBoxPED_Step.SmartIncrement = true;
             this.numericBoxPED_Step.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPED_Step.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             this.numericBoxPED_Step.Value = 36D;
             this.numericBoxPED_Step.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1681,7 +1681,7 @@
             this.numericBoxNumOfBlochWave.SmartIncrement = true;
             this.numericBoxNumOfBlochWave.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxNumOfBlochWave.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             this.numericBoxNumOfBlochWave.Value = 240D;
             this.numericBoxNumOfBlochWave.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
             // 
@@ -1701,7 +1701,7 @@
             this.numericBoxThickness.SkipEventDuringInput = false;
             this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThickness.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             this.numericBoxThickness.UpDown_Increment = 10D;
             this.numericBoxThickness.Value = 50D;
             this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
@@ -1803,7 +1803,7 @@
             this.numericBoxSpotRadius.SmartIncrement = true;
             this.numericBoxSpotRadius.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSpotRadius.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip"));
             this.numericBoxSpotRadius.UpDown_Increment = 0.01D;
             this.numericBoxSpotRadius.Value = 0.2D;
             this.numericBoxSpotRadius.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.Draw);
