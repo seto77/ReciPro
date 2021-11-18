@@ -39,7 +39,7 @@ namespace Crystallography
             {
                 return ("Error!", "An error occured while trying to locate the update to " + software + ".\r\n" +
                     " This could be caused if you do not have an active internet connection, administrative" +
-                   " right to access to internet, or host server may be down. Sorry.", false, "", "");
+                    " right to access to internet, or host server may be down. Sorry.", false, "", "");
             }
         }
 
