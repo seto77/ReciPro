@@ -54,7 +54,6 @@ namespace Crystallography
                     return true;
                 }
                 return false;
-
             }
             catch
             {
