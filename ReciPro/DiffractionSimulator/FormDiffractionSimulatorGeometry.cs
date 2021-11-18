@@ -206,16 +206,16 @@ namespace ReciPro
             {
                 var prm = DiffractionOptics.Read(fileName[0]);
                 FormDiffractionSimulator.SkipDrawing = true;
-                if (prm.SACLA_EH5 == "True")
+                if (prm.FootMode == "True")
                 {
                     FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray;
                     FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0;
-
                     FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
 
-                    DetectorPixelSize = Convert.ToDouble(prm.SACLA_EH5_PixleSize);
-                    DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight);
-                    DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth);
+                    if (prm.SACLA_EH5_PixelHeight != null)
+                        DetectorHeight = Convert.ToInt32(prm.SACLA_EH5_PixelHeight);
+                    if (prm.SACLA_EH5_PixelWidth != null)
+                        DetectorWidth = Convert.ToInt32(prm.SACLA_EH5_PixelWidth);
 
                     if (pseudBitmap != null && (pseudBitmap.Width != DetectorWidth || pseudBitmap.Height != DetectorHeight))//既に読み込んでいる画像のサイズと異なっていたら
                     {
@@ -224,36 +224,25 @@ namespace ReciPro
                         OverlappedImage = null;
                     }
 
-                    FootX = Convert.ToDouble(prm.SACLA_EH5_FootX);
-                    FootY = Convert.ToDouble(prm.SACLA_EH5_FootY);
-                    if (prm.SACLA_EH5_Phi != null)
-                    {
-                        Tau = Convert.ToDouble(prm.SACLA_EH5_Tau) / 180.0 * Math.PI;
-                        Phi = Convert.ToDouble(prm.SACLA_EH5_Phi) / 180.0 * Math.PI;
-                        CameraLength2 = Convert.ToDouble(prm.SACLA_EH5_CameraLength2);
-                    }
-                    else
-                    {
-                        Tau = Convert.ToDouble(prm.SACLA_EH5_TwoTheta) / 180.0 * Math.PI;
-                        Phi = 0;
-                        CameraLength2 = Convert.ToDouble(prm.SACLA_EH5_Distance);
-                    }
-
-
-
+                    FootX = Convert.ToDouble(prm.FootX);
+                    FootY = Convert.ToDouble(prm.FootY);
+                    Tau = Convert.ToDouble(prm.tiltTau) / 180.0 * Math.PI;
+                    Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
+                    CameraLength2 = Convert.ToDouble(prm.CameraLength2);
                 }
                 else
                 {
-                    FootX = Convert.ToDouble(prm.centerX);
-                    FootY = Convert.ToDouble(prm.centerY);
+                    FootX = Convert.ToDouble(prm.DirectSpotX);
+                    FootY = Convert.ToDouble(prm.DirectSpotY);
 
                     FormDiffractionSimulator.waveLengthControl.WaveSource = (WaveSource)Convert.ToInt32(prm.waveSource);
                     FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = Convert.ToInt32(prm.xRayElement);
                     FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine = (XrayLine)Convert.ToInt32(prm.xRayLine);
                     FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
 
-                    DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0;
+
                 }
+                DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0;
 
                 ShowDetectorArea = true;
                 FormDiffractionSimulator.SkipDrawing = false;

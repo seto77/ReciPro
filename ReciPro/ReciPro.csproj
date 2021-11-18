@@ -70,6 +70,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Crystallography.Controls\Crystallography.Controls.csproj" />
     <ProjectReference Include="..\Crystallography.OpenGL\Crystallography.OpenGL.csproj" />
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />

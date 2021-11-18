@@ -391,6 +391,7 @@ namespace Crystallography.Controls
             set
             {
                 textBox.Text = value;
+                textBox_Leave(new object(), new EventArgs());
                 if (RoundErrorAccuracy > 0)
                 {
                     var val = Value;

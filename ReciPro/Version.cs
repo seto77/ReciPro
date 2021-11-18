@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.821(2021/11/18)  Fixed minor bugs." +
         "\r\n ver4.820(2021/11/12)  Target framework has been changed to .Net 6.0." +
         "\r\n ver4.819(2021/10/27)  Improved an interface of Kikuchi line simulation. Speed up & fix bug on the dynamical diffraction simulator." +
         "\r\n ver4.817(2021/09/17)  Fixed minor bugs." +

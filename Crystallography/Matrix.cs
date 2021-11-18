@@ -228,7 +228,7 @@ public class Matrix3D : ICloneable
             : new Vector3D(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     public static Vector3DBase operator *(Matrix3D m, in Vector3DBase v)
-        => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     /// <summary>
     /// Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。
@@ -237,13 +237,13 @@ public class Matrix3D : ICloneable
     /// <param name="v"></param>
     /// <returns></returns>
     public static Vector3DBase operator *(Matrix3D m, in (int X, int Y, int Z) v)
-        => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     public static Vector3DBase operator *(Matrix3D m, in (double X, double Y, double Z) v)
-        => new Vector3DBase(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     public static Vector3d operator *(Matrix3D m, Vector3d v)
-        => new Vector3d(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     #endregion
     public static Matrix3D Inverse(Matrix3D m)
@@ -656,10 +656,7 @@ public class Vector3DBase : ICloneable
     internal static Vector3DBase Normarize(Vector3DBase v)
     {
         double l = Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
-        if (l > 0)
-            return new Vector3DBase(v.X / l, v.Y / l, v.Z / l);
-        else
-            return v;
+        return l > 0 ? new Vector3DBase(v.X / l, v.Y / l, v.Z / l) : v;
     }
 
     public Vector3DBase Normarize() => Normarize(this);
@@ -672,7 +669,7 @@ public class Vector3DBase : ICloneable
     /// <param name="v2"></param>
     /// <returns></returns>
     public static Vector3DBase VectorProduct(Vector3DBase v1, Vector3DBase v2)
-        => new Vector3DBase(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+        => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
 
     /// <summary>
@@ -696,10 +693,7 @@ public class Vector3DBase : ICloneable
         var aCos = Normarize(v1) * Normarize(v2);
         if (aCos > 1)
             return 0;
-        else if (aCos < -1)
-            return Math.PI / 2;
-        else
-            return Math.Acos(aCos);
+        else return aCos < -1 ? Math.PI / 2 : Math.Acos(aCos);
     }
 
     /// <summary>
@@ -841,17 +835,17 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
 
     public static Vector3D operator -(Vector3D v1) => new(-v1.X, -v1.Y, -v1.Z);
 
-    public static Vector3D operator *(double d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3D operator *(in double d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3D operator *(Vector3D v1, double d) => new(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3D operator *(Vector3D v1, in double d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3D operator *(int d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3D operator *(in int d, Vector3D v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3D operator *(Vector3D v1, int d) => new(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3D operator *(Vector3D v1, in int d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
     public static double operator *(Vector3D v1, Vector3D v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
-    public static Vector3D operator /(Vector3D v1, double d) => new(v1.X / d, v1.Y / d, v1.Z / d);
+    public static Vector3D operator /(Vector3D v1, in double d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
     public static Vector3D operator /(Vector3D v1, int d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
@@ -893,10 +887,7 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     public static Vector3D Normarize(Vector3D v)
     {
         double l = Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
-        if (l > 0)
-            return new Vector3D(v.X / l, v.Y / l, v.Z / l);
-        else
-            return v;
+        return l > 0 ? new Vector3D(v.X / l, v.Y / l, v.Z / l) : v;
     }
 
     /// <summary>
