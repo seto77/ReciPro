@@ -423,9 +423,9 @@ namespace Crystallography.Controls
             comboBoxGradient.SelectedIndex = PseudoBitmap.IsNegative ? 1 : 0;
             comboBoxScale2.SelectedIndex = PseudoBitmap.GrayScale ? 0 : 1;
             if (PseudoBitmap.GrayScale)
-                comboBoxScale1.SelectedIndex = PseudoBitmap.ScaleB == PseudoBitmap.BrightnessScaleLog ? 0 : 1;
+                comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleGrayLog ? 0 : 1;
             else
-                comboBoxScale1.SelectedIndex = PseudoBitmap.ScaleB == PseudoBitmap.BrightnessScaleLogColorB ? 0 : 1;
+                comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleColdWarmLog ? 0 : 1;
 
             //Blurの判定
             //checkBoxGaussianBlur.Checked = PseudoBitmap.BlurMode == Crystallography.PseudoBitmap.BlurModeEnum.Gaussian;
@@ -504,29 +504,14 @@ namespace Crystallography.Controls
             if (skipEvent) return;
             PseudoBitmap.IsNegative = comboBoxGradient.SelectedIndex == 1;
             if (comboBoxScale1.SelectedIndex == 0 && comboBoxScale2.SelectedIndex == 0)//Log & Gray
-            {
-                PseudoBitmap.ScaleR = PseudoBitmap.ScaleG = PseudoBitmap.ScaleB = PseudoBitmap.BrightnessScaleLog;
-                PseudoBitmap.GrayScale = true;
-            }
+                PseudoBitmap.SetScaleGray(false);
             else if (comboBoxScale1.SelectedIndex == 1 && comboBoxScale2.SelectedIndex == 0)//Liner & Gray
-            {
-                PseudoBitmap.ScaleR = PseudoBitmap.ScaleG = PseudoBitmap.ScaleB = PseudoBitmap.BrightnessScaleLiner;
-                PseudoBitmap.GrayScale = true;
-            }
+                PseudoBitmap.SetScaleGray(true);
             else if (comboBoxScale1.SelectedIndex == 0 && comboBoxScale2.SelectedIndex == 1)//log & Color
-            {
-                PseudoBitmap.ScaleR = PseudoBitmap.BrightnessScaleLogColorR;
-                PseudoBitmap.ScaleG = PseudoBitmap.BrightnessScaleLogColorG;
-                PseudoBitmap.ScaleB = PseudoBitmap.BrightnessScaleLogColorB;
-                PseudoBitmap.GrayScale = false;
-            }
+                PseudoBitmap.SetScaleColdWarm(false);
             else if (comboBoxScale1.SelectedIndex == 1 && comboBoxScale2.SelectedIndex == 1)//Liner & Color
-            {
-                PseudoBitmap.ScaleR = PseudoBitmap.BrightnessScaleLinerColorR;
-                PseudoBitmap.ScaleG = PseudoBitmap.BrightnessScaleLinerColorG;
-                PseudoBitmap.ScaleB = PseudoBitmap.BrightnessScaleLinerColorB;
-                PseudoBitmap.GrayScale = false;
-            }
+                PseudoBitmap.SetScaleColdWarm(true);
+
             scalablePictureBox.drawPictureBox();
             BrightnessAndColorChanged?.Invoke(sender, e);
         }

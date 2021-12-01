@@ -113,7 +113,7 @@ public partial class FormDiffractionSimulator : Form
     /// <summary>
     /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
     /// </summary>
-    public PointD DisplayCenter { get; set; } = new PointD(0, 0);
+    public PointD Foot { get; set; } = new PointD(0, 0);
 
     /// <summary>
     /// コントロールイベントをスキップする
@@ -201,7 +201,7 @@ public partial class FormDiffractionSimulator : Form
     {
         if (this.Visible)
         {
-            DisplayCenter = new PointD(0, 0);
+            Foot = new PointD(0, 0);
             SetVector();
 
             Draw();
@@ -231,8 +231,8 @@ public partial class FormDiffractionSimulator : Form
             {
                 g.Transform = new Matrix(
                 (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
-                (float)(graphicsBox.ClientSize.Width / 2.0 + DisplayCenter.X / Resolution),
-                (float)(graphicsBox.ClientSize.Height / 2.0 + DisplayCenter.Y / Resolution));
+                (float)(graphicsBox.ClientSize.Width / 2.0 + Foot.X / Resolution),
+                (float)(graphicsBox.ClientSize.Height / 2.0 + Foot.Y / Resolution));
             }
             catch { return false; }
         return true;
@@ -455,7 +455,7 @@ public partial class FormDiffractionSimulator : Form
                 if (comboBoxScaleColorScale.SelectedIndex == 1)
                 {
                     var index = Math.Min((int)(intensity2 * 65535), 65535);
-                    c = Color.FromArgb(PseudoBitmap.BrightnessScaleLinerColorR[index], PseudoBitmap.BrightnessScaleLinerColorG[index], PseudoBitmap.BrightnessScaleLinerColorB[index]);
+                    c = Color.FromArgb(PseudoBitmap.ColorScaleColdWarmLiner[index].R, PseudoBitmap.ColorScaleColdWarmLiner[index].G, PseudoBitmap.ColorScaleColdWarmLiner[index].B);
                     alpha = 255;
                 }
 
@@ -1111,8 +1111,8 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="y"></param>
     /// <returns></returns>
     private PointD convertScreenToDetector(in int x, in int y) => new(
-            (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - DisplayCenter.X,
-            (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - DisplayCenter.Y);
+            (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - Foot.X,
+            (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - Foot.Y);
 
     /// <summary>
     /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
@@ -1149,9 +1149,8 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="y"></param>
     /// <returns></returns>
     private PointD convertDetectorToScreen(in double x, in double y) => new(
-            (x + DisplayCenter.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
-            (y + DisplayCenter.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
-
+            (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
+            (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
 
     /// <summary>
     /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
@@ -1307,9 +1306,9 @@ public partial class FormDiffractionSimulator : Form
             if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) < 2 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) < 2)
             {//選択範囲があまりに小さすぎたら縮小
                 if (checkBoxFixCenter.Checked)
-                    DisplayCenter = FixedCenter;
+                    Foot = FixedCenter;
                 else
-                    DisplayCenter = -(ptStart + ptEnd) / 2;
+                    Foot = -(ptStart + ptEnd) / 2;
                 Resolution *= 1.2;
             }
             else if (Math.Abs(MouseRangeEnd.X - MouseRangeStart.X) > 10 && Math.Abs(MouseRangeEnd.Y - MouseRangeStart.Y) > 10)
@@ -1317,9 +1316,9 @@ public partial class FormDiffractionSimulator : Form
                 //現在のmagと中心位置から、新しいmagと中心位置を決定する
 
                 if (checkBoxFixCenter.Checked)
-                    DisplayCenter = FixedCenter;
+                    Foot = FixedCenter;
                 else
-                    DisplayCenter = -(ptStart + ptEnd) / 2;
+                    Foot = -(ptStart + ptEnd) / 2;
                 Resolution = (Math.Abs(ptStart.X - ptEnd.X) / graphicsBox.ClientSize.Width + Math.Abs(ptStart.Y - ptEnd.Y) / graphicsBox.ClientSize.Height) / 2;
             }
         }
@@ -1377,7 +1376,7 @@ public partial class FormDiffractionSimulator : Form
             //コントロールキーが押されていなくて、かつ中心位置が固定でないとき
             if ((ModifierKeys & Keys.Control) != Keys.Control && !checkBoxFixCenter.Checked)
             {
-                DisplayCenter = new PointD(DisplayCenter.X + (e.X - lastMousePositionScreen.X) * Resolution, DisplayCenter.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
+                Foot = new PointD(Foot.X + (e.X - lastMousePositionScreen.X) * Resolution, Foot.Y + (e.Y - lastMousePositionScreen.Y) * Resolution);
                 Draw(null, false);
             }
             //コントロールキーが押されていて、かつ検出器エリアが表示の時
@@ -1843,7 +1842,7 @@ public partial class FormDiffractionSimulator : Form
     #region 中心位置設定関連
     private void buttonResetCenter_Click_1(object sender, EventArgs e)
     {
-        DisplayCenter = FixedCenter;
+        Foot = FixedCenter;
 
         Draw();
     }
@@ -2054,14 +2053,14 @@ public partial class FormDiffractionSimulator : Form
             graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
             var originalResolution = Resolution;
-            var originalFoot = new PointD(DisplayCenter.X, DisplayCenter.Y);
+            var originalFoot = new PointD(Foot.X, Foot.Y);
             var originalStringSize = trackBarStrSize.Value;
 
             var fdsg = FormDiffractionSimulatorGeometry;
 
             Resolution = fdsg.DetectorPixelSize;
             graphicsBox.ClientSize = new Size(fdsg.DetectorWidth, fdsg.DetectorHeight);
-            DisplayCenter = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
+            Foot = new PointD((fdsg.FootX - fdsg.DetectorWidth / 2.0) * fdsg.DetectorPixelSize, (fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize);
 
             int strSize = (int)(originalResolution / Resolution * originalStringSize);
             if (strSize > trackBarStrSize.Maximum)
@@ -2078,7 +2077,7 @@ public partial class FormDiffractionSimulator : Form
             graphicsBox.Size = originalSize;
             Resolution = originalResolution;
             trackBarStrSize.Value = originalStringSize;
-            DisplayCenter = originalFoot;
+            Foot = originalFoot;
             SetVector();
             graphicsBox.Visible = true;
             Draw();
@@ -2091,7 +2090,7 @@ public partial class FormDiffractionSimulator : Form
             graphicsBox.Visible = false;
             var originalSize = graphicsBox.Size;
             var originalResolution = Resolution;
-            var originalFoot = new PointD(DisplayCenter.X, DisplayCenter.Y);
+            var originalFoot = new PointD(Foot.X, Foot.Y);
 
             Resolution = FormDiffractionSimulatorCBED.ImagePixelSize;
 
@@ -2099,13 +2098,13 @@ public partial class FormDiffractionSimulator : Form
 
 
             graphicsBox.ClientSize = new Size((int)(originalSize.Width * coeff), (int)(originalSize.Height * coeff));
-            DisplayCenter = new PointD(0, 0);
+            Foot = new PointD(0, 0);
 
             SaveOrCopy(save, asImage, drawOverlappedImage);
 
             graphicsBox.Size = originalSize;
             Resolution = originalResolution;
-            DisplayCenter = originalFoot;
+            Foot = originalFoot;
             SetVector();
             graphicsBox.Visible = true;
             Draw();

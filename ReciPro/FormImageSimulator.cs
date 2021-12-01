@@ -304,8 +304,8 @@ public partial class FormImageSimulator : Form
                     MinValue = j == 0 ? min : -180,
                     Tag = new ImageInfo(width, height, ImageResolution, mat, text, j == 1),
                     Scale = j == 0 ?
-                    (comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.LinearGray : PseudoBitmap.Scales.LinearColdWarm) :
-                    PseudoBitmap.Scales.LinearRotation
+                    (comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear) :
+                    PseudoBitmap.Scales.RotationLinear
                 };
             }
         //実数と虚数モードの時
@@ -316,7 +316,7 @@ public partial class FormImageSimulator : Form
                     MaxValue = max,
                     MinValue = min,
                     Tag = new ImageInfo(width, height, ImageResolution, mat, text),
-                    Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.LinearGray : PseudoBitmap.Scales.LinearColdWarm
+                    Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
                 };
 
         //チェック状況に応じて、削除
@@ -401,7 +401,7 @@ public partial class FormImageSimulator : Form
                         Tag = new ImageInfo(width, height, ImageResolution, mat, "t=" + thicknessArray[t].ToString() + "\r\nf=" + defocusArray[d].ToString()),
                         MaxValue = trackBarAdvancedMax.Value,
                         MinValue = trackBarAdvancedMin.Value,
-                        Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.LinearGray : PseudoBitmap.Scales.LinearColdWarm
+                        Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
                     };
             }
 

@@ -20,7 +20,7 @@ namespace ReciPro
         private Stopwatch Sw = new Stopwatch();
         public FormMain formMain;
 
-        private byte[] scaleR, scaleG, scaleB;
+        private (byte R, byte G, byte B)[] scale;
         private bool isNegative, isGray;
 
         private List<DiffractionPatternControl> diffractionPatternControl = new List<DiffractionPatternControl>();
@@ -256,32 +256,28 @@ namespace ReciPro
             if (comboBoxScale1.SelectedIndex == 0)//ログスケール
                 if (comboBoxScale2.SelectedIndex == 0)//グレー
                 {
-                    scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLog;
+                    scale = PseudoBitmap.ColorScaleGrayLog;
                     isGray = true;
                 }
                 else
                 {
-                    scaleR = PseudoBitmap.BrightnessScaleLogColorR;
-                    scaleG = PseudoBitmap.BrightnessScaleLogColorG;
-                    scaleB = PseudoBitmap.BrightnessScaleLogColorB;
+                    scale = PseudoBitmap.ColorScaleColdWarmLog;
                     isGray = false;
                 }
             else//リニア
                 if (comboBoxScale2.SelectedIndex == 0)//グレー
             {
-                scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLiner;
+                scale = PseudoBitmap.ColorScaleGrayLiner;
                 isGray = true;
             }
             else//color
             {
-                scaleR = PseudoBitmap.BrightnessScaleLinerColorR;
-                scaleG = PseudoBitmap.BrightnessScaleLinerColorG;
-                scaleB = PseudoBitmap.BrightnessScaleLinerColorB;
+                scale = PseudoBitmap.ColorScaleColdWarmLiner;
                 isGray = false;
             }
-            diffractionPatternControlSimulation.SetScale(scaleR, scaleG, scaleB, isNegative, isGray);
+            diffractionPatternControlSimulation.SetScale(scale, isNegative, isGray);
             for (int i = 0; i < diffractionPatternControl.Count; i++)
-                diffractionPatternControl[i].SetScale(scaleR, scaleG, scaleB, isNegative, isGray);
+                diffractionPatternControl[i].SetScale(scale, isNegative, isGray);
         }
 
         #endregion View関連
@@ -324,7 +320,7 @@ namespace ReciPro
 
             int index = diffractionPatternControl.Count - 1;
             diffractionPatternControl[index].ProgressChanged += dpc_ProgressChanged;
-            diffractionPatternControl[index].SetImage(pixels, ipa.Width, ipa.Center, ipa.Resolution, scaleR, scaleG, scaleB);
+            diffractionPatternControl[index].SetImage(pixels, ipa.Width, ipa.Center, ipa.Resolution, scale);
             diffractionPatternControl[index].IsReferrenceImage = true;
             diffractionPatternControl[index].Center = ipa.Center;
             if (ipa.Center.X == 0 && ipa.Center.Y == 0)

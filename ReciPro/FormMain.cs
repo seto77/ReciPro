@@ -1,15 +1,11 @@
 #region using
-using Crystallography;
-using Crystallography.Controls;
 using Crystallography.Controls.Numeric;
 using Crystallography.OpenGL;
 using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Net;

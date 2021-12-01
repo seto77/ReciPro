@@ -300,10 +300,10 @@ namespace ReciPro
         public double ScaleFactor;
         #endregion プロパティ, フィールド
 
-        public void SetImage(double[] srcPixels, int width, PointD center, double resolution, byte[] scaleR, byte[] scaleG, byte[] scaleB)
+        public void SetImage(double[] srcPixels, int width, PointD center, double resolution, (byte R, byte G, byte B)[] scale)
         {
             if (srcPixels != null)
-                scalablePictureBox.PseudoBitmap = new PseudoBitmap(srcPixels, width, scaleR, scaleG, scaleB, true);
+                scalablePictureBox.PseudoBitmap = new PseudoBitmap(srcPixels, width, scale, true);
 
             Center = center;
             SrcPixels = srcPixels;
@@ -340,13 +340,11 @@ namespace ReciPro
             scalablePictureBox_MouseUp2(new object(), new MouseEventArgs(new MouseButtons(), 0, 0, 0, 0), new PointD());
         }
 
-        public void SetScale(byte[] scaleR, byte[] scaleG, byte[] scaleB, bool isNegative, bool isGray)
+        public void SetScale((byte R, byte G, byte B)[] scale, bool isNegative, bool isGray)
         {
             if (scalablePictureBox.PseudoBitmap != null)
             {
-                scalablePictureBox.PseudoBitmap.ScaleR = scaleR;
-                scalablePictureBox.PseudoBitmap.ScaleG = scaleG;
-                scalablePictureBox.PseudoBitmap.ScaleB = scaleB;
+                scalablePictureBox.PseudoBitmap.ColorScale = scale;
                 scalablePictureBox.PseudoBitmap.IsNegative = isNegative;
                 scalablePictureBox.PseudoBitmap.GrayScale = isGray;
                 scalablePictureBox.drawPictureBox();
@@ -1028,7 +1026,7 @@ namespace ReciPro
                 Filter = new bool[DiffractionPixels.Length];
                 BackgroundPixels = new double[DiffractionPixels.Length];
                 DestPixels = new double[DiffractionPixels.Length];
-                scalablePictureBox.PseudoBitmap = new PseudoBitmap(SrcPixels, ImageWidth, PseudoBitmap.BrightnessScaleR, PseudoBitmap.BrightnessScaleR, PseudoBitmap.BrightnessScaleR, true);
+                scalablePictureBox.PseudoBitmap = new PseudoBitmap(SrcPixels, ImageWidth);
             }
 
             if (DiffractionPixels.Length == SrcPixels.Length)

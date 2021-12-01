@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,7 @@ namespace Crystallography
     [MessagePackObject]
     public class Crystal2
     {
+        #region フィールド シリアル化対象 [Key(#)]が必須
         [Key(0)]
         private byte[][] cellBytes;
         [Key(6)]
@@ -41,7 +43,9 @@ namespace Crystallography
         public float[] d;//強度8位までのd値
         [Key(18)]
         public string fileName;
+        #endregion
 
+        #region プロパティ
         /// <summary>
         /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現
         /// </summary>
@@ -84,6 +88,7 @@ namespace Crystallography
                         (Errors.A / 10, Errors.B / 10, Errors.C / 10, Errors.Alpha / 180 * Math.PI, Errors.Beta / 180 * Math.PI, Errors.Gamma / 180 * Math.PI));
             }
         }
+        #endregion
 
         public Crystal2()
         {
@@ -198,6 +203,7 @@ namespace Crystallography
                 string number = shortJournal.Substring(shortJournal.IndexOf("##", StringComparison.Ordinal), 4);
                 string journal = number switch
                 {
+                    #region ## => 雑誌名
                     "##01" => "American Mineralogist",
                     "##02" => "Canadian Mineralogist",
                     "##03" => "Acta Crystallographica",
@@ -245,6 +251,7 @@ namespace Crystallography
                     "##46" => "New Journal of Chemistry",
                     "##47" => "Organic letters",
                     _ => "",
+                    #endregion
                 };
                 return shortJournal.Replace(number, journal);
             }
@@ -257,6 +264,7 @@ namespace Crystallography
             string journal = "";
             if (fullJournal != null)
                 journal = fullJournal;
+            #region 雑誌名 => ##数値
             journal = Regex.Replace(journal, "American Mineralogist", "##01", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Canadian Mineralogist", "##02", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Acta Crystallographica", "##03", RegexOptions.IgnoreCase);
@@ -304,7 +312,7 @@ namespace Crystallography
             journal = Regex.Replace(journal, "Monatshefte fuer Chemie und verwandte Teile anderer Wissenschaften", "##45", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "New Journal of Chemistry", "##46", RegexOptions.IgnoreCase);
             journal = Regex.Replace(journal, "Organic letters", "##47", RegexOptions.IgnoreCase);
-            
+            #endregion
             return journal;
         }
 
@@ -313,6 +321,7 @@ namespace Crystallography
             string title = shortTitle;
             if (title.Contains("##"))
             {
+                #region ##数値 => キーワード
                 title = title.Replace("##01", "The crystal structure");
                 title = title.Replace("##02", "Crystal structure of");
                 title = title.Replace("##03", "crystal structure of");
@@ -327,7 +336,7 @@ namespace Crystallography
                 title = title.Replace("##12", "structure refinements of");
                 title = title.Replace("##13", "_cod_database_code");
                 title = title.Replace("##14", "_database_code_amcsd");
-
+                #endregion
             }
             return title;
         }
@@ -336,6 +345,7 @@ namespace Crystallography
         {
             string title = fullTitle;
 
+            #region キーワード => ##数値
             title = title.Replace("The crystal structure", "##01");
             title = title.Replace("Crystal structure of", "##02");
             title = title.Replace("crystal structure of", "##03");
@@ -350,6 +360,7 @@ namespace Crystallography
             title = title.Replace("structure refinements of", "##12");
             title = title.Replace("_cod_database_code", "##13");
             title = title.Replace("_database_code_amcsd", "##14");
+            #endregion
             return title;
         }
 
@@ -432,8 +443,11 @@ namespace Crystallography
         }
 
         private (double Value, double Error) Decompose2(string str) => Decompose(str, false);
-        public static (double Value, double Error) Decompose(string str, int sgnum)
-            => Decompose(str, sgnum >= 430 && sgnum <= 488);
+        public static (double Value, double Error) Decompose(string str, int sgnum)  => Decompose(str, sgnum >= 430 && sgnum <= 488);
+
+        public static CultureInfo culture = CultureInfo.InvariantCulture;
+        //public static CultureInfo culture = CultureInfo.GetCultureInfo("nl-NL");
+        public static NumberStyles style = NumberStyles.Number;
 
         /// <summary>
         /// 9.726|5|, 1.234|12|E-6 のような文字列を、ValueとErrorに分解してタプルで返す. 
@@ -448,7 +462,7 @@ namespace Crystallography
             int i;
             if ((i = str.IndexOf("E", StringComparison.Ordinal)) > 0)
             {
-                _ = double.TryParse("1" + str[i..], out expValue);
+                _ = double.TryParse("1" + str[i..], style, culture, out expValue);
                 str = str.Substring(0, i);
             }
             string valStr;
@@ -457,7 +471,7 @@ namespace Crystallography
             {
                 valStr = str.AsSpan()[0..i].ToString();
 
-                if (double.TryParse(str.AsSpan()[(i + 1)..^1], out err))
+                if (double.TryParse(str.AsSpan()[(i + 1)..^1], style, culture, out err))
                 {
                     var j = valStr.IndexOf(".",StringComparison.Ordinal);
                     if (j >= 0 && valStr.Length - j - 1 > 0)
@@ -497,13 +511,14 @@ namespace Crystallography
 
             if ((i= valStr.IndexOf("/",StringComparison.Ordinal)) >= 0)
             {
-                if (double.TryParse(valStr.AsSpan()[0..i], out var temp0) && double.TryParse(valStr.AsSpan()[(i+1)..^0], out var temp1))
+                if (double.TryParse(valStr.AsSpan()[0..i], style, culture, out var temp0) 
+                    && double.TryParse(valStr.AsSpan()[(i+1)..^0], style, culture, out var temp1))
                     return (temp0 / temp1, double.NaN);
                 else
                     return (double.NaN, double.NaN);
             }
 
-            return double.TryParse(valStr, out var val) ? (val * expValue, err * expValue) : (double.NaN, double.NaN);
+            return double.TryParse(valStr, style, culture, out var val) ? (val * expValue, err * expValue) : (double.NaN, double.NaN);
         }
         public static string Compose(double val, double err = double.NaN)
         {

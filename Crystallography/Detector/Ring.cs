@@ -25,9 +25,14 @@ namespace Crystallography
 		public WaveProperty WaveProperty;
 
 		/// <summary>
-		/// カメラ長 (サンプルからダイレクトスポットまでの距離)
+		/// カメラ長1 (サンプルからダイレクトスポットまでの距離)
 		/// </summary>
 		public double FilmDistance;//カメラ長
+
+		/// <summary>
+		/// カメラ長1 (サンプルからダイレクトスポットまでの距離)
+		/// </summary>
+		public double CameraLength1 => FilmDistance;//カメラ長
 
 		public enum CameraEnum { FlatPanel, Gandolfi }
 
@@ -46,12 +51,12 @@ namespace Crystallography
 		public int SrcHeight;
 
 		/// <summary>
-		/// センターのx位置
+		/// センター(Direct Spot)のx位置
 		/// </summary>
 		public double CenterX;
 
 		/// <summary>
-		/// センターのy位置
+		/// センター(Direct Spot)のy位置
 		/// </summary>
 		public double CenterY;
 

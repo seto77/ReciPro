@@ -128,73 +128,38 @@ namespace Crystallography.Controls
 
             //最大値をaverage*設定値に規格化して塗りつぶし
 
-            byte[] scaleR = new byte[65536];// = radioButtonGray.Checked ? PseudoBitmap.BrightnessScaleLiner : PseudoBitmap.BrightnessScaleLinerColorR;
-            byte[] scaleG = new byte[65536];//= radioButtonGray.Checked ? PseudoBitmap.BrightnessScaleLiner : PseudoBitmap.BrightnessScaleLinerColorG;
-            byte[] scaleB = new byte[65536];//= radioButtonGray.Checked ? PseudoBitmap.BrightnessScaleLiner : PseudoBitmap.BrightnessScaleLinerColorB;
+            (byte R, byte G, byte B)[] scale = new (byte R, byte G, byte B)[65536];// = radioButtonGray.Checked ? PseudoBitmap.BrightnessScaleLiner : PseudoBitmap.BrightnessScaleLinerColorR;
 
             if (comboBoxColor.SelectedIndex == 1)
             {
                 if (comboBoxScale.SelectedIndex == 0)
-                {
-                    Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleR, scaleR.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleG, scaleG.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleB, scaleB.Length);
-                }
-                else
-                {
-                    Array.Copy(PseudoBitmap.BrightnessScaleLog, scaleR, scaleR.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLog, scaleG, scaleG.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLog, scaleB, scaleB.Length);
-                }
+                    scale= PseudoBitmap.ColorScaleGrayLiner;
+                 else
+                    scale = PseudoBitmap.ColorScaleGrayLog;
             }
             else
             {
                 if (comboBoxScale.SelectedIndex == 0)
-                {
-                    Array.Copy(PseudoBitmap.BrightnessScaleLinerColorR, scaleR, scaleR.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLinerColorG, scaleG, scaleG.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLinerColorB, scaleB, scaleB.Length);
-                }
+                    scale = PseudoBitmap.ColorScaleColdWarmLiner;
                 else
-                {
-                    Array.Copy(PseudoBitmap.BrightnessScaleLogColorR, scaleR, scaleR.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLogColorG, scaleG, scaleG.Length);
-                    Array.Copy(PseudoBitmap.BrightnessScaleLogColorB, scaleB, scaleB.Length);
-                }
-                Array.Reverse(scaleR);
-                Array.Reverse(scaleG);
-                Array.Reverse(scaleB);
+                    scale = PseudoBitmap.ColorScaleColdWarmLog;
+                Array.Reverse(scale);
             }
 
             for (int i = pixels.Length - 1; i >= 0; i--)
                 for (int j = 0; j < pixels[i].Length; j++)
                 {
                     int density = pixels[i][j] < fullScale ? (int)(65535 - pixels[i][j] / fullScale * 65535) : 0;
-                    g.FillPie(new SolidBrush(Color.FromArgb(scaleR[density], scaleG[density], scaleB[density])),
+                    g.FillPie(new SolidBrush(Color.FromArgb(scale[density].R, scale[density].G, scale[density].B)),
                         -(i + 1.0) / pixels.Length, -(i + 1.0) / pixels.Length, (i + 1.0) / pixels.Length * 2, (i + 1.0) / pixels.Length * 2,
                     (double)j / pixels[i].Length * 360.0, 1.0 / pixels[i].Length * 360.0);
                 }
 
-            if (comboBoxColor.SelectedIndex == 1)
-            {
-                Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleR, scaleR.Length);
-                Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleG, scaleG.Length);
-                Array.Copy(PseudoBitmap.BrightnessScaleLiner, scaleB, scaleB.Length);
-                Array.Reverse(scaleR);
-                Array.Reverse(scaleG);
-                Array.Reverse(scaleB);
-            }
-            else
-            {
-                Array.Copy(PseudoBitmap.BrightnessScaleLinerColorR, scaleR, scaleR.Length);
-                Array.Copy(PseudoBitmap.BrightnessScaleLinerColorG, scaleG, scaleG.Length);
-                Array.Copy(PseudoBitmap.BrightnessScaleLinerColorB, scaleB, scaleB.Length);
-            }
             Graphics gScale = pictureBox1.CreateGraphics();
             for (int i = 0; i < pictureBox1.ClientSize.Width; i++)
             {
                 int dens = (int)((double)i / (double)pictureBox1.ClientSize.Width * 65536);
-                gScale.DrawLine(new Pen(Color.FromArgb(scaleR[dens], scaleG[dens], scaleB[dens])), new Point(i, 0), new Point(i, pictureBox.ClientSize.Height));
+                gScale.DrawLine(new Pen(Color.FromArgb(scale[dens].R, scale[dens].G, scale[dens].B)), new Point(i, 0), new Point(i, pictureBox.ClientSize.Height));
             }
         }
 

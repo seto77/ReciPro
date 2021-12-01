@@ -82,7 +82,7 @@
             // 
             this.label.AutoSize = true;
             this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label.Location = new System.Drawing.Point(6, 7);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(0, 18);

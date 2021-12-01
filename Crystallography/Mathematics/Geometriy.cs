@@ -102,9 +102,10 @@ namespace Crystallography
         /// <param name="tau"></param>
         /// <param name="rect"></param>
         /// <param name="Rot"></param>
-        public static void GetEllipseRectangleAndRot(double R, double FD,
-            double phi, double tau, ref PointD OffSet, ref double Width, ref double Height, ref double Cos, ref double Sin)
+        public static (PointD OffSet, double Width, double Height, double Cos, double Sin) GetEllipseRectangleAndRot(double R, double FD, double phi, double tau)
         {
+            PointD OffSet;
+            double Width, Height, Cos, Sin;
             //ç¿ïWånÇÕé¿ãÛä‘(mm)Ç≈çlÇ¶ÇÈ
             //a*x^2 + b*x*y + c*y^2 + d*x + e*y = 10000
             double CosPhi = Math.Cos(phi);
@@ -149,6 +150,8 @@ namespace Crystallography
                 Width = Math.Sqrt(f / k1);
                 Height = Math.Sqrt(f / k2);
             }
+
+            return (OffSet, Width, Height, Cos, Sin);
         }
 
         /// <summary>

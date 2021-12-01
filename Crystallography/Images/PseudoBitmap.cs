@@ -19,89 +19,157 @@ namespace Crystallography
             if (destBmp != null)
                 destBmp.Dispose();
         }
+
+        #region static なコンストラクタ、フィールド
+
+        //public static byte[] BrightnessScaleR = new byte[65536];//明るさスケール　16bit長に固定
+        //public static byte[] BrightnessScaleG = new byte[65536];//明るさスケール　16bit長に固定
+        //public static byte[] BrightnessScaleB = new byte[65536];//明るさスケール　16bit長に固定
+
+        //public static byte[] BrightnessScaleLog = new byte[65536];//ログ用の明るさスケール　16bit長に固定
+        //public static byte[] BrightnessScaleLiner = new byte[65536];//ログ用の明るさスケール　16bit長に固定
+
+        public static (byte R, byte G, byte B)[] ColorScaleGrayLiner = new (byte R, byte G, byte B)[65536];
+        public static (byte R, byte G, byte B)[] ColorScaleGrayLog = new (byte R, byte G, byte B)[65536];
+
+
+        public static (byte R, byte G, byte B)[] ColorScaleColdWarmLiner = new (byte R, byte G, byte B)[65536];
+        public static (byte R, byte G, byte B)[] ColorScaleColdWarmLog = new (byte R, byte G, byte B)[65536];
+
+        public static (byte R, byte G, byte B)[] ColorScaleFireLiner = new (byte R, byte G, byte B)[65536];
+        public static (byte R, byte G, byte B)[] ColorScaleFireLog = new (byte R, byte G, byte B)[65536];
+
+        public static (byte R, byte G, byte B)[] ColorScaleSpectrumLiner = new (byte R, byte G, byte B)[65536];
+        public static (byte R, byte G, byte B)[] ColorScaleSpectrumLog = new (byte R, byte G, byte B)[65536];
+
+        public static (byte R, byte G, byte B)[] ColorScaleRotationLiner = new (byte R, byte G, byte B)[65536];
+        public static (byte R, byte G, byte B)[] ColorScaleRotationLog = new (byte R, byte G, byte B)[65536];
+
         static PseudoBitmap()
         {
             #region スケールの初期化
 
-            int[][] cold_warm = new int[][]{
-                new int[]{0,0,0,0},
-                new int[]{5376,0,0,255},
-                new int[]{16256,0,191,191},
-                new int[]{27136,0,255,0},
-                new int[]{38016,255,255,0},
-                new int[]{48896,255,0,0},
-                new int[]{59904,255,0,255},
-                new int[]{65535,255,255,255}
+            var gray = new (int I, byte R, byte G, byte B)[]{
+                (0,0,0,0),
+                (65536,255,255,255)
             };
 
-            int[][] rotation = new int[][]{
-                new int[]{0,            80, 80,    255},       //0
-                new int[]{10922, 80,    255,    255},       //60°
-                new int[]{21845, 80,    255,    80},   //120°
-                new int[]{32767,        255,    255,    80},     //180°
-                new int[]{43690,        255, 80,    80},         //240°
-                new int[]{54613,        255, 80,    255},         //300°
-                new int[]{65535, 80, 80,    255},       //360°
+            var cold_warm = new (int I, byte R, byte G, byte B)[]{
+                (0,0,0,0),
+                (5376,0,0,255),
+                (16256,0,191,191),
+                (27136,0,255,0),
+                (38016,255,255,0),
+                (48896,255,0,0),
+                (59904,255,0,255),
+                (65536,255,255,255)
+            };
+
+            var fire = new (int I, byte R, byte G, byte B)[]{
+                (0,0,0,0),
+                (3840, 0,0,91),
+                (7936,46,0,160),
+                (12032,94,0,216),
+                (14336,122,0,227),
+                (16128,143,0, 212),
+                (20224,171,0,154),
+                (24320,193,0,96),
+                (24576,195,0,93),
+                (24832,196,1,89),
+                (27392,210,21,53),
+                (32512,238,76,0),
+                (36608,254,115,0),
+                (36864,255,117,0),
+                (40704,255, 145,0),
+                (45312,255,176, 0 ),
+                (48896,255,203, 0 ),
+                (53248,255,234, 0 ),
+                (57088,255,254,90 ),
+                (57344,255,255,98 ),
+                (61184,255,255, 215 ),
+                (65536,255,255,255)
+            };
+
+            var spectrum = new (int I, byte R, byte G, byte B)[]{
+                (0,255,0,0),
+                (10752,255,252,0),
+                (11008,252,255,0),
+                (21760,0,255,0),
+                (32512,0,255,252),
+                (32768,0,252,255),
+                (43520,0,0,255),
+                (54272,252,0,255),
+                (54528,255,0,252),
+                (65536,255, 0, 0),
+            };
+
+            var rotation = new (int I, byte R, byte G, byte B)[]{
+                (0,     80, 80,    255),       //0
+                (10922, 80,    255,    255),           //60°
+                (21845, 80,    255,    80),            //120°
+                (32767, 255, 255,    80),     //180°
+                (43690, 255, 80,    80),         //240°
+                (54613, 255, 80,    255),         //300°
+                (65536, 80, 80,    255),               //360°
 
             };
 
-            for (int i = 0; i < 65536; i++)
+            (byte R, byte G, byte B)[] setScaleLinear( (int I, byte R, byte G, byte B)[] src)
             {
-                if (i == 0)
+                var result = new (byte R, byte G, byte B)[65536];
+                for (int j = 0; j < src.Length - 1; j++)
                 {
-                    BrightnessScaleLog[0] = 0;
-                    BrightnessScaleLiner[0] = 0;
+                    (int I, byte R, byte G, byte B) a = src[j], b =src[j + 1];
+                    for (int k = src[j].I; k < src[j + 1].I; k++)
+                    {
+
+                        var x = (double)(b.I - k) / (b.I - a.I);
+                        result[k] = ((byte)(a.R * x + b.R * (1 - x)), (byte)(a.G * x + b.G * (1 - x)), (byte)(a.B * x + b.B * (1 - x)));
+                    }
                 }
-                else
-                {
-                    BrightnessScaleLiner[i] = (byte)(i / 256);//リニア
-                    BrightnessScaleLog[i] = (byte)(Math.Log(i, 65536) * 256);//ログ用 65536が255になるように調節
-                }
-                int k = i;
-                for (int j = 0; j < cold_warm.Length-1; j++)
-                    if (cold_warm[j][0] < k && cold_warm[j + 1][0] >= k)
-                    {
-                        double a1 = (double)(cold_warm[j + 1][0] - k) / (cold_warm[j + 1][0] - cold_warm[j][0]), a2 = (double)(k - cold_warm[j][0]) / (cold_warm[j + 1][0] - cold_warm[j][0]);
-                        BrightnessScaleLinerColorR[i] = (byte)(cold_warm[j][1] * a1 + cold_warm[j + 1][1] * a2);
-                        BrightnessScaleLinerColorG[i] = (byte)(cold_warm[j][2] * a1 + cold_warm[j + 1][2] * a2);
-                        BrightnessScaleLinerColorB[i] = (byte)(cold_warm[j][3] * a1 + cold_warm[j + 1][3] * a2);
-                    }
-
-                for (int j = 0; j < rotation.Length - 1; j++)
-                    if (rotation[j][0] == k)
-                    {
-                        BrightnessScaleLinerRotationR[i] = (byte)(rotation[j][1]);
-                        BrightnessScaleLinerRotationG[i] = (byte)(rotation[j][2]);
-                        BrightnessScaleLinerRotationB[i] = (byte)(rotation[j][3]);
-                    }
-                    else if (rotation[j][0] < k && rotation[j + 1][0] >= k)
-                    {
-                        double a1 = (double)(rotation[j + 1][0] - k) / (rotation[j + 1][0] - rotation[j][0]),
-                            a2 = (double)(k - rotation[j][0]) / (rotation[j + 1][0] - rotation[j][0]);
-                        BrightnessScaleLinerRotationR[i] = (byte)(rotation[j][1] * a1 + rotation[j + 1][1] * a2);
-                        BrightnessScaleLinerRotationG[i] = (byte)(rotation[j][2] * a1 + rotation[j + 1][2] * a2);
-                        BrightnessScaleLinerRotationB[i] = (byte)(rotation[j][3] * a1 + rotation[j + 1][3] * a2);
-                    }
-
-
-                k = (int)(Math.Log(i, 65536) * 65536);
-                for (int j = 0; j < cold_warm.Length - 1; j++)
-                    if (cold_warm[j][0] < k && cold_warm[j + 1][0] >= k)
-                    {
-                        double a1 = (double)(cold_warm[j + 1][0] - k) / (cold_warm[j + 1][0] - cold_warm[j][0]), a2 = (double)(k - cold_warm[j][0]) / (cold_warm[j + 1][0] - cold_warm[j][0]);
-                        BrightnessScaleLogColorR[i] = (byte)(cold_warm[j][1] * a1 + cold_warm[j + 1][1] * a2);
-                        BrightnessScaleLogColorG[i] = (byte)(cold_warm[j][2] * a1 + cold_warm[j + 1][2] * a2);
-                        BrightnessScaleLogColorB[i] = (byte)(cold_warm[j][3] * a1 + cold_warm[j + 1][3] * a2);
-                    }
+                return result;
             }
+
+            (byte R, byte G, byte B)[] setScaleLog((int I, byte R, byte G, byte B)[] src)
+            {
+                var result = new (byte R, byte G, byte B)[65536];
+                for (int i = 0; i < 65536; i++)
+                {
+                    var k = (int)(Math.Log(i, 65536) * 65536);
+                    for (int j = 0; j < src.Length - 1; j++)
+                        if (src[j].I < k && src[j + 1].I >= k)
+                        {
+                            (int I, byte R, byte G, byte B) a = src[j], b = src[j + 1];
+                            double x = (double)(b.I - k) / (b.I - a.I);
+                            result[i] = ((byte)(a.R * x + b.R * (1 - x)), (byte)(a.G * x + b.G * (1 - x)), (byte)(a.B * x + b.B * (1 - x)));
+                            break;
+                        }
+                }
+                return result;
+            }
+
+            ColorScaleGrayLiner = setScaleLinear(gray);
+            ColorScaleColdWarmLiner = setScaleLinear(cold_warm);
+            ColorScaleFireLiner = setScaleLinear(fire);
+            ColorScaleRotationLiner = setScaleLinear(rotation);
+            ColorScaleSpectrumLiner = setScaleLinear(spectrum);
+
+            ColorScaleGrayLog = setScaleLog(gray);
+            ColorScaleColdWarmLog = setScaleLog(cold_warm);
+            ColorScaleFireLog = setScaleLog(fire);
+            ColorScaleRotationLog = setScaleLog(rotation);
+            ColorScaleSpectrumLog = setScaleLog(spectrum);
 
             #endregion スケールの初期化
         }
+        #endregion 
+
 
         #region コンストラクタ
 
         public PseudoBitmap()
         {
+            ColorScale = ColorScaleGrayLiner;
         }
 
         /// <summary>
@@ -130,13 +198,8 @@ namespace Crystallography
         /// <param name="scaleB"></param>
         /// <param name="realImage"></param>
         public PseudoBitmap(List<uint> valueGray, double scale, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
-        //  :this(valueGray.Select(a => a * scale).ToArray(),width,scaleR,scaleG,scaleB,realImage)
+          :this(valueGray.Select(a => a * scale).ToArray(),width,scaleR,scaleG,scaleB,realImage)
         {
-            double[] values = new double[valueGray.Count];
-            for (int i = 0; i < values.Length; i++)
-                values[i] = valueGray[i] * scale;
-
-            constructor(values, width, scaleR, scaleB, scaleG, realImage);
         }
 
         /// <summary>
@@ -159,12 +222,34 @@ namespace Crystallography
         /// <param name="scaleG"></param>
         /// <param name="scaleB"></param>
         /// <param name="realImage"></param>
-        public PseudoBitmap(double[] values, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
+        public PseudoBitmap(double[] values, int width, byte[] scaleR, byte[] scaleG, byte[] scaleB, bool realImage = true)
         {
-            constructor(values, width, scaleR, scaleB, scaleG, realImage);
+            if(scaleR==null || scaleG==null || scaleB == null || scaleR.Length != scaleG.Length || scaleG.Length != scaleB.Length || scaleR.Length<2)
+                constructor(values, width, null, realImage);
+            else
+            {
+                var scale = new (byte R, byte G, byte B)[scaleR.Length];
+                for (int i = 0; i < scale.Length; i++)
+                    scale[i] = (scaleR[i], scaleG[i], scaleB[i]);
+                constructor(values,width, scale, realImage);
+            }
         }
 
-        private void constructor(double[] values, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
+        /// <summary>
+        /// double型がソースデータであるグレー実画像のコンストラクタ
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="width"></param>
+        /// <param name="scaleR"></param>
+        /// <param name="scaleG"></param>
+        /// <param name="scaleB"></param>
+        /// <param name="realImage"></param>
+        public PseudoBitmap(double[] values, int width, (byte R , byte G, byte B)[] scale = null, bool realImage = true)
+        {
+                constructor(values, width, scale, realImage);
+        }
+
+        private void constructor(double[] values, int width, (byte R, byte G, byte B)[] scale = null, bool realImage = true)
         {
             if (values.Length == 0 || values.Length % width != 0) throw new ArgumentNullException("Invalid input");
             Width = width;
@@ -180,241 +265,18 @@ namespace Crystallography
             SrcValuesR.Clear();
             SrcValuesG = SrcValuesB = SrcValuesR;
 
-            ScaleR = scaleR ?? BrightnessScaleLiner;
-            ScaleG = scaleG ?? BrightnessScaleLiner;
-            ScaleB = scaleB ?? BrightnessScaleLiner;
-            initFilter();
-        }
-
-        /// <summary>
-        /// 32bitまでのカラーの実画像のコンストラクタ
-        /// </summary>
-        /// <param name="valueR"></param>
-        /// <param name="valueG"></param>
-        /// <param name="valueB"></param>
-        /// <param name="width"></param>
-        public PseudoBitmap(uint[] valueR, uint[] valueG, uint[] valueB, int width)
-        {
-            if (valueR.Length == 0 || valueR.Length % width != 0) return;
-            Width = width;
-            Height = valueR.Length / width;
-
-            GrayScale = false;
-            RealImage = true;
-
-            IsSrcGray = false;
-
-            SrcValuesR = new List<uint>(valueR);
-            SrcValuesG = new List<uint>(valueG);
-            SrcValuesB = new List<uint>(valueB);
-
-            ScaleR = BrightnessScaleLiner;
-            ScaleG = BrightnessScaleLiner;
-            ScaleB = BrightnessScaleLiner;
-            initFilter();
-        }
-
-        #region complex用のコンストラクタ (どこで使ってるんだっけ?)
-
-        /// <summary>
-        /// カラーケールcomplexを引数に取るコンストラクタ
-        /// </summary>
-        /// <param name="complex"></param>
-        public PseudoBitmap(Complex[][] complexR, Complex[][] complexG, Complex[][] complexB, byte[] scaleR, byte[] scaleG, byte[] scaleB, bool normarize, bool realImage)
-        {
-            //すべてのcomplexがnullだったら例外をとばす
-            if (complexR == null && complexG == null && complexB == null) throw new ArgumentNullException("Invalid input");
-
-            //高さ、幅を設定
-            if (complexR != null && complexR.Length > 0 && complexR[0].Length > 0)
-            {
-                Width = complexR[0].Length; Height = complexR.Length;
-            }
-            else if (complexG != null && complexG.Length > 0 && complexG[0].Length > 0)
-            {
-                Width = complexG[0].Length; Height = complexG.Length;
-            }
-            else if (complexB != null && complexB.Length > 0 && complexB[0].Length > 0)
-            {
-                Width = complexB[0].Length; Height = complexB.Length;
-            }
-            else throw new ArgumentNullException("Invalid input");
-            Center = new PointF(Width / 2.0f, Height / 2.0f);
-
-            GrayScale = false;
-            RealImage = realImage;
-
-            //null値が入っていた場合は0で初期化
-            if (complexR == null) complexR = initComplex(Width, Height);
-            if (complexG == null) complexG = initComplex(Width, Height);
-            if (complexB == null) complexB = initComplex(Width, Height);
-
-            ComplexR = complexR;
-            ComplexG = complexG;
-            ComplexB = complexB;
-
-            //三個をまとめたModulas
-            double[][][] modulas = Fourier.GetModulus(new Complex[][][] { complexR, complexG, complexB }, normarize);
-
-            SrcValuesR.Clear();
-            SrcValuesG.Clear();
-            SrcValuesB.Clear();
-            int n = 0;
-            for (int y = 0; y < Height; y++)
-                for (int x = 0; x < Width; x++)
-                {
-                    if (!normarize)
-                    {
-                        SrcValuesR.Add(Math.Max(Math.Min((ushort)modulas[0][y][x], (ushort)255), (ushort)0));
-                        SrcValuesG.Add(Math.Max(Math.Min((ushort)modulas[1][y][x], (ushort)255), (ushort)0));
-                        SrcValuesB.Add(Math.Max(Math.Min((ushort)modulas[2][y][x], (ushort)255), (ushort)0));
-                    }
-                    else
-                    {
-                        SrcValuesR.Add(Math.Max(Math.Min((ushort)(modulas[0][y][x] * scaleR.Length), (ushort)(scaleR.Length - 1)), (ushort)0));
-                        SrcValuesG.Add(Math.Max(Math.Min((ushort)(modulas[1][y][x] * scaleG.Length), (ushort)(scaleG.Length - 1)), (ushort)0));
-                        SrcValuesB.Add(Math.Max(Math.Min((ushort)(modulas[2][y][x] * scaleB.Length), (ushort)(scaleB.Length - 1)), (ushort)0));
-                    }
-                    n++;
-                }
-            ScaleR = scaleR;
-            ScaleG = scaleG;
-            ScaleB = scaleB;
-
-            MaxValue = (uint)(scaleR.Length - 1);
-            MinValue = 0;
-
-            initFilter();
-        }
-
-        /// <summary>
-        /// グレイスケールcomplexを引数に取るコンストラクタ
-        /// </summary>
-        /// <param name="complex"></param>
-        public PseudoBitmap(Complex[][] complex, byte[] scaleR, byte[] scaleG, byte[] scaleB, bool normarize, bool isRealImage)
-        {
-            //適正なサイズでなければ例外をとばす
-            if (complex == null || complex.Length == 0 || complex[0].Length == 0) throw new ArgumentNullException("Invalid input");
-
-            GrayScale = true;
-            RealImage = isRealImage;
-
-            ComplexGray = complex;
-            double[][] modulas = Fourier.GetModulus(complex, normarize);
-
-            //高さ、幅を設定
-            Width = complex[0].Length;
-            Height = complex.Length;
-            Center = new PointF(Width / 2.0f, Height / 2.0f);
-
-            SrcValuesR.Clear();
-            SrcValuesR.AddRange(new uint[Width * Height]);
-            int n = 0;
-            for (int y = 0; y < Height; y++)
-                for (int x = 0; x < Width; x++)
-                {
-                    if (!normarize)
-                        SrcValuesR[n++] = (Math.Max(Math.Min((byte)modulas[y][x], (byte)255), (byte)0));
-                    else
-                        SrcValuesR[n++] = (Math.Max(Math.Min((byte)(modulas[y][x] * 255), (byte)255), (byte)0));
-                }
-            SrcValuesG = SrcValuesR;
-            SrcValuesB = SrcValuesR;
-
-            ScaleR = scaleR;
-            ScaleG = scaleG;
-            ScaleB = scaleB;
-
-            MaxValue = (scaleR.Length - 1);
-            MinValue = 0;
-
-            initFilter();
-        }
-
-        #endregion complex用のコンストラクタ (どこで使ってるんだっけ?)
-
-        /// <summary>
-        /// 実画像用コンストラクタ グレーorカラーは自動判別
-        /// </summary>
-        /// <param name="bitmap"></param>
-        public PseudoBitmap(Bitmap bitmap)
-        {
-            RealImage = true;
-            //null値だったら例外をとばす
-            if (bitmap == null) throw new ArgumentNullException("null bitmap");
-
-            //高さ、幅を設定
-            Width = bitmap.Width;
-            Height = bitmap.Height;
-
-            //画像はすべてPixelFormat.Format24bppRgbに変換する
-            if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
-            {
-                if (bitmap.PixelFormat == PixelFormat.Format32bppArgb)
-                    bitmap = bitmap.Clone(new Rectangle(0, 0, Width, Height), PixelFormat.Format24bppRgb);
-
-                if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
-                    bitmap = new Bitmap(bitmap).Clone(new Rectangle(0, 0, Width, Height), PixelFormat.Format24bppRgb);
-            }
-
-            //変換がうまくいかなければ例外をとばす
-            if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
-                throw new ArgumentNullException("Invalid bitmap");
-
-            SrcBitmap = bitmap;
-
-            //SourceBitmapをロックする
-            BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
-
-            //SouceStrideを設定しておく
-            int BitmapStride = bitmapData.Stride;
-
-            //次にその情報をargbValuesに転送
-            byte[] bitmapByteArray = new byte[bitmapData.Stride * bitmap.Height];
-            Marshal.Copy(bitmapData.Scan0, bitmapByteArray, 0, bitmapByteArray.Length);
-            //SourceBitmapをアンロックして終了
-            bitmap.UnlockBits(bitmapData);
-
-            //BitsPerPixels = 8;
-
-            //グレイスケールかどうかを判断
-            GrayScale = true;
-            for (int i = 0; i < bitmapByteArray.Length && GrayScale; i += 3)
-                if (bitmapByteArray[i] != bitmapByteArray[i + 1] || bitmapByteArray[i + 1] != bitmapByteArray[i + 2])
-                    GrayScale = false;
-
-            if (GrayScale)
-            {
-                SrcValuesR.Clear();
-
-                for (int yInit = 0; yInit < Height * bitmapData.Stride; yInit += BitmapStride)
-                    for (int x = 0; x < Width; x++)
-                        SrcValuesR.Add(bitmapByteArray[yInit + x * 3]);
-                SrcValuesG = SrcValuesR;
-                SrcValuesB = SrcValuesR;
-            }
+            if (scale == null || scale.Length < 2)
+                ColorScale = ColorScaleGrayLiner;
             else
             {
-                SrcValuesR.Clear();
-                SrcValuesG.Clear();
-                SrcValuesB.Clear();
-                for (int yInit = 0; yInit < Height * bitmapData.Stride; yInit += BitmapStride)
-                    for (int x = 0; x < Width; x++)
-                    {
-                        SrcValuesR.Add(bitmapByteArray[yInit + x * 3 + 2]);
-                        SrcValuesG.Add(bitmapByteArray[yInit + x * 3 + 1]);
-                        SrcValuesB.Add(bitmapByteArray[yInit + x * 3 + 0]);
-                    }
+                ColorScale = scale;
             }
-
-            byte[] scale = new byte[256];
-            for (int i = 0; i < 256; i++)
-                scale[i] = (byte)i;
-            ScaleR = ScaleG = ScaleB = scale;
-
+            
+            
             initFilter();
         }
 
+      
         #endregion コンストラクタ
 
         #region 初期化関連
@@ -519,43 +381,37 @@ namespace Crystallography
         /// </summary>
         public bool HorizontalFlip { set; get; } = false;
 
-        public enum Scales { LinearGray, LinearColdWarm, LinearRotation, LogGray, LogColdWarm }
+        public enum Scales { GrayLinear, ColdWarmLinear, RotationLinear, SpectrumLinear, FireLinear, GrayLog, ColdWarmLog, RotationLog, SpectrumLog, FireLog, }
 
-        private Scales scale = Scales.LinearGray;
+        private Scales scale = Scales.GrayLinear;
         public Scales Scale
         {
             get => scale;
             set
             {
                 scale = value;
-                if (scale == Scales.LinearGray)
+                if (scale == Scales.GrayLinear)
                     SetScaleGray(true);
-                else if (scale == Scales.LogGray)
+                else if (scale == Scales.GrayLog)
                     SetScaleGray(false);
-                else if (scale == Scales.LinearColdWarm)
+                else if (scale == Scales.ColdWarmLinear)
                     SetScaleColdWarm(true);
-                else if (scale == Scales.LogColdWarm)
+                else if (scale == Scales.ColdWarmLog)
                     SetScaleColdWarm(false);
-                else if (scale == Scales.LinearRotation)
+                else if (scale == Scales.RotationLinear)
                     SetScaleRotation();
+                else if (scale == Scales.SpectrumLinear)
+                    SetScaleSpectrum(true);
+                else if (scale == Scales.SpectrumLog)
+                    SetScaleSpectrum(false);
+                else if (scale == Scales.FireLinear)
+                    SetScaleFire(true);
+                else if (scale == Scales.FireLog)
+                    SetScaleFire(false);
             }
         }
         
-        public static byte[] BrightnessScaleR = new byte[65536];//明るさスケール　16bit長に固定
-        public static byte[] BrightnessScaleG = new byte[65536];//明るさスケール　16bit長に固定
-        public static byte[] BrightnessScaleB = new byte[65536];//明るさスケール　16bit長に固定
-        public static byte[] BrightnessScaleLog = new byte[65536];//ログ用の明るさスケール　16bit長に固定
-        public static byte[] BrightnessScaleLiner = new byte[65536];//ログ用の明るさスケール　16bit長に固定
-        public static byte[] BrightnessScaleLinerColorR = new byte[65536];
-        public static byte[] BrightnessScaleLinerColorG = new byte[65536];
-        public static byte[] BrightnessScaleLinerColorB = new byte[65536];
-        public static byte[] BrightnessScaleLogColorR = new byte[65536];
-        public static byte[] BrightnessScaleLogColorG = new byte[65536];
-        public static byte[] BrightnessScaleLogColorB = new byte[65536];
-
-        public static byte[] BrightnessScaleLinerRotationR = new byte[65536];
-        public static byte[] BrightnessScaleLinerRotationG = new byte[65536];
-        public static byte[] BrightnessScaleLinerRotationB = new byte[65536];
+      
 
 
         public bool RealImage = true;
@@ -592,9 +448,7 @@ namespace Crystallography
         /// </summary>
         public List<byte> FilterAlfha { get; set; } = new List<byte>();
 
-        public byte[] ScaleR;
-        public byte[] ScaleG;
-        public byte[] ScaleB;
+        public (byte R, byte G, byte B)[] ColorScale;
 
         public List<uint> SrcValuesR = new();
         public List<uint> SrcValuesG = new();
@@ -727,11 +581,8 @@ namespace Crystallography
             if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == false) return Color.FromArgb(0, 0, 0);
 
             var offset = x + (y * Width);
-            return Color.FromArgb(
-                ScaleR[Math.Max(Math.Min((int)((double)(SrcValuesR[offset] - MinValue) / (MaxValue - MinValue) * ScaleR.Length + 0.5), ScaleR.Length - 1), 0)],
-                ScaleG[Math.Max(Math.Min((int)((double)(SrcValuesG[offset] - MinValue) / (MaxValue - MinValue) * ScaleG.Length + 0.5), ScaleG.Length - 1), 0)],
-                ScaleB[Math.Max(Math.Min((int)((double)(SrcValuesB[offset] - MinValue) / (MaxValue - MinValue) * ScaleB.Length + 0.5), ScaleB.Length - 1), 0)]
-                );
+            var index = Math.Max(Math.Min((int)((double)(SrcValuesR[offset] - MinValue) / (MaxValue - MinValue) * ColorScale.Length + 0.5), ColorScale.Length - 1), 0);
+            return Color.FromArgb(ColorScale[index].R, ColorScale[index].G, ColorScale[index].B);
         }
 
         public Color GetPixelColor(double x, double y) => GetPixelColor((int)(x + 0.5), (int)(y + 0.5));
@@ -742,17 +593,28 @@ namespace Crystallography
         public void SetScaleColdWarm(bool linear=true)
         {
             if (linear)
-            {
-                ScaleR = BrightnessScaleLinerColorR;
-                ScaleG = BrightnessScaleLinerColorG;
-                ScaleB = BrightnessScaleLinerColorB;
-            }
+                ColorScale = ColorScaleColdWarmLiner;
             else
-            {
-                ScaleR = BrightnessScaleLogColorR;
-                ScaleG = BrightnessScaleLogColorG;
-                ScaleB = BrightnessScaleLogColorB;
-            }
+                ColorScale = ColorScaleColdWarmLog;
+
+            GrayScale = false;
+        }
+
+        public void SetScaleSpectrum(bool linear = true)
+        {
+            if (linear)
+                ColorScale = ColorScaleSpectrumLiner;
+            else
+                ColorScale = ColorScaleSpectrumLog;
+
+            GrayScale = false;
+        }
+        public void SetScaleFire(bool linear = true)
+        {
+            if (linear)
+                ColorScale = ColorScaleFireLiner;
+            else
+                ColorScale = ColorScaleFireLog;
 
             GrayScale = false;
         }
@@ -760,26 +622,15 @@ namespace Crystallography
         public void SetScaleGray(bool linear = true)
         {
             if (linear)
-            {
-                ScaleR = BrightnessScaleLiner;
-                ScaleG = BrightnessScaleLiner;
-                ScaleB = BrightnessScaleLiner;
-            }
+                ColorScale = ColorScaleGrayLiner;
             else
-            {
-                ScaleR = BrightnessScaleLog;
-                ScaleG = BrightnessScaleLog;
-                ScaleB = BrightnessScaleLog;
-            }
-
+                ColorScale = ColorScaleGrayLog;
             GrayScale = false;
         }
 
         public void SetScaleRotation()
         {
-            ScaleR = BrightnessScaleLinerRotationR;
-            ScaleG = BrightnessScaleLinerRotationG;
-            ScaleB = BrightnessScaleLinerRotationB;
+            ColorScale= ColorScaleRotationLiner;
             GrayScale = false;
         }
 
@@ -916,28 +767,24 @@ namespace Crystallography
             #endregion
 
             #region  入力値doubleを表示する値に変換するローカル関数
-            var lengthR = ScaleR.Length;
-            var coeffR = lengthR /(MaxValue - MinValue);
+            var length = ColorScale.Length;
+            var coeff = length /(MaxValue - MinValue);
             byte getValueR(double rawValue)
             {
-                var rawIndex = (int)((rawValue - MinValue) * coeffR + 0.5);
-                return ScaleR[Math.Min(Math.Max(0, rawIndex), lengthR - 1)];
+                var rawIndex = (int)((rawValue - MinValue) * coeff + 0.5);
+                return ColorScale[Math.Min(Math.Max(0, rawIndex), length - 1)].R;
             }
 
-            var lengthG = ScaleG.Length;
-            var coeffG = lengthG / (MaxValue - MinValue);
             byte getValueG(double rawValue)
             {
-                var rawIndex = (int)((rawValue - MinValue) * coeffG + 0.5);
-                return ScaleG[Math.Min(Math.Max(0, rawIndex), lengthG - 1)];
+                var rawIndex = (int)((rawValue - MinValue) * coeff + 0.5);
+                return ColorScale[Math.Min(Math.Max(0, rawIndex), length - 1)].G;
             }
 
-            var lengthB = ScaleB.Length;
-            var coeffB = lengthB / (MaxValue - MinValue);
             byte getValueB(double rawValue)
             {
-                var rawIndex = (int)((rawValue - MinValue) * coeffB + 0.5);
-                return ScaleB[Math.Min(Math.Max(0, rawIndex), lengthB - 1)];
+                var rawIndex = (int)((rawValue - MinValue) * coeff + 0.5);
+                return ColorScale[Math.Min(Math.Max(0, rawIndex), length - 1)].B;
             }
             #endregion
 
@@ -1120,102 +967,6 @@ namespace Crystallography
             justBeforeDestSize = destSize;
             justBeforeSrcRect = srcRect;
             return destBmp;
-        }
-
-        /// <summary>
-        /// 実画像から虚画像に変換
-        /// </summary>
-        /// <returns></returns>
-        public PseudoBitmap ToInverseImage(byte[] scale, bool normarize)
-        {
-            if (this.RealImage == false) return null;
-
-            if (this.GrayScale)//グレースケールのとき
-            {
-                //strideを考慮してbyte配列を抽出
-                double[][] valueGray = new double[Height][];
-                int n = 0;
-                for (int y = 0; y < Height; y++)
-                {
-                    valueGray[y] = new double[Width];
-                    for (int x = 0; x < Width; x++)
-                        valueGray[y][x] = SrcValuesR[n++];
-                }
-                return new PseudoBitmap(Fourier.FFT(valueGray), scale, scale, scale, normarize, false);
-            }
-            else //カラースケールのとき
-            {
-                var valueR = new double[Height][];
-                var valueG = new double[Height][];
-                var valueB = new double[Height][];
-                int n = 0;
-                for (int y = 0; y < Height; y++)
-                {
-                    valueR[y] = new double[Width];
-                    valueG[y] = new double[Width];
-                    valueB[y] = new double[Width];
-                    for (int x = 0; x < Width; x++)
-                    {
-                        valueB[y][x] = SrcValuesB[n];
-                        valueG[y][x] = SrcValuesG[n];
-                        valueR[y][x] = SrcValuesR[n];
-                        n++;
-                    }
-                }
-                return new PseudoBitmap(Fourier.FFT(valueR), Fourier.FFT(valueG), Fourier.FFT(valueB), scale, scale, scale, normarize, false);
-            }
-        }
-
-        /// <summary>
-        /// 虚画像から実画像に変換
-        /// </summary>
-        /// <returns></returns>
-        public PseudoBitmap ToRealImage(bool normarize)
-        {
-            if (this.RealImage) return null;
-
-            //フィルターの中心を抜く
-            if (FFT_Filter != null)
-            {
-                FFT_Filter[(int)Center.Y * Width + (int)Center.X] = 0;
-                if (Width % 2 == 1)
-                    if (Height % 2 == 1)
-                    {//両方奇数のとき
-                        FFT_Filter[(int)Center.Y * Width + (int)Center.X + 1] = 0;
-                        FFT_Filter[((int)Center.Y + 1) * Width + (int)Center.X] = 0;
-                        FFT_Filter[((int)Center.Y + 1) * Width + (int)Center.X + 1] = 0;
-                    }
-                    else
-                        FFT_Filter[(int)Center.Y * Width + (int)Center.X + 1] = 0;
-                else if (Height % 2 == 1)
-                    FFT_Filter[((int)Center.Y + 1) * Width + (int)Center.X] = 0;
-            }
-
-            int n = 0;
-            double[][] filter = new double[Height][];
-            for (int i = 0; i < filter.Length; i++)
-            {
-                filter[i] = new double[Width];
-                for (int j = 0; j < Width; j++)
-                    filter[i][j] = (double)FFT_Filter[n++];
-            }
-
-            byte[] scale = new byte[256];
-            for (int i = 0; i < 256; i++)
-                scale[i] = (byte)i;
-
-            if (GrayScale)
-            {
-                Complex[][] complex = Fourier.FFT(ComplexGray, filter, FourierDirectionEnum.Inverse);
-                return new PseudoBitmap(complex, scale, scale, scale, normarize, true);
-            }
-            else
-            {
-                Complex[][] complexR = Fourier.FFT(ComplexR, filter, FourierDirectionEnum.Inverse);
-                Complex[][] complexG = Fourier.FFT(ComplexG, filter, FourierDirectionEnum.Inverse);
-                Complex[][] complexB = Fourier.FFT(ComplexB, filter, FourierDirectionEnum.Inverse);
-                return new PseudoBitmap(complexR, complexG, complexB, scale, scale, scale, normarize, true);
-            }
         }
 
         /// <summary>
