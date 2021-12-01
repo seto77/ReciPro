@@ -130,7 +130,9 @@
             this.comboBoxScale2.FormattingEnabled = true;
             this.comboBoxScale2.Items.AddRange(new object[] {
             resources.GetString("comboBoxScale2.Items"),
-            resources.GetString("comboBoxScale2.Items1")});
+            resources.GetString("comboBoxScale2.Items1"),
+            resources.GetString("comboBoxScale2.Items2"),
+            resources.GetString("comboBoxScale2.Items3")});
             resources.ApplyResources(this.comboBoxScale2, "comboBoxScale2");
             this.comboBoxScale2.Name = "comboBoxScale2";
             this.comboBoxScale2.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);

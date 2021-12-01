@@ -278,13 +278,13 @@ public partial class FormDiffractionSimulatorCBED : Form
         var maxOverall = Disks.Max(d => d.PBitmap.SrcValuesGrayOriginal.Max());
         var maxRatio = Math.Pow((double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum, 4);
         var minRatio = Math.Pow((double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum, 4);
-        var gray = comboBoxScale.SelectedIndex == 0;
+        var colorScale = comboBoxScale.SelectedIndex;
         var negative = comboBoxGradient.SelectedIndex == 1;
 
         Parallel.For(0, Disks.Length, i =>
         {
-                //輝度Max,Min調整
-                if (radioButtonAllDisks.Checked)
+            //輝度Max,Min調整
+            if (radioButtonAllDisks.Checked)
             {
                 Disks[i].PBitmap.MaxValue = maxOverall * maxRatio;
                 Disks[i].PBitmap.MinValue = maxOverall * minRatio;
@@ -294,13 +294,17 @@ public partial class FormDiffractionSimulatorCBED : Form
                 Disks[i].PBitmap.MaxValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxRatio;
                 Disks[i].PBitmap.MinValue = Disks[i].PBitmap.SrcValuesGray.Max() * maxOverall * minRatio;
             }
-                //GrayかColorか
-                if (gray)
+            //GrayかColorか
+            if (colorScale == 0)
                 Disks[i].PBitmap.SetScaleGray();
-            else
+            else if (colorScale == 1)
                 Disks[i].PBitmap.SetScaleColdWarm();
-                //Negativeかどうか
-                Disks[i].PBitmap.IsNegative = negative;
+            else if (colorScale == 2)
+                Disks[i].PBitmap.SetScaleSpectrum();
+            else
+                Disks[i].PBitmap.SetScaleFire();
+            //Negativeかどうか
+            Disks[i].PBitmap.IsNegative = negative;
             Disks[i].Bitmap = Disks[i].PBitmap.GetImage();
         }
         );

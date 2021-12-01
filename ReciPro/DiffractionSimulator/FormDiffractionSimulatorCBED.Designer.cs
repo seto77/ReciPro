@@ -357,7 +357,9 @@
             this.comboBoxScale.FormattingEnabled = true;
             this.comboBoxScale.Items.AddRange(new object[] {
             resources.GetString("comboBoxScale.Items"),
-            resources.GetString("comboBoxScale.Items1")});
+            resources.GetString("comboBoxScale.Items1"),
+            resources.GetString("comboBoxScale.Items2"),
+            resources.GetString("comboBoxScale.Items3")});
             this.comboBoxScale.Name = "comboBoxScale";
             this.toolTip.SetToolTip(this.comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
             this.comboBoxScale.SelectedIndexChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);

@@ -834,10 +834,16 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="comboBoxScale.Items" xml:space="preserve">
-    <value>Gray scale</value>
+    <value>Gray</value>
   </data>
   <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm scale</value>
+    <value>Cold-Warm</value>
+  </data>
+  <data name="comboBoxScale.Items2" xml:space="preserve">
+    <value>Spectrum</value>
+  </data>
+  <data name="comboBoxScale.Items3" xml:space="preserve">
+    <value>FIre</value>
   </data>
   <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>254, 151</value>

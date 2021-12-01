@@ -452,12 +452,18 @@ public partial class FormDiffractionSimulator : Form
                 var intensity2 = intensity * coeff1 * Math.Exp(-(radius1 * radius1) / 2 / sigma2);
 
                 var alpha = (int)(255 * intensity2 * alphaCoeff);
-                if (comboBoxScaleColorScale.SelectedIndex == 1)
+                if (comboBoxScaleColorScale.SelectedIndex != 0)
                 {
                     var index = Math.Min((int)(intensity2 * 65535), 65535);
-                    c = Color.FromArgb(PseudoBitmap.ColorScaleColdWarmLiner[index].R, PseudoBitmap.ColorScaleColdWarmLiner[index].G, PseudoBitmap.ColorScaleColdWarmLiner[index].B);
+                    c = comboBoxScaleColorScale.SelectedIndex switch
+                    {
+                        1 => Color.FromArgb(PseudoBitmap.ColorScaleColdWarmLiner[index].R, PseudoBitmap.ColorScaleColdWarmLiner[index].G, PseudoBitmap.ColorScaleColdWarmLiner[index].B),
+                        2 => Color.FromArgb(PseudoBitmap.ColorScaleSpectrumLiner[index].R, PseudoBitmap.ColorScaleSpectrumLiner[index].G, PseudoBitmap.ColorScaleSpectrumLiner[index].B),
+                        _ => Color.FromArgb(PseudoBitmap.ColorScaleFireLiner[index].R, PseudoBitmap.ColorScaleFireLiner[index].G, PseudoBitmap.ColorScaleFireLiner[index].B),
+                    };
                     alpha = 255;
                 }
+                
 
                 var brush = new SolidBrush(Color.FromArgb(alpha, c));
                 if (j < gradation - 1 && radius2 > 0)

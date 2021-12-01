@@ -287,10 +287,16 @@
     <value>1</value>
   </data>
   <data name="comboBoxScale2.Items" xml:space="preserve">
-    <value>Gray scale</value>
+    <value>Gray</value>
   </data>
   <data name="comboBoxScale2.Items1" xml:space="preserve">
-    <value>Cold-Warm scale</value>
+    <value>Cold-Warm</value>
+  </data>
+  <data name="comboBoxScale2.Items2" xml:space="preserve">
+    <value>Spectrum</value>
+  </data>
+  <data name="comboBoxScale2.Items3" xml:space="preserve">
+    <value>Fire</value>
   </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
     <value>282, 2</value>

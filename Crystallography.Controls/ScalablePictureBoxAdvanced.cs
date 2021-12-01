@@ -503,14 +503,17 @@ namespace Crystallography.Controls
         {
             if (skipEvent) return;
             PseudoBitmap.IsNegative = comboBoxGradient.SelectedIndex == 1;
-            if (comboBoxScale1.SelectedIndex == 0 && comboBoxScale2.SelectedIndex == 0)//Log & Gray
-                PseudoBitmap.SetScaleGray(false);
-            else if (comboBoxScale1.SelectedIndex == 1 && comboBoxScale2.SelectedIndex == 0)//Liner & Gray
-                PseudoBitmap.SetScaleGray(true);
-            else if (comboBoxScale1.SelectedIndex == 0 && comboBoxScale2.SelectedIndex == 1)//log & Color
-                PseudoBitmap.SetScaleColdWarm(false);
-            else if (comboBoxScale1.SelectedIndex == 1 && comboBoxScale2.SelectedIndex == 1)//Liner & Color
-                PseudoBitmap.SetScaleColdWarm(true);
+
+            var linear = comboBoxScale1.SelectedIndex == 1;
+
+            if (comboBoxScale2.SelectedIndex == 0)//Gray
+                PseudoBitmap.SetScaleGray(linear);
+            else if (comboBoxScale2.SelectedIndex == 1)//Cold-Warm
+                PseudoBitmap.SetScaleColdWarm(linear);
+            else if (comboBoxScale2.SelectedIndex == 2)//Spectrum
+                PseudoBitmap.SetScaleSpectrum(linear);
+            else if (comboBoxScale2.SelectedIndex == 3)//Fire
+                PseudoBitmap.SetScaleFire(linear);
 
             scalablePictureBox.drawPictureBox();
             BrightnessAndColorChanged?.Invoke(sender, e);
