@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
 using OpenTK;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -572,7 +571,7 @@ public class Vector3DBase : ICloneable
     /// X,Y座標をPointDクラスに映す (Zは破棄)
     /// </summary>
     /// <returns></returns>
-    public PointD ToPointD => new PointD(X, Y);
+    public PointD ToPointD => new(X, Y);
 
     #region 演算子のオーバーロード
 
