@@ -1,6 +1,6 @@
 ﻿namespace ReciPro
 {
-    partial class FormSpotDetails
+    partial class FormSpotIDv2Details
     {
         /// <summary>
         /// Required designer variable.

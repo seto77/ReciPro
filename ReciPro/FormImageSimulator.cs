@@ -276,7 +276,7 @@ public partial class FormImageSimulator : Form
         Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
         var temp = sw.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text = "Generation of Potential images: " + temp.ToString() + " msec,   ";
+        toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} msec,   ";
 
         //最大値、最小値の設定
         double max = radioButtonPotentialModeMagAndPhase.Checked ? Max(images[0].Max(), images[2].Max()) : Max(Abs(images.Max(d => d.Max())), Abs(images.Min(d => d.Min())));
@@ -339,7 +339,7 @@ public partial class FormImageSimulator : Form
                 result[r, c] = pseudo[r][c];
 
         setPseudoBitamap(result);
-        toolStripStatusLabel1.Text += "Drawing: " + (sw.ElapsedMilliseconds - temp).ToString() + " msec.";
+        toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
     }
 
     public void SimulateHRTEM(bool realtimeMode = false)
@@ -368,7 +368,7 @@ public partial class FormImageSimulator : Form
             Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
             //絞りの内側のビームを取得
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
-            toolStripStatusLabel1.Text = "Solving eigen problem: " + sw.ElapsedMilliseconds.ToString() + " msec.   ";
+            toolStripStatusLabel1.Text = $"Solving eigen problem: {sw.ElapsedMilliseconds} msec.   ";
 
             //HRTEM画像を取得
             totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
@@ -398,7 +398,7 @@ public partial class FormImageSimulator : Form
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                     = new PseudoBitmap(totalImage[t][d], width)
                     {
-                        Tag = new ImageInfo(width, height, ImageResolution, mat, "t=" + thicknessArray[t].ToString() + "\r\nf=" + defocusArray[d].ToString()),
+                        Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
                         MaxValue = trackBarAdvancedMax.Value,
                         MinValue = trackBarAdvancedMin.Value,
                         Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
@@ -420,7 +420,7 @@ public partial class FormImageSimulator : Form
 
         //ScalableBoxに転送
         setPseudoBitamap(pseudo);
-        toolStripStatusLabel1.Text += "Drawing: " + (sw.ElapsedMilliseconds - temp).ToString() + " msec.";
+        toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
     }
 
     public static double[] Normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)

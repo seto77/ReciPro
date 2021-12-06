@@ -1,6 +1,6 @@
 ﻿namespace ReciPro
 {
-    partial class FormTEMID
+    partial class FormSpotIDv1
     {
         /// <summary>
         /// 必要なデザイナ変数です。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTEMID));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numericBoxP1Theta = new Crystallography.Controls.NumericBox();
             this.buttonSearchPhoto1 = new System.Windows.Forms.Button();

@@ -95,8 +95,8 @@ public partial class FormMain : Form
     public FormStructureViewer FormStructureViewer;
     public FormDiffractionSimulator FormDiffractionSimulator;
     public FormStereonet FormStereonet;
-    public FormTEMID FormTEMID;
-    public FormSpotID FormSpotID;
+    public FormSpotIDv1 FormTEMID;
+    public FormSpotIDV2 FormSpotID;
     public FormCalculator FormCalculator;
     public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
     public FormRotationMatrix FormRotation;
@@ -273,14 +273,14 @@ public partial class FormMain : Form
         FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
-        FormTEMID = new FormTEMID { formMain = this, Visible = false };
+        FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
         FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
         FormTEMID.KeyUp += new KeyEventHandler(FormMain_KeyUp);
         FormTEMID.Visible = false;
         FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.7);
-        FormSpotID = new FormSpotID { FormMain = this, Visible = false };
+        FormSpotID = new FormSpotIDV2 { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.8);
         FormCalculator = new FormCalculator { Owner = this, Visible = false };
@@ -1162,8 +1162,6 @@ public partial class FormMain : Form
         commonDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.License;
         commonDialog.Visible = true;
     }
-
-    private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e) => Ngen.Compile();
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 

@@ -1123,7 +1123,6 @@ public class BetheMethod
                                 beams.Add(new Beam(index, g, getU(AccVoltage, index, g.Length2 / 4), (k0_2 - vLen2, 2 * Surface * v)));
                             outer.Add((key, g.Length));
                         }
-
                     }
                 }
             }

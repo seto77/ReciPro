@@ -345,7 +345,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <summary>
     /// EOSのパラメータ
     /// </summary>
-    public EOS EOSCondition = new EOS();
+    public EOS EOSCondition = new();
 
     /// <summary>
     /// EOSを利用するかどうか
@@ -1074,7 +1074,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     {
         if (A_Star == null) SetAxis();
 
-        static int composeKey(in int h, in int k, int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
+        static int composeKey(in int h, in int k,in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
         static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
         double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;

@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace ReciPro
 {
-    public partial class FormTEMIDResults : Form
+    public partial class FormSpotIDv1Results : Form
     {
-        public FormTEMID formTEMID = new FormTEMID();
+        public FormSpotIDv1 formTEMID = new FormSpotIDv1();
         public List<ZoneAxes> zoneAxes;
         public List<ZoneAxis> zoneAxis;
 
-        public FormTEMIDResults() => InitializeComponent();
+        public FormSpotIDv1Results() => InitializeComponent();
 
-        public FormTEMIDResults(FormTEMID formTEMID)
+        public FormSpotIDv1Results(FormSpotIDv1 formTEMID)
         {
             InitializeComponent();
             this.formTEMID = formTEMID;

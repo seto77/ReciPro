@@ -19,13 +19,13 @@ using MQ = Crystallography.Marquardt;
 
 namespace ReciPro;
 
-public partial class FormSpotID : Form
+public partial class FormSpotIDV2 : Form
 {
     #region プロパティ、フィールド
     public object tagObsSpot = "ObsCross";
     public object tagCalcSpot = "Calc";
 
-    public FormSpotDetails FormSpotDetails;
+    public FormSpotIDv2Details FormSpotDetails;
 
     public FormMain FormMain;
 
@@ -50,7 +50,7 @@ public partial class FormSpotID : Form
 
     #region ロード, クローズ関連
 
-    public FormSpotID()
+    public FormSpotIDV2()
     {
         InitializeComponent();
         scalablePictureBoxAdvanced.Symbols = new List<ScalablePictureBox.Symbol>();
@@ -61,7 +61,7 @@ public partial class FormSpotID : Form
 
     private void FormSpotID_Load(object sender, EventArgs e)
     {
-        FormSpotDetails = new FormSpotDetails { FormSpotID = this };
+        FormSpotDetails = new FormSpotIDv2Details { FormSpotID = this };
         checkBoxDetailsOfFunction.Checked = false;
     }
 

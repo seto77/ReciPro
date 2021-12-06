@@ -1,6 +1,6 @@
 ﻿namespace ReciPro
 {
-    partial class FormTEMIDResults
+    partial class FormSpotIDv1Results
     {
         /// <summary>
         /// 必要なデザイナ変数です。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTEMIDResults));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1Results));
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();

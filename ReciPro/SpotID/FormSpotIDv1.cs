@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormTEMID : Form
+public partial class FormSpotIDv1 : Form
 {
     public FormMain formMain;
     private PhotoInformation photo1, photo2, photo3;
-    public FormTEMIDResults formTEMIDResults;
+    public FormSpotIDv1Results formTEMIDResults;
 
-    public FormTEMID()
+    public FormSpotIDv1()
     {
         InitializeComponent();
         photo1 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
@@ -297,7 +297,7 @@ public partial class FormTEMID : Form
         {
             if (formTEMIDResults != null)
                 formTEMIDResults.Close();
-            formTEMIDResults = new FormTEMIDResults(this);
+            formTEMIDResults = new FormSpotIDv1Results(this);
             formTEMIDResults.Show();
             formTEMIDResults.SetDataSet(photo, za);
         }
@@ -356,7 +356,7 @@ public partial class FormTEMID : Form
 
             if (formTEMIDResults != null)
                 formTEMIDResults.Close();
-            formTEMIDResults = new FormTEMIDResults(this);
+            formTEMIDResults = new FormSpotIDv1Results(this);
             formTEMIDResults.Show();
             formTEMIDResults.SetDataSet(obsAngle, candidate);
         }

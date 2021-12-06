@@ -14,7 +14,7 @@ namespace ReciPro
 
         partial class DataTableGrainDataTable
         {
-            public void Add(FormSpotID.Grain grain)
+            public void Add(FormSpotIDV2.Grain grain)
             {
                 DataRow dr = NewDataTableGrainRow();
                 dr["Grain"] = grain;
@@ -28,7 +28,7 @@ namespace ReciPro
 
         partial class DataTableCandidateDataTable
         {
-            public void Add(int num, List<FormSpotID.Grain> candidate)
+            public void Add(int num, List<FormSpotIDV2.Grain> candidate)
             {
                 DataRow dr = NewDataTableCandidateRow();
                 dr["Candidate"] = candidate;

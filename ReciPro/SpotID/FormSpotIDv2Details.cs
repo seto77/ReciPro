@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormSpotDetails : Form
+public partial class FormSpotIDv2Details : Form
 {
-    public FormSpotID FormSpotID;
+    public FormSpotIDV2 FormSpotID;
     public int BoxWide => scalablePictureBoxAdvanced.PictureSize.Width;
     public int BoxHeight => scalablePictureBoxAdvanced.PictureSize.Height;
 
-    public FormSpotDetails() => InitializeComponent();
+    public FormSpotIDv2Details() => InitializeComponent();
 
     public void SetData(bool renewImage = true)
     {
