@@ -336,6 +336,8 @@ public class ConvertCrystalData
             if (str.Length <= n) return null;
         }
 
+        
+
         if (Title.Contains("_cod_database_code"))
             Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
         else if (Title.Contains("_database_code_amcsd"))
@@ -351,6 +353,11 @@ public class ConvertCrystalData
             zShift = ConvertToDouble(str[n].Split(" ", true)[2]);
             n++; if (str.Length <= n) return null;
         }
+
+        //2ndセッティングにもかかわらず、shift量がゼロでないときは、1stセッティングに戻す。
+        if((xShift !=0 || yShift !=0 || zShift !=0 ) && SymmetryStatic.SpaceGroupListWithoutSpace[crystal.sym].EndsWith("(2)"))
+            crystal.sym--;
+
 
         //ここから原子座標の読み取り
         bool IsOcc = false, IsisoUsed = false, IsanisoUsed = false, IsUtypeUsed = false;

@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.828(2021/12/15)  Updated the crystal database." +
         "\r\n ver4.827(2021/12/01)  Fixed a CultureInfo problem. (see https://github.com/seto77/ReciPro/issues/10)" +
         "\r\n ver4.826(2021/11/18)  Fixed minor bugs." +
         "\r\n ver4.820(2021/11/12)  Target framework has been changed to .Net 6.0." +
