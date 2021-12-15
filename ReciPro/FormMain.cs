@@ -1121,6 +1121,13 @@ public partial class FormMain : Form
 
     #region FileMenu
 
+    private void readCrystalFromCIFOrAMCFileToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };
+        if (dlg.ShowDialog() == DialogResult.OK)
+            crystalControl.ReadCrystal(dlg.FileName);
+    }
+
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
@@ -1305,16 +1312,23 @@ public partial class FormMain : Form
     private void FormMain_DragDrop(object sender, DragEventArgs e)
     {
         var fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-        if (fileName.Length == 1 && (fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out") || fileName[0].ToLower().EndsWith("cdb2")))
+        if (fileName.Length == 1)
         {
-            var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
-                "Option", MessageBoxButtons.YesNoCancel);
-            if (dr == DialogResult.Cancel)
-                return;
-            else if (dr == DialogResult.Yes)
-                readCrystalList(fileName[0], true, true);
-            else
-                readCrystalList(fileName[0], true, false);
+            if ((fileName[0].ToLower().EndsWith("xml") || fileName[0].ToLower().EndsWith("out") || fileName[0].ToLower().EndsWith("cdb2")))
+            {
+                var dr = MessageBox.Show(this, "Read the list as a new list (if select 'No', add the list to the end of the present one",
+                    "Option", MessageBoxButtons.YesNoCancel);
+                if (dr == DialogResult.Cancel)
+                    return;
+                else if (dr == DialogResult.Yes)
+                    readCrystalList(fileName[0], true, true);
+                else
+                    readCrystalList(fileName[0], true, false);
+            }
+            else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
+            {
+                crystalControl.FormCrystal_DragDrop(sender, e);
+            }
         }
     }
 
@@ -1512,7 +1526,8 @@ public partial class FormMain : Form
 
 
 
+
     #endregion
 
-
+   
 }

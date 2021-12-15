@@ -139,6 +139,8 @@
             this.readCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readCrystalDataAndAddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemReadInitialCrystalList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.readCrystalFromCIFOrAMCFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.saveCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportCIF = new System.Windows.Forms.ToolStripMenuItem();
@@ -1140,6 +1142,8 @@
             this.readCrystalDataToolStripMenuItem,
             this.readCrystalDataAndAddToolStripMenuItem,
             this.toolStripMenuItemReadInitialCrystalList,
+            this.toolStripSeparator21,
+            this.readCrystalFromCIFOrAMCFileToolStripMenuItem,
             this.toolStripSeparator6,
             this.saveCrystalDataToolStripMenuItem,
             this.toolStripMenuItemExportCIF,
@@ -1167,6 +1171,17 @@
             this.toolStripMenuItemReadInitialCrystalList.Name = "toolStripMenuItemReadInitialCrystalList";
             resources.ApplyResources(this.toolStripMenuItemReadInitialCrystalList, "toolStripMenuItemReadInitialCrystalList");
             this.toolStripMenuItemReadInitialCrystalList.Click += new System.EventHandler(this.ToolStripMenuItemReadInitialCrystalList_Click);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            resources.ApplyResources(this.toolStripSeparator21, "toolStripSeparator21");
+            // 
+            // readCrystalFromCIFOrAMCFileToolStripMenuItem
+            // 
+            this.readCrystalFromCIFOrAMCFileToolStripMenuItem.Name = "readCrystalFromCIFOrAMCFileToolStripMenuItem";
+            resources.ApplyResources(this.readCrystalFromCIFOrAMCFileToolStripMenuItem, "readCrystalFromCIFOrAMCFileToolStripMenuItem");
+            this.readCrystalFromCIFOrAMCFileToolStripMenuItem.Click += new System.EventHandler(this.readCrystalFromCIFOrAMCFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -1571,6 +1586,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem powderDiffractionFunctionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem readCrystalFromCIFOrAMCFileToolStripMenuItem;
     }
 }
 

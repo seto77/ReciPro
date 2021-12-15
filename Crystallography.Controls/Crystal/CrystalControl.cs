@@ -280,24 +280,29 @@ namespace Crystallography.Controls
         }
 
         #endregion
-    
+
+        public void ReadCrystal(string filename)
+        {
+
+            try
+            {
+                Crystal = ConvertCrystalData.ConvertToCrystal(filename);
+            }
+            catch (Exception ex)
+            {
+                if (Crystallography.AssemblyState.IsDebug)
+                    MessageBox.Show(ex.ToString());
+                return;
+            }
+        }
+
         #region ドラッグドロップイベント
 
         public void FormCrystal_DragDrop(object sender, DragEventArgs e)
         {
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fileName.Length == 1)
-            {
-                try {
-                    Crystal = ConvertCrystalData.ConvertToCrystal(fileName[0]); 
-                }
-                catch (Exception ex)
-                {
-                    if (Crystallography.AssemblyState.IsDebug)
-                        MessageBox.Show(ex.ToString());
-                    return;
-                }
-            }
+                ReadCrystal(fileName[0]);
         }
 
         private void FormCrystal_DragEnter(object sender, DragEventArgs e)
@@ -313,13 +318,7 @@ namespace Crystallography.Controls
         {
             var dlg = new OpenFileDialog { Filter = " *.cif; *.amc | *.cif;*.amc" };
             if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    Crystal = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
-                }
-                catch { return; }
-            }
+                ReadCrystal(dlg.FileName);
         }
 
         public void exportThisCrystalAsCIFToolStripMenuItem_Click(object sender, EventArgs e)
