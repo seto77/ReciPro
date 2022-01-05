@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.829(2022/01/04)  Minor update on 'Spot ID v2' (see https://github.com/seto77/ReciPro/issues/11)." +
         "\r\n ver4.828(2021/12/15)  Updated the crystal database." +
         "\r\n ver4.827(2021/12/01)  Fixed a CultureInfo problem. (see https://github.com/seto77/ReciPro/issues/10)" +
         "\r\n ver4.826(2021/11/18)  Fixed minor bugs." +

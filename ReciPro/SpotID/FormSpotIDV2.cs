@@ -1,7 +1,4 @@
-﻿using Crystallography;
-using Crystallography.Controls;
-using MathNet.Numerics;
-using System;
+﻿using MathNet.Numerics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,6 +85,10 @@ public partial class FormSpotIDV2 : Form
     private void readImage(string fileName)
     {
         dataSet.DataTableSpot.Clear();
+        
+        dataSet.DataTableCandidate.Clear();
+        scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);
+
         scalablePictureBoxAdvanced.ReadImage(fileName);
 
         if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
@@ -142,6 +143,22 @@ public partial class FormSpotIDV2 : Form
             FormSpotDetails.SetData();
     }
 
+    #region ファイルメニュー
+    private void readToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dlg = new OpenFileDialog();
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+           
+                if (dlg.FileName.EndsWith(".csv"))
+                    readCSV(dlg.FileName);
+                else
+                    readImage(dlg.FileName);
+           
+        }
+    }
+    #endregion
+
     #region DragDrop関連
 
     private void FormSpotID_DragDrop(object sender, DragEventArgs e)
@@ -160,7 +177,10 @@ public partial class FormSpotIDV2 : Form
     private void FormSpotID_DragEnter(object sender, DragEventArgs e) => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
 
     #endregion DragDrop関連
+
     #endregion 画像読み込み関連
+
+
 
     private bool scalablePictureBoxAdvanced1_MouseDown2(object sender, MouseEventArgs e, Crystallography.PointD pt)
     {
@@ -799,7 +819,10 @@ public partial class FormSpotIDV2 : Form
                 dataSet.DataTableCandidate.Add(i, candidates[i]);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2}sec.";
+
+            MessageBox.Show(candidates.Count.ToString() + " candidates found.");
         }
+
         buttonIdentifySpots.Visible = true;
         buttonStop.Visible = false;
         FormMain.Enabled = true;
@@ -821,8 +844,6 @@ public partial class FormSpotIDV2 : Form
         catch { }
         skipProgressChangedEvent = false;
     }
-
-
 
     private List<List<Grain>> identifySpots(List<Crystal> crystals)
     {
@@ -1577,4 +1598,6 @@ public partial class FormSpotIDV2 : Form
     {
 
     }
+
+
 }
