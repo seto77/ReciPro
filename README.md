@@ -1,7 +1,7 @@
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and high-resolution TEM image, indexes diffraction spots, plots stereographic projection, and so on.
 * The functions and algorithms of this software are also presented in the following paper. If you use this software to write an academic paper, we would appreciate it if you would cite this paper. 
-  * Seto Y., Ohtsuka M. (2022, in press) ReciPro: a free and open-source multipurpose crystallographic software integrating crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools. Journal of Applied Crystallography. 
+  * <span style="color: red; ">Seto Y., Ohtsuka M. (2022, in press) ReciPro: a free and open-source multipurpose crystallographic software integrating crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools. Journal of Applied Crystallography. </span>
 * The following movie shows ReciPro running in ***real time***.
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
