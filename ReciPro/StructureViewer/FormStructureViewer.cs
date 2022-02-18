@@ -522,8 +522,8 @@ public partial class FormStructureViewer : Form
             var polyhedronMode = bond.ShowEdges ? DrawingMode.SurfacesAndEdges : DrawingMode.Surfaces;
             float bondTrans = bond.BondTransParency, polyTrans = bond.PolyhedronTransParency;
 
-                //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
-                foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
+            //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
+            foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
             {
                 dic1.Add(element, GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
                   .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
@@ -546,37 +546,37 @@ public partial class FormStructureViewer : Form
                   }).OrderBy(o => o.Key).ToArray());
             }
 
-                //中心頂点に対する、頂点のリストを一気に作成
-                var dic2 = new Dictionary<int, int[]>();//中心頂点に対する頂点リストのDictionary
-                var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
-                var cArray = dic1[bond.Element1];
+            //中心頂点に対する、頂点のリストを一気に作成
+            var dic2 = new Dictionary<int, int[]>();//中心頂点に対する頂点リストのDictionary
+            var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
+            var cArray = dic1[bond.Element1];
             var vArray = dic1[bond.Element2];
             Parallel.ForEach(cArray.Select(o => o.Key).Distinct(), ckey =>
             {
-                    //検索対象の頂点のインデックスを作成
-                    var targetIndices = neighborKeys.Select(key => key + ckey)
-                    .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
-                    .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
+                //検索対象の頂点のインデックスを作成
+                var targetIndices = neighborKeys.Select(key => key + ckey)
+                .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
+                .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
 
                 int start = cArray.FindIndex(d => d.Key == ckey), end = Array.FindLastIndex(cArray, d => d.Key == ckey) + 1;
                 for (int i = start; i < end; i++)
                 {
-                        //ボンド長さの条件を満たす頂点インデックスを検索
-                        var vIndices = targetIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
+                    //ボンド長さの条件を満たす頂点インデックスを検索
+                    var vIndices = targetIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
                     if (vIndices.Any())
                     {
                         int m = vIndices.Length, index = cArray[i].AtomIndex;
                         lock (lockObj)
                         {
                             if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合
-                                {
+                            {
                                 coord.Add(index, m);
                                 dic2.Add(i, vIndices);
                             }
                             else if (n <= m)
                             {
                                 if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
-                                    {
+                                {
                                     coord[cArray[i].AtomIndex] = m;
                                     dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
                                 }
@@ -587,13 +587,13 @@ public partial class FormStructureViewer : Form
                 }
             });
 
-                //頂点のRenderedをTrueに変更
-                var dic2P = dic2.AsParallel();
+            //頂点のRenderedをTrueに変更
+            var dic2P = dic2.AsParallel();
             dic2P.SelectMany(d => d.Value.Select(v2 => vArray[v2].ObjIndex)).Distinct().ForAll(index => GLObjects[index].Rendered = true);
             dic2P.Select(d => cArray[d.Key].ObjIndex).Distinct().ForAll(index => GLObjects[index].Rendered = true);
 
-                //bondsとpolyhedraを追加
-                dic2P.ForAll(d =>
+            //bondsとpolyhedraを追加
+            dic2P.ForAll(d =>
             {
                 var c = cArray[d.Key];
                 var vIndices = d.Value;
@@ -620,7 +620,7 @@ public partial class FormStructureViewer : Form
                         else
                             GLObjects.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
                             { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
-                    }
+                }
 
             });
         });

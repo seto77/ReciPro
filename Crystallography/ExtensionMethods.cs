@@ -204,7 +204,7 @@ public static class MathnetEx
             if (j <= p)
             {
                 var coeff = MC.Factorial[2 * p - j] * MC.Factorial[p] / MC.Factorial[2 * p] / MC.Factorial[j] / MC.Factorial[p - j];
-                var temp = coeff * m_pow_j;
+                var temp = m_pow_j.Multiply(coeff);
                 N = N.Add(temp);
                 D = j % 2 == 0 ? D.Add(temp) : D.Subtract(temp);
             }

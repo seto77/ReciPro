@@ -254,8 +254,10 @@
             this.comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxScale2.FormattingEnabled = true;
             this.comboBoxScale2.Items.AddRange(new object[] {
-            "Gray scale",
-            "Cold-Warm scale"});
+            "Gray",
+            "Cold-Warm",
+            "Spectrum",
+            "Fire"});
             this.comboBoxScale2.Location = new System.Drawing.Point(522, 108);
             this.comboBoxScale2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxScale2.Name = "comboBoxScale2";
@@ -328,12 +330,13 @@
             this.numericBoxFootY.HeaderText = "fy";
             this.numericBoxFootY.Location = new System.Drawing.Point(491, 78);
             this.numericBoxFootY.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootY.Name = "numericBoxFootY";
             this.numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootY.RadianValue = 8.9360857702109673D;
-            this.numericBoxFootY.Size = new System.Drawing.Size(123, 25);
+            this.numericBoxFootY.RoundErrorAccuracy = -1;
+            this.numericBoxFootY.Size = new System.Drawing.Size(123, 27);
             this.numericBoxFootY.SkipEventDuringInput = false;
             this.numericBoxFootY.SmartIncrement = true;
             this.numericBoxFootY.TabIndex = 0;
@@ -351,12 +354,13 @@
             this.numericBoxPixelWidth.HeaderText = "Detector    width";
             this.numericBoxPixelWidth.Location = new System.Drawing.Point(7, 51);
             this.numericBoxPixelWidth.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPixelWidth.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxPixelWidth.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxPixelWidth.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelWidth.Name = "numericBoxPixelWidth";
             this.numericBoxPixelWidth.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelWidth.RadianValue = 17.872171540421935D;
-            this.numericBoxPixelWidth.Size = new System.Drawing.Size(174, 25);
+            this.numericBoxPixelWidth.RoundErrorAccuracy = -1;
+            this.numericBoxPixelWidth.Size = new System.Drawing.Size(174, 27);
             this.numericBoxPixelWidth.SkipEventDuringInput = false;
             this.numericBoxPixelWidth.SmartIncrement = true;
             this.numericBoxPixelWidth.TabIndex = 0;
@@ -374,12 +378,13 @@
             this.numericBoxFootX.HeaderText = "fx";
             this.numericBoxFootX.Location = new System.Drawing.Point(491, 51);
             this.numericBoxFootX.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxFootX.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxFootX.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxFootX.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootX.Name = "numericBoxFootX";
             this.numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootX.RadianValue = 8.9360857702109673D;
-            this.numericBoxFootX.Size = new System.Drawing.Size(123, 25);
+            this.numericBoxFootX.RoundErrorAccuracy = -1;
+            this.numericBoxFootX.Size = new System.Drawing.Size(123, 27);
             this.numericBoxFootX.SkipEventDuringInput = false;
             this.numericBoxFootX.SmartIncrement = true;
             this.numericBoxFootX.TabIndex = 0;
@@ -397,12 +402,13 @@
             this.numericBoxPixelHeight.HeaderText = "height";
             this.numericBoxPixelHeight.Location = new System.Drawing.Point(68, 78);
             this.numericBoxPixelHeight.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPixelHeight.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxPixelHeight.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxPixelHeight.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelHeight.Name = "numericBoxPixelHeight";
             this.numericBoxPixelHeight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelHeight.RadianValue = 17.872171540421935D;
-            this.numericBoxPixelHeight.Size = new System.Drawing.Size(113, 25);
+            this.numericBoxPixelHeight.RoundErrorAccuracy = -1;
+            this.numericBoxPixelHeight.Size = new System.Drawing.Size(113, 27);
             this.numericBoxPixelHeight.SkipEventDuringInput = false;
             this.numericBoxPixelHeight.SmartIncrement = true;
             this.numericBoxPixelHeight.TabIndex = 0;
@@ -420,12 +426,13 @@
             this.numericBoxPixelSize.HeaderText = "pix. size";
             this.numericBoxPixelSize.Location = new System.Drawing.Point(194, 51);
             this.numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxPixelSize.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelSize.Name = "numericBoxPixelSize";
             this.numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelSize.RadianValue = 0.0017453292519943296D;
-            this.numericBoxPixelSize.Size = new System.Drawing.Size(143, 25);
+            this.numericBoxPixelSize.RoundErrorAccuracy = -1;
+            this.numericBoxPixelSize.Size = new System.Drawing.Size(143, 27);
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TabIndex = 0;
@@ -456,13 +463,14 @@
             this.numericBoxCameraLength2.Location = new System.Drawing.Point(0, 0);
             this.numericBoxCameraLength2.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxCameraLength2.Maximum = 1000000D;
-            this.numericBoxCameraLength2.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxCameraLength2.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxCameraLength2.Minimum = 1D;
             this.numericBoxCameraLength2.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             this.numericBoxCameraLength2.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCameraLength2.RadianValue = 17.453292519943293D;
-            this.numericBoxCameraLength2.Size = new System.Drawing.Size(220, 25);
+            this.numericBoxCameraLength2.RoundErrorAccuracy = -1;
+            this.numericBoxCameraLength2.Size = new System.Drawing.Size(220, 27);
             this.numericBoxCameraLength2.SkipEventDuringInput = false;
             this.numericBoxCameraLength2.SmartIncrement = true;
             this.numericBoxCameraLength2.TabIndex = 2;
@@ -482,11 +490,12 @@
             this.numericBoxTau.HeaderText = "τ";
             this.numericBoxTau.Location = new System.Drawing.Point(339, 0);
             this.numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxTau.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxTau.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxTau.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxTau.Name = "numericBoxTau";
             this.numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxTau.Size = new System.Drawing.Size(87, 25);
+            this.numericBoxTau.RoundErrorAccuracy = -1;
+            this.numericBoxTau.Size = new System.Drawing.Size(87, 27);
             this.numericBoxTau.SkipEventDuringInput = false;
             this.numericBoxTau.SmartIncrement = true;
             this.numericBoxTau.TabIndex = 2;
@@ -512,7 +521,7 @@
             this.panel2.Controls.Add(this.checkBoxDetectorSizePosition);
             this.panel2.Controls.Add(this.groupBoxDetectorAndOverlappedImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 655);
+            this.panel2.Location = new System.Drawing.Point(0, 657);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1007, 188);
@@ -530,7 +539,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1007, 25);
+            this.panel1.Size = new System.Drawing.Size(1007, 27);
             this.panel1.TabIndex = 58;
             // 
             // numericBoxPhi
@@ -544,11 +553,12 @@
             this.numericBoxPhi.HeaderText = "φ";
             this.numericBoxPhi.Location = new System.Drawing.Point(236, 0);
             this.numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxPhi.MaximumSize = new System.Drawing.Size(1000, 25);
+            this.numericBoxPhi.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPhi.Name = "numericBoxPhi";
             this.numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxPhi.Size = new System.Drawing.Size(87, 25);
+            this.numericBoxPhi.RoundErrorAccuracy = -1;
+            this.numericBoxPhi.Size = new System.Drawing.Size(87, 27);
             this.numericBoxPhi.SkipEventDuringInput = false;
             this.numericBoxPhi.SmartIncrement = true;
             this.numericBoxPhi.TabIndex = 2;
@@ -560,7 +570,7 @@
             // 
             this.panelSchematicDiagram.Controls.Add(this.pictureBoxSchematicDiagram);
             this.panelSchematicDiagram.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSchematicDiagram.Location = new System.Drawing.Point(0, 25);
+            this.panelSchematicDiagram.Location = new System.Drawing.Point(0, 27);
             this.panelSchematicDiagram.Margin = new System.Windows.Forms.Padding(0);
             this.panelSchematicDiagram.Name = "panelSchematicDiagram";
             this.panelSchematicDiagram.Size = new System.Drawing.Size(1007, 630);

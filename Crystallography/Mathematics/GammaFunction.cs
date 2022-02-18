@@ -322,7 +322,7 @@ namespace Crystallography
             a[0] = 1.0; a[1] = 1.0; a[2] = 2.0; a[3] = 6.0; a[4] = 24.0;
             int j;
             if (n < 0)
-                throw new ArgumentException("Factorial expects a positive argument", "n");
+                throw new ArgumentException("Factorial expects a positive argument", nameof(n));
             if (n > 32)
                 return Math.Exp(GammaLn(n + 1.0));
             while (ntop < n)
@@ -356,7 +356,7 @@ namespace Crystallography
             // TODO: check
             double[] a = new double[101];
             if (n < 0)
-                throw new ArgumentException("Factorial expects a positive argument", "n");
+                throw new ArgumentException("Factorial expects a positive argument", nameof(n));
             if (n <= 1)
                 return 0.0d;
             if (n <= 100)

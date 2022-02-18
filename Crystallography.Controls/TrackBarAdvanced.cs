@@ -129,7 +129,7 @@ namespace Crystallography.Controls
         //private double maximum = 65535;
         public double Maximum
         {
-            get { return numericBox.Maximum; }
+            get => numericBox.Maximum;
             set
             {
                 if (value < Minimum)
@@ -141,7 +141,7 @@ namespace Crystallography.Controls
         //private double minimum = 0;
         public double Minimum
         {
-            get { return numericBox.Minimum; }
+            get => numericBox.Minimum;
             set
             {
                 if (value > Maximum)

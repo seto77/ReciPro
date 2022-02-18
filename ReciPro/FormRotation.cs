@@ -533,7 +533,7 @@ public partial class FormRotationMatrix : Form
         var name = (sender as RadioButton).Name;
         if (name.Contains("1st"))
         {
-            if (name.Contains("X"))
+            if (name.Contains('X'))
             {
                 radioButton2ndX.Enabled = false;
                 radioButton2ndY.Enabled = true;
@@ -541,7 +541,7 @@ public partial class FormRotationMatrix : Form
                 if (radioButton2ndX.Checked)
                     radioButton2ndY.Checked = true;
             }
-            else if (name.Contains("Y"))
+            else if (name.Contains('Y'))
             {
                 radioButton2ndX.Enabled = true;
                 radioButton2ndY.Enabled = false;

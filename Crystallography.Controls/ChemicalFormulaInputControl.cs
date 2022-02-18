@@ -108,7 +108,7 @@ namespace Crystallography.Controls
             {
                 string[] s = comboBoxCompound.Text.Split(new char[] { ' ' });
                 accesoryFormula = s[0];
-                accesoryValence = Convert.ToDouble(s[1].Substring(s[1].Length - 1, 1) + s[1][0..^1]);
+                accesoryValence = Convert.ToDouble(string.Concat(s[1].AsSpan(s[1].Length - 1, 1), s[1][0..^1]));
             }
             //ElementProperty ep = new ElementProperty(
             //    z, numericBoxValence.Value, checkBoxCompound.Checked, textBoxCompoundForm.Text,

@@ -55,8 +55,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
 
                 trackBarAdvancedFront.Minimum = profile.Pt[0].X;
                 trackBarAdvancedBack.Minimum = profile.Pt[0].X;
-                trackBarAdvancedFront.Maximum = profile.Pt[profile.Pt.Count - 1].X;
-                trackBarAdvancedBack.Maximum = profile.Pt[profile.Pt.Count - 1].X;
+                trackBarAdvancedFront.Maximum = profile.Pt[^1].X;
+                trackBarAdvancedBack.Maximum = profile.Pt[^1].X;
             }
             catch
             {

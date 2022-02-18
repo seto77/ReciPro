@@ -3,3 +3,5 @@
 // 詳細については次を参照してください https://go.microsoft.com/fwlink/?linkid=865984
 #define HRTEM_API __declspec(dllexport)
 #define HRTEM_API __declspec(dllimport)
+#define EIGEN_FUNCS_API __declspec(dllexport)
+#define EIGEN_FUNCS_API __declspec(dllimport)

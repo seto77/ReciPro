@@ -273,9 +273,9 @@ namespace Crystallography.Controls
 
                     if (RestrictLimitValue)
                     {
-                        if (Maximum <= value)
+                        if (Maximum < value)
                             value = Maximum;
-                        if (Minimum >= value)
+                        if (Minimum > value)
                             value = Minimum;
                     }
                     this.numericalValue = value;
@@ -545,7 +545,7 @@ namespace Crystallography.Controls
                         if ((i == 1 || denom % i != 0) && Math.Abs(numericalValue - j - i / (double)denom) < threshold)
                             text = $"{i + (denom * j)}/{denom}";
             }
-            if(numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains("/"))//三角関数で表示 (既に分数表示されているときは除く)
+            if(numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains('/'))//三角関数で表示 (既に分数表示されているときは除く)
             {
                 //sin関数は -89 <= x <= 89の範囲で1刻み (度単位)
                 foreach (var a in Enumerable.Range(-89, 179))

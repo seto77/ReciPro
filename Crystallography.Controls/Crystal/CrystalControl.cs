@@ -648,7 +648,7 @@ namespace Crystallography.Controls
             if (!this.DesignMode && !registResizeEvent)
             {
                 var parent = this.Parent;
-                while (!(parent is Form) && parent!=null)
+                while (parent is not Form && parent!=null)
                     parent = parent.Parent;
                 if (parent == null) 
                     return;

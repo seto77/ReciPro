@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.01.04.1400</AssemblyVersion>
-    <FileVersion>2022.01.04.1400</FileVersion>
+    <AssemblyVersion>2022.02.18.1740</AssemblyVersion>
+    <FileVersion>2022.02.18.1740</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,7 +17,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IronPython" Version="2.7.11" />
+    <None Remove="doc\CrystalInformationManual.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="doc\CrystalInformationManual.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IronPython" Version="2.7.12" />
   </ItemGroup>
 
   <ItemGroup>

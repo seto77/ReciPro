@@ -31,6 +31,7 @@ public static class ImageIO
             "bmp",
             "jpg",
             "tif",
+            "tiff",
             "png",
             "smv",
             "mrc",
@@ -205,7 +206,7 @@ public static class ImageIO
             result = IPA(str);
         else if (str.ToLower().EndsWith("bmp") || str.ToLower().EndsWith("jpg") || str.ToLower().EndsWith("png"))
             result = GeneralImage(str);//General Image
-        else if (str.ToLower().ToLower().EndsWith("tif"))//Tiffイメージ
+        else if (str.ToLower().ToLower().EndsWith("tif") || str.ToLower().ToLower().EndsWith("tiff"))//Tiffイメージ
             result = Tiff(str, flag);
         else if (str.ToLower().EndsWith("h5"))
             result = HDF5(str, flag);

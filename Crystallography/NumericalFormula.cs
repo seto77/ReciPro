@@ -13,7 +13,7 @@ public class NumericalFormula
             //スペースを削除する
             //定数を計算する
             for (int i = 0; i < str.Length; i++)
-                if (str[i].Contains("=")) // '=' の文字列がみつかったら
+                if (str[i].Contains('=')) // '=' の文字列がみつかったら
                 {
                     string leftString = str[i].Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)[0].Replace(" ", ""); ;
                     string rightString = str[i].Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)[1].Replace(" ", ""); ;

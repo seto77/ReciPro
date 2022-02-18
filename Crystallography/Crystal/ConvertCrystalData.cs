@@ -670,7 +670,7 @@ public class ConvertCrystalData
             {
                 var sg_list = new List<string>(new[] { sg[i] });
 
-                if (sg[i].Contains("e"))
+                if (sg[i].Contains('e'))
                 {
                     sg_list.Add(sg[i].Replace('e', 'a'));
                     sg_list.Add(sg[i].Replace('e', 'b'));
@@ -1519,7 +1519,7 @@ public class ConvertCrystalData
             {
                 var sg_list = new List<string>(new[] { sg[i] });
 
-                if (sg[i].Contains("e"))
+                if (sg[i].Contains('e'))
                 {
                     sg_list.Add(sg[i].Replace('e', 'a'));
                     sg_list.Add(sg[i].Replace('e', 'b'));

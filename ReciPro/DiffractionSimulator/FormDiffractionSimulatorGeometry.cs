@@ -238,6 +238,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
             {
                 ShowDetectorArea = true;
                 this.Visible = true;
+                trackBarMaxInt_ValueChanged(sender, e);
             }
         }
     }
@@ -339,7 +340,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
                     }
                 }
             }
-            else if (filename.ToLower().EndsWith("bmp") || filename.ToLower().EndsWith("jpg") || filename.ToLower().EndsWith("tif"))
+            else if (filename.ToLower().EndsWith("bmp") || filename.ToLower().EndsWith("jpg") || filename.ToLower().EndsWith("tif") || filename.ToLower().EndsWith("tiff"))
             {
                 ImageIO.ReadImage(filename);
 

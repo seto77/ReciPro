@@ -39,7 +39,6 @@ namespace Crystallography
         /// 放射 (=自己発光). 0から1まで. 法線と始点が一致する場合に強くなる
         /// </summary>
         public float Emission { get => emission / 255f; set => emission = toByte(value); }
-
         private byte emission;
 
         /// <summary>

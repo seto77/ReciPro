@@ -1150,7 +1150,7 @@ public partial class FormMain : Form
         var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
         var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
-        f.ShowDialog();
+        f.Show();
     }
     private void hintToolStripMenuItem_Click(object sender, EventArgs e)
     {

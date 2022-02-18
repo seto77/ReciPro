@@ -208,36 +208,36 @@ public class BetheMethod
             var rotZ = beamRotation * zNorm;
             var coeff = 1.0 / rotZ.Z; // = 1/cosTau
 
-                var vecK0 = getVecK0(kvac, u0, beamRotation);
+            var vecK0 = getVecK0(kvac, u0, beamRotation);
 
             var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
-                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット //コスト高い
+            var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット //コスト高い
 
-                Complex[][] result;
+            Complex[][] result;
 
-                //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
+            //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
 
-                //Eigen＿Eigenの場合
-                if (solver == Solver.Eigen_Eigen && EigenEnabled)
+            //Eigen＿Eigenの場合
+            if (solver == Solver.Eigen_Eigen && EigenEnabled)
                 result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                //Eigen_MKL あるいは Eigen_Managedの場合    
-                else if (solver == Solver.Eigen_MKL)
+            //Eigen_MKL あるいは Eigen_Managedの場合    
+            else if (solver == Solver.Eigen_MKL)
             {
                 var evd = new DMat(len, len, potentialMatrix).Evd(Symmetricity.Asymmetric);
                 var alpha = evd.EigenVectors.LU().Solve(psi0);
                 result = Thicknesses.Select(t =>
                 {
-                        //ガンマの対称行列×アルファを作成
-                        var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
-                        //深さtにおけるψを求める
-                        return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
+                    //ガンマの対称行列×アルファを作成
+                    var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                    //深さtにおけるψを求める
+                    return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
                 }).ToArray();
             }
-                //MtxExp_Eigenの場合
-                else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
+            //MtxExp_Eigenの場合
+            else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
                 result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                //MtxExp_MKLの場合 
-                else
+            //MtxExp_MKLの場合 
+            else
             {
                 result = new Complex[Thicknesses.Length][];
                 var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(len, len, potentialMatrix)).Exponential();
@@ -256,7 +256,7 @@ public class BetheMethod
                 }
             }
             bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
-                return result;
+            return result;
         }).ToArray();
 
         //無効なRotationも再び組み込んでdisk[RotationIndex][Z_index][G_index]を構築
@@ -294,8 +294,8 @@ public class BetheMethod
                 for (int r = 0; r < pos.Length; r++)
                 {
                     var vec = BeamRotations[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                        pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
-                    }
+                    pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                }
                 diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
             }
         });
@@ -329,7 +329,7 @@ public class BetheMethod
                     Disks[t][g1].Amplitudes = intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray();
             }
             bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
-            });
+        });
 
         if (bwCBED.CancellationPending)
             e.Cancel = true;

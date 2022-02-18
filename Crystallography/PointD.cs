@@ -63,15 +63,17 @@ namespace Crystallography
             Height = Math.Abs(pt2.Y - pt1.Y);
         }
 
-        public readonly RectangleF ToRectangleF()
-        {
-            return new RectangleF((float)X, (float)Y, (float)Width, (float)Height);
-        }
+        public readonly RectangleF ToRectangleF() => new RectangleF((float)X, (float)Y, (float)Width, (float)Height);
 
-        public readonly SizeD ToSizeD()
-        {
-            return new SizeD(Width, Height);
-        }
+        public readonly SizeD ToSizeD() => new SizeD(Width, Height);
+        public readonly SizeF ToSizeF() => new SizeF((float)Width, (float)Height);
+
+        /// <summary>
+        /// 四捨五入して整数サイズに変換
+        /// </summary>
+        /// <returns></returns>
+        public readonly Size ToSize() => new Size((int)(Width+0.5), (int)(Height+0.5));
+
     }
 
     [StructLayout(LayoutKind.Sequential)]

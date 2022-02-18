@@ -144,7 +144,7 @@ public partial class FormDiffractionSimulatorCBED : Form
 
 
         BetheMethod.Solver solver;
-        if (comboBoxSolver.Text.Contains("Eigenvalue"))
+        if (comboBoxSolver.Text.Contains("Eigenproblem"))
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.Eigen_MKL : BetheMethod.Solver.Eigen_Eigen;
         else
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
