@@ -1,12 +1,14 @@
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and high-resolution TEM image, indexes diffraction spots, plots stereographic projection, and so on.
-* The following movie shows RecoPro running in real time.
+* The functions and algorithms of this software are also presented in the following paper. If you use this software to write an academic paper, we would appreciate it if you would cite this paper. 
+  * [Seto, Y. & Ohtsuka, M. (2022). *J. Appl. Cryst.* **55**, doi: 10.1107/S1600576722000139.](https://doi.org/10.1107/S1600576722000139)
+* The following movie shows ReciPro running in ***real time***.
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
-  * ReciPro runs on Windows OS with .Net 6.0 Desktop Runtime, which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-6.0.0-windows-x64-installer).
+  * ReciPro runs on Windows OS with .Net 6.0 Desktop Runtime, which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer).
 ## Manual
   * Japanese version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
   * English version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
