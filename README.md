@@ -22,7 +22,7 @@
 
 * Provides crystal database.
   * Over 20,000 crystal structures are available after installation.
-    * The database is provided by American Mineralogist Crystal Database (AMCSD, [Downs & Hall-Wallace, 2003, American Mineralogist 88, 171-194](https://www.geo.arizona.edu/xtal/group/pdf/am88_247.pdf))
+    * The database is provided by American Mineralogist Crystal Database (AMCSD, [Downs & Hall-Wallace, 2003, American Mineralogist 88, 247-250](https://www.geo.arizona.edu/xtal/group/pdf/am88_247.pdf))
 
 * Includes atomic properties.
   * Characteristic X-ray wavelength/energy.
