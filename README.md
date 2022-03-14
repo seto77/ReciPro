@@ -1,6 +1,6 @@
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and high-resolution TEM image, indexes diffraction spots, plots stereographic projection, and so on.
-* *ReciPro* is developed by Seto Y. (Osaka Meteropolitan University, Japan) and Ohtsuka M. (Nagoya University, Japan). The functions and algorithms are also presented in the following paper. If you use this software to write an academic paper, we would appreciate it if you would cite this paper. 
+* *ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Meteropolitan University, Japan) and Ohtsuka M. (Nagoya University, Japan). The functions and algorithms are also presented in the following paper. If you use this software to write an academic paper, we would appreciate it if you would cite this paper. 
   * [Seto, Y. & Ohtsuka, M. (2022). *J. Appl. Cryst.* **55**, doi: 10.1107/S1600576722000139.](https://doi.org/10.1107/S1600576722000139)
 * The following movie shows ReciPro running in ***real time***.
 
