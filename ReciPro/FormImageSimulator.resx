@@ -3451,6 +3451,45 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label35.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 105</value>
+  </data>
+  <data name="label35.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="label35.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Normarization</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="numericBoxIntensityMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3458,16 +3497,16 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxIntensityMax.HeaderText" xml:space="preserve">
-    <value>Max. intensity</value>
+    <value>Max</value>
   </data>
   <data name="numericBoxIntensityMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 106</value>
+    <value>19, 0</value>
   </data>
   <data name="numericBoxIntensityMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>19, 0, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxIntensityMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3476,7 +3515,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 27</value>
+    <value>105, 25</value>
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3488,10 +3527,145 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 122</value>
+  </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 25</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxIntensityMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIntensityMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1</value>
+  </data>
+  <data name="checkBoxIntensityMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 1, 0, 3</value>
+  </data>
+  <data name="checkBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 21</value>
+  </data>
+  <data name="checkBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxIntensityMin.Text" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntensityMin.Name" xml:space="preserve">
+    <value>checkBoxIntensityMin</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntensityMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntensityMin.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntensityMin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxIntensityMin.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxIntensityMin.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 0</value>
+  </data>
+  <data name="numericBoxIntensityMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxIntensityMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxIntensityMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxIntensityMin.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 25</value>
+  </data>
+  <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMin.Name" xml:space="preserve">
+    <value>numericBoxIntensityMin</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMin.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMin.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 147</value>
+  </data>
+  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 25</value>
+  </data>
+  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="flowLayoutPanel6.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="flowLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

@@ -341,6 +341,7 @@ public partial class FormImageSimulator : Form
 
         setPseudoBitamap(result);
         toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
+        TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
 
     public void SimulateHRTEM(bool realtimeMode = false)
@@ -382,13 +383,6 @@ public partial class FormImageSimulator : Form
         var temp = sw.ElapsedMilliseconds;
         toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw.ElapsedMilliseconds} msec,   ";
 
-        SkipEvent = true;
-        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
-
-        trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
-        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = numericBoxIntensityMax.Value / 100.0;
-        SkipEvent = false;
-
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
@@ -396,7 +390,7 @@ public partial class FormImageSimulator : Form
             for (var d = 0; d < dLen; d++)
             {
                 //ノーマライズ
-                totalImage[t][d] = Normalize(totalImage[t][d], true, true);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+                totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
                                                                            //PseudoBitmapを生成
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                     = new PseudoBitmap(totalImage[t][d], width)
@@ -421,22 +415,28 @@ public partial class FormImageSimulator : Form
             pseudo = newPseudo;
         }
 
+        SkipEvent = true;
+        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
+        trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
+        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
+        SkipEvent = false;
+
         //ScalableBoxに転送
         setPseudoBitamap(pseudo);
         toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
+        TrackBarAdvancedMin_ValueChanged(new object(), 0);
+
     }
 
-    public double[] Normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)
+    public double[] Normalize(double[] image, bool normalizeLow = true)
     {
-        double coeff = numericBoxIntensityMax.Value/ image.Max();
-        //if (normalizeHigh && normalizeLow)
-        image = image.Select(d => d * coeff).ToArray();
-        //else if (normalizeLow)
-        //    image = image.Select(d => (d - min) * 1000).ToArray();
-        //else if (normalizeHigh)
-        //    image = image.Select(d => d * 65535.0 / max).ToArray();
-        //else
-        //    image = image.Select(d => d * 1000).ToArray();
+        double min = image.Min(), max = image.Max();
+        double destMin = numericBoxIntensityMin.Value, destMax = numericBoxIntensityMax.Value;
+
+        if (normalizeLow)
+            image = image.Select(d => (d - min) / (max - min) * (destMax - destMin) + destMin).ToArray();
+         else 
+            image = image.Select(d => d * destMax / max).ToArray();
 
         return image;
     }
@@ -1044,6 +1044,8 @@ public partial class FormImageSimulator : Form
     {
 
     }
+
+    private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) =>  numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {

@@ -128,6 +128,11 @@ namespace ReciPro
             this.numericBoxHeight = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numericBoxResolution = new Crystallography.Controls.NumericBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBoxIntensityMin = new System.Windows.Forms.CheckBox();
+            this.numericBoxIntensityMin = new Crystallography.Controls.NumericBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxIntensityMax = new Crystallography.Controls.NumericBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -240,6 +245,8 @@ namespace ReciPro
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -1245,7 +1252,9 @@ namespace ReciPro
             this.flowLayoutPanel9.Controls.Add(this.numericBoxHeight);
             this.flowLayoutPanel9.Controls.Add(this.label2);
             this.flowLayoutPanel9.Controls.Add(this.numericBoxResolution);
-            this.flowLayoutPanel9.Controls.Add(this.numericBoxIntensityMax);
+            this.flowLayoutPanel9.Controls.Add(this.label35);
+            this.flowLayoutPanel9.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel9.Controls.Add(this.flowLayoutPanel6);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
             // numericBoxWidth
@@ -1310,6 +1319,48 @@ namespace ReciPro
             this.numericBoxResolution.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             this.numericBoxResolution.Value = 4D;
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.ForeColor = System.Drawing.Color.Black;
+            this.label35.Name = "label35";
+            // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
+            this.flowLayoutPanel6.Controls.Add(this.checkBoxIntensityMin);
+            this.flowLayoutPanel6.Controls.Add(this.numericBoxIntensityMin);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // checkBoxIntensityMin
+            // 
+            resources.ApplyResources(this.checkBoxIntensityMin, "checkBoxIntensityMin");
+            this.checkBoxIntensityMin.Name = "checkBoxIntensityMin";
+            this.checkBoxIntensityMin.UseVisualStyleBackColor = true;
+            this.checkBoxIntensityMin.CheckedChanged += new System.EventHandler(this.checkBoxIntensityMin_CheckedChanged);
+            // 
+            // numericBoxIntensityMin
+            // 
+            resources.ApplyResources(this.numericBoxIntensityMin, "numericBoxIntensityMin");
+            this.numericBoxIntensityMin.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMin.DecimalPlaces = 0;
+            this.numericBoxIntensityMin.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMin.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMin.Maximum = 65535D;
+            this.numericBoxIntensityMin.Minimum = 0D;
+            this.numericBoxIntensityMin.Name = "numericBoxIntensityMin";
+            this.numericBoxIntensityMin.RoundErrorAccuracy = -1;
+            this.numericBoxIntensityMin.ShowUpDown = true;
+            this.numericBoxIntensityMin.SmartIncrement = true;
+            this.numericBoxIntensityMin.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxIntensityMin.ThonsandsSeparator = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Controls.Add(this.numericBoxIntensityMax);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // numericBoxIntensityMax
             // 
@@ -2038,6 +2089,9 @@ namespace ReciPro
             this.groupBox8.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
@@ -2255,5 +2309,10 @@ namespace ReciPro
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label2;
         private NumericBox numericBoxIntensityMax;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.CheckBox checkBoxIntensityMin;
+        private NumericBox numericBoxIntensityMin;
     }
 }

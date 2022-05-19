@@ -858,7 +858,7 @@ public class BetheMethod
         }
         else//Managed
         {
-            Parallel.For(0, width * height, n =>s
+            Parallel.For(0, width * height, n =>
             {
                 PointD r = new(-(n % width - cX) * res + shift.X, -(height - n / width - 1 - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);
                 var sums = new Complex[defLen];
