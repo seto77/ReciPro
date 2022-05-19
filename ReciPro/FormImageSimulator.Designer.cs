@@ -72,7 +72,17 @@ namespace ReciPro
             this.radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             this.groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxThickness = new Crystallography.Controls.NumericBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxOpticalProperty = new System.Windows.Forms.GroupBox();
+            this.groupBoxLenzFunction = new System.Windows.Forms.GroupBox();
+            this.graphControl = new Crystallography.Controls.GraphControl();
+            this.panelGraphOption = new System.Windows.Forms.Panel();
+            this.buttonCopyGraph = new System.Windows.Forms.Button();
+            this.numericBoxMaxU1 = new Crystallography.Controls.NumericBox();
+            this.checkBoxGraphAll = new System.Windows.Forms.CheckBox();
+            this.checkBoxGraphEc = new System.Windows.Forms.CheckBox();
+            this.checkBoxGraphPCTF = new System.Windows.Forms.CheckBox();
+            this.checkBoxGraphEs = new System.Windows.Forms.CheckBox();
+            this.buttonPanel = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.numericBoxAccVol = new Crystallography.Controls.NumericBox();
             this.numericBoxDefocus = new Crystallography.Controls.NumericBox();
@@ -93,17 +103,6 @@ namespace ReciPro
             this.panelDummy1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBoxLenzFunction = new System.Windows.Forms.GroupBox();
-            this.graphControl = new Crystallography.Controls.GraphControl();
-            this.panelGraphOption = new System.Windows.Forms.Panel();
-            this.buttonCopyGraph = new System.Windows.Forms.Button();
-            this.numericBoxMaxU1 = new Crystallography.Controls.NumericBox();
-            this.checkBoxGraphAll = new System.Windows.Forms.CheckBox();
-            this.checkBoxGraphEc = new System.Windows.Forms.CheckBox();
-            this.checkBoxGraphPCTF = new System.Windows.Forms.CheckBox();
-            this.checkBoxGraphEs = new System.Windows.Forms.CheckBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.buttonPanel = new System.Windows.Forms.Button();
             this.groupBoxObjectAperture = new System.Windows.Forms.GroupBox();
             this.numericBoxObjAperX = new Crystallography.Controls.NumericBox();
             this.numericBoxObjAperRadius = new Crystallography.Controls.NumericBox();
@@ -129,11 +128,11 @@ namespace ReciPro
             this.label2 = new System.Windows.Forms.Label();
             this.numericBoxResolution = new Crystallography.Controls.NumericBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.numericBoxIntensityMax = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxIntensityMin = new System.Windows.Forms.CheckBox();
             this.numericBoxIntensityMin = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxIntensityMax = new Crystallography.Controls.NumericBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -192,6 +191,7 @@ namespace ReciPro
             this.radioButtonPotentialShowImag = new System.Windows.Forms.RadioButton();
             this.checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             this.checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -217,6 +217,8 @@ namespace ReciPro
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numericBox2 = new Crystallography.Controls.NumericBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -229,24 +231,25 @@ namespace ReciPro
             this.flowLayoutPanelGaussianBlur2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBoxSampleProperty.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxOpticalProperty.SuspendLayout();
+            this.groupBoxLenzFunction.SuspendLayout();
+            this.panelGraphOption.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBoxInherentProperty.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBoxLenzFunction.SuspendLayout();
-            this.panelGraphOption.SuspendLayout();
             this.groupBoxObjectAperture.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -265,6 +268,7 @@ namespace ReciPro
             this.flowLayoutPanelRealAndImaiginary.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -288,7 +292,7 @@ namespace ReciPro
             this.splitContainer1.Panel2.Controls.Add(this.checkBoxRealTimeCalculation);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxSampleProperty);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBoxOpticalProperty);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
@@ -670,15 +674,153 @@ namespace ReciPro
             this.numericBoxThickness.Value = 20D;
             this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThickness_ValueChanged);
             // 
-            // groupBox2
+            // groupBoxOpticalProperty
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.groupBoxInherentProperty);
-            this.groupBox2.Controls.Add(this.panelDummy1);
-            this.groupBox2.Controls.Add(this.tabControl1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.groupBoxOpticalProperty, "groupBoxOpticalProperty");
+            this.groupBoxOpticalProperty.Controls.Add(this.groupBoxLenzFunction);
+            this.groupBoxOpticalProperty.Controls.Add(this.groupBox4);
+            this.groupBoxOpticalProperty.Controls.Add(this.groupBoxInherentProperty);
+            this.groupBoxOpticalProperty.Controls.Add(this.panelDummy1);
+            this.groupBoxOpticalProperty.Controls.Add(this.tabControl1);
+            this.groupBoxOpticalProperty.Name = "groupBoxOpticalProperty";
+            this.groupBoxOpticalProperty.TabStop = false;
+            // 
+            // groupBoxLenzFunction
+            // 
+            this.groupBoxLenzFunction.Controls.Add(this.graphControl);
+            this.groupBoxLenzFunction.Controls.Add(this.panelGraphOption);
+            this.groupBoxLenzFunction.Controls.Add(this.buttonPanel);
+            resources.ApplyResources(this.groupBoxLenzFunction, "groupBoxLenzFunction");
+            this.groupBoxLenzFunction.Name = "groupBoxLenzFunction";
+            this.groupBoxLenzFunction.TabStop = false;
+            // 
+            // graphControl
+            // 
+            this.graphControl.AllowMouseOperation = true;
+            this.graphControl.BackgroundColor = System.Drawing.Color.White;
+            this.graphControl.BottomMargin = 0D;
+            this.graphControl.DivisionLineColor = System.Drawing.Color.Gray;
+            this.graphControl.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.graphControl, "graphControl");
+            this.graphControl.FixRangeHorizontal = false;
+            this.graphControl.FixRangeVertical = false;
+            this.graphControl.GraphName = "";
+            this.graphControl.HorizontalGradiationTextVisivle = true;
+            this.graphControl.Interpolation = false;
+            this.graphControl.IsIntegerX = false;
+            this.graphControl.IsIntegerY = false;
+            this.graphControl.LabelX = "X:";
+            this.graphControl.LabelY = "Y:";
+            this.graphControl.LeftMargin = 0F;
+            this.graphControl.LineColor = System.Drawing.Color.Red;
+            this.graphControl.LineWidth = 1F;
+            this.graphControl.LowerX = 0D;
+            this.graphControl.LowerY = 0D;
+            this.graphControl.MaximalX = 1D;
+            this.graphControl.MaximalY = 1D;
+            this.graphControl.MinimalX = 0D;
+            this.graphControl.MinimalY = 0D;
+            this.graphControl.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
+            this.graphControl.MousePositionVisible = false;
+            this.graphControl.Name = "graphControl";
+            this.graphControl.OriginPosition = new System.Drawing.Point(20, 20);
+            this.graphControl.Smoothing = false;
+            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControl.UnitX = "";
+            this.graphControl.UnitY = "";
+            this.graphControl.UpperText = "";
+            this.graphControl.UpperTextVisible = false;
+            this.graphControl.UpperX = 1D;
+            this.graphControl.UpperY = 1D;
+            this.graphControl.UseLineWidth = true;
+            this.graphControl.VerticalGradiationTextVisivle = true;
+            this.graphControl.XLog = false;
+            this.graphControl.XScaleLineVisible = true;
+            this.graphControl.YLog = false;
+            this.graphControl.YScaleLineVisible = true;
+            // 
+            // panelGraphOption
+            // 
+            this.panelGraphOption.Controls.Add(this.buttonCopyGraph);
+            this.panelGraphOption.Controls.Add(this.numericBoxMaxU1);
+            this.panelGraphOption.Controls.Add(this.checkBoxGraphAll);
+            this.panelGraphOption.Controls.Add(this.checkBoxGraphEc);
+            this.panelGraphOption.Controls.Add(this.checkBoxGraphPCTF);
+            this.panelGraphOption.Controls.Add(this.checkBoxGraphEs);
+            resources.ApplyResources(this.panelGraphOption, "panelGraphOption");
+            this.panelGraphOption.Name = "panelGraphOption";
+            // 
+            // buttonCopyGraph
+            // 
+            resources.ApplyResources(this.buttonCopyGraph, "buttonCopyGraph");
+            this.buttonCopyGraph.Name = "buttonCopyGraph";
+            this.buttonCopyGraph.UseVisualStyleBackColor = true;
+            this.buttonCopyGraph.Click += new System.EventHandler(this.ButtonCopyGraph_Click);
+            // 
+            // numericBoxMaxU1
+            // 
+            resources.ApplyResources(this.numericBoxMaxU1, "numericBoxMaxU1");
+            this.numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.DecimalPlaces = 1;
+            this.numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxU1.Maximum = 20D;
+            this.numericBoxMaxU1.Minimum = 0D;
+            this.numericBoxMaxU1.Name = "numericBoxMaxU1";
+            this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
+            this.numericBoxMaxU1.RoundErrorAccuracy = -1;
+            this.numericBoxMaxU1.ShowUpDown = true;
+            this.numericBoxMaxU1.SmartIncrement = true;
+            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMaxU1.ThonsandsSeparator = true;
+            this.numericBoxMaxU1.Value = 6D;
+            this.numericBoxMaxU1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // checkBoxGraphAll
+            // 
+            resources.ApplyResources(this.checkBoxGraphAll, "checkBoxGraphAll");
+            this.checkBoxGraphAll.Checked = true;
+            this.checkBoxGraphAll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGraphAll.Name = "checkBoxGraphAll";
+            this.checkBoxGraphAll.UseVisualStyleBackColor = true;
+            this.checkBoxGraphAll.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // checkBoxGraphEc
+            // 
+            resources.ApplyResources(this.checkBoxGraphEc, "checkBoxGraphEc");
+            this.checkBoxGraphEc.Checked = true;
+            this.checkBoxGraphEc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGraphEc.Name = "checkBoxGraphEc";
+            this.toolTip.SetToolTip(this.checkBoxGraphEc, resources.GetString("checkBoxGraphEc.ToolTip"));
+            this.checkBoxGraphEc.UseVisualStyleBackColor = true;
+            this.checkBoxGraphEc.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // checkBoxGraphPCTF
+            // 
+            resources.ApplyResources(this.checkBoxGraphPCTF, "checkBoxGraphPCTF");
+            this.checkBoxGraphPCTF.Checked = true;
+            this.checkBoxGraphPCTF.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGraphPCTF.Name = "checkBoxGraphPCTF";
+            this.toolTip.SetToolTip(this.checkBoxGraphPCTF, resources.GetString("checkBoxGraphPCTF.ToolTip"));
+            this.checkBoxGraphPCTF.UseVisualStyleBackColor = true;
+            this.checkBoxGraphPCTF.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // checkBoxGraphEs
+            // 
+            resources.ApplyResources(this.checkBoxGraphEs, "checkBoxGraphEs");
+            this.checkBoxGraphEs.Checked = true;
+            this.checkBoxGraphEs.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxGraphEs.Name = "checkBoxGraphEs";
+            this.toolTip.SetToolTip(this.checkBoxGraphEs, resources.GetString("checkBoxGraphEs.ToolTip"));
+            this.checkBoxGraphEs.UseVisualStyleBackColor = true;
+            this.checkBoxGraphEs.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
+            // 
+            // buttonPanel
+            // 
+            resources.ApplyResources(this.buttonPanel, "buttonPanel");
+            this.buttonPanel.Name = "buttonPanel";
+            this.buttonPanel.UseVisualStyleBackColor = true;
+            this.buttonPanel.Click += new System.EventHandler(this.ButtonPanel_Click);
             // 
             // groupBox4
             // 
@@ -908,155 +1050,10 @@ namespace ReciPro
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBoxLenzFunction);
             this.tabPage3.Controls.Add(this.groupBoxObjectAperture);
             resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxLenzFunction
-            // 
-            this.groupBoxLenzFunction.Controls.Add(this.graphControl);
-            this.groupBoxLenzFunction.Controls.Add(this.panelGraphOption);
-            this.groupBoxLenzFunction.Controls.Add(this.buttonPanel);
-            resources.ApplyResources(this.groupBoxLenzFunction, "groupBoxLenzFunction");
-            this.groupBoxLenzFunction.Name = "groupBoxLenzFunction";
-            this.groupBoxLenzFunction.TabStop = false;
-            // 
-            // graphControl
-            // 
-            this.graphControl.AllowMouseOperation = true;
-            this.graphControl.BackgroundColor = System.Drawing.Color.White;
-            this.graphControl.BottomMargin = 0D;
-            this.graphControl.DivisionLineColor = System.Drawing.Color.Gray;
-            this.graphControl.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.graphControl, "graphControl");
-            this.graphControl.FixRangeHorizontal = false;
-            this.graphControl.FixRangeVertical = false;
-            this.graphControl.GraphName = "";
-            this.graphControl.HorizontalGradiationTextVisivle = true;
-            this.graphControl.Interpolation = false;
-            this.graphControl.IsIntegerX = false;
-            this.graphControl.IsIntegerY = false;
-            this.graphControl.LabelX = "X:";
-            this.graphControl.LabelY = "Y:";
-            this.graphControl.LeftMargin = 0F;
-            this.graphControl.LineColor = System.Drawing.Color.Red;
-            this.graphControl.LineWidth = 1F;
-            this.graphControl.LowerX = 0D;
-            this.graphControl.LowerY = 0D;
-            this.graphControl.MaximalX = 1D;
-            this.graphControl.MaximalY = 1D;
-            this.graphControl.MinimalX = 0D;
-            this.graphControl.MinimalY = 0D;
-            this.graphControl.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            this.graphControl.MousePositionVisible = false;
-            this.graphControl.Name = "graphControl";
-            this.graphControl.OriginPosition = new System.Drawing.Point(20, 20);
-            this.graphControl.Smoothing = false;
-            this.graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControl.UnitX = "";
-            this.graphControl.UnitY = "";
-            this.graphControl.UpperText = "";
-            this.graphControl.UpperTextVisible = false;
-            this.graphControl.UpperX = 1D;
-            this.graphControl.UpperY = 1D;
-            this.graphControl.UseLineWidth = true;
-            this.graphControl.VerticalGradiationTextVisivle = true;
-            this.graphControl.XLog = false;
-            this.graphControl.XScaleLineVisible = true;
-            this.graphControl.YLog = false;
-            this.graphControl.YScaleLineVisible = true;
-            // 
-            // panelGraphOption
-            // 
-            this.panelGraphOption.Controls.Add(this.buttonCopyGraph);
-            this.panelGraphOption.Controls.Add(this.numericBoxMaxU1);
-            this.panelGraphOption.Controls.Add(this.checkBoxGraphAll);
-            this.panelGraphOption.Controls.Add(this.checkBoxGraphEc);
-            this.panelGraphOption.Controls.Add(this.checkBoxGraphPCTF);
-            this.panelGraphOption.Controls.Add(this.checkBoxGraphEs);
-            this.panelGraphOption.Controls.Add(this.label32);
-            resources.ApplyResources(this.panelGraphOption, "panelGraphOption");
-            this.panelGraphOption.Name = "panelGraphOption";
-            // 
-            // buttonCopyGraph
-            // 
-            resources.ApplyResources(this.buttonCopyGraph, "buttonCopyGraph");
-            this.buttonCopyGraph.Name = "buttonCopyGraph";
-            this.buttonCopyGraph.UseVisualStyleBackColor = true;
-            this.buttonCopyGraph.Click += new System.EventHandler(this.ButtonCopyGraph_Click);
-            // 
-            // numericBoxMaxU1
-            // 
-            resources.ApplyResources(this.numericBoxMaxU1, "numericBoxMaxU1");
-            this.numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.DecimalPlaces = 1;
-            this.numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxU1.Maximum = 20D;
-            this.numericBoxMaxU1.Minimum = 0D;
-            this.numericBoxMaxU1.Name = "numericBoxMaxU1";
-            this.numericBoxMaxU1.RadianValue = 0.10471975511965977D;
-            this.numericBoxMaxU1.RoundErrorAccuracy = -1;
-            this.numericBoxMaxU1.ShowUpDown = true;
-            this.numericBoxMaxU1.SmartIncrement = true;
-            this.numericBoxMaxU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxU1.ThonsandsSeparator = true;
-            this.numericBoxMaxU1.Value = 6D;
-            this.numericBoxMaxU1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // checkBoxGraphAll
-            // 
-            resources.ApplyResources(this.checkBoxGraphAll, "checkBoxGraphAll");
-            this.checkBoxGraphAll.Checked = true;
-            this.checkBoxGraphAll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGraphAll.Name = "checkBoxGraphAll";
-            this.checkBoxGraphAll.UseVisualStyleBackColor = true;
-            this.checkBoxGraphAll.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // checkBoxGraphEc
-            // 
-            resources.ApplyResources(this.checkBoxGraphEc, "checkBoxGraphEc");
-            this.checkBoxGraphEc.Checked = true;
-            this.checkBoxGraphEc.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGraphEc.Name = "checkBoxGraphEc";
-            this.toolTip.SetToolTip(this.checkBoxGraphEc, resources.GetString("checkBoxGraphEc.ToolTip"));
-            this.checkBoxGraphEc.UseVisualStyleBackColor = true;
-            this.checkBoxGraphEc.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // checkBoxGraphPCTF
-            // 
-            resources.ApplyResources(this.checkBoxGraphPCTF, "checkBoxGraphPCTF");
-            this.checkBoxGraphPCTF.Checked = true;
-            this.checkBoxGraphPCTF.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGraphPCTF.Name = "checkBoxGraphPCTF";
-            this.toolTip.SetToolTip(this.checkBoxGraphPCTF, resources.GetString("checkBoxGraphPCTF.ToolTip"));
-            this.checkBoxGraphPCTF.UseVisualStyleBackColor = true;
-            this.checkBoxGraphPCTF.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // checkBoxGraphEs
-            // 
-            resources.ApplyResources(this.checkBoxGraphEs, "checkBoxGraphEs");
-            this.checkBoxGraphEs.Checked = true;
-            this.checkBoxGraphEs.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxGraphEs.Name = "checkBoxGraphEs";
-            this.toolTip.SetToolTip(this.checkBoxGraphEs, resources.GetString("checkBoxGraphEs.ToolTip"));
-            this.checkBoxGraphEs.UseVisualStyleBackColor = true;
-            this.checkBoxGraphEs.CheckedChanged += new System.EventHandler(this.NumericBoxTEMproperty_ValueChanged);
-            // 
-            // label32
-            // 
-            resources.ApplyResources(this.label32, "label32");
-            this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Name = "label32";
-            // 
-            // buttonPanel
-            // 
-            resources.ApplyResources(this.buttonPanel, "buttonPanel");
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.UseVisualStyleBackColor = true;
-            this.buttonPanel.Click += new System.EventHandler(this.ButtonPanel_Click);
             // 
             // groupBoxObjectAperture
             // 
@@ -1193,6 +1190,7 @@ namespace ReciPro
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1326,6 +1324,30 @@ namespace ReciPro
             this.label35.ForeColor = System.Drawing.Color.Black;
             this.label35.Name = "label35";
             // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Controls.Add(this.numericBoxIntensityMax);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // numericBoxIntensityMax
+            // 
+            resources.ApplyResources(this.numericBoxIntensityMax, "numericBoxIntensityMax");
+            this.numericBoxIntensityMax.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.DecimalPlaces = 0;
+            this.numericBoxIntensityMax.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.Maximum = 65535D;
+            this.numericBoxIntensityMax.Minimum = 1D;
+            this.numericBoxIntensityMax.Name = "numericBoxIntensityMax";
+            this.numericBoxIntensityMax.RadianValue = 0.017453292519943295D;
+            this.numericBoxIntensityMax.RoundErrorAccuracy = -1;
+            this.numericBoxIntensityMax.ShowUpDown = true;
+            this.numericBoxIntensityMax.SmartIncrement = true;
+            this.numericBoxIntensityMax.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxIntensityMax.ThonsandsSeparator = true;
+            this.numericBoxIntensityMax.Value = 1D;
+            // 
             // flowLayoutPanel6
             // 
             resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
@@ -1356,35 +1378,12 @@ namespace ReciPro
             this.numericBoxIntensityMin.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxIntensityMin.ThonsandsSeparator = true;
             // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.numericBoxIntensityMax);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
-            // numericBoxIntensityMax
-            // 
-            resources.ApplyResources(this.numericBoxIntensityMax, "numericBoxIntensityMax");
-            this.numericBoxIntensityMax.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxIntensityMax.DecimalPlaces = 0;
-            this.numericBoxIntensityMax.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxIntensityMax.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxIntensityMax.Maximum = 65535D;
-            this.numericBoxIntensityMax.Minimum = 1D;
-            this.numericBoxIntensityMax.Name = "numericBoxIntensityMax";
-            this.numericBoxIntensityMax.RadianValue = 0.017453292519943295D;
-            this.numericBoxIntensityMax.RoundErrorAccuracy = -1;
-            this.numericBoxIntensityMax.ShowUpDown = true;
-            this.numericBoxIntensityMax.SmartIncrement = true;
-            this.numericBoxIntensityMax.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxIntensityMax.ThonsandsSeparator = true;
-            this.numericBoxIntensityMax.Value = 1D;
-            // 
             // tabControl2
             // 
             resources.ApplyResources(this.tabControl2, "tabControl2");
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl2.Multiline = true;
             this.tabControl2.Name = "tabControl2";
@@ -1864,6 +1863,12 @@ namespace ReciPro
             this.checkBoxPotentialUg.Name = "checkBoxPotentialUg";
             this.checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
+            // tabPage5
+            // 
+            resources.ApplyResources(this.tabPage5, "tabPage5");
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2030,6 +2035,33 @@ namespace ReciPro
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numericBox2);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // numericBox2
+            // 
+            resources.ApplyResources(this.numericBox2, "numericBox2");
+            this.numericBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBox2.DecimalPlaces = 1;
+            this.numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBox2.Maximum = 500D;
+            this.numericBox2.Minimum = 0.5D;
+            this.numericBox2.Name = "numericBox2";
+            this.numericBox2.RadianValue = 0.20943951023931953D;
+            this.numericBox2.RoundErrorAccuracy = -1;
+            this.numericBox2.ShowUpDown = true;
+            this.numericBox2.SmartIncrement = true;
+            this.numericBox2.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBox2.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBox2, resources.GetString("numericBox2.ToolTip"));
+            this.numericBox2.UpDown_Increment = 0.5D;
+            this.numericBox2.Value = 12D;
+            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2063,7 +2095,10 @@ namespace ReciPro
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBoxSampleProperty.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.groupBoxOpticalProperty.ResumeLayout(false);
+            this.groupBoxLenzFunction.ResumeLayout(false);
+            this.panelGraphOption.ResumeLayout(false);
+            this.panelGraphOption.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
@@ -2074,24 +2109,22 @@ namespace ReciPro
             this.groupBoxInherentProperty.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.groupBoxLenzFunction.ResumeLayout(false);
-            this.panelGraphOption.ResumeLayout(false);
-            this.panelGraphOption.PerformLayout();
             this.groupBoxObjectAperture.ResumeLayout(false);
             this.groupBoxObjectAperture.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel6.ResumeLayout(false);
             this.flowLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
@@ -2124,6 +2157,7 @@ namespace ReciPro
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2147,7 +2181,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxCc;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBoxSampleProperty;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxOpticalProperty;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonSingleMode;
         private System.Windows.Forms.RadioButton radioButtonSerialMode;
@@ -2305,7 +2339,6 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxRealTimeCalculation;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label2;
         private NumericBox numericBoxIntensityMax;
@@ -2314,5 +2347,8 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.CheckBox checkBoxIntensityMin;
         private NumericBox numericBoxIntensityMin;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private NumericBox numericBox2;
     }
 }

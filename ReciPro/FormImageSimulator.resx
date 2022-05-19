@@ -1302,9 +1302,6 @@ unit cell</value>
   <data name="radioButtonSTEM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButtonSTEM.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8pt</value>
   </data>
@@ -1488,8 +1485,388 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;groupBoxSampleProperty.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="groupBoxOpticalProperty.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="graphControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 20</value>
+  </data>
+  <data name="graphControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="graphControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 2</value>
+  </data>
+  <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 134</value>
+  </data>
+  <data name="graphControl.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;graphControl.Name" xml:space="preserve">
+    <value>graphControl</value>
+  </data>
+  <data name="&gt;&gt;graphControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControl.Parent" xml:space="preserve">
+    <value>groupBoxLenzFunction</value>
+  </data>
+  <data name="&gt;&gt;graphControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonCopyGraph.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonCopyGraph.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonCopyGraph.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="buttonCopyGraph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonCopyGraph.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="buttonCopyGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonCopyGraph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 23</value>
+  </data>
+  <data name="buttonCopyGraph.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="buttonCopyGraph.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyGraph.Name" xml:space="preserve">
+    <value>buttonCopyGraph</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyGraph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyGraph.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyGraph.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxMaxU1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxMaxU1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxU1.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="numericBoxMaxU1.FooterText" xml:space="preserve">
+    <value>nm⁻¹</value>
+  </data>
+  <data name="numericBoxMaxU1.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="numericBoxMaxU1.HeaderText" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="numericBoxMaxU1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 77</value>
+  </data>
+  <data name="numericBoxMaxU1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxMaxU1.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxMaxU1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 22</value>
+  </data>
+  <data name="numericBoxMaxU1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxMaxU1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 24</value>
+  </data>
+  <data name="numericBoxMaxU1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxU1.Name" xml:space="preserve">
+    <value>numericBoxMaxU1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxU1.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxU1.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxU1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxGraphAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGraphAll.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="checkBoxGraphAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGraphAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 59</value>
+  </data>
+  <data name="checkBoxGraphAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="checkBoxGraphAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="checkBoxGraphAll.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkBoxGraphAll.Text" xml:space="preserve">
+    <value>A × B × C</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphAll.Name" xml:space="preserve">
+    <value>checkBoxGraphAll</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphAll.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphAll.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxGraphEc.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGraphEc.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="checkBoxGraphEc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGraphEc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 40</value>
+  </data>
+  <data name="checkBoxGraphEc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="checkBoxGraphEc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="checkBoxGraphEc.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxGraphEc.Text" xml:space="preserve">
+    <value>Ec(u) = C</value>
+  </data>
+  <data name="checkBoxGraphEc.ToolTip" xml:space="preserve">
+    <value>Temporal coherence</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEc.Name" xml:space="preserve">
+    <value>checkBoxGraphEc</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEc.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEc.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxGraphPCTF.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGraphPCTF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="checkBoxGraphPCTF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGraphPCTF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
+  </data>
+  <data name="checkBoxGraphPCTF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="checkBoxGraphPCTF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="checkBoxGraphPCTF.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxGraphPCTF.Text" xml:space="preserve">
+    <value>sin[χ(u)] = A</value>
+  </data>
+  <data name="checkBoxGraphPCTF.ToolTip" xml:space="preserve">
+    <value>PCTF</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphPCTF.Name" xml:space="preserve">
+    <value>checkBoxGraphPCTF</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphPCTF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphPCTF.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphPCTF.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxGraphEs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGraphEs.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="checkBoxGraphEs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGraphEs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="checkBoxGraphEs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="checkBoxGraphEs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="checkBoxGraphEs.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxGraphEs.Text" xml:space="preserve">
+    <value>Es(u) = B</value>
+  </data>
+  <data name="checkBoxGraphEs.ToolTip" xml:space="preserve">
+    <value>Spatial coherence</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEs.Name" xml:space="preserve">
+    <value>checkBoxGraphEs</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEs.Parent" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGraphEs.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panelGraphOption.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panelGraphOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 20</value>
+  </data>
+  <data name="panelGraphOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelGraphOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 134</value>
+  </data>
+  <data name="panelGraphOption.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="&gt;&gt;panelGraphOption.Name" xml:space="preserve">
+    <value>panelGraphOption</value>
+  </data>
+  <data name="&gt;&gt;panelGraphOption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelGraphOption.Parent" xml:space="preserve">
+    <value>groupBoxLenzFunction</value>
+  </data>
+  <data name="&gt;&gt;panelGraphOption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="buttonPanel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>437, 20</value>
+  </data>
+  <data name="buttonPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 134</value>
+  </data>
+  <data name="buttonPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="buttonPanel.Text" xml:space="preserve">
+    <value>&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+</value>
+  </data>
+  <data name="&gt;&gt;buttonPanel.Name" xml:space="preserve">
+    <value>buttonPanel</value>
+  </data>
+  <data name="&gt;&gt;buttonPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPanel.Parent" xml:space="preserve">
+    <value>groupBoxLenzFunction</value>
+  </data>
+  <data name="&gt;&gt;buttonPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBoxLenzFunction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxLenzFunction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 112</value>
+  </data>
+  <data name="groupBoxLenzFunction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxLenzFunction.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxLenzFunction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 156</value>
+  </data>
+  <data name="groupBoxLenzFunction.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="groupBoxLenzFunction.Text" xml:space="preserve">
+    <value>Lens function</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLenzFunction.Name" xml:space="preserve">
+    <value>groupBoxLenzFunction</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLenzFunction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLenzFunction.Parent" xml:space="preserve">
+    <value>groupBoxOpticalProperty</value>
+  </data>
+  <data name="&gt;&gt;groupBoxLenzFunction.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericBoxAccVol.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1879,10 +2256,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxOpticalProperty</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="numericBoxCs.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2150,16 +2527,16 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxInherentProperty.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxOpticalProperty</value>
   </data>
   <data name="&gt;&gt;groupBoxInherentProperty.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panelDummy1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 118</value>
+    <value>197, 257</value>
   </data>
   <data name="panelDummy1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 31</value>
+    <value>20, 20</value>
   </data>
   <data name="panelDummy1.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2171,429 +2548,16 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelDummy1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxOpticalProperty</value>
   </data>
   <data name="&gt;&gt;panelDummy1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="tabControl1.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>FlatButtons</value>
-  </data>
-  <data name="graphControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 20</value>
-  </data>
-  <data name="graphControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="graphControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 2</value>
-  </data>
-  <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 134</value>
-  </data>
-  <data name="graphControl.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="&gt;&gt;graphControl.Name" xml:space="preserve">
-    <value>graphControl</value>
-  </data>
-  <data name="&gt;&gt;graphControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControl.Parent" xml:space="preserve">
-    <value>groupBoxLenzFunction</value>
-  </data>
-  <data name="&gt;&gt;graphControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonCopyGraph.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopyGraph.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopyGraph.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="buttonCopyGraph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonCopyGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 115</value>
-  </data>
-  <data name="buttonCopyGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonCopyGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 23</value>
-  </data>
-  <data name="buttonCopyGraph.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="buttonCopyGraph.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyGraph.Name" xml:space="preserve">
-    <value>buttonCopyGraph</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyGraph.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyGraph.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyGraph.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxMaxU1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxMaxU1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxU1.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="numericBoxMaxU1.FooterText" xml:space="preserve">
-    <value>nm⁻¹</value>
-  </data>
-  <data name="numericBoxMaxU1.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="numericBoxMaxU1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 92</value>
-  </data>
-  <data name="numericBoxMaxU1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxMaxU1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxMaxU1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
-  </data>
-  <data name="numericBoxMaxU1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxMaxU1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 24</value>
-  </data>
-  <data name="numericBoxMaxU1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxU1.Name" xml:space="preserve">
-    <value>numericBoxMaxU1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxU1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxU1.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxU1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBoxGraphAll.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxGraphAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="checkBoxGraphAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxGraphAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 59</value>
-  </data>
-  <data name="checkBoxGraphAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="checkBoxGraphAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
-  </data>
-  <data name="checkBoxGraphAll.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="checkBoxGraphAll.Text" xml:space="preserve">
-    <value>A × B × C</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphAll.Name" xml:space="preserve">
-    <value>checkBoxGraphAll</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphAll.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphAll.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBoxGraphEc.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxGraphEc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="checkBoxGraphEc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxGraphEc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 40</value>
-  </data>
-  <data name="checkBoxGraphEc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="checkBoxGraphEc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="checkBoxGraphEc.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="checkBoxGraphEc.Text" xml:space="preserve">
-    <value>Ec(u) = C</value>
-  </data>
-  <data name="checkBoxGraphEc.ToolTip" xml:space="preserve">
-    <value>Temporal coherence</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEc.Name" xml:space="preserve">
-    <value>checkBoxGraphEc</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEc.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEc.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="checkBoxGraphPCTF.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxGraphPCTF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="checkBoxGraphPCTF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxGraphPCTF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 2</value>
-  </data>
-  <data name="checkBoxGraphPCTF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="checkBoxGraphPCTF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
-  <data name="checkBoxGraphPCTF.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="checkBoxGraphPCTF.Text" xml:space="preserve">
-    <value>sin[χ(u)] = A</value>
-  </data>
-  <data name="checkBoxGraphPCTF.ToolTip" xml:space="preserve">
-    <value>PCTF</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphPCTF.Name" xml:space="preserve">
-    <value>checkBoxGraphPCTF</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphPCTF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphPCTF.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphPCTF.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="checkBoxGraphEs.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxGraphEs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="checkBoxGraphEs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxGraphEs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="checkBoxGraphEs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="checkBoxGraphEs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="checkBoxGraphEs.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="checkBoxGraphEs.Text" xml:space="preserve">
-    <value>Es(u) = B</value>
-  </data>
-  <data name="checkBoxGraphEs.ToolTip" xml:space="preserve">
-    <value>Spatial coherence</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEs.Name" xml:space="preserve">
-    <value>checkBoxGraphEs</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEs.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGraphEs.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 77</value>
-  </data>
-  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="label32.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-  <data name="&gt;&gt;label32.Name" xml:space="preserve">
-    <value>label32</value>
-  </data>
-  <data name="&gt;&gt;label32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="panelGraphOption.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panelGraphOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>350, 20</value>
-  </data>
-  <data name="panelGraphOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panelGraphOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 134</value>
-  </data>
-  <data name="panelGraphOption.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="&gt;&gt;panelGraphOption.Name" xml:space="preserve">
-    <value>panelGraphOption</value>
-  </data>
-  <data name="&gt;&gt;panelGraphOption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelGraphOption.Parent" xml:space="preserve">
-    <value>groupBoxLenzFunction</value>
-  </data>
-  <data name="&gt;&gt;panelGraphOption.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="buttonPanel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="buttonPanel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 20</value>
-  </data>
-  <data name="buttonPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 134</value>
-  </data>
-  <data name="buttonPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="buttonPanel.Text" xml:space="preserve">
-    <value>&gt;
-&gt;
-&gt;
-&gt;
-&gt;
-&gt;
-&gt;
-&gt;
-</value>
-  </data>
-  <data name="&gt;&gt;buttonPanel.Name" xml:space="preserve">
-    <value>buttonPanel</value>
-  </data>
-  <data name="&gt;&gt;buttonPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonPanel.Parent" xml:space="preserve">
-    <value>groupBoxLenzFunction</value>
-  </data>
-  <data name="&gt;&gt;buttonPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBoxLenzFunction.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="groupBoxLenzFunction.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBoxLenzFunction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBoxLenzFunction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBoxLenzFunction.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBoxLenzFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 156</value>
-  </data>
-  <data name="groupBoxLenzFunction.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="groupBoxLenzFunction.Text" xml:space="preserve">
-    <value>Lens function</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLenzFunction.Name" xml:space="preserve">
-    <value>groupBoxLenzFunction</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLenzFunction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLenzFunction.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLenzFunction.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBoxObjAperX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3017,13 +2981,13 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>7</value>
   </data>
   <data name="groupBoxObjectAperture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+    <value>Fill</value>
   </data>
   <data name="groupBoxObjectAperture.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxObjectAperture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 156</value>
+    <value>0, 0</value>
   </data>
   <data name="groupBoxObjectAperture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3032,7 +2996,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxObjectAperture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 80</value>
+    <value>459, 83</value>
   </data>
   <data name="groupBoxObjectAperture.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3050,7 +3014,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;groupBoxObjectAperture.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 14</value>
@@ -3059,7 +3023,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 236</value>
+    <value>459, 83</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3079,14 +3043,101 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="numericBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBox2.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="numericBox2.HeaderText" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="numericBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="numericBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="numericBox2.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBox2.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 25</value>
+  </data>
+  <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBox2.ToolTip" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="numericBox2.ToolTip1" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
+    <value>numericBox2</value>
+  </data>
+  <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;numericBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 83</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Condenser Aperture</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 14</value>
   </data>
-  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="tabPage4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 236</value>
+    <value>459, 83</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3110,7 +3161,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>50, 10</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 113</value>
+    <value>4, 266</value>
   </data>
   <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3119,7 +3170,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>467, 254</value>
+    <value>467, 101</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3131,36 +3182,36 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxOpticalProperty</value>
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxOpticalProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxOpticalProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 50</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxOpticalProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 370</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxOpticalProperty.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
     <value>Optical property</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;groupBoxOpticalProperty.Name" xml:space="preserve">
+    <value>groupBoxOpticalProperty</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxOpticalProperty.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxOpticalProperty.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxOpticalProperty.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -3506,7 +3557,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>19, 0, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxIntensityMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3515,7 +3566,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 25</value>
+    <value>105, 27</value>
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3539,7 +3590,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 27</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -3614,7 +3665,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxIntensityMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3623,7 +3674,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 25</value>
+    <value>72, 27</value>
   </data>
   <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3641,13 +3692,13 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>1</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 147</value>
+    <value>0, 149</value>
   </data>
   <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+    <value>124, 27</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -4536,19 +4587,19 @@ in which the weak phase object approximation holds
     <value>True</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 0</value>
+    <value>101, 2</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>184, 19</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4578,7 +4629,7 @@ This model should be used for a strong scattering object which usually
     <value>5, 18</value>
   </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 21</value>
+    <value>285, 21</value>
   </data>
   <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5734,6 +5785,30 @@ This model should be used for a strong scattering object which usually
   </data>
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 14</value>
+  </data>
+  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 215</value>
+  </data>
+  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
+    <value>tabPage5</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tabControl2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

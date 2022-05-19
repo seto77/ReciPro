@@ -182,8 +182,8 @@ public partial class FormImageSimulator : Form
         tabControl2.ItemSize = new Size(1, 1);
         panelDummy1.Location = tabControl1.Location;
         panelDummy2.Location = tabControl2.Location;
-        panelDummy1.Size = new Size(20, 2);
-        panelDummy2.Size = new Size(20, 2);
+        panelDummy1.Size = new Size(30, 2);
+        panelDummy2.Size = new Size(30, 2);
         panelDummy1.BringToFront();
         panelDummy2.BringToFront();
         toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
@@ -792,13 +792,38 @@ public partial class FormImageSimulator : Form
 
     private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
     {
-        groupBoxObjectAperture.Enabled = groupBoxLenzFunction.Enabled = groupBoxPartialCoherencyModel.Enabled =
-             /*groupBoxNormalizeIntensity.Enabled = */ImageMode == ImageModes.HRTEM;
+        if(ImageMode == ImageModes.HRTEM)
+        {
+            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = true;
+            groupBoxSampleProperty.Enabled = true;
+            numericBoxDefocus.Enabled = true;
+            tabControl1.SelectedIndex = 0;
+            tabControl2.SelectedIndex = 0;
+            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+        }
+        else if(ImageMode== ImageModes.POTENTIAL)
+        {
+            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = false;
+            groupBoxSampleProperty.Enabled = false;
+            numericBoxDefocus.Enabled = false;
+            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = false;
 
-        groupBoxInherentProperty.Enabled = groupBoxSampleProperty.Enabled =
-            numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
 
-        tabControl2.SelectedIndex = ImageMode switch { ImageModes.HRTEM => 0, ImageModes.POTENTIAL => 1, _ => 2 };
+            tabControl2.SelectedIndex = 1;
+        }
+        else if (ImageMode == ImageModes.STEM)
+        {
+            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = true;
+            groupBoxSampleProperty.Enabled = true;
+            numericBoxDefocus.Enabled = true;
+            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+
+            tabControl1.SelectedIndex = 1;
+            tabControl2.SelectedIndex = 2;
+
+        }
+
+            tabControl2.SelectedIndex = ImageMode switch { ImageModes.HRTEM => 0, ImageModes.POTENTIAL => 1, _ => 2 };
     }
 
     private void ButtonPanel_Click(object sender, EventArgs e)
