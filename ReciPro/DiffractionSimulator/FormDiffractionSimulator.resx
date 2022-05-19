@@ -3266,6 +3266,12 @@ Double left click: Display the information of the g-vector</value>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
     <value>as collective image (PNG format)</value>
   </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>as collective image (Tiff format)</value>
+  </data>
   <data name="saveCBEDPatternToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
   </data>
@@ -6220,6 +6226,12 @@ Inciden beams along a cone are simulated for this number.</value>
   </data>
   <data name="&gt;&gt;timerBlinkScale.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;asCollectiveImageTiffFormatToolStripMenuItem.Name" xml:space="preserve">
+    <value>asCollectiveImageTiffFormatToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;asCollectiveImageTiffFormatToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormDiffractionSimulator</value>

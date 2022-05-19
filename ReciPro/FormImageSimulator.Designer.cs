@@ -128,6 +128,7 @@ namespace ReciPro
             this.numericBoxHeight = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numericBoxResolution = new Crystallography.Controls.NumericBox();
+            this.numericBoxIntensityMax = new Crystallography.Controls.NumericBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -337,7 +338,6 @@ namespace ReciPro
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label33);
-            this.panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -407,7 +407,6 @@ namespace ReciPro
             resources.ApplyResources(this.flowLayoutPanelLabel, "flowLayoutPanelLabel");
             this.flowLayoutPanelLabel.Controls.Add(this.numericBoxLabelFontSize);
             this.flowLayoutPanelLabel.Controls.Add(this.colorControlLabel);
-            this.flowLayoutPanelLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.flowLayoutPanelLabel.Name = "flowLayoutPanelLabel";
             // 
             // numericBoxLabelFontSize
@@ -512,15 +511,15 @@ namespace ReciPro
             this.trackBarAdvancedMax.ControlHeight = 27;
             this.trackBarAdvancedMax.DecimalPlaces = -1;
             this.trackBarAdvancedMax.LogScrollBar = false;
-            this.trackBarAdvancedMax.Maximum = 65535D;
+            this.trackBarAdvancedMax.Maximum = 1D;
             this.trackBarAdvancedMax.Minimum = 0D;
             this.trackBarAdvancedMax.Name = "trackBarAdvancedMax";
             this.trackBarAdvancedMax.NumericBoxSize = 100;
             this.trackBarAdvancedMax.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBarAdvancedMax.Smart_Increment = true;
             this.trackBarAdvancedMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.trackBarAdvancedMax.UpDown_Increment = 1D;
-            this.trackBarAdvancedMax.Value = 65535D;
+            this.trackBarAdvancedMax.UpDown_Increment = 0.01D;
+            this.trackBarAdvancedMax.Value = 1D;
             this.trackBarAdvancedMax.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.TrackBarAdvancedMin_ValueChanged);
             // 
             // comboBoxScaleColorScale
@@ -608,7 +607,6 @@ namespace ReciPro
             this.groupBox6.Controls.Add(this.radioButtonProjectedPotential);
             this.groupBox6.Controls.Add(this.radioButtonSTEM);
             this.groupBox6.Controls.Add(this.radioButtonHRTEM);
-            this.groupBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -642,7 +640,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.groupBoxSampleProperty, "groupBoxSampleProperty");
             this.groupBoxSampleProperty.Controls.Add(this.numericBoxThickness);
-            this.groupBoxSampleProperty.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             this.groupBoxSampleProperty.TabStop = false;
             // 
@@ -673,7 +670,6 @@ namespace ReciPro
             this.groupBox2.Controls.Add(this.groupBoxInherentProperty);
             this.groupBox2.Controls.Add(this.panelDummy1);
             this.groupBox2.Controls.Add(this.tabControl1);
-            this.groupBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -683,7 +679,6 @@ namespace ReciPro
             this.groupBox4.Controls.Add(this.numericBoxDefocus);
             this.groupBox4.Controls.Add(this.flowLayoutPanel4);
             this.groupBox4.Controls.Add(this.flowLayoutPanel3);
-            this.groupBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -793,7 +788,6 @@ namespace ReciPro
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxDeltaV);
             this.groupBoxInherentProperty.Controls.Add(this.numericBoxBetaAgnle);
             this.groupBoxInherentProperty.Controls.Add(this.label34);
-            this.groupBoxInherentProperty.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.groupBoxInherentProperty, "groupBoxInherentProperty");
             this.groupBoxInherentProperty.Name = "groupBoxInherentProperty";
             this.groupBoxInherentProperty.TabStop = false;
@@ -851,7 +845,7 @@ namespace ReciPro
             this.numericBoxDeltaV.Maximum = 10D;
             this.numericBoxDeltaV.Minimum = 0D;
             this.numericBoxDeltaV.Name = "numericBoxDeltaV";
-            this.numericBoxDeltaV.RadianValue = 0.012217304763960307D;
+            this.numericBoxDeltaV.RadianValue = 0.012217304763960306D;
             this.numericBoxDeltaV.RestrictLimitValue = false;
             this.numericBoxDeltaV.RoundErrorAccuracy = -1;
             this.numericBoxDeltaV.ShowUpDown = true;
@@ -900,7 +894,6 @@ namespace ReciPro
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1204,7 +1197,6 @@ namespace ReciPro
             this.groupBox1.Controls.Add(this.panelDummy2);
             this.groupBox1.Controls.Add(this.groupBox8);
             this.groupBox1.Controls.Add(this.tabControl2);
-            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -1253,6 +1245,7 @@ namespace ReciPro
             this.flowLayoutPanel9.Controls.Add(this.numericBoxHeight);
             this.flowLayoutPanel9.Controls.Add(this.label2);
             this.flowLayoutPanel9.Controls.Add(this.numericBoxResolution);
+            this.flowLayoutPanel9.Controls.Add(this.numericBoxIntensityMax);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
             // numericBoxWidth
@@ -1317,6 +1310,24 @@ namespace ReciPro
             this.numericBoxResolution.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             this.numericBoxResolution.Value = 4D;
+            // 
+            // numericBoxIntensityMax
+            // 
+            resources.ApplyResources(this.numericBoxIntensityMax, "numericBoxIntensityMax");
+            this.numericBoxIntensityMax.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.DecimalPlaces = 0;
+            this.numericBoxIntensityMax.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxIntensityMax.Maximum = 65535D;
+            this.numericBoxIntensityMax.Minimum = 1D;
+            this.numericBoxIntensityMax.Name = "numericBoxIntensityMax";
+            this.numericBoxIntensityMax.RadianValue = 0.017453292519943295D;
+            this.numericBoxIntensityMax.RoundErrorAccuracy = -1;
+            this.numericBoxIntensityMax.ShowUpDown = true;
+            this.numericBoxIntensityMax.SmartIncrement = true;
+            this.numericBoxIntensityMax.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxIntensityMax.ThonsandsSeparator = true;
+            this.numericBoxIntensityMax.Value = 1D;
             // 
             // tabControl2
             // 
@@ -2174,7 +2185,6 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Panel panelSerial;
         private System.Windows.Forms.Panel panelSerialDefocus;
@@ -2243,5 +2253,7 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label2;
+        private NumericBox numericBoxIntensityMax;
     }
 }

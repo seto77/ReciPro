@@ -58,7 +58,6 @@
             // textBox
             // 
             this.textBox.BackColor = System.Drawing.Color.AliceBlue;
-            this.textBox.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.textBox, "textBox");
             this.textBox.ForeColor = System.Drawing.Color.DarkBlue;
             this.textBox.Name = "textBox";
@@ -67,7 +66,6 @@
             // buttonOK
             // 
             resources.ApplyResources(this.buttonOK, "buttonOK");
-            this.buttonOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -76,19 +74,16 @@
             // labelSoftwareAndVersion
             // 
             resources.ApplyResources(this.labelSoftwareAndVersion, "labelSoftwareAndVersion");
-            this.labelSoftwareAndVersion.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelSoftwareAndVersion.Name = "labelSoftwareAndVersion";
             // 
             // labelCopyRight
             // 
             resources.ApplyResources(this.labelCopyRight, "labelCopyRight");
-            this.labelCopyRight.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelCopyRight.Name = "labelCopyRight";
             // 
             // buttonNext
             // 
             resources.ApplyResources(this.buttonNext, "buttonNext");
-            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
@@ -98,7 +93,6 @@
             resources.ApplyResources(this.checkBoxCloseWindow, "checkBoxCloseWindow");
             this.checkBoxCloseWindow.Checked = true;
             this.checkBoxCloseWindow.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCloseWindow.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkBoxCloseWindow.Name = "checkBoxCloseWindow";
             this.checkBoxCloseWindow.UseVisualStyleBackColor = true;
             // 
@@ -133,7 +127,6 @@
             this.Controls.Add(this.flowLayoutPanelSoftwareInformation);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.panelOK);
-            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "CommonDialog";
             this.ShowIcon = false;

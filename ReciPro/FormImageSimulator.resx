@@ -1192,7 +1192,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="buttonSimulateHRTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>359, 662</value>
+    <value>359, 664</value>
   </data>
   <data name="buttonSimulateHRTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1445,6 +1445,10 @@ unit cell</value>
     <value>Set a sample thickness
 This value is neglected when "Serial image" mode is selected, </value>
   </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Set a sample thickness
+This value is neglected when "Serial image" mode is selected, </value>
+  </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
   </data>
@@ -1524,7 +1528,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Acc voltage of TEM (kV)</value>
   </data>
   <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
-    <value>Acc voltage of TEM</value>
+    <value>Acc voltage of TEM (kV)</value>
   </data>
   <data name="&gt;&gt;numericBoxAccVol.Name" xml:space="preserve">
     <value>numericBoxAccVol</value>
@@ -3172,7 +3176,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Maximum</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>21, 18</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -3217,7 +3221,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>7, 17</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 50</value>
+    <value>150, 50</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3258,6 +3262,9 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;panelDummy2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="flowLayoutPanel9.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="flowLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3274,10 +3281,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Width</value>
   </data>
   <data name="numericBoxWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="numericBoxWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
+    <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -3328,7 +3335,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 30</value>
   </data>
   <data name="numericBoxHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -3406,10 +3413,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>pm/pix</value>
   </data>
   <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 76</value>
+    <value>20, 76</value>
   </data>
   <data name="numericBoxResolution.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>23, 0, 0, 0</value>
+    <value>20, 0, 0, 0</value>
   </data>
   <data name="numericBoxResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -3421,7 +3428,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 27</value>
+    <value>101, 27</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3444,6 +3451,51 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="numericBoxIntensityMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxIntensityMax.HeaderText" xml:space="preserve">
+    <value>Max. intensity</value>
+  </data>
+  <data name="numericBoxIntensityMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 106</value>
+  </data>
+  <data name="numericBoxIntensityMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxIntensityMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxIntensityMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxIntensityMax.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 27</value>
+  </data>
+  <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMax.Name" xml:space="preserve">
+    <value>numericBoxIntensityMax</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMax.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;numericBoxIntensityMax.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="flowLayoutPanel9.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
   </data>
@@ -3451,13 +3503,16 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
+    <value>3, 21</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 103</value>
+    <value>145, 153</value>
   </data>
   <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="flowLayoutPanel9.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
     <value>flowLayoutPanel9</value>
@@ -3478,7 +3533,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>6, 65</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 134</value>
+    <value>151, 177</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3694,7 +3749,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Vertical</value>
   </data>
   <data name="textBoxThicknessList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 75</value>
+    <value>55, 79</value>
   </data>
   <data name="textBoxThicknessList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -3773,7 +3828,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2, 24</value>
   </data>
   <data name="panelSerialThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 77</value>
+    <value>144, 81</value>
   </data>
   <data name="panelSerialThickness.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3812,7 +3867,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Vertical</value>
   </data>
   <data name="textBoxDefocusList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 75</value>
+    <value>54, 79</value>
   </data>
   <data name="textBoxDefocusList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -3986,7 +4041,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>152, 24</value>
   </data>
   <data name="panelSerialDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 77</value>
+    <value>147, 81</value>
   </data>
   <data name="panelSerialDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4112,7 +4167,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 101</value>
+    <value>18, 105</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>280, 21</value>
@@ -4202,7 +4257,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3, 0, 3, 0</value>
   </data>
   <data name="panelSerial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 124</value>
+    <value>304, 128</value>
   </data>
   <data name="panelSerial.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4235,7 +4290,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 163</value>
+    <value>297, 167</value>
   </data>
   <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4379,7 +4434,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxPartialCoherencyModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 48</value>
+    <value>297, 48</value>
   </data>
   <data name="groupBoxPartialCoherencyModel.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4406,7 +4461,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 211</value>
+    <value>297, 215</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5459,7 +5514,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 211</value>
+    <value>297, 215</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -5486,7 +5541,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 211</value>
+    <value>297, 215</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5513,7 +5568,7 @@ This model should be used for a strong scattering object which usually
     <value>50, 10</value>
   </data>
   <data name="tabControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 11</value>
+    <value>166, 11</value>
   </data>
   <data name="tabControl2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5522,7 +5577,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 229</value>
+    <value>305, 233</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5546,7 +5601,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 419</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 243</value>
+    <value>474, 247</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -5633,13 +5688,13 @@ This model should be used for a strong scattering object which usually
     <value>Save image</value>
   </data>
   <data name="toolStripMenuItemCopyImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
     <value>as Image</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
     <value>as Metafile (Ctrl+C)</value>

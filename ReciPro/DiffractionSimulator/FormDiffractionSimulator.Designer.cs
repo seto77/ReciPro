@@ -224,6 +224,7 @@
             this.timerBlinkKikuchiLine = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkDebyeRing = new System.Windows.Forms.Timer(this.components);
             this.timerBlinkScale = new System.Windows.Forms.Timer(this.components);
+            this.asCollectiveImageTiffFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -1287,7 +1288,8 @@
             this.saveCBEDPatternToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveCBEDasPngToolStripMenuItem,
             this.saveCBEDasTiffToolStripMenuItem,
-            this.asPixelByPixelImagePNGFormatToolStripMenuItem});
+            this.asPixelByPixelImagePNGFormatToolStripMenuItem,
+            this.asCollectiveImageTiffFormatToolStripMenuItem});
             this.saveCBEDPatternToolStripMenuItem.Name = "saveCBEDPatternToolStripMenuItem";
             resources.ApplyResources(this.saveCBEDPatternToolStripMenuItem, "saveCBEDPatternToolStripMenuItem");
             // 
@@ -2063,6 +2065,12 @@
             this.timerBlinkScale.Tag = "";
             this.timerBlinkScale.Tick += new System.EventHandler(this.timerBlinkScale_Tick);
             // 
+            // asCollectiveImageTiffFormatToolStripMenuItem
+            // 
+            this.asCollectiveImageTiffFormatToolStripMenuItem.Name = "asCollectiveImageTiffFormatToolStripMenuItem";
+            resources.ApplyResources(this.asCollectiveImageTiffFormatToolStripMenuItem, "asCollectiveImageTiffFormatToolStripMenuItem");
+            this.asCollectiveImageTiffFormatToolStripMenuItem.Click += new System.EventHandler(this.asCollectiveImageTiffFormatToolStripMenuItem_Click);
+            // 
             // FormDiffractionSimulator
             // 
             this.AllowDrop = true;
@@ -2359,5 +2367,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelTwoThetaRad;
         private System.Windows.Forms.CheckBox checkBoxKikuchiLine_Kinematical;
+        private System.Windows.Forms.ToolStripMenuItem asCollectiveImageTiffFormatToolStripMenuItem;
     }
 }

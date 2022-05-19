@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.02.18.1740</AssemblyVersion>
-    <FileVersion>2022.02.18.1740</FileVersion>
+    <AssemblyVersion>2022.05.19.1730</AssemblyVersion>
+    <FileVersion>2022.05.19.1730</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -70,7 +70,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
+    <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.649" />
+    <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

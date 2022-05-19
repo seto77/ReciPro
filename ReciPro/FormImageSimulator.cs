@@ -286,6 +286,7 @@ public partial class FormImageSimulator : Form
         SkipEvent = true;
         trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = max;
         trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = min;
+        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (max-min) / 100.0;
         SkipEvent = false;
 
         //作成したイメージをPseudoBitmapに変換
@@ -382,8 +383,10 @@ public partial class FormImageSimulator : Form
         toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw.ElapsedMilliseconds} msec,   ";
 
         SkipEvent = true;
-        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = 65535;// checkBoxNormalizeHigh.Checked ? 65535 : totalImage.Max(d1 => d1.Max(d2 => d2.Max()));
+        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
+
         trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
+        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = numericBoxIntensityMax.Value / 100.0;
         SkipEvent = false;
 
         //作成したイメージをPseudoBitmapに変換
@@ -423,17 +426,17 @@ public partial class FormImageSimulator : Form
         toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
     }
 
-    public static double[] Normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)
+    public double[] Normalize(double[] image, bool normalizeHigh = true, bool normalizeLow = true)
     {
-        double min = image.Min(), max = image.Max();
-        if (normalizeHigh && normalizeLow)
-            image = image.Select(d => (d - min) * 65535.0 / (max - min)).ToArray();
-        else if (normalizeLow)
-            image = image.Select(d => (d - min) * 1000).ToArray();
-        else if (normalizeHigh)
-            image = image.Select(d => d * 65535.0 / max).ToArray();
-        else
-            image = image.Select(d => d * 1000).ToArray();
+        double coeff = numericBoxIntensityMax.Value/ image.Max();
+        //if (normalizeHigh && normalizeLow)
+        image = image.Select(d => d * coeff).ToArray();
+        //else if (normalizeLow)
+        //    image = image.Select(d => (d - min) * 1000).ToArray();
+        //else if (normalizeHigh)
+        //    image = image.Select(d => d * 65535.0 / max).ToArray();
+        //else
+        //    image = image.Select(d => d * 1000).ToArray();
 
         return image;
     }

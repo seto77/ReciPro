@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BitMiracle.LibTiff.Classic;
+
 #endregion
 
 namespace ReciPro;
@@ -1974,7 +1976,6 @@ public partial class FormDiffractionSimulator : Form
 
         SaveFileDialog dlg = new() { Filter = png ? "*.png|*.png" : "*.tif|*.tif" };
 
-
         if (FormDiffractionSimulatorCBED.Disks != null && FormDiffractionSimulatorCBED.Disks.Length != 0 && dlg.ShowDialog() == DialogResult.OK)
         {
             var name = dlg.FileName[0..^4];//拡張子を除去
@@ -1988,14 +1989,112 @@ public partial class FormDiffractionSimulator : Form
                     if (png)
                         disk.Bitmap.Save(name + info + ".png", ImageFormat.Png);
                     else
-                        Tiff.Writer(name + info + ".tif", disk.PBitmap.SrcValuesGray, 3, disk.PixelSize.Width);
+                    {
+                        //Crystallography.Tiff.Writer(name + info + ".tif", disk.PBitmap.SrcValuesGray, 3, disk.PixelSize.Width);
+
+                        using var image = BitMiracle.LibTiff.Classic.Tiff.Open(name + info + ".tif", "w");
+                        int height = disk.PixelSize.Width, width = disk.PixelSize.Width;
+                        image.SetField(TiffTag.IMAGEWIDTH, width);
+                        image.SetField(TiffTag.IMAGELENGTH, height);
+                        image.SetField(TiffTag.SAMPLESPERPIXEL, 1);
+                        image.SetField(TiffTag.SAMPLEFORMAT, SampleFormat.IEEEFP);
+                        image.SetField(TiffTag.BITSPERSAMPLE, 32);
+                        image.SetField(TiffTag.ROWSPERSTRIP, width);
+                        //image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+                        image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK);
+                        image.SetField(TiffTag.COMPRESSION, Compression.LZW);
+                        //image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+                        var src = disk.PBitmap.SrcValuesGray.Select(v => (float)v).ToArray();
+                        for (int i = 0; i < height; i++)
+                        {
+                            var buffer = new byte[width * sizeof(float)];
+                            Buffer.BlockCopy(src, i * width * sizeof(float), buffer, 0, buffer.Length);
+                            image.WriteScanline(buffer, i);
+                        }
+                    }
                 }
             }
         }
     }
 
-    private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
+    /// <summary>
+    /// Collective image, TIFF
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void asCollectiveImageTiffFormatToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (!FormDiffractionSimulatorCBED.Visible || FormDiffractionSimulatorCBED.Disks == null)
+            return;
 
+        SaveFileDialog dlg = new() { Filter =  "*.tif|*.tif" };
+        if (dlg.ShowDialog() != DialogResult.OK)
+            return;
+
+        var name = dlg.FileName[0..^4];//拡張子を除去
+
+        for (int t = FormDiffractionSimulatorCBED.trackBarOutputThickness.Minimum; t <= FormDiffractionSimulatorCBED.trackBarOutputThickness.Maximum; t++)
+        {
+            FormDiffractionSimulatorCBED.trackBarOutputThickness.Value = t;
+            var thickness = FormDiffractionSimulatorCBED.ThicknessArray[t];
+
+            var disk0 = FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null).First();
+            var resolution = disk0.Size.Width / disk0.PixelSize.Width;//1ピクセル辺りの長さ (mm/pixel)
+
+            //まず、作成する画像の縦横ピクセル数を決める
+            var top_left = convertScreenToDetector(0, 0);
+            var bottom_rihgt = convertScreenToDetector(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            var width = (int)((bottom_rihgt.X - top_left.X) / resolution + 1);
+            var height = (int)((bottom_rihgt.Y - top_left.Y) / resolution + 1);
+            //作成する画像の中心座標
+            var center = new PointD(-top_left.X, -top_left.Y) / resolution;
+
+            //画像の情報を格納する行列を作成
+            var imageArray = new float[width * height];
+
+            if (FormDiffractionSimulatorCBED.Visible && FormDiffractionSimulatorCBED.Disks != null)
+                foreach (var disk in FormDiffractionSimulatorCBED.Disks.Where(d => d.Bitmap != null))
+                {
+                    var diskCenterInPixel = new Point((int)(disk.Center.X / resolution + center.X + 0.5), (int)(disk.Center.Y / resolution + center.Y + 0.5));
+                    var diskWidthInPixel = disk.PixelSize.Width;
+                    var diskHeightInPixel = disk.PixelSize.Height;
+
+                    var src = disk.PBitmap.SrcValuesGray.Select(v => (float)v).ToArray();
+                    for (int y = 0; y < diskHeightInPixel; y++)
+                        for (int x = 0; x < diskWidthInPixel; x++)
+                        {
+                            var posX = diskCenterInPixel.X + x - diskWidthInPixel / 2;
+                            var posY = diskCenterInPixel.Y + y - diskHeightInPixel / 2;
+                            if ((uint)posX  < (uint)width && (uint)posY  < (uint)height && imageArray[posY * width + posX] == 0)
+                                imageArray[posY * width + posX] = src[y * diskWidthInPixel + x];
+                        }
+                }
+
+
+            var info = $" ({thickness}nm)";
+            using var image = BitMiracle.LibTiff.Classic.Tiff.Open(name + info + ".tif", "w");
+            image.SetField(TiffTag.IMAGEWIDTH, width);
+            image.SetField(TiffTag.IMAGELENGTH, height);
+            image.SetField(TiffTag.SAMPLESPERPIXEL, 1);
+            image.SetField(TiffTag.SAMPLEFORMAT, SampleFormat.IEEEFP);
+            image.SetField(TiffTag.BITSPERSAMPLE, 32);
+            image.SetField(TiffTag.ROWSPERSTRIP, width);
+            //image.SetField(TiffTag.PLANARCONFIG, PlanarConfig.CONTIG);
+            image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK);
+            image.SetField(TiffTag.COMPRESSION, Compression.LZW);
+            //image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+            for (int i = 0; i < height; i++)
+            {
+                var buffer = new byte[width * sizeof(float)];
+                Buffer.BlockCopy(imageArray, i * width * sizeof(float), buffer, 0, buffer.Length);
+                image.WriteScanline(buffer, i);
+            }
+        }
+
+
+    }
+
+    private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
     private void copyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
     //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
@@ -2152,7 +2251,6 @@ public partial class FormDiffractionSimulator : Form
     {
 
     }
-
 
 
     private void Button2_Click(object sender, EventArgs e)
