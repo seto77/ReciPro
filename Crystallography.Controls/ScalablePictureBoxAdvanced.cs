@@ -13,6 +13,8 @@ namespace Crystallography.Controls
     [Serializable]
     public partial class ScalablePictureBoxAdvanced : UserControl
     {
+        public bool SkipDrawing { get => scalablePictureBox.SkipDrawing;set=> scalablePictureBox.SkipDrawing = value; }
+
         public ScalablePictureBoxAdvanced()
         {
            
@@ -158,7 +160,7 @@ namespace Crystallography.Controls
                 scalablePictureBox.PseudoBitmap = value;
                 Initialize();
             }
-            get { return scalablePictureBox.PseudoBitmap; }
+            get => scalablePictureBox.PseudoBitmap;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -250,10 +252,10 @@ namespace Crystallography.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ScalablePictureBox ScalablePictureBox { get { return scalablePictureBox; } }
+        public ScalablePictureBox ScalablePictureBox => scalablePictureBox;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<ScalablePictureBox.Symbol> Symbols { get { return scalablePictureBox.Symbols; } set { scalablePictureBox.Symbols = value; } }
+        public List<ScalablePictureBox.Symbol> Symbols { get => scalablePictureBox.Symbols; set => scalablePictureBox.Symbols = value; }
 
         private double progress = 0;
 
@@ -496,7 +498,8 @@ namespace Crystallography.Controls
 
         public void DrawPictureBox()
         {
-            scalablePictureBox.drawPictureBox();
+            if(!SkipDrawing)
+                scalablePictureBox.drawPictureBox();
         }
 
         private void comboBoxScale_SelectedIndexChanged(object sender, EventArgs e)
@@ -534,7 +537,7 @@ namespace Crystallography.Controls
             FilterChanged?.Invoke(sender, e);
         }
 
-        private void ProcessImageFilter()
+        public void ProcessImageFilter()
         {
             Stopwatch sw = new Stopwatch();
 

@@ -13,6 +13,7 @@ namespace Crystallography.Controls
     public partial class ScalablePictureBox : UserControl
     {
         public bool SkipEvent = false;
+        public bool SkipDrawing = false;
         public enum SymbolShape { Circle, Cross, Line, CircleAndCross };
 
         #region Symbolクラス
@@ -339,9 +340,12 @@ namespace Crystallography.Controls
                 {
                     if (value.Width * value.Height == 0) return;
                     _pseudoBitmap = value;
-                    minZoom = Math.Min((double)(this.ClientSize.Width - 1) / _pseudoBitmap.Width, (double)(this.ClientSize.Height - 1) / _pseudoBitmap.Height);
-                    Zoom = minZoom;
-                    Center = new PointD(value.Width / 2, value.Height / 2);
+                     minZoom = Math.Min((double)(this.ClientSize.Width - 1) / _pseudoBitmap.Width, (double)(this.ClientSize.Height - 1) / _pseudoBitmap.Height);
+                    if (!FixZoomAndCenter)
+                    {
+                        Zoom = minZoom;
+                        Center = new PointD(value.Width / 2, value.Height / 2);
+                    }
                     checkInvalidCenter();
                 }
             }
@@ -430,8 +434,9 @@ namespace Crystallography.Controls
 
         public void drawPictureBox()
         {
-            if (SkipEvent)
+            if (SkipEvent || SkipDrawing)
                 return;
+
 
             if (PseudoBitmap != null)
             {
