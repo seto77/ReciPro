@@ -450,7 +450,7 @@ abstract public class GLObject
                 SetMaterialAndDrawElements(true, t, len, offset);
             else
             {
-                if ((t == PT.Lines || t == PT.LinesAdjacency || t == PT.LineLoop) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
+                if ((t == PT.Lines || t == PT.LinesAdjacency || t == PT.LineLoop || t == PT.LineStrip) && (Mode == DrawingMode.Edges || Mode == DrawingMode.SurfacesAndEdges))
                     SetMaterialAndDrawElements(false, t, len, offset);
                 else if (t == PT.Points && Mode == DrawingMode.Points)
                     SetMaterialAndDrawElements(false, t, len, offset);
@@ -682,10 +682,9 @@ public class Lines : GLObject
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
         Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
         Indices = Enumerable.Range(0, vertices.Length).Select(i => (uint)i).ToArray();
-        Primitives = new[] { (PT.Lines, vertices.Length) };
+        Primitives = new[] { (PT.LineStrip, vertices.Length) };
     }
 }
-
 
 #endregion
 
@@ -894,6 +893,7 @@ public class Quads : Polygon
 /// </summary>
 public class Disk : Polygon
 {
+
     public Disk(Vector3DBase origin, Vector3DBase normal, double radius, Material mat, DrawingMode mode, int slices = 60)
         : this(new V3d(origin.X, origin.Y, origin.Z), new V3d(normal.X, normal.Y, normal.Z), radius, mat, mode, slices) { }
 
@@ -913,6 +913,10 @@ public class Disk : Polygon
                  return new V3d(x, y, z);
              }).ToArray(), mat, mode)
     { }
+
+    public Disk(V3d origin, V3d normal, double radius, float lineWidth, Material mat, DrawingMode mode, int slices = 60)
+        : this(origin,normal,radius,mat,mode,slices) 
+    { LineWidth = lineWidth; }
 }
 
 #endregion

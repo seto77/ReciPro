@@ -21,7 +21,7 @@ public class Atoms2
     [Key(5)]
     public byte SubElectron;
     [Key(6)]
-    public byte AtomNo;
+    public byte AtomNo;//原子番号 ただし、255は重水素D
     [Key(7)]
     public bool IsU;
     [Key(8)]

@@ -34,6 +34,8 @@ namespace ReciPro
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStereonet));
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
             this.trackBarStrSize = new System.Windows.Forms.TrackBar();
             this.trackBarPointSize = new System.Windows.Forms.TrackBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -156,6 +158,8 @@ namespace ReciPro
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.labelHU = new System.Windows.Forms.Label();
+            this.radioButtonRange = new System.Windows.Forms.RadioButton();
+            this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -165,19 +169,32 @@ namespace ReciPro
             this.listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             this.checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonRange = new System.Windows.Forms.RadioButton();
-            this.radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numericBox3 = new Crystallography.Controls.NumericBox();
             this.numericBox2 = new Crystallography.Controls.NumericBox();
             this.numericBox1 = new Crystallography.Controls.NumericBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.checkBoxDisplay3D = new System.Windows.Forms.CheckBox();
+            this.panel3DOption = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.button3D_reset = new System.Windows.Forms.Button();
+            this.trackBarDepthFadingOut = new System.Windows.Forms.TrackBar();
+            this.checkBox3dOptionProjectionLine = new System.Windows.Forms.CheckBox();
+            this.checkBox3dOptionStereonet = new System.Windows.Forms.CheckBox();
+            this.checkBox3dOptionSemisphere = new System.Windows.Forms.CheckBox();
+            this.checkBox3dOptionLabel = new System.Windows.Forms.CheckBox();
+            this.checkBox3dOptionSphere = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.graphicsBox = new ImagingSolution.Control.GraphicsBox(this.components);
             this.scalablePictureBoxAdvanced1 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.scalablePictureBoxAdvanced2 = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -207,8 +224,31 @@ namespace ReciPro
             this.flowLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            this.panel3DOption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarDepthFadingOut)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.graphicsBox);
+            // 
+            // graphicsBox
+            // 
+            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.graphicsBox, "graphicsBox");
+            this.graphicsBox.Name = "graphicsBox";
+            this.graphicsBox.TabStop = false;
+            this.toolTip.SetToolTip(this.graphicsBox, resources.GetString("graphicsBox.ToolTip"));
+            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
+            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
+            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
+            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
             // 
             // trackBarStrSize
             // 
@@ -454,7 +494,6 @@ namespace ReciPro
             this.colorControlString.BlueF = 0F;
             this.colorControlString.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlString.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlString.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlString.Green = 0;
             this.colorControlString.GreenF = 0F;
@@ -474,7 +513,6 @@ namespace ReciPro
             this.colorControlUniqueAxis.BlueF = 0F;
             this.colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlUniqueAxis.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlUniqueAxis.Green = 0;
             this.colorControlUniqueAxis.GreenF = 0F;
@@ -494,7 +532,6 @@ namespace ReciPro
             this.colorControlUniquePlane.BlueF = 0F;
             this.colorControlUniquePlane.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            this.colorControlUniquePlane.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlUniquePlane.Green = 100;
             this.colorControlUniquePlane.GreenF = 0.3921569F;
@@ -520,7 +557,6 @@ namespace ReciPro
             this.colorControlGeneralAxis.BlueF = 0F;
             this.colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlGeneralAxis.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlGeneralAxis.Green = 0;
             this.colorControlGeneralAxis.GreenF = 0F;
@@ -557,7 +593,6 @@ namespace ReciPro
             this.colorControlGeneralPlane.BlueF = 0.1333333F;
             this.colorControlGeneralPlane.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
-            this.colorControlGeneralPlane.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlGeneralPlane.Green = 139;
             this.colorControlGeneralPlane.GreenF = 0.5450981F;
@@ -601,7 +636,6 @@ namespace ReciPro
             this.colorControl90DegLine.BlueF = 1F;
             this.colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControl90DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.colorControl90DegLine.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControl90DegLine.Green = 0;
             this.colorControl90DegLine.GreenF = 0F;
@@ -633,7 +667,6 @@ namespace ReciPro
             this.colorControl10DegLine.BlueF = 1F;
             this.colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControl10DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.colorControl10DegLine.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControl10DegLine.Green = 128;
             this.colorControl10DegLine.GreenF = 0.5019608F;
@@ -659,7 +692,6 @@ namespace ReciPro
             this.colorControl1DegLine.BlueF = 1F;
             this.colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControl1DegLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.colorControl1DegLine.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControl1DegLine.Green = 192;
             this.colorControl1DegLine.GreenF = 0.7529412F;
@@ -1368,6 +1400,23 @@ namespace ReciPro
             this.labelHU.Name = "labelHU";
             this.toolTip.SetToolTip(this.labelHU, resources.GetString("labelHU.ToolTip"));
             // 
+            // radioButtonRange
+            // 
+            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
+            this.radioButtonRange.Checked = true;
+            this.radioButtonRange.Name = "radioButtonRange";
+            this.radioButtonRange.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonRange, resources.GetString("radioButtonRange.ToolTip"));
+            this.radioButtonRange.UseVisualStyleBackColor = true;
+            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
+            // 
+            // radioButtonSpecifiedIndices
+            // 
+            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
+            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
+            this.toolTip.SetToolTip(this.radioButtonSpecifiedIndices, resources.GetString("radioButtonSpecifiedIndices.ToolTip"));
+            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
+            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
@@ -1430,23 +1479,6 @@ namespace ReciPro
             this.flowLayoutPanel3.Controls.Add(this.panel2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
-            // radioButtonRange
-            // 
-            resources.ApplyResources(this.radioButtonRange, "radioButtonRange");
-            this.radioButtonRange.Checked = true;
-            this.radioButtonRange.Name = "radioButtonRange";
-            this.radioButtonRange.TabStop = true;
-            this.toolTip.SetToolTip(this.radioButtonRange, resources.GetString("radioButtonRange.ToolTip"));
-            this.radioButtonRange.UseVisualStyleBackColor = true;
-            this.radioButtonRange.CheckedChanged += new System.EventHandler(this.radioButtonRange_CheckedChanged);
-            // 
-            // radioButtonSpecifiedIndices
-            // 
-            resources.ApplyResources(this.radioButtonSpecifiedIndices, "radioButtonSpecifiedIndices");
-            this.radioButtonSpecifiedIndices.Name = "radioButtonSpecifiedIndices";
-            this.toolTip.SetToolTip(this.radioButtonSpecifiedIndices, resources.GetString("radioButtonSpecifiedIndices.ToolTip"));
-            this.radioButtonSpecifiedIndices.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
@@ -1507,27 +1539,114 @@ namespace ReciPro
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox5);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.groupBox6);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
+            // panel4
+            // 
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // groupBox6
+            // 
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Controls.Add(this.checkBoxDisplay3D);
+            this.groupBox6.Controls.Add(this.panel3DOption);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // checkBoxDisplay3D
+            // 
+            resources.ApplyResources(this.checkBoxDisplay3D, "checkBoxDisplay3D");
+            this.checkBoxDisplay3D.Name = "checkBoxDisplay3D";
+            this.checkBoxDisplay3D.UseVisualStyleBackColor = true;
+            this.checkBoxDisplay3D.CheckedChanged += new System.EventHandler(this.checkBoxDisplay3D_CheckedChanged);
+            // 
+            // panel3DOption
+            // 
+            this.panel3DOption.Controls.Add(this.label29);
+            this.panel3DOption.Controls.Add(this.button3D_reset);
+            this.panel3DOption.Controls.Add(this.trackBarDepthFadingOut);
+            this.panel3DOption.Controls.Add(this.checkBox3dOptionProjectionLine);
+            this.panel3DOption.Controls.Add(this.checkBox3dOptionStereonet);
+            this.panel3DOption.Controls.Add(this.checkBox3dOptionSemisphere);
+            this.panel3DOption.Controls.Add(this.checkBox3dOptionLabel);
+            this.panel3DOption.Controls.Add(this.checkBox3dOptionSphere);
+            resources.ApplyResources(this.panel3DOption, "panel3DOption");
+            this.panel3DOption.Name = "panel3DOption";
+            // 
+            // label29
+            // 
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            // 
+            // button3D_reset
+            // 
+            resources.ApplyResources(this.button3D_reset, "button3D_reset");
+            this.button3D_reset.Name = "button3D_reset";
+            this.button3D_reset.UseVisualStyleBackColor = true;
+            this.button3D_reset.Click += new System.EventHandler(this.button3D_reset_Click);
+            // 
+            // trackBarDepthFadingOut
+            // 
+            resources.ApplyResources(this.trackBarDepthFadingOut, "trackBarDepthFadingOut");
+            this.trackBarDepthFadingOut.Name = "trackBarDepthFadingOut";
+            this.trackBarDepthFadingOut.Value = 5;
+            this.trackBarDepthFadingOut.Scroll += new System.EventHandler(this.trackBarDepthFadingOut_Scroll);
+            // 
+            // checkBox3dOptionProjectionLine
+            // 
+            this.checkBox3dOptionProjectionLine.Checked = true;
+            this.checkBox3dOptionProjectionLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox3dOptionProjectionLine, "checkBox3dOptionProjectionLine");
+            this.checkBox3dOptionProjectionLine.Name = "checkBox3dOptionProjectionLine";
+            this.checkBox3dOptionProjectionLine.UseVisualStyleBackColor = true;
+            this.checkBox3dOptionProjectionLine.CheckedChanged += new System.EventHandler(this.checkBox3dOptionProjectionLine_CheckedChanged);
+            // 
+            // checkBox3dOptionStereonet
+            // 
+            resources.ApplyResources(this.checkBox3dOptionStereonet, "checkBox3dOptionStereonet");
+            this.checkBox3dOptionStereonet.Checked = true;
+            this.checkBox3dOptionStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3dOptionStereonet.Name = "checkBox3dOptionStereonet";
+            this.checkBox3dOptionStereonet.UseVisualStyleBackColor = true;
+            this.checkBox3dOptionStereonet.CheckedChanged += new System.EventHandler(this.checkBox3dOptionSphere_CheckedChanged);
+            // 
+            // checkBox3dOptionSemisphere
+            // 
+            resources.ApplyResources(this.checkBox3dOptionSemisphere, "checkBox3dOptionSemisphere");
+            this.checkBox3dOptionSemisphere.Checked = true;
+            this.checkBox3dOptionSemisphere.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3dOptionSemisphere.Name = "checkBox3dOptionSemisphere";
+            this.checkBox3dOptionSemisphere.UseVisualStyleBackColor = true;
+            this.checkBox3dOptionSemisphere.CheckedChanged += new System.EventHandler(this.checkBox3dOptionSphere_CheckedChanged);
+            // 
+            // checkBox3dOptionLabel
+            // 
+            resources.ApplyResources(this.checkBox3dOptionLabel, "checkBox3dOptionLabel");
+            this.checkBox3dOptionLabel.Checked = true;
+            this.checkBox3dOptionLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3dOptionLabel.Name = "checkBox3dOptionLabel";
+            this.checkBox3dOptionLabel.UseVisualStyleBackColor = true;
+            this.checkBox3dOptionLabel.CheckedChanged += new System.EventHandler(this.checkBox3dOptionSphere_CheckedChanged);
+            // 
+            // checkBox3dOptionSphere
+            // 
+            this.checkBox3dOptionSphere.Checked = true;
+            this.checkBox3dOptionSphere.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox3dOptionSphere, "checkBox3dOptionSphere");
+            this.checkBox3dOptionSphere.Name = "checkBox3dOptionSphere";
+            this.checkBox3dOptionSphere.UseVisualStyleBackColor = true;
+            this.checkBox3dOptionSphere.CheckedChanged += new System.EventHandler(this.checkBox3dOptionSphere_CheckedChanged);
+            // 
             // panel1
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // graphicsBox
-            // 
-            resources.ApplyResources(this.graphicsBox, "graphicsBox");
-            this.graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.graphicsBox.Name = "graphicsBox";
-            this.graphicsBox.TabStop = false;
-            this.toolTip.SetToolTip(this.graphicsBox, resources.GetString("graphicsBox.ToolTip"));
-            this.graphicsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseDown);
-            this.graphicsBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseMove);
-            this.graphicsBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.graphicsBox_MouseUp);
-            this.graphicsBox.Resize += new System.EventHandler(this.formStereonet_Resize);
             // 
             // scalablePictureBoxAdvanced1
             // 
@@ -1549,8 +1668,9 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -670205);
+            this.scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 2074001760);
             this.scalablePictureBoxAdvanced1.ShowGradiaent = true;
+            this.scalablePictureBoxAdvanced1.SkipDrawing = false;
             this.scalablePictureBoxAdvanced1.StatusLabel = " ";
             this.scalablePictureBoxAdvanced1.StatusProgress = 0D;
             this.scalablePictureBoxAdvanced1.StatusVisible = true;
@@ -1578,8 +1698,9 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -670205);
+            this.scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 2074001760);
             this.scalablePictureBoxAdvanced2.ShowGradiaent = true;
+            this.scalablePictureBoxAdvanced2.SkipDrawing = false;
             this.scalablePictureBoxAdvanced2.StatusLabel = " ";
             this.scalablePictureBoxAdvanced2.StatusProgress = 0D;
             this.scalablePictureBoxAdvanced2.StatusVisible = true;
@@ -1605,7 +1726,7 @@ namespace ReciPro
             this.Controls.Add(this.labelYpos);
             this.Controls.Add(this.labelXpos);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.graphicsBox);
+            this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormStereonet";
@@ -1613,6 +1734,10 @@ namespace ReciPro
             this.Load += new System.EventHandler(this.FormStereonet_Load);
             this.VisibleChanged += new System.EventHandler(this.FormStereonet_VisibleChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormStereonet_Paint);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStrSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPointSize)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -1654,7 +1779,12 @@ namespace ReciPro
             this.flowLayoutPanel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.graphicsBox)).EndInit();
+            this.panel3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.panel3DOption.ResumeLayout(false);
+            this.panel3DOption.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarDepthFadingOut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1806,5 +1936,18 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Panel panel3DOption;
+        private System.Windows.Forms.CheckBox checkBoxDisplay3D;
+        private System.Windows.Forms.CheckBox checkBox3dOptionProjectionLine;
+        private System.Windows.Forms.CheckBox checkBox3dOptionSphere;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button3D_reset;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TrackBar trackBarDepthFadingOut;
+        private System.Windows.Forms.CheckBox checkBox3dOptionLabel;
+        private System.Windows.Forms.CheckBox checkBox3dOptionSemisphere;
+        private System.Windows.Forms.CheckBox checkBox3dOptionStereonet;
     }
 }

@@ -1,12 +1,19 @@
 using Crystallography;
+using Crystallography.OpenGL;
+using MathNet.Numerics;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using Col4 = OpenTK.Graphics.Color4;
+using V3 = OpenTK.Vector3d;
 
 namespace ReciPro;
 
@@ -20,6 +27,7 @@ public partial class FormStereonet : Form
     private bool MouseRangingMode = false;
     private PointD centerPt = new(0, 0);
     private double mag;
+    private GLControlAlpha glControl;
 
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
 
@@ -35,9 +43,30 @@ public partial class FormStereonet : Form
     //フォームがロードされたとき
     private void FormStereonet_Load(object sender, EventArgs e)
     {
+
+        glControl = new GLControlAlpha
+        {
+            AllowMouseRotation = true,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = false,
+            Name = "glControlAxes",
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 2.6,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            Dock = DockStyle.Fill,
+            LightPosition = new V3(100, 100, 100),
+            BorderStyle = BorderStyle.Fixed3D
+        };
+        //glControl.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
+        //glControl.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
+        splitContainer1.Panel2.Controls.Add(glControl);
+
         mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
         Draw();
         lastgraphicsBoxSize = graphicsBox.ClientSize;
+
+        splitContainer1.SplitterDistance = splitContainer1.Width / 2;
+        splitContainer1.Panel2Collapsed = true;
     }
 
     private void FormStereonet_FormClosing(object sender, FormClosingEventArgs e)
@@ -59,7 +88,7 @@ public partial class FormStereonet : Form
 
             mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
 
-            graphicsBox.BringToFront();
+            splitContainer1.BringToFront();
 
             Draw();
             lastgraphicsBoxSize = graphicsBox.ClientSize;
@@ -101,6 +130,8 @@ public partial class FormStereonet : Form
         DrawStereoNet(g);
         DrawCircles(g);
 
+        Draw3D();
+
         if (MouseRangingMode)
         {
             var pen = new Pen(Brushes.Gray, 1f / (float)mag) { DashStyle = DashStyle.Dash };
@@ -110,6 +141,131 @@ public partial class FormStereonet : Form
                 (float)Math.Abs(start.X - end.X), (float)Math.Abs(start.Y - end.Y));
         }
         graphicsBox.Refresh();
+    }
+
+    private void Draw3D()
+    {
+        if (glControl == null) return;
+
+        var sq2 = Math.Sqrt(2);
+
+        V3 conv(double x, double y, double z) => radioButtonWulff.Checked ? new V3(x, y, 0) / (1 + z) : new V3(x, y, 0) / Math.Sqrt(1 + z) * sq2 + new V3(0, 0, 1);
+
+        List<GLObject> glObjects = new List<GLObject>();
+        glControl.DepthCueing = (true,  (trackBarDepthFadingOut.Value-10)/2.0, 2);
+
+        Color color10 = colorControl10DegLine.Color, color90 = colorControl90DegLine.Color;
+
+        #region 球のアウトライン
+        if (checkBox3dOptionSphere.Checked)
+            for (int i = 0; i < 90; i += 10)
+            {
+                var mat = i % 90 == 0 ? new Material(color90, 0.4) : new Material(color10, 0.4);
+                var width = i % 90 == 0 ? 2f : 1f;
+                if (radioButtonOutlinePole.Checked)
+                {
+                    glObjects.Add(new Disk(new V3(0, 0, 0), new V3(sin[i], cos[i], 0), 1, width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, 0, 0), new V3(cos[i], -sin[i], 0), 1, width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, 0, sin[i]), new V3(0, 0, 1), cos[i], width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, 0, -sin[i]), new V3(0, 0, 1), cos[i], width, mat, DrawingMode.Edges, 60));
+                }
+                else
+                {
+                    glObjects.Add(new Disk(new V3(0, 0, 0), new V3(sin[i], 0, cos[i]), 1, width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, 0, 0), new V3(cos[i], 0, -sin[i]), 1, width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, sin[i], 0), new V3(0, 1, 0), cos[i], width, mat, DrawingMode.Edges, 60));
+                    glObjects.Add(new Disk(new V3(0, -sin[i], 0), new V3(0, 1, 0), cos[i], width, mat, DrawingMode.Edges, 60));
+                }
+            }
+        #endregion
+
+        #region ステレオネットのアウトライン
+        if (checkBox3dOptionStereonet.Checked)
+        {
+            if (radioButtonWulff.Checked)
+            {
+                glObjects.Add(new Disk(new V3(0, 0, 0), new V3(0, 0, 1), 1, new Material(Color.White, 0.5), DrawingMode.Surfaces, 60));
+                glObjects.Add(new Lines(new V3[] { new V3(-1, 0, 0.005), new V3(1, 0, 0.005) }, 3f, new Material(color90)));
+                glObjects.Add(new Lines(new V3[] { new V3(0, -1, 0.005), new V3(0, 1, 0.005) }, 3f, new Material(color90)));
+            }
+            else
+            {
+                glObjects.Add(new Disk(new V3(0, 0, 1), new V3(0, 0, 1), Math.Sqrt(2), new Material(Color.White, 0.5), DrawingMode.Surfaces, 60));
+                glObjects.Add(new Lines(new V3[] { new V3(-sq2, 0, 1.005), new V3(sq2, 0, 1.005) }, 3f, new Material(color90)));
+                glObjects.Add(new Lines(new V3[] { new V3(0, -sq2, 1.005), new V3(0, sq2, 1.005) }, 3f, new Material(color90)));
+                glObjects.Add(new Disk(new V3(0, 0, 1), new V3(0, 0, 1), Math.Sqrt(2), 3f, new Material(color90), DrawingMode.Edges, 60));
+
+            }
+
+            for (int i = 10; i < 90; i += 10)
+            {
+                List<V3> pts1 = new(), pts2 = new();
+                for (int j = 0; j <= 180; j++)
+                {
+                    if (radioButtonOutlinePole.Checked)
+                    {
+                        pts1.Add(conv(cos[j] * sin[i], sin[j] * sin[i], cos[i]));
+                        pts2.Add(conv(sin[i] * cos[j], cos[i] * cos[j], sin[j]));
+                    }
+                    else
+                    {
+                        pts1.Add(conv(cos[i] * cos[j], sin[i], cos[i] * sin[j]));
+                        pts2.Add(conv(sin[i] * sin[j], cos[j], cos[i] * sin[j]));
+                    }
+                }
+                glObjects.Add(new Lines(pts1.ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines(pts1.Select(v => new V3(v.X, -v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines(pts2.ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines(pts2.Select(v => new V3(-v.X, v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
+            }
+        }
+        #endregion
+
+        # region 面、軸ベクトル
+        var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
+        var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
+        var vector = radioButtonAxes.Checked ? formMain.Crystal.VectorOfAxis.ToArray() : formMain.Crystal.VectorOfPlane.ToArray();
+        var radius = pointSize*0.004;
+        for (int i = 0; i < vector.Length; i++)
+        {
+            var v = formMain.Crystal.RotationMatrix * vector[i].Normarize();
+            var color = i < 6 && radioButtonRange.Checked ? unique : general;
+            if (!checkBox3dOptionSemisphere.Checked || v.Z > 0)
+            { 
+                glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
+                if (checkBox3dOptionLabel.Checked)
+                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius +0.001, true, new Material(color)));
+            }
+            if (checkBox3dOptionStereonet.Checked && v.Z > 0)
+            {
+                glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) + new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
+                glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) - new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
+                
+                //projection line
+                if (checkBox3dOptionProjectionLine.Checked)
+                {
+                    if (radioButtonWulff.Checked)
+                        glObjects.Add(new Lines(new[] { new V3(0, 0, -1), new V3(v.X, v.Y, v.Z) }, 1f, new Material(color, 0.5)));
+                    else
+                    {
+                        var div = 100;
+                        var r = (new Vector3DBase(0, 0, 1) - v).Length;
+                        var rot = OpenTK.Matrix3d.CreateRotationZ(-Math.Atan2(v.Y, v.X));
+                        var sweep = Math.Asin((1 - v.Z) / r);
+                        var pts = new List<V3>();
+                        for (int j = 0; j < div; j++)
+                            pts.Add(new V3(0, 0, 1) + r * rot.Mult(new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div))));
+                        glObjects.Add(new Lines(pts.ToArray(), 1f, new Material(color, 0.5)));
+                    }
+                }
+            }
+        }
+        #endregion
+
+        glControl.DeleteAllObjects();
+        glControl.AddObjects(glObjects);
+        glControl.Refresh();
+
     }
 
     private readonly List<double> sin = new();
@@ -125,7 +281,7 @@ public partial class FormStereonet : Form
 
         if (sin.Count == 0)
         {
-            for (int n = 0; n < 180; n++)
+            for (int n = 0; n < 360; n++)
             {
                 sin.Add(Math.Sin(n * Math.PI / 180.0));
                 cos.Add(Math.Cos(n * Math.PI / 180.0));
@@ -274,7 +430,6 @@ public partial class FormStereonet : Form
                 positionRecorder[n].Add(srcPt);
                 for (int i = 0; i < positionRecorder[n].Count; i++)
                 {
-                    //glAlpha.FillCircle(general, positionRecorder[n][i].X, positionRecorder[n][i].Y, pointSize / mag / 2, 60);
                     g.FillEllipse(new SolidBrush(general), new RectangleF((float)(positionRecorder[n][i].X - radius / 2), (float)(-positionRecorder[n][i].Y - radius / 2), (float)radius, (float)radius));
                     if (i != 0)
                         g.DrawLine(new Pen(new SolidBrush(general), 1f), positionRecorder[n][i - 1].X, positionRecorder[n][i - 1].Y, positionRecorder[n][i].X, positionRecorder[n][i].Y);
@@ -469,7 +624,7 @@ public partial class FormStereonet : Form
     {
         if (e.X > tabControl.Width || e.Y > tabControl.Height - 20)
         {
-            graphicsBox.BringToFront();
+            splitContainer1.BringToFront();
             graphicsBox.Refresh();
         }
         PointD pt = convertClientToSrc(e.X, e.Y); ;
@@ -538,7 +693,7 @@ public partial class FormStereonet : Form
 
     private void tabControl_Click(object sender, EventArgs e)
     {
-        graphicsBox.SendToBack();
+        splitContainer1.SendToBack();
         graphicsBox.Refresh();
     }
 
@@ -818,6 +973,24 @@ public partial class FormStereonet : Form
 
         Draw();
     }
+
+    private void checkBoxDisplay3D_CheckedChanged(object sender, EventArgs e)
+    {
+        splitContainer1.Panel2Collapsed = !checkBoxDisplay3D.Checked;
+        panel3DOption.Visible = checkBoxDisplay3D.Checked;
+    }
+
+    private void button3D_reset_Click(object sender, EventArgs e)
+    {
+        glControl.ProjWidth = 2.4;
+        glControl.WorldMatrix = OpenTK.Matrix4d.Identity;
+    }
+
+    private void checkBox3dOptionSphere_CheckedChanged(object sender, EventArgs e) => Draw3D();
+
+    private void checkBox3dOptionProjectionLine_CheckedChanged(object sender, EventArgs e) => Draw3D();
+
+    private void trackBarDepthFadingOut_Scroll(object sender, EventArgs e) => Draw3D();
 
     private void FormStereonet_Paint(object sender, PaintEventArgs e) => Draw();
 }

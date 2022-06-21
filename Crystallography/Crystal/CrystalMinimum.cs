@@ -130,6 +130,13 @@ public class Crystal2
                     )
                 );
             atom[^1].ResetVesta();
+
+            //AtomNo‚ª255(d…‘fD)‚¾‚Á‚½Žž‚Ìˆ—
+            if(atom[^1].AtomicNumber==255)
+            {
+                atom[^1].AtomicNumber = 1;
+                atom[^1].Isotope = new[] { 0.0, 100.0, 0.0 };
+            }
         }
 
         var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));

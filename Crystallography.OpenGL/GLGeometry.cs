@@ -51,7 +51,7 @@ public static class GLGeometry
                         break;
                     }
                 }
-        } while (i != iList[0]);
+        } while (i != iList[0] && iList.Count<=points.Count());
 
         return (iList.ToArray(), center, norm);
     }

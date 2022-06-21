@@ -180,9 +180,9 @@ public readonly struct WyckoffPosition
             return new Atoms();
 
         var atoms = new Atoms();
-        var wykc = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber];
+        var wyck = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber];
         //まず、もっとも対称性の低いワイコフ位置で原子位置を再生
-        atoms.Atom = wykc[0].GeneratePositions(Pos.X, Pos.Y, Pos.Z);
+        atoms.Atom = wyck[0].GeneratePositions(Pos.X, Pos.Y, Pos.Z);
 
         //ワイコフ位置判定
         atoms.WyckoffLeter = "{";
@@ -193,27 +193,28 @@ public readonly struct WyckoffPosition
         int multi = 0;
         int wyckNum = 0;
 
-        for (int j = wykc.Length - 1; j >= 0; j--)
+        var atomsTemp = atoms.Atom.Select(a => (a.X, a.Y, a.Z)).ToArray();
+
+        for (int j = wyck.Length - 1; j >= 0; j--)
         {
 
             //2020/05/15 一部のtrigonal, hexagonalで正しい判定が出来ない問題の対応
             // (0.2, 0.1, 0)という座標は (x, -x, 0), (x, 2x, 0), (-2x, -x, 0)というワイコフ位置 (P321, 3j)
-            // にもかかわらず、正しく判定することが出来ない. そのため、もっとも低対称性で再生した位置全てに対して判定を
-            // おこない、一回でもOKだったらそのワイコフ位置だと判定する
+            // にもかかわらず、正しく判定することが出来ない.
+            //2022/06/16 服部さんから、P4_2/nmc(2)でも、(3/4,y,z)が上手く判定できていないとの指摘を受ける
 
-            var pos = SymmetrySeriesNumber >= 438 && SymmetrySeriesNumber <= 488 ?
-                atoms.Atom.Select(a => (a.X, a.Y, a.Z)).ToArray() : new[] { (Pos.X, Pos.Y, Pos.Z) };
-
-
-            foreach (var (X, Y, Z) in pos)
-                if (wykc[j].CheckPosition(X, Y, Z))
-                {
-                    multi = wykc[j].Multiplicity;
-                    wyckLet = wykc[j].WyckoffLetter;
-                    siteSym = wykc[j].SiteSymmetry;
-                    wyckNum = j;
-                    break;
-                }
+            // そのため、もっとも低対称性で再生した位置全てに対して判定をおこない、一回でもOKだったらそのワイコフ位置だと判定する
+            if (wyck[j].Multiplicity == atoms.Atom.Count)
+                foreach (var (X, Y, Z) in atomsTemp)
+                    if (wyck[j].CheckPosition(X, Y, Z))
+                    {
+                        multi = wyck[j].Multiplicity;
+                        wyckLet = wyck[j].WyckoffLetter;
+                        siteSym = wyck[j].SiteSymmetry;
+                        wyckNum = j;
+                        break;
+                    }
+         
             if (multi != 0)
                 break;
         }

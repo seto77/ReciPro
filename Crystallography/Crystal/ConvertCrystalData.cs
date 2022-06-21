@@ -470,7 +470,7 @@ public class ConvertCrystalData
                 if (temp == "OH") //OH基のとき
                     atomicNumber = -1;
                 else if (temp == "D") //重水素のとき
-                    atomicNumber = 1;
+                    atomicNumber = 255;
                 else if (temp == "Wat" || temp == "WAT" || temp == "wat") //水のとき
                     atomicNumber = -2;
             }
@@ -1176,6 +1176,11 @@ public class ConvertCrystalData
                     atomicNumber = -1;
                     break;
                 }
+                else if(temp =="D")
+                {
+                    atomicNumber = 255;
+                    break;
+                }
             }
 
             //Bタイプが全て ”” だったら、Uタイプと判定
@@ -1245,18 +1250,13 @@ public class ConvertCrystalData
         int symmetrySeriesNumber = -1;
         if (SgNameHall != "")
         {
+            var hall = SgNameHall.Replace(" ", "");
             for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
-            {
-                var hall = SymmetryStatic.Symmetries[i].SpaceGroupHallStr;
-                if (hall != "")
-                    if ((hall.IndexOf(SgNameHall.Trim(), 0) != -1) ||
-                    (hall.IndexOf(SgNameHall.Replace(" ", ""), 0) != -1) ||
-                    (hall.Replace("\"", "").IndexOf(SgNameHall, 0) != -1))
-                    {
-                        symmetrySeriesNumber = i;
-                        break;
-                    }
-            }
+                if (hall == SymmetryStatic.Symmetries[i].SpaceGroupHallStr)
+                {
+                    symmetrySeriesNumber = i;
+                    break;
+                }
             if (symmetrySeriesNumber != -1)
                 return symmetrySeriesNumber;
         }

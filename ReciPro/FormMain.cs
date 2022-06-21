@@ -105,7 +105,7 @@ public partial class FormMain : Form
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
 
-    public static Languages Language { get => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese; }
+    public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
     public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
@@ -132,7 +132,7 @@ public partial class FormMain : Form
     }
     public bool SkipProgressEvent { get; set; } = false;
     private readonly IProgress<(long, long, long, string)> ip;//IReport
-    public bool YusaGonioMode { get; set; } = false;
+    public bool YusaGonioMode { get; set; }
 
     private readonly Stopwatch sw = new();
     public bool SkipDrawing { get; set; } = false;
@@ -183,9 +183,7 @@ public partial class FormMain : Form
     private void FormMain_Load(object sender, EventArgs e)
     {
         //MessageBox.Show(AutoScaleMode == AutoScaleMode.Dpi ? "DPI" : "False");
-
         //MessageBox.Show(AutoScaleFactor.Width.ToString() + CurrentAutoScaleDimensions.Width.ToString());
-
 
         if (DesignMode) return;
 
