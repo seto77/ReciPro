@@ -134,7 +134,7 @@ public readonly struct Symmetry
             func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null);
         else if (sym.LatticeTypeStr == "F")
             func.Add((h, k, l) => ((h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0) ? "F" : null);
-        else if (sym.LatticeTypeStr == "R")
+        else if (sym.LatticeTypeStr == "R" && sym.SpaceGroupHMStr.Contains("Hex"))
             func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null);
 
         switch (sym.CrystalSystemNumber)
@@ -493,7 +493,7 @@ public readonly struct Symmetry
                 "C" => "hkl: h+k=2n: C",
                 "I" => "hkl: h+k+l=2n: I",
                 "F" => "hkl: h+k=2n k+l=2n: F",
-                "R" => "hkl: -h+k+l=3n: R",
+                "R" => sym.SpaceGroupHMStr.Contains("Hex") ? "hkl: -h+k+l=3n: R": "",
                 _ => ""
             });
         }

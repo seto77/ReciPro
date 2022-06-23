@@ -669,7 +669,6 @@ public class Clip
 #endregion
 
 #region 線分
-
 public class Lines : GLObject
 {
     public Lines(V3d[] vertices, float lineWidth, Material mat) : base(mat, DrawingMode.Edges)

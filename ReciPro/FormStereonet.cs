@@ -2,6 +2,7 @@ using Crystallography;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
 using Microsoft.Win32;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -152,8 +153,7 @@ public partial class FormStereonet : Form
         V3 conv(double x, double y, double z) => radioButtonWulff.Checked ? new V3(x, y, 0) / (1 + z) : new V3(x, y, 0) / Math.Sqrt(1 + z) * sq2 + new V3(0, 0, 1);
 
         List<GLObject> glObjects = new List<GLObject>();
-        glControl.DepthCueing = (true,  (trackBarDepthFadingOut.Value-10)/2.0, 2);
-
+        glControl.DepthCueing = (true, (trackBarDepthFadingOut.Value - 10) / 2.0, 2);
         Color color10 = colorControl10DegLine.Color, color90 = colorControl90DegLine.Color;
 
         #region 球のアウトライン
@@ -194,7 +194,6 @@ public partial class FormStereonet : Form
                 glObjects.Add(new Lines(new V3[] { new V3(-sq2, 0, 1.005), new V3(sq2, 0, 1.005) }, 3f, new Material(color90)));
                 glObjects.Add(new Lines(new V3[] { new V3(0, -sq2, 1.005), new V3(0, sq2, 1.005) }, 3f, new Material(color90)));
                 glObjects.Add(new Disk(new V3(0, 0, 1), new V3(0, 0, 1), Math.Sqrt(2), 3f, new Material(color90), DrawingMode.Edges, 60));
-
             }
 
             for (int i = 10; i < 90; i += 10)
@@ -225,22 +224,22 @@ public partial class FormStereonet : Form
         var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
         var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
         var vector = radioButtonAxes.Checked ? formMain.Crystal.VectorOfAxis.ToArray() : formMain.Crystal.VectorOfPlane.ToArray();
-        var radius = pointSize*0.004;
+        var radius = pointSize * 0.004;
         for (int i = 0; i < vector.Length; i++)
         {
             var v = formMain.Crystal.RotationMatrix * vector[i].Normarize();
             var color = i < 6 && radioButtonRange.Checked ? unique : general;
             if (!checkBox3dOptionSemisphere.Checked || v.Z > 0)
-            { 
+            {
                 glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
                 if (checkBox3dOptionLabel.Checked)
-                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius +0.001, true, new Material(color)));
+                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color)));
             }
             if (checkBox3dOptionStereonet.Checked && v.Z > 0)
             {
                 glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) + new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
                 glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) - new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
-                
+
                 //projection line
                 if (checkBox3dOptionProjectionLine.Checked)
                 {
@@ -265,7 +264,6 @@ public partial class FormStereonet : Form
         glControl.DeleteAllObjects();
         glControl.AddObjects(glObjects);
         glControl.Refresh();
-
     }
 
     private readonly List<double> sin = new();

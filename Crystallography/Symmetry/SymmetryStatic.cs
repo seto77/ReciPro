@@ -13126,20 +13126,12 @@ new ushort[]{535,2,6,2,1,1}
                 break;
 
             case 2:// 2/m
-                switch (sym.MainAxis)
+                result = sym.MainAxis switch
                 {
-                    case "a":
-                        result = h >= 0 && (k > 0 || (k == 0 && l >= 0));
-                        break;
-
-                    case "b":
-                        result = (k >= 0 && (h > 0 || (h == 0 && l >= 0)));
-                        break;
-
-                    case "c":
-                        result = (l >= 0 && (h > 0 || (h == 0 && k >= 0)));
-                        break;
-                }
+                    "a" => h >= 0 && (k > 0 || (k == 0 && l >= 0)),
+                    "b" => (k >= 0 && (h > 0 || (h == 0 && l >= 0))),
+                    _ => (l >= 0 && (h > 0 || (h == 0 && k >= 0)))
+                };
                 break;
 
             case 3:// mmm
@@ -13155,42 +13147,21 @@ new ushort[]{535,2,6,2,1,1}
                 break;
 
             case 6: //-3
-                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                {
-                    result = ((h >= 0 && k >= 0 && (!(h == 0 && k == 0))) || (l > 0 && h == 0 && k == 0));
-                    break;
-                }
-                else
-                {//Rhomboセルの場合
-                    result = (h > 0 && k == 0 && l == 0) //2つが0のとき
-                             || (h > 0 && k != 0 && l == 0) //1つが0のとき
-                             || (h > 0 && k > 0 && l < 0) //1つが負のとき
-                             || (h > 0 && k > 0 && l > 0 && h >= k && h >= l && h != k && k != l && l != h) //全部正で、全部が異なるとき
-                             || (h > 0 && k > 0 && l > 0 && h >= k && h >= l && h == k && k > l) //全部正で、2つが同じとき①
-                             || (h > 0 && k > 0 && l > 0 && h >= k && h >= l && h > k && k == l) //全部正で、2つが同じとき①
-                             || (h > 0 && k > 0 && l > 0 && h == k && h == l); //全部正で、3つが同じとき
-
-                    break;
-                }
+                if (sym.SpaceGroupHMsubStr != "R" )//Hexaセルの場合
+                    result = (h == 0 && k == 0 && l > 0) || (h > 0 && k >= 0);
+                else//Rhomboセルの場合
+                    result = (h > 0 && l == 0) || (h > 0 && k > 0 && l < 0) || (h >= k && k >= l && l > 0) || (h > l && l > k && k > 0);
+                break;
 
             case 7: //-3m1
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                {
-                    result = ((l > 0 && h >= 0 && k >= 0) || (l == 0 && h <= k && h >= 0));
-                    break;
-                }
-                else
-                {//Rhomboセルの場合
-                    result = (h > 0 && k == 0 && l == 0)
-                            || (h > 0 && Math.Abs(h) >= Math.Abs(k) && k != 0 && l == 0)
-                            || (h >= k && k >= l && h > 0 && k > 0 && l != 0)
-                        ;
-                    break;
-                }
+                    result = ((l > 0 && h >= 0 && k >= 0) || (l == 0 && h >= k && k >= 0));
+                else//Rhomboセルの場合
+                    result =  (h > 0 && h >= Math.Abs(k) && l == 0) || (h >= k && k >= l && k > 0 && l != 0);
+                break;
 
             case 8://6/m
-                result = (l >= 0 && h > 0 && k >= 0)
-                    || (l > 0 && h == 0 && k == 0);
+                result = (l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0);
                 break;
 
             case 9://6/mmm
