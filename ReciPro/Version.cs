@@ -10,7 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
-        "\r\n ver4.833(2022/06/24)  Added the function to generate movie (Structure Viewer)." +
+        "\r\n ver4.833(2022/06/24)  Added the function to generate movies for 'Structure Viewer'." +
         "\r\n ver4.832(2022/06/23)  Added the function to render stereonet projection with OpenGL." +
         "\r\n ver4.831(2022/05/14)  Fixed minor bugs on the HRTEM function." +
         "\r\n ver4.830(2022/04/14)  Some libraries are updated. Improved the HRTEM function (see https://github.com/seto77/ReciPro/issues/13)." +
