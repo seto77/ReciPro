@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -320,6 +321,11 @@ public partial class FormStructureViewer : Form
         tabPageBoundPlane.ResumeLayout();
         tabPageLatticePlane.ResumeLayout();
         #endregion
+
+        SkipEvent = true;
+        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        SkipEvent = false;
     }
     #endregion コンストラクタ
 
@@ -1712,9 +1718,86 @@ public partial class FormStructureViewer : Form
     /// <param name="e"></param>
     private void toolStripButtonResetRotation_Click(object sender, EventArgs e) => formMain.SetRotation(new Matrix3D());
 
-    private void FormStructureViewer_ResizeBegin(object sender, EventArgs e) => SuspendLayout();
+    private void FormStructureViewer_ResizeBegin(object sender, EventArgs e)
+    {
 
-    private void FormStructureViewer_ResizeEnd(object sender, EventArgs e) => ResumeLayout();
+        SuspendLayout();
+    }
+
+    private void FormStructureViewer_ResizeEnd(object sender, EventArgs e)
+    {
+        ResumeLayout();
+
+        SkipEvent = true;
+        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        SkipEvent = false;
+    }
+    private void numericBoxClientWidth_ValueChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        SkipEvent = true;
+
+        var currentWidth = glControlMain.ClientSize.Width;
+        var currentHeight = glControlMain.ClientSize.Height;
+
+        this.Size = new Size(this.Size.Width + numericBoxClientWidth.ValueInteger - currentWidth, this.Size.Height + numericBoxClientHeight.ValueInteger - currentHeight);
+
+        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+
+        SkipEvent = false;
+
+    }
 
     #endregion その他イベント
+
+
+    #region 動画保存
+    private void saveMovieToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+            var setting =new FormMovieSetting();
+            if (setting.ShowDialog() == DialogResult.OK)
+            {
+                string folderFrom = "ffmpeg\\"; //削除するファイルがあるフォルダー
+                foreach (string pathFrom in Directory.EnumerateFiles(folderFrom, "*.png"))
+                    File.Delete(pathFrom);
+
+                var duration = setting.Duration;
+                var speed = setting.Speed;
+                var framerate = 30;
+
+                for (int i = 0; i < duration * framerate; i++)
+                {
+                    formMain.Rotate(setting.Direction, speed * Math.PI / framerate / 180.0);
+                    var bmp = glControlMain.GenerateBitmap();
+                    bmp.Save($@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
+                }
+
+                //https://qiita.com/livlea/items/a94df4667c0eb37d859f
+
+                var info = new ProcessStartInfo();
+                info.WorkingDirectory = "ffmpeg";
+                info.FileName = "ffmpeg\\ffmpeg.exe";
+                info.Arguments = "-framerate 30 -i %04d.png -vcodec libx264 -pix_fmt yuv420p -r 60 out.mp4";
+
+                var p = Process.Start(info);
+                p.WaitForExit(60000);
+
+                Thread.Sleep(200);
+
+                File.Copy("ffmpeg\\out.mp4", dlg.FileName, true);
+
+                for (int i = 0; i < duration * framerate; i++)
+                    File.Delete($"ffmpeg\\{i:0000}.png");
+
+                File.Delete("ffmpeg\\out.mp4");
+            }
+
+        }
+    }
+    #endregion
 }

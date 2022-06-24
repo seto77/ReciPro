@@ -842,7 +842,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 174</value>
+    <value>608, 176</value>
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1287,7 +1287,7 @@
     <value>9</value>
   </data>
   <data name="tabPageBond.Text" xml:space="preserve">
-    <value>Bonds and Polyhedra</value>
+    <value>Bonds &amp; Polyhedra</value>
   </data>
   <data name="&gt;&gt;tabPageBond.Name" xml:space="preserve">
     <value>tabPageBond</value>
@@ -2685,7 +2685,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2694,7 +2694,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 25</value>
+    <value>115, 27</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2715,7 +2715,7 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 202</value>
+    <value>3, 200</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2724,7 +2724,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 27</value>
+    <value>653, 29</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2825,11 +2825,110 @@
   <data name="&gt;&gt;tabPageCoordinateInfromatin.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="numericBoxClientHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxClientHeight.FooterText" xml:space="preserve">
+    <value>pix</value>
+  </data>
+  <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 3</value>
+  </data>
+  <data name="numericBoxClientHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxClientHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxClientHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxClientHeight.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxClientHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 27</value>
+  </data>
+  <data name="numericBoxClientHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientHeight.Name" xml:space="preserve">
+    <value>numericBoxClientHeight</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
+    <value>tabPageInformation</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientHeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxClientWidth.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxClientWidth.FooterText" xml:space="preserve">
+    <value>×</value>
+  </data>
+  <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
+    <value>Size (W×H): </value>
+  </data>
+  <data name="numericBoxClientWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="numericBoxClientWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxClientWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxClientWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxClientWidth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 27</value>
+  </data>
+  <data name="numericBoxClientWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
+    <value>Set pixel sizes of the simulated pattern</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientWidth.Name" xml:space="preserve">
+    <value>numericBoxClientWidth</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
+    <value>tabPageInformation</value>
+  </data>
+  <data name="&gt;&gt;numericBoxClientWidth.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="textBoxInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>Bottom</value>
   </data>
   <data name="textBoxInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>3, 31</value>
   </data>
   <data name="textBoxInformation.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2838,7 +2937,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 214</value>
+    <value>653, 186</value>
   </data>
   <data name="textBoxInformation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2853,7 +2952,7 @@
     <value>tabPageInformation</value>
   </data>
   <data name="&gt;&gt;textBoxInformation.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2982,7 +3081,7 @@
     <value>tabPageInformation</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -4207,7 +4306,7 @@ indivisual setting)</value>
     <value>Save Image</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
     <value>Main Image</value>
@@ -4216,19 +4315,19 @@ indivisual setting)</value>
     <value>False</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
     <value>Legend</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
     <value>Crystal Axes</value>
   </data>
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
     <value>Light Direction</value>
@@ -4238,6 +4337,12 @@ indivisual setting)</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy Main Image to Clipboard</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 22</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save movie</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 6</value>
@@ -4917,6 +5022,12 @@ indivisual setting)</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveMovieToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveMovieToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveMovieToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormStructureViewer</value>

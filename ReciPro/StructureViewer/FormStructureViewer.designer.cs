@@ -106,6 +106,8 @@
             this.tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
             this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
             this.tabPageInformation = new System.Windows.Forms.TabPage();
+            this.numericBoxClientHeight = new Crystallography.Controls.NumericBox();
+            this.numericBoxClientWidth = new Crystallography.Controls.NumericBox();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelGraphicsCard = new System.Windows.Forms.Label();
@@ -180,6 +182,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1081,10 +1084,52 @@
             // 
             // tabPageInformation
             // 
+            this.tabPageInformation.Controls.Add(this.numericBoxClientHeight);
+            this.tabPageInformation.Controls.Add(this.numericBoxClientWidth);
             this.tabPageInformation.Controls.Add(this.textBoxInformation);
             this.tabPageInformation.Controls.Add(this.flowLayoutPanel4);
             resources.ApplyResources(this.tabPageInformation, "tabPageInformation");
             this.tabPageInformation.Name = "tabPageInformation";
+            // 
+            // numericBoxClientHeight
+            // 
+            resources.ApplyResources(this.numericBoxClientHeight, "numericBoxClientHeight");
+            this.numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.DecimalPlaces = 0;
+            this.numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.Maximum = 2000D;
+            this.numericBoxClientHeight.Minimum = 1D;
+            this.numericBoxClientHeight.Name = "numericBoxClientHeight";
+            this.numericBoxClientHeight.RadianValue = 17.453292519943293D;
+            this.numericBoxClientHeight.RoundErrorAccuracy = -1;
+            this.numericBoxClientHeight.ShowUpDown = true;
+            this.numericBoxClientHeight.SmartIncrement = true;
+            this.numericBoxClientHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxClientHeight.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
+            this.numericBoxClientHeight.Value = 1000D;
+            this.numericBoxClientHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxClientWidth_ValueChanged);
+            // 
+            // numericBoxClientWidth
+            // 
+            resources.ApplyResources(this.numericBoxClientWidth, "numericBoxClientWidth");
+            this.numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.DecimalPlaces = 0;
+            this.numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.Maximum = 2000D;
+            this.numericBoxClientWidth.Minimum = 1D;
+            this.numericBoxClientWidth.Name = "numericBoxClientWidth";
+            this.numericBoxClientWidth.RadianValue = 17.453292519943293D;
+            this.numericBoxClientWidth.RoundErrorAccuracy = -1;
+            this.numericBoxClientWidth.ShowUpDown = true;
+            this.numericBoxClientWidth.SmartIncrement = true;
+            this.numericBoxClientWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxClientWidth.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
+            this.numericBoxClientWidth.Value = 1000D;
+            this.numericBoxClientWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxClientWidth_ValueChanged);
             // 
             // textBoxInformation
             // 
@@ -1524,6 +1569,7 @@
             this.saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveImageToolStripMenuItem1,
             this.copyToClipboardToolStripMenuItem,
+            this.saveMovieToolStripMenuItem,
             this.toolStripSeparator1,
             this.pageSetupToolStripMenuItem,
             this.printPerviewToolStripMenuItem,
@@ -1717,6 +1763,12 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // saveMovieToolStripMenuItem
+            // 
+            this.saveMovieToolStripMenuItem.Name = "saveMovieToolStripMenuItem";
+            resources.ApplyResources(this.saveMovieToolStripMenuItem, "saveMovieToolStripMenuItem");
+            this.saveMovieToolStripMenuItem.Click += new System.EventHandler(this.saveMovieToolStripMenuItem_Click);
             // 
             // FormStructureViewer
             // 
@@ -1944,5 +1996,8 @@
         private Crystallography.Controls.ColorControl colorControlCellPlaneA;
         private Crystallography.Controls.ColorControl colorControlCellPlaneB;
         private Crystallography.Controls.ColorControl colorControlCellPlaneC;
+        public NumericBox numericBoxClientHeight;
+        public NumericBox numericBoxClientWidth;
+        private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
     }
 }

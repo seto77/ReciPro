@@ -254,7 +254,6 @@
             // 
             // splitContainer
             // 
-            this.splitContainer.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Name = "splitContainer";
@@ -263,7 +262,6 @@
             // 
             this.splitContainer.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer.Panel1.Controls.Add(this.panel2);
-            this.splitContainer.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
             // 
             // splitContainer.Panel2
@@ -278,7 +276,6 @@
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.listBox);
             this.groupBox1.Controls.Add(this.flowLayoutPanel4);
-            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -286,7 +283,6 @@
             // listBox
             // 
             resources.ApplyResources(this.listBox, "listBox");
-            this.listBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.listBox.FormattingEnabled = true;
             this.listBox.MultiColumn = true;
             this.listBox.Name = "listBox";
@@ -300,7 +296,6 @@
             this.flowLayoutPanel4.Controls.Add(this.buttonDelete);
             this.flowLayoutPanel4.Controls.Add(this.buttonLower);
             this.flowLayoutPanel4.Controls.Add(this.buttonUpper);
-            this.flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // buttonAllClear
@@ -348,7 +343,6 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.crystalControl);
-            this.groupBox6.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox6.Name = "groupBox6";
@@ -363,7 +357,6 @@
             this.crystalControl.B = 0D;
             this.crystalControl.Beta = 0D;
             this.crystalControl.C = 0D;
-            this.crystalControl.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.crystalControl.DefaultTabNumber = 0;
             this.crystalControl.Gamma = 0D;
             this.crystalControl.Name = "crystalControl";
@@ -390,7 +383,6 @@
             resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
             this.flowLayoutPanel3.Controls.Add(this.buttonAdd);
             this.flowLayoutPanel3.Controls.Add(this.buttonChange);
-            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // buttonAdd
