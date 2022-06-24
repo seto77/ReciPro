@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1762,7 +1763,9 @@ public partial class FormStructureViewer : Form
             var setting =new FormMovieSetting();
             if (setting.ShowDialog() == DialogResult.OK)
             {
-                string folderFrom = "ffmpeg\\"; //削除するファイルがあるフォルダー
+
+                var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)+"\\";
+                string folderFrom = path+"ffmpeg\\"; //削除するファイルがあるフォルダー
                 foreach (string pathFrom in Directory.EnumerateFiles(folderFrom, "*.png"))
                     File.Delete(pathFrom);
 
@@ -1774,14 +1777,14 @@ public partial class FormStructureViewer : Form
                 {
                     formMain.Rotate(setting.Direction, speed * Math.PI / framerate / 180.0);
                     var bmp = glControlMain.GenerateBitmap();
-                    bmp.Save($@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
+                    bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
                 }
 
                 //https://qiita.com/livlea/items/a94df4667c0eb37d859f
 
                 var info = new ProcessStartInfo();
-                info.WorkingDirectory = "ffmpeg";
-                info.FileName = "ffmpeg\\ffmpeg.exe";
+                info.WorkingDirectory = path+"ffmpeg";
+                info.FileName = path+"ffmpeg\\ffmpeg.exe";
                 info.Arguments = "-framerate 30 -i %04d.png -vcodec libx264 -pix_fmt yuv420p -r 60 out.mp4";
 
                 var p = Process.Start(info);
@@ -1789,12 +1792,12 @@ public partial class FormStructureViewer : Form
 
                 Thread.Sleep(200);
 
-                File.Copy("ffmpeg\\out.mp4", dlg.FileName, true);
+                File.Copy(path+"ffmpeg\\out.mp4", dlg.FileName, true);
 
                 for (int i = 0; i < duration * framerate; i++)
-                    File.Delete($"ffmpeg\\{i:0000}.png");
+                    File.Delete(path+$"ffmpeg\\{i:0000}.png");
 
-                File.Delete("ffmpeg\\out.mp4");
+                File.Delete(path+"ffmpeg\\out.mp4");
             }
 
         }

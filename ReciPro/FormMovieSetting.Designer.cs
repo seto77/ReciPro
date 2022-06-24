@@ -85,9 +85,11 @@ partial class FormMovieSetting
             this.numericBoxSpeed.RoundErrorAccuracy = -1;
             this.numericBoxSpeed.ShowUpDown = true;
             this.numericBoxSpeed.Size = new System.Drawing.Size(156, 27);
+            this.numericBoxSpeed.SkipEventDuringInput = false;
             this.numericBoxSpeed.SmartIncrement = true;
             this.numericBoxSpeed.TabIndex = 1;
             this.numericBoxSpeed.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxSpeed.TrimEndZero = true;
             this.numericBoxSpeed.Value = 30D;
             // 
             // tableLayoutPanel1
@@ -311,17 +313,17 @@ partial class FormMovieSetting
             this.numericBoxDuration.RoundErrorAccuracy = -1;
             this.numericBoxDuration.ShowUpDown = true;
             this.numericBoxDuration.Size = new System.Drawing.Size(156, 27);
+            this.numericBoxDuration.SkipEventDuringInput = false;
             this.numericBoxDuration.SmartIncrement = true;
             this.numericBoxDuration.TabIndex = 1;
             this.numericBoxDuration.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDuration.TrimEndZero = true;
             this.numericBoxDuration.Value = 12D;
             // 
             // FormMovieSetting
             // 
-            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(172, 188);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
