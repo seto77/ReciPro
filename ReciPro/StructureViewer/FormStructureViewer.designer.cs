@@ -161,6 +161,7 @@
             this.copyLegendToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPerviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -182,7 +183,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saveMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -217,6 +218,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPerspective)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -1084,9 +1086,8 @@
             // 
             // tabPageInformation
             // 
-            this.tabPageInformation.Controls.Add(this.numericBoxClientHeight);
-            this.tabPageInformation.Controls.Add(this.numericBoxClientWidth);
             this.tabPageInformation.Controls.Add(this.textBoxInformation);
+            this.tabPageInformation.Controls.Add(this.panel1);
             this.tabPageInformation.Controls.Add(this.flowLayoutPanel4);
             resources.ApplyResources(this.tabPageInformation, "tabPageInformation");
             this.tabPageInformation.Name = "tabPageInformation";
@@ -1643,6 +1644,12 @@
             resources.ApplyResources(this.copyLightToolStripMenuItem, "copyLightToolStripMenuItem");
             this.copyLightToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
             // 
+            // saveMovieToolStripMenuItem
+            // 
+            this.saveMovieToolStripMenuItem.Name = "saveMovieToolStripMenuItem";
+            resources.ApplyResources(this.saveMovieToolStripMenuItem, "saveMovieToolStripMenuItem");
+            this.saveMovieToolStripMenuItem.Click += new System.EventHandler(this.saveMovieToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -1764,11 +1771,12 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // saveMovieToolStripMenuItem
+            // panel1
             // 
-            this.saveMovieToolStripMenuItem.Name = "saveMovieToolStripMenuItem";
-            resources.ApplyResources(this.saveMovieToolStripMenuItem, "saveMovieToolStripMenuItem");
-            this.saveMovieToolStripMenuItem.Click += new System.EventHandler(this.saveMovieToolStripMenuItem_Click);
+            this.panel1.Controls.Add(this.numericBoxClientWidth);
+            this.panel1.Controls.Add(this.numericBoxClientHeight);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // FormStructureViewer
             // 
@@ -1838,6 +1846,7 @@
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1999,5 +2008,6 @@
         public NumericBox numericBoxClientHeight;
         public NumericBox numericBoxClientWidth;
         private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }

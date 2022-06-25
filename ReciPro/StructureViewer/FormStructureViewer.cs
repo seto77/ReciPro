@@ -1763,10 +1763,18 @@ public partial class FormStructureViewer : Form
             var setting =new FormMovieSetting();
             if (setting.ShowDialog() == DialogResult.OK)
             {
+                //画像の縦横ピクセル数が奇数の場合は上手くエンコードできない
+                int width = Size.Width, height = Size.Height;
+                if (glControlMain.ClientRectangle.Size.Width % 2 != 0)
+                    width -= 1;
+                if (glControlMain.ClientRectangle.Size.Height % 2 != 0)
+                    height -= 1;
+                if(width!=Size.Width || height!=Size.Height)
+                    Size = new Size(width,height);
 
+                //pngファイルが残っている場合があるので念のため削除
                 var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)+"\\";
-                string folderFrom = path+"ffmpeg\\"; //削除するファイルがあるフォルダー
-                foreach (string pathFrom in Directory.EnumerateFiles(folderFrom, "*.png"))
+                foreach (string pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
                     File.Delete(pathFrom);
 
                 var duration = setting.Duration;
