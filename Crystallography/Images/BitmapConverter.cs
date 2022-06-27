@@ -10,25 +10,6 @@ namespace Crystallography
 {
     public static class BitmapConverter
     {
-        public unsafe static Bitmap FlipVertically(Bitmap src)
-        {
-            var srcData = src.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
-            byte* srcP = (byte*)(void*)srcData.Scan0;
-
-            var dest = new Bitmap(src.Width, src.Height, src.PixelFormat);
-            var destData = dest.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadWrite, src.PixelFormat);
-            byte* destP = (byte*)(void*)destData.Scan0;
-
-            for (int h = 0; h < src.Height; h++)
-                for (int w = 0; w < destData.Stride; w++)
-                    destP[h * destData.Stride + w] = srcP[(src.Height - h - 1) * destData.Stride + w];
-
-            dest.UnlockBits(destData);
-            src.UnlockBits(srcData);
-
-            return dest;
-        }
-
         /// <summary>
         /// byte配列を、ビットマップ画像に変換。配列の長さによって、グレースケールか、カラーかを、自動で判別
         /// </summary>

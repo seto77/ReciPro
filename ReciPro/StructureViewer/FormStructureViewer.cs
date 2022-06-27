@@ -1,10 +1,7 @@
 #region using
-using Crystallography;
-using Crystallography.Controls;
 using Crystallography.OpenGL;
 using Microsoft.Scripting.Utils;
 using OpenTK;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -1753,59 +1750,52 @@ public partial class FormStructureViewer : Form
 
     #endregion その他イベント
 
-
     #region 動画保存
     private void saveMovieToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-            var setting =new FormMovieSetting();
+            var setting = new FormMovieSetting();
             if (setting.ShowDialog() == DialogResult.OK)
             {
+                Enabled = formMain.Enabled = false;
+
                 //画像の縦横ピクセル数が奇数の場合は上手くエンコードできない
-                int width = Size.Width, height = Size.Height;
                 if (glControlMain.ClientRectangle.Size.Width % 2 != 0)
-                    width -= 1;
+                    Size = new Size(Size.Width - 1, Size.Height);
                 if (glControlMain.ClientRectangle.Size.Height % 2 != 0)
-                    height -= 1;
-                if(width!=Size.Width || height!=Size.Height)
-                    Size = new Size(width,height);
+                    Size = new Size(Size.Width, Size.Height - 1);
+
+                //実行パスを取得
+                var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\";
 
                 //pngファイルが残っている場合があるので念のため削除
-                var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)+"\\";
-                foreach (string pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
+                foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
                     File.Delete(pathFrom);
 
-                var duration = setting.Duration;
-                var speed = setting.Speed;
                 var framerate = 30;
-
-                for (int i = 0; i < duration * framerate; i++)
+                for (int i = 0; i < setting.Duration * framerate; i++)
                 {
-                    formMain.Rotate(setting.Direction, speed * Math.PI / framerate / 180.0);
-                    var bmp = glControlMain.GenerateBitmap();
-                    bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
+                    formMain.Rotate(setting.Direction, setting.Speed * Math.PI / framerate / 180.0);
+                    glControlMain.GenerateBitmap().Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
                 }
 
-                //https://qiita.com/livlea/items/a94df4667c0eb37d859f
+                var p = Process.Start(new ProcessStartInfo()
+                {
+                    WorkingDirectory = path + "ffmpeg",
+                    FileName = path + "ffmpeg\\ffmpeg.exe",
+                    Arguments = "-framerate 30 -i %04d.png -c:v libx265 -pix_fmt yuv420p -y out.mp4",
+                    WindowStyle = ProcessWindowStyle.Minimized,
+                });
+                p.WaitForExit(120000);
+                File.Move(path + "ffmpeg\\out.mp4", dlg.FileName, true);
 
-                var info = new ProcessStartInfo();
-                info.WorkingDirectory = path+"ffmpeg";
-                info.FileName = path+"ffmpeg\\ffmpeg.exe";
-                info.Arguments = "-framerate 30 -i %04d.png -vcodec libx264 -pix_fmt yuv420p -r 60 out.mp4";
+                //pngファイル削除
+                foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
+                    File.Delete(pathFrom);
 
-                var p = Process.Start(info);
-                p.WaitForExit(60000);
-
-                Thread.Sleep(200);
-
-                File.Copy(path+"ffmpeg\\out.mp4", dlg.FileName, true);
-
-                for (int i = 0; i < duration * framerate; i++)
-                    File.Delete(path+$"ffmpeg\\{i:0000}.png");
-
-                File.Delete(path+"ffmpeg\\out.mp4");
+                Enabled = formMain.Enabled = true;
             }
 
         }

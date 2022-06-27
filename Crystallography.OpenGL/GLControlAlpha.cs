@@ -900,11 +900,11 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         glControl.MakeCurrent();
         var bmp = new Bitmap(glControl.ClientSize.Width, glControl.Height);
-        System.Drawing.Imaging.BitmapData data = bmp.LockBits(Rectangle.FromLTRB(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+        var data = bmp.LockBits(Rectangle.FromLTRB(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
         GL.ReadPixels(0, 0, bmp.Width, bmp.Height, PixelFormat.Bgr, PixelType.UnsignedByte, data.Scan0);
         bmp.UnlockBits(data);
-
-        return BitmapConverter.FlipVertically(bmp);
+        bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+        return bmp;
     }
 
     #endregion
