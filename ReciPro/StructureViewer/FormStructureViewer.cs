@@ -236,7 +236,7 @@ public partial class FormStructureViewer : Form
         glControlMain.LightPosition = glControlLight.LightPosition = glControlAxes.LightPosition = new V3(100, 100, 100);
         glControlMain.ViewFrom = glControlLight.ViewFrom = glControlAxes.ViewFrom = new V3(0, 0, 50);
         glControlLight.ProjWidth = 2.2;
-        glControlAxes.ProjWidth = 2.4;
+        glControlAxes.ProjWidth = 2.6;
         glControlMain.ProjWidth = 3f;
 
         glControlMainZsort.ToolTip = "Main viewer\r\n" +
@@ -855,9 +855,6 @@ public partial class FormStructureViewer : Form
 
         glControlAxes.DeleteAllObjects();
         glControlAxes.AddObjects(obj);
-
-        //textBoxInformation.AppendText("Generation of crystal axis control: " + sw.ElapsedMilliseconds + "ms.\r\n");
-
     }
     #endregion
 
@@ -1751,20 +1748,31 @@ public partial class FormStructureViewer : Form
     #endregion その他イベント
 
     #region 動画保存
-    private void saveMovieToolStripMenuItem_Click(object sender, EventArgs e)
+
+    private void SaveMovieMainImageToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-            var setting = new FormMovieSetting();
+            var setting = new FormMovieSetting(Crystal.A_Axis,Crystal.B_Axis,Crystal.C_Axis,Crystal.RotationMatrix);
             if (setting.ShowDialog() == DialogResult.OK)
             {
+                if(setting.Direction.X==0 && setting.Direction.Y == 0&& setting.Direction.Z == 0)
+                {
+                    MessageBox.Show("Please enter a valid orientation");
+                    return;
+                }
+
+                var glControl = (sender as ToolStripMenuItem).Name.Contains("MainImage") ?
+                    glControlMain : glControlAxes;
+
+
                 Enabled = formMain.Enabled = false;
 
                 //画像の縦横ピクセル数が奇数の場合は上手くエンコードできない
-                if (glControlMain.ClientRectangle.Size.Width % 2 != 0)
+                if (glControl.ClientRectangle.Size.Width % 2 != 0)
                     Size = new Size(Size.Width - 1, Size.Height);
-                if (glControlMain.ClientRectangle.Size.Height % 2 != 0)
+                if (glControl.ClientRectangle.Size.Height % 2 != 0)
                     Size = new Size(Size.Width, Size.Height - 1);
 
                 //実行パスを取得
@@ -1778,14 +1786,14 @@ public partial class FormStructureViewer : Form
                 for (int i = 0; i < setting.Duration * framerate; i++)
                 {
                     formMain.Rotate(setting.Direction, setting.Speed * Math.PI / framerate / 180.0);
-                    glControlMain.GenerateBitmap().Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
+                    glControl.GenerateBitmap().Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
                 }
 
                 var p = Process.Start(new ProcessStartInfo()
                 {
                     WorkingDirectory = path + "ffmpeg",
                     FileName = path + "ffmpeg\\ffmpeg.exe",
-                    Arguments = "-framerate 30 -i %04d.png -c:v libx265 -pix_fmt yuv420p -y out.mp4",
+                    Arguments = "-framerate 30 -i %04d.png -c:v libx264 -pix_fmt yuv420p -y out.mp4",
                     WindowStyle = ProcessWindowStyle.Minimized,
                 });
                 p.WaitForExit(120000);

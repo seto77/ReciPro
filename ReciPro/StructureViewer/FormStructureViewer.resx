@@ -815,7 +815,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 174</value>
+    <value>608, 180</value>
   </data>
   <data name="tabPageBoundUnitcell.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -878,7 +878,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 182</value>
+    <value>659, 188</value>
   </data>
   <data name="tabControlBoundOption.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -1061,7 +1061,7 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 206</value>
+    <value>0, 212</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
@@ -1199,7 +1199,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageBounds.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1257,7 +1257,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageAtom.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1281,7 +1281,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageBond.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2613,7 +2613,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 225</value>
+    <value>653, 231</value>
   </data>
   <data name="groupBoxShowUnitCell.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2643,7 +2643,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageUnitCell.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2715,7 +2715,7 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 200</value>
+    <value>3, 206</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2751,7 +2751,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageLatticePlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2784,7 +2784,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="atomCoordinateTable1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2805,7 +2805,7 @@
     <value>4, 26</value>
   </data>
   <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPageCoordinateInfromatin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -4030,7 +4030,7 @@ indivisual setting)</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>659, 233</value>
+    <value>659, 239</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4330,7 +4330,7 @@ indivisual setting)</value>
     <value>Save Image</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
     <value>Main Image</value>
@@ -4339,19 +4339,19 @@ indivisual setting)</value>
     <value>False</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
     <value>Legend</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
     <value>Crystal Axes</value>
   </data>
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
     <value>Light Direction</value>
@@ -4361,6 +4361,18 @@ indivisual setting)</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy Main Image to Clipboard</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Main Image</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Crystal Axes</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 22</value>
@@ -5052,6 +5064,18 @@ indivisual setting)</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveMovieMainImageToolStripMenuItem.Name" xml:space="preserve">
+    <value>SaveMovieMainImageToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SaveMovieMainImageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveMovieCrystalAxesToolStripMenuItem.Name" xml:space="preserve">
+    <value>SaveMovieCrystalAxesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;SaveMovieCrystalAxesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormStructureViewer</value>

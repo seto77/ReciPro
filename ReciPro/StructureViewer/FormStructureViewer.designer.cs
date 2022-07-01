@@ -106,9 +106,10 @@
             this.tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
             this.atomCoordinateTable1 = new Crystallography.Controls.AtomCoordinateTable();
             this.tabPageInformation = new System.Windows.Forms.TabPage();
-            this.numericBoxClientHeight = new Crystallography.Controls.NumericBox();
-            this.numericBoxClientWidth = new Crystallography.Controls.NumericBox();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.numericBoxClientWidth = new Crystallography.Controls.NumericBox();
+            this.numericBoxClientHeight = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelGraphicsCard = new System.Windows.Forms.Label();
             this.labelGraphicsDriver = new System.Windows.Forms.Label();
@@ -183,7 +184,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.SaveMovieMainImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveMovieCrystalAxesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -207,6 +209,7 @@
             this.flowLayoutPanel3.SuspendLayout();
             this.tabPageCoordinateInfromatin.SuspendLayout();
             this.tabPageInformation.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -218,7 +221,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPerspective)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -1092,25 +1094,18 @@
             resources.ApplyResources(this.tabPageInformation, "tabPageInformation");
             this.tabPageInformation.Name = "tabPageInformation";
             // 
-            // numericBoxClientHeight
+            // textBoxInformation
             // 
-            resources.ApplyResources(this.numericBoxClientHeight, "numericBoxClientHeight");
-            this.numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientHeight.DecimalPlaces = 0;
-            this.numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientHeight.Maximum = 2000D;
-            this.numericBoxClientHeight.Minimum = 1D;
-            this.numericBoxClientHeight.Name = "numericBoxClientHeight";
-            this.numericBoxClientHeight.RadianValue = 17.453292519943293D;
-            this.numericBoxClientHeight.RoundErrorAccuracy = -1;
-            this.numericBoxClientHeight.ShowUpDown = true;
-            this.numericBoxClientHeight.SmartIncrement = true;
-            this.numericBoxClientHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxClientHeight.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
-            this.numericBoxClientHeight.Value = 1000D;
-            this.numericBoxClientHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxClientWidth_ValueChanged);
+            resources.ApplyResources(this.textBoxInformation, "textBoxInformation");
+            this.textBoxInformation.Name = "textBoxInformation";
+            this.textBoxInformation.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.numericBoxClientWidth);
+            this.panel1.Controls.Add(this.numericBoxClientHeight);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // numericBoxClientWidth
             // 
@@ -1132,11 +1127,25 @@
             this.numericBoxClientWidth.Value = 1000D;
             this.numericBoxClientWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxClientWidth_ValueChanged);
             // 
-            // textBoxInformation
+            // numericBoxClientHeight
             // 
-            resources.ApplyResources(this.textBoxInformation, "textBoxInformation");
-            this.textBoxInformation.Name = "textBoxInformation";
-            this.textBoxInformation.ReadOnly = true;
+            resources.ApplyResources(this.numericBoxClientHeight, "numericBoxClientHeight");
+            this.numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.DecimalPlaces = 0;
+            this.numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientHeight.Maximum = 2000D;
+            this.numericBoxClientHeight.Minimum = 1D;
+            this.numericBoxClientHeight.Name = "numericBoxClientHeight";
+            this.numericBoxClientHeight.RadianValue = 17.453292519943293D;
+            this.numericBoxClientHeight.RoundErrorAccuracy = -1;
+            this.numericBoxClientHeight.ShowUpDown = true;
+            this.numericBoxClientHeight.SmartIncrement = true;
+            this.numericBoxClientHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxClientHeight.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
+            this.numericBoxClientHeight.Value = 1000D;
+            this.numericBoxClientHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxClientWidth_ValueChanged);
             // 
             // flowLayoutPanel4
             // 
@@ -1646,9 +1655,11 @@
             // 
             // saveMovieToolStripMenuItem
             // 
+            this.saveMovieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveMovieMainImageToolStripMenuItem,
+            this.SaveMovieCrystalAxesToolStripMenuItem});
             this.saveMovieToolStripMenuItem.Name = "saveMovieToolStripMenuItem";
             resources.ApplyResources(this.saveMovieToolStripMenuItem, "saveMovieToolStripMenuItem");
-            this.saveMovieToolStripMenuItem.Click += new System.EventHandler(this.saveMovieToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1771,12 +1782,18 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // panel1
+            // SaveMovieMainImageToolStripMenuItem
             // 
-            this.panel1.Controls.Add(this.numericBoxClientWidth);
-            this.panel1.Controls.Add(this.numericBoxClientHeight);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.SaveMovieMainImageToolStripMenuItem.Name = "SaveMovieMainImageToolStripMenuItem";
+            resources.ApplyResources(this.SaveMovieMainImageToolStripMenuItem, "SaveMovieMainImageToolStripMenuItem");
+            this.SaveMovieMainImageToolStripMenuItem.Click += new System.EventHandler(this.SaveMovieMainImageToolStripMenuItem_Click);
+            // 
+            // SaveMovieCrystalAxesToolStripMenuItem
+            // 
+            this.SaveMovieCrystalAxesToolStripMenuItem.Name = "SaveMovieCrystalAxesToolStripMenuItem";
+            resources.ApplyResources(this.SaveMovieCrystalAxesToolStripMenuItem, "SaveMovieCrystalAxesToolStripMenuItem");
+            this.SaveMovieCrystalAxesToolStripMenuItem.Click += new System.EventHandler(this.SaveMovieMainImageToolStripMenuItem_Click);
+
             // 
             // FormStructureViewer
             // 
@@ -1828,6 +1845,7 @@
             this.tabPageCoordinateInfromatin.ResumeLayout(false);
             this.tabPageInformation.ResumeLayout(false);
             this.tabPageInformation.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -1846,7 +1864,6 @@
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2009,5 +2026,7 @@
         public NumericBox numericBoxClientWidth;
         private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem SaveMovieMainImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveMovieCrystalAxesToolStripMenuItem;
     }
 }

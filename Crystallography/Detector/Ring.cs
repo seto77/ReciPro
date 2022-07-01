@@ -613,9 +613,9 @@ namespace Crystallography
 			//20190906í«ãL
 			//ï‚ê≥éÆÇÕÅAIcorr = I / (sin(kai)^2 + cos(kai)^2 * cos(2th)^2 ) / cos(2th)
 			
-			var coeff1 = rotate == 0 || rotate == 2 ?
-				new Func<double, double, double>((x2, y2) => 2 * (y2 + fd2) / (x2 + y2 + 2 * fd2)) :
-				new Func<double, double, double>((x2, y2) => 2 * (x2 + fd2) / (x2 + y2 + 2 * fd2));
+			Func<double,double,double> coeff1 = rotate == 0 || rotate == 2 ?
+				(x2, y2) => 2 * (y2 + fd2) / (x2 + y2 + 2 * fd2) :
+				(x2, y2) => 2 * (x2 + fd2) / (x2 + y2 + 2 * fd2);
 
 			//var coeff2 = new Func<double, double, double>((x2, y2) => Math.Sqrt( fd2 / (x2 + y2 + fd2)));
 

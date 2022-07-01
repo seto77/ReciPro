@@ -5,7 +5,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks.Sources;
 using System.Windows.Forms;
 
 namespace Crystallography;
@@ -114,7 +113,6 @@ public static class ImageIO
         return (temp[0] == 0x49 && temp[1] == 0x49) || (temp[0] == 0x4D && temp[1] == 0x4D);
     }
 
-
     public static bool Check_PF_RAW(string fileName)
     {
         //references\ImageExsample\BL18c 柴咲さん　のヘッダ情報を参考
@@ -126,7 +124,6 @@ public static class ImageIO
         return str1 == "0236" && str2 == "0052";
 
     }
-
 
     /// <summary>
     /// 指定されたfileを読み込み、読み込んだ内容はRing.***に保存される。失敗したときはfalseを返す。flagはノーマライズするかどうか。
@@ -221,17 +218,9 @@ public static class ImageIO
         else
             return false;
 
-        if (Ring.IntensityOriginal.Count == Ring.Intensity.Count)
-        {
-            for (int i = 0; i < Ring.Intensity.Count; i++)
-                Ring.IntensityOriginal[i] = Ring.Intensity[i];
-        }
-        else
-        {
-            Ring.IntensityOriginal.Clear();
-            for (int i = 0; i < Ring.Intensity.Count; i++)
-                Ring.IntensityOriginal.Add(Ring.Intensity[i]);
-        }
+        Ring.IntensityOriginal.Clear();
+        Ring.IntensityOriginal.AddRange(Ring.Intensity);
+       
         Ring.SrcImgSizeOriginal = new Size(Ring.SrcImgSize.Width, Ring.SrcImgSize.Height);
 
         return result;
@@ -515,6 +504,7 @@ public static class ImageIO
     }
     #endregion
 
+    #region MRC
     private static bool MRC(string str)
     {
         try
@@ -533,8 +523,7 @@ public static class ImageIO
         }
 
     }
-
-
+    #endregion
 
     #region MAR
     public static bool MAR(string str)
@@ -955,14 +944,10 @@ public static class ImageIO
             br.BaseStream.Position = 0;
 
             //ヘッダ部分読み込み
-
             int fileType = 1, length = 0;
             Ring.Comments = "";
 
             var readData = new Func<double>(() => 0);
-
-            int n = 0;
-
             var readHeader = new Func<bool>(() =>
             {
                 if (br.BaseStream.Length - br.BaseStream.Position < 64 || new string(br.ReadChars(2)) != "IM")
@@ -977,7 +962,6 @@ public static class ImageIO
                     return false;
 
                 readData = fileType switch { 0 => () => br.ReadByte(), 2 => () => br.ReadUInt16(), 3 => () => br.ReadUInt32(), _ => () => 0 };
-
                 br.ReadBytes(50);
 
                 Ring.SrcImgSize = new Size(imageWidth, imageHeight);
@@ -988,34 +972,25 @@ public static class ImageIO
                 return true;
             });
 
-
             Ring.BitsPerPixels = fileType switch { 0 => 8, 2 => 16, 3 => 32, _ => 0 };
-
             Ring.SequentialImageIntensities = new List<List<double>>();
             Ring.SequentialImageNames = new List<string>();
-
-            while (readHeader() && n < 500)
+            
+            int n = 0;
+            while (readHeader() && n < 10000)
             {
                 Ring.SequentialImageIntensities.Add(new List<double>());
                 for (int i = 0; i < length; i++)
                     Ring.SequentialImageIntensities[n].Add(readData());
-                Ring.SequentialImageNames.Add(n.ToString("000"));
+                Ring.SequentialImageNames.Add(n.ToString("0000"));
                 n++;
+                //100GBを超えたら読み込み終了
+                if (Ring.SequentialImageIntensities.Count * (long)Ring.SequentialImageIntensities[0].Count * 8 > 100000000000)
+                    break;
             }
 
-
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
-            }
-            else
-            {
-                for (int i = 0; i < length; i++)
-                    Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
-            }
-
+            Ring.Intensity.Clear();
+            Ring.Intensity.AddRange(Ring.SequentialImageIntensities[0]);
             Ring.ImageType = Ring.ImageTypeEnum.ITEX;
 
             br.Close();

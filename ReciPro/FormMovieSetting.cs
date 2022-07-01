@@ -16,9 +16,26 @@ public partial class FormMovieSetting : Form
     public double Speed => numericBoxSpeed.Value;
     public double Duration => numericBoxDuration.Value;
 
+    private Vector3DBase A = null;
+    private Vector3DBase B = null;
+    private Vector3DBase C = null;
+
+    private Matrix3D Rot = null;
+
     public FormMovieSetting()
     {
         InitializeComponent();
+        radioButtonAxis.Enabled = false;
+        radioButtonPlane.Enabled = false;
+    }
+
+    public FormMovieSetting(Vector3DBase a, Vector3DBase b, Vector3DBase c, Matrix3D rot)
+    {
+        InitializeComponent();
+        A = a;
+        B = b;
+        C = c;
+        Rot = rot;
     }
 
     private void buttonDirection_Click(object sender, EventArgs e)
@@ -40,7 +57,24 @@ public partial class FormMovieSetting : Form
         var buttons = new[] { buttonTopRight, buttonRight, buttonBottomRight, buttonBottom, buttonBottomLeft, buttonLeft, buttonTopLeft, buttonTop, buttonClock, buttonAntiClock };
 
         foreach (var b in buttons)
-                b.ForeColor = (sender as Button).Name == b.Name ? Color.Black : Color.Gray;
+                b.ForeColor = (sender as Button).Name == b.Name ? Color.Blue : Color.Gray;
     }
 
+    private void radioButtonCurrent_CheckedChanged(object sender, EventArgs e)
+    {
+        tableLayoutPanelAxis.Enabled = radioButtonAxis.Checked;
+        tableLayoutPanelPlane.Enabled = radioButtonPlane.Checked;
+        tableLayoutPanelCurrent.Enabled = radioButtonCurrent.Checked;
+    }
+
+    private void numericBoxAxisU_ValueChanged(object sender, EventArgs e)
+    {
+        Direction = Rot * (numericBoxAxisU.Value * A + numericBoxAxisV.Value * B + numericBoxAxisW.Value * C);
+    }
+
+    private void numericBoxPlaneH_ValueChanged(object sender, EventArgs e)
+    {
+        var rot = new Matrix3D(A, B, C).Inverse();
+        Direction = Rot * (numericBoxPlaneH.Value * rot.Row1+ numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
+    }
 }
