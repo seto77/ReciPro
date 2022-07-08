@@ -1,6 +1,6 @@
 ﻿namespace ReciPro;
 
-partial class FormMovieSetting
+partial class FormMovie
 {
     /// <summary>
     /// Required designer variable.
@@ -28,8 +28,8 @@ partial class FormMovieSetting
     /// </summary>
     private void InitializeComponent()
     {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.numericBoxSpeed = new Crystallography.Controls.NumericBox();
             this.tableLayoutPanelCurrent = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -67,25 +67,27 @@ partial class FormMovieSetting
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonOK
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(13, 318);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOK.Location = new System.Drawing.Point(13, 318);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 0;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(94, 318);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(94, 318);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // numericBoxSpeed
             // 
@@ -97,7 +99,7 @@ partial class FormMovieSetting
             this.numericBoxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSpeed.Maximum = 360D;
             this.numericBoxSpeed.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxSpeed.Minimum = 1D;
+            this.numericBoxSpeed.Minimum = 0D;
             this.numericBoxSpeed.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxSpeed.Name = "numericBoxSpeed";
             this.numericBoxSpeed.RadianValue = 0.52359877559829882D;
@@ -647,22 +649,25 @@ partial class FormMovieSetting
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Direction";
             // 
-            // FormMovieSetting
+            // FormMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(178, 346);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.numericBoxDuration);
             this.Controls.Add(this.numericBoxSpeed);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormMovieSetting";
+            this.Name = "FormMovie";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Movie setting";
             this.tableLayoutPanelCurrent.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -678,8 +683,8 @@ partial class FormMovieSetting
 
     #endregion
 
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button buttonOK;
+    private System.Windows.Forms.Button buttonCancel;
     private NumericBox numericBoxSpeed;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelCurrent;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

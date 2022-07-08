@@ -1751,62 +1751,8 @@ public partial class FormStructureViewer : Form
 
     private void SaveMovieMainImageToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var dlg = new SaveFileDialog() { Filter = "*.mp4|*.mp4" };
-        if (dlg.ShowDialog() == DialogResult.OK)
-        {
-            var setting = new FormMovieSetting(Crystal.A_Axis,Crystal.B_Axis,Crystal.C_Axis,Crystal.RotationMatrix);
-            if (setting.ShowDialog() == DialogResult.OK)
-            {
-                if(setting.Direction.X==0 && setting.Direction.Y == 0&& setting.Direction.Z == 0)
-                {
-                    MessageBox.Show("Please enter a valid orientation");
-                    return;
-                }
+        formMain.FormMovie.Execute((sender as ToolStripMenuItem).Name.Contains("MainImage") ? glControlMain : glControlAxes, this);
 
-                var glControl = (sender as ToolStripMenuItem).Name.Contains("MainImage") ?
-                    glControlMain : glControlAxes;
-
-
-                Enabled = formMain.Enabled = false;
-
-                //画像の縦横ピクセル数が奇数の場合は上手くエンコードできない
-                if (glControl.ClientRectangle.Size.Width % 2 != 0)
-                    Size = new Size(Size.Width - 1, Size.Height);
-                if (glControl.ClientRectangle.Size.Height % 2 != 0)
-                    Size = new Size(Size.Width, Size.Height - 1);
-
-                //実行パスを取得
-                var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\";
-
-                //pngファイルが残っている場合があるので念のため削除
-                foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
-                    File.Delete(pathFrom);
-
-                var framerate = 30;
-                for (int i = 0; i < setting.Duration * framerate; i++)
-                {
-                    formMain.Rotate(setting.Direction, setting.Speed * Math.PI / framerate / 180.0);
-                    glControl.GenerateBitmap().Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
-                }
-
-                var p = Process.Start(new ProcessStartInfo()
-                {
-                    WorkingDirectory = path + "ffmpeg",
-                    FileName = path + "ffmpeg\\ffmpeg.exe",
-                    Arguments = "-framerate 30 -i %04d.png -c:v libx264 -pix_fmt yuv420p -y out.mp4",
-                    WindowStyle = ProcessWindowStyle.Minimized,
-                });
-                p.WaitForExit(120000);
-                File.Move(path + "ffmpeg\\out.mp4", dlg.FileName, true);
-
-                //pngファイル削除
-                foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
-                    File.Delete(pathFrom);
-
-                Enabled = formMain.Enabled = true;
-            }
-
-        }
     }
     #endregion
 }

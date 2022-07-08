@@ -102,6 +102,7 @@ public partial class FormMain : Form
     public FormRotationMatrix FormRotation;
     public FormImageSimulator FormImageSimulator;
     public FormCrystalDatabase FormCrystalDatabase;
+    public FormMovie FormMovie;
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
 
@@ -269,6 +270,9 @@ public partial class FormMain : Form
         commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.5);
         FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
         FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
+
+        commonDialog.Progress = ("Now Loading...Initializing 'Moovie' form.", 0.5);
+        FormMovie = new FormMovie() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
