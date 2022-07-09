@@ -10,7 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
-        "\r\n ver4.834(2022/07/08)  Improved the function to generate movies." +
+        "\r\n ver4.834(2022/07/08)  Improved the function to generate movies. " +
         "\r\n ver4.833(2022/06/24)  Added the function to generate movies for 'Structure Viewer'." +
         "\r\n ver4.832(2022/06/23)  Added the function to render stereonet projection with OpenGL." +
         "\r\n ver4.831(2022/05/14)  Fixed minor bugs on the HRTEM function." +

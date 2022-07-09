@@ -237,8 +237,8 @@
             this.numericBoxK.DecimalPlaces = 0;
             this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.Maximum = 10D;
-            this.numericBoxK.Minimum = -10D;
+            this.numericBoxK.Maximum = 24D;
+            this.numericBoxK.Minimum = -24D;
             this.numericBoxK.Name = "numericBoxK";
             this.numericBoxK.RoundErrorAccuracy = -1;
             this.numericBoxK.ShowUpDown = true;
@@ -258,8 +258,8 @@
             this.numericBoxL.DecimalPlaces = 0;
             this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.Maximum = 10D;
-            this.numericBoxL.Minimum = -10D;
+            this.numericBoxL.Maximum = 24D;
+            this.numericBoxL.Minimum = -24D;
             this.numericBoxL.Name = "numericBoxL";
             this.numericBoxL.RoundErrorAccuracy = -1;
             this.numericBoxL.ShowUpDown = true;
@@ -304,8 +304,8 @@
             this.numericBoxH.DecimalPlaces = 0;
             this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.Maximum = 10D;
-            this.numericBoxH.Minimum = -10D;
+            this.numericBoxH.Maximum = 24D;
+            this.numericBoxH.Minimum = -24D;
             this.numericBoxH.Name = "numericBoxH";
             this.numericBoxH.RoundErrorAccuracy = -1;
             this.numericBoxH.ShowUpDown = true;

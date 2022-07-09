@@ -35,8 +35,6 @@ public partial class FormMovie : Form
     public FormMovie()
     {
         InitializeComponent();
-        radioButtonAxis.Enabled = false;
-        radioButtonPlane.Enabled = false;
     }
 
     private void buttonDirection_Click(object sender, EventArgs e)

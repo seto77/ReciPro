@@ -130,8 +130,6 @@ public partial class FormStructureViewer : Form
     {
         if (DesignMode) return;
 
-        //formAtom = new FormAtom            {                formStructureViewer = this, Owner = this            };
-
         #region デザイナが壊れないようにここでGLコントロールを追加
 
         // glControlAxes
@@ -321,8 +319,8 @@ public partial class FormStructureViewer : Form
         #endregion
 
         SkipEvent = true;
-        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
-        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        numericBoxClientWidth.Value = splitContainer1.Panel1.Width;
+        numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
         SkipEvent = false;
     }
     #endregion コンストラクタ
@@ -333,17 +331,10 @@ public partial class FormStructureViewer : Form
         axes.Row0 = new V3(Crystal.A_Axis.X, Crystal.B_Axis.X, Crystal.C_Axis.X);
         axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
         axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
-        //int n = Crystal.Symmetry.CrystalSystemNumber;
-        //if (n == 5 || n == 6) //trigonalとhexagonalの時
-        //{
-        //    shift = new V3(0, 0, 0);
-        //    numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.5;
-        //}
-        //else
-        //{
-        shift = (axes.Column0 + axes.Column1 + axes.Column2) / 2;
-        //numericBoxCellTransrationA.Value = numericBoxCellTransrationB.Value = numericBoxCellTransrationC.Value = 0.0;
-        // }
+
+        shift = axes.Column0 * numericBoxProjectionCenterX.Value 
+            + axes.Column1 * numericBoxProjectionCenterY.Value 
+            + axes.Column2 * numericBoxProjectionCenterZ.Value;
     }
     #endregion
 
@@ -423,10 +414,13 @@ public partial class FormStructureViewer : Form
         if (checkBoxHideAllAtoms.Checked) return;
 
         //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、最終的には消す
-        var bonds = bondControl.GetAll().Where(b => b.Enabled);
-
-        var threshold = bonds.Any() ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
-        threshold = Math.Max(-0.5, threshold);
+        var threshold = -0.001;
+        if (checkBoxShowBondedAtoms.Checked)
+        {
+            var bonds = bondControl.GetAll().Where(b => b.Enabled);
+            threshold = bonds.Any() ? -bonds.Max(b => b.MaxLength) * 1.01 : -0.1;
+            threshold = Math.Max(-0.5, threshold);
+        }
 
         //まず検索対象とするCellの範囲を決める (全ての原子位置は 0以上 1未満である)
         var cells = new List<V3>() { new V3(0, 0, 0) };
@@ -572,7 +566,10 @@ public partial class FormStructureViewer : Form
                         int m = vIndices.Length, index = cArray[i].AtomIndex;
                         lock (lockObj)
                         {
-                            if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合
+                            if(!checkBoxShowBondedAtoms.Checked)
+                                dic2.Add(i, vIndices);
+                            else if (!coord.TryGetValue(index, out int n) )
+                            //まだcoordに何も追加されていない場合か、範囲外の結合している原子を描画しない場合
                             {
                                 coord.Add(index, m);
                                 dic2.Add(i, vIndices);
@@ -1182,6 +1179,8 @@ public partial class FormStructureViewer : Form
     #region Unit cell タブ関連
     private void unitCell_PropertyChanged(object sender, EventArgs e)
     {
+        if (SkipEvent) return;
+
         groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
         setUnitCellPlanes();
         Draw();
@@ -1753,6 +1752,35 @@ public partial class FormStructureViewer : Form
     {
         formMain.FormMovie.Execute((sender as ToolStripMenuItem).Name.Contains("MainImage") ? glControlMain : glControlAxes, this);
 
+    }
+    #endregion
+
+    #region 投影中心
+    private void radioButtonScreenCenter1_CheckedChanged(object sender, EventArgs e)
+    {
+        flowLayoutPanelProjectionCenter.Enabled = radioButtonProjectionCenterCustom.Checked;
+
+        SkipEvent = true;
+        if (radioButtonProjectionCenter1.Checked)
+            numericBoxProjectionCenterX.Value = numericBoxProjectionCenterY.Value = numericBoxProjectionCenterZ.Value = 0;
+        else if (radioButtonProjectionCenter2.Checked)
+            numericBoxProjectionCenterX.Value = numericBoxProjectionCenterY.Value = numericBoxProjectionCenterZ.Value = 0.5;
+        SkipEvent = false;
+        
+        numericBoxProjectionCenterX_ValueChanged(sender, e);
+    }
+
+    private void numericBoxProjectionCenterX_ValueChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+
+        SkipEvent = true;
+        numericBoxCellTransrationA.Value = 0.5 - numericBoxProjectionCenterX.Value;
+        numericBoxCellTransrationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
+        numericBoxCellTransrationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        SkipEvent = false;
+
+        SetGLObjects();
     }
     #endregion
 }
