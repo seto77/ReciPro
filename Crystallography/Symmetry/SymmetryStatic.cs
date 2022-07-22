@@ -13186,18 +13186,16 @@ new ushort[]{535,2,6,2,1,1}
         #endregion
     }
 
-    public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym)
-        => GenerateEquivalentPlanes(index.H, index.K, index.L, sym);
-
     /// <summary>
-    /// 対称性symに従って(hkl)と等価な結晶軸を生成する
+    /// 対称性symに従って(hkl)と等価な結晶面を生成する
     /// </summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
     /// <param name="sym"></param>
+    /// <param name="inversionCenter">対称心を仮定するか。デフォルトはTrue（つまりラウエ群で面を生成する）</param>
     /// <returns></returns>
-    public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym)
+    public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym, bool inversionCenter =true)
     {
         #region
         var indices = new HashSet<(int H, int K, int L)>();
@@ -13208,329 +13206,1054 @@ new ushort[]{535,2,6,2,1,1}
             return indices.ToArray();
         }
         int i;
-        switch (sym.LaueGroupNumber)
+
+        if (inversionCenter)
         {
-            case 0://unknown
-                indices.Add((+h, +k, +l));
-                break;
+            #region 対称心があると仮定して、結晶面を生成  
+            switch (sym.LaueGroupNumber)
+            {
+                case 0://unknown
+                    indices.Add((+h, +k, +l));
+                    break;
 
-            case 1://-1
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, -k, -l));
-                break;
+                case 1://-1
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, -l));
+                    break;
 
-            case 2:// 2/m
-                switch (sym.MainAxis)
-                {
-                    case "a":
+                case 2:// 2/m
+                    switch (sym.MainAxis)
+                    {
+                        case "a":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
+
+                            indices.Add((-h, +k, +l));
+                            indices.Add((+h, -k, -l));
+                            break;
+
+                        case "b":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
+
+                            indices.Add((+h, -k, +l));
+                            indices.Add((-h, +k, -l));
+                            break;
+
+                        case "c":
+
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
+
+                            indices.Add((+h, +k, -l));
+                            indices.Add((-h, -k, +l));
+                            break;
+                    }
+                    break;
+
+                case 3:// mmm
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, +k, +l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((+h, +k, -l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    break;
+
+                case 4: //4/m
+
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+                    break;
+
+                case 5: //4/mmm
+
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
+                    indices.Add((+k, +h, +l));
+                    indices.Add((-k, -h, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+k, +h, -l));
+                    indices.Add((-k, -h, -l));
+                    break;
+
+                case 6: //-3
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        i = -h - k;
                         indices.Add((+h, +k, +l));
+                        indices.Add((+i, +h, +l));
+                        indices.Add((+k, +i, +l));
+
                         indices.Add((-h, -k, -l));
-
-                        indices.Add((-h, +k, +l));
-                        indices.Add((+h, -k, -l));
+                        indices.Add((-i, -h, -l));
+                        indices.Add((-k, -i, -l));
                         break;
-
-                    case "b":
+                    }
+                    else
+                    {//Rhomboセルの場合
                         indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
                         indices.Add((-h, -k, -l));
-
-                        indices.Add((+h, -k, +l));
-                        indices.Add((-h, +k, -l));
+                        indices.Add((-l, -h, -k));
+                        indices.Add((-k, -l, -h));
                         break;
+                    }
 
-                    case "c":
+                case 7: //-3m1, -31m, -3m(rhombo)の場合
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        if (sym.SpaceGroupHallStr.Contains("\""))//-3m1の場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
 
+                            indices.Add((+k, +h, -l));
+                            indices.Add((+h, +i, -l));
+                            indices.Add((+i, +k, -l));
+
+                            indices.Add((-h, -k, -l));
+                            indices.Add((-i, -h, -l));
+                            indices.Add((-k, -i, -l));
+
+                            indices.Add((-k, -h, +l));
+                            indices.Add((-h, -i, +l));
+                            indices.Add((-i, -k, +l));
+                        }
+                        else//-31mの場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((-k, -h, -l));
+                            indices.Add((-h, -i, -l));
+                            indices.Add((-i, -k, -l));
+
+                            indices.Add((-h, -k, -l));
+                            indices.Add((-i, -h, -l));
+                            indices.Add((-k, -i, -l));
+
+                            indices.Add((+k, +h, +l));
+                            indices.Add((+h, +i, +l));
+                            indices.Add((+i, +k, +l));
+                        }
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
                         indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
+                        indices.Add((-k, -h, -l));
+                        indices.Add((-h, -l, -k));
+                        indices.Add((-l, -k, -h));
+
                         indices.Add((-h, -k, -l));
+                        indices.Add((-l, -h, -k));
+                        indices.Add((-k, -l, -h));
 
-                        indices.Add((+h, +k, -l));
-                        indices.Add((-h, -k, +l));
+                        indices.Add((+k, +h, +l));
+                        indices.Add((+h, +l, +k));
+                        indices.Add((+l, +k, +h));
                         break;
-                }
-                break;
-
-            case 3:// mmm
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, +k, +l));
-                indices.Add((+h, -k, +l));
-                indices.Add((+h, +k, -l));
-
-                indices.Add((-h, -k, +l));
-                indices.Add((+h, -k, -l));
-                indices.Add((-h, +k, -l));
-                indices.Add((-h, -k, -l));
-                break;
-
-            case 4: //4/m
-
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, -k, +l));
-                indices.Add((-k, +h, +l));
-                indices.Add((+k, -h, +l));
-
-                indices.Add((+h, +k, -l));
-                indices.Add((-h, -k, -l));
-                indices.Add((-k, +h, -l));
-                indices.Add((+k, -h, -l));
-                break;
-
-            case 5: //4/mmm
-
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, -k, +l));
-                indices.Add((-k, +h, +l));
-                indices.Add((+k, -h, +l));
-
-                indices.Add((+h, -k, +l));
-                indices.Add((-h, +k, +l));
-                indices.Add((+k, +h, +l));
-                indices.Add((-k, -h, +l));
-
-                indices.Add((+h, +k, -l));
-                indices.Add((-h, -k, -l));
-                indices.Add((-k, +h, -l));
-                indices.Add((+k, -h, -l));
-
-                indices.Add((+h, -k, -l));
-                indices.Add((-h, +k, -l));
-                indices.Add((+k, +h, -l));
-                indices.Add((-k, -h, -l));
-                break;
-
-            case 6: //-3
-                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                {
+                    }
+                case 8://6/m
                     i = -h - k;
                     indices.Add((+h, +k, +l));
                     indices.Add((+i, +h, +l));
                     indices.Add((+k, +i, +l));
 
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+i, +h, -l));
+                    indices.Add((+k, +i, -l));
+
                     indices.Add((-h, -k, -l));
                     indices.Add((-i, -h, -l));
                     indices.Add((-k, -i, -l));
                     break;
-                }
-                else
-                {//Rhomboセルの場合
+
+                case 9://6/mmm
+                    i = -h - k;
                     indices.Add((+h, +k, +l));
-                    indices.Add((+l, +h, +k));
-                    indices.Add((+k, +l, +h));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+i, +h, -l));
+                    indices.Add((+k, +i, -l));
 
                     indices.Add((-h, -k, -l));
-                    indices.Add((-l, -h, -k));
-                    indices.Add((-k, -l, -h));
-                    break;
-                }
-
-            case 7: //-3m1, -31m, -3m(rhombo)の場合
-                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                {
-                    if (sym.SpaceGroupHallStr.Contains("\""))//-3m1の場合
-                    {
-                        i = -h - k;
-                        indices.Add((+h, +k, +l));
-                        indices.Add((+i, +h, +l));
-                        indices.Add((+k, +i, +l));
-
-                        indices.Add((+k, +h, -l));
-                        indices.Add((+h, +i, -l));
-                        indices.Add((+i, +k, -l));
-
-                        indices.Add((-h, -k, -l));
-                        indices.Add((-i, -h, -l));
-                        indices.Add((-k, -i, -l));
-
-                        indices.Add((-k, -h, +l));
-                        indices.Add((-h, -i, +l));
-                        indices.Add((-i, -k, +l));
-                    }
-                    else//-31mの場合
-                    {
-                        i = -h - k;
-                        indices.Add((+h, +k, +l));
-                        indices.Add((+i, +h, +l));
-                        indices.Add((+k, +i, +l));
-
-                        indices.Add((-k, -h, -l));
-                        indices.Add((-h, -i, -l));
-                        indices.Add((-i, -k, -l));
-
-                        indices.Add((-h, -k, -l));
-                        indices.Add((-i, -h, -l));
-                        indices.Add((-k, -i, -l));
-
-                        indices.Add((+k, +h, +l));
-                        indices.Add((+h, +i, +l));
-                        indices.Add((+i, +k, +l));
-                    }
-                    break;
-                }
-                else
-                {//Rhomboセルの場合
-                    indices.Add((+h, +k, +l));
-                    indices.Add((+l, +h, +k));
-                    indices.Add((+k, +l, +h));
-
-                    indices.Add((-k, -h, -l));
-                    indices.Add((-h, -l, -k));
-                    indices.Add((-l, -k, -h));
-
-                    indices.Add((-h, -k, -l));
-                    indices.Add((-l, -h, -k));
-                    indices.Add((-k, -l, -h));
+                    indices.Add((-i, -h, -l));
+                    indices.Add((-k, -i, -l));
 
                     indices.Add((+k, +h, +l));
-                    indices.Add((+h, +l, +k));
-                    indices.Add((+l, +k, +h));
+                    indices.Add((+h, +i, +l));
+                    indices.Add((+i, +k, +l));
+
+                    indices.Add((-k, -h, +l));
+                    indices.Add((-h, -i, +l));
+                    indices.Add((-i, -k, +l));
+
+                    indices.Add((+k, +h, -l));
+                    indices.Add((+h, +i, -l));
+                    indices.Add((+i, +k, -l));
+
+                    indices.Add((-k, -h, -l));
+                    indices.Add((-h, -i, -l));
+                    indices.Add((-i, -k, -l));
                     break;
-                }
-            case 8://6/m
-                i = -h - k;
-                indices.Add((+h, +k, +l));
-                indices.Add((+i, +h, +l));
-                indices.Add((+k, +i, +l));
 
-                indices.Add((-h, -k, +l));
-                indices.Add((-i, -h, +l));
-                indices.Add((-k, -i, +l));
+                case 10://m3
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
 
-                indices.Add((+h, +k, -l));
-                indices.Add((+i, +h, -l));
-                indices.Add((+k, +i, -l));
+                    indices.Add((+l, +h, +k));
+                    indices.Add((-l, -h, +k));
+                    indices.Add((-l, +h, -k));
+                    indices.Add((+l, -h, -k));
 
-                indices.Add((-h, -k, -l));
-                indices.Add((-i, -h, -l));
-                indices.Add((-k, -i, -l));
-                break;
+                    indices.Add((+k, +l, +h));
+                    indices.Add((-k, -l, +h));
+                    indices.Add((-k, +l, -h));
+                    indices.Add((+k, -l, -h));
 
-            case 9://6/mmm
-                i = -h - k;
-                indices.Add((+h, +k, +l));
-                indices.Add((+i, +h, +l));
-                indices.Add((+k, +i, +l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
 
-                indices.Add((-h, -k, +l));
-                indices.Add((-i, -h, +l));
-                indices.Add((-k, -i, +l));
+                    indices.Add((-l, -h, -k));
+                    indices.Add((+l, +h, -k));
+                    indices.Add((+l, -h, +k));
+                    indices.Add((-l, +h, +k));
 
-                indices.Add((+h, +k, -l));
-                indices.Add((+i, +h, -l));
-                indices.Add((+k, +i, -l));
+                    indices.Add((-k, -l, -h));
+                    indices.Add((+k, +l, -h));
+                    indices.Add((+k, -l, +h));
+                    indices.Add((-k, +l, +h));
+                    break;
 
-                indices.Add((-h, -k, -l));
-                indices.Add((-i, -h, -l));
-                indices.Add((-k, -i, -l));
+                case 11://m3m
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
 
-                indices.Add((+k, +h, +l));
-                indices.Add((+h, +i, +l));
-                indices.Add((+i, +k, +l));
+                    indices.Add((+l, +h, +k));
+                    indices.Add((-l, -h, +k));
+                    indices.Add((-l, +h, -k));
+                    indices.Add((+l, -h, -k));
 
-                indices.Add((-k, -h, +l));
-                indices.Add((-h, -i, +l));
-                indices.Add((-i, -k, +l));
+                    indices.Add((+k, +l, +h));
+                    indices.Add((-k, -l, +h));
+                    indices.Add((-k, +l, -h));
+                    indices.Add((+k, -l, -h));
 
-                indices.Add((+k, +h, -l));
-                indices.Add((+h, +i, -l));
-                indices.Add((+i, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
 
-                indices.Add((-k, -h, -l));
-                indices.Add((-h, -i, -l));
-                indices.Add((-i, -k, -l));
-                break;
+                    indices.Add((-l, -h, -k));
+                    indices.Add((+l, +h, -k));
+                    indices.Add((+l, -h, +k));
+                    indices.Add((-l, +h, +k));
 
-            case 10://m3
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, -k, +l));
-                indices.Add((-h, +k, -l));
-                indices.Add((+h, -k, -l));
+                    indices.Add((-k, -l, -h));
+                    indices.Add((+k, +l, -h));
+                    indices.Add((+k, -l, +h));
+                    indices.Add((-k, +l, +h));
 
-                indices.Add((+l, +h, +k));
-                indices.Add((-l, -h, +k));
-                indices.Add((-l, +h, -k));
-                indices.Add((+l, -h, -k));
+                    indices.Add((+k, +h, +l));
+                    indices.Add((-k, -h, +l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
 
-                indices.Add((+k, +l, +h));
-                indices.Add((-k, -l, +h));
-                indices.Add((-k, +l, -h));
-                indices.Add((+k, -l, -h));
+                    indices.Add((+l, +k, +h));
+                    indices.Add((-l, -k, +h));
+                    indices.Add((-l, +k, -h));
+                    indices.Add((+l, -k, -h));
 
-                indices.Add((-h, -k, -l));
-                indices.Add((+h, +k, -l));
-                indices.Add((+h, -k, +l));
-                indices.Add((-h, +k, +l));
+                    indices.Add((+h, +l, +k));
+                    indices.Add((-h, -l, +k));
+                    indices.Add((-h, +l, -k));
+                    indices.Add((+h, -l, -k));
 
-                indices.Add((-l, -h, -k));
-                indices.Add((+l, +h, -k));
-                indices.Add((+l, -h, +k));
-                indices.Add((-l, +h, +k));
+                    indices.Add((-k, -h, -l));
+                    indices.Add((+k, +h, -l));
+                    indices.Add((+k, -h, +l));
+                    indices.Add((-k, +h, +l));
 
-                indices.Add((-k, -l, -h));
-                indices.Add((+k, +l, -h));
-                indices.Add((+k, -l, +h));
-                indices.Add((-k, +l, +h));
-                break;
+                    indices.Add((-l, -k, -h));
+                    indices.Add((+l, +k, -h));
+                    indices.Add((+l, -k, +h));
+                    indices.Add((-l, +k, +h));
 
-            case 11://m3m
-                indices.Add((+h, +k, +l));
-                indices.Add((-h, -k, +l));
-                indices.Add((-h, +k, -l));
-                indices.Add((+h, -k, -l));
+                    indices.Add((-h, -l, -k));
+                    indices.Add((+h, +l, -k));
+                    indices.Add((+h, -l, +k));
+                    indices.Add((-h, +l, +k));
+                    break;
+            }
+            #endregion
+        }
+        else
+        {
+            #region 対称心がないと仮定して、結晶面を生成 
+            switch (sym.PointGroupNumber)
+            {
+                case 0://unknown
+                    indices.Add((+h, +k, +l));
+                    break;
+                
+                case 1://1
+                    indices.Add((+h, +k, +l));
+                    break;
 
-                indices.Add((+l, +h, +k));
-                indices.Add((-l, -h, +k));
-                indices.Add((-l, +h, -k));
-                indices.Add((+l, -h, -k));
+                case 2://1
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, -l));
+                    break;
 
-                indices.Add((+k, +l, +h));
-                indices.Add((-k, -l, +h));
-                indices.Add((-k, +l, -h));
-                indices.Add((+k, -l, -h));
+                case 3:// 2
+                    switch (sym.MainAxis)
+                    {
+                        case "a":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+h, -k, -l));
+                            break;
 
-                indices.Add((-h, -k, -l));
-                indices.Add((+h, +k, -l));
-                indices.Add((+h, -k, +l));
-                indices.Add((-h, +k, +l));
+                        case "b":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, +k, -l));
+                            break;
 
-                indices.Add((-l, -h, -k));
-                indices.Add((+l, +h, -k));
-                indices.Add((+l, -h, +k));
-                indices.Add((-l, +h, +k));
+                        case "c":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, +l));
+                            break;
+                    }
+                    break;
+                    
+                case 4:// m
+                    switch (sym.MainAxis)
+                    {
+                        case "a":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, +k, +l));
+                            break;
 
-                indices.Add((-k, -l, -h));
-                indices.Add((+k, +l, -h));
-                indices.Add((+k, -l, +h));
-                indices.Add((-k, +l, +h));
+                        case "b":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+h, -k, +l));
+                            break;
 
-                indices.Add((+k, +h, +l));
-                indices.Add((-k, -h, +l));
-                indices.Add((-k, +h, -l));
-                indices.Add((+k, -h, -l));
+                        case "c":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+h, +k, -l));
+                            break;
+                    }
+                    break;
+                case 5:// 2/m
+                    switch (sym.MainAxis)
+                    {
+                        case "a":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
 
-                indices.Add((+l, +k, +h));
-                indices.Add((-l, -k, +h));
-                indices.Add((-l, +k, -h));
-                indices.Add((+l, -k, -h));
+                            indices.Add((-h, +k, +l));
+                            indices.Add((+h, -k, -l));
+                            break;
 
-                indices.Add((+h, +l, +k));
-                indices.Add((-h, -l, +k));
-                indices.Add((-h, +l, -k));
-                indices.Add((+h, -l, -k));
+                        case "b":
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
 
-                indices.Add((-k, -h, -l));
-                indices.Add((+k, +h, -l));
-                indices.Add((+k, -h, +l));
-                indices.Add((-k, +h, +l));
+                            indices.Add((+h, -k, +l));
+                            indices.Add((-h, +k, -l));
+                            break;
 
-                indices.Add((-l, -k, -h));
-                indices.Add((+l, +k, -h));
-                indices.Add((+l, -k, +h));
-                indices.Add((-l, +k, +h));
+                        case "c":
 
-                indices.Add((-h, -l, -k));
-                indices.Add((+h, +l, -k));
-                indices.Add((+h, -l, +k));
-                indices.Add((-h, +l, +k));
-                break;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((-h, -k, -l));
+                            indices.Add((+h, +k, -l));
+                            indices.Add((-h, -k, +l));
+                            break;
+                    }
+                    break;
+
+                case 6:// 222
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    break;
+
+                case 7:// mm2
+                    if (sym.StrSE1p.Contains("2"))//2mmの場合
+                    {
+                        indices.Add((+h, +k, +l));//
+                        indices.Add((+h, -k, +l));//
+                        indices.Add((+h, +k, -l));//
+                        indices.Add((+h, -k, -l));//
+                    }
+                    else if (sym.StrSE2p.Contains("2"))//m2mの場合
+                    {
+                        indices.Add((+h, +k, +l));//
+                        indices.Add((-h, +k, +l));//
+                        indices.Add((+h, +k, -l));//
+                        indices.Add((-h, +k, -l));//
+                    }
+                    else//mm2の場合
+                    {
+                        indices.Add((+h, +k, +l));//
+                        indices.Add((-h, +k, +l));//
+                        indices.Add((+h, -k, +l));//
+                        indices.Add((-h, -k, +l));//
+                    }
+                        break;
+
+                case 8:// mmm
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, +k, +l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((+h, +k, -l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    break;
+
+                case 9: // 4
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+                    break;
+
+                case 10: // -4
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+                    break;
+                case 11: //4/m
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+                    break;
+
+                case 12: // 422
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+k, +h, -l));
+                    indices.Add((-k, -h, -l));
+                    break;
+
+                case 13: // 4mm
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
+                    indices.Add((+k, +h, +l));
+                    indices.Add((-k, -h, +l));
+                    break;
+
+                case 14: // -42m
+                    if (sym.StrSE2p.Contains("2"))// -42mの場合
+                    {
+                        indices.Add((+h, +k, +l));//
+                        indices.Add((-h, -k, +l));//
+                        indices.Add((-h, +k, -l));//
+                        indices.Add((+h, -k, -l));//
+
+                        indices.Add((+k, -h, -l));//
+                        indices.Add((-k, +h, -l));//
+                        indices.Add((-k, -h, +l));//
+                        indices.Add((+k, +h, +l));//
+                    }
+                    else// -4m2の場合
+                    {
+                        indices.Add((+h, +k, +l));//
+                        indices.Add((-h, -k, +l));//
+                        indices.Add((+h, -k, +l));//
+                        indices.Add((-h, +k, +l));//
+                        
+                        indices.Add((-k, +h, -l));//
+                        indices.Add((+k, -h, -l));//
+                        indices.Add((+k, +h, -l));//
+                        indices.Add((-k, -h, -l));//
+                    }
+                    break;
+
+                case 15: // 4/mmm
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-k, +h, +l));
+                    indices.Add((+k, -h, +l));
+
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
+                    indices.Add((+k, +h, +l));
+                    indices.Add((-k, -h, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+
+                    indices.Add((+h, -k, -l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+k, +h, -l));
+                    indices.Add((-k, -h, -l));
+                    break;
+
+                case 16: // 3
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        i = -h - k;
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+i, +h, +l));
+                        indices.Add((+k, +i, +l));
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+                        break;
+                    }
+                case 17: //-3
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        i = -h - k;
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+i, +h, +l));
+                        indices.Add((+k, +i, +l));
+
+                        indices.Add((-h, -k, -l));
+                        indices.Add((-i, -h, -l));
+                        indices.Add((-k, -i, -l));
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
+                        indices.Add((-h, -k, -l));
+                        indices.Add((-l, -h, -k));
+                        indices.Add((-k, -l, -h));
+                        break;
+                    }
+
+                case 18: // 312, 321, 32(rhombo)の場合
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        if (sym.SpaceGroupHallStr.Contains("\""))// 321の場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((+k, +h, -l));//
+                            indices.Add((+h, +i, -l));//
+                            indices.Add((+i, +k, -l));//
+                        }
+                        else// 312の場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((-k, -h, -l));
+                            indices.Add((-h, -i, -l));
+                            indices.Add((-i, -k, -l));
+                        }
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
+                        indices.Add((-k, -h, -l));
+                        indices.Add((-h, -l, -k));
+                        indices.Add((-l, -k, -h));
+                        break;
+                    }
+
+                case 19: // 3m1,  31m, 3m(rhombo)の場合
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        if (sym.SpaceGroupHallStr.Contains("\""))// 3m1の場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((-k, -h, +l));
+                            indices.Add((-h, -i, +l));
+                            indices.Add((-i, -k, +l));
+                        }
+                        else//-31mの場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((+k, +h, +l));
+                            indices.Add((+h, +i, +l));
+                            indices.Add((+i, +k, +l));
+                        }
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
+                        indices.Add((+k, +h, +l));
+                        indices.Add((+h, +l, +k));
+                        indices.Add((+l, +k, +h));
+                        break;
+                    }
+
+                case 20: //-3m1, -31m, -3m(rhombo)の場合
+                    if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                    {
+                        if (sym.SpaceGroupHallStr.Contains("\""))//-3m1の場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((+k, +h, -l));
+                            indices.Add((+h, +i, -l));
+                            indices.Add((+i, +k, -l));
+
+                            indices.Add((-h, -k, -l));
+                            indices.Add((-i, -h, -l));
+                            indices.Add((-k, -i, -l));
+
+                            indices.Add((-k, -h, +l));
+                            indices.Add((-h, -i, +l));
+                            indices.Add((-i, -k, +l));
+                        }
+                        else//-31mの場合
+                        {
+                            i = -h - k;
+                            indices.Add((+h, +k, +l));
+                            indices.Add((+i, +h, +l));
+                            indices.Add((+k, +i, +l));
+
+                            indices.Add((-k, -h, -l));
+                            indices.Add((-h, -i, -l));
+                            indices.Add((-i, -k, -l));
+
+                            indices.Add((-h, -k, -l));
+                            indices.Add((-i, -h, -l));
+                            indices.Add((-k, -i, -l));
+
+                            indices.Add((+k, +h, +l));
+                            indices.Add((+h, +i, +l));
+                            indices.Add((+i, +k, +l));
+                        }
+                        break;
+                    }
+                    else
+                    {//Rhomboセルの場合
+                        indices.Add((+h, +k, +l));
+                        indices.Add((+l, +h, +k));
+                        indices.Add((+k, +l, +h));
+
+                        indices.Add((-k, -h, -l));
+                        indices.Add((-h, -l, -k));
+                        indices.Add((-l, -k, -h));
+
+                        indices.Add((-h, -k, -l));
+                        indices.Add((-l, -h, -k));
+                        indices.Add((-k, -l, -h));
+
+                        indices.Add((+k, +h, +l));
+                        indices.Add((+h, +l, +k));
+                        indices.Add((+l, +k, +h));
+                        break;
+                    }
+
+                case 21:// 6
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+                    break;
+
+                case 22:// -6
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+i, +h, -l));
+                    indices.Add((+k, +i, -l));
+                    break;
+
+                case 23:// 6/m
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+i, +h, -l));
+                    indices.Add((+k, +i, -l));
+
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-i, -h, -l));
+                    indices.Add((-k, -i, -l));
+                    break;
+
+                case 24:// 622
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));//
+                    indices.Add((-i, -h, +l));//
+                    indices.Add((-k, -i, +l));//
+
+                    indices.Add((+k, +h, -l));//
+                    indices.Add((+h, +i, -l));//
+                    indices.Add((+i, +k, -l));//
+
+                    indices.Add((-k, -h, -l));//
+                    indices.Add((-h, -i, -l));//
+                    indices.Add((-i, -k, -l));//
+                    break;
+
+                case 25://6mm
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+
+                    indices.Add((+k, +h, +l));
+                    indices.Add((+h, +i, +l));
+                    indices.Add((+i, +k, +l));
+
+                    indices.Add((-k, -h, +l));
+                    indices.Add((-h, -i, +l));
+                    indices.Add((-i, -k, +l));
+                    break;
+
+                case 26://-6m2
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((+h, +k, -l));//
+                    indices.Add((+i, +h, -l));//
+                    indices.Add((+k, +i, -l));//
+
+                    indices.Add((-k, -h, +l));//
+                    indices.Add((-h, -i, +l));//
+                    indices.Add((-i, -k, +l));//
+
+                    indices.Add((-k, -h, -l));//
+                    indices.Add((-h, -i, -l));//
+                    indices.Add((-i, -k, -l));//
+                    break;
+
+                case 27:// 6/mmm
+                    i = -h - k;
+                    indices.Add((+h, +k, +l));
+                    indices.Add((+i, +h, +l));
+                    indices.Add((+k, +i, +l));
+
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-i, -h, +l));
+                    indices.Add((-k, -i, +l));
+
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+i, +h, -l));
+                    indices.Add((+k, +i, -l));
+
+                    indices.Add((-h, -k, -l));
+                    indices.Add((-i, -h, -l));
+                    indices.Add((-k, -i, -l));
+
+                    indices.Add((+k, +h, +l));
+                    indices.Add((+h, +i, +l));
+                    indices.Add((+i, +k, +l));
+
+                    indices.Add((-k, -h, +l));
+                    indices.Add((-h, -i, +l));
+                    indices.Add((-i, -k, +l));
+
+                    indices.Add((+k, +h, -l));
+                    indices.Add((+h, +i, -l));
+                    indices.Add((+i, +k, -l));
+
+                    indices.Add((-k, -h, -l));
+                    indices.Add((-h, -i, -l));
+                    indices.Add((-i, -k, -l));
+                    break;
+
+                case 28:// 23
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
+
+                    indices.Add((+l, +h, +k));
+                    indices.Add((-l, -h, +k));
+                    indices.Add((-l, +h, -k));
+                    indices.Add((+l, -h, -k));
+
+                    indices.Add((+k, +l, +h));
+                    indices.Add((-k, -l, +h));
+                    indices.Add((-k, +l, -h));
+                    indices.Add((+k, -l, -h));
+                    break;
+
+                case 29:// m3
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
+
+                    indices.Add((+l, +h, +k));
+                    indices.Add((-l, -h, +k));
+                    indices.Add((-l, +h, -k));
+                    indices.Add((+l, -h, -k));
+
+                    indices.Add((+k, +l, +h));
+                    indices.Add((-k, -l, +h));
+                    indices.Add((-k, +l, -h));
+                    indices.Add((+k, -l, -h));
+
+                    indices.Add((-h, -k, -l));
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
+
+                    indices.Add((-l, -h, -k));
+                    indices.Add((+l, +h, -k));
+                    indices.Add((+l, -h, +k));
+                    indices.Add((-l, +h, +k));
+
+                    indices.Add((-k, -l, -h));
+                    indices.Add((+k, +l, -h));
+                    indices.Add((+k, -l, +h));
+                    indices.Add((-k, +l, +h));
+                    break;
+
+                case 30:// 432
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
+
+                    indices.Add((+l, +h, +k));//
+                    indices.Add((-l, -h, +k));//
+                    indices.Add((-l, +h, -k));//
+                    indices.Add((+l, -h, -k));//
+
+                    indices.Add((+k, +l, +h));//
+                    indices.Add((-k, -l, +h));//
+                    indices.Add((-k, +l, -h));//
+                    indices.Add((+k, -l, -h));//
+
+                    indices.Add((-k, -h, -l));//
+                    indices.Add((+k, +h, -l));//
+                    indices.Add((+k, -h, +l));//
+                    indices.Add((-k, +h, +l));//
+
+                    indices.Add((-l, -k, -h));//
+                    indices.Add((+l, +k, -h));//
+                    indices.Add((+l, -k, +h));//
+                    indices.Add((-l, +k, +h));//
+
+                    indices.Add((-h, -l, -k));//
+                    indices.Add((+h, +l, -k));//
+                    indices.Add((+h, -l, +k));//
+                    indices.Add((-h, +l, +k));//
+                    break;
+
+                case 31:// -43m
+                    indices.Add((+h, +k, +l));//
+                    indices.Add((-h, -k, +l));//
+                    indices.Add((-h, +k, -l));//
+                    indices.Add((+h, -k, -l));//
+
+                    indices.Add((+l, +h, +k));//
+                    indices.Add((-l, -h, +k));//
+                    indices.Add((-l, +h, -k));//
+                    indices.Add((+l, -h, -k));//
+
+                    indices.Add((+k, +l, +h));//
+                    indices.Add((-k, -l, +h));//
+                    indices.Add((-k, +l, -h));//
+                    indices.Add((+k, -l, -h));//
+
+                    indices.Add((+k, +h, +l));//
+                    indices.Add((-k, -h, +l));//
+                    indices.Add((-k, +h, -l));//
+                    indices.Add((+k, -h, -l));//
+
+                    indices.Add((+l, +k, +h));//
+                    indices.Add((-l, -k, +h));//
+                    indices.Add((-l, +k, -h));//
+                    indices.Add((+l, -k, -h));//
+
+                    indices.Add((+h, +l, +k));//
+                    indices.Add((-h, -l, +k));//
+                    indices.Add((-h, +l, -k));//
+                    indices.Add((+h, -l, -k));//
+                    break;
+
+                case 32://m3m
+                    indices.Add((+h, +k, +l));
+                    indices.Add((-h, -k, +l));
+                    indices.Add((-h, +k, -l));
+                    indices.Add((+h, -k, -l));
+
+                    indices.Add((+l, +h, +k));
+                    indices.Add((-l, -h, +k));
+                    indices.Add((-l, +h, -k));
+                    indices.Add((+l, -h, -k));
+
+                    indices.Add((+k, +l, +h));
+                    indices.Add((-k, -l, +h));
+                    indices.Add((-k, +l, -h));
+                    indices.Add((+k, -l, -h));
+
+                    indices.Add((-h, -k, -l));
+                    indices.Add((+h, +k, -l));
+                    indices.Add((+h, -k, +l));
+                    indices.Add((-h, +k, +l));
+
+                    indices.Add((-l, -h, -k));
+                    indices.Add((+l, +h, -k));
+                    indices.Add((+l, -h, +k));
+                    indices.Add((-l, +h, +k));
+
+                    indices.Add((-k, -l, -h));
+                    indices.Add((+k, +l, -h));
+                    indices.Add((+k, -l, +h));
+                    indices.Add((-k, +l, +h));
+
+                    indices.Add((+k, +h, +l));
+                    indices.Add((-k, -h, +l));
+                    indices.Add((-k, +h, -l));
+                    indices.Add((+k, -h, -l));
+
+                    indices.Add((+l, +k, +h));
+                    indices.Add((-l, -k, +h));
+                    indices.Add((-l, +k, -h));
+                    indices.Add((+l, -k, -h));
+
+                    indices.Add((+h, +l, +k));
+                    indices.Add((-h, -l, +k));
+                    indices.Add((-h, +l, -k));
+                    indices.Add((+h, -l, -k));
+
+                    indices.Add((-k, -h, -l));
+                    indices.Add((+k, +h, -l));
+                    indices.Add((+k, -h, +l));
+                    indices.Add((-k, +h, +l));
+
+                    indices.Add((-l, -k, -h));
+                    indices.Add((+l, +k, -h));
+                    indices.Add((+l, -k, +h));
+                    indices.Add((-l, +k, +h));
+
+                    indices.Add((-h, -l, -k));
+                    indices.Add((+h, +l, -k));
+                    indices.Add((+h, -l, +k));
+                    indices.Add((-h, +l, +k));
+                    break;
+            }
+            #endregion
         }
         return indices.ToArray();
         #endregion

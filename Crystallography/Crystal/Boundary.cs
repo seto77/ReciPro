@@ -54,7 +54,9 @@ namespace Crystallography
             var gBase = Index.H * crystal.A_Star + Index.K * crystal.B_Star + Index.L * crystal.C_Star;
             MultipleOfD = Distance * gBase.Length;
 
-            (int H, int K, int L)[] planes = Equivalency ? SymmetryStatic.GenerateEquivalentPlanes(Index, crystal.Symmetry) : new[] { Index };
+            (int H, int K, int L)[] planes = Equivalency ?
+                SymmetryStatic.GenerateEquivalentPlanes(Index.H, Index.K, Index.L, crystal.Symmetry, false)
+                : new[] { Index };
 
             PlaneParams = planes.Select(p =>
             {
