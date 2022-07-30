@@ -13197,14 +13197,9 @@ new ushort[]{535,2,6,2,1,1}
     /// <returns></returns>
     public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym, bool inversionCenter =true)
     {
-        #region
-        var indices = new HashSet<(int H, int K, int L)>();
+        if (h == 0 && k == 0 && l == 0) return new[] { (0, 0, 0) };
 
-        if (h == 0 && k == 0 && l == 0)
-        {
-            indices.Add((0, 0, 0));
-            return indices.ToArray();
-        }
+        var indices = new HashSet<(int H, int K, int L)>();
         int i;
 
         if (inversionCenter)
@@ -14256,7 +14251,6 @@ new ushort[]{535,2,6,2,1,1}
             #endregion
         }
         return indices.ToArray();
-        #endregion
     }
 
     /// <summary>
