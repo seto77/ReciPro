@@ -2,6 +2,7 @@
 using Crystallography.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -148,7 +149,8 @@ public partial class FormImageSimulator : Form
     #region フィールド
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
-    readonly Stopwatch sw = new();
+    readonly Stopwatch sw1 = new();
+    readonly Stopwatch sw2 = new();
     private static readonly double Pi2 = PI * PI;
 
     private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
@@ -262,20 +264,125 @@ public partial class FormImageSimulator : Form
             SimulateHRTEM();
         else if (ImageMode == ImageModes.POTENTIAL)
             simulatePotential();
+        else if (ImageMode == ImageModes.STEM)
+            simulateSTEM();
 
-        toolStripProgressBar1.Value = 100;
+
+        toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
         Enabled = true;
     }
 
+    #region STEMシミュレーション
+
+    int stemDirectionTotal = 0;
+    private void simulateSTEM(bool realtimeMode = false)
+    {
+        sw1.Restart();
+        if (thicknessArray == null || defocusArray == null) return;
+
+        //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
+        var directions = new List<Vector3DBase>();
+        var division = numericBoxDivisionOfIncidentElectron.ValueInteger;
+        var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);// 収束角を1.05倍にしておく
+
+        //ゼロ次ラウエゾーンの基底ベクトルを整数分の1にしてみる
+        //var kVac = UniversalConstants.Convert.EnergyToElectronWaveNumber(200);
+
+        //var convergence = 2 * Math.Asin(UniversalConstants.Convert.EnergyToElectronWaveLength(200) * FormMain.Crystal.A_Star.Length * 2.5)
+        //   * 7.0009023190741639080089511108548 / 7;
+        //var a = FormMain.Crystal.A_Star.Length * 4;
+        //sin = Sin(convergence);
+        //division = 71;
+
+        var radius = division / 2.0;
+
+        for (int h = 0; h < division; h++)
+            for (int w = 0; w < division; w++)
+            {
+                var x = (w - radius + 0.5) / (radius - 0.5) * sin;
+                var y = -(h - radius + 0.5) / (radius - 0.5) * sin;//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
+                directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
+            }
+
+        bool inside(int i) => (i % division - radius + 0.5) * (i % division - radius + 0.5) + (i / division - radius + 0.5) * (i / division - radius + 0.5) <= radius * radius;
+
+        stemDirectionTotal = Enumerable.Range(0, division * division).Count(i => inside(i));
+
+        toolStripProgressBar1.Maximum = stemDirectionTotal;
+        FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
+        FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
+        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
+            thicknessArray, defocusArray, directions.ToArray(),
+            numericBoxSTEM_ConvergenceAngle.Value / 1000,
+            numericBoxSTEM_DetectorInnerAngle.Value / 1000,
+            numericBoxSTEM_DetectorOuterAngle.Value / 1000);
+
+      
+    }
+    #region BackgroundWorkerからのProgressChanged, Completed
+
+    private bool skipProgressChangedEvent = false;
+    private void stemProgressChanged(object sender, ProgressChangedEventArgs e)
+    {
+        if (skipProgressChangedEvent) return;
+        skipProgressChangedEvent = true;
+
+        var current = e.ProgressPercentage;
+        var message = (string)e.UserState;
+        if (message.StartsWith("Calculating I(Q)"))
+        {
+            if (sw1.IsRunning)
+            {
+                sw1.Stop();
+                sw2.Restart();
+            }
+            var sec = sw2.ElapsedMilliseconds / 1000.0;
+            var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
+            toolStripProgressBar1.Value = Math.Min(toolStripProgressBar1.Maximum* current/1000, toolStripProgressBar1.Maximum);
+            toolStripStatusLabel1.Text = "Stage 2: Calculating I(Q)  ";
+            toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
+            toolStripStatusLabel2.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
+        }
+        else
+        {
+            var sec = sw1.ElapsedMilliseconds / 1000.0;
+            toolStripProgressBar1.Value = Math.Min(current, toolStripProgressBar1.Maximum);
+            toolStripStatusLabel1.Text = "Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
+            toolStripStatusLabel2.Text = $"Ellapsed time : {sec:f2} s.,  ";
+            toolStripStatusLabel2.Text += $"{100.0 * current / stemDirectionTotal:f1} % completed,  wait for {sec * (stemDirectionTotal - current) / current:f2} s.";
+        }
+        Application.DoEvents();
+        skipProgressChangedEvent = false;
+    }
+
+    private void stemCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+        FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
+        FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
+
+        SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
+
+        toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
+        toolStripStatusLabel1.Text += $"  Stage 1: {sw1.ElapsedMilliseconds / 1000.0:f1} sec.  Stage 2: {sw2.ElapsedMilliseconds / 1000.0:f1} sec.";
+        toolStripStatusLabel2.Text = "";
+
+        Application.DoEvents();
+    }
+
+    #endregion
+
+    #endregion;
+
+
     private void simulatePotential(bool realtimeMode = false)
     {
-        sw.Restart();
+        sw1.Restart();
 
         if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
         Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
-        var temp = sw.ElapsedMilliseconds;
+        var temp = sw1.ElapsedMilliseconds;
         toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} msec,   ";
 
         //最大値、最小値の設定
@@ -286,7 +393,7 @@ public partial class FormImageSimulator : Form
         SkipEvent = true;
         trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = max;
         trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = min;
-        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (max-min) / 100.0;
+        trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (max - min) / 100.0;
         SkipEvent = false;
 
         //作成したイメージをPseudoBitmapに変換
@@ -340,13 +447,13 @@ public partial class FormImageSimulator : Form
                 result[r, c] = pseudo[r][c];
 
         setPseudoBitamap(result);
-        toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
+        toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
 
     public void SimulateHRTEM(bool realtimeMode = false)
     {
-        sw.Restart();
+        sw1.Restart();
 
         if (thicknessArray == null || defocusArray == null) return;
 
@@ -370,19 +477,67 @@ public partial class FormImageSimulator : Form
             Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
             //絞りの内側のビームを取得
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
-            toolStripStatusLabel1.Text = $"Solving eigen problem: {sw.ElapsedMilliseconds} msec.   ";
+            toolStripStatusLabel1.Text = $"Solving eigen problem: {sw1.ElapsedMilliseconds} msec.   ";
 
             //HRTEM画像を取得
             totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
             //進捗状況を報告
-            toolStripProgressBar1.Value = (int)(100.0 * (t + 1) / tLen);
+            toolStripProgressBar1.Value = (int)(toolStripProgressBar1.Maximum / tLen * (t + 1) );
             toolStripStatusLabel1.Text += $"{toolStripProgressBar1.Value} % completed.  ";
             if (!realtimeMode)
                 Application.DoEvents();
         }
-        var temp = sw.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw.ElapsedMilliseconds} msec,   ";
+        var temp = sw1.ElapsedMilliseconds;
+        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";
 
+        ////作成したイメージをPseudoBitmapに変換
+        //var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
+        //var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
+        //for (int t = 0; t < tLen; t++)
+        //    for (var d = 0; d < dLen; d++)
+        //    {
+        //        //ノーマライズ
+        //        totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+        //                                                                                     //PseudoBitmapを生成
+        //        pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
+        //            = new PseudoBitmap(totalImage[t][d], width)
+        //            {
+        //                Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
+        //                MaxValue = trackBarAdvancedMax.Value,
+        //                MinValue = trackBarAdvancedMin.Value,
+        //                Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
+        //            };
+        //    }
+
+        ////1列あるいは1行で、他の要素が多いときは適当に折り返し
+        //if ((dLen == 1 && tLen > 2) || (tLen == 1 && dLen > 2))
+        //{
+        //    var newCol = Ceiling(Sqrt(pseudo.Length));
+        //    var newRow = Ceiling(pseudo.Length / newCol);
+        //    var newPseudo = new PseudoBitmap[(int)newRow, (int)newCol];
+        //    var oldPseudo = pseudo.Cast<PseudoBitmap>().ToList();
+        //    for (int r = 0, n = 0; r < newRow; r++)
+        //        for (int c = 0; c < newCol; c++, n++)
+        //            newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
+        //    pseudo = newPseudo;
+        //}
+
+        //SkipEvent = true;
+        //trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
+        //trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
+        //trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
+        //SkipEvent = false;
+
+        
+
+        SendImage(tLen, dLen, totalImage, width, height);
+
+        toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
+        
+    }
+
+    public void SendImage(int tLen, int dLen, double[][][] totalImage, int width, int height)
+    {
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
@@ -391,7 +546,7 @@ public partial class FormImageSimulator : Form
             {
                 //ノーマライズ
                 totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
-                                                                           //PseudoBitmapを生成
+                                                                                             //PseudoBitmapを生成
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                     = new PseudoBitmap(totalImage[t][d], width)
                     {
@@ -423,9 +578,8 @@ public partial class FormImageSimulator : Form
 
         //ScalableBoxに転送
         setPseudoBitamap(pseudo);
-        toolStripStatusLabel1.Text += $"Drawing: {sw.ElapsedMilliseconds - temp} msec.";
-        TrackBarAdvancedMin_ValueChanged(new object(), 0);
 
+        TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
 
     public double[] Normalize(double[] image, bool normalizeLow = true)
@@ -435,7 +589,7 @@ public partial class FormImageSimulator : Form
 
         if (normalizeLow)
             image = image.Select(d => (d - min) / (max - min) * (destMax - destMin) + destMin).ToArray();
-         else 
+        else
             image = image.Select(d => d * destMax / max).ToArray();
 
         return image;
@@ -792,7 +946,7 @@ public partial class FormImageSimulator : Form
 
     private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
     {
-        if(ImageMode == ImageModes.HRTEM)
+        if (ImageMode == ImageModes.HRTEM)
         {
             groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = true;
             groupBoxSampleProperty.Enabled = true;
@@ -800,8 +954,12 @@ public partial class FormImageSimulator : Form
             tabControl1.SelectedIndex = 0;
             tabControl2.SelectedIndex = 0;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+            
+            tabPageHREM.Controls.Add(groupBoxSerialImage);
+            groupBoxSerialImage.BringToFront();
+            groupBoxSerialImage.Dock = DockStyle.Fill;
         }
-        else if(ImageMode== ImageModes.POTENTIAL)
+        else if (ImageMode == ImageModes.POTENTIAL)
         {
             groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = false;
             groupBoxSampleProperty.Enabled = false;
@@ -817,13 +975,16 @@ public partial class FormImageSimulator : Form
             groupBoxSampleProperty.Enabled = true;
             numericBoxDefocus.Enabled = true;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
-
             tabControl1.SelectedIndex = 1;
             tabControl2.SelectedIndex = 2;
+            
+            tabPageSTEM.Controls.Add(groupBoxSerialImage);
+            groupBoxSerialImage.BringToFront();
+            groupBoxSerialImage.Dock = DockStyle.Fill;
 
         }
 
-            tabControl2.SelectedIndex = ImageMode switch { ImageModes.HRTEM => 0, ImageModes.POTENTIAL => 1, _ => 2 };
+        tabControl2.SelectedIndex = ImageMode switch { ImageModes.HRTEM => 0, ImageModes.POTENTIAL => 1, _ => 2 };
     }
 
     private void ButtonPanel_Click(object sender, EventArgs e)
@@ -953,7 +1114,7 @@ public partial class FormImageSimulator : Form
                 g.Dispose();
 
                 if (filename.Length == 0)//finenameが""の時はコピー
-                        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+                    ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
                 else
                     using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))
                         fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
@@ -1070,7 +1231,12 @@ public partial class FormImageSimulator : Form
 
     }
 
-    private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) =>  numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
+    private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) => numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
+
+    private void textBoxDefocusList_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {

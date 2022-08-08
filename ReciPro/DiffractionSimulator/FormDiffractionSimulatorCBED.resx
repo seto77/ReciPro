@@ -133,6 +133,165 @@
   <data name="&gt;&gt;checkBoxDrawGuideCircles.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
+    <value>labelDivisionNumber</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
+    <value>comboBoxSolver</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
+    <value>numericBoxThread</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
+    <value>numericBoxThicknessStep</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
+    <value>numericBoxWholeThicknessStart</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
+    <value>numericBoxThicknessEnd</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
+    <value>numericBoxMaxNumOfG</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
+    <value>buttonStop</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedAlphaMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
+    <value>numericBoxDivision</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -1</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 180</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Input parameters</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -143,16 +302,16 @@
     <value>NoControl</value>
   </data>
   <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 127</value>
+    <value>219, 127</value>
   </data>
   <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 15</value>
+    <value>171, 15</value>
   </data>
   <data name="labelDivisionNumber.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
   <data name="labelDivisionNumber.Text" xml:space="preserve">
-    <value>Disk is divided into 31029 grids</value>
+    <value>Disk is divided into 31029 pixels</value>
   </data>
   <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
     <value>labelDivisionNumber</value>
@@ -544,7 +703,7 @@ This value directly corresponds to the disk size.</value>
     <value>Segoe UI Symbol, 10pt</value>
   </data>
   <data name="numericBoxDivision.HeaderText" xml:space="preserve">
-    <value>Division</value>
+    <value>Diameter divisions</value>
   </data>
   <data name="numericBoxDivision.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 122</value>
@@ -562,7 +721,7 @@ This value directly corresponds to the disk size.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 27</value>
+    <value>209, 27</value>
   </data>
   <data name="numericBoxDivision.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -620,32 +779,251 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
+    <value>radioButtonIndividualDisk</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, -1</value>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 180</value>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;radioButtonIndividualDisk.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Input parameters</value>
+  <data name="&gt;&gt;radioButtonAllDisks.Name" xml:space="preserve">
+    <value>radioButtonAllDisks</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;radioButtonAllDisks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;radioButtonAllDisks.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllDisks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
+    <value>comboBoxGradient</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
+    <value>comboBoxScale</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
+    <value>trackBarOutputThickness</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Name" xml:space="preserve">
+    <value>trackBarGamma</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMin</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
+    <value>textBoxThickness</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Name" xml:space="preserve">
+    <value>labelGamma</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="groupBoxOutput.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, -1</value>
+  </data>
+  <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 180</value>
+  </data>
+  <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>Output parameters</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxOutput.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="radioButtonIndividualDisk.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1251,62 +1629,14 @@ The larger this value is, the brighter the outer disk appears to be.</value>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="groupBoxOutput.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>392, -1</value>
-  </data>
-  <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 180</value>
-  </data>
-  <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output parameters</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 17</value>
   </metadata>
-  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 16</value>
-  </data>
-  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
-  </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>    </value>
-  </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>   </value>
-  </data>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 182</value>
+    <value>0, 181</value>
   </data>
   <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>772, 22</value>
+    <value>787, 22</value>
   </data>
   <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1326,6 +1656,24 @@ The larger this value is, the brighter the outer disk appears to be.</value>
   <data name="&gt;&gt;statusStrip2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>    </value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>   </value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1336,7 +1684,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>772, 204</value>
+    <value>787, 203</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 10pt</value>

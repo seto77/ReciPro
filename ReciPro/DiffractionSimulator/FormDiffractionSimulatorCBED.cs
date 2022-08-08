@@ -76,7 +76,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     public (int H, int K, int L, PointD Center, SizeD Size, Size PixelSize, PseudoBitmap PBitmap, Bitmap Bitmap)[] Disks;
 
 
-    private Matrix3D[] Rotations;
+    private Vector3DBase[] Directions;
 
     private readonly Stopwatch sw1 = new();
     private readonly Stopwatch sw2 = new();
@@ -123,7 +123,7 @@ public partial class FormDiffractionSimulatorCBED : Form
         Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
-        var rotations = new List<Matrix3D>();
+        var directions = new List<Vector3DBase>();
         //var side = 2.0 / Division;
         //var max = (int)(1 / side) + 1;
         //var max = Division % 2 == 0 ? Division / 2 : (Division + 1) / 2;
@@ -131,16 +131,21 @@ public partial class FormDiffractionSimulatorCBED : Form
         //    for (int w = -max; w <= max; w++)
         //            rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
 
-        //2021/10/02 以下に変更
+        
         var radius = Division / 2.0;
         for (int h = 0; h < Division; h++)
             for (int w = 0; w < Division; w++)
             {
-                double x = w - radius + 0.5, y = -(h - radius + 0.5);//結晶の座標系は、Y軸が画面上向きなのでYを反転
-                rotations.Add(Matrix3D.Rot(new Vector3DBase(y, -x, 0), Math.Atan(Math.Sqrt(x * x + y * y) / radius * Math.Tan(AlphaMax))));
+                //double x = w - radius + 0.5, y = -(h - radius + 0.5);
+                //directions.Add(Matrix3D.Rot(new Vector3DBase(y, -x, 0), Math.Atan(Math.Sqrt(x * x + y * y) / radius * Math.Tan(AlphaMax)))*new Vector3DBase(0,0,-1));
+                
+                //2022/10/04 以下に変更
+                var x = (w - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);
+                var y = -(h - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
+                directions.Add(new Vector3DBase(x, y, -Math.Sqrt(1 - x * x - y * y)));
             }
 
-        Rotations = rotations.ToArray();
+        Directions = directions.ToArray();
 
 
         BetheMethod.Solver solver;
@@ -149,17 +154,13 @@ public partial class FormDiffractionSimulatorCBED : Form
         else
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
 
-        Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Rotations,
-            solver, numericBoxThread.ValueInteger);
-
-
+        Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, solver, numericBoxThread.ValueInteger);
     }
     private void buttonStop_Click(object sender, EventArgs e)
     {
         Crystal.Bethe.CancelCBED();
         buttonExecute.Text = "Execute";
         buttonStop.Visible = false;
-
     }
     #endregion
 
@@ -242,7 +243,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     private void setImagePixelSize()
     {
         //以下の二つのパラメータはγ値の調整のところで使う。（あまり意味のないパラメータなので、廃止したい）
-        AngleResolution = Math.Acos((Matrix3D.SumOfDiagonalCompenent(Rotations[Rotations.Length / 2] * Rotations[Rotations.Length / 2 + 1].Inverse()) - 1) / 2);
+        AngleResolution = Math.Acos(Vector3DBase.AngleBetVectors(Directions[Directions.Length / 2], Directions[Directions.Length / 2 + 1]) / 2);
         ImagePixelSize = FormDiffractionSimulator.CameraLength2 * Math.Tan(AngleResolution);
     }
 
@@ -385,7 +386,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) =>
-        labelDivisionNumber.Text = "disk is divided into " + DivisionNumber.ToString() + " grids.";
+        labelDivisionNumber.Text = "disk is divided into " + DivisionNumber.ToString() + " pixels.";
 
     private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
     {
@@ -399,4 +400,9 @@ public partial class FormDiffractionSimulatorCBED : Form
         numericBoxThread.Value = comboBoxSolver.Text.Contains("MKL") ? Math.Max(1, Environment.ProcessorCount / 4) : numericBoxThread.Value = Environment.ProcessorCount;
     }
     #endregion
+
+    private void labelDivisionNumber_Click(object sender, EventArgs e)
+    {
+
+    }
 }

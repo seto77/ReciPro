@@ -42,7 +42,7 @@ public partial class FormDiffractionSpotInfo : Form
                 g.Index,
                 crystal.RotationMatrix * g,
                 crystal.Bethe.getU(acc, g.Index, g.d * g.d / 4),
-                crystal.Bethe.getQP(g, kvac, u0, crystal.RotationMatrix));
+                crystal.Bethe.getQP(g, kvac, u0));
         }).ToArray();
         
         SetTable(acc, crystal.Bethe.Beams);

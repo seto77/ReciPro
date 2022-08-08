@@ -3043,55 +3043,205 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxSTEM_DetectorOuterAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_DetectorOuterAngle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBox2.FooterText" xml:space="preserve">
+  <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
-  <data name="numericBox2.HeaderText" xml:space="preserve">
-    <value>Size</value>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
+    <value>Outer</value>
   </data>
-  <data name="numericBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+  <data name="numericBoxSTEM_DetectorOuterAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 49</value>
   </data>
-  <data name="numericBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSTEM_DetectorOuterAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="numericBox2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+  <data name="numericBoxSTEM_DetectorOuterAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="numericBox2.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_DetectorOuterAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
-  <data name="numericBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSTEM_DetectorOuterAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 25</value>
+  <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 27</value>
   </data>
-  <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBox2.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
+    <value>numericBoxSTEM_DetectorOuterAngle</value>
   </data>
-  <data name="numericBox2.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
-    <value>numericBox2</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
+    <value>Inner</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 21</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 27</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
+    <value>numericBoxSTEM_DetectorInnerAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 0</value>
+  </data>
+  <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 83</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Annular detector (semi-angle)</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>5, 83</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>tabPage4</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 40</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 27</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Name" xml:space="preserve">
+    <value>numericBoxSTEM_ConvergenceAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;numericBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -3110,13 +3260,13 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 83</value>
+    <value>107, 83</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Condenser Aperture</value>
+    <value>Convergence semi-angle</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -3128,7 +3278,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>tabPage4</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 14</value>
@@ -3784,7 +3934,7 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="tabControl2.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>FlatButtons</value>
   </data>
-  <data name="groupBox9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxSerialImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="radioButtonSingleMode.AutoSize" type="System.Boolean, mscorlib">
@@ -3815,7 +3965,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSingleMode.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>groupBoxSerialImage</value>
   </data>
   <data name="&gt;&gt;radioButtonSingleMode.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3848,7 +3998,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSerialMode.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>groupBoxSerialImage</value>
   </data>
   <data name="&gt;&gt;radioButtonSerialMode.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4494,45 +4644,45 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelSerial.Parent" xml:space="preserve">
-    <value>groupBox9</value>
+    <value>groupBoxSerialImage</value>
   </data>
   <data name="&gt;&gt;panelSerial.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="groupBox9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxSerialImage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox9.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxSerialImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxSerialImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 48</value>
   </data>
-  <data name="groupBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxSerialImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBox9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxSerialImage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxSerialImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>297, 167</value>
   </data>
-  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxSerialImage.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
+  <data name="groupBoxSerialImage.Text" xml:space="preserve">
     <value>Single/serial mode</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
-    <value>groupBox9</value>
+  <data name="&gt;&gt;groupBoxSerialImage.Name" xml:space="preserve">
+    <value>groupBoxSerialImage</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSerialImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;groupBoxSerialImage.Parent" xml:space="preserve">
+    <value>tabPageHREM</value>
   </data>
-  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSerialImage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
@@ -4674,36 +4824,36 @@ This model should be used for a strong scattering object which usually
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxPartialCoherencyModel.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>tabPageHREM</value>
   </data>
   <data name="&gt;&gt;groupBoxPartialCoherencyModel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageHREM.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 14</value>
   </data>
-  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageHREM.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageHREM.Size" type="System.Drawing.Size, System.Drawing">
     <value>297, 215</value>
   </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageHREM.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="tabPageHREM.Text" xml:space="preserve">
     <value>          </value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;tabPageHREM.Name" xml:space="preserve">
+    <value>tabPageHREM</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageHREM.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageHREM.Parent" xml:space="preserve">
     <value>tabControl2</value>
   </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageHREM.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanel11.AutoScroll" type="System.Boolean, mscorlib">
@@ -5786,28 +5936,136 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 14</value>
+  <data name="numericBoxDivisionOfIncidentElectron.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 215</value>
+  <data name="numericBoxDivisionOfIncidentElectron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxDivisionOfIncidentElectron.HeaderText" xml:space="preserve">
+    <value>Diameter division</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 18</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 27</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.ToolTip" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="numericBoxDivisionOfIncidentElectron.ToolTip1" xml:space="preserve">
+    <value>Object aperture size in mrad</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivisionOfIncidentElectron.Name" xml:space="preserve">
+    <value>numericBoxDivisionOfIncidentElectron</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivisionOfIncidentElectron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivisionOfIncidentElectron.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivisionOfIncidentElectron.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 18</value>
+  </data>
+  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tabPage5.Text" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 47</value>
+  </data>
+  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Division of incident electron direction</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+    <value>tabPageSTEM</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageSTEM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 14</value>
+  </data>
+  <data name="tabPageSTEM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 215</value>
+  </data>
+  <data name="tabPageSTEM.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageSTEM.Text" xml:space="preserve">
     <value>tabPage5</value>
   </data>
-  <data name="&gt;&gt;tabPage5.Name" xml:space="preserve">
-    <value>tabPage5</value>
+  <data name="&gt;&gt;tabPageSTEM.Name" xml:space="preserve">
+    <value>tabPageSTEM</value>
   </data>
-  <data name="&gt;&gt;tabPage5.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSTEM.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSTEM.Parent" xml:space="preserve">
     <value>tabControl2</value>
   </data>
-  <data name="&gt;&gt;tabPage5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSTEM.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="tabControl2.Font" type="System.Drawing.Font, System.Drawing">

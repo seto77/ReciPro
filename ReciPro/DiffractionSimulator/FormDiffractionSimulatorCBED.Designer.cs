@@ -121,6 +121,7 @@
             this.labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
             this.labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelDivisionNumber.Name = "labelDivisionNumber";
+            this.labelDivisionNumber.Click += new System.EventHandler(this.labelDivisionNumber_Click);
             // 
             // comboBoxSolver
             // 

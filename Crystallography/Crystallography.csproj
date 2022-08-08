@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.07.30.2033</AssemblyVersion>
-    <FileVersion>2022.07.30.2033</FileVersion>
+    <AssemblyVersion>2022.8.8.0816</AssemblyVersion>
+    <FileVersion>2022.8.8.0816</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -53,9 +53,5 @@
   <ItemGroup>
     <None Remove="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\MathNet.Numerics.MKL.dll" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="AssemblyVersionUpdate" />
-  </Target>
 
 </Project>

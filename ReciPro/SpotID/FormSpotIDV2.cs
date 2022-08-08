@@ -1449,7 +1449,7 @@ public partial class FormSpotIDV2 : Form
         FormMain.Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
 
         //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
-        var rotations = new List<Matrix3D>();
+        var directions = new List<Vector3DBase>();
         var side = 2.0 / 30;//30分割
         var alphaMax = numericBoxSemiangle.Value * Math.PI / 1000;// 3 mrad;
         var max = (int)(1 / side) + 1;
@@ -1457,10 +1457,10 @@ public partial class FormSpotIDV2 : Form
         for (int h = -max; h <= max; h++)
             for (int w = max; w >= -max; w--)
                 if (h * h + w * w <= max * max)
-                    rotations.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax));
+                    directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax)*new Vector3DBase(0,0,-1) );
                 else
-                    rotations.Add(null);
-        var rotArray = rotations.ToArray();
+                    directions.Add(null);
+        var rotArray = directions.ToArray();
         var thicknessArray = Enumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
         var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
@@ -1492,13 +1492,13 @@ public partial class FormSpotIDV2 : Form
 
         var bestResidual = double.PositiveInfinity;
         var bestThickness = 0.0;
-        var bestDirection = new Matrix3D();
+        var bestDirection = new Vector3DBase();
 
         // R = (oI_1 - a * cI_1)^2 + (oI_2 - a * cI_2)^2 + .... + (oI_n - a * cI_n)^2 の最小化問題
         //この時 a = (oI_1 * cI_1 + oI_2 * cI_2 + ... oI_n * cI_n) / (cI_1^2 + cI_2^2 + ... cI_n^2)
         for (int t = 0; t < FormMain.Crystal.Bethe.Thicknesses.Length; t++)
         {
-            for (int r = 0; r < FormMain.Crystal.Bethe.BeamRotations.Length; r++)
+            for (int r = 0; r < FormMain.Crystal.Bethe.BeamDirections.Length; r++)
             {
                 var numer = corrTable.Sum(c => c.intensity * disks[t][c.index].Amplitudes[r].MagnitudeSquared());
                 var denom = corrTable.Sum(c => Math.Pow(disks[t][c.index].Amplitudes[r].MagnitudeSquared(), 2));
@@ -1510,14 +1510,17 @@ public partial class FormSpotIDV2 : Form
                     {
                         bestResidual = residual;
                         bestThickness = FormMain.Crystal.Bethe.Thicknesses[t];
-                        bestDirection = FormMain.Crystal.Bethe.BeamRotations[r];
+                        bestDirection = FormMain.Crystal.Bethe.BeamDirections[r];
                     }
                 }
             }
         }
 
         splitContainer1.Enabled = true;
-        FormMain.SetRotation(bestDirection * grain.Rotation);
+        //2022/08/04 書き直す必要あり
+        //FormMain.SetRotation(bestDirection * grain.Rotation);
+        FormMain.SetRotation(grain.Rotation);
+        
         FormMain.FormDiffractionSimulator.Thickness = bestThickness;
     }
 

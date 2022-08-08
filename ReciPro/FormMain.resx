@@ -671,18 +671,18 @@ To modify a crystal data, select the target crystal, modify it in the 'Crystal I
 To remove a crystal from the list, select the target crystal and click the 'Delete' button.
 To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
-  <data name="&gt;&gt;listBox.Name" xml:space="preserve">
-    <value>listBox</value>
-  </data>
-  <data name="&gt;&gt;listBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;listBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -752,18 +752,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonAllClear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -791,18 +791,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonAllClear.ToolTip" xml:space="preserve">
     <value>Clear all crystals</value>
   </data>
-  <data name="&gt;&gt;buttonAllClear.Name" xml:space="preserve">
-    <value>buttonAllClear</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -830,18 +830,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonDelete.ToolTip" xml:space="preserve">
     <value>Delete the selected crystal</value>
   </data>
-  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
-    <value>buttonDelete</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -869,18 +869,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonLower.ToolTip" xml:space="preserve">
     <value>Move the selected crystal downward</value>
   </data>
-  <data name="&gt;&gt;buttonLower.Name" xml:space="preserve">
-    <value>buttonLower</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -908,18 +908,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonUpper.ToolTip" xml:space="preserve">
     <value>Move the selected crystal upward</value>
   </data>
-  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
-    <value>buttonUpper</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="crystalControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -938,18 +938,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;crystalControl.Name" xml:space="preserve">
-    <value>crystalControl</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonAdd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -977,18 +977,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonAdd.ToolTip" xml:space="preserve">
     <value>Add the selected crystal to the above list.</value>
   </data>
-  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
-    <value>buttonAdd</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1016,18 +1016,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonChange.ToolTip" xml:space="preserve">
     <value>Replace the below new crystal with the above selected crystal.</value>
   </data>
-  <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
-    <value>buttonChange</value>
-  </data>
-  <data name="&gt;&gt;buttonChange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonChange.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;buttonChange.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="groupBox5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1070,18 +1070,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Project along ...</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1160,21 +1160,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flowLayoutPanel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel5" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1220,18 +1220,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonSetAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1262,18 +1262,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
     <value>Set crystal axis normal to the monitor.</value>
   </data>
-  <data name="&gt;&gt;buttonSetAxis.Name" xml:space="preserve">
-    <value>buttonSetAxis</value>
-  </data>
-  <data name="&gt;&gt;buttonSetAxis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSetAxis.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonSetAxis.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxFixAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1301,18 +1301,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
     <value>By checking, the specified axis is fixed in space.</value>
   </data>
-  <data name="&gt;&gt;checkBoxFixAxis.Name" xml:space="preserve">
-    <value>checkBoxFixAxis</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixAxis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixAxis.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixAxis.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1403,21 +1403,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Name" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxAxisU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxAxisW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxAxisU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1454,18 +1454,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
-  <data name="&gt;&gt;numericBoxAxisU.Name" xml:space="preserve">
-    <value>numericBoxAxisU</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisU.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1493,18 +1493,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label9.Text" xml:space="preserve">
     <value>[</value>
   </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1532,18 +1532,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label10.Text" xml:space="preserve">
     <value>]</value>
   </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxAxisV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1580,18 +1580,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
-  <data name="&gt;&gt;numericBoxAxisV.Name" xml:space="preserve">
-    <value>numericBoxAxisV</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisV.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxAxisW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1628,18 +1628,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
-  <data name="&gt;&gt;numericBoxAxisW.Name" xml:space="preserve">
-    <value>numericBoxAxisW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAxisW.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1736,21 +1736,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel7.ToolTip" xml:space="preserve">
     <value>You can set the crystal plane.</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Name" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxPlaneL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1781,18 +1781,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
-    <value>numericBoxPlaneL</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneL.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxPlaneH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1829,18 +1829,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
     <value>Set crystal plane</value>
   </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
-    <value>numericBoxPlaneH</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneH.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxPlaneK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1871,18 +1871,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
-    <value>numericBoxPlaneK</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPlaneK.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1910,18 +1910,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label11.Text" xml:space="preserve">
     <value>)</value>
   </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1949,18 +1949,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label12.Text" xml:space="preserve">
     <value>(</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>tableLayoutPanel7</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2006,18 +2006,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonSetPlane.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -2048,18 +2048,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonSetPlane.ToolTip" xml:space="preserve">
     <value>Set crystal plane normal to the monitor.</value>
   </data>
-  <data name="&gt;&gt;buttonSetPlane.Name" xml:space="preserve">
-    <value>buttonSetPlane</value>
-  </data>
-  <data name="&gt;&gt;buttonSetPlane.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSetPlane.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;buttonSetPlane.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxFixePlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2090,18 +2090,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
     <value>By checking, the specified plane is fixed in space.</value>
   </data>
-  <data name="&gt;&gt;checkBoxFixePlane.Name" xml:space="preserve">
-    <value>checkBoxFixePlane</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixePlane.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixePlane.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixePlane.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
@@ -2165,18 +2165,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Arrows</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2315,21 +2315,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel2" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonLeft" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomLeft" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottom" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomRight" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonTop" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonRight" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,50,Percent,25" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -2375,21 +2375,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonAntiClock" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonClock" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonAntiClock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2423,18 +2423,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonAntiClock.Name" xml:space="preserve">
-    <value>buttonAntiClock</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonClock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2465,18 +2465,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonClock.Name" xml:space="preserve">
-    <value>buttonClock</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonTopLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2507,18 +2507,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonTopLeft.Name" xml:space="preserve">
-    <value>buttonTopLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2550,18 +2550,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Left)</value>
   </data>
-  <data name="&gt;&gt;buttonLeft.Name" xml:space="preserve">
-    <value>buttonLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonBottomLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2592,18 +2592,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonBottomLeft.Name" xml:space="preserve">
-    <value>buttonBottomLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2635,18 +2635,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Down)</value>
   </data>
-  <data name="&gt;&gt;buttonBottom.Name" xml:space="preserve">
-    <value>buttonBottom</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonBottomRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2677,18 +2677,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonBottomRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonBottomRight.Name" xml:space="preserve">
-    <value>buttonBottomRight</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2720,18 +2720,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Up)</value>
   </data>
-  <data name="&gt;&gt;buttonTop.Name" xml:space="preserve">
-    <value>buttonTop</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonTopRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2765,18 +2765,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonTopRight.Name" xml:space="preserve">
-    <value>buttonTopRight</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2808,18 +2808,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Right)</value>
   </data>
-  <data name="&gt;&gt;buttonRight.Name" xml:space="preserve">
-    <value>buttonRight</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="&gt;&gt;numericBoxStep.Name" xml:space="preserve">
     <value>numericBoxStep</value>
   </data>
@@ -2850,18 +2850,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -2904,18 +2904,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value>Set angle step for above buttons, or rotatian speed</value>
   </data>
-  <data name="&gt;&gt;numericBoxStep.Name" xml:space="preserve">
-    <value>numericBoxStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="checkBoxAnimation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2943,18 +2943,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
     <value>If check this and click above buttons, crysatal rotates with a constant speed</value>
   </data>
-  <data name="&gt;&gt;checkBoxAnimation.Name" xml:space="preserve">
-    <value>checkBoxAnimation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAnimation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAnimation.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAnimation.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="groupBox3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3000,18 +3000,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Euler Angle</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3147,21 +3147,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label6" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerPsi" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerTheta" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerPhi" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,34.78261,Percent,31.88406" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3186,18 +3186,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label6.Text" xml:space="preserve">
     <value>°</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericUpDownEulerPsi.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3219,18 +3219,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericUpDownEulerPsi.ToolTip" xml:space="preserve">
     <value>Set Euler angle ψ</value>
   </data>
-  <data name="&gt;&gt;numericUpDownEulerPsi.Name" xml:space="preserve">
-    <value>numericUpDownEulerPsi</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPsi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPsi.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPsi.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3252,18 +3252,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label2.Text" xml:space="preserve">
     <value>°</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3288,18 +3288,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label3.Text" xml:space="preserve">
     <value>Ψ</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericUpDownEulerTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3321,18 +3321,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericUpDownEulerTheta.ToolTip" xml:space="preserve">
     <value>Set Euler angle θ</value>
   </data>
-  <data name="&gt;&gt;numericUpDownEulerTheta.Name" xml:space="preserve">
-    <value>numericUpDownEulerTheta</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerTheta.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerTheta.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericUpDownEulerPhi.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3354,18 +3354,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericUpDownEulerPhi.ToolTip" xml:space="preserve">
     <value>Set Euler angle Φ</value>
   </data>
-  <data name="&gt;&gt;numericUpDownEulerPhi.Name" xml:space="preserve">
-    <value>numericUpDownEulerPhi</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPhi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPhi.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEulerPhi.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3390,18 +3390,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label5.Text" xml:space="preserve">
     <value>°</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3426,18 +3426,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label4.Text" xml:space="preserve">
     <value>Φ</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3462,18 +3462,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label1.Text" xml:space="preserve">
     <value>Θ</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="groupBoxCurrentDirection.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3552,18 +3552,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>Current direction of the selected crystal</value>
   </data>
-  <data name="&gt;&gt;groupBoxCurrentDirection.Name" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCurrentDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCurrentDirection.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCurrentDirection.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="buttonReset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3594,18 +3594,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="buttonReset.ToolTip" xml:space="preserve">
     <value>Reset rotation state to initial orientation</value>
   </data>
-  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
-    <value>buttonReset</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="tableLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3693,21 +3693,21 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="tableLayoutPanel6.ToolTip" xml:space="preserve">
     <value>Approximate zone axis normal to screen</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Name" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel6.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanel6.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelCurrentIndexU" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelCurrentIndexV" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelCurrentIndexW" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label14" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label15" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="labelCurrentIndexU.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3735,18 +3735,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="labelCurrentIndexU.ToolTip" xml:space="preserve">
     <value>Approximate index of zone axis</value>
   </data>
-  <data name="&gt;&gt;labelCurrentIndexU.Name" xml:space="preserve">
-    <value>labelCurrentIndexU</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexU.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexU.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="labelCurrentIndexV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3774,18 +3774,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="labelCurrentIndexV.ToolTip" xml:space="preserve">
     <value>Approximate index of zone axis</value>
   </data>
-  <data name="&gt;&gt;labelCurrentIndexV.Name" xml:space="preserve">
-    <value>labelCurrentIndexV</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexV.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexV.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="labelCurrentIndexW.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3813,18 +3813,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="labelCurrentIndexW.ToolTip" xml:space="preserve">
     <value>Approximate index of zone axis</value>
   </data>
-  <data name="&gt;&gt;labelCurrentIndexW.Name" xml:space="preserve">
-    <value>labelCurrentIndexW</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexW.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexW.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndexW.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3849,18 +3849,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label14.ToolTip" xml:space="preserve">
     <value>Approximate index of zone axis</value>
   </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3885,18 +3885,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>Approximate index of zone axis</value>
   </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>tableLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="numericBoxMaxUVW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3930,18 +3930,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
-    <value>numericBoxMaxUVW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3967,18 +3967,18 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3D graphics
  is disabled.</value>
   </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
