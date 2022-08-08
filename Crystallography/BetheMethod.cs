@@ -2,6 +2,7 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -887,68 +888,72 @@ public class BetheMethod
         bool A(PointD k) => k.Length2 <= conv2;
 
         //検出器関数 D
-        double inner = Math.Sin(detAngleInner) / rambda, sinInner2 = inner * inner, outer = Math.Sin(detAngleOuter) / rambda, sinOuter2 = outer * outer;
-        bool D(PointD k) => k.Length2 >= sinInner2 && k.Length2 <= sinOuter2;
-
-        //最大のK値(計算したK0ベクトルの中で最もXY成分が大きいもの)を求める。収束角ではないことに注意(5%大きい)。
-        var maxK = kArray.Max(e => e.X);
-
-        //Beamsの情報からDictionaryを作成
-        var beamsDic = new Dictionary<int, (int N, int H, int K, int L, PointD G)>();
-        for (int n = 0; n < Beams.Length; n++)
-            beamsDic.Add(compose(Beams[n].Index), (n, Beams[n].H, Beams[n].K, Beams[n].L, Beams[n].Vec.ToPointD));
+        double inner = Math.Sin(detAngleInner) / rambda, inner2 = inner * inner, outer = Math.Sin(detAngleOuter) / rambda, outer2 = outer * outer;
+        bool D(PointD k) => k.Length2 >= inner2 && k.Length2 <= outer2;
 
         //計算対象のQを網羅 qListを作成
         var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
         var qList = Beams.SelectMany(e1 => Beams.Select(e2 => (H: e1.H - e2.H, K: e1.K - e2.K, L: e1.L - e2.L))).Distinct()
-            .Select(e => (e.H, e.K, e.L, Q: (mat * e).ToPointD)).Where(e => kArray.Any(e2 => A(e2 + e.Q)))
-            .OrderBy(e => e.Q.Length2).Select((e, N) => (e.H, e.K, e.L, e.Q, N)).ToList();
+            .Select(e => (e.H, e.K, e.L, Q: (mat * e).ToPointD)).Where(e => kArray.Any(e2 => A(e2 + e.Q))).OrderBy(e => e.Q.Length2).ToArray();
 
-        //I[q, thickness, defocus]を作成 (3次元配列)
-        var I = qList.Select(e1 => Thicknesses.Select(e2 => new Complex[defocusses.Length]).ToArray()).ToArray();
+        //有効なディスクを判定するフラグ
+        var flag = disk.Select(e => e != null).ToArray();
 
-        var diskFlag = disk.Select(e => e != null).ToArray();
-        var disk2 = disk.AsParallel().Select((e1, i) => (result: e1, beamsDic.Values.Where(e2 => D(kArray[i] + e2.G)).ToArray(), K: kArray[i]))
+        //必要な情報だけを追加したディスク
+        var disk2 = disk.AsParallel()
+            .Select((e, i) => (result: e, gInDetector: Beams.Select((_, n) => D(kArray[i] + Beams[n].Vec.ToPointD)).ToArray(), K: kArray[i]))
             .Where(e => e.result != null && A(e.K)).ToArray();
+
+        //最大のK値(計算したK0ベクトルの中で最もXY成分が大きいもの)を求める。収束角ではないことに注意(5%大きい)。
+        var maxK = kArray.Max(e => e.X);
 
         double coeff1 = radiusPix - 0.5, coeff2 = (radiusPix - 0.5) / maxK;
         uint coeff3 = (uint)(diameterPix - 1);
+        int dLen = defocusses.Length, tLen = Thicknesses.Length, bLen=Beams.Length;
         count = 0;
-        qList.AsParallel().ForAll(q =>
-        //foreach(var q in qList)
+
+        // //I[q][thickness,defocus]を作成 
+        var I = qList.AsParallel().Select(q =>
         {
             var n = new int[4];
             var r = new double[4];
             var lenz = new Complex[defocusses.Length];
 
-            foreach (var (result, beams, K) in disk2.Where(e => A(e.K + q.Q)))
+            //計算可能なgのインデックスを計算
+            var g_qIndex = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.H - q.H, g1.K - q.K, g1.L - q.L))))
+            .Where(e => e.g_q != -1).ToArray();
+
+            var I_Q = new Complex[Thicknesses.Length, defocusses.Length];
+
+            foreach (var (result, gInDetector, K) in disk2.Where(e => A(e.K + q.Q)))
             {
                 var P = K + q.Q;
                 double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//Pに最も近いX,Y座標(実数)
                 int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
                 n[0] = y * diameterPix + x; n[1] = n[0] + 1; n[2] = n[0] + diameterPix; n[3] = n[2] + 1;//それぞれのインデックス
-                if ((uint)x < coeff3 && (uint)y < coeff3 && n.All(e => diskFlag[e]))//4つのインデックスが範囲内であることを判定
+                if ((uint)x < coeff3 && (uint)y < coeff3 && flag[n[0]] && flag[n[1]] && flag[n[2]] && flag[n[3]])//4つのインデックスが範囲内であることを判定
                 {
-                    r[0] = (1 - dX + x) * (1 - dY + y); r[1] = (dX - x) * (1 - dY + y); r[2] = (1 - dX + x) * (dY - y); r[3] = (dX - x) * (dY - y);//比率を計算
-                    for (int i = 0; i < lenz.Length; i++)
-                        lenz[i] = Exp(-ImaginaryOne * (W(K, defocusses[i]) - W(P, defocusses[i])));
+                    double xx = dX - x, yy = dY - y;
+                    r[0] = (1 - xx) * (1 - yy); r[1] = xx * (1 - yy); r[2] = (1 - xx) * yy; r[3] = xx * yy;//比率を計算
+                    
+                    for (int d = 0; d < defocusses.Length; d++)
+                        lenz[d] = Exp(-ImaginaryOne * (W(K, defocusses[d]) - W(P, defocusses[d])));
 
-                    foreach (var g in beams)
-                    {
-                        var index = compose(g.H - q.H, g.K - q.K, g.L - q.L);
-                        for (int i = 0; i < n.Length; i++)
-                            if (beamsDic.TryGetValue(index, out var g_q))
-                                for (int t = 0; t < Thicknesses.Length; t++)
+                    foreach (var (g, g_q) in g_qIndex)
+                        if (gInDetector[g])
+                            for (int i = 0; i < 4; i++)
+                                for (int t = 0; t < tLen; t++)
                                 {
-                                    var temp = r[i] * result[t][g.N] * disk[n[i]][t][g_q.N].Conjugate();
-                                    for (int d = 0; d < defocusses.Length; d++)
-                                        I[q.N][t][d] += temp * lenz[d];
+                                    var temp = r[i] * result[t][g] * disk[n[i]][t][g_q].Conjugate();
+                                    for (int d = 0; d < dLen; d++)
+                                        I_Q[t, d] += temp * lenz[d];
                                 }
-                    }
                 }
             }
-            bwSTEM.ReportProgress(Interlocked.Increment(ref count) * 1000 / qList.Count, "Calculating I(Q)");//進捗状況を報告
-        });
+            bwSTEM.ReportProgress(Interlocked.Increment(ref count) * 1000 / qList.Length, "Calculating I(Q)");//進捗状況を報告
+
+            return I_Q;
+        }).ToArray();
         #endregion I[q, thickness, defocus]を作成完了
 
         //imagesを初期化
@@ -963,10 +968,10 @@ public class BetheMethod
             for (int x = 0; x < width; x++)
             {
                 var rVec = new PointD(-resolution * (x - cX), -resolution * (height - y - 1 - cY)) + shift;
-                foreach (var (H, K, L, Q, N) in qList)
+                for(int n=0; n<I.Length;n++)
                     for (int t = 0; t < images.Length; t++)
                         for (int d = 0; d < defocusses.Length; d++)
-                            images[t][d][x + y * width] += I[N][t][d] * Exp(Q * rVec * TwoPiI) / radiusPix / radiusPix;
+                            images[t][d][x + y * width] += I[n][t,d] * Exp(qList[n].Q * rVec * TwoPiI) / radiusPix / radiusPix;
             }
         });
 
@@ -1447,14 +1452,14 @@ public class BetheMethod
     public Beam[] reset_gVectors(Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0)
     {
         var mat = baseRotation * Crystal.MatrixInverse.Transpose();
-        var newBeams = new List<Beam>();
+        var newBeams = new Beam[beams.Length];
         for (int i = 0; i < beams.Length; i++)
         {
             var g = mat * beams[i].Index;
             var prms = getQP(g, vecK0);
-            newBeams.Add(new Beam(prms));
+            newBeams[i] = new Beam(prms);
         }
-        return newBeams.ToArray();
+        return newBeams;
     }
 
     private static double getQ(in Vector3DBase g, in Vector3DBase vecK0) => vecK0.Length2 - (vecK0 + g).Length2;
