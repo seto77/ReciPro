@@ -444,7 +444,14 @@ public static class ImageIO
             var t = new DigitalMicrograph.Loader(str);
 
             double pixelScale = (float)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0];
-            double accVol = (double)t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0];
+
+            double accVol = 200000;
+            var test = t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0];
+            if (test is float accF)
+                accVol = (double)accF;
+            else if (test is double accD)
+                accVol = accD;
+            
             var pixelSize = 0.1;
             //CCDカメラの場合
             if (t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag.ContainsKey("Acquisition"))
@@ -477,6 +484,8 @@ public static class ImageIO
                     intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (float)v).ToArray();
                 else if (o.GetType() == typeof(uint))
                     intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (uint)v).ToArray();
+                else if (o.GetType() == typeof(int))
+                    intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (int)v).ToArray();
                 else
                     return false;
 

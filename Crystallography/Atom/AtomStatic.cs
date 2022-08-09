@@ -2498,9 +2498,14 @@ new ES(4.86738014,0.319974401,4.58872425,
         public Func<double, double> Factor { get; }
 
         /// <summary>
-        /// 引数がS2 (単位: nm^-2), m (単位: nm^2), 戻り値が無次元量の関数
+        /// 引数がS2 (単位: nm^-2, S = sinθ/λ = 1/2d), 温度因子 m (単位: nm^2), 戻り値が無次元量の関数
         /// </summary>
         public Func<double, double, double> FactorImaginary { get; }
+
+        /// <summary>
+        /// 引数がgvector(単位: nm^1), 温度因子 m (単位: nm^2), ドーナッツ検出器の内側と外側 (単位: nm^1) 戻り値が無次元量の関数
+        /// </summary>
+        public Func<Vector3DBase, double, (double inner, double outer), double> FactorImaginaryDonut { get; }
 
         /// <summary>
         /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
@@ -2553,8 +2558,8 @@ new ES(4.86738014,0.319974401,4.58872425,
             FactorImaginary = new Func<double, double, double>((s2, m) =>
             {
                 s2 *= 0.01;//単位を修正
-                    m *= 100;//単位を修正
-                    return prms.Sum(p1 => prms.Sum(p2 =>
+                m *= 100;//単位を修正
+                return prms.Sum(p1 => prms.Sum(p2 =>
                 {
                     var sum = p1.B + p2.B;
                     var product = p1.B * p2.B;
@@ -2563,6 +2568,18 @@ new ES(4.86738014,0.319974401,4.58872425,
                     : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
                 })) * Math.PI;
             });
+
+
+
+
+            FactorImaginaryDonut = new Func<Vector3DBase, double, (double inner, double outer), double>((g, m, range) =>
+
+                MathNet.Numerics.Integration.GaussLegendreRule.Integrate((r, theta) =>
+                {
+                    var q = new Vector3DBase(Math.Cos(theta), Math.Sin(theta),0);
+                    return Factor(g.Length2 / 4) * Factor((g - q).Length2 / 4) * (1 - Math.Exp(-m * (q.Length2 - g * q)) / 16.0 / Math.PI / Math.PI);
+                }
+                , 0, Math.PI, range.inner, range.outer, 5));
         }
 
         /// <summary>
@@ -2579,8 +2596,8 @@ new ES(4.86738014,0.319974401,4.58872425,
             FactorImaginary = new Func<double, double, double>((s2, m) =>
             {
                 s2 *= 0.01;//単位を修正
-                    m *= 100;//単位を修正
-                    return prms.Sum(p1 => prms.Sum(p2 =>
+                m *= 100;//単位を修正
+                return prms.Sum(p1 => prms.Sum(p2 =>
                 {
                     var sum = p1.B + p2.B;
                     var product = p1.B * p2.B;

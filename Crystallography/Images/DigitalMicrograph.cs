@@ -41,7 +41,7 @@ namespace Crystallography
 
             public Loader(string fileName)
             {
-                var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.ReadWrite));
+                var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
 
                 byte[] i1 = new byte[1], i2 = new byte[2], i4 = new byte[4];
 
