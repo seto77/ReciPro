@@ -2028,8 +2028,7 @@ public partial class FormDiffractionSimulator : Form
             return;
 
         SaveFileDialog dlg = new() { Filter =  "*.tif|*.tif" };
-        if (dlg.ShowDialog() != DialogResult.OK)
-            return;
+        if (dlg.ShowDialog() != DialogResult.OK) return;
 
         var name = dlg.FileName[0..^4];//拡張子を除去
 
