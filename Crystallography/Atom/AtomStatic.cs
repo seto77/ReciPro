@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Edge = Crystallography.XrayLineEdge;
+using MathNet.Numerics.Distributions;
 
 namespace Crystallography;
 
@@ -2498,14 +2499,9 @@ new ES(4.86738014,0.319974401,4.58872425,
         public Func<double, double> Factor { get; }
 
         /// <summary>
-        /// 引数がS2 (単位: nm^-2, S = sinθ/λ = 1/2d), 温度因子 m (単位: nm^2), 戻り値が無次元量の関数
+        /// 引数がkV(電子のエネルギー), S2 (単位: nm^-2, S = sinθ/λ = 1/2d), 温度因子 m (単位: nm^2), 戻り値が無次元量の関数. mがNaNの場合はゼロにして計算.
         /// </summary>
-        public Func<double, double, double> FactorImaginary { get; }
-
-        /// <summary>
-        /// 引数がgvector(単位: nm^1), 温度因子 m (単位: nm^2), ドーナッツ検出器の内側と外側 (単位: nm^1) 戻り値が無次元量の関数
-        /// </summary>
-        public Func<Vector3DBase, double, (double inner, double outer), double> FactorImaginaryDonut { get; }
+        public Func<double, double, double, double> FactorImaginary { get; }
 
         /// <summary>
         /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
@@ -2555,31 +2551,7 @@ new ES(4.86738014,0.319974401,4.58872425,
 
             var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
             Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double>((s2, m) =>
-            {
-                s2 *= 0.01;//単位を修正
-                m *= 100;//単位を修正
-                return prms.Sum(p1 => prms.Sum(p2 =>
-                {
-                    var sum = p1.B + p2.B;
-                    var product = p1.B * p2.B;
-                    return sum == 0
-                    ? 0
-                    : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-                })) * Math.PI;
-            });
-
-
-
-
-            FactorImaginaryDonut = new Func<Vector3DBase, double, (double inner, double outer), double>((g, m, range) =>
-
-                MathNet.Numerics.Integration.GaussLegendreRule.Integrate((r, theta) =>
-                {
-                    var q = new Vector3DBase(Math.Cos(theta), Math.Sin(theta),0);
-                    return Factor(g.Length2 / 4) * Factor((g - q).Length2 / 4) * (1 - Math.Exp(-m * (q.Length2 - g * q)) / 16.0 / Math.PI / Math.PI);
-                }
-                , 0, Math.PI, range.inner, range.outer, 5));
+            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, prms, s2, m));
         }
 
         /// <summary>
@@ -2590,23 +2562,88 @@ new ES(4.86738014,0.319974401,4.58872425,
         {
             Valence = 0;
             Method = "";
-
             var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
             Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double>((s2, m) =>
-            {
-                s2 *= 0.01;//単位を修正
-                m *= 100;//単位を修正
-                return prms.Sum(p1 => prms.Sum(p2 =>
-                {
-                    var sum = p1.B + p2.B;
-                    var product = p1.B * p2.B;
-                    return sum == 0
-                    ? 0
-                    : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
-                })) * Math.PI;
-            });
+            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, prms, s2, m));
         }
+
+        /// <summary>
+        /// 局所形式の非弾性散乱因子 (TDS吸収ポテンシャル) 
+        /// </summary>
+        /// <param name="prms"></param>
+        /// <param name="s2"></param>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        private double factorImaginary(double kV, (double A, double B)[] prms, double s2, double m)
+        {
+            var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+
+            if (double.IsNaN(m)) m = 0;
+            s2 *= 0.01;//単位を修正
+            m *= 100;//単位を修正
+            return prms.Sum(p1 => prms.Sum(p2 =>
+            {
+                var sum = p1.B + p2.B;
+                var product = p1.B * p2.B;
+                return sum == 0
+                ? 0
+                : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+            })) * Math.PI * gamma * 2 / k0;
+        }
+
+        /// <summary>
+        /// 非局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// </summary>
+        /// <param name="kV"></param>
+        /// <param name="g"></param>
+        /// <param name="h"></param>
+        /// <param name="m"></param>
+        /// <param name="inner"></param>
+        /// <param name="outer"></param>
+        /// <returns></returns>
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer)
+        {
+            if (double.IsNaN(m)) m = 0;
+            var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+            double g_h = (g - h).Length2 / 4;
+            return MathNet.Numerics.Integration.GaussLegendreRule.Integrate((phi, theta) =>
+            {
+                var sinTheta = Math.Sin(theta);
+                var k = k0 * new Vector3DBase(sinTheta * Math.Cos(phi), sinTheta * Math.Sin(phi), Math.Cos(theta) - 1);
+                double k_g = (k - g).Length2 / 4, k_h = (k - h).Length2 / 4;
+                return Factor(k_g) * Factor(k_h) * (1 - Math.Exp(m * (g_h - k_g - k_h))) * sinTheta;
+            }
+            , 0, 2 * Math.PI, inner, outer, 40) * gamma * k0 / 2;
+        }
+
+        /// <summary>
+        /// 非局所形式の非弾性散乱因子　近軸近似(ビーム径射角ゼロ) Flat Ewald球近似
+        /// </summary>
+        /// <param name="kV"></param>
+        /// <param name="g"></param>
+        /// <param name="h"></param>
+        /// <param name="m"></param>
+        /// <param name="inner"></param>
+        /// <param name="outer"></param>
+        /// <returns></returns>
+        public double FactorImaginaryAnnular2(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer)
+        {
+            if (double.IsNaN(m)) m = 0;
+            var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+            double g_h = (g - h).ToPointD.Length2 / 4;
+            PointD g2 = g.ToPointD, h2 = h.ToPointD;
+            return MathNet.Numerics.Integration.GaussLegendreRule.Integrate((phi, r) =>
+            {
+                var k = r * new PointD(Math.Cos(phi), Math.Sin(phi));
+                double k_g = (k - g2).Length2 / 4, k_h = (k - h2).Length2 / 4;
+                return Factor(k_g) * Factor(k_h) * (1 - Math.Exp(m * (g_h - k_g - k_h))) * r;
+            }
+            , 0, 2 * Math.PI, k0 * Math.Tan(inner), k0 * Math.Tan(outer), 40) * gamma / k0 / 2;
+        }
+
 
         /// <summary>
         /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)

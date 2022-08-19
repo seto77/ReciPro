@@ -34,14 +34,14 @@ public partial class FormDiffractionSpotInfo : Form
         //波数を計算
         var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(acc);
         //U0を計算
-        var u0 = crystal.Bethe.getU(acc, (0, 0, 0), 0).Real.Real;
+        var u0 = crystal.Bethe.getU(acc).Real.Real;
 
         crystal.Bethe.Beams = crystal.VectorOfG.Where(g => g.Flag2).Select(g =>
         {
             return new BetheMethod.Beam(
                 g.Index,
                 crystal.RotationMatrix * g,
-                crystal.Bethe.getU(acc, g.Index, g.d * g.d / 4),
+                crystal.Bethe.getU(acc,new BetheMethod.Beam(g)),
                 crystal.Bethe.getQP(g, kvac, u0));
         }).ToArray();
         
@@ -119,10 +119,10 @@ public partial class FormDiffractionSpotInfo : Form
             r.gY = Math.Abs(beam.Vec.Y) > 1e-12 ? g.Y : 0;
             r.gZ = Math.Abs(beam.Vec.Z) > 1e-12 ? g.Z : 0;
             r.__g_ = k;
-            r.Ug_re = Math.Abs(beam.Freal.Real) > 1E-12 ? beam.Freal.Real * coeff : 0;
-            r.Ug_im = Math.Abs(beam.Freal.Imaginary) > 1E-12 ? beam.Freal.Imaginary * coeff : 0;
-            r._U_g_re = Math.Abs(beam.Fimag.Real) > 1E-12 ? beam.Fimag.Real * coeff : 0;
-            r._U_g_im = Math.Abs(beam.Fimag.Imaginary) > 1E-12 ? beam.Fimag.Imaginary * coeff : 0;
+            r.Ug_re = Math.Abs(beam.Ureal.Real) > 1E-12 ? beam.Ureal.Real * coeff : 0;
+            r.Ug_im = Math.Abs(beam.Ureal.Imaginary) > 1E-12 ? beam.Ureal.Imaginary * coeff : 0;
+            r._U_g_re = Math.Abs(beam.Uimag.Real) > 1E-12 ? beam.Uimag.Real * coeff : 0;
+            r._U_g_im = Math.Abs(beam.Uimag.Imaginary) > 1E-12 ? beam.Uimag.Imaginary * coeff : 0;
             r.Sg = beam.S;
             r.Pg = beam.P;
             r.Qg = beam.Q;

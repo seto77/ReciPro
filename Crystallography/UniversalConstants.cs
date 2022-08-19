@@ -237,8 +237,15 @@ namespace Crystallography
             {
                 //U =voltage
                 //WaveLength = h / Math.Sqrt ( 2 * m0 * e0 * U * ( 1 + e0 * U / 2 / m0 / c^2 ) )
-                return  Math.Sqrt(kiloVoltage * 1000.0 * (1 + kiloVoltage * 0.9784753725226711491437618236159 / 1000))/ 1.2264262862108010441350327657997;
+                return Math.Sqrt(kiloVoltage * 1000.0 * (1 + kiloVoltage * 0.9784753725226711491437618236159 / 1000)) / 1.2264262862108010441350327657997;
             }
+
+            /// <summary>
+            /// 電子線の波数(nm^-1)をエネルギー(kV)に変換 
+            /// </summary>
+            /// <param name="kiloVoltage"></param>
+            /// <returns></returns>
+            public static double ElectronWaveNumberToEnergy(double wavenumber) => WaveLengthToElectronEnergy(1 / wavenumber);
 
 
             /// <summary>
@@ -255,11 +262,9 @@ namespace Crystallography
             /// <param name="d"></param>
             /// <param name="takeoffAngle"></param>
             /// <returns></returns>
-            public static double DspacingToWaveLength(double d, double takeoffAngle)
-                => 2.0 * d * Math.Sin(takeoffAngle / 2.0);
+            public static double DspacingToWaveLength(double d, double takeoffAngle) => 2.0 * d * Math.Sin(takeoffAngle / 2.0);
 
-            public static double DspacingToXrayEnergy(double d, double takeoffAngle)
-                => WavelengthToXrayEnergy(DspacingToWaveLength(d, takeoffAngle));
+            public static double DspacingToXrayEnergy(double d, double takeoffAngle) => WavelengthToXrayEnergy(DspacingToWaveLength(d, takeoffAngle));
         }
     }
 
