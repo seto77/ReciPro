@@ -344,10 +344,11 @@ public partial class FormImageSimulator : Form
             }
             var sec = sw2.ElapsedMilliseconds / 1000.0;
             var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
-            toolStripProgressBar1.Value = Math.Min(toolStripProgressBar1.Maximum* current/1000, toolStripProgressBar1.Maximum);
+            toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = "Stage 2: Calculating I(Q)  ";
             toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
+            toolStripStatusLabel2.Text += $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f2} s.";
+            //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
         }
         else
         {
@@ -355,7 +356,7 @@ public partial class FormImageSimulator : Form
             toolStripProgressBar1.Value = Math.Min(current, toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = "Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
             toolStripStatusLabel2.Text = $"Ellapsed time : {sec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{100.0 * current / stemDirectionTotal:f1} % completed,  wait for {sec * (stemDirectionTotal - current) / current:f2} s.";
+            toolStripStatusLabel2.Text += $"{current * 100.0 / stemDirectionTotal :f1} % completed,  wait for more {sec * (stemDirectionTotal  - current) / current:f2} s.";
         }
         Application.DoEvents();
         skipProgressChangedEvent = false;
@@ -369,7 +370,7 @@ public partial class FormImageSimulator : Form
         if (!e.Cancelled)
         {
             SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
-
+            toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
             toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
             toolStripStatusLabel1.Text += $"  Stage 1: {sw1.ElapsedMilliseconds / 1000.0:f1} sec.  Stage 2: {sw2.ElapsedMilliseconds / 1000.0:f1} sec.";
             

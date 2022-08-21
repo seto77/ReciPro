@@ -3805,9 +3805,6 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="numericBoxIntensityMin.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxIntensityMin.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="numericBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>

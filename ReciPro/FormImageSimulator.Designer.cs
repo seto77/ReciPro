@@ -1453,6 +1453,8 @@ namespace ReciPro
             // checkBoxIntensityMin
             // 
             resources.ApplyResources(this.checkBoxIntensityMin, "checkBoxIntensityMin");
+            this.checkBoxIntensityMin.Checked = true;
+            this.checkBoxIntensityMin.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxIntensityMin.Name = "checkBoxIntensityMin";
             this.checkBoxIntensityMin.UseVisualStyleBackColor = true;
             this.checkBoxIntensityMin.CheckedChanged += new System.EventHandler(this.checkBoxIntensityMin_CheckedChanged);
