@@ -18,6 +18,7 @@ using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
 using MathNet.Numerics;
 using static Crystallography.BetheMethod;
+using System.Security.Cryptography;
 #endregion
 
 namespace Crystallography;
@@ -775,6 +776,8 @@ public class BetheMethod
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
+        Control.UseNativeMKL();
+
         //Mathネットの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
         var (solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution, calcElas, calcInel)
             = ((Solver, int, double, double, double, double, double[], Size, double, bool, bool))e.Argument;
@@ -945,9 +948,9 @@ public class BetheMethod
 
             int n0, n1, n2, n3;
             double r0, r1, r2, r3;
-            Complex[] lenz = new Complex[defocusses.Length], c_kq = new Complex[bLen * bLen], λ_kq = new Complex[bLen], α_kq = new Complex[bLen], exp_k = new Complex[bLen], exp_kq = new Complex[bLen];
             //Complex[] B = new Complex[bLen * bLen];  //Mat B = neComplex[]n, len);
-            Complex[] TDS2 = new Complex[bLen * bLen];
+            Complex[] lenz = ArrayPool<Complex>.Shared.Rent(defocusses.Length), TDS2 = ArrayPool<Complex>.Shared.Rent(bLen * bLen), c_kq = ArrayPool<Complex>.Shared.Rent(bLen * bLen),
+             λ_kq = ArrayPool<Complex>.Shared.Rent(bLen), α_kq = ArrayPool<Complex>.Shared.Rent(bLen), exp_k = ArrayPool<Complex>.Shared.Rent(bLen), exp_kq = ArrayPool<Complex>.Shared.Rent(bLen);
 
             //インデックスを計算
             var g_qIndex = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.H - q.H, g1.K - q.K, g1.L - q.L))))
@@ -960,75 +963,89 @@ public class BetheMethod
                     U[i, j] = getU(AccVoltage, q, Beams[i] - Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
 
             //disk2.Where(e => A(e.K + q.Vec.ToPointD)).ForAll(dis =>
-            foreach (var (index, result, gInDetector, K) in disk2.Where(e => A(e.K + q.Vec.ToPointD)))
+            try
             {
-                var P = K + q.Vec.ToPointD;
-                double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//Pに最も近いX,Y座標(実数)
-                int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
-                n0 = y * diameterPix + x; n1 = n0 + 1; n2 = n0 + diameterPix; n3 = n2 + 1;//それぞれのインデックス
-                if ((uint)x < coeff3 && (uint)y < coeff3 && flag[n0] && flag[n1] && flag[n2] && flag[n3])//4つのインデックスが範囲内であることを判定
+                foreach (var (index, result, gInDetector, K) in disk2.Where(e => A(e.K + q.Vec.ToPointD)))
                 {
-                    double xx = dX - x, yy = dY - y;
-                    r0 = (1 - xx) * (1 - yy); r1 = xx * (1 - yy); r2 = (1 - xx) * yy; r3 = xx * yy;//比率を計算
-
-                    for (int d = 0; d < defocusses.Length; d++)
-                        lenz[d] = Exp(-ImaginaryOne * (W(K, defocusses[d]) - W(P, defocusses[d])));
-
-                    if (calcElas)//弾性散乱を計算する場合
+                    var P = K + q.Vec.ToPointD;
+                    double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//Pに最も近いX,Y座標(実数)
+                    int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
+                    n0 = y * diameterPix + x; n1 = n0 + 1; n2 = n0 + diameterPix; n3 = n2 + 1;//それぞれのインデックス
+                    if ((uint)x < coeff3 && (uint)y < coeff3 && flag[n0] && flag[n1] && flag[n2] && flag[n3])//4つのインデックスが範囲内であることを判定
                     {
-                        foreach (var (g, g_q) in g_qIndex.Where(e => gInDetector[e.g]))
-                            for (int t = 0; t < tLen; t++)
-                            {
-                                var temp = result[t][g] * (r0 * disk[n0][t][g_q] + r1 * disk[n1][t][g_q] + r2 * disk[n2][t][g_q] + r3 * disk[n3][t][g_q]).Conjugate();
-                                for (int d = 0; d < dLen; d++)
-                                    Elas[t, d] += temp * lenz[d];
-                            }
-                    }
+                        double xx = dX - x, yy = dY - y;
+                        r0 = (1 - xx) * (1 - yy); r1 = xx * (1 - yy); r2 = (1 - xx) * yy; r3 = xx * yy;//比率を計算
 
-                    if (calcInel)//非弾性を計算する場合
-                    {
-                        //C(K)とC(K+Q)を作成
-                        var c_k =  eVectors[index];
-                        Intrinsics.Blend(eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);
+                        for (int d = 0; d < defocusses.Length; d++)
+                            lenz[d] = Exp(-ImaginaryOne * (W(K, defocusses[d]) - W(P, defocusses[d])));
 
-                        //α(K)とα(K+Q)を作成
-                        var α_k = alphas[index];
-                        Intrinsics.BlendAndConjugate(alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
-
-                        //λ(K)とλ(K+Q)を作成
-                        var λ_k = eValues[index];
-                        Intrinsics.BlendAndConjugate(eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
-
-                        //kz(K)とkz(K+Q)を作成
-                        double kz_k = k_z[index], kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
-
-                        //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
-                        for (int i = 0; i < bLen; i++)
+                        if (calcElas)//弾性散乱を計算する場合
                         {
-                            λ_kq[i] += (kz_kq - kz_k);//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
-                            α_kq[i] *= -ImaginaryOne;//α(K+Q)に -i をあらかじめ掛けておく
+                            foreach (var (g, g_q) in g_qIndex.Where(e => gInDetector[e.g]))
+                                for (int t = 0; t < tLen; t++)
+                                {
+                                    var temp = result[t][g] * (r0 * disk[n0][t][g_q] + r1 * disk[n1][t][g_q] + r2 * disk[n2][t][g_q] + r3 * disk[n3][t][g_q]).Conjugate();
+                                    for (int d = 0; d < dLen; d++)
+                                        Elas[t, d] += temp * lenz[d];
+                                }
                         }
 
-                        //先にC^*T(K+Q)⋅U(Q)⋅C(K) を計算しておく
-                        NativeWrapper.STEM_TDS2(bLen, U.Values, c_k, c_kq, ref TDS2);
-                        //B行列の中身を計算し、アダマール積を取る
-                        for (int t = 0; t < tLen; t++)
+                        if (calcInel)//非弾性を計算する場合
                         {
-                            Complex temp = 0.0;
+                            //C(K)とC(K+Q)を作成
+                            var c_k = eVectors[index];
+                            Intrinsics.Blend(bLen * bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);
+
+                            //α(K)とα(K+Q)を作成
+                            var α_k = alphas[index];
+                            Intrinsics.BlendAndConjugate(bLen, alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
+
+                            //λ(K)とλ(K+Q)を作成
+                            var λ_k = eValues[index];
+                            Intrinsics.BlendAndConjugate(bLen, eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
+
+                            //先に C(K+Q)*^T × U(Q) × C(K) を計算しておく
+                            NativeWrapper.STEM_TDS2(bLen, U.Values, c_k, c_kq, ref TDS2);
+
+                            //kz(K)とkz(K+Q)を作成
+                            double kz_k = k_z[index], kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
+
+                            //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
                             for (int i = 0; i < bLen; i++)
                             {
-                                exp_k[i] = Exp(ImaginaryOne * λ_k[i] * Thicknesses[t]);
-                                exp_kq[i] = Exp(-ImaginaryOne * λ_kq[i] * Thicknesses[t]);
+                                λ_kq[i] += (kz_kq - kz_k);//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
+                                α_kq[i] *= -ImaginaryOne;//α(K+Q)に -i をあらかじめ掛けておく
                             }
-                            for (int i = 0, l = 0; i < bLen; i++)
-                                for (int j = 0; j < bLen; j++, l++)
-                                    temp += (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i])) * TDS2[l] / kvac;//B行列は作らず、直接アダマール積を取る
-                            for (int d = 0; d < dLen; d++)
-                                Inel[t, d] += temp * lenz[d];
+
+                            //B行列の中身を計算し、アダマール積を取る
+                            for (int t = 0; t < tLen; t++)
+                            {
+                                Complex temp = 0.0;
+                                for (int i = 0; i < bLen; i++)
+                                {
+                                    exp_k[i] = Exp(ImaginaryOne * λ_k[i] * Thicknesses[t]);
+                                    exp_kq[i] = Exp(-ImaginaryOne * λ_kq[i] * Thicknesses[t]);
+                                }
+                                for (int i = 0, l = 0; i < bLen; i++)
+                                    for (int j = 0; j < bLen; j++, l++)
+                                        temp += (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i])) * TDS2[l] / kvac;//B行列は作らず、直接アダマール積を取る
+                                for (int d = 0; d < dLen; d++)
+                                    Inel[t, d] += temp * lenz[d];
+                            }
                         }
                     }
-                }
-            }//);
+                }//);
+            }
+            finally
+            {
+                ArrayPool<Complex>.Shared.Return(TDS2);
+                ArrayPool<Complex>.Shared.Return(lenz);
+                ArrayPool<Complex>.Shared.Return(c_kq);
+                ArrayPool<Complex>.Shared.Return(λ_kq);
+                ArrayPool<Complex>.Shared.Return(α_kq);
+                ArrayPool<Complex>.Shared.Return(exp_k);
+                ArrayPool<Complex>.Shared.Return(exp_kq);
+            }
             bwSTEM.ReportProgress(Interlocked.Increment(ref count) * 1000 / qList.Count, "Calculating I(Q)");//状況を報告
             return (Elas, Inel);
         }).ToArray();

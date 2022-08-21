@@ -282,7 +282,12 @@ public static class NativeWrapper
         fixed (Complex* u = U)
         fixed (Complex* c_k = C_k)
         fixed (Complex* res = result)
+        {
+            var _u = (double*)u;
+            var _u_c_k = (double*)c_k;
+
             _STEM_TDS2(dim, (double*)u, (double*)c_k, (double*)c_kq, (double*)res);
+        }
     }
     #endregion
 
