@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Linq;
 using Edge = Crystallography.XrayLineEdge;
 using MathNet.Numerics.Distributions;
+using MathNet.Numerics.Integration;
+using static HDF.PInvoke.H5E;
 
 namespace Crystallography;
 
@@ -2507,6 +2509,9 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
         /// </summary>
         public Func<double, double> ProjectedPotential { get; }
+
+        private (double A, double B)[] Prms = new (double A, double B)[0];
+
         #endregion
 
         #region コンストラクタ
@@ -2549,9 +2554,9 @@ new ES(4.86738014,0.319974401,4.58872425,
             Valence = valence;
             Method = methods;
 
-            var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
-            Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, prms, s2, m));
+            Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
+            Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
+            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, s2, m));
         }
 
         /// <summary>
@@ -2562,9 +2567,9 @@ new ES(4.86738014,0.319974401,4.58872425,
         {
             Valence = 0;
             Method = "";
-            var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
-            Factor = new Func<double, double>(s2 => prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, prms, s2, m));
+            Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
+            Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
+            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, s2, m));
         }
 
         /// <summary>
@@ -2574,7 +2579,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// <param name="s2"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        private double factorImaginary(double kV, (double A, double B)[] prms, double s2, double m)
+        private double factorImaginary(double kV, double s2, double m)
         {
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
@@ -2582,7 +2587,7 @@ new ES(4.86738014,0.319974401,4.58872425,
             if (double.IsNaN(m)) m = 0;
             s2 *= 0.01;//単位を修正
             m *= 100;//単位を修正
-            return prms.Sum(p1 => prms.Sum(p2 =>
+            return Prms.Sum(p1 => Prms.Sum(p2 =>
             {
                 var sum = p1.B + p2.B;
                 var product = p1.B * p2.B;
@@ -2608,14 +2613,23 @@ new ES(4.86738014,0.319974401,4.58872425,
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             double g_h = (g - h).Length2 / 4;
-            return MathNet.Numerics.Integration.GaussLegendreRule.Integrate((phi, theta) =>
+
+            return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
-                var sinTheta = Math.Sin(theta);
-                var k = k0 * new Vector3DBase(sinTheta * Math.Cos(phi), sinTheta * Math.Sin(phi), Math.Cos(theta) - 1);
-                double k_g = (k - g).Length2 / 4, k_h = (k - h).Length2 / 4;
-                return Factor(k_g) * Factor(k_h) * (1 - Math.Exp(m * (g_h - k_g - k_h))) * sinTheta;
-            }
-            , 0, 2 * Math.PI, inner, outer, 40) * gamma * k0 / 2;
+                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                return GaussLegendreRule.Integrate(φ =>
+                {
+                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
+                    double k_g = (k - g).Length2 / 400, k_h = (k - h).Length2 / 400;
+                    double f_k_g = 0, f_k_h = 0;
+                    foreach (var (A, B) in Prms)
+                    {
+                        f_k_g += A * Math.Exp(-k_g * B);
+                        f_k_h += A * Math.Exp(-k_h * B);
+                    }
+                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinTheta;//外に出して、少しでも早く
+                }, 0, 2 * Math.PI, 20) * sinθ;
+            }, inner, outer, 60);
         }
 
         /// <summary>

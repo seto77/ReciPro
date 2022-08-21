@@ -49,6 +49,44 @@ const size_t sizeComplex = sizeof(complex<double>);
 
 extern "C" {
 
+	//STEM‚Ì”ñ’e«U—“dq‹­“x‚ÌŒvZ—p‚Ì“ÁêŠÖ”
+	EIGEN_FUNCS_API void _STEM_TDS(int dim, double B[],  double U[], double C_k[], double C_kq[], double result[])
+	{
+		auto b = Map<Mat>((dcomplex*)B, dim, dim);
+		auto u = Map<Mat>((dcomplex*)U, dim, dim);
+		auto c_k = Map<Mat>((dcomplex*)C_k, dim, dim);
+		auto c_kq = Map<Mat>((dcomplex*)C_kq, dim, dim);
+
+		dcomplex s = b.cwiseProduct(c_kq.adjoint() * u * c_k).sum();
+		//auto s = (b * c_kq.adjoint() * u * c_k).trace();
+		result[0] = s.real();
+		result[1] = s.imag();
+	}
+
+	//•¡‘f”ñ‘ÎÌs—ñ‚Ìmat1‚Æmat2‚Ì—v‘f‚²‚Æ‚ÌŠ|Z(ƒAƒ_ƒ}[ƒ‹Ï)‚ğæ‚é
+	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[])
+	{
+		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
+		memcpy(result, m1.cwiseProduct(m2).eval().data(), sizeComplex * dim * dim);
+	}
+
+	//•¡‘f”ñ‘ÎÌs—ñ‚Ìmat1‚ğ‹¤–ğ“]’l‚µ‚ÄAmat2‚ÉŠ|‚¯‚é
+	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[])
+	{
+		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
+		memcpy(result, (m1.adjoint() * m2).eval().data(), sizeComplex * dim * dim);
+	}
+
+	//•¡‘f”ñ‘ÎÌs—ñ‚ÌæZ‚ğ‹‚ß‚é
+	EIGEN_FUNCS_API void _Multiply(int dim, double mat1[], double mat2[], double result[])
+	{
+		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
+		memcpy(result, (m1 * m2).eval().data(), sizeComplex * dim * dim);
+	}
+
 	//•¡‘f”ñ‘ÎÌs—ñ‚Ì‹ts—ñ‚ğ‹‚ß‚é
 	EIGEN_FUNCS_API void _Inverse(int dim, double mat[], double inverse[])
 	{

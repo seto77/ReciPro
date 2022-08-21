@@ -17,6 +17,33 @@ public static class NativeWrapper
     [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
     private static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
 
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _STEM_TDS(int dim,
+                                        double* B,
+                                        double* U,
+                                        double* C_k,
+                                        double* C_kq,
+                                        double* result);
+
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _PointwiseMultiply(int dim,
+                                     double* mat1,
+                                     double* mat2,
+                                     double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _AdjointAndMultiply(int dim,
+                                      double* mat1,
+                                      double* mat2,
+                                      double* result);
+
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _Multiply(int dim,
+                                       double* mat1,
+                                       double* mat2,
+                                       double* result);
 
     [DllImport("Crystallography.Native.dll")]
     private static extern void _Inverse(int dim,
@@ -81,7 +108,7 @@ public static class NativeWrapper
 
     [DllImport("Crystallography.Native.dll")]
     private static unsafe extern void _HRTEMSolverTcc(
-        int gDim,
+                                            int gDim,
                                             int lDim,
                                             int rDim,
                                             double[] gPsi,
@@ -93,17 +120,17 @@ public static class NativeWrapper
 
     [DllImport("Crystallography.Native.dll")]
     private static extern void _Histogram(
-        int width, int height,
-        double centerX, double centerY,
-        double pixSizeX, double pixSizeY,
-        double fd,
-        double ksi, double tau, double phi,
-        double SpericalRadiusInverse,
-        double[] Intensity, byte[] IsValid,
-        int yMin, int yMax,
-        double startAngle, double stepAngle,
-        double[] r2, int r2len,
-        double[] profile, double[] pixels
+                                            int width, int height,
+                                            double centerX, double centerY,
+                                            double pixSizeX, double pixSizeY,
+                                            double fd,
+                                            double ksi, double tau, double phi,
+                                            double SpericalRadiusInverse,
+                                            double[] Intensity, byte[] IsValid,
+                                            int yMin, int yMax,
+                                            double startAngle, double stepAngle,
+                                            double[] r2, int r2len,
+                                            double[] profile, double[] pixels
     );
     #endregion
 
@@ -143,7 +170,7 @@ public static class NativeWrapper
     #region 変換関数
     unsafe readonly static int sizeOfComplex = sizeof(Complex);
 
-    unsafe private static void toDoubleArray(int dim, Complex[,] mat, ref double[] dest)
+    unsafe public static void toDoubleArray(int dim, Complex[,] mat, ref double[] dest)
     {
         //fixed (Complex* pSrc = mat)
         //fixed (double* pDest = dest)
@@ -159,11 +186,31 @@ public static class NativeWrapper
             }
     }
 
-    unsafe private static void toDoubleArray(int dim, Complex[] vec, ref double[] dest)
+    unsafe public static double[] toDoubleArray(int dim, Complex[,] mat)
+    {
+        double[] dest = new double[dim * dim * 2];
+        int n = 0;
+        for (int j = 0; j < dim; j++)
+            for (int i = 0; i < dim; i++)
+            {
+                dest[n++] = mat[i, j].Real;
+                dest[n++] = mat[i, j].Imaginary;
+            }
+        return dest;
+    }
+
+    unsafe public static void toDoubleArray(int dim, Complex[] vec, ref double[] dest)
     {
         fixed (Complex* pSrc = vec)
         fixed (double* pDest = dest)
             Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+    }
+
+    unsafe public static double[] toDoubleArray(int dim, Complex[] vec)
+    {
+        double[] dest = new double[dim * 2];
+        toDoubleArray(dim, vec, ref dest);
+        return dest;
     }
 
     unsafe private static DenseMatrix toDenseMatrix(int dim, in double[] src)
@@ -176,7 +223,8 @@ public static class NativeWrapper
         return new DenseMatrix(dim, dim, dest);
     }
 
-    unsafe private static DenseVector toDenseVector(int dim, in double[] src)
+
+    unsafe public static DenseVector toDenseVector(int dim, in double[] src)
     {
         var dest = new Complex[dim];
         fixed (double* pSrc = src)
@@ -185,7 +233,94 @@ public static class NativeWrapper
 
         return new DenseVector(dest);
     }
+
+    unsafe public static Complex[] toComplexArray(int dim, in double[] src)
+    {
+        var dest = new Complex[dim];
+        fixed (double* pSrc = src)
+        fixed (Complex* pDest = dest)
+            Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+
+        return dest;
+    }
     #endregion
+
+
+    #region STEMの非弾性散乱電子強度の計算用の特殊関数
+    /// <summary>
+    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. 
+    /// </summary>
+    /// <param name="dim"></param>
+    /// <param name="matrix1"></param>
+    /// <param name="matrix2"></param>
+    /// <param name="result"></param>
+    unsafe static public Complex STEM_TDS(int dim, in Complex[] B, in Complex[] U, in Complex[] C_k, in Complex[] C_kq)
+    {
+        var result = new double[2];
+        fixed (Complex* b = B)
+        fixed (Complex* c_kq = C_kq)
+        fixed (Complex* u = U)
+        fixed (Complex* c_k = C_k)
+        fixed (double* res = result)
+            _STEM_TDS(dim, (double*)b, (double*)u, (double*)c_k, (double*)c_kq, res);
+
+        return new Complex(result[0], result[1]);
+    }
+    #endregion
+
+
+
+    #region Eigenライブラリーを利用して、非対称複素行列の要素ごとの掛算(アダマール積)を求める
+    /// <summary>
+    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. 
+    /// </summary>
+    /// <param name="dim"></param>
+    /// <param name="matrix1"></param>
+    /// <param name="matrix2"></param>
+    /// <param name="result"></param>
+    unsafe static public void PointwiseMultiply(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _PointwiseMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+    #endregion
+
+    #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
+    /// <summary>
+    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. matrix1の形状は崩れるかもしれない
+    /// </summary>
+    /// <param name="dim"></param>
+    /// <param name="matrix1"></param>
+    /// <param name="matrix2"></param>
+    /// <param name="result"></param>
+    unsafe static public void AdjointAndMultiply(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _AdjointAndMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+    #endregion
+
+    #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
+    /// <summary>
+    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める
+    /// </summary>
+    /// <param name="dim"></param>
+    /// <param name="matrix1"></param>
+    /// <param name="matrix2"></param>
+    /// <param name="result"></param>
+    unsafe static public void Multiply(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _Multiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+    #endregion
+
 
     #region 逆行列
     /// <summary>
@@ -221,7 +356,7 @@ public static class NativeWrapper
     /// <summary>
     /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
     /// </summary>
-    /// <param name="mat"></param>
+    /// <param name="mat1"></param>
     /// <returns></returns>
     static public DenseMatrix Inverse(int dim, Complex[] mat)
     {
@@ -239,7 +374,6 @@ public static class NativeWrapper
             ArrayPool<double>.Shared.Return(_inv);
         }
     }
-
     #endregion 逆行列
 
     #region 固有値
