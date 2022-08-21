@@ -962,9 +962,9 @@ public class BetheMethod
                 for (int j = 0; j < Beams.Length; j++)
                     U[i, j] = getU(AccVoltage, q, Beams[i] - Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
 
-            //disk2.Where(e => A(e.K + q.Vec.ToPointD)).ForAll(dis =>
             try
             {
+                //disk2.Where(e => A(e.K + q.Vec.ToPointD)).ForAll(dis =>
                 foreach (var (index, result, gInDetector, K) in disk2.Where(e => A(e.K + q.Vec.ToPointD)))
                 {
                     var P = K + q.Vec.ToPointD;
