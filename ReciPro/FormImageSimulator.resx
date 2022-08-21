@@ -86,7 +86,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>608, 520</value>
+    <value>608, 568</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1144,7 +1144,7 @@ unit cell</value>
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 540</value>
+    <value>0, 588</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>608, 155</value>
@@ -1192,7 +1192,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="buttonSimulateHRTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>359, 664</value>
+    <value>359, 712</value>
   </data>
   <data name="buttonSimulateHRTEM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1234,7 +1234,7 @@ unit cell</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxRealTimeCalculation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 671</value>
+    <value>212, 719</value>
   </data>
   <data name="checkBoxRealTimeCalculation.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 21</value>
@@ -1488,6 +1488,9 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="groupBoxOpticalProperty.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="groupBoxLenzFunction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="graphControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1504,7 +1507,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2, 2, 0, 2</value>
   </data>
   <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 134</value>
+    <value>324, 130</value>
   </data>
   <data name="graphControl.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -1774,7 +1777,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panelGraphOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 134</value>
+    <value>111, 130</value>
   </data>
   <data name="panelGraphOption.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -1807,7 +1810,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 134</value>
+    <value>20, 130</value>
   </data>
   <data name="buttonPanel.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -1848,7 +1851,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxLenzFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 156</value>
+    <value>459, 152</value>
   </data>
   <data name="groupBoxLenzFunction.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -2533,7 +2536,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2</value>
   </data>
   <data name="panelDummy1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 257</value>
+    <value>122, 263</value>
   </data>
   <data name="panelDummy1.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -2554,7 +2557,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3</value>
   </data>
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+    <value>Bottom, Left, Right</value>
   </data>
   <data name="tabControl1.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>FlatButtons</value>
@@ -2996,7 +2999,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxObjectAperture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 83</value>
+    <value>459, 85</value>
   </data>
   <data name="groupBoxObjectAperture.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3023,7 +3026,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 83</value>
+    <value>459, 85</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3152,7 +3155,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 83</value>
+    <value>199, 85</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3179,7 +3182,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>107, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>5, 83</value>
+    <value>5, 85</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3260,7 +3263,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 83</value>
+    <value>107, 85</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3287,7 +3290,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 83</value>
+    <value>459, 85</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3311,7 +3314,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>50, 10</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 266</value>
+    <value>4, 268</value>
   </data>
   <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3320,7 +3323,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>467, 101</value>
+    <value>467, 103</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3344,7 +3347,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 50</value>
   </data>
   <data name="groupBoxOpticalProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 370</value>
+    <value>474, 374</value>
   </data>
   <data name="groupBoxOpticalProperty.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -3881,7 +3884,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3, 21</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 153</value>
+    <value>145, 189</value>
   </data>
   <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3908,7 +3911,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>6, 65</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 177</value>
+    <value>151, 213</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4124,7 +4127,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Vertical</value>
   </data>
   <data name="textBoxThicknessList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 79</value>
+    <value>55, 116</value>
   </data>
   <data name="textBoxThicknessList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4203,7 +4206,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2, 24</value>
   </data>
   <data name="panelSerialThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 81</value>
+    <value>144, 118</value>
   </data>
   <data name="panelSerialThickness.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4242,7 +4245,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Vertical</value>
   </data>
   <data name="textBoxDefocusList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 79</value>
+    <value>54, 116</value>
   </data>
   <data name="textBoxDefocusList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4416,7 +4419,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>152, 24</value>
   </data>
   <data name="panelSerialDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 81</value>
+    <value>147, 118</value>
   </data>
   <data name="panelSerialDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4542,7 +4545,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 105</value>
+    <value>18, 142</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>280, 21</value>
@@ -4632,7 +4635,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3, 0, 3, 0</value>
   </data>
   <data name="panelSerial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 128</value>
+    <value>304, 165</value>
   </data>
   <data name="panelSerial.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4665,7 +4668,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="groupBoxSerialImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 167</value>
+    <value>297, 204</value>
   </data>
   <data name="groupBoxSerialImage.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4836,7 +4839,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPageHREM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 215</value>
+    <value>297, 252</value>
   </data>
   <data name="tabPageHREM.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5889,7 +5892,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 215</value>
+    <value>297, 252</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -5916,7 +5919,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 215</value>
+    <value>297, 252</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5936,6 +5939,162 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="radioButtonSTEM_target_Inel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 18</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 21</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.Text" xml:space="preserve">
+    <value>Inelastic</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Inel.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_Inel</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Inel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Inel.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Inel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 18</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 21</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_Both.Text" xml:space="preserve">
+    <value>Elastic &amp;&amp; Inelastic</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Both.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_Both</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Both.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Both.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Both.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 18</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 21</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.Text" xml:space="preserve">
+    <value>Elastic</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Elas.Name" xml:space="preserve">
+    <value>radioButtonSTEM_target_Elas</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Elas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Elas.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSTEM_target_Elas.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 18</value>
+  </data>
+  <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel10.Name" xml:space="preserve">
+    <value>flowLayoutPanel10</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel10.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel10.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 47</value>
+  </data>
+  <data name="groupBox10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 44</value>
+  </data>
+  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Target electron</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
+    <value>tabPageSTEM</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxDivisionOfIncidentElectron.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -5946,7 +6105,7 @@ This model should be used for a strong scattering object which usually
     <value>Diameter division</value>
   </data>
   <data name="numericBoxDivisionOfIncidentElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 18</value>
+    <value>14, 18</value>
   </data>
   <data name="numericBoxDivisionOfIncidentElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -6042,13 +6201,13 @@ This model should be used for a strong scattering object which usually
     <value>tabPageSTEM</value>
   </data>
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tabPageSTEM.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 14</value>
   </data>
   <data name="tabPageSTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 215</value>
+    <value>297, 252</value>
   </data>
   <data name="tabPageSTEM.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6084,7 +6243,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 233</value>
+    <value>305, 270</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6105,10 +6264,10 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 419</value>
+    <value>0, 430</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 247</value>
+    <value>474, 284</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -6141,7 +6300,7 @@ This model should be used for a strong scattering object which usually
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 699</value>
+    <value>1100, 747</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>612</value>
@@ -6159,7 +6318,7 @@ This model should be used for a strong scattering object which usually
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>229, 17</value>
@@ -6297,7 +6456,46 @@ This model should be used for a strong scattering object which usually
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="buttonStop.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1003, 741</value>
+  </data>
+  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 28</value>
+  </data>
+  <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Stop the current simulation</value>
+  </data>
+  <data name="buttonStop.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
+    <value>buttonStop</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 17</value>
@@ -6324,7 +6522,7 @@ This model should be used for a strong scattering object which usually
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 723</value>
+    <value>0, 771</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1100, 22</value>
@@ -6345,7 +6543,7 @@ This model should be used for a strong scattering object which usually
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -6354,7 +6552,7 @@ This model should be used for a strong scattering object which usually
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 745</value>
+    <value>1100, 793</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

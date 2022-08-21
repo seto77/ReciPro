@@ -272,6 +272,8 @@ public partial class FormImageSimulator : Form
         Enabled = true;
     }
 
+    
+
     #region STEMシミュレーション
 
     int stemDirectionTotal = 0;
@@ -285,17 +287,7 @@ public partial class FormImageSimulator : Form
         var division = numericBoxDivisionOfIncidentElectron.ValueInteger;
         var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);// 収束角を1.05倍にしておく
 
-        //ゼロ次ラウエゾーンの基底ベクトルを整数分の1にしてみる
-        //var kVac = UniversalConstants.Convert.EnergyToElectronWaveNumber(200);
-
-        //var convergence = 2 * Math.Asin(UniversalConstants.Convert.EnergyToElectronWaveLength(200) * FormMain.Crystal.A_Star.Length * 2.5)
-        //   * 7.0009023190741639080089511108548 / 7;
-        //var a = FormMain.Crystal.A_Star.Length * 4;
-        //sin = Sin(convergence);
-        //division = 71;
-
         var radius = division / 2.0;
-
         for (int h = 0; h < division; h++)
             for (int w = 0; w < division; w++)
             {
@@ -315,11 +307,25 @@ public partial class FormImageSimulator : Form
             thicknessArray, defocusArray, directions.ToArray(),
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
-            numericBoxSTEM_DetectorOuterAngle.Value / 1000);
+            numericBoxSTEM_DetectorOuterAngle.Value / 1000,
+            radioButtonSTEM_target_Both.Checked||radioButtonSTEM_target_Elas.Checked,         
+            radioButtonSTEM_target_Both.Checked||radioButtonSTEM_target_Inel.Checked
+            );
 
+        this.buttonSimulateHRTEM.Visible = false;
+        this.buttonStop.Visible = true;
+        this.splitContainer1.Enabled = false;
       
     }
     #region BackgroundWorkerからのProgressChanged, Completed
+
+    private void buttonStop_Click(object sender, EventArgs e)
+    {
+        FormMain.Crystal.Bethe.CancelSTEM();
+        this.buttonSimulateHRTEM.Visible = true;
+        this.buttonStop.Visible = false;
+        this.splitContainer1.Enabled = true;
+    }
 
     private bool skipProgressChangedEvent = false;
     private void stemProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -360,11 +366,26 @@ public partial class FormImageSimulator : Form
         FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
         FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
 
-        SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
+        if (!e.Cancelled)
+        {
+            SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
 
-        toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
-        toolStripStatusLabel1.Text += $"  Stage 1: {sw1.ElapsedMilliseconds / 1000.0:f1} sec.  Stage 2: {sw2.ElapsedMilliseconds / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text += $"  Stage 1: {sw1.ElapsedMilliseconds / 1000.0:f1} sec.  Stage 2: {sw2.ElapsedMilliseconds / 1000.0:f1} sec.";
+            
+        }
+        else
+        {
+            toolStripStatusLabel1.Text = $"Interupted! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
+        }
         toolStripStatusLabel2.Text = "";
+        this.buttonSimulateHRTEM.Visible = true;
+        this.buttonStop.Visible = false;
+        this.splitContainer1.Enabled = true;
+        sw1.Stop();
+        sw1.Reset();
+        sw2.Stop();
+        sw2.Reset();
 
         Application.DoEvents();
     }
@@ -538,6 +559,7 @@ public partial class FormImageSimulator : Form
 
     public void SendImage(int tLen, int dLen, double[][][] totalImage, int width, int height)
     {
+        if (totalImage == null) return;
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
@@ -1237,6 +1259,8 @@ public partial class FormImageSimulator : Form
     {
 
     }
+
+    
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {

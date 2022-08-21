@@ -49,8 +49,18 @@ const size_t sizeComplex = sizeof(complex<double>);
 
 extern "C" {
 
-	//STEMの非弾性散乱電子強度の計算用の特殊関数
-	EIGEN_FUNCS_API void _STEM_TDS(int dim, double B[],  double U[], double C_k[], double C_kq[], double result[])
+	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
+	EIGEN_FUNCS_API void _STEM_TDS2(int dim, double U[], double C_k[], double C_kq[], double result[])
+	{
+		auto u = Map<Mat>((dcomplex*)U, dim, dim);
+		auto c_k = Map<Mat>((dcomplex*)C_k, dim, dim);
+		auto c_kq = Map<Mat>((dcomplex*)C_kq, dim, dim);
+		memcpy(result, (c_kq.adjoint() * u * c_k).eval().data(), sizeComplex * dim * dim);
+	}
+
+
+	//STEMの非弾性散乱電子強度の計算用の特殊関数その1
+	EIGEN_FUNCS_API void _STEM_TDS1(int dim, double B[],  double U[], double C_k[], double C_kq[], double result[])
 	{
 		auto b = Map<Mat>((dcomplex*)B, dim, dim);
 		auto u = Map<Mat>((dcomplex*)U, dim, dim);

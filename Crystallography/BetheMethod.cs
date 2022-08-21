@@ -753,10 +753,15 @@ public class BetheMethod
 
     private void Stem_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => StemCompleted?.Invoke(sender, e);
 
+    public void CancelSTEM()
+    {
+        if (bwSTEM.IsBusy)
+            bwSTEM.CancelAsync();
+    }
     public void RunSTEM(int maxNumOfBloch, double voltage, double cs, Size imageSize, double resolution,
-        Matrix3D baseRotation, double[] thickness, double[] defocusses, 
+        Matrix3D baseRotation, double[] thickness, double[] defocusses,
         Vector3DBase[] beamDirections, double convergenceAngle, double detAngleInner, double detAngleOuter,
-        Solver solver = Solver.Auto, int thread = 1)
+        bool calcElas, bool calcInel, Solver solver = Solver.Auto, int thread = 1)
     {
         MaxNumOfBloch = maxNumOfBloch;
         AccVoltage = voltage;
@@ -764,15 +769,15 @@ public class BetheMethod
         BaseRotation = new Matrix3D(baseRotation);
         BeamDirections = beamDirections;
         Thicknesses = thickness;
-        
+
         var mkl = Control.TryUseNativeMKL();
-        bwSTEM.RunWorkerAsync(( solver, thread, cs , convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution));
+        bwSTEM.RunWorkerAsync((solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution, calcElas, calcInel));
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
         //Mathネットの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
-        var (solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution)
-            = ((Solver, int, double, double, double, double, double[], Size, double))e.Argument;
+        var (solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution, calcElas, calcInel)
+            = ((Solver, int, double, double, double, double, double[], Size, double, bool, bool))e.Argument;
 
         var diameterPix = (int)Math.Sqrt(BeamDirections.Length);
         var radiusPix = diameterPix / 2.0;
@@ -833,8 +838,6 @@ public class BetheMethod
         var eVectors = new Complex[BeamDirections.Length][];
         var eValues = new Complex[BeamDirections.Length][];
         var alphas = new Complex[BeamDirections.Length][];
-        var coeffs = new double[BeamDirections.Length];
-
         var k_vec = new Vector3DBase[BeamDirections.Length];
 
         //進捗状況報告用の各種定数を初期化
@@ -843,7 +846,6 @@ public class BetheMethod
         var disk = BeamDirections.AsParallel().WithDegreeOfParallelism(thread).Select((beamDirection, i) =>
         {
             var coeff = Math.Abs(1.0 / beamDirection.Z); // = 1/cosTau
-            coeffs[i] = coeff;
 
             var vecK0 = getVecK0(kvac, u0, beamDirection);
             k_vec[i] = vecK0;
@@ -891,6 +893,8 @@ public class BetheMethod
             return result;
         }).ToArray();
 
+        if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+
         #region ここから I(Q)の計算
 
         var k_xy = k_vec.Select(e => e.ToPointD).ToArray();
@@ -913,7 +917,7 @@ public class BetheMethod
         var qList = Beams.SelectMany(e1 => Beams.Select(e2 => (e1 - e2).Index)).Distinct()
             .Select(e => new Beam(e, mat * e)).Where(e => k_xy.Any(e2 => A(e2 + e.Vec.ToPointD))).OrderBy(e => e.Vec.ToPointD.Length2).ToList();
 
-        //qList.RemoveRange(Beams.Length, qList.Count - Beams.Length);
+        qList.RemoveRange(Beams.Length, qList.Count - Beams.Length);
 
         //有効なディスクを判定するフラグ
         var flag = disk.Select(e => e != null).ToArray();
@@ -921,7 +925,7 @@ public class BetheMethod
         //必要な情報だけを追加したディスク
         var disk2 = disk.AsParallel()
             .Select((e, i) => (index: i, result: e, gInDetector: Beams.Select((_, n) => D(k_xy[i] + Beams[n].Vec.ToPointD)).ToArray(), K: k_xy[i]))
-            .Where(e => e.result != null && A(e.K)).ToArray();
+            .Where(e => e.result != null && A(e.K)).ToList();//.AsParallel();
 
         //最大のK値(計算したK0ベクトルの中で最もXY成分が大きいもの)を求める。収束角ではないことに注意(5%大きい)。
         var maxK = k_xy.Max(e => e.X);
@@ -936,15 +940,14 @@ public class BetheMethod
         //for(//t m=0; m<qList.Count; m++)
         var IQ = qList.AsParallel().Select(q =>
         {
-            int n0, n1, n2, n3;//
+            Complex[,] Elas = new Complex[tLen, dLen], Inel = new Complex[tLen, dLen];
+            if (bwSTEM.CancellationPending) return (Elas, Inel); ;
+
+            int n0, n1, n2, n3;
             double r0, r1, r2, r3;
-            Complex[] lenz = new Complex[defocusses.Length], cArray = new Complex[len * len], λ_kq = new Complex[len], α_kq = new Complex[len], exp_k = new Complex[len], exp_kq = new Complex[len];
-            Complex[] B = new Complex[len * len];  //Mat B = neComplex[]n, len);
-
-            var Elas = new Complex[tLen, dLen];
-            var Inel = new Complex[tLen, dLen];
-
-            var Q = q.Vec.ToPointD;
+            Complex[] lenz = new Complex[defocusses.Length], c_kq = new Complex[bLen * bLen], λ_kq = new Complex[bLen], α_kq = new Complex[bLen], exp_k = new Complex[bLen], exp_kq = new Complex[bLen];
+            //Complex[] B = new Complex[bLen * bLen];  //Mat B = neComplex[]n, len);
+            Complex[] TDS2 = new Complex[bLen * bLen];
 
             //インデックスを計算
             var g_qIndex = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.H - q.H, g1.K - q.K, g1.L - q.L))))
@@ -956,9 +959,10 @@ public class BetheMethod
                 for (int j = 0; j < Beams.Length; j++)
                     U[i, j] = getU(AccVoltage, q, Beams[i] - Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
 
-            foreach (var (index, result, gInDetector, K) in disk2.Where(e => A(e.K + Q)))
+            //disk2.Where(e => A(e.K + q.Vec.ToPointD)).ForAll(dis =>
+            foreach (var (index, result, gInDetector, K) in disk2.Where(e => A(e.K + q.Vec.ToPointD)))
             {
-                var P = K + Q;
+                var P = K + q.Vec.ToPointD;
                 double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//Pに最も近いX,Y座標(実数)
                 int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
                 n0 = y * diameterPix + x; n1 = n0 + 1; n2 = n0 + diameterPix; n3 = n2 + 1;//それぞれのインデックス
@@ -970,65 +974,67 @@ public class BetheMethod
                     for (int d = 0; d < defocusses.Length; d++)
                         lenz[d] = Exp(-ImaginaryOne * (W(K, defocusses[d]) - W(P, defocusses[d])));
 
-                    foreach (var (g, g_q) in g_qIndex.Where(e => gInDetector[e.g]))
+                    if (calcElas)//弾性散乱を計算する場合
+                    {
+                        foreach (var (g, g_q) in g_qIndex.Where(e => gInDetector[e.g]))
+                            for (int t = 0; t < tLen; t++)
+                            {
+                                var temp = result[t][g] * (r0 * disk[n0][t][g_q] + r1 * disk[n1][t][g_q] + r2 * disk[n2][t][g_q] + r3 * disk[n3][t][g_q]).Conjugate();
+                                for (int d = 0; d < dLen; d++)
+                                    Elas[t, d] += temp * lenz[d];
+                            }
+                    }
+
+                    if (calcInel)//非弾性を計算する場合
+                    {
+                        //C(K)とC(K+Q)を作成
+                        var c_k =  eVectors[index];
+                        Intrinsics.Blend(eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);
+
+                        //α(K)とα(K+Q)を作成
+                        var α_k = alphas[index];
+                        Intrinsics.BlendAndConjugate(alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
+
+                        //λ(K)とλ(K+Q)を作成
+                        var λ_k = eValues[index];
+                        Intrinsics.BlendAndConjugate(eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
+
+                        //kz(K)とkz(K+Q)を作成
+                        double kz_k = k_z[index], kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
+
+                        //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
+                        for (int i = 0; i < bLen; i++)
+                        {
+                            λ_kq[i] += (kz_kq - kz_k);//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
+                            α_kq[i] *= -ImaginaryOne;//α(K+Q)に -i をあらかじめ掛けておく
+                        }
+
+                        //先にC^*T(K+Q)⋅U(Q)⋅C(K) を計算しておく
+                        NativeWrapper.STEM_TDS2(bLen, U.Values, c_k, c_kq, ref TDS2);
+                        //B行列の中身を計算し、アダマール積を取る
                         for (int t = 0; t < tLen; t++)
                         {
-                            var temp = result[t][g] * (r0 * disk[n0][t][g_q] + r1 * disk[n1][t][g_q] + r2 * disk[n2][t][g_q] + r3 * disk[n3][t][g_q]).Conjugate();
+                            Complex temp = 0.0;
+                            for (int i = 0; i < bLen; i++)
+                            {
+                                exp_k[i] = Exp(ImaginaryOne * λ_k[i] * Thicknesses[t]);
+                                exp_kq[i] = Exp(-ImaginaryOne * λ_kq[i] * Thicknesses[t]);
+                            }
+                            for (int i = 0, l = 0; i < bLen; i++)
+                                for (int j = 0; j < bLen; j++, l++)
+                                    temp += (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i])) * TDS2[l] / kvac;//B行列は作らず、直接アダマール積を取る
                             for (int d = 0; d < dLen; d++)
-                                Elas[t, d] += temp * lenz[d];
+                                Inel[t, d] += temp * lenz[d];
                         }
-
-                    //C(K)とC(K+Q)を作成
-                    var C_k = new DMat(len, len, eVectors[index]);
-                    Intrinsics.Blend(eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref cArray);
-                    var C_kq = new DMat(len, len, cArray);
-
-                    //α(K)とα(K+Q)を作成
-                    var α_k = alphas[index];
-                    Intrinsics.BlendAndConjugate(alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
-
-                    //λ(K)とλ(K+Q)を作成
-                    var λ_k = eValues[index];
-                    Intrinsics.BlendAndConjugate(eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
-
-                    var coeff_k = coeffs[index];
-                    var coeff_kq = r0 * coeffs[n0] + r1 * coeffs[n1] + r2 * coeffs[n2] + r3 * coeffs[n3];
-
-                    //kz(K)とkz(K+Q)を作成
-                    var kz_k = k_z[index];
-                    var kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
-
-                    //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
-                    for (int i = 0; i < len; i++)
-                    {
-                        λ_kq[i] += (kz_kq - kz_k);//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
-                        α_kq[i] *= -ImaginaryOne;//α(K+Q)に -i をあらかじめ掛けておく
                     }
-
-                    //B行列を作成
-
-                    for (int t = 0; t < tLen; t++)
-                    {
-                        for (int i = 0; i < len; i++)
-                        {
-                            exp_k[i] = Exp(ImaginaryOne * λ_k[i] * Thicknesses[t]);
-                            exp_kq[i] = Exp(-ImaginaryOne * λ_kq[i] * Thicknesses[t]);
-                        }
-                        for (int i = 0, l = 0; i < len; i++)
-                            for (int j = 0; j < len; j++, l++)
-                                B[l] = α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i]);
-                        var temp = NativeWrapper.STEM_TDS(len, B, U.Values, C_k.Values, C_kq.Values) / kvac;
-                        for (int d = 0; d < dLen; d++)
-                            Inel[t, d] += temp * lenz[d];
-                    }
-
                 }
-            }
+            }//);
             bwSTEM.ReportProgress(Interlocked.Increment(ref count) * 1000 / qList.Count, "Calculating I(Q)");//状況を報告
             return (Elas, Inel);
         }).ToArray();
-        //Thickness, defocus]を作成完了
         #endregion
+
+        if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
 
         //imagesを初期化
         int width = imageSize.Width, height = imageSize.Height;

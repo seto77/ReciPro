@@ -44,7 +44,7 @@ public static class Intrinsics
         return new Complex(v.GetElement(0) + v.GetElement(2), v.GetElement(1) + v.GetElement(3));
     }
 
-    public static unsafe void Blend(Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
+    public static unsafe void Blend(Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
         var rV0 = FromArray(new double[] { r0, r0, r0, r0 }, 0);
         var rV1 = FromArray(new double[] { r1, r1, r1, r1 }, 0);
@@ -67,7 +67,7 @@ public static class Intrinsics
             result[^1] = c0[^1] * r0 + c1[^1] * r1 + c2[^1] * r2 + c3[^1] * r3;
     }
 
-    public static unsafe void BlendAndConjugate(Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
+    public static unsafe void BlendAndConjugate(Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
         var rV0 = FromArray(new double[] { r0, r0, r0, r0 }, 0);
         var rV1 = FromArray(new double[] { r1, r1, r1, r1 }, 0);
@@ -94,7 +94,7 @@ public static class Intrinsics
             result[^1] = (c0[^1] * r0 + c1[^1] * r1 + c2[^1] * r2 + c3[^1] * r3).Conjugate();
     }
 
-    public static unsafe void Blend(Complex[] c0, Complex[] c1,  double r0, double r1,  ref Complex[] result)
+    public static unsafe void Blend(Complex[] c0, Complex[] c1, in double r0, in double r1,  ref Complex[] result)
     {
         var rV0 = FromArray(new Complex[] { r0, r0, r0, r0 }, 0);
         var rV1 = FromArray(new Complex[] { r1, r1, r1, r1 }, 0);

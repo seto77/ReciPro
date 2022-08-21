@@ -17,8 +17,17 @@ public static class NativeWrapper
     [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
     private static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
 
+
     [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _STEM_TDS(int dim,
+    unsafe private static extern void _STEM_TDS2(int dim,
+                                     double* U,
+                                     double* C_k,
+                                     double* C_kq,
+                                     double* result);
+
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _STEM_TDS1(int dim,
                                         double* B,
                                         double* U,
                                         double* C_k,
@@ -254,7 +263,7 @@ public static class NativeWrapper
     /// <param name="matrix1"></param>
     /// <param name="matrix2"></param>
     /// <param name="result"></param>
-    unsafe static public Complex STEM_TDS(int dim, in Complex[] B, in Complex[] U, in Complex[] C_k, in Complex[] C_kq)
+    unsafe static public Complex STEM_TDS1(int dim, in Complex[] B, in Complex[] U, in Complex[] C_k, in Complex[] C_kq)
     {
         var result = new double[2];
         fixed (Complex* b = B)
@@ -262,9 +271,18 @@ public static class NativeWrapper
         fixed (Complex* u = U)
         fixed (Complex* c_k = C_k)
         fixed (double* res = result)
-            _STEM_TDS(dim, (double*)b, (double*)u, (double*)c_k, (double*)c_kq, res);
+            _STEM_TDS1(dim, (double*)b, (double*)u, (double*)c_k, (double*)c_kq, res);
 
         return new Complex(result[0], result[1]);
+    }
+
+    unsafe static public void STEM_TDS2(int dim, in Complex[] U, in Complex[] C_k, in Complex[] C_kq, ref Complex[] result)
+    {
+        fixed (Complex* c_kq = C_kq)
+        fixed (Complex* u = U)
+        fixed (Complex* c_k = C_k)
+        fixed (Complex* res = result)
+            _STEM_TDS2(dim, (double*)u, (double*)c_k, (double*)c_kq, (double*)res);
     }
     #endregion
 
