@@ -939,6 +939,8 @@ public class BetheMethod
         var tempCoef = 1000.0 / bLen / qList.Count;
         Parallel.For(0, qList.Count, m =>
         {
+            bwSTEM.ReportProgress((int)(tempCoef * count), "Calculating U matrix");//状況を報告
+
             I_Elas[m] = new Complex[tLen, dLen];
             I_Inel[m] = new Complex[tLen, dLen];
 
@@ -947,9 +949,8 @@ public class BetheMethod
             g_qIndex[m] = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.H - q.H, g1.K - q.K, g1.L - q.L))))
                     .Where(e => e.g_q != -1).ToArray();
 
-            if (calcInel)
+            if (calcInel) //U行列を作成
             {
-                //U行列を作成
                 U[m] = new DMat(bLen, bLen);
                 for (int i = 0; i < bLen; i++)
                 {
@@ -959,7 +960,6 @@ public class BetheMethod
                         U[m][i, j] = getU(AccVoltage, q, Beams[i] - Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
                 }
             }
-            
         });
 
         //有効なディスクを判定するフラグ
