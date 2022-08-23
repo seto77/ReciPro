@@ -19,20 +19,18 @@ public static class NativeWrapper
 
 
     [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _STEM_TDS2(int dim,
-                                     double* U,
-                                     double* C_k,
-                                     double* C_kq,
-                                     double* result);
+    unsafe private static extern void _Blend(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _STEM_TDS3
+        (int dim, double* _alpha_k, double* _alpha_kq, double* exp_k, double* exp_kq, double* rambda_k, double* rambda_kq, double* TDS, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _STEM_TDS2(int dim, double* U, double* C_k, double* C_kq, double* result);
 
 
     [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _STEM_TDS1(int dim,
-                                        double* B,
-                                        double* U,
-                                        double* C_k,
-                                        double* C_kq,
-                                        double* result);
+    unsafe private static extern void _STEM_TDS1(int dim, double* B, double* U, double* C_k, double* C_kq, double* result);
 
 
     [DllImport("Crystallography.Native.dll")]
@@ -255,6 +253,22 @@ public static class NativeWrapper
     #endregion
 
 
+
+    unsafe static public void Blend(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
+    {
+        fixed (Complex* p0 = c0)
+        fixed (Complex* p1 = c1)
+        fixed (Complex* p2 = c2)
+        fixed (Complex* p3 = c3)
+        fixed (Complex* res = result)
+        {
+            _Blend(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+        }
+    }
+
+
+
+
     #region STEMの非弾性散乱電子強度の計算用の特殊関数
     /// <summary>
     ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. 
@@ -288,6 +302,23 @@ public static class NativeWrapper
 
             _STEM_TDS2(dim, (double*)u, (double*)c_k, (double*)c_kq, (double*)res);
         }
+    }
+    unsafe static public Complex STEM_TDS3(int dim, Complex[] _alpha_k, Complex[] _alpha_kq, Complex[] _exp_k, Complex[] _exp_kq, Complex[] _rambda_k, Complex[] _rambda_kq, Complex[] _TDS)
+    {
+        var result = new double[2];
+        
+        fixed (Complex* alpha_k = _alpha_k)
+        fixed (Complex* alpha_kq = _alpha_kq)
+        fixed (Complex* exp_k = _exp_k)
+        fixed (Complex* exp_kq = _exp_kq)
+        fixed (Complex* rambda_k = _rambda_k)
+        fixed (Complex* rambda_kq = _rambda_kq)
+        fixed (Complex* TDS = _TDS)
+        fixed (double* res = result)
+        {
+            _STEM_TDS3(dim, (double*)alpha_k, (double*)alpha_kq, (double*)exp_k, (double*)exp_kq, (double*)rambda_k, (double*)rambda_kq, (double*)TDS, res);
+        }
+        return (new Complex(result[0], result[1]));
     }
     #endregion
 

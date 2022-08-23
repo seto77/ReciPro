@@ -49,6 +49,38 @@ const size_t sizeComplex = sizeof(complex<double>);
 
 extern "C" {
 
+	//行列c0~c3をr0~r3の割合でブレンドする
+	EIGEN_FUNCS_API void _Blend(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double result[])
+	{
+		for (int i = 0; i < dim * 2; i++)
+			result[i] = r0 * c0[i] + r1 * c1[i] + r2 * c2[i] + r3 * c3[i];
+		/*auto _c0 = (Vec)Map<Vec>((dcomplex*)c0, dim);
+		auto _c1 = (Vec)Map<Vec>((dcomplex*)c1, dim);
+		auto _c2 = (Vec)Map<Vec>((dcomplex*)c2, dim);
+		auto _c3 = (Vec)Map<Vec>((dcomplex*)c3, dim);
+		memcpy(result, (r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3).eval().data(), sizeComplex * dim);*/
+	}
+
+	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
+	EIGEN_FUNCS_API void _STEM_TDS3(int dim, double _alpha_k[], double _alpha_kq[], double _exp_k[], double _exp_kq[], double _rambda_k[], double _rambda_kq[], double _TDS[], double _result[])
+	{
+		auto alpha_k = (dcomplex*)_alpha_k;
+		auto alpha_kq = (dcomplex*)_alpha_kq;
+		auto exp_k = (dcomplex*)_exp_k;
+		auto exp_kq = (dcomplex*)_exp_kq;
+		auto rambda_k = (dcomplex*)_rambda_k;
+		auto rambda_kq = (dcomplex*)_rambda_kq;
+		auto TDS = (dcomplex*)_TDS;
+		auto result = (dcomplex*)_result;
+
+		auto one = complex<double>(1, 0);
+		
+		for(int i=0, n=0; i< dim; i++)
+			for (int j = 0; j < dim; j++, n++)
+				result[0] += alpha_k[j] * alpha_kq[i] * (exp_k[j] * exp_kq[i] - one) / (rambda_k[j] - rambda_kq[i]) * TDS[n];
+	}
+
+
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
 	EIGEN_FUNCS_API void _STEM_TDS2(int dim, double U[], double C_k[], double C_kq[], double result[])
 	{

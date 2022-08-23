@@ -151,6 +151,7 @@ public partial class FormImageSimulator : Form
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
     readonly Stopwatch sw1 = new();
     readonly Stopwatch sw2 = new();
+    readonly Stopwatch sw3 = new();
     private static readonly double Pi2 = PI * PI;
 
     private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
@@ -287,6 +288,16 @@ public partial class FormImageSimulator : Form
         var division = numericBoxDivisionOfIncidentElectron.ValueInteger;
         var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);// 収束角を1.05倍にしておく
 
+
+        //ゼロ次ラウエゾーンの基底ベクトルを整数分の1にしてみる
+        //var kVac = UniversalConstants.Convert.EnergyToElectronWaveNumber(200);
+
+        //var convergence = 2 * Math.Asin(UniversalConstants.Convert.EnergyToElectronWaveLength(200) * FormMain.Crystal.A_Star.Length * 2.5)
+        //   * 7.0009023190741639080089511108548 / 7;
+        //sin = Sin(convergence);
+        //division = 71;
+
+
         var radius = division / 2.0;
         for (int h = 0; h < division; h++)
             for (int w = 0; w < division; w++)
@@ -295,6 +306,9 @@ public partial class FormImageSimulator : Form
                 var y = -(h - radius + 0.5) / (radius - 0.5) * sin;//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
                 directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
             }
+
+        
+
 
         bool inside(int i) => (i % division - radius + 0.5) * (i % division - radius + 0.5) + (i / division - radius + 0.5) * (i / division - radius + 0.5) <= radius * radius;
 
@@ -308,8 +322,8 @@ public partial class FormImageSimulator : Form
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
             numericBoxSTEM_DetectorOuterAngle.Value / 1000,
-            radioButtonSTEM_target_Both.Checked||radioButtonSTEM_target_Elas.Checked,         
-            radioButtonSTEM_target_Both.Checked||radioButtonSTEM_target_Inel.Checked
+            radioButtonSTEM_target_Both.Checked || radioButtonSTEM_target_Elas.Checked,
+            radioButtonSTEM_target_Both.Checked || radioButtonSTEM_target_Inel.Checked
             );
 
         this.buttonSimulateHRTEM.Visible = false;
@@ -330,33 +344,51 @@ public partial class FormImageSimulator : Form
     private bool skipProgressChangedEvent = false;
     private void stemProgressChanged(object sender, ProgressChangedEventArgs e)
     {
+
         if (skipProgressChangedEvent) return;
         skipProgressChangedEvent = true;
 
         var current = e.ProgressPercentage;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds;
+
+
         var message = (string)e.UserState;
         if (message.StartsWith("Calculating I(Q)"))
+        {
+            if (sw2.IsRunning)
+            {
+                sw2.Stop();
+                sw3.Restart();
+            }
+            var sec = s3 / 1000.0;
+            var totalsec = sec + (s1 + s2) / 1000.0;
+            toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
+            toolStripStatusLabel1.Text = "Stage 3: Calculating I(Q)  ";
+            toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
+            toolStripStatusLabel2.Text += $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f2} s.";
+            //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
+        }
+        else if (message.StartsWith("Calculating U"))
         {
             if (sw1.IsRunning)
             {
                 sw1.Stop();
                 sw2.Restart();
             }
-            var sec = sw2.ElapsedMilliseconds / 1000.0;
-            var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
-            toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = "Stage 2: Calculating I(Q)  ";
+            var sec = s2 / 1000.0;
+            var totalsec = sec + s1 / 1000.0;
+            toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
+            toolStripStatusLabel1.Text = "Stage 2: Calculating U' matrix  ";
             toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f2} s.";
-            //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
+            toolStripStatusLabel2.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f2} s.";
         }
         else
         {
-            var sec = sw1.ElapsedMilliseconds / 1000.0;
+            var sec = s1 / 1000.0;
             toolStripProgressBar1.Value = Math.Min(current, toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = "Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
             toolStripStatusLabel2.Text = $"Ellapsed time : {sec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current * 100.0 / stemDirectionTotal :f1} % completed,  wait for more {sec * (stemDirectionTotal  - current) / current:f2} s.";
+            toolStripStatusLabel2.Text += $"{current * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal - current) / current:f2} s.";
         }
         Application.DoEvents();
         skipProgressChangedEvent = false;
@@ -366,28 +398,25 @@ public partial class FormImageSimulator : Form
     {
         FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
         FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds;
 
         if (!e.Cancelled)
         {
             SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
-            toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
-            toolStripStatusLabel1.Text += $"  Stage 1: {sw1.ElapsedMilliseconds / 1000.0:f1} sec.  Stage 2: {sw2.ElapsedMilliseconds / 1000.0:f1} sec.";
-            
+            toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3) / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.";
+
         }
         else
         {
-            toolStripStatusLabel1.Text = $"Interupted! Total ellapsed time: {(sw1.ElapsedMilliseconds + sw2.ElapsedMilliseconds) / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text = $"Interupted! Total ellapsed time: {(s1 + s2 + s3) / 1000.0:f1} sec.";
         }
         toolStripStatusLabel2.Text = "";
         this.buttonSimulateHRTEM.Visible = true;
         this.buttonStop.Visible = false;
         this.splitContainer1.Enabled = true;
-        sw1.Stop();
-        sw1.Reset();
-        sw2.Stop();
-        sw2.Reset();
-
+        sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Reset(); sw3.Reset();
         Application.DoEvents();
     }
 
