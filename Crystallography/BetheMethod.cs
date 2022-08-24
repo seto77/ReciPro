@@ -884,7 +884,7 @@ public class BetheMethod
                 //ガンマの対称行列×アルファを作成
                 var gammmaAlpha = new DVec(eigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
                 //深さtにおけるψを求める
-                return eigenVectors.Multiply(gammmaAlpha);
+                return ((DVec)eigenVectors.Multiply(gammmaAlpha)).Values;
             }).ToArray();
 
             //出射面での境界条件を考慮した位相にするため、以下のように変更 (20220803)
@@ -900,7 +900,7 @@ public class BetheMethod
 
         if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
 
-        #region ここから I(Q)の計算
+        #region I(Q)の計算
 
         var k_xy = k_vec.Select(e => e.ToPointD).ToArray();
         var k_z = k_vec.Select(e => e.Z).ToArray();
@@ -935,18 +935,18 @@ public class BetheMethod
         count = 0;
         (int g, int g_q)[][] g_qIndex = new (int g, int g_q)[qList.Count][];
         DMat[] U = new DMat[qList.Count];
-        Complex[][,] I_Elas = new Complex[qList.Count][,], I_Inel = new Complex[qList.Count][,];
+        Complex[][] I_Elas = new Complex[qList.Count][], I_Inel = new Complex[qList.Count][];
         var tempCoef = 1000.0 / bLen / qList.Count;
         Parallel.For(0, qList.Count, m =>
         {
             bwSTEM.ReportProgress((int)(tempCoef * count), "Calculating U matrix");//状況を報告
 
-            I_Elas[m] = new Complex[tLen, dLen];
-            I_Inel[m] = new Complex[tLen, dLen];
+            I_Elas[m] = new Complex[tLen* dLen];
+            I_Inel[m] = new Complex[tLen* dLen];
 
             var q = qList[m];
             //インデックスを計算 あるq[m]に対して、q-gの反射は、Beams配列で何番目か
-            g_qIndex[m] = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.H - q.H, g1.K - q.K, g1.L - q.L))))
+            g_qIndex[m] = Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1.Index.Minus(q.Index)))))
                     .Where(e => e.g_q != -1).ToArray();
 
             if (calcInel) //U行列を作成
@@ -978,7 +978,7 @@ public class BetheMethod
             Complex[] c_k = eVectors[index], α_k = alphas[index], λ_k = eValues[index];
             double kz_k = k_z[index];
             Complex[] lenz = new Complex[defocusses.Length];
-            Complex[,] i_Elas = new Complex[tLen, dLen];
+            
             for (int m = 0; m < qList.Count; m++)
                 if (A(K + qList[m].Vec.ToPointD))
                 {
@@ -997,22 +997,20 @@ public class BetheMethod
                         //弾性散乱を計算する場合
                         if (calcElas)
                         {
-                            for (int t = 0; t < tLen; t++)
-                                for (int d = 0; d < dLen; d++)
-                                    i_Elas[t, d] = 0;
-
-                            foreach (var (g, g_q) in g_qIndex[m])
-                                if (gInDetector[g])
+                            var i_Elas = new Complex[tLen * dLen];
+                            Complex[][] d0 = disk[n0], d1 = disk[n1], d2 = disk[n2], d3 = disk[n3];
+                                foreach (var (g, g_q) in g_qIndex[m])
+                                    if (gInDetector[g])
+                                        for (int t = 0; t < tLen; t++)
+                                        {
+                                            var temp = result[t][g] * (r0 * d0[t][g_q] + r1 * d1[t][g_q] + r2 * d2[t][g_q] + r3 * d3[t][g_q]).Conjugate();
+                                            for (int d = 0; d < dLen; d++)
+                                                i_Elas[t * dLen + d] += temp * lenz[d];
+                                        }
+                                lock (lockObj1)
                                     for (int t = 0; t < tLen; t++)
-                                    {
-                                        var temp = result[t][g] * (r0 * disk[n0][t][g_q] + r1 * disk[n1][t][g_q] + r2 * disk[n2][t][g_q] + r3 * disk[n3][t][g_q]).Conjugate();
                                         for (int d = 0; d < dLen; d++)
-                                            i_Elas[t, d] += temp * lenz[d];
-                                    }
-                            lock (lockObj1)
-                                for (int t = 0; t < tLen; t++)
-                                    for (int d = 0; d < dLen; d++)
-                                        I_Elas[m][t, d] += i_Elas[t, d];
+                                            I_Elas[m][t * dLen + d] += i_Elas[t * dLen + d];
                         }
 
                         //非弾性を計算する場合
@@ -1024,12 +1022,13 @@ public class BetheMethod
                                 //C(K+Q)を作成
                                 Intrinsics.Blend(bLen * bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);//69波、qList制限、256解像度で 5 secくらい
                                 //NativeWrapper.Blend(bLen * bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);//c++ネイティブでもスピード変わらない
-                                //α(K+Q)を作成
-                                Intrinsics.BlendAndConjugate(bLen, alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
-                                //λ(K+Q)を作成
-                                Intrinsics.BlendAndConjugate(bLen, eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
                                 //先に C(K+Q)*^T × U(Q) × C(K) を計算しておく
                                 NativeWrapper.STEM_TDS2(bLen, U[m].Values, c_k, c_kq, ref TDS);//69波、qList制限、256解像度で 12　secくらい
+
+                                //α(K+Q)*を作成
+                                Intrinsics.BlendAndConjugate(bLen, alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
+                                //λ(K+Q)*を作成
+                                Intrinsics.BlendAndConjugate(bLen, eValues[n0], eValues[n1], eValues[n2], eValues[n3], r0, r1, r2, r3, ref λ_kq);
                                 //kz(K)とkz(K+Q)を作成
                                 double kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
                                 //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
@@ -1053,7 +1052,7 @@ public class BetheMethod
                                     }
                                     lock (lockObj2)
                                         for (int d = 0; d < dLen; d++)
-                                            I_Inel[m][t, d] += temp / kvac * lenz[d];
+                                            I_Inel[m][t * dLen + d] += temp / kvac * lenz[d];
                                 }
                             }
                             finally { Shared.Return(TDS); Shared.Return(c_kq); Shared.Return(λ_kq); Shared.Return(α_kq); Shared.Return(temp_k); }
@@ -1083,7 +1082,7 @@ public class BetheMethod
                 for (int n = 0; n < I_Elas.Length; n++)
                     for (int t = 0; t < images.Length; t++)
                         for (int d = 0; d < defocusses.Length; d++)
-                            images[t][d][x + y * width] += (I_Elas[n][t, d] + I_Inel[n][t, d]) * Exp(qList[n].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
+                            images[t][d][x + y * width] += (I_Elas[n][t * dLen + d] + I_Inel[n][t * dLen + d]) * Exp(qList[n].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
                 //images[t][d][x + y * width] += I_elas[n][t, d] * Exp(qList[n].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
             }
         }));

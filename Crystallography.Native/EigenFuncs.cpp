@@ -31,7 +31,7 @@
 #include "math.h"
 
 #include <../Eigen/Core>
-#include <../Eigen/Dense>
+//#include <../Eigen/Dense>
 #include <../Eigen/Geometry>
 #include <../Eigen/LU>
 #include <../Eigen/Eigenvalues>
@@ -54,11 +54,6 @@ extern "C" {
 	{
 		for (int i = 0; i < dim * 2; i++)
 			result[i] = r0 * c0[i] + r1 * c1[i] + r2 * c2[i] + r3 * c3[i];
-		/*auto _c0 = (Vec)Map<Vec>((dcomplex*)c0, dim);
-		auto _c1 = (Vec)Map<Vec>((dcomplex*)c1, dim);
-		auto _c2 = (Vec)Map<Vec>((dcomplex*)c2, dim);
-		auto _c3 = (Vec)Map<Vec>((dcomplex*)c3, dim);
-		memcpy(result, (r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3).eval().data(), sizeComplex * dim);*/
 	}
 
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
@@ -81,12 +76,13 @@ extern "C" {
 	}
 
 
-	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
+	//STEMの非弾性散乱電子強度の計算用の特殊関数その2
 	EIGEN_FUNCS_API void _STEM_TDS2(int dim, double U[], double C_k[], double C_kq[], double result[])
 	{
 		auto u = Map<Mat>((dcomplex*)U, dim, dim);
 		auto c_k = Map<Mat>((dcomplex*)C_k, dim, dim);
 		auto c_kq = Map<Mat>((dcomplex*)C_kq, dim, dim);
+		auto r = c_kq.adjoint() * u * c_k;
 		memcpy(result, (c_kq.adjoint() * u * c_k).eval().data(), sizeComplex * dim * dim);
 	}
 
