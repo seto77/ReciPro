@@ -363,9 +363,8 @@ public partial class FormImageSimulator : Form
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
             toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = "Stage 3: Calculating I(Q)  ";
-            toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f2} s.";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating I(Q).  ";
+            toolStripStatusLabel2.Text = $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f1} s.";
             //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
         }
         else if (message.StartsWith("Calculating U"))
@@ -378,17 +377,15 @@ public partial class FormImageSimulator : Form
             var sec = s2 / 1000.0;
             var totalsec = sec + s1 / 1000.0;
             toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = "Stage 2: Calculating U' matrix  ";
-            toolStripStatusLabel2.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f2} s.";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 2: Calculating U' matrix.  ";
+            toolStripStatusLabel2.Text = $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
         }
         else
         {
             var sec = s1 / 1000.0;
             toolStripProgressBar1.Value = Math.Min(current, toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = "Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
-            toolStripStatusLabel2.Text = $"Ellapsed time : {sec:f2} s.,  ";
-            toolStripStatusLabel2.Text += $"{current * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal - current) / current:f2} s.";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
+            toolStripStatusLabel2.Text = $"{current * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal - current) / current:f1} s.";
         }
         Application.DoEvents();
         skipProgressChangedEvent = false;

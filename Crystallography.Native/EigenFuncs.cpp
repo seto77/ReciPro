@@ -31,7 +31,7 @@
 #include "math.h"
 
 #include <../Eigen/Core>
-//#include <../Eigen/Dense>
+#include <../Eigen/Dense>
 #include <../Eigen/Geometry>
 #include <../Eigen/LU>
 #include <../Eigen/Eigenvalues>
@@ -49,136 +49,142 @@ const size_t sizeComplex = sizeof(complex<double>);
 
 extern "C" {
 
-	//行列c0~c3をr0~r3の割合でブレンドする
+	//行列c0~c3をr0~r3の割合でブレンドする. 実数ベクトルとして取り扱うのでdimを二倍していることに注意
 	EIGEN_FUNCS_API void _Blend(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double result[])
 	{
-		for (int i = 0; i < dim * 2; i++)
-			result[i] = r0 * c0[i] + r1 * c1[i] + r2 * c2[i] + r3 * c3[i];
+		auto _c0 = Map<VectorXd>(c0, dim * 2);
+		auto _c1 = Map<VectorXd>(c1, dim * 2);
+		auto _c2 = Map<VectorXd>(c2, dim * 2);
+		auto _c3 = Map<VectorXd>(c3, dim * 2);
+		Map<VectorXd>(result, dim * 2).noalias() = r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3;
 	}
 
-	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
-	EIGEN_FUNCS_API void _STEM_TDS3(int dim, double _alpha_k[], double _alpha_kq[], double _exp_k[], double _exp_kq[], double _rambda_k[], double _rambda_kq[], double _TDS[], double _result[])
+	//行列c0~c3をr0~r3の割合でブレンドし、自己共役を得る
+	EIGEN_FUNCS_API void _BlendAndConjugate(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double result[])
 	{
-		auto alpha_k = (dcomplex*)_alpha_k;
-		auto alpha_kq = (dcomplex*)_alpha_kq;
-		auto exp_k = (dcomplex*)_exp_k;
-		auto exp_kq = (dcomplex*)_exp_kq;
-		auto rambda_k = (dcomplex*)_rambda_k;
-		auto rambda_kq = (dcomplex*)_rambda_kq;
-		auto TDS = (dcomplex*)_TDS;
-		auto result = (dcomplex*)_result;
-
-		auto one = complex<double>(1, 0);
-		
-		for(int i=0, n=0; i< dim; i++)
-			for (int j = 0; j < dim; j++, n++)
-				result[0] += alpha_k[j] * alpha_kq[i] * (exp_k[j] * exp_kq[i] - one) / (rambda_k[j] - rambda_kq[i]) * TDS[n];
+		auto _c0 = Map<Vec>((dcomplex*)c0, dim);
+		auto _c1 = Map<Vec>((dcomplex*)c1, dim);
+		auto _c2 = Map<Vec>((dcomplex*)c2, dim);
+		auto _c3 = Map<Vec>((dcomplex*)c3, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = (r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3).conjugate();
 	}
 
-
-	//STEMの非弾性散乱電子強度の計算用の特殊関数その2
-	EIGEN_FUNCS_API void _STEM_TDS2(int dim, double U[], double C_k[], double C_kq[], double result[])
+	//STEMの非弾性散乱電子強度の計算用の特殊関数
+	EIGEN_FUNCS_API void _BlendAdJointMul_Mul_Mul(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double mat2[], double mat3[], double result[])
 	{
-		auto u = Map<Mat>((dcomplex*)U, dim, dim);
-		auto c_k = Map<Mat>((dcomplex*)C_k, dim, dim);
-		auto c_kq = Map<Mat>((dcomplex*)C_kq, dim, dim);
-		auto r = c_kq.adjoint() * u * c_k;
-		memcpy(result, (c_kq.adjoint() * u * c_k).eval().data(), sizeComplex * dim * dim);
+		auto _c0 = Map<Mat>((dcomplex*)c0, dim, dim);
+		auto _c1 = Map<Mat>((dcomplex*)c1, dim, dim);
+		auto _c2 = Map<Mat>((dcomplex*)c2, dim, dim);
+		auto _c3 = Map<Mat>((dcomplex*)c3, dim, dim);
+		auto _m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		auto _m3 = Map<Mat>((dcomplex*)mat3, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = (r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3).adjoint() * _m2 * _m3;
 	}
 
-
-	//STEMの非弾性散乱電子強度の計算用の特殊関数その1
-	EIGEN_FUNCS_API void _STEM_TDS1(int dim, double B[],  double U[], double C_k[], double C_kq[], double result[])
+	//STEMの非弾性散乱電子強度の計算用の特殊関数
+	EIGEN_FUNCS_API void _AdJointMul_Mul_Mul(int dim, double mat1[], double mat2[], double mat3[], double result[])
 	{
-		auto b = Map<Mat>((dcomplex*)B, dim, dim);
-		auto u = Map<Mat>((dcomplex*)U, dim, dim);
-		auto c_k = Map<Mat>((dcomplex*)C_k, dim, dim);
-		auto c_kq = Map<Mat>((dcomplex*)C_kq, dim, dim);
-
-		dcomplex s = b.cwiseProduct(c_kq.adjoint() * u * c_k).sum();
-		//auto s = (b * c_kq.adjoint() * u * c_k).trace();
-		result[0] = s.real();
-		result[1] = s.imag();
+		auto _mat1 = Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto _mat2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		auto _mat3 = Map<Mat>((dcomplex*)mat3, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = _mat1.adjoint() * _mat2 * _mat3;
 	}
 
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
 	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[])
 	{
-		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
-		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
-		memcpy(result, m1.cwiseProduct(m2).eval().data(), sizeComplex * dim * dim);
+		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1.cwiseProduct(m2);
 	}
 
 	//複素非対称行列のmat1を共役転値して、mat2に掛ける
 	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[])
 	{
-		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
-		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
-		memcpy(result, (m1.adjoint() * m2).eval().data(), sizeComplex * dim * dim);
+		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1.adjoint() * m2;
 	}
 
 	//複素非対称行列の乗算を求める
 	EIGEN_FUNCS_API void _Multiply(int dim, double mat1[], double mat2[], double result[])
 	{
-		auto m1 = (Mat)Map<Mat>((dcomplex*)mat1, dim, dim);
-		auto m2 = (Mat)Map<Mat>((dcomplex*)mat2, dim, dim);
-		memcpy(result, (m1 * m2).eval().data(), sizeComplex * dim * dim);
+		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1 * m2;
+	}
+
+	EIGEN_FUNCS_API void _MultiplyVec(int dim, double mat[], double vec[], double result[])
+	{
+		auto m = Map<Mat>((dcomplex*)mat, dim, dim);
+		auto v = Map<Vec>((dcomplex*)vec, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = m * v;
 	}
 
 	//複素非対称行列の逆行列を求める
 	EIGEN_FUNCS_API void _Inverse(int dim, double mat[], double inverse[])
 	{
-		memcpy(inverse, ((Mat)Map<Mat>((dcomplex*)mat, dim, dim).inverse()).data(), sizeComplex * dim * dim);
+		Map<Mat>((dcomplex*)inverse, dim, dim).noalias() = Map<Mat>((dcomplex*)mat, dim, dim).inverse();
+	}
+
+	//PartialPivLuSolve
+	EIGEN_FUNCS_API void _PartialPivLuSolve(int dim, double mat[], double vec[], double result[])
+	{
+		auto m = Map<Mat>((dcomplex*)mat, dim, dim);
+		auto v = Map<Vec>((dcomplex*)vec, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = m.partialPivLu().solve(v);
 	}
 
 	//複素非対称行列の固有値、固有ベクトルを求める
 	EIGEN_FUNCS_API void _EigenSolver(int dim, double mat[], double eigenValues[], double eigenVectors[])
 	{
 		ComplexEigenSolver<Mat> solver(Map<Mat>((dcomplex*)mat, dim, dim));
-		memcpy(eigenValues, solver.eigenvalues().data(), sizeComplex * dim);
-		memcpy(eigenVectors, solver.eigenvectors().data(), sizeComplex * dim * dim);
+		Map<Vec>((dcomplex*)eigenValues, dim).noalias() = solver.eigenvalues();
+		Map<Mat>((dcomplex*)eigenVectors, dim, dim).noalias() = solver.eigenvectors();
 	}
 
 	//複素非対称行列の行列指数を求める
 	EIGEN_FUNCS_API void _MatrixExponential(int dim, double mat[], double results[])
 	{
-		memcpy(results, Map<MatrixXcd>((dcomplex*)mat, dim, dim).exp().eval().data(), sizeComplex * dim * dim);
+		Map<Mat>((dcomplex*)results, dim, dim).noalias() = Map<MatrixXcd>((dcomplex*)mat, dim, dim).exp();
+		//memcpy(results, Map<MatrixXcd>((dcomplex*)mat, dim, dim).exp().eval().data(), sizeComplex * dim * dim);//上の書き方でいいのか、未検証
 	}
 
 	//CBEDソルバー
 	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int dim, double potential[], double psi0[], int tDim, double thickness[], double coeff, double result[])
 	{
+		auto res = Map<Mat>((dcomplex*)result, dim, tDim);
+
 		ComplexEigenSolver<Mat> solver(Map<Mat>((dcomplex*)potential, dim, dim));
 		Vec values = solver.eigenvalues();
 		Mat vectors = solver.eigenvectors();
 		Vec alpha = vectors.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
-		Vec gammma_alpha = Vec::Zero(dim);
-
+		Vec gammma_alpha = Vec(dim);
 		for (int t = 0; t < tDim; ++t)
 		{
 			const auto coeff2 = two_pi_i * thickness[t] * coeff;
 			for (int g = 0; g < dim; ++g)
 				gammma_alpha[g] = exp(values[g] * coeff2) * alpha[g];
-			memcpy(&result[t * dim * 2], ((Vec)(vectors * gammma_alpha)).data(), sizeComplex * dim);
+			res.col(t).noalias() = vectors * gammma_alpha;
 		}
 	}
 
 	//CBEDソルバー
 	EIGEN_FUNCS_API void _CBEDSolver_MtxExp(int dim, double potential[], double psi0[], int tDim, double tStart, double tStep, double coeff, double result[])
 	{
+		auto res = Map<Mat>((dcomplex*)result, dim, tDim);
 		Mat matExp = (two_pi_i * tStart * coeff * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
 		Vec vec = matExp * Map<Vec>((dcomplex*)psi0, dim);
-		memcpy(&result[0], vec.data(), sizeComplex * dim);
-
+		res.col(0).noalias() = vec;
 		if (tStep == 0)
 			return;
-		
+
 		if (tStart != tStep)
 			matExp = (two_pi_i * tStep * coeff * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
 		for (int t = 1; t < tDim; ++t)
 		{
 			vec = matExp * vec;
-			memcpy(&result[t * dim * 2], vec.data(), sizeComplex * dim);
+			res.col(t).noalias() = vec;
 		}
 	}
 

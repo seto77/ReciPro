@@ -583,7 +583,7 @@ public partial class FormDiffractionSimulator : Form
                             //CBEDモードの時
                             if (FormDiffractionSimulatorCBED.Visible)
                             {
-                                if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError && g.RawIntensity > 1E-20)//黄色いガイドサークルを表示
+                                if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError)//黄色いガイドサークルを表示
                                     drawCircle(graphics, Color.Yellow, pt, radiusCBED);
                             }
                             //ダイナミックコンプレッションモードがONの時は、描画しないで強度と座標だけを格納する

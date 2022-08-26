@@ -247,6 +247,14 @@ public static class MathnetEx
 //}
 #endregion
 
+#region (int h, int k, int l)の拡張
+public static class HKL
+{
+    public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
+    public static (int H, int K, int L) Minus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H - y.H, x.K - y.K, x.L - y.L);
+}
+#endregion
+
 #region Stringの拡張
 public static class StringEx
 {
