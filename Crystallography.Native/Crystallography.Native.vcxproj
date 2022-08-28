@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>Intel C++ Compiler 2022</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PreferredToolArchitecture>
@@ -58,7 +58,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>Intel C++ Compiler 2022</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>false</UseOfMfc>
@@ -162,7 +162,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <AdditionalIncludeDirectories>Crystallography.Native;D:\Users\seto\source\repos\Crystallography.Native\Crystallography.Native\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
       <GenerateAlternateCodePaths>AVX2</GenerateAlternateCodePaths>
       <UseProcessorExtensions>AVX</UseProcessorExtensions>
@@ -229,7 +229,6 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeedHighLevel</Optimization>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -244,7 +243,7 @@
       </EnableParallelCodeGeneration>
       <Parallelization>false</Parallelization>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
-      <UseProcessorExtensions>AVX</UseProcessorExtensions>
+      <UseProcessorExtensions>None</UseProcessorExtensions>
       <Mtune>No</Mtune>
       <ConditionalBranch>
       </ConditionalBranch>
@@ -272,7 +271,7 @@
       <FloatingPointModel>Precise</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Users\seto\source\repos\Crystallography.Native\Crystallography.Native\Eigen;Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Crystallography.Native;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableFiberSafeOptimizations>
       </EnableFiberSafeOptimizations>
       <OmitFramePointers>

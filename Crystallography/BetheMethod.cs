@@ -1020,7 +1020,7 @@ public class BetheMethod
                             {
                                 //C(K+Q)をブレンドし、C(K+Q)*^T × U(Q) × C(K)をTDSに格納　(ひとまとめにした関数も作ったが、別々にやった方が早い)
                                 NativeWrapper.Blend(bLen * bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);
-                                NativeWrapper.AdjointMul_Mul_Mul(bLen, c_kq, U[m].Values, c_k,ref TDS);
+                                NativeWrapper.AdjointMul_Mul_Mul(bLen, c_kq, U[m].Values, c_k, ref TDS);
                                 //NativeWrapper.BlendAdjointMul_Mul_Mul(bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, U[m].Values, c_k, ref TDS);
                                 //α(K+Q)*を作成
                                 NativeWrapper.BlendAndConjugate(bLen, alphas[n0], alphas[n1], alphas[n2], alphas[n3], r0, r1, r2, r3, ref α_kq);
