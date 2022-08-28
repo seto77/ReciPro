@@ -18,7 +18,7 @@
 //#define EIGEN_DONT_PARALLELIZE // 並列を無効化．
 //#define EIGEN_MALLOC_ALREADY_ALIGNED 1
 //#define EIGEN_FAST_MATH 1
-#define EIGEN_STRONG_INLINE
+//#define EIGEN_STRONG_INLINE
 //#define EIGEN_INITIALIZE_MATRICES_BY_ZERO
 //#define EIGEN_USE_MKL_ALL
 
@@ -42,14 +42,14 @@ using namespace Eigen;
 using namespace std;
 
 const std::complex<double> two_pi_i = complex<double>(0, 2 * 3.141592653589793238462643383279);
-const size_t sizeComplex = sizeof(complex<double>);
+//const size_t sizeComplex = sizeof(complex<double>);
 
 #define Mat MatrixXcd
 #define Vec VectorXcd
 
 extern "C" {
 
-	//行列c0~c3をr0~r3の割合でブレンドする. 実数ベクトルとして取り扱うのでdimを二倍していることに注意
+	//行列c0~c3をr0~r3の割合でブレンドする. 実数ベクトルとして取り扱うのでdimを2倍していることに注意
 	EIGEN_FUNCS_API void _Blend(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double result[])
 	{
 		auto _c0 = Map<VectorXd>(c0, dim * 2);
@@ -166,6 +166,28 @@ extern "C" {
 			for (int g = 0; g < dim; ++g)
 				gammma_alpha[g] = exp(values[g] * coeff2) * alpha[g];
 			res.col(t).noalias() = vectors * gammma_alpha;
+		}
+	}
+
+	//CBEDソルバー. 固有値、固有ベクトル、αも返す
+	EIGEN_FUNCS_API void _CBEDSolver_Eigen2(int dim, double potential[], double psi0[], int tDim, double thickness[], double coeff, double Values[], double Vectors[], double Alphas[], double Tg[])
+	{
+		auto vals = Map<Vec>((dcomplex*)Values, dim);
+		auto vecs = Map<Mat>((dcomplex*)Vectors, dim, dim);
+		auto alphas = Map<Vec>((dcomplex*)Alphas, dim);
+		auto tg = Map<Mat>((dcomplex*)Tg, dim, tDim);
+
+		ComplexEigenSolver<Mat> solver(Map<Mat>((dcomplex*)potential, dim, dim));
+		vals.noalias() = solver.eigenvalues();
+		vecs.noalias() = solver.eigenvectors();
+		alphas.noalias() = vecs.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
+		Vec gammma_alpha = Vec(dim);
+		for (int t = 0; t < tDim; ++t)
+		{
+			const auto coeff2 = two_pi_i * thickness[t] * coeff;
+			for (int g = 0; g < dim; ++g)
+				gammma_alpha[g] = exp(vals[g] * coeff2) * alphas[g];
+			tg.col(t).noalias() = vecs * gammma_alpha;
 		}
 	}
 

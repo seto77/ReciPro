@@ -277,8 +277,8 @@ public class BetheMethod
             for (int t = 0; t < Thicknesses.Length; t++)
                 for (int b = 0; b < beams.Length; b++)
                     result[t * len + b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
-
-            bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
+            Interlocked.Increment(ref count);
+            if(count%50==0) bwCBED.ReportProgress(count, reportString);//進捗状況を報告
             return result;
         }).ToArray();
 
@@ -759,7 +759,6 @@ public class BetheMethod
     #endregion
 
     #region STEM シミュレーション
-
     private void Stem_ProgressChanged(object sender, ProgressChangedEventArgs e) => StemProgressChanged?.Invoke(sender, e);
 
     private void Stem_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => StemCompleted?.Invoke(sender, e);
@@ -841,8 +840,8 @@ public class BetheMethod
             else
                 (solver, thread) = (Solver.Eigen_MKL, Control.TryUseNativeMKL() ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
-        (solver, thread) = (Solver.Eigen_Eigen, ProcessorCount);
-        //(solver, thread) = (Solver.Eigen_MKL, Math.Max(1, ProcessorCount / 4));
+        (solver, thread) = EigenEnabled && bLen < 512 ?
+            (Solver.Eigen_Eigen, ProcessorCount) : (Solver.Eigen_MKL, Math.Max(1, ProcessorCount / 4));
         var reportString = $"{solver}{thread}";
         #endregion
 
@@ -866,29 +865,31 @@ public class BetheMethod
             var eigenMatrix = getEigenMatrix(beams, potentialMatrix);//ポテンシャル行列をセット //コスト高い
 
             //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
+            Complex[] result;
             #region 各ソルバーによる計算
             //Eigen＿Eigenの場合
             if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                (eValues[i], eVectors[i]) = NativeWrapper.EigenSolver(bLen, eigenMatrix);
+                (eValues[i], eVectors[i], alphas[i], result) = NativeWrapper.CBEDSolver2(eigenMatrix, psi0.ToArray(), Thicknesses, coeff);
             //Eigen_MKL あるいは Eigen_Managedの場合    
             else
             {
                 var evd = new DMat(bLen, bLen, eigenMatrix).Evd(Symmetricity.Asymmetric);
+                alphas[i] = ((DVec)(evd.EigenVectors as DMat).LU().Solve(new DVec(psi0))).Values;// NativeWrapper.PartialPivLuSolve(bLen, eVectors[i], psi0);
+                var tg = new DMat(bLen, tLen);
+                for(int t=0; t<tLen; t++)
+                {
+                    var gammmaAlpha =new DVec( eValues[i].Select((ev, g) => Exp(TwoPiI * ev * t * coeff) * alphas[i][g]).ToArray());//ガンマの対称行列×アルファを作成
+                    tg.SetColumn(t, evd.EigenVectors * gammmaAlpha);//深さtにおけるψを求める
+                }
+                result = tg.Values;
                 (eValues[i], eVectors[i]) = ((evd.EigenValues as DVec).Values, (evd.EigenVectors as DMat).Values);
             }
             #endregion
 
-            alphas[i] = NativeWrapper.PartialPivLuSolve(bLen, eVectors[i], psi0);
-            var result = Thicknesses.Select(t =>
-            {
-                var gammmaAlpha = eValues[i].Select((ev, g) => Exp(TwoPiI * ev * t * coeff) * alphas[i][g]);//ガンマの対称行列×アルファを作成
-                return NativeWrapper.MultiplyVec(bLen, eVectors[i], gammmaAlpha.ToArray()); //深さtにおけるψを求める
-            }).ToArray();
-
             //出射面での境界条件を考慮した位相にするため、以下のように変更 (20220803)
             for (int t = 0; t < tLen; t++)
                 for (int b = 0; b < bLen; b++)
-                    result[t][b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
+                    result[t * bLen + b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
 
             Interlocked.Increment(ref count);
             if (count % 100 == 0) bwSTEM.ReportProgress(count, reportString);//進捗状況を報告
@@ -996,12 +997,12 @@ public class BetheMethod
                         if (calcElas)
                         {
                             var i_Elas = new Complex[tLen * dLen];
-                            Complex[][] d0 = disk[n0], d1 = disk[n1], d2 = disk[n2], d3 = disk[n3];
+                            Complex[] d0 = disk[n0], d1 = disk[n1], d2 = disk[n2], d3 = disk[n3];
                             foreach (var (g, g_q) in g_qIndex[m])
                                 if (gInDetector[g])
                                     for (int t = 0; t < tLen; t++)
                                     {
-                                        var temp = result[t][g] * (r0 * d0[t][g_q] + r1 * d1[t][g_q] + r2 * d2[t][g_q] + r3 * d3[t][g_q]).Conjugate();
+                                        var temp = result[t * bLen + g] * (r0 * d0[t * bLen + g_q] + r1 * d1[t * bLen + g_q] + r2 * d2[t * bLen + g_q] + r3 * d3[t * bLen + g_q]).Conjugate();
                                         for (int d = 0; d < dLen; d++)
                                             i_Elas[t * dLen + d] += temp * lenz[d];
                                     }

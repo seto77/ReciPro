@@ -94,6 +94,18 @@ public static class NativeWrapper
                                          double* result);
 
     [DllImport("Crystallography.Native.dll")]
+    private unsafe static extern void _CBEDSolver_Eigen2(int gDim,
+                                        double* potential,
+                                        double* phi0,
+                                        int tDim,
+                                        double[] thickness,
+                                        double coeff,
+                                        double* values,
+                                        double* vectors,
+                                        double* alphas,
+                                        double* result);
+
+    [DllImport("Crystallography.Native.dll")]
     private unsafe static extern void _CBEDSolver_MtxExp(int gDim,
                                   double* potential,
                                   double* phi0,
@@ -474,6 +486,34 @@ public static class NativeWrapper
             }
         }
         return result;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="potential"></param>
+    /// <param name="psi0"></param>
+    /// <param name="thickness"></param>
+    /// <param name="coeff"></param>
+    /// <param name="eigen"></param>
+    /// <returns></returns>
+    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
+    {
+        var dim = psi0.Length;
+        var Values = GC.AllocateUninitializedArray<Complex>(dim);
+        var Vectors = GC.AllocateUninitializedArray<Complex>(dim * dim);
+        var Alphas = GC.AllocateUninitializedArray<Complex>(dim);
+        var Tg = GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);
+
+        fixed (Complex* _potential = potential)
+        fixed (Complex* _psi0 = psi0)
+        fixed (Complex* _Tg = Tg)
+        fixed (Complex* _Values = Values)
+        fixed (Complex* _Vectors = Vectors)
+        fixed (Complex* _Alphas = Alphas)
+            _CBEDSolver_Eigen2(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, coeff, (double*)_Values, (double*)_Vectors, (double*)_Alphas, (double*)_Tg);
+          
+        return (Values, Vectors, Alphas, Tg);
     }
 
     #endregion
