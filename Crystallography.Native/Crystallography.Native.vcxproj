@@ -152,7 +152,7 @@
       </FunctionLevelLinking>
       <EnableParallelCodeGeneration>
       </EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <OpenMPSupport>
       </OpenMPSupport>
       <EnableModules>
@@ -179,6 +179,7 @@
       <DiagnosticsFormat />
       <MinimalRebuild>
       </MinimalRebuild>
+      <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -239,11 +240,11 @@
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <EnableParallelCodeGeneration>
-      </EnableParallelCodeGeneration>
+      <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
       <Parallelization>false</Parallelization>
       <UseIntelOptimizedHeaders>false</UseIntelOptimizedHeaders>
-      <UseProcessorExtensions>None</UseProcessorExtensions>
+      <UseProcessorExtensions>
+      </UseProcessorExtensions>
       <Mtune>No</Mtune>
       <ConditionalBranch>
       </ConditionalBranch>
@@ -256,10 +257,10 @@
       </EnableModules>
       <BufferSecurityCheck>
       </BufferSecurityCheck>
-      <OptimizeForWindowsApplication>true</OptimizeForWindowsApplication>
+      <OptimizeForWindowsApplication>false</OptimizeForWindowsApplication>
       <OffloadOpenMP>
       </OffloadOpenMP>
-      <InterproceduralOptimization>MultiFile</InterproceduralOptimization>
+      <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
       <EnableMatrixMultiplyLibraryCall>Yes</EnableMatrixMultiplyLibraryCall>
       <GenerateAlternateCodePaths>AVX</GenerateAlternateCodePaths>
       <OffloadConstructs>
@@ -281,6 +282,8 @@
       <MinimalRebuild>
       </MinimalRebuild>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>
+      </AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
