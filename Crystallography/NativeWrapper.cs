@@ -14,8 +14,8 @@ public static class NativeWrapper
     public enum Library { None, Eigen, Cuda }
 
 
-    [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
-    public static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
+    //[DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
+    //public static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
 
     [DllImport("Crystallography.Native.dll")]
     unsafe private static extern void _PartialPivLuSolve(int dim, double* mat, double* vec, double* result);
@@ -64,9 +64,9 @@ public static class NativeWrapper
     private unsafe static extern void _EigenSolver(int dim, double* mat, double* eigenValues, double* eigenVectors);
 
     [DllImport("Crystallography.Native.dll")]
-    private static extern void _MatrixExponential(int dim,
-                                           double[] mat,
-                                           double[] results);
+    private unsafe static extern void _MatrixExponential(int dim,
+                                           double* mat,
+                                           double* results);
 
 
     [DllImport("Crystallography.Cuda.dll")]
@@ -159,7 +159,6 @@ public static class NativeWrapper
         Enabled = enabled();
     }
 
-    [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
     static bool enabled()
     {
         var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
@@ -186,81 +185,82 @@ public static class NativeWrapper
     #region 変換関数
     unsafe readonly static int sizeOfComplex = sizeof(Complex);
 
-    unsafe public static void toDoubleArray(int dim, Complex[,] mat, ref double[] dest)
-    {
-        //fixed (Complex* pSrc = mat)
-        //fixed (double* pDest = dest)
-        //    Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
+    //unsafe public static void toDoubleArray(int dim, Complex[,] mat, ref double[] dest)
+    //{
+    //    //fixed (Complex* pSrc = mat)
+    //    //fixed (double* pDest = dest)
+    //    //    Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
 
-        //　[,]の配列については、格納順の問題から、全体に対するMemcpyは使えない
-        int n = 0;
-        for (int j = 0; j < dim; j++)
-            for (int i = 0; i < dim; i++)
-            {
-                dest[n++] = mat[i, j].Real;
-                dest[n++] = mat[i, j].Imaginary;
-            }
-    }
+    //    //　[,]の配列については、格納順の問題から、全体に対するMemcpyは使えない
+    //    int n = 0;
+    //    for (int j = 0; j < dim; j++)
+    //        for (int i = 0; i < dim; i++)
+    //        {
+    //            dest[n++] = mat[i, j].Real;
+    //            dest[n++] = mat[i, j].Imaginary;
+    //        }
+    //}
 
-    unsafe public static double[] toDoubleArray(int dim, Complex[,] mat)
-    {
-        double[] dest = new double[dim * dim * 2];
-        int n = 0;
-        for (int j = 0; j < dim; j++)
-            for (int i = 0; i < dim; i++)
-            {
-                dest[n++] = mat[i, j].Real;
-                dest[n++] = mat[i, j].Imaginary;
-            }
-        return dest;
-    }
+    //unsafe public static double[] toDoubleArray(int dim, Complex[,] mat)
+    //{
+    //    double[] dest = new double[dim * dim * 2];
+    //    int n = 0;
+    //    for (int j = 0; j < dim; j++)
+    //        for (int i = 0; i < dim; i++)
+    //        {
+    //            dest[n++] = mat[i, j].Real;
+    //            dest[n++] = mat[i, j].Imaginary;
+    //        }
+    //    return dest;
+    //}
 
-    unsafe public static void toDoubleArray(int dim, Complex[] vec, ref double[] dest)
-    {
-        fixed (Complex* pSrc = vec)
-        fixed (double* pDest = dest)
-            Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
-    }
+    //unsafe public static void toDoubleArray(int dim, Complex[] vec, ref double[] dest)
+    //{
+    //    fixed (Complex* pSrc = vec)
+    //    fixed (double* pDest = dest)
+    //        Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+    //}
 
-    unsafe public static double[] toDoubleArray(int dim, Complex[] vec)
-    {
-        double[] dest = new double[dim * 2];
-        toDoubleArray(dim, vec, ref dest);
-        return dest;
-    }
+    //unsafe public static double[] toDoubleArray(int dim, Complex[] vec)
+    //{
+    //    double[] dest = new double[dim * 2];
+    //    toDoubleArray(dim, vec, ref dest);
+    //    return dest;
+    //}
 
-    unsafe private static DenseMatrix toDenseMatrix(int dim, in double[] src)
-    {
-        var dest = new Complex[dim * dim];
-        fixed (double* pSrc = src)
-        fixed (Complex* pDest = dest)
-            Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
+    //unsafe private static DenseMatrix toDenseMatrix(int dim, in double[] src)
+    //{
+    //    var dest = new Complex[dim * dim];
+    //    fixed (double* pSrc = src)
+    //    fixed (Complex* pDest = dest)
+    //        Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
 
-        return new DenseMatrix(dim, dim, dest);
-    }
+    //    return new DenseMatrix(dim, dim, dest);
+    //}
 
 
-    unsafe public static DenseVector toDenseVector(int dim, in double[] src)
-    {
-        var dest = new Complex[dim];
-        fixed (double* pSrc = src)
-        fixed (Complex* pDest = dest)
-            Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+    //unsafe public static DenseVector toDenseVector(int dim, in double[] src)
+    //{
+    //    var dest = new Complex[dim];
+    //    fixed (double* pSrc = src)
+    //    fixed (Complex* pDest = dest)
+    //        Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
 
-        return new DenseVector(dest);
-    }
+    //    return new DenseVector(dest);
+    //}
 
-    unsafe public static Complex[] toComplexArray(int dim, in double[] src)
-    {
-        var dest = new Complex[dim];
-        fixed (double* pSrc = src)
-        fixed (Complex* pDest = dest)
-            Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+    //unsafe public static Complex[] toComplexArray(int dim, in double[] src)
+    //{
+    //    var dest = new Complex[dim];
+    //    fixed (double* pSrc = src)
+    //    fixed (Complex* pDest = dest)
+    //        Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
 
-        return dest;
-    }
+    //    return dest;
+    //}
     #endregion
 
+    #region Blend関数
     unsafe static public void Blend(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0)
@@ -279,6 +279,7 @@ public static class NativeWrapper
         fixed (Complex* res = result)
             _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
+    #endregion 
 
     #region STEMの非弾性散乱電子強度の計算用の特殊関数
     unsafe static public void AdjointMul_Mul_Mul(int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
@@ -428,20 +429,21 @@ public static class NativeWrapper
     #region 行列指数関数
     static public DenseMatrix MatrixExponential(DenseMatrix mat)
     {
-        var dim = mat.RowCount;
-        var _mat = ArrayPool<double>.Shared.Rent(dim * dim * 2);
-        var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
-        try
-        {
-            toDoubleArray(dim, mat.ToArray(), ref _mat);//matをdouble[]に変換
-            _MatrixExponential(dim, _mat, vectors);
-            return toDenseMatrix(dim, in vectors);
-        }
-        finally
-        {
-            ArrayPool<double>.Shared.Return(_mat);
-            ArrayPool<double>.Shared.Return(vectors);
-        }
+        return new DenseMatrix(mat.ColumnCount, mat.ColumnCount, MatrixExponential(mat.ColumnCount, mat.Values));
+    }
+
+    static unsafe public Complex[] MatrixExponential(int dim, Complex[] mat)
+    {
+        var result = GC.AllocateUninitializedArray<Complex>(dim * dim);//new Complex[dim];
+        MatrixExponential(dim, mat, ref result);
+        return result;
+    }
+
+    static unsafe public void MatrixExponential(int dim, Complex[] mat, ref Complex[] result)
+    {
+        fixed (Complex* _result = result)
+        fixed (Complex* _mat = mat)
+            _MatrixExponential(dim, (double*)_mat, (double*)_result);
     }
 
     #endregion

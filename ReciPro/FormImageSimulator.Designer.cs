@@ -2022,14 +2022,14 @@ namespace ReciPro
             this.numericBoxDivisionOfIncidentElectron.Maximum = 1024D;
             this.numericBoxDivisionOfIncidentElectron.Minimum = 16D;
             this.numericBoxDivisionOfIncidentElectron.Name = "numericBoxDivisionOfIncidentElectron";
-            this.numericBoxDivisionOfIncidentElectron.RadianValue = 4.4680428851054836D;
+            this.numericBoxDivisionOfIncidentElectron.RadianValue = 2.2340214425527418D;
             this.numericBoxDivisionOfIncidentElectron.RoundErrorAccuracy = -1;
             this.numericBoxDivisionOfIncidentElectron.ShowUpDown = true;
             this.numericBoxDivisionOfIncidentElectron.SmartIncrement = true;
             this.numericBoxDivisionOfIncidentElectron.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDivisionOfIncidentElectron.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDivisionOfIncidentElectron, resources.GetString("numericBoxDivisionOfIncidentElectron.ToolTip"));
-            this.numericBoxDivisionOfIncidentElectron.Value = 256D;
+            this.numericBoxDivisionOfIncidentElectron.Value = 128D;
             // 
             // flowLayoutPanel7
             // 

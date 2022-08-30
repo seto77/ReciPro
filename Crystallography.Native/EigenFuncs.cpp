@@ -35,8 +35,10 @@
 #include <../Eigen/Geometry>
 #include <../Eigen/LU>
 #include <../Eigen/Eigenvalues>
-#include "EigenFuncs.h"
 #include <../unsupported/Eigen/MatrixFunctions>
+
+
+#include "EigenFuncs.h"
 
 using namespace Eigen;
 using namespace std;
