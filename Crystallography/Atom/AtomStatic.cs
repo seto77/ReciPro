@@ -9,6 +9,7 @@ using Edge = Crystallography.XrayLineEdge;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics.Integration;
 using static HDF.PInvoke.H5E;
+using System.Security.Policy;
 
 namespace Crystallography;
 
@@ -2500,17 +2501,15 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// </summary>
         public Func<double, double> Factor { get; }
 
-        /// <summary>
-        /// 引数がkV(電子のエネルギー), S2 (単位: nm^-2, S = sinθ/λ = 1/2d), 温度因子 m (単位: nm^2), 戻り値が無次元量の関数. mがNaNの場合はゼロにして計算.
-        /// </summary>
-        public Func<double, double, double, double> FactorImaginary { get; }
+       
+        //public Func<double, double, double, double> FactorImaginary { get; }
 
         /// <summary>
         /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
         /// </summary>
         public Func<double, double> ProjectedPotential { get; }
 
-        private (double A, double B)[] Prms = new (double A, double B)[0];
+        private readonly (double A, double B)[] Prms = Array.Empty<(double A, double B)>();
 
         #endregion
 
@@ -2522,16 +2521,16 @@ new ES(4.86738014,0.319974401,4.58872425,
         {
             Valence = valence;
             Method = methods;
-            var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4) };
-            Factor = new Func<double, double>(s2 => (prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
+            Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4) };
+            Factor = new Func<double, double>(s2 => (Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
         }
 
         public ES(double a1, double b1, double a2, double b2, double a3, double b3, double a4, double b4, double a5, double b5, double c, int valence, string methods)
         {
             Valence = valence;
             Method = methods;
-            var prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
-            Factor = new Func<double, double>(s2 => (prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
+            Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
+            Factor = new Func<double, double>(s2 => (Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
         }
 
         /// <summary>
@@ -2553,10 +2552,8 @@ new ES(4.86738014,0.319974401,4.58872425,
         {
             Valence = valence;
             Method = methods;
-
             Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5) };
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, s2, m));
         }
 
         /// <summary>
@@ -2569,33 +2566,69 @@ new ES(4.86738014,0.319974401,4.58872425,
             Method = "";
             Prms = new (double A, double B)[] { (a1, b1), (a2, b2), (a3, b3), (a4, b4), (a5, b5), (a6, b6), (a7, b7), (a8, b8) };
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
-            FactorImaginary = new Func<double, double, double, double>((kV, s2, m) => factorImaginary(kV, s2, m));
         }
 
         /// <summary>
         /// 局所形式の非弾性散乱因子 (TDS吸収ポテンシャル) 
         /// </summary>
-        /// <param name="prms"></param>
-        /// <param name="s2"></param>
-        /// <param name="m"></param>
-        /// <returns></returns>
-        private double factorImaginary(double kV, double s2, double m)
+        /// <param name="kV">kV(電子のエネルギー)</param>
+        /// <param name="s2">S2 (単位: nm^-2, S = sinθ/λ = 1/2d)</param>
+        /// <param name="m">温度因子 m (単位: nm^2), NaNの場合はゼロにして計算</param>
+        /// <returns> 戻り値が無次元量</returns>
+        public double FactorImaginary(double kV, double s2, double m)
         {
+            if (double.IsNaN(m) || m == 0)
+                return 0;
+
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-
-            if (double.IsNaN(m)) m = 0;
+            
             s2 *= 0.01;//単位を修正
             m *= 100;//単位を修正
             return Prms.Sum(p1 => Prms.Sum(p2 =>
             {
                 var sum = p1.B + p2.B;
+                if (sum == 0) return 0;
                 var product = p1.B * p2.B;
-                return sum == 0
-                ? 0
-                : p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / (sum + 2 * m)) / (sum + 2 * m));
+                var sum2m = sum + 2 * m;
+                return p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / sum2m) / sum2m);
             })) * Math.PI * gamma * 2 / k0;
         }
+
+        /// <summary>
+        /// 局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// </summary>
+        /// <param name="kV"></param>
+        /// <param name="g"></param>
+        /// <param name="h"></param>
+        /// <param name="m"></param>
+        /// <param name="inner"></param>
+        /// <param name="outer"></param>
+        /// <returns></returns>
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer)
+        {
+            if (double.IsNaN(m)) m = 0;
+            var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+            var gLen2= g.Length2 / 4;
+            return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
+            {
+                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                return GaussLegendreRule.Integrate(φ =>
+                {
+                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
+                    double kMinusG = (k - g / 2).Length2 / 400, kPlusG = (k + g / 2).Length2 / 400;
+                    double f_kMinusG = 0, f_kPlusG = 0;
+                    foreach (var (A, B) in Prms)
+                    {
+                        f_kMinusG += A * Math.Exp(-kMinusG * B);
+                        f_kPlusG += A * Math.Exp(-kPlusG * B);
+                    }
+                    return f_kMinusG * f_kPlusG * 0.01 * (1 - Math.Exp(m * (gLen2 - kMinusG * 100 - kPlusG * 100))); ;// * sinTheta;//外に出して、少しでも早く
+                }, 0, 2 * Math.PI, 20) * sinθ;
+            }, inner, outer, 60);
+        }
+
 
         /// <summary>
         /// 非局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)

@@ -878,14 +878,12 @@ namespace ReciPro
             this.numericBoxDefocus.Maximum = 1000D;
             this.numericBoxDefocus.Minimum = -1000D;
             this.numericBoxDefocus.Name = "numericBoxDefocus";
-            this.numericBoxDefocus.RadianValue = -1.2217304763960306D;
             this.numericBoxDefocus.RoundErrorAccuracy = -1;
             this.numericBoxDefocus.ShowUpDown = true;
             this.numericBoxDefocus.SmartIncrement = true;
             this.numericBoxDefocus.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDefocus.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
-            this.numericBoxDefocus.Value = -70D;
             this.numericBoxDefocus.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDefocus_ValueChanged);
             // 
             // flowLayoutPanel4
@@ -1988,15 +1986,15 @@ namespace ReciPro
             // radioButtonSTEM_target_Both
             // 
             resources.ApplyResources(this.radioButtonSTEM_target_Both, "radioButtonSTEM_target_Both");
-            this.radioButtonSTEM_target_Both.Checked = true;
             this.radioButtonSTEM_target_Both.Name = "radioButtonSTEM_target_Both";
-            this.radioButtonSTEM_target_Both.TabStop = true;
             this.radioButtonSTEM_target_Both.UseVisualStyleBackColor = true;
             // 
             // radioButtonSTEM_target_Elas
             // 
             resources.ApplyResources(this.radioButtonSTEM_target_Elas, "radioButtonSTEM_target_Elas");
+            this.radioButtonSTEM_target_Elas.Checked = true;
             this.radioButtonSTEM_target_Elas.Name = "radioButtonSTEM_target_Elas";
+            this.radioButtonSTEM_target_Elas.TabStop = true;
             this.radioButtonSTEM_target_Elas.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel10
