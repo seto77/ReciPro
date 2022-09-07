@@ -15,7 +15,7 @@
 //#define EIGEN_RUNTIME_NO_MALLOC
 
 //#define EIGEN_DONT_VECTORIZE // SIMDを無効化．
-//#define EIGEN_DONT_PARALLELIZE // 並列を無効化．
+#define EIGEN_DONT_PARALLELIZE // 並列を無効化．
 //#define EIGEN_MALLOC_ALREADY_ALIGNED 1
 //#define EIGEN_FAST_MATH 1
 #define EIGEN_STRONG_INLINE
@@ -50,15 +50,14 @@ const std::complex<double> two_pi_i = complex<double>(0, 2 * 3.14159265358979323
 #define Vec VectorXcd
 
 extern "C" {
-
-	//行列c0~c3をr0~r3の割合でブレンドする. 実数ベクトルとして取り扱うのでdimを2倍していることに注意
+	//行列c0~c3をr0~r3の割合でブレンドする
 	EIGEN_FUNCS_API void _Blend(int dim, double c0[], double c1[], double c2[], double c3[], double r0, double r1, double r2, double r3, double result[])
 	{
-		auto _c0 = Map<VectorXd>(c0, dim * 2);
-		auto _c1 = Map<VectorXd>(c1, dim * 2);
-		auto _c2 = Map<VectorXd>(c2, dim * 2);
-		auto _c3 = Map<VectorXd>(c3, dim * 2);
-		Map<VectorXd>(result, dim * 2).noalias() = r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3;
+		auto _c0 = Map<VectorXd>(c0, dim);
+		auto _c1 = Map<VectorXd>(c1, dim);
+		auto _c2 = Map<VectorXd>(c2, dim);
+		auto _c3 = Map<VectorXd>(c3, dim);
+		Map<VectorXd>(result, dim).noalias() = r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3;
 	}
 
 	//行列c0~c3をr0~r3の割合でブレンドし、自己共役を得る
@@ -100,7 +99,7 @@ extern "C" {
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1.cwiseProduct(m2);
 	}
 
-	//複素非対称行列のmat1を共役転値して、mat2に掛ける
+	//複素行列のmat1を共役転値して、mat2に掛ける
 	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[])
 	{
 		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
@@ -108,19 +107,56 @@ extern "C" {
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1.adjoint() * m2;
 	}
 
-	//複素非対称行列の乗算を求める
-	EIGEN_FUNCS_API void _Multiply(int dim, double mat1[], double mat2[], double result[])
+	//複素行列同士の乗算を求める
+	EIGEN_FUNCS_API void _MultiplyMM(int dim, double mat1[], double mat2[], double result[])
 	{
 		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
 		auto m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1 * m2;
 	}
 
-	EIGEN_FUNCS_API void _MultiplyVec(int dim, double mat[], double vec[], double result[])
+	//複素行列とベクトルの乗算を求める
+	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[])
 	{
 		auto m = Map<Mat>((dcomplex*)mat, dim, dim);
 		auto v = Map<Vec>((dcomplex*)vec, dim);
 		Map<Vec>((dcomplex*)result, dim).noalias() = m * v;
+	}
+
+	//複素数と複素ベクトルの乗算を求める
+	EIGEN_FUNCS_API void _MultiplySV(int dim, double real, double imag, double vec[], double result[])
+	{
+		auto s = dcomplex(real, imag);
+		auto v = Map<Vec>((dcomplex*)vec, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = s * v;
+	}
+
+	//ベクトル同士の加算を求める. 実数と複素数の両方いける
+	EIGEN_FUNCS_API void _AddVV(int dim, double vec1[], double vec2[], double result[])
+	{
+		auto v1 = Map<VectorXd>(vec1, dim);
+		auto v2 = Map<VectorXd>(vec2, dim);
+		Map<VectorXd>(result, dim).noalias() = v1 + v2;
+	}
+
+	//複素ベクトル同士の要素ごとの除算を求める
+	EIGEN_FUNCS_API void _DivideVV(int dim, double vec1[], double vec2[], double result[])
+	{
+		auto v1 = Map<Vec>((dcomplex*)vec1, dim);
+		auto v2 = Map<Vec>((dcomplex*)vec2, dim);
+
+		auto res = (dcomplex*)result;
+		
+		for (int i = 0; i < dim; i++)
+			res[i] = v1[i] / v2[i];
+	}
+
+	//複素ベクトル同士の減算を求める. 実数と複素数の両方いける
+	EIGEN_FUNCS_API void _SubtractVV(int dim, double vec1[], double vec2[], double result[])
+	{
+		auto v1 = Map<VectorXd>(vec1, dim);
+		auto v2 = Map<VectorXd>(vec2, dim);
+		Map<VectorXd>(result, dim).noalias() = v1 - v2;
 	}
 
 	//複素非対称行列の逆行列を求める

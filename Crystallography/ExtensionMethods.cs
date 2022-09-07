@@ -173,8 +173,6 @@ public static class MathnetEx
         }*/
         #endregion
 
-
-
         if (m.RowCount != m.ColumnCount)
             throw new ArgumentException("Matrix should be square");
 
@@ -197,8 +195,6 @@ public static class MathnetEx
 
         Matrix<Complex> N = DMat.CreateIdentity(m.RowCount), D = N;
         Matrix<Complex> m_pow_j = m;
-
-        
 
         for (int j = 1; j <= p; j++)
         {

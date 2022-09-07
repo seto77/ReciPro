@@ -51,7 +51,7 @@ public static class GLGeometry
                         break;
                     }
                 }
-        } while (i != iList[0] && iList.Count<=points.Count());
+        } while (i != iList[0] && iList.Count <= points.Count());
 
         return (iList.ToArray(), center, norm);
     }
@@ -61,7 +61,7 @@ public static class GLGeometry
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static M3d CreateRotationFromZ(V3d v)
+    public static M3d CreateRotationFromZ(in V3d v)
     {
         v.Normalize();
         if (Math.Abs(v.Z - 1) < Th)
@@ -77,7 +77,7 @@ public static class GLGeometry
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static M3d CreateRotationToZ(V3d v)
+    public static M3d CreateRotationToZ(in V3d v)
     {
         v.Normalize();
         if (Math.Abs(v.Z - 1) < Th)

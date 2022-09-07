@@ -142,11 +142,11 @@ public class Tiff
             bw.BaseStream.Position = offset;
             for (int i = 0; i < str.Length; i++)
             {
-                bw.Write(BitConverter.GetBytes((byte)str[i]));
+                bw.Write((byte)str[i]);
                 //bw.BaseStream.Position -= 1;
             }
 
-            bw.Write(BitConverter.GetBytes((byte)0));
+            bw.Write((byte)0);
 
             bw.BaseStream.Position = pos;
             return offset + (uint)str.Length + 1;

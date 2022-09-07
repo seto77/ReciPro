@@ -906,9 +906,9 @@ public class Disk : Polygon
                      rot = M3d.Identity;
                  else
                      rot = M3d.CreateFromAxisAngle(V3d.Cross(normal, vZ), V3d.CalculateAngle(vZ, normal));
-                 double x = rot.M11 * p.X + rot.M12 * p.Y + origin.X;
-                 double y = rot.M21 * p.X + rot.M22 * p.Y + origin.Y;
-                 double z = rot.M31 * p.X + rot.M32 * p.Y + origin.Z;
+                 var x = rot.M11 * p.X + rot.M12 * p.Y + origin.X;
+                 var y = rot.M21 * p.X + rot.M22 * p.Y + origin.Y;
+                 var z = rot.M31 * p.X + rot.M32 * p.Y + origin.Z;
                  return new V3d(x, y, z);
              }).ToArray(), mat, mode)
     { }
@@ -950,7 +950,7 @@ public class Polyhedron : GLObject
                 for (int k = j + 1; k < vrs.Length; k++)
                 {
                     V3d A = vrs[i], B = vrs[j], C = vrs[k];
-                    V3d V = V3d.Cross(C - A, A - B);
+                    var V = V3d.Cross(C - A, A - B);
 
                     if (vrs.All(v => V3d.Dot(v - A, V) < 0.0000001) || vrs.All(v => V3d.Dot(v - A, V) > -0.0000001))
                         if (candidates.All(cand => !(cand.Contains(A) && cand.Contains(B) && cand.Contains(C))))
@@ -1127,14 +1127,14 @@ public class Ellipsoid : GLObject
                 }
         Vertices = vList.ToArray();
 
-        var types = new List<PT>();
+        var types = new List<PT>(3);
         var indices = new List<int[]>();
 
         types.Add(PT.Points);
         indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
 
-        var indexListSurfaces = new List<int>();
-        var indexListEdges = new List<int>();
+        var indexListSurfaces = new List<int>(16 * rot.Length  * slices * slices);
+        var indexListEdges = new List<int>(rot.Length * 8 * (slices * slices * 2 + slices));
         for (int i = 0; i < rot.Length; i++)
             for (int h = 0; h < 2 * slices; h++)
                 for (int w = 0; w < 2 * slices; w++)
@@ -1320,7 +1320,7 @@ public class Pipe : GLObject
             }
 
         var current = 0;
-        var indiceSide = new List<int>();
+        var indiceSide = new List<int>(4 * slices * stacks);
         for (int h = 0; h < slices; h++)
             for (int t = 0; t < stacks; t++)
             {
@@ -1385,16 +1385,13 @@ public class Pipe : GLObject
             }
         }
 
-        var vList = new List<Vertex>();
+        Vertices = new Vertex[v.Count];
         for (int i = 0; i < v.Count; i++)
-            vList.Add(new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]));
+            Vertices[i] = new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]);
 
-        Vertices = vList.ToArray();
         Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
 
         Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
-
-
     }
 }
 
@@ -1788,7 +1785,7 @@ public class TextObject : GLObject
                         new Vertex(new V3f(+width / 2f, +height / 2f, (float)popout), new V3f() ,p10),
                         new Vertex(new V3f(+width / 2f, -height / 2f, (float)popout), new V3f() ,p11),
                         new Vertex(new V3f(-width / 2f, -height / 2f, (float)popout), new V3f() ,p01)
-                    };
+                };
 
                 //辞書に登録
                 dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));

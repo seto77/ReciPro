@@ -501,7 +501,7 @@ public partial class FormStructureViewer : Form
         public readonly V3 O;
         public readonly double R;
         public readonly Material BondMat, PolyMat;
-        public bondVertex(int objIndex, int atomIndex, int cellKey, in V3 origin, int serial, double r, Material bondMat, Material polyMat)
+        public bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
         { ObjIndex = objIndex; AtomIndex = atomIndex; Key = cellKey; O = origin; Serial = serial; R = r; BondMat = bondMat; PolyMat = polyMat; }
     }
 

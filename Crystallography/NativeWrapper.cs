@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Buffers;
+using System.Drawing.Printing;
 
 namespace Crystallography;
 
@@ -47,9 +48,22 @@ public static class NativeWrapper
 
 
     [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _Multiply(int dim, double* mat1, double* mat2, double* result);
+    unsafe private static extern void _MultiplyMM(int dim, double* mat1, double* mat2, double* result);
     [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _MultiplyVec(int dim, double* mat, double* vec, double* result);
+    unsafe private static extern void _MultiplyMV(int dim, double* mat, double* vec, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _MultiplySV(int dim, double real, double imag, double* vec, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _DivideVV(int dim, double* vec1, double* vec2, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _AddVV(int dim, double* vec1, double* vec2, double* result);
+
+    [DllImport("Crystallography.Native.dll")]
+    unsafe private static extern void _SubtractVV(int dim, double* vec1, double* vec2, double* result);
+
 
     [DllImport("Crystallography.Native.dll")]
     private static extern void _Inverse(int dim, double[] mat, double[] matInv);
@@ -260,6 +274,96 @@ public static class NativeWrapper
     //}
     #endregion
 
+    #region 単純な四則演算
+    /// <summary>
+    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める
+    /// </summary>
+    /// <param name="dim"></param>
+    /// <param name="matrix1"></param>
+    /// <param name="matrix2"></param>
+    /// <param name="result"></param>
+    unsafe static public void MultiplyMxM(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _MultiplyMM(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+    unsafe static public Complex[] MultiplyMxM(int dim, Complex[] matrix1, Complex[] matrix2)
+    {
+        var result = GC.AllocateUninitializedArray<Complex>(dim * dim);// new Complex[dim * dim];
+        MultiplyMxM(dim, matrix1, matrix2, ref result);
+        return result;
+    }
+
+    unsafe static public void MultiplyMxV(int dim, Complex[] matrix, Complex[] vector, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix)
+        fixed (Complex* mtx2 = vector)
+        fixed (Complex* res = result)
+            _MultiplyMV(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+
+    unsafe static public Complex[] MultiplyMxV(int dim, Complex[] matrix, Complex[] vector)
+    {
+        var result = GC.AllocateUninitializedArray<Complex>(dim);// new Complex[dim];
+        MultiplyMxV(dim, matrix, vector, ref result);
+        return result;
+    }
+
+    unsafe static public void MultiplySxV(int dim, in Complex s, in Complex[] v, ref Complex[] result)
+    {
+        fixed (Complex* p = v)
+        fixed (Complex* res = result)
+            _MultiplySV(dim, s.Real, s.Imaginary, (double*)p, (double*)res);
+    }
+
+
+    unsafe static public void Add(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
+    {
+        fixed (Complex* p1 = v1)
+        fixed (Complex* p2 = v2)
+        fixed (Complex* res = result)
+            _AddVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
+    }
+
+    unsafe static public void Add(int dim, in double[] v1, in double[] v2, ref double[] result)
+    {
+        fixed (double* p1 = v1)
+        fixed (double* p2 = v2)
+        fixed (double* res = result)
+            _AddVV(dim, p1, p2, res);
+    }
+
+    unsafe static public void Subtract(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
+    {
+        fixed (Complex* p1 = v1)
+        fixed (Complex* p2 = v2)
+        fixed (Complex* res = result)
+            _SubtractVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
+    }
+
+    unsafe static public void Subtract(int dim, in double[] v1, in double[] v2, ref double[] result)
+    {
+        fixed (double* p1 = v1)
+        fixed (double* p2 = v2)
+        fixed (double* res = result)
+            _SubtractVV(dim, p1, p2, res);
+    }
+
+    
+
+    unsafe static public void Divide(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
+    {
+        fixed (Complex* p1 = v1)
+        fixed (Complex* p2 = v2)
+        fixed (Complex* res = result)
+            _DivideVV(dim, (double*)p1, (double*)p2, (double*)res);
+    }
+
+    #endregion
+
+
     #region Blend関数
     unsafe static public void Blend(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
     {
@@ -268,8 +372,18 @@ public static class NativeWrapper
         fixed (Complex* p2 = c2)
         fixed (Complex* p3 = c3)
         fixed (Complex* res = result)
-            _Blend(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+            _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
+    unsafe static public void Blend(int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, double r0, double r1, double r2, double r3, ref double[] result)
+    {
+        fixed (double* p0 = c0)
+        fixed (double* p1 = c1)
+        fixed (double* p2 = c2)
+        fixed (double* p3 = c3)
+        fixed (double* res = result)
+            _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
+    }
+
     unsafe static public void BlendAndConjugate(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0)
@@ -303,6 +417,17 @@ public static class NativeWrapper
         fixed (Complex* res = result)
             _BlendAdJointMul_Mul_Mul(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)_mat2, (double*)_mat3, (double*)res);
     }
+
+    unsafe static public void TDS(int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
+    {
+        fixed (Complex* _mat1 = mat1)
+        fixed (Complex* _mat2 = mat2)
+        fixed (Complex* _mat3 = mat3)
+        fixed (Complex* res = result)
+            _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
+    }
+
+
     #endregion
 
     #region Eigenライブラリーを利用して、PartialPivLuSolveを求める
@@ -356,42 +481,9 @@ public static class NativeWrapper
     #endregion
 
     #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
-    /// <summary>
-    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める
-    /// </summary>
-    /// <param name="dim"></param>
-    /// <param name="matrix1"></param>
-    /// <param name="matrix2"></param>
-    /// <param name="result"></param>
-    unsafe static public void Multiply(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
-    {
-        fixed (Complex* mtx1 = matrix1)
-        fixed (Complex* mtx2 = matrix2)
-        fixed (Complex* res = result)
-            _Multiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
-    }
+  
 
-    unsafe static public Complex[] Multiply(int dim, Complex[] matrix1, Complex[] matrix2)
-    {
-        var result = GC.AllocateUninitializedArray<Complex>(dim * dim);// new Complex[dim * dim];
-        Multiply(dim, matrix1, matrix2, ref result);
-        return result;
-    }
-
-    unsafe static public void MultiplyVec(int dim, Complex[] matrix, Complex[] vector, ref Complex[] result)
-    {
-        fixed (Complex* mtx1 = matrix)
-        fixed (Complex* mtx2 = vector)
-        fixed (Complex* res = result)
-            _MultiplyVec(dim, (double*)mtx1, (double*)mtx2, (double*)res);
-    }
-
-    unsafe static public Complex[] MultiplyVec(int dim, Complex[] matrix, Complex[] vector)
-    {
-        var result = GC.AllocateUninitializedArray<Complex>(dim);// new Complex[dim];
-        MultiplyVec(dim, matrix, vector, ref result);
-        return result;
-    }
+ 
     #endregion
 
     #region 逆行列

@@ -18,8 +18,16 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[]);
 	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[]);
-	EIGEN_FUNCS_API void _Multiply(int dim, double mat1[], double mat2[], double result[]);
-	EIGEN_FUNCS_API void _MultiplyVec(int dim, double mat[], double vec[], double result[]);
+	
+	EIGEN_FUNCS_API void _MultiplyMM(int dim, double mat1[], double mat2[], double result[]);
+	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[]);
+	EIGEN_FUNCS_API void _MultiplySV(int dim, double real, double imag, double vec[], double result[]);
+
+	EIGEN_FUNCS_API void _DivideVV(int dim, double vec1[], double vec2[], double result[]);
+
+	EIGEN_FUNCS_API void _AddVV(int dim, double vec1[], double vec2[], double result[]);
+	EIGEN_FUNCS_API void _SubtractVV(int dim, double vec1[], double vec2[], double result[]);
+
 
 	EIGEN_FUNCS_API void _Inverse(int dim, double mat[], double inverse[]);
 	EIGEN_FUNCS_API void _EigenSolver(int dim, double mat[], double eigenValues[], double eigenVectors[]);
