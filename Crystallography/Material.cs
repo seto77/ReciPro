@@ -80,7 +80,7 @@ namespace Crystallography
 
         #region コンストラクタ
         //基本コンストラクタ
-        public Material(C4 _color, float _ambient, float _diffuse, float _specular, float _specularPow, float _emission, float _transparency = -1f)
+        public Material(in C4 _color, float _ambient, float _diffuse, float _specular, float _specularPow, float _emission, float _transparency = -1f)
         {
             argb = _transparency != -1f ? new C4(_color.R, _color.G, _color.B, _transparency).ToArgb() : _color.ToArgb();
             ambient = toByte(_ambient);
@@ -94,13 +94,13 @@ namespace Crystallography
             : this(color, tex.Ambient, tex.Diffuse, tex.Specular, tex.SpecularPow, tex.Emission, transparency) { }
 
         public Material(in C4 color) : this(color, DefaultTexture) { }
-        public Material(in C4 color, float transparency) : this(color, DefaultTexture, transparency) { }
-        public Material(in C4 color, double transparency) : this(color, DefaultTexture, (float)transparency) { }
+        public Material(in C4 color, in float transparency) : this(color, DefaultTexture, transparency) { }
+        public Material(in C4 color, in double transparency) : this(color, DefaultTexture, (float)transparency) { }
 
-        public Material(int argb, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f) :
+        public Material(in int argb, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f) :
             this(new C4((byte)(argb >>16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >>24 & 0xff)), tex, transparency) { }
 
-        public Material(int argb, float transparency = -1f) : this(argb, DefaultTexture, transparency) { }
+        public Material(in int argb, in float transparency = -1f) : this(argb, DefaultTexture, transparency) { }
 
         public Material(int argb, double transparency) : this(argb, DefaultTexture, (float)transparency) { }
         #endregion

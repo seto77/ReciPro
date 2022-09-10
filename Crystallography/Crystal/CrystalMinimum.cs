@@ -118,17 +118,15 @@ public class Crystal2
 
             var anisoValues = a.IsU ? aniso.Select(an => an.Value / 100).ToArray() : aniso.Select(an => an.Value).ToArray();
             var anisoErrors = a.IsU ? aniso.Select(an => an.Error / 100).ToArray() : aniso.Select(an => an.Error).ToArray();
-
-            atom.Add(
-                new Atoms(
+            var _atom = new Atoms(
                     a.Label, a.AtomNo, a.SubXray, a.SubElectron, null, c.sym,
                     new Vector3D(pos[0].Value, pos[1].Value, pos[2].Value, false),
                     new Vector3D(pos[0].Error, pos[1].Error, pos[2].Error, false),
                     occ.Value, occ.Error,
                     new DiffuseScatteringFactor(a.IsU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B, a.IsIso,
                         iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
-                    )
-                );
+                    );
+            atom.Add(_atom );
             atom[^1].ResetVesta();
 
             //AtomNoÇ™255(èdêÖëfD)ÇæÇ¡ÇΩéûÇÃèàóù

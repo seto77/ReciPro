@@ -72,8 +72,8 @@ namespace Crystallography.Controls
                 double ze = 0;
                 foreach (var atom in crystal.Atoms)
                 { 
-                    n += atom.Atom.Count;
-                    ze += atom.AtomicNumber * atom.Atom.Count * atom.Occ;
+                    n += atom.Atom.Length;
+                    ze += atom.AtomicNumber * atom.Atom.Length * atom.Occ;
                 }
                 eos.Ze = ze;
 

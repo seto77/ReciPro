@@ -103,7 +103,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         CrystalControl.SymmetrySeriesNumber = 1;
         CrystalControl.Crystal.Atoms = Array.Empty<Atoms>();
         for (int i = 0; i < OriginalCrystal.Atoms.Length; i++)
-            for (int j = 0; j < OriginalCrystal.Atoms[i].Atom.Count; j++)
+            for (int j = 0; j < OriginalCrystal.Atoms[i].Atom.Length; j++)
             {
                 var atom = Deep.Copy(OriginalCrystal.Atoms[i]);
                 atom.X = OriginalCrystal.Atoms[i].Atom[j].X;

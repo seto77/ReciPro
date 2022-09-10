@@ -27,7 +27,7 @@ public class Euler
     {
         double tilt1 = za.tilt1;
         double tilt2 = za.tilt2;
-        Vector3D v = Vector3D.Normarize(za.u * cry.A_Axis + za.v * cry.B_Axis + za.w * cry.C_Axis);
+        var v = Vector3D.Normarize(za.u * cry.A_Axis + za.v * cry.B_Axis + za.w * cry.C_Axis);
 
         Vector3D V = new(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(tilt2), Math.Cos(tilt1) * Math.Cos(tilt2));
 

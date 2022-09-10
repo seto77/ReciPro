@@ -1025,7 +1025,7 @@ public class ConvertCrystalData
         var p = new V3(0.111, 0.234, 0.457);//“K“–‚Èˆê”ÊˆÊ’u
         var tempAtom = WyckoffPosition.GetEquivalentAtomsPosition((p.X, p.Y, p.Z), sgnum).Atom;
 
-        if (operations.Count != 0 && operations.Count == tempAtom.Count)
+        if (operations.Count != 0 && operations.Count == tempAtom.Length)
         {
             var th = 0.0000001;
             var prms = new[] { "x", "y", "z" }.Select(s => Expression.Parameter(typeof(double), s)).ToArray();

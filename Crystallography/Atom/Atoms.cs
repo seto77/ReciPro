@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
@@ -13,7 +12,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public object Clone()
     {
         Atoms atoms = (Atoms)this.MemberwiseClone();
-        for (int i = 0; i < Atom.Count; i++)
+        for (int i = 0; i < Atom.Length; i++)
             atoms.Atom[i] = (Vector3D)Atom[i].Clone();
         return atoms;
     }
@@ -26,10 +25,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public bool Equals(Atoms obj)
     {
         Atoms atoms = obj;
-        if (atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ)
-            return true;
-        else
-            return false;
+        return atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ;
     }
     #endregion
 
@@ -38,7 +34,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public int ID;
 
     [XmlIgnore]
-    public List<Vector3D> Atom = new();
+    public Vector3D[] Atom = Array.Empty<Vector3D>();
 
     public double X, Y, Z;
     public double X_err, Y_err, Z_err;
@@ -136,9 +132,9 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Multiplicity = wyk.Multiplicity;
         WyckoffNumber = wyk.WyckoffNumber;
 
-        Atom = new List<Vector3D>();
+        Atom = new Vector3D[Multiplicity];
         for (int i = 0; i < Multiplicity; i++)
-            Atom.Add(new Vector3D(0, 0, 0));
+            Atom[i] = new Vector3D(0, 0, 0);
 
         Dsf = dsf;
 

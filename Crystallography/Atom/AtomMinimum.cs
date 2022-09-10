@@ -85,7 +85,7 @@ public class Atoms2
     /// <param name="isU"></param>
     /// <param name="iso"></param>
     /// <param name="aniso"></param>
-    public Atoms2(string label, int atomNo, int sfx, int sfe, string[] pos, string occ, bool isIso, bool isU, string iso, string[] aniso)
+    public Atoms2(in string label, in int atomNo, in int sfx, in int sfe, string[] pos, in string occ, in bool isIso, in bool isU, in string iso, string[] aniso)
 
     {
         PositionTexts = pos;

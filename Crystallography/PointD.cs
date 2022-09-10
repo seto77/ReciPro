@@ -151,7 +151,7 @@ public struct PointD : IComparable, IEquatable<PointD>
     public double X { get; set; }
     public double Y { get; set; }
     public object Tag { get; set; }
-    public readonly bool IsNaN { get => double.IsNaN(X) || double.IsNaN(Y); }
+    public readonly bool IsNaN => double.IsNaN(X) || double.IsNaN(Y);
     public readonly double Length2 => X * X + Y * Y;
     public readonly double Length => Math.Sqrt(X * X + Y * Y);
 

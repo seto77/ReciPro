@@ -11,6 +11,11 @@ namespace Crystallography;
 [Serializable()]
 public readonly struct WyckoffPosition
 {
+    #region 定数
+    const double th = 0.00015;
+    const double one_th = 1 - th * 2;
+    #endregion
+
     #region フィールド、プロパティ
     /// <summary>
     /// 空間群の番号
@@ -105,42 +110,27 @@ public readonly struct WyckoffPosition
     /// <param name="y"></param>
     /// <param name="z"></param>
     /// <returns></returns>
-    public readonly List<Vector3D> GeneratePositions(in double x, in double y, in double z)
+    public readonly Vector3D[] GeneratePositions(in double x, in double y, in double z)
     {
-        var pos = new List<Vector3D>();
-        var th = SymmetryStatic.Th;
+        var pos = new List<Vector3D>(PositionGenerator.Length);
 
         for (int i = 0; i < PositionGenerator.Length; i++)
         {
             var (X, Y, Z) = PositionGenerator[i](x, y, z);
 
-            //0~1の範囲に収まるかどうかチェックし、適宜修正
-            var v = new Vector3D(X, Y, Z, false).InnerLattice();
             //当たり判定
-            bool flag = true;
-            for (int j = 0; j < pos.Count && flag; j++)
-                for (int xx = (v.X < th) ? -1 : 0; xx <= ((v.X > 1 - th) ? 1 : 0) && flag; xx++)
-                    for (int yy = (v.Y < th) ? -1 : 0; yy <= ((v.Y > 1 - th) ? 1 : 0) && flag; yy++)
-                        for (int zz = (v.Z < th) ? -1 : 0; zz <= ((v.Z > 1 - th) ? 1 : 0) && flag; zz++)
-                            if ((v.X - xx - pos[j].X) * (v.X - xx - pos[j].X) + (v.Y - yy - pos[j].Y) * (v.Y - yy - pos[j].Y) + (v.Z - zz - pos[j].Z) * (v.Z - zz - pos[j].Z) < th * th)
-                            {
-                                flag = false;
-                                if (!flag)
-                                    break;
-                            }
-            if (flag)
+            if (pos.Count == 0 || pos.All(p => !chk(Z, p.Z) || !chk(X, p.X) || !chk(Y, p.Y)))
             {
+                var v = new Vector3D(X, Y, Z, false);
+                //0~1の範囲に収まるかどうかチェックし、修正
+                v.InnerLatticeThis();
                 if (PositionOperations != null)
-                {
                     v.Operation = new SymmetryOperation(PositionOperations[i], SymmetrySeriesNumber);//PositionOperatorsを格納
-
-                }
                 pos.Add(v);
             }
         }
-        return pos;
+        return pos.ToArray();
     }
-
     /// <summary>
     /// 与えられたposがこのWykoffPositionかどうかを判定する
     /// </summary>
@@ -148,22 +138,17 @@ public readonly struct WyckoffPosition
     /// <returns></returns>
     public readonly bool CheckPosition(double x, double y, double z)
     {
-        static bool chk(double d1, double d2)
+        return PositionGenerator.Any(g =>
         {
-            var d = d1 - d2;
-            while (d > 0.5)
-                d--;
-            while (d < -0.5)
-                d++;
-            return Math.Abs(d) < SymmetryStatic.Th;
-        }
-
-        foreach (var (X, Y, Z) in PositionGenerator.Select(generator => generator(x, y, z)))
-        {
-            if (chk(X, x) && chk(Y, y) && chk(Z, z))
-                return true;
-        }
-        return false;
+            var (X, Y, Z) = g(x, y, z);
+            return chk(X, x) && chk(Y, y) && chk(Z, z);
+        });
+    }
+    static bool chk(in double d1, in double d2)
+    {
+        var d = Math.Abs(d1 - d2);
+        while (d > one_th) d = Math.Abs(d - 1);
+        return d <= th;
     }
     #endregion
 
@@ -204,7 +189,7 @@ public readonly struct WyckoffPosition
             //2022/06/16 服部さんから、P4_2/nmc(2)でも、(3/4,y,z)が上手く判定できていないとの指摘を受ける
 
             // そのため、もっとも低対称性で再生した位置全てに対して判定をおこない、一回でもOKだったらそのワイコフ位置だと判定する
-            if (wyck[j].Multiplicity == atoms.Atom.Count)
+            if (wyck[j].Multiplicity == atoms.Atom.Length)
                 foreach (var (X, Y, Z) in atomsTemp)
                     if (wyck[j].CheckPosition(X, Y, Z))
                     {
@@ -214,18 +199,16 @@ public readonly struct WyckoffPosition
                         wyckNum = j;
                         break;
                     }
-         
+
             if (multi != 0)
                 break;
         }
 
-        if (atoms.WyckoffLeter.ToCharArray()[0] > wyckLet.ToCharArray()[0])
-        {
-            atoms.WyckoffLeter = wyckLet;
-            atoms.SiteSymmetry = siteSym;
-            atoms.Multiplicity = multi;
-            atoms.WyckoffNumber = wyckNum;
-        }
+        atoms.WyckoffLeter = wyckLet;
+        atoms.SiteSymmetry = siteSym;
+        atoms.Multiplicity = atoms.Atom.Length;
+        atoms.WyckoffNumber = wyckNum;
+
         return atoms;
     }
     public static Atoms GetEquivalentAtomsPosition(in Vector3D Pos, in int SymmetrySeriesNumber)

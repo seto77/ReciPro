@@ -941,7 +941,7 @@ public class BetheMethod
 
         //各種変数(I_Elas, I_Inel, g_q_index, U)の準備
         count = 0;
-        (int g, int g_q)[][] g_qIndex = new (int g, int g_q)[qList.Count][];
+        var g_qIndex = new (int g, int g_q)[qList.Count][];
         var U = new Complex[qList.Count][];
         Complex[][] I_Elas = new Complex[qList.Count][], I_Inel = new Complex[qList.Count][];
         var tempCoef = 1000.0 / bLen / qList.Count;
@@ -1003,7 +1003,7 @@ public class BetheMethod
                     if (A(K + qList[m].Vec.ToPointD))
                     {
                         var P = K + qList[m].Vec.ToPointD;
-                        double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//Pに最も近いX,Y座標(実数)
+                        double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//P の X,Y座標(実数)
                         int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
                         int n0 = y * diameterPix + x, n1 = n0 + 1, n2 = n0 + diameterPix, n3 = n2 + 1;//それぞれのインデックス
                         if ((uint)x < coeff3 && (uint)y < coeff3 && flag[n0] && flag[n1] && flag[n2] && flag[n3])//4つのインデックスが範囲内であることを判定

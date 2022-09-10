@@ -223,11 +223,11 @@ public class Matrix3D : ICloneable
         E33 = -m1.E33
     };
 
-    public static Vector3D operator *(Matrix3D m, in Vector3D v) => m == null || v == null
+    public static Vector3D operator *(Matrix3D m, Vector3D v) => m == null || v == null
             ? null
             : new Vector3D(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
-    public static Vector3DBase operator *(Matrix3D m, in Vector3DBase v)
+    public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
         => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     /// <summary>
@@ -584,18 +584,18 @@ public class Vector3DBase : ICloneable
 
     public static bool operator >=(Vector3DBase v1, Vector3DBase v2) => (v1.X >= v2.X && v1.Y >= v2.Y && v1.Z >= v2.Z);
 
-    public static Vector3DBase operator +(Vector3DBase v1, Vector3DBase v2) => new Vector3DBase(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+    public static Vector3DBase operator +(Vector3DBase v1, Vector3DBase v2) => new(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
 
-    public static Vector3DBase operator -(Vector3DBase v1, Vector3DBase v2) => new Vector3DBase(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
-    public static Vector3DBase operator -(Vector3DBase v1) => new Vector3DBase(-v1.X, -v1.Y, -v1.Z);
+    public static Vector3DBase operator -(Vector3DBase v1, Vector3DBase v2) => new(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+    public static Vector3DBase operator -(Vector3DBase v1) => new(-v1.X, -v1.Y, -v1.Z);
 
-    public static Vector3DBase operator *(in double d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3DBase operator *(in double d, Vector3DBase v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3DBase operator *(Vector3DBase v1, in double d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3DBase operator *(Vector3DBase v1, in double d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3DBase operator *(in int d, Vector3DBase v1) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3DBase operator *(in int d, Vector3DBase v1) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
-    public static Vector3DBase operator *(Vector3DBase v1, in int d) => new Vector3DBase(d * v1.X, d * v1.Y, d * v1.Z);
+    public static Vector3DBase operator *(Vector3DBase v1, in int d) => new(d * v1.X, d * v1.Y, d * v1.Z);
 
     public static double operator *(Vector3DBase v1, Vector3DBase v2) => v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
 
@@ -660,6 +660,17 @@ public class Vector3DBase : ICloneable
     }
 
     public Vector3DBase Normarize() => Normarize(this);
+
+    public void NormarizeThis()
+    {
+        double l = Math.Sqrt(X * X + Y * Y + Z * Z);
+        if (l > 0)
+        {
+            X /= l;
+            Y /= l;
+            Z /= l;
+        }
+    }
 
 
     /// <summary>
@@ -972,13 +983,29 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     /// <returns></returns>
     public Vector3D InnerLattice()
     {
-        double[] d = new double[] { X, Y, Z };
-        for (int j = 0; j < 3; j++)
-        {
-            while (d[j] < 0) { d[j] += 1; }
-            while (d[j] >= 1) { d[j] -= 1; }
-        }
-        return new Vector3D(d[0], d[1], d[2], false);
+        double x = X, y = Y, z = Z;
+        while (x < 0) x += 1;
+        while (x >= 1) x -= 1;
+        while (y < 0) y += 1;
+        while (y >= 1) y -= 1;
+        while (z < 0) z += 1;
+        while (z >= 1) z -= 1;
+        return new Vector3D(x, y, z, false);
+    }
+
+    /// <summary>
+    /// ç¿ïWàÍÇ∏Ç¬Çâ¡å∏éZÇµÅA0Ç©ÇÁ1ÇÃîÕàÕì‡Ç…é˚ÇﬂÇÈ
+    /// </summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public void InnerLatticeThis()
+    {
+        while (X < 0) X += 1;
+        while (X >= 1) X -= 1;
+        while (Y < 0) Y += 1;
+        while (Y >= 1) Y -= 1;
+        while (Z < 0) Z += 1;
+        while (Z >= 1) Z -= 1;
     }
 
     public override string ToString() => Text != "" ? Text : $"{X}, {Y}, {Z}";

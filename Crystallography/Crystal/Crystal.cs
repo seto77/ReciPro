@@ -1307,7 +1307,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             double minR = double.PositiveInfinity;
             double r;
             int k = -1;
-            for (int j = 0; j < Atoms[i].Atom.Count; j++)
+            for (int j = 0; j < Atoms[i].Atom.Length; j++)
                 if ((r = Atoms[i].Atom[j].Length2) < minR)
                 {
                     minR = r;

@@ -147,7 +147,7 @@ namespace Crystallography.Controls
             CrystalControl.SymmetrySeriesNumber = 1;
             CrystalControl.Crystal.Atoms = Array.Empty<Atoms>();
             for (int i = 0; i < originalCrystal.Atoms.Length; i++)
-                for (int j = 0; j < originalCrystal.Atoms[i].Atom.Count; j++)
+                for (int j = 0; j < originalCrystal.Atoms[i].Atom.Length; j++)
                 {
                     var atom = Deep.Copy(originalCrystal.Atoms[i]);
                     atom.X = originalCrystal.Atoms[i].Atom[j].X;
