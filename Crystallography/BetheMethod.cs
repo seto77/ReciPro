@@ -11,12 +11,13 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Buffers;
 
+using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
-using MathNet.Numerics;
+
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 #endregion
 
@@ -30,15 +31,16 @@ public class BetheMethod
 {
     #region static readonly field
     private static readonly Complex One = Complex.One;
-    private static readonly double TwoPi = 2 * Math.PI;
+    private const double TwoPi = 2 * Math.PI;
     private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;
     private static readonly Complex PiI = Math.PI * ImaginaryOne;
-    private static readonly double PiSq = Math.PI * Math.PI;
+    private const double PiSq = Math.PI * Math.PI;
     /// <summary>
     /// (001)ベクトル
     /// </summary>
     private static readonly Vector3DBase zNorm = new(0, 0, 1);
-    public static readonly bool EigenEnabled;
+    public static readonly bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
+
     public static readonly int ProcessorCount = Environment.ProcessorCount;
     #endregion
 
@@ -111,6 +113,9 @@ public class BetheMethod
     static BetheMethod()
     {
         EigenEnabled = NativeWrapper.Enabled;
+        BlasEnabled = Control.TryUseNativeOpenBLAS();
+        MklEnabled = Control.TryUseNativeMKL();
+        CudaEnabled = Control.TryUseNativeCUDA();
     }
     public BetheMethod(Crystal crystal)
     {
@@ -163,7 +168,8 @@ public class BetheMethod
         BaseRotation = new Matrix3D(rotation);
         BeamDirections = beamDirections;
         Thicknesses = thickness;
-        var mkl = Control.TryUseNativeMKL();
+
+        //var cuda = Control.TryUseNativeCUDA();
         bwCBED.RunWorkerAsync((solver, thread));
     }
 
@@ -207,7 +213,7 @@ public class BetheMethod
             if (EigenEnabled)
                 (solver, thread) = (Solver.MtxExp_Eigen, ProcessorCount);
             else
-                (solver, thread) = (Solver.Eigen_MKL, Control.TryUseNativeMKL() ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
+                (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
         var reportString = $"{solver}{thread}";
         #endregion
@@ -396,7 +402,7 @@ public class BetheMethod
             if (EigenEnabled)
                 (solver, thread) = (Solver.MtxExp_Eigen, ProcessorCount);
             else
-                (solver, thread) = (Solver.Eigen_MKL, Control.TryUseNativeMKL() ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
+                (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
         var reportString = $"{solver}{thread}";
         #endregion
@@ -574,8 +580,6 @@ public class BetheMethod
     /// <returns></returns>
     public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
     {
-        var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
-
         if (AccVoltage != voltage)
             uDictionary.Clear();
 
@@ -602,7 +606,7 @@ public class BetheMethod
             var potentialMatrix = getEigenMatrix(Beams);
             dim = Beams.Length;
             //A行列に関する固有値、固有ベクトルを取得 
-            if (useEigen)
+            if (EigenEnabled || maxNumOfBloch < 400)
             {
                 (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(dim, potentialMatrix);
                 EigenVectorsInverse = NativeWrapper.Inverse(Beams.Length, EigenVectors);
@@ -662,8 +666,6 @@ public class BetheMethod
             uDictionary.Clear();
 
         var useEigen = EigenEnabled && maxNumOfBloch < 400;
-        if (!MathNet.Numerics.Control.TryUseNativeMKL())
-            useEigen = true;
 
         var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
         if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
@@ -693,7 +695,7 @@ public class BetheMethod
                    potentialMatrix = getEigenMatrix(BeamsPED[k]);
                    var dim = BeamsPED[k].Length;
                        //A行列に関する固有値、固有ベクトルを取得 
-                       if (useEigen)
+                   if (useEigen)
                    {//Eigenを使う場合
                        var (val,vec)= NativeWrapper.EigenSolver(dim, potentialMatrix);
                        (EigenValuesPED[k], EigenVectorsPED[k]) = (new DVec(val), new DMat(len, len, vec));
@@ -785,7 +787,6 @@ public class BetheMethod
         BeamDirections = beamDirections;
         Thicknesses = thickness;
 
-        Control.TryUseNativeMKL();
         bwSTEM.RunWorkerAsync((solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution, calcElas, calcInel));
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
@@ -843,7 +844,7 @@ public class BetheMethod
             if (EigenEnabled)
                 (solver, thread) = (Solver.MtxExp_Eigen, ProcessorCount);
             else
-                (solver, thread) = (Solver.Eigen_MKL, Control.TryUseNativeMKL() ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
+                (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
         (solver, thread) = EigenEnabled && bLen < 512 ?
             (Solver.Eigen_Eigen, ProcessorCount) : (Solver.Eigen_MKL, Math.Max(1, ProcessorCount / 4));

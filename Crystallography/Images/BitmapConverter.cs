@@ -61,7 +61,7 @@ public static class BitmapConverter
             return new Bitmap(1, 1);
     }
 
-    public static Byte[] ToByte(Bitmap Bmp)
+    public static byte[] ToByte(Bitmap Bmp)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
         var rgbValues = new byte[bmpData.Stride * Bmp.Height];
@@ -70,7 +70,7 @@ public static class BitmapConverter
         return rgbValues;
     }
 
-    public static Byte[] ToByteWithA(Bitmap Bmp, byte a)
+    public static byte[] ToByteWithA(Bitmap Bmp, byte a)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
         byte[] rgbaValues;
@@ -170,7 +170,7 @@ public static class BitmapConverter
         return argbValues;            
     }
 
-    public static Byte[] ToByteGray(Bitmap Bmp)
+    public static byte[] ToByteGray(Bitmap Bmp)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
         byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];

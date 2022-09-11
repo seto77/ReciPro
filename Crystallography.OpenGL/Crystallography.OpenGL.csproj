@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.9.10.0408</AssemblyVersion>
-    <FileVersion>2022.9.10.0408</FileVersion>
+    <AssemblyVersion>2022.9.11.0825</AssemblyVersion>
+    <FileVersion>2022.9.11.0825</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,8 +17,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenTK" Version="3.3.2" />
-    <PackageReference Include="OpenTK.GLControl" Version="3.1.0" />
+    <PackageReference Include="OpenTK" Version="3.3.3" />
+    <PackageReference Include="OpenTK.GLControl" Version="3.3.3" />
     <PackageReference Include="System.Management" Version="6.0.0" />
   </ItemGroup>
 

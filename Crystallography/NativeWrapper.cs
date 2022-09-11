@@ -363,9 +363,8 @@ public static class NativeWrapper
 
     #endregion
 
-
     #region Blend関数
-    unsafe static public void Blend(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
+    unsafe static public void Blend(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0)
         fixed (Complex* p1 = c1)
@@ -374,7 +373,7 @@ public static class NativeWrapper
         fixed (Complex* res = result)
             _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
-    unsafe static public void Blend(int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, double r0, double r1, double r2, double r3, ref double[] result)
+    unsafe static public void Blend(in int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, in double r0, in double r1, in double r2, in double r3, ref double[] result)
     {
         fixed (double* p0 = c0)
         fixed (double* p1 = c1)
@@ -384,7 +383,7 @@ public static class NativeWrapper
             _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
     }
 
-    unsafe static public void BlendAndConjugate(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3, ref Complex[] result)
+    unsafe static public void BlendAndConjugate(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0)
         fixed (Complex* p1 = c1)
@@ -396,7 +395,7 @@ public static class NativeWrapper
     #endregion 
 
     #region STEMの非弾性散乱電子強度の計算用の特殊関数
-    unsafe static public void AdjointMul_Mul_Mul(int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
+    unsafe static public void AdjointMul_Mul_Mul(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
         fixed (Complex* _mat1 = mat1)
         fixed (Complex* _mat2 = mat2)
@@ -405,7 +404,7 @@ public static class NativeWrapper
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
-    unsafe static public void BlendAdjointMul_Mul_Mul(int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3,
+    unsafe static public void BlendAdjointMul_Mul_Mul(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3,
         in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0)
@@ -418,7 +417,7 @@ public static class NativeWrapper
             _BlendAdJointMul_Mul_Mul(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
-    unsafe static public void TDS(int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
+    unsafe static public void TDS(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
         fixed (Complex* _mat1 = mat1)
         fixed (Complex* _mat2 = mat2)
@@ -431,14 +430,14 @@ public static class NativeWrapper
     #endregion
 
     #region Eigenライブラリーを利用して、PartialPivLuSolveを求める
-    unsafe static public void PartialPivLuSolve(int dim, Complex[] mat, Complex[] vec, ref Complex[] result)
+    unsafe static public void PartialPivLuSolve(in int dim, Complex[] mat, Complex[] vec, ref Complex[] result)
     {
         fixed (Complex* m = mat)
         fixed (Complex* v = vec)
         fixed (Complex* res = result)
             _PartialPivLuSolve(dim, (double*)m, (double*)v, (double*)res);
     }
-    unsafe static public Complex[] PartialPivLuSolve(int dim, Complex[] mat, Complex[] vec)
+    unsafe static public Complex[] PartialPivLuSolve(in int dim, Complex[] mat, Complex[] vec)
     {
         var result = GC.AllocateUninitializedArray<Complex>(dim);// new Complex[dim];
         PartialPivLuSolve(dim, mat, vec, ref result);
@@ -549,7 +548,7 @@ public static class NativeWrapper
     /// <param name="thickness"></param>
     /// <param name="coeff"></param>
     /// <returns></returns>
-    unsafe static public Complex[] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
+    unsafe static public Complex[] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
     => CBEDSolver(potential, psi0, thickness, coeff, true);
 
     /// <summary>
@@ -560,10 +559,10 @@ public static class NativeWrapper
     /// <param name="thickness"></param>
     /// <param name="coeff"></param>
     /// <returns></returns>
-    unsafe static public Complex[] CBEDSolver_MatExp(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
+    unsafe static public Complex[] CBEDSolver_MatExp(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
         => CBEDSolver(potential, psi0, thickness, coeff, false);
 
-    unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, double coeff, bool eigen)
+    unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff, in bool eigen)
     {
         var dim = psi0.Length;
         var result = GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);// new Complex[dim * thickness.Length];
@@ -591,7 +590,7 @@ public static class NativeWrapper
     /// <param name="coeff"></param>
     /// <param name="eigen"></param>
     /// <returns></returns>
-    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, double coeff)
+    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
     {
         var dim = psi0.Length;
         var Values = GC.AllocateUninitializedArray<Complex>(dim);

@@ -48,7 +48,7 @@ public readonly struct Symmetry
     #endregion
 
     #region コンストラクタ
-    public Symmetry(int seriesNumber)
+    public Symmetry(in int seriesNumber)
     {
         if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
         {
