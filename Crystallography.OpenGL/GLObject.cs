@@ -313,7 +313,7 @@ abstract public class GLObject
                 (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
         };
 
-        foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0).ToArray())
+        foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
         {
             o.Program = program;
 

@@ -368,7 +368,6 @@ namespace ReciPro
             this.panel2.Controls.Add(this.label33);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // checkBoxShowUnitcell
             // 
@@ -1610,7 +1609,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(this.textBoxDefocusList, "textBoxDefocusList");
             this.textBoxDefocusList.Name = "textBoxDefocusList";
-            this.textBoxDefocusList.TextChanged += new System.EventHandler(this.textBoxDefocusList_TextChanged);
             // 
             // numericBoxDefocusNum
             // 

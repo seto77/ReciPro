@@ -1234,7 +1234,7 @@ public partial class FormDiffractionSimulator : Form
     /// </summary>
     /// <param name="pt"></param>
     /// <returns></returns>
-    private bool IsScreenArea(PointD pt, int margin = 0)
+    private bool IsScreenArea(in PointD pt, int margin = 0)
     {
         var clientPt = convertDetectorToScreen(pt);
         return clientPt.X > margin && clientPt.Y > margin

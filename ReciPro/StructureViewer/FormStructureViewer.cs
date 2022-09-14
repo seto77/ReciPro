@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static IronPython.Modules._ast;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
@@ -43,8 +44,9 @@ public partial class FormStructureViewer : Form
     public List<GLObject> GLObjects = new();
     private readonly ParallelQuery<GLObject> GLObjectsP;
 
-    public readonly object lockObj = new();
+    public readonly object lockObj1 = new();
     public readonly object lockObj2 = new();
+    public readonly object lockObj3 = new();
 
 
     private bool skipSetCrystal = false;
@@ -457,7 +459,7 @@ public partial class FormStructureViewer : Form
                     };
                 }
             }
-            lock (lockObj)
+            lock (lockObj1)
                 GLObjects.AddRange(spheres[0..n]);
         });
         textBoxInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -523,7 +525,8 @@ public partial class FormStructureViewer : Form
             //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
             foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
             {
-                dic1.Add(element, GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
+                dic1.Add(element, 
+                    GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
                   .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
                   {
                       var s = e.Obj as Sphere;
@@ -531,13 +534,13 @@ public partial class FormStructureViewer : Form
                       if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
                       {
                           bondMat = new Material(s.Material.Color, bondTrans);
-                          lock (lockObj2)
+                          lock (lockObj1)
                               dicMaterial.TryAdd(id.Index, bondMat);
                       }
                       if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
                       {
                           polyMat = new Material(s.Material.Color, polyTrans);
-                          lock (lockObj2)
+                          lock (lockObj1)
                               dicMaterial.TryAdd(id.Index + 1000, polyMat);
                       }
                       return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
@@ -545,14 +548,14 @@ public partial class FormStructureViewer : Form
             }
 
             //中心頂点に対する、頂点のリストを一気に作成
-            var dic2 = new Dictionary<int, int[]>();//中心頂点に対する頂点リストのDictionary
+            var dic2 = new Dictionary<int, int[]>();//中心に対する頂点リストのDictionary
             var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
             var cArray = dic1[bond.Element1];
             var vArray = dic1[bond.Element2];
             Parallel.ForEach(cArray.Select(o => o.Key).Distinct(), ckey =>
             {
                 //検索対象の頂点のインデックスを作成
-                var targetIndices = neighborKeys.Select(key => key + ckey)
+                var vertexIndices = neighborKeys.Select(key => key + ckey)
                 .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
                 .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
 
@@ -560,28 +563,32 @@ public partial class FormStructureViewer : Form
                 for (int i = start; i < end; i++)
                 {
                     //ボンド長さの条件を満たす頂点インデックスを検索
-                    var vIndices = targetIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
-                    if (vIndices.Any())
+                    var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
+                    var m = vIndices.Length;
+                    if (m > 0)
                     {
-                        int m = vIndices.Length, index = cArray[i].AtomIndex;
-                        lock (lockObj)
+                        if (!checkBoxShowBondedAtoms.Checked)
+                            lock (lockObj2)
+                                dic2.Add(i, vIndices);
+                        else
                         {
-                            if(!checkBoxShowBondedAtoms.Checked)
-                                dic2.Add(i, vIndices);
-                            else if (!coord.TryGetValue(index, out int n) )
-                            //まだcoordに何も追加されていない場合か、範囲外の結合している原子を描画しない場合
+                            var index = cArray[i].AtomIndex;
+                            lock (lockObj2)
                             {
-                                coord.Add(index, m);
-                                dic2.Add(i, vIndices);
-                            }
-                            else if (n <= m)
-                            {
-                                if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
+                                if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合か、範囲外の結合している原子を描画しない場合
                                 {
-                                    coord[cArray[i].AtomIndex] = m;
-                                    dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
+                                    coord.Add(index, m);
+                                    dic2.Add(i, vIndices);
                                 }
-                                dic2.Add(i, vIndices);
+                                else if (n <= m)
+                                {
+                                    if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
+                                    {
+                                        coord[index] = m;
+                                        dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
+                                    }
+                                    dic2.Add(i, vIndices);
+                                }
                             }
                         }
                     }
@@ -605,22 +612,28 @@ public partial class FormStructureViewer : Form
                 {
                     var v = vArray[i];
                     var vec = v.O - c.O;//中心間を結ぶベクトル
-                        var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
-                        var tag = new bondID(c.Serial, v.Serial);
+                    var m = (1 + (c.R - v.R) / vec.Length) * vec / 2;//中間地点
+                    var tag = new bondID(c.Serial, v.Serial);
                     objects[n++] = new Cylinder(c.O, m, radius, c.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
                     objects[n++] = new Cylinder(v.O, m - vec, radius, v.BondMat, DrawingMode.Surfaces) { Tag = tag, Rendered = bond.ShowBond };
                 }
-                lock (lockObj2)
+                lock (lockObj3)
                     GLObjects.AddRange(objects);
 
                 if (bond.ShowPolyhedron && vIndices.Length > 2)
                 {
-                    lock (lockObj2)
-                        if (vIndices.Length == 3)
-                            GLObjects.Add(new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron });
-                        else
-                            GLObjects.AddRange(new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
-                            { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons());//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                    if (vIndices.Length == 3)
+                    {
+                        var poly = new Polygon(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron };
+                        lock (lockObj3)
+                            GLObjects.Add(poly);
+                    }
+                    else
+                    {
+                        var poly = new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                        lock (lockObj3)
+                            GLObjects.AddRange(poly);
+                    }
                 }
 
             });

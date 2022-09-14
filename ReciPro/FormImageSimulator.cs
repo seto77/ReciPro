@@ -1275,19 +1275,7 @@ public partial class FormImageSimulator : Form
         flowLayoutPanelRealAndImaiginary.Visible = radioButtonPotentialModeRealAndImag.Checked;
     }
 
-    private void panel2_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
-
     private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) => numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
-
-    private void textBoxDefocusList_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {

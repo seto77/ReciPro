@@ -2682,7 +2682,7 @@ new ES(4.86738014,0.319974401,4.58872425,
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             double g_h = (g - h).ToPointD.Length2 / 4;
             PointD g2 = g.ToPointD, h2 = h.ToPointD;
-            return MathNet.Numerics.Integration.GaussLegendreRule.Integrate((phi, r) =>
+            return GaussLegendreRule.Integrate((phi, r) =>
             {
                 var k = r * new PointD(Math.Cos(phi), Math.Sin(phi));
                 double k_g = (k - g2).Length2 / 4, k_h = (k - h2).Length2 / 4;

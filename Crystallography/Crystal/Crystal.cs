@@ -7,6 +7,7 @@ using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Runtime.InteropServices;
 
 namespace Crystallography;
 
@@ -1064,6 +1065,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 逆格子ベクトルの計算
+
+    static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
+    static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
+
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
     /// </summary>
@@ -1073,9 +1078,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
     {
         if (A_Star == null) SetAxis();
-
-        static int composeKey(in int h, in int k,in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
-        static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
         double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
         double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
@@ -1112,36 +1114,40 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        var outer = new Dictionary<int, double>() { { zeroKey, 0 } };
-        var gDic = new Dictionary<int, (double x, double y, double z, double len)>() { { zeroKey, (0, 0, 0, 0) } };
+        var outer = new List<(int key, double len)>() { (zeroKey, 0) };
+        var gHash = new HashSet<int>(maxGnum) { zeroKey };
+        var gList=new List<(int key, double x, double y, double z, double len)>(maxGnum) { (zeroKey, 0, 0, 0, 0) };
         var minG = 0.0;
 
-        while (gDic.Count < maxGnum && (minG = outer.Values.Min()) < gMax)
+        while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
         {
-            var outerList = outer.Where(o => o.Value - minG < shift * 4).Select(o => o.Key).ToList();
-            outerList.ForEach(o => outer.Remove(o));
-
-            foreach (var (h1, k1, l1) in outerList.Select(o => decomposeKey(o)))
+            var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
+            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            {
+                var (h1, k1, l1) = decomposeKey(key1);
                 foreach ((int h2, int k2, int l2) in directions)
                 {
-                    int h = h1 + h2, k = k1 + k2, l = l1 + l2, key = composeKey(h, k, l);// h * 1024 * 1024 + k * 1024 + l;
-                    if (key > 0 && !gDic.ContainsKey(key))
+                    int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
+                    if (key2 > 0 && !gHash.Contains(key2))
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
-                        gDic.Add(key, (x, y, z, len));
-                        outer.Add(key, len);
+                        gHash.Add(key2);
+                        gList.Add((key2, x, y, z, len));
+                        outer.Add((key2, len));
                     }
                 }
+            }
+            outer.RemoveRange(0, end + 1);
+            outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        gDic.Remove(zeroKey);
-
-        var gList = gDic.ToList();
-        var gArray = new Vector3D[gDic.Count * 2];
+        gList.RemoveAt(0);
+        
+        var gArray = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {
-            var (h, k, l) = decomposeKey(gList[i].Key);
-            var (x, y, z, glen) = gList[i].Value;
+            var (key, x, y, z, glen) = gList[i];
+            var (h, k, l) = decomposeKey(key);
             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
             gArray[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
             gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };

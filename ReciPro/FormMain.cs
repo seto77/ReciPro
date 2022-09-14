@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Community.CsharpSqlite.Sqlite3.Walker;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
 
@@ -668,145 +669,6 @@ public partial class FormMain : Form
 
     #endregion
 
-    #region 他のFunctionを起動、連携
-    private void powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-    {
-        toolStripButtonDiffractionPoly.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
-        toolStripSeparator19.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
-    }
-    private void FormTEMID_VisibleChanged(object sender, EventArgs e)
-    {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
-    }
-
-    private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
-    {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
-    }
-
-    private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
-    {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
-            SelectionMode.MultiExtended : SelectionMode.One;
-    }
-
-    private void crystalControl_ScatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.FormScatteringFactor.Visible;
-
-    private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
-
-
-    /// <summary>
-    /// ToolStripボタンを押されたら、各機能を起動/終了する
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
-    {
-        var button = sender as ToolStripButton;
-        Form form;
-        if (button.Name.Contains("Structure"))
-            form = FormStructureViewer;
-        else if (button.Name.Contains("Database"))
-            form = FormCrystalDatabase;
-        else if (button.Name.Contains("Symmetry"))
-            form = crystalControl.FormSymmetryInformation;
-        else if (button.Name.Contains("Scattering"))
-            form = crystalControl.FormScatteringFactor;
-        else if (button.Name.Contains("Rotation"))
-            form = FormRotation;
-        else if (button.Name.Contains("Stereonet"))
-            form = FormStereonet;
-        else if (button.Name.Contains("DiffractionSingle"))
-            form = FormDiffractionSimulator;
-        else if (button.Name.Contains("ImageSimulator"))
-            form = FormImageSimulator;
-        else if (button.Name.Contains("SpotIDv1"))
-            form = FormTEMID;
-        else if (button.Name.Contains("SpotIDv2"))
-            form = FormSpotID;
-        else
-            form = FormPolycrystallineDiffractionSimulator;
-
-        if (e.Clicks == 1)
-        {
-            if (!form.Visible)
-            {
-                form.Visible = true;
-                form.WindowState = FormWindowState.Normal;
-            }
-            else if (form.WindowState == FormWindowState.Minimized)
-                form.WindowState = FormWindowState.Normal;
-            else
-                form.Visible = false;
-        }
-        else if (e.Clicks == 2)
-        {
-            form.Visible = true;
-            form.WindowState = FormWindowState.Normal;
-            form.BringToFront();
-        }
-        button.Checked = form.Visible;
-    }
-
-    async private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
-    {
-        //Electron diffractionを表示した直後、なぜかグラフィックボックスがグレーになってしまうので、その対処.
-        await Task.Delay(200);
-        if (FormDiffractionSimulator.Visible)
-            FormDiffractionSimulator.Draw();
-    }
-
-    private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
-    {
-        FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonDiffractionPoly.Checked;
-        listBox_SelectedIndexChanged(listBox, e);
-    }
-
-    private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        FormCalculator.Visible = false;
-        e.Cancel = true;
-    }
-
-
-    #endregion
-
-    #region CrystalControlからのCrystalChangedイベント
-    private void crystalControl_CrystalChanged(object sender, EventArgs e)
-    {
-        if (crystalControl.Crystal != null)
-        {
-            var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
-            SkipEulerChange = true;
-            numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
-            SkipEulerChange = false;
-
-            SetNearestUVW();
-
-            if (SkipDrawing) return;
-
-            if (FormStructureViewer.Visible)
-                FormStructureViewer.SetGLObjects(crystalControl.Crystal);
-            if (FormStereonet.Visible)
-                FormStereonet.SetCrystal();
-            if (FormDiffractionSimulator.Visible)
-                FormDiffractionSimulator.SetCrystal();
-            if (FormSpotID.Visible)
-                FormSpotID.SetCrystal();
-            if (FormRotation.Visible)
-                FormRotation.SetRotation();
-            if (FormImageSimulator.Visible)
-                FormImageSimulator.RotationChanged();
-
-            resetAxes();
-        }
-    }
-    #endregion
-
     #region 回転ボタン
 
     //角度リセットボタン
@@ -987,9 +849,149 @@ public partial class FormMain : Form
         SetRotation(matrix);
 
         SkipEulerChange = false;
+        SetNearestUVW();
     }
 
     #endregion オイラー角度を直接入力したばあい
+
+    #region 他のFunctionを起動、連携
+    private void powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+    {
+        toolStripButtonDiffractionPoly.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+        toolStripSeparator19.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+    }
+    private void FormTEMID_VisibleChanged(object sender, EventArgs e)
+    {
+        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+            SelectionMode.MultiExtended : SelectionMode.One;
+    }
+
+    private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
+    {
+        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+            SelectionMode.MultiExtended : SelectionMode.One;
+    }
+
+    private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
+    {
+        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+            SelectionMode.MultiExtended : SelectionMode.One;
+    }
+
+    private void crystalControl_ScatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.FormScatteringFactor.Visible;
+
+    private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
+
+
+    /// <summary>
+    /// ToolStripボタンを押されたら、各機能を起動/終了する
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
+    {
+        var button = sender as ToolStripButton;
+        Form form;
+        if (button.Name.Contains("Structure"))
+            form = FormStructureViewer;
+        else if (button.Name.Contains("Database"))
+            form = FormCrystalDatabase;
+        else if (button.Name.Contains("Symmetry"))
+            form = crystalControl.FormSymmetryInformation;
+        else if (button.Name.Contains("Scattering"))
+            form = crystalControl.FormScatteringFactor;
+        else if (button.Name.Contains("Rotation"))
+            form = FormRotation;
+        else if (button.Name.Contains("Stereonet"))
+            form = FormStereonet;
+        else if (button.Name.Contains("DiffractionSingle"))
+            form = FormDiffractionSimulator;
+        else if (button.Name.Contains("ImageSimulator"))
+            form = FormImageSimulator;
+        else if (button.Name.Contains("SpotIDv1"))
+            form = FormTEMID;
+        else if (button.Name.Contains("SpotIDv2"))
+            form = FormSpotID;
+        else
+            form = FormPolycrystallineDiffractionSimulator;
+
+        if (e.Clicks == 1)
+        {
+            if (!form.Visible)
+            {
+                form.Visible = true;
+                form.WindowState = FormWindowState.Normal;
+            }
+            else if (form.WindowState == FormWindowState.Minimized)
+                form.WindowState = FormWindowState.Normal;
+            else
+                form.Visible = false;
+        }
+        else if (e.Clicks == 2)
+        {
+            form.Visible = true;
+            form.WindowState = FormWindowState.Normal;
+            form.BringToFront();
+        }
+        button.Checked = form.Visible;
+    }
+
+    async private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
+    {
+        //Electron diffractionを表示した直後、なぜかグラフィックボックスがグレーになってしまうので、その対処.
+        await Task.Delay(200);
+        if (FormDiffractionSimulator.Visible)
+            FormDiffractionSimulator.Draw();
+    }
+
+    private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
+    {
+        FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonDiffractionPoly.Checked;
+        listBox_SelectedIndexChanged(listBox, e);
+    }
+
+    private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        FormCalculator.Visible = false;
+        e.Cancel = true;
+    }
+
+
+    #endregion
+
+    #region CrystalControlからのCrystalChangedイベント
+    private void crystalControl_CrystalChanged(object sender, EventArgs e)
+    {
+        if (crystalControl.Crystal != null)
+        {
+            var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
+            SkipEulerChange = true;
+            numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
+            numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
+            numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+            SkipEulerChange = false;
+
+            numericBoxMaxUVW_ValueChanged(sender, e);
+
+            if (SkipDrawing) return;
+
+            if (FormStructureViewer.Visible)
+                FormStructureViewer.SetGLObjects(crystalControl.Crystal);
+            if (FormStereonet.Visible)
+                FormStereonet.SetCrystal();
+            if (FormDiffractionSimulator.Visible)
+                FormDiffractionSimulator.SetCrystal();
+            if (FormSpotID.Visible)
+                FormSpotID.SetCrystal();
+            if (FormRotation.Visible)
+                FormRotation.SetRotation();
+            if (FormImageSimulator.Visible)
+                FormImageSimulator.RotationChanged();
+
+            resetAxes();
+        }
+    }
+    #endregion
 
     #region リストボックス関連
 
@@ -1436,8 +1438,7 @@ public partial class FormMain : Form
         if (Crystal.A_Axis == null)
             Crystal.SetAxis();
 
-        uvwIndices = new List<(int U, int V, int W)>();
-        uvwLength2 = new List<double>();
+        uvwIndices.Clear();
 
         int limit = numericBoxMaxUVW.ValueInteger;
         for (int u = -limit; u <= limit; u++)
@@ -1455,16 +1456,12 @@ public partial class FormMain : Form
                     if ((u == 0 && v == 0 && Math.Abs(w) != 1) || (Math.Abs(u) != 1 && v == 0 && w == 0) || (u == 0 && Math.Abs(v) != 1 && w == 0))
                         flag = false;
                     if (flag)
-                    {
-                        uvwIndices.Add((u, v, w));
-                        uvwLength2.Add((u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis).Length2);
-                    }
+                        uvwIndices.Add((u, v, w, (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis).Length));
                 }
         SetNearestUVW();
     }
 
-    private List<(int U, int V, int W)> uvwIndices = new();
-    private List<double> uvwLength2 = new();
+    private List<(int U, int V, int W, double Length)> uvwIndices = new();
 
     private void SetNearestUVW()//最も近いuvwを検索
     {
@@ -1473,27 +1470,16 @@ public partial class FormMain : Form
             Crystal.SetAxis();
 
         if (uvwIndices.Count == 0)
-        {
             numericBoxMaxUVW_ValueChanged(new object(), new EventArgs());
-            return;
-        }
-
-        (int U, int V, int W) bestIndex = (0, 0, 0);
-        double aZ = (Crystal.RotationMatrix * Crystal.A_Axis).Z, bZ = (Crystal.RotationMatrix * Crystal.B_Axis).Z, cZ = (Crystal.RotationMatrix * Crystal.C_Axis).Z;
-        double dev = 0, temp;
-
-        for (int i = 0; i < uvwIndices.Count; i++)
+        else
         {
-            var z = uvwIndices[i].U * aZ + uvwIndices[i].V * bZ + uvwIndices[i].W * cZ;
-            if (z > 0 && dev < (temp = z * z / uvwLength2[i]))
-            {
-                dev = temp;
-                bestIndex = uvwIndices[i];
-            }
+            double aZ = (Crystal.RotationMatrix * Crystal.A_Axis).Z, bZ = (Crystal.RotationMatrix * Crystal.B_Axis).Z, cZ = (Crystal.RotationMatrix * Crystal.C_Axis).Z;
+            var (U, V, W, _) = uvwIndices.MaxBy(e => (e.U * aZ + e.V * bZ + e.W * cZ) / e.Length);
+
+            labelCurrentIndexU.Text = U.ToString();
+            labelCurrentIndexV.Text = V.ToString();
+            labelCurrentIndexW.Text = W.ToString();
         }
-        labelCurrentIndexU.Text = bestIndex.U.ToString();
-        labelCurrentIndexV.Text = bestIndex.V.ToString();
-        labelCurrentIndexW.Text = bestIndex.W.ToString();
     }
     #endregion
 
