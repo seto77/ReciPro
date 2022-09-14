@@ -5,7 +5,6 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Buffers;
-using System.Drawing.Printing;
 
 namespace Crystallography;
 
@@ -168,32 +167,27 @@ public static class NativeWrapper
     #endregion
 
     #region Nativeライブラリが有効かどうか
-    static NativeWrapper()
-    {
-        Enabled = enabled();
-    }
-
-    static bool enabled()
-    {
-        var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
-        if (!System.IO.File.Exists(appPath))
-            return false;
-        else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
-            return false;
-        try
-        {
-            var result = Inverse(2, new[] { new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0) });
-            return result[0].Real + result[3].Real > 1;
-        }
-        catch { return false; }
-    }
 
     /// <summary>
     /// Native ライブラリが有効かどうか
     /// </summary>
-
     public static bool Enabled { get; }
 
+    static NativeWrapper()
+    {
+
+        var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+        if (!System.IO.File.Exists(appPath))
+            Enabled = false;
+        else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
+            Enabled = false;
+        try
+        {
+            var result = Inverse(2, new[] { new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0) });
+            Enabled = result[0].Real + result[3].Real > 1;
+        }
+        catch { Enabled = false; }
+    }
     #endregion
 
     #region 変換関数
@@ -523,14 +517,14 @@ public static class NativeWrapper
         return new DenseMatrix(mat.ColumnCount, mat.ColumnCount, MatrixExponential(mat.ColumnCount, mat.Values));
     }
 
-    static unsafe public Complex[] MatrixExponential(int dim, Complex[] mat)
+    static unsafe public Complex[] MatrixExponential(in int dim, Complex[] mat)
     {
         var result = GC.AllocateUninitializedArray<Complex>(dim * dim);//new Complex[dim];
         MatrixExponential(dim, mat, ref result);
         return result;
     }
 
-    static unsafe public void MatrixExponential(int dim, Complex[] mat, ref Complex[] result)
+    static unsafe public void MatrixExponential(in int dim, Complex[] mat, ref Complex[] result)
     {
         fixed (Complex* _result = result)
         fixed (Complex* _mat = mat)
@@ -590,7 +584,8 @@ public static class NativeWrapper
     /// <param name="coeff"></param>
     /// <param name="eigen"></param>
     /// <returns></returns>
-    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
+    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  
+        CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
     {
         var dim = psi0.Length;
         var Values = GC.AllocateUninitializedArray<Complex>(dim);

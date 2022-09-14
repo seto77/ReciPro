@@ -994,6 +994,7 @@ public class BetheMethod
             if (bwSTEM.CancellationPending) return;
 
             var (index, result, gInDetector, K) = _disk2;
+            
             Complex[] c_k = eVectors[index], α_k = αs[index], λ_k = eValues[index];
             double kz_k = k_z[index];
             Complex[] lenz = new Complex[defocusses.Length];
@@ -1001,9 +1002,10 @@ public class BetheMethod
             try
             {
                 for (int m = 0; m < qList.Count; m++)
-                    if (A(K + qList[m].Vec.ToPointD))
+                {
+                    var P = K + qList[m].Vec.ToPointD;
+                    if (A(P))
                     {
-                        var P = K + qList[m].Vec.ToPointD;
                         double dX = P.X * coeff2 + coeff1, dY = -P.Y * coeff2 + coeff1;//P の X,Y座標(実数)
                         int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
                         int n0 = y * diameterPix + x, n1 = n0 + 1, n2 = n0 + diameterPix, n3 = n2 + 1;//それぞれのインデックス
@@ -1050,7 +1052,7 @@ public class BetheMethod
 
                                 //kz(K)とkz(K+Q)を作成
                                 double kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
-                                
+
                                 //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
                                 for (int i = 0; i < bLen; i++)
                                 {
@@ -1077,6 +1079,7 @@ public class BetheMethod
                             }
                         }
                     }
+                }
             }
             finally { Shared.Return(TDS); Shared.Return(c_kq); Shared.Return(λ_kq); Shared.Return(α_kq); Shared.Return(temp_k); Shared.Return(temp_kq); }
             if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress(count, "Calculating I(Q)");//状況を報告
