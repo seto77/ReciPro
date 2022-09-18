@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BitMiracle.LibTiff.Classic;
+using System.Runtime.InteropServices;
 
 #endregion
 
@@ -428,11 +429,12 @@ public partial class FormDiffractionSimulator : Form
 
         #region ガウス関数で描画するローカル関数
         //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
+        int gradation = 32; 
         double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
         {
             //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
             //intensityはスポットの積分強度、sは半値幅
-            int gradation = 32;
+            
             double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
 
             var maxI = intensity * coeff1;
@@ -544,16 +546,17 @@ public partial class FormDiffractionSimulator : Form
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
                 }
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
-                gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
+                //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();//20220915以下に変更。合ってるかな。
+                gVector.ForEach(g => g.RelativeIntensity = g.RawIntensity / max);
 
                 if (formMain.Crystals.Length == 1)
-                    foreach (var g in gVector)
+                    foreach (var g in CollectionsMarshal.AsSpan(gVector))
                     {
                         var ext = crystal.Symmetry.CheckExtinctionRule(g.Index);
                         g.Argb = ext.Length == 0 ? colorControlNoCondition.Argb : colorControlScrewGlide.Argb;
                     }
                 else
-                    foreach (var g in gVector)
+                    foreach (var g in CollectionsMarshal.AsSpan(gVector))
                         g.Argb = crystal.Argb;
             }
             else

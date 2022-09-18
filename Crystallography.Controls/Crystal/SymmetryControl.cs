@@ -342,80 +342,78 @@ public partial class SymmetryControl : UserControl
     #endregion
 
     #region 群の記号を斜体、上付き、下付などに整形する
+
+    //下付き文字用フォント
+    readonly Font fontSub = new("Times New Roman", 8f, FontStyle.Regular);
+    //斜体
+    readonly Font fontItalic = new("Times New Roman", 11f, FontStyle.Italic);
+    //普通
+    readonly Font fontRegular = new("Times New Roman", 11f, FontStyle.Regular);
+    //太字
+    readonly Font fontBold = new("Times New Roman", 10f, FontStyle.Bold);
+
     private void comboBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
     {
         if (e.Index < 0) return;
         e.DrawBackground();
         string txt = ((ComboBox)sender).Items[e.Index].ToString();
 
-        //下付き文字用フォント
-        var sub = new Font("Times New Roman", 8f, FontStyle.Regular);
-        //斜体
-        var italic = new Font("Times New Roman", 11f, FontStyle.Italic);
-        //普通
-        var regular = new Font("Times New Roman", 11f, FontStyle.Regular);
-
-        var bold = new Font("Times New Roman", 10f, FontStyle.Bold);
-
         float xPos = e.Bounds.Left;
-        Brush b = null;
-
+        Brush b;
         if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
             b = new SolidBrush(Color.Black);
         else
             b = new SolidBrush(Color.White);
         e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-
         //「:」が含まれている場合は、空間群番号を表すので、先に「:」までを処理する。
-        if (txt.Contains(":"))
+        if (txt.Contains(':'))
         {
             var i = txt.find(":") + 1;
 
-            e.Graphics.DrawString(txt[0..i].ToString(), regular, b, xPos, e.Bounds.Y);
-            xPos += e.Graphics.MeasureString(txt[0..i].ToString(), regular).Width - 2;
+            e.Graphics.DrawString(txt[0..i].ToString(), fontRegular, b, xPos, e.Bounds.Y);
+            xPos += e.Graphics.MeasureString(txt[0..i].ToString(), fontRegular).Width - 2;
             txt = txt[i..];
         }
 
-
         while (txt.Length > 0)
         {
-            if (txt.StartsWith(" "))
+            if (txt.StartsWith(" ", StringComparison.Ordinal))
                 xPos += 0;
-            else if (txt.StartsWith("sub"))//subで始まる時は
+            else if (txt.StartsWith("sub", StringComparison.Ordinal))//subで始まる時は
             {
                 xPos -= 1;
                 txt = txt[3..];
-                e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
-                xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
+                e.Graphics.DrawString(txt[0].ToString(), fontSub, b, xPos, e.Bounds.Y + 3);
+                xPos += e.Graphics.MeasureString(txt[0].ToString(), fontSub).Width - 2;
             }
-            else if (txt.StartsWith("-"))//-で始まる時は
+            else if (txt.StartsWith("-", StringComparison.Ordinal))//-で始まる時は
             {
-                float x = e.Graphics.MeasureString(txt[1].ToString(), regular).Width;
+                float x = e.Graphics.MeasureString(txt[1].ToString(), fontRegular).Width;
                 e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));
             }
-            else if (txt.StartsWith("Hex") || txt.StartsWith("Rho") || txt.StartsWith("(1)") || txt.StartsWith("(2)"))
+            else if (txt.StartsWith("Hex", StringComparison.Ordinal) || txt.StartsWith("Rho", StringComparison.Ordinal) || txt.StartsWith("(1)", StringComparison.Ordinal) || txt.StartsWith("(2)", StringComparison.Ordinal))
             {
                 xPos += 2;
-                e.Graphics.DrawString(txt[..3], sub, b, xPos, e.Bounds.Y + 3);
-                xPos += e.Graphics.MeasureString(txt[..3], sub).Width - 2;
+                e.Graphics.DrawString(txt[..3], fontSub, b, xPos, e.Bounds.Y + 3);
+                xPos += e.Graphics.MeasureString(txt[..3], fontSub).Width - 2;
                 txt = txt[2..];
             }
             else if (txt[0] == '/')
             {
                 xPos -= 1;
-                e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 5;
+                e.Graphics.DrawString(txt[0].ToString(), fontRegular, b, xPos, e.Bounds.Y);
+                xPos += e.Graphics.MeasureString(txt[0].ToString(), fontRegular).Width - 5;
             }
             else if (('0' <= txt[0] && '9' >= txt[0]) || txt[0] == '(' || txt[0] == ')')
             {
-                e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 2;
+                e.Graphics.DrawString(txt[0].ToString(), fontRegular, b, xPos, e.Bounds.Y);
+                xPos += e.Graphics.MeasureString(txt[0].ToString(), fontRegular).Width - 2;
             }
             else
             {
-                e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
-                xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
+                e.Graphics.DrawString(txt[0].ToString(), fontItalic, b, xPos, e.Bounds.Y);
+                xPos += e.Graphics.MeasureString(txt[0].ToString(), fontItalic).Width - 2;
             }
             txt = txt[1..];
         }

@@ -564,34 +564,27 @@ public partial class FormStructureViewer : Form
                 {
                     //ボンド長さの条件を満たす頂点インデックスを検索
                     var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
-                    var m = vIndices.Length;
+                    int m = vIndices.Length, index = cArray[i].AtomIndex;
                     if (m > 0)
-                    {
-                        if (!checkBoxShowBondedAtoms.Checked)
-                            lock (lockObj2)
-                                dic2.Add(i, vIndices);
-                        else
+                        lock (lockObj2)
                         {
-                            var index = cArray[i].AtomIndex;
-                            lock (lockObj2)
+                            if (!checkBoxShowBondedAtoms.Checked)
+                                dic2.Add(i, vIndices);
+                            else if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合か、範囲外の結合している原子を描画しない場合
                             {
-                                if (!coord.TryGetValue(index, out int n))//まだcoordに何も追加されていない場合か、範囲外の結合している原子を描画しない場合
+                                dic2.Add(i, vIndices);
+                                coord.Add(index, m);
+                            }
+                            else if (n <= m)
+                            {
+                                dic2.Add(i, vIndices);
+                                if (n < m)//配位数の最大値が更新された場合は、配位数の不完全なverticesを消去
                                 {
-                                    coord.Add(index, m);
-                                    dic2.Add(i, vIndices);
-                                }
-                                else if (n <= m)
-                                {
-                                    if (n < m)//配位数が更新された場合は、配位数の不完全なverticesを消去
-                                    {
-                                        coord[index] = m;
-                                        dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
-                                    }
-                                    dic2.Add(i, vIndices);
+                                    coord[index] = m;
+                                    dic2.Where(o => cArray[o.Key].AtomIndex == index && o.Value.Length < m).ToList().ForEach(o => dic2.Remove(o.Key));
                                 }
                             }
                         }
-                    }
                 }
             });
 

@@ -173,7 +173,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Y = pos.Y;
         Z = pos.Z;
 
-        var temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
+        var temp = WyckoffPosition.GetEquivalentAtomsPosition((X,Y,Z), symmetrySeriesNumber);
         WyckoffLeter = temp.WyckoffLeter;
         SiteSymmetry = temp.SiteSymmetry;
         Multiplicity = temp.Multiplicity;
@@ -256,7 +256,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     {
         SymmetrySeriesNumber = symmetrySeriesNumber;
 
-        var temp = WyckoffPosition.GetEquivalentAtomsPosition(new Vector3D(X, Y, Z), symmetrySeriesNumber);
+        var temp = WyckoffPosition.GetEquivalentAtomsPosition((X, Y, Z), symmetrySeriesNumber);
         WyckoffLeter = temp.WyckoffLeter;
         SiteSymmetry = temp.SiteSymmetry;
         Multiplicity = temp.Multiplicity;

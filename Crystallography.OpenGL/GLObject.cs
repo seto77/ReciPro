@@ -717,33 +717,26 @@ public class Polygon : GLObject
         var polygonInfo = GLGeometry.PolygonInfo(vertices, V3d.Zero);
         var normF = polygonInfo.Norm.ToV3f();
         var centerF = polygonInfo.Center.ToV3f();
-        var tempList = polygonInfo.Indices;
-
-        var veticesList = new List<Vertex>(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)));
-        veticesList.Add(new Vertex(centerF, normF, mat.Argb));
-
-        var indicesList = new List<int> { veticesList.Count - 1 };
-        indicesList.AddRange(tempList);
+        var indicesList = polygonInfo.Indices;
+        indicesList.Insert(0, (uint)vertices.Count());
+        var indicesArray = indicesList.ToArray();
 
         //最終処理
-        Vertices = veticesList.ToArray();
+        Vertices = new Vertex[vertices.Count() + 1];
+        Array.Copy(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray(), Vertices, vertices.Count());
+        Vertices[Vertices.Length - 1] = new Vertex(centerF, normF, mat.Argb);
 
-        var lists = new List<int[]>();
-        var primitives = new List<(PT Type, int Count)>();
+        Indices = new uint[indicesArray.Length * 3 - 4];
+        Primitives = new (PT Type, int Count)[3];
         //surfaces
-        lists.Add(indicesList.ToArray());
-        primitives.Add((PT.TriangleFan, indicesList.Count));
+        Array.Copy(indicesArray, Indices, indicesArray.Length);
+        Primitives[0] = (PT.TriangleFan, indicesList.Count);
         //edges
-        indicesList.RemoveRange(0, 2);
-        lists.Add(indicesList.ToArray());
-        primitives.Add((PT.LineLoop, indicesList.Count));
+        Array.Copy(indicesArray, 2, Indices, indicesArray.Length, indicesArray.Length - 2);
+        Primitives[1] = (PT.LineLoop, indicesList.Count);
         //points
-        lists.Add(indicesList.ToArray());
-        primitives.Add((PT.Points, indicesList.Count));
-
-        Indices = lists.SelectMany(i => i).Select(i => (uint)i).ToArray();
-
-        Primitives = primitives.ToArray();
+        Array.Copy(indicesArray, 2, Indices, indicesArray.Length * 2 - 2, indicesArray.Length - 2);
+        Primitives[2] = (PT.Points, indicesList.Count);
     }
 
     /// <summary>
@@ -754,7 +747,7 @@ public class Polygon : GLObject
     public Polygon[] Decompose(int order = 1)
     {
         //ここから本体
-        var inputs = new List<V3d>();
+        var inputs = new List<V3d>(Primitives[0].Count - 2);
         for (int i = 1; i < Primitives[0].Count - 1; i++)
             inputs.Add(Vertices[Indices[i]].Position.ToV3d());
 
@@ -782,8 +775,7 @@ public class Polygon : GLObject
 
             //results[i].Material.Color = new C4((float)rn.NextDouble(), (float)rn.NextDouble(), (float)rn.NextDouble(), 1);
         }
-
-        return results.ToArray();
+        return results;
     }
 
 
@@ -802,11 +794,9 @@ public class Polygon : GLObject
         else
         {
             //頂点と、頂点間の中点を、交互に追加. 偶数番目が中点になるように.
-            var newVertices = new List<V3d>
-                {
-                    (srcVertex[^1] + srcVertex[0]) / 2,
-                    srcVertex[0]
-                };
+            var newVertices = new List<V3d>(srcVertex.Length + 1);
+            newVertices.Add((srcVertex[^1] + srcVertex[0]) / 2);
+            newVertices.Add(srcVertex[0]);
             for (int i = 1; i < srcVertex.Length; i++)
             {
                 newVertices.Add((srcVertex[i - 1] + srcVertex[i]) / 2);
@@ -823,7 +813,7 @@ public class Polygon : GLObject
                 if (n2 < newVertices.Count && n0 % 2 == 0) // n0が奇数(すなわち中点)で、四角形を作る余裕があるとき
                 {
                     var quads = new[] { center, newVertices[n0], newVertices[n1], newVertices[n2] };
-                    if (GLGeometry.PolygonInfo(quads, V3d.Zero).Indices.Length == 5) //四角形が凸になるか判定
+                    if (GLGeometry.PolygonInfo(quads, V3d.Zero).Indices.Count == 5) //四角形が凸になるか判定
                         resultVertices.Add(quads);
                     else
                         resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
@@ -892,7 +882,6 @@ public class Quads : Polygon
 /// </summary>
 public class Disk : Polygon
 {
-
     public Disk(Vector3DBase origin, Vector3DBase normal, double radius, Material mat, DrawingMode mode, int slices = 60)
         : this(new V3d(origin.X, origin.Y, origin.Z), new V3d(normal.X, normal.Y, normal.Z), radius, mat, mode, slices) { }
 
@@ -942,7 +931,7 @@ public class Polyhedron : GLObject
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
         //任意の三点を選び、平面方程式を作り、それらが最も端面であるかを評価し、端面である場合はリストに加える
-        var candidates = new List<IEnumerable<V3d>>();
+        var candidates = new List<V3d[]>();
 
         var vrs = vertices.ToArray();
         for (int i = 0; i < vrs.Length - 2; i++)
@@ -954,23 +943,23 @@ public class Polyhedron : GLObject
 
                     if (vrs.All(v => V3d.Dot(v - A, V) < 0.0000001) || vrs.All(v => V3d.Dot(v - A, V) > -0.0000001))
                         if (candidates.All(cand => !(cand.Contains(A) && cand.Contains(B) && cand.Contains(C))))
-                            candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v - A, V)) < 0.0000001));
+                            candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v - A, V)) < 0.0000001).ToArray());
                 }
 
 
         //各面を構成する頂点集合に対して
         var vList = new List<Vertex>();
-        var iList2 = new List<IEnumerable<int>>();
+        var iList2 = new List<List<uint>>();
         var types = new List<PT>();
-        var offset = 0;
-        foreach (var cand in candidates)
+        var offset = (uint)0;
+        foreach (var cand in CollectionsMarshal.AsSpan(candidates))
         {
             var polygonInfo = GLGeometry.PolygonInfo(cand, center);
 
             vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
             vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
 
-            var iTemp = new List<int>(new[] { vList.Count - 1 });//多面体中心のインデックスを追加
+            var iTemp = new List<uint>(new[] { (uint)(vList.Count - 1) });//多面体中心のインデックスを追加
             var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
             iTemp.AddRange(offsetIndices);//多面体頂点のインデックスを追加
 
@@ -983,14 +972,13 @@ public class Polyhedron : GLObject
             types.Add(PT.LineLoop);
             types.Add(PT.Points);
 
-            offset += cand.Count() + 1;
+            offset += (uint)(cand.Length + 1);
         }
 
         Vertices = vList.ToArray();
-        Indices = iList2.SelectMany(i => i).Select(i => (uint)i).ToArray();
+        Indices = iList2.SelectMany(i => i).ToArray();
 
-        Primitives = types.Select((t, i) => (t, iList2[i].Count())).ToArray();
-
+        Primitives = types.Select((t, i) => (t, iList2[i].Count)).ToArray();
     }
 
     /// <summary>
@@ -1116,16 +1104,15 @@ public class Ellipsoid : GLObject
                 new M3d(0, 0, 1, 0, 1, 0, -1, 0, 0),
                 new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), };
 
-        var vList = new List<Vertex>();
-        for (int i = 0; i < rot.Length; i++)
+        Vertices = new Vertex[rot.Length * (slices*2+1) * (slices * 2 + 1)];
+        for (int i = 0, j=0; i < rot.Length; i++)
             for (int h = -slices; h <= slices; h++)
                 for (int w = -slices; w <= slices; w++)
                 {
                     var n = new V4d(V3d.Normalize(rot[i].Mult(new V3d(w, h, slices))), 1);
                     var v = transMat.Mult(n);
-                    vList.Add(new Vertex(v.ToV3f(), n.ToV3f(), mat.Argb));
+                    Vertices[j++] = new Vertex(v.ToV3f(), n.ToV3f(), mat.Argb);
                 }
-        Vertices = vList.ToArray();
 
         var types = new List<PT>(3);
         var indices = new List<int[]>();

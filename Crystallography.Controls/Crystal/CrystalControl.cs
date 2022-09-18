@@ -283,17 +283,8 @@ namespace Crystallography.Controls
 
         public void ReadCrystal(string filename)
         {
-
-            try
-            {
-                Crystal = ConvertCrystalData.ConvertToCrystal(filename);
-            }
-            catch (Exception ex)
-            {
-                if (Crystallography.AssemblyState.IsDebug)
-                    MessageBox.Show(ex.ToString());
-                return;
-            }
+            try { Crystal = ConvertCrystalData.ConvertToCrystal(filename); }
+            catch (Exception ex) { if (AssemblyState.IsDebug) MessageBox.Show(ex.ToString()); return; }
         }
 
         #region ドラッグドロップイベント

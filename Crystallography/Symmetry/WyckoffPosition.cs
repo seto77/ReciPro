@@ -211,8 +211,6 @@ public readonly struct WyckoffPosition
 
         return atoms;
     }
-    public static Atoms GetEquivalentAtomsPosition(in Vector3D Pos, in int SymmetrySeriesNumber)
-        => GetEquivalentAtomsPosition((Pos.X, Pos.Y, Pos.Z), SymmetrySeriesNumber);
 
     #endregion
 }

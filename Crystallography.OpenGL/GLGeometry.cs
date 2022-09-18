@@ -17,7 +17,7 @@ public static class GLGeometry
     /// </summary>
     /// <param name="points"></param>
     /// <returns></returns>
-    public static (int[] Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> points, in V3d origin)
+    public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> points, in V3d origin)
     {
         var center = Extensions.Average(points);
         //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
@@ -35,7 +35,7 @@ public static class GLGeometry
         var i = lengthSquaredArray.FindIndex(len => len == maxLength);
 
         //もう一つ点を選び、直線の方程式を産出
-        var iList = new List<int>(new[] { i });
+        var iList = new List<uint>(new[] {(uint) i });
         do
         {
             for (int j = 0; j < vXY.Count; j++)
@@ -46,14 +46,14 @@ public static class GLGeometry
 
                     if (vXY.All(p => V2d.Dot(p, V) + c <= Th))
                     {
-                        iList.Add(j);
+                        iList.Add((uint)j);
                         i = j;
                         break;
                     }
                 }
         } while (i != iList[0] && iList.Count <= points.Count());
 
-        return (iList.ToArray(), center, norm);
+        return (iList, center, norm);
     }
 
     /// <summary>
