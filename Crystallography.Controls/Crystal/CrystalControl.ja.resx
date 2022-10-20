@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -124,14 +64,8 @@
   <data name="numericBoxVolume.HeaderText" xml:space="preserve">
     <value>単位格子体積</value>
   </data>
-  <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
   <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 25</value>
-  </data>
-  <data name="numericBoxCellMass.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>×10⁻²⁴ g</value>
@@ -145,9 +79,6 @@
   <data name="numericBoxCellMass.Location" type="System.Drawing.Point, System.Drawing">
     <value>181, 4</value>
   </data>
-  <data name="numericBoxCellMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
   <data name="numericBoxCellMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 25</value>
   </data>
@@ -159,12 +90,6 @@
   </data>
   <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
     <value>モル体積</value>
-  </data>
-  <data name="numericBoxMolarVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 29</value>
-  </data>
-  <data name="numericBoxMolarVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
   </data>
   <data name="numericBoxMolarVolume.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 25</value>
@@ -178,9 +103,6 @@
   <data name="numericBoxMolarMass.Location" type="System.Drawing.Point, System.Drawing">
     <value>202, 29</value>
   </data>
-  <data name="numericBoxMolarMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
   <data name="numericBoxMolarMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 25</value>
   </data>
@@ -192,12 +114,6 @@
   </data>
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>密度</value>
-  </data>
-  <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 54</value>
-  </data>
-  <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
   </data>
   <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 25</value>
@@ -237,6 +153,15 @@
   </data>
   <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>458, 276</value>
+  </data>
+  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
+    <value>デバイワラー因子をゼロにする</value>
+  </data>
+  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 26</value>
   </data>
   <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -326,86 +251,8 @@
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
   </data>
-  <data name="numericBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxHill.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
   <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 123</value>
-  </data>
-  <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
   </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -503,8 +350,75 @@
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 24</value>
   </data>
+  <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="scatteringFactorToolStripMenuItem.Text" xml:space="preserve">
+    <value>散乱因子</value>
+  </data>
+  <data name="symmetryInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="symmetryInformationToolStripMenuItem.Text" xml:space="preserve">
+    <value>対称性詳細</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 6</value>
+  </data>
+  <data name="importCrystalFromCIFAMCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="importCrystalFromCIFAMCToolStripMenuItem.Text" xml:space="preserve">
+    <value>CIFファイル又はAMCファイルから読み込み</value>
+  </data>
+  <data name="exportThisCrystalAsCIFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="exportThisCrystalAsCIFToolStripMenuItem.Text" xml:space="preserve">
+    <value>CIFファイルとして出力</value>
+  </data>
+  <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 6</value>
+  </data>
+  <data name="clearAllDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="clearAllDataToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="revertCellConstantsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="revertCellConstantsToolStripMenuItem.Text" xml:space="preserve">
+    <value>アプリ起動時の格子定数に戻す</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 6</value>
+  </data>
+  <data name="strainControlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>Strain control</value>
+  </data>
+  <data name="convertToP1SymmetryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
+    <value>空間群をP1に変換</value>
+  </data>
+  <data name="convertToSuperstructureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 22</value>
+  </data>
+  <data name="convertToSuperstructureToolStripMenuItem.Text" xml:space="preserve">
+    <value>超構造に変換</value>
+  </data>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 242</value>
   </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 0</value>

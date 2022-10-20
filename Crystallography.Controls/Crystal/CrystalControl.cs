@@ -376,7 +376,6 @@ namespace Crystallography.Controls
         private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var dlg = new FormSuperStructure();
-
             if(dlg.ShowDialog()== DialogResult.OK)
                 toSuperStructure(dlg.A, dlg.B, dlg.C);
         }
@@ -720,6 +719,11 @@ namespace Crystallography.Controls
         private void button1_Click(object sender, EventArgs e)
         {
             GenerateFromInterface();
+        }
+
+        private void clearAllDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
