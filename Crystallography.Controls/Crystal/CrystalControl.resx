@@ -3021,6 +3021,9 @@
   <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Text" xml:space="preserve">
     <value>Send this crystal to other software</value>
   </data>
+  <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 6</value>
   </data>
@@ -3045,8 +3048,23 @@
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>Strain Control</value>
   </data>
+  <data name="strainControlToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="convertToP1SymmetryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Convert to P1 symmetry</value>
+  </data>
+  <data name="convertToSuperstructureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 22</value>
+  </data>
+  <data name="convertToSuperstructureToolStripMenuItem.Text" xml:space="preserve">
+    <value>Convert to superstructure</value>
+  </data>
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 198</value>
+    <value>253, 242</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
     <value>contextMenuStrip</value>
@@ -3403,6 +3421,18 @@
     <value>strainControlToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;strainControlToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;convertToP1SymmetryToolStripMenuItem.Name" xml:space="preserve">
+    <value>convertToP1SymmetryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;convertToP1SymmetryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;convertToSuperstructureToolStripMenuItem.Name" xml:space="preserve">
+    <value>convertToSuperstructureToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;convertToSuperstructureToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">

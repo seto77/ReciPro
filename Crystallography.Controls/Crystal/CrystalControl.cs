@@ -1,6 +1,8 @@
 ﻿#region Using
+using Crystallography.Controls;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -358,6 +360,70 @@ namespace Crystallography.Controls
                 formStrain.crystal = Crystal;
 
             formStrain.Visible = !formStrain.Visible;
+        }
+
+        /// <summary>
+        /// 空間群P1に変換
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toSuperStructure(1, 1, 1);
+        }
+
+        //超構造に変換
+        private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new FormSuperStructure();
+
+            if(dlg.ShowDialog()== DialogResult.OK)
+                toSuperStructure(dlg.A, dlg.B, dlg.C);
+        }
+
+        private void toSuperStructure(int _u, int _v, int _w)
+        {
+            GenerateFromInterface();
+            crystal.SymmetrySeriesNumber = 1;
+
+            var temp_atoms = new List<Atoms>();
+            foreach (var atoms in Crystal.Atoms)
+            {
+                int n = 0;
+                foreach (var atom in atoms.Atom)
+                {
+                    for (double u = 0; u < _u; u++)
+                        for (double v = 0; v < _v; v++)
+                            for (double w = 0; w < _w; w++)
+                            {
+                                var x = (atom.X + u) / _u;
+                                var y = (atom.Y + v) / _v;
+                                var z = (atom.Z + w) / _w;
+
+                                var x_err = atoms.X_err / _u;
+                                var y_err = atoms.Y_err / _v;
+                                var z_err = atoms.Z_err / _w;
+
+                                temp_atoms.Add(new Atoms(
+                                    atoms.Label.TrimEnd() + "_" + n.ToString(),
+                                    atoms.AtomicNumber, atoms.SubNumberXray, atoms.SubNumberElectron, atoms.Isotope,
+                                    1,
+                                    new Vector3DBase(x, y, z), new Vector3DBase(x_err, y_err, z_err),
+                                    atoms.Occ, atoms.Occ_err,
+                                    atoms.Dsf,
+                                    atoms.Material,
+                                    atoms.Radius, atoms.GLEnabled, atoms.ShowLabel));
+                                n++;
+                            }
+                }
+            }
+            crystal.A *= _u;
+            crystal.B *= _v;
+            crystal.C *= _w;
+            crystal.Atoms = temp_atoms.ToArray();
+
+            SetToInterface(true);
+            GenerateFromInterface();
         }
 
         #endregion 右クリックメニュー

@@ -593,9 +593,11 @@ namespace Crystallography
 		#endregion
 
 		#region •ÎŒõ•â³
-		public static List<double> CorrectPolarization(int rotate)
+		public static List<double> CorrectPolarization(int rotate, List<double> intensity = null)
 		{
-			SetTiltParameter();
+			intensity ??= Intensity;
+
+            SetTiltParameter();
 
 			double fd = IP.FilmDistance, fd2 = fd * fd;
 			double sizeX = IP.PixSizeX, sizeY = IP.PixSizeY;
@@ -619,7 +621,7 @@ namespace Crystallography
 
 			//var coeff2 = new Func<double, double, double>((x2, y2) => Math.Sqrt( fd2 / (x2 + y2 + fd2)));
 
-			var result = new double[Intensity.Count];
+			var result = new double[intensity.Count];
 			//Parallel.For‚ğg‚í‚È‚¢‚Ù‚¤‚ª‘‚¢
 			int i = 0;
 			for (int pixY = 0; pixY < SrcImgSize.Height; pixY++)
@@ -636,7 +638,7 @@ namespace Crystallography
 					double temp8 = fd / (temp4 + tempX * Denom2);
 					double x = (temp5 + tempX * Numer2) * temp8;
 					double y = (tempX * Numer1 + temp6) * temp8;
-					result[i] = Intensity[i] / coeff1(x * x, y * y);// *coeff2(x * x, y * y);
+					result[i] = intensity[i] / coeff1(x * x, y * y);// *coeff2(x * x, y * y);
 					i++;
 				}
 			}

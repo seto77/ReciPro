@@ -38,6 +38,8 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public double X, Y, Z;
     public double X_err, Y_err, Z_err;
+   
+
     public double Occ, Occ_err;
     public int AtomicNumber;
 
@@ -68,17 +70,20 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public int Argb;
 
-
     public float Radius = 0.6f;
-
 
     public float Ambient = Material.DefaultTexture.Ambient;//ä¬ã´åı
     public float Diffusion = Material.DefaultTexture.Diffuse;//ägéUåı
     public float Emission = Material.DefaultTexture.Emission;//é©å»èÿñæ
     public float Shininess = Material.DefaultTexture.SpecularPow;//îΩéÀåıÇÃã≠ìx
     public float Specular = Material.DefaultTexture.Specular;//îΩéÀåı
+    
+    [XmlIgnore]
+    public Vector3DBase PositionError => new Vector3DBase(X_err, Y_err, Z_err);
+    [XmlIgnore] 
+    public Vector3DBase Position => new Vector3DBase(X, Y, Z);
 
-
+    
 
 
     [XmlIgnore]
@@ -94,6 +99,8 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
             Emission = value.Emission;
         }
     }
+
+    public Material Material => new(Argb,(Ambient,Diffusion,Specular,Shininess,Emission));
 
     /// <summary>
     /// OpenGLï`âÊéûÇ…ÅAÉâÉxÉãÇï\é¶Ç∑ÇÈÇ©
@@ -162,7 +169,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="occ"></param>
     /// <param name="dsf"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-        Vector3D pos, double occ, DiffuseScatteringFactor dsf)
+        Vector3DBase pos, double occ, DiffuseScatteringFactor dsf)
     {
         SymmetrySeriesNumber = symmetrySeriesNumber;
 
@@ -204,7 +211,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="occ_err"></param>
     /// <param name="dsf"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-       Vector3D pos, Vector3D pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
+       Vector3DBase pos, Vector3DBase pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
         : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, occ, dsf)
     {
 
@@ -231,7 +238,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="mat"></param>
     /// <param name="radius"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-       Vector3D pos, Vector3D pos_err, double occ, double occ_err,
+       Vector3DBase pos, Vector3DBase pos_err, double occ, double occ_err,
         DiffuseScatteringFactor dsf, Material mat, float radius, bool glEnabled = true, bool showLabel = false)
         : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, pos_err, occ, occ_err, dsf)
     {

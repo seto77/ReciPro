@@ -132,6 +132,8 @@
             this.revertCellConstantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.strainControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertToP1SymmetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertToSuperstructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -1076,7 +1078,9 @@
             this.clearAllDataToolStripMenuItem,
             this.revertCellConstantsToolStripMenuItem,
             this.toolStripSeparator3,
-            this.strainControlToolStripMenuItem});
+            this.strainControlToolStripMenuItem,
+            this.convertToP1SymmetryToolStripMenuItem,
+            this.convertToSuperstructureToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             // 
@@ -1141,6 +1145,18 @@
             this.strainControlToolStripMenuItem.Name = "strainControlToolStripMenuItem";
             resources.ApplyResources(this.strainControlToolStripMenuItem, "strainControlToolStripMenuItem");
             this.strainControlToolStripMenuItem.Click += new System.EventHandler(this.strainControlToolStripMenuItem_Click);
+            // 
+            // convertToP1SymmetryToolStripMenuItem
+            // 
+            this.convertToP1SymmetryToolStripMenuItem.Name = "convertToP1SymmetryToolStripMenuItem";
+            resources.ApplyResources(this.convertToP1SymmetryToolStripMenuItem, "convertToP1SymmetryToolStripMenuItem");
+            this.convertToP1SymmetryToolStripMenuItem.Click += new System.EventHandler(this.convertToP1ToolStripMenuItem_Click);
+            // 
+            // convertToSuperstructureToolStripMenuItem
+            // 
+            this.convertToSuperstructureToolStripMenuItem.Name = "convertToSuperstructureToolStripMenuItem";
+            resources.ApplyResources(this.convertToSuperstructureToolStripMenuItem, "convertToSuperstructureToolStripMenuItem");
+            this.convertToSuperstructureToolStripMenuItem.Click += new System.EventHandler(this.convertToSuperstructureToolStripMenuItem_Click);
             // 
             // textBoxName
             // 
@@ -1362,5 +1378,7 @@
         private System.Windows.Forms.Button buttonScatteringFactor;
         private EOSControl eosControl;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem convertToP1SymmetryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem convertToSuperstructureToolStripMenuItem;
     }
 }
