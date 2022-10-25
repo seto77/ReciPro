@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.10.21.0222</AssemblyVersion>
-    <FileVersion>2022.10.21.0222</FileVersion>
+    <AssemblyVersion>2022.10.25.0623</AssemblyVersion>
+    <FileVersion>2022.10.25.0623</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,7 +24,6 @@
   <ItemGroup>
     <PackageReference Include="HDF.PInvoke.1.10" Version="1.10.612" />
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-    <PackageReference Include="MathNet.Numerics.OpenBLAS.Win" Version="0.3.0-beta1" />
     <PackageReference Include="MessagePack" Version="2.4.35" />
     <PackageReference Include="MessagePack.Annotations" Version="2.4.35" />
     <PackageReference Include="OpenTK" Version="3.3.3" />
