@@ -8,10 +8,10 @@ namespace Crystallography.Controls
 {
     public partial class FormPeriodicTable : Form
     {
-        public int[] Includes => button.Where(b => b.BackColor == IncludeColor).Select(b => (int)b.Tag).ToArray();
+        public byte[] Includes => button.Where(b => b.BackColor == IncludeColor).Select(b => (byte)((int)b.Tag)).ToArray();
         public string[] IncludesStr => Includes.Select(i => i.ToString("000")).ToArray();
 
-        public int[] Excludes => button.Where(b => b.BackColor == ExcludeColor).Select(b => (int)b.Tag).ToArray();
+        public byte[] Excludes => button.Where(b => b.BackColor == ExcludeColor).Select(b => (byte)((int)b.Tag)).ToArray();
         public string[] ExcludesStr => Excludes.Select(i => i.ToString("000")).ToArray();
 
 

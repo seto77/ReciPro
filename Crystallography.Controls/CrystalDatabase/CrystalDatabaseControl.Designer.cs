@@ -147,7 +147,7 @@
             this.dataGridView.RowHeadersWidth = 44;
             this.dataGridView.RowTemplate.Height = 21;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(792, 168);
+            this.dataGridView.Size = new System.Drawing.Size(913, 508);
             this.dataGridView.TabIndex = 76;
             // 
             // nameDataGridViewTextBoxColumn
@@ -335,7 +335,7 @@
             this.bindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator.Name = "bindingNavigator";
             this.bindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator.Size = new System.Drawing.Size(792, 24);
+            this.bindingNavigator.Size = new System.Drawing.Size(913, 24);
             this.bindingNavigator.TabIndex = 77;
             this.bindingNavigator.Text = "bindingNavigator";
             // 
@@ -426,7 +426,7 @@
             this.textBoxAMCSD.Multiline = true;
             this.textBoxAMCSD.Name = "textBoxAMCSD";
             this.textBoxAMCSD.ReadOnly = true;
-            this.textBoxAMCSD.Size = new System.Drawing.Size(792, 32);
+            this.textBoxAMCSD.Size = new System.Drawing.Size(913, 32);
             this.textBoxAMCSD.TabIndex = 79;
             this.textBoxAMCSD.Text = resources.GetString("textBoxAMCSD.Text");
             // 
@@ -439,7 +439,7 @@
             this.textBoxCOD.Multiline = true;
             this.textBoxCOD.Name = "textBoxCOD";
             this.textBoxCOD.ReadOnly = true;
-            this.textBoxCOD.Size = new System.Drawing.Size(792, 32);
+            this.textBoxCOD.Size = new System.Drawing.Size(913, 32);
             this.textBoxCOD.TabIndex = 80;
             this.textBoxCOD.Text = "The database is based on ”COD”. Please be sure to cite the references in the foll" +
     "owing cite when publishing the data: https://wiki.crystallography.net/cod/citing" +
@@ -456,7 +456,7 @@
             this.Controls.Add(this.textBoxCOD);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "CrystalDatabaseControl";
-            this.Size = new System.Drawing.Size(792, 256);
+            this.Size = new System.Drawing.Size(913, 596);
             this.Resize += new System.EventHandler(this.CrystalDatabaseControl_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();

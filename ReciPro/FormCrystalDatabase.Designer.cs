@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchCrystalControl = new Crystallography.Controls.SearchCrystalControl();
             this.crystalDatabaseControl = new Crystallography.Controls.CrystalDatabaseControl();
@@ -37,26 +36,9 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.AutoSize = true;
-            this.buttonSearch.BackColor = System.Drawing.Color.Chocolate;
-            this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSearch.Location = new System.Drawing.Point(0, 0);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(188, 33);
-            this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "Search";
-            this.toolTip.SetToolTip(this.buttonSearch, "Search crystals");
-            this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.searchCrystalControl);
-            this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(727, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -67,10 +49,10 @@
             // searchCrystalControl
             // 
             this.searchCrystalControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchCrystalControl.Location = new System.Drawing.Point(0, 33);
+            this.searchCrystalControl.Location = new System.Drawing.Point(0, 0);
             this.searchCrystalControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchCrystalControl.Name = "searchCrystalControl";
-            this.searchCrystalControl.Size = new System.Drawing.Size(188, 319);
+            this.searchCrystalControl.Size = new System.Drawing.Size(188, 352);
             this.searchCrystalControl.TabIndex = 0;
             // 
             // crystalDatabaseControl
@@ -89,7 +71,6 @@
             // 
             // FormCrystalDatabase
             // 
-            this.AcceptButton = this.buttonSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 352);
@@ -103,7 +84,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCrystalDatabase_FormClosing);
             this.Load += new System.EventHandler(this.FormCrystalDatabase_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -112,7 +92,6 @@
 
         private Crystallography.Controls.SearchCrystalControl searchCrystalControl;
         private Crystallography.Controls.CrystalDatabaseControl crystalDatabaseControl;
-        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip toolTip;
     }

@@ -1229,6 +1229,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         //強度の順にソート
         Plane.Sort((p1, p2) => -p1.Intensity.CompareTo(p2.Intensity));
+
         return Plane.Take(Math.Min(8, Plane.Count)).Select(p => (float)p.d).ToArray();
     }
     #endregion

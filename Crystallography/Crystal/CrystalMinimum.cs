@@ -43,6 +43,7 @@ public class Crystal2
     public float[] d;//強度8位までのd値
     [Key(18)]
     public string fileName;
+
     #endregion
 
     #region プロパティ

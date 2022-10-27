@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.10.21.0222</AssemblyVersion>
-    <FileVersion>2022.10.21.0222</FileVersion>
+    <AssemblyVersion>2022.10.27.0448</AssemblyVersion>
+    <FileVersion>2022.10.27.0448</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -85,6 +85,7 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.649" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="3.0.0" />
+    <PackageReference Include="MathNet.Numerics.OpenBLAS.Win" Version="0.3.0-beta1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,10 @@ public partial class FormCrystalDatabase : Form
     public FormCrystalDatabase()
     {
         InitializeComponent();
+
+        searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
+
+        this.AcceptButton = searchCrystalControl.buttonSearch;
     }
 
     private void FormCrystalDatabase_Load(object sender, EventArgs e)
@@ -17,9 +21,6 @@ public partial class FormCrystalDatabase : Form
         if (File.Exists(FormMain.UserAppDataPath + "StdDB.cdb3"))
             crystalDatabaseControl.ReadDatabase(FormMain.UserAppDataPath + "StdDB.cdb3");
     }
-
-    private void buttonSearch_Click(object sender, EventArgs e)
-        => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 
     private void FormCrystalDatabase_FormClosing(object sender, FormClosingEventArgs e)
     {
