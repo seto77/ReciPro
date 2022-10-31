@@ -67,7 +67,7 @@
             this.crystalDatabaseControl.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this.crystalDatabaseControl.Size = new System.Drawing.Size(727, 352);
             this.crystalDatabaseControl.TabIndex = 1;
-            this.crystalDatabaseControl.CrystalChanged += new System.EventHandler(this.crystalDatabaseControl_CrystalChanged);
+            this.crystalDatabaseControl.CrystalChanged += new System.EventHandler(this.CrystalDatabaseControl_CrystalChanged);
             // 
             // FormCrystalDatabase
             // 

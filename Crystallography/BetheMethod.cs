@@ -590,7 +590,7 @@ public class BetheMethod
         var vecK0 = getVecK0(k_vac, u0);
 
         int dim;
-        if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValues == null || EigenVectors == null || !rotation.Equals(BaseRotation))
+        if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValues == null || Beams.Length!=EigenValues.Length|| EigenVectors == null || !rotation.Equals(BaseRotation))
         {
             MaxNumOfBloch = maxNumOfBloch;
             AccVoltage = voltage;

@@ -194,14 +194,8 @@ public partial class DataSet
 
     partial class DataTableCrystalDatabaseDataTable
     {
-        //public Crystal2 this[int i] => (Crystal2)Rows[i][0];
         public void SetFlag(int i, bool flag) => Rows[i][columnFlag] = flag;
         public bool GetFlag(int i) => (bool)Rows[i][columnFlag];
-
-
-        //static readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
-        //static byte[] serialize(Crystal2 c) => MessagePackSerializer.Serialize(c, msgOptions);
-        //static T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
 
         /// <summary>
         /// 引数はbindingSourceMain.Currentオブジェクト. 
@@ -240,7 +234,7 @@ public partial class DataSet
             }
         }
 
-        object lockObj = new object();
+        readonly object lockObj = new object();
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
@@ -262,8 +256,6 @@ public partial class DataSet
             dr.Flag = true;
 
             return dr;
-
-           
         }
 
 

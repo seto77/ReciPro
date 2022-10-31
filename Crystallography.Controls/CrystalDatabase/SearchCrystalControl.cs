@@ -8,8 +8,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Community.CsharpSqlite.Sqlite3;
-using static IronPython.Modules.PythonIterTools;
 
 namespace Crystallography.Controls
 {
@@ -21,11 +19,6 @@ namespace Crystallography.Controls
 
         public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
         public event ProgressChangedEventHandler ProgressChanged;
-
-        /// <summary>
-        /// 検索開始の合図を送るイベント
-        /// </summary>
-        public event EventHandler FilterChanged;
 
         public FormPeriodicTable formPeriodicTable;
 
@@ -89,12 +82,6 @@ namespace Crystallography.Controls
         }
 
         #endregion
-
-        private void textBoxSearchName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter　)
-                FilterChanged?.Invoke(this, new EventArgs());
-        }
 
         Stopwatch sw = new();
         bool[] flags = Array.Empty<bool>();
@@ -164,9 +151,9 @@ namespace Crystallography.Controls
                     var elements = cry.atoms.Select(a => a.AtomNo).Distinct().ToArray();
                     if (excludes.Length != 0 && elements.Any(e => excludes.Contains(e)))
                         flag = false;
-                    if (flag == true && includes.Length != 0 && !includes.All(e => elements.Contains(e)))
+                    if (flag && includes.Length != 0 && !includes.All(e => elements.Contains(e)))
                         flag = false;
-                    if (cry.atoms.Count == 0)
+                    if (flag && cry.atoms.Count == 0)
                         flag = false;
                 }
 
@@ -189,7 +176,7 @@ namespace Crystallography.Controls
                         flag = false;
                 }
 
-                //格子定数のフィルター
+                //密度のフィルター
                 if (flag && density != 0 && (density * (1 - densErr) > cry.density || density * (1 + densErr) < cry.density))
                     flag = false;
 
@@ -214,8 +201,7 @@ namespace Crystallography.Controls
 
                 flags[i] = flag;
 
-                Interlocked.Increment(ref count);
-                if (count % 1000 == 0 && sw.ElapsedMilliseconds-time >200)
+                if (Interlocked.Increment(ref count) % 1000 == 0 && sw.ElapsedMilliseconds - time > 100)
                 {
                     time = sw.ElapsedMilliseconds;
                     backgroundWorkerSearch.ReportProgress(count);
@@ -227,31 +213,30 @@ namespace Crystallography.Controls
 
         static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
         static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
+
+        static int  zeroKey = (255 << 20) + (255 << 10) + 255;
+        static (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
         static float[] calcDlist(double a, double b, double c, double alpha, double beta, double gamma, double dMin)
         {
             double SinAlfa = Math.Sin(alpha), CosAlfa = Math.Cos(alpha), CosBeta = Math.Cos(beta), CosGamma = Math.Cos(gamma);
-            Vector3DBase C_Axis = new(0, 0, c);
-            Vector3DBase B_Axis = new(0, b * SinAlfa, b * CosAlfa);
-            Vector3DBase A_Axis = new(
+            Vector3DBase cAxis = new(0, 0, c);
+            Vector3DBase bAxis = new(0, b * SinAlfa, b * CosAlfa);
+            Vector3DBase aAxis = new(
             a * Math.Sqrt(1 - CosBeta * CosBeta - (CosGamma - CosAlfa * CosBeta) * (CosGamma - CosAlfa * CosBeta) / SinAlfa / SinAlfa),
             a * (CosGamma - CosAlfa * CosBeta) / SinAlfa,
             a * CosBeta);
 
-            var MatrixInverse = Matrix3D.Inverse(new Matrix3D(A_Axis, B_Axis, C_Axis));
+            var MatrixInverse = new Matrix3D(aAxis, bAxis, cAxis).Inverse();
             double aX = MatrixInverse.E11, aY = MatrixInverse.E12, aZ = MatrixInverse.E13;
             double bX = MatrixInverse.E21, bY = MatrixInverse.E22, bZ = MatrixInverse.E23;
             double cX = MatrixInverse.E31, cY = MatrixInverse.E32, cZ = MatrixInverse.E33;
 
             var gMax = 1 / dMin;
-            (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
-
             var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
-
             var maxGnum = 8000;
-            var zeroKey = (255 << 20) + (255 << 10) + 255;
             var outer = new List<(int key, double len)>() { (zeroKey, 0) };
-            var gHash = new HashSet<int>(maxGnum) { zeroKey };
-            var gList = new List<double>(maxGnum) { 0 };
+            var gKeys = new HashSet<int>() { zeroKey };
+            var gList = new HashSet<double>() { 0 };
             var minG = 0.0;
 
             while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
@@ -263,11 +248,11 @@ namespace Crystallography.Controls
                     foreach ((int h2, int k2, int l2) in directions)
                     {
                         int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
-                        if (key2 > 0 && !gHash.Contains(key2))
+                        if (key2 > 0 && !gKeys.Contains(key2))
                         {
                             double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                             var len = Math.Sqrt(x * x + y * y + z * z);
-                            gHash.Add(key2);
+                            gKeys.Add(key2);
                             gList.Add(len);
                             outer.Add((key2, len));
                         }
@@ -276,9 +261,8 @@ namespace Crystallography.Controls
                 outer.RemoveRange(0, end + 1);
                 outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
             }
-            gList.RemoveAt(0);
-
-            return gList.Select(g=> (float)(1/g)).ToArray();
+            gList.Remove(0);
+            return gList.Select(g => (float)(1 / g)).ToArray();
         }
 
 

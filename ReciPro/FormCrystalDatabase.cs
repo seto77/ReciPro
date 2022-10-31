@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 
 namespace ReciPro;
@@ -26,9 +25,9 @@ public partial class FormCrystalDatabase : Form
     {
         e.Cancel = true;
         FormMain.toolStripButtonDatabase.Checked = false;
-        this.Visible = false;
+        Visible = false;
     }
 
-    private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
+    private void CrystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
         => FormMain.crystalControl.Crystal = crystalDatabaseControl.Crystal;
 }

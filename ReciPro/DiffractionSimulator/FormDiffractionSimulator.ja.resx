@@ -321,24 +321,6 @@
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <data name="tabPageWave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageWave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPageWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 83</value>
-  </data>
-  <data name="tabPageWave.Text" xml:space="preserve">
-    <value>入射波</value>
-  </data>
-  <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 3</value>
-  </data>
-  <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 77</value>
-  </data>
   <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
@@ -899,6 +881,9 @@
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 22</value>
   </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
   <data name="copyImageToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 22</value>
   </data>
@@ -971,16 +956,16 @@
   <data name="basicConceptOfBethesMethodToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 22</value>
   </data>
-  <data name="radioButtonIntensityBethe.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonIntensityDynamical.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="radioButtonIntensityBethe.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="radioButtonIntensityDynamical.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 108</value>
   </data>
-  <data name="radioButtonIntensityBethe.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="radioButtonIntensityDynamical.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 22</value>
   </data>
-  <data name="radioButtonIntensityBethe.Text" xml:space="preserve">
+  <data name="radioButtonIntensityDynamical.Text" xml:space="preserve">
     <value>動力学的効果</value>
   </data>
   <data name="checkBoxUseCrystalColor.Font" type="System.Drawing.Font, System.Drawing">
@@ -990,13 +975,16 @@
     <value>MiddleLeft</value>
   </data>
   <data name="checkBoxUseCrystalColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 0</value>
+    <value>49, 5</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 0, 0</value>
   </data>
   <data name="checkBoxUseCrystalColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 21</value>
+    <value>137, 21</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>結晶毎の指定色</value>
+    <value>結晶毎の指定色で描画</value>
   </data>
   <data name="checkBoxExtinctionAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1032,13 +1020,13 @@
     <value>False</value>
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 615</value>
+    <value>0, 764</value>
   </data>
   <data name="flowLayoutPanelPED.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelPED.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 84</value>
+    <value>207, 84</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -1086,10 +1074,10 @@
     <value />
   </data>
   <data name="flowLayoutPanelBethe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 532</value>
+    <value>0, 681</value>
   </data>
   <data name="flowLayoutPanelBethe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 83</value>
+    <value>207, 83</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -1140,10 +1128,10 @@
     <value />
   </data>
   <data name="flowLayoutPanelAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 252</value>
+    <value>0, 384</value>
   </data>
   <data name="flowLayoutPanelAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 280</value>
+    <value>207, 297</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -1224,7 +1212,7 @@
     <value>10, 102</value>
   </data>
   <data name="flowLayoutPanelGaussianOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 74</value>
+    <value>200, 77</value>
   </data>
   <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1275,7 +1263,10 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="checkBoxLogScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 46</value>
+    <value>3, 49</value>
+  </data>
+  <data name="checkBoxLogScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
   </data>
   <data name="checkBoxLogScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 24</value>
@@ -1283,8 +1274,11 @@
   <data name="checkBoxLogScale.Text" xml:space="preserve">
     <value>ログスケール</value>
   </data>
+  <data name="checkBoxLogScale.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
   <data name="flowLayoutPanelColorScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 70</value>
+    <value>20, 73</value>
   </data>
   <data name="flowLayoutPanelColorScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
@@ -1293,19 +1287,19 @@
     <value>False</value>
   </data>
   <data name="flowLayoutPanelSpotColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 179</value>
+    <value>10, 182</value>
   </data>
   <data name="flowLayoutPanelSpotColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 97</value>
+    <value>204, 111</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 18</value>
+    <value>44, 18</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>デバイリング</value>
+    <value>描画色</value>
   </data>
   <data name="colorControlOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1314,7 +1308,7 @@
     <value>ダイレクト</value>
   </data>
   <data name="colorControlOrigin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 22</value>
+    <value>5, 27</value>
   </data>
   <data name="colorControlOrigin.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 20</value>
@@ -1326,7 +1320,7 @@
     <value>一般反射</value>
   </data>
   <data name="colorControlNoCondition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 22</value>
+    <value>98, 27</value>
   </data>
   <data name="colorControlNoCondition.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 20</value>
@@ -1338,7 +1332,7 @@
     <value>禁制反射 (らせん or 映進)</value>
   </data>
   <data name="colorControlScrewGlide.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 43</value>
+    <value>5, 48</value>
   </data>
   <data name="colorControlScrewGlide.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 20</value>
@@ -1350,19 +1344,19 @@
     <value>禁制反射 (複合格子)</value>
   </data>
   <data name="colorControlForbiddenLattice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 64</value>
+    <value>5, 69</value>
   </data>
   <data name="colorControlForbiddenLattice.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 20</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 90</value>
+    <value>0, 222</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 8, 3, 3</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 162</value>
+    <value>207, 162</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -1416,7 +1410,7 @@
     <value>スポットの詳細情報</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 90</value>
+    <value>207, 90</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -1431,7 +1425,7 @@
     <value>0, 20</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 66</value>
+    <value>169, 66</value>
   </data>
   <data name="radioButtonBeamParallel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1442,17 +1436,29 @@
   <data name="radioButtonBeamParallel.Text" xml:space="preserve">
     <value>平行</value>
   </data>
-  <data name="radioButtonBeamPrecession.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="radioButtonBeamPrecessionElectron.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="radioButtonBeamPrecession.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="radioButtonBeamPrecessionElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 0</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 22</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
+    <value>歳差 (電子)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 22</value>
   </data>
-  <data name="radioButtonBeamPrecession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
+  <data name="radioButtonBeamPrecessionXray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
   </data>
-  <data name="radioButtonBeamPrecession.Text" xml:space="preserve">
-    <value>プリセション (PED, 電子線のみ)</value>
+  <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
+    <value>歳差 (X線, ZOLZ)</value>
   </data>
   <data name="radioButtonBeamConvergence.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1465,6 +1471,9 @@
   </data>
   <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
     <value>収束 (CBED, 電子線のみ)</value>
+  </data>
+  <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 132</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -105,7 +105,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     {
         e.Cancel = true;
         if (this.Visible && sender == this)
-            FormDiffractionSimulator.radioButtonIntensityBethe.Checked = true;
+            FormDiffractionSimulator.radioButtonIntensityDynamical.Checked = true;
     }
     #endregion
 

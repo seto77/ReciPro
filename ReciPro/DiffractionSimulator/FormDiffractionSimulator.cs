@@ -61,7 +61,7 @@ public partial class FormDiffractionSimulator : Form
         {
             if (radioButtonIntensityExcitation.Checked) return DrawingMode.None;
             else if (radioButtonIntensityKinematical.Checked) return DrawingMode.Kinematical;
-            else if (radioButtonIntensityBethe.Checked) return DrawingMode.BetheSAED;
+            else if (radioButtonIntensityDynamical.Checked) return DrawingMode.BetheSAED;
             else return DrawingMode.BetheCBED;
         }
     }
@@ -365,7 +365,7 @@ public partial class FormDiffractionSimulator : Form
 
         if (FormDiffractionBeamTable.Visible)
         {
-            if (radioButtonIntensityBethe.Checked)
+            if (radioButtonIntensityDynamical.Checked)
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
@@ -467,7 +467,6 @@ public partial class FormDiffractionSimulator : Form
                     };
                     alpha = 255;
                 }
-                
 
                 var brush = new SolidBrush(Color.FromArgb(alpha, c));
                 if (j < gradation - 1 && radius2 > 0)
@@ -512,7 +511,7 @@ public partial class FormDiffractionSimulator : Form
             logCoeff *= 1000000;
         }
 
-        var bethe = radioButtonIntensityBethe.Checked;
+        var bethe = radioButtonIntensityDynamical.Checked;
         var sw = new Stopwatch();
         foreach (var crystal in formMain.Crystals)
         {
@@ -524,9 +523,9 @@ public partial class FormDiffractionSimulator : Form
 
                 var blochNum = FormDiffractionSimulatorCBED.Visible ? FormDiffractionSimulatorCBED.MaxNumOfBloch : numericBoxNumOfBlochWave.ValueInteger;
 
-                if (radioButtonBeamPrecession.Checked)//プリセッションの場合
+                if (radioButtonBeamPrecessionElectron.Checked)//電子プリセッションの場合
                 {
-                    var eigenValues = crystal.Bethe.EigenValuesPED;//電子線の場合
+                    var eigenValues = crystal.Bethe.EigenValuesPED;
 
                     var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                         numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
@@ -573,14 +572,19 @@ public partial class FormDiffractionSimulator : Form
                 if (-vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
                 {
                     double L2 = (vec.X * vec.X) + (vec.Y * vec.Y), dev = 0.0;
-                    if (!bethe)
-                        g.Tag = dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
 
+                    if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの時
+                        g.Tag = dev = -vec.Z;
+                    else if (!bethe)//動力学電子回折ではないとき
+                        g.Tag = dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
+                    
                     var dev2 = dev * dev;
+
                     if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
                     //(vec.X, -vec.Y, -vec.Z + EwaldRadius) と(SinPhi*SinTau, -CosPhi*sinTau, cosTau) の内積が0より大きい = 前方散乱)
                     {
                         var pt = convertReciprocalToDetector(vec);
+
                         if (IsScreenArea(pt))
                         {
                             //CBEDモードの時
@@ -665,7 +669,7 @@ public partial class FormDiffractionSimulator : Form
             graphics.DrawLine(penOrigin, ptOrigin.X - l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X + l / 2f, ptOrigin.Y + l / 2f);
             graphics.DrawLine(penOrigin, ptOrigin.X + l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X - l / 2f, ptOrigin.Y + l / 2f);
             //fillCircle(pictureBoxOrigin.BackColor, ptOrigin, l);
-            if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityBethe.Checked)
+            if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
                 graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + l / 2f), (float)(ptOrigin.Y + l / 2f));
             //ダイレクトスポットの描画ここまで
         }
@@ -700,7 +704,7 @@ public partial class FormDiffractionSimulator : Form
         {
             if (radioButtonIntensityKinematical.Checked)
                 sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %");
-            if (radioButtonIntensityBethe.Checked)
+            if (radioButtonIntensityDynamical.Checked)
                 sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %, ({g.F.Real:0.###} + {g.F.Imaginary:0.###}i)");
         }
         graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
@@ -852,7 +856,6 @@ public partial class FormDiffractionSimulator : Form
     #region DrawScale
     private void DrawScale(Graphics g)
     {
-
         int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
         if (width == 0 || height == 0)
             return;
@@ -922,6 +925,16 @@ public partial class FormDiffractionSimulator : Form
         if (!originInside)
             min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
         max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
+        
+        if(radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
+        {
+            if (!originInside)
+                min2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt( p.X2Y2) / CameraLength2 / 2)).Min() / Math.PI * 180.0;
+            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2 )).Max() / Math.PI * 180.0;
+            if (double.IsNaN(min2Theta)) min2Theta = 0;
+            if (double.IsNaN(max2Theta)) max2Theta = 175;
+        }
+
         //2θの最大/最小値　ここまで
 
         //分割幅をきめる　ここから
@@ -942,12 +955,16 @@ public partial class FormDiffractionSimulator : Form
 
         pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
 
-
-
         for (double n = Math.Max(1, startN); n < endN; n++)
         {
             var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
             var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+            if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
+            {
+                ptsArray = new List<List<PointD>>();
+                ptsArray.Add(Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList());
+            }
+
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
 
@@ -1184,7 +1201,7 @@ public partial class FormDiffractionSimulator : Form
             //  -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau  
             //この行列を(x,y,CameraLength2)に作用させればよい
     #endregion
-            DetectorRotation * new Vector3DBase(x, y, CameraLength2);
+            radioButtonBeamPrecessionXray.Checked? new Vector3DBase(x, y, CameraLength2): DetectorRotation * new Vector3DBase(x, y, CameraLength2);
 
     private Vector3DBase convertDetectorToReal(in PointD pt) => convertDetectorToReal(pt.X, pt.Y);
 
@@ -1196,17 +1213,24 @@ public partial class FormDiffractionSimulator : Form
     /// <returns></returns>
     private Vector3DBase convertRealToReciprocal(Vector3DBase v, bool originalCoordinate)
     {
-        var len = Math.Sqrt(v.X2Y2);
-        var twoTheta = Math.Atan2(len, v.Z);
+        if (radioButtonBeamPrecessionXray.Checked)
+        {
+            var rVec = new Vector3DBase(v.X, v.Y, 0) /  CameraLength2 * EwaldRadius;
+            return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * rVec : rVec;
+        }
+        else {
 
-        double sinTheta = Math.Sin(twoTheta / 2), sinThetaSquare = sinTheta * sinTheta;
-        var Z = EwaldRadius * (1 - Math.Cos(twoTheta));
+            var len = Math.Sqrt(v.X2Y2);
+            var twoTheta = Math.Atan2(len, v.Z);
 
-        var temp = 1 / len * Math.Sqrt((4 * sinThetaSquare * EwaldRadius * EwaldRadius) - Z * Z);
-        double X = v.X * temp, Y = -v.Y * temp;
+            double sinTheta = Math.Sin(twoTheta / 2), sinThetaSquare = sinTheta * sinTheta;
+            var Z = EwaldRadius * (1 - Math.Cos(twoTheta));
 
-        return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * new Vector3DBase(X, Y, Z) : new Vector3DBase(X, Y, Z);
+            var temp = 1 / len * Math.Sqrt((4 * sinThetaSquare * EwaldRadius * EwaldRadius) - Z * Z);
+            double X = v.X * temp, Y = -v.Y * temp;
 
+            return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * new Vector3DBase(X, Y, Z) : new Vector3DBase(X, Y, Z);
+        }
     }
 
     /// <summary>
@@ -1226,6 +1250,23 @@ public partial class FormDiffractionSimulator : Form
     /// <returns></returns>
     private PointD convertReciprocalToDetector(Vector3DBase g)
     {
+        if(radioButtonBeamPrecessionXray.Checked)//X線プリセッション。　検出器の傾きは考慮しない。
+        {
+            if (g.X == 0 && g.Y == 0)
+                return new PointD(0, 0);
+            //Z=0平面 (=初期フィルム面)と、gのなす角をφとする
+            var len = g.Length;
+            var sinφ = g.Z / len;
+            var cosφ = Math.Sqrt(1 - sinφ * sinφ);
+            var sinθ = len / 2 / EwaldRadius;// 2d sinθ = 2/len sinθ = 1/EwaldRadius  ==> sinθ = len / 2 / EwaldRadius;
+            var cosθ = Math.Sqrt(1 - sinθ * sinθ);
+
+            var x = CameraLength2 / EwaldRadius * len * cosθ / (cosφ * cosθ - sinφ * sinθ);
+
+            return new PointD(g.X, -g.Y) / Math.Sqrt(g.X2Y2) * x;
+
+        }
+
         var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
         var coeff = CameraLength2 / v.Z;
         return new PointD(v.X * coeff, v.Y * coeff);
@@ -1563,8 +1604,6 @@ public partial class FormDiffractionSimulator : Form
                     tabControl.SelectedTab = page;
                     tabControl.BringToFront();
                 }
-                else if (tabControl.SelectedTab == page)
-                    tabControl.SelectedTab = tabPageWave;
             }
             tabControl.Refresh();
         }
@@ -1653,39 +1692,6 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
-    #region 波長コントロールのイベント
-    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
-    {
-        if (this.Visible == false) return;
-
-        SetVector();
-
-        Draw();
-    }
-
-    private void WaveLengthControl_WaveSourceChanged(object sender, EventArgs e)
-    {
-        if (waveLengthControl.WaveSource == WaveSource.Electron)
-        {
-            radioButtonBeamConvergence.Enabled = radioButtonBeamPrecession.Enabled = true;
-            radioButtonIntensityBethe.Enabled = true;
-        }
-        else
-        {
-            radioButtonBeamConvergence.Enabled = radioButtonBeamPrecession.Enabled = false;
-
-            if (radioButtonBeamConvergence.Checked || radioButtonBeamPrecession.Checked)
-                radioButtonBeamParallel.Checked = true;
-
-            radioButtonIntensityBethe.Enabled = false;
-            if (radioButtonIntensityBethe.Checked)
-                radioButtonIntensityKinematical.Checked = true;
-
-        }
-        radioButtonBeamParallel.Checked = true;
-    }
-    #endregion
-
     #region ドラッグドロップイベント
     public void FormDiffractionSimulator_DragDrop(object sender, DragEventArgs e)
         => FormDiffractionSimulatorGeometry.FormDiffractionSimulatorGeometry_DragDrop(sender, e);
@@ -1694,8 +1700,52 @@ public partial class FormDiffractionSimulator : Form
         => e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
     #endregion
 
-    #region スポット関連の設定変更イベント
+    #region ビーム光学系の設定変更イベント
 
+    #region 波長コントロールのイベント
+    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
+    {
+        if (this.Visible == false) return;
+
+        SetVector();
+        Draw();
+    }
+
+    private void WaveLengthControl_WaveSourceChanged(object sender, EventArgs e)
+    {
+        //線源が変更されたら無条件で平行ビームに変更
+        radioButtonBeamParallel.Checked = true;
+
+        if (waveLengthControl.WaveSource == WaveSource.Electron)//電子線が選択された場合
+        {
+            radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = true;//収束と歳差(電子)は表示
+            radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
+            radioButtonIntensityDynamical.Visible = true;//動力学計算は表示
+        }
+        else if(waveLengthControl.WaveSource == WaveSource.Xray)//X線が選択された場合
+        {
+            radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
+            radioButtonBeamPrecessionXray.Visible = true;//歳差(X線)は表示
+            radioButtonIntensityDynamical.Visible = false;//動力学計算は非表示
+            if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
+                radioButtonIntensityKinematical.Checked = true;
+        }
+        else//中性子が選択された場合
+        {
+            radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
+            radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
+            radioButtonIntensityDynamical.Visible = false;//動力学計算は非表示
+            if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
+                radioButtonIntensityKinematical.Checked = true;
+        }
+    }
+    #endregion
+
+    /// <summary>
+    /// カラースケールの変更
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
     {
         flowLayoutPanelSpotColor.Visible = comboBoxScaleColorScale.SelectedIndex == 0;
@@ -1715,7 +1765,7 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="e"></param>
     private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
     {
-        flowLayoutPanelGaussianOption.Enabled = radioButtonPointSpread.Checked;
+        flowLayoutPanelGaussianOption.Visible = radioButtonPointSpread.Checked;
         SetVector();
         trackBarIntensityForPointSpread.Enabled = radioButtonPointSpread.Checked;
         checkBoxLogScale.Enabled = radioButtonPointSpread.Checked;
@@ -1724,102 +1774,95 @@ public partial class FormDiffractionSimulator : Form
     }
 
     /// <summary>
+    /// Optics (平行、歳差(電子)、歳差(X線)、収束)が変更されたとき 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void radioButtonBeamParallel_CheckedChanged(object sender, EventArgs e)
+    {
+        if (radioButtonBeamParallel.Checked)//平行
+        {
+            radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = true;
+
+            flowLayoutPanelPED.Visible = false;
+            FormDiffractionSimulatorCBED.Visible = false;
+
+            flowLayoutPanelBethe.Enabled = true;
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+        }
+        else if(radioButtonBeamPrecessionElectron.Checked)//歳差(電子)
+        {
+            radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = false;
+
+            radioButtonIntensityDynamical.Checked = true;
+
+            flowLayoutPanelPED.Visible = true;
+            FormDiffractionSimulatorCBED.Visible = false;
+
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+        }
+        else if (radioButtonBeamConvergence.Checked)//収束
+        {
+            radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = false;
+
+            radioButtonIntensityDynamical.Checked = true;
+
+            flowLayoutPanelPED.Visible = false;
+
+            FormDiffractionSimulatorCBED.Visible = true;
+
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = false;
+        }
+        else if (radioButtonBeamPrecessionXray.Checked)//歳差(X線)
+        {
+            radioButtonIntensityExcitation.Visible = true;
+            radioButtonIntensityKinematical.Visible = true;
+
+            flowLayoutPanelPED.Visible = false;
+
+            FormDiffractionSimulatorCBED.Visible = false;
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+        }
+
+        //PEDラジオボタンのチェック状況によって、PED設定パネルの表示変更
+        flowLayoutPanelPED.Visible = radioButtonBeamPrecessionElectron.Checked;
+
+        //ブロッホ波設定パネルの表示変更
+        flowLayoutPanelBethe.Visible = radioButtonIntensityDynamical.Checked;
+
+        SetVector();
+        Draw();
+    }
+
+
+    /// <summary>
     /// 計算方法 (励起誤差、運動学、動力学)のラジオボタンが変更されたとき
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void radioButtonIntensityCalculationMethod_CheckedChanged(object sender, EventArgs e)
     {
-        formMain.Crystal.Bethe.MaxNumOfBloch = 0;
-
-        //PED設定パネルの表示変更
-        flowLayoutPanelPED.Visible = radioButtonBeamPrecession.Checked;
-
         //ファイルメニューアイテムの変更
         saveDetectorAreaToolStripMenuItem.Visible = copyDetectorAreaToolStripMenuItem.Visible = FormDiffractionSimulatorGeometry.ShowDetectorArea;
         saveCBEDPatternToolStripMenuItem.Visible = copyCBEDPatternToolStripMenuItem.Visible = radioButtonBeamConvergence.Checked;
 
-        if (radioButtonBeamParallel.Checked)//平行ビームの場合
-        {
-            radioButtonIntensityExcitation.Enabled = true;
-            radioButtonIntensityKinematical.Enabled = true;
-
-            FormDiffractionSimulatorCBED.Visible = false;
-
-            numericBoxSpotRadius.Enabled = true;
-
-            flowLayoutPanelPED.Enabled = false;
-        }
-        else if (radioButtonBeamConvergence.Checked)//収束ビームの場合
-
-        {
-            radioButtonIntensityExcitation.Enabled = false;
-            radioButtonIntensityKinematical.Enabled = false;
-            radioButtonIntensityBethe.Checked = true;
-
-            FormDiffractionSimulatorCBED.Visible = true;
-            radioButtonPointSpread.Checked = true;
-
-            numericBoxSpotRadius.Enabled = true;
-
-            flowLayoutPanelPED.Enabled = false;
-        }
-
-        else if (radioButtonBeamPrecession.Checked)//歳差ビームの場合
-        {
-            radioButtonIntensityExcitation.Enabled = false;
-            radioButtonIntensityKinematical.Enabled = false;
-            radioButtonIntensityBethe.Checked = true;
-
-            FormDiffractionSimulatorCBED.Visible = false;
-
-            numericBoxSpotRadius.Enabled = true;
-
-            flowLayoutPanelPED.Enabled = true;
-        }
-
-
         if (radioButtonIntensityExcitation.Checked) //励起誤差のみの場合
         {
-            FormDiffractionBeamTable.Visible = false;
-            colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Enabled = true;
+            flowLayoutPanelExtinctionOption.Visible = true;
 
-            flowLayoutPanelExtinctionOption.Enabled = true;
-
-            //buttonDetailsOfSpots.Enabled = false;
-            flowLayoutPanelBethe.Enabled = false;
+            flowLayoutPanelBethe.Visible = false;
         }
-        else if (radioButtonIntensityKinematical.Checked) // 運動学的
+        else  // 運動学的あるいは動力学的
         {
-            FormDiffractionBeamTable.Visible = false;
-            colorControlScrewGlide.Enabled = colorControlForbiddenLattice.Enabled = false;
+            flowLayoutPanelExtinctionOption.Visible = false;
 
-            flowLayoutPanelExtinctionOption.Enabled = false;
-
-
-            //buttonDetailsOfSpots.Enabled = false;
-            flowLayoutPanelBethe.Enabled = false;
-
-
+            flowLayoutPanelBethe.Visible = false;
         }
-        else if (radioButtonIntensityBethe.Checked) // 動力学的
-        {
-            FormDiffractionBeamTable.Visible = false;
-            colorControlScrewGlide.Enabled = true;
-            colorControlForbiddenLattice.Enabled = false;
-
-            flowLayoutPanelExtinctionOption.Enabled = false;
-
-            //buttonDetailsOfSpots.Enabled = true;
-            flowLayoutPanelBethe.Enabled = true;
-        }
-
-
-
-
+        
         SetVector();
         Draw();
     }
+
     private void checkBoxExtinctionAll_CheckedChanged(object sender, EventArgs e)
     {
         if (checkBoxExtinctionAll.Checked)
@@ -1834,19 +1877,20 @@ public partial class FormDiffractionSimulator : Form
     }
 
 
-
+    /// <summary>
+    /// ビーム詳細情報がクリックされたとき
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ButtonDetailsOfSpots_Click(object sender, EventArgs e)
     {
         FormDiffractionBeamTable.Visible = true;
         FormDiffractionBeamTable.BringToFront();
-        if (radioButtonIntensityBethe.Checked)
+        if (radioButtonIntensityDynamical.Checked)
             FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
         else
-        {
             FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal);
-        }
     }
-
 
     #endregion
 
@@ -2254,10 +2298,11 @@ public partial class FormDiffractionSimulator : Form
 
     }
 
+  
 
     private void Button2_Click(object sender, EventArgs e)
     {
-        if (radioButtonBeamParallel.Checked && radioButtonIntensityBethe.Checked)
+        if (radioButtonBeamParallel.Checked && radioButtonIntensityDynamical.Checked)
         {
             var sb = new StringBuilder();
             for (int i = 0; i < 300; i++)
