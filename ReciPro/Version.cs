@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.839(2022/11/07)  Added a function to simulate X-ray precession camara." +
         "\r\n ver4.838(2022/10/21)  Improved compatibility of importing CIF files." +
         "\r\n ver4.837(2022/10/20)  Added a function to output superstructure." +
         "\r\n ver4.836(2022/08/30)  The compiler for C++ code was changed to Clang." +

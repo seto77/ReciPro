@@ -221,12 +221,17 @@ namespace Crystallography
 			/// <summary>
 			/// MRC2014ファイル. FEI社のTEMのカメラで使われる. http://www.ccpem.ac.uk/mrc_format/mrc_format.php および \references\TalosF200\Manual を参照
 			/// </summary>
-			MRC
+			MRC,
+
+            /// <summary>
+            /// PILATUSで出力されたcbfファイルを、ADXVというソフトで変換したフォーマット (拡張子img). (references\ImageExsample\ADXV 柴咲さん )
+            /// </summary>
+            ADXV
 
 
 
-			#endregion 画像タイプ
-		}
+            #endregion 画像タイプ
+        }
 
 		//public static WaitDlg wd;
 		public static Size SrcImgSize = new Size();
