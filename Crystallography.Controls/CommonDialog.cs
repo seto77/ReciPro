@@ -36,7 +36,7 @@ namespace Crystallography.Controls
                     
                     labelSoftwareAndVersion.Visible = true;
 
-                    ClientSize = new Size(400, progressBar.Height + flowLayoutPanelSoftwareInformation.Height + panelOK.Height);
+                    ClientSize = new Size(420, progressBar.Height + flowLayoutPanelSoftwareInformation.Height + panelOK.Height);
                 }
                 else
                 {
@@ -155,5 +155,11 @@ namespace Crystallography.Controls
         #endregion
 
         private void setToolTips() => textBox.Text = hint.Length > 0 ? hint[new Random().Next(hint.Length)] : "";
+
+        private void checkBoxCloseWindow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCloseWindow.Checked)
+                Visible = false;
+        }
     }
 }

@@ -45,9 +45,9 @@
             // 
             // progressBar
             // 
+            resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.progressBar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.ForeColor = System.Drawing.Color.Silver;
             this.progressBar.MarqueeAnimationSpeed = 1;
             this.progressBar.Maximum = 1000000;
@@ -57,8 +57,8 @@
             // 
             // textBox
             // 
-            this.textBox.BackColor = System.Drawing.Color.AliceBlue;
             resources.ApplyResources(this.textBox, "textBox");
+            this.textBox.BackColor = System.Drawing.Color.AliceBlue;
             this.textBox.ForeColor = System.Drawing.Color.DarkBlue;
             this.textBox.Name = "textBox";
             this.textBox.ReadOnly = true;
@@ -95,6 +95,7 @@
             this.checkBoxCloseWindow.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCloseWindow.Name = "checkBoxCloseWindow";
             this.checkBoxCloseWindow.UseVisualStyleBackColor = true;
+            this.checkBoxCloseWindow.CheckedChanged += new System.EventHandler(this.checkBoxCloseWindow_CheckedChanged);
             // 
             // flowLayoutPanelSoftwareInformation
             // 
@@ -112,10 +113,10 @@
             // 
             // panelOK
             // 
+            resources.ApplyResources(this.panelOK, "panelOK");
             this.panelOK.Controls.Add(this.checkBoxCloseWindow);
             this.panelOK.Controls.Add(this.buttonOK);
             this.panelOK.Controls.Add(this.buttonNext);
-            resources.ApplyResources(this.panelOK, "panelOK");
             this.panelOK.Name = "panelOK";
             // 
             // CommonDialog

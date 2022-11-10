@@ -1076,6 +1076,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="wavesource"></param>
     public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
     {
+        if (double.IsNaN(dMin)) return;
+
         if (A_Star == null) SetAxis();
 
         double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
