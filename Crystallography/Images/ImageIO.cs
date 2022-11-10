@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace Crystallography;
 
@@ -1665,9 +1666,9 @@ public static class ImageIO
     public static void IPAImageWriter(string fileName, double[] data, double resolution, Size size, PointD center, double cameralength, WaveProperty waveProperty)
     {
         var ipa = IPAImageGenerator(data, size.Width, size.Height, center, resolution, cameralength, waveProperty);
-        var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+        var serializer = new XmlSerializer(typeof(IPAImage));
         using var fs = new FileStream(fileName, FileMode.Create);
-        bf.Serialize(fs, ipa);//シリアル化し、バイナリファイルに保存する
+        serializer.Serialize(fs, ipa);//シリアル化し、バイナリファイルに保存する
         fs.Close();//閉じる
     }
 
@@ -1724,9 +1725,9 @@ public static class ImageIO
 
     public static IPAImage GetIPA_Object(string fileName)
     {
-        var bf = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+        var serializer = new XmlSerializer(typeof(IPAImage));
         var fs = new FileStream(fileName, FileMode.Open);//ファイルを開く
-        var ipa = (IPAImage)bf.Deserialize(fs);
+        var ipa = (IPAImage)serializer.Deserialize(fs);
         fs.Close();//閉じる
         return ipa;
     }

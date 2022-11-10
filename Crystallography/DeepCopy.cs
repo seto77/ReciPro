@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 
 namespace Crystallography
 {
@@ -39,8 +40,8 @@ namespace Crystallography
         public static T Copy<T>(T target)
         {
             T result;
-            BinaryFormatter b = new BinaryFormatter();
-            MemoryStream mem = new MemoryStream();
+            var b = new XmlSerializer(typeof(T));
+            var mem = new MemoryStream();
             try
             {
                 b.Serialize(mem, target);

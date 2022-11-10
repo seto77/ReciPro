@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace ReciPro
 {
@@ -294,9 +295,9 @@ namespace ReciPro
 
         private void addRefferencePattern(string fileName)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream fs = new FileStream(fileName, System.IO.FileMode.Open);//ファイルを開く
-            ImageIO.IPAImage ipa = (ImageIO.IPAImage)bf.Deserialize(fs);
+            var serializer = new XmlSerializer(typeof(ImageIO.IPAImage));
+            var fs = new FileStream(fileName, System.IO.FileMode.Open);//ファイルを開く
+            var ipa = (ImageIO.IPAImage)serializer.Deserialize(fs);
 
             int n = 0;
             double[] pixels;
@@ -905,8 +906,8 @@ return residual;
         {
             setRefinmentSetting();
             using Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-            System.Runtime.Serialization.IFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(stream, setting);
+            var serializer = new XmlSerializer(typeof(RefinmentSetting));
+            serializer.Serialize(stream, setting);
         }
 
         private void buttonLoadSetting_Click(object sender, EventArgs e)

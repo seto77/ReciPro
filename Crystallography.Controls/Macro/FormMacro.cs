@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Crystallography.Controls
 {
@@ -465,8 +466,8 @@ namespace Crystallography.Controls
                 var ms = new MemoryStream();
                 var ds = new DeflateStream(ms, CompressionMode.Compress, true);
 
-                IFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(ds, strList);
+                var serializer = new XmlSerializer(typeof(List<string>));
+                serializer.Serialize(ds, strList);
                 ds.Close();
 
                 var byteArray = ms.ToArray();
@@ -479,8 +480,8 @@ namespace Crystallography.Controls
 
                 var ms = new MemoryStream(value);
                 var ds = new DeflateStream(ms, CompressionMode.Decompress, true);
-                IFormatter formatter = new BinaryFormatter();
-                var strList = (List<string>)formatter.Deserialize(ds);
+                var serializer = new XmlSerializer(typeof(List<string>));
+                var strList = (List<string>)serializer.Deserialize(ds);
                 ds.Close();
                 ms.Close();
 

@@ -486,30 +486,32 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void readToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new OpenFileDialog { Filter = "Database File[*.cpo]|*.cpo" };
-            try
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    using (Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        double version = (double)formatter.Deserialize(stream);
-                        if (version == 1.0)
-                        {
-                            numericUpDownAngleResolution.Value = (decimal)((double)formatter.Deserialize(stream));
-                            numericUpDownAngleSubDivision.Value = (decimal)((int)formatter.Deserialize(stream));
-                            numericUpDownCrystallineSize.Value = (decimal)((double)formatter.Deserialize(stream));
-                            double[] density = (double[])formatter.Deserialize(stream);
-                            crystal.Crystallites = new Crystallite(Crystal, density);
+            //2022/11/10 BinaryFormatterが使えなくなったので、取りあえずコメントアウト
 
-                            poleFigureControl.Crystal = Crystal;
-                        }
-                    }
-            }
-            catch
-            {
-                MessageBox.Show("ファイルが読み込めません");
-            }
+            //var dlg = new OpenFileDialog { Filter = "Database File[*.cpo]|*.cpo" };
+            //try
+            //{
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //        using (Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
+            //        {
+            //            IFormatter formatter = new BinaryFormatter();
+            //            double version = (double)formatter.Deserialize(stream);
+            //            if (version == 1.0)
+            //            {
+            //                numericUpDownAngleResolution.Value = (decimal)((double)formatter.Deserialize(stream));
+            //                numericUpDownAngleSubDivision.Value = (decimal)((int)formatter.Deserialize(stream));
+            //                numericUpDownCrystallineSize.Value = (decimal)((double)formatter.Deserialize(stream));
+            //                double[] density = (double[])formatter.Deserialize(stream);
+            //                crystal.Crystallites = new Crystallite(Crystal, density);
+
+            //                poleFigureControl.Crystal = Crystal;
+            //            }
+            //        }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("ファイルが読み込めません");
+            //}
         }
 
         /// <summary>
@@ -519,25 +521,29 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new SaveFileDialog            {                Filter = "Database File[*.cpo]|*.cpo"            };
-            try
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, 1.0);
 
-                        formatter.Serialize(stream, crystal.AngleResolution);
-                        formatter.Serialize(stream, crystal.SubDivision);
-                        formatter.Serialize(stream, crystal.GrainSize);
-                        formatter.Serialize(stream, crystal.Crystallites.Density);
-                    }
-            }
-            catch
-            {
-                MessageBox.Show("ファイルが書き込みません");
-            }
+            //2022/11/10 BinaryFormatterが使えなくなったので、取りあえずコメントアウト
+
+
+            //var dlg = new SaveFileDialog            {                Filter = "Database File[*.cpo]|*.cpo"            };
+            //try
+            //{
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //        using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
+            //        {
+            //            IFormatter formatter = new BinaryFormatter();
+            //            formatter.Serialize(stream, 1.0);
+
+            //            formatter.Serialize(stream, crystal.AngleResolution);
+            //            formatter.Serialize(stream, crystal.SubDivision);
+            //            formatter.Serialize(stream, crystal.GrainSize);
+            //            formatter.Serialize(stream, crystal.Crystallites.Density);
+            //        }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("ファイルが書き込みません");
+            //}
         }
 
         /// <summary>
