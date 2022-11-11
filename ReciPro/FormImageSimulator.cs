@@ -964,9 +964,9 @@ public partial class FormImageSimulator : Form
 
             for (int i = 0; i < p[0].Pt.Count; i++)
             {
-                sb.Append(p[0].Pt[i].X.ToString());
+                sb.Append(p[0].Pt[i].X);
                 for (int j = 0; j < p.Length; j++)
-                    sb.Append("\t" + p[j].Pt[i].Y.ToString());
+                    sb.Append($"\t{p[j].Pt[i].Y.ToString()}");
                 sb.Append("\r\n");
             }
             Clipboard.SetDataObject(sb.ToString());

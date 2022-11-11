@@ -282,7 +282,7 @@ public partial class SymmetryControl : UserControl
                 break;
 
             case "trigonal":
-                switch (tempSym.SpaceGroupHMStr.Contains("Rho") && tempSym.SpaceGroupHMStr.Contains("R"))
+                switch (tempSym.SpaceGroupHMStr.Contains("Rho") && tempSym.SpaceGroupHMStr.Contains('R'))
                 {
                     case false:
                         numericBoxA.Enabled = numericBoxC.Enabled = true;

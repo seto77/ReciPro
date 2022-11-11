@@ -480,7 +480,6 @@ public partial class NumericBox : UserControl
 
     public void Calculate(object sender, EventArgs e)
     {
-        double d = 0;
         //現在のカーソル位置のテキストを計算する
         int count = 0;
         int selectionLine = 0;
@@ -495,7 +494,7 @@ public partial class NumericBox : UserControl
         }
         string[] formula = new string[selectionLine + 1];
         Array.Copy(textBox.Lines, formula, selectionLine + 1);
-        d = NumericalFormula.GetNumetricValue(formula);
+        var d = NumericalFormula.GetNumetricValue(formula);
         if (!double.IsNaN(d))
         {
             skipTextChangeEvent = true;
@@ -559,7 +558,7 @@ public partial class NumericBox : UserControl
         if (text.Length == 0)
         {
             text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
-            if(TrimEndZero && text.Contains("."))
+            if(TrimEndZero && text.Contains('.'))
                 text=  text.TrimEnd(new[] { '0' }).TrimEnd(new[] { '.'});
 
             text = separateThousands(text);
@@ -573,7 +572,7 @@ public partial class NumericBox : UserControl
     private static string separateThousands(string valueString)
     {
         char decimalPoint = '.';
-        if (valueString.Contains(","))
+        if (valueString.Contains(','))
             decimalPoint = ',';
 
         var integer = valueString.Split(new[] { decimalPoint });

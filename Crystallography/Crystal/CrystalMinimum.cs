@@ -160,14 +160,13 @@ public class Crystal2
             sect = GetShortTitle(c.PublSectionTitle),
             jour = GetShortJournal(c.Journal),
             formula = c.ChemicalFormulaSum,
-            density = (float)c.Density
+            density = (float)c.Density,
+            CellTexts = new[] {
+                Compose(c.A * 10, c.A_err * 10), Compose(c.B * 10, c.B_err * 10), Compose(c.C * 10, c.C_err * 10),
+                Compose(c.Alpha /Math.PI*180, c.Alpha_err/Math.PI*180), Compose(c.Beta /Math.PI*180, c.Beta_err/Math.PI*180), Compose(c.Gamma /Math.PI*180, c.Gamma_err/Math.PI*180) },
+            atoms = new List<Atoms2>()
         };
 
-        c2.CellTexts = new[] {
-                Compose(c.A * 10, c.A_err * 10), Compose(c.B * 10, c.B_err * 10), Compose(c.C * 10, c.C_err * 10),
-                Compose(c.Alpha /Math.PI*180, c.Alpha_err/Math.PI*180), Compose(c.Beta /Math.PI*180, c.Beta_err/Math.PI*180), Compose(c.Gamma /Math.PI*180, c.Gamma_err/Math.PI*180) };
-
-        c2.atoms = new List<Atoms2>();
         foreach (Atoms a in c.Atoms)
         {
             var atom2 = new Atoms2
@@ -466,8 +465,8 @@ public class Crystal2
     private static (double Value, double Error) Decompose2(string str) => Decompose(str, false);
     public static (double Value, double Error) Decompose(string str, int sgnum) => Decompose(str, sgnum >= 430 && sgnum <= 488);
 
-    private static CultureInfo culture = CultureInfo.InvariantCulture;
-    private static NumberStyles style = NumberStyles.Number;
+    private static readonly CultureInfo culture = CultureInfo.InvariantCulture;
+    private static readonly NumberStyles style = NumberStyles.Number;
 
     /// <summary>
     /// 9.726|5|, 1.234|12|E-6 ‚Ì‚æ‚¤‚È•¶š—ñ‚ğAValue‚ÆError‚É•ª‰ğ‚µ‚Äƒ^ƒvƒ‹‚Å•Ô‚·. 

@@ -273,10 +273,8 @@ abstract public class GLObject
 
     public void Dispose()
     {
-        if (Sphere.DefaultDictionary.ContainsKey(Program))
-            Sphere.DefaultDictionary.Remove(Program);
-        if (Cylinder.DefaultDictionary.ContainsKey(Program))
-            Cylinder.DefaultDictionary.Remove(Program);
+        Sphere.DefaultDictionary.Remove(Program);
+        Cylinder.DefaultDictionary.Remove(Program);
         if (this is TextObject t && TextObject.DefaultDictionaly.ContainsKey((Program, t.TextureNum)))
             TextObject.DefaultDictionaly.Remove((Program, t.TextureNum));
         GL.DeleteBuffers(1, ref Obj.VBO);
@@ -724,7 +722,7 @@ public class Polygon : GLObject
         //最終処理
         Vertices = new Vertex[vertices.Count() + 1];
         Array.Copy(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray(), Vertices, vertices.Count());
-        Vertices[Vertices.Length - 1] = new Vertex(centerF, normF, mat.Argb);
+        Vertices[^1] = new Vertex(centerF, normF, mat.Argb);
 
         Indices = new uint[indicesArray.Length * 3 - 4];
         Primitives = new (PT Type, int Count)[3];

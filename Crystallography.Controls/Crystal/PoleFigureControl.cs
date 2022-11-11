@@ -512,7 +512,7 @@ namespace Crystallography.Controls
                         vec.Add(-vec[0]);
                         vec.Add(-vec[1]);
                         vec.Add(-vec[2]);
-                        if (sym.SpaceGroupHallStr.Contains("\""))//3m1の場合
+                        if (sym.SpaceGroupHallStr.Contains('"'))//3m1の場合
                         {
                             vec.Add(new Vector3DBase(-x, +y, +z));
                             vec.Add(new Vector3DBase(-(-x - sqrt3 * y) / 2, +(+sqrt3 * x - y) / 2, +z));
