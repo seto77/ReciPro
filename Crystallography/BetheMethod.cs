@@ -245,7 +245,7 @@ public class BetheMethod
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else if (solver == Solver.Eigen_MKL)
                 {
-                    var evd = new DMat(bLen, bLen, eigenMatrix.AsSpan().Slice(0, bLen * bLen).ToArray()).Evd(Symmetricity.Asymmetric);
+                    var evd = new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray()).Evd(Symmetricity.Asymmetric);
                     var alpha = evd.EigenVectors.LU().Solve(psi0);
 
                     var resultMat = new DMat(bLen, tLen);
@@ -265,14 +265,14 @@ public class BetheMethod
                 else
                 {
                     var resultMat = new DMat(bLen, tLen);
-                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(bLen, bLen, eigenMatrix.AsSpan().Slice(0, bLen * bLen).ToArray())).Exponential();
+                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
                     var vec = matExp.Multiply(psi0);
                     resultMat.SetColumn(0, vec);
 
                     if (tLen > 1)
                     {
                         if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
-                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(bLen, bLen, eigenMatrix.AsSpan().Slice(0, bLen * bLen).ToArray())).Exponential();
+                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
                         for (int t = 1; t < tLen; t++)
                         {
                             vec = (DVec)matExp.Multiply(vec);
@@ -1350,7 +1350,7 @@ public class BetheMethod
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(double voltage) => getU(voltage, new Beam((0, 0, 0), new Vector3DBase(0, 0, 0)));
 
-    private Dictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = new();
+    private readonly Dictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = new();
     #endregion
 
     #region ポテンシャルのマトリックス

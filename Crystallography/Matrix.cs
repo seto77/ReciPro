@@ -8,7 +8,6 @@ using OpenTK;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace Crystallography;
 
 /// <summary>
@@ -615,9 +614,9 @@ public class Vector3DBase : ICloneable
             return null;
     }
 
-    public static Vector3DBase operator /(Vector3DBase v1, in double d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
+    public static Vector3DBase operator /(Vector3DBase v1, in double d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
-    public static Vector3DBase operator /(Vector3DBase v1, in int d) => new Vector3DBase(v1.X / d, v1.Y / d, v1.Z / d);
+    public static Vector3DBase operator /(Vector3DBase v1, in int d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
     #endregion 演算子のオーバーロード
 
@@ -625,7 +624,7 @@ public class Vector3DBase : ICloneable
     /// 原点からの長さを返す
     /// </summary>
     /// <returns></returns>
-    public double Length => Math.Sqrt(X * X + Y * Y + Z * Z);
+    public double Length => Math.Sqrt(Length2);
 
     /// <summary>
     /// 原点からの長さの二乗を返す

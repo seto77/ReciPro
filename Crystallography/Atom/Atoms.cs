@@ -79,9 +79,9 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public float Specular = Material.DefaultTexture.Specular;//”½ŽËŒõ
     
     [XmlIgnore]
-    public Vector3DBase PositionError => new Vector3DBase(X_err, Y_err, Z_err);
+    public Vector3DBase PositionError => new(X_err, Y_err, Z_err);
     [XmlIgnore] 
-    public Vector3DBase Position => new Vector3DBase(X, Y, Z);
+    public Vector3DBase Position => new(X, Y, Z);
 
     
 

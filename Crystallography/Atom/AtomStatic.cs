@@ -6,10 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Edge = Crystallography.XrayLineEdge;
-using MathNet.Numerics.Distributions;
 using MathNet.Numerics.Integration;
-using static HDF.PInvoke.H5E;
-using System.Security.Policy;
 
 namespace Crystallography;
 
